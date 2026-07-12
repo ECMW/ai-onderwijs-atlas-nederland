@@ -1,6 +1,6 @@
 {
-  "version": "Werkversie 0.1",
+  "version": "Werkversie 0.2",
   "updated": "12 juli 2026",
-  "sourceNote": "Geïmporteerd uit atlas-ai-onderwijs-nederland.md; onzekerheden uit de bron zijn behouden.",
-  "recordCount": 84
+  "sourceNote": "Canonieke atlasdata, uitgebreid met 30 gecontroleerde officiële Nederlandse AI-onderwijsbronnen van Npuls, Kennisnet, SURF, SIVON en NOLAI.",
+  "recordCount": 114
 }

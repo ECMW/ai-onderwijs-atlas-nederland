@@ -1,5 +1,13 @@
 # Changelog
 
+## 12 juli 2026 — officiële inhoudstranche, batch 1
+
+- 30 unieke, direct bruikbare records toegevoegd uit officiële bronnen van Npuls, Kennisnet, SURF, SIVON en NOLAI.
+- Verdeling: 17 handreikingen, 6 praktijkvoorbeelden, 4 pilots, 2 hulpmiddelen en 1 training.
+- Canonieke data uitgebreid van 84 naar 114 records; zoekindex en browserdata opnieuw gegenereerd.
+- Specifieke bron-URL van de bestaande Kennisnet-handreiking gecorrigeerd.
+- Kandidaten-, duplicate- en resultaatrapport toegevoegd; tien nieuwe detailpagina's handmatig gecontroleerd.
+
 ## 2026-07-12 — Marketplace-zoekervaring met combinaties
 
 - Bezoekers kunnen meerdere rollen tegelijk kiezen, lokaal onthouden, wijzigen en wissen.
