@@ -3548,8 +3548,8 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "Kennisnet",
-        "url": "https://www.kennisnet.nl/",
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/handreiking-ai-in-het-onderwijs/",
         "sourceType": "official"
       }
     ],
@@ -3584,6 +3584,11 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-07-12",
+        "type": "source_updated",
+        "summary": "Generieke Kennisnet-homepage vervangen door de specifieke officiële handreikingspagina."
       }
     ]
   },
@@ -5986,6 +5991,2378 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "in-gesprek-over-digitale-geletterdheid",
+    "title": "In gesprek over digitale geletterdheid",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Gespreksplaat die digitale geletterdheid verbindt met AI-geletterdheid, datageletterdheid, informatievaardigheden en mediawijsheid.",
+    "purpose": "Een gemeenschappelijke taal en startpunt bieden voor keuzes over digitale geletterdheid in het vervolgonderwijs.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Curriculumontwikkelaars",
+      "Docenten",
+      "Informatiemanagers"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-06-23",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.npuls.nl/kennisbank/in-gesprek-over-digitale-geletterdheid",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "npuls"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "digitale geletterdheid",
+      "AI-geletterdheid",
+      "datageletterdheid",
+      "gespreksplaat",
+      "competentieraamwerken"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "kit-workshop-ai-assistenten-in-het-onderwijs",
+    "title": "Kit: workshop AI-assistenten in het onderwijs",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Vrij beschikbare workshopkit met draaiboek, presentatie, gespreksstarters en werkmaterialen over toekomstige AI-assistenten in het onderwijs.",
+    "purpose": "Onderwijsprofessionals gezamenlijk eisen, wensen en beleid voor AI-assistenten laten verkennen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsadviseurs",
+      "Beleidsmakers",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2024-08-29",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://npuls.nl/kennisbank/kit-workshop-ai-assistenten-in-het-onderwijs",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "npuls"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "workshop",
+      "AI-assistenten",
+      "draaiboek",
+      "gespreksstarters",
+      "professionalisering"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "aan-de-slag-met-de-ai-act",
+    "title": "Aan de slag met de AI Act",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Thematische toegang tot documenten en tools over de AI Act, AI-geletterdheid, algoritmeregistratie en verantwoord AI-gebruik in het vervolgonderwijs.",
+    "purpose": "Onderwijsprofessionals helpen passende AI-Act-instrumenten te vinden en toe te passen.",
+    "audiences": [
+      "Docenten",
+      "Beleidsmakers",
+      "Bestuurders",
+      "Informatiemanagers",
+      "IT-professionals",
+      "Juristen"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI Act en wetgeving",
+      "Beleid en governance",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-03-12",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://npuls.nl/kennisbank/aan-de-slag-met-de-ai-act",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "npuls"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI Act",
+      "AI-verordening",
+      "algoritmeregister",
+      "compliance",
+      "verantwoord gebruik"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "ai-act-inleiding-en-uitleg",
+    "title": "AI Act – Inleiding en uitleg over de AI-verordening",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Beknopte introductie tot de AI-verordening met begrippen, risicocategorieën, fasering en gevolgen voor onderwijsinstellingen.",
+    "purpose": "Medewerkers in het vervolgonderwijs een eerste onderbouwd overzicht van de AI Act geven.",
+    "audiences": [
+      "Beleidsmakers",
+      "Bestuurders",
+      "Docenten",
+      "IT-professionals",
+      "Juristen"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI Act en wetgeving",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-03-12",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://npuls.nl/kennisbank/ai-act-inleiding-en-uitleg",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "npuls"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI Act",
+      "AI-verordening",
+      "risicoclassificatie",
+      "juridisch",
+      "compliance"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "edugenai-uitbreiding-pilot",
+    "title": "eduGenAI: uitbreiding van de pilot",
+    "recordType": "pilot",
+    "legacyType": "Pilot",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls",
+      "org-surf"
+    ],
+    "providerName": "Npuls en SURF",
+    "description": "Gecontroleerde pilotomgeving waarin instellingen veilige en verantwoorde generatieve AI testen en de toekomstige dienst gezamenlijk verbeteren.",
+    "purpose": "Praktijkervaring opdoen met generatieve AI die aansluit op onderwijsdoelen, privacy en digitale autonomie.",
+    "audiences": [
+      "Studenten",
+      "Docenten",
+      "Ondersteunend personeel",
+      "IT-professionals",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Veilige AI-omgeving",
+      "Implementatie en adoptie",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "pilot",
+    "availabilityText": "Pilot wordt in 2026 gefaseerd uitgebreid",
+    "startDate": "2026-05-01",
+    "endDate": null,
+    "publicationDate": "2026-04-20",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://npuls.nl/nieuws/edu-gen-ai-breidt-pilot-uit",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "npuls",
+      "surf"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "eduGenAI",
+      "pilot",
+      "generatieve AI",
+      "digitale autonomie",
+      "veilige AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "ai-impact-game",
+    "title": "AI Impact Game",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Kant-en-klare workshop met instructies, script, presentatie, spelbord en werkmaterialen om de impact van generatieve AI vanuit meerdere schoolrollen te verkennen.",
+    "purpose": "Het gesprek over onderwijsvisie, rollen en schoolbeleid voor generatieve AI verdiepen.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Bestuurders",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Professionalisering",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/tools/ai-impact-game/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "kennisnet"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI Impact Game",
+      "workshop",
+      "generatieve AI",
+      "schoolbeleid",
+      "scenario's"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "ai-gebruik-op-school-in-kaart-brengen",
+    "title": "Het gebruik van AI op school in kaart brengen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Stappenplan voor een kwalitatieve of kwantitatieve inventarisatie van AI-gebruik, met een voorbeeldvragenlijst voor leraren en leerlingen.",
+    "purpose": "Feitelijk inzicht verzamelen als basis voor schoolafspraken, AI-beleid en professionalisering.",
+    "audiences": [
+      "Schoolleiders",
+      "Beleidsmakers",
+      "Docenten",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Implementatie en adoptie",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-09-25",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/het-gebruik-van-ai-op-school-in-kaart-brengen/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "kennisnet"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "inventarisatie",
+      "vragenlijst",
+      "AI-gebruik",
+      "schoolbeleid",
+      "professionalisering"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "voldoen-aan-de-ai-verordening",
+    "title": "Voldoen aan de AI-verordening",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Stappenplan dat uitlegt wanneer de AI-verordening op scholen van toepassing is, welke risicocategorieën bestaan en welke acties nodig zijn.",
+    "purpose": "Scholen ondersteunen bij het herkennen en uitvoeren van hun verplichtingen onder de AI-verordening.",
+    "audiences": [
+      "Schoolleiders",
+      "Bestuurders",
+      "Beleidsmakers",
+      "IT-professionals",
+      "Juristen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "AI Act en wetgeving",
+      "Beleid en governance",
+      "Veilige AI-omgeving"
+    ],
+    "status": "available",
+    "availabilityText": "Bijgewerkt 2 april 2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/voldoen-aan-de-ai-verordening/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "kennisnet"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-verordening",
+      "AI Act",
+      "risicocategorieën",
+      "gebruiksverantwoordelijke",
+      "compliance"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "curriculumontwikkeling-en-de-invloed-van-ai",
+    "title": "Aandachtspunten bij curriculumontwikkeling en de invloed van AI",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Praktische aandachtspunten voor curriculumkeuzes rond AI, waaronder leerdoelen, toetsing, de rol van de leraar, collectief leren en professionalisering.",
+    "purpose": "Schoolteams helpen AI doordacht in samenhang met het volledige curriculum te beoordelen.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Curriculumontwikkelaars",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Curriculumontwikkeling",
+      "Lesgeven en leren met AI",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Bijgewerkt 24 februari 2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/aandachtspunten-bij-de-ontwikkeling-van-je-curriculum-en-de-invloed-van-ai/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "kennisnet"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "curriculum",
+      "leerdoelen",
+      "toetsing",
+      "professionalisering",
+      "leraarschap"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "leermiddelen-differentieren-met-ai",
+    "title": "Leermiddelen differentiëren met AI",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Uitleg over generieke en onderwijsspecifieke AI-tools voor differentiatie, met randvoorwaarden voor kwaliteit, privacy, didactiek en professionele beoordeling.",
+    "purpose": "Leraren en scholen ondersteunen bij een verantwoorde pilot met AI-ondersteunde differentiatie.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsadviseurs",
+      "Curriculumontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Curriculumontwikkeling",
+      "Veilige AI-omgeving"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-06-15",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/leermiddelen-differentieren-met-ai/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "kennisnet"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "differentiatie",
+      "leermiddelen",
+      "AI-tutor",
+      "didactiek",
+      "kwaliteit"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "impact-van-ai-op-de-schoolorganisatie",
+    "title": "De impact van AI op de schoolorganisatie",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Overzicht van de invloed van AI op bestuur, schoolleiding, ondersteuning, leerlingbegeleiding en bedrijfsvoering binnen schoolorganisaties.",
+    "purpose": "Bestuur en schoolleiding helpen de organisatorische reikwijdte van AI in beeld te brengen.",
+    "audiences": [
+      "Bestuurders",
+      "Schoolleiders",
+      "Beleidsmakers",
+      "Ondersteunend personeel"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2024-06-12",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/de-impact-van-ai-op-de-schoolorganisatie/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "kennisnet"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "schoolorganisatie",
+      "bedrijfsvoering",
+      "bestuur",
+      "kwaliteitszorg",
+      "governance"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "ai-als-ongewenste-collega-emmauscollege",
+    "title": "Nadenken over AI op school: AI als (on)gewenste collega",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Emmauscollege",
+    "description": "Praktijkvoorbeeld waarin een interne website met stappenplan, playground, richtlijnen en tools het schoolteam helpt de positie van AI te onderzoeken.",
+    "purpose": "Laten zien hoe een VO-school AI-geletterdheid en beleidsvorming toegankelijk en onderzoekend organiseert.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "Praktijkvoorbeelden",
+      "AI-geletterdheid",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-02-13",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/nadenken-over-ai-op-je-school-ai-als-ongewenste-collega/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "kennisnet"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Emmauscollege",
+      "praktijkvoorbeeld",
+      "AI-beleid",
+      "playground",
+      "richtlijnen"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "regionale-ai-werkgroep-friesland",
+    "title": "Regionale AI-werkgroep in Noordwest- en Zuid-Friesland",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "STO Noordwest-Friesland en Zuid-Friesland",
+    "description": "Praktijkvoorbeeld van een regionale werkgroep waarin onderwijsprofessionals van VO-scholen kennis, voorbeelden en ervaringen met AI delen.",
+    "purpose": "Laten zien hoe scholen regionaal kunnen samenwerken aan AI-adoptie en een gezamenlijke inventarisatie.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Beleidsmakers",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "Praktijkvoorbeelden",
+      "Implementatie en adoptie",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-04-18",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/regionale-samenwerking-stelt-vo-scholen-in-staat-om-samen-met-ai-aan-de-slag-te-gaan/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "kennisnet"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "regionale samenwerking",
+      "AI-werkgroep",
+      "VO",
+      "kennisdeling",
+      "adoptie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "ai-in-de-lespraktijk-teylingen-college",
+    "title": "AI in de lespraktijk bij Teylingen College",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Teylingen College",
+    "description": "Praktijkvoorbeeld van een geschiedenisdocent en digicoach die AI inzet voor lesvoorbereiding, werkdrukvermindering, docentondersteuning en beleidsadvies.",
+    "purpose": "Concrete manieren tonen waarop een docent en scholenstichting AI-gebruik en professionalisering organiseren.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Bestuurders",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "Praktijkvoorbeelden",
+      "Lesgeven en leren met AI",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2024-12-20",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/dankzij-ai-werkt-robbert-van-empel-efficienter-en-zijn-lessen-worden-er-beter-van/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "kennisnet"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Teylingen College",
+      "digicoach",
+      "lesvoorbereiding",
+      "werkdruk",
+      "professionalisering"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "bewuste-inzet-ai-openbaar-onderwijs-groningen",
+    "title": "Bewuste en spaarzame inzet van AI bij Openbaar Onderwijs Groningen",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Openbaar Onderwijs Groningen",
+    "description": "Praktijkvoorbeeld met een netwerk van ICT-kartrekkers, actuele interne richtlijnen, kennisdeling en expliciete aandacht voor duurzaamheid en professioneel oordeel.",
+    "purpose": "Laten zien hoe een scholenstichting AI via bestaande kennisinfrastructuur en publieke waarden bestuurbaar maakt.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Bestuurders",
+      "IT-professionals",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Praktijkvoorbeelden",
+      "Publieke waarden en ethiek",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-07-18",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/spaarzaam-gebruik-van-ai-past-bij-een-bewuste-levenshouding/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "kennisnet"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Openbaar Onderwijs Groningen",
+      "duurzaamheid",
+      "richtlijnen",
+      "i-coaches",
+      "publieke waarden"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "handreiking-ai-en-informatiebeveiliging",
+    "title": "Handreiking AI en informatiebeveiliging binnen onderwijsinstellingen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-surf"
+    ],
+    "providerName": "SURF",
+    "description": "Handreiking voor veilig en verantwoord AI-gebruik binnen onderwijsinstellingen, gekoppeld aan volwassenheidsniveaus en bestaande beveiligingskaders.",
+    "purpose": "Instellingen helpen AI-risico's en informatiebeveiligingsmaatregelen systematisch te beoordelen.",
+    "audiences": [
+      "IT-professionals",
+      "Informatiemanagers",
+      "Bestuurders",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Veilige AI-omgeving",
+      "Data en infrastructuur",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Versie 1.0",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://sec.surf.nl/assets/handreiking-ai-en-informatiebeveiliging-binnen-onderwijs/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "surf"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "informatiebeveiliging",
+      "AI",
+      "SURFaudit",
+      "risicobeheersing",
+      "volwassenheid"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "verantwoord-ai-gebruiken-risicos-vooraf-beoordelen",
+    "title": "Verantwoord AI gebruiken in het onderwijs: risico's vooraf beoordelen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-surf"
+    ],
+    "providerName": "SURF Communities",
+    "description": "Praktische uitleg met stroomschema over AI Act, AVG, DPIA, FRIA, risicoclassificatie en de gevolgen van geautomatiseerde examinering.",
+    "purpose": "Onderwijsprofessionals helpen AI-risico's en verplichtingen vóór ingebruikname systematisch te beoordelen.",
+    "audiences": [
+      "Docenten",
+      "Bestuurders",
+      "Privacyprofessionals",
+      "IT-professionals",
+      "Examencommissies"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "AI Act en wetgeving",
+      "Privacy en AVG",
+      "Toetsing en examinering"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-03-24",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://communities.surf.nl/vraagbaak-online-onderwijs/artikel/hoe-gebruik-je-ai-verantwoord-in-je-onderwijs-denk-vooraf-altijd",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "surf"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI Act",
+      "AVG",
+      "DPIA",
+      "FRIA",
+      "geautomatiseerde examinering"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "ethische-risicos-gepersonaliseerd-onderwijs-ai",
+    "title": "Ethische risico's en kansen van gepersonaliseerd onderwijs met AI",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-surf"
+    ],
+    "providerName": "SURF",
+    "description": "Ethisch risicorapport over AI-gestuurd gepersonaliseerd hoger onderwijs, met aandacht voor privacy, toegankelijkheid, kritisch denken, docentenrol en duurzaamheid.",
+    "purpose": "Besluitvorming over gepersonaliseerd onderwijs met AI ondersteunen met expliciete publieke-waardenafwegingen.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Docenten",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Curriculumontwikkeling",
+      "Privacy en AVG"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-04-24",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.surf.nl/nieuws/ethische-risicos-en-kansen-van-gepersonaliseerd-onderwijs-met-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "surf"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "personalisering",
+      "ethiek",
+      "privacy",
+      "toegankelijkheid",
+      "democratisch burgerschap"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "dpia-edugenai",
+    "title": "DPIA eduGenAI",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-surf"
+    ],
+    "providerName": "SURF",
+    "description": "Openbaar Data Protection Impact Assessment van eduGenAI met twaalf lage risico's en bijbehorende mitigerende ontwikkelmaatregelen.",
+    "purpose": "Privacyrisico's en maatregelen rond een sectorale generatieve-AI-dienst transparant en herbruikbaar maken.",
+    "audiences": [
+      "Privacyprofessionals",
+      "IT-professionals",
+      "Informatiemanagers",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Privacy en AVG",
+      "Veilige AI-omgeving",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-09-01",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.surf.nl/nieuws/dpia-edugenai-werken-aan-veilige-en-verantwoorde-ai-in-het-onderwijs",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "surf",
+      "edugenai-uitbreiding-pilot"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "DPIA",
+      "eduGenAI",
+      "privacy",
+      "gegevensbescherming",
+      "mitigerende maatregelen"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "uva-pilots-generatieve-ai-beveiligde-omgeving",
+    "title": "UvA-pilots met generatieve AI in een beveiligde omgeving",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Universiteit van Amsterdam",
+    "description": "Dertien gedocumenteerde onderwijspilots met generatieve AI als schrijfcoach, programmeerhulp, oefenhulp en feedbackinstrument binnen een beveiligde omgeving.",
+    "purpose": "Ervaringen delen met privacyvriendelijke pilots waarin de inzet van AI dienend blijft aan leerdoelen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsadviseurs",
+      "IT-professionals",
+      "Studenten"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Praktijkvoorbeelden",
+      "Veilige AI-omgeving",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Praktijkbeschrijving van pilots in 2024",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2024-11-15",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://communities.surf.nl/vraagbaak-online-onderwijs/artikel/uva-doet-ai-onderwijspilots-in-eigen-beveiligde-omgeving-het",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "surf"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Universiteit van Amsterdam",
+      "pilots",
+      "beveiligde omgeving",
+      "leerdoelen",
+      "generatieve AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "ai-ethiek-volwassenheidsmodel-onderwijs",
+    "title": "AI-ethiek-volwassenheidsmodel voor onderwijsinstellingen",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": null,
+    "organizationIds": [
+      "org-surf"
+    ],
+    "providerName": "SURF",
+    "description": "Volwassenheidsmodel en reflectierapport waarmee onderwijsinstellingen beoordelen hoe zij AI-ethiek organisatorisch hebben ingericht.",
+    "purpose": "Instellingen een gestructureerd gesprek en groeipad bieden voor verantwoord AI-gebruik.",
+    "audiences": [
+      "Bestuurders",
+      "Informatiemanagers",
+      "Beleidsmakers",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Beleid en governance",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Laatst bijgewerkt 6 mei 2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://pec.surf.nl/model-ai-ethiek-in-het-onderwijs/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "surf"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-ethiek",
+      "volwassenheidsmodel",
+      "governance",
+      "reflectie",
+      "verantwoord AI-gebruik"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "veilige-ai-agents-hogeschool-rotterdam",
+    "title": "Veilige AI-agents bij Hogeschool Rotterdam",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Hogeschool Rotterdam",
+    "description": "Pilotpraktijk waarin de AI-hub wordt gebruikt om AI-agents wetenschappelijke bronnen te laten doorzoeken met guardrails voor betrouwbaarheid, privacy en compliance.",
+    "purpose": "Laten zien hoe onderzoeksteams AI-agents binnen bestuurbare technische en organisatorische kaders ontwikkelen.",
+    "audiences": [
+      "Onderzoekers",
+      "Docenten",
+      "IT-professionals",
+      "Informatiemanagers"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Praktijkvoorbeelden",
+      "Veilige AI-omgeving",
+      "Data en infrastructuur"
+    ],
+    "status": "pilot",
+    "availabilityText": "Onderdeel van de AI-hub-pilotfase",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-04-08",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.surf.nl/praktijkverhaal/van-pilots-naar-praktijk-hogeschool-rotterdam-bouwt-met-ai-hub-veilige-en-betrouwbare-ai-agents",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "surf"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Hogeschool Rotterdam",
+      "AI-agents",
+      "AI-hub",
+      "guardrails",
+      "wetenschappelijke bronnen"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "ai-toetsingskader-funderend-onderwijs",
+    "title": "AI Toetsingskader Funderend Onderwijs",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-sivon"
+    ],
+    "providerName": "SIVON",
+    "description": "Interactief toetsingskader waarmee leveranciers en scholen bepalen of een AI-systeem onder de AI-verordening valt, welke risicoklasse geldt en welke maatregelen nodig zijn.",
+    "purpose": "De AI-verordening eenduidig vertalen naar beoordeling, inkoop en gebruik van educatieve AI in het funderend onderwijs.",
+    "audiences": [
+      "Bestuurders",
+      "IT-professionals",
+      "Privacyprofessionals",
+      "Inkoop",
+      "Leveranciers"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI Act en wetgeving",
+      "Veilige AI-omgeving",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Versie 1.0 (voorlopig en dynamisch)",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-04-01",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.sivon.nl/toetsingskader/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "sivon",
+      "kennisnet"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "toetsingskader",
+      "AI-verordening",
+      "hoog risico",
+      "leveranciers",
+      "menselijk toezicht"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "whitepaper-educatieve-en-algemene-ai",
+    "title": "Whitepaper Educatieve AI en algemene AI",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Whitepaper die educatieve AI afbakent van algemene en generatieve AI vanuit ontwikkeling, onderwijscontext en leerdoelen.",
+    "purpose": "Onderwijsprofessionals helpen beoordelen wanneer AI werkelijk voor leren en lesgeven is ontworpen.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Bestuurders",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-04-08",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ru.nl/over-ons/nieuws/whitepaper-educatieve-ai-en-algemene-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "nolai"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "educatieve AI",
+      "algemene AI",
+      "generatieve AI",
+      "leerdoelen",
+      "menselijke regie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "whitepaper-micropseudonimisatie",
+    "title": "Whitepaper Veilig omgaan met data: micropseudonimisatie",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Whitepaper over het voorkomen van datalekken met pseudonimisatie en de verbinding met verantwoord en duurzaam datagebruik in onderwijsprojecten.",
+    "purpose": "Privacyprofessionals en onderzoekers inzicht geven in een technische maatregel voor gevoelige onderwijsdata.",
+    "audiences": [
+      "Privacyprofessionals",
+      "Onderzoekers",
+      "IT-professionals",
+      "Informatiemanagers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Privacy en AVG",
+      "Data en infrastructuur",
+      "Veilige AI-omgeving"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-09-11",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ru.nl/over-ons/nieuws/whitepaper-veilig-omgaan-met-data-micropseudonimisatie",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "nolai"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "micropseudonimisatie",
+      "pseudonimisatie",
+      "onderwijsdata",
+      "privacy",
+      "datalekken"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "whitepaper-veilig-experimenteren-taalmodellen",
+    "title": "Whitepaper Veilig experimenteren met taalmodellen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Stappenplan voor het bouwen van een lokale server waarmee scholen met taalmodellen kunnen experimenteren zonder gegevens naar een externe clouddienst te sturen.",
+    "purpose": "Scholen praktische controle geven over data en privacy bij experimenten met taalmodellen.",
+    "audiences": [
+      "Docenten",
+      "IT-professionals",
+      "Schoolleiders"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Veilige AI-omgeving",
+      "Privacy en AVG",
+      "Data en infrastructuur"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-05-26",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ru.nl/over-ons/nieuws/whitepaper-veilig-experimenteren-met-taalmodellen",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "nolai"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "taalmodellen",
+      "lokale server",
+      "open source",
+      "privacy",
+      "stappenplan"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "whitepaper-nakijken-met-ai-vijf-vragen",
+    "title": "Whitepaper Nakijken met AI: vijf vragen voor leraren",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Whitepaper met vijf vragen die leraren en schoolleiders moeten beantwoorden voordat zij AI inzetten voor nakijkwerk.",
+    "purpose": "Menselijke controle en verantwoorde keuzes bij AI-ondersteund nakijken versterken.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Toetsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Publieke waarden en ethiek",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-06-09",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ru.nl/over-ons/nieuws/whitepaper-nakijken-met-ai-5-vragen-die-leraren-zich-zouden-moeten-stellen",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "nolai",
+      "open-vragen-nakijken-met-hulp-van-ai"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "nakijken",
+      "AI",
+      "menselijke controle",
+      "toetsing",
+      "werkdruk"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "open-vragen-nakijken-met-hulp-van-ai",
+    "title": "Open vragen nakijken met hulp van AI",
+    "recordType": "research_project",
+    "legacyType": "Pilot",
+    "subtype": null,
+    "organizationIds": [
+      "org-nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Lopend co-creatieproject dat semi-automatische ondersteuning ontwikkelt voor het sneller en consistenter nakijken van open vragen bij biologie en aardrijkskunde.",
+    "purpose": "Een verantwoord en gevalideerd prototype ontwikkelen dat leraren ondersteunt zonder hun professionele rol weg te nemen.",
+    "audiences": [
+      "Docenten",
+      "Toetsmakers",
+      "Onderzoekers",
+      "Schoolleiders"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Onderzoek",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "pilot",
+    "availabilityText": "Lopend project 2024–2027",
+    "startDate": "2024-01-01",
+    "endDate": "2027-12-31",
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ru.nl/onderzoek/onderzoeksprojecten/open-vragen-nakijken-met-hulp-van-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "nolai"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "open vragen",
+      "nakijken",
+      "semi-automatisch",
+      "CitoLab",
+      "co-creatie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "generatieve-ai-in-het-vo-nolai",
+    "title": "Generatieve AI in het voortgezet onderwijs",
+    "recordType": "research_project",
+    "legacyType": "Pilot",
+    "subtype": null,
+    "organizationIds": [
+      "org-nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Lopend co-creatieonderzoek dat gebruikscases van generatieve AI beschrijft en de verdeling van controle tussen leraar, AI en leerling analyseert.",
+    "purpose": "Nieuwe manieren ontwikkelen om generatieve AI doordacht en met behoud van onderwijsregie in VO-scholen te verankeren.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen",
+      "Onderzoekers",
+      "Schoolleiders"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Lesgeven en leren met AI",
+      "Beleid en governance"
+    ],
+    "status": "pilot",
+    "availabilityText": "Lopend sinds 1 januari 2023",
+    "startDate": "2023-01-01",
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ru.nl/onderzoek/onderzoeksprojecten/generatieve-ai-in-het-vo",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "nolai"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "generatieve AI",
+      "VO",
+      "regie",
+      "automatiseringsniveaus",
+      "gebruikscases"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      }
+    ]
+  },
+  {
+    "id": "adaptief-lesmateriaal-tos-leerlingen",
+    "title": "Adaptief lesmateriaal voor TOS-leerlingen",
+    "recordType": "research_project",
+    "legacyType": "Pilot",
+    "subtype": null,
+    "organizationIds": [
+      "org-nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Lopend co-creatieproject dat een prototype van educatieve AI ontwikkelt om lesmateriaal af te stemmen op het taalniveau van leerlingen met een taalontwikkelingsstoornis.",
+    "purpose": "Toegankelijker lesmateriaal ontwikkelen zonder de vakinhoudelijke kwaliteit of de regie van de leraar te verliezen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsadviseurs",
+      "Onderzoekers",
+      "Schoolleiders"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Onderzoek",
+      "Curriculumontwikkeling"
+    ],
+    "status": "pilot",
+    "availabilityText": "Lopend project 2024–2027",
+    "startDate": "2024-01-01",
+    "endDate": "2027-12-31",
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ru.nl/onderzoek/onderzoeksprojecten/adaptief-lesmateriaal-voor-tos-leerlingen",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "nolai"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "TOS",
+      "adaptief lesmateriaal",
+      "LLM",
+      "inclusief onderwijs",
+      "co-creatie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   }
