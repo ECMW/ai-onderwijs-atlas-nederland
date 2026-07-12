@@ -10736,5 +10736,163 @@
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2b."
       }
     ]
+  },
+  {
+    "id": "civai",
+    "title": "CivAI",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-civai"
+    ],
+    "providerName": "CivAI",
+    "description": "Nederlandse aanbieder van soevereine AI-omgevingen voor onderwijs en publieke sector, waaronder EduGPT voor het onderwijs. Hosting binnen de EU, met dataverwerking onder controle van de eigen organisatie. Levert daarnaast AI Companions, implementatie, training en ondersteuning.",
+    "purpose": "Soevereine AI-toepassingen en begeleiding voor onderwijsinstellingen",
+    "audiences": [
+      "Docenten",
+      "Onderwijsinstellingen",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Actief",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://civai.eu/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "edugpt"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "soevereine AI",
+      "EU-hosting",
+      "AI-companions",
+      "digitale soevereiniteit"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd via community-bijdrage (CivAI)."
+      }
+    ]
+  },
+  {
+    "id": "edugpt",
+    "title": "EduGPT",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": null,
+    "organizationIds": [
+      "org-civai"
+    ],
+    "providerName": "CivAI",
+    "description": "Soevereine AI-chatomgeving voor het onderwijs, gehost binnen de EU met data onder controle van de onderwijsinstelling. Docenten bouwen er zelf vak- en lesspecifieke AI Companions mee, onder meer via de ingebouwde Prompt Companion. Ontworpen vanuit pedagogiek, gericht op het ondersteunen van het leerproces en kritisch denken in plaats van het overnemen ervan.",
+    "purpose": "AI-chatomgeving waarin docenten zelf AI Companions ontwerpen voor leren en lesgeven",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://civai.eu/",
+        "sourceType": "official"
+      },
+      {
+        "label": "EduGPT-whitepaper",
+        "url": "https://civai.eu/edugpt-whitepaper.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "civai"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "paid",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "AI-chatomgeving",
+      "AI-companions",
+      "soevereine AI",
+      "EU-hosting",
+      "kritisch denken"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd via community-bijdrage (CivAI)."
+      }
+    ]
   }
 ]
