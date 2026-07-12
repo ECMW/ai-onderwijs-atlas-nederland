@@ -8365,5 +8365,2376 @@
         "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
+  },
+  {
+    "id": "uva-introductie-ai-voor-docenten",
+    "title": "Introductie AI voor docenten",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Universiteit van Amsterdam",
+    "description": "Workshop waarin docenten de basis van generatieve AI, prompting en de gevolgen voor onderwijs en toetsing verkennen.",
+    "purpose": "Docenten een praktische en kritische basis geven voor het gebruik van generatieve AI in hun onderwijs.",
+    "audiences": [
+      "Docenten"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://tlc.uva.nl/article/ai-basics/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "workshop",
+      "generatieve AI",
+      "prompting",
+      "docenten"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "uva-ai-literacy-docenten-elearning",
+    "title": "AI literacy voor docenten – e-learning",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Universiteit van Amsterdam",
+    "description": "Zelfstandige e-learning over generatieve AI, kritisch gebruik en de betekenis ervan voor onderwijsprofessionals.",
+    "purpose": "Docenten laagdrempelig laten werken aan AI-geletterdheid in hun eigen tempo.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://share.articulate.com/svX7iZbENb4ocjD2biC6-",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "e-learning",
+      "AI literacy",
+      "docenten"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "uva-generatieve-ai-in-toetsing",
+    "title": "Generatieve AI in toetsing",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Universiteit van Amsterdam",
+    "description": "Workshop over de impact van generatieve AI op niet-gesurveilleerde toetsing en mogelijke aanpassingen in toetsontwerp.",
+    "purpose": "Docenten helpen toetsing opnieuw te doordenken vanuit leerdoelen en verantwoord AI-gebruik.",
+    "audiences": [
+      "Docenten",
+      "Examencommissies",
+      "Toetsmakers"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://tlc.uva.nl/article/ai-in-toetsing/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "toetsing",
+      "workshop",
+      "GenAI",
+      "toetsontwerp"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "uva-bko-plus-responsible-ai",
+    "title": "BKO+ track Responsible AI in Education",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Universiteit van Amsterdam",
+    "description": "Professionaliseringstraject waarin docenten verantwoorde AI-toepassingen ontwerpen, uitproberen en evalueren in hun onderwijspraktijk.",
+    "purpose": "Verantwoord experimenteren met AI verbinden aan didactiek, ethiek en professionele reflectie.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Publieke waarden en ethiek",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://tlc.uva.nl/article/bko-track-responsible-ai-in-education/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "BKO",
+      "responsible AI",
+      "docentprofessionalisering"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "uva-dagelijkse-taken-met-ai-chat",
+    "title": "Dagelijkse werktaken met UvA AI Chat",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Universiteit van Amsterdam",
+    "description": "Workshop over privacybewust gebruik van UvA AI Chat voor dagelijkse werkprocessen, met aandacht voor betrouwbaarheid en energiegebruik.",
+    "purpose": "Onderwijsmedewerkers praktisch en kritisch leren werken met een instellingsgebonden AI-chatomgeving.",
+    "audiences": [
+      "Docenten",
+      "Ondersteunend personeel",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Veilige AI-omgeving",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Sessies op 26 oktober 2026 en 16 maart 2027",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://tlc.uva.nl/en/article/daily-office-tasks-with-uva-ai-chat/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "AI Chat",
+      "workshop",
+      "privacy",
+      "werkprocessen"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "uva-smarter-or-dependent",
+    "title": "Smarter or dependent? Learning and thinking with AI",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Universiteit van Amsterdam",
+    "description": "Workshop over de invloed van AI-gebruik op leren, denken en schrijven en over ontwerpkeuzes die zelfstandig denken beschermen.",
+    "purpose": "Docenten helpen AI-gebruik zo te ontwerpen dat menselijke leer- en correctiecapaciteit behouden blijft.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Sessies op 6 oktober 2026 en 11 mei 2027",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://tlc.uva.nl/en/article/smarter-or-dependent/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "kritisch denken",
+      "schrijven",
+      "AI-afhankelijkheid",
+      "workshop"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "eu-ai-competent-teacher",
+    "title": "Becoming an artificial intelligent competent teacher",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie",
+    "description": "Gratis, zelfgestuurde online cursus van 15–20 uur over mensgerichte, ethische en pedagogisch verantwoorde AI in het onderwijs.",
+    "purpose": "Leraren concrete competenties geven om AI te begrijpen, beoordelen en verantwoord in te zetten.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Lerarenopleiders"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://school-education.ec.europa.eu/en/learn/courses/becoming-artificial-intelligent-competent-teacher",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "self-paced",
+      "teacher",
+      "UNESCO framework",
+      "certificate"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "erasmus-ai-education-empowering-teachers",
+    "title": "Artificial Intelligence in Education: Empowering European Teachers",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Externe cursusaanbieder via European School Education Platform",
+    "description": "Praktijkgerichte Erasmus+-cursus over AI-tools, gepersonaliseerd leren, toetsing, ethiek en gegevensbescherming.",
+    "purpose": "Leraren praktische vaardigheden geven voor verantwoorde toepassing van AI in de klas.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "Privacy en AVG"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://school-education.ec.europa.eu/en/learn/courses/artificial-intelligence-education-empowering-european-teachers",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Erasmus+",
+      "teacher training",
+      "AI tools",
+      "data protection"
+    ],
+    "notes": "Dit is aanbod van een externe cursusaanbieder in het Europese platform; opname is geen inhoudelijke goedkeuring door de Europese Commissie.",
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "cost-open-call-2026",
+    "title": "COST Open Call 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "COST Association",
+    "description": "Bottom-up Europese call voor onderzoeksnetwerken in alle wetenschaps- en technologiedomeinen, waaronder AI en onderwijs.",
+    "purpose": "Internationale netwerken financieren die kennis, onderzoekers en praktijkpartners rond een gezamenlijk vraagstuk verbinden.",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek"
+    ],
+    "status": "planned",
+    "availabilityText": "Open van 31 juli tot en met 28 oktober 2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.cost.eu/how-to-apply/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Indicatief circa €140.000 in jaar 1 en €180.000 per vervoljaar",
+    "fundingDeadline": "2026-10-28",
+    "applicationOpenDate": "2026-07-31",
+    "applicationDeadline": "2026-10-28",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Voorstel voor een netwerk met deelnemers uit ten minste zeven COST-landen; zie de officiële call voor alle samenstellingsvoorwaarden.",
+    "applicantTypes": [
+      "Onderzoekers",
+      "Universiteiten",
+      "Onderzoeksinstellingen",
+      "Publieke organisaties"
+    ],
+    "callStatus": "forthcoming",
+    "recurrence": "Jaarlijks",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "COST Action",
+      "European network",
+      "AI education",
+      "open call"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "digital-europe-advanced-skills-2026",
+    "title": "Digital Europe: Advanced Digital Skills 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "European Health and Digital Executive Agency (HaDEA)",
+    "description": "Open Europese call DIGITAL-2026-SKILLS-10 voor geavanceerde digitale vaardigheden, waaronder opleiding en training rond AI.",
+    "purpose": "Europese consortia ondersteunen bij ontwikkeling en opschaling van geavanceerde digitale opleidingen en vaardigheden.",
+    "audiences": [
+      "Onderwijsinstellingen",
+      "Onderzoekers",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "AI-geletterdheid",
+      "Professionalisering"
+    ],
+    "status": "open_call",
+    "availabilityText": "Open tot 1 oktober 2026 om 17.00 CEST",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-04-10",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://hadea.ec.europa.eu/calls-proposals/dep-call-10-advanced-digital-skills_en",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-10-01",
+    "applicationOpenDate": "2026-04-21",
+    "applicationDeadline": "2026-10-01",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [
+      "Internationale consortia",
+      "Onderwijsinstellingen",
+      "Publieke en private organisaties"
+    ],
+    "callStatus": "open",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "DIGITAL-2026-SKILLS-10",
+      "advanced digital skills",
+      "AI training"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "digital-europe-information-integrity-2026",
+    "title": "Digital Europe: Common Research Framework for Information Integrity",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie",
+    "description": "Europese call voor een gemeenschappelijk onderzoeksraamwerk rond informatie-integriteit, desinformatie en technologische risico's, inclusief AI.",
+    "purpose": "Onderzoek, maatschappelijke organisaties en technologiepartners verbinden rond informatie-integriteit en mediawijsheid.",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen",
+      "Maatschappelijke organisaties"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "AI-geletterdheid"
+    ],
+    "status": "open_call",
+    "availabilityText": "Open tot 1 oktober 2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://digital-strategy.ec.europa.eu/en/news/new-open-call-proposals-under-digital-europe-programme",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-10-01",
+    "applicationOpenDate": "2026-04-21",
+    "applicationDeadline": "2026-10-01",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "€6 miljoen",
+    "eligibility": null,
+    "applicantTypes": [
+      "Onderzoeksorganisaties",
+      "Maatschappelijke organisaties",
+      "Technologiepartners"
+    ],
+    "callStatus": "open",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "information integrity",
+      "disinformation",
+      "AI",
+      "media literacy"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "msca-doctoral-networks-2026",
+    "title": "MSCA Doctoral Networks 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie – Marie Skłodowska-Curie Actions",
+    "description": "Internationale Horizon Europe-call voor consortia die doctorale programma's in alle wetenschapsgebieden ontwikkelen; AI-onderwijsonderzoek kan binnen de open thematiek passen.",
+    "purpose": "Internationale, interdisciplinaire en intersectorale doctorale netwerken en opleiding financieren.",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Professionalisering"
+    ],
+    "status": "open_call",
+    "availabilityText": "Open tot 24 november 2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/funding/msca-doctoral-networks-2026",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-11-24",
+    "applicationOpenDate": "2026-05-28",
+    "applicationDeadline": "2026-11-24",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "€593,034 miljoen indicatief",
+    "eligibility": "Consortia van organisaties uit verschillende sectoren en landen; voorstellen kunnen elk wetenschapsgebied betreffen.",
+    "applicantTypes": [
+      "Internationale consortia",
+      "Universiteiten",
+      "Onderzoeksinstellingen",
+      "Publieke en private organisaties"
+    ],
+    "callStatus": "open",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "HORIZON-MSCA-2026-DN-01",
+      "doctoral networks",
+      "Horizon Europe"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "msca-postdoctoral-fellowships-2026",
+    "title": "MSCA Postdoctoral Fellowships 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie – Marie Skłodowska-Curie Actions",
+    "description": "Internationale Horizon Europe-call voor gepromoveerde onderzoekers die via mobiliteit nieuwe vaardigheden en onderzoekservaring willen opbouwen; AI-onderwijsonderzoek is mogelijk binnen de open thematiek.",
+    "purpose": "Individuele postdoctorale onderzoekers en gastorganisaties ondersteunen bij internationale en intersectorale ontwikkeling.",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Professionalisering"
+    ],
+    "status": "open_call",
+    "availabilityText": "Open tot 9 september 2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/funding/msca-postdoctoral-fellowships-2026",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-09-09",
+    "applicationOpenDate": "2026-04-09",
+    "applicationDeadline": "2026-09-09",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "€399,05 miljoen indicatief",
+    "eligibility": null,
+    "applicantTypes": [
+      "Gepromoveerde onderzoekers",
+      "Academische en niet-academische gastorganisaties"
+    ],
+    "callStatus": "open",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "HORIZON-MSCA-2026-PF-01",
+      "postdoctoral fellowship",
+      "mobility"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "ec-ethical-ai-data-guidelines-2026",
+    "title": "Europese richtlijnen voor ethisch gebruik van AI en data in onderwijs (2026)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie",
+    "description": "Geactualiseerde praktische richtlijnen met scenario's, kernprincipes en uitleg over de AI Act, AVG en verantwoord AI- en datagebruik.",
+    "purpose": "Leraren en onderwijsmedewerkers ondersteunen bij contextgebonden, ethische en juridisch bewuste keuzes.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "AI Act en wetgeving",
+      "Privacy en AVG"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-06-09",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://education.ec.europa.eu/focus-topics/digital-education/actions/plan/ethical-guidelines-for-educators-on-using-artificial-intelligence",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "ethical guidelines",
+      "AI Act",
+      "GDPR",
+      "teachers"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "oecd-ec-ai-literacy-framework-2026",
+    "title": "AI Literacy Framework for Primary and Secondary Education",
+    "recordType": "standard",
+    "legacyType": "Standaard",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "OECD en Europese Commissie",
+    "description": "Internationaal referentiekader voor AI-geletterdheid met kennis, vaardigheden en houdingen voor leerlingen in primair en voortgezet onderwijs.",
+    "purpose": "Curriculumontwikkelaars en beleidsmakers een gemeenschappelijke structuur bieden voor verantwoord AI-onderwijs.",
+    "audiences": [
+      "Curriculumontwikkelaars",
+      "Docenten",
+      "Beleidsmakers",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-06-18",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.oecd.org/en/publications/empowering-learners-for-the-age-of-ai_65cd27d4-en.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "AI literacy",
+      "competency framework",
+      "primary",
+      "secondary"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "unesco-ai-competency-framework-teachers",
+    "title": "UNESCO AI Competency Framework for Teachers",
+    "recordType": "standard",
+    "legacyType": "Standaard",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "UNESCO",
+    "description": "Wereldwijd competentiekader met vijftien competenties in vijf dimensies en drie ontwikkelniveaus voor leraren.",
+    "purpose": "Landen en onderwijsorganisaties ondersteunen bij mensgerichte AI-professionalisering, curricula en beoordeling.",
+    "audiences": [
+      "Docenten",
+      "Lerarenopleiders",
+      "Beleidsmakers",
+      "Curriculumontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2024-08-08",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.unesco.org/en/articles/ai-competency-framework-teachers?hub=84636",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "UNESCO",
+      "teacher competencies",
+      "human agency",
+      "AI pedagogy"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "unesco-ai-competency-framework-students",
+    "title": "UNESCO AI Competency Framework for Students",
+    "recordType": "standard",
+    "legacyType": "Standaard",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "UNESCO",
+    "description": "Wereldwijd kader voor kennis, vaardigheden en waarden waarmee leerlingen AI veilig, ethisch en verantwoordelijk leren gebruiken en mede vormgeven.",
+    "purpose": "Beleidsmakers, docenten en curriculumontwikkelaars ondersteunen bij een samenhangend AI-curriculum voor leerlingen.",
+    "audiences": [
+      "Docenten",
+      "Curriculumontwikkelaars",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2024-09-03",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.unesco.org/en/articles/what-you-need-know-about-unescos-new-ai-competency-frameworks-students-and-teachers?hub=343",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "UNESCO",
+      "student competencies",
+      "AI literacy",
+      "responsible use"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "selfie-for-teachers",
+    "title": "SELFIE for Teachers",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie",
+    "description": "Gratis online zelfreflectietool waarmee leraren in circa 25 minuten hun digitale competenties beoordelen en automatisch feedback ontvangen.",
+    "purpose": "Leraren en teams helpen sterke punten en professionaliseringsbehoeften rond digitale competenties te bepalen.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Lerarenopleiders"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://education.ec.europa.eu/selfie-for-teachers",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "Meertalig"
+    ],
+    "keywords": [
+      "SELFIE",
+      "self-reflection",
+      "digital competence",
+      "anonymous"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "ai-act-service-desk",
+    "title": "AI Act Service Desk en Single Information Platform",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie – AI Office",
+    "description": "Publieke informatievoorziening met AI Act Explorer, Compliance Checker, veelgestelde vragen en een loket voor vragen over toepassing van de AI Act.",
+    "purpose": "Organisaties helpen de AI Act te begrijpen en hun mogelijke verplichtingen systematisch te verkennen.",
+    "audiences": [
+      "Beleidsmakers",
+      "Bestuurders",
+      "IT-professionals",
+      "Juristen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "AI Act en wetgeving",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-10-08",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://digital-strategy.ec.europa.eu/en/news/commission-launches-ai-act-service-desk-and-single-information-platform-support-ai-act",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "Meertalig"
+    ],
+    "keywords": [
+      "AI Act Explorer",
+      "Compliance Checker",
+      "AI Office"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "european-school-education-course-catalogue",
+    "title": "European School Education Platform – cursuscatalogus",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie",
+    "description": "Europese catalogus met online en locatiegebonden nascholing voor schoolonderwijs, waaronder veel actuele cursussen over AI.",
+    "purpose": "Onderwijsprofessionals internationaal cursusaanbod laten vergelijken en passende nascholing laten vinden.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Lerarenopleiders"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://school-education.ec.europa.eu/en/learn/courses",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "Meertalig"
+    ],
+    "keywords": [
+      "course catalogue",
+      "Erasmus+",
+      "teacher training",
+      "AI"
+    ],
+    "notes": "Cursussen in deze catalogus kunnen door externe aanbieders worden geleverd. Controleer aanbieder, kosten en voorwaarden op de cursuspagina.",
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "digital-education-hub-funding-finder",
+    "title": "European Digital Education Hub – funding opportunities",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie",
+    "description": "Gecureerde wegwijzer naar Europese en internationale financieringsprogramma's voor innovatie, onderzoek en verandering in digitaal onderwijs.",
+    "purpose": "Docenten, onderzoekers, innovators en onderwijsorganisaties sneller naar passende internationale financiering leiden.",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen",
+      "Beleidsmakers",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://education.ec.europa.eu/focus-topics/digital-education/digital-education-hub/funding-opportunities",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "funding finder",
+      "digital education",
+      "EU funding",
+      "Nordplus"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "european-digital-education-hub",
+    "title": "European Digital Education Hub",
+    "recordType": "programme",
+    "legacyType": "Programma",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie",
+    "description": "Europese community en kennisinfrastructuur voor samenwerking rond beleid, onderzoek en implementatie van digitaal onderwijs.",
+    "purpose": "Versnippering verminderen door Europese onderwijsprofessionals, experts en beleidsmakers te verbinden.",
+    "audiences": [
+      "Docenten",
+      "Onderzoekers",
+      "Beleidsmakers",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Onderzoek",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://education.ec.europa.eu/focus-topics/digital-education/action-plan/european-digital-education-hub",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "European Digital Education Hub",
+      "community",
+      "digital education"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      }
+    ]
+  },
+  {
+    "id": "nolai-leren-argumenteren-met-ai",
+    "title": "Leren argumenteren met AI",
+    "recordType": "research_project",
+    "legacyType": "Pilot",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "NOLAI",
+    "description": "Co-creatieproject voor een veilige multi-agenttoepassing die leerlingen ondersteunt bij argumenteren zonder het denkproces over te nemen.",
+    "purpose": "Onderzoeken hoe educatieve AI de argumentatievaardigheid van leerlingen mensgericht kan ondersteunen.",
+    "audiences": [
+      "Docenten",
+      "Onderzoekers",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "PO"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "pilot",
+    "availabilityText": "Lopend project 2026–2029",
+    "startDate": "2026-01-01",
+    "endDate": "2029-12-31",
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ru.nl/onderzoek/onderzoeksprojecten/leren-argumenteren-met-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "argumenteren",
+      "multi-agent",
+      "co-creatie",
+      "menselijke regie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2b."
+      }
+    ]
+  },
+  {
+    "id": "nolai-studiekeuzeproces-met-ai",
+    "title": "Studiekeuzeproces met AI",
+    "recordType": "research_project",
+    "legacyType": "Pilot",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "NOLAI",
+    "description": "Co-creatieproject dat onderzoekt hoe AI leerlingen kan ondersteunen bij studiekeuze zonder hun autonomie en professionele begeleiding te verdringen.",
+    "purpose": "Een verantwoord AI-concept ontwikkelen dat reflectie en passende studiekeuzes ondersteunt.",
+    "audiences": [
+      "Docenten",
+      "Onderzoekers",
+      "Leerlingen",
+      "Schoolleiders"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Publieke waarden en ethiek",
+      "Implementatie en adoptie"
+    ],
+    "status": "pilot",
+    "availabilityText": "Lopend project 2026–2029",
+    "startDate": "2026-01-01",
+    "endDate": "2029-12-31",
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ru.nl/onderzoek/onderzoeksprojecten/studiekeuzeproces-met-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "studiekeuze",
+      "autonomie",
+      "AI-begeleiding",
+      "co-creatie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2b."
+      }
+    ]
+  },
+  {
+    "id": "nolai-slimme-wiskundefeedback",
+    "title": "Slimme wiskundefeedback met AI",
+    "recordType": "research_project",
+    "legacyType": "Pilot",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "NOLAI",
+    "description": "Co-creatieproject rond AI-ondersteunde feedback op tussenstappen en oplossingsstrategieën bij wiskunde.",
+    "purpose": "Onderzoeken hoe AI tijdige feedback kan geven terwijl de docent regie houdt over leren en beoordelen.",
+    "audiences": [
+      "Docenten",
+      "Onderzoekers",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering"
+    ],
+    "status": "pilot",
+    "availabilityText": "Lopend project 2025–2028",
+    "startDate": "2025-01-01",
+    "endDate": "2028-12-31",
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ru.nl/onderzoek/onderzoeksprojecten/slimme-wiskundefeedback-met-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "wiskunde",
+      "feedback",
+      "AI",
+      "co-creatie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2b."
+      }
+    ]
+  },
+  {
+    "id": "nolai-zelfstandiger-communiceren-met-ai",
+    "title": "Zelfstandiger communiceren met AI",
+    "recordType": "research_project",
+    "legacyType": "Pilot",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "NOLAI",
+    "description": "Co-creatieproject naar educatieve AI die leerlingen in het gespecialiseerd onderwijs ondersteunt bij zelfstandiger communiceren.",
+    "purpose": "Toegankelijke ondersteuning ontwikkelen met expliciete aandacht voor autonomie, inclusie en de rol van begeleiders.",
+    "audiences": [
+      "Docenten",
+      "Onderzoekers",
+      "Leerlingen",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "pilot",
+    "availabilityText": "Lopend project 2026–2029",
+    "startDate": "2026-01-01",
+    "endDate": "2029-12-31",
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ru.nl/onderzoek/onderzoeksprojecten/zelfstandiger-communiceren-met-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "gespecialiseerd onderwijs",
+      "communicatie",
+      "inclusie",
+      "autonomie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2b."
+      }
+    ]
+  },
+  {
+    "id": "hva-dark-tech-studio-smart-glasses",
+    "title": "Dark Tech Studio: ethische verkenning van AI-smartglasses",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Hogeschool van Amsterdam",
+    "description": "Praktijkverhaal over studenten die een technologisch prototype bouwen en tijdens het ontwerpproces expliciet de maatschappelijke en ethische risico's onderzoeken.",
+    "purpose": "Laten zien hoe kritische reflectie, ontwerppraktijk en publieke waarden in technisch onderwijs gecombineerd kunnen worden.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [
+      "Praktijkvoorbeelden",
+      "Publieke waarden en ethiek",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-06-24",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://communities.surf.nl/en/publieke-waarden/article/were-building-something-irresponsible-part-2",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Dark Tech Studio",
+      "smart glasses",
+      "ethiek",
+      "design education"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2b."
+      }
+    ]
+  },
+  {
+    "id": "vu-ai-toolbox-onderwijs",
+    "title": "AI Toolbox van de Vrije Universiteit",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Vrije Universiteit Amsterdam",
+    "description": "Praktijkvoorbeeld van een instellingsbrede toolbox met workshops en toepassingen waarmee docenten AI verantwoord in onderwijsactiviteiten verkennen.",
+    "purpose": "Laten zien hoe een universiteit ondersteuning, experimenten en docentprofessionalisering rond AI organiseert.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsadviseurs",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Praktijkvoorbeelden",
+      "Professionalisering",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-03-05",
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://communities.surf.nl/vraagbaak-online-onderwijs/artikel/ai-toolbox-vrije-universiteit-deze-ai-tools-helpen-je-je",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Vrije Universiteit",
+      "AI Toolbox",
+      "workshops",
+      "onderwijsinnovatie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2b."
+      }
+    ]
+  },
+  {
+    "id": "selfie-for-schools",
+    "title": "SELFIE voor scholen",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie",
+    "description": "Gratis en anonieme zelfevaluatietool waarmee schoolleiders, leraren en leerlingen gezamenlijk het gebruik van digitale technologie in hun school in kaart brengen.",
+    "purpose": "Scholen een feitelijke basis geven voor een gezamenlijk plan voor digitale ontwikkeling en professionalisering.",
+    "audiences": [
+      "Schoolleiders",
+      "Docenten",
+      "Leerlingen",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "Implementatie en adoptie",
+      "Professionalisering",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://education.ec.europa.eu/selfie",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "Meertalig"
+    ],
+    "keywords": [
+      "SELFIE",
+      "school planning",
+      "digital technology",
+      "anonymous"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2b."
+      }
+    ]
+  },
+  {
+    "id": "eit-higher-education-initiative",
+    "title": "EIT Higher Education Initiative",
+    "recordType": "programme",
+    "legacyType": "Programma",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "European Institute of Innovation and Technology",
+    "description": "Europees programma dat consortia van hogeronderwijsinstellingen ondersteunt bij innovatiecapaciteit, ondernemerschap en institutionele verandering.",
+    "purpose": "Hoger onderwijs en innovatie-ecosystemen verbinden en institutionele innovatiecapaciteit versterken.",
+    "audiences": [
+      "Bestuurders",
+      "Onderwijsinstellingen",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://eit-hei.eu/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "EIT HEI",
+      "higher education",
+      "innovation capacity",
+      "funding"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2b."
+      }
+    ]
+  },
+  {
+    "id": "unesco",
+    "title": "UNESCO",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "UNESCO",
+    "description": "Organisatie van de Verenigde Naties voor onderwijs, wetenschap en cultuur, met mondiale kaders en beleidsadviezen voor AI in het onderwijs.",
+    "purpose": "Internationale normontwikkeling, kennisdeling en capaciteitsopbouw rond mensgerichte digitale transformatie.",
+    "audiences": [
+      "Beleidsmakers",
+      "Onderzoekers",
+      "Docenten",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.unesco.org/en/digital-education/artificial-intelligence",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "Meertalig"
+    ],
+    "keywords": [
+      "UNESCO",
+      "AI education",
+      "global guidance"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2b."
+      }
+    ]
+  },
+  {
+    "id": "oecd-education",
+    "title": "OECD – Education and Skills",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "OECD",
+    "description": "Internationale kennisorganisatie die vergelijkend onderzoek, indicatoren en beleidskaders voor onderwijs en vaardigheden ontwikkelt.",
+    "purpose": "Landen ondersteunen met onderbouwde internationale vergelijking en beleidsanalyse, waaronder AI-geletterdheid.",
+    "audiences": [
+      "Beleidsmakers",
+      "Onderzoekers",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "Onderzoek",
+      "AI-geletterdheid",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.oecd.org/en/topics/education-and-skills.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en",
+      "fr"
+    ],
+    "keywords": [
+      "OECD",
+      "education",
+      "skills",
+      "policy"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 2b."
+      }
+    ]
   }
 ]
