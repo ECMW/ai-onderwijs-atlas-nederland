@@ -1,0 +1,9 @@
+name: Feitelijke correctie
+description: Meld een aantoonbare fout of verouderde bron
+title: '[Correctie] '
+labels: ['feitelijke-correctie']
+body:
+  - {type: input, id: record, attributes: {label: Record of pagina}, validations: {required: true}}
+  - {type: textarea, id: correction, attributes: {label: Wat moet worden gecorrigeerd?}, validations: {required: true}}
+  - {type: input, id: source, attributes: {label: Officiële bronlink}, validations: {required: true}}
+  - {type: textarea, id: notes, attributes: {label: Toelichting}}

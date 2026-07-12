@@ -1,0 +1,14 @@
+"""Migreer de bestaande atlasdata verliesvrij naar schema v2."""
+import json, re, unicodedata
+from datetime import date
+from pathlib import Path
+ROOT=Path(__file__).parents[1]; old=json.loads((ROOT/'data/items.json').read_text(encoding='utf-8'))
+TYPES={'Organisatie':'organization','Programma':'programme','Product':'product','Voorziening':'service','Handreiking':'guidance','Training':'training','Subsidie':'subsidy','Pilot':'pilot','Wetgeving':'legislation','Standaard':'standard','Behoefte':'identified_need','Witte vlek':'white_spot'}
+STATUS={'Beschikbaar':'available','Pilot':'pilot','In ontwikkeling':'in_development','Te verifiëren':'needs_verification','Nog niet ingevuld':'unknown'}
+def sid(s): return re.sub(r'^-|-$','',re.sub(r'[^a-z0-9]+','-',unicodedata.normalize('NFKD',s).encode('ascii','ignore').decode().lower()))
+orgids={x['organisation']:'org-'+sid(x['organisation']) for x in old if x.get('organisation') and x['organisation']!='Nog niet ingevuld'}
+records=[]
+for x in old:
+    url=x.get('url'); verified=bool(url and x.get('status')!='Te verifiëren')
+    records.append({'id':x['id'],'title':x['title'],'recordType':TYPES.get(x.get('type'),'product'),'legacyType':x.get('type'),'subtype':None,'organizationIds':[orgids[x['organisation']]] if x.get('organisation') in orgids else [],'providerName':x.get('organisation'),'description':x.get('description'),'purpose':x.get('goal'),'audiences':[s.strip() for s in (x.get('audience') or '').split(',') if s.strip()],'sectors':x.get('sector') or [],'themes':[],'status':'identified_need' if x.get('type') in ('Witte vlek','Behoefte') else STATUS.get(x.get('status'),'unknown'),'availabilityText':x.get('availableFrom'),'startDate':None,'endDate':None,'publicationDate':None,'lastVerified':'2026-07-12' if verified else None,'verificationStatus':'recently_checked' if verified else 'needs_review','sourceUrls':[{'label':z.get('label','Officiële bron'),'url':z['url'],'sourceType':'official'} for z in (x.get('links') or []) if z.get('url')] or ([{'label':'Officiële bron','url':url,'sourceType':'official'}] if url else []),'relatedIds':x.get('related') or [],'parentIds':[],'childIds':[],'geographicScope':'Nederland','accessType':'public' if url else 'unknown','costType':'unknown','fundingAmount':x.get('budget'),'fundingDeadline':None,'applicationOpenDate':None,'applicationDeadline':None,'fundingMin':None,'fundingMax':None,'totalBudget':x.get('budget'),'eligibility':None,'applicantTypes':[],'callStatus':None,'recurrence':None,'language':['nl'],'keywords':x.get('keywords') or [],'notes':None,'changeHistory':[{'date':'2026-07-12','type':'migrated','summary':'Gemigreerd uit atlasdataset v1.'}]})
+(ROOT/'data/records.json').write_text(json.dumps(records,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(len(records))

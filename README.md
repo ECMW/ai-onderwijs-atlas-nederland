@@ -2,6 +2,10 @@
 
 Een statisch, toegankelijk kennisplatform dat zonder installatie werkt. Open `index.html` in een moderne browser.
 
+## Beheerarchitectuur
+
+De canonieke v2-data staat in `data/records.json`. GitHub Actions valideert en publiceert iedere merge naar `main`. Officiële bronnen worden dagelijks op metadatawijzigingen gecontroleerd; resultaten worden uitsluitend als reviewvoorstel of Issue aangeboden. Zie `docs/update-process.md`.
+
 ## Gegevens toevoegen
 
 De website leest de gegevens uit `data/data.js`, zodat zij ook via `file://` werkt. Voeg per bronrecord een object toe aan `items`. Gebruik minimaal `id`, `title` en `type`. Ondersteunde velden zijn onder meer `description`, `organisation`, `sector` (array), `audience`, `keywords` (array), `status`, `year`, `url`, `related` (array) en `added` (ISO-datum). Ontbrekende velden worden als “Nog niet ingevuld” getoond.

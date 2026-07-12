@@ -1,0 +1,4621 @@
+[
+  {
+    "id": "ministerie-van-onderwijs-cultuur-en-wetenschap",
+    "title": "Ministerie van Onderwijs, Cultuur en Wetenschap",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-ministerie-van-ocw"
+    ],
+    "providerName": "Ministerie van OCW",
+    "description": "Kaderstelling, wet- en regelgeving, bekostiging en subsidieregelingen voor het Nederlandse onderwijsstelsel.",
+    "purpose": "Beleid, wetgeving, kaderstelling en subsidieregelingen",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "beleid",
+      "wetgeving",
+      "subsidies",
+      "AI Act",
+      "stelsel"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "duo",
+    "title": "DUO",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-duo"
+    ],
+    "providerName": "DUO",
+    "description": "Uitvoeringsorganisatie voor onderwijsdata, registers, identificatie en bekostiging. Geen AI-organisatie, maar een cruciale speler in de data-infrastructuur.",
+    "purpose": "Data, registers, identificatie en uitvoering",
+    "audiences": [
+      "Instellingen",
+      "Burgers",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Overheid"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "BRON",
+      "RIO",
+      "data",
+      "registers",
+      "identificatie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "inspectie-van-het-onderwijs",
+    "title": "Inspectie van het Onderwijs",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-inspectie-van-het-onderwijs"
+    ],
+    "providerName": "Inspectie van het Onderwijs",
+    "description": "Toezicht op onderwijskwaliteit en thematisch onderzoek, waaronder ontwikkelingen rond digitalisering en AI.",
+    "purpose": "Toezicht op onderwijskwaliteit",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Overheid"
+    ],
+    "themes": [],
+    "status": "needs_verification",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "toezicht",
+      "kwaliteit",
+      "themaonderzoek"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "kennisnet",
+    "title": "Kennisnet",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Publieke kennisorganisatie voor ICT en digitalisering in PO, VO en MBO. Biedt handreikingen, kennisproducten, monitors en lerenmetai.nl.",
+    "purpose": "Kennis, advies en beleidsondersteuning",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Bestuurders",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://www.kennisnet.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-literacy",
+      "handreiking",
+      "privacy",
+      "lerenmetai.nl",
+      "monitor"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "sivon",
+    "title": "SIVON",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-sivon"
+    ],
+    "providerName": "SIVON",
+    "description": "Gezamenlijke inkoop, contractering en ICT-diensten voor aangesloten schoolbesturen, met toenemende aandacht voor AI-clausules en toetsingskaders.",
+    "purpose": "Gezamenlijke inkoop en voorwaardenschepping",
+    "audiences": [
+      "Bestuurders",
+      "IT-professionals",
+      "Inkoop",
+      "FG's"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://www.sivon.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "inkoop",
+      "contracten",
+      "privacy",
+      "AI Act",
+      "toetsingskader"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "surf",
+    "title": "SURF",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-surf"
+    ],
+    "providerName": "SURF",
+    "description": "Coöperatieve ICT-infrastructuur en gedeelde diensten voor onderwijs en onderzoek, waaronder netwerk, rekenkracht, identity, data- en AI-diensten.",
+    "purpose": "Coöperatieve infrastructuur en kennisopbouw",
+    "audiences": [
+      "IT-professionals",
+      "Onderzoekers",
+      "Bestuurders",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://www.surf.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "infrastructuur",
+      "rekenkracht",
+      "identity",
+      "AI-werkplek",
+      "open standaarden"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "edustandaard",
+    "title": "Edustandaard",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-edustandaard"
+    ],
+    "providerName": "Edustandaard",
+    "description": "Ontwikkelt en beheert open standaarden voor gegevensuitwisseling in het onderwijs, waaronder Edu-iR, Edukoppeling en ROSA.",
+    "purpose": "Open standaarden en referentiearchitectuur",
+    "audiences": [
+      "IT-professionals",
+      "Architecten",
+      "Leveranciers",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://www.edustandaard.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "standaarden",
+      "interoperabiliteit",
+      "ROSA",
+      "Edukoppeling",
+      "Edu-iR"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "cito",
+    "title": "Cito",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-cito"
+    ],
+    "providerName": "Cito",
+    "description": "Organisatie voor toetsing en examinering, met activiteiten rond AI-ondersteunde toetsontwikkeling, itemgeneratie en beoordeling.",
+    "purpose": "Toetsing en examinering",
+    "audiences": [
+      "Docenten",
+      "Toetsmakers",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://www.cito.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "toetsing",
+      "itemgeneratie",
+      "gradering",
+      "examinering"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "slo",
+    "title": "SLO",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-slo"
+    ],
+    "providerName": "SLO",
+    "description": "Landelijk expertisecentrum voor curriculumontwikkeling, relevant voor digitale geletterdheid en AI-geletterdheid in het curriculum.",
+    "purpose": "Curriculum- en leerplanontwikkeling",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Curriculumontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://www.slo.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "curriculum",
+      "AI-geletterdheid",
+      "digitale geletterdheid"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "nwo",
+    "title": "NWO",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-nwo"
+    ],
+    "providerName": "NWO",
+    "description": "Financiert wetenschappelijk onderzoek, waaronder AI-onderzoek en onderzoek naar toepassingen in het onderwijs.",
+    "purpose": "Onderzoeksfinanciering",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://www.nwo.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "onderzoek",
+      "calls",
+      "financiering",
+      "subsidie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "nationaal-regieorgaan-onderwijsonderzoek-nro",
+    "title": "Nationaal Regieorgaan Onderwijsonderzoek (NRO)",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-nro"
+    ],
+    "providerName": "NRO",
+    "description": "Financiert en programmeert onderwijsonderzoek, inclusief onderzoek naar digitalisering en AI in onderwijs.",
+    "purpose": "Onderwijsonderzoek en kennisbenutting",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsprofessionals",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://www.nro.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "onderwijsonderzoek",
+      "subsidie",
+      "kennisbenutting"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "npuls",
+    "title": "Npuls",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Nationaal programma voor digitalisering in MBO en hoger onderwijs, met programmalijnen, kennisproducten, leergemeenschappen en proeftuinen.",
+    "purpose": "Programmasturing en kennisdeling",
+    "audiences": [
+      "Docenten",
+      "Bestuurders",
+      "Beleidsmakers",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://npuls.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "digitalisering",
+      "AI-GO",
+      "toetsing",
+      "studiedata",
+      "community"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "nolai",
+    "title": "NOLAI",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Nationaal Onderwijslab AI voor onderzoek, ontwikkeling, proeftuinen en voorzieningen rond AI in het onderwijs.",
+    "purpose": "Onderzoek, ontwikkeling en implementatie",
+    "audiences": [
+      "Onderzoekers",
+      "Docenten",
+      "Ontwikkelaars",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "in_development",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://www.nolai.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "onderzoek",
+      "pilots",
+      "proeftuinen",
+      "AI-platform",
+      "kennisbank"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "ai-coalitie-4-nederland-aic4nl",
+    "title": "AI Coalitie 4 Nederland (AIC4NL)",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-aic4nl"
+    ],
+    "providerName": "AIC4NL",
+    "description": "Publiek-private coalitie voor versnelling van AI-ontwikkeling en toepassing, met een werkpakket Onderwijs.",
+    "purpose": "Agendering, verbinding en kennisdeling",
+    "audiences": [
+      "Beleidsmakers",
+      "Onderzoekers",
+      "Bedrijven",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://aic4nl.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "coalitie",
+      "publiek-privaat",
+      "werkpakket onderwijs"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "mbo-digitaal",
+    "title": "MBO Digitaal",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-mbo-digitaal"
+    ],
+    "providerName": "MBO Digitaal",
+    "description": "Sectorale aanjager voor digitalisering in het middelbaar beroepsonderwijs via programmalijnen, kennisdeling en ondersteuning.",
+    "purpose": "Digitalisering en sectorale ondersteuning",
+    "audiences": [
+      "Docenten",
+      "Bestuurders",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://mbodigitaal.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "MBO",
+      "digitalisering",
+      "kennisdeling",
+      "leergemeenschap"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "vereniging-hogescholen",
+    "title": "Vereniging Hogescholen",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-vereniging-hogescholen"
+    ],
+    "providerName": "Vereniging Hogescholen",
+    "description": "Brancheorganisatie voor hogescholen; belangenbehartiging, kennisdeling en strategische agendering rond onder meer AI.",
+    "purpose": "Sectorale vertegenwoordiging",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Hogescholen"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://www.vereniginghogescholen.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "HBO",
+      "branche",
+      "beleid",
+      "AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "universiteiten-van-nederland",
+    "title": "Universiteiten van Nederland",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-universiteiten-van-nederland"
+    ],
+    "providerName": "Universiteiten van Nederland",
+    "description": "Brancheorganisatie voor universiteiten; strategische positionering, beleidsvorming en kennisdeling.",
+    "purpose": "Sectorale vertegenwoordiging",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Universiteiten",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://www.universiteitenvannederland.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "WO",
+      "universiteiten",
+      "onderzoek",
+      "beleid"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "europese-commissie-dg-eac",
+    "title": "Europese Commissie — DG EAC",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-europese-commissie"
+    ],
+    "providerName": "Europese Commissie",
+    "description": "Europese beleidsdirectie voor onderwijs en cultuur, verantwoordelijk voor onder meer het Digital Education Action Plan.",
+    "purpose": "Europees onderwijsbeleid",
+    "audiences": [
+      "Beleidsmakers",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://education.ec.europa.eu/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Europa",
+      "Digital Education Action Plan",
+      "beleid"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "europese-ai-office",
+    "title": "Europese AI Office",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [
+      "org-europese-commissie"
+    ],
+    "providerName": "Europese Commissie",
+    "description": "Ondersteunt de uitvoering en handhaving van de Europese AI-verordening.",
+    "purpose": "Uitvoering en toezicht AI Act",
+    "audiences": [
+      "Beleidsmakers",
+      "Bestuurders",
+      "Juristen"
+    ],
+    "sectors": [
+      "Overheid",
+      "Onderzoek",
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Website",
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/ai-office",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI Act",
+      "toezicht",
+      "handhaving",
+      "Europa"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "npuls-programma",
+    "title": "Npuls-programma",
+    "recordType": "programme",
+    "legacyType": "Programma",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Meerjarig nationaal programma voor digitalisering van MBO en hoger onderwijs, met kennisproducten, communities, proeftuinen en ondersteuning.",
+    "purpose": "Digitalisering en samenwerking in MBO en hoger onderwijs",
+    "audiences": [
+      "Onderwijsinstellingen",
+      "Docenten",
+      "Bestuurders",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2022",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Programma",
+        "url": "https://npuls.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "ca. €200+ miljoen, te verifiëren",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "ca. €200+ miljoen, te verifiëren",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "digitalisering",
+      "Groeifonds",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "nolai-programma",
+    "title": "NOLAI-programma",
+    "recordType": "programme",
+    "legacyType": "Programma",
+    "subtype": null,
+    "organizationIds": [
+      "org-nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Meerjarig programma voor onderzoek, ontwikkeling en implementatie van AI in het onderwijs.",
+    "purpose": "AI-onderzoek vertalen naar toepasbare voorzieningen",
+    "audiences": [
+      "Onderwijsinstellingen",
+      "Onderzoekers",
+      "Docenten",
+      "Ontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "in_development",
+    "availabilityText": "2024",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Programma",
+        "url": "https://www.nolai.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "ca. €80 miljoen, te verifiëren",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "ca. €80 miljoen, te verifiëren",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Groeifonds",
+      "onderzoek",
+      "AI-platform",
+      "proeftuinen"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "mbo-digitaal-2",
+    "title": "MBO Digitaal",
+    "recordType": "programme",
+    "legacyType": "Programma",
+    "subtype": null,
+    "organizationIds": [
+      "org-mbo-raad"
+    ],
+    "providerName": "MBO Raad",
+    "description": "Doorlopend programma voor digitalisering, kennisdeling en ondersteuning in het MBO.",
+    "purpose": "Digitalisering in het MBO versterken",
+    "audiences": [
+      "MBO-instellingen",
+      "Docenten",
+      "Bestuurders",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Doorlopend",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Programma",
+        "url": "https://mbodigitaal.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "MBO",
+      "digitalisering",
+      "kennisdeling"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "aic4nl-werkpakket-onderwijs",
+    "title": "AIC4NL werkpakket Onderwijs",
+    "recordType": "programme",
+    "legacyType": "Programma",
+    "subtype": null,
+    "organizationIds": [
+      "org-aic4nl"
+    ],
+    "providerName": "AIC4NL",
+    "description": "Werkpakket gericht op verbinding, agendering en versnelling van AI-toepassingen in het onderwijs.",
+    "purpose": "Samenwerking en toepassing rond AI in onderwijs versnellen",
+    "audiences": [
+      "Onderwijsinstellingen",
+      "Beleidsmakers",
+      "Onderzoekers",
+      "Bedrijven"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Programma",
+        "url": "https://aic4nl.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "publiek-privaat",
+      "coalitie",
+      "onderwijs"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "horizon-europe",
+    "title": "Horizon Europe",
+    "recordType": "programme",
+    "legacyType": "Programma",
+    "subtype": null,
+    "organizationIds": [
+      "org-europese-commissie"
+    ],
+    "providerName": "Europese Commissie",
+    "description": "Europees onderzoeks- en innovatieprogramma; relevante calls kunnen AI, onderwijs en digitale transformatie omvatten.",
+    "purpose": "Onderzoek en innovatie financieren",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen",
+      "Consortia"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2021",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Programma",
+        "url": "https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe_en",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "ca. €95 miljard totaal programma",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "ca. €95 miljard totaal programma",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Europa",
+      "onderzoek",
+      "subsidie",
+      "AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "digital-europe-programme",
+    "title": "Digital Europe Programme",
+    "recordType": "programme",
+    "legacyType": "Programma",
+    "subtype": null,
+    "organizationIds": [
+      "org-europese-commissie"
+    ],
+    "providerName": "Europese Commissie",
+    "description": "Europees programma voor digitale capaciteit, vaardigheden, data, AI en cyberveiligheid.",
+    "purpose": "Europese digitale capaciteit opbouwen",
+    "audiences": [
+      "Onderwijsinstellingen",
+      "Overheden",
+      "Consortia"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2021",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Programma",
+        "url": "https://digital-strategy.ec.europa.eu/en/activities/digital-programme",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "ca. €7,5 miljard totaal programma",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "ca. €7,5 miljard totaal programma",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Europa",
+      "digitale vaardigheden",
+      "AI",
+      "subsidie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "erasmus",
+    "title": "Erasmus+",
+    "recordType": "programme",
+    "legacyType": "Programma",
+    "subtype": null,
+    "organizationIds": [
+      "org-europese-commissie"
+    ],
+    "providerName": "Europese Commissie",
+    "description": "Europees programma voor onderwijs, samenwerking en mobiliteit, waaronder projecten rond digitale vaardigheden en AI.",
+    "purpose": "Samenwerking, mobiliteit en onderwijsvernieuwing",
+    "audiences": [
+      "Onderwijsinstellingen",
+      "Docenten",
+      "Studenten",
+      "Consortia"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2021",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Programma",
+        "url": "https://erasmus-plus.ec.europa.eu/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "ca. €26 miljard totaal programma",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "ca. €26 miljard totaal programma",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Europa",
+      "mobiliteit",
+      "AI-modules",
+      "samenwerking"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "ai-en-plagiaatdetectie",
+    "title": "AI- en plagiaatdetectie",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": null,
+    "organizationIds": [
+      "org-commerciele-aanbieders"
+    ],
+    "providerName": "Commerciële aanbieders",
+    "description": "Commerciële detectietools voor tekstovereenkomst en vermeend AI-gebruik. Uitkomsten vragen zorgvuldige menselijke beoordeling.",
+    "purpose": "Ondersteunen bij integriteits- en toetsingsvraagstukken",
+    "audiences": [
+      "Docenten",
+      "Examencommissies",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "plagiaat",
+      "AI-detectie",
+      "toetsing"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "commerciele-generatieve-ai-werkplekken",
+    "title": "Commerciële generatieve AI-werkplekken",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": null,
+    "organizationIds": [
+      "org-commerciele-aanbieders"
+    ],
+    "providerName": "Commerciële aanbieders",
+    "description": "Enterprise- en onderwijsvarianten van generatieve AI, waaronder ChatGPT, Microsoft Copilot en Google Gemini.",
+    "purpose": "Generatieve AI-functionaliteit aanbieden",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Medewerkers",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2023",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "ChatGPT",
+      "Copilot",
+      "Gemini",
+      "veilige AI-omgeving"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "nederlandstalig-onderwijsmodel-onderwijsllm",
+    "title": "Nederlandstalig onderwijsmodel / OnderwijsLLM",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": null,
+    "organizationIds": [
+      "org-nolai-surf-universiteiten-en-partners"
+    ],
+    "providerName": "NOLAI, SURF, universiteiten en partners",
+    "description": "Verkenningen en ontwikkeling rond Nederlandstalige, mogelijk onderwijsgerichte taalmodellen.",
+    "purpose": "Taalmodelcapaciteit voor de Nederlandse onderwijscontext ontwikkelen",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderzoekers",
+      "Ontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "in_development",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "LLM",
+      "Nederlands",
+      "GPT-NL",
+      "model"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "nationale-ai-geletterdheidsbibliotheek",
+    "title": "Nationale AI-geletterdheidsbibliotheek",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Nog niet ingevuld",
+    "description": "Een onderhouden nationale bibliotheek met herbruikbare AI-literacy-materialen is als witte vlek opgenomen.",
+    "purpose": "Verspreide materialen vindbaar en herbruikbaar maken",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "unknown",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-literacy",
+      "bibliotheek",
+      "witte vlek"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "gezamenlijke-ai-act-conforme-toetsvoorziening",
+    "title": "Gezamenlijke AI Act-conforme toetsvoorziening",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Nog niet ingevuld",
+    "description": "Een gezamenlijke publieke toetsvoorziening die aantoonbaar voldoet aan onderwijs- en AI Act-eisen is als witte vlek gemarkeerd.",
+    "purpose": "Veilige en uitlegbare AI-ondersteuning voor toetsing bieden",
+    "audiences": [
+      "Docenten",
+      "Examencommissies",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "unknown",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "toetsing",
+      "AI Act",
+      "publieke voorziening",
+      "witte vlek"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "surf-ai-werkplek",
+    "title": "SURF AI-werkplek",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [
+      "org-surf"
+    ],
+    "providerName": "SURF",
+    "description": "Veilige gedeelde AI-werkomgeving voor onderwijs en onderzoek, in de bron aangeduid als in opbouw.",
+    "purpose": "Veilige modeltoegang en AI-functionaliteit bieden",
+    "audiences": [
+      "Docenten",
+      "Onderzoekers",
+      "Medewerkers",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "in_development",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "SURF AI",
+        "url": "https://www.surf.nl/themas/artificial-intelligence",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "veilige AI-omgeving",
+      "werkplek",
+      "infrastructuur"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "nolai-ai-platform",
+    "title": "NOLAI AI-platform",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [
+      "org-nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Te ontwikkelen platform en servicefunctie voor AI-onderzoek en toepassingen in het onderwijs.",
+    "purpose": "Onderzoek, ontwikkeling en implementatie ondersteunen",
+    "audiences": [
+      "Onderwijsinstellingen",
+      "Onderzoekers",
+      "Ontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "in_development",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "NOLAI",
+        "url": "https://www.nolai.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "veilige AI-omgeving",
+      "platform",
+      "onderzoek"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "landelijke-publieke-ai-werkplek-voor-onderwijs",
+    "title": "Landelijke publieke AI-werkplek voor onderwijs",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Nog niet ingevuld",
+    "description": "Een landelijke publieke AI-werkplek voor alle onderwijssectoren is in de bron als witte vlek benoemd.",
+    "purpose": "Breed toegankelijke, veilige publieke AI-omgeving bieden",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Medewerkers",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "unknown",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "veilige AI-omgeving",
+      "publieke infrastructuur",
+      "witte vlek"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "federatieve-leerinfrastructuur",
+    "title": "Federatieve leerinfrastructuur",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [
+      "org-surf-nolai-en-partners"
+    ],
+    "providerName": "SURF, NOLAI en partners",
+    "description": "Infrastructuur voor samenwerking, data en modellen zonder alles centraal te verzamelen.",
+    "purpose": "Veilige samenwerking rond data en modellen mogelijk maken",
+    "audiences": [
+      "Onderzoekers",
+      "IT-professionals",
+      "Ontwikkelaars"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "in_development",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "federatief",
+      "infrastructuur",
+      "privacy",
+      "onderzoek"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "lerenmetai-nl",
+    "title": "lerenmetai.nl",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Publieke kennisomgeving met informatie en hulpmiddelen rond leren en werken met AI.",
+    "purpose": "Praktische kennis vindbaar maken",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2023",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "lerenmetai.nl",
+        "url": "https://lerenmetai.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-literacy",
+      "implementatiehulp",
+      "kennisdeling"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "npuls-community-platform",
+    "title": "Npuls community-platform",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Community- en kennisplatform voor professionals in MBO en hoger onderwijs.",
+    "purpose": "Kennisdeling en samenwerking ondersteunen",
+    "audiences": [
+      "Docenten",
+      "Beleidsmakers",
+      "Onderwijsadviseurs",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2023",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Npuls",
+        "url": "https://npuls.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "community",
+      "kennisdeling",
+      "implementatiehulp"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "nolai-kennisbank",
+    "title": "NOLAI kennisbank",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [
+      "org-nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Kennisbank met resultaten, publicaties en hulpmiddelen vanuit NOLAI-onderzoek en proeftuinen.",
+    "purpose": "Onderzoekskennis toegankelijk maken",
+    "audiences": [
+      "Docenten",
+      "Onderzoekers",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "in_development",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "NOLAI",
+        "url": "https://www.nolai.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "kennisbank",
+      "onderzoek",
+      "implementatiehulp"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "ai-ondersteuning-voor-itemgeneratie",
+    "title": "AI-ondersteuning voor itemgeneratie",
+    "recordType": "pilot",
+    "legacyType": "Pilot",
+    "subtype": null,
+    "organizationIds": [
+      "org-cito-nolai-en-onderwijsinstellingen"
+    ],
+    "providerName": "Cito, NOLAI en onderwijsinstellingen",
+    "description": "Experimenten met AI voor het genereren en verbeteren van toetsitems.",
+    "purpose": "Toetsontwikkeling ondersteunen",
+    "audiences": [
+      "Toetsmakers",
+      "Docenten",
+      "Examencommissies"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "pilot",
+    "availabilityText": "Pilotfase",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "toetsing",
+      "itemgeneratie",
+      "pilot"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "ai-gradering-van-antwoorden",
+    "title": "AI-gradering van antwoorden",
+    "recordType": "pilot",
+    "legacyType": "Pilot",
+    "subtype": null,
+    "organizationIds": [
+      "org-diverse-publieke-en-commerciele-partijen"
+    ],
+    "providerName": "Diverse publieke en commerciële partijen",
+    "description": "Pilots en commerciële toepassingen voor het automatisch of ondersteund beoordelen van antwoorden.",
+    "purpose": "Beoordeling ondersteunen en werkdruk verminderen",
+    "audiences": [
+      "Docenten",
+      "Toetsmakers",
+      "Examencommissies"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "pilot",
+    "availabilityText": "Pilot / commercieel",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "toetsing",
+      "gradering",
+      "human oversight"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "nationaal-groeifonds-nolai",
+    "title": "Nationaal Groeifonds — NOLAI",
+    "recordType": "subsidy",
+    "legacyType": "Subsidie",
+    "subtype": null,
+    "organizationIds": [
+      "org-rijksoverheid-nolai"
+    ],
+    "providerName": "Rijksoverheid / NOLAI",
+    "description": "Meerjarige Groeifondsfinanciering voor onderzoek, ontwikkeling en implementatie van AI in het onderwijs.",
+    "purpose": "Landelijke kennis- en voorzieningsopbouw rond AI in onderwijs",
+    "audiences": [
+      "Consortia",
+      "Onderwijsinstellingen",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2024",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "ca. €80 miljoen, te verifiëren",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "ca. €80 miljoen, te verifiëren",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "subsidie",
+      "Groeifonds",
+      "NOLAI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "nationaal-groeifonds-npuls",
+    "title": "Nationaal Groeifonds — Npuls",
+    "recordType": "subsidy",
+    "legacyType": "Subsidie",
+    "subtype": null,
+    "organizationIds": [
+      "org-rijksoverheid-npuls"
+    ],
+    "providerName": "Rijksoverheid / Npuls",
+    "description": "Meerjarige Groeifondsfinanciering voor digitalisering in MBO en hoger onderwijs.",
+    "purpose": "Digitale transformatie en samenwerking versterken",
+    "audiences": [
+      "Consortia",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2022",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "ca. €200+ miljoen, te verifiëren",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "ca. €200+ miljoen, te verifiëren",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "subsidie",
+      "Groeifonds",
+      "Npuls"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "nwo-calls-rond-ai-en-onderwijs",
+    "title": "NWO-calls rond AI en onderwijs",
+    "recordType": "subsidy",
+    "legacyType": "Subsidie",
+    "subtype": null,
+    "organizationIds": [
+      "org-nwo"
+    ],
+    "providerName": "NWO",
+    "description": "Wisselende onderzoeksfinanciering voor AI, digitalisering en onderwijsgerelateerde onderzoeksvragen.",
+    "purpose": "Wetenschappelijk onderzoek financieren",
+    "audiences": [
+      "Onderzoekers",
+      "Consortia"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Doorlopend / per call",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "NWO calls",
+        "url": "https://www.nwo.nl/calls",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Varieert",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Varieert",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "subsidie",
+      "onderzoek",
+      "calls"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "nro-onderwijsonderzoek",
+    "title": "NRO-onderwijsonderzoek",
+    "recordType": "subsidy",
+    "legacyType": "Subsidie",
+    "subtype": null,
+    "organizationIds": [
+      "org-nro"
+    ],
+    "providerName": "NRO",
+    "description": "Onderzoeksfinanciering voor vragen uit de onderwijspraktijk, waaronder digitalisering en AI.",
+    "purpose": "Onderwijsonderzoek en kennisbenutting stimuleren",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Doorlopend / per call",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "NRO",
+        "url": "https://www.nro.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Varieert",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Varieert",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "subsidie",
+      "onderwijsonderzoek",
+      "AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "europese-ai-verordening-ai-act",
+    "title": "Europese AI-verordening (AI Act)",
+    "recordType": "legislation",
+    "legacyType": "Wetgeving",
+    "subtype": null,
+    "organizationIds": [
+      "org-europese-unie"
+    ],
+    "providerName": "Europese Unie",
+    "description": "Risicogebaseerde Europese regelgeving voor AI-systemen, met verplichtingen rond onder meer risicomanagement, transparantie, documentatie, human oversight en AI-geletterdheid.",
+    "purpose": "Veilige, grondrechtenconforme en betrouwbare AI bevorderen",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Juristen",
+      "IT-professionals",
+      "Docenten"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "In werking sinds 2024; gefaseerde toepassing",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële informatie",
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI Act",
+      "wetgeving",
+      "human oversight",
+      "AI-literacy",
+      "compliance"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "algemene-verordening-gegevensbescherming-avg",
+    "title": "Algemene verordening gegevensbescherming (AVG)",
+    "recordType": "legislation",
+    "legacyType": "Wetgeving",
+    "subtype": null,
+    "organizationIds": [
+      "org-europese-unie"
+    ],
+    "providerName": "Europese Unie",
+    "description": "Regelgeving voor rechtmatige, transparante en doelgebonden verwerking van persoonsgegevens, ook bij inzet van AI.",
+    "purpose": "Persoonsgegevens en rechten van betrokkenen beschermen",
+    "audiences": [
+      "Bestuurders",
+      "FG's",
+      "Privacyprofessionals",
+      "IT-professionals",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2018",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Autoriteit Persoonsgegevens",
+        "url": "https://autoriteitpersoonsgegevens.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AVG",
+      "privacy",
+      "DPIA",
+      "persoonsgegevens"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "eu-data-act",
+    "title": "EU Data Act",
+    "recordType": "legislation",
+    "legacyType": "Wetgeving",
+    "subtype": null,
+    "organizationIds": [
+      "org-europese-unie"
+    ],
+    "providerName": "Europese Unie",
+    "description": "Europese regels rond toegang tot en gebruik van data, dataportabiliteit en contractuele voorwaarden.",
+    "purpose": "Eerlijker toegang tot en gebruik van data organiseren",
+    "audiences": [
+      "Bestuurders",
+      "IT-professionals",
+      "Juristen",
+      "Architecten"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Gefaseerd",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "EU Data Act",
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/data-act",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Data Act",
+      "data",
+      "portabiliteit",
+      "interoperabiliteit"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "digital-education-action-plan-20212027",
+    "title": "Digital Education Action Plan 2021–2027",
+    "recordType": "legislation",
+    "legacyType": "Wetgeving",
+    "subtype": null,
+    "organizationIds": [
+      "org-europese-commissie"
+    ],
+    "providerName": "Europese Commissie",
+    "description": "Europees beleidskader voor digitaal onderwijs, digitale vaardigheden en samenwerking.",
+    "purpose": "Hoogwaardig, inclusief en toegankelijk digitaal onderwijs bevorderen",
+    "audiences": [
+      "Beleidsmakers",
+      "Onderwijsinstellingen",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2021",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Actieplan",
+        "url": "https://education.ec.europa.eu/focus-topics/digital-education/action-plan",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Europees beleid",
+      "digitalisering",
+      "digitale vaardigheden"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "nederlandse-gedragscode-wetenschappelijke-integriteit",
+    "title": "Nederlandse Gedragscode Wetenschappelijke Integriteit",
+    "recordType": "legislation",
+    "legacyType": "Wetgeving",
+    "subtype": null,
+    "organizationIds": [
+      "org-universiteiten-van-nederland-en-partners"
+    ],
+    "providerName": "Universiteiten van Nederland en partners",
+    "description": "Gedragscode voor zorgvuldigheid, betrouwbaarheid, controleerbaarheid, onpartijdigheid en verantwoordelijkheid in onderzoek, ook relevant voor AI-gebruik.",
+    "purpose": "Wetenschappelijke integriteit borgen",
+    "audiences": [
+      "Onderzoekers",
+      "Bestuurders",
+      "Onderzoeksorganisaties"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2018",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Gedragscode",
+        "url": "https://www.universiteitenvannederland.nl/onderwerpen/onderzoek/wetenschappelijke-integriteit",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "onderzoek",
+      "integriteit",
+      "AI-gebruik",
+      "transparantie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "handreiking-ai-in-het-onderwijs-po-vo",
+    "title": "Handreiking AI in het onderwijs (PO/VO)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Praktische informatie en aandachtspunten voor verantwoord gebruik van AI in het funderend onderwijs.",
+    "purpose": "Onderwijsprofessionals snel wegwijs maken in AI",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2023",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Kennisnet",
+        "url": "https://www.kennisnet.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "implementatiehulp",
+      "beleid",
+      "verantwoord gebruik"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "handreiking-privacy-en-ai",
+    "title": "Handreiking privacy en AI",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet-sivon"
+    ],
+    "providerName": "Kennisnet / SIVON",
+    "description": "Handreiking voor privacy, gegevensbescherming, contractuele waarborgen en verantwoord gebruik van AI.",
+    "purpose": "Privacyrisico's herkennen en beheersen",
+    "audiences": [
+      "Bestuurders",
+      "FG's",
+      "Privacyprofessionals",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2023",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "privacy",
+      "AVG",
+      "DPIA",
+      "contracten"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "wegwijs-in-de-ai-act-voor-onderwijs",
+    "title": "Wegwijs in de AI Act voor onderwijs",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-diverse-publieke-kennisorganisaties"
+    ],
+    "providerName": "Diverse publieke kennisorganisaties",
+    "description": "Publieke uitleg en praktische duiding van verplichtingen uit de AI-verordening voor onderwijsorganisaties.",
+    "purpose": "Onderwijsinstellingen ondersteunen bij AI Act-implementatie",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Juristen",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2025",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "EU AI Act",
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI Act",
+      "wetgeving",
+      "compliance",
+      "risicoclassificatie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "landelijk-modelbeleid-ai-voor-onderwijsinstellingen",
+    "title": "Landelijk modelbeleid AI voor onderwijsinstellingen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Nog niet ingevuld",
+    "description": "Een breed bruikbaar, onderhouden modelbeleid voor AI op instellingsniveau is in de bron als witte vlek gemarkeerd.",
+    "purpose": "Voorbeeldbeleid bieden dat instellingen lokaal kunnen aanpassen",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Juristen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "unknown",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "voorbeeldbeleid",
+      "modelbeleid",
+      "witte vlek"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "ai-go-raamwerk-voor-ai-geletterdheid",
+    "title": "AI-GO! Raamwerk voor AI-geletterdheid",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls-en-partners"
+    ],
+    "providerName": "Npuls en partners",
+    "description": "Raamwerk en kennisobject voor AI-geletterdheid in het onderwijs.",
+    "purpose": "AI-geletterdheid systematisch ontwikkelen",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsontwikkelaars",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2025",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "AI-GO!",
+        "url": "https://npuls.nl/kennisbank/ai-go-een-raamwerk-voor-ai-geletterdheid-in-het-onderwijs",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-literacy",
+      "AI-geletterdheid",
+      "professionalisering"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "leermodules-ai-geletterdheid",
+    "title": "Leermodules AI-geletterdheid",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls-kennisnet-en-onderwijsinstellingen"
+    ],
+    "providerName": "Npuls, Kennisnet en onderwijsinstellingen",
+    "description": "Verspreide leermodules en trainingen voor AI-geletterdheid. Er is nog geen eenduidige landelijke standaard.",
+    "purpose": "Kennis en vaardigheden rond AI ontwikkelen",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Medewerkers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2023",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-literacy",
+      "training",
+      "docentprofessionalisering"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "edu-ir",
+    "title": "Edu-iR",
+    "recordType": "standard",
+    "legacyType": "Standaard",
+    "subtype": null,
+    "organizationIds": [
+      "org-edustandaard"
+    ],
+    "providerName": "Edustandaard",
+    "description": "Standaard voor identificatie en registratie in het onderwijs. Doorontwikkeling voor AI-contexten kan nodig zijn.",
+    "purpose": "Betrouwbare identificatie en registratie ondersteunen",
+    "audiences": [
+      "IT-professionals",
+      "Architecten",
+      "Leveranciers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Edustandaard",
+        "url": "https://www.edustandaard.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "standaarden",
+      "identificatie",
+      "interoperabiliteit"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "edukoppeling",
+    "title": "Edukoppeling",
+    "recordType": "standard",
+    "legacyType": "Standaard",
+    "subtype": null,
+    "organizationIds": [
+      "org-edustandaard"
+    ],
+    "providerName": "Edustandaard",
+    "description": "Standaard voor veilige gegevensuitwisseling tussen onderwijsorganisaties en ketenpartners.",
+    "purpose": "Veilige en gestandaardiseerde gegevensuitwisseling",
+    "audiences": [
+      "IT-professionals",
+      "Architecten",
+      "Leveranciers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Edustandaard",
+        "url": "https://www.edustandaard.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "standaarden",
+      "gegevensuitwisseling",
+      "interoperabiliteit"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "rosa-referentiearchitectuur",
+    "title": "ROSA referentiearchitectuur",
+    "recordType": "standard",
+    "legacyType": "Standaard",
+    "subtype": null,
+    "organizationIds": [
+      "org-edustandaard"
+    ],
+    "providerName": "Edustandaard",
+    "description": "Referentiearchitectuur voor de onderwijssector, relevant voor positionering van data-, AI- en ketenvoorzieningen.",
+    "purpose": "Samenhangende onderwijsarchitectuur ondersteunen",
+    "audiences": [
+      "Architecten",
+      "IT-professionals",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "Beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "ROSA",
+        "url": "https://www.edustandaard.nl/standaard_afspraken/rosa/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "architectuur",
+      "standaarden",
+      "ROSA"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "ai-specifieke-onderwijsstandaard-voor-data-metadata-en-logging",
+    "title": "AI-specifieke onderwijsstandaard voor data, metadata en logging",
+    "recordType": "standard",
+    "legacyType": "Standaard",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Nog niet ingevuld",
+    "description": "Een onderwijsbrede AI-specifieke standaard voor data, metadata, logging en uitwisselbaarheid is als witte vlek opgenomen.",
+    "purpose": "Interoperabiliteit en controleerbaarheid van AI-systemen versterken",
+    "audiences": [
+      "IT-professionals",
+      "Architecten",
+      "Leveranciers",
+      "Toezichthouders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "unknown",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "standaarden",
+      "logging",
+      "metadata",
+      "witte vlek"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "behoefte-veilige-ai-omgeving",
+    "title": "Behoefte: veilige AI-omgeving",
+    "recordType": "identified_need",
+    "legacyType": "Behoefte",
+    "subtype": null,
+    "organizationIds": [
+      "org-werkveld"
+    ],
+    "providerName": "Werkveld",
+    "description": "Onderwijsprofessionals zoeken een veilige, toegankelijke omgeving waarin zij AI kunnen gebruiken zonder zelf complexe leveranciers- en privacyafwegingen te maken.",
+    "purpose": "Praktisch en verantwoord gebruik mogelijk maken",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Medewerkers",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "identified_need",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "veilige AI-omgeving",
+      "implementatiehulp",
+      "privacy"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "behoefte-hulp-bij-toetsing-en-examinering",
+    "title": "Behoefte: hulp bij toetsing en examinering",
+    "recordType": "identified_need",
+    "legacyType": "Behoefte",
+    "subtype": null,
+    "organizationIds": [
+      "org-werkveld"
+    ],
+    "providerName": "Werkveld",
+    "description": "Vraag naar concrete toetsontwerpen, voorbeeldbeleid en ondersteuning die verder gaat dan algemene principes.",
+    "purpose": "Toetskwaliteit en diplomawaarde beschermen",
+    "audiences": [
+      "Docenten",
+      "Examencommissies",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "identified_need",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "toetsing",
+      "examinering",
+      "voorbeeldbeleid"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "behoefte-implementatiehulp-op-instellingsniveau",
+    "title": "Behoefte: implementatiehulp op instellingsniveau",
+    "recordType": "identified_need",
+    "legacyType": "Behoefte",
+    "subtype": null,
+    "organizationIds": [
+      "org-werkveld"
+    ],
+    "providerName": "Werkveld",
+    "description": "Vraag naar begeleiding bij de laatste kilometer: van kennisproduct en pilot naar werkende processen, rollen, training en beheer.",
+    "purpose": "Kennis vertalen naar structurele toepassing",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "IT-professionals",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "identified_need",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "implementatiehulp",
+      "adoptie",
+      "governance",
+      "laatste kilometer"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "witte-vlek-landelijke-ai-servicecatalogus",
+    "title": "Witte vlek: landelijke AI-servicecatalogus",
+    "recordType": "white_spot",
+    "legacyType": "Witte vlek",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Nog niet ingevuld",
+    "description": "Er ontbreekt één onderhouden, sectoroverstijgende catalogus met beschikbare AI-diensten, producten, eigenaren en voorwaarden.",
+    "purpose": "Aanbod transparant en navigeerbaar maken",
+    "audiences": [
+      "Docenten",
+      "Bestuurders",
+      "IT-professionals",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "identified_need",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "servicecatalogus",
+      "overzicht",
+      "witte vlek"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "witte-vlek-adoptiemeting-en-publiek-dashboard",
+    "title": "Witte vlek: adoptiemeting en publiek dashboard",
+    "recordType": "white_spot",
+    "legacyType": "Witte vlek",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Nog niet ingevuld",
+    "description": "Er is geen publiek dashboard dat investeringen, producten, gebruik, bereik en impact in samenhang laat zien.",
+    "purpose": "Leren, verantwoorden en prioriteren ondersteunen",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "identified_need",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "dashboard",
+      "adoptie",
+      "impact",
+      "witte vlek"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "witte-vlek-implementatiecoaching-op-schaal",
+    "title": "Witte vlek: implementatiecoaching op schaal",
+    "recordType": "white_spot",
+    "legacyType": "Witte vlek",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Nog niet ingevuld",
+    "description": "Er is behoefte aan praktische, schaalbare begeleiding voor instellingen die AI verantwoord willen invoeren en beheren.",
+    "purpose": "De laatste kilometer naar de praktijk organiseren",
+    "audiences": [
+      "Onderwijsinstellingen",
+      "Bestuurders",
+      "Docenten",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "identified_need",
+    "availabilityText": "Nog niet ingevuld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
+    "sourceUrls": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": "Nog niet ingevuld",
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "implementatiehulp",
+      "coaching",
+      "witte vlek"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  }
+]

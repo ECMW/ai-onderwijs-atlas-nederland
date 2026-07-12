@@ -1,0 +1,24 @@
+name: Check official sources
+on:
+  schedule: [{cron: '17 4 * * *'}]
+  workflow_dispatch:
+permissions: {contents: read, issues: write}
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python scripts/check_sources.py
+      - run: python scripts/generate_update_proposals.py
+      - uses: actions/upload-artifact@v4
+        with: {name: atlas-source-checks, path: 'data/source-checks.json'}
+      - name: Open one review issue when changes exist
+        env: {GH_TOKEN: '${{ github.token }}'}
+        run: |
+          COUNT=$(find data/proposals -name '*.json' | wc -l)
+          if [ "$COUNT" -gt 0 ] && ! gh issue list --label atlas-source-update --state open --json title --jq '.[].title' | grep -q 'Bronwijzigingen vragen review'; then
+            gh label create atlas-source-update --color 1D76DB --description 'Automatisch gedetecteerde bronwijziging' --force
+            gh issue create --title 'Bronwijzigingen vragen review' --label atlas-source-update --body "De dagelijkse broncontrole vond $COUNT reviewvoorstel(len). Download het workflow-artifact; niets is automatisch gepubliceerd."
+          fi

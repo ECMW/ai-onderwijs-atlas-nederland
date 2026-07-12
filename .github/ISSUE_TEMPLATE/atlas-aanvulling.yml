@@ -1,0 +1,15 @@
+name: Atlas-aanvulling
+description: Draag openbare, verifieerbare informatie aan
+title: '[Aanvulling] '
+labels: ['atlas-aanvulling']
+body:
+  - {type: input, id: title, attributes: {label: Titel}, validations: {required: true}}
+  - {type: dropdown, id: type, attributes: {label: Recordtype, options: [Organisatie, Programma, Product, Voorziening, Handreiking, Training, Subsidie, Call, Pilot, Praktijkvoorbeeld, Community, Standaard, Wetgeving, Beleidsdocument, Onderzoeksproject, Witte vlek]}, validations: {required: true}}
+  - {type: input, id: org, attributes: {label: Organisatie}, validations: {required: true}}
+  - {type: textarea, id: description, attributes: {label: Feitelijke beschrijving}, validations: {required: true}}
+  - {type: input, id: source, attributes: {label: Officiële bronlink}, validations: {required: true}}
+  - {type: input, id: sector, attributes: {label: Sector}}
+  - {type: input, id: audience, attributes: {label: Doelgroep}}
+  - {type: input, id: status, attributes: {label: Status}}
+  - {type: textarea, id: notes, attributes: {label: Toelichting}}
+  - {type: input, id: submitter, attributes: {label: Naam indiener (optioneel)}}

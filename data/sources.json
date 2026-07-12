@@ -1,0 +1,8 @@
+[
+  {"id":"source-kennisnet","name":"Kennisnet","baseUrl":"https://www.kennisnet.nl/","organizationId":"org-kennisnet","sourceType":"official","enabled":true,"checkFrequency":"daily","parserType":"html","allowedRecordTypes":["guidance","training","service"],"lastChecked":null,"notes":null},
+  {"id":"source-surf","name":"SURF","baseUrl":"https://www.surf.nl/","organizationId":"org-surf","sourceType":"official","enabled":true,"checkFrequency":"daily","parserType":"html","allowedRecordTypes":["service","programme","guidance"],"lastChecked":null,"notes":null},
+  {"id":"source-npuls","name":"Npuls","baseUrl":"https://npuls.nl/","organizationId":"org-npuls","sourceType":"official","enabled":true,"checkFrequency":"daily","parserType":"html","allowedRecordTypes":["guidance","training","programme"],"lastChecked":null,"notes":null},
+  {"id":"source-nolai","name":"NOLAI","baseUrl":"https://www.nolai.nl/","organizationId":"org-nolai","sourceType":"official","enabled":true,"checkFrequency":"daily","parserType":"html","allowedRecordTypes":["research_project","pilot","programme"],"lastChecked":null,"notes":null},
+  {"id":"source-edustandaard","name":"Edustandaard","baseUrl":"https://www.edustandaard.nl/","organizationId":"org-edustandaard","sourceType":"official","enabled":true,"checkFrequency":"daily","parserType":"html","allowedRecordTypes":["standard"],"lastChecked":null,"notes":null},
+  {"id":"source-nwo","name":"NWO calls","baseUrl":"https://www.nwo.nl/calls","organizationId":"org-nwo","sourceType":"official","enabled":true,"checkFrequency":"daily","parserType":"html","allowedRecordTypes":["subsidy","funding_call"],"lastChecked":null,"notes":null}
+]
