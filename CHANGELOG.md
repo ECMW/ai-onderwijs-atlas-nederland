@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-07-12 — Marketplace-zoekervaring met combinaties
+
+- Bezoekers kunnen meerdere rollen tegelijk kiezen, lokaal onthouden, wijzigen en wissen.
+- Natuurlijke vragen worden lokaal vertaald naar rollen, thema's, sectoren en soorten aanbod.
+- “Ik ben docent en onderzoeker en zoek iets over de AI Act” activeert automatisch de juiste drie filters.
+- “Voor wie” is een primair meervoudig facet met dynamische aantallen.
+- Nieuwe datagedreven filters voor publieke toegang en aanwezigheid van een officiële bron.
+- Snelfilters boven resultaten voor direct beschikbaar, publiek toegankelijk en officiële bron.
+- Lange facetlijsten openen progressief; de organisatiefilter heeft een eigen zoekveld.
+- Alle filters blijven combineerbaar, deelbaar via de URL en bruikbaar met terug/vooruit.
+
 ## 2026-07-12 — Publieke catalogus zonder witte vlekken
 
 - Witte vlekken en geïdentificeerde behoeften zijn verwijderd uit navigatie, zoeken, suggesties, filters en publieke resultaten.
