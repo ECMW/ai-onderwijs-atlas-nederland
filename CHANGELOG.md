@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-07-12 — Internationale inhoudstranche en harde bronpublicatie
+
+- 32 officieel onderbouwde records toegevoegd voor trainingen, internationale calls, voorzieningen, standaarden, pilots, praktijkvoorbeelden, programma's en organisaties.
+- De publieke catalogus bevat nu 122 geverifieerde records; 24 bronloze, niet-geverifieerde of behoefte-/witte-vlekrecords blijven buiten de publieke export.
+- Trainingen uitgebreid van drie aantoonbaar bestaande items naar elf.
+- Zes actuele open calls ontsloten: twee Nederlandse, twee Europese en twee internationale.
+- Geografische reikwijdte toegevoegd als filter op de startpagina, in uitgebreid zoeken en op detailpagina's.
+- Zoeken in gewone taal herkent nu ook vragen als “organisatie voor PO” en combineert organisatie, sector, thema en doelgroep.
+- Dekkingsaudit toegevoegd in `reports/coverage-audit-2026-07-12.md`.
+
 ## 12 juli 2026 — Direct filteren vanaf de startpagina
 
 - Op desktop staat links van de startpagina een blijvend zichtbaar filterpaneel voor thema, sector, soort aanbod, doelgroep en beschikbaarheid.

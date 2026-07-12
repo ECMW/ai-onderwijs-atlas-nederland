@@ -30,4 +30,4 @@ Neem uitsluitend informatie over uit de aangeleverde markdownbronnen. Voeg geen 
 
 ## Catalogusinteracties
 
-De zoekcatalogus ondersteunt directe filters op categorie, thema, sector, doelgroep en status. Filters binnen één groep werken als OR; verschillende groepen als AND. De selectie wordt in de URL-hash opgeslagen en is daardoor deelbaar. Witte vlekken worden als geïdentificeerde behoefte weergegeven en niet als beschikbaar aanbod.
+De zoekcatalogus ondersteunt directe filters op soort aanbod, thema, sector, doelgroep, geografische reikwijdte en status. Filters binnen één groep werken als OR; verschillende groepen als AND. De selectie wordt in de URL-hash opgeslagen en is daardoor deelbaar. De publieke export bevat uitsluitend records met een officiële bron en een bevestigde verificatiestatus; witte vlekken, behoeften en bronloze concepten worden niet gepubliceerd.

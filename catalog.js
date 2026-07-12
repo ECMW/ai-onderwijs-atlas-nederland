@@ -8,7 +8,9 @@
   const allRecords = source.records || [];
   const records = allRecords.filter(record =>
     !['identified_need', 'white_spot'].includes(record.recordType) &&
-    !['Behoefte', 'Witte vlek'].includes(record.legacyType)
+    !['Behoefte', 'Witte vlek'].includes(record.legacyType) &&
+    (record.sourceUrls || []).some(sourceItem => sourceItem.url && sourceItem.sourceType === 'official') &&
+    ['verified', 'recently_checked'].includes(record.verificationStatus)
   );
   const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
@@ -59,7 +61,7 @@
   const FAVORITES_KEY = 'atlas.favorites';
   const SAVED_SEARCHES_KEY = 'atlas.savedSearches';
   const RECENT_KEY = 'atlas.recentItems';
-  const FILTER_KEYS = ['theme', 'audience', 'sector', 'status', 'type', 'organization', 'access', 'source', 'freshness'];
+  const FILTER_KEYS = ['theme', 'audience', 'sector', 'status', 'type', 'geography', 'organization', 'access', 'source', 'freshness'];
   const ROLE_ALIASES = {
     docent: 'Docenten', leraar: 'Docenten', leerkracht: 'Docenten',
     bestuurder: 'Bestuurders', schoolleider: 'Bestuurders', manager: 'Bestuurders',
@@ -69,7 +71,8 @@
   const TYPE_QUERY_RULES = {
     Handreiking: ['handreiking', 'handleiding'], Training: ['training', 'cursus', 'workshop'],
     Praktijkvoorbeeld: ['praktijkvoorbeeld', 'voorbeeld uit de praktijk'],
-    Hulpmiddel: ['hulpmiddel', 'tool'], 'Subsidie of call': ['subsidie', 'call']
+    Hulpmiddel: ['hulpmiddel', 'tool'], Organisatie: ['organisatie', 'kennisorganisatie', 'instelling'],
+    'Subsidie of call': ['subsidie', 'call']
   };
   const QUERY_STOPWORDS = new Set(['ik', 'ben', 'wij', 'zijn', 'zoek', 'zoeken', 'iets', 'over', 'voor', 'de', 'het', 'een', 'en', 'of', 'naar', 'graag', 'wil', 'willen', 'nodig', 'informatie']);
   const PRACTICAL_PRIORITY = {
@@ -81,12 +84,13 @@
   const TASKS = [
     { label: 'Hulp bij toetsing', detail: 'Toetsontwerp, examinering en nakijken', query: { theme: 'Toetsing en examinering' } },
     { label: 'AI Act begrijpen', detail: 'Regels, rollen en risicoclassificatie', query: { theme: 'AI Act en wetgeving' } },
-    { label: 'Subsidie vinden', detail: 'Open calls en financiering', query: { type: 'Subsidie of call,Subsidie' } },
+    { label: 'Subsidie vinden', detail: 'Nederlandse én internationale calls', query: { type: 'Subsidie of call,Subsidie' } },
     { label: 'AI-geletterdheid', detail: 'Raamwerken en professionalisering', query: { theme: 'AI-geletterdheid' } },
     { label: 'Veilige AI kiezen', detail: 'Privacy, beveiliging en autonomie', query: { theme: 'Veilige AI-omgeving' } },
     { label: 'Voorbeeldbeleid', detail: 'Afspraken, governance en implementatie', query: { theme: 'Beleid en governance' } },
     { label: 'Praktijkvoorbeelden', detail: 'Ervaringen uit instellingen en scholen', query: { type: 'Praktijkvoorbeeld' } },
-    { label: 'Trainingen', detail: 'Workshops en leeractiviteiten', query: { type: 'Training' } }
+    { label: 'Trainingen', detail: 'Workshops en leeractiviteiten', query: { type: 'Training' } },
+    { label: 'Organisatie vinden', detail: 'Vind een organisatie per sector of onderwerp', query: { type: 'Organisatie' } }
   ];
 
   let state = {};
@@ -161,6 +165,7 @@
   const facetValues = (record, key) => ({
     theme: recordThemes(record), sector: record.sectors || [], status: [statusLabel(record)],
     type: [typeLabel(record)], audience: record.audiences || [], organization: [record.providerName],
+    geography: [record.geographicScope || 'Reikwijdte niet ingevuld'],
     access: [record.accessType === 'public' ? 'Publiek toegankelijk' : 'Toegang nog niet bevestigd'],
     source: [(record.sourceUrls || []).length ? 'Met officiële bron' : 'Bron nog niet vastgelegd'],
     freshness: [['verified', 'recently_checked'].includes(record.verificationStatus) ? 'Recent gecontroleerd' : 'Controle nodig']
@@ -386,11 +391,12 @@
   }
   function homeFilterPanel(personas) {
     const themes = ['Toetsing en examinering', 'AI Act en wetgeving', 'Privacy en AVG', 'AI-geletterdheid', 'Veilige AI-omgeving', 'Beleid en governance', 'Professionalisering', 'Praktijkvoorbeelden'];
-    const types = ['Handreiking', 'Hulpmiddel', 'Voorziening', 'Training', 'Praktijkvoorbeeld', 'Pilot', 'Subsidie of call', 'Subsidie', 'Wetgeving'];
+    const types = ['Handreiking', 'Hulpmiddel', 'Voorziening', 'Training', 'Praktijkvoorbeeld', 'Pilot', 'Subsidie of call', 'Subsidie', 'Wetgeving', 'Organisatie'];
     return `<details class="home-filter-sidebar"><summary>Filter het aanbod</summary><form class="home-filter-form"><header><span class="eyebrow">Snel verfijnen</span><h2>Filter het aanbod</h2><p>Combineer meerdere keuzes.</p></header>
       ${homeFilterGroup('theme', 'Waar zoekt u hulp bij?', themes, [], true)}
       ${homeFilterGroup('sector', 'Voor welke sector?', SECTORS, [], true)}
       ${homeFilterGroup('type', 'Wat zoekt u?', types)}
+      ${homeFilterGroup('geography', 'Waar is het aanbod beschikbaar?', ['Nederland', 'Europa', 'Internationaal'])}
       ${homeFilterGroup('audience', 'Voor wie?', PRIMARY_AUDIENCES, personas)}
       ${homeFilterGroup('status', 'Beschikbaarheid', ['Direct beschikbaar', 'Open voor aanvragen', 'Pilot', 'In ontwikkeling'])}
       <button class="btn home-filter-submit" type="submit">Bekijk aanbod</button><a class="home-all-filters" href="#zoeken">Naar uitgebreid zoeken →</a>
@@ -577,8 +583,8 @@
     const hiddenCount = ['access', 'source', 'freshness'].reduce((sum, key) => sum + values(key).length, 0);
     main.innerHTML = `<section class="catalog">${searchForm('catalog-search')}<div class="catalog-grid">
       <aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Verfijn</h2><button class="close" aria-label="Sluit filters">×</button></header>
-        ${facet('theme', '1. Waar zoekt u hulp bij?', Object.keys(THEME_RULES), true)}${facet('sector', '2. Voor welke sector?', SECTORS, true)}${facet('type', '3. Wat zoekt u?', typeOptions, true)}${facet('audience', '4. Voor wie?', audienceOptions, Boolean(values('audience').length))}${facet('status', '5. Beschikbaarheid', Object.values(STATUS_LABELS), Boolean(values('status').length))}${facet('organization', '6. Aanbieder', organizationOptions, Boolean(values('organization').length))}
-        <details class="more-filters"><summary>7. Meer filters<span data-more-count>${hiddenCount ? ` (${hiddenCount})` : ''}</span> <span aria-hidden="true">▼</span></summary>
+        ${facet('theme', '1. Waar zoekt u hulp bij?', Object.keys(THEME_RULES), true)}${facet('sector', '2. Voor welke sector?', SECTORS, true)}${facet('type', '3. Wat zoekt u?', typeOptions, true)}${facet('geography', '4. Geografische reikwijdte', ['Nederland', 'Europa', 'Internationaal'], Boolean(values('geography').length))}${facet('audience', '5. Voor wie?', audienceOptions, Boolean(values('audience').length))}${facet('status', '6. Beschikbaarheid', Object.values(STATUS_LABELS), Boolean(values('status').length))}${facet('organization', '7. Aanbieder', organizationOptions, Boolean(values('organization').length))}
+        <details class="more-filters"><summary>8. Meer filters<span data-more-count>${hiddenCount ? ` (${hiddenCount})` : ''}</span> <span aria-hidden="true">▼</span></summary>
           ${facet('access', 'Toegang', ['Publiek toegankelijk', 'Toegang nog niet bevestigd'])}${facet('source', 'Bron', ['Met officiële bron', 'Bron nog niet vastgelegd'])}${facet('freshness', 'Actualiteit', ['Recent gecontroleerd', 'Controle nodig'])}
         </details><button class="clear btn secondary">Wis alle filters</button><footer><button class="apply btn">Toon ${resultRecords.length} resultaten</button></footer>
       </aside><section class="results" id="results-panel">${resultsMarkup()}</section></div></section>`;
@@ -609,6 +615,7 @@
       ['Sector', (record.sectors || []).join(', ')],
       ['Voor wie', (record.audiences || []).join(', ')],
       ['Beschikbaarheid', statusLabel(record)],
+      ['Geografische reikwijdte', record.geographicScope],
       ['Laatst gecontroleerd', record.lastVerified],
       ['Deadline', record.applicationDeadline || record.fundingDeadline]
     ].filter(([, value]) => value && value !== 'Nog niet ingevuld');
