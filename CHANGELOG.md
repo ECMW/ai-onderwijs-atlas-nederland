@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-07-12 — Launchkwaliteit en contextvaste gebruikersreis
+
+- Praktische bronnen krijgen bij gecombineerde filters voorrang boven organisaties en geïdentificeerde behoeften.
+- “Direct bruikbaar” toont vier verschillende concrete aanbodtypen met officiële bron.
+- Detailpagina's gebruiken rechtstreeks v2-data, verbergen lege velden en behouden selectie en terugkeercontext.
+- Nulresultaat-suggesties behouden alle overige actieve filters.
+- Zoeksuggesties ondersteunen Pijl-omlaag, Pijl-omhoog en Escape.
+- Het mobiele filterpaneel heeft een focustrap en correcte `aria-expanded`-status.
+- Mobiele themagroepen openen compact en beginnen bij het meest praktisch bruikbare aanbodtype.
+- Kaartacties en detailpagina's hebben een duidelijkere visuele hiërarchie.
+
 ## 2026-07-12 — Makkelijker ontdekken op basis van v2-data
 
 - De catalogus gebruikt rechtstreeks `window.ATLAS_RECORDS` als canonieke databron.

@@ -52,6 +52,12 @@
   const PRIMARY_AUDIENCES = ['Docenten', 'Bestuurders', 'IT-professionals', 'Onderzoekers'];
   const SECTORS = ['PO', 'VO', 'MBO', 'HBO', 'WO', 'Onderzoek', 'Overheid'];
   const PERSONA_KEY = 'atlas.persona';
+  const PRACTICAL_PRIORITY = {
+    Handreiking: 70, Voorziening: 65, Training: 60, Praktijkvoorbeeld: 55,
+    Hulpmiddel: 50, 'Subsidie of call': 45, Subsidie: 45, Pilot: 40,
+    Wetgeving: 35, Standaard: 30, Programma: 25, Organisatie: 5,
+    'Geïdentificeerde behoefte': 0
+  };
 
   let state = {};
   let resultRecords = [];
@@ -66,6 +72,8 @@
   function savePersona(value) {
     try { value ? localStorage.setItem(PERSONA_KEY, value) : localStorage.removeItem(PERSONA_KEY); } catch { /* lokale opslag kan geblokkeerd zijn */ }
   }
+  function sessionGet(key) { try { return sessionStorage.getItem(key) || ''; } catch { return ''; } }
+  function sessionSet(key, value) { try { sessionStorage.setItem(key, String(value)); } catch { /* sessieopslag kan geblokkeerd zijn */ } }
   const personaLabel = value => ({ Docenten: 'Docent', Bestuurders: 'Bestuurder', 'IT-professionals': 'IT-professional', Onderzoekers: 'Onderzoeker' }[value] || value);
 
   const recordText = record => normalize([
@@ -115,6 +123,14 @@
     history.pushState(null, '', `#zoeken${params.size ? `?${params}` : ''}`);
     renderSearch();
   }
+  function stateHref(overrides = {}) {
+    const next = { ...state, ...overrides };
+    const params = new URLSearchParams();
+    Object.entries(next).forEach(([key, value]) => {
+      if (value && !(key === 'sort' && value === 'relevant')) params.set(key, value);
+    });
+    return `#zoeken${params.size ? `?${params}` : ''}`;
+  }
   function queryMatches(record, query) {
     const terms = queryTerms(query);
     if (terms.length && !terms.some(term => recordText(record).includes(term))) return false;
@@ -127,7 +143,8 @@
     );
   }
   function relevance(record) {
-    if (!state.q) return statusLabel(record) === 'Direct beschikbaar' ? 2 : 0;
+    const practical = PRACTICAL_PRIORITY[typeLabel(record)] || 10;
+    if (!state.q) return practical + (statusLabel(record) === 'Direct beschikbaar' ? 4 : 0);
     const query = normalize(state.q);
     const title = normalize(record.title);
     let score = title === query ? 100 : title.includes(query) ? 60 : 0;
@@ -136,12 +153,14 @@
       if (normalize((record.keywords || []).join(' ')).includes(term)) score += 20;
       if (normalize(record.description).includes(term)) score += 8;
     });
-    return score + (statusLabel(record) === 'Direct beschikbaar' ? 3 : 0);
+    return score + practical / 10 + (statusLabel(record) === 'Direct beschikbaar' ? 3 : 0);
   }
   function sortRecords(list) {
     if (state.sort === 'az') return list.sort((a, b) => a.title.localeCompare(b.title, 'nl'));
-    if (state.sort === 'available') return list.sort((a, b) =>
-      (statusLabel(a) === 'Direct beschikbaar' ? -1 : 1) - (statusLabel(b) === 'Direct beschikbaar' ? -1 : 1));
+    if (state.sort === 'available') return list.sort((a, b) => {
+      const availability = Number(statusLabel(b) === 'Direct beschikbaar') - Number(statusLabel(a) === 'Direct beschikbaar');
+      return availability || relevance(b) - relevance(a) || a.title.localeCompare(b.title, 'nl');
+    });
     if (state.sort === 'checked') return list.sort((a, b) => String(b.lastVerified || '').localeCompare(a.lastVerified || ''));
     return list.sort((a, b) => relevance(b) - relevance(a));
   }
@@ -166,8 +185,12 @@
     return `<div class="popular ${className}">${available.map(query => `<a href="#zoeken?q=${encodeURIComponent(query)}${persona ? `&audience=${encodeURIComponent(persona)}` : ''}">${escapeHtml(query)}</a>`).join('')}</div>`;
   }
   function directUsable() {
-    return records.filter(record => statusLabel(record) === 'Direct beschikbaar' && (record.sourceUrls || []).length)
-      .sort((a, b) => a.title.localeCompare(b.title, 'nl')).slice(0, 4);
+    const pool = records.filter(record => statusLabel(record) === 'Direct beschikbaar' && (record.sourceUrls || []).length && !['Organisatie', 'Geïdentificeerde behoefte'].includes(typeLabel(record)))
+      .sort((a, b) => (PRACTICAL_PRIORITY[typeLabel(b)] || 0) - (PRACTICAL_PRIORITY[typeLabel(a)] || 0) || a.title.localeCompare(b.title, 'nl'));
+    const selected = [], usedTypes = new Set();
+    pool.forEach(record => { if (selected.length < 4 && !usedTypes.has(typeLabel(record))) { selected.push(record); usedTypes.add(typeLabel(record)); } });
+    pool.forEach(record => { if (selected.length < 4 && !selected.includes(record)) selected.push(record); });
+    return selected;
   }
   function simpleCard(record, explain = false) {
     const sectors = (record.sectors || []).slice(0, 3);
@@ -237,8 +260,9 @@
       if (!groups.has(label)) groups.set(label, []);
       groups.get(label).push(record);
     });
-    return [...groups.entries()].sort((a, b) => b[1].length - a[1].length).map(([label, items]) =>
-      `<details class="result-group" open><summary><span>${escapeHtml(label)} <b>${items.length}</b></span><span class="group-toggle" aria-hidden="true"></span></summary><div class="result-list">${items.slice(0, 3).map(record => simpleCard(record, true)).join('')}</div>${items.length > 3 ? `<a class="group-all" href="#zoeken?theme=${encodeURIComponent(values('theme')[0])}&type=${encodeURIComponent(label)}">Toon alle ${items.length} →</a>` : ''}</details>`
+    const compact = matchMedia('(max-width:560px)').matches;
+    return [...groups.entries()].sort((a, b) => (PRACTICAL_PRIORITY[b[0]] || 10) - (PRACTICAL_PRIORITY[a[0]] || 10) || b[1].length - a[1].length).map(([label, items], index) =>
+      `<details class="result-group" ${!compact || index === 0 ? 'open' : ''}><summary><span>${escapeHtml(label)} <b>${items.length}</b></span><span class="group-toggle" aria-hidden="true"></span></summary><div class="result-list">${items.slice(0, 3).map(record => simpleCard(record, true)).join('')}</div>${items.length > 3 ? `<a class="group-all" href="#zoeken?theme=${encodeURIComponent(values('theme')[0])}&type=${encodeURIComponent(label)}">Toon alle ${items.length} →</a>` : ''}</details>`
     ).join('');
   }
   function levenshtein(left, right) {
@@ -288,18 +312,58 @@
     const organizationOptions = [...new Set(records.map(record => record.providerName).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'nl'));
     const audienceOptions = [...new Set(records.flatMap(record => record.audiences || []))].sort((a, b) => a.localeCompare(b, 'nl'));
     main.innerHTML = `<section class="catalog">${searchForm('catalog-search')}<div class="catalog-grid">
-      <aside class="filters" id="filters"><header><h2>Verfijn</h2><button class="close" aria-label="Sluit filters">×</button></header>
+      <aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Verfijn</h2><button class="close" aria-label="Sluit filters">×</button></header>
         ${facet('theme', 'Thema', Object.keys(THEME_RULES), true)}${facet('sector', 'Sector', SECTORS, true)}${facet('status', 'Beschikbaarheid', Object.values(STATUS_LABELS), true)}
         <details class="more-filters"><summary>Meer filters${hiddenCount ? ` (${hiddenCount})` : ''} <span>▼</span></summary>
           ${facet('type', 'Soort aanbod', typeOptions)}${facet('audience', 'Voor wie', audienceOptions)}${facet('organization', 'Organisatie', organizationOptions)}${facet('freshness', 'Actualiteit', ['Recent gecontroleerd', 'Controle nodig'])}
         </details><button class="clear btn secondary">Wis alle filters</button><footer><button class="apply btn">Toon ${resultRecords.length} resultaten</button></footer>
-      </aside><section class="results"><header class="result-head"><h1>${oneThemeOnly ? escapeHtml(values('theme')[0]) : `${resultRecords.length} resultaten${state.q ? ` voor ‘${escapeHtml(state.q)}’` : ''}`}</h1><div><button class="mobile-filter btn secondary">Filters (${['theme', 'sector', 'status', 'type', 'audience', 'organization', 'freshness'].reduce((sum, key) => sum + values(key).length, 0)})</button><label>Sorteren<select id="sort"><option value="relevant">Meest relevant</option><option value="available">Direct beschikbaar eerst</option><option value="checked">Recent gecontroleerd</option><option value="az">Titel A–Z</option></select></label></div></header>
+      </aside><section class="results"><header class="result-head"><h1>${oneThemeOnly ? escapeHtml(values('theme')[0]) : `${resultRecords.length} resultaten${state.q ? ` voor ‘${escapeHtml(state.q)}’` : ''}`}</h1><div><button class="mobile-filter btn secondary" aria-controls="filters" aria-expanded="false">Filters (${['theme', 'sector', 'status', 'type', 'audience', 'organization', 'freshness'].reduce((sum, key) => sum + values(key).length, 0)})</button><label>Sorteren<select id="sort"><option value="relevant">Meest relevant</option><option value="available">Direct beschikbaar eerst</option><option value="checked">Recent gecontroleerd</option><option value="az">Titel A–Z</option></select></label></div></header>
         ${chips ? `<div class="chips">${chips}<button class="clear-link">Wis alles</button></div>` : ''}
         ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="#zoeken?theme=${encodeURIComponent(theme)}">${escapeHtml(theme)} <span>${count}</span></a>`).join('')}</nav>` : ''}
-        <div aria-live="polite">${resultRecords.length ? (oneThemeOnly ? groupedResults() : `<div class="result-list">${resultRecords.map(record => simpleCard(record, true)).join('')}</div>`) : `<div class="empty"><h2>Geen resultaten gevonden</h2>${alternative ? `<a class="alternative" href="#zoeken?q=${encodeURIComponent(alternative.candidate)}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` : '<p>Voor deze zoekterm is geen aantoonbaar werkend alternatief gevonden.</p>'}<button class="clear btn">Wis filters</button><p><a href="#bijdragen">Mis u iets in de atlas? Laat het weten.</a></p></div>`}</div>
+        <div aria-live="polite">${resultRecords.length ? (oneThemeOnly ? groupedResults() : `<div class="result-list">${resultRecords.map(record => simpleCard(record, true)).join('')}</div>`) : `<div class="empty"><h2>Geen resultaten gevonden</h2>${alternative ? `<a class="alternative" href="${stateHref({ q: alternative.candidate })}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` : '<p>Voor deze zoekterm is geen aantoonbaar werkend alternatief gevonden.</p>'}<button class="clear btn">Wis filters</button><p><a href="#bijdragen">Mis u iets in de atlas? Laat het weten.</a></p></div>`}</div>
       </section></div></section>`;
     document.querySelector('#sort').value = state.sort;
     bindSearchPage();
+    if (sessionGet('atlas.restoreResults') === location.hash) {
+      const targetY = Number(sessionGet('atlas.resultsScroll')) || 0;
+      sessionSet('atlas.restoreResults', '');
+      requestAnimationFrame(() => scrollTo(0, targetY));
+    }
+  }
+
+  function renderDetail(id) {
+    const record = records.find(item => item.id === id);
+    if (!record) {
+      main.innerHTML = `<section class="detail-missing"><h1>Niet gevonden</h1><p>Dit item staat niet in de huidige dataset.</p><a class="btn" href="#zoeken">Terug naar zoeken</a></section>`;
+      return;
+    }
+    const lastSearch = sessionGet('atlas.lastSearch') || '#zoeken';
+    const related = records.filter(item => item.id !== record.id && (
+      item.providerName === record.providerName || recordThemes(item).some(theme => recordThemes(record).includes(theme))
+    )).sort((a, b) => relevance(b) - relevance(a)).slice(0, 3);
+    const sources = record.sourceUrls || [];
+    const factRows = [
+      ['Aanbieder', record.providerName],
+      ['Sector', (record.sectors || []).join(', ')],
+      ['Voor wie', (record.audiences || []).join(', ')],
+      ['Beschikbaarheid', statusLabel(record)],
+      ['Laatst gecontroleerd', record.lastVerified],
+      ['Deadline', record.applicationDeadline || record.fundingDeadline]
+    ].filter(([, value]) => value && value !== 'Nog niet ingevuld');
+    main.innerHTML = `<header class="detail-hero"><span class="eyebrow">${escapeHtml(typeLabel(record))}</span><h1>${escapeHtml(record.title)}</h1><p>${escapeHtml(record.description || '')}</p></header>
+      <section class="detail-shell"><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">← Terug naar resultaten</a><span>Home / Resultaten / ${escapeHtml(record.title)}</span></nav>
+      <div class="detail-layout"><article>
+        ${record.purpose ? `<h2>Waarvoor kunt u dit gebruiken?</h2><p>${escapeHtml(record.purpose)}</p>` : ''}
+        ${recordThemes(record).length ? `<h2>Onderwerpen</h2><div class="detail-themes">${recordThemes(record).map(theme => `<a href="#zoeken?theme=${encodeURIComponent(theme)}">${escapeHtml(theme)}</a>`).join('')}</div>` : ''}
+        ${record.eligibility ? `<h2>Voorwaarden</h2><p>${escapeHtml(record.eligibility)}</p>` : ''}
+        ${related.length ? `<h2>Gerelateerd aanbod</h2><div class="related-cards">${related.map(item => simpleCard(item)).join('')}</div>` : ''}
+      </article><aside class="detail-facts"><h2>In één oogopslag</h2><dl>${factRows.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl>
+        ${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}
+        <a class="correction-link" href="#bijdragen">Klopt er iets niet? Geef een correctie door.</a>
+      </aside></div></section>`;
+    const back = document.querySelector('.back-results');
+    back.onclick = () => sessionSet('atlas.restoreResults', lastSearch);
+    document.querySelectorAll('.related-cards a[href^="#item/"]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', lastSearch));
   }
 
   function suggestionData(query) {
@@ -324,12 +388,29 @@
         const titleMatch = Object.keys(THEME_RULES).find(theme => normalize(theme).includes(normalize(input.value)));
         suggestions.hidden = !data.groups.length && !data.organizations.length;
         input.setAttribute('aria-expanded', String(!suggestions.hidden));
-        suggestions.innerHTML = `${titleMatch ? `<a href="#zoeken?theme=${encodeURIComponent(titleMatch)}" class="suggestion-topic"><small>Onderwerp</small><strong>${escapeHtml(titleMatch)}</strong></a>` : ''}
-          ${data.groups.length ? `<section><h2>Soort aanbod</h2>${data.groups.map(([label, count]) => `<a href="#zoeken?q=${encodeURIComponent(input.value)}&type=${encodeURIComponent(label)}"><span>${escapeHtml(label)}</span><strong>${count}</strong></a>`).join('')}</section>` : ''}
-          ${data.organizations.length ? `<section><h2>Organisaties</h2>${data.organizations.map(name => `<a href="#zoeken?organization=${encodeURIComponent(name)}">${escapeHtml(name)}</a>`).join('')}</section>` : ''}`;
+        suggestions.innerHTML = `${titleMatch ? `<a href="${stateHref({ q: '', theme: titleMatch })}" class="suggestion-topic"><small>Onderwerp</small><strong>${escapeHtml(titleMatch)}</strong></a>` : ''}
+          ${data.groups.length ? `<section><h2>Soort aanbod</h2>${data.groups.map(([label, count]) => `<a href="${stateHref({ q: input.value, type: label })}"><span>${escapeHtml(label)}</span><strong>${count}</strong></a>`).join('')}</section>` : ''}
+          ${data.organizations.length ? `<section><h2>Organisaties</h2>${data.organizations.map(name => `<a href="${stateHref({ q: '', organization: name })}">${escapeHtml(name)}</a>`).join('')}</section>` : ''}`;
       }, 150);
     };
-    input.onkeydown = event => { if (event.key === 'Escape') { suggestions.hidden = true; input.setAttribute('aria-expanded', 'false'); } };
+    const closeSuggestions = () => { suggestions.hidden = true; input.setAttribute('aria-expanded', 'false'); };
+    input.onkeydown = event => {
+      if (event.key === 'Escape') closeSuggestions();
+      if (event.key === 'ArrowDown' && !suggestions.hidden) {
+        const first = suggestions.querySelector('a');
+        if (first) { event.preventDefault(); first.focus(); }
+      }
+    };
+    suggestions.onkeydown = event => {
+      const links = [...suggestions.querySelectorAll('a')];
+      const index = links.indexOf(document.activeElement);
+      if (event.key === 'Escape') { closeSuggestions(); input.focus(); }
+      if (['ArrowDown', 'ArrowUp'].includes(event.key) && index >= 0) {
+        event.preventDefault();
+        links[(index + (event.key === 'ArrowDown' ? 1 : -1) + links.length) % links.length].focus();
+      }
+    };
+    form.onfocusout = () => setTimeout(() => { if (!form.contains(document.activeElement)) closeSuggestions(); }, 0);
   }
   function bindPersona() {
     document.querySelectorAll('[data-persona]').forEach(link => link.addEventListener('click', () => savePersona(link.dataset.persona)));
@@ -350,16 +431,29 @@
     });
     document.querySelectorAll('.clear,.clear-link').forEach(button => button.onclick = () => { state = { q: '', sort: 'relevant' }; setUrl(); });
     document.querySelector('#sort').onchange = event => { state.sort = event.target.value; setUrl(); };
+    document.querySelectorAll('.result-card a[href^="#item/"]').forEach(link => link.onclick = () => {
+      sessionSet('atlas.lastSearch', location.hash); sessionSet('atlas.resultsScroll', scrollY);
+    });
     const panel = document.querySelector('#filters'); const opener = document.querySelector('.mobile-filter'); const closer = document.querySelector('.close');
-    const closePanel = () => { panel.classList.remove('open'); document.body.classList.remove('locked'); opener.focus(); };
-    opener.onclick = () => { panel.classList.add('open'); document.body.classList.add('locked'); closer.focus(); };
+    const closePanel = () => { panel.classList.remove('open'); document.body.classList.remove('locked'); opener.setAttribute('aria-expanded', 'false'); opener.focus(); };
+    opener.onclick = () => { panel.classList.add('open'); document.body.classList.add('locked'); opener.setAttribute('aria-expanded', 'true'); closer.focus(); };
     closer.onclick = document.querySelector('.apply').onclick = closePanel;
-    document.onkeydown = event => { if (event.key === 'Escape' && panel.classList.contains('open')) closePanel(); };
+    document.onkeydown = event => {
+      if (event.key === 'Escape' && panel.classList.contains('open')) closePanel();
+      if (event.key === 'Tab' && panel.classList.contains('open')) {
+        const focusable = [...panel.querySelectorAll('button:not([disabled]),input:not([disabled]),summary,select,a[href]')].filter(element => element.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    };
   }
   function route() {
     const path = (location.hash.slice(1) || 'home').split('?')[0];
     if (path === 'home') renderHome();
     if (path === 'zoeken' || path === 'organisaties') { parseState(); if (path === 'organisaties') state.type = 'Organisatie'; renderSearch(); }
+    if (path.startsWith('item/')) renderDetail(decodeURIComponent(path.slice(5)));
     const updated = document.querySelector('[data-updated]'); if (updated) updated.textContent = source.metadata.updated || '';
   }
   addEventListener('hashchange', route); addEventListener('popstate', route); route();
