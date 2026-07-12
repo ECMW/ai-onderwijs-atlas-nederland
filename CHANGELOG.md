@@ -1,5 +1,48 @@
 # Changelog
 
+## 12 juli 2026 — Marketplace-UX en persoonlijke atlas
+
+### Toegepaste UX-principes
+
+- Eén dominante zoekingang, taakgerichte oriëntatie en progressieve verfijning naar het patroon van grote zoek- en marktplaatsdiensten.
+- Resultaten hebben een vaste scanvolgorde: soort aanbod, titel, aanbieder, korte omschrijving, sector, vertrouwen en acties.
+- Relevantie is uitlegbaar via “Waarom zie ik dit?” en uitsluitend gebaseerd op de actieve zoekterm en filters.
+- Vertrouwen is expliciet: officiële bron, controledatum en beschikbaarheid staan op kaarten; onzeker aanbod krijgt nooit een groene status.
+- Ontdekken is inhoudsgebaseerd via thema, aanbieder, trefwoorden, sector, doelgroep en recordtype. Er wordt geen gebruikersgedrag verzonnen of gevolgd.
+- “Veel gezocht” bestaat uit vaste, transparant benoemde snelkoppelingen; de atlas claimt geen populariteitsdata die niet wordt gemeten.
+
+### Aangepaste schermen
+
+- Homepage: grote zoekbalk, acht herkenbare gebruikerstaken, vaste veelgezocht-snelkoppelingen en databron-gestuurde rails voor nieuw toegevoegd, direct beschikbaar, open subsidies, praktijkvoorbeelden en recent gecontroleerd.
+- Zoeken: gegroepeerde autocomplete voor onderwerpen, organisaties, hulpmiddelen, wetgeving, subsidies, praktijkvoorbeelden en pilots.
+- Resultaten: nieuwe marktplaatskaarten, snelfilters, bewaar- en deelacties, actieve filterchips, slimme lege staat en inhoudelijk verwante thema’s.
+- Detailpagina: rijkere vertrouwensinformatie, favoriete- en deelactie, recent bekeken en automatisch berekend gerelateerd aanbod.
+- Mijn atlas: lokale favorieten, bewaarde zoekopdrachten en recent bekeken items met een expliciete privacy-uitleg.
+- Bijdragen: eenvoudige route om ontbrekend aanbod of correcties met een officiële bron via een transparant GitHub-proces te melden.
+
+### Eenvoudiger geworden interacties
+
+- Natuurlijke vragen zoals “Ik ben docent en onderzoeker en zoek iets over de AI Act” zetten meerdere rollen en het juiste thema tegelijk aan.
+- Filters veranderen alleen het resultatenpaneel; zoekveld en filtercontext blijven staan en de pagina knippert niet volledig opnieuw.
+- Zoeksuggesties zijn met pijltjestoetsen en Escape bedienbaar en leiden rechtstreeks naar een thema, aanbieder of concreet item.
+- Favorieten, persona, bewaarde zoekopdrachten en recent bekeken aanbod blijven uitsluitend lokaal in de browser.
+- Mobiele resultaten gebruiken een vaste filteractie boven de veilige onderrand en afzonderlijk inklapbare themagroepen.
+
+### Opgeloste gebruikersproblemen
+
+- Geen ongevraagde lijst met alle records meer vóórdat de gebruiker een zoekvraag of keuze maakt.
+- Witte vlekken en geïdentificeerde behoeften verschijnen nergens in de publieke zoek- of ontdekervaring.
+- Meerdere rollen en filters zijn combineerbaar; een docent-onderzoeker hoeft niet meer één identiteit te kiezen.
+- Nulresultaat-pagina’s bieden alleen een spellings- of filtersuggestie wanneer die aantoonbaar resultaten oplevert.
+- Kleine mobiele tikdoelen, een horizontaal vervormde resultaatkop en mogelijke overlap met mobiele navigatiebalken zijn hersteld op 375 en 414 pixels.
+
+### Nog mogelijke vervolgstappen
+
+- Een echt, beheerd populariteitsmodel kan pas worden toegevoegd als daar een privacyvriendelijke en bestuurlijk goedgekeurde gegevensbasis voor bestaat.
+- Vergelijken van enkele hulpmiddelen naast elkaar kan waardevol worden zodra de metadata per aanbodtype voldoende compleet en consistent is.
+- Bij verdere groei kan de statische zoekindex worden opgesplitst of vooraf worden geïndexeerd; voor de huidige 114 records is dit niet nodig.
+- Een formeel redactiemodel met bronhouders per organisatie blijft de belangrijkste stap om actualiteit op schaal te borgen.
+
 ## 12 juli 2026 — officiële inhoudstranche, batch 1
 
 - 30 unieke, direct bruikbare records toegevoegd uit officiële bronnen van Npuls, Kennisnet, SURF, SIVON en NOLAI.
