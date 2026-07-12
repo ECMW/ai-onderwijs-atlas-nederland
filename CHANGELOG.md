@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-07-12 — Van zoeken naar ontdekken
+
+- Zonder zoekvraag worden niet langer alle 84 records getoond.
+- Bezoekers starten via een zoekterm, populair onderwerp of herkenbare rol.
+- Alleen Thema en Sector zijn primaire filters; de rest staat onder “Meer filters”.
+- Eenvoudigere kaarten leggen uit waarom een resultaat bij de selectie past.
+- De homepage focust op zoeken, veel gezocht, direct bruikbaar, nieuw en bijdragen.
+
 ## 2026-07-12 — Taakgestuurde catalogus 2.0
 
 - Eén consistente zoekervaring vervangt overlappende zoeklagen.
