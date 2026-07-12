@@ -35,7 +35,7 @@
     ['privacy', 'avg', 'persoonsgegevens'], ['ai wet', 'ai act', 'ai verordening'],
     ['veilige ai', 'ai werkplek', 'veilige omgeving'], ['subsidie', 'financiering', 'call', 'regeling'],
     ['beleid', 'beleidskader', 'richtlijn', 'voorbeeldbeleid'], ['training', 'scholing', 'professionalisering'],
-    ['tool', 'hulpmiddel', 'product', 'voorziening']
+    ['tool', 'hulpmiddel', 'product', 'voorziening'], ['prompting', 'prompten', 'prompt']
   ];
   const STATUS_LABELS = {
     available: 'Direct beschikbaar', open_call: 'Open voor aanvragen', pilot: 'Pilot',
@@ -51,10 +51,22 @@
   };
   const PRIMARY_AUDIENCES = ['Docenten', 'Bestuurders', 'IT-professionals', 'Onderzoekers'];
   const SECTORS = ['PO', 'VO', 'MBO', 'HBO', 'WO', 'Onderzoek', 'Overheid'];
+  const PERSONA_KEY = 'atlas.persona';
 
   let state = {};
   let resultRecords = [];
   let debounceTimer;
+
+  function savedPersona() {
+    try {
+      const value = localStorage.getItem(PERSONA_KEY);
+      return PRIMARY_AUDIENCES.includes(value) ? value : '';
+    } catch { return ''; }
+  }
+  function savePersona(value) {
+    try { value ? localStorage.setItem(PERSONA_KEY, value) : localStorage.removeItem(PERSONA_KEY); } catch { /* lokale opslag kan geblokkeerd zijn */ }
+  }
+  const personaLabel = value => ({ Docenten: 'Docent', Bestuurders: 'Bestuurder', 'IT-professionals': 'IT-professional', Onderzoekers: 'Onderzoeker' }[value] || value);
 
   const recordText = record => normalize([
     record.title, record.description, record.purpose, record.providerName,
@@ -103,9 +115,13 @@
     history.pushState(null, '', `#zoeken${params.size ? `?${params}` : ''}`);
     renderSearch();
   }
-  function matches(record, omittedFacet = '') {
-    const terms = queryTerms(state.q);
+  function queryMatches(record, query) {
+    const terms = queryTerms(query);
     if (terms.length && !terms.some(term => recordText(record).includes(term))) return false;
+    return true;
+  }
+  function matches(record, omittedFacet = '') {
+    if (!queryMatches(record, state.q)) return false;
     return ['theme', 'sector', 'status', 'type', 'audience', 'organization', 'freshness'].every(key =>
       key === omittedFacet || !values(key).length || values(key).some(value => facetValues(record, key).includes(value))
     );
@@ -144,10 +160,10 @@
       <div class="suggestions" id="search-suggestions" hidden></div>
     </form>`;
   }
-  function popularLinks(className = '') {
+  function popularLinks(className = '', persona = '') {
     const candidates = ['Toetsing', 'AI Act', 'Privacy', 'Prompting', 'Subsidies', 'Veilige AI', 'Curriculum', 'AI-geletterdheid'];
     const available = candidates.filter(query => records.some(record => queryTerms(query).some(term => recordText(record).includes(term))));
-    return `<div class="popular ${className}">${available.map(query => `<a href="#zoeken?q=${encodeURIComponent(query)}">${escapeHtml(query)}</a>`).join('')}</div>`;
+    return `<div class="popular ${className}">${available.map(query => `<a href="#zoeken?q=${encodeURIComponent(query)}${persona ? `&audience=${encodeURIComponent(persona)}` : ''}">${escapeHtml(query)}</a>`).join('')}</div>`;
   }
   function directUsable() {
     return records.filter(record => statusLabel(record) === 'Direct beschikbaar' && (record.sourceUrls || []).length)
@@ -180,16 +196,17 @@
   }
 
   function renderHome() {
-    state = { q: '', sort: 'relevant' };
+    const persona = savedPersona();
+    state = { q: '', sort: 'relevant', audience: persona };
     const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
     main.innerHTML = `<section class="home-simple">
       <section class="home-search"><h1>Waar bent u vandaag naar op zoek?</h1>${searchForm('home-search')}</section>
-      <section><h2>Veel gezocht</h2>${popularLinks()}</section>
-      <section><h2>Ik ben…</h2><div class="role-grid">${roles.map(role => `<a href="#zoeken?audience=${encodeURIComponent(role)}">${escapeHtml(role.replace(/en$/, ''))}<span>Bekijk passend aanbod →</span></a>`).join('')}</div></section>
+      <section><h2>Veel gezocht</h2>${popularLinks('', persona)}</section>
+      <section class="persona-block">${persona ? `<div class="persona-indicator"><span>U bekijkt aanbod voor: <strong>${escapeHtml(personaLabel(persona))}</strong></span><button class="persona-change" type="button">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden><h2>Kies een andere rol</h2><div class="role-grid">${roles.map(role => `<a data-persona="${escapeHtml(role)}" href="#zoeken?audience=${encodeURIComponent(role)}">${escapeHtml(personaLabel(role))}<span>Bekijk passend aanbod →</span></a>`).join('')}</div></div>` : `<h2>Ik ben…</h2><div class="role-grid">${roles.map(role => `<a data-persona="${escapeHtml(role)}" href="#zoeken?audience=${encodeURIComponent(role)}">${escapeHtml(personaLabel(role))}<span>Bekijk passend aanbod →</span></a>`).join('')}</div>`}</section>
       <section><div class="section-title"><h2>Direct bruikbaar</h2><a href="#zoeken?status=${encodeURIComponent('Direct beschikbaar')}">Bekijk alles →</a></div><div class="direct-grid">${directUsable().map(record => simpleCard(record)).join('')}</div></section>
       <section class="missing"><h2>Nog niets gevonden? Laat het weten</h2><p>Vertel welk aanbod ontbreekt en voeg bij voorkeur een officiële bron toe.</p><a class="btn secondary" href="#bijdragen">Ontbrekend aanbod melden</a></section>
     </section>`;
-    bindSearchForm();
+    bindSearchForm(); bindPersona();
   }
   function renderStart() {
     const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
@@ -221,8 +238,42 @@
       groups.get(label).push(record);
     });
     return [...groups.entries()].sort((a, b) => b[1].length - a[1].length).map(([label, items]) =>
-      `<section class="result-group"><div class="group-title"><h2>${escapeHtml(label)} <span>${items.length}</span></h2>${items.length > 3 ? `<a href="#zoeken?theme=${encodeURIComponent(values('theme')[0])}&type=${encodeURIComponent(label)}">Toon alle ${items.length} →</a>` : ''}</div><div class="result-list">${items.slice(0, 3).map(record => simpleCard(record, true)).join('')}</div></section>`
+      `<details class="result-group" open><summary><span>${escapeHtml(label)} <b>${items.length}</b></span><span class="group-toggle" aria-hidden="true"></span></summary><div class="result-list">${items.slice(0, 3).map(record => simpleCard(record, true)).join('')}</div>${items.length > 3 ? `<a class="group-all" href="#zoeken?theme=${encodeURIComponent(values('theme')[0])}&type=${encodeURIComponent(label)}">Toon alle ${items.length} →</a>` : ''}</details>`
     ).join('');
+  }
+  function levenshtein(left, right) {
+    const a = normalize(left), b = normalize(right);
+    const row = Array.from({ length: b.length + 1 }, (_, index) => index);
+    for (let i = 1; i <= a.length; i += 1) {
+      let previous = row[0]; row[0] = i;
+      for (let j = 1; j <= b.length; j += 1) {
+        const current = row[j];
+        row[j] = Math.min(row[j] + 1, row[j - 1] + 1, previous + (a[i - 1] === b[j - 1] ? 0 : 1));
+        previous = current;
+      }
+    }
+    return row[b.length];
+  }
+  function alternativeSuggestion() {
+    if (!state.q || resultRecords.length) return null;
+    const rawCandidates = [
+      ...Object.keys(THEME_RULES), ...SYNONYMS.flat(),
+      ...records.map(record => record.providerName).filter(Boolean)
+    ];
+    const candidates = [...new Set(rawCandidates)].filter(candidate => normalize(candidate) !== normalize(state.q));
+    const currentQuery = state.q;
+    const ranked = candidates.map(candidate => {
+      state.q = candidate;
+      const count = records.filter(record => matches(record)).length;
+      state.q = currentQuery;
+      const left = normalize(currentQuery), right = normalize(candidate);
+      const distance = levenshtein(left, right);
+      const overlap = left.includes(right) || right.includes(left);
+      const quality = overlap ? 0 : distance / Math.max(left.length, right.length, 1);
+      return { candidate, count, quality };
+    }).filter(item => item.count > 0 && item.quality <= 0.42)
+      .sort((a, b) => a.quality - b.quality || b.count - a.count);
+    return ranked[0] || null;
   }
   function renderSearch() {
     if (!hasIntent()) return renderStart();
@@ -232,6 +283,7 @@
       .flatMap(key => values(key).map(value => `<button class="chip" data-remove="${key}|${escapeHtml(value)}">${escapeHtml(value)} ×</button>`)).join('');
     const oneThemeOnly = values('theme').length === 1 && !state.q && ['sector', 'status', 'type', 'audience', 'organization', 'freshness'].every(key => !values(key).length);
     const related = values('theme').length ? relatedThemes(values('theme')[0]) : [];
+    const alternative = alternativeSuggestion();
     const typeOptions = [...new Set(records.map(typeLabel))].sort((a, b) => a.localeCompare(b, 'nl'));
     const organizationOptions = [...new Set(records.map(record => record.providerName).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'nl'));
     const audienceOptions = [...new Set(records.flatMap(record => record.audiences || []))].sort((a, b) => a.localeCompare(b, 'nl'));
@@ -244,7 +296,7 @@
       </aside><section class="results"><header class="result-head"><h1>${oneThemeOnly ? escapeHtml(values('theme')[0]) : `${resultRecords.length} resultaten${state.q ? ` voor ‘${escapeHtml(state.q)}’` : ''}`}</h1><div><button class="mobile-filter btn secondary">Filters (${['theme', 'sector', 'status', 'type', 'audience', 'organization', 'freshness'].reduce((sum, key) => sum + values(key).length, 0)})</button><label>Sorteren<select id="sort"><option value="relevant">Meest relevant</option><option value="available">Direct beschikbaar eerst</option><option value="checked">Recent gecontroleerd</option><option value="az">Titel A–Z</option></select></label></div></header>
         ${chips ? `<div class="chips">${chips}<button class="clear-link">Wis alles</button></div>` : ''}
         ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="#zoeken?theme=${encodeURIComponent(theme)}">${escapeHtml(theme)} <span>${count}</span></a>`).join('')}</nav>` : ''}
-        <div aria-live="polite">${resultRecords.length ? (oneThemeOnly ? groupedResults() : `<div class="result-list">${resultRecords.map(record => simpleCard(record, true)).join('')}</div>`) : '<div class="empty"><h2>Geen resultaten gevonden</h2><p>Verwijder een filter of probeer een bredere zoekterm.</p><button class="clear btn">Wis filters</button></div>'}</div>
+        <div aria-live="polite">${resultRecords.length ? (oneThemeOnly ? groupedResults() : `<div class="result-list">${resultRecords.map(record => simpleCard(record, true)).join('')}</div>`) : `<div class="empty"><h2>Geen resultaten gevonden</h2>${alternative ? `<a class="alternative" href="#zoeken?q=${encodeURIComponent(alternative.candidate)}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` : '<p>Voor deze zoekterm is geen aantoonbaar werkend alternatief gevonden.</p>'}<button class="clear btn">Wis filters</button><p><a href="#bijdragen">Mis u iets in de atlas? Laat het weten.</a></p></div>`}</div>
       </section></div></section>`;
     document.querySelector('#sort').value = state.sort;
     bindSearchPage();
@@ -278,6 +330,13 @@
       }, 150);
     };
     input.onkeydown = event => { if (event.key === 'Escape') { suggestions.hidden = true; input.setAttribute('aria-expanded', 'false'); } };
+  }
+  function bindPersona() {
+    document.querySelectorAll('[data-persona]').forEach(link => link.addEventListener('click', () => savePersona(link.dataset.persona)));
+    const change = document.querySelector('.persona-change');
+    if (change) change.onclick = () => { const choices = document.querySelector('.persona-choices'); choices.hidden = false; change.setAttribute('aria-expanded', 'true'); choices.querySelector('a').focus(); };
+    const clear = document.querySelector('.persona-clear');
+    if (clear) clear.onclick = () => { savePersona(''); renderHome(); };
   }
   function bindSearchPage() {
     bindSearchForm();
