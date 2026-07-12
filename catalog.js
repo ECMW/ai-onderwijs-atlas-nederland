@@ -5,7 +5,8 @@
   const main = document.querySelector('main');
   if (!source || !main) return;
 
-  const records = source.records || [];
+  const allRecords = source.records || [];
+  const records = allRecords.filter(record => !['Behoefte', 'Witte vlek'].includes(record.legacyType));
   const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   }[char]));

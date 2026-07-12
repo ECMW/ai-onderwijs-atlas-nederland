@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-07-12 — Publieke catalogus zonder witte vlekken
+
+- Witte vlekken en geïdentificeerde behoeften zijn verwijderd uit navigatie, zoeken, suggesties, filters en publieke resultaten.
+- De onderliggende records blijven behouden in de canonieke dataset voor beheer, analyse en signalering.
+
 ## 2026-07-12 — Launchkwaliteit en contextvaste gebruikersreis
 
 - Praktische bronnen krijgen bij gecombineerde filters voorrang boven organisaties en geïdentificeerde behoeften.
