@@ -15,3 +15,7 @@ Vervang vóór publieke publicatie de voorbeeld-URL in `index.html`, `robots.txt
 ## Bronbeleid
 
 Neem uitsluitend informatie over uit de aangeleverde markdownbronnen. Voeg geen aannames toe. Voeg duplicaten samen en leg herkomst bij voorkeur per record vast.
+
+## Catalogusinteracties
+
+De zoekcatalogus ondersteunt directe filters op categorie, thema, sector, doelgroep en status. Filters binnen één groep werken als OR; verschillende groepen als AND. De selectie wordt in de URL-hash opgeslagen en is daardoor deelbaar. Witte vlekken worden als geïdentificeerde behoefte weergegeven en niet als beschikbaar aanbod.
