@@ -46,7 +46,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -116,7 +116,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -186,7 +186,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -258,7 +258,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -332,7 +332,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -407,7 +407,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -483,7 +483,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -556,7 +556,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -627,7 +627,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -697,7 +697,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -772,7 +772,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -844,7 +844,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -921,7 +921,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -999,7 +999,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -1068,7 +1068,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -1138,7 +1138,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -1210,7 +1210,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -1285,7 +1285,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -1360,7 +1360,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -1433,7 +1433,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "ca. €200+ miljoen, te verifiëren",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -1510,7 +1510,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "ca. €80 miljoen, te verifiëren",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -1581,7 +1581,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -1656,7 +1656,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -1727,7 +1727,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "ca. €95 miljard totaal programma",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -1801,7 +1801,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "ca. €7,5 miljard totaal programma",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -1876,7 +1876,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "ca. €26 miljard totaal programma",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -1943,7 +1943,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -2012,7 +2012,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -2081,7 +2081,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -2147,7 +2147,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -2212,7 +2212,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -2286,7 +2286,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -2360,7 +2360,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -2426,7 +2426,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -2491,7 +2491,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -2563,7 +2563,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -2635,7 +2635,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -2709,7 +2709,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -2776,7 +2776,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -2843,7 +2843,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -2911,7 +2911,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "ca. €80 miljoen, te verifiëren",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -2975,7 +2975,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "ca. €200+ miljoen, te verifiëren",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -3045,7 +3045,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Varieert",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -3118,7 +3118,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Varieert",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -3195,7 +3195,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -3274,7 +3274,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -3349,7 +3349,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -3423,7 +3423,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -3494,7 +3494,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -3565,7 +3565,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -3631,7 +3631,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -3706,7 +3706,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -3772,7 +3772,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -3844,7 +3844,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -3911,7 +3911,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -3984,7 +3984,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -4057,7 +4057,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -4128,7 +4128,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -4194,7 +4194,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -4263,7 +4263,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -4329,7 +4329,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -4397,7 +4397,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -4464,7 +4464,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -4529,7 +4529,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -4596,7 +4596,7 @@
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "Nog niet ingevuld",
+    "totalBudget": null,
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
@@ -5256,6 +5256,729 @@
       "AI-beleid",
       "schoolafspraken",
       "implementatie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "sprong-versnelling-ai-opschaling-in-het-publieke-domein-2026",
+    "title": "SPRONG-versnelling: AI-opschaling in het publieke domein 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [
+      "org-regieorgaan-sia"
+    ],
+    "providerName": "Regieorgaan SIA",
+    "description": "Open financieringsronde voor duurzame praktijkgerichte onderzoeksgroepen rond AI-opschaling in het publieke domein.",
+    "purpose": "Duurzame onderzoeksgroepen versterken rond AI-opschaling in het publieke domein",
+    "audiences": [
+      "Hogescholen",
+      "Onderzoekers",
+      "Consortia"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [],
+    "status": "open_call",
+    "availabilityText": "2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://regieorgaan-sia.nl/financiering/sprong-thematisch/sprong-versnelling-ai-opschaling-in-het-publieke-domein/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-09-15",
+    "applicationOpenDate": "2026-06-04",
+    "applicationDeadline": "2026-09-15",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Samenwerkingsverbanden rond praktijkgericht onderzoek; volledige voorwaarden staan in de call.",
+    "applicantTypes": [],
+    "callStatus": "open_call",
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "subsidie",
+      "call",
+      "AI",
+      "publieke domein",
+      "SPRONG"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "kiem-arbeidsbesparende-ai-2026",
+    "title": "KIEM Arbeidsbesparende AI 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [
+      "org-regieorgaan-sia"
+    ],
+    "providerName": "Regieorgaan SIA",
+    "description": "Open KIEM-ronde voor praktijkgericht onderzoek naar testbare bestaande AI-toepassingen in organisaties.",
+    "purpose": "Kortlopend praktijkgericht onderzoek naar arbeidsbesparende AI stimuleren",
+    "audiences": [
+      "Hogescholen",
+      "Onderzoekers",
+      "Consortia",
+      "Bedrijven"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "themes": [],
+    "status": "open_call",
+    "availabilityText": "2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://regieorgaan-sia.nl/financiering/kiem/kiem-arbeidsbesparende-ai/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-09-15",
+    "applicationOpenDate": "2026-01-27",
+    "applicationDeadline": "2026-09-15",
+    "fundingMin": null,
+    "fundingMax": 40000,
+    "totalBudget": 1800000,
+    "eligibility": "Aanvrager met ten minste twee praktijkpartners, waaronder minimaal één mkb-onderneming; zie call.",
+    "applicantTypes": [],
+    "callStatus": "open_call",
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "subsidie",
+      "call",
+      "arbeidsbesparende AI",
+      "KIEM"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "ai-go-in-actie",
+    "title": "AI-GO in Actie",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Praktische vertaling van het AI-GO-raamwerk naar acht cyclische stappen voor visie, curriculum, professionalisering en kwaliteitszorg.",
+    "purpose": "AI-geletterdheid duurzaam verankeren in onderwijs, teams en organisatie",
+    "audiences": [
+      "Docenten",
+      "Onderwijsadviseurs",
+      "Beleidsmakers",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://npuls.nl/kennisbank/ai-go-in-actie",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-geletterdheid",
+      "implementatie",
+      "curriculum",
+      "professionalisering"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "visietool-toetsen",
+    "title": "Visietool Toetsen",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Vrij toegankelijke gesprekstool met materialen voor gestructureerde gesprekken over toetsing, examinering, kwaliteitsborging en AI.",
+    "purpose": "Teams ondersteunen bij een gedeelde visie op toetsen, examineren en AI",
+    "audiences": [
+      "Docenten",
+      "Examencommissies",
+      "Onderwijsadviseurs",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.npuls.nl/kennisbank/visietool-toetsen",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "toetsing",
+      "examinering",
+      "AI",
+      "visievorming",
+      "gesprekstool"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "train-de-trainer-visietool-toetsen-examineren-en-ai",
+    "title": "Train-de-trainer Visietool Toetsen, Examineren en AI",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Online train-de-trainer waarin deelnemers leren de Npuls Visietool effectief binnen opleiding, faculteit of instelling in te zetten.",
+    "purpose": "Professionals leren zelfstandig gesprekken over toetsing, examinering en AI begeleiden",
+    "audiences": [
+      "Onderwijsadviseurs",
+      "Beleidsmakers",
+      "Docenten",
+      "Examencommissies"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "planned",
+    "availabilityText": "2026",
+    "startDate": "2026-07-16",
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://npuls.nl/agenda/breng-als-trainer-het-gesprek-over-toetsen-examineren-en-ai-in-beweging-2",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "training",
+      "toetsing",
+      "examinering",
+      "AI",
+      "train-de-trainer"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "ai-beleid-ontwikkelen-op-school",
+    "title": "AI-beleid ontwikkelen op school",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Stappenplan met voorbeelddocument om vanuit onderwijsvisie, waarden en bestaande kaders breed gedragen AI-beleid te ontwikkelen.",
+    "purpose": "Scholen ondersteunen bij het gezamenlijk ontwikkelen en onderhouden van AI-beleid",
+    "audiences": [
+      "Schoolleiders",
+      "Bestuurders",
+      "Beleidsmakers",
+      "Docenten"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2025",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/ai-beleid-ontwikkelen-op-school/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-beleid",
+      "governance",
+      "voorbeeldbeleid",
+      "implementatie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "werken-aan-ai-geletterdheid-op-school",
+    "title": "Werken aan AI-geletterdheid op school",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Praktische uitleg en stappen voor AI-geletterdheid, afgestemd op de manier waarop AI binnen de school wordt gebruikt.",
+    "purpose": "Scholen helpen invulling te geven aan AI-geletterdheid",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2025",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/werken-aan-ai-geletterdheid-op-school/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-geletterdheid",
+      "AI Act",
+      "professionalisering",
+      "digitale geletterdheid"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "toetsing-en-generatieve-ai-in-het-voortgezet-onderwijs",
+    "title": "Toetsing en generatieve AI in het voortgezet onderwijs",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Handreiking over het herijken van toetsactiviteiten en bewuste keuzes voor AI in het leer- en toetsproces.",
+    "purpose": "Scholen ondersteunen bij valide toetsing in tijden van generatieve AI",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Toetsmakers"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/toetsing-en-generatieve-ai-in-het-voortgezet-onderwijs/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "toetsing",
+      "generatieve AI",
+      "toetsontwerp",
+      "validiteit"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "ai-beleid-bij-het-roer-college-schondeln",
+    "title": "AI-beleid bij het ROER College Schöndeln",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [
+      "org-roer-college-schondeln"
+    ],
+    "providerName": "ROER College Schöndeln",
+    "description": "Openbaar praktijkvoorbeeld van een beleidsproces waarin docenten, leerlingen, ouders en ondernemers bij AI-beleid zijn betrokken.",
+    "purpose": "Laten zien hoe een school met betrokkenen AI-beleid ontwikkelt",
+    "audiences": [
+      "Schoolleiders",
+      "Bestuurders",
+      "Docenten",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2024",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/hoe-gaan-we-om-met-ai-zo-maakte-het-roer-college-zijn-beleidsplan/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "praktijkvoorbeeld",
+      "AI-beleid",
+      "medezeggenschap",
+      "implementatie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "faize-kaartspel-voor-ai-geletterdheid",
+    "title": "FAIZE-kaartspel voor AI-geletterdheid",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [
+      "org-thomas-more-hogeschool"
+    ],
+    "providerName": "Thomas More Hogeschool",
+    "description": "Praktijkvoorbeeld van een kaartspel waarmee studenten en onderwijsprofessionals leren prompten en kritisch nadenken over AI, gedeeld via een Npuls-webinar.",
+    "purpose": "Promptvaardigheid en kritisch denken over AI in het curriculum ondersteunen",
+    "audiences": [
+      "Studenten",
+      "Docenten",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.npuls.nl/agenda/digitale-ai-en-data-geletterdheid-in-het-hbo",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "praktijkvoorbeeld",
+      "AI-geletterdheid",
+      "prompten",
+      "curriculum",
+      "kaartspel"
     ],
     "notes": null,
     "changeHistory": [

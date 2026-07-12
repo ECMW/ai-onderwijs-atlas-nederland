@@ -1,5 +1,14 @@
 # Changelog
 
+## Calls, training, hulpmiddelen en praktijk — 12 juli 2026
+
+- Twee actuele Regieorgaan SIA-calls toegevoegd, beide open tot 15 september 2026.
+- AI-GO in Actie, Visietool Toetsen en een geplande train-de-trainer toegevoegd.
+- Drie concrete Kennisnet-handreikingen toegevoegd.
+- Praktijkvoorbeelden van ROER College Schöndeln en Thomas More Hogeschool toegevoegd.
+- Totaal verhoogd van 74 naar 84 records.
+- Een landelijke publieke AI-voorziening is niet als beschikbaar product toegevoegd: officiële bronnen beschrijven deze nog als behoefte of verkenning.
+
 ## Officiële contentuitbreiding — 12 juli 2026
 
 - Negen afzonderlijke records toegevoegd uit officiële pagina's van Kennisnet, Npuls en SURF Communities.
