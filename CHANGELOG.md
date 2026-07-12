@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-07-12 — Makkelijker ontdekken op basis van v2-data
+
+- De catalogus gebruikt rechtstreeks `window.ATLAS_RECORDS` als canonieke databron.
+- De homepage bestaat uit precies vijf taakgerichte blokken; “Nieuw toegevoegd” is bewust weggelaten omdat een betrouwbaar `addedDate` ontbreekt.
+- Live zoeken groepeert matches per soort aanbod met aantallen en toont bijpassende organisaties.
+- Resultaatkaarten tonen alleen type, titel, aanbieder, één omschrijvingsregel, sectoren en de detailactie.
+- Relevantieverklaringen zijn uitsluitend gebaseerd op werkelijke matches met thema, sector, status of zoekterm.
+- Thema, Sector en Beschikbaarheid zijn de drie primaire filters; alle overige filters staan achter “Meer filters (n)”.
+- Eén los thema opent een gegroepeerde ontdekweergave per soort aanbod.
+- Verwante thema’s worden berekend uit inhoudelijke co-occurrence in records; er wordt geen gebruikersgedrag gesuggereerd of gevolgd.
+- Alle publieke en beheerroutes zijn gecontroleerd zonder consolefouten.
+
 ## 2026-07-12 — Van zoeken naar ontdekken
 
 - Zonder zoekvraag worden niet langer alle 84 records getoond.

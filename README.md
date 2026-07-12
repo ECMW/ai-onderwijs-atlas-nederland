@@ -4,6 +4,10 @@ De publieke interface is taakgestuurd: bezoekers zoeken eerst op hun vraag en ve
 
 De standaardvolgorde gebruikt een transparant relevantiemodel: titelmatches wegen het zwaarst, gevolgd door thema's en trefwoorden, daarna beschrijving. Direct beschikbaar en recent gecontroleerd aanbod krijgt een kleine bonus; te verifiëren aanbod niet.
 
+De catalogus leest rechtstreeks uit `data/data-v2.js` (`window.ATLAS_RECORDS`). Thema's worden, zolang het bronveld `themes` leeg is, reproduceerbaar afgeleid met de centrale `THEME_RULES` in `catalog.js`; de bronrecords zelf worden daarvoor niet aangepast. De site gebruikt geen tracking, cookies, externe autocomplete of backend.
+
+Een blok “Nieuw toegevoegd” wordt pas getoond wanneer het databeheerproces een betrouwbaar en structureel bijgehouden `addedDate`-veld bevat. De huidige migratiedatum en lege publicatiedatums zijn daarvoor nadrukkelijk niet geschikt.
+
 Een statisch, toegankelijk kennisplatform dat zonder installatie werkt. Open `index.html` in een moderne browser.
 
 ## Beheerarchitectuur

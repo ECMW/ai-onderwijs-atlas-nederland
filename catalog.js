@@ -1,19 +1,307 @@
-(()=>{'use strict';const D=window.ATLAS_DATA,M=document.querySelector('main');if(!D)return;const I=D.items||[],E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),N=s=>String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
-const SYN=[['ai literacy','ai geletterdheid'],['toetsen','toetsing','examinering'],['privacy','avg','persoonsgegevens'],['ai wet','ai act','ai verordening'],['veilige ai','ai werkplek','veilige omgeving'],['subsidie','financiering','call','regeling'],['beleid','beleidskader','richtlijn','voorbeeldbeleid'],['lesgeven','onderwijs','didactiek'],['implementatie','invoering','adoptie'],['tool','hulpmiddel','product','voorziening'],['training','scholing','professionalisering']];
-const T={'AI-geletterdheid':['ai geletterdheid','ai literacy'],'Lesgeven en leren met AI':['lesgeven','didactiek','leren met ai'],'Toetsing en examinering':['toetsing','toetsen','examinering'],'Privacy en AVG':['privacy','avg','persoonsgegevens','dpia'],'AI Act en wetgeving':['ai act','ai verordening','wetgeving'],'Beleid en governance':['beleid','governance','bestuurbaarheid'],'Veilige AI-omgeving':['veilige ai','ai werkplek','publieke infrastructuur'],'Implementatie en adoptie':['implementatie','adoptie'],'Professionalisering':['professionalisering','training','scholing'],'Curriculumontwikkeling':['curriculum'],'Onderzoek':['onderzoek'],'Data en infrastructuur':['infrastructuur','data','rekenkracht'],'Standaarden en interoperabiliteit':['standaard','interoperabiliteit'],'Subsidies en financiering':['subsidie','financiering','call'],'Praktijkvoorbeelden':['praktijkvoorbeeld','pilot'],'Publieke waarden en ethiek':['publieke waarden','ethiek','autonomie']},TM={Product:'Hulpmiddel',Handreiking:'Handreiking',Voorziening:'Voorziening',Platform:'Platform',Training:'Training',Kennisbank:'Kennisbank',Praktijkvoorbeeld:'Praktijkvoorbeeld',Pilot:'Pilot',Subsidie:'Subsidie of call',Call:'Subsidie of call',Programma:'Programma',Organisatie:'Organisatie',Community:'Community',Wetgeving:'Wetgeving',Standaard:'Standaard','Witte vlek':'Geïdentificeerde behoefte'},SM={Beschikbaar:'Direct beschikbaar',Open:'Open voor aanvragen','Open call':'Open voor aanvragen',Pilot:'Pilot','In ontwikkeling':'In ontwikkeling',Gepland:'Gepland','Te verifiëren':'Te verifiëren'};
-const AUD=['Docent','Onderwijsontwikkelaar','Student','Bestuurder','Beleidsmaker','IT-professional','Privacyprofessional','Jurist','Onderzoeker','Examencommissie','Onderwijsadviseur','Leverancier'];let S={},R=[],tmr;
-const txt=x=>N([x.title,x.description,x.organisation,x.audience,...(x.sector||[]),...(x.keywords||[])].join(' ')),themes=x=>{let h=txt(x);return Object.entries(T).filter(([,a])=>a.some(k=>h.includes(N(k)))).map(([k])=>k)},status=x=>x.type==='Witte vlek'?'Geïdentificeerde behoefte':SM[x.status]||x.status||'Te verifiëren',aud=x=>AUD.filter(v=>N(x.audience).includes(N(v).replace(/en$/,''))),fresh=x=>x.lastVerified?'Recent gecontroleerd':'Controle nodig';
-const G=()=>[['theme','Thema',Object.keys(T)],['sector','Sector',['PO','VO','MBO','HBO','WO','Onderzoek','Sectoroverstijgend','Overheid']],['type','Soort aanbod',[...new Set(I.map(x=>TM[x.type]||x.type))].sort()],['aud','Voor wie',AUD],['status','Beschikbaarheid',['Direct beschikbaar','Open voor aanvragen','Pilot','In ontwikkeling','Gepland','Te verifiëren','Niet meer actueel','Geïdentificeerde behoefte']],['org','Organisatie',[...new Set(I.map(x=>x.organisation).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'nl'))],['fresh','Actualiteit',['Recent gecontroleerd','Controle nodig','Bron gewijzigd','Bron niet bereikbaar']]],V=k=>(S[k]||'').split(',').filter(Boolean),P=(x,k)=>k==='theme'?themes(x):k==='sector'?(x.sector||[]):k==='type'?[TM[x.type]||x.type]:k==='aud'?aud(x):k==='status'?[status(x)]:k==='org'?[x.organisation]:[fresh(x)];
-function terms(q){let a=N(q).split(' ').filter(Boolean);SYN.forEach(g=>{if(g.some(v=>N(q).includes(N(v))))a.push(...g.map(N))});return[...new Set(a)]}function match(x,skip=''){if(terms(S.q).some(t=>!txt(x).includes(t)))return false;return G().every(([k])=>k===skip||!V(k).length||V(k).some(v=>P(x,k).includes(v)))}function score(x){let q=N(S.q),n=N(x.title)===q?100:N(x.title).includes(q)?60:0;terms(S.q).forEach(t=>{n+=N(themes(x)).includes(t)?25:0;n+=N(x.keywords).includes(t)?18:0;n+=N(x.description).includes(t)?8:0});return n+(status(x)==='Direct beschikbaar'?5:0)+(x.lastVerified?2:0)}
-function parse(){let p=new URLSearchParams(location.hash.split('?')[1]||'');S={q:p.get('q')||'',sort:p.get('sort')||'relevant'};G().forEach(([k])=>S[k]=p.get(k)||'')}function sync(){let p=new URLSearchParams;Object.entries(S).forEach(([k,v])=>v&&!(k==='sort'&&v==='relevant')&&p.set(k,v));history.pushState(null,'','#zoeken'+(p.size?'?'+p:''));render()}function count(k,v){let old=S[k];S[k]=v;let n=I.filter(x=>match(x,k)&&P(x,k).includes(v)).length;S[k]=old;return n}
-function search(id='main-search'){return`<form class="atlas-search" role="search" autocomplete="off"><label for="${id}">Wat zoekt u?</label><div><input id="${id}" value="${E(S.q)}" placeholder="Bijvoorbeeld: toetsing, AI Act, privacy, subsidie of veilige AI…" aria-controls="suggestions"><button class="btn">Zoeken</button></div><div class="suggestions" id="suggestions" hidden></div></form>`}function facet(k,t,a,i){a=a.filter(v=>I.some(x=>P(x,k).includes(v)));return`<details class="facet" ${i<3?'open':''}><summary>${t}<b>${V(k).length||''}</b></summary><div>${k==='org'&&a.length>15?'<input class="org-find" placeholder="Zoek organisatie…" aria-label="Zoek organisatie">':''}<section class="facet-list ${k==='org'?'limited':''}">${a.map(v=>{let n=count(k,v),on=V(k).includes(v);return`<label><input data-g="${k}" type="checkbox" value="${E(v)}" ${on?'checked':''} ${!n&&!on?'disabled':''}><span>${E(v)}</span><small>${n}</small></label>`}).join('')}</section>${k==='org'&&a.length>8?'<button class="more">Toon meer</button>':''}</div></details>`}
-function why(x){let a=[];V('sector').forEach(v=>P(x,'sector').includes(v)&&a.push(`past bij ${v}`));V('theme').forEach(v=>P(x,'theme').includes(v)&&a.push(`gaat over ${v}`));V('status').forEach(v=>P(x,'status').includes(v)&&a.push(v.toLowerCase()));if(S.q&&themes(x)[0])a.push(`gaat over ${themes(x)[0]}`);return[...new Set(a)].slice(0,3)}
-function card(x){let need=x.type==='Witte vlek',ss=x.sector||[],w=why(x);return`<article class="result-card ${need?'need':''}"><div><div class="badges"><span class="badge">${E(TM[x.type]||x.type)}</span>${status(x)!=='Direct beschikbaar'?`<span class="badge">${E(status(x))}</span>`:''}</div><h2><a href="#item/${E(x.id)}">${E(x.title)}</a></h2>${x.organisation?`<p class="provider">${E(x.organisation)}</p>`:''}<p class="desc">${need?'Voor deze behoefte is nog geen bevestigd landelijk aanbod gevonden.':E(x.description)}</p>${ss.length?`<div class="simple-meta">${ss.slice(0,3).map(s=>`<span>${E(s)}</span>`).join('')}</div>`:''}${w.length?`<div class="why"><strong>Waarom dit past</strong>${w.map(v=>`<span>✓ ${E(v)}</span>`).join('')}</div>`:''}</div><aside><a class="btn" href="#item/${E(x.id)}">Bekijk →</a>${x.url&&!need?`<a href="${E(x.url)}" target="_blank" rel="noopener noreferrer">Officiële bron ↗</a>`:''}</aside></article>`}
-function sorting(a){if(S.sort==='az')return a.sort((x,y)=>x.title.localeCompare(y.title,'nl'));if(S.sort==='available')return a.sort((x,y)=>(status(x)==='Direct beschikbaar'?-1:1));if(S.sort==='checked')return a.sort((x,y)=>String(y.lastVerified||'').localeCompare(x.lastVerified||''));if(S.sort==='new')return a.sort((x,y)=>(y.year||0)-(x.year||0));return a.sort((x,y)=>score(y)-score(x))}
-function hasIntent(){return !!S.q||G().some(([k])=>V(k).length)}
-function start(){M.innerHTML=`<section class="catalog start-page">${search()}<div class="start-content"><span class="eyebrow">Begin bij uw vraag</span><h1>Waar bent u vandaag naar op zoek?</h1><p>Kies een onderwerp, vertel wat uw rol is of typ uw eigen zoekterm. Daarna tonen we alleen passend aanbod.</p><h2>Veel gezocht</h2><div class="popular">${['Toetsing','AI Act','Privacy','Prompting','Subsidies','Veilige AI','Curriculum','AI-geletterdheid'].map(x=>`<a href="#zoeken?q=${encodeURIComponent(x)}">${x}</a>`).join('')}</div><h2>Ik ben…</h2><div class="role-grid">${[['Docent','Docent'],['Bestuurder','Bestuurder'],['ICT-professional','IT-professional'],['Onderzoeker','Onderzoeker']].map(([a,b])=>`<a href="#zoeken?aud=${encodeURIComponent(b)}">${a}<span>Vind aanbod voor mijn rol →</span></a>`).join('')}</div><div class="start-help"><h2>Nog niets gevonden?</h2><p>Vertel ons wat ontbreekt. Zo helpt u de atlas bruikbaarder te maken.</p><a class="btn secondary" href="#bijdragen">Laat het weten</a></div></div></section>`;bindSearch()}
-function render(){if(!hasIntent()){start();return}R=sorting(I.filter(match));let chips=G().flatMap(([k])=>V(k).map(v=>`<button class="chip" data-r="${k}|${E(v)}">${E(v)} ×</button>`)).join('');let related=(V('theme').length?Object.keys(T).filter(x=>!V('theme').includes(x)).slice(0,3):['AI Act en wetgeving','Privacy en AVG','AI-geletterdheid']);M.innerHTML=`<section class="catalog">${search()}<div class="catalog-grid"><aside id="filters" class="filters"><header><h2>Verfijn</h2><button class="close" aria-label="Sluiten">×</button></header>${G().slice(0,2).map((g,i)=>facet(...g,i)).join('')}<details class="more-filters"><summary>Meer filters</summary>${G().slice(2).map((g,i)=>facet(...g,i+3)).join('')}</details><button class="btn secondary clear">Wis alle filters</button><footer><button class="btn apply">Toon ${R.length} resultaten</button></footer></aside><section class="results" aria-labelledby="results-title"><header class="result-head"><div><span class="eyebrow">Gevonden aanbod</span><h1 id="results-title">${R.length} resultaten${S.q?` voor ‘${E(S.q)}’`:''}</h1></div><section><button class="mobile-filter btn secondary">Filters (${G().reduce((n,[k])=>n+V(k).length,0)})</button><label>Sorteren<select id="sort"><option value="relevant">Meest relevant</option><option value="available">Direct beschikbaar eerst</option><option value="checked">Recent gecontroleerd</option><option value="new">Nieuw toegevoegd</option><option value="az">Titel A–Z</option></select></label><button class="share">Deel selectie</button></section></header>${chips?`<div class="chips">${chips}<button class="clear-link">Wis alles</button></div>`:''}<div class="related"><span>Bekijk ook:</span>${related.map(x=>`<a href="#zoeken?theme=${encodeURIComponent(x)}">${E(x)}</a>`).join('')}</div><div class="list" aria-live="polite">${R.map(card).join('')||'<div class="empty"><h2>Geen resultaten gevonden</h2><p>Verwijder een filter of probeer een bredere zoekterm.</p><button class="btn clear">Wis filters</button><p><a href="#bijdragen">Mis u iets? Geef een aanvulling door.</a></p></div>'}</div></section></div></section>`;document.querySelector('#sort').value=S.sort;bind()}
-function bindSearch(){let f=document.querySelector('.atlas-search'),i=f.querySelector('input'),l=f.querySelector('.suggestions');f.onsubmit=e=>{e.preventDefault();S.q=i.value.trim();location.hash='zoeken?q='+encodeURIComponent(S.q)};i.oninput=()=>{clearTimeout(tmr);tmr=setTimeout(()=>{let q=N(i.value),a=[];if(q.length>1){a.push(...Object.keys(T).filter(x=>N(x).includes(q)).slice(0,2).map(x=>['Onderwerp',x,'theme']));a.push(...[...new Set(I.map(x=>x.organisation).filter(x=>N(x).includes(q)))].slice(0,2).map(x=>['Organisatie',x,'org']));a.push(...I.filter(x=>txt(x).includes(q)).slice(0,3).map(x=>['Resultaat',x.title,'q']))}l.hidden=!a.length;l.innerHTML=a.slice(0,6).map(x=>`<button data-k="${x[2]}" data-v="${E(x[1])}"><small>${x[0]}</small><strong>${E(x[1])}</strong></button>`).join('');l.querySelectorAll('button').forEach(b=>b.onclick=()=>{S[b.dataset.k]=b.dataset.v;sync()})},150)};i.onkeydown=e=>{if(e.key==='Escape')l.hidden=true}}
-function bind(){bindSearch();document.querySelectorAll('[data-g]').forEach(x=>x.onchange=()=>{let a=V(x.dataset.g);x.checked?a.push(x.value):a.splice(a.indexOf(x.value),1);S[x.dataset.g]=[...new Set(a)].join(',');sync()});document.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{let[k,v]=b.dataset.r.split('|');S[k]=V(k).filter(x=>x!==v).join(',');sync()});document.querySelectorAll('.clear,.clear-link').forEach(b=>b.onclick=()=>{S={q:'',sort:'relevant'};sync()});document.querySelector('#sort').onchange=e=>{S.sort=e.target.value;sync()};document.querySelector('.share').onclick=async e=>{try{await navigator.clipboard.writeText(location.href);e.target.textContent='Link gekopieerd'}catch{prompt('Kopieer de link',location.href)}};document.querySelectorAll('.more').forEach(b=>b.onclick=()=>{b.previousElementSibling.classList.toggle('all');b.textContent=b.previousElementSibling.classList.contains('all')?'Toon minder':'Toon meer'});document.querySelectorAll('.org-find').forEach(i=>i.oninput=()=>i.nextElementSibling.querySelectorAll('label').forEach(l=>l.hidden=!N(l.textContent).includes(N(i.value))));let p=document.querySelector('#filters'),o=document.querySelector('.mobile-filter'),c=document.querySelector('.close'),a=document.querySelector('.apply');o.onclick=()=>{p.classList.add('open');document.body.classList.add('locked');c.focus()};let shut=()=>{p.classList.remove('open');document.body.classList.remove('locked');o.focus()};c.onclick=a.onclick=shut;document.onkeydown=e=>e.key==='Escape'&&p.classList.contains('open')&&shut()}
-function home(){S={q:'',sort:'relevant'};let direct=sorting(I.filter(x=>status(x)==='Direct beschikbaar'&&x.url)).slice(0,4),nieuw=[...I].sort((a,b)=>(b.year||0)-(a.year||0)).slice(0,4);M.innerHTML=`<section class="home-hero"><div><span class="eyebrow">AI & Onderwijs Atlas Nederland</span><h1>Waar bent u vandaag naar op zoek?</h1>${search('home-q')}<h2>Veel gezocht</h2><div class="popular inverse">${['Toetsing','AI Act','Privacy','Prompting','Subsidies','Veilige AI','Curriculum','AI-geletterdheid'].map(x=>`<a href="#zoeken?q=${encodeURIComponent(x)}">${x}</a>`).join('')}</div></div></section><section class="home-content"><div class="section-title"><h2>Direct bruikbaar</h2><a href="#zoeken?status=Direct%20beschikbaar">Bekijk alles →</a></div><div class="direct">${direct.map(card).join('')}</div><div class="section-title"><h2>Nieuw toegevoegd</h2><a href="#zoeken?sort=new">Bekijk alles →</a></div><div class="direct">${nieuw.map(card).join('')}</div><div class="start-help"><h2>Nog niets gevonden?</h2><p>Laat weten wat u mist. Een officiële bron helpt ons het aanbod snel te beoordelen.</p><a class="btn secondary" href="#bijdragen">Laat het weten</a></div></section>`;bindSearch()}
-function route(){let p=(location.hash.slice(1)||'home').split('?')[0];if(p==='home')home();else if(p==='zoeken'||p==='organisaties'){parse();if(p==='organisaties')S.type='Organisatie';render()}let f=document.querySelector('[data-updated]');if(f)f.textContent=D.metadata.updated||new Date().toISOString().slice(0,10)}addEventListener('hashchange',route);addEventListener('popstate',route);route()})();
+(() => {
+  'use strict';
+
+  const source = window.ATLAS_RECORDS;
+  const main = document.querySelector('main');
+  if (!source || !main) return;
+
+  const records = source.records || [];
+  const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[char]));
+  const normalize = value => String(value || '').normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+
+  const THEME_RULES = {
+    'AI-geletterdheid': ['ai geletterdheid', 'ai literacy', 'digitale geletterdheid'],
+    'Lesgeven en leren met AI': ['lesgeven', 'didactiek', 'leren met ai', 'onderwijspraktijk'],
+    'Toetsing en examinering': ['toetsing', 'toetsen', 'examinering', 'toetsontwerp', 'itemgeneratie'],
+    'Privacy en AVG': ['privacy', 'avg', 'persoonsgegevens', 'dpia', 'gegevensbescherming'],
+    'AI Act en wetgeving': ['ai act', 'ai verordening', 'wetgeving', 'juridisch', 'compliance'],
+    'Beleid en governance': ['beleid', 'governance', 'bestuurbaarheid', 'richtlijn', 'toezicht'],
+    'Veilige AI-omgeving': ['veilige ai', 'ai werkplek', 'publieke infrastructuur', 'soeverein'],
+    'Implementatie en adoptie': ['implementatie', 'adoptie', 'invoering', 'opschaling'],
+    'Professionalisering': ['professionalisering', 'training', 'scholing', 'leergemeenschap'],
+    'Curriculumontwikkeling': ['curriculum', 'leerplan'],
+    'Onderzoek': ['onderzoek', 'onderwijslab', 'proeftuin'],
+    'Data en infrastructuur': ['infrastructuur', 'data', 'rekenkracht', 'federatief', 'identity'],
+    'Standaarden en interoperabiliteit': ['standaard', 'interoperabiliteit', 'referentiearchitectuur'],
+    'Subsidies en financiering': ['subsidie', 'financiering', 'call', 'bekostiging'],
+    'Praktijkvoorbeelden': ['praktijkvoorbeeld', 'pilot', 'casus'],
+    'Publieke waarden en ethiek': ['publieke waarden', 'ethiek', 'autonomie', 'menselijke maat']
+  };
+  const SYNONYMS = [
+    ['ai literacy', 'ai geletterdheid'], ['toetsen', 'toetsing', 'examinering'],
+    ['privacy', 'avg', 'persoonsgegevens'], ['ai wet', 'ai act', 'ai verordening'],
+    ['veilige ai', 'ai werkplek', 'veilige omgeving'], ['subsidie', 'financiering', 'call', 'regeling'],
+    ['beleid', 'beleidskader', 'richtlijn', 'voorbeeldbeleid'], ['training', 'scholing', 'professionalisering'],
+    ['tool', 'hulpmiddel', 'product', 'voorziening']
+  ];
+  const STATUS_LABELS = {
+    available: 'Direct beschikbaar', open_call: 'Open voor aanvragen', pilot: 'Pilot',
+    in_development: 'In ontwikkeling', planned: 'Gepland', needs_verification: 'Te verifiëren',
+    archived: 'Niet meer actueel'
+  };
+  const TYPE_LABELS = {
+    Organisatie: 'Organisatie', Product: 'Hulpmiddel', Handreiking: 'Handreiking',
+    Voorziening: 'Voorziening', Training: 'Training', Praktijkvoorbeeld: 'Praktijkvoorbeeld',
+    Pilot: 'Pilot', Subsidie: 'Subsidie', Call: 'Subsidie of call', Programma: 'Programma',
+    Wetgeving: 'Wetgeving', Standaard: 'Standaard', Behoefte: 'Geïdentificeerde behoefte',
+    'Witte vlek': 'Geïdentificeerde behoefte'
+  };
+  const PRIMARY_AUDIENCES = ['Docenten', 'Bestuurders', 'IT-professionals', 'Onderzoekers'];
+  const SECTORS = ['PO', 'VO', 'MBO', 'HBO', 'WO', 'Onderzoek', 'Overheid'];
+
+  let state = {};
+  let resultRecords = [];
+  let debounceTimer;
+
+  const recordText = record => normalize([
+    record.title, record.description, record.purpose, record.providerName,
+    ...(record.audiences || []), ...(record.sectors || []), ...(record.keywords || [])
+  ].join(' '));
+  const recordThemes = record => {
+    const explicit = record.themes || [];
+    if (explicit.length) return explicit;
+    const text = recordText(record);
+    return Object.entries(THEME_RULES)
+      .filter(([, terms]) => terms.some(term => text.includes(normalize(term))))
+      .map(([theme]) => theme);
+  };
+  const typeLabel = record => TYPE_LABELS[record.legacyType] || record.legacyType || record.recordType;
+  const statusLabel = record => {
+    if (['Behoefte', 'Witte vlek'].includes(record.legacyType)) return 'Geïdentificeerde behoefte';
+    return STATUS_LABELS[record.status] || 'Te verifiëren';
+  };
+  const values = key => (state[key] || '').split(',').filter(Boolean);
+  const queryTerms = query => {
+    const normalized = normalize(query);
+    const terms = normalized ? [normalized] : [];
+    SYNONYMS.forEach(group => {
+      if (group.some(term => normalized.includes(normalize(term)))) terms.push(...group.map(normalize));
+    });
+    return [...new Set(terms)];
+  };
+  const facetValues = (record, key) => ({
+    theme: recordThemes(record), sector: record.sectors || [], status: [statusLabel(record)],
+    type: [typeLabel(record)], audience: record.audiences || [], organization: [record.providerName],
+    freshness: [record.verificationStatus === 'recently_checked' ? 'Recent gecontroleerd' : 'Controle nodig']
+  }[key] || []);
+
+  function parseState() {
+    const params = new URLSearchParams(location.hash.split('?')[1] || '');
+    state = { q: params.get('q') || '', sort: params.get('sort') || 'relevant' };
+    ['theme', 'sector', 'status', 'type', 'audience', 'organization', 'freshness']
+      .forEach(key => state[key] = params.get(key) || '');
+    if (params.get('cat')) state.type = params.get('cat').split(',').map(value => TYPE_LABELS[value] || value).join(',');
+  }
+  function setUrl() {
+    const params = new URLSearchParams();
+    Object.entries(state).forEach(([key, value]) => {
+      if (value && !(key === 'sort' && value === 'relevant')) params.set(key, value);
+    });
+    history.pushState(null, '', `#zoeken${params.size ? `?${params}` : ''}`);
+    renderSearch();
+  }
+  function matches(record, omittedFacet = '') {
+    const terms = queryTerms(state.q);
+    if (terms.length && !terms.some(term => recordText(record).includes(term))) return false;
+    return ['theme', 'sector', 'status', 'type', 'audience', 'organization', 'freshness'].every(key =>
+      key === omittedFacet || !values(key).length || values(key).some(value => facetValues(record, key).includes(value))
+    );
+  }
+  function relevance(record) {
+    if (!state.q) return statusLabel(record) === 'Direct beschikbaar' ? 2 : 0;
+    const query = normalize(state.q);
+    const title = normalize(record.title);
+    let score = title === query ? 100 : title.includes(query) ? 60 : 0;
+    queryTerms(state.q).forEach(term => {
+      if (normalize(recordThemes(record).join(' ')).includes(term)) score += 25;
+      if (normalize((record.keywords || []).join(' ')).includes(term)) score += 20;
+      if (normalize(record.description).includes(term)) score += 8;
+    });
+    return score + (statusLabel(record) === 'Direct beschikbaar' ? 3 : 0);
+  }
+  function sortRecords(list) {
+    if (state.sort === 'az') return list.sort((a, b) => a.title.localeCompare(b.title, 'nl'));
+    if (state.sort === 'available') return list.sort((a, b) =>
+      (statusLabel(a) === 'Direct beschikbaar' ? -1 : 1) - (statusLabel(b) === 'Direct beschikbaar' ? -1 : 1));
+    if (state.sort === 'checked') return list.sort((a, b) => String(b.lastVerified || '').localeCompare(a.lastVerified || ''));
+    return list.sort((a, b) => relevance(b) - relevance(a));
+  }
+  function facetCount(key, option) {
+    return records.filter(record => matches(record, key) && facetValues(record, key).includes(option)).length;
+  }
+  function hasIntent() {
+    return Boolean(state.q || ['theme', 'sector', 'status', 'type', 'audience', 'organization', 'freshness']
+      .some(key => values(key).length));
+  }
+
+  function searchForm(id) {
+    return `<form class="atlas-search" role="search" autocomplete="off">
+      <label for="${id}">Waar bent u vandaag naar op zoek?</label>
+      <div class="search-row"><input id="${id}" value="${escapeHtml(state.q)}" placeholder="Bijvoorbeeld toetsing, AI Act, subsidie of veilige AI…" aria-controls="search-suggestions" aria-expanded="false"><button class="btn">Zoeken</button></div>
+      <div class="suggestions" id="search-suggestions" hidden></div>
+    </form>`;
+  }
+  function popularLinks(className = '') {
+    const candidates = ['Toetsing', 'AI Act', 'Privacy', 'Prompting', 'Subsidies', 'Veilige AI', 'Curriculum', 'AI-geletterdheid'];
+    const available = candidates.filter(query => records.some(record => queryTerms(query).some(term => recordText(record).includes(term))));
+    return `<div class="popular ${className}">${available.map(query => `<a href="#zoeken?q=${encodeURIComponent(query)}">${escapeHtml(query)}</a>`).join('')}</div>`;
+  }
+  function directUsable() {
+    return records.filter(record => statusLabel(record) === 'Direct beschikbaar' && (record.sourceUrls || []).length)
+      .sort((a, b) => a.title.localeCompare(b.title, 'nl')).slice(0, 4);
+  }
+  function simpleCard(record, explain = false) {
+    const sectors = (record.sectors || []).slice(0, 3);
+    const reasons = relevanceReasons(record);
+    return `<article class="result-card">
+      <div class="card-body"><span class="type-label">${escapeHtml(typeLabel(record))}</span>
+        <h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
+        ${record.providerName ? `<p class="provider">${escapeHtml(record.providerName)}</p>` : ''}
+        <p class="description">${escapeHtml(record.description || '')}</p>
+        ${sectors.length ? `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>` : ''}
+        ${explain && reasons.length ? `<p class="relevance"><strong>Relevant omdat:</strong> ${reasons.map(reason => `<span>✓ ${escapeHtml(reason)}</span>`).join(' ')}</p>` : ''}
+      </div><a class="card-cta" href="#item/${escapeHtml(record.id)}">Bekijk →</a>
+    </article>`;
+  }
+  function relevanceReasons(record) {
+    const reasons = [];
+    values('sector').forEach(value => facetValues(record, 'sector').includes(value) && reasons.push(`past bij ${value}`));
+    values('theme').forEach(value => facetValues(record, 'theme').includes(value) && reasons.push(`gaat over ${value.toLowerCase()}`));
+    values('status').forEach(value => facetValues(record, 'status').includes(value) && reasons.push(value.toLowerCase()));
+    if (state.q) {
+      const matchingTheme = recordThemes(record).find(theme => queryTerms(state.q).some(term => normalize(theme).includes(term) || recordText(record).includes(term)));
+      if (matchingTheme) reasons.push(`gaat over ${matchingTheme.toLowerCase()}`);
+      else if (normalize(record.title).includes(normalize(state.q))) reasons.push('de titel overeenkomt met uw zoekterm');
+    }
+    return [...new Set(reasons)].slice(0, 3);
+  }
+
+  function renderHome() {
+    state = { q: '', sort: 'relevant' };
+    const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
+    main.innerHTML = `<section class="home-simple">
+      <section class="home-search"><h1>Waar bent u vandaag naar op zoek?</h1>${searchForm('home-search')}</section>
+      <section><h2>Veel gezocht</h2>${popularLinks()}</section>
+      <section><h2>Ik ben…</h2><div class="role-grid">${roles.map(role => `<a href="#zoeken?audience=${encodeURIComponent(role)}">${escapeHtml(role.replace(/en$/, ''))}<span>Bekijk passend aanbod →</span></a>`).join('')}</div></section>
+      <section><div class="section-title"><h2>Direct bruikbaar</h2><a href="#zoeken?status=${encodeURIComponent('Direct beschikbaar')}">Bekijk alles →</a></div><div class="direct-grid">${directUsable().map(record => simpleCard(record)).join('')}</div></section>
+      <section class="missing"><h2>Nog niets gevonden? Laat het weten</h2><p>Vertel welk aanbod ontbreekt en voeg bij voorkeur een officiële bron toe.</p><a class="btn secondary" href="#bijdragen">Ontbrekend aanbod melden</a></section>
+    </section>`;
+    bindSearchForm();
+  }
+  function renderStart() {
+    const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
+    main.innerHTML = `<section class="catalog start">${searchForm('catalog-search')}<div class="start-content">
+      <h1>Kies een eenvoudige ingang</h1><p>Typ wat u zoekt, kies een onderwerp of start vanuit uw rol. Daarna ziet u alleen passend aanbod.</p>
+      <h2>Veel gezocht</h2>${popularLinks()}
+      <h2>Ik ben…</h2><div class="role-grid">${roles.map(role => `<a href="#zoeken?audience=${encodeURIComponent(role)}">${escapeHtml(role.replace(/en$/, ''))}<span>Bekijk passend aanbod →</span></a>`).join('')}</div>
+    </div></section>`;
+    bindSearchForm();
+  }
+  function facet(key, title, options, open = false) {
+    const present = options.filter(option => records.some(record => facetValues(record, key).includes(option)));
+    return `<details class="facet" ${open ? 'open' : ''}><summary>${title}${values(key).length ? `<b>${values(key).length}</b>` : ''}</summary><div>
+      ${present.map(option => { const count = facetCount(key, option); const checked = values(key).includes(option); return `<label><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${!count && !checked ? 'disabled' : ''}><span>${escapeHtml(option)}</span><small>${count}</small></label>`; }).join('')}
+    </div></details>`;
+  }
+  function relatedThemes(activeTheme) {
+    const matching = records.filter(record => recordThemes(record).includes(activeTheme));
+    const counts = new Map();
+    matching.forEach(record => recordThemes(record).filter(theme => theme !== activeTheme)
+      .forEach(theme => counts.set(theme, (counts.get(theme) || 0) + 1)));
+    return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 4);
+  }
+  function groupedResults() {
+    const groups = new Map();
+    resultRecords.forEach(record => {
+      const label = typeLabel(record);
+      if (!groups.has(label)) groups.set(label, []);
+      groups.get(label).push(record);
+    });
+    return [...groups.entries()].sort((a, b) => b[1].length - a[1].length).map(([label, items]) =>
+      `<section class="result-group"><div class="group-title"><h2>${escapeHtml(label)} <span>${items.length}</span></h2>${items.length > 3 ? `<a href="#zoeken?theme=${encodeURIComponent(values('theme')[0])}&type=${encodeURIComponent(label)}">Toon alle ${items.length} →</a>` : ''}</div><div class="result-list">${items.slice(0, 3).map(record => simpleCard(record, true)).join('')}</div></section>`
+    ).join('');
+  }
+  function renderSearch() {
+    if (!hasIntent()) return renderStart();
+    resultRecords = sortRecords(records.filter(record => matches(record)));
+    const hiddenCount = ['type', 'audience', 'organization', 'freshness'].reduce((sum, key) => sum + values(key).length, 0);
+    const chips = ['theme', 'sector', 'status', 'type', 'audience', 'organization', 'freshness']
+      .flatMap(key => values(key).map(value => `<button class="chip" data-remove="${key}|${escapeHtml(value)}">${escapeHtml(value)} ×</button>`)).join('');
+    const oneThemeOnly = values('theme').length === 1 && !state.q && ['sector', 'status', 'type', 'audience', 'organization', 'freshness'].every(key => !values(key).length);
+    const related = values('theme').length ? relatedThemes(values('theme')[0]) : [];
+    const typeOptions = [...new Set(records.map(typeLabel))].sort((a, b) => a.localeCompare(b, 'nl'));
+    const organizationOptions = [...new Set(records.map(record => record.providerName).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'nl'));
+    const audienceOptions = [...new Set(records.flatMap(record => record.audiences || []))].sort((a, b) => a.localeCompare(b, 'nl'));
+    main.innerHTML = `<section class="catalog">${searchForm('catalog-search')}<div class="catalog-grid">
+      <aside class="filters" id="filters"><header><h2>Verfijn</h2><button class="close" aria-label="Sluit filters">×</button></header>
+        ${facet('theme', 'Thema', Object.keys(THEME_RULES), true)}${facet('sector', 'Sector', SECTORS, true)}${facet('status', 'Beschikbaarheid', Object.values(STATUS_LABELS), true)}
+        <details class="more-filters"><summary>Meer filters${hiddenCount ? ` (${hiddenCount})` : ''} <span>▼</span></summary>
+          ${facet('type', 'Soort aanbod', typeOptions)}${facet('audience', 'Voor wie', audienceOptions)}${facet('organization', 'Organisatie', organizationOptions)}${facet('freshness', 'Actualiteit', ['Recent gecontroleerd', 'Controle nodig'])}
+        </details><button class="clear btn secondary">Wis alle filters</button><footer><button class="apply btn">Toon ${resultRecords.length} resultaten</button></footer>
+      </aside><section class="results"><header class="result-head"><h1>${oneThemeOnly ? escapeHtml(values('theme')[0]) : `${resultRecords.length} resultaten${state.q ? ` voor ‘${escapeHtml(state.q)}’` : ''}`}</h1><div><button class="mobile-filter btn secondary">Filters (${['theme', 'sector', 'status', 'type', 'audience', 'organization', 'freshness'].reduce((sum, key) => sum + values(key).length, 0)})</button><label>Sorteren<select id="sort"><option value="relevant">Meest relevant</option><option value="available">Direct beschikbaar eerst</option><option value="checked">Recent gecontroleerd</option><option value="az">Titel A–Z</option></select></label></div></header>
+        ${chips ? `<div class="chips">${chips}<button class="clear-link">Wis alles</button></div>` : ''}
+        ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="#zoeken?theme=${encodeURIComponent(theme)}">${escapeHtml(theme)} <span>${count}</span></a>`).join('')}</nav>` : ''}
+        <div aria-live="polite">${resultRecords.length ? (oneThemeOnly ? groupedResults() : `<div class="result-list">${resultRecords.map(record => simpleCard(record, true)).join('')}</div>`) : '<div class="empty"><h2>Geen resultaten gevonden</h2><p>Verwijder een filter of probeer een bredere zoekterm.</p><button class="clear btn">Wis filters</button></div>'}</div>
+      </section></div></section>`;
+    document.querySelector('#sort').value = state.sort;
+    bindSearchPage();
+  }
+
+  function suggestionData(query) {
+    const terms = queryTerms(query);
+    if (!normalize(query) || normalize(query).length < 2) return { groups: [], organizations: [] };
+    const matching = records.filter(record => terms.some(term => recordText(record).includes(term)));
+    const grouped = new Map();
+    matching.forEach(record => grouped.set(typeLabel(record), (grouped.get(typeLabel(record)) || 0) + 1));
+    const groups = [...grouped.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
+    const organizations = [...new Set(matching.map(record => record.providerName).filter(Boolean))].slice(0, 4);
+    return { groups, organizations };
+  }
+  function bindSearchForm() {
+    const form = document.querySelector('.atlas-search');
+    const input = form.querySelector('input');
+    const suggestions = form.querySelector('.suggestions');
+    form.onsubmit = event => { event.preventDefault(); state.q = input.value.trim(); setUrl(); };
+    input.oninput = () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        const data = suggestionData(input.value);
+        const titleMatch = Object.keys(THEME_RULES).find(theme => normalize(theme).includes(normalize(input.value)));
+        suggestions.hidden = !data.groups.length && !data.organizations.length;
+        input.setAttribute('aria-expanded', String(!suggestions.hidden));
+        suggestions.innerHTML = `${titleMatch ? `<a href="#zoeken?theme=${encodeURIComponent(titleMatch)}" class="suggestion-topic"><small>Onderwerp</small><strong>${escapeHtml(titleMatch)}</strong></a>` : ''}
+          ${data.groups.length ? `<section><h2>Soort aanbod</h2>${data.groups.map(([label, count]) => `<a href="#zoeken?q=${encodeURIComponent(input.value)}&type=${encodeURIComponent(label)}"><span>${escapeHtml(label)}</span><strong>${count}</strong></a>`).join('')}</section>` : ''}
+          ${data.organizations.length ? `<section><h2>Organisaties</h2>${data.organizations.map(name => `<a href="#zoeken?organization=${encodeURIComponent(name)}">${escapeHtml(name)}</a>`).join('')}</section>` : ''}`;
+      }, 150);
+    };
+    input.onkeydown = event => { if (event.key === 'Escape') { suggestions.hidden = true; input.setAttribute('aria-expanded', 'false'); } };
+  }
+  function bindSearchPage() {
+    bindSearchForm();
+    document.querySelectorAll('[data-facet]').forEach(input => input.onchange = () => {
+      const selected = values(input.dataset.facet);
+      input.checked ? selected.push(input.value) : selected.splice(selected.indexOf(input.value), 1);
+      state[input.dataset.facet] = [...new Set(selected)].join(','); setUrl();
+    });
+    document.querySelectorAll('[data-remove]').forEach(button => button.onclick = () => {
+      const [key, value] = button.dataset.remove.split('|'); state[key] = values(key).filter(item => item !== value).join(','); setUrl();
+    });
+    document.querySelectorAll('.clear,.clear-link').forEach(button => button.onclick = () => { state = { q: '', sort: 'relevant' }; setUrl(); });
+    document.querySelector('#sort').onchange = event => { state.sort = event.target.value; setUrl(); };
+    const panel = document.querySelector('#filters'); const opener = document.querySelector('.mobile-filter'); const closer = document.querySelector('.close');
+    const closePanel = () => { panel.classList.remove('open'); document.body.classList.remove('locked'); opener.focus(); };
+    opener.onclick = () => { panel.classList.add('open'); document.body.classList.add('locked'); closer.focus(); };
+    closer.onclick = document.querySelector('.apply').onclick = closePanel;
+    document.onkeydown = event => { if (event.key === 'Escape' && panel.classList.contains('open')) closePanel(); };
+  }
+  function route() {
+    const path = (location.hash.slice(1) || 'home').split('?')[0];
+    if (path === 'home') renderHome();
+    if (path === 'zoeken' || path === 'organisaties') { parseState(); if (path === 'organisaties') state.type = 'Organisatie'; renderSearch(); }
+    const updated = document.querySelector('[data-updated]'); if (updated) updated.textContent = source.metadata.updated || '';
+  }
+  addEventListener('hashchange', route); addEventListener('popstate', route); route();
+})();
