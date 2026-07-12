@@ -380,6 +380,43 @@
     if (!items.length) return '';
     return `<section class="home-shelf"><div class="section-title"><div><h2>${escapeHtml(title)}</h2><p>${items.length} ${items.length === 1 ? 'item' : 'items'} beschikbaar</p></div><a href="${escapeHtml(href)}">Bekijk alles →</a></div><div class="content-rail">${items.slice(0, 4).map(record => teaserCard(record, label)).join('')}</div></section>`;
   }
+  function homeFilterGroup(key, title, options, selected = [], open = false) {
+    const present = options.filter(option => records.some(record => facetValues(record, key).includes(option)));
+    return `<details class="home-filter-group" ${open ? 'open' : ''}><summary>${escapeHtml(title)}</summary><div>${present.map(option => `<label><input type="checkbox" name="${escapeHtml(key)}" value="${escapeHtml(option)}" ${selected.includes(option) ? 'checked' : ''}><span>${escapeHtml(option)}</span><small>${recordsForCriteria({ [key]: option }).length}</small></label>`).join('')}</div></details>`;
+  }
+  function homeFilterPanel(personas) {
+    const themes = ['Toetsing en examinering', 'AI Act en wetgeving', 'Privacy en AVG', 'AI-geletterdheid', 'Veilige AI-omgeving', 'Beleid en governance', 'Professionalisering', 'Praktijkvoorbeelden'];
+    const types = ['Handreiking', 'Hulpmiddel', 'Voorziening', 'Training', 'Praktijkvoorbeeld', 'Pilot', 'Subsidie of call', 'Subsidie', 'Wetgeving'];
+    return `<details class="home-filter-sidebar"><summary>Filter het aanbod</summary><form class="home-filter-form"><header><span class="eyebrow">Snel verfijnen</span><h2>Filter het aanbod</h2><p>Combineer meerdere keuzes.</p></header>
+      ${homeFilterGroup('theme', 'Waar zoekt u hulp bij?', themes, [], true)}
+      ${homeFilterGroup('sector', 'Voor welke sector?', SECTORS, [], true)}
+      ${homeFilterGroup('type', 'Wat zoekt u?', types)}
+      ${homeFilterGroup('audience', 'Voor wie?', PRIMARY_AUDIENCES, personas)}
+      ${homeFilterGroup('status', 'Beschikbaarheid', ['Direct beschikbaar', 'Open voor aanvragen', 'Pilot', 'In ontwikkeling'])}
+      <button class="btn home-filter-submit" type="submit">Bekijk aanbod</button><a class="home-all-filters" href="#zoeken">Naar uitgebreid zoeken →</a>
+    </form></details>`;
+  }
+  function bindHomeFilters() {
+    const sidebar = document.querySelector('.home-filter-sidebar');
+    if (sidebar && matchMedia('(min-width:901px)').matches) sidebar.open = true;
+    const form = document.querySelector('.home-filter-form');
+    if (!form) return;
+    const selection = () => {
+      const criteria = {};
+      FILTER_KEYS.forEach(key => {
+        const selected = [...form.querySelectorAll(`input[name="${key}"]:checked`)].map(input => input.value);
+        if (selected.length) criteria[key] = selected.join(',');
+      });
+      return criteria;
+    };
+    const update = () => {
+      const count = recordsForCriteria(selection()).length;
+      form.querySelector('.home-filter-submit').textContent = `Bekijk ${count} ${count === 1 ? 'resultaat' : 'resultaten'}`;
+    };
+    form.querySelectorAll('input').forEach(input => input.onchange = update);
+    form.onsubmit = event => { event.preventDefault(); location.hash = criteriaHref(selection()).slice(1); };
+    update();
+  }
   function renderHome() {
     const personas = savedPersonas();
     state = { q: '', sort: 'relevant', audience: personas.join(',') };
@@ -388,7 +425,7 @@
     const openCalls = recordsForCriteria({ status: 'Open voor aanvragen' }).sort((a, b) => String(a.applicationDeadline || a.fundingDeadline || '9999').localeCompare(String(b.applicationDeadline || b.fundingDeadline || '9999')));
     const practices = recordsForCriteria({ type: 'Praktijkvoorbeeld' }).sort((a, b) => (latestChangeDate(b, 'added') || b.publicationDate || '').localeCompare(latestChangeDate(a, 'added') || a.publicationDate || ''));
     const recentlyChecked = [...records].filter(record => record.lastVerified && !added.includes(record) && !['Organisatie'].includes(typeLabel(record))).sort((a, b) => String(b.lastVerified).localeCompare(String(a.lastVerified)) || relevance(b) - relevance(a));
-    main.innerHTML = `<section class="home-simple">
+    main.innerHTML = `<section class="home-market">${homeFilterPanel(personas)}<div class="home-simple">
       <section class="home-search"><span class="eyebrow">De publieke wegwijzer voor AI in het onderwijs</span><h1>Vind wat u nodig hebt voor AI in uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, voorzieningen, subsidies, pilots en praktijkvoorbeelden.</p>${searchForm('home-search')}${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}</section>
       <section><div class="section-title"><div><h2>Waarmee kunnen we u helpen?</h2><p>Begin bij uw vraag, niet bij een organisatie.</p></div></div><div class="task-grid">${TASKS.map(task => { const count = recordsForCriteria(task.query).length; return `<a class="task-tile" href="${criteriaHref({ ...task.query, audience: personas.join(',') })}"><strong>${escapeHtml(task.label)}</strong><span>${escapeHtml(task.detail)}</span><small>${count} resultaten</small></a>`; }).join('')}</div></section>
       <section><div class="section-title"><div><h2>Veel gezocht</h2><p>Vaste snelkoppelingen naar veelvoorkomende onderwijsvragen.</p></div></div>${popularLinks('', personas.join(','))}</section>
@@ -398,8 +435,8 @@
       ${homeShelf('Nieuwe praktijkvoorbeelden', `#zoeken?type=${encodeURIComponent('Praktijkvoorbeeld')}&sort=new`, practices)}
       ${homeShelf('Recent gecontroleerd', '#zoeken?sort=checked', recentlyChecked)}
       <section class="missing"><div><h2>Nog niet gevonden wat u zoekt?</h2><p>Laat ontbrekend aanbod weten en voeg een officiële bron toe.</p></div><a class="btn secondary" href="#bijdragen">Aanbod melden</a></section>
-    </section>`;
-    bindSearchForm(); bindRolePickers(); bindFavoriteButtons();
+    </div></section>`;
+    bindSearchForm(); bindRolePickers(); bindFavoriteButtons(); bindHomeFilters();
   }
   function renderStart() {
     const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
