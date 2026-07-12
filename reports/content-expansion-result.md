@@ -86,7 +86,7 @@ Een record kan meerdere sectoren hebben.
 
 ## Verificatie en onzekerheden
 
-- Alle nieuwe records hebben `lastVerified: 2026-07-12` en `verificationStatus: recently_checked`.
+- Alle nieuwe records hebben `lastVerified: 2026-07-12` en `verificationStatus: verified`; titel, aanbieder en beschikbaarheid zijn op de geopende officiële bron bevestigd.
 - `eduGenAI`, de AI-hub-praktijk van Hogeschool Rotterdam en de drie NOLAI-projecten zijn bewust als `pilot` opgenomen, niet als algemeen beschikbare dienst of gereed product.
 - Het SIVON-toetsingskader is beschikbaar als versie 1.0; de detailmetadata vermeldt expliciet dat het kader voorlopig en dynamisch is.
 - Onbekende prijs- en kosteninformatie is niet ingevuld en blijft `unknown`.
@@ -149,4 +149,3 @@ Aanvullend is vindbaarheid gecontroleerd via:
 - type `Praktijkvoorbeeld`.
 
 In alle vier controles was minimaal één nieuw, vooraf aangewezen batchrecord zichtbaar.
-

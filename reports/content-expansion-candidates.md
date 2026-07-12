@@ -77,4 +77,4 @@ De geautomatiseerde eindcontrole met een titelgelijkenisdrempel van 0,88 vond vo
 - Het SIVON-toetsingskader krijgt status `available`, maar `availabilityText` vermeldt expliciet dat versie 1.0 voorlopig en dynamisch is.
 - De drie NOLAI-projecten krijgen status `pilot` en worden niet als gereed product gepresenteerd.
 - Publicatiedata worden alleen ingevuld wanneer de officiële pagina die datum expliciet toont.
-- Alle records krijgen `lastVerified: 2026-07-12`, `verificationStatus: recently_checked` en een officiële specifieke bron.
+- Alle records krijgen `lastVerified: 2026-07-12`, `verificationStatus: verified` en een officiële specifieke bron, omdat titel, aanbieder en beschikbaarheid op de geopende officiële pagina zijn bevestigd.

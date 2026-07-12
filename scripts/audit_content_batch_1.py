@@ -43,6 +43,8 @@ def main():
         missing = [field for field in REQUIRED if not record.get(field)]
         if missing:
             errors.append(f"{record['id']}: ontbreekt {', '.join(missing)}")
+        if record.get("verificationStatus") != "verified":
+            errors.append(f"{record['id']}: officiële bron is niet als verified vastgelegd")
         if len(record.get("sourceUrls", [])) != 1 or record["sourceUrls"][0].get("sourceType") != "official":
             errors.append(f"{record['id']}: bron is niet eenduidig officieel")
 
@@ -76,4 +78,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
