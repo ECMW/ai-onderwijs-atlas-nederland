@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-07-12 — Taakgestuurde catalogus 2.0
+
+- Eén consistente zoekervaring vervangt overlappende zoeklagen.
+- Nieuwe facetvolgorde: thema, sector, soort aanbod, doelgroep, beschikbaarheid, organisatie en actualiteit.
+- Dynamische aantallen, uitgeschakelde lege opties, actieve filterchips en deelbare URL-selecties.
+- Zoek­suggesties, Nederlandse synoniemen en gewogen relevantiesortering.
+- Taakgestuurde homepage met veelgezochte onderwerpen en direct bruikbaar aanbod.
+- Volledig mobiel filterpaneel, toegankelijkere focus en scanbare horizontale resultaatkaarten.
+- Centrale weergave van datasetdatum en verwijdering van inconsistente aanvullende UX-laag.
+
 ## Calls, training, hulpmiddelen en praktijk — 12 juli 2026
 
 - Twee actuele Regieorgaan SIA-calls toegevoegd, beide open tot 15 september 2026.

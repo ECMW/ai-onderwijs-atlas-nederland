@@ -1,5 +1,9 @@
 # AI & Onderwijs Atlas Nederland
 
+De publieke interface is taakgestuurd: bezoekers zoeken eerst op hun vraag en verfijnen daarna op thema, sector, soort aanbod, doelgroep, beschikbaarheid, organisatie en actualiteit. Alle selecties worden in de URL bewaard en zijn daardoor deelbaar.
+
+De standaardvolgorde gebruikt een transparant relevantiemodel: titelmatches wegen het zwaarst, gevolgd door thema's en trefwoorden, daarna beschrijving. Direct beschikbaar en recent gecontroleerd aanbod krijgt een kleine bonus; te verifiëren aanbod niet.
+
 Een statisch, toegankelijk kennisplatform dat zonder installatie werkt. Open `index.html` in een moderne browser.
 
 ## Beheerarchitectuur
