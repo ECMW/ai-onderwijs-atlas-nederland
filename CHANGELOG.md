@@ -1,5 +1,12 @@
 # Changelog
 
+## 12 juli 2026 — Direct filteren vanaf de startpagina
+
+- Op desktop staat links van de startpagina een blijvend zichtbaar filterpaneel voor thema, sector, soort aanbod, doelgroep en beschikbaarheid.
+- Bezoekers kunnen meerdere filters combineren en zien vóór vertrek naar de resultaten hoeveel passend aanbod beschikbaar is.
+- Op mobiel staat dezelfde functie compact achter “Filter het aanbod”, zodat de zoekingang niet wordt verdrongen.
+- “Over de atlas” vermeldt Eva Willems als maker en bevat een rechtstreeks contactadres.
+
 ## 12 juli 2026 — Marketplace-UX en persoonlijke atlas
 
 ### Toegepaste UX-principes
