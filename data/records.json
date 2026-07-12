@@ -4617,5 +4617,653 @@
         "summary": "Gemigreerd uit atlasdataset v1."
       }
     ]
+  },
+  {
+    "id": "schoolafspraken-over-het-gebruik-van-generatieve-ai",
+    "title": "Schoolafspraken over het gebruik van generatieve AI",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Principes, voorbeeldafspraken en een toolkit waarmee schoolteams afspraken kunnen maken over generatieve AI.",
+    "purpose": "Scholen ondersteunen bij het maken van afspraken over veilig en verantwoord AI-gebruik",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2025",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/schoolafspraken-over-het-gebruik-van-generatieve-ai/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-geletterdheid",
+      "beleid",
+      "privacy",
+      "schoolafspraken"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "generatieve-ai-en-privacy-hier-moeten-scholen-op-letten",
+    "title": "Generatieve AI en privacy: hier moeten scholen op letten",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Uitleg en praktijksituaties over persoonsgegevens, bewaartermijnen en afspraken met leveranciers bij generatieve AI.",
+    "purpose": "Scholen helpen privacyrisico's bij generatieve AI te herkennen",
+    "audiences": [
+      "Bestuurders",
+      "Privacyprofessionals",
+      "IT-professionals",
+      "Docenten"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2025",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/privacy-en-ai-hier-moeten-scholen-op-letten/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "privacy",
+      "AVG",
+      "persoonsgegevens",
+      "generatieve AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "kansen-en-risico-s-van-generatieve-ai-in-het-onderwijs",
+    "title": "Kansen en risico's van generatieve AI in het onderwijs",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Overzicht van kansen, risico's en aanbevelingen voor de inzet van generatieve AI op school.",
+    "purpose": "Onderwijsprofessionals ondersteunen bij een bewuste afweging van kansen en risico's",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/kansen-en-risicos-van-generatieve-ai-in-het-onderwijs/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "generatieve AI",
+      "risico's",
+      "publieke waarden",
+      "beleid"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "referentiekader-2-0-verantwoord-gebruik-van-studiedata-en-ai",
+    "title": "Referentiekader 2.0: Verantwoord gebruik van studiedata en AI",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Referentiekader voor toepassing van studiedata en AI met aandacht voor rechtvaardigheid, menselijkheid en autonomie.",
+    "purpose": "Richtlijnen bieden voor verantwoord gebruik van studiedata en AI",
+    "audiences": [
+      "Beleidsmakers",
+      "Docenten",
+      "IT-professionals",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2025",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://npuls.prod.sdp.surf.nl/kennisbank/referentiekader-2-0-verantwoord-gebruik-van-studiedata-en-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "studiedata",
+      "AI",
+      "publieke waarden",
+      "governance"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "visie-op-toetsing-examinering-en-ai-en-handreikingen",
+    "title": "Visie op toetsing, examinering en AI en handreikingen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Landelijke visie en vier handreikingen voor verantwoorde omgang met AI bij toetsing en examinering.",
+    "purpose": "Instellingen ondersteunen bij AI-bewuste toetsing en examinering",
+    "audiences": [
+      "Docenten",
+      "Examencommissies",
+      "Beleidsmakers",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2025",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://npuls.nl/kennisbank/visie-op-toetsing-examinering-en-ai-handreikingen",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "toetsing",
+      "examinering",
+      "AI-geletterdheid",
+      "toetsintegriteit"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "ai-waaier-voor-toetsen",
+    "title": "AI-waaier voor toetsen",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": null,
+    "organizationIds": [
+      "org-npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Praktisch instrument met vijf niveaus van AI-gebruik voor bewuste keuzes bij toetsing en examinering.",
+    "purpose": "Een gemeenschappelijke taal bieden voor toegestane niveaus van AI-gebruik bij toetsing",
+    "audiences": [
+      "Docenten",
+      "Examencommissies",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.npuls.nl/kennisbank/ai-waaier",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "toetsing",
+      "examinering",
+      "AI Assessment Scale",
+      "hulpmiddel"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "ai-en-kansengelijkheid-handreiking-voor-een-zo-positief-mogelijke-impact",
+    "title": "AI en kansengelijkheid: handreiking voor een zo positief mogelijke impact",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "org-surf-communities"
+    ],
+    "providerName": "SURF Communities",
+    "description": "Praktische handreiking met oplossingsrichtingen om positieve effecten van AI op kansengelijkheid te bevorderen.",
+    "purpose": "Onderwijsinstellingen helpen AI met aandacht voor kansengelijkheid in te zetten",
+    "audiences": [
+      "Docenten",
+      "Beleidsmakers",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2025",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://communities.surf.nl/ai-in-education/artikel/ai-en-kansengelijkheid-handreiking-voor-een-zo-positief-mogelijke-impact",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "kansengelijkheid",
+      "publieke waarden",
+      "implementatie",
+      "AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "toolkit-ai-in-je-toetsontwerp",
+    "title": "Toolkit AI in je toetsontwerp",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": null,
+    "organizationIds": [
+      "org-de-haagse-hogeschool"
+    ],
+    "providerName": "De Haagse Hogeschool",
+    "description": "Toolkit met onder meer een flowchart, kaartenset, handreiking academische integriteit en praatplaat over AI en toetsing.",
+    "purpose": "Toetsontwerpen controleren en aanpassen aan generatieve AI",
+    "audiences": [
+      "Docenten",
+      "Examencommissies",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2024",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://communities.surf.nl/digitaal-toetsen/artikel/ai-en-toetsen-check-je-toetsen-met-de-toolkit-ai-in-je-toetsontwerp",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "toetsing",
+      "toetsontwerp",
+      "academische integriteit",
+      "praktijkvoorbeeld"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
+  },
+  {
+    "id": "ai-richtlijnen-bij-unicoz-ruimte-voor-eigen-schoolbeleid",
+    "title": "AI-richtlijnen bij Unicoz: ruimte voor eigen schoolbeleid",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [
+      "org-unicoz-onderwijsgroep"
+    ],
+    "providerName": "Unicoz Onderwijsgroep",
+    "description": "Openbaar praktijkvoorbeeld van AI-beleid op bestuursniveau met ruimte voor invulling door afzonderlijke scholen.",
+    "purpose": "Laten zien hoe een schoolbestuur AI-richtlijnen en lokaal schoolbeleid vormgeeft",
+    "audiences": [
+      "Schoolleiders",
+      "Bestuurders",
+      "Docenten"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [],
+    "status": "available",
+    "availabilityText": "2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-12",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/ai-richtlijnen-bij-unicoz-ruimte-voor-eigen-schoolbeleid/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "praktijkvoorbeeld",
+      "AI-beleid",
+      "schoolafspraken",
+      "implementatie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-12",
+        "type": "migrated",
+        "summary": "Gemigreerd uit atlasdataset v1."
+      }
+    ]
   }
 ]

@@ -1,5 +1,12 @@
 # Changelog
 
+## Officiële contentuitbreiding — 12 juli 2026
+
+- Negen afzonderlijke records toegevoegd uit officiële pagina's van Kennisnet, Npuls en SURF Communities.
+- Nieuwe inhoud: schoolafspraken, privacy, kansen en risico's, studiedata, toetsing, AI-waaier, kansengelijkheid, toetsontwerp en het praktijkvoorbeeld Unicoz.
+- Totaal verhoogd van 65 naar 74 records.
+- Alle nieuwe records bevatten aanbieder, officiële bron-URL en controledatum.
+
 ## Catalogusherontwerp — juli 2026
 
 ### Gewijzigde bestanden

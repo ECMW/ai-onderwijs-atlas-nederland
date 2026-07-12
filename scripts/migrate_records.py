@@ -3,7 +3,7 @@ import json, re, unicodedata
 from datetime import date
 from pathlib import Path
 ROOT=Path(__file__).parents[1]; old=json.loads((ROOT/'data/items.json').read_text(encoding='utf-8'))
-TYPES={'Organisatie':'organization','Programma':'programme','Product':'product','Voorziening':'service','Handreiking':'guidance','Training':'training','Subsidie':'subsidy','Pilot':'pilot','Wetgeving':'legislation','Standaard':'standard','Behoefte':'identified_need','Witte vlek':'white_spot'}
+TYPES={'Organisatie':'organization','Programma':'programme','Product':'product','Voorziening':'service','Handreiking':'guidance','Training':'training','Subsidie':'subsidy','Pilot':'pilot','Praktijkvoorbeeld':'practice_example','Wetgeving':'legislation','Standaard':'standard','Behoefte':'identified_need','Witte vlek':'white_spot'}
 STATUS={'Beschikbaar':'available','Pilot':'pilot','In ontwikkeling':'in_development','Te verifiëren':'needs_verification','Nog niet ingevuld':'unknown'}
 def sid(s): return re.sub(r'^-|-$','',re.sub(r'[^a-z0-9]+','-',unicodedata.normalize('NFKD',s).encode('ascii','ignore').decode().lower()))
 orgids={x['organisation']:'org-'+sid(x['organisation']) for x in old if x.get('organisation') and x['organisation']!='Nog niet ingevuld'}
