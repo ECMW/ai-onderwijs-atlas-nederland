@@ -1,15 +1,101 @@
 name: Atlas-aanvulling
-description: Draag openbare, verifieerbare informatie aan
+description: Voeg bestaand aanbod met een officiële bron toe
 title: '[Aanvulling] '
 labels: ['atlas-aanvulling']
 body:
-  - {type: input, id: title, attributes: {label: Titel}, validations: {required: true}}
-  - {type: dropdown, id: type, attributes: {label: Recordtype, options: [Organisatie, Programma, Product, Voorziening, Handreiking, Training, Subsidie, Call, Pilot, Praktijkvoorbeeld, Community, Standaard, Wetgeving, Beleidsdocument, Onderzoeksproject, Witte vlek]}, validations: {required: true}}
-  - {type: input, id: org, attributes: {label: Organisatie}, validations: {required: true}}
-  - {type: textarea, id: description, attributes: {label: Feitelijke beschrijving}, validations: {required: true}}
-  - {type: input, id: source, attributes: {label: Officiële bronlink}, validations: {required: true}}
-  - {type: input, id: sector, attributes: {label: Sector}}
-  - {type: input, id: audience, attributes: {label: Doelgroep}}
-  - {type: input, id: status, attributes: {label: Status}}
-  - {type: textarea, id: notes, attributes: {label: Toelichting}}
-  - {type: input, id: submitter, attributes: {label: Naam indiener (optioneel)}}
+  - type: markdown
+    attributes:
+      value: |
+        Complete toevoegingen worden automatisch gecontroleerd op structuur, duplicaten, bronbereikbaarheid en aansluiting van titel en aanbieder op de officiële bron. Alleen een volledig geslaagde controle wordt gepubliceerd. Dit is geen inhoudelijke aanbeveling door de Atlas.
+  - type: input
+    id: title
+    attributes:
+      label: Titel
+      placeholder: Officiële naam van het aanbod
+    validations: {required: true}
+  - type: dropdown
+    id: type
+    attributes:
+      label: Recordtype
+      options: [Organisatie, Programma, Product, Voorziening, Handreiking, Training, Pilot, Praktijkvoorbeeld, Community, Standaard, Subsidie, Call]
+    validations: {required: true}
+  - type: input
+    id: org
+    attributes:
+      label: Organisatie
+      placeholder: Officiële aanbieder of eigenaar
+    validations: {required: true}
+  - type: textarea
+    id: description
+    attributes:
+      label: Feitelijke beschrijving
+      description: Schrijf 2–4 neutrale zinnen die door de officiële bron worden ondersteund. Vermijd reclameclaims.
+    validations: {required: true}
+  - type: input
+    id: source
+    attributes:
+      label: Officiële bronlink
+      description: Gebruik een directe HTTPS-link van de aanbieder; geen nieuwsbericht of zoekresultaat.
+      placeholder: https://organisatie.nl/aanbod
+    validations: {required: true}
+  - type: dropdown
+    id: sector
+    attributes:
+      label: Sector
+      multiple: true
+      options: [PO, VO, MBO, HBO, WO, Onderzoek, Overheid]
+    validations: {required: true}
+  - type: dropdown
+    id: audience
+    attributes:
+      label: Doelgroep
+      multiple: true
+      options: [Docenten, Leraren, Studenten, Onderwijsinstellingen, Bestuurders, IT-professionals, Onderzoekers, Beleidsadviseurs]
+    validations: {required: true}
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Thema
+      multiple: true
+      options: [AI-geletterdheid, Lesgeven en leren met AI, Toetsing en examinering, Privacy en AVG, AI Act en wetgeving, Beleid en governance, Veilige AI-omgeving, Implementatie en adoptie, Professionalisering, Curriculumontwikkeling, Onderzoek, Data en infrastructuur, Standaarden en interoperabiliteit, Subsidies en financiering, Praktijkvoorbeelden, Publieke waarden en ethiek]
+    validations: {required: true}
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options: [Direct beschikbaar, Pilot, In ontwikkeling, Gepland, Open voor aanvragen, Gesloten]
+    validations: {required: true}
+  - type: dropdown
+    id: geography
+    attributes:
+      label: Geografische reikwijdte
+      options: [Nederland, Europa, Internationaal]
+    validations: {required: true}
+  - type: dropdown
+    id: cost
+    attributes:
+      label: Kosten
+      options: [Onbekend, Gratis, Betaald, Gratis en betaald]
+    validations: {required: true}
+  - type: input
+    id: deadline
+    attributes:
+      label: Deadline
+      description: Alleen voor subsidies en calls; gebruik JJJJ-MM-DD.
+      placeholder: '2027-03-31'
+  - type: textarea
+    id: notes
+    attributes:
+      label: Toelichting
+      description: Eventuele extra context voor het openbare wijzigingsspoor.
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Bevestiging
+      options:
+        - label: Dit aanbod bestaat daadwerkelijk; ik meld geen behoefte of witte vlek.
+          required: true
+        - label: De officiële bron ondersteunt de titel, aanbieder, status en beschrijving.
+          required: true
+        - label: Ik begrijp dat een geslaagde automatische broncontrole geen aanbeveling of keurmerk van de Atlas is.
+          required: true

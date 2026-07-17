@@ -1,0 +1,59 @@
+name: Publish auto-verified contribution
+
+on:
+  pull_request_target:
+    types: [closed]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atlas-content-write
+  cancel-in-progress: false
+
+jobs:
+  promote:
+    if: ${{ github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'atlas:auto-verified') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Recover the reviewed before-and-after data
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git fetch --no-tags origin "+refs/pull/${PR_NUMBER}/head:refs/remotes/origin/atlas-pr-${PR_NUMBER}"
+          git show "${BASE_SHA}:data/records.json" > "$RUNNER_TEMP/base-records.json"
+          git show "refs/remotes/origin/atlas-pr-${PR_NUMBER}:data/records.json" > "$RUNNER_TEMP/candidate-records.json"
+
+      - name: Recheck and promote only the new records
+        run: |
+          python scripts/promote_contribution.py \
+            --base "$RUNNER_TEMP/base-records.json" \
+            --candidate "$RUNNER_TEMP/candidate-records.json" \
+            --pr-number "${{ github.event.pull_request.number }}"
+
+      - name: Validate the complete Atlas and regenerate public data
+        run: |
+          python scripts/validate_data.py
+          python scripts/generate_data.py
+          python -m unittest discover tests
+
+      - name: Save the transparent verification record
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          git config user.name "atlas-quality-bot"
+          git config user.email "atlas-quality-bot@users.noreply.github.com"
+          git add data/records.json data/metadata.json data/data-v2.js data/search-index.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Publiceer brongecontroleerde bijdrage #${PR_NUMBER}"
+          git push origin HEAD:main

@@ -10747,8 +10747,8 @@
       "org-civai"
     ],
     "providerName": "CivAI",
-    "description": "Nederlandse aanbieder van soevereine AI-omgevingen voor onderwijs en publieke sector, waaronder EduGPT voor het onderwijs. Hosting binnen de EU, met dataverwerking onder controle van de eigen organisatie. Levert daarnaast AI Companions, implementatie, training en ondersteuning.",
-    "purpose": "Soevereine AI-toepassingen en begeleiding voor onderwijsinstellingen",
+    "description": "Nederlandse aanbieder van AI-omgevingen voor overheid, onderwijs, organisaties en zorg. Voor het onderwijs biedt CivAI EduGPT aan. De aanbieder beschrijft EU-hosting, data-onafhankelijkheid, training en ondersteuning als onderdelen van het aanbod.",
+    "purpose": "AI-omgevingen en begeleiding voor onderwijsinstellingen",
     "audiences": [
       "Docenten",
       "Onderwijsinstellingen",
@@ -10760,14 +10760,18 @@
       "HBO",
       "WO"
     ],
-    "themes": [],
+    "themes": [
+      "Veilige AI-omgeving",
+      "Implementatie en adoptie",
+      "Professionalisering"
+    ],
     "status": "available",
     "availabilityText": "Actief",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": null,
-    "verificationStatus": "needs_review",
+    "lastVerified": "2026-07-17",
+    "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
         "label": "Website",
@@ -10823,8 +10827,8 @@
       "org-civai"
     ],
     "providerName": "CivAI",
-    "description": "Soevereine AI-chatomgeving voor het onderwijs, gehost binnen de EU met data onder controle van de onderwijsinstelling. Docenten bouwen er zelf vak- en lesspecifieke AI Companions mee, onder meer via de ingebouwde Prompt Companion. Ontworpen vanuit pedagogiek, gericht op het ondersteunen van het leerproces en kritisch denken in plaats van het overnemen ervan.",
-    "purpose": "AI-chatomgeving waarin docenten zelf AI Companions ontwerpen voor leren en lesgeven",
+    "description": "AI-omgeving voor het onderwijs die volgens de aanbieder EU-hosting, centraal model- en gebruikersbeheer en ondersteuning voor docenten en studenten biedt. De aanbieder vermeldt dat pilotplaatsen beschikbaar zijn.",
+    "purpose": "Beheersbare AI-chatomgeving voor leren, lesgeven en onderwijsbrede inzet",
     "audiences": [
       "Docenten",
       "Studenten",
@@ -10836,18 +10840,23 @@
       "HBO",
       "WO"
     ],
-    "themes": [],
-    "status": "available",
-    "availabilityText": "Beschikbaar",
+    "themes": [
+      "Veilige AI-omgeving",
+      "Privacy en AVG",
+      "Beleid en governance",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "pilot",
+    "availabilityText": "Pilotplaatsen beschikbaar",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": null,
-    "verificationStatus": "needs_review",
+    "lastVerified": "2026-07-17",
+    "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
         "label": "Website",
-        "url": "https://civai.eu/",
+        "url": "https://edugpt.nl/",
         "sourceType": "official"
       },
       {
