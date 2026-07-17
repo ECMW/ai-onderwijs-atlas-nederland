@@ -10827,14 +10827,16 @@
       "org-civai"
     ],
     "providerName": "CivAI",
-    "description": "AI-omgeving voor het onderwijs die volgens de aanbieder EU-hosting, centraal model- en gebruikersbeheer en ondersteuning voor docenten en studenten biedt. De aanbieder vermeldt dat pilotplaatsen beschikbaar zijn.",
+    "description": "AI-omgeving voor het onderwijs die volgens de aanbieder EU-hosting, centraal model- en gebruikersbeheer en ondersteuning voor docenten en studenten biedt. Het product is volgens de aanbieder beschikbaar en in gebruik bij betalende klanten; implementaties starten vaak met een pilot.",
     "purpose": "Beheersbare AI-chatomgeving voor leren, lesgeven en onderwijsbrede inzet",
     "audiences": [
       "Docenten",
+      "Leerlingen",
       "Studenten",
       "Onderwijsinstellingen"
     ],
     "sectors": [
+      "PO",
       "VO",
       "MBO",
       "HBO",
@@ -10846,8 +10848,8 @@
       "Beleid en governance",
       "Lesgeven en leren met AI"
     ],
-    "status": "pilot",
-    "availabilityText": "Pilotplaatsen beschikbaar",
+    "status": "available",
+    "availabilityText": "Beschikbaar",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
@@ -10901,6 +10903,11 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd via community-bijdrage (CivAI)."
+      },
+      {
+        "date": "2026-07-17",
+        "type": "updated",
+        "summary": "Status bijgewerkt naar beschikbaar (betalende klanten, start vaak met pilot) en PO toegevoegd aan sectoren (bron: aanbieder CivAI)."
       }
     ]
   }
