@@ -61,6 +61,8 @@ De Atlas bevat onder `Compatibility tokens` vertalingen naar bestaande namen zoa
 
 Het ronde Atlas-teken gebruikt drie kleurzones als abstracte verwijzing naar lucht, duin en strand. Het is ondersteunend; de naam blijft het belangrijkste herkenningspunt.
 
+De startpagina gebruikt dezelfde gelaagde horizon als de sociale voorvertoning. De herbruikbare vector staat in `assets/strand-horizon.svg`; gebruik deze vorm vooral voor brede introductievlakken en niet als decoratie achter lange inhoud.
+
 ## Toegankelijkheid
 
 Donkere tekst en primaire acties hebben ruim contrast op de lichte achtergronden. Interactieve elementen houden een duidelijke focusring en mobiele hoofdacties zijn minimaal ongeveer 44 pixels hoog. Kleur is nooit de enige informatiedrager. Animatie blijft minimaal en respecteert `prefers-reduced-motion`.

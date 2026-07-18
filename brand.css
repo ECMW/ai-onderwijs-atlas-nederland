@@ -75,18 +75,29 @@ h1,h2,h3{color:#263b45;text-wrap:balance}
 .home-market .home-search{
   position:relative;
   overflow:visible;
-  background:linear-gradient(135deg,var(--brand-mist),#f0eee5 70%,var(--brand-sand));
+  isolation:isolate;
+  padding-bottom:12.5rem!important;
+  background:
+    url("assets/strand-horizon.svg") bottom center/100% 11.5rem no-repeat,
+    linear-gradient(135deg,var(--brand-shell),#f8f5ed 68%,var(--brand-dune));
   border:1px solid #d7d4cb;
+  border-top:8px solid var(--brand-olive);
   box-shadow:0 18px 50px rgba(52,79,93,.08);
 }
 .home-market .home-search::before{
-  content:"";
-  position:absolute;
-  left:0;top:0;bottom:0;
-  width:7px;
-  border-radius:12px 0 0 12px;
-  background:linear-gradient(var(--brand-bluegray),var(--brand-olive),var(--brand-sand));
+  content:"AI & ONDERWIJS ATLAS NEDERLAND";
+  display:block;
+  margin-bottom:1.1rem;
+  color:var(--brand-bluegray-deep);
+  font-size:.74rem;
+  font-weight:850;
+  letter-spacing:.13em;
 }
+.home-market .home-search>.eyebrow{display:none}
+.home-market .home-search h1{max-width:980px;margin:.15rem 0 1.15rem;color:var(--brand-ink);font-size:clamp(3.25rem,6vw,5.55rem);line-height:.98;letter-spacing:-.055em}
+.home-market .home-search>p{max-width:780px;color:#52656d;font-size:1.1rem}
+.home-market .home-search .atlas-search{max-width:900px}
+.home-market .home-search .search-row{box-shadow:0 12px 30px rgba(52,79,93,.13)}
 .atlas-search input{
   border-color:#86959a;
   background:#fffefa;
@@ -151,8 +162,14 @@ footer{
   .menu{background:#fffdf9;border-color:#9ca9ad;color:var(--brand-bluegray-deep)}
 }
 @media(max-width:600px){
-  .home-market .home-search{border-radius:10px}
-  .home-market .home-search::before{width:5px;border-radius:10px 0 0 10px}
+  .home-market .home-search{
+    padding-bottom:8.9rem!important;
+    border-radius:10px;
+    background-size:100% 7.75rem,auto;
+  }
+  .home-market .home-search::before{margin-bottom:.8rem;font-size:.66rem;letter-spacing:.1em}
+  .home-market .home-search h1{font-size:clamp(2.6rem,13vw,3.55rem);line-height:1.01}
+  .home-market .home-search>p{font-size:.98rem}
 }
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
 @media print{body{background:#fff}.site-header{box-shadow:none}}
