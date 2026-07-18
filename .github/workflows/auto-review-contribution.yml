@@ -3,6 +3,8 @@ name: Automatic contribution screening
 on:
   pull_request_target:
     types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - 'data/records.json'
 
 permissions:
   contents: read
