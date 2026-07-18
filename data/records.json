@@ -10755,6 +10755,7 @@
       "Bestuurders"
     ],
     "sectors": [
+      "PO",
       "VO",
       "MBO",
       "HBO",
@@ -10770,7 +10771,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-17",
+    "lastVerified": "2026-07-18",
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
@@ -10814,6 +10815,11 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd via community-bijdrage (CivAI)."
+      },
+      {
+        "date": "2026-07-18",
+        "type": "updated",
+        "summary": "PO toegevoegd als sector op basis van het officiële EduGPT-aanbod van CivAI."
       }
     ]
   },
@@ -10827,14 +10833,16 @@
       "org-civai"
     ],
     "providerName": "CivAI",
-    "description": "AI-omgeving voor het onderwijs die volgens de aanbieder EU-hosting, centraal model- en gebruikersbeheer en ondersteuning voor docenten en studenten biedt. De aanbieder vermeldt dat pilotplaatsen beschikbaar zijn.",
+    "description": "Beheerde AI-omgeving voor leerkrachten, docenten, leerlingen en studenten. De aanbieder vermeldt EU-hosting, centraal model- en gebruikersbeheer, een direct te starten betaalde standaardlicentie en daarnaast een kosteloze pilotmogelijkheid.",
     "purpose": "Beheersbare AI-chatomgeving voor leren, lesgeven en onderwijsbrede inzet",
     "audiences": [
       "Docenten",
+      "Leerlingen",
       "Studenten",
       "Onderwijsinstellingen"
     ],
     "sectors": [
+      "PO",
       "VO",
       "MBO",
       "HBO",
@@ -10846,12 +10854,12 @@
       "Beleid en governance",
       "Lesgeven en leren met AI"
     ],
-    "status": "pilot",
-    "availabilityText": "Pilotplaatsen beschikbaar",
+    "status": "available",
+    "availabilityText": "Standaardlicentie direct te starten; gratis pilotmogelijkheid beschikbaar",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-17",
+    "lastVerified": "2026-07-18",
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
@@ -10901,6 +10909,11 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd via community-bijdrage (CivAI)."
+      },
+      {
+        "date": "2026-07-18",
+        "type": "updated",
+        "summary": "Status gewijzigd van pilot naar beschikbaar; PO toegevoegd op basis van de officiële tarieven- en doelgroepinformatie."
       }
     ]
   }

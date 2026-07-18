@@ -1,24 +1,85 @@
-name: Check official sources
+name: Daily Atlas maintenance review
+
 on:
-  schedule: [{cron: '17 4 * * *'}]
+  schedule:
+    - cron: '0 5 * * *'
   workflow_dispatch:
-permissions: {contents: read, issues: write}
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: atlas-daily-maintenance
+  cancel-in-progress: false
+
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
-        with: {python-version: '3.12'}
-      - run: python scripts/check_sources.py
-      - run: python scripts/generate_update_proposals.py
+        with:
+          python-version: '3.12'
+
+      - name: Restore last known maintenance state
+        uses: actions/cache/restore@v4
+        with:
+          path: maintenance-state
+          key: atlas-maintenance-${{ github.run_id }}
+          restore-keys: atlas-maintenance-
+
+      - name: Detect, compare and prepare review proposals
+        run: python scripts/run_daily_maintenance.py
+
       - uses: actions/upload-artifact@v4
-        with: {name: atlas-source-checks, path: 'data/source-checks.json'}
-      - name: Open one review issue when changes exist
-        env: {GH_TOKEN: '${{ github.token }}'}
-        run: |
-          COUNT=$(find data/proposals -name '*.json' | wc -l)
-          if [ "$COUNT" -gt 0 ] && ! gh issue list --label atlas-source-update --state open --json title --jq '.[].title' | grep -q 'Bronwijzigingen vragen review'; then
-            gh label create atlas-source-update --color 1D76DB --description 'Automatisch gedetecteerde bronwijziging' --force
-            gh issue create --title 'Bronwijzigingen vragen review' --label atlas-source-update --body "De dagelijkse broncontrole vond $COUNT reviewvoorstel(len). Download het workflow-artifact; niets is automatisch gepubliceerd."
-          fi
+        with:
+          name: atlas-maintenance-${{ github.run_id }}
+          path: maintenance-output
+          retention-days: 30
+
+      - name: Save last known maintenance state
+        uses: actions/cache/save@v4
+        with:
+          path: maintenance-state
+          key: atlas-maintenance-${{ github.run_id }}
+
+      - name: Publish compact review signal
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('maintenance-output/daily-report.json', 'utf8'));
+            const markdown = fs.readFileSync('maintenance-output/daily-report.md', 'utf8');
+            const { owner, repo } = context.repo;
+            const label = 'atlas-daily-review';
+            if (!report.summary.actionRequired) {
+              await core.summary.addHeading('Geen actie nodig').addRaw(
+                `${report.summary.sourcesChecked} bronnen gecontroleerd; geen betekenisvolle wijziging.`
+              ).write();
+              return;
+            }
+            try {
+              await github.rest.issues.getLabel({ owner, repo, name: label });
+            } catch (error) {
+              if (error.status !== 404) throw error;
+              await github.rest.issues.createLabel({
+                owner, repo, name: label, color: 'D4A72C',
+                description: 'Dagelijkse broncontrole vraagt menselijke beoordeling'
+              });
+            }
+            const open = await github.paginate(github.rest.issues.listForRepo, {
+              owner, repo, state: 'open', labels: label, per_page: 100
+            });
+            const title = 'Dagelijkse Atlas-controle vraagt beoordeling';
+            const existing = open.find(issue => issue.title === title);
+            const body = `${markdown}\nWorkflow-artifact: ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}\n`;
+            if (existing) {
+              await github.rest.issues.update({ owner, repo, issue_number: existing.number, body });
+            } else {
+              await github.rest.issues.create({ owner, repo, title, body, labels: [label] });
+            }
+            await core.summary.addHeading('Beoordeling nodig').addRaw(
+              `${report.summary.proposalsForReview} voorstel(len); niets is automatisch gepubliceerd.`
+            ).write();
