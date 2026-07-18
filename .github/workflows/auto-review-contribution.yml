@@ -40,10 +40,10 @@ jobs:
         id: review
         continue-on-error: true
         run: |
+          set +e
           python scripts/review_contribution.py \
             --base data/records.json \
             --candidate "$RUNNER_TEMP/candidate-records.json" \
-          set +e
             --changed-files "$RUNNER_TEMP/changed-files.txt" \
             --report-json "$RUNNER_TEMP/atlas-review.json" \
             --report-markdown "$RUNNER_TEMP/atlas-review.md"
@@ -51,7 +51,7 @@ jobs:
           if [ "$status" -eq 0 ]; then echo "eligible=true" >> "$GITHUB_OUTPUT"; else echo "eligible=false" >> "$GITHUB_OUTPUT"; fi
           exit 0
 
-      - name: Report the decision and merge eligible additions
+      - name: Report the screening result for human review
         uses: actions/github-script@v7
         env:
           ELIGIBLE: ${{ steps.review.outputs.eligible }}
@@ -73,24 +73,19 @@ jobs:
             } else {
               await github.rest.issues.createComment({ owner, repo, issue_number, body });
             }
-            const wanted = eligible ? 'atlas:auto-verified' : 'atlas:needs-attention';
-            const unwanted = eligible ? 'atlas:needs-attention' : 'atlas:auto-verified';
+            const wanted = eligible ? 'atlas:checks-passed' : 'atlas:needs-attention';
+            const unwanted = eligible ? 'atlas:needs-attention' : 'atlas:checks-passed';
             try {
               await github.rest.issues.getLabel({ owner, repo, name: wanted });
             } catch (error) {
               if (error.status !== 404) throw error;
-              await github.rest.issues.createLabel({ owner, repo, name: wanted, color: eligible ? '1A7F37' : 'D4A72C', description: eligible ? 'Automatisch bron- en structuurgecontroleerd' : 'Aanvulling nodig voor automatische publicatie' });
+              await github.rest.issues.createLabel({ owner, repo, name: wanted, color: eligible ? '1A7F37' : 'D4A72C', description: eligible ? 'Automatische controles geslaagd; menselijke beoordeling vereist' : 'Aanvulling nodig voor beoordeling' });
             }
             try { await github.rest.issues.removeLabel({ owner, repo, issue_number, name: unwanted }); } catch (error) { if (error.status !== 404) throw error; }
             await github.rest.issues.addLabels({ owner, repo, issue_number, labels: [wanted] });
-            if (!eligible) return;
-            const result = await github.rest.pulls.merge({
-              owner, repo, pull_number: issue_number,
-              sha: context.payload.pull_request.head.sha,
-              merge_method: 'squash',
-              commit_title: `Publiceer automatisch gecontroleerde bijdrage (#${issue_number})`
-            });
-            if (!result.data.merged) throw new Error(result.data.message || 'GitHub kon de bijdrage niet automatisch mergen.');
+            if (eligible) {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body: 'De automatische controles zijn geslaagd. Een mens moet de bijdrage nog beoordelen en mergen; er is niets automatisch gepubliceerd.' });
+            }
 
       - name: Mark an unresolved contribution as failed
         if: ${{ steps.review.outputs.eligible != 'true' }}

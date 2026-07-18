@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-07-18 — Conceptuele eindredactie en publicatie-integriteit
+
+- Publieke positionering aangescherpt: open en brongebaseerd, maar geen keurmerk, ranglijst, aanbevelingssysteem of volledigheidsgarantie.
+- De publieke exporttelling wordt voortaan automatisch uit de werkelijk publiceerbare records afgeleid en met een regressietest bewaakt.
+- De browserprojectie en metadata tonen nu beide 124 gepubliceerde records, inclusief CivAI en EduGPT.
+- EduGPT gecorrigeerd van pilot naar beschikbaar; PO, leerlingen en de direct te starten standaardlicentie zijn toegevoegd vanuit de officiële productpagina.
+- Niet-onderbouwde beheerstatistieken met hardgecodeerde nulwaarden verwijderd.
+- Een compacte vertrouwensregel toegevoegd zonder de taakgerichte homepage te verzwaren.
+- Professionele sociale voorvertoning toegevoegd voor LinkedIn en andere deelplatforms.
+- Maker, open repository en correctieroute zichtbaarder gemaakt.
+
 ## 2026-07-12 — Internationale inhoudstranche en harde bronpublicatie
 
 - 32 officieel onderbouwde records toegevoegd voor trainingen, internationale calls, voorzieningen, standaarden, pilots, praktijkvoorbeelden, programma's en organisaties.

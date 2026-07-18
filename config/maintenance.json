@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "schedule": {"cron": "0 5 * * *", "timezoneNote": "05:00 UTC; 07:00 CEST or 06:00 CET"},
+  "network": {
+    "timeoutSeconds": 20,
+    "maxAttempts": 3,
+    "backoffSeconds": [1, 3],
+    "minimumDelaySeconds": 1,
+    "userAgent": "AI-Onderwijs-Atlas-Maintenance/1.0 (+https://github.com/ECMW/ai-onderwijs-atlas-nederland)"
+  },
+  "classification": {
+    "failureThreshold": 3,
+    "missingLinkThreshold": 2,
+    "minimumWords": 30,
+    "structureDropRatio": 0.45,
+    "deadlineTerms": ["deadline", "sluitingsdatum", "aanvragen tot", "open tot", "closing date"],
+    "relevantTerms": ["ai", "artificiele intelligentie", "kunstmatige intelligentie", "onderwijs", "training", "subsidie", "call", "pilot", "handreiking", "praktijkvoorbeeld", "ai act", "privacy"]
+  },
+  "normalization": {
+    "ignoredTags": ["script", "style", "noscript", "svg", "nav", "footer", "header", "form", "dialog"],
+    "ignoredTextPatterns": ["^accepteer cookies$", "^cookievoorkeuren$", "^laatst bijgewerkt[: ]", "^\\d{1,2}[:.]\\d{2}$"]
+  }
+}
