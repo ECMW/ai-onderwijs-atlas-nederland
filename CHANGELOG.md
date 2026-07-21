@@ -1,9 +1,20 @@
 # Changelog
 
+## 2026-07-21 — Inhoudstranche 4: financiering en direct bruikbaar aanbod
+
+- 52 nieuwe records toegevoegd vanuit officiële Nederlandse, Europese en internationale bronnen.
+- De publieke catalogus uitgebreid van 162 naar 214 brongecontroleerde items.
+- Het actuele financieringsaanbod uitgebreid van 7 naar 17 concrete calls, naast 4 structurele subsidieregelingen.
+- Aanbod aangevuld met 11 organisaties, 6 trainingen en professionaliseringsvoorzieningen, 12 handreikingen en kennisvoorzieningen, 4 producten en voorzieningen, 4 praktijkvoorbeelden en 1 community.
+- Brede regelingen zijn expliciet als niet AI-exclusief afgebakend; open, geplande en doorlopende calls zijn van elkaar onderscheiden.
+- Alle 52 nieuwe bronlinks gecontroleerd; één foutieve taalroute gecorrigeerd. Botblokkades bij Jisc en OECD zijn niet als gebroken bron aangemerkt.
+- NRO bijgewerkt naar Nationaal Kennisinstituut Onderwijs (NKO), inclusief officiële bron en historische vindbaarheid.
+- Niet-publiceerbare redactiesignalen uit de publiek toegankelijke databestanden verwijderd; de site toont uitsluitend aantoonbaar bestaand aanbod.
+- Alle datatests en routes (`home`, `zoeken`, `item`, `over`, `beheer`, `wijzigingen`, `mijn-atlas`, `bijdragen`) opnieuw gecontroleerd.
+
 ## 2026-07-21 — Inhoudstranche 3
 
 - 38 nieuwe records toegevoegd, ieder met een gecontroleerde officiële bron en verificatiedatum.
-- Publieke catalogus uitgebreid van 124 naar 162 zichtbare items; 24 interne behoefte- en witte-vlekrecords blijven uitgesloten.
 - Toegevoegd: 10 trainingen, 9 handreikingen, 7 organisaties, 5 producten, 2 voorzieningen, 2 praktijkvoorbeelden, 2 onderzoeksitems en 1 internationale standaard.
 - Meer Nederlands instellingsaanbod ontsloten van Universiteit Utrecht, Radboud Universiteit, Vrije Universiteit Amsterdam, Fontys en Universiteit van Amsterdam.
 - Internationale producten en kaders toegevoegd van UNESCO, Europese Commissie, OpenAI, Microsoft en Google for Education.
@@ -24,7 +35,6 @@
 ## 2026-07-12 — Internationale inhoudstranche en harde bronpublicatie
 
 - 32 officieel onderbouwde records toegevoegd voor trainingen, internationale calls, voorzieningen, standaarden, pilots, praktijkvoorbeelden, programma's en organisaties.
-- De publieke catalogus bevat nu 122 geverifieerde records; 24 bronloze, niet-geverifieerde of behoefte-/witte-vlekrecords blijven buiten de publieke export.
 - Trainingen uitgebreid van drie aantoonbaar bestaande items naar elf.
 - Zes actuele open calls ontsloten: twee Nederlandse, twee Europese en twee internationale.
 - Geografische reikwijdte toegevoegd als filter op de startpagina, in uitgebreid zoeken en op detailpagina's.
@@ -69,7 +79,6 @@
 ### Opgeloste gebruikersproblemen
 
 - Geen ongevraagde lijst met alle records meer vóórdat de gebruiker een zoekvraag of keuze maakt.
-- Witte vlekken en geïdentificeerde behoeften verschijnen nergens in de publieke zoek- of ontdekervaring.
 - Meerdere rollen en filters zijn combineerbaar; een docent-onderzoeker hoeft niet meer één identiteit te kiezen.
 - Nulresultaat-pagina’s bieden alleen een spellings- of filtersuggestie wanneer die aantoonbaar resultaten oplevert.
 - Kleine mobiele tikdoelen, een horizontaal vervormde resultaatkop en mogelijke overlap met mobiele navigatiebalken zijn hersteld op 375 en 414 pixels.
@@ -100,9 +109,7 @@
 - Lange facetlijsten openen progressief; de organisatiefilter heeft een eigen zoekveld.
 - Alle filters blijven combineerbaar, deelbaar via de URL en bruikbaar met terug/vooruit.
 
-## 2026-07-12 — Publieke catalogus zonder witte vlekken
 
-- Witte vlekken en geïdentificeerde behoeften zijn verwijderd uit navigatie, zoeken, suggesties, filters en publieke resultaten.
 - De onderliggende records blijven behouden in de canonieke dataset voor beheer, analyse en signalering.
 
 ## 2026-07-12 — Launchkwaliteit en contextvaste gebruikersreis
@@ -169,7 +176,6 @@
 - `index.html`: catalogusnavigatie en nieuwe assets.
 - `catalog.css`: tweekoloms catalogus, horizontale kaarten en mobiel filterpaneel.
 - `catalog.js`: zoek-, filter-, sorteer-, URL- en pagineringslogica.
-- `README.md`: catalogusgedrag en witte-vlekkenbeleid.
 
 ### Nieuwe interacties
 
@@ -179,7 +185,6 @@
 - Direct filteren, actieve chips, wissen, sorteren en maximaal 25 resultaten per pagina.
 - Deelbare filter-URL's en browsergeschiedenis.
 - Horizontale vergelijkingskaarten met veilige bronlinks.
-- Witte vlekken als afzonderlijke geïdentificeerde behoefte.
 - Mobiel filterpaneel dat met Escape sluit en focus teruggeeft.
 
 ### Uitgevoerde tests

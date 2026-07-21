@@ -8,7 +8,7 @@ De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijze
 ## Uitgangspunten
 
 - uitsluitend bestaand aanbod met een vastgelegde bron wordt publiek getoond;
-- witte vlekken en bronloze behoeften horen niet in de publieke catalogus;
+- interne redactiesignalen en bronloze concepten horen niet in de publieke catalogus;
 - filters binnen een groep werken als OR, verschillende groepen als AND;
 - meerdere rollen, zoals Docent en Onderzoeker, kunnen gecombineerd worden;
 - zoek- en filterstaat staat in de URL en is deelbaar;
