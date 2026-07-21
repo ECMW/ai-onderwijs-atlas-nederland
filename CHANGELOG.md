@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-07-21 — Inhoudstranche 3
+
+- 38 nieuwe records toegevoegd, ieder met een gecontroleerde officiële bron en verificatiedatum.
+- Publieke catalogus uitgebreid van 124 naar 162 zichtbare items; 24 interne behoefte- en witte-vlekrecords blijven uitgesloten.
+- Toegevoegd: 10 trainingen, 9 handreikingen, 7 organisaties, 5 producten, 2 voorzieningen, 2 praktijkvoorbeelden, 2 onderzoeksitems en 1 internationale standaard.
+- Meer Nederlands instellingsaanbod ontsloten van Universiteit Utrecht, Radboud Universiteit, Vrije Universiteit Amsterdam, Fontys en Universiteit van Amsterdam.
+- Internationale producten en kaders toegevoegd van UNESCO, Europese Commissie, OpenAI, Microsoft en Google for Education.
+- Nieuwe publieke governancebronnen toegevoegd van Autoriteit Persoonsgegevens, RDI en Rijksoverheid.
+- Alle nieuwe items zijn gepubliceerd in de zoekindex; browsercontroles voor product-, organisatie- en combinatiefilters zijn geslaagd.
+
 ## 2026-07-18 — Conceptuele eindredactie en publicatie-integriteit
 
 - Publieke positionering aangescherpt: open en brongebaseerd, maar geen keurmerk, ranglijst, aanbevelingssysteem of volledigheidsgarantie.
