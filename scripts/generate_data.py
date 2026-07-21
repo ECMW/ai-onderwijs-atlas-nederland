@@ -22,6 +22,9 @@ def is_publishable(record):
 
 published = [record for record in records if is_publishable(record)]
 public_meta = {**meta, 'recordCount': len(published)}
+(R / 'data/metadata.json').write_text(
+    json.dumps(public_meta, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+)
 (R / 'data/data-v2.js').write_text(
     'window.ATLAS_RECORDS=' + json.dumps(
         {'metadata': public_meta, 'records': published}, ensure_ascii=False, separators=(',', ':')

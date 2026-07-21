@@ -1,0 +1,193 @@
+/*
+ * Eva Willems house style: Strand
+ * Reusable design tokens for the Atlas and www.evawillems.nl.
+ * Aptos is used when installed; no external font request or tracking is added.
+ */
+:root{
+  --brand-olive:#6f7651;
+  --brand-olive-deep:#4f583d;
+  --brand-sand:#e8dfcf;
+  --brand-dune:#f6f2e9;
+  --brand-shell:#fcfaf6;
+  --brand-bluegray:#607783;
+  --brand-bluegray-deep:#344f5d;
+  --brand-mist:#e8eef0;
+  --brand-stone:#737a78;
+  --brand-ink:#28383f;
+  --brand-focus:#b7662f;
+  --brand-font:"Aptos","Aptos Display","Segoe UI",system-ui,-apple-system,sans-serif;
+
+  /* Compatibility tokens used by the existing Atlas styles. */
+  --navy:var(--brand-bluegray-deep);
+  --navy2:#496673;
+  --green:var(--brand-olive-deep);
+  --mint:#edf0e6;
+  --ink:var(--brand-ink);
+  --muted:#65737a;
+  --bg:var(--brand-dune);
+  --catalog-bg:#f2f0ea;
+  --line:#d8d4ca;
+  --focus:var(--brand-focus);
+  --shadow:0 12px 32px rgba(52,79,93,.09);
+  --r:12px;
+}
+
+html{background:var(--brand-shell)}
+body{
+  color:var(--brand-ink);
+  background:var(--brand-shell);
+  font-family:var(--brand-font);
+  font-size:16px;
+  line-height:1.58;
+  text-rendering:optimizeLegibility;
+}
+button,input,select,textarea{font-family:inherit}
+h1,h2,h3,.brand{font-family:var(--brand-font)}
+h1,h2,h3{color:#263b45;text-wrap:balance}
+
+.site-header{
+  background:rgba(252,250,246,.96);
+  border-bottom-color:#d8d2c6;
+  box-shadow:0 3px 18px rgba(52,79,93,.05);
+  backdrop-filter:blur(12px);
+}
+.brand{letter-spacing:.005em}
+.brand-mark{
+  position:relative;
+  overflow:hidden;
+  border-radius:50% 50% 46% 54%;
+  background:linear-gradient(150deg,var(--brand-bluegray-deep) 0 58%,var(--brand-olive) 58% 76%,var(--brand-sand) 76%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.28);
+}
+.site-header nav a{border-bottom:2px solid transparent;padding:.45rem .1rem}
+.site-header nav a:hover,.site-header nav a[aria-current=page]{color:var(--brand-olive-deep);border-bottom-color:var(--brand-olive)}
+.header-credit{margin-left:1.5rem;padding-left:1.5rem;border-left:1px solid var(--line);color:var(--brand-bluegray);font-size:.82rem;font-weight:650;white-space:nowrap}
+
+.btn,.card-cta.primary,.mobile-filter{
+  background:var(--brand-bluegray-deep);
+  border-color:var(--brand-bluegray-deep);
+  color:#fff;
+  box-shadow:none;
+}
+.btn:hover,.card-cta.primary:hover,.mobile-filter:hover{background:#263f4c;border-color:#263f4c}
+.btn.secondary{background:transparent;color:var(--brand-bluegray-deep);border-color:var(--brand-bluegray)}
+
+.home-market,.home-simple,.catalog{background:transparent}
+.home-market .home-search{
+  position:relative;
+  overflow:visible;
+  isolation:isolate;
+  padding-bottom:12.5rem!important;
+  background:
+    url("assets/strand-horizon.svg") bottom center/100% 11.5rem no-repeat,
+    linear-gradient(135deg,var(--brand-shell),#f8f5ed 68%,var(--brand-dune));
+  border:1px solid #d7d4cb;
+  border-top:8px solid var(--brand-olive);
+  box-shadow:0 18px 50px rgba(52,79,93,.08);
+}
+.home-market .home-search::before{
+  content:"AI & ONDERWIJS ATLAS NEDERLAND";
+  display:block;
+  margin-bottom:1.1rem;
+  color:var(--brand-bluegray-deep);
+  font-size:.74rem;
+  font-weight:850;
+  letter-spacing:.13em;
+}
+.home-market .home-search>.eyebrow{display:none}
+.home-market .home-search h1{max-width:980px;margin:.15rem 0 1.15rem;color:var(--brand-ink);font-size:clamp(3.25rem,6vw,5.55rem);line-height:.98;letter-spacing:-.055em}
+.home-market .home-search>p{max-width:780px;color:#52656d;font-size:1.1rem}
+.home-market .home-search .atlas-search{max-width:900px}
+.home-market .home-search .search-row{box-shadow:0 12px 30px rgba(52,79,93,.13)}
+.atlas-search input{
+  border-color:#86959a;
+  background:#fffefa;
+  color:var(--brand-ink);
+  box-shadow:inset 0 1px 2px rgba(52,79,93,.05);
+}
+.atlas-search input::placeholder{color:#68777d}
+.popular a,.related a,.chip{
+  background:#fffdf8;
+  border-color:#b8b6aa;
+}
+.popular a:hover,.related a:hover,.chip:hover{background:#eef0e7;border-color:var(--brand-olive)}
+
+.home-filter-sidebar,.filters,.result-card,.teaser-card,.personal-empty,.saved-list article,.contribute-options article{
+  background:#fffdf9;
+  border-color:#d8d4ca;
+}
+.home-filter-sidebar,.filters{box-shadow:0 10px 28px rgba(52,79,93,.06)}
+.home-filter-group>summary::after,.facet summary b{color:var(--brand-olive-deep)}
+.facet summary b{background:#e9eddf}
+.result-card{box-shadow:0 3px 14px rgba(52,79,93,.04)}
+.result-card:hover{border-color:#9da58b;box-shadow:0 12px 30px rgba(52,79,93,.1)}
+.type-label{color:var(--brand-olive-deep)}
+.sector-chips span{background:var(--brand-mist);color:#3d5661}
+.card-actions{background:#f8f5ee;border-color:#e0dbd0}
+.card-cta:not(.primary),.clear-link,.text-button,.selection-actions button,.relevance summary,.home-all-filters{color:#3f6576}
+.relevance{border-color:#e4dfd4}
+
+.persona-indicator,.missing,.source-policy,.notice{
+  background:#eef0e7;
+  border-color:var(--brand-olive)!important;
+}
+.alternative{background:#eef0e7;border-color:var(--brand-olive);color:var(--brand-olive-deep)}
+.suggestions{border-color:#cbc6ba;box-shadow:0 16px 42px rgba(52,79,93,.16)}
+.suggestions a:hover,.suggestions a:focus{background:#eef0e7}
+
+/* Rustige kleurcodering voor de belangrijkste ingangen. */
+.task-tile{
+  background:linear-gradient(150deg,#fffdf9,#f7f4ec);
+  border-color:#d8d4ca;
+  border-top:4px solid var(--brand-olive);
+  box-shadow:0 3px 14px rgba(52,79,93,.04);
+}
+.task-tile:nth-child(3n+2){border-top-color:var(--brand-bluegray)}
+.task-tile:nth-child(3n){border-top-color:#b6a889}
+.task-tile:hover{background:#fffefa;border-color:#9da58b;box-shadow:0 10px 26px rgba(52,79,93,.09)}
+.teaser-card{border-top:3px solid #aab5b2}
+.teaser-card:nth-child(even){border-top-color:var(--brand-olive)}
+.role-option:has(input:checked){background:#eef0e7;border-color:var(--brand-olive)}
+
+footer{
+  background:linear-gradient(120deg,#2d4653,var(--brand-bluegray-deep) 65%,#455b5e);
+  color:#f7f3e9;
+  border-top:6px solid var(--brand-olive);
+}
+
+*:focus-visible{outline:3px solid var(--brand-focus)!important;outline-offset:3px}
+::selection{background:var(--brand-sand);color:var(--brand-ink)}
+
+@media(max-width:900px){
+  .site-header{backdrop-filter:none}
+  .menu{background:#fffdf9;border-color:#9ca9ad;color:var(--brand-bluegray-deep)}
+}
+@media(max-width:600px){
+  .home-market .home-search{
+    padding-bottom:8.9rem!important;
+    border-radius:10px;
+    background-size:100% 7.75rem,auto;
+  }
+  .home-market .home-search::before{margin-bottom:.8rem;font-size:.66rem;letter-spacing:.1em}
+  .home-market .home-search h1{font-size:clamp(2.6rem,13vw,3.55rem);line-height:1.01}
+  .home-market .home-search>p{font-size:.98rem}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+@media print{body{background:#fff}.site-header{box-shadow:none}}
+
+.trust-summary{display:flex;flex-wrap:wrap;gap:.5rem 1.15rem;margin:1rem 0 1.35rem;padding:0;list-style:none;color:#455b63;font-size:.84rem;font-weight:700}
+.trust-summary li{display:flex;align-items:center;gap:.4rem}
+.trust-summary li::before{content:"\2713";display:grid;place-items:center;width:1.25rem;height:1.25rem;border-radius:50%;background:#e4eadb;color:var(--brand-olive-deep);font-size:.72rem}
+.principle-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin:1rem 0 2rem}
+.principle-list section{padding:1rem 1.05rem;border:1px solid #d8d4ca;border-top:4px solid var(--brand-olive);border-radius:10px;background:#fffdf9}
+.principle-list section:nth-child(2){border-top-color:var(--brand-bluegray)}
+.principle-list section:nth-child(3){border-top-color:#b6a889}
+.principle-list h3{margin:0 0 .35rem;font-size:1rem}
+.principle-list p{margin:0;font-size:.88rem;color:var(--muted)}
+@media(max-width:700px){.principle-list{grid-template-columns:1fr}.trust-summary{display:grid;gap:.45rem}}
+@media(max-width:900px){
+  .site-header .brand{order:1}
+  .site-header .header-credit{order:2;margin-left:auto;margin-right:.75rem;padding-left:0;border-left:0;font-size:.75rem}
+  .site-header .menu{order:3}
+  .site-header nav{order:4}
+}

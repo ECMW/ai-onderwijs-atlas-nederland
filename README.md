@@ -1,33 +1,56 @@
 # AI & Onderwijs Atlas Nederland
 
-De publieke interface is taakgestuurd: bezoekers zoeken eerst op hun vraag en verfijnen daarna op thema, sector, soort aanbod, doelgroep, beschikbaarheid, organisatie en actualiteit. Alle selecties worden in de URL bewaard en zijn daardoor deelbaar.
+De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijzer voor bestaand aanbod rond AI in het onderwijs. Bezoekers zoeken vanuit hun vraag en kunnen daarna combineren op thema, sector, soort aanbod, doelgroep, beschikbaarheid, organisatie, geografische reikwijdte en actualiteit.
 
-De standaardvolgorde gebruikt een transparant relevantiemodel: titelmatches wegen het zwaarst, gevolgd door thema's en trefwoorden, daarna beschrijving. Direct beschikbaar en recent gecontroleerd aanbod krijgt een kleine bonus; te verifiëren aanbod niet.
+- Publieke Atlas: https://ecmw.github.io/ai-onderwijs-atlas-nederland/
+- Bijdragen en broncode: https://github.com/ECMW/ai-onderwijs-atlas-nederland
 
-De catalogus leest rechtstreeks uit `data/data-v2.js` (`window.ATLAS_RECORDS`). Thema's worden, zolang het bronveld `themes` leeg is, reproduceerbaar afgeleid met de centrale `THEME_RULES` in `catalog.js`; de bronrecords zelf worden daarvoor niet aangepast. De site gebruikt geen tracking, cookies, externe autocomplete of backend.
+## Uitgangspunten
 
-Een blok “Nieuw toegevoegd” wordt pas getoond wanneer het databeheerproces een betrouwbaar en structureel bijgehouden `addedDate`-veld bevat. De huidige migratiedatum en lege publicatiedatums zijn daarvoor nadrukkelijk niet geschikt.
+- uitsluitend bestaand aanbod met een vastgelegde bron wordt publiek getoond;
+- interne redactiesignalen en bronloze concepten horen niet in de publieke catalogus;
+- filters binnen een groep werken als OR, verschillende groepen als AND;
+- meerdere rollen, zoals Docent en Onderzoeker, kunnen gecombineerd worden;
+- zoek- en filterstaat staat in de URL en is deelbaar;
+- persoonlijke voorkeuren, favorieten en bewaarde zoekopdrachten blijven lokaal in de browser;
+- er zijn geen trackers, cookies, externe autocomplete of backend nodig.
 
-Een statisch, toegankelijk kennisplatform dat zonder installatie werkt. Open `index.html` in een moderne browser.
+## Techniek en data
 
-## Beheerarchitectuur
+De website is statische HTML, CSS en vanilla JavaScript. Er is geen buildstap nodig. De canonieke bron is `data/records.json`; de publieke browserprojectie staat in `data/data-v2.js` als `window.ATLAS_RECORDS`.
 
-De canonieke v2-data staat in `data/records.json`. GitHub Actions valideert en publiceert iedere merge naar `main`. Officiële bronnen worden dagelijks op metadatawijzigingen gecontroleerd; resultaten worden uitsluitend als reviewvoorstel of Issue aangeboden. Zie `docs/update-process.md`.
+Het datamodel en de toegestane enums staan in [docs/data-model.md](docs/data-model.md). De publieke export bevat alleen records met een officiele bron en een bevestigde verificatiestatus.
 
-## Gegevens toevoegen
+## Dagelijks onderhoud
 
-De website leest de gegevens uit `data/data.js`, zodat zij ook via `file://` werkt. Voeg per bronrecord een object toe aan `items`. Gebruik minimaal `id`, `title` en `type`. Ondersteunde velden zijn onder meer `description`, `organisation`, `sector` (array), `audience`, `keywords` (array), `status`, `year`, `url`, `related` (array) en `added` (ISO-datum). Ontbrekende velden worden als “Nog niet ingevuld” getoond.
+De workflow controleert geregistreerde bronnen om 05:00 UTC of volgens hun eigen schema. Zij normaliseert pagina-inhoud, negeert opmaakruis, bewaart de laatste succesvolle staat en classificeert veranderingen. Mogelijke toevoegingen, updates, archivering en twijfelgevallen worden uitsluitend als reviewvoorstel aangeboden.
 
-`data/items.json` is beschikbaar als uitwisselingsformaat. Houd dit bestand bij publicatie gelijk aan `data/data.js`.
+Automatisering mag nooit zelfstandig publiceren, records wijzigen, verwijderen of pull requests mergen. Zie:
 
-## Publiceren
+- [dagelijkse onderhoudsarchitectuur](docs/daily-maintenance.md);
+- [voorbeeld van het dagrapport](docs/example-daily-report.md);
+- [bronbeleid](docs/source-policy.md);
+- [redactioneel beleid](docs/editorial-policy.md).
 
-Vervang vóór publieke publicatie de voorbeeld-URL in `index.html`, `robots.txt` en `sitemap.xml` door het definitieve domein. Publiceer vervolgens de volledige map op een statische webserver.
+## Huisstijl
 
-## Bronbeleid
+De Atlas gebruikt de herbruikbare huisstijl **Strand**: Aptos, olijfgroen, beige, grijs en blauwgrijs. De tokens staan in `brand.css` en kunnen ook voor `www.evawillems.nl` worden gebruikt. Zie [docs/brand-guide.md](docs/brand-guide.md).
 
-Neem uitsluitend informatie over uit de aangeleverde markdownbronnen. Voeg geen aannames toe. Voeg duplicaten samen en leg herkomst bij voorkeur per record vast.
+## Lokaal openen en testen
 
-## Catalogusinteracties
+Open `index.html` rechtstreeks of start een eenvoudige lokale webserver. Voer voor een inhoudelijke wijziging uit:
 
-De zoekcatalogus ondersteunt directe filters op soort aanbod, thema, sector, doelgroep, geografische reikwijdte en status. Filters binnen één groep werken als OR; verschillende groepen als AND. De selectie wordt in de URL-hash opgeslagen en is daardoor deelbaar. De publieke export bevat uitsluitend records met een officiële bron en een bevestigde verificatiestatus; witte vlekken, behoeften en bronloze concepten worden niet gepubliceerd.
+```text
+python scripts/validate_data.py
+python -m unittest discover tests -v
+```
+
+De onderhoudstests gebruiken lokale fixtures en zijn niet afhankelijk van live websites. De dagelijkse workflow kan in GitHub handmatig worden gestart via **Actions > Daily Atlas maintenance review > Run workflow**.
+
+## Bijdragen
+
+Een correctie of aanvulling moet een officiele bron bevatten. Automatische controles geven structuur-, bron- en duplicaatsignalen; een mens neemt altijd het publicatiebesluit. Zie [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Licentie en maker
+
+De Atlas is gemaakt door Eva Willems. Contact: `evac.m.willems@proton.me`. Zie [LICENSE](LICENSE) voor de licentievoorwaarden.

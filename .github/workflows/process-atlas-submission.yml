@@ -1,78 +1,50 @@
-name: Process Atlas submission
+name: Review Atlas submission
 
 on:
   issues:
     types: [opened, edited, reopened]
 
 permissions:
-  contents: write
+  contents: read
   issues: write
 
-concurrency:
-  group: atlas-content-write
-  cancel-in-progress: false
-
 jobs:
-  process:
+  review:
     if: ${{ github.event.issue.state == 'open' && contains(github.event.issue.labels.*.name, 'atlas-aanvulling') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
-      - name: Check and import the structured submission
-        id: import
+      - name: Check the structured submission without publishing
+        id: check
         continue-on-error: true
         env:
           ATLAS_ISSUE_BODY: ${{ github.event.issue.body }}
           ATLAS_ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
+          cp data/records.json "$RUNNER_TEMP/original-records.json"
           python scripts/import_issue_submission.py \
             --report-json "$RUNNER_TEMP/atlas-issue-report.json" \
             --report-markdown "$RUNNER_TEMP/atlas-issue-report.md"
-
-      - name: Validate and generate public data
-        if: ${{ steps.import.outcome == 'success' }}
-        run: |
-          python scripts/validate_data.py
-          python scripts/generate_data.py
-          python -m unittest discover tests
-
-      - name: Commit a successful contribution
-        if: ${{ steps.import.outcome == 'success' }}
-        env:
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-        run: |
-          git config user.name "atlas-quality-bot"
-          git config user.email "atlas-quality-bot@users.noreply.github.com"
-          git add data/records.json data/metadata.json data/data-v2.js data/search-index.json
-          git commit -m "Publiceer brongecontroleerde bijdrage #${ISSUE_NUMBER}"
-          git push origin HEAD:main
-
-      - name: Confirm publication and close the request
-        if: ${{ steps.import.outcome == 'success' }}
+          cp "$RUNNER_TEMP/original-records.json" data/records.json
+      - name: Return the review result
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
+          OUTCOME: ${{ steps.check.outcome }}
         run: |
-          gh label create "atlas:auto-published" --color "1A7F37" --description "Automatisch bron- en structuurgecontroleerd en gepubliceerd" --force
-          gh issue edit "$ISSUE_NUMBER" --add-label "atlas:auto-published"
+          if [ "$OUTCOME" = "success" ]; then
+            LABEL="atlas:ready-for-human-review"
+            COLOR="1A7F37"
+            DESCRIPTION="Automatische controles geslaagd; menselijke beoordeling vereist"
+          else
+            LABEL="atlas:needs-info"
+            COLOR="D4A72C"
+            DESCRIPTION="Aanvulling nodig voor beoordeling"
+          fi
+          gh label create "$LABEL" --color "$COLOR" --description "$DESCRIPTION" --force
+          gh issue edit "$ISSUE_NUMBER" --add-label "$LABEL"
           gh issue comment "$ISSUE_NUMBER" --body-file "$RUNNER_TEMP/atlas-issue-report.md"
-          gh issue close "$ISSUE_NUMBER" --reason completed
-
-      - name: Ask the contributor for a precise correction
-        if: ${{ steps.import.outcome != 'success' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-        run: |
-          gh label create "atlas:needs-info" --color "D4A72C" --description "Aanvulling nodig voor automatische publicatie" --force
-          gh issue edit "$ISSUE_NUMBER" --add-label "atlas:needs-info"
-          gh issue comment "$ISSUE_NUMBER" --body-file "$RUNNER_TEMP/atlas-issue-report.md"
-          exit 1
+          gh issue comment "$ISSUE_NUMBER" --body "Niets is automatisch gepubliceerd. Een beheerder beslist over verwerking."
