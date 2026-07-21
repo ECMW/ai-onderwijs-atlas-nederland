@@ -722,16 +722,16 @@
   },
   {
     "id": "nationaal-regieorgaan-onderwijsonderzoek-nro",
-    "title": "Nationaal Regieorgaan Onderwijsonderzoek (NRO)",
+    "title": "Nationaal Kennisinstituut Onderwijs (NKO)",
     "recordType": "organization",
     "legacyType": "Organisatie",
     "subtype": null,
     "organizationIds": [
       "org-nro"
     ],
-    "providerName": "NRO",
-    "description": "Financiert en programmeert onderwijsonderzoek, inclusief onderzoek naar digitalisering en AI in onderwijs.",
-    "purpose": "Onderwijsonderzoek en kennisbenutting",
+    "providerName": "Nationaal Kennisinstituut Onderwijs",
+    "description": "Nationaal kennisinstituut dat onderwijsonderzoek programmeert, financiert en verbindt met de onderwijspraktijk; tot 2026 bekend als NRO.",
+    "purpose": "Onderwijsonderzoek, kennisbenutting en evidence-informed onderwijs versterken",
     "audiences": [
       "Onderzoekers",
       "Onderwijsprofessionals",
@@ -751,12 +751,12 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Website",
-        "url": "https://www.nro.nl/",
+        "label": "Officiële website",
+        "url": "https://www.nko.nl/",
         "sourceType": "official"
       }
     ],
@@ -781,9 +781,12 @@
       "nl"
     ],
     "keywords": [
+      "NKO",
+      "NRO",
+      "Nationaal Kennisinstituut Onderwijs",
+      "kennisbenutting",
       "onderwijsonderzoek",
-      "subsidie",
-      "kennisbenutting"
+      "subsidie"
     ],
     "notes": null,
     "changeHistory": [
@@ -791,6 +794,11 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-07-21",
+        "type": "updated",
+        "summary": "Naam en bron bijgewerkt na de overgang van NRO naar Nationaal Kennisinstituut Onderwijs."
       }
     ]
   },
@@ -2105,137 +2113,6 @@
     ]
   },
   {
-    "id": "nationale-ai-geletterdheidsbibliotheek",
-    "title": "Nationale AI-geletterdheidsbibliotheek",
-    "recordType": "service",
-    "legacyType": "Voorziening",
-    "subtype": null,
-    "organizationIds": [],
-    "providerName": "Nog niet ingevuld",
-    "description": "Een onderhouden nationale bibliotheek met herbruikbare AI-literacy-materialen is als witte vlek opgenomen.",
-    "purpose": "Verspreide materialen vindbaar en herbruikbaar maken",
-    "audiences": [
-      "Docenten",
-      "Studenten",
-      "Bestuurders"
-    ],
-    "sectors": [
-      "PO",
-      "VO",
-      "MBO",
-      "HBO",
-      "WO"
-    ],
-    "themes": [],
-    "status": "unknown",
-    "availabilityText": "Nog niet ingevuld",
-    "startDate": null,
-    "endDate": null,
-    "publicationDate": null,
-    "lastVerified": null,
-    "verificationStatus": "needs_review",
-    "sourceUrls": [],
-    "relatedIds": [],
-    "parentIds": [],
-    "childIds": [],
-    "geographicScope": "Nederland",
-    "accessType": "unknown",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
-    "fundingDeadline": null,
-    "applicationOpenDate": null,
-    "applicationDeadline": null,
-    "fundingMin": null,
-    "fundingMax": null,
-    "totalBudget": null,
-    "eligibility": null,
-    "applicantTypes": [],
-    "callStatus": null,
-    "recurrence": null,
-    "language": [
-      "nl"
-    ],
-    "keywords": [
-      "AI-literacy",
-      "bibliotheek",
-      "witte vlek"
-    ],
-    "notes": null,
-    "changeHistory": [
-      {
-        "date": "2026-07-12",
-        "type": "migrated",
-        "summary": "Gemigreerd uit atlasdataset v1."
-      }
-    ]
-  },
-  {
-    "id": "gezamenlijke-ai-act-conforme-toetsvoorziening",
-    "title": "Gezamenlijke AI Act-conforme toetsvoorziening",
-    "recordType": "service",
-    "legacyType": "Voorziening",
-    "subtype": null,
-    "organizationIds": [],
-    "providerName": "Nog niet ingevuld",
-    "description": "Een gezamenlijke publieke toetsvoorziening die aantoonbaar voldoet aan onderwijs- en AI Act-eisen is als witte vlek gemarkeerd.",
-    "purpose": "Veilige en uitlegbare AI-ondersteuning voor toetsing bieden",
-    "audiences": [
-      "Docenten",
-      "Examencommissies",
-      "Bestuurders"
-    ],
-    "sectors": [
-      "PO",
-      "VO",
-      "MBO",
-      "HBO",
-      "WO"
-    ],
-    "themes": [],
-    "status": "unknown",
-    "availabilityText": "Nog niet ingevuld",
-    "startDate": null,
-    "endDate": null,
-    "publicationDate": null,
-    "lastVerified": null,
-    "verificationStatus": "needs_review",
-    "sourceUrls": [],
-    "relatedIds": [],
-    "parentIds": [],
-    "childIds": [],
-    "geographicScope": "Nederland",
-    "accessType": "unknown",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
-    "fundingDeadline": null,
-    "applicationOpenDate": null,
-    "applicationDeadline": null,
-    "fundingMin": null,
-    "fundingMax": null,
-    "totalBudget": null,
-    "eligibility": null,
-    "applicantTypes": [],
-    "callStatus": null,
-    "recurrence": null,
-    "language": [
-      "nl"
-    ],
-    "keywords": [
-      "toetsing",
-      "AI Act",
-      "publieke voorziening",
-      "witte vlek"
-    ],
-    "notes": null,
-    "changeHistory": [
-      {
-        "date": "2026-07-12",
-        "type": "migrated",
-        "summary": "Gemigreerd uit atlasdataset v1."
-      }
-    ]
-  },
-  {
     "id": "surf-ai-werkplek",
     "title": "SURF AI-werkplek",
     "recordType": "service",
@@ -2372,72 +2249,6 @@
       "veilige AI-omgeving",
       "platform",
       "onderzoek"
-    ],
-    "notes": null,
-    "changeHistory": [
-      {
-        "date": "2026-07-12",
-        "type": "migrated",
-        "summary": "Gemigreerd uit atlasdataset v1."
-      }
-    ]
-  },
-  {
-    "id": "landelijke-publieke-ai-werkplek-voor-onderwijs",
-    "title": "Landelijke publieke AI-werkplek voor onderwijs",
-    "recordType": "service",
-    "legacyType": "Voorziening",
-    "subtype": null,
-    "organizationIds": [],
-    "providerName": "Nog niet ingevuld",
-    "description": "Een landelijke publieke AI-werkplek voor alle onderwijssectoren is in de bron als witte vlek benoemd.",
-    "purpose": "Breed toegankelijke, veilige publieke AI-omgeving bieden",
-    "audiences": [
-      "Docenten",
-      "Studenten",
-      "Medewerkers",
-      "Bestuurders"
-    ],
-    "sectors": [
-      "PO",
-      "VO",
-      "MBO",
-      "HBO",
-      "WO"
-    ],
-    "themes": [],
-    "status": "unknown",
-    "availabilityText": "Nog niet ingevuld",
-    "startDate": null,
-    "endDate": null,
-    "publicationDate": null,
-    "lastVerified": null,
-    "verificationStatus": "needs_review",
-    "sourceUrls": [],
-    "relatedIds": [],
-    "parentIds": [],
-    "childIds": [],
-    "geographicScope": "Nederland",
-    "accessType": "unknown",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
-    "fundingDeadline": null,
-    "applicationOpenDate": null,
-    "applicationDeadline": null,
-    "fundingMin": null,
-    "fundingMax": null,
-    "totalBudget": null,
-    "eligibility": null,
-    "applicantTypes": [],
-    "callStatus": null,
-    "recurrence": null,
-    "language": [
-      "nl"
-    ],
-    "keywords": [
-      "veilige AI-omgeving",
-      "publieke infrastructuur",
-      "witte vlek"
     ],
     "notes": null,
     "changeHistory": [
@@ -3735,71 +3546,6 @@
     ]
   },
   {
-    "id": "landelijk-modelbeleid-ai-voor-onderwijsinstellingen",
-    "title": "Landelijk modelbeleid AI voor onderwijsinstellingen",
-    "recordType": "guidance",
-    "legacyType": "Handreiking",
-    "subtype": null,
-    "organizationIds": [],
-    "providerName": "Nog niet ingevuld",
-    "description": "Een breed bruikbaar, onderhouden modelbeleid voor AI op instellingsniveau is in de bron als witte vlek gemarkeerd.",
-    "purpose": "Voorbeeldbeleid bieden dat instellingen lokaal kunnen aanpassen",
-    "audiences": [
-      "Bestuurders",
-      "Beleidsmakers",
-      "Juristen"
-    ],
-    "sectors": [
-      "PO",
-      "VO",
-      "MBO",
-      "HBO",
-      "WO"
-    ],
-    "themes": [],
-    "status": "unknown",
-    "availabilityText": "Nog niet ingevuld",
-    "startDate": null,
-    "endDate": null,
-    "publicationDate": null,
-    "lastVerified": null,
-    "verificationStatus": "needs_review",
-    "sourceUrls": [],
-    "relatedIds": [],
-    "parentIds": [],
-    "childIds": [],
-    "geographicScope": "Nederland",
-    "accessType": "unknown",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
-    "fundingDeadline": null,
-    "applicationOpenDate": null,
-    "applicationDeadline": null,
-    "fundingMin": null,
-    "fundingMax": null,
-    "totalBudget": null,
-    "eligibility": null,
-    "applicantTypes": [],
-    "callStatus": null,
-    "recurrence": null,
-    "language": [
-      "nl"
-    ],
-    "keywords": [
-      "voorbeeldbeleid",
-      "modelbeleid",
-      "witte vlek"
-    ],
-    "notes": null,
-    "changeHistory": [
-      {
-        "date": "2026-07-12",
-        "type": "migrated",
-        "summary": "Gemigreerd uit atlasdataset v1."
-      }
-    ]
-  },
-  {
     "id": "ai-go-raamwerk-voor-ai-geletterdheid",
     "title": "AI-GO! Raamwerk voor AI-geletterdheid",
     "recordType": "training",
@@ -4145,474 +3891,6 @@
       "architectuur",
       "standaarden",
       "ROSA"
-    ],
-    "notes": null,
-    "changeHistory": [
-      {
-        "date": "2026-07-12",
-        "type": "migrated",
-        "summary": "Gemigreerd uit atlasdataset v1."
-      }
-    ]
-  },
-  {
-    "id": "ai-specifieke-onderwijsstandaard-voor-data-metadata-en-logging",
-    "title": "AI-specifieke onderwijsstandaard voor data, metadata en logging",
-    "recordType": "standard",
-    "legacyType": "Standaard",
-    "subtype": null,
-    "organizationIds": [],
-    "providerName": "Nog niet ingevuld",
-    "description": "Een onderwijsbrede AI-specifieke standaard voor data, metadata, logging en uitwisselbaarheid is als witte vlek opgenomen.",
-    "purpose": "Interoperabiliteit en controleerbaarheid van AI-systemen versterken",
-    "audiences": [
-      "IT-professionals",
-      "Architecten",
-      "Leveranciers",
-      "Toezichthouders"
-    ],
-    "sectors": [
-      "PO",
-      "VO",
-      "MBO",
-      "HBO",
-      "WO"
-    ],
-    "themes": [],
-    "status": "unknown",
-    "availabilityText": "Nog niet ingevuld",
-    "startDate": null,
-    "endDate": null,
-    "publicationDate": null,
-    "lastVerified": null,
-    "verificationStatus": "needs_review",
-    "sourceUrls": [],
-    "relatedIds": [],
-    "parentIds": [],
-    "childIds": [],
-    "geographicScope": "Nederland",
-    "accessType": "unknown",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
-    "fundingDeadline": null,
-    "applicationOpenDate": null,
-    "applicationDeadline": null,
-    "fundingMin": null,
-    "fundingMax": null,
-    "totalBudget": null,
-    "eligibility": null,
-    "applicantTypes": [],
-    "callStatus": null,
-    "recurrence": null,
-    "language": [
-      "nl"
-    ],
-    "keywords": [
-      "standaarden",
-      "logging",
-      "metadata",
-      "witte vlek"
-    ],
-    "notes": null,
-    "changeHistory": [
-      {
-        "date": "2026-07-12",
-        "type": "migrated",
-        "summary": "Gemigreerd uit atlasdataset v1."
-      }
-    ]
-  },
-  {
-    "id": "behoefte-veilige-ai-omgeving",
-    "title": "Behoefte: veilige AI-omgeving",
-    "recordType": "identified_need",
-    "legacyType": "Behoefte",
-    "subtype": null,
-    "organizationIds": [
-      "org-werkveld"
-    ],
-    "providerName": "Werkveld",
-    "description": "Onderwijsprofessionals zoeken een veilige, toegankelijke omgeving waarin zij AI kunnen gebruiken zonder zelf complexe leveranciers- en privacyafwegingen te maken.",
-    "purpose": "Praktisch en verantwoord gebruik mogelijk maken",
-    "audiences": [
-      "Docenten",
-      "Studenten",
-      "Medewerkers",
-      "IT-professionals"
-    ],
-    "sectors": [
-      "PO",
-      "VO",
-      "MBO",
-      "HBO",
-      "WO"
-    ],
-    "themes": [],
-    "status": "identified_need",
-    "availabilityText": "Nog niet ingevuld",
-    "startDate": null,
-    "endDate": null,
-    "publicationDate": null,
-    "lastVerified": null,
-    "verificationStatus": "needs_review",
-    "sourceUrls": [],
-    "relatedIds": [],
-    "parentIds": [],
-    "childIds": [],
-    "geographicScope": "Nederland",
-    "accessType": "unknown",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
-    "fundingDeadline": null,
-    "applicationOpenDate": null,
-    "applicationDeadline": null,
-    "fundingMin": null,
-    "fundingMax": null,
-    "totalBudget": null,
-    "eligibility": null,
-    "applicantTypes": [],
-    "callStatus": null,
-    "recurrence": null,
-    "language": [
-      "nl"
-    ],
-    "keywords": [
-      "veilige AI-omgeving",
-      "implementatiehulp",
-      "privacy"
-    ],
-    "notes": null,
-    "changeHistory": [
-      {
-        "date": "2026-07-12",
-        "type": "migrated",
-        "summary": "Gemigreerd uit atlasdataset v1."
-      }
-    ]
-  },
-  {
-    "id": "behoefte-hulp-bij-toetsing-en-examinering",
-    "title": "Behoefte: hulp bij toetsing en examinering",
-    "recordType": "identified_need",
-    "legacyType": "Behoefte",
-    "subtype": null,
-    "organizationIds": [
-      "org-werkveld"
-    ],
-    "providerName": "Werkveld",
-    "description": "Vraag naar concrete toetsontwerpen, voorbeeldbeleid en ondersteuning die verder gaat dan algemene principes.",
-    "purpose": "Toetskwaliteit en diplomawaarde beschermen",
-    "audiences": [
-      "Docenten",
-      "Examencommissies",
-      "Bestuurders"
-    ],
-    "sectors": [
-      "VO",
-      "MBO",
-      "HBO",
-      "WO"
-    ],
-    "themes": [],
-    "status": "identified_need",
-    "availabilityText": "Nog niet ingevuld",
-    "startDate": null,
-    "endDate": null,
-    "publicationDate": null,
-    "lastVerified": null,
-    "verificationStatus": "needs_review",
-    "sourceUrls": [],
-    "relatedIds": [],
-    "parentIds": [],
-    "childIds": [],
-    "geographicScope": "Nederland",
-    "accessType": "unknown",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
-    "fundingDeadline": null,
-    "applicationOpenDate": null,
-    "applicationDeadline": null,
-    "fundingMin": null,
-    "fundingMax": null,
-    "totalBudget": null,
-    "eligibility": null,
-    "applicantTypes": [],
-    "callStatus": null,
-    "recurrence": null,
-    "language": [
-      "nl"
-    ],
-    "keywords": [
-      "toetsing",
-      "examinering",
-      "voorbeeldbeleid"
-    ],
-    "notes": null,
-    "changeHistory": [
-      {
-        "date": "2026-07-12",
-        "type": "migrated",
-        "summary": "Gemigreerd uit atlasdataset v1."
-      }
-    ]
-  },
-  {
-    "id": "behoefte-implementatiehulp-op-instellingsniveau",
-    "title": "Behoefte: implementatiehulp op instellingsniveau",
-    "recordType": "identified_need",
-    "legacyType": "Behoefte",
-    "subtype": null,
-    "organizationIds": [
-      "org-werkveld"
-    ],
-    "providerName": "Werkveld",
-    "description": "Vraag naar begeleiding bij de laatste kilometer: van kennisproduct en pilot naar werkende processen, rollen, training en beheer.",
-    "purpose": "Kennis vertalen naar structurele toepassing",
-    "audiences": [
-      "Bestuurders",
-      "Beleidsmakers",
-      "IT-professionals",
-      "Onderwijsadviseurs"
-    ],
-    "sectors": [
-      "PO",
-      "VO",
-      "MBO",
-      "HBO",
-      "WO"
-    ],
-    "themes": [],
-    "status": "identified_need",
-    "availabilityText": "Nog niet ingevuld",
-    "startDate": null,
-    "endDate": null,
-    "publicationDate": null,
-    "lastVerified": null,
-    "verificationStatus": "needs_review",
-    "sourceUrls": [],
-    "relatedIds": [],
-    "parentIds": [],
-    "childIds": [],
-    "geographicScope": "Nederland",
-    "accessType": "unknown",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
-    "fundingDeadline": null,
-    "applicationOpenDate": null,
-    "applicationDeadline": null,
-    "fundingMin": null,
-    "fundingMax": null,
-    "totalBudget": null,
-    "eligibility": null,
-    "applicantTypes": [],
-    "callStatus": null,
-    "recurrence": null,
-    "language": [
-      "nl"
-    ],
-    "keywords": [
-      "implementatiehulp",
-      "adoptie",
-      "governance",
-      "laatste kilometer"
-    ],
-    "notes": null,
-    "changeHistory": [
-      {
-        "date": "2026-07-12",
-        "type": "migrated",
-        "summary": "Gemigreerd uit atlasdataset v1."
-      }
-    ]
-  },
-  {
-    "id": "witte-vlek-landelijke-ai-servicecatalogus",
-    "title": "Witte vlek: landelijke AI-servicecatalogus",
-    "recordType": "white_spot",
-    "legacyType": "Witte vlek",
-    "subtype": null,
-    "organizationIds": [],
-    "providerName": "Nog niet ingevuld",
-    "description": "Er ontbreekt één onderhouden, sectoroverstijgende catalogus met beschikbare AI-diensten, producten, eigenaren en voorwaarden.",
-    "purpose": "Aanbod transparant en navigeerbaar maken",
-    "audiences": [
-      "Docenten",
-      "Bestuurders",
-      "IT-professionals",
-      "Beleidsmakers"
-    ],
-    "sectors": [
-      "PO",
-      "VO",
-      "MBO",
-      "HBO",
-      "WO"
-    ],
-    "themes": [],
-    "status": "identified_need",
-    "availabilityText": "Nog niet ingevuld",
-    "startDate": null,
-    "endDate": null,
-    "publicationDate": null,
-    "lastVerified": null,
-    "verificationStatus": "needs_review",
-    "sourceUrls": [],
-    "relatedIds": [],
-    "parentIds": [],
-    "childIds": [],
-    "geographicScope": "Nederland",
-    "accessType": "unknown",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
-    "fundingDeadline": null,
-    "applicationOpenDate": null,
-    "applicationDeadline": null,
-    "fundingMin": null,
-    "fundingMax": null,
-    "totalBudget": null,
-    "eligibility": null,
-    "applicantTypes": [],
-    "callStatus": null,
-    "recurrence": null,
-    "language": [
-      "nl"
-    ],
-    "keywords": [
-      "servicecatalogus",
-      "overzicht",
-      "witte vlek"
-    ],
-    "notes": null,
-    "changeHistory": [
-      {
-        "date": "2026-07-12",
-        "type": "migrated",
-        "summary": "Gemigreerd uit atlasdataset v1."
-      }
-    ]
-  },
-  {
-    "id": "witte-vlek-adoptiemeting-en-publiek-dashboard",
-    "title": "Witte vlek: adoptiemeting en publiek dashboard",
-    "recordType": "white_spot",
-    "legacyType": "Witte vlek",
-    "subtype": null,
-    "organizationIds": [],
-    "providerName": "Nog niet ingevuld",
-    "description": "Er is geen publiek dashboard dat investeringen, producten, gebruik, bereik en impact in samenhang laat zien.",
-    "purpose": "Leren, verantwoorden en prioriteren ondersteunen",
-    "audiences": [
-      "Bestuurders",
-      "Beleidsmakers",
-      "Onderzoekers"
-    ],
-    "sectors": [
-      "PO",
-      "VO",
-      "MBO",
-      "HBO",
-      "WO"
-    ],
-    "themes": [],
-    "status": "identified_need",
-    "availabilityText": "Nog niet ingevuld",
-    "startDate": null,
-    "endDate": null,
-    "publicationDate": null,
-    "lastVerified": null,
-    "verificationStatus": "needs_review",
-    "sourceUrls": [],
-    "relatedIds": [],
-    "parentIds": [],
-    "childIds": [],
-    "geographicScope": "Nederland",
-    "accessType": "unknown",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
-    "fundingDeadline": null,
-    "applicationOpenDate": null,
-    "applicationDeadline": null,
-    "fundingMin": null,
-    "fundingMax": null,
-    "totalBudget": null,
-    "eligibility": null,
-    "applicantTypes": [],
-    "callStatus": null,
-    "recurrence": null,
-    "language": [
-      "nl"
-    ],
-    "keywords": [
-      "dashboard",
-      "adoptie",
-      "impact",
-      "witte vlek"
-    ],
-    "notes": null,
-    "changeHistory": [
-      {
-        "date": "2026-07-12",
-        "type": "migrated",
-        "summary": "Gemigreerd uit atlasdataset v1."
-      }
-    ]
-  },
-  {
-    "id": "witte-vlek-implementatiecoaching-op-schaal",
-    "title": "Witte vlek: implementatiecoaching op schaal",
-    "recordType": "white_spot",
-    "legacyType": "Witte vlek",
-    "subtype": null,
-    "organizationIds": [],
-    "providerName": "Nog niet ingevuld",
-    "description": "Er is behoefte aan praktische, schaalbare begeleiding voor instellingen die AI verantwoord willen invoeren en beheren.",
-    "purpose": "De laatste kilometer naar de praktijk organiseren",
-    "audiences": [
-      "Onderwijsinstellingen",
-      "Bestuurders",
-      "Docenten",
-      "IT-professionals"
-    ],
-    "sectors": [
-      "PO",
-      "VO",
-      "MBO",
-      "HBO",
-      "WO"
-    ],
-    "themes": [],
-    "status": "identified_need",
-    "availabilityText": "Nog niet ingevuld",
-    "startDate": null,
-    "endDate": null,
-    "publicationDate": null,
-    "lastVerified": null,
-    "verificationStatus": "needs_review",
-    "sourceUrls": [],
-    "relatedIds": [],
-    "parentIds": [],
-    "childIds": [],
-    "geographicScope": "Nederland",
-    "accessType": "unknown",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
-    "fundingDeadline": null,
-    "applicationOpenDate": null,
-    "applicationDeadline": null,
-    "fundingMin": null,
-    "fundingMax": null,
-    "totalBudget": null,
-    "eligibility": null,
-    "applicantTypes": [],
-    "callStatus": null,
-    "recurrence": null,
-    "language": [
-      "nl"
-    ],
-    "keywords": [
-      "implementatiehulp",
-      "coaching",
-      "witte vlek"
     ],
     "notes": null,
     "changeHistory": [
@@ -13750,6 +13028,3912 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 3."
+      }
+    ]
+  },
+  {
+    "id": "rijksuniversiteit-groningen",
+    "title": "Rijksuniversiteit Groningen",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Rijksuniversiteit Groningen",
+    "description": "Nederlandse universiteit met een centraal AI Office, docenttrainingen en een open module voor kritische AI-geletterdheid.",
+    "purpose": "Onderwijs, onderzoek en verantwoorde toepassing van AI ondersteunen.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderzoekers",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Onderzoek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.rug.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "RUG",
+      "Groningen",
+      "AI Office",
+      "AI-geletterdheid"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "erasmus-universiteit-rotterdam",
+    "title": "Erasmus Universiteit Rotterdam",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Erasmus Universiteit Rotterdam",
+    "description": "Nederlandse universiteit met trainingen en ondersteuning voor docenten die generatieve AI verantwoord willen toepassen.",
+    "purpose": "Onderwijs en professionalisering rond generatieve AI ondersteunen.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderzoekers",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.eur.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "EUR",
+      "Rotterdam",
+      "generatieve AI",
+      "docenten"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "hogeschool-van-amsterdam",
+    "title": "Hogeschool van Amsterdam",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Hogeschool van Amsterdam",
+    "description": "Nederlandse hogeschool die samen met de UvA een instellingsgestuurde AI-chatomgeving voor onderwijs en onderzoek aanbiedt.",
+    "purpose": "Praktijkgericht onderwijs, onderzoek en veilige AI-toepassing ondersteunen.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderzoekers",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Veilige AI-omgeving",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.hva.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "HvA",
+      "hogeschool",
+      "AI Chat"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "jisc",
+    "title": "Jisc",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Jisc",
+    "description": "Britse non-profitorganisatie voor digitale voorzieningen, kennis en professionalisering in vervolg- en hoger onderwijs.",
+    "purpose": "Onderwijsinstellingen ondersteunen bij betrouwbare digitale en AI-transformatie.",
+    "audiences": [
+      "Docenten",
+      "Bestuurders",
+      "IT-professionals",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Professionalisering",
+      "Data en infrastructuur"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.jisc.ac.uk/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Jisc",
+      "tertiary education",
+      "National Centre for AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "teqsa",
+    "title": "Tertiary Education Quality and Standards Agency (TEQSA)",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "TEQSA",
+    "description": "Australische onafhankelijke toezichthouder met publieke kennisbronnen over generatieve AI, toetsing en onderwijskwaliteit.",
+    "purpose": "Hoger onderwijs ondersteunen bij kwaliteitsborging in een AI-geïntegreerde omgeving.",
+    "audiences": [
+      "Bestuurders",
+      "Examencommissies",
+      "Docenten",
+      "Toezichthouders"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.teqsa.gov.au/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "TEQSA",
+      "quality assurance",
+      "assessment",
+      "GenAI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "teachai",
+    "title": "TeachAI",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "TeachAI",
+    "description": "Internationaal initiatief dat scholen en overheden ondersteunt met open richtlijnen, beleid en hulpmiddelen voor AI in het onderwijs.",
+    "purpose": "Verantwoorde en inclusieve invoering van AI in het funderend onderwijs ondersteunen.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "AI-geletterdheid",
+      "Curriculumontwikkeling"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.teachai.org/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "TeachAI",
+      "schools",
+      "policy",
+      "AI guidance"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "spencer-foundation",
+    "title": "Spencer Foundation",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Spencer Foundation",
+    "description": "Internationale stichting die onderzoek financiert dat bijdraagt aan verbetering en transformatie van onderwijs.",
+    "purpose": "Onderwijsonderzoek en duurzame systeemverandering financieren.",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen",
+      "Consortia"
+    ],
+    "sectors": [
+      "Onderzoek",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.spencer.org/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Spencer Foundation",
+      "education research",
+      "grants"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "national-science-foundation",
+    "title": "National Science Foundation (NSF)",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "National Science Foundation",
+    "description": "Amerikaanse publieke onderzoeksfinancier met programma's voor informatica-, AI- en computeronderwijs.",
+    "purpose": "Fundamenteel en toegepast onderzoek en onderwijsinnovatie financieren.",
+    "audiences": [
+      "Onderzoekers",
+      "Universiteiten",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.nsf.gov/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "NSF",
+      "research funding",
+      "AI education",
+      "computing education"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "roc-mondriaan",
+    "title": "ROC Mondriaan",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "ROC Mondriaan",
+    "description": "Mbo-instelling die met MondriAI werkt aan verantwoorde, inclusieve en duurzame toepassing van AI.",
+    "purpose": "Mbo-onderwijs en professionalisering rond AI ontwikkelen.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Bestuurders",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.rocmondriaan.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "ROC Mondriaan",
+      "MondriAI",
+      "MBO",
+      "AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "zadkine",
+    "title": "Zadkine",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Zadkine",
+    "description": "Mbo-instelling die AI-agents toepast in ondersteunende processen en medewerkers daarvoor professionaliseert.",
+    "purpose": "Mbo-onderwijs en bedrijfsvoering met verantwoorde AI-toepassing ondersteunen.",
+    "audiences": [
+      "Docenten",
+      "Ondersteunend personeel",
+      "Bestuurders",
+      "Studenten"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "Implementatie en adoptie",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.zadkine.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Zadkine",
+      "MBO",
+      "AI-agents",
+      "professionalisering"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "hogeschool-inholland",
+    "title": "Hogeschool Inholland",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Hogeschool Inholland",
+    "description": "Nederlandse hogeschool met praktijktoepassingen van generatieve AI als leer- en feedbackpartner.",
+    "purpose": "Praktijkgericht onderwijs en onderzoek rond betekenisvolle AI-toepassing ontwikkelen.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderzoekers",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Praktijkvoorbeelden",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.inholland.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Inholland",
+      "Holli",
+      "AI-feedback",
+      "hogeschool"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "ciiic-learning-communities-november-2026",
+    "title": "CIIIC Learning Communities – indieningsronde november 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Regieorgaan SIA",
+    "description": "Open call voor duurzame learning communities rond immersieve ervaringen, met samenwerking tussen onderzoek, onderwijs en praktijk.",
+    "purpose": "Kennisontwikkeling en professionalisering rond immersieve technologie structureel verbinden.",
+    "audiences": [
+      "Hogescholen",
+      "Onderzoekers",
+      "Consortia",
+      "Bedrijven"
+    ],
+    "sectors": [
+      "HBO",
+      "MBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Professionalisering",
+      "Onderzoek"
+    ],
+    "status": "open_call",
+    "availabilityText": "Open; deadline 3 november 2026 om 14.00 uur",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://regieorgaan-sia.nl/financiering/ciiic-learning-communities/indieningsronde-november-2026/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": "€900.000 tot €1.800.000 per aanvraag",
+    "fundingDeadline": "2026-11-03",
+    "applicationOpenDate": "2026-05-07",
+    "applicationDeadline": "2026-11-03",
+    "fundingMin": 900000,
+    "fundingMax": 1800000,
+    "totalBudget": 10800000,
+    "eligibility": "Consortia van onderwijs, onderzoek en praktijk; minimaal 20% cofinanciering. Zie de call voor de volledige voorwaarden.",
+    "applicantTypes": [
+      "Hogescholen",
+      "Universiteiten",
+      "Onderzoeksorganisaties",
+      "Bedrijven",
+      "Publieke organisaties"
+    ],
+    "callStatus": "open_call",
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "CIIIC",
+      "learning communities",
+      "immersive experience",
+      "call"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "raak-mkb-september-2026",
+    "title": "RAAK-mkb – indieningsronde september 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Regieorgaan SIA",
+    "description": "Open regeling voor praktijkgericht onderzoek van hogescholen met minimaal zes mkb-bedrijven. Niet uitsluitend voor AI; AI- en EdTech-vraagstukken zijn mogelijk wanneer ze aantoonbaar uit de praktijk komen.",
+    "purpose": "Nieuwe kennis ontwikkelen en toepassen voor concrete innovatievragen van het mkb.",
+    "audiences": [
+      "Hogescholen",
+      "Onderzoekers",
+      "Consortia",
+      "Bedrijven"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Implementatie en adoptie"
+    ],
+    "status": "open_call",
+    "availabilityText": "Open; deadline uiterlijk 22 september 2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://regieorgaan-sia.nl/financiering/raak-mkb/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-09-22",
+    "applicationOpenDate": null,
+    "applicationDeadline": "2026-09-22",
+    "fundingMin": null,
+    "fundingMax": 375000,
+    "totalBudget": null,
+    "eligibility": "Aanvraag door een hogeschool in samenwerking met ten minste zes mkb-ondernemingen; regeling is breder dan AI.",
+    "applicantTypes": [
+      "Hogescholen",
+      "Mkb-bedrijven",
+      "Consortia"
+    ],
+    "callStatus": "open_call",
+    "recurrence": "Periodiek",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "RAAK-mkb",
+      "praktijkgericht onderzoek",
+      "AI",
+      "EdTech"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "kiem-maatschappelijk-verdienvermogen-september-2026",
+    "title": "KIEM Maatschappelijk Verdienvermogen – september 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Regieorgaan SIA",
+    "description": "Open KIEM-ronde voor kortlopend praktijkgericht onderzoek naar maatschappelijke verdiencapaciteit. Niet AI-exclusief; bruikbaar voor verantwoorde AI-vraagstukken met een concrete praktijkpartner.",
+    "purpose": "Nieuwe samenwerkingen en eerste onderzoeksactiviteiten rond maatschappelijke transities mogelijk maken.",
+    "audiences": [
+      "Hogescholen",
+      "Onderzoekers",
+      "Consortia",
+      "Bedrijven"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Publieke waarden en ethiek",
+      "Onderzoek"
+    ],
+    "status": "open_call",
+    "availabilityText": "Open; tweede ophaalmoment 15 september 2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://regieorgaan-sia.nl/financiering/kiem/kiem-mv/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-09-15",
+    "applicationOpenDate": null,
+    "applicationDeadline": "2026-09-15",
+    "fundingMin": null,
+    "fundingMax": 40000,
+    "totalBudget": 1820302,
+    "eligibility": "Hogeschool met praktijkpartners; regeling is breder dan AI. Controleer de volledige callvoorwaarden.",
+    "applicantTypes": [
+      "Hogescholen",
+      "Praktijkpartners",
+      "Consortia"
+    ],
+    "callStatus": "open_call",
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "KIEM MV",
+      "maatschappelijk verdienvermogen",
+      "verantwoorde AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "kiem-hightech-september-2026",
+    "title": "KIEM HighTech – september 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Regieorgaan SIA",
+    "description": "Open KIEM-ronde voor verkennend praktijkgericht onderzoek naar sleuteltechnologieën en digitalisering. Niet uitsluitend voor onderwijs of AI.",
+    "purpose": "Nieuwe samenwerkingen rond hightech- en digitaliseringsvraagstukken starten.",
+    "audiences": [
+      "Hogescholen",
+      "Onderzoekers",
+      "Consortia",
+      "Bedrijven"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Data en infrastructuur",
+      "Onderzoek"
+    ],
+    "status": "open_call",
+    "availabilityText": "Open; tweede ophaalmoment 15 september 2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://regieorgaan-sia.nl/financiering/kiem/kiem-hightech/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-09-15",
+    "applicationOpenDate": null,
+    "applicationDeadline": "2026-09-15",
+    "fundingMin": null,
+    "fundingMax": 40000,
+    "totalBudget": null,
+    "eligibility": "Hogeschool met praktijkpartners; regeling is breder dan AI en onderwijs.",
+    "applicantTypes": [
+      "Hogescholen",
+      "Bedrijven",
+      "Consortia"
+    ],
+    "callStatus": "open_call",
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "KIEM HighTech",
+      "digitalisering",
+      "sleuteltechnologie",
+      "AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "professional-doctorate-technologie-digitalisering-2026",
+    "title": "Professional Doctorate – Technologie & Digitalisering 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Regieorgaan SIA",
+    "description": "Financiering voor kandidaten in een Professional Doctorate-traject, waaronder het domein Technologie & Digitalisering. De regeling is breder dan AI.",
+    "purpose": "Professionals opleiden die complexe praktijkvraagstukken door onderzoekend handelen vernieuwen.",
+    "audiences": [
+      "Hogescholen",
+      "Onderzoekers",
+      "Consortia"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Professionalisering",
+      "Onderzoek"
+    ],
+    "status": "open_call",
+    "availabilityText": "Ophaalmomenten op 10 september en 12 november 2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://regieorgaan-sia.nl/financiering/professional-doctorate/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-11-12",
+    "applicationOpenDate": null,
+    "applicationDeadline": "2026-11-12",
+    "fundingMin": null,
+    "fundingMax": 271400,
+    "totalBudget": null,
+    "eligibility": "Nederlandse hogescholen met een erkend PD-programma; regeling is breder dan AI.",
+    "applicantTypes": [
+      "Hogescholen"
+    ],
+    "callStatus": "open_call",
+    "recurrence": "Meerdere ophaalmomenten per jaar",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Professional Doctorate",
+      "Technologie en Digitalisering",
+      "PD"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "take-off-hbo-najaar-2026",
+    "title": "Take-off hbo – najaarsronde 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Regieorgaan SIA",
+    "description": "Verwachte najaarsronde voor haalbaarheidsstudies naar commerciële toepassing van kennis en innovaties uit hogescholen. Niet uitsluitend voor AI of onderwijs.",
+    "purpose": "Onderzoekers en studenten helpen een innovatieve kennisgedreven onderneming te verkennen.",
+    "audiences": [
+      "Hogescholen",
+      "Onderzoekers",
+      "Studenten",
+      "Bedrijven"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Implementatie en adoptie"
+    ],
+    "status": "planned",
+    "availabilityText": "Najaarsronde verwacht in september 2026; exacte deadline nog niet gepubliceerd",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://regieorgaan-sia.nl/financiering/take-off-hbo/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": 50000,
+    "totalBudget": null,
+    "eligibility": "Onderzoekers, studenten en kennisbenutters verbonden aan een Nederlandse hogeschool; regeling is breder dan AI.",
+    "applicantTypes": [
+      "Hogescholen",
+      "Onderzoekers",
+      "Studenten"
+    ],
+    "callStatus": "forthcoming",
+    "recurrence": "Periodiek",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Take-off hbo",
+      "haalbaarheidsstudie",
+      "startup",
+      "AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "comenius-leadership-fellows-2027",
+    "title": "Comenius Leadership Fellows 2027",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Nationaal Kennisinstituut Onderwijs",
+    "description": "Subsidieronde voor omvangrijke onderwijsinnovatieprojecten in het hoger onderwijs. Niet AI-exclusief; projecten rond verantwoord AI-onderwijs kunnen passen wanneer zij aan de regeling voldoen.",
+    "purpose": "Duurzame onderwijsinnovatie en instellingsbrede verandering in het hoger onderwijs ondersteunen.",
+    "audiences": [
+      "Docenten",
+      "Hogescholen",
+      "Universiteiten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Implementatie en adoptie",
+      "Curriculumontwikkeling"
+    ],
+    "status": "open_call",
+    "availabilityText": "Intentieverklaring 10 september; volledige aanvraag 29 oktober 2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://zoek.officielebekendmakingen.nl/stcrt-2026-17923.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-10-29",
+    "applicationOpenDate": "2026-06-04",
+    "applicationDeadline": "2026-10-29",
+    "fundingMin": null,
+    "fundingMax": 500000,
+    "totalBudget": 2000000,
+    "eligibility": "Onderwijsprofessionals in het bekostigd hoger onderwijs; regeling is breder dan AI.",
+    "applicantTypes": [
+      "Hogescholen",
+      "Universiteiten",
+      "Onderwijsprofessionals"
+    ],
+    "callStatus": "open_call",
+    "recurrence": "Jaarlijks",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Comenius",
+      "Leadership Fellows",
+      "onderwijsinnovatie",
+      "AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "open-journals-onderwijsonderzoek-2026",
+    "title": "Open Journals – onderwijsonderzoek 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Nationaal Kennisinstituut Onderwijs",
+    "description": "Doorlopende subsidie voor Nederlandse wetenschappelijke tijdschriften over onderwijsonderzoek die volledig open access willen werken. Niet specifiek voor AI.",
+    "purpose": "Open toegang tot resultaten van onderwijsonderzoek bevorderen.",
+    "audiences": [
+      "Onderzoekers",
+      "Onderzoeksorganisaties",
+      "Universiteiten"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Data en infrastructuur"
+    ],
+    "status": "open_call",
+    "availabilityText": "Doorlopend tot het subsidieplafond is bereikt",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.officielebekendmakingen.nl/stcrt-2026-7642.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": 17500,
+    "totalBudget": 70000,
+    "eligibility": "Nederlandse wetenschappelijke tijdschriften die onderwijsonderzoek publiceren en aan de regeling voldoen.",
+    "applicantTypes": [
+      "Wetenschappelijke tijdschriften",
+      "Onderzoeksorganisaties"
+    ],
+    "callStatus": "open_call",
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Open Journals",
+      "open access",
+      "onderwijsonderzoek",
+      "tijdschrift"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "eu-code-week-tender-2027-2030",
+    "title": "Europese aanbesteding EU Code Week 2027–2030",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie",
+    "description": "Europese aanbesteding voor uitvoering en opschaling van EU Code Week, inclusief leermiddelen, docentprofessionalisering en communityvorming. Dit is een tender, geen subsidie.",
+    "purpose": "Digitale vaardigheden en programmeeronderwijs in Europa opschalen.",
+    "audiences": [
+      "Consortia",
+      "Bedrijven",
+      "Onderwijsorganisaties",
+      "Overheden"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "AI-geletterdheid",
+      "Professionalisering"
+    ],
+    "status": "open_call",
+    "availabilityText": "Aanbesteding open; deadline 15 september 2026 om 16.00 uur CET",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://digital-strategy.ec.europa.eu/en/funding/call-tenders-eu-code-week-2027-2030",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-09-15",
+    "applicationOpenDate": "2026-07-09",
+    "applicationDeadline": "2026-09-15",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Inschrijvers die aan de Europese aanbestedingsvoorwaarden voldoen.",
+    "applicantTypes": [
+      "Consortia",
+      "Bedrijven",
+      "Onderwijsorganisaties"
+    ],
+    "callStatus": "open_call",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "EU Code Week",
+      "tender",
+      "digital skills",
+      "teacher training"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "spencer-vision-grants-2026",
+    "title": "Spencer Foundation Vision Grants 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Spencer Foundation",
+    "description": "Internationale call voor het ontwikkelen van grootschalige onderzoeksprogramma's gericht op transformatie van onderwijssystemen. Niet specifiek voor AI.",
+    "purpose": "Interdisciplinaire onderzoeksagenda's voor duurzame verandering in onderwijs ontwikkelen.",
+    "audiences": [
+      "Onderzoekers",
+      "Consortia",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Beleid en governance"
+    ],
+    "status": "open_call",
+    "availabilityText": "Intentie uiterlijk 12 augustus; volledige aanvraag 16 september 2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.spencer.org/grant_types/vision-grants",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-09-16",
+    "applicationOpenDate": "2026-06-04",
+    "applicationDeadline": "2026-09-16",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Internationale onderzoeksteams volgens de officiële call; regeling is breder dan AI.",
+    "applicantTypes": [
+      "Onderzoekers",
+      "Consortia",
+      "Onderzoeksorganisaties"
+    ],
+    "callStatus": "open_call",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Spencer",
+      "Vision Grants",
+      "education systems",
+      "research"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "nsf-computing-education-research",
+    "title": "NSF Computing Education Research",
+    "recordType": "subsidy",
+    "legacyType": "Subsidie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "National Science Foundation",
+    "description": "Actief Amerikaans financieringsprogramma voor onderzoek naar onderwijs en leren in computing, waaronder artificiële intelligentie, op alle onderwijsniveaus.",
+    "purpose": "Kennisbasis en onderwijspaden voor computer- en AI-onderwijs versterken.",
+    "audiences": [
+      "Onderzoekers",
+      "Universiteiten",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Actief programma; controleer de officiële pagina voor actuele indienmomenten",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.nsf.gov/funding/opportunities/computing-education-research",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Amerikaanse instellingen en partners volgens de NSF-voorwaarden; Nederlandse partijen kunnen niet zonder meer als hoofdaanvrager indienen.",
+    "applicantTypes": [
+      "Universiteiten",
+      "Onderzoeksorganisaties",
+      "Onderwijsinstellingen"
+    ],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "NSF",
+      "Computing Education Research",
+      "AI education",
+      "funding"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "nsf-k12-ai-education-resources",
+    "title": "NSF Expanding K-12 Resources for AI Education",
+    "recordType": "subsidy",
+    "legacyType": "Subsidie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "National Science Foundation",
+    "description": "Aanvullende financiering voor bestaande NSF-projecten die hoogwaardige leermiddelen, curricula, docentprofessionalisering of netwerken voor AI-onderwijs in K-12 uitbreiden.",
+    "purpose": "Toegang tot betrouwbare middelen en professionalisering voor AI-onderwijs vergroten.",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen",
+      "Docenten"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Actieve aanvullende financiering voor bestaande NSF-awardees",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.nsf.gov/funding/opportunities/dcl-expanding-k-12-resources-ai-education",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": 300000,
+    "totalBudget": null,
+    "eligibility": "Alleen bestaande NSF-awardees die aan de Dear Colleague Letter voldoen.",
+    "applicantTypes": [
+      "Bestaande NSF-awardees"
+    ],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "NSF",
+      "K-12",
+      "AI education",
+      "curriculum",
+      "teacher professional development"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "rug-critical-ai-literacy-module",
+    "title": "Critical AI Literacy Module",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Rijksuniversiteit Groningen",
+    "description": "Open zelfstudiemodule van ongeveer twee uur over kritisch, verantwoord en transparant gebruik van generatieve AI in studie, onderwijs en onderzoek.",
+    "purpose": "Studenten en medewerkers een gedeeld fundament voor kritische AI-geletterdheid geven.",
+    "audiences": [
+      "Studenten",
+      "Docenten",
+      "Onderzoekers",
+      "Medewerkers"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-07-06",
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.rug.nl/library/education-and-research/information-literacy/ai-module",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "RUG",
+      "critical AI literacy",
+      "self-study",
+      "module"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "rug-ai-office-courses-workshops",
+    "title": "AI Office – cursussen en workshops",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Rijksuniversiteit Groningen",
+    "description": "Centraal actueel overzicht van trainingen, workshops en ondersteuning voor medewerkers en docenten rond AI.",
+    "purpose": "Gebruikers naar passend professionaliseringsaanbod van de RUG leiden.",
+    "audiences": [
+      "Docenten",
+      "Onderzoekers",
+      "Medewerkers",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Professionalisering",
+      "AI-geletterdheid",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.rug.nl/cit/services/ai-office/advies-en-training/courses-workshops",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "RUG AI Office",
+      "courses",
+      "workshops",
+      "training"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "eur-ai-voor-docenten-beginners",
+    "title": "How to use AI as a teacher – beginners",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Erasmus Universiteit Rotterdam",
+    "description": "Praktische introductie van drie uur voor docenten en tutoren, met basiskennis, kansen, beperkingen en verantwoorde toepassing van AI in onderwijs.",
+    "purpose": "Docenten zelfstandig en kritisch met generatieve AI laten starten.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsadviseurs",
+      "Ondersteunend personeel"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "planned",
+    "availabilityText": "Nieuwe editie wordt verwacht; belangstelling kan worden doorgegeven",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.eur.nl/en/educational-innovation/programme/how-use-ai-teacher-beginners",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "EUR",
+      "AI for teachers",
+      "beginners",
+      "microcredential"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "eur-generative-ai-academic-questions",
+    "title": "Generative AI for Academic Questions",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Erasmus Universiteit Rotterdam",
+    "description": "Gratis online training van zes uur over het zorgvuldig gebruiken en beoordelen van generatieve AI bij academische vragen.",
+    "purpose": "Docenten en professionals leren generatieve AI verantwoord in een academische context toe te passen.",
+    "audiences": [
+      "Docenten",
+      "Onderzoekers",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Onderzoek"
+    ],
+    "status": "available",
+    "availabilityText": "Online en op aanvraag",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.eur.nl/onderwijsinnovatie/cursus/generative-ai-academic-questions",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "EUR",
+      "academic questions",
+      "online course",
+      "GenAI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "jisc-ethical-responsible-ai-education",
+    "title": "Ethical and responsible AI in education",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Jisc",
+    "description": "Zelfstudiecursus van 45 tot 60 minuten over ethische en verantwoorde keuzes bij gebruik van AI in onderwijs.",
+    "purpose": "Onderwijsprofessionals praktische kaders geven voor verantwoord AI-gebruik.",
+    "audiences": [
+      "Docenten",
+      "Bestuurders",
+      "Onderwijsadviseurs",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "AI-geletterdheid",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Zelfstudie; maandelijks komen nieuwe plaatsen beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.jisc.ac.uk/training/ethical-and-responsible-ai-in-education",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "freemium",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Jisc",
+      "ethical AI",
+      "responsible AI",
+      "self-paced"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "jisc-ai-literacy-module-understanding-ai",
+    "title": "AI literacy for teaching and learning – Understanding AI",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Jisc",
+    "description": "Downloadbare introductiemodule van 45 tot 60 minuten met slides, activiteiten en begeleidersnotities over wat AI is en hoe het onderwijs raakt.",
+    "purpose": "Teams een herbruikbare basisworkshop voor AI-geletterdheid bieden.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsadviseurs",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.jisc.ac.uk/training/ai-literacy-for-teaching-and-learning-module-1-understanding-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Jisc",
+      "AI literacy",
+      "facilitator",
+      "downloadable module"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "comenius-npuls-peergang-digitale-transformatie",
+    "title": "Peergang Digitale Transformatie",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "ComeniusNetwerk en Npuls",
+    "description": "Praktijkgericht programma voor duo's uit onderwijs en ondersteuning die aan een concrete digitale vernieuwing werken, zoals AI, blended learning of digitale geletterdheid.",
+    "purpose": "Digitale onderwijsinnovatie duurzaam van idee naar uitvoering brengen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsadviseurs",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Implementatie en adoptie",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Aanmelden via de officiële programmapagina",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-05-12",
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://comeniusnetwerk.nl/nieuws/3258810.aspx?t=Wil-jij-digitale-vernieuwing-echt-van-de-grond-krijgen-",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "ComeniusNetwerk",
+      "Npuls",
+      "peergang",
+      "digitale transformatie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "oecd-digital-education-outlook-2026",
+    "title": "OECD Digital Education Outlook 2026",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "OECD",
+    "description": "Internationaal evidence-overzicht over effectieve inzet van generatieve AI in onderwijs, met aandacht voor leren, docentrol, infrastructuur, beleid en menselijke regie.",
+    "purpose": "Onderwijspraktijk en beleid baseren op internationale evidentie over generatieve AI.",
+    "audiences": [
+      "Beleidsmakers",
+      "Bestuurders",
+      "Docenten",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Lesgeven en leren met AI",
+      "Beleid en governance",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-01-19",
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.oecd.org/en/publications/2026/01/oecd-digital-education-outlook-2026_940e0dd8.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "OECD",
+      "Digital Education Outlook 2026",
+      "GenAI",
+      "evidence"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "oecd-vijf-principes-ai-beroepsonderwijs",
+    "title": "Five principles for effective AI use in vocational education and training development",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "OECD",
+    "description": "Vijf principes voor mensgerichte, uitlegbare en gecontroleerde toepassing van AI bij ontwikkeling van beroepsonderwijs en kwalificaties.",
+    "purpose": "Beroepsonderwijs ondersteunen bij bestuurbare en verantwoorde inzet van AI in curriculumontwikkeling.",
+    "audiences": [
+      "Beleidsmakers",
+      "Onderwijsontwikkelaars",
+      "Bestuurders",
+      "Docenten"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "Curriculumontwikkeling",
+      "Beleid en governance",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-06-24",
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.oecd.org/en/publications/five-principles-for-the-effective-use-of-ai-in-vocational-education-and-training-development_ee8c8e8e-en/full-report.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "OECD",
+      "VET",
+      "vocational education",
+      "human oversight",
+      "AI governance"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "jisc-ai-maturity-toolkit",
+    "title": "AI maturity toolkit for tertiary education",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Jisc",
+    "description": "Praktisch volwassenheidsmodel met vijf niveaus en thema's voor strategie, studenten, medewerkers, academische integriteit en veilig gebruik.",
+    "purpose": "Instellingen helpen hun huidige AI-volwassenheid bepalen en gerichte vervolgstappen kiezen.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "IT-professionals",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Implementatie en adoptie",
+      "Veilige AI-omgeving"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.jisc.ac.uk/ai-maturity-toolkit-for-tertiary-education",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Jisc",
+      "AI maturity",
+      "toolkit",
+      "academic integrity"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "jisc-leading-ai-colleges-framework",
+    "title": "Leading AI in colleges: a strategic framework",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Jisc",
+    "description": "Strategisch raamwerk voor AI-leiderschap rond vaardigheden en cultuur, technologie, governance en datavolwassenheid.",
+    "purpose": "Bestuurders en teams helpen AI-invoering als samenhangende organisatieverandering te sturen.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "IT-professionals",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Implementatie en adoptie",
+      "Data en infrastructuur"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-11-17",
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.jisc.ac.uk/guides/leading-ai-in-colleges-a-strategic-framework",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Jisc",
+      "strategic framework",
+      "college",
+      "AI leadership"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "jisc-ai-environmental-sustainability",
+    "title": "AI and environmental sustainability in post-16 education",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Jisc",
+    "description": "Praktisch en evidence-gebaseerd rapport over milieu-impact van AI en stappen die onderwijsinstellingen kunnen nemen bij inkoop, gebruik en governance.",
+    "purpose": "Milieueffecten expliciet meewegen in bestuurlijke keuzes over AI.",
+    "audiences": [
+      "Bestuurders",
+      "IT-professionals",
+      "Inkoop",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Beleid en governance",
+      "Data en infrastructuur"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-06-24",
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.jisc.ac.uk/reports/ai-and-environmental-sustainability-in-post-16-education",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Jisc",
+      "sustainability",
+      "environment",
+      "AI procurement"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "teqsa-assessment-reform-ai",
+    "title": "Assessment reform for the age of artificial intelligence",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "TEQSA",
+    "description": "Principes en voorstellen voor toetsbeleid dat leeruitkomsten blijft borgen en studenten voorbereidt op verantwoord AI-gebruik.",
+    "purpose": "Instellingen helpen toetsing en kwaliteitsborging structureel aan te passen aan generatieve AI.",
+    "audiences": [
+      "Docenten",
+      "Examencommissies",
+      "Bestuurders",
+      "Toetsmakers"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Beleid en governance",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.teqsa.gov.au/guides-resources/resources/corporate-publications/assessment-reform-age-artificial-intelligence",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "TEQSA",
+      "assessment reform",
+      "GenAI",
+      "learning assurance"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "teqsa-adaptive-capabilities-genai",
+    "title": "Assuring quality learning in a gen AI-integrated future",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "TEQSA",
+    "description": "Actuele handreiking met evidence-gebaseerde, toepasbare benaderingen voor leerkwaliteit, kritisch denken, ethisch redeneren en adaptieve vaardigheden in een AI-geïntegreerde toekomst.",
+    "purpose": "Kwaliteit van leren en menselijke correctiecapaciteit onder AI-condities borgen.",
+    "audiences": [
+      "Docenten",
+      "Examencommissies",
+      "Bestuurders",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-06-24",
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.teqsa.gov.au/guides-resources/resources/corporate-publications/assuring-quality-learning-gen-ai-integrated-future-role-adaptive-capabilities",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "TEQSA",
+      "adaptive capabilities",
+      "learning assurance",
+      "critical thinking"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "teqsa-genai-knowledge-hub",
+    "title": "TEQSA Gen AI knowledge hub",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "TEQSA",
+    "description": "Publieke kennisbank met samenhangende bronnen over generatieve AI, toetsing, academische integriteit en kwaliteitsborging in hoger onderwijs.",
+    "purpose": "Instellingen één actuele ingang bieden naar onderbouwde GenAI-kennis en praktijkvoorbeelden.",
+    "audiences": [
+      "Docenten",
+      "Examencommissies",
+      "Bestuurders",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Beleid en governance",
+      "Praktijkvoorbeelden"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.teqsa.gov.au/guides-resources/higher-education-good-practice-hub/gen-ai-knowledge-hub",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "TEQSA",
+      "Gen AI knowledge hub",
+      "academic integrity"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "australian-framework-generative-ai-schools",
+    "title": "Australian Framework for Generative AI in Schools",
+    "recordType": "standard",
+    "legacyType": "Standaard",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Australian Government Department of Education",
+    "description": "Nationaal kader met principes en leidende uitspraken voor verantwoord en ethisch gebruik van generatieve AI in scholen.",
+    "purpose": "Scholen ondersteunen bij consistente keuzes over leren, welzijn, transparantie, privacy, veiligheid en menselijke regie.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Bestuurders",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Publieke waarden en ethiek",
+      "Privacy en AVG"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.education.gov.au/schooling/resources/australian-framework-generative-artificial-intelligence-ai-schools",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Australian Framework",
+      "schools",
+      "GenAI",
+      "human oversight"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "teachai-guidance-schools-toolkit",
+    "title": "AI Guidance for Schools Toolkit",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "TeachAI",
+    "description": "Open toolkit voor schoolbeleid met leidende vragen, voorbeeldteksten, implementatiestappen en aandacht voor verantwoord gebruik van AI.",
+    "purpose": "Schoolleiders en teams helpen praktisch, uitlegbaar en aanpasbaar AI-beleid te maken.",
+    "audiences": [
+      "Schoolleiders",
+      "Bestuurders",
+      "Beleidsmakers",
+      "Docenten"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Implementatie en adoptie",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.teachai.org/toolkit",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "TeachAI",
+      "school guidance",
+      "policy toolkit",
+      "responsible AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "dfe-generative-ai-product-safety-standards",
+    "title": "Generative AI product safety standards for education",
+    "recordType": "standard",
+    "legacyType": "Standaard",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "UK Department for Education",
+    "description": "Publieke veiligheidsstandaarden voor leveranciers en onderwijsinstellingen, met eisen rond filtering, logging, beveiliging, privacy, intellectueel eigendom en bescherming tegen manipulatie.",
+    "purpose": "Onderwijsorganisaties concrete criteria geven voor beoordeling en inkoop van generatieve AI-producten.",
+    "audiences": [
+      "IT-professionals",
+      "Inkoop",
+      "Bestuurders",
+      "Leveranciers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "Veilige AI-omgeving",
+      "Privacy en AVG",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-01-19",
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.gov.uk/government/publications/generative-ai-product-safety-standards/generative-ai-product-safety-standards",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "DfE",
+      "product safety standards",
+      "procurement",
+      "GenAI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "ofqual-ai-coursework-resources-schools",
+    "title": "AI in coursework: resources for schools",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Ofqual",
+    "description": "Lesplan en leiderschapspakket voor zorgvuldig gebruik van AI bij beoordeeld werk, gericht op leerlingen, docenten en schoolleiding.",
+    "purpose": "Scholen helpen de geldigheid en integriteit van coursework onder generatieve AI te beschermen.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Toetsmakers",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "AI-geletterdheid",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-03-09",
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.gov.uk/government/publications/ai-in-coursework-resources-for-schools",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Ofqual",
+      "coursework",
+      "assessment",
+      "AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "qaa-generative-ai-resource-hub",
+    "title": "QAA Generative AI resource hub",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Quality Assurance Agency for Higher Education",
+    "description": "Publieke thematische kennisbank met kwaliteitszorg, beleid, toetsing en praktijkbronnen over generatieve AI in hoger onderwijs.",
+    "purpose": "Hogeronderwijsinstellingen snel naar relevante, gecureerde GenAI-bronnen leiden.",
+    "audiences": [
+      "Docenten",
+      "Examencommissies",
+      "Bestuurders",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Beleid en governance",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.qaa.ac.uk/sector-resources/generative-artificial-intelligence",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "QAA",
+      "resource hub",
+      "quality assurance",
+      "generative AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "feedbackfruits-ai-practice",
+    "title": "FeedbackFruits AI Practice",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "FeedbackFruits",
+    "description": "Onderwijsactiviteit waarin studenten doelgericht met een AI-assistent oefenen en docenten de interactie kunnen opnemen in begeleiding en evaluatie. De functie wordt als bèta aangeboden.",
+    "purpose": "AI-geletterdheid oefenen binnen een door de docent ontworpen leeractiviteit.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering"
+    ],
+    "status": "pilot",
+    "availabilityText": "Bèta; beschikbaar via deelnemende instellingen",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://feedbackfruits.com/solutions/ai-practice",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "FeedbackFruits",
+      "AI Practice",
+      "AI literacy",
+      "learning activity"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "d2l-lumi-pro",
+    "title": "D2L Lumi Pro",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "D2L",
+    "description": "Verzameling door beheerders inschakelbare AI-functies in Brightspace voor onder meer quizvragen, leeruitkomsten, samenvattingen, studiemateriaal en contentbewerking.",
+    "purpose": "Docenten en studenten binnen de bestaande leeromgeving ondersteunen met configureerbare AI-functies.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "IT-professionals",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Implementatie en adoptie",
+      "Veilige AI-omgeving"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://community.d2l.com/brightspace/kb/articles/26332-about-d2l-lumi-pro",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "D2L Lumi Pro",
+      "Brightspace",
+      "quiz",
+      "study support"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "canvas-igniteai",
+    "title": "Canvas IgniteAI",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Instructure",
+    "description": "Samenhangende AI-functies binnen Canvas voor onderwijsontwerp, begeleiding en werkprocessen, met instellingen en docenten als regisseur van gebruik.",
+    "purpose": "AI-ondersteuning in de leeromgeving integreren zonder losse gebruikersroutes.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "IT-professionals",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Implementatie en adoptie",
+      "Veilige AI-omgeving"
+    ],
+    "status": "available",
+    "availabilityText": "Gefaseerd wereldwijd beschikbaar uiterlijk 15 augustus 2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.instructure.com/products/canvas-tiers",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Canvas IgniteAI",
+      "Instructure",
+      "LMS",
+      "educator control"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "uva-hva-ai-chat",
+    "title": "UvA/HvA AI Chat",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Universiteit van Amsterdam en Hogeschool van Amsterdam",
+    "description": "Instellingsgestuurde chatomgeving waarmee studenten en medewerkers generatieve AI binnen een beheerde onderwijscontext kunnen gebruiken.",
+    "purpose": "Veilig experimenteren en werken met generatieve AI binnen institutionele kaders mogelijk maken.",
+    "audiences": [
+      "Studenten",
+      "Docenten",
+      "Onderzoekers",
+      "Medewerkers"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Veilige AI-omgeving",
+      "Lesgeven en leren met AI",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-12-09",
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.surf.nl/index.php/nieuws/winnaars-surf-onderwijsawards-2025-brengen-vernieuwing-van-ai-tot-robotica",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "UvA",
+      "HvA",
+      "AI Chat",
+      "veilige omgeving"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "miec-data-ai-mbo",
+    "title": "MIEC Data & AI in het mbo",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "MBO Digitaal",
+    "description": "Praktijkvoorbeeld van een meerjarig expertisecentrum dat mbo-instellingen ondersteunt bij verantwoorde integratie van data en AI in curriculum, vaardigheden en governance.",
+    "purpose": "Kennis, voorbeelden en professionalisering rond data en AI tussen mbo-instellingen delen.",
+    "audiences": [
+      "Docenten",
+      "Bestuurders",
+      "Onderwijsontwikkelaars",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "Praktijkvoorbeelden",
+      "AI-geletterdheid",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-03-01",
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://mbodigitaal.nl/wp-content/uploads/2026/03/Factsheet-MIEC-DATA-AI.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "MIEC",
+      "MBO Digitaal",
+      "Data en AI",
+      "expertisecentrum"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "zadkine-ai-agents-bedrijfsvoering",
+    "title": "AI-agents in de bedrijfsvoering van Zadkine",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Zadkine",
+    "description": "Mbo-praktijkvoorbeeld waarin AI-agents worden ingezet in ondersteunende processen, gecombineerd met professionalisering en kritische beoordeling van output.",
+    "purpose": "Laten zien hoe een mbo-instelling AI in bedrijfsvoering invoert met aandacht voor medewerkers en kwaliteitscontrole.",
+    "audiences": [
+      "Ondersteunend personeel",
+      "Bestuurders",
+      "IT-professionals",
+      "Docenten"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "Praktijkvoorbeelden",
+      "Implementatie en adoptie",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-03-01",
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://mbodigitaal.nl/wp-content/uploads/2026/03/Factsheet-Zadkine.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Zadkine",
+      "AI-agents",
+      "bedrijfsvoering",
+      "MBO"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "roc-mondriaan-mondriai",
+    "title": "MondriAI bij ROC Mondriaan",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "ROC Mondriaan",
+    "description": "Instellingsbrede mbo-aanpak voor verantwoorde, inclusieve en duurzame AI, met aandacht voor AI-geletterdheid, curriculum en toetsing.",
+    "purpose": "AI als samenhangende onderwijs- en organisatieverandering vormgeven.",
+    "audiences": [
+      "Docenten",
+      "Bestuurders",
+      "Onderwijsontwikkelaars",
+      "Studenten"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "Praktijkvoorbeelden",
+      "AI-geletterdheid",
+      "Toetsing en examinering"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-03-01",
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://mbodigitaal.nl/wp-content/uploads/2026/03/Factsheet-ROC-Mondriaan.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "MondriAI",
+      "ROC Mondriaan",
+      "MBO",
+      "AI-geletterdheid"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "inholland-holli-ai-feedback-leerpartner",
+    "title": "Holli en AI-feedback als leerpartner",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Hogeschool Inholland en Universiteit Twente",
+    "description": "Twee toegepaste voorbeelden waarin generatieve AI reflectiegesprekken ondersteunt en narratieve feedback helpt formuleren, met onderzoek naar de effecten op leren.",
+    "purpose": "Laten zien hoe AI als begeleide leerpartner kan worden ontworpen en geëvalueerd.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderzoekers",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Praktijkvoorbeelden",
+      "Lesgeven en leren met AI",
+      "Onderzoek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://pretalx.surf.nl/surf-onderwijsdagen-2025/talk/PY9DC8/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Holli",
+      "Inholland",
+      "Universiteit Twente",
+      "AI-feedback",
+      "reflection"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      }
+    ]
+  },
+  {
+    "id": "surf-community-ai-in-education",
+    "title": "SURF Community AI in Education",
+    "recordType": "community",
+    "legacyType": "Community",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "SURF",
+    "description": "Open kenniscommunity met artikelen, bijeenkomsten en uitwisseling over AI in onderwijs en onderzoek.",
+    "purpose": "Professionals en onderzoekers verbinden rond actuele AI-vraagstukken en praktijkkennis.",
+    "audiences": [
+      "Docenten",
+      "Onderzoekers",
+      "Onderwijsadviseurs",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Praktijkvoorbeelden",
+      "Onderzoek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://communities.surf.nl/ai-in-education",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "SURF Communities",
+      "AI in Education",
+      "community",
+      "kennisdeling"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-21",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
       }
     ]
   }
