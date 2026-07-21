@@ -61,6 +61,7 @@ h1,h2,h3{color:#263b45;text-wrap:balance}
 }
 .site-header nav a{border-bottom:2px solid transparent;padding:.45rem .1rem}
 .site-header nav a:hover,.site-header nav a[aria-current=page]{color:var(--brand-olive-deep);border-bottom-color:var(--brand-olive)}
+.header-credit{margin-left:1.5rem;padding-left:1.5rem;border-left:1px solid var(--line);color:var(--brand-bluegray);font-size:.82rem;font-weight:650;white-space:nowrap}
 
 .btn,.card-cta.primary,.mobile-filter{
   background:var(--brand-bluegray-deep);
@@ -184,3 +185,9 @@ footer{
 .principle-list h3{margin:0 0 .35rem;font-size:1rem}
 .principle-list p{margin:0;font-size:.88rem;color:var(--muted)}
 @media(max-width:700px){.principle-list{grid-template-columns:1fr}.trust-summary{display:grid;gap:.45rem}}
+@media(max-width:900px){
+  .site-header .brand{order:1}
+  .site-header .header-credit{order:2;margin-left:auto;margin-right:.75rem;padding-left:0;border-left:0;font-size:.75rem}
+  .site-header .menu{order:3}
+  .site-header nav{order:4}
+}
