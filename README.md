@@ -23,9 +23,12 @@ Het datamodel en de toegestane enums staan in [docs/data-model.md](docs/data-mod
 
 ## Dagelijks onderhoud
 
-De workflow controleert geregistreerde bronnen om 05:00 UTC of volgens hun eigen schema. Zij normaliseert pagina-inhoud, negeert opmaakruis, bewaart de laatste succesvolle staat en classificeert veranderingen. Mogelijke toevoegingen, updates, archivering en twijfelgevallen worden uitsluitend als reviewvoorstel aangeboden.
+De Atlas heeft twee gescheiden onderhoudsroutes:
 
-Automatisering mag nooit zelfstandig publiceren, records wijzigen, verwijderen of pull requests mergen. Zie:
+- de GitHub-signaalworkflow controleert geregistreerde bronnen om 05:00 UTC, classificeert veranderingen en maakt uitsluitend reviewvoorstellen;
+- de door de eigenaar gemachtigde dagelijkse Atlas-actualisator zoekt en controleert primaire bronnen, werkt canonieke data bij en mag uitsluitend eigen, volledig geverifieerde pull requests zelfstandig mergen nadat alle verplichte controles zijn geslaagd.
+
+De autonome route stopt zonder merge bij een dirty worktree, conflicten, mislukte checks, onduidelijke bronnen, mogelijke doublures of andere materiële onzekerheid. Na iedere merge controleert zij de Pages-publicatie en live zoekbaarheid. Externe bijdragen en voorstellen uit de signaalworkflow blijven altijd onder menselijke beoordeling. Zie:
 
 - [dagelijkse onderhoudsarchitectuur](docs/daily-maintenance.md);
 - [voorbeeld van het dagrapport](docs/example-daily-report.md);
@@ -49,7 +52,7 @@ De onderhoudstests gebruiken lokale fixtures en zijn niet afhankelijk van live w
 
 ## Bijdragen
 
-Een correctie of aanvulling moet een officiele bron bevatten. Automatische controles geven structuur-, bron- en duplicaatsignalen; een mens neemt altijd het publicatiebesluit. Zie [CONTRIBUTING.md](CONTRIBUTING.md).
+Een externe correctie of aanvulling moet een officiele bron bevatten. Automatische controles geven structuur-, bron- en duplicaatsignalen; een mens neemt voor externe bijdragen altijd het publicatiebesluit. Zie [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Licentie en maker
 

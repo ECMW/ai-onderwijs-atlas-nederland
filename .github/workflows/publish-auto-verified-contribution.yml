@@ -1,4 +1,4 @@
-name: Automatic publication disabled
+name: Automatic external contribution publication disabled
 
 on:
   workflow_dispatch:
@@ -10,4 +10,4 @@ jobs:
   notice:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Automatic publication is disabled; human review and merge are required."
+      - run: echo "Automatic publication of external contributions is disabled; the owner-authorized Atlas updater uses its own fully checked PR flow."
