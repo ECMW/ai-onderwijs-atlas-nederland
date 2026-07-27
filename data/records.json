@@ -16936,5 +16936,81 @@
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
       }
     ]
+  },
+  {
+    "id": "unesco-integrating-ai-tvet-guide",
+    "title": "Integrating AI in TVET: A practical guide for institutions",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "UNESCO-UNEVOC",
+    "description": "Praktische gids voor een instellingsbrede en mensgerichte integratie van AI in technisch en beroepsonderwijs, met aandacht voor governance, curriculum, pedagogiek, toetsing, professionalisering, veiligheid en evaluatie.",
+    "purpose": "Beroepsonderwijsinstellingen ondersteunen bij samenhangende, verantwoorde en uitvoerbare keuzes over AI.",
+    "audiences": [
+      "Beleidsmakers",
+      "Bestuurders",
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Toetsing en examinering",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Publicatie direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-07-03",
+    "lastVerified": "2026-07-27",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.unesco.org/en/articles/integrating-ai-tvet-practical-guide-institutions",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "UNESCO-UNEVOC",
+      "TVET",
+      "beroepsonderwijs",
+      "AI-governance",
+      "AI-geletterdheid"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-27",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële UNESCO-publicatiepagina."
+      }
+    ]
   }
 ]
