@@ -111,6 +111,7 @@ h1,h2,h3{color:#263b45;text-wrap:balance}
   border-color:#b8b6aa;
 }
 .popular a:hover,.related a:hover,.chip:hover{background:#eef0e7;border-color:var(--brand-olive)}
+.popular small{color:var(--brand-bluegray-deep)}
 
 .home-filter-sidebar,.filters,.result-card,.teaser-card,.personal-empty,.saved-list article,.contribute-options article{
   background:#fffdf9;
