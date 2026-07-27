@@ -325,7 +325,7 @@
   function searchForm(id) {
     return `<form class="atlas-search" role="search" autocomplete="off">
       <label for="${id}">Waar bent u vandaag naar op zoek?</label>
-      <div class="search-row"><input id="${id}" type="search" value="${escapeHtml(state.q)}" placeholder="Zoek bijvoorbeeld ‘AI Act voor docenten in het mbo’" aria-controls="search-suggestions" aria-autocomplete="list" aria-expanded="false"><button class="btn">Zoeken</button></div>
+      <div class="search-row"><input id="${id}" type="search" role="combobox" value="${escapeHtml(state.q)}" placeholder="Zoek bijvoorbeeld ‘AI Act voor docenten in het mbo’" aria-controls="search-suggestions" aria-autocomplete="list" aria-expanded="false"><button class="btn">Zoeken</button></div>
       <div class="suggestions" id="search-suggestions" hidden></div>
     </form>`;
   }
