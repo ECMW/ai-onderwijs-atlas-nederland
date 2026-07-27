@@ -2,9 +2,16 @@
 
 ## Doel en grens
 
-De onderhoudsstraat detecteert veranderingen en bereidt beslissingen voor. Zij publiceert, wijzigt,
-archiveert of verwijdert nooit zelfstandig Atlas-records. Een mens controleert ieder voorstel aan de
-hand van de officiele bron en neemt het publicatiebesluit.
+Het dagelijkse onderhoud kent twee bewust gescheiden routes. De GitHub-signaalworkflow detecteert
+veranderingen en bereidt reviewvoorstellen voor; deze route publiceert, wijzigt, archiveert of verwijdert
+nooit zelfstandig Atlas-records. Daarnaast is er een door de eigenaar gemachtigde Atlas-actualisator die
+zelf primaire bronnen onderzoekt, canonieke records bijwerkt en uitsluitend eigen, volledig geverifieerde
+pull requests na alle verplichte controles mag mergen.
+
+De autonome route is geen automatische acceptatie van signalen. Zij moet ieder feit rechtstreeks aan een
+officiële primaire bron vaststellen en stopt zonder merge bij onzekerheid, conflicten, een dirty worktree,
+mislukte checks of mogelijke doublures. Externe bijdragen en voorstellen uit de signaalworkflow blijven
+altijd onder menselijke beoordeling.
 
 ## Architectuur
 
@@ -136,7 +143,7 @@ Voorbeeld afwijzing:
 }
 ```
 
-## Beoordelingsprocedure
+## Beoordelingsprocedure voor signalen
 
 1. Open het enige Issue met label `atlas-daily-review`.
 2. Download het artifact van de gelinkte workflowrun.
@@ -147,8 +154,28 @@ Voorbeeld afwijzing:
 7. Verwerk een geaccepteerd voorstel via de normale pull-requestroute.
 8. Registreer afwijzingen met proposal- en evidence-hash.
 
-Automatische bijdragecontroles geven alleen labels en commentaar. Zij mergen, committen, sluiten of
-publiceren niets. De oude automatische publicatieworkflow is expliciet uitgeschakeld.
+Automatische controles van externe bijdragen geven alleen labels en commentaar. Zij mergen, committen,
+sluiten of publiceren niets. De oude automatische publicatieworkflow voor externe bijdragen is expliciet
+uitgeschakeld.
+
+## Autonome Atlas-actualisator
+
+De door de eigenaar gemachtigde dagelijkse actualisator werkt onafhankelijk van de review-only
+signaalworkflow. Voor iedere run:
+
+1. controleert zij repository, open branches, bestaande dagelijkse PR's en de lokale worktree;
+2. gebruikt zij alleen concrete informatie die rechtstreeks via officiële primaire bronnen is bevestigd;
+3. controleert zij record-ID, genormaliseerde titel, canonieke URL, aanbieder en inhoudelijke overlap;
+4. houdt zij `data/records.json`, publieke projectie, metadata en zoekindex synchroon;
+5. draait zij datavalidatie, alle unittests, JavaScript-syntaxcontroles en relevante headless smoketests;
+6. maakt of actualiseert zij alleen bij materiële wijzigingen een eigen branch en pull request;
+7. zet zij die PR gereed zodat alle verplichte controles werkelijk draaien;
+8. mergeert zij uitsluitend wanneer alle checks slagen en GitHub geen conflict of onzekerheid meldt;
+9. verifieert zij daarna de Pages-deployment en live zoekbaarheid van nieuwe of bijgewerkte records.
+
+Zij verlaagt nooit branchbescherming, omzeilt geen checks en mergeert geen externe pull requests. Bij twijfel
+blijft de PR ongemerged en vermeldt het runrapport de exacte blokkade. Wanneer geen betrouwbare wijziging
+beschikbaar is, maakt zij geen lege commit of PR.
 
 ## Lokaal testen en handmatig starten
 
@@ -178,4 +205,5 @@ Nederlandse zomer- en wintertijd vast.
 
 Bekende beperking: generieke HTML-extractie ziet relevante links en deadlines, maar begrijpt geen
 JavaScript-only pagina's, PDF-inhoud of bron-specifieke API's. Voeg daarvoor later een expliciete,
-geteste extractiemethode per bron toe. Geen enkele beperking rechtvaardigt automatische publicatie.
+geteste extractiemethode per bron toe. Geen enkele beperking rechtvaardigt automatische publicatie van
+een onbevestigd signaal of reviewvoorstel.

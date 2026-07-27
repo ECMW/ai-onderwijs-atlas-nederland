@@ -53,7 +53,7 @@ jobs:
           if [ "$status" -eq 0 ]; then echo "eligible=true" >> "$GITHUB_OUTPUT"; else echo "eligible=false" >> "$GITHUB_OUTPUT"; fi
           exit 0
 
-      - name: Report the screening result for human review
+      - name: Report the screening result
         uses: actions/github-script@v9
         env:
           ELIGIBLE: ${{ steps.review.outputs.eligible }}
@@ -65,6 +65,9 @@ jobs:
             const repo = context.repo.repo;
             const issue_number = context.payload.pull_request.number;
             const eligible = process.env.ELIGIBLE === 'true';
+            const trustedAutomation =
+              context.payload.pull_request.head.repo.full_name === `${owner}/${repo}` &&
+              context.payload.pull_request.head.ref.startsWith('agent/daily-atlas-');
             const marker = '<!-- atlas-automatic-review -->';
             const report = fs.readFileSync(process.env.REPORT_PATH, 'utf8');
             const body = `${marker}\n${report}`;
@@ -75,18 +78,42 @@ jobs:
             } else {
               await github.rest.issues.createComment({ owner, repo, issue_number, body });
             }
-            const wanted = eligible ? 'atlas:checks-passed' : 'atlas:needs-attention';
-            const unwanted = eligible ? 'atlas:needs-attention' : 'atlas:checks-passed';
+            const wanted = eligible
+              ? (trustedAutomation ? 'atlas:automation-checks-passed' : 'atlas:checks-passed')
+              : 'atlas:needs-attention';
+            const unwanted = eligible
+              ? ['atlas:needs-attention', trustedAutomation ? 'atlas:checks-passed' : 'atlas:automation-checks-passed']
+              : ['atlas:checks-passed', 'atlas:automation-checks-passed'];
+            const wantedDescription = eligible
+              ? (trustedAutomation
+                ? 'Vertrouwde Atlas-actualisator; automatische controles geslaagd'
+                : 'Automatische controles geslaagd; menselijke beoordeling vereist')
+              : 'Aanvulling nodig voor beoordeling';
             try {
               await github.rest.issues.getLabel({ owner, repo, name: wanted });
             } catch (error) {
               if (error.status !== 404) throw error;
-              await github.rest.issues.createLabel({ owner, repo, name: wanted, color: eligible ? '1A7F37' : 'D4A72C', description: eligible ? 'Automatische controles geslaagd; menselijke beoordeling vereist' : 'Aanvulling nodig voor beoordeling' });
+              await github.rest.issues.createLabel({
+                owner,
+                repo,
+                name: wanted,
+                color: eligible ? '1A7F37' : 'D4A72C',
+                description: wantedDescription
+              });
             }
-            try { await github.rest.issues.removeLabel({ owner, repo, issue_number, name: unwanted }); } catch (error) { if (error.status !== 404) throw error; }
+            for (const label of unwanted) {
+              try {
+                await github.rest.issues.removeLabel({ owner, repo, issue_number, name: label });
+              } catch (error) {
+                if (error.status !== 404) throw error;
+              }
+            }
             await github.rest.issues.addLabels({ owner, repo, issue_number, labels: [wanted] });
             if (eligible) {
-              await github.rest.issues.createComment({ owner, repo, issue_number, body: 'De automatische controles zijn geslaagd. Een mens moet de bijdrage nog beoordelen en mergen; er is niets automatisch gepubliceerd.' });
+              const decision = trustedAutomation
+                ? 'De automatische controles zijn geslaagd. De door de eigenaar gemachtigde dagelijkse Atlas-actualisator mag deze eigen PR mergen zodra ook alle overige verplichte checks groen zijn.'
+                : 'De automatische controles zijn geslaagd. Een mens moet deze externe bijdrage nog beoordelen en mergen; er is niets automatisch gepubliceerd.';
+              await github.rest.issues.createComment({ owner, repo, issue_number, body: decision });
             }
 
       - name: Mark an unresolved contribution as failed
