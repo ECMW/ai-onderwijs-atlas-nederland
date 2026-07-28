@@ -15,6 +15,11 @@ def main() -> int:
     parser.add_argument("--base", required=True, help="JSON-bestand v\u00f3\u00f3r de bijdrage")
     parser.add_argument("--candidate", required=True, help="JSON-bestand uit de pull request")
     parser.add_argument("--changed-files", help="Tekstbestand met \u00e9\u00e9n gewijzigd pad per regel")
+    parser.add_argument(
+        "--trusted-automation",
+        action="store_true",
+        help="Pas de strikte route toe voor de gemachtigde dagelijkse Atlas-actualisator.",
+    )
     parser.add_argument("--report-json")
     parser.add_argument("--report-markdown")
     args = parser.parse_args()
@@ -24,7 +29,7 @@ def main() -> int:
     changed = None
     if args.changed_files:
         changed = [line.strip().replace("\\", "/") for line in Path(args.changed_files).read_text(encoding="utf-8").splitlines() if line.strip()]
-    report = review_records(base, candidate, changed)
+    report = review_records(base, candidate, changed, trusted_automation=args.trusted_automation)
     dump_report(report, args.report_json, args.report_markdown)
     print(report_markdown(report))
     return 0 if report["eligible"] else 2

@@ -41,14 +41,21 @@ jobs:
       - name: Screen structure, duplicates, status and official sources
         id: review
         continue-on-error: true
+        env:
+          TRUSTED_AUTOMATION: ${{ github.event.pull_request.head.repo.full_name == github.repository && startsWith(github.event.pull_request.head.ref, 'agent/daily-atlas-') }}
         run: |
           set +e
+          trusted_argument=""
+          if [ "$TRUSTED_AUTOMATION" = "true" ]; then
+            trusted_argument="--trusted-automation"
+          fi
           python scripts/review_contribution.py \
             --base data/records.json \
             --candidate "$RUNNER_TEMP/candidate-records.json" \
             --changed-files "$RUNNER_TEMP/changed-files.txt" \
             --report-json "$RUNNER_TEMP/atlas-review.json" \
-            --report-markdown "$RUNNER_TEMP/atlas-review.md"
+            --report-markdown "$RUNNER_TEMP/atlas-review.md" \
+            $trusted_argument
           status=$?
           if [ "$status" -eq 0 ]; then echo "eligible=true" >> "$GITHUB_OUTPUT"; else echo "eligible=false" >> "$GITHUB_OUTPUT"; fi
           exit 0
