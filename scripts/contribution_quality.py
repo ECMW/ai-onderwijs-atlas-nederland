@@ -2,7 +2,9 @@
 
 De controle bewijst geen inhoudelijke waarheid of aanbeveling. Zij controleert wel
 of een toevoeging afgebakend is, geen bestaande data wijzigt, een bereikbare
-offici?le bron heeft en herkenbaar aansluit op titel en aanbieder.
+officiële bron heeft en herkenbaar aansluit op titel en aanbieder. De afzonderlijke
+trusted-automationmodus staat uitsluitend geverifieerde dagelijkse Atlas-updates
+uit de eigen repository toe en behoudt dezelfde bron- en datakwaliteitscontroles.
 """
 
 from __future__ import annotations
@@ -49,6 +51,12 @@ GENERIC_TOKENS = {
 }
 PRIVATE_HOSTS = {"localhost", "localhost.localdomain"}
 ALLOWED_CHANGED_FILE = "data/records.json"
+TRUSTED_ALLOWED_CHANGED_FILES = {
+    "data/records.json",
+    "data/metadata.json",
+    "data/data-v2.js",
+    "data/search-index.json",
+}
 USER_AGENT = (
     "AI-Onderwijs-Atlas-contribution-check/1.0 "
     "(+https://ecmw.github.io/ai-onderwijs-atlas-nederland/)"
@@ -154,19 +162,25 @@ def _status_conflicts(record: dict, source_checks: Iterable[SourceCheck]) -> str
     return None
 
 
-def _record_errors(record: dict, all_ids: set[str]) -> list[str]:
+def _record_errors(record: dict, all_ids: set[str], trusted_automation: bool = False) -> list[str]:
     errors: list[str] = []
     record_id = record.get("id")
     prefix = f"{record_id or '<zonder id>'}: "
     if not record_id or not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,99}", str(record_id)):
         errors.append(prefix + "id moet een unieke, kleine slug zijn.")
-    if record.get("recordType") not in AUTO_TYPES:
+    trusted_types = RECORD_TYPES - {"identified_need", "white_spot"}
+    if not trusted_automation and record.get("recordType") not in AUTO_TYPES:
         errors.append(prefix + "dit recordtype vraagt inhoudelijke beoordeling en wordt niet automatisch gepubliceerd.")
-    if record.get("recordType") not in RECORD_TYPES:
+    if record.get("recordType") not in (trusted_types if trusted_automation else RECORD_TYPES):
         errors.append(prefix + "ongeldig recordtype.")
     if record.get("status") not in STATUSES or record.get("status") in {"unknown", "needs_verification", "identified_need"}:
         errors.append(prefix + "kies een concrete status.")
-    if record.get("verificationStatus") != "needs_review" or record.get("lastVerified"):
+    if trusted_automation:
+        if record.get("verificationStatus") not in {"verified", "recently_checked"}:
+            errors.append(prefix + "de vertrouwde actualisator vereist een bevestigde verificatiestatus.")
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(record.get("lastVerified") or "")):
+            errors.append(prefix + "de vertrouwde actualisator vereist een geldige controledatum.")
+    elif record.get("verificationStatus") != "needs_review" or record.get("lastVerified"):
         errors.append(prefix + "nieuwe bijdragen starten met verificationStatus 'needs_review' en zonder lastVerified.")
     for field, minimum, maximum in (("title", 2, 160), ("providerName", 2, 160), ("description", 40, 900)):
         value = str(record.get(field) or "").strip()
@@ -194,11 +208,17 @@ def review_records(
     candidate_records: list[dict],
     changed_files: list[str] | None = None,
     source_loader: Callable[[str], SourceCheck] = check_source,
+    trusted_automation: bool = False,
 ) -> dict:
     errors: list[str] = []
     warnings: list[str] = []
-    if changed_files is not None and set(changed_files) != {ALLOWED_CHANGED_FILE}:
-        errors.append("Automatische verwerking staat alleen een toevoeging in data/records.json toe.")
+    if changed_files is not None:
+        changed_set = set(changed_files)
+        if trusted_automation:
+            if "data/records.json" not in changed_set or not changed_set.issubset(TRUSTED_ALLOWED_CHANGED_FILES):
+                errors.append("De vertrouwde actualisator mag uitsluitend de canonieke data en afgeleide databestanden wijzigen.")
+        elif changed_set != {ALLOWED_CHANGED_FILE}:
+            errors.append("Automatische verwerking staat alleen een toevoeging in data/records.json toe.")
 
     base_by_id = {record.get("id"): record for record in base_records}
     candidate_by_id = {record.get("id"): record for record in candidate_records}
@@ -212,29 +232,40 @@ def review_records(
     added_ids = sorted(set(candidate_by_id) - set(base_by_id))
     if removed:
         errors.append("Bestaande records mogen niet automatisch worden verwijderd: " + ", ".join(removed))
-    if modified:
+    if modified and not trusted_automation:
         errors.append("Correcties op bestaande records vragen een aparte beoordeling: " + ", ".join(modified))
-    if not added_ids:
+    touched_ids = sorted(set(added_ids) | (set(modified) if trusted_automation else set()))
+    if not touched_ids:
         errors.append("Er is geen nieuw record gevonden.")
-    if len(added_ids) > 5:
-        errors.append("Voeg per automatisch verzoek maximaal vijf records toe.")
+    if len(touched_ids) > 5:
+        errors.append("Verwerk per automatisch verzoek maximaal vijf records.")
 
     all_ids = set(candidate_by_id)
     base_titles = {(normalize(item.get("title")), normalize(item.get("providerName")), item.get("recordType")) for item in base_records}
-    base_urls = {
-        (canonical_url(source["url"]), item.get("recordType"))
-        for item in base_records for source in item.get("sourceUrls", []) if source.get("url", "").startswith("http")
-    }
+    base_url_owners: dict[tuple[str, str], set[str]] = {}
+    for item in base_records:
+        for source in item.get("sourceUrls", []):
+            if source.get("url", "").startswith("http"):
+                key = (canonical_url(source["url"]), item.get("recordType"))
+                base_url_owners.setdefault(key, set()).add(item.get("id"))
     source_results: dict[str, list[dict]] = {}
     seen_added_titles: set[tuple[str, str, str]] = set()
 
-    for record_id in added_ids:
+    for record_id in touched_ids:
         record = candidate_by_id[record_id]
-        errors.extend(_record_errors(record, all_ids))
+        errors.extend(_record_errors(record, all_ids, trusted_automation))
         title_key = (normalize(record.get("title")), normalize(record.get("providerName")), record.get("recordType"))
-        if title_key in base_titles or title_key in seen_added_titles:
-            errors.append(f"{record_id}: mogelijk duplicaat op titel, aanbieder en type.")
-        seen_added_titles.add(title_key)
+        if record_id in added_ids:
+            if title_key in base_titles or title_key in seen_added_titles:
+                errors.append(f"{record_id}: mogelijk duplicaat op titel, aanbieder en type.")
+            seen_added_titles.add(title_key)
+        elif trusted_automation:
+            base_history = base_by_id[record_id].get("changeHistory", [])
+            candidate_history = record.get("changeHistory", [])
+            if candidate_history == base_history:
+                errors.append(f"{record_id}: een correctie vereist een nieuwe changeHistory-vermelding.")
+            elif candidate_history[-1].get("date") != record.get("lastVerified"):
+                errors.append(f"{record_id}: de laatste changeHistory-datum moet gelijk zijn aan lastVerified.")
 
         official_sources = [source for source in record.get("sourceUrls", []) if source.get("sourceType") == "official" and source.get("url")]
         checks: list[SourceCheck] = []
@@ -244,7 +275,7 @@ def review_records(
                 errors.append(f"{record_id}: de automatische route vereist een HTTPS-bron.")
                 continue
             key = (canonical_url(url), record.get("recordType"))
-            if key in base_urls:
+            if base_url_owners.get(key, set()) - {record_id}:
                 errors.append(f"{record_id}: deze bron is al gekoppeld aan een bestaand record van hetzelfde type.")
             checks.append(source_loader(url))
         source_results[record_id] = [asdict(check) for check in checks]
@@ -262,10 +293,15 @@ def review_records(
     return {
         "eligible": not errors,
         "addedIds": added_ids,
+        "modifiedIds": modified if trusted_automation else [],
         "errors": errors,
         "warnings": warnings,
         "sourceChecks": source_results,
-        "scope": "Automatische bron- en structuurcontrole; geen inhoudelijke aanbeveling.",
+        "scope": (
+            "Vertrouwde dagelijkse Atlas-controle op bron, structuur, duplicaten en verificatie."
+            if trusted_automation
+            else "Automatische bron- en structuurcontrole; geen inhoudelijke aanbeveling."
+        ),
     }
 
 
@@ -274,6 +310,9 @@ def report_markdown(report: dict) -> str:
     lines = [heading, "", report["scope"], ""]
     if report.get("addedIds"):
         lines.append("**Nieuwe records:** " + ", ".join(f"`{item}`" for item in report["addedIds"]))
+        lines.append("")
+    if report.get("modifiedIds"):
+        lines.append("**Bijgewerkte records:** " + ", ".join(f"`{item}`" for item in report["modifiedIds"]))
         lines.append("")
     if report.get("errors"):
         lines.extend(["**Nog op te lossen:**", *[f"- {item}" for item in report["errors"]], ""])
