@@ -11920,13 +11920,13 @@
     "availabilityText": "Direct beschikbaar",
     "startDate": null,
     "endDate": null,
-    "publicationDate": null,
-    "lastVerified": "2026-07-21",
+    "publicationDate": "2026-07-20",
+    "lastVerified": "2026-07-28",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "Officiële bron",
-        "url": "https://www.unesco.org/en/articles/empowering-minds-transforming-lives-global-mooc-ethics-ai?hub=67817",
+        "url": "https://www.unesco.org/en/articles/unesco-and-lg-ai-research-launch-global-mooc-ethics-ai?hub=355",
         "sourceType": "official"
       }
     ],
@@ -11962,6 +11962,11 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 3."
+      },
+      {
+        "date": "2026-07-28",
+        "type": "updated",
+        "summary": "Formele lanceerdatum en actuele UNESCO-bron bevestigd; inschrijving is geopend."
       }
     ]
   },
@@ -17010,6 +17015,171 @@
         "date": "2026-07-27",
         "type": "added",
         "summary": "Toegevoegd na controle van de officiële UNESCO-publicatiepagina."
+      }
+    ]
+  },
+  {
+    "id": "npuls-learning-analytics-in-de-praktijk",
+    "title": "Learning Analytics in de praktijk: twee jaar inzichten, uitdagingen en vervolgstappen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Npuls",
+    "description": "Praktijkpublicatie met lessen uit twee jaar Learning Analytics in mbo, hbo en wo, waaronder datakwaliteit, ethiek, draagvlak, opschaling en de relatie met verantwoord gebruik van AI.",
+    "purpose": "Onderwijsinstellingen ondersteunen bij bestuurbare toepassing en opschaling van Learning Analytics en AI.",
+    "audiences": [
+      "Docenten",
+      "Beleidsmakers",
+      "Onderzoekers",
+      "IT-professionals",
+      "Projectleiders"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Data en infrastructuur",
+      "Publieke waarden en ethiek",
+      "Beleid en governance",
+      "Implementatie en adoptie",
+      "Onderzoek"
+    ],
+    "status": "available",
+    "availabilityText": "Publicatie direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-04-14",
+    "lastVerified": "2026-07-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://npuls.nl/kennisbank/learning-analytics-in-de-praktijk",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Learning Analytics",
+      "studiedata",
+      "datakwaliteit",
+      "AI-governance",
+      "opschaling"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-28",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële Npuls-publicatiepagina."
+      }
+    ]
+  },
+  {
+    "id": "unesco-digital-learning-week-2026",
+    "title": "Digital Learning Week 2026: Education in the age of AI",
+    "recordType": "programme",
+    "legacyType": "Programma",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "UNESCO",
+    "description": "Internationaal UNESCO-flagshipevenement over onderwijs in het AI-tijdperk, met aandacht voor menselijke regie, kansengelijkheid, publiek belang, publieke AI en digitale soevereiniteit.",
+    "purpose": "Beleidsmakers, onderwijsprofessionals en onderzoekers laten leren en samenwerken rond bestuurbaar en mensgericht AI-gebruik in onderwijs.",
+    "audiences": [
+      "Beleidsmakers",
+      "Bestuurders",
+      "Docenten",
+      "Onderzoekers",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Publieke waarden en ethiek",
+      "AI-geletterdheid",
+      "Veilige AI-omgeving",
+      "Professionalisering"
+    ],
+    "status": "planned",
+    "availabilityText": "Registratie geopend voor fysieke of online deelname; 8–11 september 2026",
+    "startDate": "2026-09-08",
+    "endDate": "2026-09-11",
+    "publicationDate": null,
+    "lastVerified": "2026-07-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.unesco.org/en/weeks/digital-learning?hub=67390",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "registration_required",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": "Jaarlijks",
+    "language": [
+      "en",
+      "fr"
+    ],
+    "keywords": [
+      "UNESCO",
+      "Digital Learning Week",
+      "AI in education",
+      "public interest AI",
+      "digital sovereignty",
+      "human agency"
+    ],
+    "notes": "Plenaire sessies worden volgens UNESCO live gestreamd met vertolking in Engels en Frans.",
+    "changeHistory": [
+      {
+        "date": "2026-07-28",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële UNESCO-evenement- en registratiepagina."
       }
     ]
   }
