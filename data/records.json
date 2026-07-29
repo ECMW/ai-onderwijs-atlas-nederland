@@ -17220,8 +17220,8 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
-        "url": "https://www.oecd.org/en/publications/policies-supporting-responsible-and-systematic-genai-adoption-in-higher-education_c4e5621f-en.html",
+        "label": "Officiële publicatie (PDF)",
+        "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2026/07/policies-supporting-responsible-and-systematic-genai-adoption-in-higher-education_0f8d9b9f/c4e5621f-en.pdf",
         "sourceType": "official"
       }
     ],
