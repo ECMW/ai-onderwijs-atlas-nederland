@@ -17182,5 +17182,167 @@
         "summary": "Toegevoegd na controle van de officiële UNESCO-evenement- en registratiepagina."
       }
     ]
+  },
+  {
+    "id": "oecd-systematic-genai-adoption-higher-education",
+    "title": "Policies supporting responsible and systematic GenAI adoption in higher education",
+    "recordType": "policy_document",
+    "legacyType": "Beleidsdocument",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "OECD",
+    "description": "OECD-beleidsanalyse van vijf opkomende systeemreacties op generatieve AI in het hoger onderwijs: richtlijnen voor verantwoord gebruik, gezamenlijke compliance en inkoop, competentieontwikkeling, bewijsopbouw en pilots, en gespecialiseerde AI-toepassingen.",
+    "purpose": "Overheden en instellingen ondersteunen bij samenhangend en verantwoord beleid voor generatieve AI in het hoger onderwijs.",
+    "audiences": [
+      "Beleidsmakers",
+      "Bestuurders",
+      "Onderwijsinstellingen",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Implementatie en adoptie",
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Beleidsanalyse direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-07-17",
+    "lastVerified": "2026-07-29",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële publicatie (PDF)",
+        "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2026/07/policies-supporting-responsible-and-systematic-genai-adoption-in-higher-education_0f8d9b9f/c4e5621f-en.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "oecd-digital-education-outlook-2026"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "OECD",
+      "hoger onderwijs",
+      "GenAI",
+      "inkoop",
+      "compliance",
+      "systeembeleid"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-29",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële OECD-publicatiepagina."
+      }
+    ]
+  },
+  {
+    "id": "nolai-professionaliseringskalender-ai-2026-2027",
+    "title": "NOLAI-webinars en workshops over educatieve AI 2026-2027",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [
+      "org-nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Gratis professionaliseringsaanbod voor leraren in het primair, voortgezet en speciaal onderwijs: online webinars over algemene en educatieve AI en fysieke workshops waarin schoolteams een praktijkprobleem vertalen naar een mogelijke educatieve-AI-projectvraag.",
+    "purpose": "Leraren handelingskennis geven over educatieve AI en menselijke regie bij het formuleren van AI-vraagstukken vanuit de onderwijspraktijk.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Inschrijving geopend; webinars en workshops van 17 september 2026 tot en met 10 juni 2027",
+    "startDate": "2026-09-17",
+    "endDate": "2027-06-10",
+    "publicationDate": "2026-07-02",
+    "lastVerified": "2026-07-29",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële kalender en inschrijving",
+        "url": "https://www.ru.nl/over-ons/nieuws/nolai-kalender-2026-2027-voor-leraren-en-andere-onderwijsprofessionals",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "nolai-programma",
+      "whitepaper-educatieve-en-algemene-ai"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "registration_required",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Leraren en schoolteams in het primair, voortgezet en speciaal onderwijs in Nederland.",
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": "Meerdere webinars en workshops in schooljaar 2026-2027",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "NOLAI",
+      "educatieve AI",
+      "algemene AI",
+      "webinar",
+      "workshop",
+      "speciaal onderwijs",
+      "co-creatie"
+    ],
+    "notes": "De officiële kalender vermeldt vijf online webinars en vijf fysieke workshops; deelnemers melden zich per sessie aan.",
+    "changeHistory": [
+      {
+        "date": "2026-07-29",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële NOLAI-kalender en inschrijflinks."
+      }
+    ]
   }
 ]
