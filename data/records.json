@@ -4865,17 +4865,17 @@
       "WO"
     ],
     "themes": [],
-    "status": "planned",
-    "availabilityText": "2026",
-    "startDate": "2026-07-16",
-    "endDate": null,
+    "status": "available",
+    "availabilityText": "Inschrijving geopend voor de resterende online sessie op 25 augustus 2026",
+    "startDate": "2026-07-13",
+    "endDate": "2026-08-25",
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
-        "url": "https://npuls.nl/agenda/breng-als-trainer-het-gesprek-over-toetsen-examineren-en-ai-in-beweging-2",
+        "label": "Officiële agenda en inschrijving resterende sessie",
+        "url": "https://npuls.nl/agenda/breng-als-trainer-het-gesprek-over-toetsen-examineren-en-ai-in-beweging-3",
         "sourceType": "official"
       }
     ],
@@ -4883,7 +4883,7 @@
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Nederland",
-    "accessType": "public",
+    "accessType": "registration_required",
     "costType": "unknown",
     "fundingAmount": null,
     "fundingDeadline": null,
@@ -4895,7 +4895,7 @@
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
-    "recurrence": null,
+    "recurrence": "Drie online sessies op 13 juli, 16 juli en 25 augustus 2026",
     "language": [
       "nl"
     ],
@@ -4912,6 +4912,11 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-07-30",
+        "type": "updated",
+        "summary": "Resterende sessie van 25 augustus, volledige reeksdata, inschrijfstatus en bron bijgewerkt."
       }
     ]
   },
@@ -17342,6 +17347,1919 @@
         "date": "2026-07-29",
         "type": "added",
         "summary": "Toegevoegd na controle van de officiële NOLAI-kalender en inschrijflinks."
+      }
+    ]
+  },
+  {
+    "id": "fontys-ai-voor-onderwijs-basis",
+    "title": "AI voor het Onderwijs - Basis",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Fontys Hogeschool",
+    "description": "Eendaagse praktijkcursus voor docenten die zonder vereiste voorkennis leren wat generatieve AI kan, prompts schrijven, AI inzetten voor lesvoorbereiding, toetsen, feedback en differentiatie, en studenten begeleiden bij kritisch en verantwoord AI-gebruik.",
+    "purpose": "Docenten praktische AI-basisvaardigheden geven en hen toerusten om studenten verantwoord met AI te laten leren.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "VO",
+      "MBO",
+      "HBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Inschrijving geopend voor 4 september en 20 november 2026 in Eindhoven",
+    "startDate": "2026-09-04",
+    "endDate": "2026-11-20",
+    "publicationDate": null,
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële cursuspagina en inschrijving",
+        "url": "https://www.fontys.nl/Opleidingen/AI-voor-het-Onderwijs-Basis-cursus.htm",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "fontys-ai-voor-onderwijs-verdieping",
+      "fontys-ai-voor-onderwijs-compleet"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "registration_required",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Primair gericht op docenten in het voortgezet onderwijs, mbo en hbo; ook toegankelijk voor andere onderwijsprofessionals.",
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": "Twee edities in 2026; ook incompany beschikbaar",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Fontys",
+      "basis",
+      "generatieve AI",
+      "prompten",
+      "lesvoorbereiding",
+      "feedback",
+      "differentiatie"
+    ],
+    "notes": "De cursus duurt circa 6,5 uur, kost EUR 395 en levert een bewijs van deelname op.",
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd na controle van cursusinhoud, doelgroep, data, prijs en directe inschrijfmogelijkheid op de officiële Fontys-pagina."
+      }
+    ]
+  },
+  {
+    "id": "fontys-ai-voor-onderwijs-compleet",
+    "title": "AI voor het Onderwijs - Compleet",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Fontys Hogeschool",
+    "description": "Achttienweeks professionaliseringstraject waarin onderwijsprofessionals generatieve AI, data en mixed reality toepassen en iteratief een eigen technologische oplossing of prototype voor een praktijkvraagstuk in het onderwijs ontwikkelen.",
+    "purpose": "Onderwijsprofessionals leren zelfstandig en kritisch technologie kiezen, ontwerpen, testen en implementeren voor een concreet onderwijsvraagstuk.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsondersteuners",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "VO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "Implementatie en adoptie",
+      "Data en infrastructuur",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Inschrijving geopend voor start op 2 september 2026 in Eindhoven",
+    "startDate": "2026-09-02",
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële cursuspagina en inschrijving",
+        "url": "https://www.fontys.nl/Opleidingen/AI-voor-het-Onderwijs-Compleet-cursus.htm",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "fontys-ai-voor-onderwijs-basis",
+      "fontys-ai-voor-onderwijs-verdieping"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "registration_required",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Voor onderwijsprofessionals met bij voorkeur hbo-werk- en denkniveau en enkele jaren werkervaring; IT-ervaring is niet vereist.",
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": "Startmomenten in september en februari",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Fontys",
+      "microcredential",
+      "generatieve AI",
+      "data",
+      "mixed reality",
+      "prototype",
+      "onderwijsinnovatie"
+    ],
+    "notes": "Het traject duurt 18 weken, vraagt circa 12 uur per week, kost EUR 3.105 en wordt afgesloten met een microcredential.",
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd na controle van cursusinhoud, doelgroep, startdatum, prijs en directe inschrijfmogelijkheid op de officiële Fontys-pagina."
+      }
+    ]
+  },
+  {
+    "id": "radboud-masterclass-leren-over-en-met-ai",
+    "title": "Masterclass Leren over en met AI",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Radboud Docenten Academie",
+    "description": "Driedelige masterclass voor docenten in het voortgezet onderwijs over leren over en met AI, met aandacht voor werking, dataopslag, bias, milieubelasting, effecten op het leerproces en pedagogisch-didactisch handelen dat menselijk denken centraal houdt.",
+    "purpose": "VO-docenten handelingsperspectief geven om AI verantwoord in te zetten zonder het leerproces en de cognitieve inspanning van leerlingen uit te besteden.",
+    "audiences": [
+      "Docenten"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "planned",
+    "availabilityText": "Inschrijving geopend; drie bijeenkomsten van 11 maart tot en met 22 april 2027 in Nijmegen",
+    "startDate": "2027-03-11",
+    "endDate": "2027-04-22",
+    "publicationDate": null,
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële opleidingspagina en inschrijving",
+        "url": "https://www.ru.nl/opleidingen/onderwijs-voor-professionals/overzicht/masterclass-leren-over-en-met-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "radboud-onderwijs-ai-workshops"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "registration_required",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": "2027-02-25",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Docenten in het voortgezet onderwijs.",
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": "Drie fysieke bijeenkomsten op 11 maart, 1 april en 22 april 2027",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Radboud Docenten Academie",
+      "VO",
+      "leren over AI",
+      "leren met AI",
+      "bias",
+      "menselijke regie",
+      "cognitieve inspanning"
+    ],
+    "notes": "De masterclass heeft een studielast van 10 uur, kost EUR 395 en hanteert 25 februari 2027 als inschrijfdeadline.",
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd na controle van programma, doelgroep, bijeenkomsten, prijs en inschrijfdeadline op de officiële Radboud-pagina."
+      }
+    ]
+  },
+  {
+    "id": "hogeschool-van-arnhem-en-nijmegen",
+    "title": "Hogeschool van Arnhem en Nijmegen (HAN)",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Hogeschool van Arnhem en Nijmegen",
+    "description": "Nederlandse hogeschool met opleidingen, docentprofessionalisering, kaders en praktische hulpmiddelen voor verantwoord gebruik van AI in onderwijs en onderzoek.",
+    "purpose": "Onderwijsprofessionals en organisaties ondersteunen bij toegepaste, verantwoorde AI.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderwijsontwikkelaars",
+      "Onderzoekers",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.han.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "HAN",
+      "hogeschool",
+      "AI",
+      "docentprofessionalisering"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "universiteit-leiden",
+    "title": "Universiteit Leiden",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Universiteit Leiden",
+    "description": "Nederlandse universiteit met onderwijs, onderzoek en ondersteuning rond AI-geletterdheid, generatieve AI, toetsing en verantwoord onderwijsontwerp.",
+    "purpose": "Wetenschappelijk onderwijs, onderzoek en docentprofessionalisering rond AI ondersteunen.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderzoekers",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Onderzoek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.universiteitleiden.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Universiteit Leiden",
+      "LLInC",
+      "AI in Education"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "open-universiteit",
+    "title": "Open Universiteit",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Open Universiteit",
+    "description": "Nederlandse universiteit voor flexibel en online hoger onderwijs met publieke kennisdeling en onderzoek naar leren, toetsen en verantwoord gebruik van AI.",
+    "purpose": "Toegankelijk academisch onderwijs en onderzoek naar digitaal en AI-ondersteund leren bieden.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderzoekers",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering",
+      "Onderzoek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ou.nl/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Open Universiteit",
+      "online leren",
+      "AI",
+      "toetsing"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "han-ai-voor-docenten-basis",
+    "title": "AI voor Docenten in het Onderwijs (basis)",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [
+      "hogeschool-van-arnhem-en-nijmegen"
+    ],
+    "providerName": "Hogeschool van Arnhem en Nijmegen",
+    "description": "Cursus van twee bijeenkomsten waarin docenten uit po, vo, mbo en hbo met onder meer ChatGPT, Gemini en NotebookLM onderwijs op maat leren ontwerpen.",
+    "purpose": "Docenten praktisch en verantwoord leren werken met AI bij het ontwerpen van leermateriaal.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "Curriculumontwikkeling"
+    ],
+    "status": "planned",
+    "availabilityText": "Aanmelden mogelijk; startdatum wordt nog vastgesteld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.han.nl/opleidingen/cursus/ai-voor-docenten-in-het-onderwijs-basis/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "HAN",
+      "AI voor docenten",
+      "ChatGPT",
+      "Gemini",
+      "NotebookLM"
+    ],
+    "notes": "Kosten volgens de officiële pagina: €295. Twee bijeenkomsten; er was op 30 juli 2026 nog geen startdatum vastgesteld.",
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "han-ai-voor-docenten-verdieping",
+    "title": "AI voor Docenten in het Onderwijs (verdieping)",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [
+      "hogeschool-van-arnhem-en-nijmegen"
+    ],
+    "providerName": "Hogeschool van Arnhem en Nijmegen",
+    "description": "Verdiepende cursus voor docenten met AI-ervaring die via vibecoding eigen applicaties en websites voor hun onderwijspraktijk leren maken.",
+    "purpose": "Docenten leren met AI onderwijsapplicaties te ontwerpen en daarbij bewuste privacykeuzes te maken.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "Privacy en AVG"
+    ],
+    "status": "planned",
+    "availabilityText": "Aanmelden mogelijk; startdatum wordt nog vastgesteld",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.han.nl/opleidingen/cursus/ai-voor-docenten-in-het-onderwijs-verdieping/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "HAN",
+      "vibecoding",
+      "Bolt",
+      "Lovable",
+      "Cursor",
+      "docenten"
+    ],
+    "notes": "Kosten volgens de officiële pagina: €295. Twee bijeenkomsten; er was op 30 juli 2026 nog geen startdatum vastgesteld.",
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "han-onderwijs-met-ai",
+    "title": "Onderwijs met AI: kaders, tools en ondersteuning",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [
+      "hogeschool-van-arnhem-en-nijmegen"
+    ],
+    "providerName": "Hogeschool van Arnhem en Nijmegen",
+    "description": "Centrale HAN-omgeving met het integrale AI-kader, informatie over AI als bron, beschikbare AI-tools, literatuur en ondersteuning voor onderwijsprofessionals.",
+    "purpose": "Kaders en direct bruikbare ondersteuning voor verantwoord AI-gebruik in onderwijs bijeenbrengen.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderwijsontwikkelaars",
+      "Onderzoekers",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Veilige AI-omgeving",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.han.nl/onderwijsondersteuning/leren-werken-met-ict/artificial-intelligence/ai-in-je-onderwijs/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "HAN",
+      "integraal AI-kader",
+      "AI-tools",
+      "onderwijsondersteuning"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "han-toolkit-ai-bestendig-toetsen",
+    "title": "Toolkit AI-bestendig toetsen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "hogeschool-van-arnhem-en-nijmegen"
+    ],
+    "providerName": "Hogeschool van Arnhem en Nijmegen",
+    "description": "Toolkit waarmee opleidingen de AI-bestendigheid van toetsen analyseren en het gesprek voeren over leeruitkomsten, toetsvormen en constructive alignment.",
+    "purpose": "Opleidingsteams helpen hun toetsprogramma bewust aan te passen aan de mogelijkheden en risico's van AI.",
+    "audiences": [
+      "Docenten",
+      "Examencommissies",
+      "Onderwijsontwikkelaars",
+      "Toetsdeskundigen"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Beleid en governance",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2024-10-17",
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.han.nl/onderwijsondersteuning/leren-werken-met-ict/toetsing/AI-bestendig-toetsen-Versie-1.0-17-oktober-2024.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "HAN",
+      "AI-bestendig toetsen",
+      "constructive alignment",
+      "toetsprogramma"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "vu-workshops-generatieve-ai-onderwijsteams",
+    "title": "Workshops generatieve AI voor onderwijsteams",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [
+      "vrije-universiteit-amsterdam"
+    ],
+    "providerName": "Vrije Universiteit Amsterdam",
+    "description": "Op maat aangeboden workshops voor onderwijsteams, waaronder AI-chatbots, prompting, AI-tools, cursusontwerp en integratie van generatieve AI in onderwijs.",
+    "purpose": "Onderwijsteams praktisch ondersteunen bij verantwoord en effectief gebruik van generatieve AI.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Onderwijsteams"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Op aanvraag voor onderwijsteams",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://vu.nl/nl/nieuws/2026/workshops-op-maat-voor-jouw-onderwijsteam",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "VU Education Lab",
+      "maatwerk",
+      "prompting",
+      "AI-chatbots",
+      "cursusontwerp"
+    ],
+    "notes": "Prijs en planning worden op aanvraag afgestemd.",
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "leiden-ai-literacy-for-teachers",
+    "title": "AI Literacy for Teachers",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [
+      "universiteit-leiden"
+    ],
+    "providerName": "Universiteit Leiden",
+    "description": "Interactieve online module met kansen, risico's, praktische toepassingen en richtlijnen voor docenten die AI bewust in hun onderwijs willen integreren.",
+    "purpose": "Docenten een toegankelijke basis geven voor verantwoorde toepassing van AI in hun onderwijspraktijk.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Beschikbaar voor medewerkers via de universitaire leeromgeving",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-04-09",
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.medewerkers.universiteitleiden.nl/mededelingen/2026/04/nieuwe-online-module-met-schat-aan-informatie-over-ai-in-het-onderwijs",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "restricted",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Universiteit Leiden",
+      "LLInC",
+      "AI Literacy for Teachers",
+      "e-learning"
+    ],
+    "notes": "De module zelf staat in ecole en vereist toegang als medewerker van Universiteit Leiden.",
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "leiden-llm-didactic-guide",
+    "title": "LLM Didactic Guide",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [
+      "universiteit-leiden"
+    ],
+    "providerName": "Universiteit Leiden",
+    "description": "E-learning over de werking van taalmodellen en het effectief, verantwoord en transparant integreren van LLM's in onderwijsactiviteiten.",
+    "purpose": "Docenten praktische kennis en vaardigheden geven voor didactisch verantwoord gebruik van taalmodellen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Beschikbaar voor medewerkers via de universitaire leeromgeving",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-04-09",
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.staff.universiteitleiden.nl/announcements/2026/04/understanding-llms-in-your-teaching-follow-the-e-learning-course",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "restricted",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Universiteit Leiden",
+      "LLInC",
+      "LLM Didactic Guide",
+      "e-learning"
+    ],
+    "notes": "De e-learning zelf staat in de interne leeromgeving van Universiteit Leiden.",
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "ou-webinar-slim-leren-oefenen-toetsen-ai",
+    "title": "Webinar Slim leren, oefenen en toetsen met AI",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [
+      "open-universiteit"
+    ],
+    "providerName": "Open Universiteit",
+    "description": "Publiek terug te kijken webinar over verantwoorde inzet van generatieve AI bij leren, oefenen en betrouwbaar toetsen, met menselijk vakmanschap als uitgangspunt.",
+    "purpose": "Wetenschappelijke inzichten over AI in de volledige onderwijscyclus toegankelijk maken.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Onderzoekers",
+      "Studenten"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-03-05",
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ou.nl/-/studium-generale-lezing-slim-leren-oefenen-en-toetsen-met-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Open Universiteit",
+      "webinar",
+      "leren",
+      "oefenen",
+      "toetsen"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "ec-ai-literacy-questions-answers",
+    "title": "AI-geletterdheid: vragen en antwoorden",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "europese-ai-office"
+    ],
+    "providerName": "Europese Commissie",
+    "description": "Actuele uitleg van de Europese Commissie over AI-geletterdheid, artikel 4 van de AI Act, verantwoordelijkheden van aanbieders en gebruiksorganisaties en beschikbare ondersteuningsinitiatieven.",
+    "purpose": "Organisaties helpen de Europese verplichting rond AI-geletterdheid praktisch en proportioneel te begrijpen.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Docenten",
+      "IT-professionals",
+      "HR-professionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "AI Act en wetgeving",
+      "AI-geletterdheid",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-07-27",
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://digital-strategy.ec.europa.eu/en/faqs/ai-literacy-questions-answers",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "AI Act artikel 4",
+      "AI literacy",
+      "vragen en antwoorden",
+      "Europese Commissie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "ec-richtlijnen-digitale-onderwijsinhoud-2026",
+    "title": "EU-richtlijnen voor digitale onderwijsinhoud",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "europese-commissie-dg-eac"
+    ],
+    "providerName": "Europese Commissie",
+    "description": "Praktisch raamwerk voor het selecteren, maken, aanpassen en evalueren van digitale leermaterialen, waaronder AI-gegenereerde inhoud, met criteria voor kwaliteit, inclusie, veiligheid en juridische naleving.",
+    "purpose": "Leraren en onderwijsorganisaties helpen betrouwbare digitale en AI-gegenereerde leermiddelen te kiezen en gebruiken.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsontwikkelaars",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Curriculumontwikkeling",
+      "Publieke waarden en ethiek",
+      "Veilige AI-omgeving"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-07-27",
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://education.ec.europa.eu/focus-topics/digital-education/actions/plan/digital-education-content-guidelines-and-framework",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "digital education content",
+      "AI-generated content",
+      "quality criteria",
+      "EU guidelines"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "ec-richtlijnen-digitale-geletterdheid-desinformatie-2026",
+    "title": "EU-richtlijnen digitale geletterdheid en desinformatie (2026)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "europese-commissie-dg-eac"
+    ],
+    "providerName": "Europese Commissie",
+    "description": "Geactualiseerde richtlijnen met lesplannen en praktische adviezen over digitale geletterdheid, generatieve AI, desinformatie, sociale media en kritisch denken.",
+    "purpose": "Leraren ondersteunen bij het herkennen en behandelen van AI-versterkte desinformatie in de klas.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsontwikkelaars",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-06-10",
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://education.ec.europa.eu/focus-topics/digital-education/actions/plan/guidelines-for-teachers-to-foster-digital-literacy-and-tackle-disinformation",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "generatieve AI",
+      "desinformatie",
+      "digitale geletterdheid",
+      "lesplannen"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "slo-definitieve-conceptkerndoelen-digitale-geletterdheid",
+    "title": "Definitieve conceptkerndoelen digitale geletterdheid",
+    "recordType": "standard",
+    "legacyType": "Standaard",
+    "subtype": null,
+    "organizationIds": [
+      "slo"
+    ],
+    "providerName": "SLO",
+    "description": "Definitieve conceptkerndoelen voor digitale geletterdheid in primair, voortgezet en speciaal onderwijs, inclusief het herkennen en doordacht gebruiken van AI.",
+    "purpose": "Scholen helpen vooruit te kijken naar het landelijke curriculum voor digitale geletterdheid.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsontwikkelaars",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Curriculumontwikkeling",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-11-21",
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.slo.nl/thema/meer/actualisatie-kerndoelen-examenprogramma/actualisatie-kerndoelen/definitieve-conceptkerndoelen-digitale/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "SLO",
+      "kerndoelen",
+      "digitale geletterdheid",
+      "AI",
+      "curriculum"
+    ],
+    "notes": "De kerndoelen zijn definitief als concept, maar op 30 juli 2026 nog niet wettelijk van kracht.",
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "slo-stappenplan-digitale-geletterdheid-onderwijspraktijk",
+    "title": "Stappenplan digitale geletterdheid in de onderwijspraktijk",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "slo"
+    ],
+    "providerName": "SLO",
+    "description": "Stappenplan met tips en adviezen waarmee schoolteams digitale geletterdheid, waaronder omgaan met data en AI, gestructureerd in hun onderwijs implementeren.",
+    "purpose": "Schoolteams ondersteunen bij visieontwikkeling, curriculumkeuzes en invoering van digitale geletterdheid.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Implementatie en adoptie",
+      "Curriculumontwikkeling",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-01-06",
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.slo.nl/sectoren/vmbo/digitale-geletterdheid-vmbo/digitale-geletterdheid-vo/digitale-geletterdheid-onderwijspraktijk/stappenplan/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "SLO",
+      "stappenplan",
+      "digitale geletterdheid",
+      "data en AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "slo-inhoudslijnen-digitale-geletterdheid",
+    "title": "Inhoudslijnen digitale geletterdheid",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "slo"
+    ],
+    "providerName": "SLO",
+    "description": "Voorbeeldmatige inhoudslijnen met aanbodsdoelen voor kennis, vaardigheden en houding, waaronder het verantwoord omgaan met data en AI in po en onderbouw vo.",
+    "purpose": "Scholen een basis geven voor eigen leerlijnen en een beredeneerd aanbod digitale geletterdheid.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Curriculumontwikkeling",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-01-06",
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.slo.nl/sectoren/havo-vwo/digitale-geletterdheid-havo-vwo/digitale-geletterdheid-vo/inhoudslijnen/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "SLO",
+      "inhoudslijnen",
+      "aanbodsdoelen",
+      "digitale geletterdheid",
+      "AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "raise-academic-advisory-board-2026",
+    "title": "Call RAISE High-Level Academic Advisory Board",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [
+      "europese-commissie-dg-eac"
+    ],
+    "providerName": "Europese Commissie",
+    "description": "Open oproep voor vooraanstaande wetenschappers die onderzoek doen naar AI of AI in wetenschappelijk onderzoek toepassen en het Europese RAISE-initiatief strategisch willen adviseren.",
+    "purpose": "Wetenschappelijke expertise betrekken bij de koers van Europese AI-wetenschap en onderzoeksinfrastructuur.",
+    "audiences": [
+      "Onderzoekers",
+      "Hoogleraren",
+      "Wetenschappers"
+    ],
+    "sectors": [
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Beleid en governance",
+      "Subsidies en financiering"
+    ],
+    "status": "open_call",
+    "availabilityText": "Open voor aanmeldingen tot 4 september 2026",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://research-and-innovation.ec.europa.eu/news/all-research-and-innovation-news/launch-call-experts-join-raise-high-level-academic-advisory-board-2026-06-15_en",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-09-04",
+    "applicationOpenDate": null,
+    "applicationDeadline": "2026-09-04",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [
+      "Wetenschappers",
+      "Hoogleraren"
+    ],
+    "callStatus": "open_call",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "RAISE",
+      "AI in Science",
+      "call for experts",
+      "advisory board"
+    ],
+    "notes": "Dit is een oproep voor deelname aan een adviesraad, geen subsidie.",
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "leiden-transkribus-digitale-geletterdheid",
+    "title": "Transkribus in het onderwijs: digitale geletterdheid met historische bronnen",
+    "recordType": "research_project",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [
+      "universiteit-leiden"
+    ],
+    "providerName": "Universiteit Leiden",
+    "description": "Project waarin onderzoekers en vo-docenten open leermateriaal ontwikkelen rond machine learning, AI en het werken met gedigitaliseerde historische bronnen.",
+    "purpose": "Leerlingen kritisch leren omgaan met AI en historische broninterpretatie en docenten voorzien van open opdrachten.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen",
+      "Onderzoekers",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Praktijkvoorbeelden"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.universiteitleiden.nl/onderzoek/onderzoeksprojecten/iclon/transkribus-in-het-onderwijs-werken-aan-digitale-geletterdheid-met-historische-bronnen",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Transkribus",
+      "historische bronnen",
+      "machine learning",
+      "open leermateriaal"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "leiden-fair-assessment-generatieve-ai",
+    "title": "Fair Educational Assessment in the Age of Generative AI",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "universiteit-leiden"
+    ],
+    "providerName": "Universiteit Leiden",
+    "description": "Rapport van een deliberatieve bijeenkomst over eerlijke toetsing in het tijdperk van generatieve AI, met aanbevelingen voor toetsontwerp, beleid en docentontwikkeling.",
+    "purpose": "Onderwijsinstellingen ondersteunen bij eerlijke en uitlegbare keuzes over toetsing en generatieve AI.",
+    "audiences": [
+      "Docenten",
+      "Examencommissies",
+      "Bestuurders",
+      "Onderwijsontwikkelaars",
+      "Studenten"
+    ],
+    "sectors": [
+      "WO",
+      "HBO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Beleid en governance",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-04-01",
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.universiteitleiden.nl/binaries/content/assets/customsites/fair-assess/fair-assess-deliberative-assembly-report.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "FAIR Assess",
+      "generatieve AI",
+      "fair assessment",
+      "toetsbeleid"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "vu-ai-tutors-optimaal-benutten",
+    "title": "AI-tutors optimaal benutten in je onderwijs",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "vrije-universiteit-amsterdam"
+    ],
+    "providerName": "Vrije Universiteit Amsterdam",
+    "description": "Praktische didactische tips voor het verantwoord inbedden van AI-tutors in cursusontwerp, met aandacht voor feedback, privacy, menselijk contact en AI-geletterdheid.",
+    "purpose": "Docenten helpen AI-tutors doelgericht in te zetten zonder het leerproces of de menselijke begeleiding uit het oog te verliezen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Privacy en AVG",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-06-02",
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://vu.nl/nl/medewerker/didactiek/ai-tutors-optimaal-benutten-in-je-onderwijs",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "VU",
+      "AI-tutor",
+      "didactiek",
+      "blended learning",
+      "privacy"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      }
+    ]
+  },
+  {
+    "id": "vu-handboek-ai-geletterdheid-studenten",
+    "title": "Handboek AI-geletterdheid – studenteneditie",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "vrije-universiteit-amsterdam"
+    ],
+    "providerName": "Vrije Universiteit Amsterdam",
+    "description": "Open handboek voor studenten over de werking, mogelijkheden, beperkingen, maatschappelijke impact en het verantwoord gebruik van AI in studie en onderwijs.",
+    "purpose": "Studenten ondersteunen bij kritisch, transparant en verantwoord gebruik van generatieve AI.",
+    "audiences": [
+      "Studenten",
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-09-15",
+    "lastVerified": "2026-07-30",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.cs.vu.nl/~eliens/update/image/read/AI-in-onderwijs.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "VU",
+      "handboek AI-geletterdheid",
+      "studenten",
+      "open leermateriaal"
+    ],
+    "notes": "Uitgegeven onder CC BY-SA 4.0.",
+    "changeHistory": [
+      {
+        "date": "2026-07-30",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
       }
     ]
   }
