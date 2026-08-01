@@ -18120,7 +18120,7 @@
   },
   {
     "id": "vu-workshops-generatieve-ai-onderwijsteams",
-    "title": "Workshops generatieve AI voor onderwijsteams",
+    "title": "Prompten voor beginners",
     "recordType": "training",
     "legacyType": "Training",
     "subtype": null,
@@ -18128,32 +18128,30 @@
       "vrije-universiteit-amsterdam"
     ],
     "providerName": "Vrije Universiteit Amsterdam",
-    "description": "Op maat aangeboden workshops voor onderwijsteams, waaronder AI-chatbots, prompting, AI-tools, cursusontwerp en integratie van generatieve AI in onderwijs.",
-    "purpose": "Onderwijsteams praktisch ondersteunen bij verantwoord en effectief gebruik van generatieve AI.",
+    "description": "Hybride workshop waarin docenten met verschillende promptstrategieën oefenen om generatieve AI doelgericht in hun eigen onderwijscontext in te zetten.",
+    "purpose": "Docenten praktische promptvaardigheden laten ontwikkelen voor doelgericht gebruik van generatieve AI in het onderwijs.",
     "audiences": [
-      "Docenten",
-      "Onderwijsontwikkelaars",
-      "Onderwijsteams"
+      "Docenten"
     ],
     "sectors": [
       "WO"
     ],
     "themes": [
+      "AI-geletterdheid",
       "Professionalisering",
-      "Lesgeven en leren met AI",
-      "Implementatie en adoptie"
+      "Lesgeven en leren met AI"
     ],
     "status": "available",
-    "availabilityText": "Op aanvraag voor onderwijsteams",
-    "startDate": null,
-    "endDate": null,
+    "availabilityText": "Aanmelden voor 24 september 2026",
+    "startDate": "2026-09-24",
+    "endDate": "2026-09-24",
     "publicationDate": null,
-    "lastVerified": "2026-07-30",
+    "lastVerified": "2026-08-01",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "Officiële bron",
-        "url": "https://vu.nl/nl/nieuws/2026/workshops-op-maat-voor-jouw-onderwijsteam",
+        "url": "https://vu.nl/nl/onderwijs/meer-over/professional-development-exchange-hub",
         "sourceType": "official"
       }
     ],
@@ -18161,8 +18159,8 @@
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Nederland",
-    "accessType": "public",
-    "costType": "unknown",
+    "accessType": "registration_required",
+    "costType": "free",
     "fundingAmount": null,
     "fundingDeadline": null,
     "applicationOpenDate": null,
@@ -18175,21 +18173,27 @@
     "callStatus": null,
     "recurrence": null,
     "language": [
+      "nl",
       "en"
     ],
     "keywords": [
-      "VU Education Lab",
-      "maatwerk",
-      "prompting",
-      "AI-chatbots",
-      "cursusontwerp"
+      "VU CTL",
+      "prompten",
+      "generatieve AI",
+      "docenten",
+      "hybride workshop"
     ],
-    "notes": "Prijs en planning worden op aanvraag afgestemd.",
+    "notes": "Hybride workshop van 11.00 tot 12.30 uur; deelname is gratis volgens de officiële aanbodpagina.",
     "changeHistory": [
       {
         "date": "2026-07-30",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      },
+      {
+        "date": "2026-08-01",
+        "type": "updated",
+        "summary": "Vervangen door de unieke, concrete VU-workshop Prompten voor beginners van 24 september 2026; titel, inhoud, toegang, kosten en bron gecorrigeerd."
       }
     ]
   },
@@ -18501,7 +18505,7 @@
   },
   {
     "id": "ec-richtlijnen-digitale-onderwijsinhoud-2026",
-    "title": "EU-richtlijnen voor digitale onderwijsinhoud",
+    "title": "Digital education content: guidelines for teachers and interoperability framework",
     "recordType": "guidance",
     "legacyType": "Handreiking",
     "subtype": null,
@@ -18533,8 +18537,8 @@
     "availabilityText": "Direct beschikbaar",
     "startDate": null,
     "endDate": null,
-    "publicationDate": "2026-07-27",
-    "lastVerified": "2026-07-30",
+    "publicationDate": null,
+    "lastVerified": "2026-08-01",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -18569,18 +18573,23 @@
       "quality criteria",
       "EU guidelines"
     ],
-    "notes": null,
+    "notes": "De officiële pagina is bijgewerkt op 27 juli 2026 en vermeldt publicatie in 2026, maar geen afzonderlijke exacte publicatiedatum voor de richtlijnen.",
     "changeHistory": [
       {
         "date": "2026-07-30",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      },
+      {
+        "date": "2026-08-01",
+        "type": "updated",
+        "summary": "Titel exact op de officiële bron afgestemd en niet-onderbouwde dagprecisie uit de publicatiedatum verwijderd."
       }
     ]
   },
   {
     "id": "ec-richtlijnen-digitale-geletterdheid-desinformatie-2026",
-    "title": "EU-richtlijnen digitale geletterdheid en desinformatie (2026)",
+    "title": "Guidelines for teachers to foster digital literacy and tackle disinformation",
     "recordType": "guidance",
     "legacyType": "Handreiking",
     "subtype": null,
@@ -18610,8 +18619,8 @@
     "availabilityText": "Direct beschikbaar",
     "startDate": null,
     "endDate": null,
-    "publicationDate": "2026-06-10",
-    "lastVerified": "2026-07-30",
+    "publicationDate": null,
+    "lastVerified": "2026-08-01",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -18646,12 +18655,17 @@
       "digitale geletterdheid",
       "lesplannen"
     ],
-    "notes": null,
+    "notes": "De officiële pagina is bijgewerkt op 10 juni 2026 en duidt dit als de versie van 2026, zonder een afzonderlijke exacte publicatiedatum te noemen.",
     "changeHistory": [
       {
         "date": "2026-07-30",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      },
+      {
+        "date": "2026-08-01",
+        "type": "updated",
+        "summary": "Titel exact op de officiële bron afgestemd en niet-onderbouwde dagprecisie uit de publicatiedatum verwijderd."
       }
     ]
   },
@@ -19068,13 +19082,13 @@
     "availabilityText": "Direct beschikbaar",
     "startDate": null,
     "endDate": null,
-    "publicationDate": "2026-04-01",
-    "lastVerified": "2026-07-30",
+    "publicationDate": null,
+    "lastVerified": "2026-08-01",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "Officiële bron",
-        "url": "https://www.universiteitleiden.nl/binaries/content/assets/customsites/fair-assess/fair-assess-deliberative-assembly-report.pdf",
+        "url": "https://www.universiteitleiden.nl/fair-assess/activiteiten",
         "sourceType": "official"
       }
     ],
@@ -19104,12 +19118,17 @@
       "fair assessment",
       "toetsbeleid"
     ],
-    "notes": null,
+    "notes": "De projectpagina vermeldt publicatie in april 2026, maar geen exacte dag.",
     "changeHistory": [
       {
         "date": "2026-07-30",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      },
+      {
+        "date": "2026-08-01",
+        "type": "updated",
+        "summary": "Bron vervangen door de officiële FAIR-ASSESS-projectpagina en niet-onderbouwde dagprecisie uit de publicatiedatum verwijderd."
       }
     ]
   },
@@ -19190,7 +19209,7 @@
   },
   {
     "id": "vu-handboek-ai-geletterdheid-studenten",
-    "title": "Handboek AI-geletterdheid – studenteneditie",
+    "title": "AI-geletterdheid Companion - studenteneditie",
     "recordType": "guidance",
     "legacyType": "Handreiking",
     "subtype": null,
@@ -19219,12 +19238,12 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": "2025-09-15",
-    "lastVerified": "2026-07-30",
+    "lastVerified": "2026-08-01",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "Officiële bron",
-        "url": "https://www.cs.vu.nl/~eliens/update/image/read/AI-in-onderwijs.pdf",
+        "url": "https://vu.nl/nl/student/studievaardigheden/handboek-ai-geletterdheid-studenteneditie",
         "sourceType": "official"
       }
     ],
@@ -19254,12 +19273,17 @@
       "studenten",
       "open leermateriaal"
     ],
-    "notes": "Uitgegeven onder CC BY-SA 4.0.",
+    "notes": "De officiële productpagina biedt versie 1.1 aan en vermeldt dat het materiaal als open leermateriaal hergebruikt en aangepast kan worden.",
     "changeHistory": [
       {
         "date": "2026-07-30",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      },
+      {
+        "date": "2026-08-01",
+        "type": "updated",
+        "summary": "Officiële producttitel en actuele VU-productpagina vastgelegd; licentienotitie beperkt tot wat de pagina ondubbelzinnig vermeldt."
       }
     ]
   }
