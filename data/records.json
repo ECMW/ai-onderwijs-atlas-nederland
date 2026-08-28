@@ -19286,5 +19286,1092 @@
         "summary": "Officiële producttitel en actuele VU-productpagina vastgelegd; licentienotitie beperkt tot wat de pagina ondubbelzinnig vermeldt."
       }
     ]
+  },
+  {
+    "id": "npuls-ai-curriculum-arbeidsmarkt-2026",
+    "title": "AI, curriculum & arbeidsmarkt",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Verkenning van de invloed van AI op werk, vaardigheden en beroepsprofielen, met handvatten voor responsieve curriculumontwikkeling en samenwerking met het werkveld.",
+    "purpose": "Opleidingen helpen curricula toekomstbestendig te houden in een arbeidsmarkt waarin mens en AI steeds meer samenwerken.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Curriculumontwikkeling",
+      "AI-geletterdheid",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-06-23",
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.npuls.nl/kennisbank/ai-curriculum-and-arbeidsmarkt",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Npuls",
+      "curriculum",
+      "arbeidsmarkt",
+      "AI-geletterdheid",
+      "vaardigheden"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      }
+    ]
+  },
+  {
+    "id": "oecd-skills-in-ai-age-2026",
+    "title": "Skills in the AI age",
+    "recordType": "policy_document",
+    "legacyType": "Beleidsdocument",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "OECD",
+    "description": "Beleidsstudie over de gevolgen van AI voor werk en vaardigheden en over de rol van onderwijs, leven lang ontwikkelen, werkgevers en AI-geletterdheid.",
+    "purpose": "Beleidsmakers en onderwijsorganisaties onderbouwen welke combinatie van basis-, digitale en aanvullende vaardigheden nodig is in het AI-tijdperk.",
+    "audiences": [
+      "Beleidsmakers",
+      "Bestuurders",
+      "Onderzoekers",
+      "Onderwijsontwikkelaars",
+      "HR-professionals"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Onderzoek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-07-08",
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.oecd.org/en/publications/skills-in-the-ai-age_972bd15e-en.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "OECD",
+      "skills",
+      "future of work",
+      "adult learning",
+      "AI literacy"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      }
+    ]
+  },
+  {
+    "id": "oecd-ai-and-skills-2026",
+    "title": "AI and skills: What we know so far",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "OECD",
+    "description": "Compacte beleidsbrief die bestaand OECD-onderzoek naar AI en vaardigheden samenbrengt en prioriteiten voor scholing, arbeidsmarktbeleid en vervolgonderzoek benoemt.",
+    "purpose": "Snel een onderbouwd overzicht bieden van wat bekend is over AI, vaardigheden en beleidsopties.",
+    "audiences": [
+      "Beleidsmakers",
+      "Bestuurders",
+      "Onderzoekers",
+      "HR-professionals"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Onderzoek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-06-05",
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.oecd.org/en/publications/ai-and-skills_f843b352-en.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "OECD",
+      "AI and skills",
+      "policy brief",
+      "arbeidsmarkt",
+      "professionalisering"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      }
+    ]
+  },
+  {
+    "id": "ec-repository-ai-literacy-practices-2026",
+    "title": "EU-register met praktijkvoorbeelden voor AI-geletterdheid",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": null,
+    "organizationIds": [
+      "europese-ai-office"
+    ],
+    "providerName": "Europese Commissie",
+    "description": "Doorzoekbaar register van de Europese AI Office met meer dan veertig praktijkvoorbeelden van AI-geletterdheidsinitiatieven, zoals e-learning, trainingen, bootcamps en samenwerkingen.",
+    "purpose": "Organisaties voorbeelden bieden voor de invulling van AI-geletterdheid onder artikel 4 van de AI Act.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Docenten",
+      "HR-professionals",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "AI Act en wetgeving",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-07-27",
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/repository-ai-literacy-practices",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "AI Office",
+      "AI literacy practices",
+      "AI Act artikel 4",
+      "repository",
+      "training"
+    ],
+    "notes": "De Europese Commissie benadrukt dat overnemen van een voorbeeld niet automatisch betekent dat aan artikel 4 is voldaan.",
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      }
+    ]
+  },
+  {
+    "id": "surf-tech-trends-ai-2026",
+    "title": "SURF Tech Trends 2026: Artificial Intelligence",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "surf"
+    ],
+    "providerName": "SURF",
+    "description": "Trendverkenning naar onder meer toegang tot taalmodellen, responsible AI, mens-AI-samenwerking en de gevolgen voor onderwijs, onderzoek en bedrijfsvoering.",
+    "purpose": "Onderwijs- en onderzoeksinstellingen helpen anticiperen op relevante AI-ontwikkelingen en hun impact op publieke waarden.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderzoekers",
+      "IT-professionals",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "AI-infrastructuur",
+      "Publieke waarden en ethiek",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-10-01",
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.surf.nl/files/cocoon_media_files/surf-tech-trends-2026_ttr26_nl.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "SURF Tech Trends",
+      "language models",
+      "responsible AI",
+      "mens-AI samenwerking"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      }
+    ]
+  },
+  {
+    "id": "kennisnet-ai-tutoren-kansen-beperkingen",
+    "title": "Kansen en beperkingen van AI-tutoren voor het onderwijs",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Praktische duiding van AI-tutoren, mogelijke toepassingen en beperkingen rond didactiek, privacy, onderwijskwaliteit, menselijke begeleiding en leveranciersafhankelijkheid.",
+    "purpose": "Scholen helpen beoordelen of en hoe een AI-tutor verantwoord kan worden verkend.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Bestuurders",
+      "Onderwijsontwikkelaars",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Privacy en AVG",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-05-19",
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/trends/kansen-en-beperkingen-van-ai-tutoren-voor-het-onderwijs/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Kennisnet",
+      "AI-tutor",
+      "adaptief leren",
+      "privacy",
+      "menselijke begeleiding"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      }
+    ]
+  },
+  {
+    "id": "jisc-ai-literacy-module-applied-ai-essentials",
+    "title": "AI literacy for teaching and learning – Applied AI essentials",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Jisc",
+    "description": "Zelfstudiemodule over praktische inzet van AI voor lesmateriaal, planning, toetsing, feedback, toegankelijkheid, differentiatie en routinematige onderwijstaken.",
+    "purpose": "Onderwijsprofessionals AI praktisch leren toepassen met behoud van professioneel oordeel en menselijke regie.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Op aanvraag als downloadbare module voor instellingen",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.jisc.ac.uk/training/ai-literacy-for-teaching-and-learning-module-2-essential-ai-skills-applied-ai-skills",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Jisc",
+      "AI literacy",
+      "applied AI",
+      "teaching resources",
+      "feedback"
+    ],
+    "notes": "Jisc publiceert prijsopties voor instellingen; toegang is niet vrij voor individuele Nederlandse gebruikers.",
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      }
+    ]
+  },
+  {
+    "id": "jisc-ai-literacy-module-responsible-use",
+    "title": "AI literacy for teaching and learning – Ethical and responsible use",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Jisc",
+    "description": "Zelfstudiemodule over bias, desinformatie, privacy, beveiliging, auteursrecht, academische integriteit en kritisch beoordelen van AI-uitvoer.",
+    "purpose": "Onderwijsprofessionals leren risico's herkennen en AI verantwoord toepassen in onderwijs en toetsing.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Examencommissies",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek",
+      "Toetsing en examinering"
+    ],
+    "status": "available",
+    "availabilityText": "Op aanvraag als downloadbare module voor instellingen",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.jisc.ac.uk/training/ai-literacy-for-teaching-and-learning-module-3-ethical-and-responsible-use-of-ai-critical-evaluation-and-responsible-use",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Jisc",
+      "ethical AI",
+      "academic integrity",
+      "privacy",
+      "critical evaluation"
+    ],
+    "notes": "Jisc publiceert prijsopties voor instellingen; toegang is niet vrij voor individuele Nederlandse gebruikers.",
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      }
+    ]
+  },
+  {
+    "id": "jisc-prompting-teaching-learning-october-2026",
+    "title": "Prompting for teaching and learning",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Jisc",
+    "description": "Online sessie over heldere instructies, context geven, iteratief prompten en kritisch controleren van AI-uitvoer in onderwijscontexten.",
+    "purpose": "Docenten en onderwijsontwikkelaars praktische promptvaardigheden en kritisch beoordelingsvermogen laten oefenen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "AI-geletterdheid"
+    ],
+    "status": "planned",
+    "availabilityText": "Inschrijving geopend voor online sessie op 14 oktober 2026",
+    "startDate": "2026-10-14",
+    "endDate": "2026-10-14",
+    "publicationDate": null,
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.jisc.ac.uk/training/prompting-for-teaching-and-learning",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Jisc",
+      "prompting",
+      "critical evaluation",
+      "teaching and learning"
+    ],
+    "notes": "Voor Jisc-leden inbegrepen; Jisc vermeldt voor niet-leden £52 exclusief btw.",
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      }
+    ]
+  },
+  {
+    "id": "nolai-meetup-oktober-2026",
+    "title": "NOLAI Meet-up – oktober 2026",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [
+      "nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Middag met een keynote, drie interactieve workshops, een projectenplein met prototypes en presentatie van het vernieuwde magazine AI in Onderwijs.",
+    "purpose": "Onderwijsprofessionals, onderzoekers en ontwikkelaars laten leren van actuele co-creatieprojecten rond educatieve AI.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderzoekers",
+      "Onderwijsontwikkelaars",
+      "Aanbieders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Praktijkvoorbeelden",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "planned",
+    "availabilityText": "Inschrijving geopend tot en met 30 september 2026",
+    "startDate": "2026-10-01",
+    "endDate": "2026-10-01",
+    "publicationDate": null,
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ru.nl/over-ons/agenda/nolai-meet-up-1",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "NOLAI",
+      "meet-up",
+      "workshops",
+      "prototypes",
+      "co-creatie"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      }
+    ]
+  },
+  {
+    "id": "npuls-publieke-waarden-academie-ai-act-september-2026",
+    "title": "Publieke Waarden Academie – AI Act workshop",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [
+      "npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Interactieve workshop over kernbegrippen, tijdlijn en verplichtingen van de AI Act, vertaald naar concrete onderwijscases.",
+    "purpose": "Onderwijsinstellingen praktisch voorbereiden op de gevolgen van de Europese AI-verordening.",
+    "audiences": [
+      "Beleidsmakers",
+      "Bestuurders",
+      "IT-professionals",
+      "Privacyprofessionals",
+      "Informatiemanagers"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI Act en wetgeving",
+      "Beleid en governance",
+      "Professionalisering"
+    ],
+    "status": "planned",
+    "availabilityText": "Gratis workshop; inschrijving geopend voor 25 september 2026",
+    "startDate": "2026-09-25",
+    "endDate": "2026-09-25",
+    "publicationDate": null,
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://npuls.nl/agenda/publieke-waarden-academie-ai-act-workshop",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Npuls",
+      "Publieke Waarden Academie",
+      "AI Act",
+      "governance",
+      "onderwijscases"
+    ],
+    "notes": "Fysieke workshop bij SURF in Utrecht.",
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      }
+    ]
+  },
+  {
+    "id": "surf-onderwijsdagen-actief-leren-ai-2026",
+    "title": "Actief leren met door AI ondersteunde werkvormen",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [
+      "surf"
+    ],
+    "providerName": "SURF Onderwijsdagen",
+    "description": "Hands-on workshop waarin deelnemers AI-ondersteunde leeractiviteiten analyseren en een eigen activiteit ontwerpen die actief en verdiepend leren stimuleert.",
+    "purpose": "Onderwijsprofessionals leren generatieve AI didactisch in te zetten zonder het beoogde leereffect uit het oog te verliezen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Lerarenopleiders"
+    ],
+    "sectors": [
+      "VO",
+      "MBO",
+      "HBO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Professionalisering",
+      "Curriculumontwikkeling"
+    ],
+    "status": "planned",
+    "availabilityText": "Onderdeel van SURF Onderwijsdagen op 10 november 2026",
+    "startDate": "2026-11-10",
+    "endDate": "2026-11-10",
+    "publicationDate": null,
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://pretalx.surf.nl/surf-onderwijsdagen-2026/talk/SEWRCW/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "SURF Onderwijsdagen",
+      "actief leren",
+      "didactiek",
+      "AI-werkvormen",
+      "Bloom"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      }
+    ]
+  },
+  {
+    "id": "roc-amsterdam-ai-tutoring-mbo-2026",
+    "title": "AI-tutoring in het mbo bij ROC van Amsterdam-Flevoland",
+    "recordType": "practice_example",
+    "legacyType": "Praktijkvoorbeeld",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "ROC van Amsterdam-Flevoland",
+    "description": "Praktijkcasus over AI-begeleiding in Canvas bij drie mbo-opleidingen, met adaptieve taalondersteuning, vakspecifieke assistenten en contextgerichte prompts.",
+    "purpose": "Laten zien hoe een klein mbo-team AI-begeleiding stapsgewijs kan configureren, integreren en beproeven.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "IT-professionals",
+      "Schoolleiders"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "Praktijkvoorbeelden",
+      "Lesgeven en leren met AI",
+      "Implementatie en adoptie"
+    ],
+    "status": "planned",
+    "availabilityText": "Praktijkcasus wordt gepresenteerd op 11 november 2026",
+    "startDate": "2026-11-11",
+    "endDate": "2026-11-11",
+    "publicationDate": null,
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://pretalx.surf.nl/surf-onderwijsdagen-2026/talk/8AP7KP/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "ROC van Amsterdam",
+      "AI tutoring",
+      "Canvas",
+      "adaptieve begeleiding",
+      "MBO"
+    ],
+    "notes": "De bron beschrijft een bestaande praktijkcasus; de openbare presentatie vindt plaats tijdens SURF Onderwijsdagen 2026.",
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      }
+    ]
+  },
+  {
+    "id": "nolai-webinar-algemene-educatieve-ai-2026-2027",
+    "title": "NOLAI-webinar Algemene en educatieve AI",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [
+      "nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Gratis online webinar voor leraren over wat AI voor leren en lesgeven betekent en het verschil tussen algemene en specifiek educatieve AI.",
+    "purpose": "Leraren zonder vereiste voorkennis een toegankelijke introductie tot verantwoorde educatieve AI bieden.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "planned",
+    "availabilityText": "Gratis webinars vanaf 17 september 2026; meerdere vervolgdata gepubliceerd",
+    "startDate": "2026-09-17",
+    "endDate": "2027-05-13",
+    "publicationDate": null,
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ru.nl/over-ons/agenda/nolai-webinar-algemene-en-educatieve-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "NOLAI",
+      "webinar",
+      "educatieve AI",
+      "algemene AI",
+      "leraren"
+    ],
+    "notes": "De officiële pagina vermeldt vervolgdata op 12 november 2026 en 14 januari, 11 maart en 13 mei 2027.",
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      }
+    ]
   }
 ]
