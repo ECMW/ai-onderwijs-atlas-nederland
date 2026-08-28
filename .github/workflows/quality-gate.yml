@@ -1,0 +1,31 @@
+name: Atlas quality gate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '15 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Validate canonical data
+        run: python scripts/validate_data.py
+      - name: Verify public quality gate
+        run: python scripts/quality_gate.py --strict
+      - name: Retain internal quality report
+        uses: actions/upload-artifact@v7
+        with:
+          name: atlas-quality-report-${{ github.run_id }}
+          path: maintenance-output/quality-report.json
+          retention-days: 30

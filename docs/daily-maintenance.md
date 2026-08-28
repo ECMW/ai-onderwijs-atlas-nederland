@@ -207,3 +207,15 @@ Bekende beperking: generieke HTML-extractie ziet relevante links en deadlines, m
 JavaScript-only pagina's, PDF-inhoud of bron-specifieke API's. Voeg daarvoor later een expliciete,
 geteste extractiemethode per bron toe. Geen enkele beperking rechtvaardigt automatische publicatie van
 een onbevestigd signaal of reviewvoorstel.
+
+
+## Automatische kwaliteitsbewaking
+
+Naast de broncontrole draait de workflow `.github/workflows/quality-gate.yml` dagelijks om 05:15 UTC en bij iedere pull request of wijziging op `main`. Deze netwerkvrije kwaliteits-poort controleert dat:
+
+- de publieke browserprojectie exact overeenkomt met de publiceerbare canonieke records;
+- de publieke telling klopt;
+- ieder publiek record een titel, omschrijving, geldige controledatum en officiële bron heeft;
+- records zonder publicatiestatus, behoeften en witte vlekken nooit in de publieke export staan.
+
+Een fout laat de workflow mislukken en blokkeert daarmee een veilige publicatieroute. Mogelijke gedeelde officiële bron-URL’s zijn waarschuwingen in een intern artifact, geen automatische inhoudelijke beslissing. De workflow wijzigt of publiceert zelf nooit gegevens.
