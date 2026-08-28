@@ -188,5 +188,193 @@
     "themes": [],
     "sectors": [],
     "sourceType": "official"
+  },
+  {
+    "id": "source-edusources",
+    "name": "edusources",
+    "owner": "SURF",
+    "baseUrl": "https://edusources.nl/search",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "weekly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "practice_example",
+      "service"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officieel SURF-platform voor open leermaterialen. Een individueel materiaal is pas publiceerbaar na controle van de eigen detailpagina of oorspronkelijke bron.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-unesco-ai-education",
+    "name": "UNESCO: Artificial intelligence in education",
+    "owner": "UNESCO",
+    "baseUrl": "https://www.unesco.org/en/digital-education/artificial-intelligence",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "weekly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "policy_document",
+      "standard",
+      "training"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Primaire publicatiepagina voor UNESCO-kaders en -handreikingen rond AI in onderwijs.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-eu-ai-office",
+    "name": "Europese Commissie AI Office",
+    "owner": "Europese Commissie",
+    "baseUrl": "https://digital-strategy.ec.europa.eu/en/policies/ai-literacy-practices",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "weekly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "service",
+      "policy_document",
+      "standard"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële bron voor de AI-geletterdheidsrepository en AI Office-informatie. Voorbeelden zijn geen automatische bewijsgrond voor AI-Act-conformiteit.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-eur-lex-ai-act",
+    "name": "EUR-Lex: AI Act",
+    "owner": "Europese Unie",
+    "baseUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "legislation",
+      "policy_document",
+      "standard"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële, geconsolideerde juridische bron voor Verordening (EU) 2024/1689.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-rvo-digital-europe",
+    "name": "RVO: Digital Europe Programme",
+    "owner": "RVO",
+    "baseUrl": "https://www.rvo.nl/onderwerpen/digital-europe-programme/digital-europe/calls-hoofdwerkprogramma-digital-europe",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "weekly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële Nederlandse toegang tot actuele Digital Europe-calls.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-erasmus-plus",
+    "name": "Erasmus+",
+    "owner": "Europese Commissie",
+    "baseUrl": "https://erasmus-plus.ec.europa.eu/funding",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "weekly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "subsidy",
+      "funding_call",
+      "programme"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële Europese programma- en callinformatie voor Erasmus+.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
   }
 ]
