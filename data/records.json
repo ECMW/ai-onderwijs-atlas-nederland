@@ -20461,5 +20461,411 @@
         "summary": "Toegevoegd na controle van de officiële SURF-pagina en Edusources-zoekomgeving."
       }
     ]
+  },
+  {
+    "id": "npuls-ai-go-in-actie-2026",
+    "title": "AI-GO in Actie: Handreiking voor AI-geletterdheid in het onderwijs",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": null,
+    "organizationIds": [
+      "npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Praktische handreiking die het AI-GO-raamwerk vertaalt naar acht stappen voor duurzame AI-geletterdheid in leren, lesgeven en organiseren.",
+    "purpose": "Onderwijsteams helpen AI-geletterdheid structureel te ontwikkelen via visie, curriculum, professionalisering, implementatie en kwaliteitszorg.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderwijsondersteuners"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Professionalisering",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-05-22",
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://npuls.production.sdp.surf.nl/kennisbank/ai-go-in-actie",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-GO",
+      "AI-geletterdheid",
+      "raamwerk",
+      "curriculum",
+      "kwaliteitszorg"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 8."
+      }
+    ]
+  },
+  {
+    "id": "unesco-ai-competency-framework-teachers-2024",
+    "title": "AI competency framework for teachers",
+    "recordType": "guidance",
+    "legacyType": "Raamwerk",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "UNESCO",
+    "description": "Internationaal competentieraamwerk met kennis, vaardigheden en waarden voor docenten die AI verantwoord gebruiken in onderwijs.",
+    "purpose": "Onderwijsstelsels en instellingen ondersteunen bij professionalisering, leerdoelen en beoordeling van AI-competenties voor docenten.",
+    "audiences": [
+      "Docenten",
+      "Lerarenopleiders",
+      "Onderwijsontwikkelaars",
+      "Beleidsmakers",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2024-08-08",
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.unesco.org/en/articles/ai-competency-framework-teachers?hub=779",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "UNESCO",
+      "AI competency framework",
+      "docenten",
+      "ethiek",
+      "AI-pedagogie",
+      "professional development"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 8."
+      }
+    ]
+  },
+  {
+    "id": "unesco-ai-competency-framework-students-2024",
+    "title": "AI competency framework for students",
+    "recordType": "guidance",
+    "legacyType": "Raamwerk",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "UNESCO",
+    "description": "Internationaal competentieraamwerk voor leerlingen en studenten, gericht op verantwoord, inclusief en creatief omgaan met AI.",
+    "purpose": "Curriculumontwikkelaars en docenten een referentie bieden voor AI-geletterdheid van lerenden.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Curriculumontwikkelaars",
+      "Beleidsmakers",
+      "Studenten"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2024-09-03",
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.unesco.org/en/articles/what-you-need-know-about-unescos-new-ai-competency-frameworks-students-and-teachers?hub=66973",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "UNESCO",
+      "AI competency framework",
+      "students",
+      "leerlingen",
+      "AI-geletterdheid",
+      "curriculum"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 8."
+      }
+    ]
+  },
+  {
+    "id": "unesco-ai-education-rights-learners-2025",
+    "title": "AI and education: Protecting the rights of learners",
+    "recordType": "policy_document",
+    "legacyType": "Beleidsdocument",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "UNESCO",
+    "description": "Rapport over een mensgerichte en rechtengebaseerde benadering van AI en digitalisering in onderwijs, met aandacht voor ongelijkheid, privacy, veiligheid, ethiek en governance.",
+    "purpose": "Beleidsmakers en onderwijsinstellingen helpen AI-inzet te verbinden aan het recht op onderwijs en bescherming van lerenden.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Privacyprofessionals",
+      "Onderwijsontwikkelaars",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Privacy en AVG",
+      "Beleid en governance",
+      "AI Act en wetgeving"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-09-04",
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.unesco.org/en/articles/ai-and-education-protecting-rights-learners?hub=195885",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "UNESCO",
+      "rights of learners",
+      "human rights",
+      "privacy",
+      "equity",
+      "AI governance"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 8."
+      }
+    ]
+  },
+  {
+    "id": "eu-council-conclusions-teachers-ai-2026",
+    "title": "Council conclusions on teachers in the era of artificial intelligence",
+    "recordType": "policy_document",
+    "legacyType": "Beleidsdocument",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Raad van de Europese Unie",
+    "description": "Raadsconclusies over de rol van docenten in het AI-tijdperk, met oproepen aan lidstaten rond professionele ontwikkeling, ethisch en veilig AI-gebruik en praktische ondersteuning.",
+    "purpose": "Europese beleidscontext bieden voor de ondersteuning van docenten bij verantwoord en transparant AI-gebruik in onderwijs en opleiding.",
+    "audiences": [
+      "Beleidsmakers",
+      "Bestuurders",
+      "Lerarenopleiders",
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Overheid"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Beleid en governance",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-05-14",
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:C_202602826",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Council conclusions",
+      "EU",
+      "teachers",
+      "AI",
+      "professional development",
+      "ethical AI"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 8."
+      }
+    ]
   }
 ]
