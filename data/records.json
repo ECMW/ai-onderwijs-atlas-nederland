@@ -20867,5 +20867,85 @@
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 8."
       }
     ]
+  },
+  {
+    "id": "oecd-teachers-students-powerful-ai-2025",
+    "title": "What should teachers teach and students learn in a future of powerful AI?",
+    "recordType": "policy_document",
+    "legacyType": "Beleidsdocument",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "OECD",
+    "description": "Korte beleidsverkenning over welke kennis, vaardigheden en attitudes onderwijs mogelijk moet herwaarderen naarmate AI-capaciteiten toenemen.",
+    "purpose": "Curriculum- en beleidsontwikkeling helpen richten op competenties die mensen naast en met AI nodig hebben.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Curriculumontwikkelaars",
+      "Beleidsmakers",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Curriculumontwikkeling",
+      "AI-geletterdheid",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-05-23",
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.oecd.org/en/publications/what-should-teachers-teach-and-students-learn-in-a-future-of-powerful-ai_ca56c7d6-en.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "OECD",
+      "curriculum",
+      "AI capabilities",
+      "skills",
+      "teachers",
+      "students"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 9."
+      }
+    ]
   }
 ]
