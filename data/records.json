@@ -20373,5 +20373,93 @@
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
       }
     ]
+  },
+  {
+    "id": "edusources-open-leermaterialen",
+    "title": "edusources",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": "Open leermaterialen",
+    "organizationIds": [
+      "surf"
+    ],
+    "providerName": "SURF",
+    "description": "Landelijk platform voor digitale (open) leermaterialen, met zoekfilters op onder meer onderwijsniveau, materiaaltype, thema en collectie.",
+    "purpose": "Docenten, studenten en instellingen helpen open leermaterialen te vinden, te delen en te hergebruiken.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Onderwijsadviseurs",
+      "Studenten",
+      "Bibliotheekprofessionals"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "AI-geletterdheid",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Beschikbaar via edusources.nl; toegang en gebruik kunnen per materiaal verschillen.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-08-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Edusources zoeken",
+        "url": "https://edusources.nl/search",
+        "sourceType": "official"
+      },
+      {
+        "label": "SURF: edusources",
+        "url": "https://www.surf.nl/diensten/publiceren/edusources",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "edusources",
+      "open leermaterialen",
+      "open educational resources",
+      "OER",
+      "digitale leermaterialen",
+      "SURF",
+      "AI",
+      "kunstmatige intelligentie"
+    ],
+    "notes": "Edusources bevat materiaal van verschillende aanbieders. Raadpleeg per materiaal de weergegeven bron, toegang en gebruiksvoorwaarden.",
+    "changeHistory": [
+      {
+        "date": "2026-08-28",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële SURF-pagina en Edusources-zoekomgeving."
+      }
+    ]
   }
 ]
