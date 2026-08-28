@@ -376,5 +376,1331 @@
     "themes": [],
     "sectors": [],
     "sourceType": "official"
+  },
+  {
+    "id": "source-org-sivon",
+    "name": "SIVON",
+    "owner": "SIVON",
+    "baseUrl": "https://www.sivon.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-cito",
+    "name": "Cito",
+    "owner": "Cito",
+    "baseUrl": "https://www.cito.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-slo",
+    "name": "SLO",
+    "owner": "SLO",
+    "baseUrl": "https://www.slo.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-nwo",
+    "name": "NWO",
+    "owner": "NWO",
+    "baseUrl": "https://www.nwo.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-nationaal-regieorgaan-onderwijsonderzoek-nro",
+    "name": "Nationaal Kennisinstituut Onderwijs (NKO)",
+    "owner": "Nationaal Kennisinstituut Onderwijs",
+    "baseUrl": "https://www.nko.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-ai-coalitie-4-nederland-aic4nl",
+    "name": "AI Coalitie 4 Nederland (AIC4NL)",
+    "owner": "AIC4NL",
+    "baseUrl": "https://aic4nl.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-mbo-digitaal",
+    "name": "MBO Digitaal",
+    "owner": "MBO Digitaal",
+    "baseUrl": "https://mbodigitaal.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-vereniging-hogescholen",
+    "name": "Vereniging Hogescholen",
+    "owner": "Vereniging Hogescholen",
+    "baseUrl": "https://www.vereniginghogescholen.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-universiteiten-van-nederland",
+    "name": "Universiteiten van Nederland",
+    "owner": "Universiteiten van Nederland",
+    "baseUrl": "https://www.universiteitenvannederland.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-europese-commissie-dg-eac",
+    "name": "Europese Commissie — DG EAC",
+    "owner": "Europese Commissie",
+    "baseUrl": "https://education.ec.europa.eu/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-europese-ai-office",
+    "name": "Europese AI Office",
+    "owner": "Europese Commissie",
+    "baseUrl": "https://digital-strategy.ec.europa.eu/en/policies/ai-office",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-oecd-education",
+    "name": "OECD – Education and Skills",
+    "owner": "OECD",
+    "baseUrl": "https://www.oecd.org/en/topics/education-and-skills.html",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-civai",
+    "name": "CivAI",
+    "owner": "CivAI",
+    "baseUrl": "https://civai.eu/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-autoriteit-persoonsgegevens",
+    "name": "Autoriteit Persoonsgegevens",
+    "owner": "Autoriteit Persoonsgegevens",
+    "baseUrl": "https://www.autoriteitpersoonsgegevens.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-rijksinspectie-digitale-infrastructuur",
+    "name": "Rijksinspectie Digitale Infrastructuur",
+    "owner": "Rijksinspectie Digitale Infrastructuur",
+    "baseUrl": "https://www.rdi.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-universiteit-utrecht",
+    "name": "Universiteit Utrecht",
+    "owner": "Universiteit Utrecht",
+    "baseUrl": "https://www.uu.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-radboud-universiteit",
+    "name": "Radboud Universiteit",
+    "owner": "Radboud Universiteit",
+    "baseUrl": "https://www.ru.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-vrije-universiteit-amsterdam",
+    "name": "Vrije Universiteit Amsterdam",
+    "owner": "Vrije Universiteit Amsterdam",
+    "baseUrl": "https://vu.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-fontys-hogeschool",
+    "name": "Fontys Hogeschool",
+    "owner": "Fontys Hogeschool",
+    "baseUrl": "https://www.fontys.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-universiteit-van-amsterdam",
+    "name": "Universiteit van Amsterdam",
+    "owner": "Universiteit van Amsterdam",
+    "baseUrl": "https://www.uva.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-rijksuniversiteit-groningen",
+    "name": "Rijksuniversiteit Groningen",
+    "owner": "Rijksuniversiteit Groningen",
+    "baseUrl": "https://www.rug.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-erasmus-universiteit-rotterdam",
+    "name": "Erasmus Universiteit Rotterdam",
+    "owner": "Erasmus Universiteit Rotterdam",
+    "baseUrl": "https://www.eur.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-hogeschool-van-amsterdam",
+    "name": "Hogeschool van Amsterdam",
+    "owner": "Hogeschool van Amsterdam",
+    "baseUrl": "https://www.hva.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-jisc",
+    "name": "Jisc",
+    "owner": "Jisc",
+    "baseUrl": "https://www.jisc.ac.uk/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-teqsa",
+    "name": "Tertiary Education Quality and Standards Agency (TEQSA)",
+    "owner": "TEQSA",
+    "baseUrl": "https://www.teqsa.gov.au/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-teachai",
+    "name": "TeachAI",
+    "owner": "TeachAI",
+    "baseUrl": "https://www.teachai.org/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-spencer-foundation",
+    "name": "Spencer Foundation",
+    "owner": "Spencer Foundation",
+    "baseUrl": "https://www.spencer.org/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-national-science-foundation",
+    "name": "National Science Foundation (NSF)",
+    "owner": "National Science Foundation",
+    "baseUrl": "https://www.nsf.gov/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-roc-mondriaan",
+    "name": "ROC Mondriaan",
+    "owner": "ROC Mondriaan",
+    "baseUrl": "https://www.rocmondriaan.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-zadkine",
+    "name": "Zadkine",
+    "owner": "Zadkine",
+    "baseUrl": "https://www.zadkine.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-hogeschool-inholland",
+    "name": "Hogeschool Inholland",
+    "owner": "Hogeschool Inholland",
+    "baseUrl": "https://www.inholland.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-hogeschool-van-arnhem-en-nijmegen",
+    "name": "Hogeschool van Arnhem en Nijmegen (HAN)",
+    "owner": "Hogeschool van Arnhem en Nijmegen",
+    "baseUrl": "https://www.han.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-universiteit-leiden",
+    "name": "Universiteit Leiden",
+    "owner": "Universiteit Leiden",
+    "baseUrl": "https://www.universiteitleiden.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-org-open-universiteit",
+    "name": "Open Universiteit",
+    "owner": "Open Universiteit",
+    "baseUrl": "https://www.ou.nl/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen aanbod. Deze homepage is een ontdekkingsbron; publicatie vereist controle van een concrete, officiële detailpagina.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
   }
 ]
