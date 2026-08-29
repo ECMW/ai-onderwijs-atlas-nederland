@@ -1768,5 +1768,20 @@
     "allowedRecordTypes": ["guidance", "training", "service", "programme", "practice_example", "pilot", "research_project", "policy_document", "standard", "subsidy", "funding_call"],
     "operational": {"lastSuccessfulCheck": null, "lastContentHash": null, "lastStatus": "never_checked", "consecutiveFailures": 0},
     "notes": "Officiële kennisbron voor standaarden en publieke geo-informatie. Detailpagina's zijn vereist voor publicatie.", "themes": [], "sectors": [], "sourceType": "official"
+  },
+  {
+    "id": "source-org-european-schoolnet-fcl",
+    "name": "European Schoolnet / Future Classroom Lab",
+    "owner": "European Schoolnet",
+    "baseUrl": "https://fcl.eun.org/",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {"frequency": "monthly"},
+    "extraction": {"type": "html", "scope": "page"},
+    "allowedRecordTypes": ["guidance", "training", "service", "programme", "practice_example", "pilot", "research_project", "policy_document", "standard", "subsidy", "funding_call"],
+    "operational": {"lastSuccessfulCheck": null, "lastContentHash": null, "lastStatus": "never_checked", "consecutiveFailures": 0},
+    "notes": "Officiële Europese bron voor leermiddelen, praktijkkennis en professionalisering. Alleen concrete, toegankelijke detailpagina's onderbouwen publieke records.",
+    "themes": [], "sectors": [], "sourceType": "official"
   }
 ]
