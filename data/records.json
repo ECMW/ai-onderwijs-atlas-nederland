@@ -20947,5 +20947,163 @@
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 9."
       }
     ]
+  },
+  {
+    "id": "teachai-foundational-policy-ideas-2024",
+    "title": "Foundational Policy Ideas for AI in Education",
+    "recordType": "policy_document",
+    "legacyType": "Beleidsdocument",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "TeachAI",
+    "description": "Open beleidsbron met informatiebrieven, vijf beleidsideeën en presentatiemateriaal over leiderschap, AI-geletterdheid, richtlijnen, capaciteit en innovatie in onderwijs.",
+    "purpose": "Onderwijsleiders en beleidsmakers ondersteunen bij het formuleren van samenhangend, mensgericht AI-beleid.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Schoolleiders",
+      "Onderwijsontwikkelaars",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2024-06-10",
+    "lastVerified": "2026-08-29",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.teachai.org/policy",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "TeachAI",
+      "policy ideas",
+      "AI governance",
+      "AI literacy",
+      "leadership",
+      "professional development"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-08-29",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 11."
+      }
+    ]
+  },
+  {
+    "id": "jisc-understand-ai-basics-teaching-learning-october-2026",
+    "title": "Understand AI basics for teaching and learning",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Jisc",
+    "description": "Online basistraining over AI-begrippen, generatieve AI, AI-assistenten, agentic AI, prompting en kritisch beoordelen van AI-uitvoer in het vervolgonderwijs.",
+    "purpose": "Onderwijsprofessionals een gedeelde basis bieden voor verantwoord gebruik van AI met behoud van professioneel oordeel en menselijke controle.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Onderwijsadviseurs",
+      "Lerarenopleiders"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "planned",
+    "availabilityText": "Online sessie op 1 oktober 2026; voor Jisc-leden inbegrepen, niet-leden £52 exclusief btw.",
+    "startDate": "2026-10-01",
+    "endDate": "2026-10-01",
+    "publicationDate": null,
+    "lastVerified": "2026-08-29",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.jisc.ac.uk/training/understand-ai-basics-for-teaching-and-learning",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Jisc",
+      "AI basics",
+      "generative AI",
+      "agentic AI",
+      "prompting",
+      "critical evaluation"
+    ],
+    "notes": "De officiële pagina positioneert deze sessie als onderdeel van module 1 van Jisc’ AI-literacycurriculum.",
+    "changeHistory": [
+      {
+        "date": "2026-08-29",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 11."
+      }
+    ]
   }
 ]
