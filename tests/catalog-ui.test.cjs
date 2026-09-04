@@ -11,6 +11,7 @@ const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     publicationDate, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard,
     homeFilterPanel, recordsForCriteria,
+    suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
     options: SORT_OPTIONS, getState: () => state, setState: value => { state = value; }
   };`);
 
@@ -161,4 +162,87 @@ test('funding task appears under help and reuses existing subsidy and call filte
   assert.ok(!html.includes('value="Subsidies"'));
   assert.deepEqual(Array.from(api.recordsForCriteria({ type:'Subsidie of call,Subsidie' }), r=>r.id), ['grant','call']);
   assert.deepEqual(Array.from(api.recordsForCriteria({ type:'Subsidie of call,Subsidie', sector:'HBO', status:'Open voor aanvragen' }), r=>r.id), ['call']);
+});
+
+test('suggested counts use exactly the linked criteria and exclude filtered-out records', () => {
+  const data = [record('hbo'), { ...record('po-a'), sectors:['PO'] },
+    { ...record('po-b'), sectors:['PO'] }, { ...record('researcher'), sectors:['PO'], audiences:['Onderzoekers'] }];
+  const api = load(data, '#zoeken?sector=PO&audience=Docenten&sort=published');
+  const before = JSON.stringify(api.getState());
+  const sections = api.suggestionData('privacy');
+  assert.ok(sections.length > 0);
+  for (const item of sections.flatMap(section=>section.items)) {
+    if (item.href.startsWith('#zoeken')) {
+      const criteria = Object.fromEntries(new URLSearchParams(item.href.split('?')[1]));
+      assert.equal(criteria.sector, 'PO');
+      assert.equal(criteria.audience, 'Docenten');
+      assert.equal(criteria.sort, 'published');
+      const count = api.recordsForCriteria(criteria).length;
+      assert.ok(count > 0);
+      assert.equal(item.count, count);
+    } else assert.ok(['#item/po-a','#item/po-b'].includes(item.href));
+  }
+  assert.equal(JSON.stringify(api.getState()),before);
+});
+
+test('suggestions and Enter use the same natural-language query interpretation', () => {
+  const api=load();
+  const criteria=api.criteriaForQuery('ik ben docent en onderzoeker en zoek iets over ai act', {sector:'HBO',sort:'published'});
+  assert.equal(criteria.audience,'Docenten,Onderzoekers');
+  assert.equal(criteria.theme,'AI Act en wetgeving');
+  assert.equal(criteria.sector,'HBO');
+  assert.equal(criteria.sort,'published');
+});
+
+test('subsidy searches include subsidies and calls even without a financing theme', () => {
+  const data=[{...record('grant'),legacyType:'Subsidie'}, {...record('call'),legacyType:'Call'},record('guide')];
+  const api=load(data);
+  for(const query of ['subsidie','subsidies','call','calls']) {
+    const criteria=api.criteriaForQuery(query);
+    assert.deepEqual(Array.from(api.recordsForCriteria(criteria),r=>r.id),['grant','call']);
+    assert.equal(criteria.theme,'');
+  }
+});
+
+test('retired freshness links keep remaining filters without showing the retired facet', () => {
+  const data=[record('hbo'),{...record('po'),sectors:['PO']}];
+  for(const suffix of ['','&sector=PO']) {
+    const api=load(data,'#zoeken?freshness=Recent%20gecontroleerd'+suffix);
+    assert.ok(api.hasIntent());
+    assert.equal(api.getState().freshness,undefined);
+    assert.ok(!api.filterKeys.includes('freshness'));
+    assert.ok(!api.stateHref().includes('freshness'));
+    assert.ok(!api.resultsMarkup().includes('Recent gecontroleerd'));
+    assert.equal(api.recordsForCriteria(api.getState()).length,suffix?1:2);
+  }
+});
+
+test('related theme counts represent destinations and retain contextual filters', () => {
+  const data=[{...record('po'),sectors:['PO'],themes:['Privacy en AVG','AI Act en wetgeving']},
+    {...record('po-law'),sectors:['PO'],themes:['AI Act en wetgeving']},
+    {...record('hbo'),themes:['Privacy en AVG','AI Act en wetgeving']}];
+  const api=load(data,'#zoeken?theme=Privacy%20en%20AVG&sector=PO&audience=Docenten');
+  assert.deepEqual(Array.from(api.relatedThemes('Privacy en AVG'),pair=>Array.from(pair)),[['AI Act en wetgeving',2]]);
+  assert.ok(api.resultsMarkup().includes('sector=PO'));
+});
+
+test('actual catalogue suggestions have exact counts across roles, sectors and topics', () => {
+  const dataWindow={};
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname,'..','data','data-v2.js'),'utf8'),{window:dataWindow});
+  let checked=0;
+  for(const filters of ['', '&sector=PO&audience=Docenten', '&sector=HBO&audience=Docenten%2COnderzoekers', '&type=Training', '&organization=Kennisnet']) {
+    const api=load(dataWindow.ATLAS_RECORDS.records,'#zoeken?sort=published'+filters);
+    for(const query of ['privacy','toets','AI Act','SURF','subsidies','training']) {
+      const expectedIds = new Set(api.recordsForCriteria(api.criteriaForQuery(query)).map(r=>r.id));
+      for(const item of api.suggestionData(query).flatMap(s=>s.items)) {
+        if(item.href.startsWith('#zoeken')) {
+          const actual=api.recordsForCriteria(Object.fromEntries(new URLSearchParams(item.href.split('?')[1]))).length;
+          assert.ok(actual>0);
+          assert.equal(item.count,actual,query+' '+filters+' '+item.label);
+        } else assert.ok(expectedIds.has(decodeURIComponent(item.href.slice(6))));
+        checked++;
+      }
+    }
+  }
+  assert.ok(checked>50);
 });
