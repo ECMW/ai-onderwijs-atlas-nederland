@@ -21395,5 +21395,410 @@
     "keywords": ["PriSA", "CIP", "privacyvolwassenheid", "Privacy Baseline", "AVG", "zelfevaluatie"],
     "notes": "Dit instrument is niet AI-specifiek, maar relevant als organisatiebreed privacy- en governance-instrument bij AI-toepassingen waarin persoonsgegevens worden verwerkt.",
     "changeHistory": [{"date": "2026-08-29", "type": "added", "summary": "Toegevoegd in gecontroleerde Europese inhoudstranche."}]
+  },
+  {
+    "id": "nolai-prompting-genai-in-de-klas",
+    "title": "Prompting: Haal meer uit genAI in de klas",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Whitepaper",
+    "organizationIds": [
+      "nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Praktische handreiking voor leraren over het formuleren van prompts voor gebruik in de klas, met uitleg en voorbeelden bij het CROP-model.",
+    "purpose": "Leraren ondersteunen bij het formuleren van context, rol, opdracht en presentatie in een prompt.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Openbare PDF via de officiële publicatiepagina.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-09-03",
+    "lastVerified": "2026-09-04",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ru.nl/over-ons/nieuws/whitepaper-prompting-haal-meer-uit-genai-in-de-klas",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "nolai"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "prompting",
+      "prompten",
+      "CROP",
+      "generatieve AI",
+      "leraren",
+      "klas"
+    ],
+    "notes": "De broncontrole betreft de officiële beschrijving en aangeboden PDF. Er is geen effectiviteitsbeoordeling of specifieke hergebruiklicentie vastgesteld.",
+    "changeHistory": [
+      {
+        "date": "2026-09-04",
+        "type": "added",
+        "summary": "Toegevoegd na broncontrole en goedkeuring van de inhoudstranche."
+      }
+    ]
+  },
+  {
+    "id": "nolai-checklist-energieverbruik-op-school",
+    "title": "Bewust omgaan met energieverbruik op school",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Checklist",
+    "organizationIds": [
+      "nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Checklist voor scholen die ICT- of AI-toepassingen overwegen, met aandacht voor energiegebruik, leverancierskeuzes, gegevensbeheer en de levensduur van apparatuur.",
+    "purpose": "Scholen helpen duurzaamheid mee te nemen in de keuze en het gebruik van ICT en AI.",
+    "audiences": [
+      "Schoolleiders",
+      "IT-professionals",
+      "Inkoop"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Beleid en governance",
+      "Data en infrastructuur"
+    ],
+    "status": "available",
+    "availabilityText": "Openbare checklist als PDF via de officiële publicatiepagina.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-03-12",
+    "lastVerified": "2026-09-04",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.ru.nl/over-ons/nieuws/energieverbruik-van-ai-op-scholen-weet-wat-je-doet",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "nolai"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "duurzaamheid",
+      "energieverbruik",
+      "ICT",
+      "AI",
+      "inkoop",
+      "vendor lock-in",
+      "gegevensbeheer"
+    ],
+    "notes": "De checklist gaat over ICT én AI op school. De broncontrole betreft de officiële beschrijving en aangeboden PDF; geen afzonderlijke hergebruiklicentie vastgesteld.",
+    "changeHistory": [
+      {
+        "date": "2026-09-04",
+        "type": "added",
+        "summary": "Toegevoegd na broncontrole en goedkeuring van de inhoudstranche."
+      }
+    ]
+  },
+  {
+    "id": "surf-pec-praatplaat-ai-en-privacy",
+    "title": "Praatplaat AI en Privacy",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Praatplaat",
+    "organizationIds": [
+      "surf"
+    ],
+    "providerName": "SURF Privacy Expertise Centrum",
+    "description": "Visueel gesprekshulpmiddel over het trainen en toepassen van AI-modellen en de bijbehorende gegevensstromen, met verkennende vragen voor AI- en privacyprofessionals.",
+    "purpose": "Het gesprek tussen AI- en privacyprofessionals ondersteunen bij het in kaart brengen van processen en gegevensstromen.",
+    "audiences": [
+      "Privacyprofessionals",
+      "IT-professionals",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Privacy en AVG",
+      "Veilige AI-omgeving"
+    ],
+    "status": "available",
+    "availabilityText": "Eerste versie, openbaar beschikbaar in het Nederlands en Engels, met een Nederlandstalige toelichting.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-04",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://pec.surf.nl/praatplaat-ai-en-privacy/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "surf"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "praatplaat",
+      "privacy",
+      "AVG",
+      "gegevensstromen",
+      "AI-modellen",
+      "training",
+      "deployment"
+    ],
+    "notes": "De bron vermeldt als laatste update 6 augustus 2026; dit is niet als publicatiedatum overgenomen. Het is een gesprekshulpmiddel, geen juridische goedkeuring of certificering. Geen specifieke hergebruiklicentie vastgesteld.",
+    "changeHistory": [
+      {
+        "date": "2026-09-04",
+        "type": "added",
+        "summary": "Toegevoegd na broncontrole en goedkeuring van de inhoudstranche."
+      }
+    ]
+  },
+  {
+    "id": "radio-microlearnings-starten-met-ai",
+    "title": "RADIO: Microlearnings Starten met AI",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": "Microlearningserie",
+    "organizationIds": [],
+    "providerName": "RijksAcademie voor Digitalisering en Informatisering Overheid (RADIO)",
+    "description": "Openbare uitlegvideo's vanuit de overheid over de werking van generatieve AI, praktisch gebruik en verantwoordelijkheden, verdeeld over drie onderwerpen.",
+    "purpose": "Basiskennis opbouwen over generatieve AI en het kritisch en verantwoord gebruiken ervan.",
+    "audiences": [
+      "Medewerkers",
+      "Beleidsmakers",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "Overheid"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Openbare video's; bij het gecontroleerde onderdeel zijn ook transcript, ondertiteling en downloadlinks beschikbaar zonder inloggen.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-04",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.it-academieoverheid.nl/onderwerpen/m/microlearnings-starten-met-ai",
+        "sourceType": "official"
+      },
+      {
+        "label": "Gecontroleerd onderdeel: GenAI in de praktijk",
+        "url": "https://www.it-academieoverheid.nl/onderwerpen/m/microlearnings-starten-met-ai/genai-in-de-praktijk",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "radio-ai-en-generatieve-ai-leeraanbod"
+    ],
+    "parentIds": [
+      "radio-ai-en-generatieve-ai-leeraanbod"
+    ],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Gericht op overheidsprofessionals; de video's zijn openbaar te raadplegen.",
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "RADIO",
+      "microlearning",
+      "generatieve AI",
+      "prompting",
+      "video",
+      "AI-geletterdheid"
+    ],
+    "notes": "Als één serie opgenomen. Een onderwijsdoelgroep of accreditatie is niet door de aanbieder bevestigd. Losse video's hebben verschillende datums; de publicatiedatum van de gehele serie is niet vastgesteld.",
+    "changeHistory": [
+      {
+        "date": "2026-09-04",
+        "type": "added",
+        "summary": "Toegevoegd na broncontrole en goedkeuring van de inhoudstranche."
+      }
+    ]
+  },
+  {
+    "id": "radio-basisopleiding-ai-digitaal-vakmanschap",
+    "title": "RADIO: Basisopleiding AI – Digitaal vakmanschap",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": "E-learning",
+    "organizationIds": [],
+    "providerName": "RijksAcademie voor Digitalisering en Informatisering Overheid (RADIO)",
+    "description": "E-learning met afsluitende toets voor medewerkers bij de (rijks)overheid over AI, toepassingsmogelijkheden, risico's en verantwoord gebruik. Een account is vereist.",
+    "purpose": "Overheidsmedewerkers basiskennis geven over AI en verantwoord gebruik in hun werk.",
+    "audiences": [
+      "Medewerkers",
+      "Beleidsmakers",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "Overheid"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Account en inloggen vereist. Bedoeld voor medewerkers bij de (rijks)overheid; toegang voor onderwijsmedewerkers is niet bevestigd. Duur volgens de aanbieder: ongeveer 30 minuten.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-04",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële beschrijving en toegangseisen",
+        "url": "https://www.it-academieoverheid.nl/actueel/nieuws/2026/01/26/ai-opleiding-basismodule-digitaal-vakmanschap",
+        "sourceType": "official"
+      },
+      {
+        "label": "Basisopleiding AI: inloggen",
+        "url": "https://leerplatform.it-academieoverheid.nl/course/view.php?id=70",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "radio-ai-en-generatieve-ai-leeraanbod"
+    ],
+    "parentIds": [
+      "radio-ai-en-generatieve-ai-leeraanbod"
+    ],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "registration_required",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Medewerkers bij de (rijks)overheid; toegang voor medewerkers van onderwijsinstellingen niet bevestigd.",
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "RADIO",
+      "basisopleiding",
+      "digitaal vakmanschap",
+      "e-learning",
+      "AI-geletterdheid",
+      "overheid"
+    ],
+    "notes": "De officiële aankondiging is van 26 januari 2026. De beschrijving en loginroute zijn gecontroleerd; de opleiding achter de login is niet doorlopen. Geen exacte publicatiedatum voor het cursusmateriaal vastgesteld.",
+    "changeHistory": [
+      {
+        "date": "2026-09-04",
+        "type": "added",
+        "summary": "Toegevoegd na broncontrole en goedkeuring van de inhoudstranche."
+      }
+    ]
   }
 ]
