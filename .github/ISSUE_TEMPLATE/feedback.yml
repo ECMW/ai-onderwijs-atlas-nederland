@@ -1,0 +1,27 @@
+name: Feedback op de website
+description: Meld een gebruiksprobleem of stel een verbetering aan de website voor
+title: '[Feedback] '
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Dank voor uw feedback. Controleer eerst of er al een vergelijkbare melding is.
+        Dit formulier is openbaar: voeg geen persoonsgegevens of vertrouwelijke informatie toe.
+        Voor ontbrekend aanbod of een feitelijke correctie zijn er aparte formulieren.
+  - type: input
+    id: page
+    attributes:
+      label: Op welke pagina of bij welke zoekopdracht?
+      placeholder: Paginalink of korte omschrijving
+    validations: {required: true}
+  - type: textarea
+    id: feedback
+    attributes:
+      label: Wat kan beter?
+      description: Wat probeerde u te doen, wat gebeurde er en wat verwachtte u?
+    validations: {required: true}
+  - type: textarea
+    id: context
+    attributes:
+      label: Aanvullende context
+      description: Bijvoorbeeld uw browser en of u een telefoon of computer gebruikt. Deel geen persoonlijke gegevens.

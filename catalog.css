@@ -43,3 +43,44 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 .result-head .result-tools label{display:block;max-width:100%}
 .result-head .result-tools select{min-height:44px;max-width:100%;width:100%;font-size:1rem}
 .publication-date{font-size:.85rem;color:var(--muted);margin:.5rem 0}
+
+/* Compacte pulldowns behouden meervoudige filterkeuzes en native toetsenbordbediening. */
+.filter-help{margin:.2rem 0 .9rem;color:var(--muted);font-size:.82rem;line-height:1.5}
+.facet{border:0;margin:.55rem 0}
+.facet>summary{display:block;position:relative;min-height:64px;padding:.65rem 2rem .65rem .75rem;border:1px solid var(--line);border-radius:7px;background:var(--surface,#fff);list-style:none}
+.facet>summary::-webkit-details-marker{display:none}
+.facet>summary::after{content:'';position:absolute;right:.85rem;top:1.6rem;width:.45rem;height:.45rem;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg)}
+.facet[open]>summary{border-color:var(--brand-olive-deep,#526049)}
+.facet>summary:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.facet[open]>summary::after{transform:rotate(225deg)}
+.facet-heading{display:flex;align-items:center;justify-content:space-between;gap:.5rem;font-size:.85rem}
+.facet-value{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:.2rem;font-size:.78rem;font-weight:400;color:var(--muted)}
+.facet>div{padding:.4rem .75rem .65rem;max-height:22rem;overflow-y:auto;overscroll-behavior:contain}
+.facet label,.facet-more{min-height:44px}
+.facet .facet-search{width:100%;height:auto;min-height:44px;margin:.2rem 0 .45rem}
+.facet-options.limited.searching:not(.expanded)>label:not([hidden]){display:flex}
+.facet-more[hidden]{display:none}
+.more-filters[open]>summary [data-more-count]{transform:none}
+@media(max-width:899px){.filters.open{height:100dvh;box-sizing:border-box}}
+
+/* One visible, public contribution route; no account or favorites in the Atlas. */
+.site-header nav a.nav-contribute{padding:.45rem .7rem;border:1px solid var(--brand-olive-deep,#526049);border-radius:7px;background:#edf0e6;color:var(--brand-olive-deep,#526049)}
+.contribution-prompt{display:flex;align-items:center;justify-content:space-between;gap:1.25rem;margin:1.5rem 0;padding:1.25rem;border:1px solid #cbd1bc;border-left:5px solid var(--brand-olive-deep,#526049);border-radius:9px;background:#f2f3eb}
+.contribution-prompt h2{margin:0 0 .3rem;font-size:1.2rem}
+.contribution-prompt p{margin:0;max-width:650px;color:var(--muted);font-size:.95rem}
+.contribution-prompt .btn{flex-shrink:0;min-height:44px}
+.selection-actions{flex-wrap:wrap;justify-content:flex-end;flex-shrink:1}
+.selection-actions a{display:inline-flex;align-items:center;min-height:44px;padding:.4rem .65rem;border:1px solid var(--line);border-radius:6px;font-size:.85rem;font-weight:700;text-align:center}
+.contribute-options{grid-template-columns:repeat(3,minmax(0,1fr))}
+.contribute-options article{display:flex;flex-direction:column;align-items:flex-start}
+.contribute-options article p{flex:1}
+.contribute-options .btn{min-height:44px;white-space:normal}
+.contribution-notice,.contribution-context{padding:1rem;border-radius:7px;background:#f2f3eb;font-size:.92rem!important;overflow-wrap:anywhere}
+.contribution-context{border-left:4px solid var(--brand-olive-deep,#526049)}
+.item-contribution{margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--line)}
+.item-contribution h3{margin:0;font-size:1.05rem}
+.item-contribution p{font-size:.9rem}
+.item-contribution .btn{min-height:44px;white-space:normal}
+@media(max-width:1000px){.contribute-options{grid-template-columns:1fr}.selection-bar{flex-wrap:wrap}}
+@media(max-width:600px){.contribution-prompt{display:block;padding:1rem}.contribution-prompt .btn{margin-top:1rem;width:100%}.selection-actions{display:flex;width:100%;justify-content:flex-start}.selection-actions a{flex:1 1 auto}.selection-actions button{padding:.4rem .65rem;min-height:44px}}
+@media(max-width:600px){.site-header{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:.5rem;row-gap:.25rem}.site-header .brand{grid-row:1;grid-column:1}.site-header .menu{grid-row:1;grid-column:2}.site-header .header-credit{grid-row:2;grid-column:1 / -1;justify-self:end;margin:0}.site-header nav{grid-row:3;grid-column:1 / -1}}
