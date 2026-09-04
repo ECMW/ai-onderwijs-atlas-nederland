@@ -62,6 +62,12 @@
   const SAVED_SEARCHES_KEY = 'atlas.savedSearches';
   const RECENT_KEY = 'atlas.recentItems';
   const FILTER_KEYS = ['theme', 'audience', 'sector', 'status', 'type', 'geography', 'organization', 'access', 'source', 'freshness'];
+  const SORT_OPTIONS = {
+    relevant: 'Meest relevant',
+    published: 'Nieuwste publicatie eerst',
+    'published-oldest': 'Oudste publicatie eerst',
+    az: 'Titel A–Z'
+  };
   const ROLE_ALIASES = {
     docent: 'Docenten', leraar: 'Docenten', leerkracht: 'Docenten',
     bestuurder: 'Bestuurders', schoolleider: 'Bestuurders', manager: 'Bestuurders',
@@ -173,7 +179,8 @@
 
   function parseState() {
     const params = new URLSearchParams(location.hash.split('?')[1] || '');
-    state = { q: params.get('q') || '', sort: params.get('sort') || 'relevant' };
+    const sort = params.get('sort');
+    state = { q: params.get('q') || '', sort: Object.hasOwn(SORT_OPTIONS, sort) ? sort : 'relevant' };
     FILTER_KEYS
       .forEach(key => state[key] = params.get(key) || '');
     if (!state.audience && params.get('aud')) state.audience = params.get('aud');
@@ -238,21 +245,30 @@
     score += values('audience').filter(value => (record.audiences || []).includes(value)).length * 4;
     return score + practical / 10 + (statusLabel(record) === 'Direct beschikbaar' ? 3 : 0) + trusted;
   }
+  function publicationDate(record) {
+    const value = record.publicationDate;
+    if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return '';
+    const parsed = new Date(`${value}T00:00:00Z`);
+    return !Number.isNaN(parsed.getTime()) && parsed.toISOString().slice(0, 10) === value ? value : '';
+  }
+  const isPublicationSort = () => ['published', 'published-oldest'].includes(state.sort);
+
   function sortRecords(list) {
     if (state.sort === 'az') return list.sort((a, b) => a.title.localeCompare(b.title, 'nl'));
-    if (state.sort === 'available') return list.sort((a, b) => {
-      const availability = Number(statusLabel(b) === 'Direct beschikbaar') - Number(statusLabel(a) === 'Direct beschikbaar');
-      return availability || relevance(b) - relevance(a) || a.title.localeCompare(b.title, 'nl');
+    if (isPublicationSort()) return list.sort((a, b) => {
+      const aDate = publicationDate(a), bDate = publicationDate(b);
+      // Een controle- of toevoegdatum is geen publicatiedatum. Onbekend blijft onderaan.
+      if (Boolean(aDate) !== Boolean(bDate)) return aDate ? -1 : 1;
+      const order = state.sort === 'published' ? bDate.localeCompare(aDate) : aDate.localeCompare(bDate);
+      return order || a.title.localeCompare(b.title, 'nl') || a.id.localeCompare(b.id);
     });
-    if (state.sort === 'checked') return list.sort((a, b) => String(b.lastVerified || '').localeCompare(a.lastVerified || ''));
-    if (state.sort === 'new') return list.sort((a, b) => latestChangeDate(b, 'added').localeCompare(latestChangeDate(a, 'added')) || relevance(b) - relevance(a));
     return list.sort((a, b) => relevance(b) - relevance(a));
   }
   function facetCount(key, option) {
     return records.filter(record => matches(record, key) && facetValues(record, key).includes(option)).length;
   }
   function hasIntent() {
-    return Boolean(state.q || FILTER_KEYS.some(key => values(key).length));
+    return Boolean(state.q || FILTER_KEYS.some(key => values(key).length) || state.sort !== 'relevant');
   }
 
   function phrasePresent(text, phrase) {
@@ -362,6 +378,7 @@
         <h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
         ${record.providerName ? `<p class="provider">${escapeHtml(record.providerName)}</p>` : ''}
         <p class="description">${escapeHtml(record.description || '')}</p>
+        ${explain && isPublicationSort() ? `<p class="publication-date">${publicationDate(record) ? `Verschenen op <time datetime="${publicationDate(record)}">${escapeHtml(dateLabel(publicationDate(record)))}</time>` : 'Publicatiedatum onbekend'}</p>` : ''}
         ${sectors.length ? `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>` : ''}
         <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span>${sourceItem ? '<span>Officiële bron</span>' : '<span>Bron nog niet vastgelegd</span>'}<span>Gecontroleerd ${escapeHtml(dateLabel(record.lastVerified))}</span></div>
         ${explain && reasons.length ? `<details class="relevance"><summary>Waarom zie ik dit?</summary><p>${reasons.map(reason => `<span>✓ ${escapeHtml(reason)}</span>`).join(' ')}</p></details>` : ''}
@@ -437,7 +454,7 @@
       ${homeShelf('Direct beschikbaar', `#zoeken?status=${encodeURIComponent('Direct beschikbaar')}`, directUsable())}
       ${homeShelf('Open subsidies', `#zoeken?status=${encodeURIComponent('Open voor aanvragen')}`, openCalls)}
       ${homeShelf('Praktijkvoorbeelden', `#zoeken?type=${encodeURIComponent('Praktijkvoorbeeld')}`, practices)}
-      ${homeShelf('Recent gecontroleerd', '#zoeken?sort=checked', recentlyChecked)}
+      ${homeShelf('Recent gecontroleerd', `#zoeken?freshness=${encodeURIComponent('Recent gecontroleerd')}`, recentlyChecked)}
       <section class="missing"><div><h2>Nog niet gevonden wat u zoekt?</h2><p>Laat ontbrekend aanbod weten en voeg een officiële bron toe.</p></div><a class="btn secondary" href="#bijdragen">Aanbod melden</a></section>
     </div></section>`;
     bindSearchForm(); bindRolePickers(); bindFavoriteButtons(); bindHomeFilters();
@@ -525,14 +542,18 @@
       ...(state.q ? [`<button class="chip" data-clear-query>Zoekterm: ${escapeHtml(state.q)} ×</button>`] : []),
       ...FILTER_KEYS.flatMap(key => values(key).map(value => `<button class="chip" data-remove="${key}|${escapeHtml(value)}">${escapeHtml(value)} ×</button>`))
     ].join('');
-    const oneThemeOnly = values('theme').length === 1 && !state.q && FILTER_KEYS.filter(key => key !== 'theme').every(key => !values(key).length);
+    const oneThemeOnly = state.sort === 'relevant' && values('theme').length === 1 && !state.q && FILTER_KEYS.filter(key => key !== 'theme').every(key => !values(key).length);
     const related = values('theme').length ? relatedThemes(values('theme')[0]) : [];
     const alternative = alternativeSuggestion();
     const relaxations = relaxationSuggestions();
     const activeCount = FILTER_KEYS.reduce((sum, key) => sum + values(key).length, 0) + Number(Boolean(state.q));
     const quickFilters = [['status', 'Direct beschikbaar', 'Direct beschikbaar'], ['source', 'Met officiële bron', 'Officiële bron'], ['freshness', 'Recent gecontroleerd', 'Recent gecontroleerd']];
     const heading = oneThemeOnly ? values('theme')[0] : `${resultRecords.length} ${resultRecords.length === 1 ? 'resultaat' : 'resultaten'}${state.q ? ` voor ‘${state.q}’` : ''}`;
-    return `<header class="result-head"><div><span class="eyebrow">Gevonden aanbod</span><h1>${escapeHtml(heading)}</h1><p class="result-summary" aria-live="polite">Gesorteerd op relevantie en directe bruikbaarheid.</p></div><div class="result-tools"><button class="mobile-filter btn secondary" aria-controls="filters" aria-expanded="false">Filters (${activeCount})</button><label>Sorteren<select id="sort"><option value="relevant" ${state.sort === 'relevant' ? 'selected' : ''}>Meest relevant</option><option value="available" ${state.sort === 'available' ? 'selected' : ''}>Direct beschikbaar eerst</option><option value="checked" ${state.sort === 'checked' ? 'selected' : ''}>Recent gecontroleerd</option><option value="az" ${state.sort === 'az' ? 'selected' : ''}>Titel A–Z</option></select></label></div></header>
+    const knownDates = resultRecords.filter(record => publicationDate(record)).length;
+    const sortSummary = isPublicationSort()
+      ? `${state.sort === 'published' ? 'Nieuwste' : 'Oudste'} publicaties eerst. Publicatiedatum bekend bij ${knownDates} van ${resultRecords.length} resultaten; onbekende datums staan onderaan.`
+      : state.sort === 'az' ? 'Gesorteerd op titel, van A tot Z.' : 'Gesorteerd op relevantie en directe bruikbaarheid.';
+    return `<header class="result-head"><div><span class="eyebrow">Gevonden aanbod</span><h1>${escapeHtml(heading)}</h1><p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p></div><div class="result-tools"><button class="mobile-filter btn secondary" aria-controls="filters" aria-expanded="false">Filters (${activeCount})</button><label>Sorteren<select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select></label></div></header>
       <div class="selection-bar"><div class="quick-filters" aria-label="Snelfilters"><span>Snel verfijnen:</span>${quickFilters.map(([key, value, label]) => `<button type="button" data-quick="${key}|${value}" aria-pressed="${values(key).includes(value)}">${label}</button>`).join('')}</div><div class="selection-actions"><button type="button" data-save-search>Bewaar zoekopdracht</button><button type="button" data-share-selection>Deel selectie</button></div></div>
       ${chips ? `<div class="chips">${chips}<button class="clear-link">Wis alles</button></div>` : ''}
       ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="#zoeken?theme=${encodeURIComponent(theme)}">${escapeHtml(theme)} <span>${count}</span></a>`).join('')}</nav>` : ''}
@@ -614,6 +635,7 @@
       ['Voor wie', (record.audiences || []).join(', ')],
       ['Beschikbaarheid', statusLabel(record)],
       ['Geografische reikwijdte', record.geographicScope],
+      ['Verschenen op', publicationDate(record) ? dateLabel(publicationDate(record)) : 'Publicatiedatum onbekend'],
       ['Laatst gecontroleerd', record.lastVerified],
       ['Deadline', record.applicationDeadline || record.fundingDeadline]
     ].filter(([, value]) => value && value !== 'Nog niet ingevuld');
@@ -823,7 +845,7 @@
     if (clearQuery) clearQuery.onclick = () => { state.q = ''; setUrl(); };
     panel.querySelectorAll('.clear-link,.empty .clear').forEach(button => button.onclick = () => { state = { q: '', sort: 'relevant' }; setUrl(); });
     const sort = panel.querySelector('#sort');
-    if (sort) sort.onchange = event => { state.sort = event.target.value; setUrl(); };
+    if (sort) sort.onchange = event => { state.sort = event.target.value; setUrl(); document.querySelector('#sort')?.focus(); };
     const saveSearch = panel.querySelector('[data-save-search]');
     if (saveSearch) saveSearch.onclick = saveCurrentSearch;
     const share = panel.querySelector('[data-share-selection]');

@@ -36,3 +36,10 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 @media(max-width:600px){.home-market{padding:.75rem .75rem 3rem}.home-market .home-simple{padding:0}.home-market .home-search{margin:0;padding:2rem .9rem!important}.home-market .home-search h1{font-size:2.45rem}.home-market .content-rail{margin-right:0}.home-filter-form{padding:.9rem}.home-filter-group label{min-height:46px}}
 @media(min-width:1101px) and (max-width:1350px){.home-market .content-rail{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(min-width:901px) and (max-width:1100px){.home-market .content-rail{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Sorteren blijft zichtbaar op mobiel; publicatie en controle zijn aparte datums. */
+.result-head>div:first-child{display:block;min-width:0}
+.result-head .result-tools{flex:0 0 auto;max-width:100%}
+.result-head .result-tools label{display:block;max-width:100%}
+.result-head .result-tools select{min-height:44px;max-width:100%;width:100%;font-size:1rem}
+.publication-date{font-size:.85rem;color:var(--muted);margin:.5rem 0}
