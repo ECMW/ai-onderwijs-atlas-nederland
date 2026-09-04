@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Complete toevoegingen worden automatisch gecontroleerd op structuur, duplicaten, bronbereikbaarheid en aansluiting van titel en aanbieder op de officiële bron. Alleen een volledig geslaagde controle wordt gepubliceerd. Dit is geen inhoudelijke aanbeveling door de Atlas.
+        Complete toevoegingen worden automatisch gecontroleerd op structuur, duplicaten, bronbereikbaarheid en aansluiting van titel en aanbieder op de officiële bron. Een geslaagde controle is geen inhoudelijke goedkeuring: een beheerder beoordeelt de bijdrage voordat die wordt gepubliceerd. Uw inzending is openbaar; deel geen persoonsgegevens of vertrouwelijke informatie.
   - type: input
     id: title
     attributes:

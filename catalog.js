@@ -58,9 +58,6 @@
   const PRIMARY_AUDIENCES = ['Docenten', 'Bestuurders', 'IT-professionals', 'Onderzoekers'];
   const SECTORS = ['PO', 'VO', 'MBO', 'HBO', 'WO', 'Onderzoek', 'Overheid'];
   const PERSONA_KEY = 'atlas.persona';
-  const FAVORITES_KEY = 'atlas.favorites';
-  const SAVED_SEARCHES_KEY = 'atlas.savedSearches';
-  const RECENT_KEY = 'atlas.recentItems';
   const FILTER_KEYS = ['theme', 'audience', 'sector', 'status', 'type', 'geography', 'organization', 'access', 'source', 'freshness'];
   const SORT_OPTIONS = {
     relevant: 'Meest relevant',
@@ -118,26 +115,6 @@
   }
   function sessionGet(key) { try { return sessionStorage.getItem(key) || ''; } catch { return ''; } }
   function sessionSet(key, value) { try { sessionStorage.setItem(key, String(value)); } catch { /* sessieopslag kan geblokkeerd zijn */ } }
-  function localList(key) {
-    try {
-      const parsed = JSON.parse(localStorage.getItem(key) || '[]');
-      return Array.isArray(parsed) ? parsed : [];
-    } catch { return []; }
-  }
-  function saveLocalList(key, items) {
-    try { localStorage.setItem(key, JSON.stringify(items)); } catch { /* lokale opslag kan geblokkeerd zijn */ }
-  }
-  const favoriteIds = () => localList(FAVORITES_KEY).filter(id => records.some(record => record.id === id));
-  const isFavorite = id => favoriteIds().includes(id);
-  function toggleFavorite(id) {
-    const current = favoriteIds();
-    const next = current.includes(id) ? current.filter(item => item !== id) : [id, ...current].slice(0, 100);
-    saveLocalList(FAVORITES_KEY, next);
-    return next.includes(id);
-  }
-  function addRecent(id) {
-    saveLocalList(RECENT_KEY, [id, ...localList(RECENT_KEY).filter(item => item !== id)].slice(0, 12));
-  }
   const personaLabel = value => ({ Docenten: 'Docent', Bestuurders: 'Bestuurder', 'IT-professionals': 'IT-professional', Onderzoekers: 'Onderzoeker' }[value] || value);
   const personaSummary = selected => selected.map(personaLabel).join(' + ');
 
@@ -327,10 +304,6 @@
     Object.entries(criteria).forEach(([key, value]) => value && params.set(key, value));
     return `#zoeken${params.size ? `?${params}` : ''}`;
   }
-  function favoriteButton(record) {
-    const active = isFavorite(record.id);
-    return `<button class="favorite-button" type="button" data-favorite="${escapeHtml(record.id)}" aria-pressed="${active}" aria-label="${active ? 'Verwijder uit favorieten' : 'Bewaar als favoriet'}"><span aria-hidden="true">${active ? '★' : '☆'}</span><span>${active ? 'Bewaard' : 'Bewaar'}</span></button>`;
-  }
   function trustTone(record) {
     if (['needs_verification', 'unknown'].includes(record.status) || !['verified', 'recently_checked'].includes(record.verificationStatus)) return 'is-uncertain';
     if (['available', 'open_call'].includes(record.status)) return 'is-confirmed';
@@ -363,7 +336,7 @@
   }
   function teaserCard(record, label = '') {
     const sourceItem = primarySource(record);
-    return `<article class="teaser-card"><div class="teaser-top"><span class="type-label">${escapeHtml(label || typeLabel(record))}</span>${favoriteButton(record)}</div>
+    return `<article class="teaser-card"><div class="teaser-top"><span class="type-label">${escapeHtml(label || typeLabel(record))}</span></div>
       <h3><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h3>
       <p class="provider">${escapeHtml(record.providerName || 'Aanbieder nog niet ingevuld')}</p>
       <div class="teaser-meta"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span>${sourceItem ? '<span>Officiële bron</span>' : ''}</div>
@@ -374,13 +347,13 @@
     const reasons = relevanceReasons(record);
     const sourceItem = primarySource(record);
     return `<article class="result-card" data-record-id="${escapeHtml(record.id)}">
-      <div class="card-body"><div class="card-top"><span class="type-label">${escapeHtml(typeLabel(record))}</span>${favoriteButton(record)}</div>
+      <div class="card-body"><div class="card-top"><span class="type-label">${escapeHtml(typeLabel(record))}</span></div>
         <h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
         ${record.providerName ? `<p class="provider">${escapeHtml(record.providerName)}</p>` : ''}
         <p class="description">${escapeHtml(record.description || '')}</p>
         ${explain && isPublicationSort() ? `<p class="publication-date">${publicationDate(record) ? `Verschenen op <time datetime="${publicationDate(record)}">${escapeHtml(dateLabel(publicationDate(record)))}</time>` : 'Publicatiedatum onbekend'}</p>` : ''}
         ${sectors.length ? `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>` : ''}
-        <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span>${sourceItem ? '<span>Officiële bron</span>' : '<span>Bron nog niet vastgelegd</span>'}<span>Gecontroleerd ${escapeHtml(dateLabel(record.lastVerified))}</span></div>
+        <div class="trust-row">${statusLabel(record) !== 'Direct beschikbaar' ? `<span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span>` : ''}<span>Gecontroleerd ${escapeHtml(dateLabel(record.lastVerified))}</span></div>
         ${explain && reasons.length ? `<details class="relevance"><summary>Waarom zie ik dit?</summary><p>${reasons.map(reason => `<span>✓ ${escapeHtml(reason)}</span>`).join(' ')}</p></details>` : ''}
       </div><div class="card-actions"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">Bron ↗</a>` : ''}</div>
     </article>`;
@@ -449,15 +422,15 @@
     const recentlyChecked = [...records].filter(record => record.lastVerified && !['Organisatie'].includes(typeLabel(record))).sort((a, b) => String(b.lastVerified).localeCompare(String(a.lastVerified)) || relevance(b) - relevance(a));
     main.innerHTML = `<section class="home-market">${homeFilterPanel(personas)}<div class="home-simple">
       <section class="home-search"><span class="eyebrow">De publieke wegwijzer voor AI in het onderwijs</span><h1>Vind wat u nodig hebt voor AI in uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, voorzieningen, subsidies, pilots en praktijkvoorbeelden.</p><ul class="trust-summary" aria-label="Kenmerken van de atlas"><li>Alleen bestaand aanbod</li><li>Officiële bron per vermelding</li><li>Geen tracking</li></ul>${searchForm('home-search')}${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}</section>
+      ${contributionPrompt()}
       <section><div class="section-title"><div><h2>Waarmee kunnen we u helpen?</h2><p>Begin bij uw vraag, niet bij een organisatie.</p></div></div><div class="task-grid">${TASKS.map(task => { const count = recordsForCriteria(task.query).length; return `<a class="task-tile" href="${criteriaHref({ ...task.query, audience: personas.join(',') })}"><strong>${escapeHtml(task.label)}</strong><span>${escapeHtml(task.detail)}</span><small>${count} resultaten</small></a>`; }).join('')}</div></section>
       <section><div class="section-title"><div><h2>Veel gezocht</h2><p>Vaste snelkoppelingen naar veelvoorkomende onderwijsvragen.</p></div></div>${popularLinks('', personas.join(','))}</section>
       ${homeShelf('Direct beschikbaar', `#zoeken?status=${encodeURIComponent('Direct beschikbaar')}`, directUsable())}
       ${homeShelf('Open subsidies', `#zoeken?status=${encodeURIComponent('Open voor aanvragen')}`, openCalls)}
       ${homeShelf('Praktijkvoorbeelden', `#zoeken?type=${encodeURIComponent('Praktijkvoorbeeld')}`, practices)}
       ${homeShelf('Recent gecontroleerd', `#zoeken?freshness=${encodeURIComponent('Recent gecontroleerd')}`, recentlyChecked)}
-      <section class="missing"><div><h2>Nog niet gevonden wat u zoekt?</h2><p>Laat ontbrekend aanbod weten en voeg een officiële bron toe.</p></div><a class="btn secondary" href="#bijdragen">Aanbod melden</a></section>
     </div></section>`;
-    bindSearchForm(); bindRolePickers(); bindFavoriteButtons(); bindHomeFilters();
+    bindSearchForm(); bindRolePickers(); bindHomeFilters();
   }
   function renderStart() {
     const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
@@ -469,12 +442,21 @@
     </div></section>`;
     bindSearchForm(); bindRolePickers();
   }
-  function facet(key, title, options, open = false) {
+  function facetSelectionLabel(key) {
+    const defaults = {
+      theme: 'Alle onderwerpen', sector: 'Alle sectoren', type: 'Alle soorten aanbod',
+      geography: 'Alle regio’s', audience: 'Alle doelgroepen', status: 'Alle statussen',
+      organization: 'Alle aanbieders', access: 'Alle toegangsopties',
+      source: 'Alle bronnen', freshness: 'Alle actualiteitsopties'
+    };
+    return values(key).join(', ') || defaults[key] || 'Alle opties';
+  }
+  function facet(key, title, options) {
     const present = options.filter(option => records.some(record => facetValues(record, key).includes(option)));
-    return `<details class="facet" data-facet-block="${escapeHtml(key)}" ${open ? 'open' : ''}><summary>${title}<b ${values(key).length ? '' : 'hidden'}>${values(key).length}</b></summary><div>
+    return `<details class="facet" data-facet-block="${escapeHtml(key)}"><summary><span class="facet-heading">${escapeHtml(title)}<b aria-label="${values(key).length} geselecteerd" ${values(key).length ? '' : 'hidden'}>${values(key).length}</b></span><span class="facet-value">${escapeHtml(facetSelectionLabel(key))}</span></summary><div>
       ${key === 'organization' && present.length > 12 ? '<input class="facet-search" type="search" placeholder="Zoek organisatie…" aria-label="Zoek binnen organisaties">' : ''}
       <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => { const count = facetCount(key, option); const checked = values(key).includes(option); return `<label data-facet-option="${escapeHtml(option)}"><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${!count && !checked ? 'disabled' : ''}><span>${escapeHtml(option)}</span><small>${count}</small></label>`; }).join('')}</div>
-      ${present.length > 8 ? '<button class="facet-more" type="button">Toon meer</button>' : ''}
+      ${present.length > 8 ? '<button class="facet-more" type="button" aria-expanded="false">Toon meer</button>' : ''}
     </div></details>`;
   }
   function relatedThemes(activeTheme) {
@@ -547,14 +529,14 @@
     const alternative = alternativeSuggestion();
     const relaxations = relaxationSuggestions();
     const activeCount = FILTER_KEYS.reduce((sum, key) => sum + values(key).length, 0) + Number(Boolean(state.q));
-    const quickFilters = [['status', 'Direct beschikbaar', 'Direct beschikbaar'], ['source', 'Met officiële bron', 'Officiële bron'], ['freshness', 'Recent gecontroleerd', 'Recent gecontroleerd']];
+    const quickFilters = [['freshness', 'Recent gecontroleerd', 'Recent gecontroleerd']];
     const heading = oneThemeOnly ? values('theme')[0] : `${resultRecords.length} ${resultRecords.length === 1 ? 'resultaat' : 'resultaten'}${state.q ? ` voor ‘${state.q}’` : ''}`;
     const knownDates = resultRecords.filter(record => publicationDate(record)).length;
     const sortSummary = isPublicationSort()
       ? `${state.sort === 'published' ? 'Nieuwste' : 'Oudste'} publicaties eerst. Publicatiedatum bekend bij ${knownDates} van ${resultRecords.length} resultaten; onbekende datums staan onderaan.`
       : state.sort === 'az' ? 'Gesorteerd op titel, van A tot Z.' : 'Gesorteerd op relevantie en directe bruikbaarheid.';
     return `<header class="result-head"><div><span class="eyebrow">Gevonden aanbod</span><h1>${escapeHtml(heading)}</h1><p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p></div><div class="result-tools"><button class="mobile-filter btn secondary" aria-controls="filters" aria-expanded="false">Filters (${activeCount})</button><label>Sorteren<select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select></label></div></header>
-      <div class="selection-bar"><div class="quick-filters" aria-label="Snelfilters"><span>Snel verfijnen:</span>${quickFilters.map(([key, value, label]) => `<button type="button" data-quick="${key}|${value}" aria-pressed="${values(key).includes(value)}">${label}</button>`).join('')}</div><div class="selection-actions"><button type="button" data-save-search>Bewaar zoekopdracht</button><button type="button" data-share-selection>Deel selectie</button></div></div>
+      <div class="selection-bar"><div class="quick-filters" aria-label="Snelfilters"><span>Snel verfijnen:</span>${quickFilters.map(([key, value, label]) => `<button type="button" data-quick="${key}|${value}" aria-pressed="${values(key).includes(value)}">${label}</button>`).join('')}</div><div class="selection-actions"><a href="#bijdragen">Aanbod toevoegen of feedback geven</a><button type="button" data-share-selection>Deel selectie</button></div></div>
       ${chips ? `<div class="chips">${chips}<button class="clear-link">Wis alles</button></div>` : ''}
       ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="#zoeken?theme=${encodeURIComponent(theme)}">${escapeHtml(theme)} <span>${count}</span></a>`).join('')}</nav>` : ''}
       <div id="action-feedback" class="action-feedback" aria-live="polite"></div>
@@ -573,7 +555,9 @@
     document.querySelectorAll('[data-facet-block]').forEach(block => {
       const count = values(block.dataset.facetBlock).length;
       const badge = block.querySelector(':scope > summary b');
-      if (badge) { badge.textContent = count; badge.hidden = !count; }
+      if (badge) { badge.textContent = count; badge.hidden = !count; badge.setAttribute('aria-label', `${count} geselecteerd`); }
+      const selected = block.querySelector('.facet-value');
+      if (selected) selected.textContent = facetSelectionLabel(block.dataset.facetBlock);
     });
     const hiddenCount = ['access', 'source', 'freshness'].reduce((sum, key) => sum + values(key).length, 0);
     const moreCount = document.querySelector('[data-more-count]');
@@ -602,7 +586,8 @@
     const hiddenCount = ['access', 'source', 'freshness'].reduce((sum, key) => sum + values(key).length, 0);
     main.innerHTML = `<section class="catalog">${searchForm('catalog-search')}<div class="catalog-grid">
       <aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Verfijn</h2><button class="close" aria-label="Sluit filters">×</button></header>
-        ${facet('theme', '1. Waar zoekt u hulp bij?', Object.keys(THEME_RULES), true)}${facet('sector', '2. Voor welke sector?', SECTORS, true)}${facet('type', '3. Wat zoekt u?', typeOptions, true)}${facet('geography', '4. Geografische reikwijdte', ['Nederland', 'Europa', 'Internationaal'], Boolean(values('geography').length))}${facet('audience', '5. Voor wie?', audienceOptions, Boolean(values('audience').length))}${facet('status', '6. Beschikbaarheid', Object.values(STATUS_LABELS), Boolean(values('status').length))}${facet('organization', '7. Aanbieder', organizationOptions, Boolean(values('organization').length))}
+        <p class="filter-help">Klap een onderdeel open. U kunt meerdere opties kiezen.</p>
+        ${facet('theme', '1. Onderwerp', Object.keys(THEME_RULES))}${facet('sector', '2. Sector', SECTORS)}${facet('type', '3. Soort aanbod', typeOptions)}${facet('geography', '4. Regio', ['Nederland', 'Europa', 'Internationaal'])}${facet('audience', '5. Doelgroep', audienceOptions)}${facet('status', '6. Beschikbaarheid', Object.values(STATUS_LABELS))}${facet('organization', '7. Aanbieder', organizationOptions)}
         <details class="more-filters"><summary>8. Meer filters<span data-more-count>${hiddenCount ? ` (${hiddenCount})` : ''}</span> <span aria-hidden="true">▼</span></summary>
           ${facet('access', 'Toegang', ['Publiek toegankelijk', 'Toegang nog niet bevestigd'])}${facet('source', 'Bron', ['Met officiële bron', 'Bron nog niet vastgelegd'])}${facet('freshness', 'Actualiteit', ['Recent gecontroleerd', 'Controle nodig'])}
         </details><button class="clear btn secondary">Wis alle filters</button><footer><button class="apply btn">Toon ${resultRecords.length} resultaten</button></footer>
@@ -621,7 +606,6 @@
       main.innerHTML = `<section class="detail-missing"><h1>Niet gevonden</h1><p>Dit item staat niet in de huidige dataset.</p><a class="btn" href="#zoeken">Terug naar zoeken</a></section>`;
       return;
     }
-    addRecent(record.id);
     const lastSearch = sessionGet('atlas.lastSearch') || '#zoeken';
     const related = records.filter(item => item.id !== record.id)
       .map(item => ({ item, score: relationScore(record, item) }))
@@ -639,7 +623,7 @@
       ['Laatst gecontroleerd', record.lastVerified],
       ['Deadline', record.applicationDeadline || record.fundingDeadline]
     ].filter(([, value]) => value && value !== 'Nog niet ingevuld');
-    main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(typeLabel(record))}</span>${favoriteButton(record)}</div><h1>${escapeHtml(record.title)}</h1><p>${escapeHtml(record.description || '')}</p></header>
+    main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(typeLabel(record))}</span></div><h1>${escapeHtml(record.title)}</h1><p>${escapeHtml(record.description || '')}</p></header>
       <section class="detail-shell"><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">← Terug naar resultaten</a><span>Home / Resultaten / ${escapeHtml(record.title)}</span></nav>
       <div class="detail-layout"><article>
         ${record.purpose ? `<h2>Waarvoor kunt u dit gebruiken?</h2><p>${escapeHtml(record.purpose)}</p>` : ''}
@@ -650,12 +634,11 @@
         ${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}
         <button class="btn secondary share-item" type="button" data-share-item>Deel dit item</button>
         <p id="detail-feedback" class="action-feedback" aria-live="polite"></p>
-        <a class="correction-link" href="#bijdragen">Klopt er iets niet? Geef een correctie door.</a>
+        <aside class="item-contribution"><h3>Klopt deze informatie nog?</h3><p>Help mee met een correctie of aanvulling.</p><a class="btn secondary" href="#bijdragen?item=${encodeURIComponent(record.id)}">Fout of aanvulling doorgeven</a></aside>
       </aside></div></section>`;
     const back = document.querySelector('.back-results');
     back.onclick = () => sessionSet('atlas.restoreResults', lastSearch);
     document.querySelectorAll('.related-cards a[href^="#item/"]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', lastSearch));
-    bindFavoriteButtons();
     document.querySelector('[data-share-item]').onclick = async () => {
       const feedback = document.querySelector('#detail-feedback');
       try {
@@ -766,42 +749,24 @@
     if (clear) clear.onclick = () => { savePersonas([]); renderHome(); };
   }
 
-  function renderMyAtlas() {
-    const favoriteRecords = favoriteIds().map(id => records.find(record => record.id === id)).filter(Boolean);
-    const saved = localList(SAVED_SEARCHES_KEY).filter(item => item && item.hash);
-    const recent = localList(RECENT_KEY).map(id => records.find(record => record.id === id)).filter(Boolean);
-    main.innerHTML = `<section class="personal-page"><header class="page-intro"><span class="eyebrow">Alleen op dit apparaat</span><h1>Mijn atlas</h1><p>Uw favorieten, bewaarde zoekopdrachten en recent bekeken aanbod blijven lokaal in deze browser. Er wordt niets verzonden of gevolgd.</p></header>
-      <section><div class="section-title"><div><h2>Favorieten</h2><p>${favoriteRecords.length ? `${favoriteRecords.length} bewaard` : 'Bewaar aanbod met de sterknop.'}</p></div></div>${favoriteRecords.length ? `<div class="personal-grid">${favoriteRecords.map(record => teaserCard(record)).join('')}</div>` : `<div class="personal-empty"><p>Nog geen favorieten.</p><a class="btn" href="#zoeken">Zoek aanbod</a></div>`}</section>
-      <section><div class="section-title"><div><h2>Bewaarde zoekopdrachten</h2><p>Open uw selectie opnieuw met alle filters intact.</p></div></div>${saved.length ? `<div class="saved-list">${saved.map((item, index) => `<article><div><h3><a href="${escapeHtml(item.hash)}">${escapeHtml(item.label || 'Bewaarde selectie')}</a></h3><p>Bewaard ${escapeHtml(dateLabel(String(item.savedAt || '').slice(0, 10)))}</p></div><button type="button" data-remove-saved="${index}">Verwijder</button></article>`).join('')}</div>` : '<div class="personal-empty"><p>Nog geen zoekopdrachten bewaard.</p></div>'}</section>
-      <section><div class="section-title"><div><h2>Recent bekeken</h2><p>Uw laatste bekeken items op dit apparaat.</p></div>${recent.length ? '<button type="button" class="text-button" data-clear-recent>Wis geschiedenis</button>' : ''}</div>${recent.length ? `<div class="personal-grid">${recent.slice(0, 8).map(record => teaserCard(record)).join('')}</div>` : '<div class="personal-empty"><p>Nog geen aanbod bekeken.</p></div>'}</section>
-    </section>`;
-    bindFavoriteButtons();
-    document.querySelectorAll('[data-remove-saved]').forEach(button => button.onclick = () => {
-      const current = localList(SAVED_SEARCHES_KEY);
-      current.splice(Number(button.dataset.removeSaved), 1);
-      saveLocalList(SAVED_SEARCHES_KEY, current); renderMyAtlas();
-    });
-    const clearRecent = document.querySelector('[data-clear-recent]');
-    if (clearRecent) clearRecent.onclick = () => { saveLocalList(RECENT_KEY, []); renderMyAtlas(); };
+  function contributionPrompt() {
+    return `<aside class="contribution-prompt" aria-label="Help de atlas verbeteren"><div><h2>Help de Atlas verder</h2><p>Kent u relevant aanbod? Ziet u een fout of kan de website prettiger werken? Geef het door via de vaste bijdrageroute.</p></div><a class="btn" href="#bijdragen">Bijdragen &amp; feedback <span aria-hidden="true">→</span></a></aside>`;
   }
-
+  function contributionIssueUrl(kind, record = null) {
+    const templates = { addition: 'atlas-aanvulling.yml', correction: 'feitelijke-correctie.yml', feedback: 'feedback.yml' };
+    const params = new URLSearchParams({ template: templates[kind] || templates.feedback });
+    if (kind === 'correction' && record) {
+      params.set('title', `[Correctie] ${record.title}`);
+      params.set('record', `${record.title}\nhttps://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${encodeURIComponent(record.id)}`);
+    }
+    return `https://github.com/ECMW/ai-onderwijs-atlas-nederland/issues/new?${params}`;
+  }
   function renderContribute() {
-    const issueUrl = 'https://github.com/ECMW/ai-onderwijs-atlas-nederland/issues/new?title=Aanbod%20of%20correctie%20voor%20de%20atlas&body=Wat%20wilt%20u%20toevoegen%20of%20corrigeren%3F%0A%0AOffici%C3%ABle%20bron%20(verplicht)%3A%0A%0AToelichting%3A';
-    main.innerHTML = `<section class="contribute-page"><header class="page-intro"><span class="eyebrow">Samen actueel houden</span><h1>Ontbreekt er iets of klopt er iets niet?</h1><p>Geef een toevoeging of correctie door met een officiële bron. Zo blijft de atlas controleerbaar en hoeft niemand informatie op goed vertrouwen over te nemen.</p></header>
-      <div class="contribute-options"><article><span aria-hidden="true">＋</span><h2>Aanbod toevoegen</h2><p>Meld een handreiking, training, voorziening, subsidie, pilot of praktijkvoorbeeld dat nog ontbreekt.</p><a class="btn" href="${issueUrl}" target="_blank" rel="noopener noreferrer">Open bijdrageformulier ↗</a></article><article><span aria-hidden="true">✓</span><h2>Informatie corrigeren</h2><p>Stuur de juiste titel, status, deadline of bron. Vermeld om welk atlasitem het gaat.</p><a class="btn secondary" href="${issueUrl}" target="_blank" rel="noopener noreferrer">Geef correctie door ↗</a></article></div>
-      <aside class="source-policy"><h2>Wat hebben we nodig?</h2><ul><li>Een concrete titel en korte toelichting</li><li>Een officiële bron van de aanbieder of overheid</li><li>Bij subsidies: status en deadline uit de officiële aanvraagpagina</li></ul><p>Bijdragen worden openbaar en transparant beoordeeld via GitHub. Marketingclaims worden niet als feiten overgenomen.</p></aside></section>`;
-  }
-  function bindFavoriteButtons(root = document) {
-    root.querySelectorAll('[data-favorite]').forEach(button => button.onclick = event => {
-      event.preventDefault();
-      event.stopPropagation();
-      const active = toggleFavorite(button.dataset.favorite);
-      document.querySelectorAll(`[data-favorite="${CSS.escape(button.dataset.favorite)}"]`).forEach(item => {
-        item.setAttribute('aria-pressed', String(active));
-        item.setAttribute('aria-label', active ? 'Verwijder uit favorieten' : 'Bewaar als favoriet');
-        item.innerHTML = `<span aria-hidden="true">${active ? '★' : '☆'}</span><span>${active ? 'Bewaard' : 'Bewaar'}</span>`;
-      });
-    });
+    const params = new URLSearchParams(location.hash.split('?')[1] || '');
+    const record = records.find(item => item.id === params.get('item'));
+    main.innerHTML = `<section class="contribute-page"><header class="page-intro"><span class="eyebrow">Samen actueel en bruikbaar</span><h1>Help de Atlas verder</h1><p>Voeg bestaand aanbod toe, verbeter informatie of vertel wat op de website beter kan. Kies hieronder de passende route.</p><p class="contribution-notice">De formulieren openen op GitHub. U heeft een gratis GitHub-account nodig. Uw inzending is openbaar: deel geen persoonsgegevens of vertrouwelijke informatie.</p>${record ? `<p class="contribution-context">Uw correctie gaat over <a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a>. Dit item staat alvast ingevuld in het correctieformulier.</p>` : ''}</header>
+      <div class="contribute-options"><article><span aria-hidden="true">＋</span><h2>Aanbod toevoegen</h2><p>Kent u een handreiking, training, organisatie, voorziening, subsidie of praktijkvoorbeeld dat ontbreekt? Voeg de officiële bron en een korte feitelijke beschrijving toe.</p><a class="btn" data-contribution="addition" href="${escapeHtml(contributionIssueUrl('addition'))}" target="_blank" rel="noopener noreferrer">Aanbod toevoegen ↗</a></article><article><span aria-hidden="true">✓</span><h2>Fout of aanvulling doorgeven</h2><p>Klopt een titel, beschrijving, status, deadline of bron niet meer? Vermeld wat er moet veranderen, met een onderbouwende bron.</p><a class="btn secondary" data-contribution="correction" href="${escapeHtml(contributionIssueUrl('correction', record))}" target="_blank" rel="noopener noreferrer">Correctie doorgeven ↗</a></article><article><span aria-hidden="true">↔</span><h2>Feedback op de website</h2><p>Lukt zoeken niet goed, werkt een knop niet of kan iets duidelijker? Beschrijf wat u probeerde en wat u verwachtte. Hiervoor is geen bronlink nodig.</p><a class="btn secondary" data-contribution="feedback" href="${escapeHtml(contributionIssueUrl('feedback'))}" target="_blank" rel="noopener noreferrer">Feedback geven ↗</a></article></div>
+      <aside class="source-policy"><h2>Wat gebeurt er met uw bijdrage?</h2><p>Uw melding krijgt een eigen openbare plek op GitHub. Controleer eerst of er al een <a href="https://github.com/ECMW/ai-onderwijs-atlas-nederland/issues" target="_blank" rel="noopener noreferrer">vergelijkbare melding ↗</a> is; u kunt daar een aanvulling plaatsen.</p><p>Nieuwe aanbodmeldingen worden automatisch gecontroleerd op onder meer verplichte velden, mogelijke duplicaten en de bron. Een geslaagde controle is geen inhoudelijke goedkeuring. Publicatie volgt pas na beoordeling; een inzending verandert de Atlas niet direct.</p><p>Correcties en websitefeedback blijven via dezelfde openbare route te volgen. U hoeft Eva niet apart te mailen.</p></aside></section>`;
   }
   function currentSearchLabel() {
     const parts = [state.q && `‘${state.q}’`, ...FILTER_KEYS.flatMap(key => values(key))].filter(Boolean);
@@ -810,12 +775,6 @@
   function setActionFeedback(message) {
     const feedback = document.querySelector('#action-feedback');
     if (feedback) feedback.textContent = message;
-  }
-  function saveCurrentSearch() {
-    const item = { hash: location.hash, label: currentSearchLabel(), savedAt: new Date().toISOString() };
-    const next = [item, ...localList(SAVED_SEARCHES_KEY).filter(saved => saved.hash !== item.hash)].slice(0, 10);
-    saveLocalList(SAVED_SEARCHES_KEY, next);
-    setActionFeedback('Zoekopdracht lokaal bewaard in Mijn atlas.');
   }
   async function shareCurrentSelection() {
     const shareData = { title: 'AI & Onderwijs Atlas Nederland', text: `Bekijk deze selectie: ${currentSearchLabel()}`, url: location.href };
@@ -846,14 +805,11 @@
     panel.querySelectorAll('.clear-link,.empty .clear').forEach(button => button.onclick = () => { state = { q: '', sort: 'relevant' }; setUrl(); });
     const sort = panel.querySelector('#sort');
     if (sort) sort.onchange = event => { state.sort = event.target.value; setUrl(); document.querySelector('#sort')?.focus(); };
-    const saveSearch = panel.querySelector('[data-save-search]');
-    if (saveSearch) saveSearch.onclick = saveCurrentSearch;
     const share = panel.querySelector('[data-share-selection]');
     if (share) share.onclick = shareCurrentSelection;
     panel.querySelectorAll('.result-card a[href^="#item/"]').forEach(link => link.onclick = () => {
       sessionSet('atlas.lastSearch', location.hash); sessionSet('atlas.resultsScroll', scrollY);
     });
-    bindFavoriteButtons(panel);
     const opener = panel.querySelector('.mobile-filter');
     if (opener) opener.onclick = () => {
       const filters = document.querySelector('#filters');
@@ -872,10 +828,15 @@
       const options = button.previousElementSibling;
       options.classList.toggle('expanded');
       button.textContent = options.classList.contains('expanded') ? 'Toon minder' : 'Toon meer';
+      button.setAttribute('aria-expanded', String(options.classList.contains('expanded')));
     });
     document.querySelectorAll('.facet-search').forEach(input => input.oninput = () => {
       const query = normalize(input.value);
-      input.nextElementSibling.querySelectorAll('label').forEach(label => { label.hidden = !normalize(label.textContent).includes(query); });
+      const options = input.nextElementSibling;
+      options.classList.toggle('searching', Boolean(query));
+      options.querySelectorAll('label').forEach(label => { label.hidden = !normalize(label.textContent).includes(query); });
+      const more = options.nextElementSibling;
+      if (more?.classList.contains('facet-more')) more.hidden = Boolean(query);
     });
     const panel = document.querySelector('#filters'); const closer = panel.querySelector('.close');
     panel.querySelector('.clear').onclick = () => { state = { q: '', sort: 'relevant' }; setUrl(); };
@@ -899,14 +860,20 @@
   }
   function route() {
     const path = (location.hash.slice(1) || 'home').split('?')[0];
+    document.querySelector('.site-header')?.classList.remove('open');
+    document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
     if (path === 'home') renderHome();
     if (path === 'zoeken' || path === 'organisaties') { parseState(); if (path === 'organisaties') state.type = 'Organisatie'; renderSearch(); }
     if (path.startsWith('item/')) renderDetail(decodeURIComponent(path.slice(5)));
-    if (path === 'mijn-atlas') renderMyAtlas();
+    if (path === 'mijn-atlas') { location.replace('#home'); return; }
     if (path === 'bijdragen') renderContribute();
     document.querySelectorAll('.site-header nav a').forEach(link => link.removeAttribute('aria-current'));
     document.querySelector(`.site-header nav a[href="#${CSS.escape(path)}"]`)?.setAttribute('aria-current', 'page');
     const updated = document.querySelector('[data-updated]'); if (updated) updated.textContent = source.metadata.updated || '';
+    if (!['zoeken', 'organisaties'].includes(path)) {
+      scrollTo({ top: 0, behavior: 'instant' });
+      main.focus({ preventScroll: true });
+    }
   }
   addEventListener('hashchange', route); addEventListener('popstate', route); route();
 })();
