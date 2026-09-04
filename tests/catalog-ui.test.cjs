@@ -10,6 +10,7 @@ assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly th
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     publicationDate, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard,
+    homeFilterPanel, recordsForCriteria,
     options: SORT_OPTIONS, getState: () => state, setState: value => { state = value; }
   };`);
 
@@ -142,4 +143,22 @@ test('contributions use distinct templates and correction retains exact item con
       assert.equal(url.searchParams.get('record'), item.title + '\nhttps://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/item-with-id');
     }
   }
+});
+
+test('funding task appears under help and reuses existing subsidy and call filters', () => {
+  const data = [
+    { ...record('grant'), legacyType: 'Subsidie', sectors: ['PO'] },
+    { ...record('call'), legacyType: 'Call', status: 'open_call' },
+    record('guidance')
+  ];
+  const api = load(data);
+  const html = api.homeFilterPanel([]);
+  const help = html.split('Waar zoekt u hulp bij?</summary>')[1].split('</details>')[0];
+  assert.ok(help.includes('Subsidies en calls vinden'));
+  assert.ok(help.includes('name="type" value="Subsidie of call,Subsidie"'));
+  assert.ok(html.includes('value="Subsidie of call"'));
+  assert.ok(html.includes('value="Subsidie"'));
+  assert.ok(!html.includes('value="Subsidies"'));
+  assert.deepEqual(Array.from(api.recordsForCriteria({ type:'Subsidie of call,Subsidie' }), r=>r.id), ['grant','call']);
+  assert.deepEqual(Array.from(api.recordsForCriteria({ type:'Subsidie of call,Subsidie', sector:'HBO', status:'Open voor aanvragen' }), r=>r.id), ['call']);
 });
