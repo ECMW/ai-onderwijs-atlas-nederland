@@ -84,3 +84,6 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 @media(max-width:1000px){.contribute-options{grid-template-columns:1fr}.selection-bar{flex-wrap:wrap}}
 @media(max-width:600px){.contribution-prompt{display:block;padding:1rem}.contribution-prompt .btn{margin-top:1rem;width:100%}.selection-actions{display:flex;width:100%;justify-content:flex-start}.selection-actions a{flex:1 1 auto}.selection-actions button{padding:.4rem .65rem;min-height:44px}}
 @media(max-width:600px){.site-header{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:.5rem;row-gap:.25rem}.site-header .brand{grid-row:1;grid-column:1}.site-header .menu{grid-row:1;grid-column:2}.site-header .header-credit{grid-row:2;grid-column:1 / -1;justify-self:end;margin:0}.site-header nav{grid-row:3;grid-column:1 / -1}}
+
+/* Search suggestions must remain unobstructed by the fixed mobile filter action. */
+@media(max-width:899px){body:has(.suggestions:not([hidden])) .mobile-filter{visibility:hidden}}
