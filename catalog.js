@@ -375,15 +375,16 @@
     if (!items.length) return '';
     return `<section class="home-shelf"><div class="section-title"><div><h2>${escapeHtml(title)}</h2><p>${items.length} ${items.length === 1 ? 'item' : 'items'} beschikbaar</p></div><a href="${escapeHtml(href)}">Bekijk alles →</a></div><div class="content-rail">${items.slice(0, 4).map(record => teaserCard(record, label)).join('')}</div></section>`;
   }
-  function homeFilterGroup(key, title, options, selected = [], open = false) {
-    const present = options.filter(option => records.some(record => facetValues(record, key).includes(option)));
-    return `<details class="home-filter-group" ${open ? 'open' : ''}><summary>${escapeHtml(title)}</summary><div>${present.map(option => `<label><input type="checkbox" name="${escapeHtml(key)}" value="${escapeHtml(option)}" ${selected.includes(option) ? 'checked' : ''}><span>${escapeHtml(option)}</span><small>${recordsForCriteria({ [key]: option }).length}</small></label>`).join('')}</div></details>`;
+  function homeFilterGroup(key, title, options, selected = [], open = false, extraOptions = []) {
+    const present = [...options.map(value => ({ key, value, label: value })), ...extraOptions]
+      .filter(option => recordsForCriteria({ [option.key]: option.value }).length);
+    return `<details class="home-filter-group" ${open ? 'open' : ''}><summary>${escapeHtml(title)}</summary><div>${present.map(option => `<label><input type="checkbox" name="${escapeHtml(option.key)}" value="${escapeHtml(option.value)}" ${selected.includes(option.value) ? 'checked' : ''}><span>${escapeHtml(option.label)}</span><small>${recordsForCriteria({ [option.key]: option.value }).length}</small></label>`).join('')}</div></details>`;
   }
   function homeFilterPanel(personas) {
     const themes = ['Toetsing en examinering', 'AI Act en wetgeving', 'Privacy en AVG', 'AI-geletterdheid', 'Veilige AI-omgeving', 'Beleid en governance', 'Professionalisering', 'Praktijkvoorbeelden'];
     const types = ['Handreiking', 'Hulpmiddel', 'Voorziening', 'Training', 'Praktijkvoorbeeld', 'Pilot', 'Subsidie of call', 'Subsidie', 'Wetgeving', 'Organisatie'];
     return `<details class="home-filter-sidebar"><summary>Filter het aanbod</summary><form class="home-filter-form"><header><span class="eyebrow">Snel verfijnen</span><h2>Filter het aanbod</h2><p>Combineer meerdere keuzes.</p></header>
-      ${homeFilterGroup('theme', 'Waar zoekt u hulp bij?', themes, [], true)}
+      ${homeFilterGroup('theme', 'Waar zoekt u hulp bij?', themes, [], true, [{ key: 'type', value: 'Subsidie of call,Subsidie', label: 'Subsidies en calls vinden' }])}
       ${homeFilterGroup('sector', 'Voor welke sector?', SECTORS, [], true)}
       ${homeFilterGroup('type', 'Wat zoekt u?', types)}
       ${homeFilterGroup('geography', 'Waar is het aanbod beschikbaar?', ['Nederland', 'Europa', 'Internationaal'])}
@@ -401,7 +402,7 @@
       const criteria = {};
       FILTER_KEYS.forEach(key => {
         const selected = [...form.querySelectorAll(`input[name="${key}"]:checked`)].map(input => input.value);
-        if (selected.length) criteria[key] = selected.join(',');
+        if (selected.length) criteria[key] = [...new Set(selected.flatMap(value => value.split(',')))].join(',');
       });
       return criteria;
     };
@@ -409,7 +410,20 @@
       const count = recordsForCriteria(selection()).length;
       form.querySelector('.home-filter-submit').textContent = `Bekijk ${count} ${count === 1 ? 'resultaat' : 'resultaten'}`;
     };
-    form.querySelectorAll('input').forEach(input => input.onchange = update);
+    const selectedTypes = new Set((selection().type || '').split(',').filter(Boolean));
+    form.querySelectorAll('input').forEach(input => input.onchange = () => {
+      if (input.name === 'type') {
+        input.value.split(',').forEach(value => input.checked ? selectedTypes.add(value) : selectedTypes.delete(value));
+        // The task shortcut and existing offer-type choices control the same filters.
+        form.querySelectorAll('input[name="type"]').forEach(option => {
+          const types = option.value.split(',');
+          const count = types.filter(value => selectedTypes.has(value)).length;
+          option.checked = count === types.length;
+          option.indeterminate = count > 0 && count < types.length;
+        });
+      }
+      update();
+    });
     form.onsubmit = event => { event.preventDefault(); location.hash = criteriaHref(selection()).slice(1); };
     update();
   }
