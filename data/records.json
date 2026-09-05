@@ -21826,7 +21826,7 @@
     "availabilityText": "Spelmateriaal met handleiding en werkbladen is als Nederlandstalige PDF openbaar en kosteloos te downloaden.",
     "startDate": null,
     "endDate": null,
-    "publicationDate": null,
+    "publicationDate": "2026-09-05",
     "lastVerified": "2026-09-05",
     "verificationStatus": "verified",
     "sourceUrls": [
@@ -21878,12 +21878,17 @@
       "skills",
       "strategische dialoog"
     ],
-    "notes": "Redactionele onderwijsrelevantie: bruikbaar als gespreksaanzet over scholing, leven lang ontwikkelen en de aansluiting tussen onderwijs en arbeidsmarkt. Een specifieke onderwijsdoelgroep of bewezen werking in onderwijs is niet vastgesteld. De scenario’s zijn fictieve verkenningen, geen voorspellingen. Het spel vermeldt © 2026; de exacte publicatiedatum is niet vastgesteld. Openbare download betekent niet dat een open hergebruiklicentie is vastgesteld.",
+    "notes": "Redactionele onderwijsrelevantie: bruikbaar als gespreksaanzet over scholing, leven lang ontwikkelen en de aansluiting tussen onderwijs en arbeidsmarkt. Een specifieke onderwijsdoelgroep of bewezen werking in onderwijs is niet vastgesteld. De scenario’s zijn fictieve verkenningen, geen voorspellingen. Het spel vermeldt © 2026; de publicatiedatum van 5 september 2026 is op diezelfde dag door Eva bevestigd. Openbare download betekent niet dat een open hergebruiklicentie is vastgesteld.",
     "changeHistory": [
       {
         "date": "2026-09-05",
         "type": "added",
         "summary": "Toegevoegd op verzoek van Eva na controle van de officiële TNO-projectpagina, spelhandleiding en het achtergrondrapport."
+      },
+      {
+        "date": "2026-09-05",
+        "type": "updated",
+        "summary": "Publicatiedatum ingevuld als 5 september 2026 op basis van Eva’s bevestiging."
       }
     ]
   }
