@@ -1783,5 +1783,72 @@
     "operational": {"lastSuccessfulCheck": null, "lastContentHash": null, "lastStatus": "never_checked", "consecutiveFailures": 0},
     "notes": "Officiële Europese bron voor leermiddelen, praktijkkennis en professionalisering. Alleen concrete, toegankelijke detailpagina's onderbouwen publieke records.",
     "themes": [], "sectors": [], "sourceType": "official"
+  },
+  {
+    "id": "source-org-tno",
+    "name": "TNO",
+    "owner": "TNO",
+    "baseUrl": "https://www.tno.nl/nl",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "product",
+      "service",
+      "training",
+      "programme",
+      "research_project",
+      "policy_document",
+      "practice_example"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële organisatiebron voor eigen onderzoek en instrumenten rond onder meer AI, werk en ontwikkeling. De homepage dient voor ontdekking; opname vereist een concrete officiële detailbron en expliciete relevantie voor de Atlas. Bron gecontroleerd op 5 september 2026.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-tno-werkzekerheid",
+    "name": "TNO: werkzekerheid en loopbaanontwikkeling",
+    "owner": "TNO",
+    "baseUrl": "https://www.tno.nl/nl/gezond/werk-gezondheid/arbeidsmarktinnovatie/werkomgeving-proactief-loopbaangedrag/",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "weekly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "product",
+      "research_project"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële projectpagina met het scenariospel werkzekerheid en bijbehorend rapport. Nieuwe links worden uitsluitend als reviewvoorstel verwerkt. Bron gecontroleerd op 5 september 2026.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
   }
 ]

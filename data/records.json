@@ -21800,5 +21800,91 @@
         "summary": "Toegevoegd na broncontrole en goedkeuring van de inhoudstranche."
       }
     ]
+  },
+  {
+    "id": "tno-scenariospel-werkzekerheid",
+    "title": "TNO: Scenariospel werkzekerheid",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Scenariospel",
+    "organizationIds": [],
+    "providerName": "TNO",
+    "description": "Scenariospel over vier mogelijke toekomsten van werkzekerheid in 2035–2040. Deelnemers verkennen vanuit vier persona’s wat technologische en maatschappelijke veranderingen, waaronder AI, betekenen voor werk en loopbaanontwikkeling. Met dialoogvragen en werkbladen voor mogelijke maatregelen.",
+    "purpose": "Beleidsmakers, werkgevers en werkenden helpen gevolgen van verschillende toekomstbeelden te bespreken en handelingsopties te verkennen.",
+    "audiences": [
+      "Beleidsmakers",
+      "HR-professionals",
+      "Bestuurders",
+      "Medewerkers"
+    ],
+    "sectors": [],
+    "themes": [
+      "Beleid en governance",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Spelmateriaal met handleiding en werkbladen is als Nederlandstalige PDF openbaar en kosteloos te downloaden.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-05",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "TNO: toelichting en toegang tot het scenariospel",
+        "url": "https://www.tno.nl/nl/gezond/werk-gezondheid/arbeidsmarktinnovatie/werkomgeving-proactief-loopbaangedrag/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Spelmateriaal: Werkzekerheid in een veranderende arbeidsmarkt (PDF)",
+        "url": "https://publications.tno.nl/publication/34646519/BCdweC4U/TNO-2026-Werkzekerheid.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Achtergrondrapport: Veerkracht in een veranderende arbeidsmarkt – toekomstscenario’s (PDF)",
+        "url": "https://publications.tno.nl/publication/34645549/6XokhxIn/TNO-2026-R10055.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Gericht op beleidsmakers, werkgevers en werkenden; de handleiding noemt ook HR, trainees en MT-leden.",
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "TNO",
+      "scenariospel",
+      "werkzekerheid",
+      "toekomst van werk",
+      "toekomstscenario’s",
+      "AI",
+      "arbeidsmarkt",
+      "leven lang ontwikkelen",
+      "skills",
+      "strategische dialoog"
+    ],
+    "notes": "Redactionele onderwijsrelevantie: bruikbaar als gespreksaanzet over scholing, leven lang ontwikkelen en de aansluiting tussen onderwijs en arbeidsmarkt. Een specifieke onderwijsdoelgroep of bewezen werking in onderwijs is niet vastgesteld. De scenario’s zijn fictieve verkenningen, geen voorspellingen. Het spel vermeldt © 2026; de exacte publicatiedatum is niet vastgesteld. Openbare download betekent niet dat een open hergebruiklicentie is vastgesteld.",
+    "changeHistory": [
+      {
+        "date": "2026-09-05",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële TNO-projectpagina, spelhandleiding en het achtergrondrapport."
+      }
+    ]
   }
 ]

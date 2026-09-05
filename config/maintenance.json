@@ -14,7 +14,7 @@
     "minimumWords": 30,
     "structureDropRatio": 0.45,
     "deadlineTerms": ["deadline", "sluitingsdatum", "aanvragen tot", "open tot", "closing date"],
-    "relevantTerms": ["ai", "artificiele intelligentie", "kunstmatige intelligentie", "onderwijs", "training", "subsidie", "call", "pilot", "handreiking", "praktijkvoorbeeld", "ai act", "privacy"]
+    "relevantTerms": ["ai", "artificiele intelligentie", "kunstmatige intelligentie", "onderwijs", "training", "subsidie", "call", "pilot", "handreiking", "praktijkvoorbeeld", "ai act", "privacy", "scenariospel", "toekomstscenario", "werkzekerheid"]
   },
   "normalization": {
     "ignoredTags": ["script", "style", "noscript", "svg", "nav", "footer", "header", "form", "dialog"],
