@@ -467,7 +467,9 @@
   }
   function facet(key, title, options) {
     const present = options.filter(option => records.some(record => facetValues(record, key).includes(option)));
-    return `<details class="facet" data-facet-block="${escapeHtml(key)}"><summary><span class="facet-heading">${escapeHtml(title)}<b aria-label="${values(key).length} geselecteerd" ${values(key).length ? '' : 'hidden'}>${values(key).length}</b></span><span class="facet-value">${escapeHtml(facetSelectionLabel(key))}</span></summary><div>
+    const supportsMultiple = ['sector', 'audience'].includes(key);
+    return `<details class="facet${supportsMultiple ? ' facet-multi' : ''}" data-facet-block="${escapeHtml(key)}"${supportsMultiple ? ' open' : ''}><summary><span class="facet-heading">${escapeHtml(title)}<b aria-label="${values(key).length} geselecteerd" ${values(key).length ? '' : 'hidden'}>${values(key).length}</b></span><span class="facet-value">${escapeHtml(facetSelectionLabel(key))}</span></summary><div>
+      ${supportsMultiple ? '<p class="facet-note">Kies één of meer opties tegelijk.</p>' : ''}
       ${key === 'organization' && present.length > 12 ? '<input class="facet-search" type="search" placeholder="Zoek organisatie…" aria-label="Zoek binnen organisaties">' : ''}
       <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => { const count = facetCount(key, option); const checked = values(key).includes(option); return `<label data-facet-option="${escapeHtml(option)}"><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${!count && !checked ? 'disabled' : ''}><span>${escapeHtml(option)}</span><small>${count}</small></label>`; }).join('')}</div>
       ${present.length > 8 ? '<button class="facet-more" type="button" aria-expanded="false">Toon meer</button>' : ''}
@@ -600,7 +602,7 @@
     const hiddenCount = ['access', 'source'].reduce((sum, key) => sum + values(key).length, 0);
     main.innerHTML = `<section class="catalog">${searchForm('catalog-search')}<div class="catalog-grid">
       <aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Verfijn</h2><button class="close" aria-label="Sluit filters">×</button></header>
-        <p class="filter-help">Klap een onderdeel open. U kunt meerdere opties kiezen.</p>
+        <p class="filter-help">Kies binnen een groep één of meer opties. Keuzes binnen dezelfde groep werken als OR; verschillende groepen worden gecombineerd.</p>
         ${facet('theme', '1. Onderwerp', Object.keys(THEME_RULES))}${facet('sector', '2. Sector', SECTORS)}${facet('type', '3. Soort aanbod', typeOptions)}${facet('geography', '4. Regio', ['Nederland', 'Europa', 'Internationaal'])}${facet('audience', '5. Doelgroep', audienceOptions)}${facet('status', '6. Beschikbaarheid', Object.values(STATUS_LABELS))}${facet('organization', '7. Aanbieder', organizationOptions)}
         <details class="more-filters"><summary>8. Meer filters<span data-more-count>${hiddenCount ? ` (${hiddenCount})` : ''}</span> <span aria-hidden="true">▼</span></summary>
           ${facet('access', 'Toegang', ['Publiek toegankelijk', 'Toegang nog niet bevestigd'])}${facet('source', 'Bron', ['Met officiële bron', 'Bron nog niet vastgelegd'])}
