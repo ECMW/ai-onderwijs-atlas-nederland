@@ -21116,9 +21116,21 @@
     "providerName": "Impuls Open Leermateriaal",
     "description": "Vrij te gebruiken en aanpasbare AI-lessen via Wikiwijs, met lerarenhandleiding en opdrachten die aansluiten bij de conceptkerndoelen digitale geletterdheid van SLO.",
     "purpose": "Docenten helpen leerlingen basiskennis, kritisch denken en bewustwording rond AI te ontwikkelen.",
-    "audiences": ["Docenten", "Onderwijsontwikkelaars"],
-    "sectors": ["PO", "VO", "VSO"],
-    "themes": ["AI-geletterdheid", "Lesgeven en leren met AI", "Curriculum", "AI Act"],
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "VSO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Curriculum",
+      "AI Act"
+    ],
     "status": "available",
     "availabilityText": "Vrij te gebruiken en aan te passen via Wikiwijs; gericht op groep 7-8, onderbouw VSO en vmbo-kader, en onderbouw havo-vwo en bovenbouw VSO.",
     "startDate": null,
@@ -21126,15 +21138,49 @@
     "publicationDate": "2025-10-03",
     "lastVerified": "2026-08-29",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële bron", "url": "https://www.openleermateriaal.nl/open-inspiratielessen-over-ai/", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
-    "geographicScope": "Nederland", "accessType": "public", "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null,
-    "recurrence": null, "language": ["nl"],
-    "keywords": ["open leermateriaal", "Wikiwijs", "AI-lessen", "digitale geletterdheid", "SLO", "lerarenhandleiding"],
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.openleermateriaal.nl/open-inspiratielessen-over-ai/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "open leermateriaal",
+      "Wikiwijs",
+      "AI-lessen",
+      "digitale geletterdheid",
+      "SLO",
+      "lerarenhandleiding"
+    ],
     "notes": "De bron vermeldt zes onderwerpen binnen het kerndoel AI en benadrukt dat de lessen geen complexe generatieve tools vereisen.",
-    "changeHistory": [{"date": "2026-08-29", "type": "added", "summary": "Toegevoegd in gecontroleerde inhoudstranche 12."}]
+    "changeHistory": [
+      {
+        "date": "2026-08-29",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 12."
+      }
+    ]
   },
   {
     "id": "open-leermateriaal-ai-in-de-klas-pilotscholen",
@@ -21146,21 +21192,73 @@
     "providerName": "Impuls Open Leermateriaal",
     "description": "Praktijkverhaal over Fortior en STIP Hilversum, die AI gebruiken bij het maken van open leermateriaal en interactieve rekeninstructies.",
     "purpose": "Inzicht bieden in concrete schoolpraktijken, opbrengsten en aandachtspunten bij AI-ondersteund open leermateriaal.",
-    "audiences": ["Docenten", "Schoolleiders", "Onderwijsontwikkelaars"],
-    "sectors": ["PO", "VO"],
-    "themes": ["Lesgeven en leren met AI", "Open leermateriaal", "Implementatie", "AI-geletterdheid"],
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Open leermateriaal",
+      "Implementatie",
+      "AI-geletterdheid"
+    ],
     "status": "available",
     "availabilityText": "Openbaar praktijkverhaal met toepasbare tips; de genoemde materialen zijn nader uitgewerkt via Wikiwijs.",
-    "startDate": null, "endDate": null, "publicationDate": "2025-10-04", "lastVerified": "2026-08-29", "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële bron", "url": "https://www.openleermateriaal.nl/ai-in-de-klas-zo-doen-pilots-het/", "sourceType": "official"}],
-    "relatedIds": ["open-inspiratielessen-over-ai"], "parentIds": [], "childIds": [],
-    "geographicScope": "Nederland", "accessType": "public", "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null,
-    "recurrence": null, "language": ["nl"],
-    "keywords": ["Fortior", "STIP Hilversum", "open leermateriaal", "rekeninstructie", "AI-pilots", "praktijkvoorbeeld"],
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-10-04",
+    "lastVerified": "2026-08-29",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.openleermateriaal.nl/ai-in-de-klas-zo-doen-pilots-het/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "open-inspiratielessen-over-ai"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Fortior",
+      "STIP Hilversum",
+      "open leermateriaal",
+      "rekeninstructie",
+      "AI-pilots",
+      "praktijkvoorbeeld"
+    ],
     "notes": "De bron benoemt expliciet zowel opbrengsten als beperkingen van de pilotscholen.",
-    "changeHistory": [{"date": "2026-08-29", "type": "added", "summary": "Toegevoegd in gecontroleerde inhoudstranche 12."}]
+    "changeHistory": [
+      {
+        "date": "2026-08-29",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 12."
+      }
+    ]
   },
   {
     "id": "open-leermateriaal-griftland-ai-verrijken",
@@ -21172,21 +21270,74 @@
     "providerName": "Impuls Open Leermateriaal",
     "description": "Praktijkverhaal van het Griftland College over het verrijken van lessen met AI, inclusief aandacht voor AI-geletterdheid, privacy, AVG en eigenaarschap van docenten.",
     "purpose": "Laten zien hoe een school AI en open leermateriaal schoolbreed kan verbinden aan didactiek, professionalisering en maatwerk.",
-    "audiences": ["Docenten", "Schoolleiders", "Onderwijsontwikkelaars", "ICT-professionals"],
-    "sectors": ["VO"],
-    "themes": ["Lesgeven en leren met AI", "Open leermateriaal", "AI-geletterdheid", "Privacy en AVG", "Professionalisering"],
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsontwikkelaars",
+      "ICT-professionals"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Open leermateriaal",
+      "AI-geletterdheid",
+      "Privacy en AVG",
+      "Professionalisering"
+    ],
     "status": "available",
     "availabilityText": "Openbaar praktijkverhaal; de pagina verwijst ook naar een AI-collectie en AI-starterkit op Wikiwijs.",
-    "startDate": null, "endDate": null, "publicationDate": "2025-12-12", "lastVerified": "2026-08-29", "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële bron", "url": "https://www.openleermateriaal.nl/leermateriaal-verrijken-met-ai-actueel-relevant-en-van-de-docent-zelf/", "sourceType": "official"}],
-    "relatedIds": ["open-inspiratielessen-over-ai"], "parentIds": [], "childIds": [],
-    "geographicScope": "Nederland", "accessType": "public", "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null,
-    "recurrence": null, "language": ["nl"],
-    "keywords": ["Griftland College", "AI-collectie", "AI-starterkit", "open leermateriaal", "AVG", "AI-geletterdheid"],
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-12-12",
+    "lastVerified": "2026-08-29",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.openleermateriaal.nl/leermateriaal-verrijken-met-ai-actueel-relevant-en-van-de-docent-zelf/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "open-inspiratielessen-over-ai"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Griftland College",
+      "AI-collectie",
+      "AI-starterkit",
+      "open leermateriaal",
+      "AVG",
+      "AI-geletterdheid"
+    ],
     "notes": "De inhoud is een praktijkverhaal; uitspraken over de eigen werkwijze en opbrengsten zijn aan het Griftland College toegeschreven.",
-    "changeHistory": [{"date": "2026-08-29", "type": "added", "summary": "Toegevoegd in gecontroleerde inhoudstranche 12."}]
+    "changeHistory": [
+      {
+        "date": "2026-08-29",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 12."
+      }
+    ]
   },
   {
     "id": "open-leermateriaal-glu-drie-systemen",
@@ -21198,21 +21349,75 @@
     "providerName": "Impuls Open Leermateriaal",
     "description": "Praktijkverhaal van het Grafisch Lyceum Utrecht over GPT's, lokale AI-oplossingen en workflowautomatisering bij het ontwikkelen van lesmateriaal.",
     "purpose": "Docenten en onderwijsorganisaties laten zien welke afwegingen spelen rond gebruiksgemak, privacy, continuïteit en menselijke kwaliteitsborging.",
-    "audiences": ["Docenten", "ICT-professionals", "Onderwijsontwikkelaars", "Schoolleiders"],
-    "sectors": ["MBO"],
-    "themes": ["Lesgeven en leren met AI", "Open leermateriaal", "Privacy en AVG", "Implementatie", "Governance"],
+    "audiences": [
+      "Docenten",
+      "ICT-professionals",
+      "Onderwijsontwikkelaars",
+      "Schoolleiders"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Open leermateriaal",
+      "Privacy en AVG",
+      "Implementatie",
+      "Governance"
+    ],
     "status": "available",
     "availabilityText": "Openbaar praktijkverhaal over een werkwijze die sinds 2023 bij GLU wordt verkend.",
-    "startDate": null, "endDate": null, "publicationDate": "2026-02-10", "lastVerified": "2026-08-29", "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële bron", "url": "https://www.openleermateriaal.nl/ai-creeert-lesmateriaal/", "sourceType": "official"}],
-    "relatedIds": ["open-leermateriaal-griftland-ai-verrijken"], "parentIds": [], "childIds": [],
-    "geographicScope": "Nederland", "accessType": "public", "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null,
-    "recurrence": null, "language": ["nl"],
-    "keywords": ["Grafisch Lyceum Utrecht", "GLU", "GPT", "lokale AI", "workflowautomatisering", "n8n", "menselijke kwaliteitsborging"],
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-02-10",
+    "lastVerified": "2026-08-29",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.openleermateriaal.nl/ai-creeert-lesmateriaal/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "open-leermateriaal-griftland-ai-verrijken"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Grafisch Lyceum Utrecht",
+      "GLU",
+      "GPT",
+      "lokale AI",
+      "workflowautomatisering",
+      "n8n",
+      "menselijke kwaliteitsborging"
+    ],
     "notes": "De bron benoemt expliciet risico's voor continuïteit van no-code-workflows en het belang van borging.",
-    "changeHistory": [{"date": "2026-08-29", "type": "added", "summary": "Toegevoegd in gecontroleerde inhoudstranche 12."}]
+    "changeHistory": [
+      {
+        "date": "2026-08-29",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 12."
+      }
+    ]
   },
   {
     "id": "algoritmekader-iama-2026",
@@ -21224,21 +21429,76 @@
     "providerName": "Ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
     "description": "Instrument voor overheidsorganen om de gevolgen voor grondrechten bij de ontwikkeling en inzet van AI-systemen en andere algoritmen vroegtijdig en gestructureerd te beoordelen.",
     "purpose": "Een interdisciplinaire dialoog en onderbouwde besluitvorming over impactvolle algoritmen en AI-systemen ondersteunen.",
-    "audiences": ["Beleidsadviseurs", "Juristen", "Projectleiders", "ICT-professionals", "Bestuurders"],
-    "sectors": ["Overheid", "Onderzoek", "HBO", "WO"],
-    "themes": ["Governance", "AI Act", "Mensenrechten", "Risicomanagement", "Privacy en AVG"],
+    "audiences": [
+      "Beleidsadviseurs",
+      "Juristen",
+      "Projectleiders",
+      "ICT-professionals",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "Overheid",
+      "Onderzoek",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Governance",
+      "AI Act",
+      "Mensenrechten",
+      "Risicomanagement",
+      "Privacy en AVG"
+    ],
     "status": "available",
     "availabilityText": "Actueel hulpmiddel in het Algoritmekader; de versie van februari 2026 bevat ook een toelichtingsdocument en een handreiking voor samenloop met het Rijksmodel DPIA.",
-    "startDate": null, "endDate": null, "publicationDate": "2026-02-17", "lastVerified": "2026-08-29", "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële bron", "url": "https://algoritmes.overheid.nl/nl/algoritmekader/voldoen-aan-wetten-en-regels/hulpmiddelen/IAMA", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
-    "geographicScope": "Nederland", "accessType": "public", "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null,
-    "recurrence": null, "language": ["nl"],
-    "keywords": ["IAMA", "grondrechteneffectbeoordeling", "algoritmen", "AI-systemen", "Rijksmodel DPIA", "hoog-risico AI"],
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-02-17",
+    "lastVerified": "2026-08-29",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://algoritmes.overheid.nl/nl/algoritmekader/voldoen-aan-wetten-en-regels/hulpmiddelen/IAMA",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "IAMA",
+      "grondrechteneffectbeoordeling",
+      "algoritmen",
+      "AI-systemen",
+      "Rijksmodel DPIA",
+      "hoog-risico AI"
+    ],
     "notes": "Het instrument is vooral bedoeld voor overheidsorganen. De bron vermeldt dat het in het bijzonder wordt aanbevolen voor hoog-risico-AI-systemen en impactvolle algoritmen.",
-    "changeHistory": [{"date": "2026-08-29", "type": "added", "summary": "Toegevoegd in gecontroleerde inhoudstranche 13."}]
+    "changeHistory": [
+      {
+        "date": "2026-08-29",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 13."
+      }
+    ]
   },
   {
     "id": "digitale-overheid-algoritmekader",
@@ -21250,21 +21510,78 @@
     "providerName": "Digitale Overheid",
     "description": "Open ontwikkeld kader dat wetten, normen, instrumenten en expertise samenbrengt voor de verantwoorde inzet van algoritmen en AI binnen de overheid.",
     "purpose": "Overheidsorganisaties helpen bepalen welke eisen en hulpmiddelen in verschillende fasen van de levenscyclus van een algoritmische of AI-toepassing relevant zijn.",
-    "audiences": ["Beleidsadviseurs", "Juristen", "Projectleiders", "ICT-professionals", "Bestuurders"],
-    "sectors": ["Overheid", "Onderzoek", "HBO", "WO"],
-    "themes": ["Governance", "AI Act", "Risicomanagement", "Implementatie", "Transparantie"],
+    "audiences": [
+      "Beleidsadviseurs",
+      "Juristen",
+      "Projectleiders",
+      "ICT-professionals",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "Overheid",
+      "Onderzoek",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Governance",
+      "AI Act",
+      "Risicomanagement",
+      "Implementatie",
+      "Transparantie"
+    ],
     "status": "available",
     "availabilityText": "Publiek toegankelijk en in open ontwikkeling; bevat hulpmiddelen, vereisten en maatregelen voor de levenscyclus van algoritmen en AI.",
-    "startDate": null, "endDate": null, "publicationDate": null, "lastVerified": "2026-08-29", "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële bron", "url": "https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/algoritmes/algoritmekader/", "sourceType": "official"}],
-    "relatedIds": ["algoritmekader-iama-2026"], "parentIds": [], "childIds": [],
-    "geographicScope": "Nederland", "accessType": "public", "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null,
-    "recurrence": null, "language": ["nl"],
-    "keywords": ["algoritmekader", "verantwoorde AI", "algoritmen", "overheid", "levenscyclus", "normen"],
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-08-29",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/algoritmes/algoritmekader/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "algoritmekader-iama-2026"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "algoritmekader",
+      "verantwoorde AI",
+      "algoritmen",
+      "overheid",
+      "levenscyclus",
+      "normen"
+    ],
     "notes": "Het kader is overheidsgericht, maar kan voor onderwijsorganisaties als publieke referentiebron nuttig zijn bij governance- en implementatievragen.",
-    "changeHistory": [{"date": "2026-08-29", "type": "added", "summary": "Toegevoegd in gecontroleerde inhoudstranche 13."}]
+    "changeHistory": [
+      {
+        "date": "2026-08-29",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 13."
+      }
+    ]
   },
   {
     "id": "digitale-overheid-ai-verordening-tijdlijn-2026",
@@ -21276,21 +21593,82 @@
     "providerName": "Digitale Overheid",
     "description": "Nederlandse overheidspagina met uitleg over de AI-verordening, risicocategorieën, rollen en de gefaseerde inwerkingtreding van verplichtingen.",
     "purpose": "Organisaties helpen relevante AI-verordeningseisen en belangrijke data te begrijpen en in hun implementatieplanning op te nemen.",
-    "audiences": ["Bestuurders", "Beleidsadviseurs", "Juristen", "ICT-professionals", "Onderwijsontwikkelaars"],
-    "sectors": ["PO", "VO", "MBO", "HBO", "WO", "Overheid", "Onderzoek"],
-    "themes": ["AI Act", "Governance", "AI-geletterdheid", "Transparantie", "Risicomanagement"],
+    "audiences": [
+      "Bestuurders",
+      "Beleidsadviseurs",
+      "Juristen",
+      "ICT-professionals",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Overheid",
+      "Onderzoek"
+    ],
+    "themes": [
+      "AI Act",
+      "Governance",
+      "AI-geletterdheid",
+      "Transparantie",
+      "Risicomanagement"
+    ],
     "status": "available",
     "availabilityText": "Publieke uitleg met tijdlijn, waaronder AI-geletterdheid vanaf februari 2025 en transparantieverplichtingen vanaf 2 augustus 2026.",
-    "startDate": null, "endDate": null, "publicationDate": null, "lastVerified": "2026-08-29", "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële bron", "url": "https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/artificiele-intelligentie-ai/ai-verordening/", "sourceType": "official"}],
-    "relatedIds": ["algoritmekader-iama-2026", "digitale-overheid-algoritmekader"], "parentIds": [], "childIds": [],
-    "geographicScope": "Nederland", "accessType": "public", "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null,
-    "recurrence": null, "language": ["nl"],
-    "keywords": ["AI-verordening", "AI Act", "transparantieverplichtingen", "hoog-risico AI", "AI-geletterdheid", "tijdlijn"],
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-08-29",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/artificiele-intelligentie-ai/ai-verordening/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "algoritmekader-iama-2026",
+      "digitale-overheid-algoritmekader"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-verordening",
+      "AI Act",
+      "transparantieverplichtingen",
+      "hoog-risico AI",
+      "AI-geletterdheid",
+      "tijdlijn"
+    ],
     "notes": "De pagina is een overheidswegwijzer en geen vervanging voor juridisch advies of de verordeningstekst zelf.",
-    "changeHistory": [{"date": "2026-08-29", "type": "added", "summary": "Toegevoegd in gecontroleerde inhoudstranche 13."}]
+    "changeHistory": [
+      {
+        "date": "2026-08-29",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde inhoudstranche 13."
+      }
+    ]
   },
   {
     "id": "ap-verder-bouwen-ai-geletterdheid",
@@ -21298,25 +21676,84 @@
     "recordType": "guidance",
     "legacyType": "Handreiking",
     "subtype": null,
-    "organizationIds": ["autoriteit-persoonsgegevens"],
+    "organizationIds": [
+      "autoriteit-persoonsgegevens"
+    ],
     "providerName": "Autoriteit Persoonsgegevens",
     "description": "Verdiepende AP-handreiking over de AI-geletterdheidsverplichting, met praktijkvoorbeelden en een meerjarig actieplan voor organisaties.",
     "purpose": "Organisaties helpen AI-geletterdheid strategisch en duurzaam in te richten bij de inzet van AI-systemen.",
-    "audiences": ["Bestuurders", "Beleidsmakers", "Docenten", "IT-professionals", "Privacyprofessionals"],
-    "sectors": ["PO", "VO", "MBO", "HBO", "WO", "Onderzoek", "Overheid"],
-    "themes": ["AI-geletterdheid", "AI Act en wetgeving", "Beleid en governance"],
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Docenten",
+      "IT-professionals",
+      "Privacyprofessionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "AI Act en wetgeving",
+      "Beleid en governance"
+    ],
     "status": "available",
     "availabilityText": "Publiek beschikbare handreiking; aanvulling op de eerdere AP-handreiking ‘Aan de slag met AI-geletterdheid’.",
-    "startDate": null, "endDate": null, "publicationDate": "2025-10-23", "lastVerified": "2026-08-29", "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële bron", "url": "https://autoriteitpersoonsgegevens.nl/actueel/verder-bouwen-aan-ai-geletterdheid", "sourceType": "official"}],
-    "relatedIds": ["ap-aan-de-slag-ai-geletterdheid"], "parentIds": [], "childIds": [],
-    "geographicScope": "Nederland", "accessType": "public", "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null,
-    "recurrence": null, "language": ["nl"],
-    "keywords": ["AP", "AI-geletterdheid", "AI Act", "actieplan", "professionalisering"],
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-10-23",
+    "lastVerified": "2026-08-29",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://autoriteitpersoonsgegevens.nl/actueel/verder-bouwen-aan-ai-geletterdheid",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "ap-aan-de-slag-ai-geletterdheid"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AP",
+      "AI-geletterdheid",
+      "AI Act",
+      "actieplan",
+      "professionalisering"
+    ],
     "notes": "De bron positioneert deze handreiking als aanvulling op de AP-publicatie uit januari 2025.",
-    "changeHistory": [{"date": "2026-08-29", "type": "added", "summary": "Toegevoegd in gecontroleerde bronuitbreiding."}]
+    "changeHistory": [
+      {
+        "date": "2026-08-29",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde bronuitbreiding."
+      }
+    ]
   },
   {
     "id": "radio-ai-en-generatieve-ai-leeraanbod",
@@ -21328,21 +21765,75 @@
     "providerName": "RijksAcademie voor Digitalisering en Informatisering Overheid (RADIO)",
     "description": "Leeraanbod voor medewerkers binnen de (rijks)overheid over mogelijkheden en risico's van AI en generatieve AI, met onder meer e-learnings, webinars en opleidingen op maat.",
     "purpose": "Het digitale vakmanschap en de professionele oordeelsvorming rond AI binnen de overheid versterken.",
-    "audiences": ["Beleidsmakers", "IT-professionals", "Bestuurders", "Onderwijsontwikkelaars", "Docenten"],
-    "sectors": ["Overheid", "HBO", "WO", "Onderzoek"],
-    "themes": ["AI-geletterdheid", "Professionalisering", "Governance", "Privacy en AVG"],
+    "audiences": [
+      "Beleidsmakers",
+      "IT-professionals",
+      "Bestuurders",
+      "Onderwijsontwikkelaars",
+      "Docenten"
+    ],
+    "sectors": [
+      "Overheid",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Governance",
+      "Privacy en AVG"
+    ],
     "status": "available",
     "availabilityText": "Doorlopend leeraanbod van RADIO; concrete activiteiten en beschikbaarheid kunnen per onderdeel verschillen.",
-    "startDate": null, "endDate": null, "publicationDate": null, "lastVerified": "2026-08-29", "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële bron", "url": "https://www.it-academieoverheid.nl/onderwerpen", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
-    "geographicScope": "Nederland", "accessType": "public", "costType": "unknown",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": "Gericht op medewerkers binnen de (rijks)overheid; voorwaarden verschillen per onderdeel.", "applicantTypes": [], "callStatus": null,
-    "recurrence": null, "language": ["nl"],
-    "keywords": ["RADIO", "RijksAcademie", "generatieve AI", "e-learning", "webinar", "AI-geletterdheid"],
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-08-29",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.it-academieoverheid.nl/onderwerpen",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Gericht op medewerkers binnen de (rijks)overheid; voorwaarden verschillen per onderdeel.",
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "RADIO",
+      "RijksAcademie",
+      "generatieve AI",
+      "e-learning",
+      "webinar",
+      "AI-geletterdheid"
+    ],
     "notes": "Voor afzonderlijke cursussen of activiteiten worden later alleen concrete, actuele detailpagina's als aparte records toegevoegd.",
-    "changeHistory": [{"date": "2026-08-29", "type": "added", "summary": "Toegevoegd in gecontroleerde bronuitbreiding."}]
+    "changeHistory": [
+      {
+        "date": "2026-08-29",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde bronuitbreiding."
+      }
+    ]
   },
   {
     "id": "ec-ethical-ai-data-guidelines-educators-2026",
@@ -21350,25 +21841,84 @@
     "recordType": "guidance",
     "legacyType": "Handreiking",
     "subtype": "Internationale richtlijn",
-    "organizationIds": ["europese-commissie-dg-eac"],
+    "organizationIds": [
+      "europese-commissie-dg-eac"
+    ],
     "providerName": "Europese Commissie",
     "description": "Geactualiseerde richtlijnen voor docenten en onderwijsmedewerkers over ethisch gebruik van AI en data, met praktijkscenario's, leidende vragen, begrippen en juridische context.",
     "purpose": "Onderwijsprofessionals helpen contextgebonden, ethisch en juridisch onderbouwde keuzes te maken bij het gebruik van AI en data.",
-    "audiences": ["Docenten", "Schoolleiders", "Onderwijsontwikkelaars", "Beleidsmakers"],
-    "sectors": ["PO", "VO", "MBO", "HBO", "WO"],
-    "themes": ["AI-geletterdheid", "Publieke waarden en ethiek", "AI Act en wetgeving", "Privacy en AVG"],
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsontwikkelaars",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek",
+      "AI Act en wetgeving",
+      "Privacy en AVG"
+    ],
     "status": "available",
     "availabilityText": "Direct beschikbaar in het Engels; de versie van 2026 bouwt voort op de oorspronkelijke richtlijnen uit 2022.",
-    "startDate": null, "endDate": null, "publicationDate": "2026-06-09", "lastVerified": "2026-08-29", "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële bron", "url": "https://education.ec.europa.eu/focus-topics/digital-education/actions/plan/ethical-guidelines-for-educators-on-using-artificial-intelligence", "sourceType": "official"}],
-    "relatedIds": ["ec-richtlijnen-digitale-onderwijsinhoud-2026", "oecd-ec-ai-literacy-framework-2026"], "parentIds": [], "childIds": [],
-    "geographicScope": "Europa", "accessType": "public", "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null,
-    "recurrence": null, "language": ["en"],
-    "keywords": ["ethical AI", "AI and data", "educators", "AI Act", "GDPR", "teaching and learning"],
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-06-09",
+    "lastVerified": "2026-08-29",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://education.ec.europa.eu/focus-topics/digital-education/actions/plan/ethical-guidelines-for-educators-on-using-artificial-intelligence",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "ec-richtlijnen-digitale-onderwijsinhoud-2026",
+      "oecd-ec-ai-literacy-framework-2026"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "ethical AI",
+      "AI and data",
+      "educators",
+      "AI Act",
+      "GDPR",
+      "teaching and learning"
+    ],
     "notes": "De officiële pagina vermeldt dat de vertalingen in alle EU-talen volgen na de Engelstalige actualisatie.",
-    "changeHistory": [{"date": "2026-08-29", "type": "added", "summary": "Toegevoegd in gecontroleerde Europese inhoudstranche."}]
+    "changeHistory": [
+      {
+        "date": "2026-08-29",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde Europese inhoudstranche."
+      }
+    ]
   },
   {
     "id": "cip-privacy-self-assessment-prisa-2025",
@@ -21380,21 +21930,76 @@
     "providerName": "Centrum Informatiebeveiliging en Privacybescherming (CIP)",
     "description": "Praktisch zelfevaluatie-instrument om de privacyvolwassenheid van een organisatie te meten, te verbeteren en te bewaken aan de hand van de Privacy Baseline en de AVG.",
     "purpose": "Privacyprofessionals en uitvoerende medewerkers helpen privacymaatregelen organisatiebreed te beoordelen en verbeterstappen te bepalen.",
-    "audiences": ["Privacyprofessionals", "Bestuurders", "Beleidsmakers", "IT-professionals"],
-    "sectors": ["Overheid", "HBO", "WO", "Onderzoek"],
-    "themes": ["Privacy en AVG", "Governance", "Risicomanagement", "Veilige AI-omgeving"],
+    "audiences": [
+      "Privacyprofessionals",
+      "Bestuurders",
+      "Beleidsmakers",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "Overheid",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Privacy en AVG",
+      "Governance",
+      "Risicomanagement",
+      "Veilige AI-omgeving"
+    ],
     "status": "available",
     "availabilityText": "Vernieuwd instrument, beschikbaar via CIP; bedoeld voor privacyprofessionals en medewerkers in de uitvoering.",
-    "startDate": null, "endDate": null, "publicationDate": "2025-02-13", "lastVerified": "2026-08-29", "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële bron", "url": "https://www.digitaleoverheid.nl/nieuws/cip-privacy-self-assessment-vernieuwd/", "sourceType": "official"}],
-    "relatedIds": ["algoritmekader-iama-2026"], "parentIds": [], "childIds": [],
-    "geographicScope": "Nederland", "accessType": "public", "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null,
-    "recurrence": null, "language": ["nl"],
-    "keywords": ["PriSA", "CIP", "privacyvolwassenheid", "Privacy Baseline", "AVG", "zelfevaluatie"],
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-02-13",
+    "lastVerified": "2026-08-29",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.digitaleoverheid.nl/nieuws/cip-privacy-self-assessment-vernieuwd/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "algoritmekader-iama-2026"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "PriSA",
+      "CIP",
+      "privacyvolwassenheid",
+      "Privacy Baseline",
+      "AVG",
+      "zelfevaluatie"
+    ],
     "notes": "Dit instrument is niet AI-specifiek, maar relevant als organisatiebreed privacy- en governance-instrument bij AI-toepassingen waarin persoonsgegevens worden verwerkt.",
-    "changeHistory": [{"date": "2026-08-29", "type": "added", "summary": "Toegevoegd in gecontroleerde Europese inhoudstranche."}]
+    "changeHistory": [
+      {
+        "date": "2026-08-29",
+        "type": "added",
+        "summary": "Toegevoegd in gecontroleerde Europese inhoudstranche."
+      }
+    ]
   },
   {
     "id": "nolai-prompting-genai-in-de-klas",
@@ -21889,6 +22494,163 @@
         "date": "2026-09-05",
         "type": "updated",
         "summary": "Publicatiedatum ingevuld als 5 september 2026 op basis van Eva’s bevestiging."
+      }
+    ]
+  },
+  {
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": "E-learning",
+    "organizationIds": [],
+    "providerName": "RijksAcademie voor Digitalisering en Informatisering Overheid (RADIO)",
+    "audiences": [
+      "Medewerkers",
+      "Beleidsmakers",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "Overheid"
+    ],
+    "status": "available",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-09-07",
+    "lastVerified": "2026-09-07",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële aankondiging RADIO",
+        "url": "https://www.it-academieoverheid.nl/actueel/nieuws/2026/09/07/2-nieuwe-e-learnings-over-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "radio-ai-en-generatieve-ai-leeraanbod"
+    ],
+    "parentIds": [
+      "radio-ai-en-generatieve-ai-leeraanbod"
+    ],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "registration_required",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Beschikbaar voor interne en externe overheidsmedewerkers.",
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "id": "radio-elearning-hoe-werk-jij-met-ai-assistent",
+    "title": "RADIO: Hoe werk jij met een AI-assistent?",
+    "description": "Verdiepende e-learning met toets over de werking van AI-assistenten, het effect van het eigen referentiekader en het schrijven van effectieve prompts.",
+    "purpose": "Overheidsmedewerkers helpen AI-assistenten effectief en bewust te gebruiken.",
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering"
+    ],
+    "availabilityText": "E-learning met toets via het RADIO Leerplatform; duur ongeveer 30 minuten. Beschikbaar voor interne en externe overheidsmedewerkers.",
+    "keywords": [
+      "RADIO",
+      "AI-assistent",
+      "prompting",
+      "prompts",
+      "AI-geletterdheid",
+      "e-learning"
+    ],
+    "notes": "De module behandelt hoe een AI-assistent tot antwoorden komt, hoe het eigen referentiekader het gebruik beïnvloedt en hoe effectieve prompts worden geschreven. De officiële aankondiging vermeldt dat de module en toets ongeveer 30 minuten duren.",
+    "changeHistory": [
+      {
+        "date": "2026-09-07",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële aankondiging van RADIO."
+      }
+    ]
+  },
+  {
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": "E-learning",
+    "organizationIds": [],
+    "providerName": "RijksAcademie voor Digitalisering en Informatisering Overheid (RADIO)",
+    "audiences": [
+      "Medewerkers",
+      "Beleidsmakers",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "Overheid"
+    ],
+    "status": "available",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-09-07",
+    "lastVerified": "2026-09-07",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële aankondiging RADIO",
+        "url": "https://www.it-academieoverheid.nl/actueel/nieuws/2026/09/07/2-nieuwe-e-learnings-over-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "radio-ai-en-generatieve-ai-leeraanbod"
+    ],
+    "parentIds": [
+      "radio-ai-en-generatieve-ai-leeraanbod"
+    ],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "registration_required",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Beschikbaar voor interne en externe overheidsmedewerkers.",
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "id": "radio-elearning-bewust-aan-de-slag-met-ai",
+    "title": "RADIO: Bewust aan de slag met AI",
+    "description": "Verdiepende e-learning met toets over afhankelijkheid van AI, duurzaamheid, wet- en regelgeving, verantwoord gebruik en de gevolgen van AI voor ambtelijk werk.",
+    "purpose": "Overheidsmedewerkers helpen bredere maatschappelijke, juridische en organisatorische vragen rond het gebruik van AI te beoordelen.",
+    "themes": [
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek",
+      "AI Act en wetgeving",
+      "Beleid en governance"
+    ],
+    "availabilityText": "E-learning met toets via het RADIO Leerplatform; duur ongeveer 30 minuten. Beschikbaar voor interne en externe overheidsmedewerkers.",
+    "keywords": [
+      "RADIO",
+      "AI",
+      "AI Act",
+      "wetgeving",
+      "duurzaamheid",
+      "afhankelijkheid",
+      "e-learning"
+    ],
+    "notes": "De module behandelt onder meer de keuze tussen inkopen en zelf ontwikkelen, relevante wet- en regelgeving, situaties waarin een AI-assistent niet moet worden ingezet en de betekenis van AI voor de toekomst van ambtelijk werk. De officiële aankondiging vermeldt dat de module en toets ongeveer 30 minuten duren.",
+    "changeHistory": [
+      {
+        "date": "2026-09-07",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële aankondiging van RADIO."
       }
     ]
   }
