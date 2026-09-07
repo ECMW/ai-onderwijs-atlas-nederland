@@ -18,6 +18,9 @@ class DataTests(unittest.TestCase):
   self.assertEqual({x['id'] for x in public},{x['id'] for x in eligible})
   self.assertEqual(projection['metadata']['recordCount'],len(public))
   self.assertEqual(json.loads((R/'data/metadata.json').read_text(encoding='utf-8'))['recordCount'],len(public))
+ def test_public_data_script_is_cache_busted(self):
+  html=(R/'index.html').read_text(encoding='utf-8')
+  self.assertRegex(html,r'<script src="data/data-v2\.js\?v=[^"]+"></script>')
  def test_urls(self): self.assertTrue(all(re.match(r'^https?://',s['url']) for x in D for s in x.get('sourceUrls',[])))
  def test_relations(self):
   ids={x['id'] for x in D}; self.assertTrue(all(r in ids for x in D for r in x.get('relatedIds',[])))
