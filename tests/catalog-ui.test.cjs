@@ -89,12 +89,13 @@ test('title sorting and its explanation remain available', () => {
   assert.ok(html.includes('Gesorteerd op titel, van A tot Z.'));
 });
 
-test('filter pulldowns start closed and expose selected values and counts', () => {
+test('multi-select filter pulldowns expose selected values and counts', () => {
   const item = record('both', '2026-09-03');
   item.sectors = ['HBO', 'WO'];
   const api = load([item], '#zoeken?sector=HBO%2CWO&sort=published');
   const html = api.facet('sector', '2. Sector', ['HBO', 'WO']);
-  assert.ok(!/<details[^>]*\sopen(?:\s|>)/.test(html));
+  assert.ok(/<details[^>]*\sopen(?:\s|>)/.test(html));
+  assert.ok(html.includes('Kies één of meer opties tegelijk.'));
   assert.ok(html.includes('HBO, WO'));
   assert.ok(html.includes('aria-label="2 geselecteerd"'));
   assert.equal((html.match(/type="checkbox"/g) || []).length, 2);
