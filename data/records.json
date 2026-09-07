@@ -22653,5 +22653,53 @@
         "summary": "Toegevoegd na controle van de officiële aankondiging van RADIO."
       }
     ]
+  },
+  {
+    "id": "de-ai-maturity-in-education-scan-aimes",
+    "title": "De AI Maturity in Education Scan (AIMES)",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": null,
+    "organizationIds": ["org-vu-amsterdam"],
+    "providerName": "VU Amsterdam",
+    "description": "Volgens de aanbieder: de AI Maturity in Education Scan (AIMES) ondersteunt jou als student, docent, opleidingsdirecteur of faculteitsbestuurder om je begrip van Artificiële Intelligentie (AI literacy) te beoordelen en te vergroten. AIMES is beschikbaar als Open Educational Resource.",
+    "purpose": "Nog niet ingevuld",
+    "audiences": ["Studenten", "Leraren"],
+    "sectors": ["WO"],
+    "themes": ["AI-geletterdheid"],
+    "status": "available",
+    "availabilityText": "Direct beschikbaar",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-07",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [{"label": "Officiële bron", "url": "https://vu.nl/nl/onderwijs/meer-over/de-ai-maturity-in-education-scan-aimes", "sourceType": "official"}],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "unknown",
+    "costType": "free",
+    "fundingAmount": "Nog niet ingevuld",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": ["nl"],
+    "keywords": ["De AI Maturity in Education Scan (AIMES)", "VU Amsterdam", "AI-geletterdheid"],
+    "notes": null,
+    "changeHistory": [
+      {"date": "2026-09-07", "type": "added", "summary": "Ingediend via communitybijdrage #57."},
+      {"date": "2026-09-07", "type": "verified", "summary": "Officiële bron automatisch gecontroleerd bij communitybijdrage #57."}
+    ],
+    "verificationMethod": "automatic_official_source_check",
+    "verificationNote": "Bereikbaarheid en aansluiting van titel en aanbieder op de officiële bron zijn automatisch gecontroleerd; dit is geen inhoudelijke aanbeveling."
   }
 ]
