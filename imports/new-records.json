@@ -1,1 +1,36 @@
-[]
+[
+  {
+    "id": "org-mbo-mediawijs",
+    "title": "mbo mediawijs",
+    "recordType": "organization",
+    "sourceUrl": "https://mbomediawijs.nl",
+    "providerName": "mbo mediawijs",
+    "description": "Platform voor mediawijsheid en AI in het mbo, met open leermaterialen voor docenten en studenten.",
+    "purpose": "Mediawijsheid en verantwoord gebruik van AI in het mbo",
+    "audiences": ["MBO-docenten", "MBO-studenten", "Onderwijsprofessionals"],
+    "sectors": ["MBO"],
+    "themes": ["AI in het onderwijs", "mediawijsheid", "ethiek", "digitale geletterdheid"],
+    "status": "available",
+    "accessType": "public",
+    "costType": "free",
+    "language": ["nl"],
+    "keywords": ["mbo", "mediawijsheid", "AI", "leermateriaal", "ethiek", "prompten"]
+  },
+  {
+    "id": "mbo-mediawijs-open-ai-leermaterialen",
+    "title": "Open AI-leermaterialen voor het mbo",
+    "recordType": "guidance",
+    "sourceUrl": "https://mbomediawijs.nl",
+    "providerName": "mbo mediawijs",
+    "description": "Collectie van 20 open leermaterialen rond Artificial Intelligence voor het mbo. De collectie bevat onder meer lessen over AI en ethiek, leren prompten met kunst, een handleiding voor lesplannen met een custom AI-tool en de praatplaat AI en onderwijs.",
+    "purpose": "Docenten en studenten ondersteunen bij het begrijpen, bespreken en verantwoord toepassen van AI in de onderwijspraktijk.",
+    "audiences": ["MBO-docenten", "MBO-studenten", "Onderwijsprofessionals"],
+    "sectors": ["MBO"],
+    "themes": ["AI in het onderwijs", "mediawijsheid", "ethiek", "digitale geletterdheid", "generatieve AI"],
+    "status": "available",
+    "accessType": "public",
+    "costType": "free",
+    "language": ["nl"],
+    "keywords": ["open leermateriaal", "AI en ethiek", "prompten", "lesplan", "praatplaat", "verantwoord AI-gebruik"]
+  }
+]
