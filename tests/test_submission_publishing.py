@@ -1,5 +1,6 @@
 """Publication policy tests; no GitHub calls or real repository mutations."""
 import copy
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -111,6 +112,57 @@ class SubmissionPublicationTests(unittest.TestCase):
         self.assertEqual(reviewer.call_args.args[1][-1]['verificationStatus'], 'needs_review')
         reviewer.return_value = {'eligible': True, 'autoPublishEligible': False}
         self.assertFalse(publication.source_readmission(case['base_records'], case['candidate_records'], reviewer))
+
+    def discovery_recheck_case(self):
+        case = valid_case()
+        title = 'Handreiking AI-geletterdheid | Kennisnet'
+        body = 'Deze handreiking van Kennisnet ondersteunt docenten in het mbo bij AI-geletterdheid en lesgeven.'
+        digest = hashlib.sha256((title + '\n' + body).encode('utf-8')).hexdigest()
+        issue = {**case['issue'], 'user': {'login': publication.BOT},
+                 'labels': [{'name': 'atlas-aanvulling'}, {'name': 'atlas-discovery'}],
+                 'body': case['issue']['body'] + '\n\n' + publication.marker(
+                     {'evidenceHash': digest}, 'atlas-discovery-v1')}
+        report = {'eligible': True, 'autoPublishEligible': True,
+                  'sourceChecks': {'new-record': [{'reachable': True, 'title': title, 'body_text': body}]}}
+        return case, issue, report
+
+    def test_discovery_last_read_requires_the_exact_verified_source_revision(self):
+        case, issue, report = self.discovery_recheck_case()
+        self.assertTrue(publication.source_readmission(case['base_records'], case['candidate_records'],
+                                                     Mock(return_value=report), issue=issue))
+
+    def test_later_unavailability_blocks_discovery_even_when_description_still_matches(self):
+        case, issue, report = self.discovery_recheck_case()
+        report['sourceChecks']['new-record'][0]['body_text'] += '\nDeze handreiking is niet meer beschikbaar.'
+        # Ordinary admission can still recognize the unchanged description;
+        # discovery must also preserve the evidence for its availability facts.
+        self.assertFalse(publication.source_readmission(case['base_records'], case['candidate_records'],
+                                                      Mock(return_value=report), issue=issue))
+
+    def test_discovery_missing_malformed_untrusted_or_unread_evidence_fails_closed(self):
+        for mutation in ('missing_marker', 'malformed_marker', 'bad_hash', 'non_bot', 'missing_checks', 'wrong_record_checks'):
+            with self.subTest(mutation=mutation):
+                case, issue, report = self.discovery_recheck_case()
+                if mutation == 'missing_marker':
+                    issue['body'] = 'Form without discovery provenance'
+                elif mutation == 'malformed_marker':
+                    issue['body'] = '<!-- atlas-discovery-v1:invalid -->'
+                elif mutation == 'bad_hash':
+                    issue['body'] = publication.marker({'evidenceHash': 'bad'}, 'atlas-discovery-v1')
+                elif mutation == 'non_bot':
+                    issue['user']['login'] = 'someone'
+                elif mutation == 'missing_checks':
+                    del report['sourceChecks']
+                else:
+                    report['sourceChecks']['other-record'] = report['sourceChecks'].pop('new-record')
+                self.assertFalse(publication.source_readmission(case['base_records'], case['candidate_records'],
+                                                              Mock(return_value=report), issue=issue))
+
+    def test_normal_issue_readmission_does_not_require_discovery_hash(self):
+        case = valid_case()
+        reviewer = Mock(return_value={'eligible': True, 'autoPublishEligible': True})
+        self.assertTrue(publication.source_readmission(case['base_records'], case['candidate_records'],
+                                                     reviewer, issue=case['issue']))
 
     def test_repeated_deployment_callback_does_not_dispatch_again(self):
         case = valid_case()

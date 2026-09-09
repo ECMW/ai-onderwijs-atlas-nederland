@@ -2,16 +2,16 @@
 
 ## Doel en grens
 
-Het dagelijkse onderhoud kent twee bewust gescheiden routes. De GitHub-signaalworkflow detecteert
-veranderingen en bereidt reviewvoorstellen voor; deze route publiceert, wijzigt, archiveert of verwijdert
-nooit zelfstandig Atlas-records. Daarnaast is er een door de eigenaar gemachtigde Atlas-actualisator die
-zelf primaire bronnen onderzoekt, canonieke records bijwerkt en uitsluitend eigen, volledig geverifieerde
-pull requests na alle verplichte controles mag mergen.
+Het onderhoud draait op GitHub, ook wanneer de laptop uitstaat. De bestaande workflow detecteert
+veranderingen en bewaart reviewvoorstellen. De aanvullende cloudverkenning leest begrensd concrete
+pagina's van bekende officiële aanbieders. Alleen volledig brononderbouwde nieuwe aanvullingen mogen
+door naar de bestaande strikte inzendings- en publicatieroute. Daar zijn een eigen bot-PR, geslaagde
+controles van dezelfde kandidaatcommit en bronhercontrole verplicht.
 
-De autonome route is geen automatische acceptatie van signalen. Zij moet ieder feit rechtstreeks aan een
-officiële primaire bron vaststellen en stopt zonder merge bij onzekerheid, conflicten, een dirty worktree,
-mislukte checks of mogelijke doublures. Externe bijdragen en voorstellen uit de signaalworkflow blijven
-altijd onder menselijke beoordeling.
+Een ontdekt linkje of een reviewvoorstel is geen publicatiebewijs. Twijfelgevallen, correcties,
+archiveringssignalen en mogelijke doublures blijven ter beoordeling. De cloudroute gebruikt geen LLM
+of nieuwe externe secrets en veronderstelt geen lopende Codex-sessie. Aanvullend inhoudelijk onderzoek
+met Codex kan helpen, maar is geen afhankelijkheid voor de cloudcontroles.
 
 ## Architectuur
 
@@ -20,9 +20,9 @@ De bestaande canonieke bestanden blijven leidend:
 - `data/records.json`: gepubliceerde Atlas-records;
 - `data/relations.json`: relaties;
 - `data/sources.json`: geregistreerde controlebronnen;
-- `data/proposal-decisions.json`: blijvende registratie van afgewezen voorstellen en bewijs-hashes.
+- `data/proposal-decisions.json`: blijvende registratie van afgehandelde voorstellen en bewijs-hashes.
 
-De cyclus bestaat uit vier modules:
+De signaalcyclus bestaat uit vijf modules:
 
 1. `maintenance_normalize.py` behandelt HTML uitsluitend als onbetrouwbare data, verwijdert ruis en
    maakt stabiele inhouds- en structuur-hashes;
@@ -37,8 +37,10 @@ de rapportage als artifact. De laatst bekende succesvolle snapshot wordt bij fou
 
 ## Dagelijkse cyclus
 
-De workflow `.github/workflows/check-sources.yml` draait om `05:00 UTC`: in Nederland om 07:00 tijdens
-zomertijd en om 06:00 tijdens wintertijd. De cyclus:
+De bestaande workflow `.github/workflows/check-sources.yml` draait driemaal per dag om
+`06:17`, `11:17` en `16:17 UTC`: in Nederland om 08:17, 13:17 en 18:17 tijdens zomertijd,
+en 07:17, 12:17 en 17:17 tijdens wintertijd. GitHub kan geplande runs later starten;
+dit zijn geplande tijdstippen, geen garantie. De signaalcyclus:
 
 1. herstelt de laatste bekende staat;
 2. selecteert bronnen volgens hun eigen frequentie;
@@ -48,13 +50,16 @@ zomertijd en om 06:00 tijdens wintertijd. De cyclus:
 6. vergelijkt met de vorige succesvolle snapshot;
 7. classificeert als `NEW`, `CHANGED`, `REMOVED`, `UNREACHABLE`, `SOURCE_CHANGED` of `NO_CHANGE`;
 8. zoekt exacte URL-doublures en sterk gelijkende titels;
-9. maakt en valideert alleen reviewvoorstellen;
+9. maakt en valideert reviewvoorstellen en behoudt eerdere open voorstellen;
 10. levert een JSON- en Markdownrapport op;
 11. maakt of actualiseert hoogstens een open review-Issue wanneer menselijk handelen nodig is.
 
 Bij een eerste succesvolle controle wordt alleen een baseline opgeslagen (`NEW`). Dat voorkomt een
-stroom voorstellen bij ingebruikname. Wanneer niets relevants is gevonden, eindigt de run succesvol met
-`Geen actie nodig` in het run-overzicht en zonder nieuw Issue.
+stroom voorstellen bij ingebruikname. Wanneer er geen nieuwe of open voorstellen zijn, eindigt de
+signaalcyclus succesvol met `Geen actie nodig` in het run-overzicht en zonder nieuw review-Issue.
+De linkextractie ziet veranderingen op geregistreerde pagina's; zij doorzoekt niet zelfstandig het hele
+internet. De aanvullende cloudverkenning controleert een begrensde selectie officiële detailpagina's
+en moet iedere voorgestelde toevoeging door de strikte inhoudelijke toelating laten beoordelen.
 
 ## Bronregister
 
@@ -73,6 +78,10 @@ Iedere bron heeft minimaal:
 
 De operationele waarden in het register zijn documenterende startwaarden. De actuele waarden leven in
 `maintenance-state/state.json`, zodat een controle nooit ongecontroleerd canonieke data commit.
+`daily` betekent controle bij iedere geplande run, dus driemaal per dag. `weekly` en `monthly` worden
+pas na respectievelijk zeven en 28 dagen opnieuw gecontroleerd. Kennisnet, SURF, Npuls, MBO Digitaal,
+SLO, UNESCO AI en onderwijs, edusources en de bestaande TNO-bronnen staan op `daily`. Hun bronrollen
+zijn ongewijzigd: een ontdekkingsbron geldt niet automatisch als bewijs voor andermans aanbod.
 
 ### Bron toevoegen of aanpassen
 
@@ -109,8 +118,37 @@ ontstaat `SOURCE_CHANGED`. Dit vraagt onderzoek in plaats van een inhoudelijke u
 - `NO_CHANGE`: genormaliseerde inhoud is gelijk of alleen niet-structurele tekst/opmaak veranderde.
 
 Retries zijn begrensd en bronnen worden afzonderlijk afgehandeld. Een falende bron blokkeert de overige
-bronnen niet. De minimale pauze tussen live verzoeken beperkt belasting. Secrets zijn niet nodig en de
-workflow heeft alleen `contents: read` en `issues: write`.
+bronnen niet. De minimale pauze tussen live verzoeken beperkt belasting. Externe secrets zijn niet
+nodig. Het signaaldeel heeft `contents: read` en `issues: write`; het doorzetten van volledig toegelaten
+cloudvondsten vraagt daarnaast `actions: write` voor een expliciete start van de bestaande inzendingsworkflow.
+Bronextractie krijgt geen recht om canonieke data te committen of een PR te mergen.
+
+### Concrete nieuwe inhoud op GitHub
+
+`scripts/discover_official_content.py` leest links uit onderhoudssnapshots (ook de eerste baseline)
+en bezoekt per run maximaal twaalf bronpagina's, inclusief de aanvullende toelatingscontrole.
+De AI-themabronnen van Kennisnet en SURF zijn afzonderlijk geregistreerd voor gerichtere ontdekking.
+Een volledige, korte bronzin moet het aanbod, de aanbieder, het type, de doelgroep, sector en het
+thema expliciet verbinden. Alleen Nederlands HTML-aanbod met herkenbare hoofdtekst kan in deze
+route automatisch worden toegelaten. Downloadbestanden, dynamische pagina's, onduidelijke gegevens
+en wijzigingen aan bestaand aanbod vragen verdere beoordeling. De grenzen beperken automatische
+toelating; ze zijn geen oordeel over de waarde van een bron.
+
+Maximaal drie volledig toegelaten vondsten gaan per run naar `scripts/publish_discovery.py`.
+Die maakt een herkenbare botinzending, controleert bestaande inzendingen om doublures te voorkomen
+en start expliciet de gewone beschermde toelatingsroute. De tweede broncontrole, beide verplichte
+validaties en de laatste bronhercontrole blijven verplicht. Kosten en commerciële aard worden niet
+uit de organisatievorm afgeleid. Onbekende velden blijven onbekend.
+
+`discovery-state/state.json` bewaart wachtrij, bewijs-hashes, uitgestelde kandidaten en terugkoppeling
+van de inzendingsroute. Een gesloten of bewerkte botinzending blijft herkenbaar afgehandeld of ter
+beoordeling en kan daardoor niet iedere nieuwe ronde vullen. Een mislukte brokerstap kan veilig
+opnieuw worden gestart: bestaande GitHub-issues blijven ook na verlies van een cache herkenbaar.
+De bestaande review-Issue en runsummary tonen zowel onderhoudssignalen als kandidaten waarvoor
+verdere broncontrole nodig is. Ongewijzigde signalen geven geen herhaalde wijzigingsmelding.
+
+De cloudroute werkt zelfstandig zonder lokale Codex-automation, extra API-sleutels of een taalmodel.
+De eerder aanwezige lokale actualisator is gepauzeerd om dubbele geplande uitvoeringen te voorkomen.
 
 ## Voorstelformaat
 
@@ -128,8 +166,15 @@ Ieder voorstel bestaat als JSON in `maintenance-output/proposals/` en bevat onde
 - `publicationAllowed: false`.
 
 Ontbrekende feiten blijven `Nog niet ingevuld`, leeg of expliciet onzeker. Er worden geen nieuwe
-categorieen bedacht. Gelijke voorstellen houden dezelfde ID en verhogen alleen `occurrences`. Een
-afwijzing in `data/proposal-decisions.json` onderdrukt hetzelfde voorstel zolang de bewijs-hash gelijk is.
+categorieen bedacht. Gelijke voorstellen houden dezelfde ID en verhogen alleen `occurrences` bij een
+nieuwe waarneming. De ledger bewaart ook de volledige open voorstellen. Daardoor blijven ze zichtbaar
+bij een run zonder nieuwe verandering en wanneer een later signaal het review-Issue bijwerkt. Een
+beslissing `accepted` of `rejected` in `data/proposal-decisions.json` handelt uitsluitend het bijbehorende
+voorstel met dezelfde bewijs-hash af. Acceptatie in dit bestand publiceert zelf niets.
+
+Dit behoud geldt vanaf de eerste run met de volledige ledger. Oudere ledgerregels bevatten alleen
+tellers en kunnen verloren voorstelinhoud niet reconstrueren. De cache is operationele opslag;
+besluiten blijven daarom in Git vastgelegd en rapporten zijn 30 dagen als artifact beschikbaar.
 
 Voorbeeld afwijzing:
 
@@ -152,16 +197,23 @@ Voorbeeld afwijzing:
 5. Controleer mogelijke doublures en relaties.
 6. Kies accepteren, afwijzen, aanpassen of aanvullend onderzoek.
 7. Verwerk een geaccepteerd voorstel via de normale pull-requestroute.
-8. Registreer afwijzingen met proposal- en evidence-hash.
+8. Registreer afgehandelde voorstellen met `accepted` of `rejected`, proposal- en evidence-hash.
 
-Automatische controles van externe bijdragen geven alleen labels en commentaar. Zij mergen, committen,
-sluiten of publiceren niets. De oude automatische publicatieworkflow voor externe bijdragen is expliciet
-uitgeschakeld.
+Website-inzendingen hebben een aparte actieve route: `process-atlas-submission.yml` laat uitsluitend
+volledig brononderbouwde aanvullingen toe. `publish-auto-verified-contribution.yml` controleert de
+onveranderlijke kandidaatcommit, beide geslaagde validaties, de actuele inzending en de bron opnieuw.
+Pas daarna kan de eigen bot-PR worden gemerged en de gecontroleerde Pages-publicatie worden gestart.
+De cloudverkenning gebruikt dezezelfde toelating voor complete, bronbewezen nieuwe aanvullingen;
+een samenvattend review-Issue wordt niet als inzending behandeld. Onzekere inzendingen, correcties,
+feedback en willekeurige externe PR's worden niet via deze toelating gepubliceerd.
+Zie `docs/release-process.md`.
 
 ## Autonome Atlas-actualisator
 
-De door de eigenaar gemachtigde dagelijkse actualisator werkt onafhankelijk van de review-only
-signaalworkflow. Voor iedere run:
+De cloudverkenning kan alleen gegevens toelaten die deterministisch uit bekende officiële bronnen
+zijn vastgesteld. Zij doet geen vrij webonderzoek of redactionele interpretatie. Voor uitgebreider
+inhoudelijk onderzoek kan de door de eigenaar gemachtigde Codex-actualisator aanvullend worden gebruikt.
+Die lokale uitvoering is niet nodig voor de geplande cloudruns. Voor iedere aanvullende inhoudelijke run:
 
 1. controleert zij repository, open branches, bestaande dagelijkse PR's en de lokale worktree;
 2. gebruikt zij alleen concrete informatie die rechtstreeks via officiële primaire bronnen is bevestigd;

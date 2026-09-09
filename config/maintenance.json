@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "schedule": {"cron": "0 5 * * *", "timezoneNote": "05:00 UTC; 07:00 CEST or 06:00 CET"},
+  "schedule": {"cron": "17 6,11,16 * * *", "timezoneNote": "06:17, 11:17, 16:17 UTC; 08:17, 13:17, 18:17 CEST or 07:17, 12:17, 17:17 CET. GitHub may delay scheduled runs."},
   "network": {
     "timeoutSeconds": 20,
     "maxAttempts": 3,
