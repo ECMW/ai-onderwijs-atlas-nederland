@@ -1,6 +1,6 @@
 # AI & Onderwijs Atlas Nederland
 
-De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijzer voor bestaand aanbod rond AI in het onderwijs. Bezoekers zoeken vanuit hun vraag en kunnen daarna combineren op thema, sector, soort aanbod, doelgroep, beschikbaarheid, organisatie, geografische reikwijdte en actualiteit.
+De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijzer voor bestaand aanbod rond AI in het onderwijs. Bezoekers zoeken vanuit hun vraag en kunnen daarna combineren op thema, sector, soort aanbod, doelgroep, beschikbaarheid, organisatie en geografische reikwijdte.
 
 - [Publieke Atlas](https://ecmw.github.io/ai-onderwijs-atlas-nederland/)
 - [Bijdragen en broncode](https://github.com/ECMW/ai-onderwijs-atlas-nederland)
@@ -30,7 +30,7 @@ niet opnieuw nieuw; ontbrekende datums blijven als onbekend herkenbaar.
 
 ## Techniek en data
 
-De website is statische HTML, CSS en vanilla JavaScript. Er is geen buildstap nodig. De canonieke bron is `data/records.json`; de publieke browserprojectie staat in `data/data-v2.js` als `window.ATLAS_RECORDS`.
+De website is statische HTML, CSS en vanilla JavaScript. Er is geen applicatieserver nodig. De canonieke bron is `data/records.json`; de publieke browserprojectie staat in `data/data-v2.js` als `window.ATLAS_RECORDS`.
 
 Het datamodel en de toegestane enums staan in [docs/data-model.md](docs/data-model.md). De publieke export bevat alleen records met een officiele bron en een bevestigde verificatiestatus.
 
