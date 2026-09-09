@@ -38,12 +38,19 @@ jobs:
           report = json.loads(result.stdout)
           if result.returncode not in (0, 1, 2) or report.get('exitCode') != result.returncode:
               raise RuntimeError('Live checker did not produce a valid outcome')
+          warnings = (report.get('attempts') or [{}])[-1].get('optionalAssetWarnings', [])
           Path('site-health.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
           with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
               output.write(f'exit_code={result.returncode}\n')
+              output.write(f'optional_warnings={str(bool(warnings)).lower()}\n')
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
               summary.write(f"Atlas health: **{report['status']}**\n\n")
               summary.write('A network error or changing release never triggers automatic recovery.\n')
+              if warnings:
+                  summary.write('\n**Optional statistics require attention.** The catalogue remains available; these warnings do not trigger recovery.\n\n')
+                  for warning in warnings:
+                      summary.write(f"- {warning['resource']}: {warning['code']}\n")
+                  summary.write('\nDetails are retained in the atlas-site-health artifact.\n')
       - name: Dispatch one recovery only for a stable confirmed site fault
         id: recovery
         if: steps.health.outputs.exit_code == '1'
@@ -155,8 +162,8 @@ jobs:
               }
               await github.rest.issues.create({ owner, repo, title, body, labels: [label] });
             }
-      - name: Retain fault evidence
-        if: always() && steps.health.outputs.exit_code != '0'
+      - name: Retain fault and optional-statistics evidence
+        if: always() && (steps.health.outputs.exit_code != '0' || steps.health.outputs.optional_warnings == 'true')
         uses: actions/upload-artifact@v7
         with:
           name: atlas-site-health

@@ -185,13 +185,24 @@ def release_evidence(site_url, html_sha, timeout, fetch):
         marker = json.loads(raw.decode("utf-8"))
         if not isinstance(marker, dict) or not re.fullmatch(r"[0-9a-f]{40}", str(marker.get("sourceSha", ""))):
             raise ValueError("Release marker has no valid sourceSha")
-        return {"release": marker, "releaseFingerprint": f"release:{hashlib.sha256(raw).hexdigest()}:{html_sha}"}
     except HTTPError as error:
         if error.code == 404:
             return {"releaseFingerprint": f"html:{html_sha}", "releaseMarker": "not_present"}
         return {"releaseMarker": "unavailable"}
     except (URLError, OSError, TimeoutError, ValueError, CheckFailure):
         return {"releaseMarker": "unavailable"}
+    # A CDN can serve a new marker together with an older entry document. Do not
+    # attribute that page to the marker's commit or trigger recovery from it.
+    # Older markers did not contain a document hash and retain legacy behavior.
+    if "htmlSha256" in marker:
+        expected = marker["htmlSha256"]
+        if not isinstance(expected, str) or not re.fullmatch(r"[0-9a-f]{64}", expected):
+            raise CheckFailure("invalid_release_html_hash", "release.json",
+                               "Release marker has no valid HTML SHA-256", unknown=True)
+        if expected != html_sha:
+            raise CheckFailure("release_html_mismatch", "release.json",
+                               "Release marker does not identify the served HTML", unknown=True)
+    return {"release": marker, "releaseFingerprint": f"release:{hashlib.sha256(raw).hexdigest()}:{html_sha}"}
 
 
 def snapshot(site_url, timeout, fetch, javascript_check):
