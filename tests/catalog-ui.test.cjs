@@ -68,15 +68,18 @@ test('workshop and trainer entry uses training filters and preserves a named tra
   assert.ok(html.includes('Copilot Chat: adoptietraining op locatie'));
 });
 
-test('offer forms separate AI software from work materials and preserve legacy links', () => {
+test('excluded software stays out of results and filters while materials and legacy links remain usable', () => {
   const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
   const api = load(data);
   const ids = criteria => Array.from(api.recordsForCriteria(criteria), item => item.id);
   const software = ids({ type: 'software' });
   const materials = ids({ type: 'materials' });
   const knowledge = ids({ type: 'knowledge' });
-  assert.ok(software.includes('uva-hva-ai-chat'));
-  assert.ok(software.includes('chatgpt-edu'));
+  assert.equal(software.length, 0);
+  const excluded = data.filter(item => item.publicationExclusion);
+  assert.equal(excluded.length, 12);
+  const publicIds = ids({});
+  for (const item of excluded) assert.ok(!publicIds.includes(item.id), item.id);
   for (const id of ['selfie-for-teachers', 'ai-waaier-voor-toetsen', 'vista-promptdatabase-ai-onderwijs', 'open-inspiratielessen-over-ai']) {
     assert.ok(materials.includes(id), id);
     assert.ok(!software.includes(id), id);
@@ -84,12 +87,12 @@ test('offer forms separate AI software from work materials and preserve legacy l
   assert.ok(knowledge.includes('nolai-kennisbank'));
   assert.ok(knowledge.includes('ai-act-service-desk'));
   assert.equal(new Set([...software, ...materials, ...knowledge]).size, software.length + materials.length + knowledge.length);
-  assert.ok(ids({ type: 'Voorziening' }).includes('uva-hva-ai-chat'));
+  assert.ok(!ids({ type: 'Voorziening' }).includes('uva-hva-ai-chat'));
   assert.ok(ids({ type: 'Hulpmiddel' }).includes('ai-waaier-voor-toetsen'));
   const combined = ids({ type: 'software,knowledge' });
   assert.equal(combined.length, software.length + knowledge.length);
   const form = api.homeFilterPanel([]);
-  assert.ok(form.includes('name="type" value="software"'));
+  assert.ok(!form.includes('name="type" value="software"'));
   assert.ok(form.includes('name="type" value="knowledge"'));
   assert.ok(!form.includes('name="type" value="Hulpmiddel"'));
   assert.ok(!form.includes('name="type" value="Voorziening"'));

@@ -40,8 +40,9 @@ De automatische route voor nieuwe bijdragen stelt strengere eisen: de bron moet 
 
 `offerCategory` is een optionele redactionele indeling van de vorm, naast het
 bestaande `recordType`. Toegestane waarden zijn `software`, `materials` en
-`knowledge`. De website toont respectievelijk **AI-software**, **Les- en
-werkmaterialen** en **Handreikingen, kennisbanken en ondersteuning**.
+`knowledge`. De website toont **Les- en werkmaterialen** en **Handreikingen,
+kennisbanken en ondersteuning**. De categorie `software` blijft in de canonieke
+gegevens bewaard; de 12 bestaande softwarevermeldingen zijn publiek uitgesloten.
 
 - `software`: een AI-toepassing of AI-werkomgeving om daadwerkelijk te gebruiken.
   Ook aanbod in ontwikkeling kan hieronder vallen; beschikbaarheid blijft apart.
@@ -63,11 +64,25 @@ Bij oudere producten of voorzieningen zonder indeling toont de interface
 naam automatisch als AI-software aangemerkt. Alle overige recordsoorten behouden
 hun eigen herkenbare keuze, waaronder trainingen, subsidies en praktijkvoorbeelden.
 
-De publieke filterwaarden zijn korte sleutels (`type=software`, `type=materials`,
+De publieke filterwaarden zijn korte sleutels (`type=materials`,
 `type=knowledge`), zodat komma's in een weergavenaam geen extra filters veroorzaken.
 Oude URL's met bijvoorbeeld `type=Hulpmiddel`, `type=Voorziening` of
-`type=Handreiking` behouden hun oorspronkelijke selectie. Kaarten, detailpagina's
+`type=Handreiking` behouden hun selectie binnen het resterende publieke aanbod. Kaarten, detailpagina's
 en nieuwe filters gebruiken de nieuwe vormnamen.
+
+## Redactionele uitsluiting van publieke weergave
+
+Het optionele object `publicationExclusion` bevat een niet-lege `reason` en een
+beslisdatum `decidedOn` in `JJJJ-MM-DD`. De aanwezigheid sluit een record uit van
+de publieke data, zoekindex en interface. Ook een onjuist ingevulde uitsluiting
+wordt nooit als toestemming tot weergave behandeld; de datavalidatie blokkeert
+dan de release.
+
+Op 9 september 2026 zijn op verzoek van Eva de 12 zelfstandige
+softwarevermeldingen uitgesloten om verwarring over de reikwijdte te voorkomen.
+De canonieke records, relaties, broncontrole en beschikbaarheid blijven bewaard.
+Terugplaatsen vergt een expliciet redactioneel besluit; een nieuwe broncontrole
+heft de uitsluiting niet op.
 
 ## Vaste neutrale informatievelden
 

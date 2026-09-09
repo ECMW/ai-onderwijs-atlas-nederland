@@ -84,6 +84,15 @@ class LiveSiteTests(unittest.TestCase):
         self.assertEqual(result["attempts"][0]["issue"]["code"], "empty_catalogue")
         self.assertEqual(self.calls.count(URL), 2)
 
+    def test_editorially_excluded_record_is_rejected_in_live_projection(self):
+        excluded = {"id": "excluded", "title": "Software", "recordType": "product",
+                    "verificationStatus": "verified",
+                    "sourceUrls": [{"sourceType": "official", "url": "https://example.test/software"}],
+                    "publicationExclusion": {"reason": "Outside scope", "decidedOn": "2026-09-09"}}
+        result = self.run_check([fixture(records=[excluded])])
+        self.assertEqual(result["exitCode"], 1)
+        self.assertEqual(result["attempts"][0]["issue"]["code"], "ineligible_public_record")
+
     def test_count_mismatch_duplicate_ids_and_unverified_records_are_faults(self):
         record = json.loads(fixture()["data/data-v2.js"].decode().split("=", 1)[1].rstrip(";\n"))["records"][0]
         unverified = {**record, "verificationStatus": "unverified"}

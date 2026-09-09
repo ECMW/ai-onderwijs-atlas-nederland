@@ -5,6 +5,14 @@ goedkeuring, kwaliteitsbeoordeling of aanbeveling. De aanwezigheid van een
 officiële bron bewijst niet dat een product geschikt, veilig of effectief is voor
 een bepaalde instelling.
 
+Zelfstandige AI-software valt buiten de gekozen publieke reikwijdte. De 12
+bestaande softwarevermeldingen zijn op verzoek van Eva uitgesloten op
+9 september 2026. Handreikingen over het kiezen en beoordelen van toepassingen,
+les- en werkmaterialen en trainingen blijven onderdeel van de Atlas. Een
+training over een specifiek product is daarbij een training. Bestaande
+softwaregegevens blijven canoniek bewaard met `publicationExclusion`; een
+broncontrole verandert dit redactionele besluit niet.
+
 ## Feitelijke en vergelijkbare vermeldingen
 
 Gebruik voor iedere vermelding dezelfde velden: titel, aanbieder, soort aanbod,

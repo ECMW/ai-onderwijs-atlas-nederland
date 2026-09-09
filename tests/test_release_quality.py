@@ -78,6 +78,28 @@ class ReleaseQualityTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("Public record contents differ from the canonical projection", report["errors"])
 
+    def test_editorial_exclusion_is_retained_but_cannot_leak_into_public_data(self):
+        excluded = {**self.records[0], "id": "excluded", "publicationExclusion": {
+            "reason": "Outside editorial scope", "decidedOn": "2026-09-09"}}
+        canonical = self.records + [excluded]
+        self.write_data(canonical, self.records)
+        result, report = self.gate()
+        self.assertEqual(result.returncode, 0, report)
+        self.write_data(canonical)
+        result, report = self.gate()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("Public record contents differ from the canonical projection", report["errors"])
+
+    def test_malformed_editorial_exclusions_block_release(self):
+        for exclusion in [None, False, {}, {"reason": ""},
+                          {"reason": "Outside scope", "decidedOn": "2026-02-30"}]:
+            with self.subTest(exclusion=exclusion):
+                excluded = {**self.records[0], "id": "excluded", "publicationExclusion": exclusion}
+                self.write_data(self.records + [excluded], self.records)
+                result, report = self.gate()
+                self.assertNotEqual(result.returncode, 0)
+                self.assertTrue(any("publicationExclusion" in error for error in report["errors"]))
+
     def test_valid_utf8_with_latin1_corruption_is_rejected(self):
         self.records[0]["description"] = "creëert".encode("utf-8").decode("latin1")
         self.write_data(self.records)

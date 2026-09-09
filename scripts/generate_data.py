@@ -9,6 +9,8 @@ R = Path(__file__).parents[1]
 
 def is_publishable(record):
     """Alleen aantoonbaar bestaand en recent gecontroleerd aanbod publiceren."""
+    if 'publicationExclusion' in record:
+        return False
     if record.get('recordType') in {'identified_need', 'white_spot'}:
         return False
     if record.get('legacyType') in {'Behoefte', 'Witte vlek'}:

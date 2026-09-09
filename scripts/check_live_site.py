@@ -105,6 +105,7 @@ def asset_location(site_url, reference):
 def public_record(record):
     return (
         isinstance(record, dict)
+        and "publicationExclusion" not in record
         and isinstance(record.get("id"), str) and bool(record["id"].strip())
         and isinstance(record.get("title"), str) and bool(record["title"].strip())
         and record.get("recordType") not in ("identified_need", "white_spot")

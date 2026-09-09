@@ -15,6 +15,7 @@ from pathlib import Path
 from public_assets import versioned_html
 from contribution_quality import commercial_field_errors
 from offer_categories import offer_category_errors
+from publication_scope import publication_exclusion_errors
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_STATUSES = {"verified", "recently_checked"}
@@ -41,7 +42,8 @@ def load_json(path: Path):
 
 def is_public(record: dict) -> bool:
     return (
-        record.get("recordType") not in EXCLUDED_TYPES
+        "publicationExclusion" not in record
+        and record.get("recordType") not in EXCLUDED_TYPES
         and record.get("legacyType") not in EXCLUDED_LEGACY
         and record.get("verificationStatus") in PUBLIC_STATUSES
         and any(
@@ -94,6 +96,7 @@ def main() -> int:
     for record in records:
         errors.extend(commercial_field_errors(record))
         errors.extend(offer_category_errors(record))
+        errors.extend(publication_exclusion_errors(record))
     index_html = (root / "index.html").read_text(encoding="utf-8")
     if index_html != versioned_html(root, index_html):
         errors.append("Browser asset versions are stale; run scripts/generate_data.py")

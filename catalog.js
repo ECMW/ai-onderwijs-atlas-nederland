@@ -11,6 +11,7 @@
 
   const allRecords = source.records || [];
   const records = allRecords.filter(record =>
+    !Object.hasOwn(record, 'publicationExclusion') &&
     !['identified_need', 'white_spot'].includes(record.recordType) &&
     !['Behoefte', 'Witte vlek'].includes(record.legacyType) &&
     (record.sourceUrls || []).some(sourceItem => sourceItem.url && sourceItem.sourceType === 'official') &&
@@ -81,7 +82,6 @@
     'it professional': 'IT-professionals', ict: 'IT-professionals', it: 'IT-professionals'
   };
   const TYPE_QUERY_RULES = {
-    software: ['ai software', 'ai tool', 'ai tools', 'ai toepassing', 'ai toepassingen', 'software', 'tool', 'tools'],
     materials: ['lesmateriaal', 'lesmaterialen', 'werkmateriaal', 'werkmaterialen', 'kaartenset'],
     knowledge: ['kennisbank', 'kennisbanken', 'ondersteuning'],
     Handreiking: ['handreiking', 'handleiding'], Training: ['training', 'trainingen', 'cursus', 'workshop', 'workshops', 'trainer', 'trainers'],
@@ -485,7 +485,7 @@
   }
   function homeFilterPanel(personas) {
     const themes = ['Veilige AI-omgeving', 'Lesgeven en leren met AI', 'Beleid en governance', 'Toetsing en examinering', 'AI Act en wetgeving', 'Privacy en AVG', 'AI-geletterdheid', 'Professionalisering', 'Praktijkvoorbeelden'];
-    const types = ['software', 'materials', 'Training', 'knowledge', 'Praktijkvoorbeeld', 'Pilot', 'Subsidie of call', 'Subsidie', 'Wetgeving', 'Organisatie', 'Programma', 'Community', 'Standaard', 'Raamwerk', 'Beleidsdocument', 'unclassified'];
+    const types = ['materials', 'Training', 'knowledge', 'Praktijkvoorbeeld', 'Pilot', 'Subsidie of call', 'Subsidie', 'Wetgeving', 'Organisatie', 'Programma', 'Community', 'Standaard', 'Raamwerk', 'Beleidsdocument', 'unclassified'];
     return `<details class="home-filter-sidebar"><summary>Filter het aanbod</summary><form class="home-filter-form"><header><span class="eyebrow">Snel verfijnen</span><h2>Filter het aanbod</h2><p>Combineer meerdere keuzes.</p></header>
       ${homeFilterGroup('theme', 'Waar zoekt u hulp bij?', themes, [], false, [{ key: 'type', value: 'Training', label: 'Mijn team scholen — workshops en trainers' }, { key: 'type', value: 'Subsidie of call,Subsidie', label: 'Subsidies en calls vinden' }])}
       ${homeFilterGroup('sector', 'Voor welke sector?', SECTORS)}
@@ -537,7 +537,7 @@
     const openCalls = recordsForCriteria({ status: 'Open voor aanvragen' }).sort((a, b) => String(a.applicationDeadline || a.fundingDeadline || '9999').localeCompare(String(b.applicationDeadline || b.fundingDeadline || '9999')));
     const practices = recordsForCriteria({ type: 'Praktijkvoorbeeld' }).sort((a, b) => relevance(b) - relevance(a));
     main.innerHTML = `<section class="home-market">${homeFilterPanel(personas)}<div class="home-simple">
-      <section class="home-search"><span class="eyebrow">De publieke wegwijzer voor AI in het onderwijs</span><h1>Vind wat u nodig hebt voor AI in uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, voorzieningen, subsidies, pilots en praktijkvoorbeelden.</p><ul class="trust-summary" aria-label="Kenmerken van de atlas"><li>Alleen bestaand aanbod</li><li>Officiële bron per vermelding</li><li>Zonder cookies</li></ul><p class=visit-proof data-atlas-visit-count hidden></p><div class="home-new-contributions"><a class="btn" href="#nieuw">Nieuwe bijdragen <span aria-hidden="true">→</span></a><span>Bekijk wat er recent aan de Atlas is toegevoegd.</span></div>${searchForm('home-search')}${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}</section>
+      <section class="home-search"><span class="eyebrow">De publieke wegwijzer voor AI in het onderwijs</span><h1>Vind wat u nodig hebt voor AI in uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, les- en werkmaterialen, subsidies, pilots en praktijkvoorbeelden.</p><ul class="trust-summary" aria-label="Kenmerken van de atlas"><li>Alleen bestaand aanbod</li><li>Officiële bron per vermelding</li><li>Zonder cookies</li></ul><p class=visit-proof data-atlas-visit-count hidden></p><div class="home-new-contributions"><a class="btn" href="#nieuw">Nieuwe bijdragen <span aria-hidden="true">→</span></a><span>Bekijk wat er recent aan de Atlas is toegevoegd.</span></div>${searchForm('home-search')}${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}</section>
       ${contributionPrompt()}
       <section><div class="section-title"><div><h2>Waarmee kunnen we u helpen?</h2><p>Begin bij uw vraag, niet bij een organisatie.</p></div></div><div class="task-grid">${TASKS.map(task => { const criteria = { ...task.query, audience: personas.join(',') }; const count = recordsForCriteria(criteria).length; return `<a class="task-tile" href="${criteriaHref(criteria)}"><strong>${escapeHtml(task.label)}</strong><span>${escapeHtml(task.detail)}</span><small>${count} resultaten</small></a>`; }).join('')}</div></section>
       <section><div class="section-title"><div><h2>Veel gezocht</h2><p>Vaste snelkoppelingen naar veelvoorkomende onderwijsvragen.</p></div></div>${popularLinks('', personas.join(','))}</section>
