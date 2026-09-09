@@ -17,6 +17,7 @@ class Element {
     this.tagName = tagName.toUpperCase(); this.attributes = attributes;
     this.parent = parent; this.children = []; this.dataset = {};
     this.textContent = ''; this.value = attributes.value || ''; this.checked = 'checked' in attributes;
+    this.name = attributes.name || '';
     Object.entries(attributes).filter(([key]) => key.startsWith('data-')).forEach(([key, value]) => {
       this.dataset[key.slice(5).replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())] = value;
     });
@@ -141,6 +142,24 @@ test('a blocked or broken optional analytics script leaves the real Atlas usable
   assert.equal(app.context.ATLAS_STARTUP.status, 'ready');
   app.navigate('#over'); assert.match(app.main.innerHTML, /Over de atlas/);
   app.navigate('#zoeken'); assert.match(app.main.innerHTML, /class="atlas-search"/);
+});
+
+test('workshop help and offer-type filters stay synchronized and submit one training filter', () => {
+  const app = boot();
+  const choices = app.document.querySelectorAll('.home-filter-form input[name="type"][value="Training"]');
+  assert.equal(choices.length, 2);
+  assert.match(app.main.innerHTML, /Mijn team scholen/);
+  assert.match(app.main.innerHTML, /Trainingen en workshops/);
+  choices[0].checked = true;
+  choices[0].onchange();
+  assert.ok(choices.every(input => input.checked));
+  const total = app.context.ATLAS_RECORDS.records.filter(record => record.recordType === 'training').length;
+  assert.equal(app.document.querySelector('.home-filter-submit').textContent, `Bekijk ${total} resultaten`);
+  app.document.querySelector('.home-filter-form').onsubmit({ preventDefault() {} });
+  assert.equal(app.context.location.hash.replace(/^#/, ''), 'zoeken?type=Training');
+  choices[1].checked = false;
+  choices[1].onchange();
+  assert.ok(choices.every(input => !input.checked));
 });
 
 test('home rerenders notify optional widgets when a saved role is cleared', () => {

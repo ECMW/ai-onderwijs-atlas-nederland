@@ -2182,8 +2182,23 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Uit de publieke Atlas gehaald op verzoek van Eva: zelfstandige AI-software valt buiten de gekozen reikwijdte. Broncontrole en beschikbaarheid zijn niet gewijzigd."
       }
-    ]
+    ],
+    "offerCategory": "software",
+    "publicationExclusion": {
+      "reason": "Zelfstandige AI-software valt buiten de publieke Atlas om verwarring over de reikwijdte te voorkomen. Uitgesloten op verzoek van Eva.",
+      "decidedOn": "2026-09-09"
+    }
   },
   {
     "id": "nolai-ai-platform",
@@ -2256,8 +2271,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "knowledge"
   },
   {
     "id": "federatieve-leerinfrastructuur",
@@ -2393,8 +2414,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "knowledge"
   },
   {
     "id": "npuls-community-platform",
@@ -2465,8 +2492,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "knowledge"
   },
   {
     "id": "nolai-kennisbank",
@@ -2539,8 +2572,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "knowledge"
   },
   {
     "id": "ai-ondersteuning-voor-itemgeneratie",
@@ -4333,8 +4372,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "ai-en-kansengelijkheid-handreiking-voor-een-zo-positief-mogelijke-impact",
@@ -4475,8 +4520,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "ai-richtlijnen-bij-unicoz-ruimte-voor-eigen-schoolbeleid",
@@ -4838,8 +4889,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "train-de-trainer-visietool-toetsen-examineren-en-ai",
@@ -5355,8 +5412,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "kit-workshop-ai-assistenten-in-het-onderwijs",
@@ -5759,8 +5822,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "ai-gebruik-op-school-in-kaart-brengen",
@@ -5839,8 +5908,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "voldoen-aan-de-ai-verordening",
@@ -6937,8 +7012,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "veilige-ai-agents-hogeschool-rotterdam",
@@ -8974,8 +9055,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "ai-act-service-desk",
@@ -9051,8 +9138,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "knowledge"
   },
   {
     "id": "european-school-education-course-catalogue",
@@ -9123,8 +9216,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "knowledge"
   },
   {
     "id": "digital-education-hub-funding-finder",
@@ -9200,8 +9299,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "knowledge"
   },
   {
     "id": "european-digital-education-hub",
@@ -9787,8 +9892,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2b."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "eit-higher-education-initiative",
@@ -10202,6 +10313,16 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Commerciële aard afzonderlijk vastgelegd op basis van de officiële product- en afname-informatie. Toegang verduidelijkt op basis van dezelfde bron."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Uit de publieke Atlas gehaald op verzoek van Eva: zelfstandige AI-software valt buiten de gekozen reikwijdte. Broncontrole en beschikbaarheid zijn niet gewijzigd."
       }
     ],
     "commercialStatus": "commercial",
@@ -10209,6 +10330,11 @@
       "url": "https://edugpt.nl/",
       "note": "De aanbieder beschrijft een standaardlicentie per docent of medewerker, een tijdelijke gratis pilot en een enterprise-aanbod op aanvraag.",
       "checkedOn": "2026-09-09"
+    },
+    "offerCategory": "software",
+    "publicationExclusion": {
+      "reason": "Zelfstandige AI-software valt buiten de publieke Atlas om verwarring over de reikwijdte te voorkomen. Uitgesloten op verzoek van Eva.",
+      "decidedOn": "2026-09-09"
     }
   },
   {
@@ -10812,6 +10938,16 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Commerciële aard afzonderlijk vastgelegd op basis van de officiële product- en afname-informatie. Toegang verduidelijkt op basis van dezelfde bron."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Uit de publieke Atlas gehaald op verzoek van Eva: zelfstandige AI-software valt buiten de gekozen reikwijdte. Broncontrole en beschikbaarheid zijn niet gewijzigd."
       }
     ],
     "commercialStatus": "commercial",
@@ -10819,6 +10955,11 @@
       "url": "https://openai.com/index/introducing-chatgpt-edu/",
       "note": "OpenAI biedt ChatGPT Edu als instellingsproduct aan; de productpagina verwijst universiteiten voor afname naar het verkoopteam.",
       "checkedOn": "2026-09-09"
+    },
+    "offerCategory": "software",
+    "publicationExclusion": {
+      "reason": "Zelfstandige AI-software valt buiten de publieke Atlas om verwarring over de reikwijdte te voorkomen. Uitgesloten op verzoek van Eva.",
+      "decidedOn": "2026-09-09"
     }
   },
   {
@@ -10899,6 +11040,16 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Commerciële aard afzonderlijk vastgelegd op basis van de officiële product- en afname-informatie. Toegang verduidelijkt op basis van dezelfde bron."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Uit de publieke Atlas gehaald op verzoek van Eva: zelfstandige AI-software valt buiten de gekozen reikwijdte. Broncontrole en beschikbaarheid zijn niet gewijzigd."
       }
     ],
     "commercialStatus": "commercial",
@@ -10906,6 +11057,11 @@
       "url": "https://www.microsoft.com/en-us/education/products/copilot-in-education",
       "note": "Microsoft beschrijft Copilot als betaalde aanvullende licentie op Microsoft 365; Copilot Chat is zonder extra kosten inbegrepen bij geschikte abonnementen.",
       "checkedOn": "2026-09-09"
+    },
+    "offerCategory": "software",
+    "publicationExclusion": {
+      "reason": "Zelfstandige AI-software valt buiten de publieke Atlas om verwarring over de reikwijdte te voorkomen. Uitgesloten op verzoek van Eva.",
+      "decidedOn": "2026-09-09"
     }
   },
   {
@@ -10986,6 +11142,16 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Commerciële aard afzonderlijk vastgelegd op basis van de officiële product- en afname-informatie. Toegang verduidelijkt op basis van dezelfde bron."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Uit de publieke Atlas gehaald op verzoek van Eva: zelfstandige AI-software valt buiten de gekozen reikwijdte. Broncontrole en beschikbaarheid zijn niet gewijzigd."
       }
     ],
     "commercialStatus": "commercial",
@@ -10993,6 +11159,11 @@
       "url": "https://edu.google.com/intl/ALL_nl/ai/gemini-for-education/",
       "note": "Google biedt een kosteloze basisapp en verwijst voor uitgebreidere toegang naar de betaalde Google AI Pro for Education-add-on en het verkoopteam.",
       "checkedOn": "2026-09-09"
+    },
+    "offerCategory": "software",
+    "publicationExclusion": {
+      "reason": "Zelfstandige AI-software valt buiten de publieke Atlas om verwarring over de reikwijdte te voorkomen. Uitgesloten op verzoek van Eva.",
+      "decidedOn": "2026-09-09"
     }
   },
   {
@@ -11073,6 +11244,16 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Commerciële aard afzonderlijk vastgelegd op basis van de officiële product- en afname-informatie. Toegang verduidelijkt op basis van dezelfde bron."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Uit de publieke Atlas gehaald op verzoek van Eva: zelfstandige AI-software valt buiten de gekozen reikwijdte. Broncontrole en beschikbaarheid zijn niet gewijzigd."
       }
     ],
     "commercialStatus": "commercial",
@@ -11080,6 +11261,11 @@
       "url": "https://edu.google.com/ai-gemini-notebook/",
       "note": "De officiële productpagina verwijst voor uitgebreidere toegang naar Google AI Pro for Education en prijzen via het verkoopteam. De commerciële productlijn bevat ook een kosteloze variant.",
       "checkedOn": "2026-09-09"
+    },
+    "offerCategory": "software",
+    "publicationExclusion": {
+      "reason": "Zelfstandige AI-software valt buiten de publieke Atlas om verwarring over de reikwijdte te voorkomen. Uitgesloten op verzoek van Eva.",
+      "decidedOn": "2026-09-09"
     }
   },
   {
@@ -11159,6 +11345,16 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Commerciële aard afzonderlijk vastgelegd op basis van de officiële product- en afname-informatie. Toegang verduidelijkt op basis van dezelfde bron."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Uit de publieke Atlas gehaald op verzoek van Eva: zelfstandige AI-software valt buiten de gekozen reikwijdte. Broncontrole en beschikbaarheid zijn niet gewijzigd."
       }
     ],
     "commercialStatus": "commercial",
@@ -11166,6 +11362,11 @@
       "url": "https://www.microsoft.com/en-us/education/products/copilot-in-education",
       "note": "Microsoft levert de agent binnen Microsoft 365 Copilot. Toegang voor leerlingen en studenten verloopt via het instellingsaccount en de bijbehorende licentie-inrichting.",
       "checkedOn": "2026-09-09"
+    },
+    "offerCategory": "software",
+    "publicationExclusion": {
+      "reason": "Zelfstandige AI-software valt buiten de publieke Atlas om verwarring over de reikwijdte te voorkomen. Uitgesloten op verzoek van Eva.",
+      "decidedOn": "2026-09-09"
     }
   },
   {
@@ -11236,8 +11437,14 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 3."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "knowledge"
   },
   {
     "id": "uva-tlc-ai-portaal",
@@ -11308,8 +11515,14 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 3."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "knowledge"
   },
   {
     "id": "radboud-onderwijs-ai-module-docenten",
@@ -14998,8 +15211,14 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "knowledge"
   },
   {
     "id": "eur-ai-voor-docenten-beginners",
@@ -15598,8 +15817,14 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "jisc-leading-ai-colleges-framework",
@@ -15969,8 +16194,14 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "knowledge"
   },
   {
     "id": "australian-framework-generative-ai-schools",
@@ -16117,8 +16348,14 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "dfe-generative-ai-product-safety-standards",
@@ -16340,8 +16577,14 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "knowledge"
   },
   {
     "id": "feedbackfruits-ai-practice",
@@ -16419,6 +16662,16 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Commerciële aard afzonderlijk vastgelegd op basis van officiële contract- en afname-informatie. Toegang verduidelijkt op basis van dezelfde bron."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Uit de publieke Atlas gehaald op verzoek van Eva: zelfstandige AI-software valt buiten de gekozen reikwijdte. Broncontrole en beschikbaarheid zijn niet gewijzigd."
       }
     ],
     "commercialStatus": "commercial",
@@ -16426,6 +16679,11 @@
       "url": "https://feedbackfruits.com/terms-of-service",
       "note": "FeedbackFruits B.V. biedt AI Practice aan binnen contractuele softwaredienstverlening aan klantinstellingen. De voorwaarden beschrijven aankoopovereenkomsten en bijbehorende gebruiksrechten.",
       "checkedOn": "2026-09-09"
+    },
+    "offerCategory": "software",
+    "publicationExclusion": {
+      "reason": "Zelfstandige AI-software valt buiten de publieke Atlas om verwarring over de reikwijdte te voorkomen. Uitgesloten op verzoek van Eva.",
+      "decidedOn": "2026-09-09"
     }
   },
   {
@@ -16505,6 +16763,16 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Commerciële aard afzonderlijk vastgelegd op basis van officiële contract- en afname-informatie. Toegang verduidelijkt op basis van dezelfde bron."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Uit de publieke Atlas gehaald op verzoek van Eva: zelfstandige AI-software valt buiten de gekozen reikwijdte. Broncontrole en beschikbaarheid zijn niet gewijzigd."
       }
     ],
     "commercialStatus": "commercial",
@@ -16512,6 +16780,11 @@
       "url": "https://community.d2l.com/brightspace/kb/articles/35074-july-2026-20-26-07",
       "note": "D2L beschrijft Lumi Pro als afzonderlijk aan te schaffen software-uitbreiding op Brightspace, verkrijgbaar via het verkoopteam of de accountmanager.",
       "checkedOn": "2026-09-09"
+    },
+    "offerCategory": "software",
+    "publicationExclusion": {
+      "reason": "Zelfstandige AI-software valt buiten de publieke Atlas om verwarring over de reikwijdte te voorkomen. Uitgesloten op verzoek van Eva.",
+      "decidedOn": "2026-09-09"
     }
   },
   {
@@ -16591,6 +16864,16 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Commerciële aard afzonderlijk vastgelegd op basis van de officiële product- en afname-informatie. Toegang verduidelijkt op basis van dezelfde bron."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Uit de publieke Atlas gehaald op verzoek van Eva: zelfstandige AI-software valt buiten de gekozen reikwijdte. Broncontrole en beschikbaarheid zijn niet gewijzigd."
       }
     ],
     "commercialStatus": "commercial",
@@ -16598,6 +16881,11 @@
       "url": "https://www.instructure.com/products/canvas-tiers",
       "note": "Instructure levert IgniteAI binnen de Canvas-productpakketten. De aanbieder vermeldt contracten, uitbreidingen en een offerte op maat voor afname.",
       "checkedOn": "2026-09-09"
+    },
+    "offerCategory": "software",
+    "publicationExclusion": {
+      "reason": "Zelfstandige AI-software valt buiten de publieke Atlas om verwarring over de reikwijdte te voorkomen. Uitgesloten op verzoek van Eva.",
+      "decidedOn": "2026-09-09"
     }
   },
   {
@@ -16672,8 +16960,23 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Uit de publieke Atlas gehaald op verzoek van Eva: zelfstandige AI-software valt buiten de gekozen reikwijdte. Broncontrole en beschikbaarheid zijn niet gewijzigd."
       }
-    ]
+    ],
+    "offerCategory": "software",
+    "publicationExclusion": {
+      "reason": "Zelfstandige AI-software valt buiten de publieke Atlas om verwarring over de reikwijdte te voorkomen. Uitgesloten op verzoek van Eva.",
+      "decidedOn": "2026-09-09"
+    }
   },
   {
     "id": "miec-data-ai-mbo",
@@ -18149,8 +18452,14 @@
         "date": "2026-07-30",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "knowledge"
   },
   {
     "id": "han-toolkit-ai-bestendig-toetsen",
@@ -18224,8 +18533,14 @@
         "date": "2026-07-30",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "vu-workshops-generatieve-ai-onderwijsteams",
@@ -19393,8 +19708,14 @@
         "date": "2026-08-01",
         "type": "updated",
         "summary": "Officiële producttitel en actuele VU-productpagina vastgelegd; licentienotitie beperkt tot wat de pagina ondubbelzinnig vermeldt."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "npuls-ai-curriculum-arbeidsmarkt-2026",
@@ -19712,8 +20033,14 @@
         "date": "2026-08-28",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "knowledge"
   },
   {
     "id": "surf-tech-trends-ai-2026",
@@ -20568,8 +20895,14 @@
         "date": "2026-08-28",
         "type": "added",
         "summary": "Toegevoegd na controle van de officiële SURF-pagina en Edusources-zoekomgeving."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "knowledge"
   },
   {
     "id": "npuls-ai-go-in-actie-2026",
@@ -21288,8 +21621,14 @@
         "date": "2026-08-29",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 12."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "open-leermateriaal-ai-in-de-klas-pilotscholen",
@@ -21606,8 +21945,14 @@
         "date": "2026-08-29",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 13."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "digitale-overheid-algoritmekader",
@@ -22107,8 +22452,14 @@
         "date": "2026-08-29",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde Europese inhoudstranche."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "nolai-prompting-genai-in-de-klas",
@@ -22265,8 +22616,14 @@
         "date": "2026-09-04",
         "type": "added",
         "summary": "Toegevoegd na broncontrole en goedkeuring van de inhoudstranche."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "surf-pec-praatplaat-ai-en-privacy",
@@ -22347,8 +22704,14 @@
         "date": "2026-09-04",
         "type": "added",
         "summary": "Toegevoegd na broncontrole en goedkeuring van de inhoudstranche."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "radio-microlearnings-starten-met-ai",
@@ -22603,8 +22966,14 @@
         "date": "2026-09-05",
         "type": "updated",
         "summary": "Publicatiedatum ingevuld als 5 september 2026 op basis van Eva’s bevestiging."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "recordType": "training",
@@ -22835,10 +23204,16 @@
         "date": "2026-09-07",
         "type": "verified",
         "summary": "Officiële bron automatisch gecontroleerd bij communitybijdrage #57."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
     ],
     "verificationMethod": "automatic_official_source_check",
-    "verificationNote": "Bereikbaarheid en aansluiting van titel en aanbieder op de officiële bron zijn automatisch gecontroleerd; dit is geen inhoudelijke aanbeveling."
+    "verificationNote": "Bereikbaarheid en aansluiting van titel en aanbieder op de officiële bron zijn automatisch gecontroleerd; dit is geen inhoudelijke aanbeveling.",
+    "offerCategory": "materials"
   },
   {
     "id": "org-mbo-mediawijs",
@@ -22996,8 +23371,14 @@
         "date": "2026-09-08",
         "type": "added",
         "summary": "Toegevoegd als recent gecontroleerde officiële bron."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "vista-ai-in-onderwijs-kennissite",
@@ -23188,8 +23569,14 @@
         "date": "2026-09-09",
         "type": "added",
         "summary": "Brongecontroleerd record naar aanleiding van communitybijdrage #65; ingedeeld als digitaal hulpmiddel."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "iris-connect-ai-inzichten",
@@ -23288,6 +23675,16 @@
         "date": "2026-09-09",
         "type": "added",
         "summary": "Voorstel uit issue #69 na controle van officiële product-, ondersteunings- en contractbronnen; doelgroep en claims afgebakend tot de brononderbouwing."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Uit de publieke Atlas gehaald op verzoek van Eva: zelfstandige AI-software valt buiten de gekozen reikwijdte. Broncontrole en beschikbaarheid zijn niet gewijzigd."
       }
     ],
     "commercialStatus": "commercial",
@@ -23295,6 +23692,11 @@
       "url": "https://help.irisconnect.com/hc/en-gb/articles/33914027460498",
       "note": "IRIS Connect biedt de AI-optie aan binnen contractuele softwaredienstverlening aan klantinstellingen. Sectie 3 van overeenkomst 1.5 benoemt commerciële voorwaarden, bestellingen en facturatie van softwarelicenties en verlenging van abonnementen. De Nederlandse FAQ vermeldt AI-inzichten als aanvullende optie in de offerte.",
       "checkedOn": "2026-09-09"
+    },
+    "offerCategory": "software",
+    "publicationExclusion": {
+      "reason": "Zelfstandige AI-software valt buiten de publieke Atlas om verwarring over de reikwijdte te voorkomen. Uitgesloten op verzoek van Eva.",
+      "decidedOn": "2026-09-09"
     }
   },
   {
@@ -23477,8 +23879,14 @@
         "date": "2026-09-09",
         "type": "added",
         "summary": "Toegevoegd na inhoudelijke controle van de officiële bron en duplicaatcontrole op 9 september 2026."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
       }
-    ]
+    ],
+    "offerCategory": "materials"
   },
   {
     "id": "iol-kennisnet-toolkit-leermateriaal-maken-ai",
