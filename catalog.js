@@ -3,6 +3,10 @@
 
   const source = window.ATLAS_RECORDS;
   const main = document.querySelector('main');
+  if (window.ATLAS_STARTUP && (window.ATLAS_STARTUP.status === 'failed' || !window.ATLAS_STARTUP.validData())) {
+    window.ATLAS_STARTUP.fail();
+    return;
+  }
   if (!source || !main) return;
 
   const allRecords = source.records || [];
@@ -879,10 +883,11 @@
     };
   }
   function route() {
+    if (window.ATLAS_STARTUP?.status === 'failed') { window.ATLAS_STARTUP.fail(); return; }
     const path = (location.hash.slice(1) || 'home').split('?')[0];
     document.querySelector('.site-header')?.classList.remove('open');
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
-    if (path === 'home') renderHome();
+    if (path === 'home' || (!['zoeken', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
     if (path === 'zoeken' || path === 'organisaties') { parseState(); if (path === 'organisaties') state.type = 'Organisatie'; renderSearch(); }
     if (path.startsWith('item/')) renderDetail(decodeURIComponent(path.slice(5)));
     if (path === 'mijn-atlas') { location.replace('#home'); return; }
@@ -896,4 +901,5 @@
     }
   }
   addEventListener('hashchange', route); addEventListener('popstate', route); route();
+  window.ATLAS_STARTUP?.ready();
 })();

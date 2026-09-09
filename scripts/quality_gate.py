@@ -12,11 +12,25 @@ import json
 import re
 from datetime import date
 from pathlib import Path
+from public_assets import versioned_html
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_STATUSES = {"verified", "recently_checked"}
 EXCLUDED_TYPES = {"identified_need", "white_spot"}
 EXCLUDED_LEGACY = {"Behoefte", "Witte vlek"}
+
+
+def encoding_errors(value, path="data"):
+    """Catch the proven UTF-8-as-Latin-1 corruption, including valid UTF-8 JSON."""
+    if isinstance(value, str):
+        if re.search(r"[\u0080-\u009f]|[\u00c2\u00c3][\u0080-\u00bf]", value):
+            yield f"{path}: text contains likely encoding corruption"
+    elif isinstance(value, dict):
+        for key, item in value.items():
+            yield from encoding_errors(item, f"{path}.{key}")
+    elif isinstance(value, list):
+        for index, item in enumerate(value):
+            yield from encoding_errors(item, f"{path}[{index}]")
 
 
 def load_json(path: Path):
@@ -66,6 +80,18 @@ def main() -> int:
     expected = [record for record in records if is_public(record)]
     expected_ids = [record.get("id") for record in expected]
     public_ids = [record.get("id") for record in public_records]
+
+    if not public_records:
+        errors.append("Public catalogue must not be empty")
+    if public_records != expected:
+        errors.append("Public record contents differ from the canonical projection")
+    if public_data.get("metadata") != metadata:
+        errors.append("Public metadata differs from canonical metadata")
+    errors.extend(encoding_errors(records, "records"))
+    errors.extend(encoding_errors(metadata, "metadata"))
+    index_html = (root / "index.html").read_text(encoding="utf-8")
+    if index_html != versioned_html(root, index_html):
+        errors.append("Browser asset versions are stale; run scripts/generate_data.py")
 
     if len(public_ids) != len(set(public_ids)):
         errors.append("Public projection contains duplicate IDs")

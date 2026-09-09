@@ -1,5 +1,5 @@
 (()=>{'use strict';
-const d=window.ATLAS_RECORDS;if(!d)return;
+const d=window.ATLAS_RECORDS;if(!d?.metadata||!Array.isArray(d.records)||!d.records.length||(window.ATLAS_STARTUP&&(!window.ATLAS_STARTUP.validData()||window.ATLAS_STARTUP.status==='failed')))return;
 const main=document.querySelector('main');
 const e=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function head(t,s){return `<header class="page-head"><span class="eyebrow">AI & Onderwijs Atlas</span><h1>${e(t)}</h1><p class="lead">${e(s)}</p></header>`}
@@ -15,6 +15,6 @@ function changes(){
   const all=d.records.flatMap(x=>(x.changeHistory||[]).map(c=>({...c,title:x.title}))).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
   main.innerHTML=head('Wijzigingen','Publieke inhoudelijke geschiedenis zonder technische commitdetails.')+`<section class="section"><div class="result-list">${all.slice(0,100).map(x=>`<article class="result-card"><div><span class="badge">${e(x.type)}</span><h2>${e(x.title)}</h2><p>${e(x.summary)}</p><small>${e(x.date)}</small></div></article>`).join('')||'<div class="empty">Nog geen wijzigingen geregistreerd.</div>'}</div></section>`;
 }
-function route(){const p=(location.hash.slice(1)||'').split('?')[0];if(p==='over')about();if(p==='beheer')beheer();if(p==='wijzigingen')changes()}
+function route(){if(window.ATLAS_STARTUP?.status==='failed'){window.ATLAS_STARTUP.fail();return}const p=(location.hash.slice(1)||'').split('?')[0];if(p==='over')about();if(p==='beheer')beheer();if(p==='wijzigingen')changes()}
 addEventListener('hashchange',route);route();
 })();

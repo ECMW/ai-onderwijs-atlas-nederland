@@ -19,9 +19,9 @@
   <meta name="twitter:image" content="https://ecmw.github.io/ai-onderwijs-atlas-nederland/assets/social-preview.png">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="platform.css">
-  <link rel="stylesheet" href="catalog.css?v=20260905-2">
-  <link rel="stylesheet" href="brand.css?v=20260718-2">
+  <link rel="stylesheet" href="platform.css?v=360959d21103b22c">
+  <link rel="stylesheet" href="catalog.css?v=cc98d8d31e46bc36">
+  <link rel="stylesheet" href="brand.css?v=ee9fcaf94c48b96e">
   <title>AI & Onderwijs Atlas Nederland</title>
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"AI & Onderwijs Atlas Nederland","url":"https://ecmw.github.io/ai-onderwijs-atlas-nederland/","description":"Gratis, open en brongebaseerde wegwijzer voor AI in het onderwijs.","inLanguage":"nl","creator":{"@type":"Person","name":"Eva Willems"}},{"@type":"Dataset","name":"AI & Onderwijs Atlas Nederland","url":"https://ecmw.github.io/ai-onderwijs-atlas-nederland/","description":"Brongebaseerde catalogus van bestaand aanbod rond AI in het onderwijs.","inLanguage":"nl","creator":{"@type":"Person","name":"Eva Willems"},"isAccessibleForFree":true}]}</script>
 </head>
@@ -35,12 +35,50 @@
     </nav>
     <span class="header-credit">door Eva Willems</span>
   </header>
-  <main id="inhoud" tabindex="-1"></main>
+  <main id="inhoud" tabindex="-1"><section class="section" role="status"><h1>De atlas wordt geladen</h1><p>Het brongecontroleerde aanbod wordt opgehaald.</p><noscript><p>Schakel JavaScript in om de atlas te bekijken.</p></noscript></section></main>
   <footer><div><strong>AI & Onderwijs Atlas Nederland</strong><br>Publieke werkversie · Gemaakt door Eva Willems · Bijgewerkt <span data-updated></span></div><p>Gebaseerd op openbare bronnen. Controleer belangrijke beslissingen altijd bij de officiële bron. <a href="#bijdragen">Geef een correctie of aanvulling door</a> of <a href="https://github.com/ECMW/ai-onderwijs-atlas-nederland" target="_blank" rel="noopener noreferrer">bekijk de open repository ↗</a>.</p></footer>
-  <script src="data/data.js"></script>
-  <script src="data/data-v2.js?v=20260909-herstel"></script>
-  <script src="platform.js?v=20260712-4"></script>
-  <script src="catalog.js?v=20260905-2"></script>
-  <script src="governance.js"></script>
+  <script>
+    (() => {
+      'use strict';
+      const main = document.querySelector('main');
+      const published = record => record && typeof record === 'object' &&
+        !['identified_need', 'white_spot'].includes(record.recordType) &&
+        !['Behoefte', 'Witte vlek'].includes(record.legacyType) &&
+        Array.isArray(record.sourceUrls) && record.sourceUrls.some(item => item && item.url && item.sourceType === 'official') &&
+        ['verified', 'recently_checked'].includes(record.verificationStatus);
+      const startup = window.ATLAS_STARTUP = {
+        status: 'loading',
+        published,
+        validData() {
+          const data = window.ATLAS_RECORDS;
+          return Boolean(data && data.metadata && typeof data.metadata === 'object' && !Array.isArray(data.metadata) &&
+            Array.isArray(data.records) && data.records.length && data.records.every(record =>
+              record && typeof record.id === 'string' && record.id.trim() && typeof record.title === 'string' && record.title.trim() &&
+              Array.isArray(record.sourceUrls) && record.sourceUrls.every(item => item && typeof item.url === 'string') &&
+              ['audiences', 'sectors', 'themes', 'keywords', 'changeHistory'].every(key => record[key] === undefined || Array.isArray(record[key]))
+            ) && data.records.some(published));
+        },
+        fail() {
+          startup.status = 'failed';
+          main.innerHTML = '<section class="section" role="alert"><h1>De atlas kon niet worden geladen</h1><p>Het aanbod is nu niet beschikbaar door een laadfout. Dit betekent niet dat de atlas leeg is.</p><p><a class="btn" data-atlas-retry href="">Probeer opnieuw</a></p><p>Blijft dit gebeuren? Meld het via <a href="mailto:evac.m.willems@proton.me?subject=Atlas%20laadt%20niet">e-mail</a>.</p></section>';
+          const retry = new URL(location.href);
+          retry.searchParams.set('atlas-reload', String(Date.now()));
+          document.querySelector('[data-atlas-retry]').href = retry.href;
+          document.querySelectorAll('[data-updated]').forEach(element => { element.textContent = 'niet geladen'; });
+        },
+        ready() { if (startup.status !== 'failed') startup.status = 'ready'; }
+      };
+      addEventListener('error', event => {
+        const script = event.target && event.target.tagName === 'SCRIPT';
+        const atlasFile = /\/(?:data\/data-v2|platform|catalog|governance)\.js(?:[?#]|$)/.test(event.filename || '');
+        if (startup.status === 'loading' || script || atlasFile) startup.fail();
+      }, true);
+      addEventListener('load', () => { if (startup.status !== 'ready') startup.fail(); });
+    })();
+  </script>
+  <script src="data/data-v2.js?v=4d74d8e8cbccad07"></script>
+  <script src="platform.js?v=6d2902dab76ac5ab"></script>
+  <script src="catalog.js?v=281fc82c91d16921"></script>
+  <script src="governance.js?v=21e04fd2f4beb63e"></script>
 </body>
 </html>

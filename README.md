@@ -45,10 +45,25 @@ Open `index.html` rechtstreeks of start een eenvoudige lokale webserver. Voer vo
 
 ```text
 python scripts/validate_data.py
+python scripts/generate_data.py
+python scripts/quality_gate.py --strict
 python -m unittest discover tests -v
 ```
 
 De onderhoudstests gebruiken lokale fixtures en zijn niet afhankelijk van live websites. De dagelijkse workflow kan in GitHub handmatig worden gestart via **Actions > Daily Atlas maintenance review > Run workflow**.
+
+Voer `generate_data.py` ook uit na wijzigingen aan JavaScript of CSS: dit koppelt
+de browsercacheversie van ieder geladen bestand aan de inhoud. Commit de
+gegenereerde data en `index.html` samen. Publicatie valideert de vastgelegde
+bestanden en maakt ze niet opnieuw aan.
+
+GitHub Pages gebruikt **GitHub Actions** als publicatiebron. Alleen de workflow
+**Validate and deploy Pages** publiceert, na datavalidatie, de strikte quality
+gate, alle regressietests en JavaScript-controle van het publicatiepakket.
+Zet Pages niet terug op publicatie vanaf een branch: die route kan controles
+omzeilen. Een lege dataset, coderingsschade, afwijkende projectie of verouderde
+cacheversie blokkeert publicatie. Bij een laadfout toont de website een
+herlaadmogelijkheid in plaats van nul bronrecords.
 
 ## Bijdragen
 
