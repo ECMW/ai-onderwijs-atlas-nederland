@@ -138,6 +138,40 @@ class LiveSiteTests(unittest.TestCase):
         self.assertEqual(result["exitCode"], 1)
         self.assertTrue(result["releaseFingerprint"].startswith("html:"))
 
+    def test_release_marker_hash_must_identify_the_served_entry_document(self):
+        files = fixture()
+        marker = json.loads(files["release.json"])
+        marker["htmlSha256"] = hashlib.sha256(files["index.html"]).hexdigest()
+        files["release.json"] = json.dumps(marker).encode()
+        result = self.run_check([files])
+        self.assertEqual(result["exitCode"], 0)
+        self.assertEqual(result["sourceSha"], marker["sourceSha"])
+
+        stale = {**files, "index.html": files["index.html"] + b"<!-- older entry -->"}
+        result = self.run_check([stale])
+        self.assertEqual(result["exitCode"], 2)
+        self.assertIsNone(result["sourceSha"])
+        self.assertIsNone(result["releaseFingerprint"])
+        self.assertEqual(result["attempts"][-1]["issue"]["code"], "release_html_mismatch")
+        self.assertEqual(self.calls.count(URL), 2)
+
+        result = self.run_check([stale, files])
+        self.assertEqual(result["exitCode"], 0)
+        self.assertEqual(result["sourceSha"], marker["sourceSha"])
+
+    def test_malformed_release_html_hash_cannot_confirm_a_release_or_recovery(self):
+        for value in [None, "", "abc", 123, {}, "A" * 64]:
+            with self.subTest(value=value):
+                files = fixture(records=[])
+                marker = json.loads(files["release.json"])
+                marker["htmlSha256"] = value
+                files["release.json"] = json.dumps(marker).encode()
+                result = self.run_check([files])
+                self.assertEqual(result["exitCode"], 2)
+                self.assertIsNone(result["sourceSha"])
+                self.assertIsNone(result["releaseFingerprint"])
+                self.assertEqual(result["attempts"][-1]["issue"]["code"], "invalid_release_html_hash")
+
     def test_unavailable_release_marker_prevents_automatic_restore(self):
         files = fixture(records=[])
         files["release.json"] = URLError("timed out")

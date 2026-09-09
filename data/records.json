@@ -1420,12 +1420,12 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Programma",
-        "url": "https://npuls.nl/",
+        "label": "Programmaplan Npuls fase 2",
+        "url": "https://www.npuls.nl/kennisbank/programmaplan-npuls-fase-2-2025-2031",
         "sourceType": "official"
       }
     ],
@@ -1462,8 +1462,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Programma en digitalisering van mbo, hbo en wo gecontroleerd aan het officiële programmaplan; algemene homepage vervangen door concrete programmabron."
       }
-    ]
+    ],
+    "verificationNote": "Programma en digitalisering van mbo, hbo en wo gecontroleerd aan het officiële programmaplan; algemene homepage vervangen door concrete programmabron."
   },
   {
     "id": "nolai-programma",
@@ -1492,17 +1498,17 @@
       "Onderzoek"
     ],
     "themes": [],
-    "status": "in_development",
-    "availabilityText": "2024",
+    "status": "available",
+    "availabilityText": "Lopend programma voor onderzoek, co-creatie en implementatie van educatieve AI in het funderend onderwijs.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Programma",
-        "url": "https://www.nolai.nl/",
+        "label": "Over het NOLAI-programma",
+        "url": "https://www.ru.nl/nolai/over-nolai",
         "sourceType": "official"
       }
     ],
@@ -1538,8 +1544,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "De officiële programmabeschrijving bevestigt lopende co-creatie, co-implementatie en wetenschappelijk onderzoek. Niet slechts in ontwikkeling."
       }
-    ]
+    ],
+    "verificationNote": "De officiële programmabeschrijving bevestigt lopende co-creatie, co-implementatie en wetenschappelijk onderzoek. Niet slechts in ontwikkeling."
   },
   {
     "id": "mbo-digitaal-2",
@@ -1568,12 +1580,12 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Programma",
-        "url": "https://mbodigitaal.nl/",
+        "label": "MBO Raad over MBO Digitaal",
+        "url": "https://www.mboraad.nl/mbo-digitaal",
         "sourceType": "official"
       }
     ],
@@ -1608,12 +1620,18 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "MBO Raad bevestigt het platform, kennisdeling en gezamenlijke digitaliseringsprojecten; concrete bron toegevoegd."
       }
-    ]
+    ],
+    "verificationNote": "MBO Raad bevestigt het platform, kennisdeling en gezamenlijke digitaliseringsprojecten; concrete bron toegevoegd."
   },
   {
     "id": "aic4nl-werkpakket-onderwijs",
-    "title": "AIC4NL werkpakket Onderwijs",
+    "title": "AIC4NL: Talent, kennis en vaardigheden",
     "recordType": "programme",
     "legacyType": "Programma",
     "subtype": null,
@@ -1621,8 +1639,8 @@
       "org-aic4nl"
     ],
     "providerName": "AIC4NL",
-    "description": "Werkpakket gericht op verbinding, agendering en versnelling van AI-toepassingen in het onderwijs.",
-    "purpose": "Samenwerking en toepassing rond AI in onderwijs versnellen",
+    "description": "Werkgebied dat AI-onderwijs en talentontwikkeling ondersteunt, onder meer via AiNed Learning Communities en Fellowship Grants. De pagina verwijst ook naar publicaties over AI-opleidingen.",
+    "purpose": "AI-onderwijs, talentontwikkeling en praktijkgericht leren versterken",
     "audiences": [
       "Onderwijsinstellingen",
       "Beleidsmakers",
@@ -1630,8 +1648,6 @@
       "Bedrijven"
     ],
     "sectors": [
-      "PO",
-      "VO",
       "MBO",
       "HBO",
       "WO",
@@ -1639,16 +1655,16 @@
     ],
     "themes": [],
     "status": "available",
-    "availabilityText": "Nog niet ingevuld",
+    "availabilityText": "Werkgebied met instrumenten en publicaties; de informatiepagina wordt verder aangevuld.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Programma",
-        "url": "https://aic4nl.nl/",
+        "label": "Werkgebied Talent, kennis en vaardigheden",
+        "url": "https://aic4nl.nl/community/werkgebieden/talent-kennis-en-vaardigheden/",
         "sourceType": "official"
       }
     ],
@@ -1683,8 +1699,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Actuele naam en beschreven instrumenten overgenomen uit de officiële werkgebiedpagina. Brede onbevestigde PO/VO-toepassing en oude werkpakketnaam verwijderd."
       }
-    ]
+    ],
+    "verificationNote": "Actuele naam en beschreven instrumenten overgenomen uit de officiële werkgebiedpagina. Brede onbevestigde PO/VO-toepassing en oude werkpakketnaam verwijderd."
   },
   {
     "id": "horizon-europe",
@@ -1863,12 +1885,12 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Programma",
-        "url": "https://erasmus-plus.ec.europa.eu/",
+        "label": "Programmaprioriteiten Erasmus+",
+        "url": "https://erasmus-plus.ec.europa.eu/about-erasmus/programme-priorities",
         "sourceType": "official"
       }
     ],
@@ -1904,8 +1926,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Officiële programmaprioriteiten bevestigen digitale transformatie, digitale vaardigheden en samenwerking. Geen afzonderlijke open call geclaimd."
       }
-    ]
+    ],
+    "verificationNote": "Officiële programmaprioriteiten bevestigen digitale transformatie, digitale vaardigheden en samenwerking. Geen afzonderlijke open call geclaimd."
   },
   {
     "id": "ai-en-plagiaatdetectie",
@@ -2226,13 +2254,13 @@
       "Onderzoek"
     ],
     "themes": [],
-    "status": "in_development",
+    "status": "needs_verification",
     "availabilityText": "Nog niet ingevuld",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
     "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "verificationStatus": "needs_review",
     "sourceUrls": [
       {
         "label": "NOLAI",
@@ -2276,9 +2304,15 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Buiten de publieke projectie gehouden na broncontrole: De officiële NOLAI-bronnen bevestigen onderzoek en technische infrastructuur, maar niet de geregistreerde algemene publiek beschikbare platform- en servicevoorziening. NEST wordt niet met dit record gelijkgesteld."
       }
     ],
-    "offerCategory": "knowledge"
+    "offerCategory": "knowledge",
+    "verificationNote": "De officiële NOLAI-bronnen bevestigen onderzoek en technische infrastructuur, maar niet de geregistreerde algemene publiek beschikbare platform- en servicevoorziening. NEST wordt niet met dit record gelijkgesteld."
   },
   {
     "id": "federatieve-leerinfrastructuur",
@@ -2369,13 +2403,13 @@
       "MBO"
     ],
     "themes": [],
-    "status": "available",
+    "status": "needs_verification",
     "availabilityText": "2023",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
     "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "verificationStatus": "needs_review",
     "sourceUrls": [
       {
         "label": "lerenmetai.nl",
@@ -2419,13 +2453,19 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Buiten de publieke projectie gehouden na broncontrole: De geraadpleegde webweergave is een lege hostingpagina; directe browsercontrole kon het domein niet bereiken. Aanbod en de vermelde toeschrijving aan Kennisnet zijn niet bevestigd."
       }
     ],
-    "offerCategory": "knowledge"
+    "offerCategory": "knowledge",
+    "verificationNote": "De geraadpleegde webweergave is een lege hostingpagina; directe browsercontrole kon het domein niet bereiken. Aanbod en de vermelde toeschrijving aan Kennisnet zijn niet bevestigd."
   },
   {
     "id": "npuls-community-platform",
-    "title": "Npuls community-platform",
+    "title": "Npuls Community AI en Data",
     "recordType": "service",
     "legacyType": "Voorziening",
     "subtype": null,
@@ -2433,7 +2473,7 @@
       "org-npuls"
     ],
     "providerName": "Npuls",
-    "description": "Community- en kennisplatform voor professionals in MBO en hoger onderwijs.",
+    "description": "Besloten community voor professionals in mbo, hbo en wo om kennis en praktijkervaringen over AI en data te delen en samen aan producten en diensten te werken.",
     "purpose": "Kennisdeling en samenwerking ondersteunen",
     "audiences": [
       "Docenten",
@@ -2448,16 +2488,26 @@
     ],
     "themes": [],
     "status": "available",
-    "availabilityText": "2023",
+    "availabilityText": "Community beschikbaar met account; aanmelden via Pleio of SURFconext.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Npuls",
-        "url": "https://npuls.nl/",
+        "label": "Npuls Community AI en Data",
+        "url": "https://community-data-ai.npuls.nl/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Officieel overzicht van Npuls-kennisnetwerken",
+        "url": "https://kennisnetwerken.npuls.nl/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Toegang tot de besloten community",
+        "url": "https://community-data-ai.npuls.nl/login",
         "sourceType": "official"
       }
     ],
@@ -2465,7 +2515,7 @@
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Nederland",
-    "accessType": "public",
+    "accessType": "registration_required",
     "costType": "unknown",
     "fundingAmount": "Nog niet ingevuld",
     "fundingDeadline": null,
@@ -2497,9 +2547,15 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Concrete community en de accountplicht bevestigd; algemene verwijzing naar Npuls en de onjuiste openbare toegang vervangen. Kosten niet vastgesteld."
       }
     ],
-    "offerCategory": "knowledge"
+    "offerCategory": "knowledge",
+    "verificationNote": "Concrete community en de accountplicht bevestigd; algemene verwijzing naar Npuls en de onjuiste openbare toegang vervangen. Kosten niet vastgesteld."
   },
   {
     "id": "nolai-kennisbank",
@@ -2527,13 +2583,13 @@
       "Onderzoek"
     ],
     "themes": [],
-    "status": "in_development",
+    "status": "needs_verification",
     "availabilityText": "Nog niet ingevuld",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
     "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "verificationStatus": "needs_review",
     "sourceUrls": [
       {
         "label": "NOLAI",
@@ -2577,9 +2633,15 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Buiten de publieke projectie gehouden na broncontrole: NOLAI heeft concrete projecten en publicaties; de afzonderlijke algemene kennisbank zoals geregistreerd is niet bevestigd. Concrete NOLAI-publicaties blijven beschikbaar in de Atlas."
       }
     ],
-    "offerCategory": "knowledge"
+    "offerCategory": "knowledge",
+    "verificationNote": "NOLAI heeft concrete projecten en publicaties; de afzonderlijke algemene kennisbank zoals geregistreerd is niet bevestigd. Concrete NOLAI-publicaties blijven beschikbaar in de Atlas."
   },
   {
     "id": "ai-ondersteuning-voor-itemgeneratie",
@@ -2942,13 +3004,13 @@
       "Onderzoek"
     ],
     "themes": [],
-    "status": "available",
+    "status": "needs_verification",
     "availabilityText": "Doorlopend / per call",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
     "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "verificationStatus": "needs_review",
     "sourceUrls": [
       {
         "label": "NRO",
@@ -2987,8 +3049,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Buiten de publieke projectie gehouden na broncontrole: De algemene financieringsrol van NRO is bekend, maar dit record bevat geen concrete subsidieregeling of bevestigd actueel subsidieoverzicht. De homepage is daarvoor onvoldoende bronbewijs. Dit is geen oordeel over het bestaan van NRO of zijn financiering."
       }
-    ]
+    ],
+    "verificationNote": "De algemene financieringsrol van NRO is bekend, maar dit record bevat geen concrete subsidieregeling of bevestigd actueel subsidieoverzicht. De homepage is daarvoor onvoldoende bronbewijs. Dit is geen oordeel over het bestaan van NRO of zijn financiering."
   },
   {
     "id": "europese-ai-verordening-ai-act",
@@ -3103,12 +3171,12 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Autoriteit Persoonsgegevens",
-        "url": "https://autoriteitpersoonsgegevens.nl/",
+        "label": "Privacywetgeving en AVG bij de AP",
+        "url": "https://autoriteitpersoonsgegevens.nl/nl/over-privacy/wetten",
         "sourceType": "official"
       }
     ],
@@ -3144,8 +3212,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Algemene AP-homepage vervangen door de officiële uitleg over de AVG en het wettelijke kader. Geen nieuwe juridische interpretatie toegevoegd."
       }
-    ]
+    ],
+    "verificationNote": "Algemene AP-homepage vervangen door de officiële uitleg over de AVG en het wettelijke kader. Geen nieuwe juridische interpretatie toegevoegd."
   },
   {
     "id": "eu-data-act",
@@ -3535,13 +3609,13 @@
       "WO"
     ],
     "themes": [],
-    "status": "available",
-    "availabilityText": "2025",
+    "status": "needs_verification",
+    "availabilityText": "Een afzonderlijke onderwijsgerichte handreiking met deze titel en aanbieder is nog niet met een concrete bron bevestigd.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "lastVerified": null,
+    "verificationStatus": "needs_review",
     "sourceUrls": [
       {
         "label": "EU AI Act",
@@ -3581,8 +3655,15 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Teruggezet naar inhoudelijke review: de algemene EU AI Act-bron bevestigt geen afzonderlijke onderwijsgerichte handreiking. De aparte wetgevingsvermelding blijft ongewijzigd."
       }
-    ]
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Broncontrole op 9 september 2026: de vastgelegde URL is de algemene AI Act-pagina van de Europese Commissie. Die onderbouwt geen afzonderlijke handreiking met deze titel van Diverse publieke kennisorganisaties. De bestaande titel, aanbieder en beschrijving blijven uitsluitend als te onderzoeken registratie bewaard; dit is geen bewijs dat zo'n handreiking niet bestaat."
   },
   {
     "id": "ai-go-raamwerk-voor-ai-geletterdheid",
@@ -3748,13 +3829,13 @@
       "WO"
     ],
     "themes": [],
-    "status": "available",
+    "status": "needs_verification",
     "availabilityText": "Beschikbaar",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
     "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "verificationStatus": "needs_review",
     "sourceUrls": [
       {
         "label": "Edustandaard",
@@ -3793,8 +3874,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Buiten de publieke projectie gehouden na broncontrole: Naam, bestaan en beschreven functie van Edu-iR niet bevestigd in het officiële Edustandaardregister of gerichte zoekcontrole. De AI-doorontwikkelingsclaim is onvoldoende onderbouwd. Geen uitspraak dat het definitief niet bestaat."
       }
-    ]
+    ],
+    "verificationNote": "Naam, bestaan en beschreven functie van Edu-iR niet bevestigd in het officiële Edustandaardregister of gerichte zoekcontrole. De AI-doorontwikkelingsclaim is onvoldoende onderbouwd. Geen uitspraak dat het definitief niet bestaat."
   },
   {
     "id": "edukoppeling",
@@ -3826,12 +3913,12 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Edustandaard",
-        "url": "https://www.edustandaard.nl/",
+        "label": "Officiële registratie Edukoppeling",
+        "url": "https://www.edustandaard.nl/standaard_afspraken/edukoppeling-transactiestandaard/",
         "sourceType": "official"
       }
     ],
@@ -3866,8 +3953,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Concrete standaardregistratie bevestigt de afspraken voor beveiligde gegevensuitwisseling. Geen claim dat een conceptversie al is vastgesteld."
       }
-    ]
+    ],
+    "verificationNote": "Concrete standaardregistratie bevestigt de afspraken voor beveiligde gegevensuitwisseling. Geen claim dat een conceptversie al is vastgesteld."
   },
   {
     "id": "rosa-referentiearchitectuur",
@@ -4922,16 +5015,16 @@
       "WO"
     ],
     "themes": [],
-    "status": "available",
-    "availabilityText": "Inschrijving geopend voor de resterende online sessie op 25 augustus 2026",
+    "status": "archived",
+    "availabilityText": "De aangekondigde online sessies op 13 juli, 16 juli en 25 augustus 2026 zijn verstreken. Op de gecontroleerde bronpagina staat geen nieuwe datum.",
     "startDate": "2026-07-13",
     "endDate": "2026-08-25",
     "publicationDate": null,
-    "lastVerified": "2026-07-30",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële agenda en inschrijving resterende sessie",
+        "label": "Officiële agenda van de verstreken sessiereeks",
         "url": "https://npuls.nl/agenda/breng-als-trainer-het-gesprek-over-toetsen-examineren-en-ai-in-beweging-3",
         "sourceType": "official"
       }
@@ -4940,7 +5033,7 @@
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Nederland",
-    "accessType": "registration_required",
+    "accessType": "unknown",
     "costType": "unknown",
     "fundingAmount": null,
     "fundingDeadline": null,
@@ -4974,8 +5067,15 @@
         "date": "2026-07-30",
         "type": "updated",
         "summary": "Resterende sessie van 25 augustus, volledige reeksdata, inschrijfstatus en bron bijgewerkt."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Verstreken sessiereeks gearchiveerd na controle van de officiële Npuls-agenda; onjuiste open inschrijving verwijderd."
       }
-    ]
+    ],
+    "verificationNote": "Gerichte actualiteitscontrole op 9 september 2026: de officiële Npuls-agenda bevestigt de drie verstreken sessiedata; geen nieuwe editie op deze bronpagina vastgesteld.",
+    "verificationMethod": "agent_primary_source_review"
   },
   {
     "id": "ai-beleid-ontwikkelen-op-school",
@@ -7738,7 +7838,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "Universiteit van Amsterdam",
-    "description": "Workshop waarin docenten de basis van generatieve AI, prompting en de gevolgen voor onderwijs en toetsing verkennen.",
+    "description": "Workshop voor UvA-docenten waarin zij de basis van generatieve AI, prompting en de gevolgen voor hun onderwijs verkennen.",
     "purpose": "Docenten een praktische en kritische basis geven voor het gebruik van generatieve AI in hun onderwijs.",
     "audiences": [
       "Docenten"
@@ -7751,17 +7851,17 @@
       "Professionalisering",
       "Lesgeven en leren met AI"
     ],
-    "status": "available",
-    "availabilityText": "Direct beschikbaar",
-    "startDate": null,
-    "endDate": null,
+    "status": "planned",
+    "availabilityText": "Sessies op 17 november 2026 en 3 maart 2027; vooraf aanmelden als UvA-docent.",
+    "startDate": "2026-11-17",
+    "endDate": "2027-03-03",
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
-        "url": "https://tlc.uva.nl/article/ai-basics/",
+        "label": "Officiele UvA-cursusdetails, doelgroep en aanmelding",
+        "url": "https://tlc.uva.nl/en/article/introduction-to-ai-for-teachers/",
         "sourceType": "official"
       }
     ],
@@ -7769,7 +7869,7 @@
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Nederland",
-    "accessType": "public",
+    "accessType": "restricted",
     "costType": "unknown",
     "fundingAmount": null,
     "fundingDeadline": null,
@@ -7778,7 +7878,7 @@
     "fundingMin": null,
     "fundingMax": null,
     "totalBudget": null,
-    "eligibility": null,
+    "eligibility": "Voor UvA-docenten. Voor UvA-medewerkers; aanmelding met een @uva.nl-adres. AUC-, ACTA- en FdG/AMC-medewerkers melden zich per e-mail bij TLC Centraal aan.",
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
@@ -7797,8 +7897,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Officiele cursuspagina bevestigt UvA-docenten als doelgroep, instellingsgebonden aanmelding en sessies op 17 november 2026 en 3 maart 2027. Openbare toegang en Direct beschikbaar vervangen; beschikbare plaatsen en succesvolle inschrijving niet getest. Kosten niet opnieuw vastgesteld."
       }
-    ]
+    ],
+    "verificationNote": "Officiele cursuspagina bevestigt UvA-docenten als doelgroep, instellingsgebonden aanmelding en sessies op 17 november 2026 en 3 maart 2027. Openbare toegang en Direct beschikbaar vervangen; beschikbare plaatsen en succesvolle inschrijving niet getest. Kosten niet opnieuw vastgesteld."
   },
   {
     "id": "uva-ai-literacy-docenten-elearning",
@@ -7827,12 +7933,17 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
-        "url": "https://share.articulate.com/svX7iZbENb4ocjD2biC6-",
+        "label": "Officiele UvA-pagina met uitleg en actuele cursusverwijzing",
+        "url": "https://tlc.uva.nl/en/article/build-your-ai-literacy/",
+        "sourceType": "official"
+      },
+      {
+        "label": "AI literacy for lecturers: actuele cursuslink vanaf UvA",
+        "url": "https://share.articulate.com/RoMQC5qv9KmeRmXFLQtsd",
         "sourceType": "official"
       }
     ],
@@ -7867,8 +7978,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "De officiele UvA-bronnenpagina bevestigt de e-learning voor docenten en onderwijsassistenten en verwijst naar de opgenomen actuele Articulate-link. De oude Atlas-link was in deze controle niet uitleesbaar; daarmee is niet bewezen dat hij defect is. De JavaScript-lesinhoud en volledige cursusstart zijn niet zelfstandig geverifieerd. Bestaande toegang, kosten en beschikbaarheidsstatus niet gewijzigd wegens ontbrekend nieuw bewijs voor een beperking."
       }
-    ]
+    ],
+    "verificationNote": "De officiele UvA-bronnenpagina bevestigt de e-learning voor docenten en onderwijsassistenten en verwijst naar de opgenomen actuele Articulate-link. De oude Atlas-link was in deze controle niet uitleesbaar; daarmee is niet bewezen dat hij defect is. De JavaScript-lesinhoud en volledige cursusstart zijn niet zelfstandig geverifieerd. Bestaande toegang, kosten en beschikbaarheidsstatus niet gewijzigd wegens ontbrekend nieuw bewijs voor een beperking."
   },
   {
     "id": "uva-generatieve-ai-in-toetsing",
@@ -7878,7 +7995,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "Universiteit van Amsterdam",
-    "description": "Workshop over de impact van generatieve AI op niet-gesurveilleerde toetsing en mogelijke aanpassingen in toetsontwerp.",
+    "description": "Workshop voor UvA-docenten over de impact van generatieve AI op niet-gesurveilleerde toetsing en mogelijke aanpassingen in toetsontwerp.",
     "purpose": "Docenten helpen toetsing opnieuw te doordenken vanuit leerdoelen en verantwoord AI-gebruik.",
     "audiences": [
       "Docenten",
@@ -7892,17 +8009,17 @@
       "Toetsing en examinering",
       "Professionalisering"
     ],
-    "status": "available",
-    "availabilityText": "Direct beschikbaar",
-    "startDate": null,
-    "endDate": null,
+    "status": "planned",
+    "availabilityText": "Sessies op 28 oktober 2026 en 7 april 2027; vooraf aanmelden als UvA-docent.",
+    "startDate": "2026-10-28",
+    "endDate": "2027-04-07",
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
-        "url": "https://tlc.uva.nl/article/ai-in-toetsing/",
+        "label": "Officiele UvA-cursusdetails, doelgroep en aanmelding",
+        "url": "https://tlc.uva.nl/en/article/ai-in-assessment/?faculty=55",
         "sourceType": "official"
       }
     ],
@@ -7910,7 +8027,7 @@
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Nederland",
-    "accessType": "public",
+    "accessType": "restricted",
     "costType": "unknown",
     "fundingAmount": null,
     "fundingDeadline": null,
@@ -7919,7 +8036,7 @@
     "fundingMin": null,
     "fundingMax": null,
     "totalBudget": null,
-    "eligibility": null,
+    "eligibility": "Voor UvA-docenten met basiskennis van generatieve AI. Voor UvA-medewerkers; aanmelding met een @uva.nl-adres. AUC-, ACTA- en FdG/AMC-medewerkers melden zich per e-mail bij TLC Centraal aan.",
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
@@ -7938,8 +8055,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Officiele pagina voor GenAI and Assessment 1 bevestigt UvA-docenten, instellingsgebonden aanmelding en sessies op 28 oktober 2026 en 7 april 2027. Openbare toegang en Direct beschikbaar vervangen; beschikbare plaatsen en succesvolle inschrijving niet getest. Kosten niet opnieuw vastgesteld."
       }
-    ]
+    ],
+    "verificationNote": "Officiele pagina voor GenAI and Assessment 1 bevestigt UvA-docenten, instellingsgebonden aanmelding en sessies op 28 oktober 2026 en 7 april 2027. Openbare toegang en Direct beschikbaar vervangen; beschikbare plaatsen en succesvolle inschrijving niet getest. Kosten niet opnieuw vastgesteld."
   },
   {
     "id": "uva-bko-plus-responsible-ai",
@@ -7949,7 +8072,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "Universiteit van Amsterdam",
-    "description": "Professionaliseringstraject waarin docenten verantwoorde AI-toepassingen ontwerpen, uitproberen en evalueren in hun onderwijspraktijk.",
+    "description": "BKO+-traject voor UvA-onderwijsmedewerkers met een afgeronde BKO/UTQ, waarin zij verantwoorde AI-toepassingen ontwerpen, uitproberen en evalueren in hun onderwijspraktijk.",
     "purpose": "Verantwoord experimenteren met AI verbinden aan didactiek, ethiek en professionele reflectie.",
     "audiences": [
       "Docenten",
@@ -7963,17 +8086,17 @@
       "Publieke waarden en ethiek",
       "Lesgeven en leren met AI"
     ],
-    "status": "available",
-    "availabilityText": "Direct beschikbaar",
-    "startDate": null,
-    "endDate": null,
+    "status": "planned",
+    "availabilityText": "Traject vanaf 10 november 2026, met bijeenkomsten tot 13 april 2027 en assessment op 8 juni 2027. Studielast 80 uur; vooraf aanmelden.",
+    "startDate": "2026-11-10",
+    "endDate": "2027-06-08",
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
-        "url": "https://tlc.uva.nl/article/bko-track-responsible-ai-in-education/",
+        "label": "Officiele UvA-trajectinformatie, toelating en data",
+        "url": "https://tlc.uva.nl/en/article/bko-track-responsible-ai-in-education/?faculty=55",
         "sourceType": "official"
       }
     ],
@@ -7981,7 +8104,7 @@
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Nederland",
-    "accessType": "public",
+    "accessType": "restricted",
     "costType": "unknown",
     "fundingAmount": null,
     "fundingDeadline": null,
@@ -7990,7 +8113,7 @@
     "fundingMin": null,
     "fundingMax": null,
     "totalBudget": null,
-    "eligibility": null,
+    "eligibility": "Een afgeronde BKO/UTQ is vereist. Voorbereiding: de e-learning AI in Education afronden. Voor UvA-medewerkers; aanmelding met een @uva.nl-adres. AUC-, ACTA- en FdG/AMC-medewerkers melden zich per e-mail bij TLC Centraal aan.",
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
@@ -8008,8 +8131,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Officiele trajectpagina bevestigt BKO/UTQ als toelatingseis, voorbereiding via e-learning, 80 uur studielast en aanmeldroutes voor UvA/AUC/ACTA/FdG. Bijeenkomsten starten op 10 november 2026; assessment op 8 juni 2027. Externe toelating, beschikbare plaatsen en succesvolle inschrijving niet bevestigd; geen algemene publieke toegang geclaimd."
       }
-    ]
+    ],
+    "verificationNote": "Officiele trajectpagina bevestigt BKO/UTQ als toelatingseis, voorbereiding via e-learning, 80 uur studielast en aanmeldroutes voor UvA/AUC/ACTA/FdG. Bijeenkomsten starten op 10 november 2026; assessment op 8 juni 2027. Externe toelating, beschikbare plaatsen en succesvolle inschrijving niet bevestigd; geen algemene publieke toegang geclaimd."
   },
   {
     "id": "uva-dagelijkse-taken-met-ai-chat",
@@ -8019,7 +8148,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "Universiteit van Amsterdam",
-    "description": "Workshop over privacybewust gebruik van UvA AI Chat voor dagelijkse werkprocessen, met aandacht voor betrouwbaarheid en energiegebruik.",
+    "description": "Workshop voor UvA-docenten en andere UvA-medewerkers over privacybewust gebruik van UvA AI Chat voor dagelijkse werkprocessen, met aandacht voor betrouwbaarheid en energiegebruik.",
     "purpose": "Onderwijsmedewerkers praktisch en kritisch leren werken met een instellingsgebonden AI-chatomgeving.",
     "audiences": [
       "Docenten",
@@ -8034,16 +8163,16 @@
       "Veilige AI-omgeving",
       "Implementatie en adoptie"
     ],
-    "status": "available",
-    "availabilityText": "Sessies op 26 oktober 2026 en 16 maart 2027",
-    "startDate": null,
-    "endDate": null,
+    "status": "planned",
+    "availabilityText": "Sessies op 26 oktober 2026 en 16 maart 2027; vooraf aanmelden als UvA-medewerker.",
+    "startDate": "2026-10-26",
+    "endDate": "2027-03-16",
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
+        "label": "Officiele UvA-cursusdetails, doelgroep en aanmelding",
         "url": "https://tlc.uva.nl/en/article/daily-office-tasks-with-uva-ai-chat/",
         "sourceType": "official"
       }
@@ -8052,7 +8181,7 @@
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Nederland",
-    "accessType": "public",
+    "accessType": "restricted",
     "costType": "unknown",
     "fundingAmount": null,
     "fundingDeadline": null,
@@ -8061,7 +8190,7 @@
     "fundingMin": null,
     "fundingMax": null,
     "totalBudget": null,
-    "eligibility": null,
+    "eligibility": "Voor UvA-docenten en medewerkers met ondersteunende, organisatorische of administratieve taken. Voor UvA-medewerkers; aanmelding met een @uva.nl-adres. AUC-, ACTA- en FdG/AMC-medewerkers melden zich per e-mail bij TLC Centraal aan.",
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
@@ -8081,8 +8210,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Officiele cursuspagina bevestigt UvA-medewerkers als doelgroep, instellingsgebonden aanmelding en sessies op 26 oktober 2026 en 16 maart 2027. Geen algemeen publiek toegankelijk aanbod. Beschikbare plaatsen en succesvolle inschrijving niet getest; kosten niet opnieuw vastgesteld."
       }
-    ]
+    ],
+    "verificationNote": "Officiele cursuspagina bevestigt UvA-medewerkers als doelgroep, instellingsgebonden aanmelding en sessies op 26 oktober 2026 en 16 maart 2027. Geen algemeen publiek toegankelijk aanbod. Beschikbare plaatsen en succesvolle inschrijving niet getest; kosten niet opnieuw vastgesteld."
   },
   {
     "id": "uva-smarter-or-dependent",
@@ -8092,7 +8227,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "Universiteit van Amsterdam",
-    "description": "Workshop over de invloed van AI-gebruik op leren, denken en schrijven en over ontwerpkeuzes die zelfstandig denken beschermen.",
+    "description": "Workshop voor UvA-docenten over de invloed van AI-gebruik op leren, denken en schrijven en over ontwerpkeuzes die zelfstandig denken beschermen.",
     "purpose": "Docenten helpen AI-gebruik zo te ontwerpen dat menselijke leer- en correctiecapaciteit behouden blijft.",
     "audiences": [
       "Docenten",
@@ -8106,16 +8241,16 @@
       "Publieke waarden en ethiek",
       "Professionalisering"
     ],
-    "status": "available",
-    "availabilityText": "Sessies op 6 oktober 2026 en 11 mei 2027",
-    "startDate": null,
-    "endDate": null,
+    "status": "planned",
+    "availabilityText": "Sessies op 6 oktober 2026 en 11 mei 2027; vooraf aanmelden als UvA-docent.",
+    "startDate": "2026-10-06",
+    "endDate": "2027-05-11",
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
+        "label": "Officiele UvA-cursusdetails, doelgroep en aanmelding",
         "url": "https://tlc.uva.nl/en/article/smarter-or-dependent/",
         "sourceType": "official"
       }
@@ -8124,7 +8259,7 @@
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Nederland",
-    "accessType": "public",
+    "accessType": "restricted",
     "costType": "unknown",
     "fundingAmount": null,
     "fundingDeadline": null,
@@ -8133,7 +8268,7 @@
     "fundingMin": null,
     "fundingMax": null,
     "totalBudget": null,
-    "eligibility": null,
+    "eligibility": "Voor UvA-docenten met een basisbegrip van generatieve AI. Voor UvA-medewerkers; aanmelding met een @uva.nl-adres. AUC-, ACTA- en FdG/AMC-medewerkers melden zich per e-mail bij TLC Centraal aan.",
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
@@ -8152,8 +8287,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Officiele cursuspagina bevestigt UvA-docenten als doelgroep, basiskennis van generatieve AI, instellingsgebonden aanmelding en sessies op 6 oktober 2026 en 11 mei 2027. Beschikbare plaatsen en succesvolle inschrijving niet getest; kosten niet opnieuw vastgesteld."
       }
-    ]
+    ],
+    "verificationNote": "Officiele cursuspagina bevestigt UvA-docenten als doelgroep, basiskennis van generatieve AI, instellingsgebonden aanmelding en sessies op 6 oktober 2026 en 11 mei 2027. Beschikbare plaatsen en succesvolle inschrijving niet getest; kosten niet opnieuw vastgesteld."
   },
   {
     "id": "eu-ai-competent-teacher",
@@ -8325,12 +8466,12 @@
       "Subsidies en financiering",
       "Onderzoek"
     ],
-    "status": "planned",
-    "availabilityText": "Open van 31 juli tot en met 28 oktober 2026",
+    "status": "open_call",
+    "availabilityText": "Indienen is mogelijk van 31 juli 2026 om 12.00 CEST tot 28 oktober 2026 om 12.00 CET.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -8359,7 +8500,7 @@
       "Onderzoeksinstellingen",
       "Publieke organisaties"
     ],
-    "callStatus": "forthcoming",
+    "callStatus": "open_call",
     "recurrence": "Jaarlijks",
     "language": [
       "en"
@@ -8376,8 +8517,15 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Status gewijzigd naar open op basis van de officiële aanvraagperiode; exacte sluitingstijd toegevoegd."
       }
-    ]
+    ],
+    "verificationNote": "Gerichte actualiteitscontrole op 9 september 2026: de officiële COST-pagina bevestigt de geopende aanvraagperiode en sluiting op 28 oktober 2026 om 12.00 CET. Andere financiële voorwaarden zijn in deze controle niet opnieuw beoordeeld.",
+    "verificationMethod": "agent_primary_source_review"
   },
   {
     "id": "digital-europe-advanced-skills-2026",
@@ -8716,8 +8864,8 @@
     "availabilityText": "Direct beschikbaar",
     "startDate": null,
     "endDate": null,
-    "publicationDate": "2026-06-09",
-    "lastVerified": "2026-07-12",
+    "publicationDate": null,
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -8752,14 +8900,21 @@
       "GDPR",
       "teachers"
     ],
-    "notes": null,
+    "notes": "De bron noemt 2026 als jaar van actualisatie; de exacte publicatiedatum is niet vastgesteld.",
     "changeHistory": [
       {
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Als bestaande hoofdvermelding behouden voor de richtlijneditie 2026; wijzigingsdatum niet langer als publicatiedatum gebruikt en PO/VO-doelgroep aan de officiële bron getoetst."
       }
-    ]
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Gerichte broncontrole op 9 september 2026: de officiële Commissie-pagina beschrijft één actualisatie van de richtlijnen in 2026, primair voor onderwijsmedewerkers in het primair en voortgezet onderwijs. De datum 9 juni 2026 staat bij Last updated en bevestigt niet de oorspronkelijke publicatiedag; daarom blijft publicationDate leeg. Geen volledige nieuwe inhouds- of juridische beoordeling uitgevoerd."
   },
   {
     "id": "oecd-ec-ai-literacy-framework-2026",
@@ -9930,12 +10085,12 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
-        "url": "https://eit-hei.eu/",
+        "label": "Over EIT Higher Education Initiative",
+        "url": "https://eit-hei.eu/about-us/",
         "sourceType": "official"
       }
     ],
@@ -9971,8 +10126,14 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2b."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "De officiële programmawebsite bevestigt ondersteuning voor innovatiecapaciteit en ondernemerschap in hoger onderwijs; gerichte programmabron toegevoegd."
       }
-    ]
+    ],
+    "verificationNote": "De officiële programmawebsite bevestigt ondersteuning voor innovatiecapaciteit en ondernemerschap in hoger onderwijs; gerichte programmabron toegevoegd."
   },
   {
     "id": "unesco",
@@ -11825,9 +11986,9 @@
       "Onderwijsontwikkelaars"
     ],
     "sectors": [
+      "VO",
       "MBO",
-      "HBO",
-      "WO"
+      "HBO"
     ],
     "themes": [
       "Professionalisering",
@@ -11835,11 +11996,11 @@
       "Publieke waarden en ethiek"
     ],
     "status": "available",
-    "availabilityText": "Edities vanaf 4 september 2026",
-    "startDate": "2026-09-04",
+    "availabilityText": "Eerstvolgende aangekondigde start: 20 november 2026 in Eindhoven. Aanmelden via de aanbieder; ook incompany mogelijk.",
+    "startDate": "2026-11-20",
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-21",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -11852,7 +12013,7 @@
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Nederland",
-    "accessType": "public",
+    "accessType": "registration_required",
     "costType": "paid",
     "fundingAmount": null,
     "fundingDeadline": null,
@@ -11864,7 +12025,7 @@
     "eligibility": null,
     "applicantTypes": [],
     "callStatus": null,
-    "recurrence": null,
+    "recurrence": "Meerdere startmomenten; ook incompany beschikbaar",
     "language": [
       "nl"
     ],
@@ -11880,8 +12041,15 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 3."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Eerstvolgende start op 20 november 2026 verwerkt; doelgroepsectoren gecorrigeerd naar vo, mbo en hbo conform bron."
       }
-    ]
+    ],
+    "verificationNote": "Gerichte broncontrole op 9 september 2026: de officiële Fontys-pagina bevestigt de volgende start op 20 november 2026 en noemt docenten uit vo, mbo en hbo als doelgroep. De eerdere start op 4 september is verstreken.",
+    "verificationMethod": "agent_primary_source_review"
   },
   {
     "id": "uu-ai-e-modules",
@@ -12035,7 +12203,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "Universiteit van Amsterdam",
-    "description": "Workshop voor docenten die leeractiviteiten willen ontwerpen waarin generatieve AI het leren doelgericht ondersteunt.",
+    "description": "Workshop voor UvA-docenten die leeractiviteiten willen ontwerpen waarin generatieve AI het leren doelgericht ondersteunt.",
     "purpose": "Van incidenteel toolgebruik naar onderwijskundig ontworpen leeractiviteiten met AI gaan.",
     "audiences": [
       "Docenten",
@@ -12049,17 +12217,17 @@
       "Professionalisering",
       "Curriculumontwikkeling"
     ],
-    "status": "available",
-    "availabilityText": "Aanmelding via UvA TLC",
-    "startDate": null,
-    "endDate": null,
+    "status": "planned",
+    "availabilityText": "Sessies op 3 november 2026 en 24 maart 2027; vooraf aanmelden als UvA-docent.",
+    "startDate": "2026-11-03",
+    "endDate": "2027-03-24",
     "publicationDate": null,
-    "lastVerified": "2026-07-21",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
-        "url": "https://tlc.uva.nl/article/genai-in-the-classroom/",
+        "label": "Officiele UvA-cursusdetails, doelgroep en aanmelding",
+        "url": "https://tlc.uva.nl/en/article/genai-in-the-classroom/?faculty=55",
         "sourceType": "official"
       }
     ],
@@ -12067,7 +12235,7 @@
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Nederland",
-    "accessType": "public",
+    "accessType": "restricted",
     "costType": "unknown",
     "fundingAmount": null,
     "fundingDeadline": null,
@@ -12076,7 +12244,7 @@
     "fundingMin": null,
     "fundingMax": null,
     "totalBudget": null,
-    "eligibility": null,
+    "eligibility": "Voor UvA-docenten. Voor UvA-medewerkers; aanmelding met een @uva.nl-adres. AUC-, ACTA- en FdG/AMC-medewerkers melden zich per e-mail bij TLC Centraal aan.",
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
@@ -12095,8 +12263,14 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 3."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Officiele cursuspagina bevestigt UvA-docenten als doelgroep, instellingsgebonden aanmelding en sessies op 3 november 2026 en 24 maart 2027. Openbare toegang vervangen; beschikbare plaatsen en succesvolle inschrijving niet getest. Kosten niet opnieuw vastgesteld."
       }
-    ]
+    ],
+    "verificationNote": "Officiele cursuspagina bevestigt UvA-docenten als doelgroep, instellingsgebonden aanmelding en sessies op 3 november 2026 en 24 maart 2027. Openbare toegang vervangen; beschikbare plaatsen en succesvolle inschrijving niet getest. Kosten niet opnieuw vastgesteld."
   },
   {
     "id": "uva-toetsing-herzien-met-genai",
@@ -12106,7 +12280,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "Universiteit van Amsterdam",
-    "description": "Workshop waarin docenten de invloed van generatieve AI op niet-gesurveilleerde toetsing onderzoeken en een eigen summatieve toets herontwerpen.",
+    "description": "Workshop voor docenten van UvA Economie en Bedrijfskunde waarin zij de invloed van generatieve AI op niet-gesurveilleerde toetsing onderzoeken en een eigen summatieve toets herontwerpen.",
     "purpose": "Toetsing valide en doelgericht aanpassen aan generatieve AI.",
     "audiences": [
       "Docenten",
@@ -12121,16 +12295,16 @@
       "Professionalisering",
       "Lesgeven en leren met AI"
     ],
-    "status": "available",
-    "availabilityText": "Gepland op 21 oktober 2026",
+    "status": "planned",
+    "availabilityText": "Gepland op 21 oktober 2026, 13.00-15.00 uur; voor EB-docenten, met voorafgaande aanmelding.",
     "startDate": "2026-10-21",
     "endDate": "2026-10-21",
     "publicationDate": null,
-    "lastVerified": "2026-07-21",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
+        "label": "Officiele UvA TLC-EB-workshop, doelgroep en datum",
         "url": "https://tlc.uva.nl/article/workshop-toetsingen-herzien-met-genai/?faculty=8",
         "sourceType": "official"
       }
@@ -12139,7 +12313,7 @@
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Nederland",
-    "accessType": "public",
+    "accessType": "restricted",
     "costType": "unknown",
     "fundingAmount": null,
     "fundingDeadline": null,
@@ -12148,7 +12322,7 @@
     "fundingMin": null,
     "fundingMax": null,
     "totalBudget": null,
-    "eligibility": null,
+    "eligibility": "Voor EB-docenten van de Universiteit van Amsterdam; vooraf aanmelden via de cursuspagina van TLC-EB.",
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
@@ -12167,8 +12341,14 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 3."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Officiele TLC-EB-pagina noemt EB-docenten als doelgroep en bevestigt 21 oktober 2026, 13.00-15.00 uur. De eveneens genoemde sessie van 6 mei 2026 is verstreken. Openbare toegang vervangen door instellingsgebonden toegang; beschikbare plaatsen en succesvolle inschrijving niet getest."
       }
-    ]
+    ],
+    "verificationNote": "Officiele TLC-EB-pagina noemt EB-docenten als doelgroep en bevestigt 21 oktober 2026, 13.00-15.00 uur. De eveneens genoemde sessie van 6 mei 2026 is verstreken. Openbare toegang vervangen door instellingsgebonden toegang; beschikbare plaatsen en succesvolle inschrijving niet getest."
   },
   {
     "id": "unesco-mooc-ethiek-ai",
@@ -14853,12 +15033,12 @@
       "Onderzoek",
       "Beleid en governance"
     ],
-    "status": "open_call",
-    "availabilityText": "Intentie uiterlijk 12 augustus; volledige aanvraag 16 september 2026",
+    "status": "closed_call",
+    "availabilityText": "Gesloten voor nieuwe aanmeldingen: de verplichte intentiefase is voorbij. Alleen wie tijdig een intentie indiende kan de volledige aanvraag nog indienen tot 16 september 2026 om 12.00 uur (Chicago).",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-21",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -14880,13 +15060,13 @@
     "fundingMin": null,
     "fundingMax": null,
     "totalBudget": null,
-    "eligibility": "Internationale onderzoeksteams volgens de officiële call; regeling is breder dan AI.",
+    "eligibility": "Internationale onderzoeksteams volgens de officiële call; regeling is breder dan AI. Een tijdig ingediende Intent to Apply is verplicht voor toegang tot de volledige aanvraag. Deze intentiefase is inmiddels gesloten.",
     "applicantTypes": [
       "Onderzoekers",
       "Consortia",
       "Onderzoeksorganisaties"
     ],
-    "callStatus": "open_call",
+    "callStatus": "closed_call",
     "recurrence": null,
     "language": [
       "en"
@@ -14903,8 +15083,15 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Gesloten intentiefase verwerkt; resterende volledige aanvraag expliciet beperkt tot tijdig aangemelde teams."
       }
-    ]
+    ],
+    "verificationNote": "Gerichte actualiteitscontrole op 9 september 2026: de officiële Spencer-pagina vermeldt dat nieuwe aanmeldingen gesloten zijn en de intentiedeadline is verstreken. De volledige aanvraag blijft tot 16 september 2026 om 12.00 uur Central/Chicago uitsluitend toegankelijk na de verplichte intentie.",
+    "verificationMethod": "agent_primary_source_review"
   },
   {
     "id": "nsf-computing-education-research",
@@ -17538,17 +17725,22 @@
       "Veilige AI-omgeving",
       "Professionalisering"
     ],
-    "status": "planned",
-    "availabilityText": "Registratie geopend voor fysieke of online deelname; 8–11 september 2026",
+    "status": "available",
+    "availabilityText": "Het evenement loopt van 8 tot en met 11 september 2026. Registratie is gesloten; plenaire sessies zijn via de openbare UNESCO-webcast te volgen.",
     "startDate": "2026-09-08",
     "endDate": "2026-09-11",
     "publicationDate": null,
-    "lastVerified": "2026-07-28",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "Officiële bron",
         "url": "https://www.unesco.org/en/weeks/digital-learning?hub=67390",
+        "sourceType": "official"
+      },
+      {
+        "label": "Officiële webcast Digital Learning Week 2026",
+        "url": "https://webcast.unesco.org/events/2026-09-DigitalLearningWeek2026/",
         "sourceType": "official"
       }
     ],
@@ -17556,7 +17748,7 @@
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Internationaal",
-    "accessType": "registration_required",
+    "accessType": "public",
     "costType": "unknown",
     "fundingAmount": null,
     "fundingDeadline": null,
@@ -17587,8 +17779,15 @@
         "date": "2026-07-28",
         "type": "added",
         "summary": "Toegevoegd na controle van de officiële UNESCO-evenement- en registratiepagina."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Gesloten registratie en lopend evenement verwerkt; openbare webcast als actuele toegang toegevoegd."
       }
-    ]
+    ],
+    "verificationNote": "Gerichte actualiteitscontrole op 9 september 2026: de officiële UNESCO-evenementpagina meldt dat registratie gesloten is en verwijst naar de openbare webcast. De webcastpagina voor Digital Learning Week 2026 is gecontroleerd.",
+    "verificationMethod": "agent_primary_source_review"
   },
   {
     "id": "oecd-systematic-genai-adoption-higher-education",
@@ -17779,11 +17978,11 @@
       "Publieke waarden en ethiek"
     ],
     "status": "available",
-    "availabilityText": "Inschrijving geopend voor 4 september en 20 november 2026 in Eindhoven",
-    "startDate": "2026-09-04",
+    "availabilityText": "Eerstvolgende aangekondigde cursusdag: 20 november 2026 in Eindhoven. Aanmelden via de aanbieder; ook incompany mogelijk.",
+    "startDate": "2026-11-20",
     "endDate": "2026-11-20",
     "publicationDate": null,
-    "lastVerified": "2026-07-30",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -17811,7 +18010,7 @@
     "eligibility": "Primair gericht op docenten in het voortgezet onderwijs, mbo en hbo; ook toegankelijk voor andere onderwijsprofessionals.",
     "applicantTypes": [],
     "callStatus": null,
-    "recurrence": "Twee edities in 2026; ook incompany beschikbaar",
+    "recurrence": "Meerdere edities per jaar; ook incompany beschikbaar",
     "language": [
       "nl"
     ],
@@ -17830,8 +18029,15 @@
         "date": "2026-07-30",
         "type": "added",
         "summary": "Toegevoegd na controle van cursusinhoud, doelgroep, data, prijs en directe inschrijfmogelijkheid op de officiële Fontys-pagina."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Verstreken septembereditie vervangen door eerstvolgende bevestigde cursusdag op 20 november 2026."
       }
-    ]
+    ],
+    "verificationNote": "Gerichte actualiteitscontrole op 9 september 2026: de officiële Fontys-pagina bevestigt 20 november als resterende cursusdag in 2026. De eerdere editie van 4 september is verstreken. Incompany-aanbod is eveneens vermeld.",
+    "verificationMethod": "agent_primary_source_review"
   },
   {
     "id": "fontys-ai-voor-onderwijs-compleet",
@@ -17861,11 +18067,11 @@
       "Publieke waarden en ethiek"
     ],
     "status": "available",
-    "availabilityText": "Inschrijving geopend voor start op 2 september 2026 in Eindhoven",
-    "startDate": "2026-09-02",
+    "availabilityText": "Eerstvolgende aangekondigde start: 17 februari 2027 in Eindhoven. Aanmelden via de aanbieder; de editie van 2 september 2026 is al begonnen.",
+    "startDate": "2027-02-17",
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-30",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -17906,14 +18112,21 @@
       "prototype",
       "onderwijsinnovatie"
     ],
-    "notes": "Het traject duurt 18 weken, vraagt circa 12 uur per week, kost EUR 3.105 en wordt afgesloten met een microcredential.",
+    "notes": "Het traject duurt 18 weken, vraagt circa 12 uur per week en wordt afgesloten met een microcredential. Voor de editie van 17 februari 2027 vermeldt de aanbieder EUR 3.275 (btw vrijgesteld). Eventueel gebruik van betaalde AI-platforms kan extra kosten meebrengen.",
     "changeHistory": [
       {
         "date": "2026-07-30",
         "type": "added",
         "summary": "Toegevoegd na controle van cursusinhoud, doelgroep, startdatum, prijs en directe inschrijfmogelijkheid op de officiële Fontys-pagina."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Eerstvolgende bevestigde start op 17 februari 2027 en bijbehorend tarief verwerkt; verstreken septemberinschrijving verwijderd."
       }
-    ]
+    ],
+    "verificationNote": "Gerichte broncontrole op 9 september 2026: de officiële Fontys-pagina bevestigt de volgende start op 17 februari 2027 en het bijbehorende tarief van EUR 3.275. De eerdere editie van 2 september 2026 is al begonnen.",
+    "verificationMethod": "agent_primary_source_review"
   },
   {
     "id": "radboud-masterclass-leren-over-en-met-ai",
@@ -19329,7 +19542,7 @@
       "europese-commissie-dg-eac"
     ],
     "providerName": "Europese Commissie",
-    "description": "Open oproep voor vooraanstaande wetenschappers die onderzoek doen naar AI of AI in wetenschappelijk onderzoek toepassen en het Europese RAISE-initiatief strategisch willen adviseren.",
+    "description": "Oproep voor vooraanstaande wetenschappers die onderzoek doen naar AI of AI in wetenschappelijk onderzoek toepassen en het Europese RAISE-initiatief strategisch willen adviseren.",
     "purpose": "Wetenschappelijke expertise betrekken bij de koers van Europese AI-wetenschap en onderzoeksinfrastructuur.",
     "audiences": [
       "Onderzoekers",
@@ -19345,12 +19558,12 @@
       "Beleid en governance",
       "Subsidies en financiering"
     ],
-    "status": "open_call",
-    "availabilityText": "Open voor aanmeldingen tot 4 september 2026",
+    "status": "closed_call",
+    "availabilityText": "Gesloten: de aanmelddeadline was 4 september 2026.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-30",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -19377,7 +19590,7 @@
       "Wetenschappers",
       "Hoogleraren"
     ],
-    "callStatus": "open_call",
+    "callStatus": "closed_call",
     "recurrence": null,
     "language": [
       "en"
@@ -19394,8 +19607,15 @@
         "date": "2026-07-30",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Oproep gesloten na controle van de officiële deadline van 4 september 2026."
       }
-    ]
+    ],
+    "verificationNote": "Gerichte actualiteitscontrole op 9 september 2026: de officiële Europese Commissie-bron bevestigt 4 september 2026 als aanmelddeadline.",
+    "verificationMethod": "agent_primary_source_review"
   },
   {
     "id": "leiden-transkribus-digitale-geletterdheid",
@@ -22309,10 +22529,7 @@
     ],
     "sectors": [
       "PO",
-      "VO",
-      "MBO",
-      "HBO",
-      "WO"
+      "VO"
     ],
     "themes": [
       "AI-geletterdheid",
@@ -22324,8 +22541,8 @@
     "availabilityText": "Direct beschikbaar in het Engels; de versie van 2026 bouwt voort op de oorspronkelijke richtlijnen uit 2022.",
     "startDate": null,
     "endDate": null,
-    "publicationDate": "2026-06-09",
-    "lastVerified": "2026-08-29",
+    "publicationDate": null,
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -22365,14 +22582,25 @@
       "GDPR",
       "teaching and learning"
     ],
-    "notes": "De officiële pagina vermeldt dat de vertalingen in alle EU-talen volgen na de Engelstalige actualisatie.",
+    "notes": "De officiële pagina vermeldt dat de vertalingen in alle EU-talen volgen na de Engelstalige actualisatie. De bron noemt 2026 als jaar van actualisatie; de exacte publicatiedatum is niet vastgesteld.",
     "changeHistory": [
       {
         "date": "2026-08-29",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde Europese inhoudstranche."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Bewezen dubbeling van ec-ethical-ai-data-guidelines-2026 uitgesloten van de browserprojectie; canonieke ID en relaties behouden. Onbewezen publicatiedag verwijderd en doelgroep beperkt tot de expliciet genoemde PO/VO-context."
       }
-    ]
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Gerichte broncontrole op 9 september 2026: de officiële Commissie-pagina beschrijft één actualisatie van de richtlijnen in 2026, primair voor onderwijsmedewerkers in het primair en voortgezet onderwijs. De datum 9 juni 2026 staat bij Last updated en bevestigt niet de oorspronkelijke publicatiedag; daarom blijft publicationDate leeg. Geen volledige nieuwe inhouds- of juridische beoordeling uitgevoerd. Deze latere registratie is een inhoudelijke dubbeling van ec-ethical-ai-data-guidelines-2026.",
+    "publicationExclusion": {
+      "reason": "Dubbele registratie van dezelfde richtlijneditie 2026 als ec-ethical-ai-data-guidelines-2026. De bestaande hoofdvermelding blijft publiek; dit canonieke record en zijn relaties blijven voor herleidbaarheid bewaard.",
+      "decidedOn": "2026-09-09"
+    }
   },
   {
     "id": "cip-privacy-self-assessment-prisa-2025",
@@ -23304,7 +23532,7 @@
       "org-mbo-mediawijs"
     ],
     "providerName": "mbo mediawijs",
-    "description": "Collectie van 20 open leermaterialen rond Artificial Intelligence voor het mbo. De collectie bevat onder meer lessen over AI en ethiek, leren prompten met kunst, een handleiding voor lesplannen met een custom AI-tool en de praatplaat AI en onderwijs.",
+    "description": "Open leermaterialen rond Artificial Intelligence voor het mbo. Het lessenoverzicht heeft een AI-filter en bevat onder meer lessen over AI en ethiek, verantwoord gebruik en leren prompten met kunst.",
     "purpose": "Docenten en studenten ondersteunen bij het begrijpen, bespreken en verantwoord toepassen van AI in de onderwijspraktijk.",
     "audiences": [
       "MBO-docenten",
@@ -23326,12 +23554,22 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": "2026-09-08",
-    "lastVerified": "2026-09-08",
-    "verificationStatus": "recently_checked",
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële website",
-        "url": "https://mbomediawijs.nl",
+        "label": "Lessenoverzicht met AI-filter en open licentie",
+        "url": "https://mbomediawijs.nl/lessen/",
+        "sourceType": "official"
+      },
+      {
+        "label": "AI en ethiek: verantwoord gebruik",
+        "url": "https://mbomediawijs.nl/openleermaterialen/ai-ethiek-verantwoord-gebruik/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Leren prompten met kunst",
+        "url": "https://mbomediawijs.nl/mediawijsheid-lessen/leren-prompten-met-kunst/",
         "sourceType": "official"
       }
     ],
@@ -23376,9 +23614,15 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Lessenoverzicht, concrete AI-lessen en de verklaring over open leermiddelen gecontroleerd. Het vaste aantal 20 is niet opnieuw vastgesteld en daarom weggelaten."
       }
     ],
-    "offerCategory": "materials"
+    "offerCategory": "materials",
+    "verificationNote": "Lessenoverzicht, concrete AI-lessen en de verklaring over open leermiddelen gecontroleerd. Het vaste aantal 20 is niet opnieuw vastgesteld en daarom weggelaten."
   },
   {
     "id": "vista-ai-in-onderwijs-kennissite",

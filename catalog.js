@@ -41,6 +41,13 @@
     'Praktijkvoorbeelden': ['praktijkvoorbeeld', 'pilot', 'casus'],
     'Publieke waarden en ethiek': ['publieke waarden', 'ethiek', 'autonomie', 'menselijke maat']
   };
+  // These existing editorial labels describe the same catalogue categories.
+  // Other specific topics remain distinct and stay selectable in the filters.
+  const THEME_ALIASES = {
+    'ai act': 'AI Act en wetgeving', governance: 'Beleid en governance',
+    implementatie: 'Implementatie en adoptie', curriculum: 'Curriculumontwikkeling',
+    'ai infrastructuur': 'Data en infrastructuur', ethiek: 'Publieke waarden en ethiek'
+  };
   const SYNONYMS = [
     ['ai literacy', 'ai geletterdheid'], ['toetsen', 'toetsing', 'examinering'],
     ['privacy', 'avg', 'persoonsgegevens'], ['ai wet', 'ai act', 'ai verordening'],
@@ -49,7 +56,7 @@
     ['tool', 'hulpmiddel', 'product', 'voorziening'], ['prompting', 'prompten', 'prompt']
   ];
   const STATUS_LABELS = {
-    available: 'Direct beschikbaar', open_call: 'Open voor aanvragen', pilot: 'Pilot',
+    available: 'Direct beschikbaar', open_call: 'Open voor aanvragen', closed_call: 'Aanvraag gesloten', pilot: 'Pilot',
     in_development: 'In ontwikkeling', planned: 'Gepland', needs_verification: 'Te verifiëren',
     archived: 'Niet meer actueel'
   };
@@ -66,7 +73,11 @@
     unclassified: 'Aanbodvorm nog niet ingedeeld'
   };
   const PRIMARY_AUDIENCES = ['Docenten', 'Bestuurders', 'IT-professionals', 'Onderzoekers'];
-  const SECTORS = ['PO', 'VO', 'MBO', 'HBO', 'WO', 'Onderzoek', 'Overheid'];
+  const SECTORS = ['PO', 'VO', 'VSO', 'MBO', 'HBO', 'WO', 'Onderzoek', 'Overheid'];
+  const ACCESS_LABELS = {
+    public: 'Publiek toegankelijk', registration_required: 'Registratie nodig',
+    paid: 'Betaalde toegang', restricted: 'Beperkte toegang', unknown: 'Toegang niet vastgesteld'
+  };
   const PERSONA_KEY = 'atlas.persona';
   const FILTER_KEYS = ['theme', 'audience', 'sector', 'status', 'type', 'geography', 'organization', 'access', 'source'];
   const SORT_OPTIONS = {
@@ -112,6 +123,7 @@
   let state = {};
   let resultRecords = [];
   let debounceTimer;
+  let todayCache = { value: '', checkedAt: 0 };
 
   function savedPersonas() {
     try {
@@ -138,12 +150,19 @@
   ].join(' '));
   const recordThemes = record => {
     const explicit = record.themes || [];
-    if (explicit.length) return explicit;
+    if (explicit.length) return [...new Set(explicit.map(canonicalTheme))];
     const text = recordText(record);
     return Object.entries(THEME_RULES)
       .filter(([, terms]) => terms.some(term => text.includes(normalize(term))))
       .map(([theme]) => theme);
   };
+  function canonicalTheme(value) {
+    const key = normalize(value);
+    return Object.hasOwn(THEME_ALIASES, key) ? THEME_ALIASES[key] : value;
+  }
+  function themeOptions() {
+    return [...new Set([...Object.keys(THEME_RULES), ...records.flatMap(recordThemes)])];
+  }
   const typeLabel = record => TYPE_LABELS[record.legacyType] || record.legacyType || record.recordType;
   const offerType = record => {
     if (Object.hasOwn(OFFER_CATEGORIES, record.offerCategory) && record.offerCategory !== 'unclassified') return record.offerCategory;
@@ -152,11 +171,62 @@
     return typeLabel(record);
   };
   const offerLabel = record => filterOptionLabel('type', offerType(record));
-  const statusLabel = record => {
+  function todayInNetherlands() {
+    const now = Date.now();
+    if (!todayCache.value || now - todayCache.checkedAt >= 60_000) {
+      todayCache = { checkedAt: now, value: new Intl.DateTimeFormat('sv-SE', {
+        timeZone: 'Europe/Amsterdam', year: 'numeric', month: '2-digit', day: '2-digit'
+      }).format(new Date(now)) };
+    }
+    return todayCache.value;
+  }
+  function effectiveStatus(record, today = todayInNetherlands()) {
+    if (validDate(today)) {
+      const deadline = validDate(record.applicationDeadline) || validDate(record.fundingDeadline);
+      if (record.status === 'open_call' &&
+          (['funding_call', 'subsidy'].includes(record.recordType) || ['Call', 'Subsidie'].includes(record.legacyType)) &&
+          deadline && deadline < today) return 'closed_call';
+      const end = validDate(record.endDate);
+      if ((record.recordType === 'training' || record.legacyType === 'Training') &&
+          ['available', 'planned'].includes(record.status) && end && end < today) return 'archived';
+    }
+    return record.status;
+  }
+  const statusLabel = (record, today) => {
     if (['Behoefte', 'Witte vlek'].includes(record.legacyType)) return 'Geïdentificeerde behoefte';
-    return STATUS_LABELS[record.status] || 'Te verifiëren';
+    return STATUS_LABELS[effectiveStatus(record, today)] || 'Te verifiëren';
   };
-  const values = key => (state[key] || '').split(',').filter(Boolean);
+  const organizationNames = [...new Set(records.map(record => record.providerName).filter(Boolean))]
+    .sort((left, right) => right.length - left.length);
+  function filterValues(key, value) {
+    const raw = String(value || '');
+    if (key === 'organization') {
+      // New comma-containing selections use a JSON array; old shared URLs keep
+      // working by matching the longest complete known provider name first.
+      if (raw.startsWith('[')) {
+        try {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed) && parsed.every(item => typeof item === 'string')) return [...new Set(parsed.filter(Boolean))];
+        } catch { /* Preserve unrecognised legacy text as an exact selection. */ }
+      }
+      const selected = [];
+      let remaining = raw;
+      while (remaining) {
+        const name = organizationNames.find(item => remaining === item || remaining.startsWith(item + ','));
+        const next = name || remaining.split(',')[0];
+        if (next) selected.push(next);
+        remaining = remaining.slice(next.length + 1);
+      }
+      return [...new Set(selected)];
+    }
+    return [...new Set(raw.split(',').filter(Boolean).map(item => key === 'theme' ? canonicalTheme(item)
+      : key === 'access' && item === 'Toegang nog niet bevestigd' ? ACCESS_LABELS.unknown : item))];
+  }
+  function serializeFilterValues(key, selected) {
+    const unique = [...new Set(selected)];
+    return key === 'organization' && (unique.length > 1 || unique.some(item => item.includes(','))) ? JSON.stringify(unique) : unique.join(',');
+  }
+  const values = key => filterValues(key, state[key]);
   const queryTerms = query => {
     const normalized = normalize(query);
     const terms = normalized ? [normalized] : [];
@@ -169,7 +239,7 @@
     theme: recordThemes(record), sector: record.sectors || [], status: [statusLabel(record)],
     type: [...new Set([offerType(record), typeLabel(record)])], audience: record.audiences || [], organization: [record.providerName],
     geography: [record.geographicScope || 'Reikwijdte niet ingevuld'],
-    access: [record.accessType === 'public' ? 'Publiek toegankelijk' : 'Toegang nog niet bevestigd'],
+    access: [accessLabel(record)],
     source: [(record.sourceUrls || []).length ? 'Met officiële bron' : 'Bron nog niet vastgelegd']
   }[key] || []);
 
@@ -220,7 +290,7 @@
   function matches(record, omittedFacet = '', criteria = state) {
     if (!queryMatches(record, criteria.q)) return false;
     return FILTER_KEYS.every(key => {
-      const selected = String(criteria[key] || '').split(',').filter(Boolean);
+      const selected = filterValues(key, criteria[key]);
       return key === omittedFacet || !selected.length || selected.some(value => facetValues(record, key).includes(value));
     });
   }
@@ -239,7 +309,7 @@
     query.split(' ').filter(Boolean).forEach(token => {
       if (title.split(' ').some(word => levenshtein(token, word) <= (token.length >= 8 ? 2 : 1))) score += 12;
     });
-    score += String(criteria.theme || '').split(',').filter(value => recordThemes(record).includes(value)).length * 6;
+    score += filterValues('theme', criteria.theme).filter(value => recordThemes(record).includes(value)).length * 6;
     score += String(criteria.sector || '').split(',').filter(value => (record.sectors || []).includes(value)).length * 4;
     score += String(criteria.audience || '').split(',').filter(value => (record.audiences || []).includes(value)).length * 4;
     return score + practical / 10 + (statusLabel(record) === 'Direct beschikbaar' ? 3 : 0) + trusted;
@@ -360,8 +430,9 @@
     return `#zoeken${params.size ? `?${params}` : ''}`;
   }
   function trustTone(record) {
-    if (['needs_verification', 'unknown'].includes(record.status) || !['verified', 'recently_checked'].includes(record.verificationStatus)) return 'is-uncertain';
-    if (['available', 'open_call'].includes(record.status)) return 'is-confirmed';
+    const status = effectiveStatus(record);
+    if (['needs_verification', 'unknown'].includes(status) || !['verified', 'recently_checked'].includes(record.verificationStatus)) return 'is-uncertain';
+    if (['available', 'open_call'].includes(status)) return 'is-confirmed';
     return 'is-neutral';
   }
   function primarySource(record) { return (record.sourceUrls || [])[0] || null; }
@@ -373,18 +444,23 @@
     return ({ free: 'Gratis', paid: 'Betaald', freemium: 'Gratis en betaald' })[record.costType] || 'Kosten onbekend';
   }
   function accessLabel(record) {
-    return ({ public: 'Publiek toegankelijk', registration_required: 'Registratie nodig', paid: 'Betaalde toegang' })[record.accessType] || 'Toegang niet vastgesteld';
+    return ACCESS_LABELS[record.accessType] || ACCESS_LABELS.unknown;
   }
   function commercialLabel(record) {
     const evidence = record.commercialEvidence;
     const supported = evidence && /^https:\/\//.test(evidence.url || '') && evidence.note && validDate(evidence.checkedOn);
     if (supported && record.commercialStatus === 'commercial') return 'Commercieel aanbod';
-    if (supported && record.commercialStatus === 'non_commercial') return 'Niet-commercieel aanbod';
-    return 'Commerciële aard niet vastgesteld';
+    return '';
   }
   function commercialBadge(record) {
     const label = commercialLabel(record);
+    if (!label) return '';
     return `<span class="commercial-label${label === 'Commercieel aanbod' ? ' is-commercial' : ''}">${escapeHtml(label)}</span>`;
+  }
+  function commercialDetails(record) {
+    if (!commercialLabel(record)) return '';
+    const evidence = record.commercialEvidence;
+    return `<h2>Commercieel aanbod</h2><p>${escapeHtml(evidence.note)} <a href="${escapeHtml(evidence.url)}" target="_blank" rel="noopener noreferrer">Bron voor deze vermelding ↗</a> · Broncontrole ${escapeHtml(dateLabel(evidence.checkedOn))}.</p>`;
   }
   function offerFacts(record) {
     return [
@@ -396,7 +472,6 @@
       ['Beschikbaarheid', statusLabel(record)],
       ['Kosten', costLabel(record)],
       ['Toegang', accessLabel(record)],
-      ['Commerciële aard', commercialLabel(record)],
       ['Geografische reikwijdte', factValue(record.geographicScope)],
       ['Verschenen op', publicationDate(record) ? dateLabel(publicationDate(record)) : 'Publicatiedatum onbekend'],
       ['Nieuw in de Atlas sinds', addedDate(record) ? dateLabel(addedDate(record)) : 'Datum niet vastgelegd'],
@@ -408,7 +483,7 @@
   function searchForm(id) {
     return `<form class="atlas-search" role="search" autocomplete="off">
       <label for="${id}">Waar bent u vandaag naar op zoek?</label>
-      <div class="search-row"><input id="${id}" type="search" role="combobox" value="${escapeHtml(state.q)}" placeholder="Zoek bijvoorbeeld ‘AI Act voor docenten in het mbo’" aria-controls="search-suggestions" aria-autocomplete="list" aria-expanded="false"><button class="btn">Zoeken</button></div>
+      <div class="search-row"><input id="${id}" type="search" role="combobox" value="${escapeHtml(state.q)}" placeholder="Zoek bijvoorbeeld ‘AI Act voor docenten in het mbo’" aria-controls="search-suggestions" aria-autocomplete="list" aria-expanded="false"><button class="btn" aria-label="Zoeken">Zoeken</button></div>
       <div class="suggestions" id="search-suggestions" hidden></div>
     </form>`;
   }
@@ -613,7 +688,7 @@
   function alternativeSuggestion() {
     if (!state.q || resultRecords.length) return null;
     const rawCandidates = [
-      ...Object.keys(THEME_RULES), ...SYNONYMS.flat(),
+      ...themeOptions(), ...SYNONYMS.flat(),
       ...records.map(record => record.providerName).filter(Boolean)
     ];
     const candidates = [...new Set(rawCandidates)].filter(candidate => normalize(candidate) !== normalize(state.q));
@@ -707,9 +782,9 @@
     main.innerHTML = `<section class="catalog">${searchForm('catalog-search')}<div class="catalog-grid">
       <aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Verfijn</h2><button class="close" aria-label="Sluit filters">×</button></header>
         <p class="filter-help">Kies binnen een groep één of meer opties. Keuzes binnen dezelfde groep werken als OR; verschillende groepen worden gecombineerd.</p>
-        ${facet('theme', '1. Onderwerp', Object.keys(THEME_RULES))}${facet('sector', '2. Sector', SECTORS)}${facet('type', '3. Soort aanbod', typeOptions)}${facet('geography', '4. Regio', ['Nederland', 'Europa', 'Internationaal'])}${facet('audience', '5. Doelgroep', audienceOptions)}${facet('status', '6. Beschikbaarheid', Object.values(STATUS_LABELS))}${facet('organization', '7. Aanbieder', organizationOptions)}
+        ${facet('theme', '1. Onderwerp', themeOptions())}${facet('sector', '2. Sector', SECTORS)}${facet('type', '3. Soort aanbod', typeOptions)}${facet('geography', '4. Regio', ['Nederland', 'Europa', 'Internationaal'])}${facet('audience', '5. Doelgroep', audienceOptions)}${facet('status', '6. Beschikbaarheid', Object.values(STATUS_LABELS))}${facet('organization', '7. Aanbieder', organizationOptions)}
         <details class="more-filters"><summary>8. Meer filters<span data-more-count>${hiddenCount ? ` (${hiddenCount})` : ''}</span> <span aria-hidden="true">▼</span></summary>
-          ${facet('access', 'Toegang', ['Publiek toegankelijk', 'Toegang nog niet bevestigd'])}${facet('source', 'Bron', ['Met officiële bron', 'Bron nog niet vastgelegd'])}
+          ${facet('access', 'Toegang', Object.values(ACCESS_LABELS))}${facet('source', 'Bron', ['Met officiële bron', 'Bron nog niet vastgelegd'])}
         </details><button class="clear btn secondary">Wis alle filters</button><footer><button class="apply btn">Toon ${resultRecords.length} resultaten</button></footer>
       </aside><section class="results" id="results-panel">${resultsMarkup()}</section></div></section>`;
     bindSearchPage();
@@ -742,8 +817,7 @@
         ${record.recordType === 'training' ? `<h2>Praktisch en beschikbaarheid</h2><p>${escapeHtml(factValue(record.availabilityText))}</p>` : ''}
         <h2>Onderwerpen</h2>${recordThemes(record).length ? `<div class="detail-themes">${recordThemes(record).map(theme => `<a href="#zoeken?theme=${encodeURIComponent(theme)}">${escapeHtml(theme)}</a>`).join('')}</div>` : '<p>Niet vastgesteld</p>'}
         <h2>Voorwaarden</h2><p>${escapeHtml(factValue(record.eligibility))}</p>
-        <h2>Commerciële aard</h2><p>${escapeHtml(commercialLabel(record))}. Kosten en commerciële aard worden afzonderlijk vermeld.</p>
-        ${commercialLabel(record) !== 'Commerciële aard niet vastgesteld' ? `<p>${escapeHtml(record.commercialEvidence.note)} <a href="${escapeHtml(record.commercialEvidence.url)}" target="_blank" rel="noopener noreferrer">Bron voor deze vermelding ↗</a> · Broncontrole ${escapeHtml(dateLabel(record.commercialEvidence.checkedOn))}.</p>` : '<p>De beschikbare registratie bevat nog geen brononderbouwing voor deze kwalificatie.</p>'}
+        ${commercialDetails(record)}
         ${related.length ? `<h2>Gerelateerd aanbod</h2><p class="section-intro">Inhoudelijk verbonden via onderwerp, sector, doelgroep, aanbieder of soort aanbod.</p><div class="related-cards">${related.map(item => simpleCard(item)).join('')}</div>` : ''}
       </article><aside class="detail-facts"><h2>In één oogopslag</h2><dl>${factRows.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl>
         <h3>Officiële bronnen</h3>${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}
@@ -787,8 +861,8 @@
       const count = recordsForCriteria(next).length;
       return { label, count, meta: `${count} ${count === 1 ? 'resultaat' : 'resultaten'}`, href: criteriaHref(next) };
     };
-    const themes = Object.keys(THEME_RULES)
-      .filter(theme => normalize(theme).includes(normalized) || THEME_RULES[theme].some(term => normalize(term).includes(normalized) || normalized.includes(normalize(term))))
+    const themes = themeOptions()
+      .filter(theme => normalize(theme).includes(normalized) || (THEME_RULES[theme] || []).some(term => normalize(term).includes(normalized) || normalized.includes(normalize(term))))
       .map(theme => collection(theme, { ...criteria, theme }))
       .filter(item => item.count > 0).sort((a, b) => b.count - a.count).slice(0, 3);
     const organizations = [...new Set(matching.map(record => record.providerName).filter(Boolean))]
@@ -916,7 +990,7 @@
     if (!panel) return;
     panel.querySelectorAll('[data-remove]').forEach(button => button.onclick = () => {
       const [key, value] = button.dataset.remove.split('|');
-      state[key] = values(key).filter(item => item !== value).join(',');
+      state[key] = serializeFilterValues(key, values(key).filter(item => item !== value));
       setUrl();
     });
     const clearQuery = panel.querySelector('[data-clear-query]');
@@ -930,18 +1004,21 @@
       sessionSet('atlas.lastSearch', location.hash); sessionSet('atlas.resultsScroll', scrollY);
     });
     const opener = panel.querySelector('.mobile-filter');
-    if (opener) opener.onclick = () => {
-      const filters = document.querySelector('#filters');
-      filters.classList.add('open'); document.body.classList.add('locked'); opener.setAttribute('aria-expanded', 'true');
-      filters.querySelector('.close').focus();
-    };
+    if (opener) {
+      opener.setAttribute('aria-expanded', String(Boolean(document.querySelector('#filters')?.classList.contains('open'))));
+      opener.onclick = () => {
+        const filters = document.querySelector('#filters');
+        filters.classList.add('open'); document.body.classList.add('locked'); opener.setAttribute('aria-expanded', 'true');
+        filters.querySelector('.close').focus();
+      };
+    }
   }
   function bindSearchPage() {
     bindSearchForm();
     document.querySelectorAll('[data-facet]').forEach(input => input.onchange = () => {
       const selected = values(input.dataset.facet);
       input.checked ? selected.push(input.value) : selected.splice(selected.indexOf(input.value), 1);
-      state[input.dataset.facet] = [...new Set(selected)].join(','); setUrl();
+      state[input.dataset.facet] = serializeFilterValues(input.dataset.facet, selected); setUrl();
     });
     document.querySelectorAll('.facet-more').forEach(button => button.onclick = () => {
       const options = button.previousElementSibling;
@@ -978,6 +1055,13 @@
     };
   }
   function route() {
+    // Back/forward can replace an open mobile panel without invoking its close
+    // button. Release scrolling and detached keyboard handlers before rendering.
+    document.body?.classList.remove('locked');
+    document.querySelector('#filters')?.classList.remove('open');
+    document.querySelector('.mobile-filter')?.setAttribute('aria-expanded', 'false');
+    document.onkeydown = null;
+    clearTimeout(debounceTimer);
     if (window.ATLAS_STARTUP?.status === 'failed') { window.ATLAS_STARTUP.fail(); return; }
     const path = (location.hash.slice(1) || 'home').split('?')[0];
     document.querySelector('.site-header')?.classList.remove('open');

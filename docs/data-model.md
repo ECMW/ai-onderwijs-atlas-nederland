@@ -7,7 +7,7 @@ Enums:
 - recordType: `organization`, `programme`, `product`, `service`, `guidance`, `training`, `subsidy`, `funding_call`, `pilot`, `practice_example`, `community`, `standard`, `legislation`, `policy_document`, `research_project`, `identified_need`, `white_spot`.
 - status: `available`, `pilot`, `in_development`, `planned`, `open_call`, `closed_call`, `archived`, `needs_verification`, `identified_need`, `unknown`.
 - verificationStatus: `verified`, `recently_checked`, `stale`, `changed`, `broken_source`, `needs_review`.
-- accessType: `public`, `registration_required`, `paid`, `unknown`.
+- accessType: `public`, `registration_required`, `paid`, `restricted`, `unknown`.
 - costType: `free`, `paid`, `freemium`, `unknown`.
 - commercialStatus: `commercial`, `non_commercial`, `unknown`. Dit veld is aanvullend; een ontbrekend veld in oudere records betekent `unknown`.
 - sourceType: `official`, `authoritative`, `secondary`.
@@ -21,6 +21,12 @@ Status beschrijft het aanbod; verificatiestatus beschrijft de betrouwbaarheid en
 - `commercial`: commercieel aanbod, met vastgelegde officiële brononderbouwing.
 - `non_commercial`: niet-commercieel aanbod, met vastgelegde officiële brononderbouwing.
 - `unknown`: commerciële aard niet vastgesteld. Een oud ontbrekend veld heeft dezelfde betekenis en is geen impliciete kwalificatie als niet-commercieel.
+
+Publiek verschijnt alleen **Commercieel aanbod**, bij `commercial` met geldige
+brononderbouwing. Andere waarden leveren geen badge, feitveld of toelichting
+over commerciële aard op. Kosten en toegang blijven apart zichtbaar. Het
+ontbreken van een label bevestigt geen niet-commerciële aard; de drie mogelijke
+classificaties blijven in de canonieke registratie behouden.
 
 Bij een vastgestelde aard is `commercialEvidence` verplicht:
 
@@ -74,7 +80,9 @@ en nieuwe filters gebruiken de nieuwe vormnamen.
 
 Het optionele object `publicationExclusion` bevat een niet-lege `reason` en een
 beslisdatum `decidedOn` in `JJJJ-MM-DD`. De aanwezigheid sluit een record uit van
-de publieke data, zoekindex en interface. Ook een onjuist ingevulde uitsluiting
+de publieke browserprojectie, zoekindex en interface. De canonieke dataset blijft
+bewaard en is in het openbare repository en de huidige downloadbare sitebestanden
+beschikbaar; deze uitsluiting is geen vertrouwelijkheidsgrens. Ook een onjuist ingevulde uitsluiting
 wordt nooit als toestemming tot weergave behandeld; de datavalidatie blokkeert
 dan de release.
 
@@ -86,7 +94,7 @@ heft de uitsluiting niet op.
 
 ## Vaste neutrale informatievelden
 
-Elke vermelding gebruikt dezelfde feitelijke velden: titel, aanbieder, soort aanbod, functie, doelgroep, sector, thema, beschikbaarheid, kosten, toegang, commerciële aard, officiële bron en controledatum. Ontbrekende informatie blijft herkenbaar als onbekend. `purpose` legt de opgegeven functie vast; `description` blijft beschikbaar voor compatibiliteit en broncontrole. Nieuwe automatische bijdragen bevatten daarin alleen volledige, feitelijke bronzinnen. Wervende superlatieven, garanties en koopoproepen worden niet automatisch verwerkt, ook niet wanneer de aanbieder ze zelf publiceert.
+Elke vermelding gebruikt dezelfde feitelijke velden: titel, aanbieder, soort aanbod, functie, doelgroep, sector, thema, beschikbaarheid, kosten, toegang, officiële bron en controledatum. Ontbrekende informatie blijft herkenbaar als onbekend. Commerciële aard wordt alleen getoond bij onderbouwd commercieel aanbod, zoals hierboven beschreven. `purpose` legt de opgegeven functie vast; `description` blijft beschikbaar voor compatibiliteit en broncontrole. Nieuwe automatische bijdragen bevatten daarin alleen volledige, feitelijke bronzinnen. Wervende superlatieven, garanties en koopoproepen worden niet automatisch verwerkt, ook niet wanneer de aanbieder ze zelf publiceert.
 
 Een vermelding is geen goedkeuring, kwaliteitsbeoordeling of aanbeveling door de Atlas of Eva. De commerciële kwalificatie is informatie over de aard van het aanbod, geen kwaliteitsoordeel. Bestaande records worden door deze modeluitbreiding niet massaal geherclassificeerd.
 

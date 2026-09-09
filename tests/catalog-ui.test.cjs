@@ -8,10 +8,13 @@ const catalogue = fs.readFileSync(path.join(__dirname, '..', 'catalog.js'), 'utf
 const boot = "  addEventListener('hashchange', route); addEventListener('popstate', route); route();";
 assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly the route startup');
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
-    commercialLabel, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
+    commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard,
     homeFilterPanel, recordsForCriteria,
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
+    effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
+    accessLabel, accessOptions: Object.values(ACCESS_LABELS), recordThemes, themeOptions, route,
+    searchForm, bindResultsControls,
     options: SORT_OPTIONS, getState: () => state, setState: value => { state = value; }
   };`);
 
@@ -23,13 +26,13 @@ function record(id, date, title = id) {
     changeHistory: [{ date: '2099-12-31', type: 'added' }],
     sourceUrls: [{ url: 'https://example.org/' + id, sourceType: 'official' }] };
 }
-function load(records = [], hash = '#zoeken') {
+function load(records = [], hash = '#zoeken', overrides = {}) {
   const media = () => ({ matches: false });
   const context = vm.createContext({
     window: { ATLAS_RECORDS: { records, metadata: {} }, matchMedia: media },
     document: { querySelector: selector => selector === 'main' ? {} : null },
     localStorage: { getItem: () => null }, location: { hash }, matchMedia: media,
-    URLSearchParams, Intl
+    URLSearchParams, Intl, ...overrides
   });
   vm.runInContext(instrumented, context);
   context.window.testCatalogue.parseState();
@@ -39,13 +42,218 @@ function load(records = [], hash = '#zoeken') {
 test('commercial labels require evidence and are independent of price', () => {
   const api = load();
   const paid = { ...record('course', null), costType: 'paid' };
-  assert.equal(api.commercialLabel(paid), 'Commerciële aard niet vastgesteld');
+  assert.equal(api.commercialLabel(paid), '');
+  assert.equal(api.commercialBadge(paid), '');
   const free = { ...record('tool', null), costType: 'free', commercialStatus: 'commercial',
     commercialEvidence: {url: 'https://example.org/tool', note: 'Commercial product with a free tier.', checkedOn: '2026-09-09'} };
   assert.equal(api.costLabel(free), 'Gratis');
   assert.equal(api.commercialLabel(free), 'Commercieel aanbod');
   delete free.commercialEvidence;
-  assert.equal(api.commercialLabel(free), 'Commerciële aard niet vastgesteld');
+  assert.equal(api.commercialLabel(free), '');
+  assert.equal(api.commercialBadge(free), '');
+});
+
+test('only confirmed commercial offers receive public labels on cards and details', () => {
+  const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
+  const api = load(data);
+  const npuls = data.find(item => item.id === 'train-de-trainer-visietool-toetsen-examineren-en-ai');
+  const surf = data.find(item => item.id === 'surf-onderwijsdagen-actief-leren-ai-2026');
+  const nolai = data.find(item => item.id === 'nolai-meetup-oktober-2026');
+  const uva = data.find(item => /universiteit van amsterdam|uva/i.test(item.providerName));
+  const unclassified = {...record('unclassified-provider'), costType:'paid'};
+  const nonCommercial = {...record('non-commercial'), commercialStatus:'non_commercial',
+    commercialEvidence:{url:'https://example.org/evidence', note:'Evidence for this specific offering.', checkedOn:'2026-09-09'}};
+  assert.ok(uva);
+  for (const item of [npuls, surf, nolai, uva, unclassified, nonCommercial]) {
+    for (const html of [api.simpleCard(item), api.teaserCard(item)]) {
+      assert.ok(!html.includes('commercial-label'), item.id);
+      assert.ok(!html.includes('Commerciële aard niet vastgesteld'), item.id);
+    }
+    assert.equal(api.commercialDetails(item), '');
+    assert.ok(!api.offerFacts(item).some(row => /commerci/i.test(row[0])));
+  }
+  assert.ok(api.simpleCard(npuls).includes('Kosten onbekend'));
+  assert.ok(api.simpleCard(surf).includes('Betaald'));
+});
+
+test('confirmed commercial offers retain their source evidence regardless of price', () => {
+  const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
+  const api = load(data);
+  for (const costType of ['free', 'paid', 'unknown']) {
+    const item = {...record('classified'), costType, commercialStatus:'commercial',
+      commercialEvidence:{url:'https://example.org/evidence', note:'Evidence for this specific offering.', checkedOn:'2026-09-09'}};
+    assert.ok(api.simpleCard(item).includes('Commercieel aanbod'));
+    assert.ok(api.teaserCard(item).includes('Commercieel aanbod'));
+    assert.ok(api.commercialDetails(item).includes('https://example.org/evidence'));
+    delete item.commercialEvidence;
+    assert.equal(api.commercialDetails(item), '');
+  }
+});
+
+test('expired dated training and application calls never retain an active status', () => {
+  const api = load();
+  const training = {...record('training'), recordType:'training', legacyType:'Training', endDate:'2026-08-25'};
+  const call = {...record('call'), recordType:'funding_call', legacyType:'Call', status:'open_call',
+    applicationDeadline:'2026-09-04'};
+  const original = JSON.stringify([training, call]);
+  assert.equal(api.statusLabel(training, '2026-08-25'), 'Direct beschikbaar');
+  assert.equal(api.statusLabel(training, '2026-08-26'), 'Niet meer actueel');
+  assert.equal(api.statusLabel({...training, status:'planned'}, '2026-08-26'), 'Niet meer actueel');
+  assert.equal(api.statusLabel(call, '2026-09-04'), 'Open voor aanvragen');
+  assert.equal(api.statusLabel(call, '2026-09-05'), 'Aanvraag gesloten');
+  assert.equal(api.statusLabel({...call, status:'closed_call'}, '2026-09-01'), 'Aanvraag gesloten');
+  assert.equal(api.statusLabel({...call, applicationDeadline:null, fundingDeadline:'2026-09-04'}, '2026-09-05'), 'Aanvraag gesloten');
+  for (const endDate of [null, 'unknown', '2026-02-30', '2026-8-25']) {
+    assert.equal(api.statusLabel({...training, endDate}, '2026-09-09'), 'Direct beschikbaar');
+    assert.equal(api.statusLabel({...call, applicationDeadline:endDate}, '2026-09-09'), 'Open voor aanvragen');
+  }
+  assert.equal(api.statusLabel({...record('guide'), endDate:'2026-01-01'}, '2026-09-09'), 'Direct beschikbaar');
+  assert.equal(api.statusLabel({...call, status:'planned'}, '2026-09-09'), 'Gepland');
+  assert.equal(JSON.stringify([training, call]), original, 'Display status must not rewrite canonical data');
+});
+
+test('expired availability is consistent across cards and availability filters', () => {
+  const data = [
+    {...record('old-training'), recordType:'training', legacyType:'Training', endDate:'2000-01-01'},
+    {...record('old-call'), recordType:'funding_call', legacyType:'Call', status:'open_call', fundingDeadline:'2000-01-01'},
+    record('current-guide')
+  ];
+  const api = load(data);
+  assert.deepEqual(Array.from(api.recordsForCriteria({status:'Direct beschikbaar'}), item=>item.id), ['current-guide']);
+  assert.equal(api.recordsForCriteria({status:'Open voor aanvragen'}).length, 0);
+  assert.deepEqual(Array.from(api.recordsForCriteria({status:'Aanvraag gesloten'}), item=>item.id), ['old-call']);
+  for (const item of data.slice(0,2)) {
+    assert.equal(api.trustTone(item), 'is-neutral');
+    assert.ok(!api.simpleCard(item).includes('is-confirmed'));
+    assert.ok(!api.teaserCard(item).includes('Direct beschikbaar'));
+  }
+});
+
+test('provider filters preserve whole comma-containing names and legacy shared URLs', () => {
+  const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
+  const all = load(data);
+  const publicRecords = all.recordsForCriteria({});
+  const providers = [...new Set(publicRecords.map(item=>item.providerName).filter(name=>name.includes(',')))];
+  assert.ok(providers.length >= 3);
+  for (const name of providers) {
+    const expected = publicRecords.filter(item=>item.providerName === name).map(item=>item.id).sort();
+    const api = load(data, '#zoeken?organization=' + encodeURIComponent(name));
+    assert.deepEqual(Array.from(api.recordsForCriteria(api.getState()), item=>item.id).sort(), expected, name);
+    assert.equal(api.facetSelectionLabel('organization'), name);
+    assert.equal(api.filterValues('organization', api.getState().organization).length, 1);
+  }
+  const multi = [providers[0], 'Npuls', providers[1]];
+  const encoded = all.serializeFilterValues('organization', multi);
+  all.setState({organization:encoded, sector:'HBO', sort:'published'});
+  const restored = load(data, all.stateHref());
+  assert.deepEqual(Array.from(restored.filterValues('organization', restored.getState().organization)), multi);
+  assert.equal(restored.getState().sector, 'HBO');
+  assert.equal(restored.getState().sort, 'published');
+  const legacy = load(data, '#zoeken?organization=Kennisnet%2CNpuls');
+  assert.deepEqual(Array.from(legacy.filterValues('organization', legacy.getState().organization)), ['Kennisnet','Npuls']);
+  const longest = 'MBO Digitaal, mbo-instellingen, SURF en Npuls';
+  assert.deepEqual(Array.from(all.filterValues('organization', longest + ',Kennisnet')), [longest, 'Kennisnet']);
+  assert.deepEqual(Array.from(all.filterValues('organization', all.serializeFilterValues('organization', [longest,'Kennisnet']))), [longest,'Kennisnet']);
+});
+
+test('access facets distinguish confirmed conditions and keep unknown access unknown', () => {
+  const options = {public:'Publiek toegankelijk', registration_required:'Registratie nodig',
+    paid:'Betaalde toegang', restricted:'Beperkte toegang', unknown:'Toegang niet vastgesteld'};
+  const data = Object.keys(options).map(accessType=>({...record(accessType), accessType, costType:'free'}));
+  const api = load(data);
+  for (const [key,label] of Object.entries(options)) {
+    assert.equal(api.accessLabel(data.find(item=>item.id===key)), label);
+    assert.deepEqual(Array.from(api.recordsForCriteria({access:label}), item=>item.id), [key]);
+    assert.ok(api.facet('access', 'Toegang', api.accessOptions).includes(label));
+  }
+  assert.deepEqual(Array.from(api.recordsForCriteria({access:'Toegang nog niet bevestigd'}), item=>item.id), ['unknown']);
+  assert.equal(api.costLabel(data.find(item=>item.id==='paid')), 'Gratis', 'Access and price remain separate');
+});
+
+test('explicit theme aliases match existing entrances while distinct topics remain selectable', () => {
+  const data = [
+    {...record('law'), themes:['AI Act','AI Act en wetgeving','Governance']},
+    {...record('implementation'), themes:['Implementatie','Curriculum','AI-infrastructuur','ethiek']},
+    {...record('specific'), themes:['mediawijsheid','digitale geletterdheid','Mensenrechten','Open leermateriaal']}
+  ];
+  const api = load(data);
+  assert.deepEqual(Array.from(api.recordThemes(data[0])), ['AI Act en wetgeving','Beleid en governance']);
+  assert.deepEqual(Array.from(api.recordThemes(data[1])), ['Implementatie en adoptie','Curriculumontwikkeling','Data en infrastructuur','Publieke waarden en ethiek']);
+  assert.deepEqual(Array.from(api.recordsForCriteria(api.criteriaForQuery('AI Act')), item=>item.id), ['law']);
+  assert.deepEqual(Array.from(api.recordsForCriteria({theme:'AI Act'}), item=>item.id), ['law']);
+  assert.deepEqual(Array.from(api.recordThemes(data[2])), data[2].themes);
+  for (const topic of data[2].themes) {
+    assert.ok(api.themeOptions().includes(topic));
+    assert.ok(api.facet('theme', 'Onderwerp', api.themeOptions()).includes(topic));
+  }
+  const current = load(JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8')));
+  const laws = current.recordsForCriteria({theme:'AI Act en wetgeving'}).map(item=>item.id);
+  for (const id of ['digitale-overheid-ai-verordening-tijdlijn-2026','algoritmekader-iama-2026']) assert.ok(laws.includes(id), id);
+});
+
+test('VSO is available wherever the catalogue contains that sector', () => {
+  const data = [{...record('vso-offer'),sectors:['VSO']}, record('higher-education')];
+  const api = load(data);
+  assert.ok(api.homeFilterPanel([]).includes('name="sector" value="VSO"'));
+  assert.deepEqual(Array.from(api.recordsForCriteria(api.criteriaForQuery('VSO')), item=>item.id), ['vso-offer']);
+});
+
+test('route changes release an open mobile filter overlay and its detached keyboard handler', () => {
+  const bodyClasses = new Set(['locked']);
+  const panelClasses = new Set(['open']);
+  const opener = {expanded:'true',setAttribute(name,value){if(name==='aria-expanded')this.expanded=value;}};
+  const main = {focus(){}};
+  const doc = {
+    body:{classList:{remove:value=>bodyClasses.delete(value)}},
+    onkeydown:()=>{throw new Error('stale filter handler');},
+    querySelector:selector=>selector==='main'?main:selector==='#filters'?{classList:{remove:value=>panelClasses.delete(value)}}:selector==='.mobile-filter'?opener:null,
+    querySelectorAll:()=>[]
+  };
+  const api = load([], '#over', {document:doc, CSS:{escape:value=>value}, scrollTo:()=>{}, clearTimeout:()=>{}});
+  api.route();
+  assert.equal(bodyClasses.has('locked'), false);
+  assert.equal(panelClasses.has('open'), false);
+  assert.equal(opener.expanded, 'false');
+  assert.equal(doc.onkeydown, null);
+});
+
+test('search buttons have an explicit accessible name across both search forms', () => {
+  const api = load();
+  for (const id of ['home-search','catalog-search']) {
+    assert.match(api.searchForm(id), /<button class="btn" aria-label="Zoeken">Zoeken<\/button>/);
+  }
+});
+
+test('refreshed mobile filter controls announce the still-open panel correctly', () => {
+  const filterClasses = new Set();
+  const bodyClasses = new Set();
+  let focusedClose = false;
+  const makeOpener = () => ({expanded:'false', setAttribute(name,value){if(name==='aria-expanded')this.expanded=value;}});
+  let opener = makeOpener();
+  const filters = {
+    classList:{contains:value=>filterClasses.has(value), add:value=>filterClasses.add(value)},
+    querySelector:selector=>selector==='.close'?{focus:()=>{focusedClose=true;}}:null
+  };
+  const panel = {querySelectorAll:()=>[],querySelector:selector=>selector==='.mobile-filter'?opener:null};
+  const doc = {
+    body:{classList:{add:value=>bodyClasses.add(value)}},
+    querySelector:selector=>selector==='main'?{}:selector==='#results-panel'?panel:selector==='#filters'?filters:null
+  };
+  const api = load([], '#zoeken?all=1', {document:doc});
+  api.bindResultsControls();
+  assert.equal(opener.expanded, 'false');
+  opener.onclick();
+  assert.equal(opener.expanded, 'true');
+  assert.ok(focusedClose);
+  assert.ok(bodyClasses.has('locked'));
+  opener = makeOpener(); // updateSearchResults replaces only the results panel.
+  api.bindResultsControls();
+  assert.equal(opener.expanded, 'true');
+  assert.ok(filterClasses.has('open'));
+  assert.ok(bodyClasses.has('locked'));
+  filterClasses.clear();
+  api.bindResultsControls();
+  assert.equal(opener.expanded, 'false');
 });
 
 test('workshop and trainer entry uses training filters and preserves a named trainer search', () => {
@@ -77,15 +285,17 @@ test('excluded software stays out of results and filters while materials and leg
   const knowledge = ids({ type: 'knowledge' });
   assert.equal(software.length, 0);
   const excluded = data.filter(item => item.publicationExclusion);
-  assert.equal(excluded.length, 12);
+  assert.equal(excluded.filter(item => item.offerCategory === 'software').length, 12);
   const publicIds = ids({});
   for (const item of excluded) assert.ok(!publicIds.includes(item.id), item.id);
   for (const id of ['selfie-for-teachers', 'ai-waaier-voor-toetsen', 'vista-promptdatabase-ai-onderwijs', 'open-inspiratielessen-over-ai']) {
     assert.ok(materials.includes(id), id);
     assert.ok(!software.includes(id), id);
   }
-  assert.ok(knowledge.includes('nolai-kennisbank'));
   assert.ok(knowledge.includes('ai-act-service-desk'));
+  for (const item of data.filter(item => !['verified','recently_checked'].includes(item.verificationStatus))) {
+    assert.ok(!publicIds.includes(item.id), 'Unverified source must stay out of the public catalogue: ' + item.id);
+  }
   assert.equal(new Set([...software, ...materials, ...knowledge]).size, software.length + materials.length + knowledge.length);
   assert.ok(!ids({ type: 'Voorziening' }).includes('uva-hva-ai-chat'));
   assert.ok(ids({ type: 'Hulpmiddel' }).includes('ai-waaier-voor-toetsen'));

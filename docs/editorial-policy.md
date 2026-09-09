@@ -16,8 +16,9 @@ broncontrole verandert dit redactionele besluit niet.
 ## Feitelijke en vergelijkbare vermeldingen
 
 Gebruik voor iedere vermelding dezelfde velden: titel, aanbieder, soort aanbod,
-functie, doelgroep, sector, thema, beschikbaarheid, kosten, toegang, commerciële
-aard, officiële bron en controledatum. Ontbrekende informatie blijft onbekend.
+functie, doelgroep, sector, thema, beschikbaarheid, kosten, toegang,
+officiële bron en controledatum. Ontbrekende informatie blijft onbekend.
+Commerciële aard verschijnt alleen bij onderbouwd commercieel aanbod.
 Schrijf neutraal en herleidbaar; neem geen superlatieven, garanties of koopoproepen
 over. Maak geen ranglijsten en beoordeel geen organisaties zonder een expliciet,
 publiek beoordelingskader.
@@ -46,9 +47,12 @@ bestaande organisatiekoppelingen en voorkom dubbele vermeldingen van één cursu
 
 `costType` en `accessType` staan los van `commercialStatus`. Leid commerciële aard
 niet af uit prijs, naam, rechtsvorm of een licentie die bepaald gebruik toestaat.
-Zonder expliciete brononderbouwing is `commercialStatus` gelijk aan `unknown` en
-toont de website **Commerciële aard niet vastgesteld**. Dit geldt ook voor oudere
-records waarin het veld ontbreekt.
+De website toont uitsluitend **Commercieel aanbod** wanneer `commercialStatus`
+gelijk is aan `commercial` en officiële brononderbouwing is vastgelegd. Bij
+`non_commercial`, `unknown` of een ontbrekende waarde verschijnt geen label,
+feitveld of toelichting over commerciële aard. Dit geldt op kaarten, teasers en
+detailpagina's. Ontbreken van een label is geen bevestiging van niet-commercieel
+aanbod. De canonieke classificaties blijven bewaard voor bronbeheer.
 
 Een classificatie als `commercial` of `non_commercial` vereist
 `commercialEvidence`: een officiële HTTPS-bron, een feitelijke onderbouwing en
