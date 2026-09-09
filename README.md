@@ -130,4 +130,4 @@ onvoldoende onderbouwde gegevens worden niet als vaststaand gepubliceerd. Zie
 
 ## Licentie en maker
 
-De Atlas is gemaakt door Eva Willems. Contact: `evac.m.willems@proton.me`. Zie [LICENSE](LICENSE) voor de licentievoorwaarden.
+De Atlas is gemaakt door E.C.M. Willems. Contact: `evac.m.willems@proton.me`. Zie [LICENSE](LICENSE) voor de licentievoorwaarden.
