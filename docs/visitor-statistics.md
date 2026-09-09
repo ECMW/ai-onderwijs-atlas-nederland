@@ -4,7 +4,8 @@ Deze editie schakelt dagelijkse bezoekersmeting in op het door Eva opgegeven
 account `https://ecmw.goatcounter.com/`. Eva heeft publicatie en controle van de
 eerste meting op 9 september 2026 expliciet goedgekeurd. Het ingelogde dashboard
 is gecontroleerd: privé, publieke teller uit, alleen Sessions verzamelen.
-De tijdzone staat op Nederland. Live ontvangst wordt bij het uitrollen gecontroleerd.
+De tijdzone staat op Nederland. De eerste live ontvangst is op 9 september 2026
+bevestigd in het privé dashboard na publicatie via pull request #77.
 De code telt uitsluitend op de publieke Atlas-origin, niet in lokale previews.
 Eerdere bezoekersaantallen worden hiermee niet teruggehaald.
 
@@ -37,7 +38,7 @@ omschrijving te passen; de voorwaarden van de aanbieder blijven van toepassing.
    **Region** en **Language** staan uit. Sessions gebruikt nog steeds tijdelijk
    IP-adres en browserkenmerken voor ontdubbeling. **Your site** staat op
    `https://ecmw.github.io`, omdat GoatCounter het gemeten Atlas-pad zelf toevoegt.
-   Het account vraagt nog om e-mailbevestiging door Eva.
+   Bevestiging van het accountadres gebeurt via de e-mail van GoatCounter.
 3. De accountnaam `ecmw` staat bij `atlas-goatcounter-site` in `index.html`.
    Het account is door Eva opgegeven en in de ingelogde account-UI gecontroleerd.
 4. Voer de generator, datavalidatie, strikte quality gate, regressietests en
@@ -92,7 +93,8 @@ Gecontroleerd op 9 september 2026:
 - [Standaard meetscript](https://github.com/arp242/goatcounter/blob/main/public/count.js)
 
 De accountinstellingen zijn bevestigd in de werkelijke account-UI en de
-publicatie is goedgekeurd. E-mailbevestiging blijft een accountactie voor Eva.
-De eerste live meting moet met een gewoon bezoek aan de gepubliceerde Atlas
-worden gecontroleerd; een geslaagde lokale test bewijst geen ontvangst.
+publicatie is goedgekeurd. E-mailbevestiging is een accountactie voor Eva.
+De eerste live meting is bevestigd na een bezoek aan de gepubliceerde Atlas;
+de bezoekenaantallen zelf blijven in het privé dashboard. Bij latere wijzigingen
+blijft een live controle nodig: een geslaagde lokale test bewijst geen ontvangst.
 Ontwikkelbroncode bewijst geen specifieke productieconfiguratie.
