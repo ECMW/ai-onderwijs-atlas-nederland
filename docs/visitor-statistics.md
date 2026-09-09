@@ -27,7 +27,9 @@ De homepage toont **X bezoeken sinds 9 september 2026**, zonder de waarde zelf
 te verhogen of unieke personen te suggereren. Het getal komt rechtstreeks van
 de openbare padspecifieke teller. GoatCounter ververst die doorgaans ongeveer
 elke vier uur; het is geen realtime teller. Bij een fout of ongeldige respons
-wordt geen getal getoond. Een daadwerkelijk ontvangen nul wordt wel als nul getoond.
+wordt geen getal getoond. Op Eva's verzoek blijft de teller verborgen tot het
+gemeten totaal hoger is dan 200. Vanaf 201 verschijnt hij automatisch; de
+dagelijkse meting loopt onder deze grens gewoon door.
 
 GoatCounter is momenteel gratis voor redelijk openbaar gebruik, waaronder
 persoonlijke websites en kleine/middelgrote bedrijven. De Atlas lijkt binnen die

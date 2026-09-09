@@ -17915,12 +17915,12 @@
     "title": "AI voor Docenten in het Onderwijs (basis)",
     "recordType": "training",
     "legacyType": "Training",
-    "subtype": null,
+    "subtype": "Cursus",
     "organizationIds": [
       "hogeschool-van-arnhem-en-nijmegen"
     ],
     "providerName": "Hogeschool van Arnhem en Nijmegen",
-    "description": "Cursus van twee bijeenkomsten waarin docenten uit po, vo, mbo en hbo met onder meer ChatGPT, Gemini en NotebookLM onderwijs op maat leren ontwerpen.",
+    "description": "Cursus over AI en het ontwerpen van leermateriaal voor docenten in po, vo, mbo en hbo, met aandacht voor privacy en ethiek. Docent: Tanja van Grinsven. Twee bijeenkomsten, samen vier contacturen, bij HAN Nijmegen.",
     "purpose": "Docenten praktisch en verantwoord leren werken met AI bij het ontwerpen van leermateriaal.",
     "audiences": [
       "Docenten",
@@ -17938,11 +17938,11 @@
       "Curriculumontwikkeling"
     ],
     "status": "planned",
-    "availabilityText": "Aanmelden mogelijk; startdatum wordt nog vastgesteld",
+    "availabilityText": "Open cursus: startdatum nog niet vastgesteld; kosten €295. Incompanymogelijkheden via HAN op aanvraag; datum en prijs daarvan niet vastgesteld.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-30",
+    "lastVerified": "2026-09-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -17955,7 +17955,7 @@
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Nederland",
-    "accessType": "public",
+    "accessType": "paid",
     "costType": "paid",
     "fundingAmount": null,
     "fundingDeadline": null,
@@ -17976,16 +17976,26 @@
       "AI voor docenten",
       "ChatGPT",
       "Gemini",
-      "NotebookLM"
+      "NotebookLM",
+      "Tanja van Grinsven",
+      "trainer",
+      "incompany",
+      "maatwerk"
     ],
-    "notes": "Kosten volgens de officiële pagina: €295. Twee bijeenkomsten; er was op 30 juli 2026 nog geen startdatum vastgesteld.",
+    "notes": "Docent en incompanymogelijkheid gecontroleerd op de officiële cursuspagina. De vermelding bevestigt geen zelfstandige boekbaarheid van de docent. De open cursus heeft nog geen startdatum.",
     "changeHistory": [
       {
         "date": "2026-07-30",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      },
+      {
+        "date": "2026-09-09",
+        "type": "updated",
+        "summary": "Docent, cursusvorm, kosten en incompanymogelijkheid aangevuld na broncontrole; ontbrekende startdatum behouden."
       }
-    ]
+    ],
+    "commercialStatus": "unknown"
   },
   {
     "id": "han-ai-voor-docenten-verdieping",
@@ -23649,5 +23659,152 @@
         "summary": "Toegevoegd na inhoudelijke controle van de officiële bron en duplicaatcontrole op 9 september 2026."
       }
     ]
+  },
+  {
+    "id": "onderwijs-ai-in-school-workshop",
+    "title": "In-school AI workshop op maat",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": "Workshop",
+    "organizationIds": [],
+    "providerName": "Onderwijs AI",
+    "description": "Workshop op school voor docenten, onderwijsondersteuners en management. Het programma sluit aan op hun rol, voorkennis en schoolpraktijk. Materialen en begeleiding zijn inbegrepen; de uitvoerende trainer wordt op de aanbodpagina niet bij naam genoemd.",
+    "purpose": "Met het schoolteam oefenen met AI in de eigen onderwijspraktijk.",
+    "audiences": [
+      "Docenten",
+      "Medewerkers",
+      "Bestuurders"
+    ],
+    "sectors": [],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Op aanvraag op de eigen school. Tijdstip en groepsgrootte in overleg; prijs op aanvraag, afhankelijk van doelstellingen en groepsgrootte.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officieel aanbod en contact",
+        "url": "https://onderwijs-ai.nl/opleidingen/workshop/in-school-ai-workshop",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Bedoeld voor het complete schoolteam; precieze sectorafbakening en beschikbaarheid afstemmen met de aanbieder.",
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "workshop",
+      "workshops",
+      "trainer",
+      "schoolteam",
+      "incompany",
+      "maatwerk"
+    ],
+    "notes": "De bron bevestigt geen specifieke uitvoerende trainer of onderwijssector. De genoemde medeoprichter is een contactpersoon en is niet als trainer geregistreerd.",
+    "changeHistory": [
+      {
+        "date": "2026-09-09",
+        "type": "added",
+        "summary": "Concrete training toegevoegd na controle van de officiële aanbodpagina."
+      }
+    ],
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "aps-copilot-chat-training-op-locatie",
+    "title": "Copilot Chat: adoptietraining op locatie",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": "Training op locatie",
+    "organizationIds": [],
+    "providerName": "APS IT-diensten",
+    "description": "Trainingsdag op de eigen locatie over generatieve AI, Copilot Chat, prompts en oefenen met lesmateriaal. Er kunnen drie sessies van twee uur plaatsvinden, elk voor maximaal twintig deelnemers. Een trainer van APS IT-diensten verzorgt de sessies; diens naam staat niet op de aanbodpagina.",
+    "purpose": "Onderwijsmedewerkers laten oefenen met Copilot Chat voor hun dagelijkse werk.",
+    "audiences": [
+      "Docenten",
+      "Medewerkers",
+      "Bestuurders"
+    ],
+    "sectors": [],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Aan te vragen via APS IT-diensten. Maximaal drie sessies van twee uur op locatie. Prijs via de aanbieder te berekenen; trainingsdatum niet vermeld.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officieel aanbod en contact",
+        "url": "https://www.apsitdiensten.nl/licenties/aps-it-diensten/copilot-adoptietrainingen/copilot-chat-adoptietraining-op-locatie",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Microsoft 365-school- of werkaccount met toegang tot Copilot Chat, een laptop of pc per deelnemer, lokaal, digibord en wifi vereist. Gericht op eindgebruikers, waaronder leerkrachten, IB’ers en ondersteuners; geen beheerderstraining en geen training voor Microsoft 365 Copilot in Office-apps.",
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Copilot Chat",
+      "Microsoft 365",
+      "APS IT-diensten",
+      "trainer",
+      "training",
+      "op locatie",
+      "prompting"
+    ],
+    "notes": "Concrete variant op locatie gecontroleerd. De onderwijssector, trainernaam, trainingsdatum en het exacte bedrag zijn niet vastgesteld. Product- en accountafhankelijkheid expliciet vermeld; geen garantie over veiligheid, effectiviteit of wettelijke naleving overgenomen.",
+    "changeHistory": [
+      {
+        "date": "2026-09-09",
+        "type": "added",
+        "summary": "Concrete training toegevoegd na controle van de officiële aanbodpagina."
+      }
+    ],
+    "commercialStatus": "unknown"
   }
 ]
