@@ -13,7 +13,9 @@ De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijze
 - meerdere rollen, zoals Docent en Onderzoeker, kunnen gecombineerd worden;
 - zoek- en filterstaat staat in de URL en is deelbaar;
 - persoonlijke rolvoorkeuren blijven lokaal in de browser;
-- er zijn geen trackers, cookies, externe autocomplete of backend nodig.
+- er zijn geen cookies, externe autocomplete of eigen backend nodig;
+- GoatCounter telt bezoeken per dag zonder zoektermen of filters te ontvangen;
+  het dashboard is privé en de koppeling kan worden uitgeschakeld.
 
 Een vermelding is geen goedkeuring, kwaliteitsbeoordeling of aanbeveling. De Atlas
 presenteert vaste feitelijke velden. Kosten, toegang en commerciële aard zijn
@@ -35,6 +37,11 @@ De website is statische HTML, CSS en vanilla JavaScript. Er is geen applicatiese
 Het datamodel en de toegestane enums staan in [docs/data-model.md](docs/data-model.md). De publieke export bevat alleen records met een officiele bron en een bevestigde verificatiestatus.
 
 ## Dagelijks onderhoud
+
+Bezoekersmeting staat los van brononderhoud. De inrichting, telwijze,
+privacyinstellingen en activatiestappen staan in
+[dagelijkse bezoekersmeting](docs/visitor-statistics.md). De telling werkt op de
+publieke Atlas onafhankelijk van de laptop.
 
 De Atlas heeft verschillende onderhoudsroutes:
 

@@ -133,6 +133,15 @@ function assertFailure(app) {
   }
 }
 
+test('a blocked or broken optional analytics script leaves the real Atlas usable', () => {
+  const app = boot({ omitted: ['analytics.js'] });
+  app.dispatch('error', { target: { tagName: 'SCRIPT', src: 'https://ecmw.github.io/ai-onderwijs-atlas-nederland/analytics.js?v=test' } });
+  app.dispatch('error', { filename: 'https://ecmw.github.io/ai-onderwijs-atlas-nederland/analytics.js', target: app.context });
+  assert.equal(app.context.ATLAS_STARTUP.status, 'ready');
+  app.navigate('#over'); assert.match(app.main.innerHTML, /Over de atlas/);
+  app.navigate('#zoeken'); assert.match(app.main.innerHTML, /class="atlas-search"/);
+});
+
 test('the real script order starts the catalogue and retains the mobile menu and informational routes', () => {
   const app = boot();
   assert.deepEqual(app.errors, []);

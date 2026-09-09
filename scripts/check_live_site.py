@@ -27,6 +27,10 @@ from uuid import uuid4
 DEFAULT_URL = "https://ecmw.github.io/ai-onderwijs-atlas-nederland/"
 ROOT = Path(__file__).resolve().parents[1]
 MAX_BYTES = 8 * 1024 * 1024
+# Statistics are not required for the catalogue to remain available. Build-time
+# validation still checks the original script and its content hash strictly.
+OPTIONAL_SCRIPTS = frozenset({"analytics.js"})
+OPTIONAL_PLACEHOLDER = "// Optional statistics omitted from the availability smoke test.\n"
 
 
 class CheckFailure(Exception):
@@ -140,6 +144,7 @@ def check_javascript(site, scripts, inline):
     if not node:
         raise CheckFailure("node_unavailable", "local checker", "Node.js is required to verify JavaScript", unknown=True)
     paths = list(scripts)
+    warnings = []
     for index, code in enumerate(inline):
         relative = f".atlas-check-inline-{index}.js"
         (site / relative).write_text(code, encoding="utf-8")
@@ -150,7 +155,14 @@ def check_javascript(site, scripts, inline):
         if result.returncode:
             # Temporary paths vary between attempts and are not useful evidence.
             detail = result.stderr.replace(str(site), "<snapshot>")[-1200:]
-            raise CheckFailure("javascript_syntax", relative, detail)
+            if relative in OPTIONAL_SCRIPTS:
+                warnings.append({"code": "javascript_syntax", "resource": relative, "detail": detail})
+            else:
+                raise CheckFailure("javascript_syntax", relative, detail)
+    # Test catalogue availability independently of optional analytics runtime
+    # behavior. These are temporary snapshot files, never repository assets.
+    for relative in OPTIONAL_SCRIPTS.intersection(scripts):
+        (site / relative).write_text(OPTIONAL_PLACEHOLDER, encoding="utf-8")
     test = ROOT / "tests" / "catalog-startup.test.cjs"
     if not test.is_file():
         raise CheckFailure("startup_test_unavailable", "local checker", "The startup smoke test is missing", unknown=True)
@@ -162,6 +174,7 @@ def check_javascript(site, scripts, inline):
     if result.returncode:
         # Test timings and temporary paths change; retain a stable fault signature.
         raise CheckFailure("catalogue_startup_failed", "index.html", "Downloaded page failed the home, menu and informational-route smoke test")
+    return warnings
 
 
 def release_evidence(site_url, html_sha, timeout, fetch):
@@ -194,25 +207,46 @@ def snapshot(site_url, timeout, fetch, javascript_check):
         if len(parser.assets) > 32:
             raise CheckFailure("too_many_assets", "index.html", "More than 32 assets exceeds the checker scope", unknown=True)
         assets = [(asset_location(site_url, ref), is_script) for ref, is_script in parser.assets]
+        def fetch_asset(item):
+            try:
+                return fetch(item[0][0], timeout)
+            except (HTTPError, URLError, OSError, TimeoutError, CheckFailure) as error:
+                return error
+
         with ThreadPoolExecutor(max_workers=4) as pool:
-            contents = list(pool.map(lambda item: fetch(item[0][0], timeout), assets))
+            contents = list(pool.map(fetch_asset, assets))
         with tempfile.TemporaryDirectory(prefix="atlas-live-check-") as directory:
             site = Path(directory)
             (site / "index.html").write_bytes(html_bytes)
-            scripts, asset_evidence, versions_missing = [], [], []
+            scripts, asset_evidence, versions_missing, warnings = [], [], [], []
             for ((url, relative), is_script), raw in zip(assets, contents):
-                text = raw.decode("utf-8")
-                # Match generate_data.py's platform-independent text hashing.
-                digest = hashlib.sha256(text.replace("\r\n", "\n").replace("\r", "\n").encode("utf-8")).hexdigest()
-                versions = parse_qs(urlsplit(url).query).get("v", [])
-                version = versions[0] if len(versions) == 1 else ""
-                if re.fullmatch(r"[0-9a-f]{16}", version):
-                    if not digest.startswith(version):
-                        raise CheckFailure("asset_hash_mismatch", relative, f"Advertised {version}; received {digest[:16]}")
-                else:
-                    versions_missing.append(relative)
                 target = site / relative
                 target.parent.mkdir(parents=True, exist_ok=True)
+                try:
+                    if isinstance(raw, Exception):
+                        raise raw
+                    text = raw.decode("utf-8")
+                    # Match generate_data.py's platform-independent text hashing.
+                    digest = hashlib.sha256(text.replace("\r\n", "\n").replace("\r", "\n").encode("utf-8")).hexdigest()
+                    versions = parse_qs(urlsplit(url).query).get("v", [])
+                    version = versions[0] if len(versions) == 1 else ""
+                    if re.fullmatch(r"[0-9a-f]{16}", version):
+                        if not digest.startswith(version):
+                            raise CheckFailure("asset_hash_mismatch", relative, f"Advertised {version}; received {digest[:16]}")
+                    else:
+                        versions_missing.append(relative)
+                except (CheckFailure, HTTPError, URLError, OSError, TimeoutError, UnicodeDecodeError) as error:
+                    if not is_script or relative not in OPTIONAL_SCRIPTS:
+                        raise
+                    if isinstance(error, CheckFailure):
+                        issue = error.issue
+                    else:
+                        code = f"http_{error.code}" if isinstance(error, HTTPError) else "invalid_utf8" if isinstance(error, UnicodeDecodeError) else "check_unavailable"
+                        issue = {"code": code, "resource": relative, "detail": str(error)[:500]}
+                    warnings.append(issue)
+                    target.write_text(OPTIONAL_PLACEHOLDER, encoding="utf-8")
+                    scripts.append(relative)
+                    continue
                 target.write_bytes(raw)
                 asset_evidence.append({"path": relative, "sha256": digest})
                 if is_script:
@@ -220,8 +254,9 @@ def snapshot(site_url, timeout, fetch, javascript_check):
             if "data/data-v2.js" not in scripts:
                 raise CheckFailure("public_data_not_loaded", "index.html", "The page does not reference the public data script")
             evidence["recordCount"] = validate_data((site / "data/data-v2.js").read_text(encoding="utf-8"))
-            javascript_check(site, scripts, parser.inline)
-            evidence.update(status="healthy", assets=asset_evidence, assetsWithoutContentHash=versions_missing)
+            warnings.extend(javascript_check(site, scripts, parser.inline) or [])
+            evidence.update(status="healthy", assets=asset_evidence, assetsWithoutContentHash=versions_missing,
+                            optionalAssetWarnings=warnings)
     except CheckFailure as error:
         evidence.update(status="unknown" if error.unknown else "content_fault", issue=error.issue)
     except HTTPError as error:
