@@ -1,14 +1,68 @@
 name: Validate and deploy Pages
+run-name: ${{ inputs.recovery_ref && format('Atlas recovery {0}', github.sha) || format('Atlas publication {0}', github.sha) }}
 on:
   push: {branches: [main]}
   workflow_dispatch:
-permissions: {contents: read, pages: write, id-token: write}
-concurrency: {group: pages, cancel-in-progress: true}
+    inputs:
+      recovery_ref:
+        description: 'Verified recovery source SHA; leave empty for a normal publication'
+        required: false
+        type: string
+      observed_main_sha:
+        description: 'Main SHA observed by the health monitor'
+        required: false
+        type: string
+      observed_release_fingerprint:
+        description: 'Unchanged served-release fingerprint observed by the health monitor'
+        required: false
+        type: string
+permissions: {contents: read, actions: read, pages: write, id-token: write}
+# Normal publication and recovery share one lock and never cancel an active deployment.
+concurrency: {group: pages, cancel-in-progress: false}
 jobs:
   build:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      source_sha: ${{ steps.source.outputs.sha }}
     steps:
-      - uses: actions/checkout@v7
+      - name: Checkout the current trusted validation toolkit
+        uses: actions/checkout@v7
+        with:
+          path: toolkit
+          persist-credentials: false
+      - name: Select and validate the publication source
+        id: source
+        shell: python
+        env:
+          RECOVERY_REF: ${{ inputs.recovery_ref }}
+          OBSERVED_MAIN_SHA: ${{ inputs.observed_main_sha }}
+          OBSERVED_RELEASE_FINGERPRINT: ${{ inputs.observed_release_fingerprint }}
+        run: |
+          import json
+          import os
+          import re
+          from pathlib import Path
+
+          recovery = os.environ.get('RECOVERY_REF', '')
+          config = json.loads(Path('toolkit/config/site-recovery.json').read_text())
+          if recovery:
+              if not re.fullmatch(r'[0-9a-f]{40}', recovery) or recovery != config['baselineSha']:
+                  raise ValueError('Recovery source must equal the reviewed baseline')
+              if os.environ.get('OBSERVED_MAIN_SHA') != os.environ['GITHUB_SHA']:
+                  raise ValueError('Main changed after the monitor observed the failure')
+              if not os.environ.get('OBSERVED_RELEASE_FINGERPRINT'):
+                  raise ValueError('Recovery requires a confirmed served-release fingerprint')
+          selected = recovery or os.environ['GITHUB_SHA']
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'sha={selected}\n')
+      - name: Checkout publication content separately
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ steps.source.outputs.sha }}
+          path: source
+          persist-credentials: false
       - uses: actions/setup-python@v7
         with: {python-version: '3.12'}
       - uses: actions/setup-node@v7
@@ -16,21 +70,38 @@ jobs:
           node-version: '24'
           package-manager-cache: false
       - name: Validate committed canonical data
+        working-directory: source
         run: python scripts/validate_data.py
       - name: Validate the committed public projection
-        run: python scripts/quality_gate.py --strict --output "${{ runner.temp }}/atlas-quality-report.json"
+        working-directory: source
+        run: python ../toolkit/scripts/quality_gate.py --root . --strict --output "${{ runner.temp }}/atlas-quality-report.json"
       - name: Run data and browser regression tests
+        working-directory: source
         run: python -m unittest discover tests
-      - name: Ensure checks did not rewrite the data to be published
-        run: git diff --exit-code -- data
-      - name: Stage public site files
+      - name: Verify recovery startup with the current smoke test
+        if: inputs.recovery_ref != ''
+        working-directory: source
+        # Keep the verified release's own implementation tests intact. Apply current
+        # common startup checks without requiring newer feature-specific functions.
+        env:
+          ATLAS_SITE_ROOT: ${{ github.workspace }}/source
+        run: node --test --test-name-pattern="the real script order" ../toolkit/tests/catalog-startup.test.cjs
+      - name: Ensure checks did not rewrite public content
+        working-directory: source
+        run: git diff --exit-code -- data index.html '*.js' '*.css' assets
+      - name: Stage public site files and a release marker
         shell: python
+        env:
+          SOURCE_SHA: ${{ steps.source.outputs.sha }}
+          RECOVERY_REF: ${{ inputs.recovery_ref }}
         run: |
+          import hashlib
+          import json
           import os
           import shutil
           from pathlib import Path
 
-          root = Path.cwd()
+          root = Path('source').resolve()
           site = Path(os.environ['RUNNER_TEMP']) / 'atlas-site'
           site.mkdir()
           files = [root / name for name in (
@@ -45,7 +116,15 @@ jobs:
               target = site / source.relative_to(root)
               target.parent.mkdir(parents=True, exist_ok=True)
               shutil.copy2(source, target)
-          print(f'Staged {len(files)} public files')
+          release = {
+              'sourceSha': os.environ['SOURCE_SHA'],
+              'workflowSha': os.environ['GITHUB_SHA'],
+              'workflowRunId': os.environ['GITHUB_RUN_ID'],
+              'recovery': bool(os.environ.get('RECOVERY_REF')),
+              'htmlSha256': hashlib.sha256((site / 'index.html').read_bytes()).hexdigest(),
+          }
+          (site / 'release.json').write_text(json.dumps(release, indent=2) + '\n', encoding='utf-8')
+          print(f'Staged {len(files)} public files from {release["sourceSha"]}')
       - name: Check JavaScript loaded by the page
         working-directory: ${{ runner.temp }}/atlas-site
         shell: python
@@ -76,8 +155,109 @@ jobs:
   deploy:
     environment: {name: github-pages, url: '${{ steps.deployment.outputs.page_url }}'}
     runs-on: ubuntu-latest
+    timeout-minutes: 12
     needs: build
     steps:
+      - name: Checkout current tools for the final and live checks
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Recheck the served release before recovery
+        if: inputs.recovery_ref != ''
+        shell: python
+        run: |
+          import json
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          config = json.loads(Path('config/site-recovery.json').read_text())
+          result = subprocess.run([
+              sys.executable, 'scripts/check_live_site.py', '--url', config['siteUrl'],
+              '--retry-delay', '20'
+          ], capture_output=True, text=True, timeout=180)
+          report = json.loads(result.stdout)
+          if result.returncode not in (0, 1, 2) or report.get('exitCode') != result.returncode:
+              raise RuntimeError('Invalid recovery recheck outcome')
+          Path('recovery-recheck.json').write_text(json.dumps(report), encoding='utf-8')
+      - name: Stop a superseded or unnecessary publication
+        id: gate
+        uses: actions/github-script@v8
+        env:
+          RECOVERY_REF: ${{ inputs.recovery_ref }}
+          OBSERVED_MAIN_SHA: ${{ inputs.observed_main_sha }}
+          OBSERVED_RELEASE_FINGERPRINT: ${{ inputs.observed_release_fingerprint }}
+        with:
+          script: |
+            const fs = require('fs');
+            const { owner, repo } = context.repo;
+            const stop = reason => { core.notice(reason); core.setOutput('publish', 'false'); };
+            const main = await github.rest.repos.getBranch({ owner, repo, branch: 'main' });
+            if (main.data.commit.sha !== context.sha) {
+              stop('A newer main commit exists; this publication is superseded.'); return;
+            }
+            if (process.env.RECOVERY_REF) {
+              if (process.env.OBSERVED_MAIN_SHA !== context.sha) {
+                stop('The monitored main commit changed.'); return;
+              }
+              const report = JSON.parse(fs.readFileSync('recovery-recheck.json', 'utf8'));
+              const attempts = report.attempts || [];
+              if (report.exitCode !== 1 || attempts.length !== 2 || !attempts.every(item =>
+                  item.status === 'content_fault' && item.releaseFingerprint === process.env.OBSERVED_RELEASE_FINGERPRINT)) {
+                stop('The site recovered, changed release, or could not be verified; no recovery publication.'); return;
+              }
+              if ((report.sourceSha || attempts[1].sourceSha || attempts[1].release?.sourceSha) === process.env.RECOVERY_REF) {
+                stop('The recovery baseline is already served.'); return;
+              }
+            }
+            core.setOutput('publish', 'true');
       - name: Deploy
+        if: steps.gate.outputs.publish == 'true'
         id: deployment
         uses: actions/deploy-pages@v5
+      - name: Verify the published site
+        if: steps.gate.outputs.publish == 'true'
+        shell: python
+        env:
+          EXPECTED_SOURCE_SHA: ${{ needs.build.outputs.source_sha }}
+          EXPECTED_WORKFLOW_RUN_ID: ${{ github.run_id }}
+        run: |
+          import json
+          import os
+          import subprocess
+          import sys
+          import time
+          from pathlib import Path
+
+          config = json.loads(Path('config/site-recovery.json').read_text())
+          for attempt in range(6):
+              result = subprocess.run([
+                  sys.executable, 'scripts/check_live_site.py', '--url', config['siteUrl'],
+                  '--retry-delay', '5'
+              ], capture_output=True, text=True, timeout=150)
+              report = json.loads(result.stdout)
+              Path('published-site-health.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+              latest = (report.get('attempts') or [{}])[-1]
+              release = latest.get('release') or {}
+              served = report.get('sourceSha') or latest.get('sourceSha') or release.get('sourceSha')
+              if result.returncode == 0 and served == os.environ['EXPECTED_SOURCE_SHA'] and str(release.get('workflowRunId')) == os.environ['EXPECTED_WORKFLOW_RUN_ID']:
+                  print(f'Live catalogue and release verified: {served}')
+                  break
+              if attempt < 5:
+                  time.sleep(20)
+          else:
+              raise RuntimeError('The exact published release did not pass live verification; inspect the health report')
+      - name: Retain live publication evidence
+        if: always() && steps.gate.outputs.publish == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: atlas-published-site-health
+          path: published-site-health.json
+          retention-days: 30
+          if-no-files-found: ignore

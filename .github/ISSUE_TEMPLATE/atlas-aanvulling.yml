@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Complete toevoegingen worden automatisch gecontroleerd op structuur, duplicaten, bronbereikbaarheid en aansluiting van titel en aanbieder op de officiële bron. Een geslaagde controle is geen inhoudelijke goedkeuring: een beheerder beoordeelt de bijdrage voordat die wordt gepubliceerd. Uw inzending is openbaar; deel geen persoonsgegevens of vertrouwelijke informatie.
+        Uw aanvulling wordt direct gecontroleerd op een officiële bron, relevantie voor AI en onderwijs, onderbouwing van de beschrijving en mogelijke duplicaten. Duidelijk onderbouwde aanvullingen worden na alle controles automatisch verwerkt. Bij twijfel of ontbrekende informatie blijft de bijdrage ter beoordeling staan. Een vermelding is geen aanbeveling of keurmerk. Uw inzending is openbaar; deel geen persoonsgegevens of vertrouwelijke informatie.
   - type: input
     id: title
     attributes:
@@ -28,8 +28,8 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: Feitelijke beschrijving
-      description: Schrijf 2–4 neutrale zinnen die door de officiële bron worden ondersteund. Vermijd reclameclaims.
+      label: Functie van het aanbod
+      description: Neem 1–2 volledige, feitelijke zinnen uit de officiële bron over die uitleggen wat het aanbod doet en voor wie. Gebruik geen reclame, superlatieven, kwaliteitsclaims of oproepen tot aankoop. De Atlas toont vaste informatievelden; opname is geen goedkeuring, kwaliteitsbeoordeling of aanbeveling.
     validations: {required: true}
   - type: input
     id: source
@@ -77,6 +77,24 @@ body:
       label: Kosten
       options: [Onbekend, Gratis, Betaald, Gratis en betaald]
     validations: {required: true}
+  - type: dropdown
+    id: commercial_status
+    attributes:
+      label: Commerciële aard
+      description: Geef alleen een vastgestelde aard op wanneer de officiële bron die ondersteunt. Gratis betekent niet automatisch niet-commercieel; betaald betekent niet automatisch commercieel.
+      options: [Niet vastgesteld, Commercieel aanbod, Niet-commercieel aanbod]
+    validations: {required: true}
+  - type: input
+    id: commercial_source
+    attributes:
+      label: Bron commerciële aard
+      description: Alleen nodig bij vastgesteld commercieel of niet-commercieel aanbod. Geef de officiële HTTPS-bron waarin deze aard expliciet wordt onderbouwd. Prijs, naam en rechtsvorm zijn op zichzelf geen bewijs.
+      placeholder: https://organisatie.nl/over-het-aanbod
+  - type: textarea
+    id: commercial_evidence
+    attributes:
+      label: Onderbouwing commerciële aard
+      description: Neem de volledige feitelijke bronzin over die de commerciële of niet-commerciële aard expliciet benoemt. Zonder die onderbouwing blijft de aard niet vastgesteld of de inzending ter beoordeling.
   - type: input
     id: deadline
     attributes:

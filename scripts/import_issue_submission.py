@@ -10,7 +10,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-from contribution_quality import dump_report, normalize, report_markdown, review_records, slug
+from contribution_quality import dump_report, normalize, report_markdown, review_external_submission, slug
 from promote_contribution import dutch_date
 
 
@@ -36,7 +36,8 @@ STATUS_MAP = {
     "Open voor aanvragen": ("open_call", "Open voor aanvragen"),
     "Gesloten": ("closed_call", "Gesloten"),
 }
-COST_MAP = {"Gratis": "free", "Betaald": "paid", "Gratis en betaald": "mixed", "Onbekend": "unknown"}
+COST_MAP = {"Gratis": "free", "Betaald": "paid", "Gratis en betaald": "freemium", "Onbekend": "unknown"}
+COMMERCIAL_MAP = {"Niet vastgesteld": "unknown", "Commercieel aanbod": "commercial", "Niet-commercieel aanbod": "non_commercial"}
 
 
 def parse_form(body: str) -> dict[str, str]:
@@ -44,9 +45,12 @@ def parse_form(body: str) -> dict[str, str]:
     headings = {
         "titel": "Titel", "recordtype": "Recordtype", "organisatie": "Organisatie",
         "feitelijke beschrijving": "Feitelijke beschrijving", "sector": "Sector",
+        "functie van het aanbod": "Feitelijke beschrijving",
         "doelgroep": "Doelgroep", "thema": "Thema", "status": "Status",
         "geografische reikwijdte": "Geografische reikwijdte", "kosten": "Kosten",
         "deadline": "Deadline", "toelichting": "Toelichting",
+        "commerciele aard": "Commerciële aard", "bron commerciele aard": "Bron commerciële aard",
+        "onderbouwing commerciele aard": "Onderbouwing commerciële aard",
     }
     pattern = re.compile(r"^###\s+(.+?)\s*$\n(.*?)(?=^###\s+|\Z)", flags=re.M | re.S)
     for heading, value in pattern.findall(body.replace("\r\n", "\n")):
@@ -73,6 +77,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--records", default="data/records.json")
     parser.add_argument("--metadata", default="data/metadata.json")
+    parser.add_argument("--sources", default="data/sources.json")
     parser.add_argument("--report-json")
     parser.add_argument("--report-markdown")
     args = parser.parse_args()
@@ -84,7 +89,7 @@ def main() -> int:
     missing = [field for field in required if not fields.get(field)]
     if missing:
         report = {
-            "eligible": False, "addedIds": [],
+            "eligible": False, "autoPublishEligible": False, "addedIds": [],
             "errors": ["Verplichte velden ontbreken: " + ", ".join(missing)], "warnings": [], "sourceChecks": {},
             "scope": "Automatische bron- en structuurcontrole; geen inhoudelijke aanbeveling.",
         }
@@ -92,9 +97,10 @@ def main() -> int:
         print(report_markdown(report))
         return 2
 
-    if fields["Recordtype"] not in TYPE_MAP or fields["Status"] not in STATUS_MAP:
+    commercial_choice = fields.get("Commerciële aard") or "Niet vastgesteld"
+    if fields["Recordtype"] not in TYPE_MAP or fields["Status"] not in STATUS_MAP or commercial_choice not in COMMERCIAL_MAP:
         report = {
-            "eligible": False, "addedIds": [], "errors": ["Recordtype of status is niet herkenbaar."],
+            "eligible": False, "autoPublishEligible": False, "addedIds": [], "errors": ["Recordtype, status of commerciële aard is niet herkenbaar."],
             "warnings": [], "sourceChecks": {}, "scope": "Automatische bron- en structuurcontrole; geen inhoudelijke aanbeveling.",
         }
         dump_report(report, args.report_json, args.report_markdown)
@@ -109,6 +115,7 @@ def main() -> int:
     provider = fields["Organisatie"].strip()
     record_id = slug(title)
     description = fields["Feitelijke beschrijving"].strip()
+    purpose = description
     if description and not description.lower().startswith(("volgens de aanbieder", "volgens de offici\u00eble bron")):
         description = "Volgens de aanbieder: " + description[0].lower() + description[1:]
     source_url = fields["Offici\u00eble bronlink"].strip()
@@ -118,6 +125,12 @@ def main() -> int:
     themes = multi(fields["Thema"])
     geography = fields.get("Geografische reikwijdte", "Nederland").strip() or "Nederland"
     cost = COST_MAP.get(fields.get("Kosten", "Onbekend").strip(), "unknown")
+    commercial_status = COMMERCIAL_MAP[commercial_choice]
+    commercial_evidence = None if commercial_status == "unknown" else {
+        "url": fields.get("Bron commerciële aard", "").strip(),
+        "note": fields.get("Onderbouwing commerciële aard", "").strip(),
+        "checkedOn": today,
+    }
 
     record = {
         "id": record_id,
@@ -128,7 +141,7 @@ def main() -> int:
         "organizationIds": ["org-" + slug(title if record_type == "organization" else provider)],
         "providerName": provider,
         "description": description,
-        "purpose": "Nog niet ingevuld",
+        "purpose": purpose,
         "audiences": audiences,
         "sectors": sectors,
         "themes": themes,
@@ -144,6 +157,8 @@ def main() -> int:
         "geographicScope": geography,
         "accessType": "unknown",
         "costType": cost,
+        "commercialStatus": commercial_status,
+        "commercialEvidence": commercial_evidence,
         "fundingAmount": "Nog niet ingevuld",
         "fundingDeadline": fields.get("Deadline") or None,
         "applicationOpenDate": None,
@@ -156,18 +171,19 @@ def main() -> int:
         "changeHistory": [{"date": today, "type": "added", "summary": f"Ingediend via communitybijdrage #{number}."}],
     }
     candidate = [*records, record]
-    report = review_records(records, candidate, ["data/records.json"])
+    sources = json.loads(Path(args.sources).read_text(encoding="utf-8"))
+    report = review_external_submission(records, candidate, sources)
     dump_report(report, args.report_json, args.report_markdown)
     print(report_markdown(report))
-    if not report["eligible"]:
+    if not report["eligible"] or report.get("autoPublishEligible") is not True:
         return 2
 
     record["lastVerified"] = today
     record["verificationStatus"] = "recently_checked"
-    record["verificationMethod"] = "automatic_official_source_check"
+    record["verificationMethod"] = "automatic_source_evidence_admission"
     record["verificationNote"] = (
-        "Bereikbaarheid en aansluiting van titel en aanbieder op de offici\u00eble bron zijn automatisch gecontroleerd; "
-        "dit is geen inhoudelijke aanbeveling."
+        "Bekende bronautoriteit, titel, aanbieder, letterlijke beschrijvende bronzinnen en AI-onderwijsrelevantie "
+        "zijn automatisch gecontroleerd. Dit is geen aanbeveling of persoonlijk akkoord van Eva."
     )
     record["changeHistory"].append({
         "date": today, "type": "verified",

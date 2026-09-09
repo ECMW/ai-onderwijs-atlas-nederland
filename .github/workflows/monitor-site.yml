@@ -1,0 +1,165 @@
+name: Monitor Atlas availability
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+permissions: {contents: read, actions: write, issues: write}
+concurrency: {group: atlas-site-monitor, cancel-in-progress: false}
+jobs:
+  monitor:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Check the served catalogue twice if unhealthy
+        id: health
+        shell: python
+        run: |
+          import json
+          import os
+          import subprocess
+          import sys
+          from pathlib import Path
+
+          config = json.loads(Path('config/site-recovery.json').read_text())
+          result = subprocess.run([
+              sys.executable, 'scripts/check_live_site.py', '--url', config['siteUrl'],
+              '--retry-delay', '20'
+          ], capture_output=True, text=True, timeout=180)
+          report = json.loads(result.stdout)
+          if result.returncode not in (0, 1, 2) or report.get('exitCode') != result.returncode:
+              raise RuntimeError('Live checker did not produce a valid outcome')
+          Path('site-health.json').write_text(json.dumps(report, indent=2), encoding='utf-8')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'exit_code={result.returncode}\n')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write(f"Atlas health: **{report['status']}**\n\n")
+              summary.write('A network error or changing release never triggers automatic recovery.\n')
+      - name: Dispatch one recovery only for a stable confirmed site fault
+        id: recovery
+        if: steps.health.outputs.exit_code == '1'
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs');
+            const report = JSON.parse(fs.readFileSync('site-health.json', 'utf8'));
+            const config = JSON.parse(fs.readFileSync('config/site-recovery.json', 'utf8'));
+            const { owner, repo } = context.repo;
+            const skip = reason => { core.notice(reason); core.setOutput('outcome', 'skipped'); core.setOutput('detail', reason); };
+            const alert = reason => { core.setOutput('outcome', 'attention'); core.setOutput('detail', reason); core.setFailed(reason); };
+            if (!/^[0-9a-f]{40}$/.test(config.baselineSha)) throw new Error('Invalid recovery baseline');
+            const attempts = report.attempts || [];
+            if (report.exitCode !== 1 || attempts.length !== 2 ||
+                !attempts.every(item => item.status === 'content_fault') ||
+                !attempts[0].releaseFingerprint ||
+                attempts[0].releaseFingerprint !== attempts[1].releaseFingerprint ||
+                JSON.stringify(attempts[0].issue) !== JSON.stringify(attempts[1].issue)) {
+              skip('Failure or release identity was not independently confirmed twice.'); return;
+            }
+            const servedSha = report.sourceSha || attempts[1].sourceSha || attempts[1].release?.sourceSha;
+            if (servedSha === config.baselineSha) {
+              alert('The verified baseline is already served; repeated recovery is blocked.'); return;
+            }
+            const main = await github.rest.repos.getBranch({ owner, repo, branch: 'main' });
+            if (main.data.commit.sha !== context.sha) {
+              skip('Main changed during the health check; let the newer publication proceed.'); return;
+            }
+            const workflow_id = 'deploy-pages.yml';
+            const activeStates = ['queued', 'in_progress', 'waiting', 'pending', 'requested'];
+            for (const status of activeStates) {
+              const response = await github.rest.actions.listWorkflowRuns({ owner, repo, workflow_id, branch: 'main', status, per_page: 1 });
+              if (response.data.workflow_runs.length) {
+                skip('A publication is already queued or running.'); return;
+              }
+            }
+            const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {
+              owner, repo, workflow_id, branch: 'main', event: 'workflow_dispatch', head_sha: context.sha, per_page: 100
+            });
+            if (runs.some(run => (run.display_title || '').startsWith('Atlas recovery '))) {
+              skip('Recovery has already been attempted for this main commit; inspect that run instead of repeating it.'); return;
+            }
+            // Dispatch on main: the environment sees main while source content is
+            // selected by its reviewed SHA in a separate checkout.
+            const dispatch = await github.rest.actions.createWorkflowDispatch({
+              owner, repo, workflow_id, ref: 'main', inputs: {
+                recovery_ref: config.baselineSha,
+                observed_main_sha: context.sha,
+                observed_release_fingerprint: attempts[1].releaseFingerprint
+              }
+            });
+            core.setOutput('outcome', 'dispatched');
+            core.setOutput('run_url', dispatch.data?.html_url || `https://github.com/${owner}/${repo}/actions/workflows/deploy-pages.yml`);
+            core.setOutput('detail', 'De bevestigde laadfout heeft één herstelpublicatie van de gecontroleerde basisversie gestart.');
+            await core.summary.addRaw('A confirmed site fault triggered one publication of the verified recovery baseline. Git history and main are unchanged.\n').write();
+      - name: Maintain one incident and report recovery once
+        if: always() && steps.health.outputs.exit_code != ''
+        uses: actions/github-script@v8
+        env:
+          RECOVERY_OUTCOME: ${{ steps.recovery.outputs.outcome }}
+          RECOVERY_DETAIL: ${{ steps.recovery.outputs.detail }}
+          RECOVERY_RUN_URL: ${{ steps.recovery.outputs.run_url }}
+        with:
+          script: |
+            const fs = require('fs');
+            const crypto = require('crypto');
+            const report = JSON.parse(fs.readFileSync('site-health.json', 'utf8'));
+            const { owner, repo } = context.repo;
+            const label = 'atlas-beschikbaarheid';
+            const marker = '<!-- atlas-availability-incident -->';
+            const open = await github.rest.issues.listForRepo({ owner, repo, state: 'open', labels: label, per_page: 100 });
+            const incident = open.data.find(issue => !issue.pull_request && issue.body?.includes(marker));
+            const runUrl = `https://github.com/${owner}/${repo}/actions/runs/${context.runId}`;
+            if (report.exitCode === 0) {
+              if (incident) {
+                await github.rest.issues.createComment({ owner, repo, issue_number: incident.number,
+                  body: `De live atlas werkt weer. De controle vond ${report.recordCount} bronrecords en heeft de catalogus en navigatie succesvol gestart.\n\n[Geslaagde controle](${runUrl}).` });
+                await github.rest.issues.update({ owner, repo, issue_number: incident.number, state: 'closed', state_reason: 'completed' });
+              }
+              return;
+            }
+            const attempt = report.attempts?.at(-1) || {};
+            const issue = attempt.issue || {};
+            const recovery = process.env.RECOVERY_OUTCOME || 'not_requested';
+            const fingerprint = report.releaseFingerprint || attempt.releaseFingerprint || '';
+            // Timings and transport messages vary per run and must not generate noise.
+            const signature = crypto.createHash('sha256').update(JSON.stringify([
+              report.status, issue.code, String(issue.resource || '').split('?')[0],
+              report.exitCode === 1 ? fingerprint : '', recovery
+            ])).digest('hex');
+            const stateMarker = `<!-- atlas-availability-state:${signature} -->`;
+            if (incident?.body?.includes(stateMarker)) return;
+            const confirmed = report.exitCode === 1;
+            const title = confirmed ? 'Atlas: bevestigde laadfout' : 'Atlas: beschikbaarheidscontrole niet uitvoerbaar';
+            const explanation = confirmed
+              ? 'Dezelfde inhoudelijke laadfout is tweemaal vastgesteld bij dezelfde gepubliceerde versie.'
+              : 'De controle geeft nog geen betrouwbaar oordeel. Er wordt geen automatisch herstel uitgevoerd op basis van een netwerkfout of onzekere meting.';
+            const action = process.env.RECOVERY_DETAIL || 'Automatisch herstel is niet gestart.';
+            const recoveryLink = process.env.RECOVERY_RUN_URL ? `\n[Herstelpublicatie](${process.env.RECOVERY_RUN_URL}).` : '';
+            const body = `${marker}\n${stateMarker}\n${explanation}\n\n**Signaal:** ${issue.code || report.status}\n\n**Actie:** ${action}\n\n[Controle en bewijs](${runUrl}).${recoveryLink}\n\nDit incident wordt alleen bijgewerkt wanneer de status verandert en wordt gesloten na een geslaagde livecontrole. Hoofdbranch en bronhistorie blijven behouden.`;
+            if (incident) {
+              await github.rest.issues.update({ owner, repo, issue_number: incident.number, title, body });
+            } else {
+              try { await github.rest.issues.getLabel({ owner, repo, name: label }); }
+              catch (error) {
+                if (error.status !== 404) throw error;
+                await github.rest.issues.createLabel({ owner, repo, name: label, color: 'B42318', description: 'Live Atlas availability incidents and recovery' });
+              }
+              await github.rest.issues.create({ owner, repo, title, body, labels: [label] });
+            }
+      - name: Retain fault evidence
+        if: always() && steps.health.outputs.exit_code != '0'
+        uses: actions/upload-artifact@v7
+        with:
+          name: atlas-site-health
+          path: site-health.json
+          retention-days: 14
+          if-no-files-found: ignore

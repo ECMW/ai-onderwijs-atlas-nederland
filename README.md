@@ -2,8 +2,8 @@
 
 De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijzer voor bestaand aanbod rond AI in het onderwijs. Bezoekers zoeken vanuit hun vraag en kunnen daarna combineren op thema, sector, soort aanbod, doelgroep, beschikbaarheid, organisatie, geografische reikwijdte en actualiteit.
 
-- Publieke Atlas: https://ecmw.github.io/ai-onderwijs-atlas-nederland/
-- Bijdragen en broncode: https://github.com/ECMW/ai-onderwijs-atlas-nederland
+- [Publieke Atlas](https://ecmw.github.io/ai-onderwijs-atlas-nederland/)
+- [Bijdragen en broncode](https://github.com/ECMW/ai-onderwijs-atlas-nederland)
 
 ## Uitgangspunten
 
@@ -12,8 +12,21 @@ De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijze
 - filters binnen een groep werken als OR, verschillende groepen als AND;
 - meerdere rollen, zoals Docent en Onderzoeker, kunnen gecombineerd worden;
 - zoek- en filterstaat staat in de URL en is deelbaar;
-- persoonlijke voorkeuren, favorieten en bewaarde zoekopdrachten blijven lokaal in de browser;
+- persoonlijke rolvoorkeuren blijven lokaal in de browser;
 - er zijn geen trackers, cookies, externe autocomplete of backend nodig.
+
+Een vermelding is geen goedkeuring, kwaliteitsbeoordeling of aanbeveling. De Atlas
+presenteert vaste feitelijke velden. Kosten, toegang en commerciële aard zijn
+afzonderlijke gegevens; onbekende informatie wordt niet ingevuld op basis van de
+naam, rechtsvorm of prijs van een aanbieder.
+
+## Nieuwe bijdragen
+
+Via **Nieuwe bijdragen** ziet een bezoeker wat recent aan de Atlas is toegevoegd.
+**Nieuw in de Atlas** gebruikt de eerste geldige toevoegdatum in de
+wijzigingsgeschiedenis. **Recent gepubliceerd** gebruikt de vastgelegde
+publicatiedatum bij de aanbieder. Een latere broncontrole maakt bestaand aanbod
+niet opnieuw nieuw; ontbrekende datums blijven als onbekend herkenbaar.
 
 ## Techniek en data
 
@@ -23,12 +36,20 @@ Het datamodel en de toegestane enums staan in [docs/data-model.md](docs/data-mod
 
 ## Dagelijks onderhoud
 
-De Atlas heeft twee gescheiden onderhoudsroutes:
+De Atlas heeft verschillende onderhoudsroutes:
 
 - de GitHub-signaalworkflow controleert geregistreerde bronnen om 05:00 UTC, classificeert veranderingen en maakt uitsluitend reviewvoorstellen;
-- de door de eigenaar gemachtigde dagelijkse Atlas-actualisator zoekt en controleert primaire bronnen, werkt canonieke data bij en mag uitsluitend eigen, volledig geverifieerde pull requests zelfstandig mergen nadat alle verplichte controles zijn geslaagd.
+- de door de eigenaar gemachtigde dagelijkse Atlas-actualisator zoekt en controleert primaire bronnen, werkt canonieke data bij en mag uitsluitend eigen, volledig geverifieerde pull requests zelfstandig mergen nadat alle verplichte controles zijn geslaagd;
+- aanvullingen via het websiteformulier worden onmiddellijk getoetst aan de strikte bron- en publicatieregels. Alleen volledig toegelaten aanvullingen mogen via een eigen bot-PR automatisch worden verwerkt; twijfelgevallen blijven buiten de publieke Atlas.
 
-De autonome route stopt zonder merge bij een dirty worktree, conflicten, mislukte checks, onduidelijke bronnen, mogelijke doublures of andere materiële onzekerheid. Na iedere merge controleert zij de Pages-publicatie en live zoekbaarheid. Externe bijdragen en voorstellen uit de signaalworkflow blijven altijd onder menselijke beoordeling. Zie:
+De dagelijkse actualisator stopt zonder merge bij een dirty worktree, conflicten,
+mislukte checks, onduidelijke bronnen, mogelijke doublures of andere materiële
+onzekerheid. De website-inzendingen gebruiken een aparte route met onveranderlijke
+kandidaatcommits, twee geslaagde controles van dezelfde commit en een laatste
+bronhercontrole vóór samenvoegen. Gewijzigde inzendingen worden niet stilzwijgend
+doorgezet; een gewijzigde hoofdbranch vereist een nieuwe kandidaat en controles.
+Correcties, feedback, willekeurige externe PR's en signaalvoorstellen vallen niet
+onder deze automatische toelating. Zie:
 
 - [dagelijkse onderhoudsarchitectuur](docs/daily-maintenance.md);
 - [voorbeeld van het dagrapport](docs/example-daily-report.md);
@@ -57,6 +78,13 @@ de browsercacheversie van ieder geladen bestand aan de inhoud. Commit de
 gegenereerde data en `index.html` samen. Publicatie valideert de vastgelegde
 bestanden en maakt ze niet opnieuw aan.
 
+De generator zet `metadata.updated` op de werkelijke generatiedatum in Nederlands
+formaat. Dit is de datum bij **Bijgewerkt** in de footer. De `lastVerified`-datum
+van ieder bronrecord blijft onaangetast. Een controle zonder nieuwe generatie,
+een browserbezoek of het opnieuw uitrollen van dezelfde editie verschuift deze
+datum niet. De dagelijkse actualisator moet de generator bij echte wijzigingen
+uitvoeren en de resulterende metadata meenemen in de PR.
+
 GitHub Pages gebruikt **GitHub Actions** als publicatiebron. Alleen de workflow
 **Validate and deploy Pages** publiceert, na datavalidatie, de strikte quality
 gate, alle regressietests en JavaScript-controle van het publicatiepakket.
@@ -65,9 +93,40 @@ omzeilen. Een lege dataset, coderingsschade, afwijkende projectie of verouderde
 cacheversie blokkeert publicatie. Bij een laadfout toont de website een
 herlaadmogelijkheid in plaats van nul bronrecords.
 
+## Beschikbaarheid en herstel
+
+**Monitor Atlas availability** draait op GitHub met een geplande frequentie van
+vijf minuten, ook wanneer de laptop uitstaat. De controle haalt de gepubliceerde
+HTML en assets op en test gegevens, JavaScript en de werkelijke opstartvolgorde.
+Alleen tweemaal dezelfde inhoudelijke fout bij dezelfde release kan automatisch
+herstel starten. Netwerkonzekerheid, een veranderende release, een gewijzigde
+hoofdbranch of een lopende publicatie leiden niet tot herstel.
+
+Herstel publiceert uitsluitend de gecontroleerde basisversie uit
+`config/site-recovery.json`. Het zet `main` of de Gitgeschiedenis niet terug en
+wordt hoogstens eenmaal per hoofdbranchcommit geprobeerd. De oudere editie kan
+minder records en functies bevatten. `release.json` maakt zichtbaar welke
+broncommit daadwerkelijk is gepubliceerd; iedere publicatie wordt daarna live
+gecontroleerd.
+
+Bij een fout of onuitvoerbare controle houdt de monitor één GitHub-incident bij
+met label `atlas-beschikbaarheid`. Ongewijzigde signalen veroorzaken geen nieuwe
+comments. Na herstel volgt één bericht en sluit het incident. Mail- en
+pushmeldingen hangen af van de GitHub-notificatie-instellingen.
+
+Vijf minuten is de ingestelde frequentie, geen gegarandeerde reactietijd. GitHub
+kan runs vertragen of laten vervallen en schakelt geplande workflows in publieke
+repositories na 60 dagen zonder repositoryactiviteit uit. Zie de
+[GitHub-uitleg over schedules](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)
+en het [releaseproces](docs/release-process.md).
+
 ## Bijdragen
 
-Een externe correctie of aanvulling moet een officiele bron bevatten. Automatische controles geven structuur-, bron- en duplicaatsignalen; een mens neemt voor externe bijdragen altijd het publicatiebesluit. Zie [CONTRIBUTING.md](CONTRIBUTING.md).
+Een aanvulling beschrijft bestaand AI-onderwijsaanbod met een directe officiële
+bron. Bekende bronautoriteit, letterlijke feitelijke brononderbouwing en geslaagde
+technische controles zijn voorwaarden voor automatische toelating. Onbekende of
+onvoldoende onderbouwde gegevens worden niet als vaststaand gepubliceerd. Zie
+[CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Licentie en maker
 
