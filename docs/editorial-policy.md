@@ -21,6 +21,19 @@ parafrases, PDF's zonder betrouwbaar uitleesbare tekst en andere twijfelgevallen
 worden niet automatisch gepubliceerd. De strikte toelating wordt vóór samenvoegen
 opnieuw uitgevoerd; zij kent geen persoonlijk akkoord van Eva toe.
 
+## Workshops en trainers
+
+Workshops en cursussen gebruiken het bestaande recordtype `training`. Leg de
+vorm vast in `subtype` als de officiële bron die bevestigt. De beschrijving
+vermeldt de trainer alleen wanneer diens uitvoerende rol bij het aanbod is
+bevestigd. Een contactpersoon is niet automatisch de trainer; een naam bewijst
+geen zelfstandige boekbaarheid. Verwijs voor contact naar de zakelijke aanbodpagina.
+
+Gebruik `availabilityText` voor locatie, duur, prijs en planning, en `eligibility`
+voor deelnamevoorwaarden en benodigde accounts of producten. Vermeld onbekenden
+expliciet; verzin geen onderwijssector, beschikbare datum of trainer. Bewaar
+bestaande organisatiekoppelingen en voorkom dubbele vermeldingen van één cursus.
+
 ## Kosten en commerciële aard
 
 `costType` en `accessType` staan los van `commercialStatus`. Leid commerciële aard

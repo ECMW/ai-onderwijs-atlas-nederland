@@ -48,6 +48,26 @@ test('commercial labels require evidence and are independent of price', () => {
   assert.equal(api.commercialLabel(free), 'Commerciële aard niet vastgesteld');
 });
 
+test('workshop and trainer entry uses training filters and preserves a named trainer search', () => {
+  const api = load();
+  for (const q of ['workshops', 'trainers', 'trainingen', 'workshop', 'trainer']) {
+    const criteria = api.criteriaForQuery(q);
+    assert.equal(criteria.type, 'Training', q);
+    assert.equal(criteria.q, '', q);
+  }
+  const criteria = api.criteriaForQuery('trainer Tanja van Grinsven');
+  assert.equal(criteria.type, 'Training');
+  assert.match(criteria.q, /tanja/);
+  const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
+  const live = load(data);
+  assert.ok(live.recordsForCriteria(criteria).some(item => item.id === 'han-ai-voor-docenten-basis'));
+  const training = load(data, '#zoeken?type=Training');
+  const html = training.resultsMarkup();
+  assert.ok(html.includes('<h2>Workshops en trainers</h2>'));
+  assert.ok(html.includes('In-school AI workshop op maat'));
+  assert.ok(html.includes('Copilot Chat: adoptietraining op locatie'));
+});
+
 test('every offering keeps the same facts including explicit unknowns', () => {
   const api = load();
   const complete = {...record('complete', '2026-09-01'), costType:'free', accessType:'public', geographicScope:'Nederland'};

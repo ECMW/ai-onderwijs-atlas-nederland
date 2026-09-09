@@ -15,7 +15,8 @@ De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijze
 - persoonlijke rolvoorkeuren blijven lokaal in de browser;
 - er zijn geen cookies, externe autocomplete of eigen backend nodig;
 - GoatCounter telt bezoeken per dag zonder zoektermen of filters te ontvangen;
-  de homepage toont het totale aantal gemeten bezoeken sinds 9 september 2026.
+  de homepage toont het totale aantal gemeten bezoeken sinds 9 september 2026
+  zodra dat totaal hoger is dan 200.
   Het uitgebreide dashboard is privé en de koppeling kan worden uitgeschakeld.
 
 Een vermelding is geen goedkeuring, kwaliteitsbeoordeling of aanbeveling. De Atlas

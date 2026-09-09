@@ -30,7 +30,7 @@
       const formatted = String(data.count ?? '').trim();
       if (!/^(?:\d+|\d{1,3}(?:[ ,.'\u00a0\u2009\u202f]\d{3})+)$/.test(formatted)) return;
       const value = Number(formatted.replace(/\D/g, ''));
-      if (!Number.isSafeInteger(value) || value < 0) return;
+      if (!Number.isSafeInteger(value) || value <= 200) return;
       publicVisits = value;
       renderPublicVisits();
     }).catch(() => { /* Leave the counter hidden instead of inventing a total. */ });

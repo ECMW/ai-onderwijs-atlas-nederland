@@ -98,7 +98,7 @@ test('public counter shows the Atlas total with start date and survives home nav
   assert.equal(app.requests.length, requests);
 });
 
-test('unavailable or malformed public counts stay hidden; a real zero and singular count are truthful', async () => {
+test('unavailable or malformed public counts stay hidden', async () => {
   for (const options of [{ counterOk: false }, { blocked: true },
     ...[null, {}, { count: '-1' }, { count: '<img src=x>' }, { count: '1.5' },
       { count: '9007199254740992' }].map(counterData => ({ counterData }))]) {
@@ -108,15 +108,22 @@ test('unavailable or malformed public counts stay hidden; a real zero and singul
     assert.equal(app.widget.textContent, '');
     assert.equal(app.context.ATLAS_STARTUP.status, 'ready');
   }
-  for (const [count, label] of [['0', '0 bezoeken'], ['1', '1 bezoek']]) {
+});
+
+test('counts up to 200 stay hidden while measurement continues; 201 becomes visible', async () => {
+  for (const count of ['0', '1', '199', '200', '201']) {
     const app = run({ counterData: { count } });
     await new Promise(resolve => setImmediate(resolve));
-    assert.equal(app.widget.textContent, `${label} sinds 9 september 2026`);
+    assert.equal(app.widget.hidden, Number(count) <= 200, count);
+    assert.equal(app.widget.textContent, count === '201' ? '201 bezoeken sinds 9 september 2026' : '');
+    assert.equal(app.measurementRequests().length, 1);
+    app.renderHomeAgain();
+    assert.equal(app.widget.hidden, Number(count) <= 200, count);
   }
 });
 
 test('visitors opting out can read the public total without registering a visit', async () => {
-  const app = run({ navigator: { globalPrivacyControl: true } });
+  const app = run({ navigator: { globalPrivacyControl: true }, counterData: { count: '201' } });
   await new Promise(resolve => setImmediate(resolve));
   assert.equal(app.measurementRequests().length, 0);
   assert.equal(app.requests.length, 1);

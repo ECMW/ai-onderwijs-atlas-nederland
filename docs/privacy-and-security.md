@@ -15,7 +15,9 @@ Deze editie koppelt GoatCounter aan Eva's account `ecmw`. Eva heeft de publicati
 op 9 september 2026 goedgekeurd. De accountinstellingen zijn gecontroleerd en opgeslagen:
 alleen Sessions verzamelen en dashboard privé. Op Eva's verzoek is alleen de
 openbare bezoekenteller aangezet. De homepage leest het geaggregeerde totaal
-voor het Atlas-pad, zonder cookies of verwijzer; dit registreert geen extra bezoek.
+en toont dit pas boven 200 gemeten bezoeken; de meting loopt onder deze grens door.
+De leesaanvraag geldt alleen voor het Atlas-pad, zonder cookies of verwijzer;
+dit registreert geen extra bezoek.
 De koppeling kan uit door `atlas-goatcounter-site` in `index.html` leeg te maken.
 Na publicatie vraagt de browser
 eenmaal per paginalading een telling aan voor het vaste Atlas-pad. Zoektermen,

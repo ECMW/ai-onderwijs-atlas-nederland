@@ -76,7 +76,7 @@
     'it professional': 'IT-professionals', ict: 'IT-professionals', it: 'IT-professionals'
   };
   const TYPE_QUERY_RULES = {
-    Handreiking: ['handreiking', 'handleiding'], Training: ['training', 'cursus', 'workshop'],
+    Handreiking: ['handreiking', 'handleiding'], Training: ['training', 'trainingen', 'cursus', 'workshop', 'workshops', 'trainer', 'trainers'],
     Praktijkvoorbeeld: ['praktijkvoorbeeld', 'voorbeeld uit de praktijk'],
     Hulpmiddel: ['hulpmiddel', 'tool'], Organisatie: ['organisatie', 'kennisorganisatie', 'instelling'],
     'Subsidie of call,Subsidie': ['subsidie', 'subsidies', 'call', 'calls']
@@ -96,7 +96,7 @@
     { label: 'Veilige AI kiezen', detail: 'Privacy, beveiliging en autonomie', query: { theme: 'Veilige AI-omgeving' } },
     { label: 'Voorbeeldbeleid', detail: 'Afspraken, governance en implementatie', query: { theme: 'Beleid en governance' } },
     { label: 'Praktijkvoorbeelden', detail: 'Ervaringen uit instellingen en scholen', query: { type: 'Praktijkvoorbeeld' } },
-    { label: 'Trainingen', detail: 'Workshops en leeractiviteiten', query: { type: 'Training' } },
+    { label: 'Workshops en trainers', detail: 'Trainingen, begeleiders en leren met uw team', query: { type: 'Training' } },
     { label: 'Organisatie vinden', detail: 'Vind een organisatie per sector of onderwerp', query: { type: 'Organisatie' } }
   ];
 
@@ -124,7 +124,7 @@
 
   const recordText = record => normalize([
     record.title, record.description, record.purpose, record.providerName,
-    record.legacyType, record.status, ...(record.audiences || []), ...(record.sectors || []),
+    record.legacyType, record.subtype, record.status, ...(record.audiences || []), ...(record.sectors || []),
     ...(record.themes || []), ...(record.keywords || [])
   ].join(' '));
   const recordThemes = record => {
@@ -374,6 +374,7 @@
     return [
       ['Aanbieder', factValue(record.providerName)],
       ['Soort aanbod', typeLabel(record)],
+      ['Vorm', factValue(record.subtype)],
       ['Voor wie', factValue((record.audiences || []).join(', '))],
       ['Sector', factValue((record.sectors || []).join(', '))],
       ['Beschikbaarheid', statusLabel(record)],
@@ -548,7 +549,7 @@
     const supportsMultiple = ['sector', 'audience'].includes(key);
     return `<details class="facet${supportsMultiple ? ' facet-multi' : ''}" data-facet-block="${escapeHtml(key)}"${supportsMultiple ? ' open' : ''}><summary><span class="facet-heading">${escapeHtml(title)}<b aria-label="${values(key).length} geselecteerd" ${values(key).length ? '' : 'hidden'}>${values(key).length}</b></span><span class="facet-value">${escapeHtml(facetSelectionLabel(key))}</span></summary><div>
       ${supportsMultiple ? '<p class="facet-note">Kies één of meer opties tegelijk.</p>' : ''}
-      ${key === 'organization' && present.length > 12 ? '<input class="facet-search" type="search" placeholder="Zoek organisatie…" aria-label="Zoek binnen organisaties">' : ''}
+      ${key === 'organization' && present.length > 12 ? '<input class="facet-search" type="search" placeholder="Zoek aanbieder…" aria-label="Zoek binnen aanbieders">' : ''}
       <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => { const count = facetCount(key, option); const checked = values(key).includes(option); return `<label data-facet-option="${escapeHtml(option)}"><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${!count && !checked ? 'disabled' : ''}><span>${escapeHtml(option)}</span><small>${count}</small></label>`; }).join('')}</div>
       ${present.length > 8 ? '<button class="facet-more" type="button" aria-expanded="false">Toon meer</button>' : ''}
     </div></details>`;
@@ -630,6 +631,7 @@
       ? `${state.sort === 'published' ? 'Nieuwste' : 'Oudste'} publicaties eerst. Publicatiedatum bekend bij ${knownDates} van ${resultRecords.length} resultaten; onbekende datums staan onderaan.`
       : state.sort === 'az' ? 'Gesorteerd op titel, van A tot Z.' : 'Gesorteerd op relevantie en directe bruikbaarheid.';
     return `<header class="result-head"><div><span class="eyebrow">Gevonden aanbod</span><h1>${escapeHtml(heading)}</h1><p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p></div><div class="result-tools"><button class="mobile-filter btn secondary" aria-controls="filters" aria-expanded="false">Filters (${activeCount})</button><label>Sorteren<select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select></label></div></header>
+      ${values('type').length === 1 && values('type')[0] === 'Training' ? '<section class="training-intro"><h2>Workshops en trainers</h2><p>Vind een workshop, cursus of training en de aanbieder die deze verzorgt. Verfijn op onderwerp, doelgroep of aanbieder. Trainer, locatie, kosten en beschikbaarheid staan bij het aanbod voor zover bevestigd. Bespreek maatwerk via de officiële aanbodpagina.</p></section>' : ''}
       <div class="selection-bar"><div class="selection-actions"><a href="#bijdragen">Aanbod toevoegen of feedback geven</a><button type="button" data-share-selection>Deel selectie</button></div></div>
       ${chips ? `<div class="chips">${chips}<button class="clear-link">Wis alles</button></div>` : ''}
       ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="${escapeHtml(stateHref({ theme }))}">${escapeHtml(theme)} <span>${count} ${count === 1 ? 'resultaat' : 'resultaten'}</span></a>`).join('')}</nav>` : ''}
@@ -713,6 +715,7 @@
       <div class="detail-layout"><article>
         <h2>Feitelijke beschrijving</h2><p>${escapeHtml(factValue(record.description))}</p>
         <h2>Doel en gebruik</h2><p>${escapeHtml(factValue(record.purpose))}</p>
+        ${record.recordType === 'training' ? `<h2>Praktisch en beschikbaarheid</h2><p>${escapeHtml(factValue(record.availabilityText))}</p>` : ''}
         <h2>Onderwerpen</h2>${recordThemes(record).length ? `<div class="detail-themes">${recordThemes(record).map(theme => `<a href="#zoeken?theme=${encodeURIComponent(theme)}">${escapeHtml(theme)}</a>`).join('')}</div>` : '<p>Niet vastgesteld</p>'}
         <h2>Voorwaarden</h2><p>${escapeHtml(factValue(record.eligibility))}</p>
         <h2>Commerciële aard</h2><p>${escapeHtml(commercialLabel(record))}. Kosten en commerciële aard worden afzonderlijk vermeld.</p>
@@ -770,7 +773,7 @@
       .filter(item => item.count > 0).slice(0, 4);
     const sections = [];
     if (themes.length) sections.push({ label: 'Onderwerpen', items: themes });
-    if (organizations.length) sections.push({ label: 'Organisaties', items: organizations });
+    if (organizations.length) sections.push({ label: 'Aanbieders', items: organizations });
     const definitions = [
       ['Hulpmiddelen', ['Handreiking', 'Hulpmiddel', 'Voorziening', 'Training']],
       ['Wetgeving', ['Wetgeving']], ['Subsidies', ['Subsidie', 'Subsidie of call']],
