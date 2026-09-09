@@ -12,6 +12,7 @@ jobs:
       - uses: actions/setup-python@v7
         with: {python-version: '3.12'}
       - run: python scripts/validate_data.py
+      - run: python scripts/quality_gate.py --strict --output "${{ runner.temp }}/atlas-quality-report.json"
       - run: python scripts/generate_data.py
       - run: python -m unittest discover tests
       - uses: actions/configure-pages@v6
