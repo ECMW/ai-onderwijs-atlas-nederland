@@ -198,7 +198,7 @@
     "trustLevel": "official",
     "enabled": true,
     "schedule": {
-      "frequency": "weekly"
+      "frequency": "daily"
     },
     "extraction": {
       "type": "html",
@@ -230,7 +230,7 @@
     "trustLevel": "official",
     "enabled": true,
     "schedule": {
-      "frequency": "weekly"
+      "frequency": "daily"
     },
     "extraction": {
       "type": "html",
@@ -464,7 +464,7 @@
     "trustLevel": "official",
     "enabled": true,
     "schedule": {
-      "frequency": "monthly"
+      "frequency": "daily"
     },
     "extraction": {
       "type": "html",
@@ -620,7 +620,7 @@
     "trustLevel": "official",
     "enabled": true,
     "schedule": {
-      "frequency": "monthly"
+      "frequency": "daily"
     },
     "extraction": {
       "type": "html",
@@ -1708,66 +1708,234 @@
     "name": "Digitale Overheid",
     "owner": "Ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
     "baseUrl": "https://www.digitaleoverheid.nl/",
-    "sourceRole": "discovery", "trustLevel": "official", "enabled": true,
-    "schedule": {"frequency": "monthly"}, "extraction": {"type": "html", "scope": "page"},
-    "allowedRecordTypes": ["guidance", "training", "service", "programme", "practice_example", "pilot", "research_project", "policy_document", "standard", "subsidy", "funding_call"],
-    "operational": {"lastSuccessfulCheck": null, "lastContentHash": null, "lastStatus": "never_checked", "consecutiveFailures": 0},
-    "notes": "Officiële Rijksbron voor digitale overheid. Detailpagina's zijn vereist voor publicatie.", "themes": [], "sectors": [], "sourceType": "official"
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële Rijksbron voor digitale overheid. Detailpagina's zijn vereist voor publicatie.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
   },
   {
     "id": "source-org-algoritmekader",
     "name": "Algoritmekader",
     "owner": "Ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
     "baseUrl": "https://algoritmes.overheid.nl/",
-    "sourceRole": "discovery", "trustLevel": "official", "enabled": true,
-    "schedule": {"frequency": "monthly"}, "extraction": {"type": "html", "scope": "page"},
-    "allowedRecordTypes": ["guidance", "training", "service", "programme", "practice_example", "pilot", "research_project", "policy_document", "standard", "subsidy", "funding_call"],
-    "operational": {"lastSuccessfulCheck": null, "lastContentHash": null, "lastStatus": "never_checked", "consecutiveFailures": 0},
-    "notes": "Officiële bron voor het Algoritmekader en bijbehorende instrumenten. Detailpagina's zijn vereist voor publicatie.", "themes": [], "sectors": [], "sourceType": "official"
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële bron voor het Algoritmekader en bijbehorende instrumenten. Detailpagina's zijn vereist voor publicatie.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
   },
   {
     "id": "source-org-radio",
     "name": "RADIO",
     "owner": "RijksAcademie voor Digitalisering en Informatisering Overheid",
     "baseUrl": "https://www.it-academieoverheid.nl/",
-    "sourceRole": "discovery", "trustLevel": "official", "enabled": true,
-    "schedule": {"frequency": "monthly"}, "extraction": {"type": "html", "scope": "page"},
-    "allowedRecordTypes": ["guidance", "training", "service", "programme", "practice_example", "pilot", "research_project", "policy_document", "standard", "subsidy", "funding_call"],
-    "operational": {"lastSuccessfulCheck": null, "lastContentHash": null, "lastStatus": "never_checked", "consecutiveFailures": 0},
-    "notes": "Officiële Rijksacademie voor opleidingen. Alleen concrete, actuele cursuspagina's worden als record gepubliceerd.", "themes": [], "sectors": [], "sourceType": "official"
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële Rijksacademie voor opleidingen. Alleen concrete, actuele cursuspagina's worden als record gepubliceerd.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
   },
   {
     "id": "source-org-cip",
     "name": "Centrum Informatiebeveiliging en Privacybescherming",
     "owner": "CIP",
     "baseUrl": "https://cip-overheid.nl/",
-    "sourceRole": "discovery", "trustLevel": "official", "enabled": true,
-    "schedule": {"frequency": "monthly"}, "extraction": {"type": "html", "scope": "page"},
-    "allowedRecordTypes": ["guidance", "training", "service", "programme", "practice_example", "pilot", "research_project", "policy_document", "standard", "subsidy", "funding_call"],
-    "operational": {"lastSuccessfulCheck": null, "lastContentHash": null, "lastStatus": "never_checked", "consecutiveFailures": 0},
-    "notes": "Officiële kennisbron voor informatiebeveiliging en privacy binnen de overheid. Detailpagina's zijn vereist voor publicatie.", "themes": [], "sectors": [], "sourceType": "official"
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële kennisbron voor informatiebeveiliging en privacy binnen de overheid. Detailpagina's zijn vereist voor publicatie.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
   },
   {
     "id": "source-org-logius",
     "name": "Logius",
     "owner": "Logius",
     "baseUrl": "https://www.logius.nl/",
-    "sourceRole": "discovery", "trustLevel": "official", "enabled": true,
-    "schedule": {"frequency": "monthly"}, "extraction": {"type": "html", "scope": "page"},
-    "allowedRecordTypes": ["guidance", "training", "service", "programme", "practice_example", "pilot", "research_project", "policy_document", "standard", "subsidy", "funding_call"],
-    "operational": {"lastSuccessfulCheck": null, "lastContentHash": null, "lastStatus": "never_checked", "consecutiveFailures": 0},
-    "notes": "Officiële bron voor digitale overheidsvoorzieningen. Detailpagina's zijn vereist voor publicatie.", "themes": [], "sectors": [], "sourceType": "official"
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële bron voor digitale overheidsvoorzieningen. Detailpagina's zijn vereist voor publicatie.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
   },
   {
     "id": "source-org-geonovum",
     "name": "Geonovum",
     "owner": "Geonovum",
     "baseUrl": "https://www.geonovum.nl/",
-    "sourceRole": "discovery", "trustLevel": "official", "enabled": true,
-    "schedule": {"frequency": "monthly"}, "extraction": {"type": "html", "scope": "page"},
-    "allowedRecordTypes": ["guidance", "training", "service", "programme", "practice_example", "pilot", "research_project", "policy_document", "standard", "subsidy", "funding_call"],
-    "operational": {"lastSuccessfulCheck": null, "lastContentHash": null, "lastStatus": "never_checked", "consecutiveFailures": 0},
-    "notes": "Officiële kennisbron voor standaarden en publieke geo-informatie. Detailpagina's zijn vereist voor publicatie.", "themes": [], "sectors": [], "sourceType": "official"
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële kennisbron voor standaarden en publieke geo-informatie. Detailpagina's zijn vereist voor publicatie.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
   },
   {
     "id": "source-org-european-schoolnet-fcl",
@@ -1777,12 +1945,36 @@
     "sourceRole": "discovery",
     "trustLevel": "official",
     "enabled": true,
-    "schedule": {"frequency": "monthly"},
-    "extraction": {"type": "html", "scope": "page"},
-    "allowedRecordTypes": ["guidance", "training", "service", "programme", "practice_example", "pilot", "research_project", "policy_document", "standard", "subsidy", "funding_call"],
-    "operational": {"lastSuccessfulCheck": null, "lastContentHash": null, "lastStatus": "never_checked", "consecutiveFailures": 0},
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "service",
+      "programme",
+      "practice_example",
+      "pilot",
+      "research_project",
+      "policy_document",
+      "standard",
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
     "notes": "Officiële Europese bron voor leermiddelen, praktijkkennis en professionalisering. Alleen concrete, toegankelijke detailpagina's onderbouwen publieke records.",
-    "themes": [], "sectors": [], "sourceType": "official"
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
   },
   {
     "id": "source-org-tno",
@@ -1793,7 +1985,7 @@
     "trustLevel": "official",
     "enabled": true,
     "schedule": {
-      "frequency": "monthly"
+      "frequency": "daily"
     },
     "extraction": {
       "type": "html",
@@ -1829,7 +2021,7 @@
     "trustLevel": "official",
     "enabled": true,
     "schedule": {
-      "frequency": "weekly"
+      "frequency": "daily"
     },
     "extraction": {
       "type": "html",
@@ -1847,6 +2039,72 @@
       "consecutiveFailures": 0
     },
     "notes": "Officiële projectpagina met het scenariospel werkzekerheid en bijbehorend rapport. Nieuwe links worden uitsluitend als reviewvoorstel verwerkt. Bron gecontroleerd op 5 september 2026.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-kennisnet-ai",
+    "name": "Kennisnet: AI in het onderwijs",
+    "owner": "Kennisnet",
+    "baseUrl": "https://www.kennisnet.nl/artificial-intelligence/",
+    "organizationId": "org-kennisnet",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "daily"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "product",
+      "service"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële AI-themabron gecontroleerd op 9 september 2026. Alleen de afzonderlijke detailpagina kan een nieuwe toevoeging onderbouwen; verwijzingen naar andere aanbieders zijn geen bewijs van eigen aanbod.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-surf-ai",
+    "name": "SURF: Artificial intelligence",
+    "owner": "SURF",
+    "baseUrl": "https://www.surf.nl/themas/artificial-intelligence",
+    "organizationId": "org-surf",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "daily"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "training",
+      "product",
+      "service"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële AI-themabron gecontroleerd op 9 september 2026. Alleen de afzonderlijke detailpagina kan een nieuwe toevoeging onderbouwen; verwijzingen naar andere aanbieders zijn geen bewijs van eigen aanbod.",
     "themes": [],
     "sectors": [],
     "sourceType": "official"

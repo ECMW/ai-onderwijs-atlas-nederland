@@ -77,7 +77,7 @@ def other_checks_pass(checks, skipped_screen_suites=()):
     return True
 
 
-def source_readmission(base_records, candidate_records, reviewer=None):
+def source_readmission(base_records, candidate_records, reviewer=None, issue=None):
     """Recheck public source evidence immediately before merge, as data only."""
     if reviewer is None:
         from contribution_quality import review_external_submission
@@ -87,7 +87,34 @@ def source_readmission(base_records, candidate_records, reviewer=None):
     pending[-1]["lastVerified"] = None
     sources = json.loads((ROOT / "data/sources.json").read_text(encoding="utf-8"))
     report = reviewer(base_records, pending, sources)
-    return report.get("eligible") is True and report.get("autoPublishEligible") is True
+    if not (report.get("eligible") is True and report.get("autoPublishEligible") is True):
+        return False
+    issue = issue or {}
+    discovery_marker = "atlas-discovery-v1"
+    discovery_issue = (any(label.get("name") == "atlas-discovery" for label in issue.get("labels", []))
+                       or f"<!-- {discovery_marker}:" in (issue.get("body") or ""))
+    if not discovery_issue:
+        return True
+    # Discovery applies stricter metadata checks than ordinary form intake.
+    # Bind those checks to this final source read, including text outside the
+    # quoted sentence (for example a later notice that an offer has closed).
+    provenance = read_marker(issue.get("body"), discovery_marker)
+    expected = provenance.get("evidenceHash")
+    if issue.get("user", {}).get("login") != BOT or not re.fullmatch(r"[0-9a-f]{64}", str(expected or "")):
+        return False
+    checks = report.get("sourceChecks", {}).get(pending[-1]["id"], [])
+    if not isinstance(checks, list) or not checks:
+        return False
+    for check in checks:
+        if not isinstance(check, dict) or check.get("reachable") is not True:
+            return False
+        title, body = check.get("title") or "", check.get("body_text")
+        if not isinstance(title, str) or not isinstance(body, str) or not body:
+            return False
+        actual = hashlib.sha256((title + "\n" + body).encode("utf-8")).hexdigest()
+        if actual != expected:
+            return False
+    return True
 
 
 def publication_decision(repo, run, pr, metadata, issue, changed, current_main, validations, base_records, candidate_records):
@@ -366,7 +393,7 @@ def publish(api, event):
     statuses = api.request("GET", f"commits/{run['head_sha']}/status")
     if statuses.get("statuses") and statuses.get("state") != "success":
         return {"action": "stop", "reason": "A commit status did not pass"}
-    if not source_readmission(base_records, candidate_records):
+    if not source_readmission(base_records, candidate_records, issue=issue):
         api.status(metadata["issue"], "atlas:needs-info", "De laatste bronhercontrole vlak voor publicatie is niet volledig geslaagd. Er is niets gepubliceerd; de bron of onderbouwing vraagt opnieuw controle.",
                    {"bodySha": metadata["bodySha"], "status": "source_recheck_failed", "pr": pr["number"]})
         return {"action": "stop", "reason": "Current source evidence no longer fully admits the candidate"}

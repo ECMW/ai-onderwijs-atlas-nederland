@@ -9,7 +9,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from maintenance_core import classify
 from maintenance_normalize import FetchResult, fold, normalize_html
 from maintenance_proposals import active_proposals, proposals_for_event
-from maintenance_validation import enrich, validate
+from maintenance_validation import enrich, validate, enrich_and_validate
 from maintenance_reporting import build_daily_report, proposal_markdown
 
 
@@ -47,6 +47,7 @@ class DailyMaintenanceTests(unittest.TestCase):
                                     "sourceType": "official"}]}]
         proposals = proposals_for_event(self.source, event, records, self.config)
         self.assertTrue(any(p["action"] == "update" and p["target"] == "training-ai" for p in proposals))
+        enrich_and_validate(proposals)
 
     def test_03_formatting_only_is_ignored(self):
         state = self.baseline()
@@ -63,6 +64,7 @@ class DailyMaintenanceTests(unittest.TestCase):
         self.assertIsNone(enriched["targetRecordId"])
         self.assertTrue(enriched["oldValues"]["deadlineFacts"])
         self.assertTrue(enriched["proposedValues"]["deadlineFacts"])
+        enrich_and_validate(proposals)
 
     def test_05_temporary_unreachable_preserves_snapshot(self):
         state = self.baseline()
@@ -146,6 +148,54 @@ class DailyMaintenanceTests(unittest.TestCase):
         decisions = {"decisions": [{"proposalId": "proposal-1", "evidenceHash": "same", "decision": "rejected"}]}
         active, _ = active_proposals([item], decisions, {})
         self.assertEqual([], active)
+
+    def test_pending_proposal_survives_no_change_and_later_new_signal(self):
+        first = {"id": "proposal-1", "evidenceHash": "one", "detectedAt": "2026-01-01T00:00:00Z"}
+        second = {"id": "proposal-2", "evidenceHash": "two", "detectedAt": "2026-01-02T00:00:00Z"}
+        _, ledger = active_proposals([first], {"decisions": []}, {})
+        unchanged, ledger = active_proposals([], {"decisions": []}, ledger)
+        self.assertEqual(["proposal-1"], [p["id"] for p in unchanged])
+        self.assertEqual(1, unchanged[0]["occurrences"])
+        later, _ = active_proposals([second], {"decisions": []}, ledger)
+        self.assertEqual(["proposal-1", "proposal-2"], [p["id"] for p in later])
+
+    def test_decision_removes_pending_evidence_but_new_evidence_can_reappear(self):
+        item = {"id": "proposal-1", "evidenceHash": "old", "detectedAt": "2026-01-01T00:00:00Z"}
+        for decision in ("accepted", "rejected"):
+            with self.subTest(decision=decision):
+                _, ledger = active_proposals([item], {"decisions": []}, {})
+                decisions = {"decisions": [{"proposalId": item["id"], "evidenceHash": "old", "decision": decision}]}
+                active, ledger = active_proposals([], decisions, ledger)
+                self.assertEqual([], active)
+                self.assertNotIn("proposal", ledger[item["id"]])
+                active, _ = active_proposals([dict(item, evidenceHash="new")], decisions, ledger)
+                self.assertEqual("new", active[0]["evidenceHash"])
+
+    def test_legacy_counter_only_ledger_is_compatible(self):
+        ledger = {"old": {"evidenceHash": "x", "occurrences": 3, "lastSeen": "2026-01-01T00:00:00Z"}}
+        active, after = active_proposals([], {"decisions": []}, ledger)
+        self.assertEqual([], active)
+        self.assertEqual(ledger, after)
+
+    def test_update_patch_cannot_smuggle_record_replacement(self):
+        event = {"type": "CHANGED", "sourceId": self.source["id"],
+                 "detectedAt": "2026-01-01T00:00:00Z", "actionable": True, "deadlineChanged": True,
+                 "previous": {"deadlineFacts": []}, "current": {"deadlineFacts": []}}
+        proposal = enrich(proposals_for_event(self.source, event, [], self.config)[0])
+        validate(proposal)
+        proposal["proposedValues"]["verificationStatus"] = "verified"
+        with self.assertRaisesRegex(ValueError, "Unexpected update evidence fields"):
+            validate(proposal)
+
+    def test_update_source_signal_rejects_non_public_scheme(self):
+        event = {"type": "CHANGED", "sourceId": self.source["id"],
+                 "detectedAt": "2026-01-01T00:00:00Z", "actionable": True,
+                 "addedUnits": [{"url": "https://example.test/training", "label": "Training AI"}]}
+        records = [{"id": "existing", "title": "Training AI", "sourceUrls": []}]
+        proposal = enrich(proposals_for_event(self.source, event, records, self.config)[0])
+        proposal["proposedValues"]["sourceSignal"]["url"] = "javascript:alert(1)"
+        with self.assertRaisesRegex(ValueError, "Invalid source signal URL"):
+            validate(proposal)
 
     def test_normalization_filters_irrelevant_links_and_repairs_text(self):
         html = "<main><p>AI en onderwijs</p><a href='/ai'>AI handreiking</a><a href='/contact'>Contact</a></main>"

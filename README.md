@@ -38,8 +38,9 @@ Het datamodel en de toegestane enums staan in [docs/data-model.md](docs/data-mod
 
 De Atlas heeft verschillende onderhoudsroutes:
 
-- de GitHub-signaalworkflow controleert geregistreerde bronnen om 05:00 UTC, classificeert veranderingen en maakt uitsluitend reviewvoorstellen;
-- de door de eigenaar gemachtigde dagelijkse Atlas-actualisator zoekt en controleert primaire bronnen, werkt canonieke data bij en mag uitsluitend eigen, volledig geverifieerde pull requests zelfstandig mergen nadat alle verplichte controles zijn geslaagd;
+- de bestaande GitHub-workflow controleert geregistreerde bronnen driemaal per dag om 06:17, 11:17 en 16:17 UTC en bewaart open reviewvoorstellen; deze cloudcontrole werkt ook met de laptop uit;
+- de aanvullende cloudverkenning controleert begrensd concrete officiële detailpagina's. Alleen complete, bronbewezen nieuwe aanvullingen gaan door dezelfde strikte toelating als website-inzendingen; overige vondsten blijven ter beoordeling;
+- de door de eigenaar gemachtigde Atlas-actualisator kan aanvullend inhoudelijk webonderzoek doen en uitsluitend eigen, volledig geverifieerde pull requests na alle verplichte controles mergen; een lokale Codex-sessie is geen vereiste voor de cloudroute;
 - aanvullingen via het websiteformulier worden onmiddellijk getoetst aan de strikte bron- en publicatieregels. Alleen volledig toegelaten aanvullingen mogen via een eigen bot-PR automatisch worden verwerkt; twijfelgevallen blijven buiten de publieke Atlas.
 
 De dagelijkse actualisator stopt zonder merge bij een dirty worktree, conflicten,

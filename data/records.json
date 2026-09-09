@@ -23286,5 +23286,368 @@
       "note": "IRIS Connect biedt de AI-optie aan binnen contractuele softwaredienstverlening aan klantinstellingen. Sectie 3 van overeenkomst 1.5 benoemt commerciële voorwaarden, bestellingen en facturatie van softwarelicenties en verlenging van abonnementen. De Nederlandse FAQ vermeldt AI-inzichten als aanvullende optie in de offerte.",
       "checkedOn": "2026-09-09"
     }
+  },
+  {
+    "id": "kennisnet-effectieve-professionalisering-digitalisering",
+    "title": "Zo organiseer je effectieve professionalisering voor digitalisering in het onderwijs",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Stappenplan",
+    "organizationIds": [],
+    "providerName": "Kennisnet",
+    "description": "Stappenplan voor schoolleiders en bestuurders om professionalisering rond digitalisering te organiseren. Verbindt gezamenlijke doelen, leerbehoeften, activiteiten en monitoring en benoemt AI-geletterdheid als ontwikkelvraag. Bevat een voorbeeldplan en een gespreksleidraad voor externe ondersteuning.",
+    "purpose": "Schoolleiders en bestuurders ondersteunen bij de planning en opvolging van professionalisering rond digitale en AI-geletterdheid.",
+    "audiences": [
+      "Schoolleiders",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "AI-geletterdheid",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Het stappenplan en de bijbehorende documenten zijn online beschikbaar.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-05-18",
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "Kennisnet: stappenplan professionalisering",
+        "url": "https://www.kennisnet.nl/professionalisering-leraar/zo-organiseer-je-effectieve-professionalisering-voor-digitalisering-in-het-onderwijs/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Kennisnet: gespreksleidraad externe ondersteuning",
+        "url": "https://www.kennisnet.nl/app/uploads/Gespreksleidraad-voor-passende-externe-ondersteuning.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Kennisnet: voorbeeld professionaliseringsplan",
+        "url": "https://www.kennisnet.nl/app/uploads/Professionaliseringsplan.docx",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "werken-aan-ai-geletterdheid-op-school"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "commercialEvidence": null,
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "professionaliseringsplan",
+      "schoolontwikkeling",
+      "AI-geletterdheid",
+      "monitoring",
+      "onderwijsbeleid"
+    ],
+    "notes": "Het stappenplan behandelt digitalisering breder dan AI. Kosten en commerciële aard zijn niet expliciet vastgesteld.",
+    "verificationMethod": "Inhoudelijke controle van de officiële Kennisnet-publicatie en bijlagen tijdens bronverkenning op 9 september 2026.",
+    "verificationNote": "Doelgroep, PO/VO-labels, publicatiedatum en de expliciete relatie met AI-geletterdheid staan op de bronpagina.",
+    "changeHistory": [
+      {
+        "date": "2026-09-09",
+        "type": "added",
+        "summary": "Toegevoegd na inhoudelijke controle van de officiële bron en duplicaatcontrole op 9 september 2026."
+      }
+    ]
+  },
+  {
+    "id": "mbo-digitaal-ai-knoppenkaart-vervolgset",
+    "title": "AI: aan welke knop draai jij? - knoppenkaart en vervolgset",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": "Gesprekskaart met handreiking",
+    "organizationIds": [],
+    "providerName": "MBO Digitaal, mbo-instellingen, SURF en Npuls",
+    "description": "Knoppenkaart met een toelichtende vervolgset voor bestuurlijke keuzes rond AI in het mbo. De kaart biedt ruimte voor acties, samenwerking en monitoring rond onder meer eigen kennis, experimenten, ethiek, juridische vragen, kwaliteitszorg en financiën.",
+    "purpose": "Bestuurders en beleidsmakers ondersteunen bij het concretiseren en volgen van keuzes over AI in onderwijs en bedrijfsvoering.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Implementatie en adoptie",
+      "Publieke waarden en ethiek",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "De knoppenkaart en digitale vervolgset zijn als PDF beschikbaar.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "MBO Digitaal: toelichting en downloads",
+        "url": "https://mbodigitaal.nl/bestuurdersbijeenkomst-2-oktober-2025-aan-de-slag-met-ai/",
+        "sourceType": "official"
+      },
+      {
+        "label": "MBO Digitaal: AI-knoppenkaart",
+        "url": "https://mbodigitaal.nl/wp-content/uploads/2025/09/Knoppenkaart-A3_press-002.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "MBO Digitaal: digitale vervolgset",
+        "url": "https://mbodigitaal.nl/wp-content/uploads/2025/09/Brochure-Meegeefset-AI.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "MBO Digitaal: introductie op 3 oktober 2025",
+        "url": "https://mbodigitaal.nl/2025/10/aan-de-slag-met-ai-in-het-mbo/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "commercialEvidence": null,
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "knoppenkaart",
+      "AI-beleid",
+      "mbo",
+      "bestuur",
+      "monitoring",
+      "kwaliteitszorg",
+      "instellingsbeleid"
+    ],
+    "notes": "Betreft beschikbaar materiaal uit 2025, geen aankomende bijeenkomst. Het initiatievenoverzicht in de vervolgset is een momentopname. Kosten en commerciële aard zijn niet expliciet vastgesteld.",
+    "verificationMethod": "Inhoudelijke controle van de officiële toelichting, knoppenkaart en vervolgset tijdens bronverkenning op 9 september 2026.",
+    "verificationNote": "MBO Digitaal bevestigt de gezamenlijke ontwikkeling en doelgroep. De datum van de bijeenkomst en het nieuwsbericht zijn niet overgenomen als exacte publicatiedatum van het materiaal.",
+    "changeHistory": [
+      {
+        "date": "2026-09-09",
+        "type": "added",
+        "summary": "Toegevoegd na inhoudelijke controle van de officiële bron en duplicaatcontrole op 9 september 2026."
+      }
+    ]
+  },
+  {
+    "id": "iol-kennisnet-toolkit-leermateriaal-maken-ai",
+    "title": "Toolkit Leermateriaal maken met AI",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Toolkit",
+    "organizationIds": [],
+    "providerName": "Impuls Open Leermateriaal (IOL), in samenwerking met Kennisnet",
+    "description": "Toolkit voor leraren die generatieve AI willen gebruiken bij het ontwikkelen of aanpassen van open leermateriaal. Behandelt de werking van AI, kwaliteitscontrole, regie, ethiek, prompts en praktijkvoorbeelden, met aandacht voor de afweging of AI passend is.",
+    "purpose": "Leraren ondersteunen bij keuzes over het gebruik van generatieve AI voor open leermateriaal.",
+    "audiences": [
+      "Docenten"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Professionalisering",
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "De toolkit is online te raadplegen en te downloaden via Wikiwijs.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "IOL: Toolkit Leermateriaal maken met AI",
+        "url": "https://maken.wikiwijs.nl/212584/Toolkit_Leermateriaal_maken_met_AI",
+        "sourceType": "official"
+      },
+      {
+        "label": "Kennisnet: verwijzing naar de toolkit",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/leermiddelen-differentieren-met-ai/",
+        "sourceType": "official"
+      },
+      {
+        "label": "IOL: toelichting en verwijzing naar de toolkit",
+        "url": "https://www.openleermateriaal.nl/open-leermateriaal-maken-met-ai/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "leermiddelen-differentieren-met-ai"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "commercialEvidence": null,
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "open leermateriaal",
+      "Wikiwijs",
+      "IOL",
+      "lesmateriaal",
+      "kwaliteitscontrole",
+      "prompts",
+      "regie"
+    ],
+    "notes": "Het colofon vermeldt wijziging op 28 augustus 2026. Dit is geen vastgestelde eerste publicatiedatum. Kosten en commerciële aard zijn niet expliciet vastgesteld; afzonderlijke AI-tools hebben eigen voorwaarden.",
+    "verificationMethod": "Inhoudelijke controle van het Wikiwijs-arrangement en de officiële JSON-export, met kruisverwijzingen van Kennisnet en IOL.",
+    "verificationNote": "Het colofon noemt IOL en samenwerking met Kennisnet; de doelgroep is leraar. PO/VO volgt de onderwijscontext van de verwijzende Kennisnet-publicatie. De toolkit geeft geen afzonderlijke sectorafbakening.",
+    "changeHistory": [
+      {
+        "date": "2026-09-09",
+        "type": "added",
+        "summary": "Toegevoegd na inhoudelijke controle van de officiële bron en duplicaatcontrole op 9 september 2026."
+      }
+    ]
+  },
+  {
+    "id": "arbeidsmarktplatform-po-handreiking-werken-met-ai",
+    "title": "Werken met AI in het primair onderwijs – In gesprek over AI-professionalisering",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "PDF-handreiking",
+    "organizationIds": [],
+    "providerName": "Arbeidsmarktplatform PO",
+    "description": "Handreiking voor AI-professionalisering in het primair onderwijs, met voorbeelden van AI-competenties, gespreksvragen en een routekaart voor schoolorganisaties. Gericht op de samenhang tussen onderwijsvisie, schoolafspraken en de ontwikkeling van medewerkers.",
+    "purpose": "Schoolorganisaties ondersteunen bij het bespreken en organiseren van AI-geletterdheid en professionalisering van medewerkers.",
+    "audiences": [
+      "Docenten",
+      "Bestuurders",
+      "Schoolleiders",
+      "HR-adviseurs",
+      "Onderwijsondersteuners"
+    ],
+    "sectors": [
+      "PO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Beleid en governance",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Openbaar te downloaden als PDF van 28 pagina's.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "verified",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële aankondiging en gelinkte PDF inhoudelijk gecontroleerd op titel, aanbieder, doelgroep, inhoud en toegang. Verificatie betreft broninhoud en beschikbaarheid; geen effect- of kwaliteitsbeoordeling.",
+    "sourceUrls": [
+      {
+        "label": "Officiële aankondiging — 16 maart 2026",
+        "url": "https://arbeidsmarktplatformpo.nl/nieuws/nieuwe-handreiking-helpt-scholen-werken-aan-ai-professionalisering-in-het-primair-onderwijs/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Handreiking — volledige PDF, maart 2026",
+        "url": "https://arbeidsmarktplatformpo.nl/wp-content/uploads/2026/03/Handreiking-Werken-met-AI-in-het-primair-onderwijs-Arbeidsmarktplatform-PO.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "unesco-ai-competency-framework-teachers",
+      "ai-go-raamwerk-voor-ai-geletterdheid"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "commercialEvidence": null,
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-competenties",
+      "primair onderwijs",
+      "schoolafspraken",
+      "HRM",
+      "professionalisering",
+      "routekaart"
+    ],
+    "notes": "De aankondiging is van 16 maart 2026; het PDF-colofon noemt maart 2026. De exacte publicatiedag van het document is niet vastgesteld. Kosteloos downloaden, geen open hergebruiklicentie: het colofon vermeldt auteursrecht en toestemming voor verveelvoudiging/openbaarmaking. De handreiking heeft volgens de disclaimer geen normatieve status. Commerciële aard niet vastgesteld.",
+    "changeHistory": [
+      {
+        "date": "2026-09-09",
+        "type": "added",
+        "summary": "Toegevoegd na inhoudelijke controle van de officiële bron en duplicaatcontrole op 9 september 2026."
+      }
+    ]
   }
 ]

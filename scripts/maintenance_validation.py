@@ -60,7 +60,31 @@ def validate(proposal: dict) -> None:
     if proposal["action"] not in {"add", "update", "archive", "investigate"}:
         raise ValueError(f"Invalid action: {proposal['action']}")
     record = proposal.get("proposedValues")
-    if not record:
+    if record is None and proposal["action"] != "add":
+        return
+    if not isinstance(record, dict) or not record:
+        raise ValueError("Proposed values must be a nonempty object")
+    if proposal["action"] != "add":
+        # Update signals are evidence patches, not replacement Atlas records.
+        if proposal["action"] != "update":
+            raise ValueError("Only add and update proposals may contain proposed values")
+        if set(record) == {"deadlineFacts"}:
+            facts = record["deadlineFacts"]
+            if not isinstance(facts, list) or any(
+                not isinstance(fact, dict) or not isinstance(fact.get("dateText"), str)
+                or not fact["dateText"] or not isinstance(fact.get("context", ""), str)
+                for fact in facts
+            ):
+                raise ValueError("Invalid deadline evidence patch")
+        elif set(record) == {"sourceSignal"}:
+            signal = record["sourceSignal"]
+            if not isinstance(signal, dict) or not isinstance(signal.get("url"), str):
+                raise ValueError("Invalid source signal patch")
+            url = urlsplit(signal["url"])
+            if url.scheme not in {"http", "https"} or not url.netloc:
+                raise ValueError("Invalid source signal URL")
+        else:
+            raise ValueError("Unexpected update evidence fields")
         return
     if record.get("recordType") not in RECORD_TYPES and record.get("recordType") != "Nog niet ingevuld":
         raise ValueError(f"Invalid recordType: {record.get('recordType')}")

@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from copy import deepcopy
 from difflib import SequenceMatcher
 from urllib.parse import urlsplit
 
@@ -138,17 +139,29 @@ def proposals_for_event(source: dict, event: dict, records: list[dict], config: 
 
 
 def active_proposals(proposals: list[dict], decisions: dict, ledger: dict) -> tuple[list[dict], dict]:
-    rejected = {(d.get("proposalId"), d.get("evidenceHash")) for d in decisions.get("decisions", [])
-                if d.get("decision") == "rejected"}
-    result = []
-    updated = dict(ledger)
-    for proposal in proposals:
-        if (proposal["id"], proposal["evidenceHash"]) in rejected:
+    resolved = {(d.get("proposalId"), d.get("evidenceHash")) for d in decisions.get("decisions", [])
+                if d.get("decision") in {"accepted", "rejected"}}
+    result = {}
+    updated = deepcopy(ledger)
+    # Retain the full pending evidence, including on runs with no new changes.
+    # Older counter-only ledger entries remain readable but cannot restore evidence.
+    for identity, entry in updated.items():
+        pending = entry.get("proposal")
+        if not pending:
             continue
+        if (identity, pending["evidenceHash"]) in resolved:
+            entry.pop("proposal", None)
+        else:
+            result[identity] = deepcopy(pending)
+    for proposal in proposals:
+        if (proposal["id"], proposal["evidenceHash"]) in resolved:
+            continue
+        proposal = deepcopy(proposal)
         previous = updated.get(proposal["id"], {})
         proposal["occurrences"] = int(previous.get("occurrences", 0)) + 1
         updated[proposal["id"]] = {"evidenceHash": proposal["evidenceHash"],
                                    "occurrences": proposal["occurrences"],
-                                   "lastSeen": proposal["detectedAt"]}
-        result.append(proposal)
-    return result, updated
+                                   "lastSeen": proposal["detectedAt"],
+                                   "proposal": deepcopy(proposal)}
+        result[proposal["id"]] = proposal
+    return sorted(result.values(), key=lambda item: (item["detectedAt"], item["id"])), updated
