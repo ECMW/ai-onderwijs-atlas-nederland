@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#344f5d">
   <meta name="description" content="Vind brongebaseerde handreikingen, trainingen, voorzieningen, subsidies en praktijkvoorbeelden voor AI in het onderwijs.">
   <meta name="author" content="E.C.M. Willems">
+  <meta name="atlas-goatcounter-site" content="ecmw">
   <link rel="canonical" href="https://ecmw.github.io/ai-onderwijs-atlas-nederland/">
   <meta property="og:title" content="AI & Onderwijs Atlas Nederland">
   <meta property="og:description" content="Een gratis, open en brongebaseerde wegwijzer voor AI in het onderwijs.">
@@ -69,6 +70,8 @@
         ready() { if (startup.status !== 'failed') startup.status = 'ready'; }
       };
       addEventListener('error', event => {
+        // Optional statistics must not trigger the Atlas failure screen.
+        if (/\/analytics\.js(?:[?#]|$)/.test(event.target?.src || event.filename || '')) return;
         const script = event.target && event.target.tagName === 'SCRIPT';
         const atlasFile = /\/(?:data\/data-v2|platform|catalog|governance)\.js(?:[?#]|$)/.test(event.filename || '');
         if (startup.status === 'loading' || script || atlasFile) startup.fail();
@@ -80,5 +83,6 @@
   <script src="platform.js?v=4e9783207fe7280f"></script>
   <script src="catalog.js?v=942bd774f07f4109"></script>
   <script src="governance.js?v=7bc7489ae54cf67d"></script>
+  <script src="analytics.js?v=40ce866420815874"></script>
 </body>
 </html>

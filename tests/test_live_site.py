@@ -140,6 +140,58 @@ class LiveSiteTests(unittest.TestCase):
             files["catalog.js"] = HTTPError(URL + "catalog.js", status, "server response", {}, None)
             self.assertEqual(self.run_check([files])["exitCode"], expected)
 
+    def test_optional_analytics_failure_is_visible_without_triggering_recovery(self):
+        expected = b"window.optional = true;\n"
+        version = hashlib.sha256(expected).hexdigest()[:16]
+        reference = f"analytics.js?v={version}"
+        cases = [
+            (HTTPError(URL + reference, 404, "Not Found", {}, None), "http_404"),
+            (URLError("analytics unavailable"), "check_unavailable"),
+            (b"window.optional = false;\n", "asset_hash_mismatch"),
+            (b"\xff", "invalid_utf8"),
+        ]
+        for value, expected_code in cases:
+            with self.subTest(expected_code=expected_code):
+                files = fixture()
+                files["index.html"] += f'<script src="{reference}"></script>'.encode()
+                files["analytics.js"] = value
+                result = self.run_check([files])
+                self.assertEqual(result["exitCode"], 0)
+                self.assertEqual(len(result["attempts"]), 1)
+                warning = result["attempts"][0]["optionalAssetWarnings"][0]
+                self.assertEqual(warning["code"], expected_code)
+                self.assertEqual(warning["resource"], "analytics.js")
+
+    def test_optional_failure_does_not_hide_an_empty_catalogue(self):
+        files = fixture(records=[])
+        files["index.html"] += b'<script src="analytics.js"></script>'
+        files["analytics.js"] = HTTPError(URL + "analytics.js", 404, "Not Found", {}, None)
+        result = self.run_check([files])
+        self.assertEqual(result["exitCode"], 1)
+        self.assertEqual(result["attempts"][-1]["issue"]["code"], "empty_catalogue")
+
+    @unittest.skipUnless(shutil.which("node"), "Node is required for the real catalogue smoke test")
+    def test_broken_optional_script_does_not_fail_real_catalogue_smoke(self):
+        files = {"index.html": (ROOT / "index.html").read_bytes(),
+                 "release.json": fixture()["release.json"]}
+        parser = live.PageAssets()
+        parser.feed(files["index.html"].decode("utf-8"))
+        for reference, _ in parser.assets:
+            _, relative = live.asset_location(URL, reference)
+            files[relative] = (ROOT / relative).read_bytes()
+            if relative == "analytics.js":
+                analytics_reference = reference
+        files["analytics.js"] = b"window.optional = {;\n"
+        version = hashlib.sha256(files["analytics.js"]).hexdigest()[:16]
+        files["index.html"] = files["index.html"].replace(
+            analytics_reference.encode(), f"analytics.js?v={version}".encode())
+        result = self.run_check([files], javascript_check=live.check_javascript)
+        self.assertEqual(result["exitCode"], 0)
+        self.assertGreater(result["recordCount"], 0)
+        warning = result["attempts"][0]["optionalAssetWarnings"][0]
+        self.assertEqual(warning["code"], "javascript_syntax")
+        self.assertEqual(warning["resource"], "analytics.js")
+
     def test_external_assets_are_not_fetched_or_treated_as_known_fault(self):
         files = fixture()
         files["index.html"] += b'<script src="https://another.test/script.js"></script>'
