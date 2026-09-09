@@ -15,6 +15,15 @@ Correcties, feedback, willekeurige externe PR's en signaalvoorstellen krijgen
 hierdoor geen automatische publicatietoestemming. De voorwaarden voor nieuwe
 inzendingen staan in [CONTRIBUTING.md](../CONTRIBUTING.md).
 
+De labels `atlas-aanvulling` en `feitelijke-correctie` moeten daadwerkelijk in
+de GitHub-repository bestaan: het formulier kan een ontbrekend label niet
+toekennen. Op 9 september 2026 zijn beide aangemaakt. De automatische intake
+reageert op open issues met `atlas-aanvulling`; controleer bij beheer ook
+ongelabelde open issues, zodat een oudere inzending niet buiten beeld valt.
+De instelling voor het maken van pull requests door GitHub Actions is ingeschakeld;
+standaard workflowrechten blijven read-only en alleen de betrokken jobs krijgen
+de benodigde schrijfbevoegdheden.
+
 Vóór vastlegging worden `scripts/generate_data.py` en de controles uitgevoerd.
 De generator schrijft de publieke projectie, actuele generatie-/editiedatum en
 inhoudsgebonden cacheversies. Individuele controledatums blijven behouden.

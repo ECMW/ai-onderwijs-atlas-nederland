@@ -22988,5 +22988,303 @@
         "summary": "Toegevoegd als recent gecontroleerde officiële bron."
       }
     ]
+  },
+  {
+    "id": "vista-ai-in-onderwijs-kennissite",
+    "title": "AI in onderwijs - VISTA college",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Kennissite",
+    "organizationIds": [],
+    "providerName": "VISTA college",
+    "description": "Kennissite van VISTA college met uitleg over AI en materiaal voor onderwijsontwerp, studentbegeleiding en toetsing. Bevat een handreiking die het eigen AI-beleidskader vertaalt naar de onderwijspraktijk en materiaal voor teamafspraken.",
+    "purpose": "Docenten en onderwijsteams ondersteunen bij het bespreken en vastleggen van hun aanpak voor AI in het onderwijs.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Beleid en governance",
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering"
+    ],
+    "status": "available",
+    "availabilityText": "De kennissite is direct online te raadplegen.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "VISTA: AI in onderwijs",
+        "url": "https://ctl.vistacollege.nl/ai/",
+        "sourceType": "official"
+      },
+      {
+        "label": "VISTA: AI in de onderwijspraktijk",
+        "url": "https://ctl.vistacollege.nl/ai/onderwijs.html",
+        "sourceType": "official"
+      },
+      {
+        "label": "VISTA: Center for Teaching and Learning",
+        "url": "https://ctl.vistacollege.nl/",
+        "sourceType": "official"
+      },
+      {
+        "label": "VISTA: mbo-onderwijs",
+        "url": "https://vistacollege.nl/studeren",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "vista-promptdatabase-ai-onderwijs"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "commercialEvidence": null,
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "VISTA",
+      "CTL",
+      "mbo",
+      "docenten",
+      "AI-beleidskader",
+      "teamafspraken",
+      "onderwijsontwerp"
+    ],
+    "notes": "Deze vermelding betreft de publiek raadpleegbare kennissite vanuit het CTL van VISTA college. Het materiaal is ontwikkeld vanuit de eigen instellingscontext. Externe deelname aan workshops is hiermee niet vastgesteld. Kosten en commerciële aard zijn niet expliciet vastgesteld.",
+    "verificationMethod": "Inhoudelijke controle van de officiële VISTA-webpagina's naar aanleiding van issue #64.",
+    "verificationNote": "Titel, aanbieder, functie en doelgroep zijn onderbouwd door de kennissite en CTL-pagina. Het mbo-profiel is bevestigd op de officiële opleidingssite. Geen exacte publicatiedatum aangetroffen; de controledatum is geen publicatiedatum.",
+    "changeHistory": [
+      {
+        "date": "2026-09-09",
+        "type": "added",
+        "summary": "Brongecontroleerd record naar aanleiding van communitybijdrage #64."
+      }
+    ]
+  },
+  {
+    "id": "vista-promptdatabase-ai-onderwijs",
+    "title": "VISTA Promptdatabase AI in het onderwijs",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": "Promptdatabase",
+    "organizationIds": [],
+    "providerName": "VISTA college",
+    "description": "Webapp van VISTA college met zoekbare en aanpasbare prompts voor docenten, onder meer voor lesontwerp, toetsing en reflectie. De promptwerkplaats biedt invulvelden om een eigen prompt samen te stellen en te kopiëren naar een afzonderlijke AI-tool.",
+    "purpose": "Docenten helpen prompts te vinden en uit te werken voor hun eigen onderwijsvraag.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering"
+    ],
+    "status": "available",
+    "availabilityText": "De promptdatabase en promptwerkplaats zijn direct online te raadplegen.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "recently_checked",
+    "sourceUrls": [
+      {
+        "label": "VISTA: promptdatabase",
+        "url": "https://ai.vistacollege.nl/",
+        "sourceType": "official"
+      },
+      {
+        "label": "VISTA: promptwerkplaats",
+        "url": "https://ai.vistacollege.nl/promptwerkplaats.html",
+        "sourceType": "official"
+      },
+      {
+        "label": "VISTA: wegwijzer naar de AI-kennissite",
+        "url": "https://ai.vistacollege.nl/wegwijzer.html",
+        "sourceType": "official"
+      },
+      {
+        "label": "VISTA: mbo-onderwijs",
+        "url": "https://vistacollege.nl/studeren",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "vista-ai-in-onderwijs-kennissite"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "commercialEvidence": null,
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "VISTA",
+      "mbo",
+      "docenten",
+      "prompts",
+      "promptbibliotheek",
+      "promptwerkplaats",
+      "onderwijsontwerp",
+      "reflectie"
+    ],
+    "notes": "Dit record beschrijft een digitaal hulpmiddel, niet de organisatie VISTA college. De AI-tools waarnaar de webapp verwijst zijn afzonderlijke diensten; hun toegang en tarieven vallen buiten deze vermelding. De melding noemt gratis, maar een expliciete tariefuitspraak is niet aangetroffen. Kosten en commerciële aard blijven onbekend.",
+    "verificationMethod": "Inhoudelijke controle van de officiële VISTA-webpagina's naar aanleiding van issue #65.",
+    "verificationNote": "De bron benoemt docenten en de werkplaats gebruikt een mbo-docent als voorbeeld. De officiële opleidingssite bevestigt het mbo-profiel. De wegwijzer verbindt deze app met de afzonderlijke AI-kennissite. Geen exacte publicatiedatum aangetroffen.",
+    "changeHistory": [
+      {
+        "date": "2026-09-09",
+        "type": "added",
+        "summary": "Brongecontroleerd record naar aanleiding van communitybijdrage #65; ingedeeld als digitaal hulpmiddel."
+      }
+    ]
+  },
+  {
+    "id": "iris-connect-ai-inzichten",
+    "title": "IRIS Connect AI-Inzichten",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "IRIS Connect",
+    "description": "AI-functie binnen IRIS Connect die transcripties van opgenomen lessen analyseert aan de hand van gekozen vragen en rubrics. De uitkomsten kunnen worden gebruikt bij reflectie en coaching, bijvoorbeeld om vraagstelling en interacties in de les te bespreken.",
+    "purpose": "Docenten en begeleiders ondersteunen bij reflectie op de eigen lespraktijk.",
+    "audiences": [
+      "Docenten",
+      "Leraren",
+      "Lerarenopleiders",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Aangeboden als AI-optie binnen IRIS Connect; toegang via een instellingsaccount en prijs op offerte. Een gratis demo is beschikbaar.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Nederlandse productinformatie AI-Inzichten",
+        "url": "https://irisconnect.nl/ai-inzichten/",
+        "sourceType": "official"
+      },
+      {
+        "label": "AI Insights: werking en gebruik",
+        "url": "https://help.irisconnect.com/hc/en-gb/articles/18967216778898-AI-Insights",
+        "sourceType": "official"
+      },
+      {
+        "label": "Kosten en toegang tot IRIS Connect",
+        "url": "https://irisconnect.nl/faq/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Onderwijstoepassingen en begeleiding",
+        "url": "https://irisconnect.nl/toepassingen/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Contractvoorwaarden en commerciële dienstverlening, versie 1.5",
+        "url": "https://help.irisconnect.com/hc/en-gb/articles/33914027460498",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "IRIS Connect",
+      "AI-Inzichten",
+      "AI Insights",
+      "lesobservatie",
+      "videoreflectie",
+      "transcriptanalyse",
+      "coaching",
+      "lerarenopleiding"
+    ],
+    "notes": "De vermelding beschrijft het aanbod op basis van officiële bronnen. De werking en resultaten van het product zijn niet onafhankelijk getest.",
+    "changeHistory": [
+      {
+        "date": "2026-09-09",
+        "type": "added",
+        "summary": "Voorstel uit issue #69 na controle van officiële product-, ondersteunings- en contractbronnen; doelgroep en claims afgebakend tot de brononderbouwing."
+      }
+    ],
+    "commercialStatus": "commercial",
+    "commercialEvidence": {
+      "url": "https://help.irisconnect.com/hc/en-gb/articles/33914027460498",
+      "note": "IRIS Connect biedt de AI-optie aan binnen contractuele softwaredienstverlening aan klantinstellingen. Sectie 3 van overeenkomst 1.5 benoemt commerciële voorwaarden, bestellingen en facturatie van softwarelicenties en verlenging van abonnementen. De Nederlandse FAQ vermeldt AI-inzichten als aanvullende optie in de offerte.",
+      "checkedOn": "2026-09-09"
+    }
   }
 ]
