@@ -36,6 +36,39 @@ Bij een vastgestelde aard is `commercialEvidence` verplicht:
 
 De automatische route voor nieuwe bijdragen stelt strengere eisen: de bron moet bij de bekende aanbieder horen, volledig uitgelezen worden en de letterlijke onderbouwende zin moet de commerciële of niet-commerciële aard van het aanbod expliciet benoemen. Een prijs, bedrijfsvorm, algemene licentievoorwaarde of aangevinkte keuze geldt niet als zelfstandig bewijs. Twijfelgevallen blijven ter beoordeling; er wordt geen persoonlijk akkoord van Eva toegekend.
 
+## Aanbodvorm voor publieksfilters
+
+`offerCategory` is een optionele redactionele indeling van de vorm, naast het
+bestaande `recordType`. Toegestane waarden zijn `software`, `materials` en
+`knowledge`. De website toont respectievelijk **AI-software**, **Les- en
+werkmaterialen** en **Handreikingen, kennisbanken en ondersteuning**.
+
+- `software`: een AI-toepassing of AI-werkomgeving om daadwerkelijk te gebruiken.
+  Ook aanbod in ontwikkeling kan hieronder vallen; beschikbaarheid blijft apart.
+- `materials`: lessen, werkbladen, kaarten, spellen, vragenlijsten, scans en
+  andere materialen waarmee gebruikers zelf werken. Een online scan of
+  promptverzameling is daardoor niet automatisch AI-software.
+- `knowledge`: uitleg, bronnenverzamelingen, catalogi, advies en toegang tot
+  ondersteuning. Een portaal naar trainingen is geen afzonderlijke training.
+
+Een indeling kan uit de bestaande gecontroleerde beschrijving volgen. Leg deze
+redactionele wijziging vast in `changeHistory`; wijzig `lastVerified` niet zonder
+nieuwe broncontrole. De indeling zegt niets over kwaliteit, veiligheid of
+verantwoord gebruik. Bronverwijzingen, beschikbaarheid en onzekerheid blijven
+zelfstandig zichtbaar.
+
+Bij handreikingen zonder expliciete indeling gebruikt de interface `knowledge`.
+Bij oudere producten of voorzieningen zonder indeling toont de interface
+**Aanbodvorm nog niet ingedeeld**. Nieuwe bijdragen worden niet op grond van hun
+naam automatisch als AI-software aangemerkt. Alle overige recordsoorten behouden
+hun eigen herkenbare keuze, waaronder trainingen, subsidies en praktijkvoorbeelden.
+
+De publieke filterwaarden zijn korte sleutels (`type=software`, `type=materials`,
+`type=knowledge`), zodat komma's in een weergavenaam geen extra filters veroorzaken.
+Oude URL's met bijvoorbeeld `type=Hulpmiddel`, `type=Voorziening` of
+`type=Handreiking` behouden hun oorspronkelijke selectie. Kaarten, detailpagina's
+en nieuwe filters gebruiken de nieuwe vormnamen.
+
 ## Vaste neutrale informatievelden
 
 Elke vermelding gebruikt dezelfde feitelijke velden: titel, aanbieder, soort aanbod, functie, doelgroep, sector, thema, beschikbaarheid, kosten, toegang, commerciële aard, officiële bron en controledatum. Ontbrekende informatie blijft herkenbaar als onbekend. `purpose` legt de opgegeven functie vast; `description` blijft beschikbaar voor compatibiliteit en broncontrole. Nieuwe automatische bijdragen bevatten daarin alleen volledige, feitelijke bronzinnen. Wervende superlatieven, garanties en koopoproepen worden niet automatisch verwerkt, ook niet wanneer de aanbieder ze zelf publiceert.

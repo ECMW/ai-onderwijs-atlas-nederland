@@ -14,6 +14,7 @@ from datetime import date
 from pathlib import Path
 from public_assets import versioned_html
 from contribution_quality import commercial_field_errors
+from offer_categories import offer_category_errors
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_STATUSES = {"verified", "recently_checked"}
@@ -92,6 +93,7 @@ def main() -> int:
     errors.extend(encoding_errors(metadata, "metadata"))
     for record in records:
         errors.extend(commercial_field_errors(record))
+        errors.extend(offer_category_errors(record))
     index_html = (root / "index.html").read_text(encoding="utf-8")
     if index_html != versioned_html(root, index_html):
         errors.append("Browser asset versions are stale; run scripts/generate_data.py")

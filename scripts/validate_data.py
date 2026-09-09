@@ -2,12 +2,14 @@ import json,re,sys
 from datetime import date,datetime
 from pathlib import Path
 from contribution_quality import commercial_field_errors
+from offer_categories import offer_category_errors
 R=Path(__file__).parents[1]; records=json.loads((R/'data/records.json').read_text(encoding='utf-8'))
 T={'organization','programme','product','service','guidance','training','subsidy','funding_call','pilot','practice_example','community','standard','legislation','policy_document','research_project','identified_need','white_spot'}; S={'available','pilot','in_development','planned','open_call','closed_call','archived','needs_verification','identified_need','unknown'}; V={'verified','recently_checked','stale','changed','broken_source','needs_review'}
 errors=[]; ids=[x.get('id') for x in records]
 if len(ids)!=len(set(ids)): errors.append('IDs zijn niet uniek')
 for x in records:
  errors.extend(commercial_field_errors(x))
+ errors.extend(offer_category_errors(x))
  if not x.get('title'): errors.append(f"{x.get('id')}: titel ontbreekt")
  if x.get('recordType') not in T: errors.append(f"{x['id']}: ongeldig recordType")
  if x.get('status') not in S or x.get('verificationStatus') not in V: errors.append(f"{x['id']}: ongeldige status")

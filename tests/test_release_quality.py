@@ -59,6 +59,19 @@ class ReleaseQualityTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("Public catalogue must not be empty", report["errors"])
 
+    def test_offer_categories_reject_quality_labels_and_malformed_values(self):
+        for category in ["safe", "recommended", [], {}, ""]:
+            with self.subTest(category=category):
+                self.write_data([{**self.records[0], "offerCategory": category}])
+                result, report = self.gate()
+                self.assertNotEqual(result.returncode, 0)
+                self.assertTrue(any("offerCategory" in error for error in report["errors"]))
+        for category in ["software", "materials", "knowledge"]:
+            with self.subTest(category=category):
+                self.write_data([{**self.records[0], "offerCategory": category}])
+                result, report = self.gate()
+                self.assertEqual(result.returncode, 0, report)
+
     def test_matching_ids_do_not_hide_changed_public_content(self):
         self.write_data(self.records, [{**self.records[0], "title": "Unverified replacement"}])
         result, report = self.gate()

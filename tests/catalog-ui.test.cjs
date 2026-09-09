@@ -68,6 +68,43 @@ test('workshop and trainer entry uses training filters and preserves a named tra
   assert.ok(html.includes('Copilot Chat: adoptietraining op locatie'));
 });
 
+test('offer forms separate AI software from work materials and preserve legacy links', () => {
+  const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
+  const api = load(data);
+  const ids = criteria => Array.from(api.recordsForCriteria(criteria), item => item.id);
+  const software = ids({ type: 'software' });
+  const materials = ids({ type: 'materials' });
+  const knowledge = ids({ type: 'knowledge' });
+  assert.ok(software.includes('uva-hva-ai-chat'));
+  assert.ok(software.includes('chatgpt-edu'));
+  for (const id of ['selfie-for-teachers', 'ai-waaier-voor-toetsen', 'vista-promptdatabase-ai-onderwijs', 'open-inspiratielessen-over-ai']) {
+    assert.ok(materials.includes(id), id);
+    assert.ok(!software.includes(id), id);
+  }
+  assert.ok(knowledge.includes('nolai-kennisbank'));
+  assert.ok(knowledge.includes('ai-act-service-desk'));
+  assert.equal(new Set([...software, ...materials, ...knowledge]).size, software.length + materials.length + knowledge.length);
+  assert.ok(ids({ type: 'Voorziening' }).includes('uva-hva-ai-chat'));
+  assert.ok(ids({ type: 'Hulpmiddel' }).includes('ai-waaier-voor-toetsen'));
+  const combined = ids({ type: 'software,knowledge' });
+  assert.equal(combined.length, software.length + knowledge.length);
+  const form = api.homeFilterPanel([]);
+  assert.ok(form.includes('name="type" value="software"'));
+  assert.ok(form.includes('name="type" value="knowledge"'));
+  assert.ok(!form.includes('name="type" value="Hulpmiddel"'));
+  assert.ok(!form.includes('name="type" value="Voorziening"'));
+  const unknown = {...record('new-tool'), legacyType:'Product', recordType:'product'};
+  assert.equal(load([unknown]).recordsForCriteria({type:'software'}).length, 0);
+  assert.equal(load([unknown]).recordsForCriteria({type:'unclassified'}).length, 1);
+});
+
+test('choosing an AI application is framed as an assessment, not a safety endorsement', () => {
+  const api = load([], '#zoeken?theme=Veilige%20AI-omgeving');
+  const html = api.resultsMarkup();
+  assert.ok(html.includes('<h1>Een AI-toepassing kiezen</h1>'));
+  assert.ok(html.includes('geen keurmerk'));
+});
+
 test('every offering keeps the same facts including explicit unknowns', () => {
   const api = load();
   const complete = {...record('complete', '2026-09-01'), costType:'free', accessType:'public', geographicScope:'Nederland'};

@@ -148,7 +148,7 @@ test('workshop help and offer-type filters stay synchronized and submit one trai
   const app = boot();
   const choices = app.document.querySelectorAll('.home-filter-form input[name="type"][value="Training"]');
   assert.equal(choices.length, 2);
-  assert.match(app.main.innerHTML, /Workshops en trainers vinden/);
+  assert.match(app.main.innerHTML, /Mijn team scholen/);
   assert.match(app.main.innerHTML, /Trainingen en workshops/);
   choices[0].checked = true;
   choices[0].onchange();
