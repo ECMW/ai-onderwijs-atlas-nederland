@@ -12,7 +12,7 @@ TEXT_LINES = [
     BULLET.join(["Handreikingen", "trainingen", "voorzieningen", "subsidies"]),
     BULLET.join(["praktijkvoorbeelden", "wetgeving", "organisaties"]),
     BULLET.join(["OPEN", "BRONGEBASEERD", "GEEN TRACKING"]),
-    "Eva Willems",
+    "E.C.M. Willems",
 ]
 
 
