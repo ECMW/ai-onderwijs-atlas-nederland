@@ -89,3 +89,20 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 
 /* Search suggestions must remain unobstructed by the fixed mobile filter action. */
 @media(max-width:899px){body:has(.suggestions:not([hidden])) .mobile-filter{visibility:hidden}}
+
+.new-offers{max-width:1100px;margin:0 auto;padding:2rem clamp(1rem,4vw,3rem) 4rem}
+.new-offers .page-intro{padding:0;margin-bottom:1.4rem}
+.new-offers-modes{display:flex;flex-wrap:wrap;gap:.65rem;margin-bottom:1rem}
+.new-offers-modes .btn{min-height:44px;white-space:normal}
+.new-offers-modes [aria-current="page"]{text-decoration:underline;text-underline-offset:.25em}
+.new-offers-explanation{max-width:75ch;line-height:1.6}
+.new-offers .sort-summary{margin:1rem 0 1.5rem}
+.new-offers-pagination{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1rem;margin-top:2rem}
+@media(max-width:600px){.new-offers-modes .btn{flex:1 1 100%;text-align:center}}
+.commercial-label{display:inline-block;align-self:flex-start;margin:.35rem 0;padding:.3rem .55rem;border:1px solid #ccd4d7;border-radius:4px;color:#465861;background:#f4f6f7;font-size:.75rem;line-height:1.4}
+.commercial-label.is-commercial{color:#654800;background:#fff4d8;border-color:#bea566;font-weight:750}
+.card-facts{display:grid;grid-template-columns:2fr 1fr 1.4fr;gap:.75rem;margin:.8rem 0 0;font-size:.8rem}.card-facts dt{font-weight:750;color:var(--muted)}.card-facts dd{margin:.2rem 0 0;overflow-wrap:anywhere}
+.listing-notice{font-size:.9rem!important;line-height:1.55;border-left:3px solid #9da99b;padding-left:.8rem;color:#465861!important}
+.detail-facts{position:static}.detail-hero-top{flex-wrap:wrap}
+@media(max-width:600px){.card-facts{grid-template-columns:1fr 1fr}.card-facts>div:first-child{grid-column:1/-1}.detail-hero .commercial-label{max-width:100%}}
+.home-new-contributions{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1rem;margin:1.4rem 0}.home-new-contributions .btn{display:inline-flex;align-items:center;gap:1.1rem;min-height:52px;padding:.85rem 1.3rem;font-weight:800;text-decoration:none}.home-new-contributions>span{font-size:.9rem;color:#465861}

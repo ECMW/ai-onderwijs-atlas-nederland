@@ -2,49 +2,49 @@ name: Review Atlas submission
 
 on:
   issues:
-    types: [opened, edited, reopened]
+    types: [opened, edited, reopened, labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: Open Atlas submission to check against current main
+        required: true
+        type: string
 
 permissions:
   contents: read
-  issues: write
+
+concurrency:
+  group: atlas-submission-${{ github.event.issue.number || inputs.issue_number }}
+  cancel-in-progress: false
 
 jobs:
   review:
-    if: ${{ github.event.issue.state == 'open' && contains(github.event.issue.labels.*.name, 'atlas-aanvulling') }}
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.issue.state == 'open' &&
+       contains(github.event.issue.labels.*.name, 'atlas-aanvulling') &&
+       (github.event.action != 'labeled' || github.event.label.name == 'atlas-aanvulling'))
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      actions: write
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: main
+          persist-credentials: false
       - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
-      - name: Check the structured submission without publishing
-        id: check
-        continue-on-error: true
-        env:
-          ATLAS_ISSUE_BODY: ${{ github.event.issue.body }}
-          ATLAS_ISSUE_NUMBER: ${{ github.event.issue.number }}
-        run: |
-          cp data/records.json "$RUNNER_TEMP/original-records.json"
-          python scripts/import_issue_submission.py \
-            --report-json "$RUNNER_TEMP/atlas-issue-report.json" \
-            --report-markdown "$RUNNER_TEMP/atlas-issue-report.md"
-          cp "$RUNNER_TEMP/original-records.json" data/records.json
-      - name: Return the review result
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Admit only source-proven additions and request independent validation
         env:
           GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-          OUTCOME: ${{ steps.check.outcome }}
-        run: |
-          if [ "$OUTCOME" = "success" ]; then
-            LABEL="atlas:ready-for-human-review"
-            COLOR="1A7F37"
-            DESCRIPTION="Automatische controles geslaagd; menselijke beoordeling vereist"
-          else
-            LABEL="atlas:needs-info"
-            COLOR="D4A72C"
-            DESCRIPTION="Aanvulling nodig voor beoordeling"
-          fi
-          gh label create "$LABEL" --color "$COLOR" --description "$DESCRIPTION" --force
-          gh issue edit "$ISSUE_NUMBER" --add-label "$LABEL"
-          gh issue comment "$ISSUE_NUMBER" --body-file "$RUNNER_TEMP/atlas-issue-report.md"
-          gh issue comment "$ISSUE_NUMBER" --body "Niets is automatisch gepubliceerd. Een beheerder beslist over verwerking."
+          ATLAS_SUBMISSION_ISSUE: ${{ github.event.issue.number || inputs.issue_number }}
+        run: python scripts/publish_submission.py prepare

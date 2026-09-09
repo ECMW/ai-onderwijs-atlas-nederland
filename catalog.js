@@ -228,13 +228,46 @@
     score += String(criteria.audience || '').split(',').filter(value => (record.audiences || []).includes(value)).length * 4;
     return score + practical / 10 + (statusLabel(record) === 'Direct beschikbaar' ? 3 : 0) + trusted;
   }
-  function publicationDate(record) {
-    const value = record.publicationDate;
+  function validDate(value) {
     if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return '';
     const parsed = new Date(`${value}T00:00:00Z`);
     return !Number.isNaN(parsed.getTime()) && parsed.toISOString().slice(0, 10) === value ? value : '';
   }
+  function publicationDate(record) { return validDate(record.publicationDate); }
   const isPublicationSort = () => ['published', 'published-oldest'].includes(state.sort);
+
+  function addedDate(record) {
+    // The first documented addition is distinct from later checks or edits.
+    return (record.changeHistory || []).filter(change => change.type === 'added')
+      .map(change => publicationDate({ publicationDate: change.date })).filter(Boolean).sort()[0] || '';
+  }
+  function newestRecords(mode = 'added') {
+    const date = mode === 'published' ? publicationDate : addedDate;
+    return records.filter(record => date(record)).sort((a, b) =>
+      date(b).localeCompare(date(a)) || a.title.localeCompare(b.title, 'nl') || a.id.localeCompare(b.id));
+  }
+  function newOffersMarkup(mode = 'added', requestedPage = 1) {
+    mode = mode === 'published' ? 'published' : 'added';
+    const published = mode === 'published', date = published ? publicationDate : addedDate;
+    const sorted = newestRecords(mode), pages = Math.max(1, Math.ceil(sorted.length / 24));
+    const page = Math.min(pages, Math.max(1, Number.isSafeInteger(requestedPage) ? requestedPage : 1));
+    const shown = sorted.slice((page - 1) * 24, page * 24), unknown = records.length - sorted.length;
+    const href = number => `#nieuw?volgorde=${mode}&pagina=${number}`;
+    const label = published ? 'Gepubliceerd op' : 'Toegevoegd aan de Atlas op';
+    return `<section class="new-offers"><header class="page-intro"><span class="eyebrow">Snel zien wat er is toegevoegd</span><h1>Nieuwe bijdragen</h1><p>Bekijk nieuwe vermeldingen in de Atlas of kies aanbod met een recente publicatiedatum.</p><p class="listing-notice">${LISTING_NOTICE}</p></header>
+      <nav class="new-offers-modes" aria-label="Welke datum wilt u bekijken?">
+        <a class="btn${published ? ' secondary' : ''}" href="#nieuw?volgorde=added"${!published ? ' aria-current="page"' : ''}>Nieuw in de Atlas</a>
+        <a class="btn${published ? '' : ' secondary'}" href="#nieuw?volgorde=published"${published ? ' aria-current="page"' : ''}>Recent gepubliceerd</a>
+      </nav><p class="new-offers-explanation">${published ? 'Gesorteerd op de vastgelegde publicatiedatum van het aanbod bij de aanbieder.' : 'Gesorteerd op de eerste vastgelegde toevoeging aan de Atlas. Het aanbod zelf kan al langer bestaan.'} Een latere broncontrole verandert deze volgorde niet.</p>
+      <p class="sort-summary">${sorted.length} vermeldingen met een bekende ${published ? 'publicatiedatum' : 'toevoegdatum'}.${unknown ? ` Bij ${unknown} vermeldingen is deze datum niet vastgelegd; die staan wel bij <a href="#zoeken?all=1">al het aanbod</a>.` : ''}</p>
+      <div class="result-list">${shown.length ? shown.map(record => simpleCard(record, false, { date: date(record), label })).join('') : '<div class="empty"><p>Er zijn nog geen vermeldingen met deze datum vastgelegd.</p><a href="#zoeken?all=1">Bekijk al het aanbod</a></div>'}</div>
+      ${pages > 1 ? `<nav class="new-offers-pagination" aria-label="Meer nieuwe bijdragen">${page > 1 ? `<a class="btn secondary" href="${href(page - 1)}">Vorige</a>` : ''}<span>Pagina ${page} van ${pages}</span>${page < pages ? `<a class="btn secondary" href="${href(page + 1)}">Volgende</a>` : ''}</nav>` : ''}</section>`;
+  }
+  function renderNewOffers() {
+    const params = new URLSearchParams(location.hash.split('?')[1] || '');
+    sessionSet('atlas.lastSearch', location.hash);
+    main.innerHTML = newOffersMarkup(params.get('volgorde'), Number(params.get('pagina') || 1));
+  }
 
   function sortRecords(list) {
     if (state.sort === 'az') return list.sort((a, b) => a.title.localeCompare(b.title, 'nl'));
@@ -316,6 +349,44 @@
     return 'is-neutral';
   }
   function primarySource(record) { return (record.sourceUrls || [])[0] || null; }
+  const LISTING_NOTICE = 'Opname in de Atlas betekent geen goedkeuring, kwaliteitsbeoordeling of aanbeveling van het aanbod of de aanbieder.';
+  function factValue(value) {
+    return value && value !== 'Nog niet ingevuld' ? value : 'Niet vastgesteld';
+  }
+  function costLabel(record) {
+    return ({ free: 'Gratis', paid: 'Betaald', freemium: 'Gratis en betaald' })[record.costType] || 'Kosten onbekend';
+  }
+  function accessLabel(record) {
+    return ({ public: 'Publiek toegankelijk', registration_required: 'Registratie nodig', paid: 'Betaalde toegang' })[record.accessType] || 'Toegang niet vastgesteld';
+  }
+  function commercialLabel(record) {
+    const evidence = record.commercialEvidence;
+    const supported = evidence && /^https:\/\//.test(evidence.url || '') && evidence.note && validDate(evidence.checkedOn);
+    if (supported && record.commercialStatus === 'commercial') return 'Commercieel aanbod';
+    if (supported && record.commercialStatus === 'non_commercial') return 'Niet-commercieel aanbod';
+    return 'Commerciële aard niet vastgesteld';
+  }
+  function commercialBadge(record) {
+    const label = commercialLabel(record);
+    return `<span class="commercial-label${label === 'Commercieel aanbod' ? ' is-commercial' : ''}">${escapeHtml(label)}</span>`;
+  }
+  function offerFacts(record) {
+    return [
+      ['Aanbieder', factValue(record.providerName)],
+      ['Soort aanbod', typeLabel(record)],
+      ['Voor wie', factValue((record.audiences || []).join(', '))],
+      ['Sector', factValue((record.sectors || []).join(', '))],
+      ['Beschikbaarheid', statusLabel(record)],
+      ['Kosten', costLabel(record)],
+      ['Toegang', accessLabel(record)],
+      ['Commerciële aard', commercialLabel(record)],
+      ['Geografische reikwijdte', factValue(record.geographicScope)],
+      ['Verschenen op', publicationDate(record) ? dateLabel(publicationDate(record)) : 'Publicatiedatum onbekend'],
+      ['Nieuw in de Atlas sinds', addedDate(record) ? dateLabel(addedDate(record)) : 'Datum niet vastgelegd'],
+      ['Broncontrole', validDate(record.lastVerified) ? dateLabel(record.lastVerified) : 'Datum niet vastgelegd'],
+      ['Deadline', factValue(record.applicationDeadline || record.fundingDeadline)]
+    ];
+  }
 
   function searchForm(id) {
     return `<form class="atlas-search" role="search" autocomplete="off">
@@ -344,22 +415,24 @@
     const sourceItem = primarySource(record);
     return `<article class="teaser-card"><div class="teaser-top"><span class="type-label">${escapeHtml(label || typeLabel(record))}</span></div>
       <h3><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h3>
-      <p class="provider">${escapeHtml(record.providerName || 'Aanbieder nog niet ingevuld')}</p>
+      <p class="provider">${escapeHtml(record.providerName || 'Aanbieder niet vastgesteld')}</p>${commercialBadge(record)}
       <div class="teaser-meta"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span>${sourceItem ? '<span>Officiële bron</span>' : ''}</div>
       <a class="teaser-link" href="#item/${escapeHtml(record.id)}">Bekijk aanbod <span aria-hidden="true">→</span></a></article>`;
   }
-  function simpleCard(record, explain = false) {
+  function simpleCard(record, explain = false, recency = null) {
     const sectors = (record.sectors || []).slice(0, 3);
     const reasons = relevanceReasons(record);
     const sourceItem = primarySource(record);
     return `<article class="result-card" data-record-id="${escapeHtml(record.id)}">
       <div class="card-body"><div class="card-top"><span class="type-label">${escapeHtml(typeLabel(record))}</span></div>
         <h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
-        ${record.providerName ? `<p class="provider">${escapeHtml(record.providerName)}</p>` : ''}
-        <p class="description">${escapeHtml(record.description || '')}</p>
+        <p class="provider">Aanbieder: ${escapeHtml(factValue(record.providerName))}</p>${commercialBadge(record)}
+        <p class="description">${escapeHtml(factValue(record.description))}</p>
+        <dl class="card-facts"><div><dt>Voor wie</dt><dd>${escapeHtml(factValue((record.audiences || []).join(', ')))}</dd></div><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div><div><dt>Toegang</dt><dd>${escapeHtml(accessLabel(record))}</dd></div></dl>
+        ${recency ? `<p class="publication-date">${escapeHtml(recency.label)} <time datetime="${escapeHtml(recency.date)}">${escapeHtml(dateLabel(recency.date))}</time></p>` : ''}
         ${explain && isPublicationSort() ? `<p class="publication-date">${publicationDate(record) ? `Verschenen op <time datetime="${publicationDate(record)}">${escapeHtml(dateLabel(publicationDate(record)))}</time>` : 'Publicatiedatum onbekend'}</p>` : ''}
         ${sectors.length ? `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>` : ''}
-        <div class="trust-row">${statusLabel(record) !== 'Direct beschikbaar' ? `<span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span>` : ''}<span>Gecontroleerd ${escapeHtml(dateLabel(record.lastVerified))}</span></div>
+        <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span><span>Broncontrole ${escapeHtml(dateLabel(record.lastVerified))}</span></div>
         ${explain && reasons.length ? `<details class="relevance"><summary>Waarom zie ik dit?</summary><p>${reasons.map(reason => `<span>✓ ${escapeHtml(reason)}</span>`).join(' ')}</p></details>` : ''}
       </div><div class="card-actions"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">Bron ↗</a>` : ''}</div>
     </article>`;
@@ -390,8 +463,8 @@
     const themes = ['Toetsing en examinering', 'AI Act en wetgeving', 'Privacy en AVG', 'AI-geletterdheid', 'Veilige AI-omgeving', 'Beleid en governance', 'Professionalisering', 'Praktijkvoorbeelden'];
     const types = ['Handreiking', 'Hulpmiddel', 'Voorziening', 'Training', 'Praktijkvoorbeeld', 'Pilot', 'Subsidie of call', 'Subsidie', 'Wetgeving', 'Organisatie'];
     return `<details class="home-filter-sidebar"><summary>Filter het aanbod</summary><form class="home-filter-form"><header><span class="eyebrow">Snel verfijnen</span><h2>Filter het aanbod</h2><p>Combineer meerdere keuzes.</p></header>
-      ${homeFilterGroup('theme', 'Waar zoekt u hulp bij?', themes, [], true, [{ key: 'type', value: 'Subsidie of call,Subsidie', label: 'Subsidies en calls vinden' }])}
-      ${homeFilterGroup('sector', 'Voor welke sector?', SECTORS, [], true)}
+      ${homeFilterGroup('theme', 'Waar zoekt u hulp bij?', themes, [], false, [{ key: 'type', value: 'Subsidie of call,Subsidie', label: 'Subsidies en calls vinden' }])}
+      ${homeFilterGroup('sector', 'Voor welke sector?', SECTORS)}
       ${homeFilterGroup('type', 'Wat zoekt u?', types)}
       ${homeFilterGroup('geography', 'Waar is het aanbod beschikbaar?', ['Nederland', 'Europa', 'Internationaal'])}
       ${homeFilterGroup('audience', 'Voor wie?', PRIMARY_AUDIENCES, personas)}
@@ -440,7 +513,7 @@
     const openCalls = recordsForCriteria({ status: 'Open voor aanvragen' }).sort((a, b) => String(a.applicationDeadline || a.fundingDeadline || '9999').localeCompare(String(b.applicationDeadline || b.fundingDeadline || '9999')));
     const practices = recordsForCriteria({ type: 'Praktijkvoorbeeld' }).sort((a, b) => relevance(b) - relevance(a));
     main.innerHTML = `<section class="home-market">${homeFilterPanel(personas)}<div class="home-simple">
-      <section class="home-search"><span class="eyebrow">De publieke wegwijzer voor AI in het onderwijs</span><h1>Vind wat u nodig hebt voor AI in uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, voorzieningen, subsidies, pilots en praktijkvoorbeelden.</p><ul class="trust-summary" aria-label="Kenmerken van de atlas"><li>Alleen bestaand aanbod</li><li>Officiële bron per vermelding</li><li>Geen tracking</li></ul>${searchForm('home-search')}${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}</section>
+      <section class="home-search"><span class="eyebrow">De publieke wegwijzer voor AI in het onderwijs</span><h1>Vind wat u nodig hebt voor AI in uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, voorzieningen, subsidies, pilots en praktijkvoorbeelden.</p><ul class="trust-summary" aria-label="Kenmerken van de atlas"><li>Alleen bestaand aanbod</li><li>Officiële bron per vermelding</li><li>Geen tracking</li></ul><div class="home-new-contributions"><a class="btn" href="#nieuw">Nieuwe bijdragen <span aria-hidden="true">→</span></a><span>Bekijk wat er recent aan de Atlas is toegevoegd.</span></div>${searchForm('home-search')}${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}</section>
       ${contributionPrompt()}
       <section><div class="section-title"><div><h2>Waarmee kunnen we u helpen?</h2><p>Begin bij uw vraag, niet bij een organisatie.</p></div></div><div class="task-grid">${TASKS.map(task => { const criteria = { ...task.query, audience: personas.join(',') }; const count = recordsForCriteria(criteria).length; return `<a class="task-tile" href="${criteriaHref(criteria)}"><strong>${escapeHtml(task.label)}</strong><span>${escapeHtml(task.detail)}</span><small>${count} resultaten</small></a>`; }).join('')}</div></section>
       <section><div class="section-title"><div><h2>Veel gezocht</h2><p>Vaste snelkoppelingen naar veelvoorkomende onderwijsvragen.</p></div></div>${popularLinks('', personas.join(','))}</section>
@@ -633,25 +706,19 @@
       .sort((a, b) => b.score - a.score || relevance(b.item) - relevance(a.item))
       .slice(0, 4).map(candidate => candidate.item);
     const sources = record.sourceUrls || [];
-    const factRows = [
-      ['Aanbieder', record.providerName],
-      ['Sector', (record.sectors || []).join(', ')],
-      ['Voor wie', (record.audiences || []).join(', ')],
-      ['Beschikbaarheid', statusLabel(record)],
-      ['Geografische reikwijdte', record.geographicScope],
-      ['Verschenen op', publicationDate(record) ? dateLabel(publicationDate(record)) : 'Publicatiedatum onbekend'],
-      ['Laatst gecontroleerd', record.lastVerified],
-      ['Deadline', record.applicationDeadline || record.fundingDeadline]
-    ].filter(([, value]) => value && value !== 'Nog niet ingevuld');
-    main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(typeLabel(record))}</span></div><h1>${escapeHtml(record.title)}</h1><p>${escapeHtml(record.description || '')}</p></header>
+    const factRows = offerFacts(record);
+    main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(typeLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
       <section class="detail-shell"><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">← Terug naar resultaten</a><span>Home / Resultaten / ${escapeHtml(record.title)}</span></nav>
       <div class="detail-layout"><article>
-        ${record.purpose ? `<h2>Waarvoor kunt u dit gebruiken?</h2><p>${escapeHtml(record.purpose)}</p>` : ''}
-        ${recordThemes(record).length ? `<h2>Onderwerpen</h2><div class="detail-themes">${recordThemes(record).map(theme => `<a href="#zoeken?theme=${encodeURIComponent(theme)}">${escapeHtml(theme)}</a>`).join('')}</div>` : ''}
-        ${record.eligibility ? `<h2>Voorwaarden</h2><p>${escapeHtml(record.eligibility)}</p>` : ''}
+        <h2>Feitelijke beschrijving</h2><p>${escapeHtml(factValue(record.description))}</p>
+        <h2>Doel en gebruik</h2><p>${escapeHtml(factValue(record.purpose))}</p>
+        <h2>Onderwerpen</h2>${recordThemes(record).length ? `<div class="detail-themes">${recordThemes(record).map(theme => `<a href="#zoeken?theme=${encodeURIComponent(theme)}">${escapeHtml(theme)}</a>`).join('')}</div>` : '<p>Niet vastgesteld</p>'}
+        <h2>Voorwaarden</h2><p>${escapeHtml(factValue(record.eligibility))}</p>
+        <h2>Commerciële aard</h2><p>${escapeHtml(commercialLabel(record))}. Kosten en commerciële aard worden afzonderlijk vermeld.</p>
+        ${commercialLabel(record) !== 'Commerciële aard niet vastgesteld' ? `<p>${escapeHtml(record.commercialEvidence.note)} <a href="${escapeHtml(record.commercialEvidence.url)}" target="_blank" rel="noopener noreferrer">Bron voor deze vermelding ↗</a> · Broncontrole ${escapeHtml(dateLabel(record.commercialEvidence.checkedOn))}.</p>` : '<p>De beschikbare registratie bevat nog geen brononderbouwing voor deze kwalificatie.</p>'}
         ${related.length ? `<h2>Gerelateerd aanbod</h2><p class="section-intro">Inhoudelijk verbonden via onderwerp, sector, doelgroep, aanbieder of soort aanbod.</p><div class="related-cards">${related.map(item => simpleCard(item)).join('')}</div>` : ''}
       </article><aside class="detail-facts"><h2>In één oogopslag</h2><dl>${factRows.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl>
-        ${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}
+        <h3>Officiële bronnen</h3>${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}
         <button class="btn secondary share-item" type="button" data-share-item>Deel dit item</button>
         <p id="detail-feedback" class="action-feedback" aria-live="polite"></p>
         <aside class="item-contribution"><h3>Klopt deze informatie nog?</h3><p>Help mee met een correctie of aanvulling.</p><a class="btn secondary" href="#bijdragen?item=${encodeURIComponent(record.id)}">Fout of aanvulling doorgeven</a></aside>
@@ -796,7 +863,7 @@
     const record = records.find(item => item.id === params.get('item'));
     main.innerHTML = `<section class="contribute-page"><header class="page-intro"><span class="eyebrow">Samen actueel en bruikbaar</span><h1>Help de Atlas verder</h1><p>Voeg bestaand aanbod toe, verbeter informatie of vertel wat op de website beter kan. Kies hieronder de passende route.</p><p class="contribution-notice">De formulieren openen op GitHub. U heeft een gratis GitHub-account nodig. Uw inzending is openbaar: deel geen persoonsgegevens of vertrouwelijke informatie.</p>${record ? `<p class="contribution-context">Uw correctie gaat over <a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a>. Dit item staat alvast ingevuld in het correctieformulier.</p>` : ''}</header>
       <div class="contribute-options"><article><span aria-hidden="true">＋</span><h2>Aanbod toevoegen</h2><p>Kent u een handreiking, training, organisatie, voorziening, subsidie of praktijkvoorbeeld dat ontbreekt? Voeg de officiële bron en een korte feitelijke beschrijving toe.</p><a class="btn" data-contribution="addition" href="${escapeHtml(contributionIssueUrl('addition'))}" target="_blank" rel="noopener noreferrer">Aanbod toevoegen ↗</a></article><article><span aria-hidden="true">✓</span><h2>Fout of aanvulling doorgeven</h2><p>Klopt een titel, beschrijving, status, deadline of bron niet meer? Vermeld wat er moet veranderen, met een onderbouwende bron.</p><a class="btn secondary" data-contribution="correction" href="${escapeHtml(contributionIssueUrl('correction', record))}" target="_blank" rel="noopener noreferrer">Correctie doorgeven ↗</a></article><article><span aria-hidden="true">↔</span><h2>Feedback op de website</h2><p>Lukt zoeken niet goed, werkt een knop niet of kan iets duidelijker? Beschrijf wat u probeerde en wat u verwachtte. Hiervoor is geen bronlink nodig.</p><a class="btn secondary" data-contribution="feedback" href="${escapeHtml(contributionIssueUrl('feedback'))}" target="_blank" rel="noopener noreferrer">Feedback geven ↗</a></article></div>
-      <aside class="source-policy"><h2>Wat gebeurt er met uw bijdrage?</h2><p>Uw melding krijgt een eigen openbare plek op GitHub. Controleer eerst of er al een <a href="https://github.com/ECMW/ai-onderwijs-atlas-nederland/issues" target="_blank" rel="noopener noreferrer">vergelijkbare melding ↗</a> is; u kunt daar een aanvulling plaatsen.</p><p>Nieuwe aanbodmeldingen worden automatisch gecontroleerd op onder meer verplichte velden, mogelijke duplicaten en de bron. Een geslaagde controle is geen inhoudelijke goedkeuring. Publicatie volgt pas na beoordeling; een inzending verandert de Atlas niet direct.</p><p>Correcties en websitefeedback blijven via dezelfde openbare route te volgen. U hoeft Eva niet apart te mailen.</p></aside></section>`;
+      <aside class="source-policy"><h2>Wat gebeurt er met uw bijdrage?</h2><p>Uw melding krijgt een eigen openbare plek op GitHub. Controleer eerst of er al een <a href="https://github.com/ECMW/ai-onderwijs-atlas-nederland/issues" target="_blank" rel="noopener noreferrer">vergelijkbare melding ↗</a> is; u kunt daar een aanvulling plaatsen.</p><p>Nieuwe aanbodmeldingen worden direct gecontroleerd op een officiële bron, relevantie voor AI en onderwijs, onderbouwing en mogelijke duplicaten. Duidelijk onderbouwde aanvullingen worden na alle controles automatisch verwerkt. Bij twijfel of ontbrekende informatie blijft de bijdrage ter beoordeling staan. ${LISTING_NOTICE}</p><p>Correcties en websitefeedback blijven via dezelfde openbare route te volgen. U hoeft Eva niet apart te mailen.</p></aside></section>`;
   }
   function currentSearchLabel() {
     const parts = [state.q && `‘${state.q}’`, ...FILTER_KEYS.flatMap(key => values(key))].filter(Boolean);
@@ -887,7 +954,8 @@
     const path = (location.hash.slice(1) || 'home').split('?')[0];
     document.querySelector('.site-header')?.classList.remove('open');
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
-    if (path === 'home' || (!['zoeken', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
+    if (path === 'home' || (!['nieuw', 'zoeken', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
+    if (path === 'nieuw') renderNewOffers();
     if (path === 'zoeken' || path === 'organisaties') { parseState(); if (path === 'organisaties') state.type = 'Organisatie'; renderSearch(); }
     if (path.startsWith('item/')) renderDetail(decodeURIComponent(path.slice(5)));
     if (path === 'mijn-atlas') { location.replace('#home'); return; }

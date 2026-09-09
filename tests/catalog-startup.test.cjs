@@ -6,7 +6,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const { test } = require('node:test');
 
-const root = path.join(__dirname, '..');
+const root = path.resolve(process.env.ATLAS_SITE_ROOT || path.join(__dirname, '..'));
 const page = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const scripts = [...page.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)]
   .filter(match => !match[1].includes('application/ld+json'))

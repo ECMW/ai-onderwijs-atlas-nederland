@@ -17,7 +17,9 @@ concurrency:
 
 jobs:
   screen:
-    if: ${{ !github.event.pull_request.draft }}
+    # Form submissions already pass the dedicated admission and publication gates.
+    # Keep the legacy screener for external PRs and the daily updater only.
+    if: ${{ !github.event.pull_request.draft && !(github.event.pull_request.user.login == 'github-actions[bot]' && github.event.pull_request.head.repo.full_name == github.repository && startsWith(github.event.pull_request.head.ref, 'codex/inzending-')) }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out trusted Atlas controls

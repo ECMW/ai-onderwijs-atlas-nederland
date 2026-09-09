@@ -8,7 +8,7 @@ const catalogue = fs.readFileSync(path.join(__dirname, '..', 'catalog.js'), 'utf
 const boot = "  addEventListener('hashchange', route); addEventListener('popstate', route); route();";
 assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly the route startup');
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
-    publicationDate, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
+    commercialLabel, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard,
     homeFilterPanel, recordsForCriteria,
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
@@ -35,6 +35,80 @@ function load(records = [], hash = '#zoeken') {
   context.window.testCatalogue.parseState();
   return context.window.testCatalogue;
 }
+
+test('commercial labels require evidence and are independent of price', () => {
+  const api = load();
+  const paid = { ...record('course', null), costType: 'paid' };
+  assert.equal(api.commercialLabel(paid), 'Commerciële aard niet vastgesteld');
+  const free = { ...record('tool', null), costType: 'free', commercialStatus: 'commercial',
+    commercialEvidence: {url: 'https://example.org/tool', note: 'Commercial product with a free tier.', checkedOn: '2026-09-09'} };
+  assert.equal(api.costLabel(free), 'Gratis');
+  assert.equal(api.commercialLabel(free), 'Commercieel aanbod');
+  delete free.commercialEvidence;
+  assert.equal(api.commercialLabel(free), 'Commerciële aard niet vastgesteld');
+});
+
+test('every offering keeps the same facts including explicit unknowns', () => {
+  const api = load();
+  const complete = {...record('complete', '2026-09-01'), costType:'free', accessType:'public', geographicScope:'Nederland'};
+  const sparse = {...record('sparse', null), providerName:'', audiences:[], sectors:[], lastVerified:'', changeHistory:[]};
+  const first = Array.from(api.offerFacts(complete), row => row[0]);
+  const second = Array.from(api.offerFacts(sparse), row => row[0]);
+  assert.deepEqual(first, second);
+  assert.ok(api.offerFacts(sparse).every(row => row[1]));
+  assert.ok(api.simpleCard(sparse).includes('Kosten onbekend'));
+  assert.ok(api.simpleCard(sparse).includes('Toegang niet vastgesteld'));
+});
+
+test('new contributions and product detail code carry the non-endorsement notice', () => {
+  const api = load([record('notice', null)]);
+  assert.ok(api.newOffersMarkup().includes('<h1>Nieuwe bijdragen</h1>'));
+  assert.ok(api.newOffersMarkup().includes('geen goedkeuring, kwaliteitsbeoordeling of aanbeveling'));
+});
+
+test('new additions use the earliest valid added date, never a verification or edit date', () => {
+  const api = load();
+  const item = record('history', '2020-01-01');
+  item.changeHistory = [{type: 'updated', date: '2026-09-09'}, {type: 'added', date: '2026-02-30'},
+    {type: 'added', date: '2026-09-01'}, {type: 'added', date: '2026-07-12'}];
+  assert.equal(api.addedDate(item), '2026-07-12');
+  item.changeHistory = [{type: 'verified', date: '2026-09-09'}];
+  assert.equal(api.addedDate(item), '');
+});
+
+test('newest additions and newest publications are separate ordered views', () => {
+  const oldOffer = record('just-added', '2020-01-01');
+  oldOffer.changeHistory = [{type: 'added', date: '2026-09-09'}];
+  const newOffer = record('just-published', '2026-09-08');
+  newOffer.changeHistory = [{type: 'added', date: '2026-09-08'}];
+  const api = load([oldOffer, newOffer]);
+  assert.deepEqual(Array.from(api.newestRecords('added'), r => r.id), ['just-added', 'just-published']);
+  assert.deepEqual(Array.from(api.newestRecords('published'), r => r.id), ['just-published', 'just-added']);
+  assert.ok(api.newOffersMarkup('added').includes('Het aanbod zelf kan al langer bestaan'));
+  assert.ok(api.newOffersMarkup('published').includes('Gepubliceerd op'));
+});
+
+test('unknown recency dates are disclosed rather than invented from verification', () => {
+  const unknown = record('unknown-date', null); unknown.changeHistory = [];
+  const api = load([unknown]);
+  for (const mode of ['added', 'published']) {
+    const html = api.newOffersMarkup(mode);
+    assert.ok(html.includes('Bij 1 vermeldingen is deze datum niet vastgelegd'));
+    assert.ok(!html.includes('data-record-id="unknown-date"'));
+    assert.ok(html.includes('#zoeken?all=1'));
+  }
+});
+
+test('new offering pages keep the chosen date mode and cover all dated records once', () => {
+  const data = Array.from({length: 25}, (_, i) => record('item-' + i, '2026-09-09', String(i).padStart(2, '0')));
+  const api = load(data);
+  const first = api.newOffersMarkup('published', 1), second = api.newOffersMarkup('published', 2);
+  assert.equal((first.match(/data-record-id=/g) || []).length, 24);
+  assert.equal((second.match(/data-record-id=/g) || []).length, 1);
+  assert.ok(first.includes('#nieuw?volgorde=published&pagina=2'));
+  assert.ok(second.includes('data-record-id="item-24"'));
+  assert.equal(api.newOffersMarkup('invalid', -8), api.newOffersMarkup('added', 1));
+});
 
 test('only real calendar dates qualify; check and import dates are never fallbacks', () => {
   const api = load();
@@ -111,11 +185,11 @@ test('empty filter values have clear placeholders and URL values are escaped', (
   assert.ok(!html.includes('<img'));
 });
 
-test('results omit redundant availability and source badges but retain source links and pilot status', () => {
+test('results consistently show availability and retain source links and pilot status', () => {
   const item = record('example', '2026-09-03');
   const api = load([item], '#zoeken?sort=published');
   const html = api.resultsMarkup();
-  assert.ok(!html.includes('>Direct beschikbaar<'));
+  assert.ok(html.includes('>Direct beschikbaar<'));
   assert.ok(!html.includes('>Officiële bron<'));
   assert.ok(!html.includes('data-quick="status|'));
   assert.ok(!html.includes('data-quick="source|'));
