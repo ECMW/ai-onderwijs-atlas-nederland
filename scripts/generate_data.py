@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from public_assets import versioned_html
 
 R = Path(__file__).parents[1]
 records = json.loads((R / 'data/records.json').read_text(encoding='utf-8'))
@@ -35,3 +36,7 @@ public_meta = {**meta, 'recordCount': len(published)}
         item['title'], item.get('providerName'), item.get('description'), *item.get('keywords', [])
     ] if value)} for item in published
 ], ensure_ascii=False), encoding='utf-8')
+
+# Changing data or frontend code must also change the browser cache key.
+index = R / 'index.html'
+index.write_text(versioned_html(R, index.read_text(encoding='utf-8')), encoding='utf-8')

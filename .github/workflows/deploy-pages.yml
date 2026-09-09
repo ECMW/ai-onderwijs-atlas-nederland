@@ -11,13 +11,68 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with: {python-version: '3.12'}
-      - run: python scripts/validate_data.py
-      - run: python scripts/quality_gate.py --strict --output "${{ runner.temp }}/atlas-quality-report.json"
-      - run: python scripts/generate_data.py
-      - run: python -m unittest discover tests
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Validate committed canonical data
+        run: python scripts/validate_data.py
+      - name: Validate the committed public projection
+        run: python scripts/quality_gate.py --strict --output "${{ runner.temp }}/atlas-quality-report.json"
+      - name: Run data and browser regression tests
+        run: python -m unittest discover tests
+      - name: Ensure checks did not rewrite the data to be published
+        run: git diff --exit-code -- data
+      - name: Stage public site files
+        shell: python
+        run: |
+          import os
+          import shutil
+          from pathlib import Path
+
+          root = Path.cwd()
+          site = Path(os.environ['RUNNER_TEMP']) / 'atlas-site'
+          site.mkdir()
+          files = [root / name for name in (
+              'index.html', 'manifest.webmanifest', 'robots.txt', 'sitemap.xml'
+          )]
+          files += list(root.glob('*.css')) + list(root.glob('*.js'))
+          files += list((root / 'data').glob('*.json')) + list((root / 'data').glob('*.js'))
+          files += [path for path in (root / 'assets').rglob('*') if path.is_file()]
+          for source in files:
+              if source.is_symlink():
+                  raise ValueError(f'Public assets must be regular files: {source}')
+              target = site / source.relative_to(root)
+              target.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(source, target)
+          print(f'Staged {len(files)} public files')
+      - name: Check JavaScript loaded by the page
+        working-directory: ${{ runner.temp }}/atlas-site
+        shell: python
+        run: |
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import unquote, urlsplit
+          import subprocess
+
+          class Scripts(HTMLParser):
+              def handle_starttag(self, tag, attrs):
+                  source = dict(attrs).get('src') if tag == 'script' else None
+                  if not source:
+                      return
+                  url = urlsplit(source)
+                  if url.scheme or url.netloc:
+                      raise ValueError(f'Cannot validate external script: {source}')
+                  path = Path(unquote(url.path)).resolve()
+                  if not path.is_relative_to(Path.cwd()):
+                      raise ValueError(f'Script is outside the site: {source}')
+                  subprocess.run(['node', '--check', str(path)], check=True)
+
+          Scripts().feed(Path('index.html').read_text(encoding='utf-8'))
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
-        with: {path: .}
+        with:
+          path: ${{ runner.temp }}/atlas-site
   deploy:
     environment: {name: github-pages, url: '${{ steps.deployment.outputs.page_url }}'}
     runs-on: ubuntu-latest

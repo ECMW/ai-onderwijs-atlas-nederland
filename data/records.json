@@ -366,8 +366,8 @@
       "org-surf"
     ],
     "providerName": "SURF",
-    "description": "CoÃ¶peratieve ICT-infrastructuur en gedeelde diensten voor onderwijs en onderzoek, waaronder netwerk, rekenkracht, identity, data- en AI-diensten.",
-    "purpose": "CoÃ¶peratieve infrastructuur en kennisopbouw",
+    "description": "Coöperatieve ICT-infrastructuur en gedeelde diensten voor onderwijs en onderzoek, waaronder netwerk, rekenkracht, identity, data- en AI-diensten.",
+    "purpose": "Coöperatieve infrastructuur en kennisopbouw",
     "audiences": [
       "IT-professionals",
       "Onderzoekers",
@@ -755,7 +755,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le website",
+        "label": "Officiële website",
         "url": "https://www.nko.nl/",
         "sourceType": "official"
       }
@@ -1243,7 +1243,7 @@
   },
   {
     "id": "europese-commissie-dg-eac",
-    "title": "Europese Commissie â DG EAC",
+    "title": "Europese Commissie — DG EAC",
     "recordType": "organization",
     "legacyType": "Organisatie",
     "subtype": null,
@@ -1435,7 +1435,7 @@
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "unknown",
-    "fundingAmount": "ca. â¬200+ miljoen, te verifiÃ«ren",
+    "fundingAmount": "ca. €200+ miljoen, te verifiëren",
     "fundingDeadline": null,
     "applicationOpenDate": null,
     "applicationDeadline": null,
@@ -1512,7 +1512,7 @@
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "unknown",
-    "fundingAmount": "ca. â¬80 miljoen, te verifiÃ«ren",
+    "fundingAmount": "ca. €80 miljoen, te verifiëren",
     "fundingDeadline": null,
     "applicationOpenDate": null,
     "applicationDeadline": null,
@@ -1729,7 +1729,7 @@
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "unknown",
-    "fundingAmount": "ca. â¬95 miljard totaal programma",
+    "fundingAmount": "ca. €95 miljard totaal programma",
     "fundingDeadline": null,
     "applicationOpenDate": null,
     "applicationDeadline": null,
@@ -1803,7 +1803,7 @@
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "unknown",
-    "fundingAmount": "ca. â¬7,5 miljard totaal programma",
+    "fundingAmount": "ca. €7,5 miljard totaal programma",
     "fundingDeadline": null,
     "applicationOpenDate": null,
     "applicationDeadline": null,
@@ -1878,7 +1878,7 @@
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "unknown",
-    "fundingAmount": "ca. â¬26 miljard totaal programma",
+    "fundingAmount": "ca. €26 miljard totaal programma",
     "fundingDeadline": null,
     "applicationOpenDate": null,
     "applicationDeadline": null,
@@ -1916,8 +1916,8 @@
     "organizationIds": [
       "org-commerciele-aanbieders"
     ],
-    "providerName": "CommerciÃ«le aanbieders",
-    "description": "CommerciÃ«le detectietools voor tekstovereenkomst en vermeend AI-gebruik. Uitkomsten vragen zorgvuldige menselijke beoordeling.",
+    "providerName": "Commerciële aanbieders",
+    "description": "Commerciële detectietools voor tekstovereenkomst en vermeend AI-gebruik. Uitkomsten vragen zorgvuldige menselijke beoordeling.",
     "purpose": "Ondersteunen bij integriteits- en toetsingsvraagstukken",
     "audiences": [
       "Docenten",
@@ -1975,14 +1975,14 @@
   },
   {
     "id": "commerciele-generatieve-ai-werkplekken",
-    "title": "CommerciÃ«le generatieve AI-werkplekken",
+    "title": "Commerciële generatieve AI-werkplekken",
     "recordType": "product",
     "legacyType": "Product",
     "subtype": null,
     "organizationIds": [
       "org-commerciele-aanbieders"
     ],
-    "providerName": "CommerciÃ«le aanbieders",
+    "providerName": "Commerciële aanbieders",
     "description": "Enterprise- en onderwijsvarianten van generatieve AI, waaronder ChatGPT, Microsoft Copilot en Google Gemini.",
     "purpose": "Generatieve AI-functionaliteit aanbieden",
     "audiences": [
@@ -2618,8 +2618,8 @@
     "organizationIds": [
       "org-diverse-publieke-en-commerciele-partijen"
     ],
-    "providerName": "Diverse publieke en commerciÃ«le partijen",
-    "description": "Pilots en commerciÃ«le toepassingen voor het automatisch of ondersteund beoordelen van antwoorden.",
+    "providerName": "Diverse publieke en commerciële partijen",
+    "description": "Pilots en commerciële toepassingen voor het automatisch of ondersteund beoordelen van antwoorden.",
     "purpose": "Beoordeling ondersteunen en werkdruk verminderen",
     "audiences": [
       "Docenten",
@@ -2678,7 +2678,7 @@
   },
   {
     "id": "nationaal-groeifonds-nolai",
-    "title": "Nationaal Groeifonds â NOLAI",
+    "title": "Nationaal Groeifonds — NOLAI",
     "recordType": "subsidy",
     "legacyType": "Subsidie",
     "subtype": null,
@@ -2716,7 +2716,7 @@
     "geographicScope": "Nederland",
     "accessType": "unknown",
     "costType": "unknown",
-    "fundingAmount": "ca. â¬80 miljoen, te verifiÃ«ren",
+    "fundingAmount": "ca. €80 miljoen, te verifiëren",
     "fundingDeadline": null,
     "applicationOpenDate": null,
     "applicationDeadline": null,
@@ -2746,7 +2746,7 @@
   },
   {
     "id": "nationaal-groeifonds-npuls",
-    "title": "Nationaal Groeifonds â Npuls",
+    "title": "Nationaal Groeifonds — Npuls",
     "recordType": "subsidy",
     "legacyType": "Subsidie",
     "subtype": null,
@@ -2780,7 +2780,7 @@
     "geographicScope": "Nederland",
     "accessType": "unknown",
     "costType": "unknown",
-    "fundingAmount": "ca. â¬200+ miljoen, te verifiÃ«ren",
+    "fundingAmount": "ca. €200+ miljoen, te verifiëren",
     "fundingDeadline": null,
     "applicationOpenDate": null,
     "applicationDeadline": null,
@@ -2989,7 +2989,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le informatie",
+        "label": "Officiële informatie",
         "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
         "sourceType": "official"
       }
@@ -3185,7 +3185,7 @@
   },
   {
     "id": "digital-education-action-plan-20212027",
-    "title": "Digital Education Action Plan 2021â2027",
+    "title": "Digital Education Action Plan 2021–2027",
     "recordType": "legislation",
     "legacyType": "Wetgeving",
     "subtype": null,
@@ -3359,7 +3359,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/handreiking-ai-in-het-onderwijs/",
         "sourceType": "official"
       }
@@ -3399,7 +3399,7 @@
       {
         "date": "2026-07-12",
         "type": "source_updated",
-        "summary": "Generieke Kennisnet-homepage vervangen door de specifieke officiÃ«le handreikingspagina."
+        "summary": "Generieke Kennisnet-homepage vervangen door de specifieke officiële handreikingspagina."
       }
     ]
   },
@@ -3933,7 +3933,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/schoolafspraken-over-het-gebruik-van-generatieve-ai/",
         "sourceType": "official"
       }
@@ -4006,7 +4006,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/privacy-en-ai-hier-moeten-scholen-op-letten/",
         "sourceType": "official"
       }
@@ -4078,7 +4078,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/kansen-en-risicos-van-generatieve-ai-in-het-onderwijs/",
         "sourceType": "official"
       }
@@ -4151,7 +4151,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://npuls.prod.sdp.surf.nl/kennisbank/referentiekader-2-0-verantwoord-gebruik-van-studiedata-en-ai",
         "sourceType": "official"
       }
@@ -4224,7 +4224,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://npuls.nl/kennisbank/visie-op-toetsing-examinering-en-ai-handreikingen",
         "sourceType": "official"
       }
@@ -4296,7 +4296,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.npuls.nl/kennisbank/ai-waaier",
         "sourceType": "official"
       }
@@ -4368,7 +4368,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://communities.surf.nl/ai-in-education/artikel/ai-en-kansengelijkheid-handreiking-voor-een-zo-positief-mogelijke-impact",
         "sourceType": "official"
       }
@@ -4438,7 +4438,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://communities.surf.nl/digitaal-toetsen/artikel/ai-en-toetsen-check-je-toetsen-met-de-toolkit-ai-in-je-toetsontwerp",
         "sourceType": "official"
       }
@@ -4509,7 +4509,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/ai-richtlijnen-bij-unicoz-ruimte-voor-eigen-schoolbeleid/",
         "sourceType": "official"
       }
@@ -4581,7 +4581,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://regieorgaan-sia.nl/financiering/sprong-thematisch/sprong-versnelling-ai-opschaling-in-het-publieke-domein/",
         "sourceType": "official"
       }
@@ -4654,7 +4654,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://regieorgaan-sia.nl/financiering/kiem/kiem-arbeidsbesparende-ai/",
         "sourceType": "official"
       }
@@ -4672,7 +4672,7 @@
     "fundingMin": null,
     "fundingMax": 40000,
     "totalBudget": 1800000,
-    "eligibility": "Aanvrager met ten minste twee praktijkpartners, waaronder minimaal Ã©Ã©n mkb-onderneming; zie call.",
+    "eligibility": "Aanvrager met ten minste twee praktijkpartners, waaronder minimaal één mkb-onderneming; zie call.",
     "applicantTypes": [],
     "callStatus": "open_call",
     "recurrence": null,
@@ -4727,7 +4727,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://npuls.nl/kennisbank/ai-go-in-actie",
         "sourceType": "official"
       }
@@ -4800,7 +4800,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.npuls.nl/kennisbank/visietool-toetsen",
         "sourceType": "official"
       }
@@ -4874,7 +4874,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le agenda en inschrijving resterende sessie",
+        "label": "Officiële agenda en inschrijving resterende sessie",
         "url": "https://npuls.nl/agenda/breng-als-trainer-het-gesprek-over-toetsen-examineren-en-ai-in-beweging-3",
         "sourceType": "official"
       }
@@ -4953,7 +4953,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/ai-beleid-ontwikkelen-op-school/",
         "sourceType": "official"
       }
@@ -5025,7 +5025,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/werken-aan-ai-geletterdheid-op-school/",
         "sourceType": "official"
       }
@@ -5095,7 +5095,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/toetsing-en-generatieve-ai-in-het-voortgezet-onderwijs/",
         "sourceType": "official"
       }
@@ -5137,14 +5137,14 @@
   },
   {
     "id": "ai-beleid-bij-het-roer-college-schondeln",
-    "title": "AI-beleid bij het ROER College SchÃ¶ndeln",
+    "title": "AI-beleid bij het ROER College Schöndeln",
     "recordType": "practice_example",
     "legacyType": "Praktijkvoorbeeld",
     "subtype": null,
     "organizationIds": [
       "org-roer-college-schondeln"
     ],
-    "providerName": "ROER College SchÃ¶ndeln",
+    "providerName": "ROER College Schöndeln",
     "description": "Openbaar praktijkvoorbeeld van een beleidsproces waarin docenten, leerlingen, ouders en ondernemers bij AI-beleid zijn betrokken.",
     "purpose": "Laten zien hoe een school met betrokkenen AI-beleid ontwikkelt",
     "audiences": [
@@ -5166,7 +5166,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/hoe-gaan-we-om-met-ai-zo-maakte-het-roer-college-zijn-beleidsplan/",
         "sourceType": "official"
       }
@@ -5236,7 +5236,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.npuls.nl/agenda/digitale-ai-en-data-geletterdheid-in-het-hbo",
         "sourceType": "official"
       }
@@ -5315,7 +5315,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.npuls.nl/kennisbank/in-gesprek-over-digitale-geletterdheid",
         "sourceType": "official"
       }
@@ -5354,7 +5354,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -5395,7 +5395,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://npuls.nl/kennisbank/kit-workshop-ai-assistenten-in-het-onderwijs",
         "sourceType": "official"
       }
@@ -5434,7 +5434,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -5477,7 +5477,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://npuls.nl/kennisbank/aan-de-slag-met-de-ai-act",
         "sourceType": "official"
       }
@@ -5516,13 +5516,13 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
   {
     "id": "ai-act-inleiding-en-uitleg",
-    "title": "AI Act â Inleiding en uitleg over de AI-verordening",
+    "title": "AI Act – Inleiding en uitleg over de AI-verordening",
     "recordType": "guidance",
     "legacyType": "Handreiking",
     "subtype": null,
@@ -5530,7 +5530,7 @@
       "org-npuls"
     ],
     "providerName": "Npuls",
-    "description": "Beknopte introductie tot de AI-verordening met begrippen, risicocategorieÃ«n, fasering en gevolgen voor onderwijsinstellingen.",
+    "description": "Beknopte introductie tot de AI-verordening met begrippen, risicocategorieën, fasering en gevolgen voor onderwijsinstellingen.",
     "purpose": "Medewerkers in het vervolgonderwijs een eerste onderbouwd overzicht van de AI Act geven.",
     "audiences": [
       "Beleidsmakers",
@@ -5557,7 +5557,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://npuls.nl/kennisbank/ai-act-inleiding-en-uitleg",
         "sourceType": "official"
       }
@@ -5596,7 +5596,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -5639,7 +5639,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://npuls.nl/nieuws/edu-gen-ai-breidt-pilot-uit",
         "sourceType": "official"
       }
@@ -5679,7 +5679,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -5719,7 +5719,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/tools/ai-impact-game/",
         "sourceType": "official"
       }
@@ -5758,7 +5758,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -5799,7 +5799,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/het-gebruik-van-ai-op-school-in-kaart-brengen/",
         "sourceType": "official"
       }
@@ -5838,7 +5838,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -5852,7 +5852,7 @@
       "org-kennisnet"
     ],
     "providerName": "Kennisnet",
-    "description": "Stappenplan dat uitlegt wanneer de AI-verordening op scholen van toepassing is, welke risicocategorieÃ«n bestaan en welke acties nodig zijn.",
+    "description": "Stappenplan dat uitlegt wanneer de AI-verordening op scholen van toepassing is, welke risicocategorieën bestaan en welke acties nodig zijn.",
     "purpose": "Scholen ondersteunen bij het herkennen en uitvoeren van hun verplichtingen onder de AI-verordening.",
     "audiences": [
       "Schoolleiders",
@@ -5880,7 +5880,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/voldoen-aan-de-ai-verordening/",
         "sourceType": "official"
       }
@@ -5910,7 +5910,7 @@
     "keywords": [
       "AI-verordening",
       "AI Act",
-      "risicocategorieÃ«n",
+      "risicocategorieën",
       "gebruiksverantwoordelijke",
       "compliance"
     ],
@@ -5919,7 +5919,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -5959,7 +5959,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/aandachtspunten-bij-de-ontwikkeling-van-je-curriculum-en-de-invloed-van-ai/",
         "sourceType": "official"
       }
@@ -5998,13 +5998,13 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
   {
     "id": "leermiddelen-differentieren-met-ai",
-    "title": "Leermiddelen differentiÃ«ren met AI",
+    "title": "Leermiddelen differentiëren met AI",
     "recordType": "guidance",
     "legacyType": "Handreiking",
     "subtype": null,
@@ -6038,7 +6038,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/leermiddelen-differentieren-met-ai/",
         "sourceType": "official"
       }
@@ -6077,7 +6077,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -6116,7 +6116,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/de-impact-van-ai-op-de-schoolorganisatie/",
         "sourceType": "official"
       }
@@ -6155,7 +6155,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -6191,7 +6191,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/nadenken-over-ai-op-je-school-ai-als-ongewenste-collega/",
         "sourceType": "official"
       }
@@ -6230,7 +6230,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -6267,7 +6267,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/regionale-samenwerking-stelt-vo-scholen-in-staat-om-samen-met-ai-aan-de-slag-te-gaan/",
         "sourceType": "official"
       }
@@ -6306,7 +6306,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -6343,7 +6343,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/dankzij-ai-werkt-robbert-van-empel-efficienter-en-zijn-lessen-worden-er-beter-van/",
         "sourceType": "official"
       }
@@ -6382,7 +6382,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -6421,7 +6421,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/spaarzaam-gebruik-van-ai-past-bij-een-bewuste-levenshouding/",
         "sourceType": "official"
       }
@@ -6460,7 +6460,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -6502,7 +6502,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://sec.surf.nl/assets/handreiking-ai-en-informatiebeveiliging-binnen-onderwijs/",
         "sourceType": "official"
       }
@@ -6541,7 +6541,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -6556,7 +6556,7 @@
     ],
     "providerName": "SURF Communities",
     "description": "Praktische uitleg met stroomschema over AI Act, AVG, DPIA, FRIA, risicoclassificatie en de gevolgen van geautomatiseerde examinering.",
-    "purpose": "Onderwijsprofessionals helpen AI-risico's en verplichtingen vÃ³Ã³r ingebruikname systematisch te beoordelen.",
+    "purpose": "Onderwijsprofessionals helpen AI-risico's en verplichtingen vóór ingebruikname systematisch te beoordelen.",
     "audiences": [
       "Docenten",
       "Bestuurders",
@@ -6581,7 +6581,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://communities.surf.nl/vraagbaak-online-onderwijs/artikel/hoe-gebruik-je-ai-verantwoord-in-je-onderwijs-denk-vooraf-altijd",
         "sourceType": "official"
       }
@@ -6620,7 +6620,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -6660,7 +6660,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.surf.nl/nieuws/ethische-risicos-en-kansen-van-gepersonaliseerd-onderwijs-met-ai",
         "sourceType": "official"
       }
@@ -6699,7 +6699,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -6740,7 +6740,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.surf.nl/nieuws/dpia-edugenai-werken-aan-veilige-en-verantwoorde-ai-in-het-onderwijs",
         "sourceType": "official"
       }
@@ -6780,7 +6780,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -6817,7 +6817,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://communities.surf.nl/vraagbaak-online-onderwijs/artikel/uva-doet-ai-onderwijspilots-in-eigen-beveiligde-omgeving-het",
         "sourceType": "official"
       }
@@ -6856,7 +6856,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -6897,7 +6897,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://pec.surf.nl/model-ai-ethiek-in-het-onderwijs/",
         "sourceType": "official"
       }
@@ -6936,7 +6936,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -6974,7 +6974,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.surf.nl/praktijkverhaal/van-pilots-naar-praktijk-hogeschool-rotterdam-bouwt-met-ai-hub-veilige-en-betrouwbare-ai-agents",
         "sourceType": "official"
       }
@@ -7013,7 +7013,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -7054,7 +7054,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.sivon.nl/toetsingskader/",
         "sourceType": "official"
       }
@@ -7094,7 +7094,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -7134,7 +7134,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/over-ons/nieuws/whitepaper-educatieve-ai-en-algemene-ai",
         "sourceType": "official"
       }
@@ -7173,7 +7173,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -7214,7 +7214,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/over-ons/nieuws/whitepaper-veilig-omgaan-met-data-micropseudonimisatie",
         "sourceType": "official"
       }
@@ -7253,7 +7253,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -7292,7 +7292,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/over-ons/nieuws/whitepaper-veilig-experimenteren-met-taalmodellen",
         "sourceType": "official"
       }
@@ -7331,7 +7331,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -7370,7 +7370,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/over-ons/nieuws/whitepaper-nakijken-met-ai-5-vragen-die-leraren-zich-zouden-moeten-stellen",
         "sourceType": "official"
       }
@@ -7410,7 +7410,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -7441,7 +7441,7 @@
       "Publieke waarden en ethiek"
     ],
     "status": "pilot",
-    "availabilityText": "Lopend project 2024â2027",
+    "availabilityText": "Lopend project 2024–2027",
     "startDate": "2024-01-01",
     "endDate": "2027-12-31",
     "publicationDate": null,
@@ -7449,7 +7449,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/onderzoek/onderzoeksprojecten/open-vragen-nakijken-met-hulp-van-ai",
         "sourceType": "official"
       }
@@ -7488,7 +7488,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -7527,7 +7527,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/onderzoek/onderzoeksprojecten/generatieve-ai-in-het-vo",
         "sourceType": "official"
       }
@@ -7566,7 +7566,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -7598,7 +7598,7 @@
       "Curriculumontwikkeling"
     ],
     "status": "pilot",
-    "availabilityText": "Lopend project 2024â2027",
+    "availabilityText": "Lopend project 2024–2027",
     "startDate": "2024-01-01",
     "endDate": "2027-12-31",
     "publicationDate": null,
@@ -7606,7 +7606,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/onderzoek/onderzoeksprojecten/adaptief-lesmateriaal-voor-tos-leerlingen",
         "sourceType": "official"
       }
@@ -7645,7 +7645,7 @@
       {
         "date": "2026-07-12",
         "type": "added",
-        "summary": "Toegevoegd in officiÃ«le inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
+        "summary": "Toegevoegd in officiële inhoudstranche Nederlandse AI-onderwijsbronnen, batch 1."
       }
     ]
   },
@@ -7679,7 +7679,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://tlc.uva.nl/article/ai-basics/",
         "sourceType": "official"
       }
@@ -7721,7 +7721,7 @@
   },
   {
     "id": "uva-ai-literacy-docenten-elearning",
-    "title": "AI literacy voor docenten â e-learning",
+    "title": "AI literacy voor docenten – e-learning",
     "recordType": "training",
     "legacyType": "Training",
     "subtype": null,
@@ -7750,7 +7750,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://share.articulate.com/svX7iZbENb4ocjD2biC6-",
         "sourceType": "official"
       }
@@ -7820,7 +7820,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://tlc.uva.nl/article/ai-in-toetsing/",
         "sourceType": "official"
       }
@@ -7891,7 +7891,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://tlc.uva.nl/article/bko-track-responsible-ai-in-education/",
         "sourceType": "official"
       }
@@ -7962,7 +7962,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://tlc.uva.nl/en/article/daily-office-tasks-with-uva-ai-chat/",
         "sourceType": "official"
       }
@@ -8034,7 +8034,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://tlc.uva.nl/en/article/smarter-or-dependent/",
         "sourceType": "official"
       }
@@ -8082,7 +8082,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "Europese Commissie",
-    "description": "Gratis, zelfgestuurde online cursus van 15â20 uur over mensgerichte, ethische en pedagogisch verantwoorde AI in het onderwijs.",
+    "description": "Gratis, zelfgestuurde online cursus van 15–20 uur over mensgerichte, ethische en pedagogisch verantwoorde AI in het onderwijs.",
     "purpose": "Leraren concrete competenties geven om AI te begrijpen, beoordelen en verantwoord in te zetten.",
     "audiences": [
       "Docenten",
@@ -8107,7 +8107,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://school-education.ec.europa.eu/en/learn/courses/becoming-artificial-intelligent-competent-teacher",
         "sourceType": "official"
       }
@@ -8180,7 +8180,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://school-education.ec.europa.eu/en/learn/courses/artificial-intelligence-education-empowering-european-teachers",
         "sourceType": "official"
       }
@@ -8253,7 +8253,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.cost.eu/how-to-apply/",
         "sourceType": "official"
       }
@@ -8264,14 +8264,14 @@
     "geographicScope": "Europa",
     "accessType": "public",
     "costType": "unknown",
-    "fundingAmount": "Indicatief circa â¬140.000 in jaar 1 en â¬180.000 per vervoljaar",
+    "fundingAmount": "Indicatief circa €140.000 in jaar 1 en €180.000 per vervoljaar",
     "fundingDeadline": "2026-10-28",
     "applicationOpenDate": "2026-07-31",
     "applicationDeadline": "2026-10-28",
     "fundingMin": null,
     "fundingMax": null,
     "totalBudget": null,
-    "eligibility": "Voorstel voor een netwerk met deelnemers uit ten minste zeven COST-landen; zie de officiÃ«le call voor alle samenstellingsvoorwaarden.",
+    "eligibility": "Voorstel voor een netwerk met deelnemers uit ten minste zeven COST-landen; zie de officiële call voor alle samenstellingsvoorwaarden.",
     "applicantTypes": [
       "Onderzoekers",
       "Universiteiten",
@@ -8333,7 +8333,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://hadea.ec.europa.eu/calls-proposals/dep-call-10-advanced-digital-skills_en",
         "sourceType": "official"
       }
@@ -8410,7 +8410,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://digital-strategy.ec.europa.eu/en/news/new-open-call-proposals-under-digital-europe-programme",
         "sourceType": "official"
       }
@@ -8427,7 +8427,7 @@
     "applicationDeadline": "2026-10-01",
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "â¬6 miljoen",
+    "totalBudget": "€6 miljoen",
     "eligibility": null,
     "applicantTypes": [
       "Onderzoeksorganisaties",
@@ -8461,7 +8461,7 @@
     "legacyType": "Call",
     "subtype": null,
     "organizationIds": [],
-    "providerName": "Europese Commissie â Marie SkÅodowska-Curie Actions",
+    "providerName": "Europese Commissie – Marie Skłodowska-Curie Actions",
     "description": "Internationale Horizon Europe-call voor consortia die doctorale programma's in alle wetenschapsgebieden ontwikkelen; AI-onderwijsonderzoek kan binnen de open thematiek passen.",
     "purpose": "Internationale, interdisciplinaire en intersectorale doctorale netwerken en opleiding financieren.",
     "audiences": [
@@ -8488,7 +8488,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/funding/msca-doctoral-networks-2026",
         "sourceType": "official"
       }
@@ -8505,7 +8505,7 @@
     "applicationDeadline": "2026-11-24",
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "â¬593,034 miljoen indicatief",
+    "totalBudget": "€593,034 miljoen indicatief",
     "eligibility": "Consortia van organisaties uit verschillende sectoren en landen; voorstellen kunnen elk wetenschapsgebied betreffen.",
     "applicantTypes": [
       "Internationale consortia",
@@ -8539,7 +8539,7 @@
     "legacyType": "Call",
     "subtype": null,
     "organizationIds": [],
-    "providerName": "Europese Commissie â Marie SkÅodowska-Curie Actions",
+    "providerName": "Europese Commissie – Marie Skłodowska-Curie Actions",
     "description": "Internationale Horizon Europe-call voor gepromoveerde onderzoekers die via mobiliteit nieuwe vaardigheden en onderzoekservaring willen opbouwen; AI-onderwijsonderzoek is mogelijk binnen de open thematiek.",
     "purpose": "Individuele postdoctorale onderzoekers en gastorganisaties ondersteunen bij internationale en intersectorale ontwikkeling.",
     "audiences": [
@@ -8565,7 +8565,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/funding/msca-postdoctoral-fellowships-2026",
         "sourceType": "official"
       }
@@ -8582,7 +8582,7 @@
     "applicationDeadline": "2026-09-09",
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "â¬399,05 miljoen indicatief",
+    "totalBudget": "€399,05 miljoen indicatief",
     "eligibility": null,
     "applicantTypes": [
       "Gepromoveerde onderzoekers",
@@ -8640,7 +8640,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://education.ec.europa.eu/focus-topics/digital-education/actions/plan/ethical-guidelines-for-educators-on-using-artificial-intelligence",
         "sourceType": "official"
       }
@@ -8714,7 +8714,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.oecd.org/en/publications/empowering-learners-for-the-age-of-ai_65cd27d4-en.html",
         "sourceType": "official"
       }
@@ -8791,7 +8791,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.unesco.org/en/articles/ai-competency-framework-teachers?hub=84636",
         "sourceType": "official"
       }
@@ -8865,7 +8865,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.unesco.org/en/articles/what-you-need-know-about-unescos-new-ai-competency-frameworks-students-and-teachers?hub=343",
         "sourceType": "official"
       }
@@ -8937,7 +8937,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://education.ec.europa.eu/selfie-for-teachers",
         "sourceType": "official"
       }
@@ -8984,7 +8984,7 @@
     "legacyType": "Voorziening",
     "subtype": null,
     "organizationIds": [],
-    "providerName": "Europese Commissie â AI Office",
+    "providerName": "Europese Commissie – AI Office",
     "description": "Publieke informatievoorziening met AI Act Explorer, Compliance Checker, veelgestelde vragen en een loket voor vragen over toepassing van de AI Act.",
     "purpose": "Organisaties helpen de AI Act te begrijpen en hun mogelijke verplichtingen systematisch te verkennen.",
     "audiences": [
@@ -9015,7 +9015,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://digital-strategy.ec.europa.eu/en/news/commission-launches-ai-act-service-desk-and-single-information-platform-support-ai-act",
         "sourceType": "official"
       }
@@ -9056,7 +9056,7 @@
   },
   {
     "id": "european-school-education-course-catalogue",
-    "title": "European School Education Platform â cursuscatalogus",
+    "title": "European School Education Platform – cursuscatalogus",
     "recordType": "service",
     "legacyType": "Voorziening",
     "subtype": null,
@@ -9086,7 +9086,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://school-education.ec.europa.eu/en/learn/courses",
         "sourceType": "official"
       }
@@ -9128,7 +9128,7 @@
   },
   {
     "id": "digital-education-hub-funding-finder",
-    "title": "European Digital Education Hub â funding opportunities",
+    "title": "European Digital Education Hub – funding opportunities",
     "recordType": "service",
     "legacyType": "Voorziening",
     "subtype": null,
@@ -9163,7 +9163,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://education.ec.europa.eu/focus-topics/digital-education/digital-education-hub/funding-opportunities",
         "sourceType": "official"
       }
@@ -9241,7 +9241,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://education.ec.europa.eu/focus-topics/digital-education/action-plan/european-digital-education-hub",
         "sourceType": "official"
       }
@@ -9304,7 +9304,7 @@
       "Publieke waarden en ethiek"
     ],
     "status": "pilot",
-    "availabilityText": "Lopend project 2026â2029",
+    "availabilityText": "Lopend project 2026–2029",
     "startDate": "2026-01-01",
     "endDate": "2029-12-31",
     "publicationDate": null,
@@ -9312,7 +9312,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/onderzoek/onderzoeksprojecten/leren-argumenteren-met-ai",
         "sourceType": "official"
       }
@@ -9377,7 +9377,7 @@
       "Implementatie en adoptie"
     ],
     "status": "pilot",
-    "availabilityText": "Lopend project 2026â2029",
+    "availabilityText": "Lopend project 2026–2029",
     "startDate": "2026-01-01",
     "endDate": "2029-12-31",
     "publicationDate": null,
@@ -9385,7 +9385,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/onderzoek/onderzoeksprojecten/studiekeuzeproces-met-ai",
         "sourceType": "official"
       }
@@ -9433,7 +9433,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "NOLAI",
-    "description": "Co-creatieproject rond AI-ondersteunde feedback op tussenstappen en oplossingsstrategieÃ«n bij wiskunde.",
+    "description": "Co-creatieproject rond AI-ondersteunde feedback op tussenstappen en oplossingsstrategieën bij wiskunde.",
     "purpose": "Onderzoeken hoe AI tijdige feedback kan geven terwijl de docent regie houdt over leren en beoordelen.",
     "audiences": [
       "Docenten",
@@ -9449,7 +9449,7 @@
       "Toetsing en examinering"
     ],
     "status": "pilot",
-    "availabilityText": "Lopend project 2025â2028",
+    "availabilityText": "Lopend project 2025–2028",
     "startDate": "2025-01-01",
     "endDate": "2028-12-31",
     "publicationDate": null,
@@ -9457,7 +9457,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/onderzoek/onderzoeksprojecten/slimme-wiskundefeedback-met-ai",
         "sourceType": "official"
       }
@@ -9523,7 +9523,7 @@
       "Publieke waarden en ethiek"
     ],
     "status": "pilot",
-    "availabilityText": "Lopend project 2026â2029",
+    "availabilityText": "Lopend project 2026–2029",
     "startDate": "2026-01-01",
     "endDate": "2029-12-31",
     "publicationDate": null,
@@ -9531,7 +9531,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/onderzoek/onderzoeksprojecten/zelfstandiger-communiceren-met-ai",
         "sourceType": "official"
       }
@@ -9603,7 +9603,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://communities.surf.nl/en/publieke-waarden/article/were-building-something-irresponsible-part-2",
         "sourceType": "official"
       }
@@ -9675,7 +9675,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://communities.surf.nl/vraagbaak-online-onderwijs/artikel/ai-toolbox-vrije-universiteit-deze-ai-tools-helpen-je-je",
         "sourceType": "official"
       }
@@ -9750,7 +9750,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://education.ec.europa.eu/selfie",
         "sourceType": "official"
       }
@@ -9823,7 +9823,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://eit-hei.eu/",
         "sourceType": "official"
       }
@@ -9902,7 +9902,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.unesco.org/en/digital-education/artificial-intelligence",
         "sourceType": "official"
       }
@@ -9943,7 +9943,7 @@
   },
   {
     "id": "oecd-education",
-    "title": "OECD â Education and Skills",
+    "title": "OECD – Education and Skills",
     "recordType": "organization",
     "legacyType": "Organisatie",
     "subtype": null,
@@ -9979,7 +9979,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.oecd.org/en/topics/education-and-skills.html",
         "sourceType": "official"
       }
@@ -10102,7 +10102,7 @@
       {
         "date": "2026-07-18",
         "type": "updated",
-        "summary": "PO toegevoegd als sector op basis van het officiÃ«le EduGPT-aanbod van CivAI."
+        "summary": "PO toegevoegd als sector op basis van het officiële EduGPT-aanbod van CivAI."
       }
     ]
   },
@@ -10196,7 +10196,7 @@
       {
         "date": "2026-07-18",
         "type": "updated",
-        "summary": "Status gewijzigd van pilot naar beschikbaar; PO toegevoegd op basis van de officiÃ«le tarieven- en doelgroepinformatie."
+        "summary": "Status gewijzigd van pilot naar beschikbaar; PO toegevoegd op basis van de officiële tarieven- en doelgroepinformatie."
       }
     ]
   },
@@ -10208,7 +10208,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "Autoriteit Persoonsgegevens",
-    "description": "Onafhankelijke Nederlandse toezichthouder op de bescherming van persoonsgegevens en coÃ¶rdinerend toezichthouder voor algoritmes en AI.",
+    "description": "Onafhankelijke Nederlandse toezichthouder op de bescherming van persoonsgegevens en coördinerend toezichthouder voor algoritmes en AI.",
     "purpose": "Uitleg, toezicht en normering rond privacy, algoritmes en AI bieden.",
     "audiences": [
       "Bestuurders",
@@ -10240,7 +10240,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.autoriteitpersoonsgegevens.nl/",
         "sourceType": "official"
       }
@@ -10288,7 +10288,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "Rijksinspectie Digitale Infrastructuur",
-    "description": "Nederlandse toezichthouder voor betrouwbare digitale infrastructuur, met een coÃ¶rdinerende rol bij het toezicht op de AI-verordening.",
+    "description": "Nederlandse toezichthouder voor betrouwbare digitale infrastructuur, met een coördinerende rol bij het toezicht op de AI-verordening.",
     "purpose": "Informatie en toezicht rond digitale infrastructuur, AI-veiligheid en de AI-verordening bieden.",
     "audiences": [
       "Bestuurders",
@@ -10319,7 +10319,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.rdi.nl/",
         "sourceType": "official"
       }
@@ -10393,7 +10393,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.uu.nl/",
         "sourceType": "official"
       }
@@ -10467,7 +10467,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/",
         "sourceType": "official"
       }
@@ -10540,7 +10540,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://vu.nl/",
         "sourceType": "official"
       }
@@ -10613,7 +10613,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.fontys.nl/",
         "sourceType": "official"
       }
@@ -10686,7 +10686,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.uva.nl/",
         "sourceType": "official"
       }
@@ -10759,7 +10759,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://openai.com/index/introducing-chatgpt-edu/",
         "sourceType": "official"
       }
@@ -10835,7 +10835,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.microsoft.com/en-us/education/products/copilot-in-education",
         "sourceType": "official"
       }
@@ -10912,7 +10912,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://edu.google.com/intl/ALL_nl/ai/gemini-for-education/",
         "sourceType": "official"
       }
@@ -10987,7 +10987,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://edu.google.com/ai-notebooklm/",
         "sourceType": "official"
       }
@@ -11062,7 +11062,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://support.microsoft.com/en-us/education/copilot/study-learn-agent",
         "sourceType": "official"
       }
@@ -11133,7 +11133,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.uu.nl/onderwijs/centre-for-academic-teaching-and-learning/onderwijsinnovatie/ai-ondersteuningsaanbod",
         "sourceType": "official"
       }
@@ -11182,7 +11182,7 @@
     "organizationIds": [],
     "providerName": "Universiteit van Amsterdam",
     "description": "Portaal met UvA-bronnen voor docenten, professionaliseringsaanbod, e-learning, communities, beleid en praktische AI-hulpmiddelen.",
-    "purpose": "AI-ondersteuning binnen de UvA op Ã©Ã©n plek vindbaar maken.",
+    "purpose": "AI-ondersteuning binnen de UvA op één plek vindbaar maken.",
     "audiences": [
       "Docenten",
       "Onderwijsadviseurs",
@@ -11205,7 +11205,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://tlc.uva.nl/article/ai-portaal/",
         "sourceType": "official"
       }
@@ -11247,7 +11247,7 @@
   },
   {
     "id": "radboud-onderwijs-ai-module-docenten",
-    "title": "Onderwijs en AI â online module voor docenten",
+    "title": "Onderwijs en AI – online module voor docenten",
     "recordType": "training",
     "legacyType": "Training",
     "subtype": null,
@@ -11276,7 +11276,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/medewerkers/nieuws/verantwoord-aan-de-slag-met-ai-meld-je-aan-voor-een-module-of-workshop",
         "sourceType": "official"
       }
@@ -11346,7 +11346,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/over-ons/agenda/onderwijs-en-ai-workshops",
         "sourceType": "official"
       }
@@ -11420,7 +11420,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://vu.nl/nl/onderwijs/professionals/cursussen-opleidingen/workshop-ai-in-het-onderwijs/inhoud",
         "sourceType": "official"
       }
@@ -11490,7 +11490,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://vu.nl/nl/agenda/2026/genai-ai-geletterdheid-voor-docenten-een-introductie",
         "sourceType": "official"
       }
@@ -11532,7 +11532,7 @@
   },
   {
     "id": "fontys-ai-voor-onderwijs-verdieping",
-    "title": "AI voor het Onderwijs â Verdieping",
+    "title": "AI voor het Onderwijs – Verdieping",
     "recordType": "training",
     "legacyType": "Training",
     "subtype": null,
@@ -11564,7 +11564,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.fontys.nl/Opleidingen/AI-voor-het-Onderwijs-Verdieping-cursus.htm",
         "sourceType": "official"
       }
@@ -11635,7 +11635,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.uu.nl/onderwijs/centre-for-academic-teaching-and-learning/onderwijsinnovatie/generatieve-ai/ai-e-modules",
         "sourceType": "official"
       }
@@ -11708,7 +11708,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://school-education.ec.europa.eu/en/learn/courses/artificial-intelligence-teachers-0",
         "sourceType": "official"
       }
@@ -11779,7 +11779,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://tlc.uva.nl/article/genai-in-the-classroom/",
         "sourceType": "official"
       }
@@ -11851,7 +11851,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://tlc.uva.nl/article/workshop-toetsingen-herzien-met-genai/?faculty=8",
         "sourceType": "official"
       }
@@ -11930,7 +11930,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.unesco.org/en/articles/unesco-and-lg-ai-research-launch-global-mooc-ethics-ai?hub=355",
         "sourceType": "official"
       }
@@ -12008,7 +12008,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.uu.nl/onderwijs/onderwijsadvies-training/kennisdossiers/themadossier-generatieve-ai-in-het-onderwijs/geschreven-eindproducten-toetsen-in-tijden-van-genai",
         "sourceType": "official"
       }
@@ -12088,7 +12088,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://autoriteitpersoonsgegevens.nl/documenten/aan-de-slag-met-ai-geletterdheid",
         "sourceType": "official"
       }
@@ -12166,7 +12166,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.rdi.nl/onderwerpen/technologische-ontwikkelingen/kunstmatige-intelligentie/ai-verordening",
         "sourceType": "official"
       }
@@ -12245,7 +12245,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research?hub=195885",
         "sourceType": "official"
       }
@@ -12323,7 +12323,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.unesco.org/en/articles/ai-and-education-guidance-policy-makers?hub=32618",
         "sourceType": "official"
       }
@@ -12402,7 +12402,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.unesco.org/en/legal-affairs/recommendation-ethics-artificial-intelligence?hub=1063",
         "sourceType": "official"
       }
@@ -12479,7 +12479,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.rijksoverheid.nl/documenten/2025/09/19/gebruik-ai-in-het-onderwijs",
         "sourceType": "official"
       }
@@ -12556,7 +12556,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.rijksoverheid.nl/documenten/2025/04/16/overheidsbrede-handreiking-generatieve-ai",
         "sourceType": "official"
       }
@@ -12630,7 +12630,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/ai-in-leermiddelen-en-andere-toepassingen/",
         "sourceType": "official"
       }
@@ -12705,7 +12705,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/artificial-intelligence/ethische-dilemmas-en-de-inzet-van-ai-in-het-onderwijs/",
         "sourceType": "official"
       }
@@ -12753,7 +12753,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "Kennisnet",
-    "description": "Uitleg over hoe AI cyberdreigingen toegankelijker en schaalbaarder maakt en waarom onderwijsinstellingen techniek, bewustwording en beleid geÃ¯ntegreerd moeten benaderen.",
+    "description": "Uitleg over hoe AI cyberdreigingen toegankelijker en schaalbaarder maakt en waarom onderwijsinstellingen techniek, bewustwording en beleid geïntegreerd moeten benaderen.",
     "purpose": "Onderwijsinstellingen helpen AI-risico's mee te nemen in hun digitale weerbaarheid.",
     "audiences": [
       "IT-professionals",
@@ -12780,7 +12780,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/informatiebeveiliging-en-privacy/de-impact-van-ai-op-cyberveiligheid-in-het-onderwijs/",
         "sourceType": "official"
       }
@@ -12852,7 +12852,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://pretalx.surf.nl/surf-onderwijsdagen-2024/talk/MQF8YK/",
         "sourceType": "official"
       }
@@ -12926,7 +12926,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://community-data-ai.npuls.nl/attachment/entity/4bd8f3af-cf09-4e9e-8f8a-35715f026f63",
         "sourceType": "official"
       }
@@ -13001,7 +13001,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/onderzoek/klimaat-en-rekenkracht-onderzoek-naar-de-milieu-impact-van-ai-in-het-onderwijs/",
         "sourceType": "official"
       }
@@ -13075,7 +13075,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.rug.nl/",
         "sourceType": "official"
       }
@@ -13148,7 +13148,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.eur.nl/",
         "sourceType": "official"
       }
@@ -13221,7 +13221,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.hva.nl/",
         "sourceType": "official"
       }
@@ -13296,7 +13296,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.jisc.ac.uk/",
         "sourceType": "official"
       }
@@ -13344,7 +13344,7 @@
     "organizationIds": [],
     "providerName": "TEQSA",
     "description": "Australische onafhankelijke toezichthouder met publieke kennisbronnen over generatieve AI, toetsing en onderwijskwaliteit.",
-    "purpose": "Hoger onderwijs ondersteunen bij kwaliteitsborging in een AI-geÃ¯ntegreerde omgeving.",
+    "purpose": "Hoger onderwijs ondersteunen bij kwaliteitsborging in een AI-geïntegreerde omgeving.",
     "audiences": [
       "Bestuurders",
       "Examencommissies",
@@ -13368,7 +13368,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.teqsa.gov.au/",
         "sourceType": "official"
       }
@@ -13441,7 +13441,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.teachai.org/",
         "sourceType": "official"
       }
@@ -13514,7 +13514,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.spencer.org/",
         "sourceType": "official"
       }
@@ -13590,7 +13590,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.nsf.gov/",
         "sourceType": "official"
       }
@@ -13662,7 +13662,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.rocmondriaan.nl/",
         "sourceType": "official"
       }
@@ -13734,7 +13734,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.zadkine.nl/",
         "sourceType": "official"
       }
@@ -13807,7 +13807,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.inholland.nl/",
         "sourceType": "official"
       }
@@ -13849,7 +13849,7 @@
   },
   {
     "id": "ciiic-learning-communities-november-2026",
-    "title": "CIIIC Learning Communities â indieningsronde november 2026",
+    "title": "CIIIC Learning Communities – indieningsronde november 2026",
     "recordType": "funding_call",
     "legacyType": "Call",
     "subtype": null,
@@ -13883,7 +13883,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://regieorgaan-sia.nl/financiering/ciiic-learning-communities/indieningsronde-november-2026/",
         "sourceType": "official"
       }
@@ -13894,7 +13894,7 @@
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
-    "fundingAmount": "â¬900.000 tot â¬1.800.000 per aanvraag",
+    "fundingAmount": "€900.000 tot €1.800.000 per aanvraag",
     "fundingDeadline": "2026-11-03",
     "applicationOpenDate": "2026-05-07",
     "applicationDeadline": "2026-11-03",
@@ -13931,7 +13931,7 @@
   },
   {
     "id": "raak-mkb-september-2026",
-    "title": "RAAK-mkb â indieningsronde september 2026",
+    "title": "RAAK-mkb – indieningsronde september 2026",
     "recordType": "funding_call",
     "legacyType": "Call",
     "subtype": null,
@@ -13963,7 +13963,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://regieorgaan-sia.nl/financiering/raak-mkb/",
         "sourceType": "official"
       }
@@ -14009,7 +14009,7 @@
   },
   {
     "id": "kiem-maatschappelijk-verdienvermogen-september-2026",
-    "title": "KIEM Maatschappelijk Verdienvermogen â september 2026",
+    "title": "KIEM Maatschappelijk Verdienvermogen – september 2026",
     "recordType": "funding_call",
     "legacyType": "Call",
     "subtype": null,
@@ -14042,7 +14042,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://regieorgaan-sia.nl/financiering/kiem/kiem-mv/",
         "sourceType": "official"
       }
@@ -14087,13 +14087,13 @@
   },
   {
     "id": "kiem-hightech-september-2026",
-    "title": "KIEM HighTech â september 2026",
+    "title": "KIEM HighTech – september 2026",
     "recordType": "funding_call",
     "legacyType": "Call",
     "subtype": null,
     "organizationIds": [],
     "providerName": "Regieorgaan SIA",
-    "description": "Open KIEM-ronde voor verkennend praktijkgericht onderzoek naar sleuteltechnologieÃ«n en digitalisering. Niet uitsluitend voor onderwijs of AI.",
+    "description": "Open KIEM-ronde voor verkennend praktijkgericht onderzoek naar sleuteltechnologieën en digitalisering. Niet uitsluitend voor onderwijs of AI.",
     "purpose": "Nieuwe samenwerkingen rond hightech- en digitaliseringsvraagstukken starten.",
     "audiences": [
       "Hogescholen",
@@ -14119,7 +14119,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://regieorgaan-sia.nl/financiering/kiem/kiem-hightech/",
         "sourceType": "official"
       }
@@ -14165,7 +14165,7 @@
   },
   {
     "id": "professional-doctorate-technologie-digitalisering-2026",
-    "title": "Professional Doctorate â Technologie & Digitalisering 2026",
+    "title": "Professional Doctorate – Technologie & Digitalisering 2026",
     "recordType": "funding_call",
     "legacyType": "Call",
     "subtype": null,
@@ -14196,7 +14196,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://regieorgaan-sia.nl/financiering/professional-doctorate/",
         "sourceType": "official"
       }
@@ -14239,13 +14239,13 @@
   },
   {
     "id": "take-off-hbo-najaar-2026",
-    "title": "Take-off hbo â najaarsronde 2026",
+    "title": "Take-off hbo – najaarsronde 2026",
     "recordType": "funding_call",
     "legacyType": "Call",
     "subtype": null,
     "organizationIds": [],
     "providerName": "Regieorgaan SIA",
-    "description": "Verwachte najaarsronde voor haalbaarheidsstudies naar commerciÃ«le toepassing van kennis en innovaties uit hogescholen. Niet uitsluitend voor AI of onderwijs.",
+    "description": "Verwachte najaarsronde voor haalbaarheidsstudies naar commerciële toepassing van kennis en innovaties uit hogescholen. Niet uitsluitend voor AI of onderwijs.",
     "purpose": "Onderzoekers en studenten helpen een innovatieve kennisgedreven onderneming te verkennen.",
     "audiences": [
       "Hogescholen",
@@ -14270,7 +14270,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://regieorgaan-sia.nl/financiering/take-off-hbo/",
         "sourceType": "official"
       }
@@ -14348,7 +14348,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://zoek.officielebekendmakingen.nl/stcrt-2026-17923.html",
         "sourceType": "official"
       }
@@ -14394,7 +14394,7 @@
   },
   {
     "id": "open-journals-onderwijsonderzoek-2026",
-    "title": "Open Journals â onderwijsonderzoek 2026",
+    "title": "Open Journals – onderwijsonderzoek 2026",
     "recordType": "funding_call",
     "legacyType": "Call",
     "subtype": null,
@@ -14426,7 +14426,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.officielebekendmakingen.nl/stcrt-2026-7642.html",
         "sourceType": "official"
       }
@@ -14471,7 +14471,7 @@
   },
   {
     "id": "eu-code-week-tender-2027-2030",
-    "title": "Europese aanbesteding EU Code Week 2027â2030",
+    "title": "Europese aanbesteding EU Code Week 2027–2030",
     "recordType": "funding_call",
     "legacyType": "Call",
     "subtype": null,
@@ -14505,7 +14505,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://digital-strategy.ec.europa.eu/en/funding/call-tenders-eu-code-week-2027-2030",
         "sourceType": "official"
       }
@@ -14583,7 +14583,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.spencer.org/grant_types/vision-grants",
         "sourceType": "official"
       }
@@ -14601,7 +14601,7 @@
     "fundingMin": null,
     "fundingMax": null,
     "totalBudget": null,
-    "eligibility": "Internationale onderzoeksteams volgens de officiÃ«le call; regeling is breder dan AI.",
+    "eligibility": "Internationale onderzoeksteams volgens de officiële call; regeling is breder dan AI.",
     "applicantTypes": [
       "Onderzoekers",
       "Consortia",
@@ -14635,7 +14635,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "National Science Foundation",
-    "description": "Actief Amerikaans financieringsprogramma voor onderzoek naar onderwijs en leren in computing, waaronder artificiÃ«le intelligentie, op alle onderwijsniveaus.",
+    "description": "Actief Amerikaans financieringsprogramma voor onderzoek naar onderwijs en leren in computing, waaronder artificiële intelligentie, op alle onderwijsniveaus.",
     "purpose": "Kennisbasis en onderwijspaden voor computer- en AI-onderwijs versterken.",
     "audiences": [
       "Onderzoekers",
@@ -14656,7 +14656,7 @@
       "AI-geletterdheid"
     ],
     "status": "available",
-    "availabilityText": "Actief programma; controleer de officiÃ«le pagina voor actuele indienmomenten",
+    "availabilityText": "Actief programma; controleer de officiële pagina voor actuele indienmomenten",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
@@ -14664,7 +14664,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.nsf.gov/funding/opportunities/computing-education-research",
         "sourceType": "official"
       }
@@ -14743,7 +14743,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.nsf.gov/funding/opportunities/dcl-expanding-k-12-resources-ai-education",
         "sourceType": "official"
       }
@@ -14821,7 +14821,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.rug.nl/library/education-and-research/information-literacy/ai-module",
         "sourceType": "official"
       }
@@ -14863,7 +14863,7 @@
   },
   {
     "id": "rug-ai-office-courses-workshops",
-    "title": "AI Office â cursussen en workshops",
+    "title": "AI Office – cursussen en workshops",
     "recordType": "service",
     "legacyType": "Voorziening",
     "subtype": null,
@@ -14895,7 +14895,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.rug.nl/cit/services/ai-office/advies-en-training/courses-workshops",
         "sourceType": "official"
       }
@@ -14937,7 +14937,7 @@
   },
   {
     "id": "eur-ai-voor-docenten-beginners",
-    "title": "How to use AI as a teacher â beginners",
+    "title": "How to use AI as a teacher – beginners",
     "recordType": "training",
     "legacyType": "Training",
     "subtype": null,
@@ -14967,7 +14967,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.eur.nl/en/educational-innovation/programme/how-use-ai-teacher-beginners",
         "sourceType": "official"
       }
@@ -15041,7 +15041,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.eur.nl/onderwijsinnovatie/cursus/generative-ai-academic-questions",
         "sourceType": "official"
       }
@@ -15116,7 +15116,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.jisc.ac.uk/training/ethical-and-responsible-ai-in-education",
         "sourceType": "official"
       }
@@ -15158,7 +15158,7 @@
   },
   {
     "id": "jisc-ai-literacy-module-understanding-ai",
-    "title": "AI literacy for teaching and learning â Understanding AI",
+    "title": "AI literacy for teaching and learning – Understanding AI",
     "recordType": "training",
     "legacyType": "Training",
     "subtype": null,
@@ -15189,7 +15189,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.jisc.ac.uk/training/ai-literacy-for-teaching-and-learning-module-1-understanding-ai",
         "sourceType": "official"
       }
@@ -15255,7 +15255,7 @@
       "AI-geletterdheid"
     ],
     "status": "available",
-    "availabilityText": "Aanmelden via de officiÃ«le programmapagina",
+    "availabilityText": "Aanmelden via de officiële programmapagina",
     "startDate": null,
     "endDate": null,
     "publicationDate": "2026-05-12",
@@ -15263,7 +15263,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://comeniusnetwerk.nl/nieuws/3258810.aspx?t=Wil-jij-digitale-vernieuwing-echt-van-de-grond-krijgen-",
         "sourceType": "official"
       }
@@ -15343,7 +15343,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.oecd.org/en/publications/2026/01/oecd-digital-education-outlook-2026_940e0dd8.html",
         "sourceType": "official"
       }
@@ -15419,7 +15419,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.oecd.org/en/publications/five-principles-for-the-effective-use-of-ai-in-vocational-education-and-training-development_ee8c8e8e-en/full-report.html",
         "sourceType": "official"
       }
@@ -15495,7 +15495,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.jisc.ac.uk/ai-maturity-toolkit-for-tertiary-education",
         "sourceType": "official"
       }
@@ -15569,7 +15569,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.jisc.ac.uk/guides/leading-ai-in-colleges-a-strategic-framework",
         "sourceType": "official"
       }
@@ -15645,7 +15645,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.jisc.ac.uk/reports/ai-and-environmental-sustainability-in-post-16-education",
         "sourceType": "official"
       }
@@ -15719,7 +15719,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.teqsa.gov.au/guides-resources/resources/corporate-publications/assessment-reform-age-artificial-intelligence",
         "sourceType": "official"
       }
@@ -15767,7 +15767,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "TEQSA",
-    "description": "Actuele handreiking met evidence-gebaseerde, toepasbare benaderingen voor leerkwaliteit, kritisch denken, ethisch redeneren en adaptieve vaardigheden in een AI-geÃ¯ntegreerde toekomst.",
+    "description": "Actuele handreiking met evidence-gebaseerde, toepasbare benaderingen voor leerkwaliteit, kritisch denken, ethisch redeneren en adaptieve vaardigheden in een AI-geïntegreerde toekomst.",
     "purpose": "Kwaliteit van leren en menselijke correctiecapaciteit onder AI-condities borgen.",
     "audiences": [
       "Docenten",
@@ -15793,7 +15793,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.teqsa.gov.au/guides-resources/resources/corporate-publications/assuring-quality-learning-gen-ai-integrated-future-role-adaptive-capabilities",
         "sourceType": "official"
       }
@@ -15842,7 +15842,7 @@
     "organizationIds": [],
     "providerName": "TEQSA",
     "description": "Publieke kennisbank met samenhangende bronnen over generatieve AI, toetsing, academische integriteit en kwaliteitsborging in hoger onderwijs.",
-    "purpose": "Instellingen Ã©Ã©n actuele ingang bieden naar onderbouwde GenAI-kennis en praktijkvoorbeelden.",
+    "purpose": "Instellingen één actuele ingang bieden naar onderbouwde GenAI-kennis en praktijkvoorbeelden.",
     "audiences": [
       "Docenten",
       "Examencommissies",
@@ -15867,7 +15867,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.teqsa.gov.au/guides-resources/higher-education-good-practice-hub/gen-ai-knowledge-hub",
         "sourceType": "official"
       }
@@ -15940,7 +15940,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.education.gov.au/schooling/resources/australian-framework-generative-artificial-intelligence-ai-schools",
         "sourceType": "official"
       }
@@ -16014,7 +16014,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.teachai.org/toolkit",
         "sourceType": "official"
       }
@@ -16089,7 +16089,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.gov.uk/government/publications/generative-ai-product-safety-standards/generative-ai-product-safety-standards",
         "sourceType": "official"
       }
@@ -16163,7 +16163,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.gov.uk/government/publications/ai-in-coursework-resources-for-schools",
         "sourceType": "official"
       }
@@ -16237,7 +16237,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.qaa.ac.uk/sector-resources/generative-artificial-intelligence",
         "sourceType": "official"
       }
@@ -16285,7 +16285,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "FeedbackFruits",
-    "description": "Onderwijsactiviteit waarin studenten doelgericht met een AI-assistent oefenen en docenten de interactie kunnen opnemen in begeleiding en evaluatie. De functie wordt als bÃ¨ta aangeboden.",
+    "description": "Onderwijsactiviteit waarin studenten doelgericht met een AI-assistent oefenen en docenten de interactie kunnen opnemen in begeleiding en evaluatie. De functie wordt als bèta aangeboden.",
     "purpose": "AI-geletterdheid oefenen binnen een door de docent ontworpen leeractiviteit.",
     "audiences": [
       "Docenten",
@@ -16303,7 +16303,7 @@
       "Toetsing en examinering"
     ],
     "status": "pilot",
-    "availabilityText": "BÃ¨ta; beschikbaar via deelnemende instellingen",
+    "availabilityText": "Bèta; beschikbaar via deelnemende instellingen",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
@@ -16311,7 +16311,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://feedbackfruits.com/solutions/ai-practice",
         "sourceType": "official"
       }
@@ -16386,7 +16386,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://community.d2l.com/brightspace/kb/articles/26332-about-d2l-lumi-pro",
         "sourceType": "official"
       }
@@ -16461,7 +16461,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.instructure.com/products/canvas-tiers",
         "sourceType": "official"
       }
@@ -16536,7 +16536,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.surf.nl/index.php/nieuws/winnaars-surf-onderwijsawards-2025-brengen-vernieuwing-van-ai-tot-robotica",
         "sourceType": "official"
       }
@@ -16609,7 +16609,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://mbodigitaal.nl/wp-content/uploads/2026/03/Factsheet-MIEC-DATA-AI.pdf",
         "sourceType": "official"
       }
@@ -16682,7 +16682,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://mbodigitaal.nl/wp-content/uploads/2026/03/Factsheet-Zadkine.pdf",
         "sourceType": "official"
       }
@@ -16755,7 +16755,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://mbodigitaal.nl/wp-content/uploads/2026/03/Factsheet-ROC-Mondriaan.pdf",
         "sourceType": "official"
       }
@@ -16804,7 +16804,7 @@
     "organizationIds": [],
     "providerName": "Hogeschool Inholland en Universiteit Twente",
     "description": "Twee toegepaste voorbeelden waarin generatieve AI reflectiegesprekken ondersteunt en narratieve feedback helpt formuleren, met onderzoek naar de effecten op leren.",
-    "purpose": "Laten zien hoe AI als begeleide leerpartner kan worden ontworpen en geÃ«valueerd.",
+    "purpose": "Laten zien hoe AI als begeleide leerpartner kan worden ontworpen en geëvalueerd.",
     "audiences": [
       "Docenten",
       "Studenten",
@@ -16830,7 +16830,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://pretalx.surf.nl/surf-onderwijsdagen-2025/talk/PY9DC8/",
         "sourceType": "official"
       }
@@ -16907,7 +16907,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://communities.surf.nl/ai-in-education",
         "sourceType": "official"
       }
@@ -16982,7 +16982,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.unesco.org/en/articles/integrating-ai-tvet-practical-guide-institutions",
         "sourceType": "official"
       }
@@ -17019,7 +17019,7 @@
       {
         "date": "2026-07-27",
         "type": "added",
-        "summary": "Toegevoegd na controle van de officiÃ«le UNESCO-publicatiepagina."
+        "summary": "Toegevoegd na controle van de officiële UNESCO-publicatiepagina."
       }
     ]
   },
@@ -17062,7 +17062,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://npuls.nl/kennisbank/learning-analytics-in-de-praktijk",
         "sourceType": "official"
       }
@@ -17099,7 +17099,7 @@
       {
         "date": "2026-07-28",
         "type": "added",
-        "summary": "Toegevoegd na controle van de officiÃ«le Npuls-publicatiepagina."
+        "summary": "Toegevoegd na controle van de officiële Npuls-publicatiepagina."
       }
     ]
   },
@@ -17137,7 +17137,7 @@
       "Professionalisering"
     ],
     "status": "planned",
-    "availabilityText": "Registratie geopend voor fysieke of online deelname; 8â11 september 2026",
+    "availabilityText": "Registratie geopend voor fysieke of online deelname; 8–11 september 2026",
     "startDate": "2026-09-08",
     "endDate": "2026-09-11",
     "publicationDate": null,
@@ -17145,7 +17145,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.unesco.org/en/weeks/digital-learning?hub=67390",
         "sourceType": "official"
       }
@@ -17184,7 +17184,7 @@
       {
         "date": "2026-07-28",
         "type": "added",
-        "summary": "Toegevoegd na controle van de officiÃ«le UNESCO-evenement- en registratiepagina."
+        "summary": "Toegevoegd na controle van de officiële UNESCO-evenement- en registratiepagina."
       }
     ]
   },
@@ -17225,7 +17225,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le publicatie (PDF)",
+        "label": "Officiële publicatie (PDF)",
         "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2026/07/policies-supporting-responsible-and-systematic-genai-adoption-in-higher-education_0f8d9b9f/c4e5621f-en.pdf",
         "sourceType": "official"
       }
@@ -17265,7 +17265,7 @@
       {
         "date": "2026-07-29",
         "type": "added",
-        "summary": "Toegevoegd na controle van de officiÃ«le OECD-publicatiepagina."
+        "summary": "Toegevoegd na controle van de officiële OECD-publicatiepagina."
       }
     ]
   },
@@ -17304,7 +17304,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le kalender en inschrijving",
+        "label": "Officiële kalender en inschrijving",
         "url": "https://www.ru.nl/over-ons/nieuws/nolai-kalender-2026-2027-voor-leraren-en-andere-onderwijsprofessionals",
         "sourceType": "official"
       }
@@ -17341,12 +17341,12 @@
       "speciaal onderwijs",
       "co-creatie"
     ],
-    "notes": "De officiÃ«le kalender vermeldt vijf online webinars en vijf fysieke workshops; deelnemers melden zich per sessie aan.",
+    "notes": "De officiële kalender vermeldt vijf online webinars en vijf fysieke workshops; deelnemers melden zich per sessie aan.",
     "changeHistory": [
       {
         "date": "2026-07-29",
         "type": "added",
-        "summary": "Toegevoegd na controle van de officiÃ«le NOLAI-kalender en inschrijflinks."
+        "summary": "Toegevoegd na controle van de officiële NOLAI-kalender en inschrijflinks."
       }
     ]
   },
@@ -17385,7 +17385,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le cursuspagina en inschrijving",
+        "label": "Officiële cursuspagina en inschrijving",
         "url": "https://www.fontys.nl/Opleidingen/AI-voor-het-Onderwijs-Basis-cursus.htm",
         "sourceType": "official"
       }
@@ -17427,7 +17427,7 @@
       {
         "date": "2026-07-30",
         "type": "added",
-        "summary": "Toegevoegd na controle van cursusinhoud, doelgroep, data, prijs en directe inschrijfmogelijkheid op de officiÃ«le Fontys-pagina."
+        "summary": "Toegevoegd na controle van cursusinhoud, doelgroep, data, prijs en directe inschrijfmogelijkheid op de officiële Fontys-pagina."
       }
     ]
   },
@@ -17467,7 +17467,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le cursuspagina en inschrijving",
+        "label": "Officiële cursuspagina en inschrijving",
         "url": "https://www.fontys.nl/Opleidingen/AI-voor-het-Onderwijs-Compleet-cursus.htm",
         "sourceType": "official"
       }
@@ -17509,7 +17509,7 @@
       {
         "date": "2026-07-30",
         "type": "added",
-        "summary": "Toegevoegd na controle van cursusinhoud, doelgroep, startdatum, prijs en directe inschrijfmogelijkheid op de officiÃ«le Fontys-pagina."
+        "summary": "Toegevoegd na controle van cursusinhoud, doelgroep, startdatum, prijs en directe inschrijfmogelijkheid op de officiële Fontys-pagina."
       }
     ]
   },
@@ -17544,7 +17544,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le opleidingspagina en inschrijving",
+        "label": "Officiële opleidingspagina en inschrijving",
         "url": "https://www.ru.nl/opleidingen/onderwijs-voor-professionals/overzicht/masterclass-leren-over-en-met-ai",
         "sourceType": "official"
       }
@@ -17585,7 +17585,7 @@
       {
         "date": "2026-07-30",
         "type": "added",
-        "summary": "Toegevoegd na controle van programma, doelgroep, bijeenkomsten, prijs en inschrijfdeadline op de officiÃ«le Radboud-pagina."
+        "summary": "Toegevoegd na controle van programma, doelgroep, bijeenkomsten, prijs en inschrijfdeadline op de officiële Radboud-pagina."
       }
     ]
   },
@@ -17624,7 +17624,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.han.nl/",
         "sourceType": "official"
       }
@@ -17698,7 +17698,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.universiteitleiden.nl/",
         "sourceType": "official"
       }
@@ -17771,7 +17771,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ou.nl/",
         "sourceType": "official"
       }
@@ -17847,7 +17847,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.han.nl/opleidingen/cursus/ai-voor-docenten-in-het-onderwijs-basis/",
         "sourceType": "official"
       }
@@ -17879,7 +17879,7 @@
       "Gemini",
       "NotebookLM"
     ],
-    "notes": "Kosten volgens de officiÃ«le pagina: â¬295. Twee bijeenkomsten; er was op 30 juli 2026 nog geen startdatum vastgesteld.",
+    "notes": "Kosten volgens de officiële pagina: €295. Twee bijeenkomsten; er was op 30 juli 2026 nog geen startdatum vastgesteld.",
     "changeHistory": [
       {
         "date": "2026-07-30",
@@ -17924,7 +17924,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.han.nl/opleidingen/cursus/ai-voor-docenten-in-het-onderwijs-verdieping/",
         "sourceType": "official"
       }
@@ -17957,7 +17957,7 @@
       "Cursor",
       "docenten"
     ],
-    "notes": "Kosten volgens de officiÃ«le pagina: â¬295. Twee bijeenkomsten; er was op 30 juli 2026 nog geen startdatum vastgesteld.",
+    "notes": "Kosten volgens de officiële pagina: €295. Twee bijeenkomsten; er was op 30 juli 2026 nog geen startdatum vastgesteld.",
     "changeHistory": [
       {
         "date": "2026-07-30",
@@ -18003,7 +18003,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.han.nl/onderwijsondersteuning/leren-werken-met-ict/artificial-intelligence/ai-in-je-onderwijs/",
         "sourceType": "official"
       }
@@ -18078,7 +18078,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.han.nl/onderwijsondersteuning/leren-werken-met-ict/toetsing/AI-bestendig-toetsen-Versie-1.0-17-oktober-2024.pdf",
         "sourceType": "official"
       }
@@ -18128,7 +18128,7 @@
       "vrije-universiteit-amsterdam"
     ],
     "providerName": "Vrije Universiteit Amsterdam",
-    "description": "Hybride workshop waarin docenten met verschillende promptstrategieÃ«n oefenen om generatieve AI doelgericht in hun eigen onderwijscontext in te zetten.",
+    "description": "Hybride workshop waarin docenten met verschillende promptstrategieën oefenen om generatieve AI doelgericht in hun eigen onderwijscontext in te zetten.",
     "purpose": "Docenten praktische promptvaardigheden laten ontwikkelen voor doelgericht gebruik van generatieve AI in het onderwijs.",
     "audiences": [
       "Docenten"
@@ -18150,7 +18150,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://vu.nl/nl/onderwijs/meer-over/professional-development-exchange-hub",
         "sourceType": "official"
       }
@@ -18183,7 +18183,7 @@
       "docenten",
       "hybride workshop"
     ],
-    "notes": "Hybride workshop van 11.00 tot 12.30 uur; deelname is gratis volgens de officiÃ«le aanbodpagina.",
+    "notes": "Hybride workshop van 11.00 tot 12.30 uur; deelname is gratis volgens de officiële aanbodpagina.",
     "changeHistory": [
       {
         "date": "2026-07-30",
@@ -18230,7 +18230,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.medewerkers.universiteitleiden.nl/mededelingen/2026/04/nieuwe-online-module-met-schat-aan-informatie-over-ai-in-het-onderwijs",
         "sourceType": "official"
       }
@@ -18303,7 +18303,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.staff.universiteitleiden.nl/announcements/2026/04/understanding-llms-in-your-teaching-follow-the-e-learning-course",
         "sourceType": "official"
       }
@@ -18380,7 +18380,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ou.nl/-/studium-generale-lezing-slim-leren-oefenen-en-toetsen-met-ai",
         "sourceType": "official"
       }
@@ -18463,7 +18463,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://digital-strategy.ec.europa.eu/en/faqs/ai-literacy-questions-answers",
         "sourceType": "official"
       }
@@ -18542,7 +18542,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://education.ec.europa.eu/focus-topics/digital-education/actions/plan/digital-education-content-guidelines-and-framework",
         "sourceType": "official"
       }
@@ -18573,7 +18573,7 @@
       "quality criteria",
       "EU guidelines"
     ],
-    "notes": "De officiÃ«le pagina is bijgewerkt op 27 juli 2026 en vermeldt publicatie in 2026, maar geen afzonderlijke exacte publicatiedatum voor de richtlijnen.",
+    "notes": "De officiële pagina is bijgewerkt op 27 juli 2026 en vermeldt publicatie in 2026, maar geen afzonderlijke exacte publicatiedatum voor de richtlijnen.",
     "changeHistory": [
       {
         "date": "2026-07-30",
@@ -18583,7 +18583,7 @@
       {
         "date": "2026-08-01",
         "type": "updated",
-        "summary": "Titel exact op de officiÃ«le bron afgestemd en niet-onderbouwde dagprecisie uit de publicatiedatum verwijderd."
+        "summary": "Titel exact op de officiële bron afgestemd en niet-onderbouwde dagprecisie uit de publicatiedatum verwijderd."
       }
     ]
   },
@@ -18624,7 +18624,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://education.ec.europa.eu/focus-topics/digital-education/actions/plan/guidelines-for-teachers-to-foster-digital-literacy-and-tackle-disinformation",
         "sourceType": "official"
       }
@@ -18655,7 +18655,7 @@
       "digitale geletterdheid",
       "lesplannen"
     ],
-    "notes": "De officiÃ«le pagina is bijgewerkt op 10 juni 2026 en duidt dit als de versie van 2026, zonder een afzonderlijke exacte publicatiedatum te noemen.",
+    "notes": "De officiële pagina is bijgewerkt op 10 juni 2026 en duidt dit als de versie van 2026, zonder een afzonderlijke exacte publicatiedatum te noemen.",
     "changeHistory": [
       {
         "date": "2026-07-30",
@@ -18665,7 +18665,7 @@
       {
         "date": "2026-08-01",
         "type": "updated",
-        "summary": "Titel exact op de officiÃ«le bron afgestemd en niet-onderbouwde dagprecisie uit de publicatiedatum verwijderd."
+        "summary": "Titel exact op de officiële bron afgestemd en niet-onderbouwde dagprecisie uit de publicatiedatum verwijderd."
       }
     ]
   },
@@ -18704,7 +18704,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.slo.nl/thema/meer/actualisatie-kerndoelen-examenprogramma/actualisatie-kerndoelen/definitieve-conceptkerndoelen-digitale/",
         "sourceType": "official"
       }
@@ -18780,7 +18780,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.slo.nl/sectoren/vmbo/digitale-geletterdheid-vmbo/digitale-geletterdheid-vo/digitale-geletterdheid-onderwijspraktijk/stappenplan/",
         "sourceType": "official"
       }
@@ -18854,7 +18854,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.slo.nl/sectoren/havo-vwo/digitale-geletterdheid-havo-vwo/digitale-geletterdheid-vo/inhoudslijnen/",
         "sourceType": "official"
       }
@@ -18930,7 +18930,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://research-and-innovation.ec.europa.eu/news/all-research-and-innovation-news/launch-call-experts-join-raise-high-level-academic-advisory-board-2026-06-15_en",
         "sourceType": "official"
       }
@@ -19010,7 +19010,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.universiteitleiden.nl/onderzoek/onderzoeksprojecten/iclon/transkribus-in-het-onderwijs-werken-aan-digitale-geletterdheid-met-historische-bronnen",
         "sourceType": "official"
       }
@@ -19087,7 +19087,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.universiteitleiden.nl/fair-assess/activiteiten",
         "sourceType": "official"
       }
@@ -19128,7 +19128,7 @@
       {
         "date": "2026-08-01",
         "type": "updated",
-        "summary": "Bron vervangen door de officiÃ«le FAIR-ASSESS-projectpagina en niet-onderbouwde dagprecisie uit de publicatiedatum verwijderd."
+        "summary": "Bron vervangen door de officiële FAIR-ASSESS-projectpagina en niet-onderbouwde dagprecisie uit de publicatiedatum verwijderd."
       }
     ]
   },
@@ -19166,7 +19166,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://vu.nl/nl/medewerker/didactiek/ai-tutors-optimaal-benutten-in-je-onderwijs",
         "sourceType": "official"
       }
@@ -19242,7 +19242,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://vu.nl/nl/student/studievaardigheden/handboek-ai-geletterdheid-studenteneditie",
         "sourceType": "official"
       }
@@ -19273,7 +19273,7 @@
       "studenten",
       "open leermateriaal"
     ],
-    "notes": "De officiÃ«le productpagina biedt versie 1.1 aan en vermeldt dat het materiaal als open leermateriaal hergebruikt en aangepast kan worden.",
+    "notes": "De officiële productpagina biedt versie 1.1 aan en vermeldt dat het materiaal als open leermateriaal hergebruikt en aangepast kan worden.",
     "changeHistory": [
       {
         "date": "2026-07-30",
@@ -19283,7 +19283,7 @@
       {
         "date": "2026-08-01",
         "type": "updated",
-        "summary": "OfficiÃ«le producttitel en actuele VU-productpagina vastgelegd; licentienotitie beperkt tot wat de pagina ondubbelzinnig vermeldt."
+        "summary": "Officiële producttitel en actuele VU-productpagina vastgelegd; licentienotitie beperkt tot wat de pagina ondubbelzinnig vermeldt."
       }
     ]
   },
@@ -19325,7 +19325,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.npuls.nl/kennisbank/ai-curriculum-and-arbeidsmarkt",
         "sourceType": "official"
       }
@@ -19404,7 +19404,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.oecd.org/en/publications/skills-in-the-ai-age_972bd15e-en.html",
         "sourceType": "official"
       }
@@ -19482,7 +19482,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.oecd.org/en/publications/ai-and-skills_f843b352-en.html",
         "sourceType": "official"
       }
@@ -19565,7 +19565,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://digital-strategy.ec.europa.eu/en/policies/repository-ai-literacy-practices",
         "sourceType": "official"
       }
@@ -19645,7 +19645,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.surf.nl/files/cocoon_media_files/surf-tech-trends-2026_ttr26_nl.pdf",
         "sourceType": "official"
       }
@@ -19723,7 +19723,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/trends/kansen-en-beperkingen-van-ai-tutoren-voor-het-onderwijs/",
         "sourceType": "official"
       }
@@ -19766,7 +19766,7 @@
   },
   {
     "id": "jisc-ai-literacy-module-applied-ai-essentials",
-    "title": "AI literacy for teaching and learning â Applied AI essentials",
+    "title": "AI literacy for teaching and learning – Applied AI essentials",
     "recordType": "training",
     "legacyType": "Training",
     "subtype": null,
@@ -19798,7 +19798,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.jisc.ac.uk/training/ai-literacy-for-teaching-and-learning-module-2-essential-ai-skills-applied-ai-skills",
         "sourceType": "official"
       }
@@ -19841,7 +19841,7 @@
   },
   {
     "id": "jisc-ai-literacy-module-responsible-use",
-    "title": "AI literacy for teaching and learning â Ethical and responsible use",
+    "title": "AI literacy for teaching and learning – Ethical and responsible use",
     "recordType": "training",
     "legacyType": "Training",
     "subtype": null,
@@ -19874,7 +19874,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.jisc.ac.uk/training/ai-literacy-for-teaching-and-learning-module-3-ethical-and-responsible-use-of-ai-critical-evaluation-and-responsible-use",
         "sourceType": "official"
       }
@@ -19949,7 +19949,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.jisc.ac.uk/training/prompting-for-teaching-and-learning",
         "sourceType": "official"
       }
@@ -19980,7 +19980,7 @@
       "critical evaluation",
       "teaching and learning"
     ],
-    "notes": "Voor Jisc-leden inbegrepen; Jisc vermeldt voor niet-leden Â£52 exclusief btw.",
+    "notes": "Voor Jisc-leden inbegrepen; Jisc vermeldt voor niet-leden £52 exclusief btw.",
     "changeHistory": [
       {
         "date": "2026-08-28",
@@ -19991,7 +19991,7 @@
   },
   {
     "id": "nolai-meetup-oktober-2026",
-    "title": "NOLAI Meet-up â oktober 2026",
+    "title": "NOLAI Meet-up – oktober 2026",
     "recordType": "training",
     "legacyType": "Training",
     "subtype": null,
@@ -20027,7 +20027,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/over-ons/agenda/nolai-meet-up-1",
         "sourceType": "official"
       }
@@ -20070,7 +20070,7 @@
   },
   {
     "id": "npuls-publieke-waarden-academie-ai-act-september-2026",
-    "title": "Publieke Waarden Academie â AI Act workshop",
+    "title": "Publieke Waarden Academie – AI Act workshop",
     "recordType": "training",
     "legacyType": "Training",
     "subtype": null,
@@ -20106,7 +20106,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://npuls.nl/agenda/publieke-waarden-academie-ai-act-workshop",
         "sourceType": "official"
       }
@@ -20183,7 +20183,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://pretalx.surf.nl/surf-onderwijsdagen-2026/talk/SEWRCW/",
         "sourceType": "official"
       }
@@ -20257,7 +20257,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://pretalx.surf.nl/surf-onderwijsdagen-2026/talk/8AP7KP/",
         "sourceType": "official"
       }
@@ -20333,7 +20333,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/over-ons/agenda/nolai-webinar-algemene-en-educatieve-ai",
         "sourceType": "official"
       }
@@ -20365,7 +20365,7 @@
       "algemene AI",
       "leraren"
     ],
-    "notes": "De officiÃ«le pagina vermeldt vervolgdata op 12 november 2026 en 14 januari, 11 maart en 13 mei 2027.",
+    "notes": "De officiële pagina vermeldt vervolgdata op 12 november 2026 en 14 januari, 11 maart en 13 mei 2027.",
     "changeHistory": [
       {
         "date": "2026-08-28",
@@ -20458,7 +20458,7 @@
       {
         "date": "2026-08-28",
         "type": "added",
-        "summary": "Toegevoegd na controle van de officiÃ«le SURF-pagina en Edusources-zoekomgeving."
+        "summary": "Toegevoegd na controle van de officiële SURF-pagina en Edusources-zoekomgeving."
       }
     ]
   },
@@ -20501,7 +20501,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://npuls.production.sdp.surf.nl/kennisbank/ai-go-in-actie",
         "sourceType": "official"
       }
@@ -20581,7 +20581,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.unesco.org/en/articles/ai-competency-framework-teachers?hub=779",
         "sourceType": "official"
       }
@@ -20661,7 +20661,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.unesco.org/en/articles/what-you-need-know-about-unescos-new-ai-competency-frameworks-students-and-teachers?hub=66973",
         "sourceType": "official"
       }
@@ -20744,7 +20744,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.unesco.org/en/articles/ai-and-education-protecting-rights-learners?hub=195885",
         "sourceType": "official"
       }
@@ -20826,7 +20826,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=OJ:C_202602826",
         "sourceType": "official"
       }
@@ -20906,7 +20906,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.oecd.org/en/publications/what-should-teachers-teach-and-students-learn-in-a-future-of-powerful-ai_ca56c7d6-en.html",
         "sourceType": "official"
       }
@@ -20956,7 +20956,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "TeachAI",
-    "description": "Open beleidsbron met informatiebrieven, vijf beleidsideeÃ«n en presentatiemateriaal over leiderschap, AI-geletterdheid, richtlijnen, capaciteit en innovatie in onderwijs.",
+    "description": "Open beleidsbron met informatiebrieven, vijf beleidsideeën en presentatiemateriaal over leiderschap, AI-geletterdheid, richtlijnen, capaciteit en innovatie in onderwijs.",
     "purpose": "Onderwijsleiders en beleidsmakers ondersteunen bij het formuleren van samenhangend, mensgericht AI-beleid.",
     "audiences": [
       "Bestuurders",
@@ -20987,7 +20987,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.teachai.org/policy",
         "sourceType": "official"
       }
@@ -21056,7 +21056,7 @@
       "Lesgeven en leren met AI"
     ],
     "status": "planned",
-    "availabilityText": "Online sessie op 1 oktober 2026; voor Jisc-leden inbegrepen, niet-leden Â£52 exclusief btw.",
+    "availabilityText": "Online sessie op 1 oktober 2026; voor Jisc-leden inbegrepen, niet-leden £52 exclusief btw.",
     "startDate": "2026-10-01",
     "endDate": "2026-10-01",
     "publicationDate": null,
@@ -21064,7 +21064,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.jisc.ac.uk/training/understand-ai-basics-for-teaching-and-learning",
         "sourceType": "official"
       }
@@ -21097,7 +21097,7 @@
       "prompting",
       "critical evaluation"
     ],
-    "notes": "De officiÃ«le pagina positioneert deze sessie als onderdeel van module 1 van Jiscâ AI-literacycurriculum.",
+    "notes": "De officiële pagina positioneert deze sessie als onderdeel van module 1 van Jisc’ AI-literacycurriculum.",
     "changeHistory": [
       {
         "date": "2026-08-29",
@@ -21140,7 +21140,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.openleermateriaal.nl/open-inspiratielessen-over-ai/",
         "sourceType": "official"
       }
@@ -21216,7 +21216,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.openleermateriaal.nl/ai-in-de-klas-zo-doen-pilots-het/",
         "sourceType": "official"
       }
@@ -21295,7 +21295,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.openleermateriaal.nl/leermateriaal-verrijken-met-ai-actueel-relevant-en-van-de-docent-zelf/",
         "sourceType": "official"
       }
@@ -21341,14 +21341,14 @@
   },
   {
     "id": "open-leermateriaal-glu-drie-systemen",
-    "title": "AI creÃ«ert lesmateriaal: drie systemen voor werkdrukverlaging",
+    "title": "AI creëert lesmateriaal: drie systemen voor werkdrukverlaging",
     "recordType": "practice_example",
     "legacyType": "Praktijkvoorbeeld",
     "subtype": null,
     "organizationIds": [],
     "providerName": "Impuls Open Leermateriaal",
     "description": "Praktijkverhaal van het Grafisch Lyceum Utrecht over GPT's, lokale AI-oplossingen en workflowautomatisering bij het ontwikkelen van lesmateriaal.",
-    "purpose": "Docenten en onderwijsorganisaties laten zien welke afwegingen spelen rond gebruiksgemak, privacy, continuÃ¯teit en menselijke kwaliteitsborging.",
+    "purpose": "Docenten en onderwijsorganisaties laten zien welke afwegingen spelen rond gebruiksgemak, privacy, continuïteit en menselijke kwaliteitsborging.",
     "audiences": [
       "Docenten",
       "ICT-professionals",
@@ -21374,7 +21374,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.openleermateriaal.nl/ai-creeert-lesmateriaal/",
         "sourceType": "official"
       }
@@ -21410,7 +21410,7 @@
       "n8n",
       "menselijke kwaliteitsborging"
     ],
-    "notes": "De bron benoemt expliciet risico's voor continuÃ¯teit van no-code-workflows en het belang van borging.",
+    "notes": "De bron benoemt expliciet risico's voor continuïteit van no-code-workflows en het belang van borging.",
     "changeHistory": [
       {
         "date": "2026-08-29",
@@ -21458,7 +21458,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://algoritmes.overheid.nl/nl/algoritmekader/voldoen-aan-wetten-en-regels/hulpmiddelen/IAMA",
         "sourceType": "official"
       }
@@ -21539,7 +21539,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/algoritmes/algoritmekader/",
         "sourceType": "official"
       }
@@ -21591,7 +21591,7 @@
     "subtype": "Wegwijzer",
     "organizationIds": [],
     "providerName": "Digitale Overheid",
-    "description": "Nederlandse overheidspagina met uitleg over de AI-verordening, risicocategorieÃ«n, rollen en de gefaseerde inwerkingtreding van verplichtingen.",
+    "description": "Nederlandse overheidspagina met uitleg over de AI-verordening, risicocategorieën, rollen en de gefaseerde inwerkingtreding van verplichtingen.",
     "purpose": "Organisaties helpen relevante AI-verordeningseisen en belangrijke data te begrijpen en in hun implementatieplanning op te nemen.",
     "audiences": [
       "Bestuurders",
@@ -21625,7 +21625,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/artificiele-intelligentie-ai/ai-verordening/",
         "sourceType": "official"
       }
@@ -21704,7 +21704,7 @@
       "Beleid en governance"
     ],
     "status": "available",
-    "availabilityText": "Publiek beschikbare handreiking; aanvulling op de eerdere AP-handreiking âAan de slag met AI-geletterdheidâ.",
+    "availabilityText": "Publiek beschikbare handreiking; aanvulling op de eerdere AP-handreiking ‘Aan de slag met AI-geletterdheid’.",
     "startDate": null,
     "endDate": null,
     "publicationDate": "2025-10-23",
@@ -21712,7 +21712,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://autoriteitpersoonsgegevens.nl/actueel/verder-bouwen-aan-ai-geletterdheid",
         "sourceType": "official"
       }
@@ -21793,7 +21793,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.it-academieoverheid.nl/onderwerpen",
         "sourceType": "official"
       }
@@ -21875,7 +21875,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://education.ec.europa.eu/focus-topics/digital-education/actions/plan/ethical-guidelines-for-educators-on-using-artificial-intelligence",
         "sourceType": "official"
       }
@@ -21911,7 +21911,7 @@
       "GDPR",
       "teaching and learning"
     ],
-    "notes": "De officiÃ«le pagina vermeldt dat de vertalingen in alle EU-talen volgen na de Engelstalige actualisatie.",
+    "notes": "De officiële pagina vermeldt dat de vertalingen in alle EU-talen volgen na de Engelstalige actualisatie.",
     "changeHistory": [
       {
         "date": "2026-08-29",
@@ -21957,7 +21957,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.digitaleoverheid.nl/nieuws/cip-privacy-self-assessment-vernieuwd/",
         "sourceType": "official"
       }
@@ -22027,7 +22027,7 @@
       "Professionalisering"
     ],
     "status": "available",
-    "availabilityText": "Openbare PDF via de officiÃ«le publicatiepagina.",
+    "availabilityText": "Openbare PDF via de officiële publicatiepagina.",
     "startDate": null,
     "endDate": null,
     "publicationDate": "2026-09-03",
@@ -22035,7 +22035,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/over-ons/nieuws/whitepaper-prompting-haal-meer-uit-genai-in-de-klas",
         "sourceType": "official"
       }
@@ -22070,7 +22070,7 @@
       "leraren",
       "klas"
     ],
-    "notes": "De broncontrole betreft de officiÃ«le beschrijving en aangeboden PDF. Er is geen effectiviteitsbeoordeling of specifieke hergebruiklicentie vastgesteld.",
+    "notes": "De broncontrole betreft de officiële beschrijving en aangeboden PDF. Er is geen effectiviteitsbeoordeling of specifieke hergebruiklicentie vastgesteld.",
     "changeHistory": [
       {
         "date": "2026-09-04",
@@ -22106,7 +22106,7 @@
       "Data en infrastructuur"
     ],
     "status": "available",
-    "availabilityText": "Openbare checklist als PDF via de officiÃ«le publicatiepagina.",
+    "availabilityText": "Openbare checklist als PDF via de officiële publicatiepagina.",
     "startDate": null,
     "endDate": null,
     "publicationDate": "2026-03-12",
@@ -22114,7 +22114,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.ru.nl/over-ons/nieuws/energieverbruik-van-ai-op-scholen-weet-wat-je-doet",
         "sourceType": "official"
       }
@@ -22150,7 +22150,7 @@
       "vendor lock-in",
       "gegevensbeheer"
     ],
-    "notes": "De checklist gaat over ICT Ã©n AI op school. De broncontrole betreft de officiÃ«le beschrijving en aangeboden PDF; geen afzonderlijke hergebruiklicentie vastgesteld.",
+    "notes": "De checklist gaat over ICT én AI op school. De broncontrole betreft de officiële beschrijving en aangeboden PDF; geen afzonderlijke hergebruiklicentie vastgesteld.",
     "changeHistory": [
       {
         "date": "2026-09-04",
@@ -22195,7 +22195,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://pec.surf.nl/praatplaat-ai-en-privacy/",
         "sourceType": "official"
       }
@@ -22273,7 +22273,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://www.it-academieoverheid.nl/onderwerpen/m/microlearnings-starten-met-ai",
         "sourceType": "official"
       },
@@ -22315,7 +22315,7 @@
       "video",
       "AI-geletterdheid"
     ],
-    "notes": "Als Ã©Ã©n serie opgenomen. Een onderwijsdoelgroep of accreditatie is niet door de aanbieder bevestigd. Losse video's hebben verschillende datums; de publicatiedatum van de gehele serie is niet vastgesteld.",
+    "notes": "Als één serie opgenomen. Een onderwijsdoelgroep of accreditatie is niet door de aanbieder bevestigd. Losse video's hebben verschillende datums; de publicatiedatum van de gehele serie is niet vastgesteld.",
     "changeHistory": [
       {
         "date": "2026-09-04",
@@ -22326,7 +22326,7 @@
   },
   {
     "id": "radio-basisopleiding-ai-digitaal-vakmanschap",
-    "title": "RADIO: Basisopleiding AI â Digitaal vakmanschap",
+    "title": "RADIO: Basisopleiding AI – Digitaal vakmanschap",
     "recordType": "training",
     "legacyType": "Training",
     "subtype": "E-learning",
@@ -22355,7 +22355,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le beschrijving en toegangseisen",
+        "label": "Officiële beschrijving en toegangseisen",
         "url": "https://www.it-academieoverheid.nl/actueel/nieuws/2026/01/26/ai-opleiding-basismodule-digitaal-vakmanschap",
         "sourceType": "official"
       },
@@ -22397,7 +22397,7 @@
       "AI-geletterdheid",
       "overheid"
     ],
-    "notes": "De officiÃ«le aankondiging is van 26 januari 2026. De beschrijving en loginroute zijn gecontroleerd; de opleiding achter de login is niet doorlopen. Geen exacte publicatiedatum voor het cursusmateriaal vastgesteld.",
+    "notes": "De officiële aankondiging is van 26 januari 2026. De beschrijving en loginroute zijn gecontroleerd; de opleiding achter de login is niet doorlopen. Geen exacte publicatiedatum voor het cursusmateriaal vastgesteld.",
     "changeHistory": [
       {
         "date": "2026-09-04",
@@ -22414,7 +22414,7 @@
     "subtype": "Scenariospel",
     "organizationIds": [],
     "providerName": "TNO",
-    "description": "Scenariospel over vier mogelijke toekomsten van werkzekerheid in 2035â2040. Deelnemers verkennen vanuit vier personaâs wat technologische en maatschappelijke veranderingen, waaronder AI, betekenen voor werk en loopbaanontwikkeling. Met dialoogvragen en werkbladen voor mogelijke maatregelen.",
+    "description": "Scenariospel over vier mogelijke toekomsten van werkzekerheid in 2035–2040. Deelnemers verkennen vanuit vier persona’s wat technologische en maatschappelijke veranderingen, waaronder AI, betekenen voor werk en loopbaanontwikkeling. Met dialoogvragen en werkbladen voor mogelijke maatregelen.",
     "purpose": "Beleidsmakers, werkgevers en werkenden helpen gevolgen van verschillende toekomstbeelden te bespreken en handelingsopties te verkennen.",
     "audiences": [
       "Beleidsmakers",
@@ -22446,7 +22446,7 @@
         "sourceType": "official"
       },
       {
-        "label": "Achtergrondrapport: Veerkracht in een veranderende arbeidsmarkt â toekomstscenarioâs (PDF)",
+        "label": "Achtergrondrapport: Veerkracht in een veranderende arbeidsmarkt – toekomstscenario’s (PDF)",
         "url": "https://publications.tno.nl/publication/34645549/6XokhxIn/TNO-2026-R10055.pdf",
         "sourceType": "official"
       }
@@ -22476,24 +22476,24 @@
       "scenariospel",
       "werkzekerheid",
       "toekomst van werk",
-      "toekomstscenarioâs",
+      "toekomstscenario’s",
       "AI",
       "arbeidsmarkt",
       "leven lang ontwikkelen",
       "skills",
       "strategische dialoog"
     ],
-    "notes": "Redactionele onderwijsrelevantie: bruikbaar als gespreksaanzet over scholing, leven lang ontwikkelen en de aansluiting tussen onderwijs en arbeidsmarkt. Een specifieke onderwijsdoelgroep of bewezen werking in onderwijs is niet vastgesteld. De scenarioâs zijn fictieve verkenningen, geen voorspellingen. Het spel vermeldt Â© 2026; de publicatiedatum van 5 september 2026 is op diezelfde dag door Eva bevestigd. Openbare download betekent niet dat een open hergebruiklicentie is vastgesteld.",
+    "notes": "Redactionele onderwijsrelevantie: bruikbaar als gespreksaanzet over scholing, leven lang ontwikkelen en de aansluiting tussen onderwijs en arbeidsmarkt. Een specifieke onderwijsdoelgroep of bewezen werking in onderwijs is niet vastgesteld. De scenario’s zijn fictieve verkenningen, geen voorspellingen. Het spel vermeldt © 2026; de publicatiedatum van 5 september 2026 is op diezelfde dag door Eva bevestigd. Openbare download betekent niet dat een open hergebruiklicentie is vastgesteld.",
     "changeHistory": [
       {
         "date": "2026-09-05",
         "type": "added",
-        "summary": "Toegevoegd op verzoek van Eva na controle van de officiÃ«le TNO-projectpagina, spelhandleiding en het achtergrondrapport."
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële TNO-projectpagina, spelhandleiding en het achtergrondrapport."
       },
       {
         "date": "2026-09-05",
         "type": "updated",
-        "summary": "Publicatiedatum ingevuld als 5 september 2026 op basis van Evaâs bevestiging."
+        "summary": "Publicatiedatum ingevuld als 5 september 2026 op basis van Eva’s bevestiging."
       }
     ]
   },
@@ -22519,7 +22519,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le aankondiging RADIO",
+        "label": "Officiële aankondiging RADIO",
         "url": "https://www.it-academieoverheid.nl/actueel/nieuws/2026/09/07/2-nieuwe-e-learnings-over-ai",
         "sourceType": "official"
       }
@@ -22565,12 +22565,12 @@
       "AI-geletterdheid",
       "e-learning"
     ],
-    "notes": "De module behandelt hoe een AI-assistent tot antwoorden komt, hoe het eigen referentiekader het gebruik beÃ¯nvloedt en hoe effectieve prompts worden geschreven. De officiÃ«le aankondiging vermeldt dat de module en toets ongeveer 30 minuten duren.",
+    "notes": "De module behandelt hoe een AI-assistent tot antwoorden komt, hoe het eigen referentiekader het gebruik beïnvloedt en hoe effectieve prompts worden geschreven. De officiële aankondiging vermeldt dat de module en toets ongeveer 30 minuten duren.",
     "changeHistory": [
       {
         "date": "2026-09-07",
         "type": "added",
-        "summary": "Toegevoegd na controle van de officiÃ«le aankondiging van RADIO."
+        "summary": "Toegevoegd na controle van de officiële aankondiging van RADIO."
       }
     ]
   },
@@ -22596,7 +22596,7 @@
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le aankondiging RADIO",
+        "label": "Officiële aankondiging RADIO",
         "url": "https://www.it-academieoverheid.nl/actueel/nieuws/2026/09/07/2-nieuwe-e-learnings-over-ai",
         "sourceType": "official"
       }
@@ -22645,12 +22645,12 @@
       "afhankelijkheid",
       "e-learning"
     ],
-    "notes": "De module behandelt onder meer de keuze tussen inkopen en zelf ontwikkelen, relevante wet- en regelgeving, situaties waarin een AI-assistent niet moet worden ingezet en de betekenis van AI voor de toekomst van ambtelijk werk. De officiÃ«le aankondiging vermeldt dat de module en toets ongeveer 30 minuten duren.",
+    "notes": "De module behandelt onder meer de keuze tussen inkopen en zelf ontwikkelen, relevante wet- en regelgeving, situaties waarin een AI-assistent niet moet worden ingezet en de betekenis van AI voor de toekomst van ambtelijk werk. De officiële aankondiging vermeldt dat de module en toets ongeveer 30 minuten duren.",
     "changeHistory": [
       {
         "date": "2026-09-07",
         "type": "added",
-        "summary": "Toegevoegd na controle van de officiÃ«le aankondiging van RADIO."
+        "summary": "Toegevoegd na controle van de officiële aankondiging van RADIO."
       }
     ]
   },
@@ -22664,7 +22664,7 @@
       "org-vu-amsterdam"
     ],
     "providerName": "VU Amsterdam",
-    "description": "Volgens de aanbieder: de AI Maturity in Education Scan (AIMES) ondersteunt jou als student, docent, opleidingsdirecteur of faculteitsbestuurder om je begrip van ArtificiÃ«le Intelligentie (AI literacy) te beoordelen en te vergroten. AIMES is beschikbaar als Open Educational Resource.",
+    "description": "Volgens de aanbieder: de AI Maturity in Education Scan (AIMES) ondersteunt jou als student, docent, opleidingsdirecteur of faculteitsbestuurder om je begrip van Artificiële Intelligentie (AI literacy) te beoordelen en te vergroten. AIMES is beschikbaar als Open Educational Resource.",
     "purpose": "Nog niet ingevuld",
     "audiences": [
       "Studenten",
@@ -22685,7 +22685,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le bron",
+        "label": "Officiële bron",
         "url": "https://vu.nl/nl/onderwijs/meer-over/de-ai-maturity-in-education-scan-aimes",
         "sourceType": "official"
       }
@@ -22725,11 +22725,11 @@
       {
         "date": "2026-09-07",
         "type": "verified",
-        "summary": "OfficiÃ«le bron automatisch gecontroleerd bij communitybijdrage #57."
+        "summary": "Officiële bron automatisch gecontroleerd bij communitybijdrage #57."
       }
     ],
     "verificationMethod": "automatic_official_source_check",
-    "verificationNote": "Bereikbaarheid en aansluiting van titel en aanbieder op de officiÃ«le bron zijn automatisch gecontroleerd; dit is geen inhoudelijke aanbeveling."
+    "verificationNote": "Bereikbaarheid en aansluiting van titel en aanbieder op de officiële bron zijn automatisch gecontroleerd; dit is geen inhoudelijke aanbeveling."
   },
   {
     "id": "org-mbo-mediawijs",
@@ -22766,7 +22766,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le website",
+        "label": "Officiële website",
         "url": "https://mbomediawijs.nl",
         "sourceType": "official"
       }
@@ -22806,7 +22806,7 @@
       {
         "date": "2026-09-08",
         "type": "added",
-        "summary": "Toegevoegd als recent gecontroleerde officiÃ«le bron."
+        "summary": "Toegevoegd als recent gecontroleerde officiële bron."
       }
     ]
   },
@@ -22846,7 +22846,7 @@
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "OfficiÃ«le website",
+        "label": "Officiële website",
         "url": "https://mbomediawijs.nl",
         "sourceType": "official"
       }
@@ -22886,7 +22886,7 @@
       {
         "date": "2026-09-08",
         "type": "added",
-        "summary": "Toegevoegd als recent gecontroleerde officiÃ«le bron."
+        "summary": "Toegevoegd als recent gecontroleerde officiële bron."
       }
     ]
   }
