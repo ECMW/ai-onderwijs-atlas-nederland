@@ -97,7 +97,8 @@ function boot({ replacements = {}, omitted = [], omitGuard = false, href = 'http
   };
   const location = new URL(href); location.replace = value => { location.href = new URL(value, location).href; };
   const storage = { getItem: () => null, setItem() {}, removeItem() {} };
-  const context = vm.createContext({ document, location, URL, URLSearchParams, Intl,
+  const context = vm.createContext({ document, location, URL, URLSearchParams, Intl, Event,
+    dispatchEvent: event => dispatch(event.type, event),
     localStorage: storage, sessionStorage: storage, CSS: { escape: value => value },
     matchMedia: () => ({ matches: false }), scrollTo() {}, scrollBy() {}, scrollY: 0,
     requestAnimationFrame: callback => callback(), setTimeout, clearTimeout,
@@ -140,6 +141,23 @@ test('a blocked or broken optional analytics script leaves the real Atlas usable
   assert.equal(app.context.ATLAS_STARTUP.status, 'ready');
   app.navigate('#over'); assert.match(app.main.innerHTML, /Over de atlas/);
   app.navigate('#zoeken'); assert.match(app.main.innerHTML, /class="atlas-search"/);
+});
+
+test('home rerenders notify optional widgets when a saved role is cleared', () => {
+  const app = boot();
+  let stored = JSON.stringify(['Docenten']);
+  app.context.localStorage.getItem = () => stored;
+  app.context.localStorage.setItem = (key, value) => { stored = value; };
+  app.context.localStorage.removeItem = () => { stored = null; };
+  app.navigate('#home');
+  const clear = app.document.querySelector('.persona-clear');
+  assert.ok(clear, 'Saved roles expose the clear control');
+  let rendered = 0;
+  app.context.addEventListener('atlas:home-rendered', () => { rendered++; });
+  clear.onclick();
+  assert.equal(rendered, 1);
+  assert.ok(app.document.querySelector('[data-atlas-visit-count]'));
+  assert.equal(app.context.ATLAS_STARTUP.status, 'ready');
 });
 
 test('the real script order starts the catalogue and retains the mobile menu and informational routes', () => {

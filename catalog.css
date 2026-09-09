@@ -106,3 +106,4 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 .detail-facts{position:static}.detail-hero-top{flex-wrap:wrap}
 @media(max-width:600px){.card-facts{grid-template-columns:1fr 1fr}.card-facts>div:first-child{grid-column:1/-1}.detail-hero .commercial-label{max-width:100%}}
 .home-new-contributions{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1rem;margin:1.4rem 0}.home-new-contributions .btn{display:inline-flex;align-items:center;gap:1.1rem;min-height:52px;padding:.85rem 1.3rem;font-weight:800;text-decoration:none}.home-new-contributions>span{font-size:.9rem;color:#465861}
+.home-market .home-search .visit-proof{font-size:.9rem;font-weight:600;color:var(--muted);margin:.7rem 0 0}.visit-proof[hidden]{display:none}

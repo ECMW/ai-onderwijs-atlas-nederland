@@ -13,7 +13,9 @@ checks omzeilen of bij brononzekerheid mergen.
 
 Deze editie koppelt GoatCounter aan Eva's account `ecmw`. Eva heeft de publicatie
 op 9 september 2026 goedgekeurd. De accountinstellingen zijn gecontroleerd en opgeslagen:
-alleen Sessions verzamelen, dashboard privé en publieke teller uit.
+alleen Sessions verzamelen en dashboard privé. Op Eva's verzoek is alleen de
+openbare bezoekenteller aangezet. De homepage leest het geaggregeerde totaal
+voor het Atlas-pad, zonder cookies of verwijzer; dit registreert geen extra bezoek.
 De koppeling kan uit door `atlas-goatcounter-site` in `index.html` leeg te maken.
 Na publicatie vraagt de browser
 eenmaal per paginalading een telling aan voor het vaste Atlas-pad. Zoektermen,
@@ -29,6 +31,7 @@ minimale accountinstellingen en controleer het actuele
 De website toont na activering een korte toelichting in de footer.
 
 Do Not Track, Global Privacy Control, automatische browsercontroles, lokale
-kopieën en ingesloten pagina's worden uitgesloten. De teller is optioneel: een
+kopieën en ingesloten pagina's worden uitgesloten van de meting. Het openbare
+totaal blijft leesbaar voor bezoekers die niet gemeten willen worden. De teller is optioneel: een
 geblokkeerd of mislukt meetverzoek beïnvloedt het aanbod en zoeken niet.
 Zie [de inrichting en telwijze](visitor-statistics.md).

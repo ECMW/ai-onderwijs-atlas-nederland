@@ -7,6 +7,37 @@
   if (location.origin !== 'https://ecmw.github.io' ||
       ![atlasPath, `${atlasPath}index.html`].includes(location.pathname)) return;
 
+  let publicVisits = null;
+  const renderPublicVisits = () => {
+    if (publicVisits === null) return;
+    document.querySelectorAll('[data-atlas-visit-count]').forEach(element => {
+      element.textContent = `${new Intl.NumberFormat('nl-NL').format(publicVisits)} ${publicVisits === 1 ? 'bezoek' : 'bezoeken'} sinds 9 september 2026`;
+      element.title = 'Gemeten bezoeken, geen unieke personen. Wordt enkele keren per dag bijgewerkt.';
+      element.hidden = false;
+    });
+  };
+  const loadPublicVisits = () => {
+    // GoatCounter normalizes the stored path by removing the trailing slash.
+    // Read only this Atlas total, never totals belonging to other account paths.
+    const path = encodeURIComponent(atlasPath.replace(/\/$/, ''));
+    window.fetch(`https://${site}.goatcounter.com/counter/${path}.json?start=2026-09-09`, {
+      mode: 'cors', credentials: 'omit', referrerPolicy: 'no-referrer'
+    }).then(response => {
+      if (!response.ok) throw new Error('Public visit count unavailable');
+      return response.json();
+    }).then(data => {
+      // The public API returns a formatted integer, not a raw number.
+      const formatted = String(data.count ?? '').trim();
+      if (!/^(?:\d+|\d{1,3}(?:[ ,.'\u00a0\u2009\u202f]\d{3})+)$/.test(formatted)) return;
+      const value = Number(formatted.replace(/\D/g, ''));
+      if (!Number.isSafeInteger(value) || value < 0) return;
+      publicVisits = value;
+      renderPublicVisits();
+    }).catch(() => { /* Leave the counter hidden instead of inventing a total. */ });
+  };
+  window.addEventListener('hashchange', renderPublicVisits);
+  window.addEventListener('atlas:home-rendered', renderPublicVisits);
+
   const count = () => {
     // Analytics must never interfere with the Atlas, even if requests are blocked.
     try {
@@ -19,6 +50,10 @@
       link.rel = 'noopener noreferrer';
       notice.append(link);
       document.querySelector('body > footer')?.append(notice);
+
+      // Reading an existing public total does not register a visit. This remains
+      // available when the visitor opts out of measurement below.
+      loadPublicVisits();
 
       if (navigator.doNotTrack === '1' || window.doNotTrack === '1' ||
           navigator.globalPrivacyControl === true || navigator.webdriver ||

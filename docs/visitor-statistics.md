@@ -3,7 +3,9 @@
 Deze editie schakelt dagelijkse bezoekersmeting in op het door Eva opgegeven
 account `https://ecmw.goatcounter.com/`. Eva heeft publicatie en controle van de
 eerste meting op 9 september 2026 expliciet goedgekeurd. Het ingelogde dashboard
-is gecontroleerd: privé, publieke teller uit, alleen Sessions verzamelen.
+is gecontroleerd: privé, alleen Sessions verzamelen. Eva heeft daarna expliciet
+gevraagd het bezoekentotaal ook op de Atlas te tonen als sociaal bewijs; daarvoor
+is de openbare teller aangezet terwijl het dashboard privé blijft.
 De tijdzone staat op Nederland. De eerste live ontvangst is op 9 september 2026
 bevestigd in het privé dashboard na publicatie via pull request #77.
 De code telt uitsluitend op de publieke Atlas-origin, niet in lokale previews.
@@ -21,6 +23,12 @@ meetellen; mensen met vergelijkbare browserkenmerken achter hetzelfde netwerk
 kunnen samenvallen. Privacyinstellingen, blokkades en bots beïnvloeden de telling.
 Dit is geen afzonderlijke telling van alle paginaweergaven of van zoekacties.
 
+De homepage toont **X bezoeken sinds 9 september 2026**, zonder de waarde zelf
+te verhogen of unieke personen te suggereren. Het getal komt rechtstreeks van
+de openbare padspecifieke teller. GoatCounter ververst die doorgaans ongeveer
+elke vier uur; het is geen realtime teller. Bij een fout of ongeldige respons
+wordt geen getal getoond. Een daadwerkelijk ontvangen nul wordt wel als nul getoond.
+
 GoatCounter is momenteel gratis voor redelijk openbaar gebruik, waaronder
 persoonlijke websites en kleine/middelgrote bedrijven. De Atlas lijkt binnen die
 omschrijving te passen; de voorwaarden van de aanbieder blijven van toepassing.
@@ -32,8 +40,9 @@ omschrijving te passen; de voorwaarden van de aanbieder blijven van toepassing.
    Een wachtwoord of API-token is niet nodig voor het tellen en hoort niet in
    de repository of chat. Inloggen gebeurt door Eva in de browser.
 2. De accountinstellingen zijn op 9 september 2026 gecontroleerd en opgeslagen:
-   tijdzone Nederland, dashboard alleen voor ingelogde gebruikers, publieke
-   teller uit. Onder **Data collection** staat alleen **Sessions** aan.
+   tijdzone Nederland, dashboard alleen voor ingelogde gebruikers. Op het latere
+   verzoek van Eva staat **Allow adding visitor counts on your website** aan.
+   Onder **Data collection** staat alleen **Sessions** aan.
    **Individual pageviews**, **Referrer**, **User-Agent**, **Size**, **Country**,
    **Region** en **Language** staan uit. Sessions gebruikt nog steeds tijdelijk
    IP-adres en browserkenmerken voor ontdubbeling. **Your site** staat op
@@ -44,7 +53,7 @@ omschrijving te passen; de voorwaarden van de aanbieder blijven van toepassing.
 4. Voer de generator, datavalidatie, strikte quality gate, regressietests en
    `git diff --check` uit. Publiceer pas na Eva's expliciete goedkeuring.
 5. Controleer na publicatie één gewoon browserbezoek en de ontvangst in het
-   privé dashboard. Controleer in het netwerkpaneel dat er één meetverzoek is
+   privé dashboard en de openbare teller. Controleer in het netwerkpaneel dat er één meetverzoek is
    met alleen `p`, `t`, `r` (leeg) en `rnd`, zonder Referer-header of cookies.
    Een succesvolle lokale test bewijst nog geen ontvangst door GoatCounter.
 6. Bekijk [de grafiek per dag](https://ecmw.goatcounter.com/?group=day).
@@ -63,6 +72,12 @@ De willekeurige `rnd` voorkomt caching en is geen blijvend bezoekerskenmerk.
 De standaard externe `count.js` wordt niet geladen: die kan `location.search`
 als campagnegegevens meesturen, ook bij een vast ingesteld paginapad.
 Er is geen externe script-afhankelijkheid voor het starten van de Atlas.
+De openbare weergave gebruikt een afzonderlijke leesaanvraag naar
+`/counter/%2Fai-onderwijs-atlas-nederland.json?start=2026-09-09`, eveneens zonder
+cookies en Referer-header. De door GoatCounter genormaliseerde padnaam bevat
+geen afsluitende slash. Het totaal is alleen voor dit Atlas-pad; andere sites
+of paden in het account worden niet meegeteld. Hashnavigatie hergebruikt het
+ontvangen totaal, zonder extra aanvragen of kunstmatige verhoging.
 Een mislukt telverzoek wordt opgevangen. De beschikbaarheidsmonitor meldt
 laad- of integriteitsfouten in het optionele analyticsbestand als waarschuwing;
 die mogen geen automatische terugzetting van een werkende Atlas veroorzaken.
@@ -95,6 +110,6 @@ Gecontroleerd op 9 september 2026:
 De accountinstellingen zijn bevestigd in de werkelijke account-UI en de
 publicatie is goedgekeurd. E-mailbevestiging is een accountactie voor Eva.
 De eerste live meting is bevestigd na een bezoek aan de gepubliceerde Atlas;
-de bezoekenaantallen zelf blijven in het privé dashboard. Bij latere wijzigingen
+het bezoekentotaal is op Eva's verzoek ook openbaar. Bij latere wijzigingen
 blijft een live controle nodig: een geslaagde lokale test bewijst geen ontvangst.
 Ontwikkelbroncode bewijst geen specifieke productieconfiguratie.
