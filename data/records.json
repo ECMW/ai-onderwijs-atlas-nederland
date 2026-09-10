@@ -24458,5 +24458,89 @@
       }
     ],
     "commercialStatus": "unknown"
+  },
+  {
+    "id": "onderwijs-ai-zo-maak-je-ai-beleid-in-het-onderwijs",
+    "title": "Zo maak je AI-beleid in het onderwijs",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Kennisartikel",
+    "organizationIds": [],
+    "providerName": "Onderwijs AI",
+    "description": "Praktische gids voor het ontwikkelen van AI-beleid in onderwijsinstellingen. De gids bespreekt wettelijke verplichtingen, beleidskeuzes die scholen zelf kunnen maken en onderwerpen die meer tijd vragen, zoals curriculumontwikkeling, professionalisering en gedragsverandering.",
+    "purpose": "Onderwijsinstellingen ondersteunen bij het opstellen, invoeren en evalueren van AI-beleid.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderwijsinstellingen",
+      "Docenten"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-governance",
+      "AI-geletterdheid",
+      "Wet- en regelgeving",
+      "Toetsing",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Vrij online raadpleegbaar.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-09-03",
+    "lastVerified": "2026-09-10",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Artikel op Onderwijs AI",
+        "url": "https://onderwijs-ai.nl/blog/ai-beleid-maken-in-het-onderwijs",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-beleid",
+      "AI Act",
+      "AI-verordening",
+      "AVG",
+      "medezeggenschap",
+      "curriculum",
+      "toetsing"
+    ],
+    "notes": "De aanbieder biedt vanuit de website ook opleidingen, workshops en advies aan. De vermelding beschrijft het openbare kennisartikel en is geen beoordeling of aanbeveling van het aanbod.",
+    "changeHistory": [
+      {
+        "date": "2026-09-10",
+        "type": "added",
+        "summary": "Kennisartikel toegevoegd na controle van de officiële publicatiepagina."
+      }
+    ],
+    "commercialStatus": "unknown"
   }
 ]
+
