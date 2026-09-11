@@ -449,13 +449,7 @@
       "Leveranciers",
       "Beleidsmakers"
     ],
-    "sectors": [
-      "PO",
-      "VO",
-      "MBO",
-      "HBO",
-      "WO"
-    ],
+    "sectors": ["MBO"],
     "themes": [],
     "status": "available",
     "availabilityText": "Nog niet ingevuld",
@@ -25252,5 +25246,97 @@
     "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Praktijkvoorbeeld toegevoegd na controle van de officiële WUR-publicatie."}],
     "offerCategory": "materials",
     "commercialStatus": "unknown"
+  },
+  {
+    "id": "eerlijk-over-ai-ai-coach-opleiding-open-source",
+    "title": "Open-source lesmateriaal Ai-coachopleiding",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Eerlijk over Ai en ROC Mondriaan",
+    "description": "Vrij toegankelijk driedaags train-de-trainerprogramma met handleidingen, presentaties en werkvormen over AI-geletterdheid, didactiek, pedagogiek, ethiek, wetgeving, toetsing en verandermanagement.",
+    "purpose": "Onderwijsorganisaties in staat stellen eigen medewerkers op te leiden tot Ai-coach en het trainingsmateriaal aan hun context aan te passen.",
+    "audiences": [
+      "Docenten",
+      "Trainers",
+      "Onderwijsontwikkelaars",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Het volledige trainingsmateriaal is vrij online beschikbaar onder CC BY-SA 4.0.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-11",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Introductie, handleiding en materialen",
+        "url": "https://eerlijkoverai.nl/leeromgeving/ai-coach-opleiding/introductie-en-handleiding/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Beschrijving van de Ai-coachopleiding",
+        "url": "https://eerlijkoverai.nl/aanbod/ai-coach-opleiding/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": ["nl"],
+    "keywords": [
+      "Eerlijk over Ai",
+      "ROC Mondriaan",
+      "Ai-coach",
+      "train-de-trainer",
+      "CC BY-SA",
+      "lesmateriaal",
+      "AI-geletterdheid"
+    ],
+    "notes": "De opleiding is ontwikkeld met ROC Mondriaan als founding partner en is volgens de aanbieder breder bruikbaar in het onderwijs. Aanvullende begeleiding door Eerlijk over Ai is een afzonderlijke betaalde dienst.",
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Open-source trainingsmateriaal toegevoegd na controle van de leeromgeving, licentie en officiële aanbodbeschrijving."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "commercial",
+    "commercialEvidence": {
+      "url": "https://eerlijkoverai.nl/aanbod/ai-coach-opleiding/",
+      "note": "De aanbieder beschrijft het lesmateriaal als vrij beschikbaar en noemt daarnaast betaalde aanvullende diensten, waaronder uitvoering, maatwerk, ontwikkeling en ondersteuning.",
+      "checkedOn": "2026-09-11"
+    }
   }
 ]
