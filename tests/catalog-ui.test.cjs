@@ -14,7 +14,7 @@ const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
     effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
     accessLabel, accessOptions: Object.values(ACCESS_LABELS), recordThemes, themeOptions, route,
-    searchForm, bindResultsControls,
+    searchForm, bindResultsControls, sourceActionLabel, sourceCitation, copySourceCitation, meetingSheetMarkup,
     options: SORT_OPTIONS, getState: () => state, setState: value => { state = value; }
   };`);
 
@@ -495,6 +495,146 @@ test('each flat and grouped result opens an email draft with its own public item
     }
     assert.ok(html.includes('aria-label="Delen via e-mail: AI &amp; onderwijs: &quot;café&quot;'));
   }
+});
+
+test('source citations preserve official references without inventing authors or publication dates', () => {
+  const item = {
+    ...record('citation-caf\u00e9/ruimte', '2001-02-03', 'Bron & onderwijs: "caf\u00e9"'),
+    providerName: 'Onderzoek & Opleiding',
+    sourceUrls: [
+      { url: 'https://secondary.example.org/background', sourceType: 'secondary' },
+      { url: 'https://official.example.org/report?chapter=1&lang=nl', sourceType: 'official' },
+      { url: 'https://official.example.org/appendix', sourceType: 'official' },
+      { url: 'https://authoritative.example.org/commentary', sourceType: 'authoritative' }
+    ]
+  };
+  const hash = '#zoeken?sector=HBO';
+  const api = load([item], hash, { location: { hash, href: `http://localhost:8000/?atlas-no-count=1${hash}` } });
+  const text = api.sourceCitation(item);
+  assert.ok(text.includes(item.title));
+  assert.ok(text.includes(`Aanbieder: ${item.providerName}`));
+  assert.ok(text.includes('2001'));
+  assert.ok(text.includes('https://official.example.org/report?chapter=1&lang=nl'));
+  assert.ok(text.includes('https://official.example.org/appendix'));
+  assert.ok(text.includes(`https://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${encodeURIComponent(item.id)}`));
+  assert.ok(!/secondary\.example|authoritative\.example|localhost|atlas-no-count|sector=|2099|Auteur:/i.test(text));
+  for (const publicationDate of [null, '', '2001-02-30']) {
+    const undated = api.sourceCitation({ ...item, publicationDate });
+    assert.ok(!/2001|2099/.test(undated), 'Invalid or missing publication dates must not fall back to source-check or import dates');
+  }
+  const sparse = api.sourceCitation({ ...item, providerName: '', publicationDate: null, sourceUrls: [] });
+  assert.ok(!/undefined|null/.test(sparse));
+  assert.ok(sparse.includes(`https://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${encodeURIComponent(item.id)}`));
+});
+
+test('copying a source citation reports success only after the clipboard accepts it', async () => {
+  const item = record('clipboard-success', '2001-02-03');
+  const feedback = { textContent: '' };
+  const fallback = { hidden: true };
+  const textarea = { value: '', readOnly: true, focus() {}, select() { throw new Error('Manual fallback should not run after successful copying'); } };
+  const copied = [];
+  let acceptWrite;
+  const api = load([item], '#zoeken', {
+    navigator: { clipboard: { writeText: text => { copied.push(text); return new Promise(resolve => { acceptWrite = resolve; }); } } },
+    document: { querySelector: selector => ({ main: {}, '#detail-feedback': feedback, '#citation-fallback': fallback, '#source-citation': textarea })[selector] || null }
+  });
+  const copying = api.copySourceCitation(item);
+  assert.ok(!/gekopieerd/i.test(feedback.textContent), 'Copying is not successful while the clipboard write is pending');
+  acceptWrite();
+  await copying;
+  assert.deepEqual(copied, [api.sourceCitation(item)]);
+  assert.match(feedback.textContent, /gekopieerd/i);
+  assert.equal(fallback.hidden, true);
+});
+
+test('blocked or unavailable clipboards expose the complete citation for manual copying', async () => {
+  for (const navigator of [
+    { clipboard: { writeText: async () => { throw new Error('Clipboard permission denied'); } } },
+    {}
+  ]) {
+    const item = record('clipboard-fallback', null, 'Handreiking & toelichting');
+    const feedback = { textContent: '' };
+    const fallback = { hidden: true };
+    let selected = false;
+    const textarea = { value: '', readOnly: true, focus() {}, select() { selected = true; } };
+    const api = load([item], '#zoeken', {
+      navigator,
+      document: { querySelector: selector => ({ main: {}, '#detail-feedback': feedback, '#citation-fallback': fallback, '#source-citation': textarea })[selector] || null }
+    });
+    await api.copySourceCitation(item);
+    assert.equal(fallback.hidden, false);
+    assert.equal(textarea.value, api.sourceCitation(item));
+    assert.equal(selected, true);
+    assert.ok(!/gekopieerd/i.test(feedback.textContent), 'A rejected clipboard write must not be announced as successful');
+  }
+});
+
+test('a delayed clipboard rejection cannot change a different page or use detached fallback controls', async () => {
+  for (const replacement of [null, { value: '', readOnly: true, focus() { throw new Error('An old copy action must not steal focus'); }, select() {} }]) {
+    const item = record('citation-before-navigation', null);
+    const originalFallback = { hidden: true };
+    const feedback = { textContent: '' };
+    const originalField = { value: '', readOnly: true, focus() {}, select() {} };
+    const current = { main: {}, '#detail-feedback': feedback, '#citation-fallback': originalFallback, '#source-citation': originalField };
+    let rejectWrite;
+    const api = load([item], '#zoeken', {
+      navigator: { clipboard: { writeText: () => new Promise((resolve, reject) => { rejectWrite = reject; }) } },
+      document: { querySelector: selector => current[selector] || null }
+    });
+    const copying = api.copySourceCitation(item);
+    current['#detail-feedback'] = replacement ? { textContent: '' } : null;
+    current['#citation-fallback'] = replacement ? { hidden: true } : null;
+    current['#source-citation'] = replacement;
+    rejectWrite(new Error('Permission denied after navigation'));
+    await assert.doesNotReject(copying);
+    assert.equal(originalFallback.hidden, true);
+    if (replacement) {
+      assert.equal(replacement.value, '');
+      assert.equal(current['#citation-fallback'].hidden, true);
+      assert.equal(current['#detail-feedback'].textContent, '');
+    }
+  }
+});
+
+test('meeting sheets include all matching records even when a themed group shows only three cards', () => {
+  const matching = Array.from({ length: 5 }, (_, index) => record(`meeting-${index}`, null, `Overlegitem ${index}`));
+  const excluded = { ...record('excluded-sheet-item', null), publicationExclusion: { reason: 'Outside public scope', decidedOn: '2026-09-01' } };
+  const unverified = { ...record('unverified-sheet-item', null), verificationStatus: 'needs_review' };
+  const differentTheme = { ...record('different-theme', null), themes: ['Onderzoek'], description: 'Onderzoeksprogramma' };
+  const api = load([...matching, excluded, unverified, differentTheme], '#zoeken?theme=Privacy%20en%20AVG');
+  assert.equal([...api.resultsMarkup().matchAll(/<article class="result-card"/g)].length, 3, 'The fixture must exercise the abbreviated grouped result view');
+  const html = api.meetingSheetMarkup();
+  for (const item of matching) {
+    assert.ok(html.includes(item.title));
+    assert.ok(html.includes(item.sourceUrls[0].url));
+    assert.ok(html.includes(`https://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${item.id}`));
+  }
+  for (const item of [excluded, unverified, differentTheme]) assert.ok(!html.includes(item.id));
+  assert.ok(!/2099|Broncontrole|Waarom zie ik dit/.test(html));
+});
+
+test('meeting sheets preserve chronological ordering, complete criteria and current filter membership', () => {
+  const shared = { providerName: 'Onderzoek & Opleiding', geographicScope: 'Nederland', accessType: 'registration_required' };
+  const oldest = { ...record('meeting-old', '2001-02-03', 'Oudste vermelding'), ...shared };
+  const newest = { ...record('meeting-new', '2020-05-06', 'Nieuwste vermelding'), ...shared };
+  const undated = { ...record('meeting-undated', null, 'Ongedateerde vermelding'), ...shared };
+  const otherSector = { ...record('meeting-other-sector', '2021-01-01', 'Verkeerde sector'), ...shared, sectors: ['PO'] };
+  const params = new URLSearchParams({ q: 'privacy', theme: 'Privacy en AVG', audience: 'Docenten', sector: 'HBO',
+    status: 'Direct beschikbaar', geography: 'Nederland', organization: shared.providerName, access: 'Registratie nodig', sort: 'published' });
+  const api = load([oldest, undated, otherSector, newest], `#zoeken?${params}`);
+  const html = api.meetingSheetMarkup();
+  assert.ok(html.indexOf(newest.title) < html.indexOf(oldest.title));
+  assert.ok(html.indexOf(oldest.title) < html.indexOf(undated.title));
+  assert.ok(!html.includes(otherSector.title));
+  const criteria = html.match(/<dl\b[^>]*class="[^"]*\bmeeting-criteria\b[^"]*"[^>]*>([\s\S]*?)<\/dl>/)?.[1];
+  assert.ok(criteria, 'The printable search context must be a distinct criteria list');
+  for (const value of ['privacy', 'Privacy en AVG', 'Docenten', 'HBO', 'Direct beschikbaar', 'Nederland', 'Onderzoek &amp; Opleiding', 'Registratie nodig']) {
+    assert.ok(criteria.includes(value), `Print criteria must retain ${value}, including choices after the first four`);
+  }
+  api.setState({ ...api.getState(), sort: 'published-oldest' });
+  const ascending = api.meetingSheetMarkup();
+  assert.ok(ascending.indexOf(oldest.title) < ascending.indexOf(newest.title));
+  assert.ok(ascending.indexOf(newest.title) < ascending.indexOf(undated.title));
 });
 
 test('no saving controls remain on cards or results; contributions are visible', () => {
