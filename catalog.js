@@ -534,7 +534,7 @@
         ${recency ? `<p class="publication-date">${escapeHtml(recency.label)} <time datetime="${escapeHtml(recency.date)}">${escapeHtml(dateLabel(recency.date))}</time></p>` : ''}
         ${showPublicationDate && isPublicationSort() ? `<p class="publication-date">${publicationDate(record) ? `Verschenen op <time datetime="${publicationDate(record)}">${escapeHtml(dateLabel(publicationDate(record)))}</time>` : 'Publicatiedatum onbekend'}</p>` : ''}
         ${sectors.length ? `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>` : ''}
-        <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span><span>Broncontrole ${escapeHtml(dateLabel(record.lastVerified))}</span></div>
+        <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span></div>
       </div><div class="card-actions"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">Bron ↗</a>` : ''}<a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a></div>
     </article>`;
   }
