@@ -435,7 +435,57 @@
     if (['available', 'open_call'].includes(status)) return 'is-confirmed';
     return 'is-neutral';
   }
-  function primarySource(record) { return (record.sourceUrls || [])[0] || null; }
+  function officialSources(record) {
+    return (record.sourceUrls || []).filter(item => item.sourceType === 'official' && /^https?:\/\//i.test(item.url || ''));
+  }
+  function primarySource(record) { return officialSources(record)[0] || null; }
+  function sourceActionLabel(record) {
+    if (record.offerCategory === 'materials') return 'Bekijk materiaal';
+    if (record.legacyType === 'Raamwerk') return 'Bekijk raamwerk';
+    if (record.recordType === 'guidance' && record.subtype) {
+      return ({ Kennissite: 'Bekijk kennisbank', Kennisartikel: 'Lees artikel', Whitepaper: 'Lees whitepaper',
+        Kader: 'Bekijk kader', Toetsingskader: 'Bekijk kader', Checklist: 'Bekijk checklist',
+        Toolkit: 'Bekijk toolkit', Stappenplan: 'Bekijk stappenplan',
+        'PDF-handreiking': 'Bekijk handreiking', 'Methodologische handreiking': 'Bekijk handreiking'
+      })[record.subtype] || 'Bekijk informatie';
+    }
+    return ({ organization: 'Naar organisatie', training: 'Bekijk training', funding_call: 'Bekijk call',
+      subsidy: 'Bekijk subsidie', guidance: 'Bekijk handreiking', legislation: 'Lees wetgeving',
+      standard: 'Bekijk standaard', practice_example: 'Bekijk voorbeeld', research_project: 'Bekijk onderzoek',
+      pilot: 'Bekijk pilot', programme: 'Bekijk programma', community: 'Naar community',
+      policy_document: 'Bekijk beleid', product: 'Bekijk aanbod', service: 'Bekijk aanbod'
+    })[record.recordType] || 'Bekijk bron';
+  }
+  function publicItemUrl(record) {
+    return `https://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${encodeURIComponent(record.id)}`;
+  }
+  function sourceCitation(record) {
+    return [record.title,
+      ...(record.providerName ? [`Aanbieder: ${record.providerName}`] : []),
+      ...(publicationDate(record) ? [`Publicatiedatum: ${dateLabel(publicationDate(record))}`] : []),
+      ...officialSources(record).map(item => `${item.label || 'Officiële bron'}: ${item.url}`),
+      `AI & Onderwijs Atlas Nederland: ${publicItemUrl(record)}`
+    ].join('\n');
+  }
+  async function copySourceCitation(record) {
+    const feedback = document.querySelector('#detail-feedback');
+    const fallback = document.querySelector('#citation-fallback');
+    const text = sourceCitation(record);
+    try {
+      await navigator.clipboard.writeText(text);
+      if (document.querySelector('#citation-fallback') !== fallback) return;
+      fallback.hidden = true;
+      feedback.textContent = 'Bronvermelding gekopieerd.';
+    } catch {
+      if (document.querySelector('#citation-fallback') !== fallback) return;
+      fallback.hidden = false;
+      const field = document.querySelector('#source-citation');
+      field.value = text;
+      field.focus();
+      field.select();
+      feedback.textContent = 'Kopieer de geselecteerde bronvermelding.';
+    }
+  }
   const LISTING_NOTICE = 'Opname in de Atlas betekent geen goedkeuring, kwaliteitsbeoordeling of aanbeveling van het aanbod of de aanbieder.';
   function factValue(value) {
     return value && value !== 'Nog niet ingevuld' ? value : 'Niet vastgesteld';
@@ -512,7 +562,7 @@
       <a class="teaser-link" href="#item/${escapeHtml(record.id)}">Bekijk aanbod <span aria-hidden="true">→</span></a></article>`;
   }
   function emailShareHref(record) {
-    const itemUrl = `https://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${encodeURIComponent(record.id)}`;
+    const itemUrl = publicItemUrl(record);
     const subject = `AI & Onderwijs Atlas: ${record.title}`.replace(/[\r\n]+/g, ' ');
     const body = [
       'Bekijk dit aanbod in de AI & Onderwijs Atlas Nederland:', '',
@@ -535,7 +585,7 @@
         ${showPublicationDate && isPublicationSort() ? `<p class="publication-date">${publicationDate(record) ? `Verschenen op <time datetime="${publicationDate(record)}">${escapeHtml(dateLabel(publicationDate(record)))}</time>` : 'Publicatiedatum onbekend'}</p>` : ''}
         ${sectors.length ? `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>` : ''}
         <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span></div>
-      </div><div class="card-actions"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">Bron ↗</a>` : ''}<a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a></div>
+      </div><div class="card-actions"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record))}: ${escapeHtml(record.title)}">${escapeHtml(sourceActionLabel(record))} ↗</a>` : ''}<a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a></div>
     </article>`;
   }
 
@@ -728,7 +778,7 @@
     return `<header class="result-head"><div><span class="eyebrow">Gevonden aanbod</span><h1>${escapeHtml(heading)}</h1><p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p></div><div class="result-tools"><button class="mobile-filter btn secondary" aria-controls="filters" aria-expanded="false">Filters (${activeCount})</button><label>Sorteren<select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select></label></div></header>
       ${values('type').length === 1 && values('type')[0] === 'Training' ? '<section class="training-intro"><h2>Workshops en trainers</h2><p>Vind een workshop, cursus of training en de aanbieder die deze verzorgt. Verfijn op onderwerp, doelgroep of aanbieder. Trainer, locatie, kosten en beschikbaarheid staan bij het aanbod voor zover bevestigd. Bespreek maatwerk via de officiële aanbodpagina.</p></section>' : ''}
       ${values('theme').includes('Veilige AI-omgeving') ? '<section class="selection-guidance"><h2>Beoordeel de toepassing in uw eigen situatie</h2><p>Gebruik de officiële bronnen om gegevensgebruik, beheer, menselijke controle, toegankelijkheid en overstapmogelijkheden te beoordelen. Wat passend is, hangt af van uw doel, gegevens, instellingen en afspraken. Deze selectie is geen keurmerk voor veilige of verantwoorde AI.</p></section>' : ''}
-      <div class="selection-bar"><div class="selection-actions"><a href="#bijdragen">Aanbod toevoegen of feedback geven</a><button type="button" data-share-selection>Deel selectie</button></div></div>
+      <div class="selection-bar"><div class="selection-actions"><a href="#bijdragen">Aanbod toevoegen of feedback geven</a><button type="button" data-share-selection>Deel selectie</button>${resultRecords.length ? `<a data-meeting-sheet href="${escapeHtml(stateHref().replace(/^#zoeken/, '#overlegblad'))}">Overlegblad (${resultRecords.length})</a>` : ''}</div></div>
       ${chips ? `<div class="chips">${chips}<button class="clear-link">Wis alles</button></div>` : ''}
       ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="${escapeHtml(stateHref({ theme }))}">${escapeHtml(theme)} <span>${count} ${count === 1 ? 'resultaat' : 'resultaten'}</span></a>`).join('')}</nav>` : ''}
       <div id="action-feedback" class="action-feedback" aria-live="polite"></div>
@@ -792,6 +842,35 @@
     }
   }
 
+  function meetingSheetMarkup() {
+    const items = sortRecords(records.filter(record => matches(record)));
+    const labels = { theme: 'Onderwerp', audience: 'Doelgroep', sector: 'Sector', status: 'Beschikbaarheid',
+      type: 'Soort aanbod', geography: 'Regio', organization: 'Aanbieder', access: 'Toegang', source: 'Bron' };
+    const criteria = [
+      ...(state.q ? [['Zoekterm', state.q]] : []),
+      ...FILTER_KEYS.filter(key => values(key).length).map(key => [labels[key], values(key).map(value => filterOptionLabel(key, value)).join(' of ')]),
+      ['Sortering', SORT_OPTIONS[state.sort] || SORT_OPTIONS.relevant]
+    ];
+    return `<section class="meeting-sheet"><nav class="sheet-controls" aria-label="Overlegblad"><a class="back-results" href="${escapeHtml(stateHref())}">← Terug naar resultaten</a>${items.length ? '<button class="btn" type="button" data-print-sheet>Afdrukken / opslaan als PDF</button>' : ''}</nav>
+      <header><span class="eyebrow">AI & Onderwijs Atlas Nederland</span><h1>Overlegblad</h1><p>${items.length} ${items.length === 1 ? 'resultaat' : 'resultaten'} · Samengesteld op ${escapeHtml(dateLabel(todayInNetherlands()))}</p>
+      <p class="sheet-help">Dit overzicht bevat alle resultaten van uw zoekselectie. Verfijn uw zoekopdracht als u een korter overzicht wilt.</p>
+      <dl class="meeting-criteria">${criteria.map(([key, value]) => `<div><dt>${escapeHtml(key)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl>
+      <p class="listing-notice">${LISTING_NOTICE}</p></header>
+      ${items.length ? `<ol class="sheet-list">${items.map(record => `<li class="sheet-entry"><article><h2>${escapeHtml(record.title)}</h2>
+        <p class="sheet-meta">Aanbieder: ${escapeHtml(factValue(record.providerName))} · ${escapeHtml(offerLabel(record))}</p>
+        <p>${escapeHtml(factValue(record.description))}</p>
+        <p class="sheet-meta">${escapeHtml(statusLabel(record))} · ${escapeHtml(costLabel(record))} · ${escapeHtml(accessLabel(record))}${publicationDate(record) ? ` · Verschenen op ${escapeHtml(dateLabel(publicationDate(record)))}` : ''}</p>
+        <dl class="sheet-links">${officialSources(record).map(item => `<div><dt>${escapeHtml(item.label || 'Officiële bron')}</dt><dd><a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.url)}</a></dd></div>`).join('')}<div><dt>In de Atlas</dt><dd><a href="${escapeHtml(publicItemUrl(record))}">${escapeHtml(publicItemUrl(record))}</a></dd></div></dl>
+        </article></li>`).join('')}</ol>` : '<p class="empty">Deze zoekselectie heeft geen resultaten. Pas uw zoekopdracht aan.</p>'}
+      <p class="sheet-credit">AI & Onderwijs Atlas Nederland · Gemaakt door E.C.M. Willems</p></section>`;
+  }
+  function renderMeetingSheet() {
+    main.innerHTML = meetingSheetMarkup();
+    document.querySelector('.back-results').onclick = () => sessionSet('atlas.restoreResults', stateHref());
+    const print = document.querySelector('[data-print-sheet]');
+    if (print) print.onclick = () => window.print();
+  }
+
   function renderDetail(id) {
     const record = records.find(item => item.id === id);
     if (!record) {
@@ -804,7 +883,7 @@
       .filter(candidate => candidate.score > 0)
       .sort((a, b) => b.score - a.score || relevance(b.item) - relevance(a.item))
       .slice(0, 4).map(candidate => candidate.item);
-    const sources = record.sourceUrls || [];
+    const sources = officialSources(record);
     const factRows = offerFacts(record);
     main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(offerLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
       <section class="detail-shell"><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">← Terug naar resultaten</a><span>Home / Resultaten / ${escapeHtml(record.title)}</span></nav>
@@ -818,6 +897,7 @@
         ${related.length ? `<h2>Gerelateerd aanbod</h2><p class="section-intro">Inhoudelijk verbonden via onderwerp, sector, doelgroep, aanbieder of soort aanbod.</p><div class="related-cards">${related.map(item => simpleCard(item)).join('')}</div>` : ''}
       </article><aside class="detail-facts"><h2>In één oogopslag</h2><dl>${factRows.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl>
         <h3>Officiële bronnen</h3>${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}
+        ${sources.length ? '<button class="btn secondary copy-citation" type="button" data-copy-citation>Kopieer bronvermelding</button><div id="citation-fallback" hidden><label for="source-citation">Bronvermelding om te kopiëren</label><textarea id="source-citation" rows="8" readonly></textarea></div>' : ''}
         <button class="btn secondary share-item" type="button" data-share-item>Deel dit item</button>
         <p id="detail-feedback" class="action-feedback" aria-live="polite"></p>
         <aside class="item-contribution"><h3>Klopt deze informatie nog?</h3><p>Help mee met een correctie of aanvulling.</p><a class="btn secondary" href="#bijdragen?item=${encodeURIComponent(record.id)}">Fout of aanvulling doorgeven</a></aside>
@@ -825,6 +905,8 @@
     const back = document.querySelector('.back-results');
     back.onclick = () => sessionSet('atlas.restoreResults', lastSearch);
     document.querySelectorAll('.related-cards a[href^="#item/"]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', lastSearch));
+    const copy = document.querySelector('[data-copy-citation]');
+    if (copy) copy.onclick = () => copySourceCitation(record);
     document.querySelector('[data-share-item]').onclick = async () => {
       const feedback = document.querySelector('#detail-feedback');
       try {
@@ -997,6 +1079,10 @@
     if (sort) sort.onchange = event => { state.sort = event.target.value; setUrl(); document.querySelector('#sort')?.focus(); };
     const share = panel.querySelector('[data-share-selection]');
     if (share) share.onclick = shareCurrentSelection;
+    const sheet = panel.querySelector('[data-meeting-sheet]');
+    if (sheet) sheet.onclick = () => {
+      sessionSet('atlas.lastSearch', stateHref()); sessionSet('atlas.resultsScroll', scrollY);
+    };
     panel.querySelectorAll('.result-card a[href^="#item/"]').forEach(link => link.onclick = () => {
       sessionSet('atlas.lastSearch', location.hash); sessionSet('atlas.resultsScroll', scrollY);
     });
@@ -1063,9 +1149,10 @@
     const path = (location.hash.slice(1) || 'home').split('?')[0];
     document.querySelector('.site-header')?.classList.remove('open');
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
-    if (path === 'home' || (!['nieuw', 'zoeken', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
+    if (path === 'home' || (!['nieuw', 'zoeken', 'overlegblad', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
     if (path === 'nieuw') renderNewOffers();
     if (path === 'zoeken' || path === 'organisaties') { parseState(); if (path === 'organisaties') state.type = 'Organisatie'; renderSearch(); }
+    if (path === 'overlegblad') { parseState(); renderMeetingSheet(); }
     if (path.startsWith('item/')) renderDetail(decodeURIComponent(path.slice(5)));
     if (path === 'mijn-atlas') { location.replace('#home'); return; }
     if (path === 'bijdragen') renderContribute();
