@@ -522,9 +522,8 @@
     ].join('\r\n');
     return `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
-  function simpleCard(record, explain = false, recency = null) {
+  function simpleCard(record, showPublicationDate = false, recency = null) {
     const sectors = (record.sectors || []).slice(0, 3);
-    const reasons = relevanceReasons(record);
     const sourceItem = primarySource(record);
     return `<article class="result-card" data-record-id="${escapeHtml(record.id)}">
       <div class="card-body"><div class="card-top"><span class="type-label">${escapeHtml(offerLabel(record))}</span></div>
@@ -533,24 +532,11 @@
         <p class="description">${escapeHtml(factValue(record.description))}</p>
         <dl class="card-facts"><div><dt>Voor wie</dt><dd>${escapeHtml(factValue((record.audiences || []).join(', ')))}</dd></div><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div><div><dt>Toegang</dt><dd>${escapeHtml(accessLabel(record))}</dd></div></dl>
         ${recency ? `<p class="publication-date">${escapeHtml(recency.label)} <time datetime="${escapeHtml(recency.date)}">${escapeHtml(dateLabel(recency.date))}</time></p>` : ''}
-        ${explain && isPublicationSort() ? `<p class="publication-date">${publicationDate(record) ? `Verschenen op <time datetime="${publicationDate(record)}">${escapeHtml(dateLabel(publicationDate(record)))}</time>` : 'Publicatiedatum onbekend'}</p>` : ''}
+        ${showPublicationDate && isPublicationSort() ? `<p class="publication-date">${publicationDate(record) ? `Verschenen op <time datetime="${publicationDate(record)}">${escapeHtml(dateLabel(publicationDate(record)))}</time>` : 'Publicatiedatum onbekend'}</p>` : ''}
         ${sectors.length ? `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>` : ''}
         <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span><span>Broncontrole ${escapeHtml(dateLabel(record.lastVerified))}</span></div>
-        ${explain && reasons.length ? `<details class="relevance"><summary>Waarom zie ik dit?</summary><p>${reasons.map(reason => `<span>✓ ${escapeHtml(reason)}</span>`).join(' ')}</p></details>` : ''}
       </div><div class="card-actions"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">Bron ↗</a>` : ''}<a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a></div>
     </article>`;
-  }
-  function relevanceReasons(record) {
-    const reasons = [];
-    values('sector').forEach(value => facetValues(record, 'sector').includes(value) && reasons.push(`past bij ${value}`));
-    values('theme').forEach(value => facetValues(record, 'theme').includes(value) && reasons.push(`gaat over ${value.toLowerCase()}`));
-    values('status').forEach(value => facetValues(record, 'status').includes(value) && reasons.push(value.toLowerCase()));
-    if (state.q) {
-      const matchingTheme = recordThemes(record).find(theme => queryTerms(state.q).some(term => normalize(theme).includes(term) || recordText(record).includes(term)));
-      if (matchingTheme) reasons.push(`gaat over ${matchingTheme.toLowerCase()}`);
-      else if (normalize(record.title).includes(normalize(state.q))) reasons.push('de titel overeenkomt met uw zoekterm');
-    }
-    return [...new Set(reasons)].slice(0, 3);
   }
 
   function homeShelf(title, href, items, label = '') {

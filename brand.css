@@ -125,8 +125,8 @@ h1,h2,h3{color:#263b45;text-wrap:balance}
 .type-label{color:var(--brand-olive-deep)}
 .sector-chips span{background:var(--brand-mist);color:#3d5661}
 .card-actions{background:#f8f5ee;border-color:#e0dbd0}
-.card-cta:not(.primary),.clear-link,.text-button,.selection-actions button,.relevance summary,.home-all-filters{color:#3f6576}
-.relevance{border-color:#e4dfd4}
+.card-cta:not(.primary),.clear-link,.text-button,.selection-actions button,.home-all-filters{color:#3f6576}
+
 
 .persona-indicator,.missing,.source-policy,.notice{
   background:#eef0e7;
