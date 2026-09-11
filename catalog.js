@@ -867,4 +867,262 @@
         <p id="detail-feedback" class="action-feedback" aria-live="polite"></p>
         <aside class="item-contribution"><h3>Klopt deze informatie nog?</h3><p>Help mee met een correctie of aanvulling.</p><a class="btn secondary" href="#bijdragen?item=${encodeURIComponent(record.id)}">Fout of aanvulling doorgeven</a></aside>
       </aside></div></section>`;
-    const back = document.q
+    const back = document.querySelector('.back-results');
+    back.onclick = () => sessionSet('atlas.restoreResults', lastSearch);
+    document.querySelectorAll('.related-cards a[href^="#item/"]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', lastSearch));
+    document.querySelector('[data-share-item]').onclick = async () => {
+      const feedback = document.querySelector('#detail-feedback');
+      try {
+        if (navigator.share) await navigator.share({ title: record.title, text: record.description || record.title, url: location.href });
+        else if (navigator.clipboard) { await navigator.clipboard.writeText(location.href); feedback.textContent = 'Link gekopieerd.'; }
+        else feedback.textContent = 'Kopieer de URL uit de adresbalk om dit item te delen.';
+      } catch (error) { if (error?.name !== 'AbortError') feedback.textContent = 'Delen lukte niet. Kopieer de URL uit de adresbalk.'; }
+    };
+  }
+
+  function relationScore(sourceRecord, candidate) {
+    let score = 0;
+    const relationships = Array.isArray(sourceRecord.relationships) ? sourceRecord.relationships : [];
+    const explicit = new Set([...(sourceRecord.relatedIds || []), ...relationships.map(item => item.targetId).filter(Boolean)]);
+    if (explicit.has(candidate.id)) score += 20;
+    if (sourceRecord.providerName && sourceRecord.providerName === candidate.providerName) score += 6;
+    score += recordThemes(sourceRecord).filter(theme => recordThemes(candidate).includes(theme)).length * 5;
+    score += (sourceRecord.keywords || []).filter(keyword => (candidate.keywords || []).some(other => normalize(other) === normalize(keyword))).length * 3;
+    score += (sourceRecord.sectors || []).filter(sector => (candidate.sectors || []).includes(sector)).length;
+    score += (sourceRecord.audiences || []).filter(audience => (candidate.audiences || []).includes(audience)).length;
+    if (typeLabel(sourceRecord) === typeLabel(candidate)) score += 1;
+    return score;
+  }
+
+  function suggestionData(query) {
+    const normalized = normalize(query);
+    if (normalized.length < 2) return [];
+    const criteria = criteriaForQuery(query);
+    const matching = recordsForCriteria(criteria).sort((a, b) => relevance(b, criteria) - relevance(a, criteria));
+    const collection = (label, next) => {
+      const count = recordsForCriteria(next).length;
+      return { label, count, meta: `${count} ${count === 1 ? 'resultaat' : 'resultaten'}`, href: criteriaHref(next) };
+    };
+    const themes = themeOptions()
+      .filter(theme => normalize(theme).includes(normalized) || (THEME_RULES[theme] || []).some(term => normalize(term).includes(normalized) || normalized.includes(normalize(term))))
+      .map(theme => collection(theme, { ...criteria, theme }))
+      .filter(item => item.count > 0).sort((a, b) => b.count - a.count).slice(0, 3);
+    const organizations = [...new Set(matching.map(record => record.providerName).filter(Boolean))]
+      .filter(name => normalize(name).includes(normalized) || matching.filter(record => record.providerName === name).length > 1)
+      .map(name => collection(name, { ...criteria, organization: name }))
+      .filter(item => item.count > 0).slice(0, 4);
+    const sections = [];
+    if (themes.length) sections.push({ label: 'Onderwerpen', items: themes });
+    if (organizations.length) sections.push({ label: 'Aanbieders', items: organizations });
+    const definitions = [
+      ['Praktisch aanbod', ['Handreiking', 'Hulpmiddel', 'Voorziening', 'Training']],
+      ['Wetgeving', ['Wetgeving']], ['Subsidies', ['Subsidie', 'Subsidie of call']],
+      ['Praktijkvoorbeelden', ['Praktijkvoorbeeld']], ['Pilots', ['Pilot']]
+    ];
+    definitions.forEach(([label, types]) => {
+      const items = matching.filter(record => types.includes(typeLabel(record))).slice(0, label === 'Praktisch aanbod' ? 4 : 3);
+      if (items.length) sections.push({ label, items: items.map(record => ({ label: record.title, meta: record.providerName, href: `#item/${encodeURIComponent(record.id)}` })) });
+    });
+    return sections.slice(0, 6);
+  }
+  function bindSearchForm() {
+    const form = document.querySelector('.atlas-search');
+    const input = form.querySelector('input');
+    const suggestions = form.querySelector('.suggestions');
+    const keepSearchVisible = () => {
+      if (document.activeElement !== input) return;
+      const top = form.getBoundingClientRect().top;
+      const headerBottom = document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0;
+      if (top < headerBottom) scrollBy({ top: top - headerBottom, behavior: 'instant' });
+    };
+    input.onfocus = () => requestAnimationFrame(keepSearchVisible);
+    form.onsubmit = event => { event.preventDefault(); closeSuggestions(); applyNaturalQuery(input.value); setUrl(); };
+    input.oninput = () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        const sections = suggestionData(input.value);
+        suggestions.hidden = !sections.length;
+        input.setAttribute('aria-expanded', String(!suggestions.hidden));
+        suggestions.innerHTML = sections.map(section => `<section><h2>${escapeHtml(section.label)}</h2>${section.items.map(item => `<a href="${escapeHtml(item.href)}"><span>${escapeHtml(item.label)}</span>${item.meta ? `<small>${escapeHtml(item.meta)}</small>` : ''}</a>`).join('')}</section>`).join('');
+        keepSearchVisible();
+      }, 150);
+    };
+    const closeSuggestions = () => { clearTimeout(debounceTimer); suggestions.hidden = true; input.setAttribute('aria-expanded', 'false'); };
+    input.onkeydown = event => {
+      if (event.key === 'Escape') closeSuggestions();
+      if (event.key === 'ArrowDown' && !suggestions.hidden) {
+        const first = suggestions.querySelector('a');
+        if (first) { event.preventDefault(); first.focus(); }
+      }
+    };
+    suggestions.onkeydown = event => {
+      const links = [...suggestions.querySelectorAll('a')];
+      const index = links.indexOf(document.activeElement);
+      if (event.key === 'Escape') { closeSuggestions(); input.focus(); }
+      if (['ArrowDown', 'ArrowUp'].includes(event.key) && index >= 0) {
+        event.preventDefault();
+        links[(index + (event.key === 'ArrowDown' ? 1 : -1) + links.length) % links.length].focus();
+      }
+    };
+    form.onfocusout = () => setTimeout(() => { if (!form.contains(document.activeElement)) closeSuggestions(); }, 0);
+  }
+  function bindRolePickers() {
+    document.querySelectorAll('.role-picker').forEach(form => {
+      const submit = form.querySelector('.role-submit');
+      const update = () => {
+        const count = form.querySelectorAll('input:checked').length;
+        submit.disabled = count === 0;
+        submit.textContent = count > 1 ? `Bekijk aanbod voor ${count} rollen` : 'Bekijk passend aanbod';
+      };
+      form.querySelectorAll('input').forEach(input => input.onchange = update);
+      form.onsubmit = event => {
+        event.preventDefault();
+        const selected = [...form.querySelectorAll('input:checked')].map(input => input.value);
+        if (!selected.length) return;
+        savePersonas(selected);
+        location.hash = `zoeken?audience=${encodeURIComponent(selected.join(','))}`;
+      };
+      update();
+    });
+    const change = document.querySelector('.persona-change');
+    if (change) change.onclick = () => { const choices = document.querySelector('.persona-choices'); choices.hidden = false; change.setAttribute('aria-expanded', 'true'); choices.querySelector('input').focus(); };
+    const clear = document.querySelector('.persona-clear');
+    if (clear) clear.onclick = () => { savePersonas([]); renderHome(); };
+  }
+
+  function contributionPrompt() {
+    return `<aside class="contribution-prompt" aria-label="Help de atlas verbeteren"><div><h2>Help de Atlas verder</h2><p>Kent u relevant aanbod? Ziet u een fout of kan de website prettiger werken? Geef het door via de vaste bijdrageroute.</p></div><a class="btn" href="#bijdragen">Bijdragen &amp; feedback <span aria-hidden="true">→</span></a></aside>`;
+  }
+  function contributionIssueUrl(kind, record = null) {
+    const templates = { addition: 'atlas-aanvulling.yml', correction: 'feitelijke-correctie.yml', feedback: 'feedback.yml' };
+    const params = new URLSearchParams({ template: templates[kind] || templates.feedback });
+    if (kind === 'correction' && record) {
+      params.set('title', `[Correctie] ${record.title}`);
+      params.set('record', `${record.title}\nhttps://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${encodeURIComponent(record.id)}`);
+    }
+    return `https://github.com/ECMW/ai-onderwijs-atlas-nederland/issues/new?${params}`;
+  }
+  function renderContribute() {
+    const params = new URLSearchParams(location.hash.split('?')[1] || '');
+    const record = records.find(item => item.id === params.get('item'));
+    main.innerHTML = `<section class="contribute-page"><header class="page-intro"><span class="eyebrow">Samen actueel en bruikbaar</span><h1>Help de Atlas verder</h1><p>Voeg bestaand aanbod toe, verbeter informatie of vertel wat op de website beter kan. Kies hieronder de passende route.</p><p class="contribution-notice">De formulieren openen op GitHub. U heeft een gratis GitHub-account nodig. Uw inzending is openbaar: deel geen persoonsgegevens of vertrouwelijke informatie.</p>${record ? `<p class="contribution-context">Uw correctie gaat over <a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a>. Dit item staat alvast ingevuld in het correctieformulier.</p>` : ''}</header>
+      <div class="contribute-options"><article><span aria-hidden="true">＋</span><h2>Aanbod toevoegen</h2><p>Kent u een handreiking, training, organisatie, voorziening, subsidie of praktijkvoorbeeld dat ontbreekt? Voeg de officiële bron en een korte feitelijke beschrijving toe.</p><a class="btn" data-contribution="addition" href="${escapeHtml(contributionIssueUrl('addition'))}" target="_blank" rel="noopener noreferrer">Aanbod toevoegen ↗</a></article><article><span aria-hidden="true">✓</span><h2>Fout of aanvulling doorgeven</h2><p>Klopt een titel, beschrijving, status, deadline of bron niet meer? Vermeld wat er moet veranderen, met een onderbouwende bron.</p><a class="btn secondary" data-contribution="correction" href="${escapeHtml(contributionIssueUrl('correction', record))}" target="_blank" rel="noopener noreferrer">Correctie doorgeven ↗</a></article><article><span aria-hidden="true">↔</span><h2>Feedback op de website</h2><p>Lukt zoeken niet goed, werkt een knop niet of kan iets duidelijker? Beschrijf wat u probeerde en wat u verwachtte. Hiervoor is geen bronlink nodig.</p><a class="btn secondary" data-contribution="feedback" href="${escapeHtml(contributionIssueUrl('feedback'))}" target="_blank" rel="noopener noreferrer">Feedback geven ↗</a></article></div>
+      <aside class="source-policy"><h2>Wat gebeurt er met uw bijdrage?</h2><p>Uw melding krijgt een eigen openbare plek op GitHub. Controleer eerst of er al een <a href="https://github.com/ECMW/ai-onderwijs-atlas-nederland/issues" target="_blank" rel="noopener noreferrer">vergelijkbare melding ↗</a> is; u kunt daar een aanvulling plaatsen.</p><p>Nieuwe aanbodmeldingen worden direct gecontroleerd op een officiële bron, relevantie voor AI en onderwijs, onderbouwing en mogelijke duplicaten. Duidelijk onderbouwde aanvullingen worden na alle controles automatisch verwerkt. Bij twijfel of ontbrekende informatie blijft de bijdrage ter beoordeling staan. ${LISTING_NOTICE}</p><p>Correcties en websitefeedback blijven via dezelfde openbare route te volgen. U hoeft Eva niet apart te mailen.</p></aside></section>`;
+  }
+  function currentSearchLabel() {
+    const parts = [state.q && `‘${state.q}’`, ...FILTER_KEYS.flatMap(key => values(key).map(value => filterOptionLabel(key, value)))].filter(Boolean);
+    return parts.slice(0, 4).join(' · ') || 'Alle aanbod';
+  }
+  function setActionFeedback(message) {
+    const feedback = document.querySelector('#action-feedback');
+    if (feedback) feedback.textContent = message;
+  }
+  async function shareCurrentSelection() {
+    const shareData = { title: 'AI & Onderwijs Atlas Nederland', text: `Bekijk deze selectie: ${currentSearchLabel()}`, url: location.href };
+    try {
+      if (navigator.share) await navigator.share(shareData);
+      else if (navigator.clipboard) { await navigator.clipboard.writeText(location.href); setActionFeedback('Link naar deze selectie gekopieerd.'); }
+      else setActionFeedback('Kopieer de URL uit de adresbalk om deze selectie te delen.');
+    } catch (error) {
+      if (error?.name !== 'AbortError') setActionFeedback('Delen lukte niet. Kopieer de URL uit de adresbalk.');
+    }
+  }
+  function bindResultsControls() {
+    const panel = document.querySelector('#results-panel');
+    if (!panel) return;
+    panel.querySelectorAll('[data-remove]').forEach(button => button.onclick = () => {
+      const [key, value] = button.dataset.remove.split('|');
+      state[key] = serializeFilterValues(key, values(key).filter(item => item !== value));
+      setUrl();
+    });
+    const clearQuery = panel.querySelector('[data-clear-query]');
+    if (clearQuery) clearQuery.onclick = () => { state.q = ''; setUrl(); };
+    panel.querySelectorAll('.clear-link,.empty .clear').forEach(button => button.onclick = () => { state = { q: '', sort: 'relevant' }; setUrl(); });
+    const sort = panel.querySelector('#sort');
+    if (sort) sort.onchange = event => { state.sort = event.target.value; setUrl(); document.querySelector('#sort')?.focus(); };
+    const share = panel.querySelector('[data-share-selection]');
+    if (share) share.onclick = shareCurrentSelection;
+    panel.querySelectorAll('.result-card a[href^="#item/"]').forEach(link => link.onclick = () => {
+      sessionSet('atlas.lastSearch', location.hash); sessionSet('atlas.resultsScroll', scrollY);
+    });
+    const opener = panel.querySelector('.mobile-filter');
+    if (opener) {
+      opener.setAttribute('aria-expanded', String(Boolean(document.querySelector('#filters')?.classList.contains('open'))));
+      opener.onclick = () => {
+        const filters = document.querySelector('#filters');
+        filters.classList.add('open'); document.body.classList.add('locked'); opener.setAttribute('aria-expanded', 'true');
+        filters.querySelector('.close').focus();
+      };
+    }
+  }
+  function bindSearchPage() {
+    bindSearchForm();
+    document.querySelectorAll('[data-facet]').forEach(input => input.onchange = () => {
+      const selected = values(input.dataset.facet);
+      input.checked ? selected.push(input.value) : selected.splice(selected.indexOf(input.value), 1);
+      state[input.dataset.facet] = serializeFilterValues(input.dataset.facet, selected); setUrl();
+    });
+    document.querySelectorAll('.facet-more').forEach(button => button.onclick = () => {
+      const options = button.previousElementSibling;
+      options.classList.toggle('expanded');
+      button.textContent = options.classList.contains('expanded') ? 'Toon minder' : 'Toon meer';
+      button.setAttribute('aria-expanded', String(options.classList.contains('expanded')));
+    });
+    document.querySelectorAll('.facet-search').forEach(input => input.oninput = () => {
+      const query = normalize(input.value);
+      const options = input.nextElementSibling;
+      options.classList.toggle('searching', Boolean(query));
+      options.querySelectorAll('label').forEach(label => { label.hidden = !normalize(label.textContent).includes(query); });
+      const more = options.nextElementSibling;
+      if (more?.classList.contains('facet-more')) more.hidden = Boolean(query);
+    });
+    const panel = document.querySelector('#filters'); const closer = panel.querySelector('.close');
+    panel.querySelector('.clear').onclick = () => { state = { q: '', sort: 'relevant' }; setUrl(); };
+    const closePanel = () => {
+      const opener = document.querySelector('.mobile-filter');
+      panel.classList.remove('open'); document.body.classList.remove('locked');
+      if (opener) { opener.setAttribute('aria-expanded', 'false'); opener.focus(); }
+    };
+    closer.onclick = panel.querySelector('.apply').onclick = closePanel;
+    bindResultsControls();
+    document.onkeydown = event => {
+      if (event.key === 'Escape' && panel.classList.contains('open')) closePanel();
+      if (event.key === 'Tab' && panel.classList.contains('open')) {
+        const focusable = [...panel.querySelectorAll('button:not([disabled]),input:not([disabled]),summary,select,a[href]')].filter(element => element.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    };
+  }
+  function route() {
+    // Back/forward can replace an open mobile panel without invoking its close
+    // button. Release scrolling and detached keyboard handlers before rendering.
+    document.body?.classList.remove('locked');
+    document.querySelector('#filters')?.classList.remove('open');
+    document.querySelector('.mobile-filter')?.setAttribute('aria-expanded', 'false');
+    document.onkeydown = null;
+    clearTimeout(debounceTimer);
+    if (window.ATLAS_STARTUP?.status === 'failed') { window.ATLAS_STARTUP.fail(); return; }
+    const path = (location.hash.slice(1) || 'home').split('?')[0];
+    document.querySelector('.site-header')?.classList.remove('open');
+    document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
+    if (path === 'home' || (!['nieuw', 'boeken', 'zoeken', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
+    if (path === 'nieuw') renderNewOffers();
+    if (path === 'boeken') renderBooks();
+    if (path === 'zoeken' || path === 'organisaties') { parseState(); if (path === 'organisaties') state.type = 'Organisatie'; renderSearch(); }
+    if (path.startsWith('item/')) renderDetail(decodeURIComponent(path.slice(5)));
+    if (path === 'mijn-atlas') { location.replace('#home'); return; }
+    if (path === 'bijdragen') renderContribute();
+    document.querySelectorAll('.site-header nav a').forEach(link => link.removeAttribute('aria-current'));
+    document.querySelector(`.site-header nav a[href="#${CSS.escape(path)}"]`)?.setAttribute('aria-current', 'page');
+    const updated = document.querySelector('[data-updated]'); if (updated) updated.textContent = source.metadata.updated || '';
+    if (!['zoeken', 'organisaties'].includes(path)) {
+      scrollTo({ top: 0, behavior: 'instant' });
+      main.focus({ preventScroll: true });
+    }
+  }
+  addEventListener('hashchange', route); addEventListener('popstate', route); route();
+  window.ATLAS_STARTUP?.ready();
+})();
