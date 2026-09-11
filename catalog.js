@@ -511,6 +511,17 @@
       <div class="teaser-meta"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span>${sourceItem ? '<span>Officiële bron</span>' : ''}</div>
       <a class="teaser-link" href="#item/${escapeHtml(record.id)}">Bekijk aanbod <span aria-hidden="true">→</span></a></article>`;
   }
+  function emailShareHref(record) {
+    const itemUrl = `https://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${encodeURIComponent(record.id)}`;
+    const subject = `AI & Onderwijs Atlas: ${record.title}`.replace(/[\r\n]+/g, ' ');
+    const body = [
+      'Bekijk dit aanbod in de AI & Onderwijs Atlas Nederland:', '',
+      record.title,
+      ...(record.providerName ? [`Aanbieder: ${record.providerName}`] : []),
+      '', itemUrl
+    ].join('\r\n');
+    return `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
   function simpleCard(record, explain = false, recency = null) {
     const sectors = (record.sectors || []).slice(0, 3);
     const reasons = relevanceReasons(record);
@@ -526,7 +537,7 @@
         ${sectors.length ? `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>` : ''}
         <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span><span>Broncontrole ${escapeHtml(dateLabel(record.lastVerified))}</span></div>
         ${explain && reasons.length ? `<details class="relevance"><summary>Waarom zie ik dit?</summary><p>${reasons.map(reason => `<span>✓ ${escapeHtml(reason)}</span>`).join(' ')}</p></details>` : ''}
-      </div><div class="card-actions"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">Bron ↗</a>` : ''}</div>
+      </div><div class="card-actions"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">Bron ↗</a>` : ''}<a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a></div>
     </article>`;
   }
   function relevanceReasons(record) {
