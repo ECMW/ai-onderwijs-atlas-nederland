@@ -9,7 +9,7 @@ const boot = "  addEventListener('hashchange', route); addEventListener('popstat
 assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly the route startup');
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
-    facet, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard,
+    facet, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup,
     homeFilterPanel, recordsForCriteria,
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
     effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
@@ -51,6 +51,20 @@ test('commercial labels require evidence and are independent of price', () => {
   delete free.commercialEvidence;
   assert.equal(api.commercialLabel(free), '');
   assert.equal(api.commercialBadge(free), '');
+});
+
+test('books page separates Dutch reading, study and practice books with metadata', () => {
+  const books = [
+    {...record('essay'), recordType:'book', legacyType:'Boek', title:'Essayboek', authors:['A. Auteur'], isbn:'9780000000001', bookCategory:'reading', language:['nl'], pageCount:80, publicationYear:2025},
+    {...record('study'), recordType:'book', legacyType:'Boek', title:'Studieboek', authors:['B. Auteur'], isbn:'9780000000002', bookCategory:'study', language:['nl']},
+    {...record('practice'), recordType:'book', legacyType:'Boek', title:'Praktijkboek', authors:['C. Auteur'], isbn:'9780000000003', bookCategory:'practice', language:['nl']},
+    {...record('english'), recordType:'book', legacyType:'Boek', title:'English book', authors:['D. Author'], isbn:'9780000000004', bookCategory:'reading', language:['en']}
+  ];
+  const html = load(books).booksMarkup();
+  for (const heading of ['Leesboeken en essays', 'Studieboeken', 'Praktijk- en handboeken']) assert.ok(html.includes(heading));
+  for (const title of ['Essayboek', 'Studieboek', 'Praktijkboek']) assert.ok(html.includes(title));
+  assert.ok(html.includes('ISBN 9780000000001'));
+  assert.ok(!html.includes('English book'));
 });
 
 test('only confirmed commercial offers receive public labels on cards and details', () => {

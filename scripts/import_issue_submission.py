@@ -21,6 +21,7 @@ TYPE_MAP = {
     "Voorziening": ("service", "Voorziening"),
     "Handreiking": ("guidance", "Handreiking"),
     "Training": ("training", "Training"),
+    "Boek": ("book", "Boek"),
     "Pilot": ("pilot", "Pilot"),
     "Praktijkvoorbeeld": ("practice_example", "Praktijkvoorbeeld"),
     "Community": ("community", "Community"),
@@ -38,6 +39,7 @@ STATUS_MAP = {
 }
 COST_MAP = {"Gratis": "free", "Betaald": "paid", "Gratis en betaald": "freemium", "Onbekend": "unknown"}
 COMMERCIAL_MAP = {"Niet vastgesteld": "unknown", "Commercieel aanbod": "commercial", "Niet-commercieel aanbod": "non_commercial"}
+BOOK_CATEGORY_MAP = {"Leesboek of essay": "reading", "Studieboek of leerwerkboek": "study", "Praktijkboek of handboek": "practice"}
 
 
 def parse_form(body: str) -> dict[str, str]:
@@ -110,6 +112,15 @@ def main() -> int:
     records_path = Path(args.records)
     records = json.loads(records_path.read_text(encoding="utf-8"))
     record_type, legacy_type = TYPE_MAP[fields["Recordtype"]]
+    if record_type == "book" and (not fields.get("Auteurs (alleen voor boeken)") or not fields.get("ISBN (alleen voor boeken)") or fields.get("Boeksoort (alleen voor boeken)") not in BOOK_CATEGORY_MAP):
+        report = {
+            "eligible": False, "autoPublishEligible": False, "addedIds": [],
+            "errors": ["Een boek vereist auteurs, ISBN en een boeksoort."], "warnings": [], "sourceChecks": {},
+            "scope": "Automatische bron- en structuurcontrole; geen inhoudelijke aanbeveling.",
+        }
+        dump_report(report, args.report_json, args.report_markdown)
+        print(report_markdown(report))
+        return 2
     status, availability = STATUS_MAP[fields["Status"]]
     title = fields["Titel"].strip()
     provider = fields["Organisatie"].strip()
@@ -170,6 +181,12 @@ def main() -> int:
         "notes": None,
         "changeHistory": [{"date": today, "type": "added", "summary": f"Ingediend via communitybijdrage #{number}."}],
     }
+    if record_type == "book":
+        record.update({
+            "authors": multi(fields["Auteurs (alleen voor boeken)"]),
+            "isbn": re.sub(r"[^0-9Xx]", "", fields["ISBN (alleen voor boeken)"]),
+            "bookCategory": BOOK_CATEGORY_MAP[fields["Boeksoort (alleen voor boeken)"]],
+        })
     candidate = [*records, record]
     sources = json.loads(Path(args.sources).read_text(encoding="utf-8"))
     report = review_external_submission(records, candidate, sources)
