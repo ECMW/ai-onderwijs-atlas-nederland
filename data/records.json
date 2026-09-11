@@ -24541,6 +24541,411 @@
       }
     ],
     "commercialStatus": "unknown"
+  },
+  {
+    "id": "cpb-scoren-zonder-doel-te-treffen-2026",
+    "title": "Scoren zonder doel te treffen? Een handreiking voor het meten van de effectiviteit van algoritmische processen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Methodologische handreiking",
+    "organizationIds": [],
+    "providerName": "Centraal Planbureau (CPB)",
+    "description": "Handreiking voor het meten van de maatschappelijke effecten van algoritmisch ondersteunde interventie-, inspectie- en adviesprocessen. De publicatie maakt onderscheid tussen voorspelkracht van een algoritme en de effectiviteit van het volledige proces, inclusief menselijke besluitvorming en interventies.",
+    "purpose": "Organisaties helpen effectmeting vanaf de inrichting van algoritmische processen structureel en doelgericht vorm te geven.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderzoekers",
+      "Data scientists",
+      "IT-professionals"
+    ],
+    "sectors": [
+      "Overheid",
+      "Onderzoek",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Governance",
+      "Evaluatie en effectmeting",
+      "Risicomanagement",
+      "Publieke waarden en ethiek",
+      "Menselijke tussenkomst"
+    ],
+    "status": "available",
+    "availabilityText": "De handreiking en een afzonderlijke infographic zijn openbaar als PDF beschikbaar via het CPB.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-09-08",
+    "lastVerified": "2026-09-11",
+    "verificationStatus": "verified",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële CPB-publicatiepagina, de gekoppelde handreiking en de infographic zijn gecontroleerd op titel, aanbieder, publicatiedatum, functie, aanbevelingen en publieke beschikbaarheid.",
+    "sourceUrls": [
+      {
+        "label": "CPB: publicatiepagina",
+        "url": "https://www.cpb.nl/publicatie/scoren-zonder-doel-te-treffen-een-handreiking-voor-het-meten-van-de-effectiviteit-van",
+        "sourceType": "official"
+      },
+      {
+        "label": "CPB: volledige handreiking",
+        "url": "https://www.cpb.nl/system/files/cpbmedia/CPB-publicatie-Scoren-zonder-doel-te-treffen-07092026_0.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "CPB: infographic",
+        "url": "https://www.cpb.nl/system/files/cpbmedia/CPB-algoritmes-infographic.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "cpb-selectiviteitsscan-algoritmes-2025",
+      "algemene-rekenkamer-toetsingskader-algoritmes-2021",
+      "digitale-overheid-algoritmekader"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "commercialEvidence": null,
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "effectmeting",
+      "algoritmische processen",
+      "maatschappelijke effecten",
+      "econometrische evaluatie",
+      "voorspelkracht",
+      "interventie",
+      "inspectie",
+      "adviesproces"
+    ],
+    "notes": "De handreiking is sectoroverstijgend en niet specifiek voor onderwijs. De Atlas neemt haar op als governance- en evaluatie-instrument voor publieke onderwijs- en onderzoeksorganisaties. Effectiviteit moet volgens het CPB naast publieke waarden zoals transparantie, legitimiteit en eerlijkheid worden afgewogen.",
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Toegevoegd na inhoudelijke controle van de officiële CPB-publicatie, PDF en infographic en na duplicaatcontrole."
+      }
+    ],
+    "offerCategory": "knowledge"
+  },
+  {
+    "id": "cpb-selectiviteitsscan-algoritmes-2025",
+    "title": "Selectiviteitsscan: veilige toetsing van algoritmes",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Toetsingsmethode",
+    "organizationIds": [],
+    "providerName": "Centraal Planbureau (CPB)",
+    "description": "Methode waarmee overheidsorganisaties kunnen toetsen of selectie-algoritmes indirect onderscheid maken tussen groepen, zonder zelf toegang te krijgen tot de gebruikte gevoelige persoonsgegevens. De analyse vindt plaats in de beveiligde microdataomgeving van het CBS en levert alleen uitkomsten aan de organisatie terug.",
+    "purpose": "Mogelijke groepsverschillen in algoritmische selectieprocessen veilig zichtbaar maken voor nadere duiding en rechtvaardiging door de eigenaar van het algoritme.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderzoekers",
+      "Data scientists",
+      "Privacyprofessionals"
+    ],
+    "sectors": [
+      "Overheid",
+      "Onderzoek",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Governance",
+      "Discriminatie en kansengelijkheid",
+      "Risicomanagement",
+      "Privacy en AVG",
+      "Toetsing"
+    ],
+    "status": "available",
+    "availabilityText": "De hoofdpublicatie en het verdiepingsdocument zijn openbaar als PDF beschikbaar via het CPB.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-12-16",
+    "lastVerified": "2026-09-11",
+    "verificationStatus": "verified",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële CPB-publicatiepagina en beide gekoppelde documenten zijn gecontroleerd op titel, aanbieder, datum, werkwijze, doelgroep en beschikbaarheid. De op de pagina gemelde wijziging van figuur 4.1 op 21 januari 2026 is als onderhoudssignaal meegewogen.",
+    "sourceUrls": [
+      {
+        "label": "CPB: publicatiepagina",
+        "url": "https://www.cpb.nl/publicatie/selectiviteitsscan-veilige-toetsing-van-algoritmes",
+        "sourceType": "official"
+      },
+      {
+        "label": "CPB: volledige publicatie",
+        "url": "https://www.cpb.nl/system/files/cpbmedia/CPB_publicatie_selectiviteitsscan_veilige_toetsing_van_algoritmes_V2.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "CPB: verdiepingsdocument",
+        "url": "https://www.cpb.nl/system/files/cpbmedia/CPB_publicatie_verdiepingsdocument_selectiviteitsscan_V2.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "cpb-scoren-zonder-doel-te-treffen-2026",
+      "algoritmekader-iama-2026",
+      "algemene-rekenkamer-toetsingskader-algoritmes-2021"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "commercialEvidence": null,
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Gericht op selectie-algoritmes van overheidsorganisaties; de eigenaar blijft verantwoordelijk voor de duiding en rechtvaardiging van gevonden groepsverschillen.",
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "selectiviteitsscan",
+      "selectie-algoritmes",
+      "indirect onderscheid",
+      "groepsverschillen",
+      "CBS-microdata",
+      "gelijke behandeling",
+      "privacy"
+    ],
+    "notes": "De methode is sectoroverstijgend en niet specifiek voor onderwijs. De CPB-bron benadrukt dat de scan verschillen zichtbaar maakt, maar die niet automatisch verklaart of normatief beoordeelt.",
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Toegevoegd na inhoudelijke controle van de officiële CPB-publicatie en de gekoppelde documenten en na duplicaatcontrole."
+      }
+    ],
+    "offerCategory": "materials"
+  },
+  {
+    "id": "algemene-rekenkamer-toetsingskader-algoritmes-2021",
+    "title": "Toetsingskader algoritmes",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Toetsingskader",
+    "organizationIds": [],
+    "providerName": "Algemene Rekenkamer",
+    "description": "Praktisch toetsingskader voor het beoordelen van de kwaliteit en verantwoorde inzet van algoritmes. Het kader onderzoekt mogelijke zwakheden vanuit vijf perspectieven: sturing en verantwoording, model en data, privacy, IT-beheersmaatregelen en ethiek.",
+    "purpose": "Organisaties ondersteunen bij het systematisch toetsen van algoritmes en het vastleggen van kwaliteitseisen, verantwoordelijkheden en monitoring.",
+    "audiences": [
+      "Bestuurders",
+      "Auditors",
+      "Beleidsmakers",
+      "IT-professionals",
+      "Privacyprofessionals"
+    ],
+    "sectors": [
+      "Overheid",
+      "Onderzoek",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Governance",
+      "Toetsing",
+      "Risicomanagement",
+      "Privacy en AVG",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Het rapport en het digitale toetsingskader zijn openbaar beschikbaar via de Algemene Rekenkamer.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2021-01-26",
+    "lastVerified": "2026-09-11",
+    "verificationStatus": "verified",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële rapportpagina, de downloadbare publicatie en de verwijzing naar het digitale toetsingskader zijn gecontroleerd op titel, aanbieder, publicatiedatum, functie, vijf perspectieven en publieke beschikbaarheid.",
+    "sourceUrls": [
+      {
+        "label": "Algemene Rekenkamer: rapportpagina",
+        "url": "https://www.rekenkamer.nl/documenten/2021/01/26/aandacht-voor-algoritmes",
+        "sourceType": "official"
+      },
+      {
+        "label": "Algemene Rekenkamer: digitaal toetsingskader",
+        "url": "https://www.rekenkamer.nl/algoritmes-toetsingskader",
+        "sourceType": "official"
+      },
+      {
+        "label": "Algemene Rekenkamer: rapport Aandacht voor algoritmes",
+        "url": "https://www.rekenkamer.nl/site/binaries/site-content/collections/documents/2021/01/26/aandacht-voor-algoritmes/Aandacht+voor+algoritmes.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "cpb-scoren-zonder-doel-te-treffen-2026",
+      "cpb-selectiviteitsscan-algoritmes-2025",
+      "digitale-overheid-algoritmekader",
+      "algoritmekader-iama-2026"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "commercialEvidence": null,
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "toetsingskader",
+      "algoritmes",
+      "sturing en verantwoording",
+      "model en data",
+      "IT general controls",
+      "ethiek",
+      "menselijke maat"
+    ],
+    "notes": "Het kader is ontwikkeld voor de rijksoverheid en is niet specifiek voor onderwijs. De officiële bron noemt ook een toepassing bij algoritmes voor risicogericht schooltoezicht. De Atlasvermelding is geen actualiteits- of geschiktheidsoordeel ten opzichte van nieuwere kaders.",
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële rapportpagina, het rapport en het digitale toetsingskader en na duplicaatcontrole."
+      }
+    ],
+    "offerCategory": "materials"
+  },
+  {
+    "id": "oecd-pisa-2025-results-volume-i",
+    "title": "PISA 2025 Results (Volume I): Future-Ready Students",
+    "recordType": "policy_document",
+    "legacyType": "Beleidsdocument",
+    "subtype": "Internationaal onderzoeksrapport",
+    "organizationIds": [
+      "oecd-education"
+    ],
+    "providerName": "OECD",
+    "description": "Eerste resultatenrapport van PISA 2025 over prestaties van 15-jarige leerlingen in wetenschap, lezen, wiskunde en computationeel probleemoplossen. Het rapport bevat daarnaast analyses van onderwijs in het tijdperk van AI, waaronder samenhangen tussen verschillende vormen van AI-gebruik, AI-geletterdheid, leerprestaties en sociaaleconomische verschillen.",
+    "purpose": "Beleidsmakers, onderzoekers en onderwijsorganisaties voorzien van internationaal vergelijkbare gegevens over leerprestaties en de context waarin leerlingen leren, waaronder AI-gebruik en AI-geletterdheid.",
+    "audiences": [
+      "Beleidsmakers",
+      "Onderzoekers",
+      "Bestuurders",
+      "Schoolleiders",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Onderzoek en kennisontwikkeling",
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Kansengelijkheid",
+      "Toetsing"
+    ],
+    "status": "available",
+    "availabilityText": "Het Engelstalige rapport van 377 pagina's is online te lezen en als PDF te downloaden via de OECD.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-09-08",
+    "lastVerified": "2026-09-11",
+    "verificationStatus": "verified",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële OECD-publicatiepagina, het volledige online rapport en de officiële PDF zijn gecontroleerd op titel, aanbieder, datum, omvang, DOI, onderzochte domeinen en de expliciete behandeling van AI-gebruik en AI-geletterdheid.",
+    "sourceUrls": [
+      {
+        "label": "OECD: publicatiepagina",
+        "url": "https://www.oecd.org/en/publications/pisa-2025-results-volume-i_73451bc5-en.html",
+        "sourceType": "official"
+      },
+      {
+        "label": "OECD: volledig online rapport",
+        "url": "https://www.oecd.org/en/publications/pisa-2025-results-volume-i_73451bc5-en/full-report.html",
+        "sourceType": "official"
+      },
+      {
+        "label": "OECD: officiële PDF",
+        "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2026/09/pisa-2025-results-volume-i_5265bfb1/73451bc5-en.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "oecd-education",
+      "oecd-digital-education-outlook-2026"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "commercialEvidence": null,
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "PISA 2025",
+      "15-jarige leerlingen",
+      "AI-gebruik",
+      "AI-geletterdheid",
+      "leerprestaties",
+      "computationeel probleemoplossen",
+      "kansengelijkheid",
+      "internationale vergelijking"
+    ],
+    "notes": "De Atlas neemt geen causale conclusies over uit de gerapporteerde samenhangen tussen AI-gebruik en prestaties. Het rapport bestrijkt 91 deelnemende landen en economieën en is gepubliceerd onder DOI 10.1787/73451bc5-en.",
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële OECD-publicatiepagina, het volledige rapport en de PDF en na duplicaatcontrole."
+      }
+    ],
+    "offerCategory": "knowledge"
   }
 ]
-

@@ -2108,5 +2108,66 @@
     "themes": [],
     "sectors": [],
     "sourceType": "official"
+  },
+  {
+    "id": "source-cpb-algoritmes",
+    "name": "Centraal Planbureau: algoritmes en effectmeting",
+    "owner": "Centraal Planbureau (CPB)",
+    "baseUrl": "https://www.cpb.nl/publicatie/scoren-zonder-doel-te-treffen-een-handreiking-voor-het-meten-van-de-effectiviteit-van",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "weekly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "policy_document",
+      "research_project"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële CPB-bron voor concrete publicaties over algoritmische processen, effectmeting en publieke uitkomsten. Alleen afzonderlijke, inhoudelijk gecontroleerde detailpagina's onderbouwen een Atlasrecord. Bron gecontroleerd op 11 september 2026.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-algemene-rekenkamer-algoritmes",
+    "name": "Algemene Rekenkamer: algoritmes",
+    "owner": "Algemene Rekenkamer",
+    "baseUrl": "https://www.rekenkamer.nl/onderwerpen/algoritmes",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "monthly"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page"
+    },
+    "allowedRecordTypes": [
+      "guidance",
+      "policy_document"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Officiële ontdekkingsbron voor rapporten en toetsingsinstrumenten over algoritmes. Opname vereist een concrete officiële detailpagina en expliciete relevantie voor AI-governance in publieke onderwijs- of onderzoeksorganisaties. Bron gecontroleerd op 11 september 2026.",
+    "themes": [],
+    "sectors": [],
+    "sourceType": "official"
   }
 ]
