@@ -26,7 +26,7 @@ from typing import Callable, Iterable
 
 
 RECORD_TYPES = {
-    "organization", "programme", "product", "service", "guidance", "training",
+    "organization", "programme", "product", "service", "guidance", "training", "book",
     "subsidy", "funding_call", "pilot", "practice_example", "community",
     "standard", "legislation", "policy_document", "research_project",
     "identified_need", "white_spot",
@@ -36,7 +36,7 @@ STATUSES = {
     "closed_call", "archived", "needs_verification", "identified_need", "unknown",
 }
 AUTO_TYPES = {
-    "organization", "programme", "product", "service", "guidance", "training",
+    "organization", "programme", "product", "service", "guidance", "training", "book",
     "pilot", "practice_example", "community", "standard",
 }
 SECTORS = {"PO", "VO", "MBO", "HBO", "WO", "Onderzoek", "Overheid"}

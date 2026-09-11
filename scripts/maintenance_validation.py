@@ -1,7 +1,7 @@
 """Proposal enrichment and validation against the canonical Atlas schema."""
 from urllib.parse import urlsplit
 
-RECORD_TYPES = {"organization", "programme", "product", "service", "guidance", "training", "subsidy",
+RECORD_TYPES = {"organization", "programme", "product", "service", "guidance", "training", "book", "subsidy",
                 "funding_call", "pilot", "practice_example", "community", "standard", "legislation",
                 "policy_document", "research_project", "identified_need", "white_spot"}
 STATUSES = {"available", "pilot", "in_development", "planned", "open_call", "closed_call", "archived",

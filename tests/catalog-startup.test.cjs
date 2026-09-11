@@ -188,7 +188,7 @@ test('the real script order starts the catalogue and retains the mobile menu and
   const menu = app.document.querySelector('.menu');
   menu.onclick(); assert.equal(menu.attributes['aria-expanded'], 'true');
   assert.equal(app.document.querySelector('.site-header').classList.contains('open'), true);
-  for (const [hash, title] of [['#dashboard', 'Inzichten en actualiteit'], ['#ecosysteem', 'Het AI-onderwijsecosysteem'], ['#over', 'Over de atlas']]) {
+  for (const [hash, title] of [['#boeken', 'Boeken'], ['#dashboard', 'Inzichten en actualiteit'], ['#ecosysteem', 'Het AI-onderwijsecosysteem'], ['#over', 'Over de atlas']]) {
     app.navigate(hash); assert.match(app.main.innerHTML, new RegExp(title));
     assert.equal(menu.attributes['aria-expanded'], 'false');
     assert.equal(app.context.ATLAS_STARTUP.status, 'ready');

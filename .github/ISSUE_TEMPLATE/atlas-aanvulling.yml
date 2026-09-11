@@ -17,7 +17,7 @@ body:
     id: type
     attributes:
       label: Recordtype
-      options: [Organisatie, Programma, Product, Voorziening, Handreiking, Training, Pilot, Praktijkvoorbeeld, Community, Standaard, Subsidie, Call]
+      options: [Organisatie, Programma, Product, Voorziening, Handreiking, Training, Boek, Pilot, Praktijkvoorbeeld, Community, Standaard, Subsidie, Call]
     validations: {required: true}
   - type: input
     id: org
@@ -25,6 +25,21 @@ body:
       label: Organisatie
       placeholder: Officiële aanbieder of eigenaar
     validations: {required: true}
+  - type: input
+    id: authors
+    attributes:
+      label: Auteurs (alleen voor boeken)
+      description: Vermeld alle auteurs, gescheiden door komma's. Verplicht wanneer u Boek kiest.
+  - type: input
+    id: isbn
+    attributes:
+      label: ISBN (alleen voor boeken)
+      description: Gebruik het ISBN-13 zonder streepjes. Verplicht wanneer u Boek kiest.
+  - type: dropdown
+    id: book_category
+    attributes:
+      label: Boeksoort (alleen voor boeken)
+      options: [Niet van toepassing, Leesboek of essay, Studieboek of leerwerkboek, Praktijkboek of handboek]
   - type: textarea
     id: description
     attributes:

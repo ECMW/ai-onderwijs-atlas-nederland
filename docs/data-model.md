@@ -4,7 +4,7 @@ De canonieke dataset is `data/records.json`. Verplichte velden zijn `id`, `title
 
 Enums:
 
-- recordType: `organization`, `programme`, `product`, `service`, `guidance`, `training`, `subsidy`, `funding_call`, `pilot`, `practice_example`, `community`, `standard`, `legislation`, `policy_document`, `research_project`, `identified_need`, `white_spot`.
+- recordType: `organization`, `programme`, `product`, `service`, `guidance`, `training`, `book`, `subsidy`, `funding_call`, `pilot`, `practice_example`, `community`, `standard`, `legislation`, `policy_document`, `research_project`, `identified_need`, `white_spot`.
 - status: `available`, `pilot`, `in_development`, `planned`, `open_call`, `closed_call`, `archived`, `needs_verification`, `identified_need`, `unknown`.
 - verificationStatus: `verified`, `recently_checked`, `stale`, `changed`, `broken_source`, `needs_review`.
 - accessType: `public`, `registration_required`, `paid`, `restricted`, `unknown`.
@@ -43,6 +43,8 @@ Bij een vastgestelde aard is `commercialEvidence` verplicht:
 De automatische route voor nieuwe bijdragen stelt strengere eisen: de bron moet bij de bekende aanbieder horen, volledig uitgelezen worden en de letterlijke onderbouwende zin moet de commerciële of niet-commerciële aard van het aanbod expliciet benoemen. Een prijs, bedrijfsvorm, algemene licentievoorwaarde of aangevinkte keuze geldt niet als zelfstandig bewijs. Twijfelgevallen blijven ter beoordeling; er wordt geen persoonlijk akkoord van Eva toegekend.
 
 ## Aanbodvorm voor publieksfilters
+
+Boeken gebruiken `recordType: book`, `legacyType: Boek`, een ISBN en minimaal één auteur. Het veld `bookCategory` onderscheidt `reading` (leesboeken en essays), `study` (studieboeken en leerwerkboeken) en `practice` (praktijk- en handboeken). De sectie Boeken beperkt zich tot Nederlandstalige titels die aantoonbaar over AI in een onderwijs- of leercontext gaan.
 
 `offerCategory` is een optionele redactionele indeling van de vorm, naast het
 bestaande `recordType`. Toegestane waarden zijn `software`, `materials` en
