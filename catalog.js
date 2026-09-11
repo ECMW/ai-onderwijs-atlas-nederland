@@ -118,9 +118,17 @@
     { label: 'Beleid en afspraken maken', detail: 'Afspraken, governance en implementatie', query: { theme: 'Beleid en governance' } },
     { label: 'Praktijkvoorbeelden', detail: 'Ervaringen uit instellingen en scholen', query: { type: 'Praktijkvoorbeeld' } },
     { label: 'Workshops en trainers', detail: 'Trainingen, begeleiders en leren met uw team', query: { type: 'Training' } },
-    { label: 'Boeken', detail: 'Lees-, studie- en praktijkboeken in het Nederlands', query: { type: 'Boek' } },
+    { label: 'Boeken en materialen', detail: 'Nederlandstalige boeken, lessen en werkmaterialen', href: '#boeken' },
     { label: 'Organisatie vinden', detail: 'Vind een organisatie per sector of onderwerp', query: { type: 'Organisatie' } }
   ];
+  const BOOKS_MATERIAL_IDS = new Set([
+    'vu-handboek-ai-geletterdheid-studenten',
+    'open-inspiratielessen-over-ai',
+    'mbo-mediawijs-open-ai-leermaterialen',
+    'eerlijk-over-ai-ai-coach-opleiding-open-source',
+    'ai-waaier-voor-toetsen',
+    'han-toolkit-ai-bestendig-toetsen'
+  ]);
 
   let state = {};
   let resultRecords = [];
@@ -431,6 +439,11 @@
     Object.entries(criteria).forEach(([key, value]) => value && params.set(key, value));
     return `#zoeken${params.size ? `?${params}` : ''}`;
   }
+  function taskTile(task, personas = []) {
+    const criteria = { ...task.query, audience: personas.join(',') };
+    const count = task.href === '#boeken' ? booksPageRecords().length : recordsForCriteria(criteria).length;
+    return `<a class="task-tile" href="${escapeHtml(task.href || criteriaHref(criteria))}"><strong>${escapeHtml(task.label)}</strong><span>${escapeHtml(task.detail)}</span><small>${count} resultaten</small></a>`;
+  }
   function trustTone(record) {
     const status = effectiveStatus(record);
     if (['needs_verification', 'unknown'].includes(status) || !['verified', 'recently_checked'].includes(record.verificationStatus)) return 'is-uncertain';
@@ -667,16 +680,16 @@
     const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
     const openCalls = recordsForCriteria({ status: 'Open voor aanvragen' }).sort((a, b) => String(a.applicationDeadline || a.fundingDeadline || '9999').localeCompare(String(b.applicationDeadline || b.fundingDeadline || '9999')));
     const practices = recordsForCriteria({ type: 'Praktijkvoorbeeld' }).sort((a, b) => relevance(b) - relevance(a));
-    const books = records.filter(record => record.recordType === 'book').sort((a, b) => a.title.localeCompare(b.title, 'nl'));
+    const booksAndMaterials = booksPageRecords().sort((a, b) => a.title.localeCompare(b.title, 'nl'));
     main.innerHTML = `<section class="home-market">${homeFilterPanel(personas)}<div class="home-simple">
       <section class="home-search"><span class="eyebrow">De publieke wegwijzer voor AI in het onderwijs</span><h1>Vind wat u nodig hebt voor AI in uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, boeken, les- en werkmaterialen, subsidies, pilots en praktijkvoorbeelden.</p><ul class="trust-summary" aria-label="Kenmerken van de atlas"><li>Alleen bestaand aanbod</li><li>Officiële bron per vermelding</li><li>Zonder cookies</li></ul><p class=visit-proof data-atlas-visit-count hidden></p><div class="home-new-contributions"><a class="btn" href="#nieuw">Nieuwe bijdragen <span aria-hidden="true">→</span></a><span>Bekijk wat er recent aan de Atlas is toegevoegd.</span></div>${searchForm('home-search')}${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}</section>
       ${contributionPrompt()}
-      <section><div class="section-title"><div><h2>Waarmee kunnen we u helpen?</h2><p>Begin bij uw vraag, niet bij een organisatie.</p></div></div><div class="task-grid">${TASKS.map(task => { const criteria = { ...task.query, audience: personas.join(',') }; const count = recordsForCriteria(criteria).length; return `<a class="task-tile" href="${criteriaHref(criteria)}"><strong>${escapeHtml(task.label)}</strong><span>${escapeHtml(task.detail)}</span><small>${count} resultaten</small></a>`; }).join('')}</div></section>
+      <section><div class="section-title"><div><h2>Waarmee kunnen we u helpen?</h2><p>Begin bij uw vraag, niet bij een organisatie.</p></div></div><div class="task-grid">${TASKS.map(task => taskTile(task, personas)).join('')}</div></section>
       <section><div class="section-title"><div><h2>Veel gezocht</h2><p>Vaste snelkoppelingen naar veelvoorkomende onderwijsvragen.</p></div></div>${popularLinks('', personas.join(','))}</section>
       ${homeShelf('Direct beschikbaar', `#zoeken?status=${encodeURIComponent('Direct beschikbaar')}`, directUsable())}
       ${homeShelf('Open subsidies', `#zoeken?status=${encodeURIComponent('Open voor aanvragen')}`, openCalls)}
       ${homeShelf('Praktijkvoorbeelden', `#zoeken?type=${encodeURIComponent('Praktijkvoorbeeld')}`, practices)}
-      ${homeShelf('Boeken', '#boeken', books, 'Boek')}
+      ${homeShelf('Boeken en materialen', '#boeken', booksAndMaterials)}
     </div></section>`;
     bindSearchForm(); bindRolePickers(); bindHomeFilters();
     window.dispatchEvent?.(new Event('atlas:home-rendered'));
@@ -684,6 +697,12 @@
 
   function bookCategoryLabel(value) {
     return ({ study: 'Studieboeken', practice: 'Praktijk- en handboeken', reading: 'Leesboeken en essays' })[value] || 'Overige boeken';
+  }
+  function booksPageRecords() {
+    return records.filter(record => (record.language || []).includes('nl') && (
+      record.recordType === 'book' ||
+      (record.offerCategory === 'materials' && BOOKS_MATERIAL_IDS.has(record.id))
+    ));
   }
   function bookCard(record) {
     const sourceItem = primarySource(record);
@@ -702,24 +721,37 @@
     </div><div class="card-actions"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">Uitgevers- of auteursbron ↗</a>` : ''}</div></article>`;
   }
   function booksMarkup() {
-    const books = records.filter(record => record.recordType === 'book' && (record.language || []).includes('nl'));
+    const selection = booksPageRecords();
+    const books = selection.filter(record => record.recordType === 'book');
+    const materials = selection.filter(record => record.recordType !== 'book').sort((a, b) => a.title.localeCompare(b.title, 'nl'));
     const categories = ['reading', 'study', 'practice'];
-    return `<section class="new-offers books"><header class="page-intro"><span class="eyebrow">Nederlandstalige verdieping</span><h1>Boeken</h1><p>Leesboeken en essays om verder te denken, studieboeken om mee te leren, en praktische handboeken voor toepassing in het onderwijs.</p><p class="listing-notice">${LISTING_NOTICE} Prijzen en leverbaarheid kunnen wijzigen; controleer die altijd bij de officiële bron.</p></header>
-      <div class="book-kinds" aria-label="Boeksoorten">${categories.filter(category => books.some(book => book.bookCategory === category)).map(category => `<span>${escapeHtml(bookCategoryLabel(category))}</span>`).join('')}</div>
+    return `<section class="new-offers books"><header class="page-intro"><span class="eyebrow">Nederlandstalige verdieping en toepassing</span><h1>Boeken en materialen</h1><p>Leesboeken en essays om verder te denken, studieboeken om mee te leren, en praktische handboeken voor toepassing in het onderwijs. Daarnaast vindt u een selectie lessen, handvatten en werkmaterialen om zelf of met uw team te gebruiken.</p><p class="listing-notice">${LISTING_NOTICE} Prijzen, toegang en leverbaarheid kunnen wijzigen; controleer die altijd bij de officiële bron.</p></header>
+      <nav class="book-kinds" aria-label="Ga naar boeken of materialen">${categories.filter(category => books.some(book => book.bookCategory === category)).map(category => `<a href="#boeken?groep=${category}">${escapeHtml(bookCategoryLabel(category))}</a>`).join('')}${materials.length ? '<a href="#boeken?groep=materials">Les- en werkmaterialen</a>' : ''}</nav>
       ${categories.map(category => {
         const items = books.filter(book => book.bookCategory === category).sort((a, b) => a.title.localeCompare(b.title, 'nl'));
-        return items.length ? `<section id="boeken-${category}" class="book-group"><div class="section-title"><div><h2>${escapeHtml(bookCategoryLabel(category))}</h2><p>${items.length} ${items.length === 1 ? 'titel' : 'titels'}</p></div></div><div class="result-list">${items.map(bookCard).join('')}</div></section>` : '';
-      }).join('')}</section>`;
+        return items.length ? `<section id="boeken-${category}" class="book-group"><div class="section-title"><div><h2 tabindex="-1">${escapeHtml(bookCategoryLabel(category))}</h2><p>${items.length} ${items.length === 1 ? 'titel' : 'titels'}</p></div></div><div class="result-list">${items.map(bookCard).join('')}</div></section>` : '';
+      }).join('')}
+      ${materials.length ? `<section id="boeken-materialen" class="book-group"><div class="section-title"><div><h2 tabindex="-1">Les- en werkmaterialen</h2><p>${materials.length} Nederlandstalige materialen voor lessen, AI-geletterdheid en toetsing.</p></div><a href="#zoeken?type=materials">Bekijk alle les- en werkmaterialen →</a></div><div class="result-list">${materials.map(record => simpleCard(record)).join('')}</div></section>` : ''}</section>`;
   }
   function renderBooks() {
     sessionSet('atlas.lastSearch', '#boeken');
     main.innerHTML = booksMarkup();
+    const group = new URLSearchParams(location.hash.split('?')[1] || '').get('groep');
+    if (!['reading', 'study', 'practice', 'materials'].includes(group)) return false;
+    const section = document.querySelector(`#boeken-${group === 'materials' ? 'materialen' : group}`);
+    const heading = section?.querySelector('h2');
+    if (!heading) return false;
+    const headerHeight = document.querySelector('.site-header')?.getBoundingClientRect().height || 0;
+    section.style.scrollMarginTop = `${headerHeight + 16}px`;
+    section.scrollIntoView({ block: 'start', behavior: 'instant' });
+    heading.focus({ preventScroll: true });
+    return true;
   }
   function renderStart() {
     const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
     main.innerHTML = `<section class="catalog start">${searchForm('catalog-search')}<div class="start-content">
       <span class="eyebrow">Zoek in de volledige atlas</span><h1>Waarmee wilt u aan de slag?</h1><p>Typ uw vraag of kies een herkenbare ingang. Resultaten verschijnen pas nadat u een keuze maakt.</p>
-      <div class="task-grid compact">${TASKS.map(task => `<a class="task-tile" href="${criteriaHref(task.query)}"><strong>${escapeHtml(task.label)}</strong><span>${escapeHtml(task.detail)}</span><small>${recordsForCriteria(task.query).length} resultaten</small></a>`).join('')}</div>
+      <div class="task-grid compact">${TASKS.map(task => taskTile(task)).join('')}</div>
       <h2>Veel gezocht</h2>${popularLinks()}
       <details class="role-start"><summary>Afstemmen op uw rol</summary>${rolePicker(roles, savedPersonas())}</details>
     </div></section>`;
@@ -1196,7 +1228,7 @@
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
     if (path === 'home' || (!['nieuw', 'boeken', 'zoeken', 'overlegblad', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
     if (path === 'nieuw') renderNewOffers();
-    if (path === 'boeken') renderBooks();
+    const focusedBookGroup = path === 'boeken' && renderBooks();
     if (path === 'zoeken' || path === 'organisaties') { parseState(); if (path === 'organisaties') state.type = 'Organisatie'; renderSearch(); }
     if (path === 'overlegblad') { parseState(); renderMeetingSheet(); }
     if (path.startsWith('item/')) renderDetail(decodeURIComponent(path.slice(5)));
@@ -1205,7 +1237,7 @@
     document.querySelectorAll('.site-header nav a').forEach(link => link.removeAttribute('aria-current'));
     document.querySelector(`.site-header nav a[href="#${CSS.escape(path)}"]`)?.setAttribute('aria-current', 'page');
     const updated = document.querySelector('[data-updated]'); if (updated) updated.textContent = source.metadata.updated || '';
-    if (!['zoeken', 'organisaties'].includes(path)) {
+    if (!['zoeken', 'organisaties'].includes(path) && !focusedBookGroup) {
       scrollTo({ top: 0, behavior: 'instant' });
       main.focus({ preventScroll: true });
     }

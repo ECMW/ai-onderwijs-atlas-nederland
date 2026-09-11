@@ -63,8 +63,113 @@ test('books page separates Dutch reading, study and practice books with metadata
   const html = load(books).booksMarkup();
   for (const heading of ['Leesboeken en essays', 'Studieboeken', 'Praktijk- en handboeken']) assert.ok(html.includes(heading));
   for (const title of ['Essayboek', 'Studieboek', 'Praktijkboek']) assert.ok(html.includes(title));
-  assert.ok(html.includes('ISBN 9780000000001'));
+  for (const detail of ['A. Auteur', '2025', 'ISBN 9780000000001', '80 pagina&#39;s', '<dt>Uitgever</dt>']) assert.ok(html.includes(detail), detail);
   assert.ok(!html.includes('English book'));
+});
+
+test('books and materials page reuses six public Dutch materials with costs, access and official sources', () => {
+  const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
+  const selectedIds = [
+    'vu-handboek-ai-geletterdheid-studenten', 'open-inspiratielessen-over-ai',
+    'mbo-mediawijs-open-ai-leermaterialen', 'eerlijk-over-ai-ai-coach-opleiding-open-source',
+    'ai-waaier-voor-toetsen', 'han-toolkit-ai-bestendig-toetsen'
+  ];
+  const api = load(data);
+  const html = api.booksMarkup();
+  assert.ok(html.includes('<h1>Boeken en materialen</h1>'));
+  const materials = html.slice(html.indexOf('<section id="boeken-materialen"'));
+  assert.ok(materials.includes('<h2 tabindex="-1">Les- en werkmaterialen</h2>'));
+  const cards = [...materials.matchAll(/<article class="result-card"[\s\S]*?<\/article>/g)].map(match => match[0]);
+  assert.equal(cards.length, selectedIds.length);
+  for (const id of selectedIds) {
+    const item = data.find(item => item.id === id);
+    const card = cards.find(card => card.includes(`data-record-id="${id}"`));
+    assert.ok(card, id);
+    assert.equal(html.split(`data-record-id="${id}"`).length - 1, 1, 'Each selected material appears once');
+    assert.ok(card.includes(`<dt>Kosten</dt><dd>${api.costLabel(item)}</dd>`));
+    assert.ok(card.includes(`<dt>Toegang</dt><dd>${api.accessLabel(item)}</dd>`));
+    const source = item.sourceUrls.find(source => source.sourceType === 'official');
+    assert.ok(card.includes(`href="${source.url.replaceAll('&', '&amp;')}"`), id);
+    assert.ok(card.includes('Bekijk materiaal'));
+  }
+  const allMaterialsLink = materials.match(/href="(#zoeken\?type=materials)"/);
+  assert.ok(allMaterialsLink, 'Visitors can open the complete materials filter');
+  const search = load(data, allMaterialsLink[1]);
+  assert.equal(search.getState().type, 'materials');
+  const resultIds = search.recordsForCriteria(search.getState()).map(item => item.id);
+  for (const id of selectedIds) assert.ok(resultIds.includes(id), id);
+  for (const item of data.filter(item => item.recordType === 'book')) {
+    assert.ok(!materials.includes(`data-record-id="${item.id}"`), 'Books keep their separate groups');
+  }
+});
+
+test('materials selection excludes other records and respects language, category and publication changes', () => {
+  const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
+  const material = data.find(item => item.id === 'vu-handboek-ai-geletterdheid-studenten');
+  const other = {...material, id:'other-material', title:'Overig Nederlandstalig materiaal'};
+  assert.ok(!load([...data, other]).booksMarkup().includes('data-record-id="other-material"'));
+  for (const change of [
+    {language:['en']}, {offerCategory:'software'}, {offerCategory:'knowledge'},
+    {publicationExclusion:{reason:'Review required'}}, {verificationStatus:'unverified'}, {sourceUrls:[]}
+  ]) {
+    const changed = data.map(item => item.id === material.id ? {...item, ...change} : item);
+    assert.ok(!load(changed).booksMarkup().includes(`data-record-id="${material.id}"`), JSON.stringify(change));
+  }
+});
+
+test('books and materials navigation opens the collection and its tile count matches the page', () => {
+  const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
+  const count = (load(data).booksMarkup().match(/data-record-id=/g) || []).length;
+  const index = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+  assert.ok(index.includes('<a href="#boeken">Boeken en materialen</a>'));
+  for (const hash of ['#home', '#zoeken']) {
+    const main = {focus(){}};
+    const input = {};
+    const suggestions = {};
+    const form = {querySelector:selector=>selector==='input'?input:suggestions};
+    const doc = {
+      querySelector:selector=>selector==='main'?main:selector==='.atlas-search'?form:null,
+      querySelectorAll:()=>[]
+    };
+    const api = load(data, hash, {document:doc, CSS:{escape:value=>value}, scrollTo:()=>{}, clearTimeout:()=>{}});
+    api.route();
+    const tile = main.innerHTML.match(/<a class="task-tile" href="#boeken">[\s\S]*?<\/a>/);
+    assert.ok(tile, hash);
+    assert.ok(tile[0].includes('<strong>Boeken en materialen</strong>'));
+    assert.ok(tile[0].includes(`<small>${count} resultaten</small>`));
+  }
+});
+
+test('book group links scroll below the sticky header and move focus while invalid or missing groups open the page top', () => {
+  const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
+  const html = load(data).booksMarkup();
+  const groups = ['reading', 'study', 'practice', 'materials'];
+  for (const group of groups) assert.ok(html.includes(`href="#boeken?groep=${group}"`));
+  assert.equal((html.match(/<h2 tabindex="-1">/g) || []).length, 4);
+  for (const [group, missing] of [...groups.map(group => [group, false]), ['', false], ['unknown', false], ['__proto__', false], ['materials', true]]) {
+    const events = [];
+    const main = {focus:()=>events.push('main-focus')};
+    const heading = {focus:options=>{assert.equal(options.preventScroll, true); events.push('group-focus');}};
+    const section = {style:{}, querySelector:selector=>selector==='h2'?heading:null,
+      scrollIntoView:options=>{assert.equal(options.block, 'start'); events.push('group-scroll');}};
+    const header = {classList:{remove(){}}, getBoundingClientRect:()=>({height:96})};
+    const selector = `#boeken-${group === 'materials' ? 'materialen' : group}`;
+    const doc = {
+      querySelector:requested=>requested==='main'?main:requested==='.site-header'?header:
+        !missing && groups.includes(group) && requested===selector?section:null,
+      querySelectorAll:()=>[]
+    };
+    const hash = `#boeken${group ? `?groep=${group}` : ''}`;
+    const api = load(missing ? [] : data, hash, {document:doc, CSS:{escape:value=>value}, scrollTo:()=>events.push('top-scroll'), clearTimeout:()=>{}});
+    api.route();
+    assert.ok(main.innerHTML.includes('<h1>Boeken en materialen</h1>'));
+    if (groups.includes(group) && !missing) {
+      assert.deepEqual(events, ['group-scroll', 'group-focus'], hash);
+      assert.equal(section.style.scrollMarginTop, '112px', 'The destination clears the sticky navigation');
+    } else {
+      assert.deepEqual(events, ['top-scroll', 'main-focus'], hash);
+    }
+  }
 });
 
 test('only confirmed commercial offers receive public labels on cards and details', () => {

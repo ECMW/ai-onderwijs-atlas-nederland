@@ -99,8 +99,8 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 .new-offers-explanation{max-width:75ch;line-height:1.6}
 .new-offers .sort-summary{margin:1rem 0 1.5rem}
 .new-offers-pagination{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1rem;margin-top:2rem}
-.book-kinds{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 2rem}.book-kinds span{border:1px solid #aebfc7;border-radius:99px;padding:.45rem .75rem;background:#fff;color:var(--ink);font-size:.85rem}.book-group{margin-top:2.5rem;scroll-margin-top:1rem}.book-group .section-title{margin-bottom:.85rem}.book-card .provider{line-height:1.5}
-@media(max-width:600px){.new-offers-modes .btn{flex:1 1 100%;text-align:center}}
+.book-kinds{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 2rem}.book-kinds a{display:inline-flex;align-items:center;min-height:44px;border:1px solid #aebfc7;border-radius:99px;padding:.45rem .75rem;background:#fff;color:var(--ink);font-size:.85rem;text-decoration:none}.book-kinds a:hover{text-decoration:underline}.book-kinds a:focus-visible{outline:3px solid var(--green);outline-offset:3px}.book-group{margin-top:2.5rem;scroll-margin-top:1rem}.book-group .section-title{margin-bottom:.85rem}.book-card .provider{line-height:1.5}
+@media(max-width:600px){.new-offers-modes .btn{flex:1 1 100%;text-align:center}.books .section-title{flex-direction:column;align-items:flex-start;gap:.75rem}}
 .commercial-label{display:inline-block;align-self:flex-start;margin:.35rem 0;padding:.3rem .55rem;border:1px solid #ccd4d7;border-radius:4px;color:#465861;background:#f4f6f7;font-size:.75rem;line-height:1.4}
 .commercial-label.is-commercial{color:#654800;background:#fff4d8;border-color:#bea566;font-weight:750}
 .card-facts{display:grid;grid-template-columns:2fr 1fr 1.4fr;gap:.75rem;margin:.8rem 0 0;font-size:.8rem}.card-facts dt{font-weight:750;color:var(--muted)}.card-facts dd{margin:.2rem 0 0;overflow-wrap:anywhere}

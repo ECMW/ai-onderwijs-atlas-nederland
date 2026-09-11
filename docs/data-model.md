@@ -46,6 +46,11 @@ De automatische route voor nieuwe bijdragen stelt strengere eisen: de bron moet 
 
 Boeken gebruiken `recordType: book`, `legacyType: Boek`, een ISBN en minimaal één auteur. Het veld `bookCategory` onderscheidt `reading` (leesboeken en essays), `study` (studieboeken en leerwerkboeken) en `practice` (praktijk- en handboeken). De sectie Boeken beperkt zich tot Nederlandstalige titels die aantoonbaar over AI in een onderwijs- of leercontext gaan.
 
+De pagina **Boeken en materialen** ontsluit daarnaast een selectie bestaande
+Nederlandstalige records met `offerCategory: materials`, met een verwijzing
+naar alle les- en werkmaterialen. Deze selectie gebruikt dezelfde canonieke
+records en maakt van een lespakket of toolkit geen boek met ISBN.
+
 `offerCategory` is een optionele redactionele indeling van de vorm, naast het
 bestaande `recordType`. Toegestane waarden zijn `software`, `materials` en
 `knowledge`. De website toont **Les- en werkmaterialen** en **Handreikingen,
