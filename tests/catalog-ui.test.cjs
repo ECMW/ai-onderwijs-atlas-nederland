@@ -467,6 +467,36 @@ test('results consistently show availability and retain source links and pilot s
   assert.ok(api.simpleCard({ ...item, status: 'pilot' }).includes('>Pilot<'));
 });
 
+test('each flat and grouped result opens an email draft with its own public item link', () => {
+  const item = { ...record('email-cafe', null, 'AI & onderwijs: "café" + 100%? #leren'),
+    providerName: 'Onderzoek & Opleiding' };
+  const other = record('second-result', null);
+  for (const hash of ['#zoeken?sector=HBO', '#zoeken?theme=Privacy%20en%20AVG']) {
+    const api = load([item, other], hash, {
+      location: { hash, href: `http://localhost:8000/?atlas-no-count=1${hash}` }
+    });
+    const html = api.resultsMarkup();
+    const cards = [...html.matchAll(/<article class="result-card"[\s\S]*?<\/article>/g)];
+    assert.equal(cards.length, 2);
+    for (const [card] of cards) {
+      const anchors = [...card.matchAll(/<a[^>]+href="(mailto:[^"]+)"[^>]*>Delen via e-mail<\/a>/g)];
+      assert.equal(anchors.length, 1);
+      const email = new URL(anchors[0][1].replaceAll('&amp;', '&'));
+      assert.equal(email.pathname, '', 'The visitor chooses the recipient');
+      assert.deepEqual([...email.searchParams.keys()], ['subject', 'body']);
+      const expected = card.includes('data-record-id="email-cafe"') ? item : other;
+      assert.equal(email.searchParams.get('subject'), `AI & Onderwijs Atlas: ${expected.title}`);
+      const body = email.searchParams.get('body');
+      assert.ok(body.includes(expected.title));
+      assert.ok(body.includes(`Aanbieder: ${expected.providerName}`));
+      assert.ok(body.endsWith(`https://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${expected.id}`));
+      assert.ok(!/localhost|atlas-no-count|sector=|theme=/.test(body));
+      assert.ok(card.includes('aria-label="Delen via e-mail:'));
+    }
+    assert.ok(html.includes('aria-label="Delen via e-mail: AI &amp; onderwijs: &quot;café&quot;'));
+  }
+});
+
 test('no saving controls remain on cards or results; contributions are visible', () => {
   const item = record('example', '2026-09-03');
   const api = load([item], '#zoeken?sort=published');

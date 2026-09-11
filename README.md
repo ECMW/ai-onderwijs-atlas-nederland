@@ -12,6 +12,7 @@ De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijze
 - filters binnen een groep werken als OR, verschillende groepen als AND;
 - meerdere rollen, zoals Docent en Onderzoeker, kunnen gecombineerd worden;
 - zoek- en filterstaat staat in de URL en is deelbaar;
+- elk zoekresultaat heeft een knop **Delen via e-mail**, die een e-mailconcept opent met de titel, aanbieder en directe Atlas-link;
 - persoonlijke rolvoorkeuren blijven lokaal in de browser;
 - er zijn geen cookies, externe autocomplete of eigen backend nodig;
 - GoatCounter telt bezoeken per dag zonder zoektermen of filters te ontvangen;
