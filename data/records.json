@@ -25708,5 +25708,85 @@
     "notes": "Bibliografische gegevens volgen de uitgever. De bron noemt studenten, maar specificeert geen afzonderlijke Nederlandse onderwijssector.",
     "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Nederlandstalig studieboek toegevoegd na controle van de officiële uitgeverspagina."}],
     "commercialStatus": "unknown"
+  },
+{
+    "id": "publinova",
+    "title": "Publinova",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": "Onderzoeksplatform",
+    "organizationIds": [
+      "org-surf"
+    ],
+    "providerName": "Publinova",
+    "description": "Landelijk platform waarop producten, projecten, personen en organisaties uit het praktijkgericht onderzoek van Nederlandse hogescholen vindbaar zijn.",
+    "purpose": "Praktijkgericht hbo-onderzoek, waaronder onderzoek over AI en onderwijs, vinden en delen.",
+    "audiences": [
+      "Onderzoekers",
+      "Professionals"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Onderzoek en kennisontwikkeling"
+    ],
+    "status": "available",
+    "availabilityText": "Publiek toegankelijk via de website; zoeken kan in onderzoeksproducten, projecten, personen en organisaties.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële website",
+        "url": "https://publinova.nl/",
+        "sourceType": "official"
+      },
+      {
+        "label": "SURF-dienstpagina",
+        "url": "https://www.surf.nl/diensten/publiceren/publinova",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "praktijkgericht onderzoek",
+      "open access",
+      "hogescholen",
+      "onderzoeksprojecten",
+      "onderzoeksproducten"
+    ],
+    "notes": "Publinova is niet specifiek op AI gericht. Het platform is opgenomen als landelijke vindplaats voor praktijkgericht hbo-onderzoek, waaronder onderzoek over AI en onderwijs. Publinova is een samenwerking tussen de Nederlandse hogescholen, Vereniging Hogescholen, Regieorgaan SIA en SURF.",
+    "changeHistory": [
+      {
+        "date": "2026-09-12",
+        "type": "added",
+        "summary": "Landelijk platform voor open praktijkgericht hbo-onderzoek toegevoegd na controle van de officiële Publinova- en SURF-pagina's."
+      }
+    ],
+    "offerCategory": "knowledge",
+    "commercialStatus": "unknown"
   }
 ]
