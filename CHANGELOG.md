@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-09-14 — Internetbrede bronnenscan en opschoning
+
+- 12 nieuwe, officieel gecontroleerde records toegevoegd: 7 handreikingen en materialen, 3 beleids- en onderzoekspublicaties, 1 onderzoeksproject en 1 internationaal kader.
+- Nieuwe dekking voor AI-geletterdheid in PO/VO, werk en autonomie in het VO, toetsing en kwaliteitszorg in het hoger onderwijs, kinderrechten, lerarenopleiding, open docentmateriaal en Europees onderzoek.
+- 6 officiële bronkanalen toegevoegd met de laagst ondersteunde controlefrequentie (maandelijks) om actualiteit te verbeteren zonder onnodige beheerlast.
+- 3 aantoonbare duplicaten van AI-GO en de UNESCO-competentiekaders gemotiveerd uit de publieke projectie gehaald; de canonieke records zijn verrijkt en behouden.
+- Beperkte toegang, internationale context, conceptuele onderzoeksstatus en nog niet opgeleverde projectresultaten expliciet in de records afgebakend.
+- Zoekstrategie, selectie, afwijzingen, resterende hiaten en alle officiële bronlinks vastgelegd in `reports/internet-scan-2026-09-14.md`.
+
 ## 2026-07-21 — Inhoudstranche 4: financiering en direct bruikbaar aanbod
 
 - 52 nieuwe records toegevoegd vanuit officiële Nederlandse, Europese en internationale bronnen.
