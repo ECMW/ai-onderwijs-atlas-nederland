@@ -1,3 +1,32 @@
 {
-  "decisions": []
+  "decisions": [
+    {
+      "proposalId": "proposal-0feb0416290d797b",
+      "evidenceHash": "fb009de5da5f4d811634037d26769f772a532d62063563fc0563a29c814da9b2",
+      "decision": "accepted",
+      "decidedAt": "2026-09-14T14:09:00Z",
+      "reason": "Doelrecord bijgewerkt op basis van de actuele primaire Regieorgaan SIA-call; het workflowfragment zelf bevatte geen betrouwbare bedragen."
+    },
+    {
+      "proposalId": "proposal-d77a104caf66945b",
+      "evidenceHash": "bfb087af9c13012dab0d8eb8fee5d72fffef1a782fdea746c35eb80ef2693bf4",
+      "decision": "rejected",
+      "decidedAt": "2026-09-14T14:09:00Z",
+      "reason": "Archiefsignaal is een false positive: de Kennisnet-verwijzing en de twee primaire toolkitbronnen zijn bereikbaar."
+    },
+    {
+      "proposalId": "proposal-345853eb3fa0402d",
+      "evidenceHash": "22f1270d6a04df7d758ddd48ceac0ca9cc7565cf51faf921b89e0d21623f7c0a",
+      "decision": "rejected",
+      "decidedAt": "2026-09-14T14:09:00Z",
+      "reason": "Archiefsignaal is een false positive: de officiële Kennisnet-detailpagina is bereikbaar en inhoudelijk ongewijzigd beschikbaar."
+    },
+    {
+      "proposalId": "proposal-3b83d964d390c261",
+      "evidenceHash": "0a08a4e41b5f63d71740794d0df6f9f870d82fa3ae604e5c18b0e90eaf81355a",
+      "decision": "rejected",
+      "decidedAt": "2026-09-14T14:09:00Z",
+      "reason": "De actuele artikelen tonen activiteit binnen de bestaande SURF-community, maar geen wijziging van het geregistreerde community-aanbod."
+    }
+  ]
 }
