@@ -14,6 +14,8 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--base", required=True, help="JSON-bestand v\u00f3\u00f3r de bijdrage")
     parser.add_argument("--candidate", required=True, help="JSON-bestand uit de pull request")
+    parser.add_argument("--base-decisions", help="Bestaand append-only voorstelbesluitlog")
+    parser.add_argument("--candidate-decisions", help="Voorstelbesluitlog uit de pull request")
     parser.add_argument("--changed-files", help="Tekstbestand met \u00e9\u00e9n gewijzigd pad per regel")
     parser.add_argument(
         "--trusted-automation",
@@ -26,10 +28,19 @@ def main() -> int:
 
     base = json.loads(Path(args.base).read_text(encoding="utf-8"))
     candidate = json.loads(Path(args.candidate).read_text(encoding="utf-8"))
+    base_decisions = json.loads(Path(args.base_decisions).read_text(encoding="utf-8")) if args.base_decisions else None
+    candidate_decisions = json.loads(Path(args.candidate_decisions).read_text(encoding="utf-8")) if args.candidate_decisions else None
     changed = None
     if args.changed_files:
         changed = [line.strip().replace("\\", "/") for line in Path(args.changed_files).read_text(encoding="utf-8").splitlines() if line.strip()]
-    report = review_records(base, candidate, changed, trusted_automation=args.trusted_automation)
+    report = review_records(
+        base,
+        candidate,
+        changed,
+        trusted_automation=args.trusted_automation,
+        base_decisions=base_decisions,
+        candidate_decisions=candidate_decisions,
+    )
     dump_report(report, args.report_json, args.report_markdown)
     print(report_markdown(report))
     return 0 if report["eligible"] else 2

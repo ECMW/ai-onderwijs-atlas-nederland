@@ -32,12 +32,13 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Read only the proposed data file
+      - name: Read only the proposed data files
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           git fetch --no-tags --depth=1 origin "+refs/pull/${PR_NUMBER}/head:refs/remotes/origin/atlas-pr-${PR_NUMBER}"
           git show "refs/remotes/origin/atlas-pr-${PR_NUMBER}:data/records.json" > "$RUNNER_TEMP/candidate-records.json"
+          git show "refs/remotes/origin/atlas-pr-${PR_NUMBER}:data/proposal-decisions.json" > "$RUNNER_TEMP/candidate-proposal-decisions.json"
           git diff --name-only HEAD "refs/remotes/origin/atlas-pr-${PR_NUMBER}" > "$RUNNER_TEMP/changed-files.txt"
 
       - name: Screen structure, duplicates, status and official sources
@@ -54,6 +55,8 @@ jobs:
           python scripts/review_contribution.py \
             --base data/records.json \
             --candidate "$RUNNER_TEMP/candidate-records.json" \
+            --base-decisions data/proposal-decisions.json \
+            --candidate-decisions "$RUNNER_TEMP/candidate-proposal-decisions.json" \
             --changed-files "$RUNNER_TEMP/changed-files.txt" \
             --report-json "$RUNNER_TEMP/atlas-review.json" \
             --report-markdown "$RUNNER_TEMP/atlas-review.md" \
