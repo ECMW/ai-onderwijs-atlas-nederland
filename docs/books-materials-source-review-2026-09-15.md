@@ -1,7 +1,7 @@
 # Broncontrole Boeken en materialen — 15 september 2026
 
 Zes nieuwe materiaalrecords vullen de bestaande selectie aan. De sectie bevat
-daarmee elf boeken en twaalf les- en werkmaterialen. Alle 350 bestaande
+daarmee elf boeken en twaalf les- en werkmaterialen. Alle 353 bestaande
 canonieke records blijven inhoudelijk behouden. Een vermelding beschrijft
 beschikbaar aanbod en is geen beoordeling van de onderwijskundige effectiviteit.
 
