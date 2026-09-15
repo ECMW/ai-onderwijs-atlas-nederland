@@ -20,7 +20,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass, asdict
-from datetime import date
+from datetime import date, datetime
 from html.parser import HTMLParser
 from typing import Callable, Iterable
 
@@ -54,11 +54,14 @@ GENERIC_TOKENS = {
 }
 PRIVATE_HOSTS = {"localhost", "localhost.localdomain"}
 ALLOWED_CHANGED_FILE = "data/records.json"
+PROPOSAL_DECISION_FILE = "data/proposal-decisions.json"
 TRUSTED_ALLOWED_CHANGED_FILES = {
     "data/records.json",
     "data/metadata.json",
     "data/data-v2.js",
     "data/search-index.json",
+    "index.html",
+    PROPOSAL_DECISION_FILE,
 }
 USER_AGENT = (
     "AI-Onderwijs-Atlas-contribution-check/1.0 "
@@ -344,12 +347,58 @@ def _record_errors(record: dict, all_ids: set[str], trusted_automation: bool = F
     return errors
 
 
+def _proposal_decision_errors(base: object, candidate: object) -> list[str]:
+    """Validate the append-only decision log used by daily maintenance."""
+    errors: list[str] = []
+    if not isinstance(base, dict) or set(base) != {"decisions"} or not isinstance(base.get("decisions"), list):
+        return ["Het bestaande voorstelbesluitlog heeft een ongeldige structuur."]
+    if not isinstance(candidate, dict) or set(candidate) != {"decisions"} or not isinstance(candidate.get("decisions"), list):
+        return ["Het voorgestelde voorstelbesluitlog heeft een ongeldige structuur."]
+
+    base_items = base["decisions"]
+    candidate_items = candidate["decisions"]
+    if candidate_items[:len(base_items)] != base_items:
+        errors.append("Bestaande voorstelbesluiten moeten ongewijzigd en in dezelfde volgorde behouden blijven.")
+
+    required = {"proposalId", "evidenceHash", "decision", "decidedAt", "reason"}
+    seen: set[tuple[str, str]] = set()
+    for index, item in enumerate(candidate_items):
+        prefix = f"Voorstelbesluit {index + 1}: "
+        if not isinstance(item, dict) or set(item) != required:
+            errors.append(prefix + "gebruik uitsluitend de vijf verplichte velden.")
+            continue
+        proposal_id = item["proposalId"]
+        evidence_hash = item["evidenceHash"]
+        if not isinstance(proposal_id, str) or not re.fullmatch(r"proposal-[0-9a-f]{16}", proposal_id):
+            errors.append(prefix + "proposalId heeft niet het verwachte formaat.")
+        if not isinstance(evidence_hash, str) or not re.fullmatch(r"[0-9a-f]{64}", evidence_hash):
+            errors.append(prefix + "evidenceHash moet een SHA-256-hash zijn.")
+        identity = (str(proposal_id), str(evidence_hash))
+        if identity in seen:
+            errors.append(prefix + "de combinatie proposalId en evidenceHash is dubbel.")
+        seen.add(identity)
+        if item["decision"] not in {"accepted", "rejected"}:
+            errors.append(prefix + "decision moet accepted of rejected zijn.")
+        try:
+            decided_at = datetime.fromisoformat(str(item["decidedAt"]).replace("Z", "+00:00"))
+            if decided_at.tzinfo is None:
+                raise ValueError
+        except ValueError:
+            errors.append(prefix + "decidedAt moet een ISO 8601-tijdstip met tijdzone zijn.")
+        reason = item["reason"]
+        if not isinstance(reason, str) or not 20 <= len(reason.strip()) <= 1000:
+            errors.append(prefix + "reason moet een concrete toelichting van 20 tot 1000 tekens zijn.")
+    return errors
+
+
 def review_records(
     base_records: list[dict],
     candidate_records: list[dict],
     changed_files: list[str] | None = None,
     source_loader: Callable[[str], SourceCheck] = check_source,
     trusted_automation: bool = False,
+    base_decisions: dict | None = None,
+    candidate_decisions: dict | None = None,
 ) -> dict:
     errors: list[str] = []
     warnings: list[str] = []
@@ -357,7 +406,12 @@ def review_records(
         changed_set = set(changed_files)
         if trusted_automation:
             if "data/records.json" not in changed_set or not changed_set.issubset(TRUSTED_ALLOWED_CHANGED_FILES):
-                errors.append("De vertrouwde actualisator mag uitsluitend de canonieke data en afgeleide databestanden wijzigen.")
+                errors.append("De vertrouwde actualisator mag uitsluitend canonieke data, afgeleide databestanden, de versie-entrypoint en het voorstelbesluitlog wijzigen.")
+            if PROPOSAL_DECISION_FILE in changed_set:
+                if base_decisions is None or candidate_decisions is None:
+                    errors.append("Een gewijzigd voorstelbesluitlog moet afzonderlijk worden gevalideerd.")
+                else:
+                    errors.extend(_proposal_decision_errors(base_decisions, candidate_decisions))
         elif changed_set != {ALLOWED_CHANGED_FILE}:
             errors.append("Automatische verwerking staat alleen een toevoeging in data/records.json toe.")
 
