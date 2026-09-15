@@ -26532,5 +26532,442 @@
     "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Recente UNESCO-publicatie over ethiek en academische integriteit toegevoegd na controle van de officiële bron en doublures."}],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
+  },
+  {
+    "id": "ai-voor-docenten-gesprekskaarten-ai-onderwijs",
+    "title": "Gesprekskaarten AI in het onderwijs",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Printbare gesprekskaarten",
+    "providerName": "AI voor Docenten",
+    "description": "Printbare gesprekskaarten met stellingen en verdiepingsvragen over onderwijsvisie, ethiek, toepassingen, toetsing, teamontwikkeling en communicatie rond AI.",
+    "purpose": "Onderwijsteams ondersteunen bij het bespreken van AI en het vastleggen van prioriteiten en afspraken.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Beleid en governance",
+      "Publieke waarden en ethiek",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "PDF gratis te downloaden en te delen. De aanbieder beschrijft een teamsessie van ongeveer 90 minuten.",
+    "eligibility": "Gratis downloaden en delen is toegestaan volgens de aanbieder. Een specifieke open licentie is niet vastgesteld.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-15",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële beschrijving en printversie",
+        "url": "https://aivoordocenten.nl/gesprekskaarten/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download gesprekskaarten (PDF)",
+        "url": "https://aivoordocenten.nl/downloads/gesprekskaarten/gesprekskaarten-ai-voor-docenten.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "gesprekskaarten",
+      "teamgesprek",
+      "printbaar",
+      "AI-geletterdheid",
+      "afspraken"
+    ],
+    "notes": "Deze vermelding betreft het downloadbare gespreksmateriaal. De aanbieder staat gratis downloaden en delen toe; er is geen specifieke open licentieversie vastgesteld.",
+    "changeHistory": [
+      {
+        "date": "2026-09-15",
+        "type": "added",
+        "summary": "Materiaal toegevoegd na controle van de officiële aanbodpagina en inhoud van de printbare kaartenset."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "ai-voor-docenten-kies-handleidingen-kaarten",
+    "title": "KIES-docentenhandleidingen en gesprekskaarten",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Docentenhandleidingen en kaartenset",
+    "providerName": "AI voor Docenten",
+    "description": "Docentenhandleidingen voor VO, MBO en HBO en gesprekskaarten over kiezen, instrueren, evalueren en spelregels bij AI-gebruik, met opdrachten, voorbeelden en vragen voor de klas.",
+    "purpose": "Docenten ondersteunen bij het begeleiden van bewuste AI-keuzes en het bespreken van AI-gebruik met leerlingen en studenten.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO",
+      "MBO",
+      "HBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Handleidingen gratis als PDF en aanpasbaar Word-bestand; de kaartenset is als PDF beschikbaar. Begeleiding op locatie is een afzonderlijke betaalde dienst.",
+    "eligibility": "De handleidingen begeleiden lessen met de KIES-leeromgeving; doorloop die vooraf als docent. De aanbieder staat aanpassen van de Word-handleiding en kaartenset toe. Begeleiding op locatie is afzonderlijk betaald. Een specifieke open licentie is niet vastgesteld.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-15",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële beschrijving en downloads per onderwijsniveau",
+        "url": "https://aivoordocenten.nl/kies/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Docentenhandleiding MBO (PDF)",
+        "url": "https://aivoordocenten.nl/downloads/kies/docentenhandleiding-kies-mbo.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Gesprekskaarten KIES (PDF)",
+        "url": "https://aivoordocenten.nl/downloads/kies/gesprekskaarten-kies.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "KIES",
+      "docentenhandleiding",
+      "gesprekskaarten",
+      "AI-vaardigheid",
+      "instrueren",
+      "evalueren"
+    ],
+    "notes": "Deze vermelding beschrijft de les- en gespreksmaterialen. De aanbieder staat aanpassen van het Word-bestand en de kaartenset toe; een specifieke open licentieversie is niet vastgesteld.",
+    "changeHistory": [
+      {
+        "date": "2026-09-15",
+        "type": "added",
+        "summary": "Lesmateriaal toegevoegd na controle van de officiële downloadpagina, MBO-handleiding en gesprekskaartenset."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "techyourfuture-les-basiskennis-ai",
+    "title": "Les Basiskennis AI",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Lesplan en presentaties",
+    "providerName": "TechYourFuture",
+    "description": "Gratis lesmateriaal; de uitvoering vraagt volgens de bron betaalde AI-software. Lesplan en presentaties voor groep 5/6 en 7/8, met een AI-quiz en het gezamenlijk ontwerpen van een groepsmascotte.",
+    "purpose": "Leerlingen laten kennismaken met de werking en toepassingen van AI via een quiz en een creatieve opdracht.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "PO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Lesplan en presentaties gratis downloadbaar. De aanbieder vermeldt kosten voor een benodigd ChatGPT-abonnement.",
+    "eligibility": "De les uit 2024 noemt een abonnement op ChatGPT 4.0 en andere generatieve AI-toepassingen. Actuele externe toolvoorwaarden en uitvoeringskosten zijn niet vastgesteld. De aanbieder staat rechtenvrij hergebruik van de materialen toe; een specifieke licentieversie is niet vermeld.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-15",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële lespagina en gebruiksvoorwaarden",
+        "url": "https://www.techyourfuture.nl/producten/les-basiskennis-ai/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Lesplan (PDF)",
+        "url": "https://www.techyourfuture.nl/wp-content/uploads/2024/03/Lesplan.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "basisonderwijs",
+      "groep 5",
+      "groep 6",
+      "groep 7",
+      "groep 8",
+      "lesplan",
+      "AI-quiz",
+      "groepsmascotte"
+    ],
+    "notes": "Ontworpen door Casper de Jong. De aanbieder noemt publicatiejaar 2024 en rechtenvrij hergebruik; een precieze publicatiedatum en specifieke licentieversie zijn niet vastgelegd. Gratis betreft de materialen, niet alle middelen voor uitvoering.",
+    "changeHistory": [
+      {
+        "date": "2026-09-15",
+        "type": "added",
+        "summary": "Lesmateriaal toegevoegd na controle van officiële beschrijving, lesplan, downloads en genoemde uitvoeringskosten."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "mediawijs-edubox-artificiele-intelligentie",
+    "title": "EDUbox Artificiële Intelligentie",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Lespakket met opdrachten en kaartjes",
+    "providerName": "VRT en Mediawijs",
+    "description": "Educatief pakket met informatiefiches, video's en opdrachten over de werking en maatschappelijke betekenis van AI. Het bevat oefeningen met generatieve AI en printbare kaartjes.",
+    "purpose": "Leerlingen laten onderzoeken hoe AI werkt en hoe zij met de mogelijkheden en maatschappelijke gevolgen ervan omgaan.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Vrij downloadbaar lespakket, online individueel of als groepswerk te gebruiken. De aanbieder noemt twee tot drie lesuren.",
+    "eligibility": "Voor leerlingen in het secundair onderwijs van 13 tot 18 jaar. Een computer met internetverbinding is nodig; bij groepswerk één pakket per drie tot vijf leerlingen. Mediawijs vermeldt de licentie Naamsvermelding-NietCommercieel-GelijkDelen, zonder versienummer.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-15",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële lespagina, downloads en licentie",
+        "url": "https://www.mediawijs.be/nl/tools/edubox-artificiele-intelligentie",
+        "sourceType": "official"
+      },
+      {
+        "label": "EDUbox lespakket (PDF)",
+        "url": "https://assets.mediawijs.be/2025-02/artificiele-intelligentie-generatieve.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Printbare zombiekaartjes (PDF)",
+        "url": "https://assets.mediawijs.be/2025-02/edubox_ai_zombie_kaartjes.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "license": "Naamsvermelding-NietCommercieel-GelijkDelen; versie niet vermeld",
+    "keywords": [
+      "EDUbox",
+      "lespakket",
+      "secundair onderwijs",
+      "AI-geletterdheid",
+      "generatieve AI",
+      "kaartjes"
+    ],
+    "notes": "Initiatief van VRT in samenwerking met Mediawijs, imec, Kenniscentrum Data & Maatschappij, amai! en Brightlab. Het Vlaamse secundair onderwijs is redactioneel gekoppeld aan VO. Lancering in 2019 is geen publicatiedatum van de vernieuwde versie; die blijft onbekend.",
+    "changeHistory": [
+      {
+        "date": "2026-09-15",
+        "type": "added",
+        "summary": "Lespakket toegevoegd na controle van de officiële Mediawijs-pagina, downloadlinks, printkaartjes en gebruiksvoorwaarden."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "data-maatschappij-ai-omgeving-posters",
+    "title": "Hoe artificieel intelligent mag jouw omgeving worden?",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Posters en gesprekswerkvorm",
+    "providerName": "Kenniscentrum Data & Maatschappij",
+    "description": "Printbare posters en een gesprekswerkvorm over gewenste en ongewenste AI-toepassingen in de klas, thuis, op straat, op het werk en in de zorg, met een basisposter die AI uitlegt.",
+    "purpose": "Deelnemers laten verwoorden waar zij AI willen inzetten en welke vragen en voorwaarden daarbij horen.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [],
+    "themes": [
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Posters en instructies vrij beschikbaar, met kleur- en zwart-witversies en bestanden om op A4 te printen.",
+    "eligibility": "Mediawijs vermeldt voor het materiaal de licentie Naamsvermelding-NietCommercieel-GelijkDelen, zonder versienummer.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-15",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële werkvorm en posterdownloads",
+        "url": "https://data-en-maatschappij.ai/tools/tool-hoe-artificieel-intelligent-mag-jouw-omgeving-worden",
+        "sourceType": "official"
+      },
+      {
+        "label": "Mediawijs: doelgroep en gebruikslicentie",
+        "url": "https://www.mediawijs.be/nl/afficheai",
+        "sourceType": "official"
+      },
+      {
+        "label": "Poster AI in de klas (PDF)",
+        "url": "https://data-en-maatschappij.ai/uploads/Tools-downloads/Klas_kleur_200608_081649.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "license": "Naamsvermelding-NietCommercieel-GelijkDelen; versie niet vermeld",
+    "keywords": [
+      "posters",
+      "affiches",
+      "gespreksmateriaal",
+      "AI in de klas",
+      "AI-ethiek",
+      "wereld"
+    ],
+    "notes": "De aanbieders noemen leerlingen, collega's en onderwijs, maar geen specifieke onderwijssector. Mediawijs vermeldt de gebruikslicentie zonder versienummer. De CC BY 4.0-vermelding bij de kopafbeelding op de primaire pagina is niet de licentie van de posters.",
+    "changeHistory": [
+      {
+        "date": "2026-09-15",
+        "type": "added",
+        "summary": "Gespreksmateriaal toegevoegd na controle van de officiële werkvorm, posterbestanden en licentievermelding bij Mediawijs."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "hu-care-werkvormen-ai-geletterdheid",
+    "title": "Werkvormen AI-geletterdheid",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Werkvormen, promptwerkblad en AI-dagboek",
+    "providerName": "Hogeschool Utrecht",
+    "description": "Dertien Nederlandstalige werkvormen om AI-begrippen, AI-output en eigen AI-gebruik kritisch te onderzoeken, met een aanvullend promptwerkblad en een bewerkbaar AI-dagboektemplate.",
+    "purpose": "Docenten en studenten ondersteunen bij het oefenen van kritische AI-geletterdheid, broncontrole en reflectie op AI-gebruik.",
+    "audiences": [
+      "Docenten",
+      "Studenten"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "De werkvormen en aanvullende documenten zijn gratis en zonder account te downloaden via edusources en SURFsharekit.",
+    "eligibility": "De uitvoering verschilt per werkvorm: sommige vragen vooraf door de docent verzamelde AI-output of eigen gebruik van een AI-toepassing. De werkvormen, het promptwerkblad en de dagboektemplate vallen onder CC BY-SA 4.0. De twee aanvullende video's hebben afzonderlijke YouTube-rechten.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-15",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "HU: CARE-project en verwijzing naar de werkvormen",
+        "url": "https://www.hu.nl/onderzoek/projecten/care-kritische-ai-geletterdheid-in-onderzoek-en-onderwijs",
+        "sourceType": "official"
+      },
+      {
+        "label": "Werkvormen en aanvullende documenten op edusources",
+        "url": "https://edusources.nl/materials/a3e60f01-0ae5-4a2e-ac7c-8e667eb9df8a/project-digitale-informatievaardigheden-en-kritische-ai-geletterdheid",
+        "sourceType": "official"
+      },
+      {
+        "label": "Werkvorm AI factcheckathon (PDF)",
+        "url": "https://surfsharekit.nl/objectstore/da8d35bd-b313-426a-93b2-0a45a7856de5",
+        "sourceType": "official"
+      },
+      {
+        "label": "Werkvorm AI dagboek (PDF)",
+        "url": "https://surfsharekit.nl/objectstore/da6b9dfb-f0a9-44a4-a4f8-2a51bb7eb8d8",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "license": "CC BY-SA 4.0 (werkvormen en aanvullende documenten)",
+    "keywords": [
+      "CARE",
+      "Josien Boetje",
+      "werkvormen",
+      "factcheckathon",
+      "AI-dagboek",
+      "promptwerkblad",
+      "kritische AI-geletterdheid"
+    ],
+    "notes": "Auteur: Josien Boetje. Edusources vermeldt publicatiejaar 2025, HBO en open toegang. CC BY-SA 4.0 geldt voor de dertien PDF-werkvormen, het promptwerkblad en de dagboektemplate; de twee aanvullende video's hebben afzonderlijke YouTube-rechten. Een precieze publicatiedatum is niet vastgesteld.",
+    "changeHistory": [
+      {
+        "date": "2026-09-15",
+        "type": "added",
+        "summary": "Werkvormen toegevoegd na controle van de HU-projectpagina, edusources-metadata en inhoud van AI factcheckathon en AI dagboek."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
   }
 ]

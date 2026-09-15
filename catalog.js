@@ -127,7 +127,13 @@
     'mbo-mediawijs-open-ai-leermaterialen',
     'eerlijk-over-ai-ai-coach-opleiding-open-source',
     'ai-waaier-voor-toetsen',
-    'han-toolkit-ai-bestendig-toetsen'
+    'han-toolkit-ai-bestendig-toetsen',
+    'ai-voor-docenten-gesprekskaarten-ai-onderwijs',
+    'ai-voor-docenten-kies-handleidingen-kaarten',
+    'techyourfuture-les-basiskennis-ai',
+    'mediawijs-edubox-artificiele-intelligentie',
+    'data-maatschappij-ai-omgeving-posters',
+    'hu-care-werkvormen-ai-geletterdheid'
   ]);
 
   let state = {};
