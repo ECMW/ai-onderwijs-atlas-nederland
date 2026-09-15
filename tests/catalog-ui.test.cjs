@@ -67,12 +67,15 @@ test('books page separates Dutch reading, study and practice books with metadata
   assert.ok(!html.includes('English book'));
 });
 
-test('books and materials page reuses six public Dutch materials with costs, access and official sources', () => {
+test('books and materials page reuses the selected public Dutch materials with costs, access and official sources', () => {
   const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
   const selectedIds = [
     'vu-handboek-ai-geletterdheid-studenten', 'open-inspiratielessen-over-ai',
     'mbo-mediawijs-open-ai-leermaterialen', 'eerlijk-over-ai-ai-coach-opleiding-open-source',
-    'ai-waaier-voor-toetsen', 'han-toolkit-ai-bestendig-toetsen'
+    'ai-waaier-voor-toetsen', 'han-toolkit-ai-bestendig-toetsen',
+    'ai-voor-docenten-gesprekskaarten-ai-onderwijs', 'ai-voor-docenten-kies-handleidingen-kaarten',
+    'techyourfuture-les-basiskennis-ai', 'mediawijs-edubox-artificiele-intelligentie',
+    'data-maatschappij-ai-omgeving-posters', 'hu-care-werkvormen-ai-geletterdheid'
   ];
   const api = load(data);
   const html = api.booksMarkup();
