@@ -4870,14 +4870,19 @@
       "HBO",
       "WO"
     ],
-    "themes": [],
+    "themes": [
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Professionalisering",
+      "Beleid en governance"
+    ],
     "status": "available",
-    "availabilityText": "2026",
+    "availabilityText": "Direct beschikbaar",
     "startDate": null,
     "endDate": null,
-    "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "publicationDate": "2026-05-22",
+    "lastVerified": "2026-09-14",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "Officiële bron",
@@ -4890,7 +4895,7 @@
     "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
-    "costType": "unknown",
+    "costType": "free",
     "fundingAmount": null,
     "fundingDeadline": null,
     "applicationOpenDate": null,
@@ -4911,14 +4916,21 @@
       "curriculum",
       "professionalisering"
     ],
-    "notes": null,
+    "notes": "Dit is het canonieke Atlasrecord voor AI-GO in Actie. Een later aangemaakt dubbel record is van publicatie uitgesloten.",
     "changeHistory": [
       {
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-14",
+        "type": "updated",
+        "summary": "Bron, publicatiedatum, thema's en toegankelijkheid opnieuw gecontroleerd; dit record als canonieke versie behouden."
       }
-    ]
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
   },
   {
     "id": "visietool-toetsen",
@@ -9032,7 +9044,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": "2024-08-08",
-    "lastVerified": "2026-07-12",
+    "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -9046,7 +9058,7 @@
     "childIds": [],
     "geographicScope": "Internationaal",
     "accessType": "public",
-    "costType": "unknown",
+    "costType": "free",
     "fundingAmount": null,
     "fundingDeadline": null,
     "applicationOpenDate": null,
@@ -9067,14 +9079,21 @@
       "human agency",
       "AI pedagogy"
     ],
-    "notes": null,
+    "notes": "Dit standaardrecord is de canonieke Atlasvermelding; een latere dubbele handreiking is van publicatie uitgesloten.",
     "changeHistory": [
       {
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      },
+      {
+        "date": "2026-09-14",
+        "type": "updated",
+        "summary": "Officiële bron opnieuw gecontroleerd en dubbele latere vermelding samengevoegd in dit canonieke record."
       }
-    ]
+    ],
+    "offerCategory": "knowledge",
+    "commercialStatus": "unknown"
   },
   {
     "id": "unesco-ai-competency-framework-students",
@@ -9106,7 +9125,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": "2024-09-03",
-    "lastVerified": "2026-07-12",
+    "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -9120,7 +9139,7 @@
     "childIds": [],
     "geographicScope": "Internationaal",
     "accessType": "public",
-    "costType": "unknown",
+    "costType": "free",
     "fundingAmount": null,
     "fundingDeadline": null,
     "applicationOpenDate": null,
@@ -9141,14 +9160,21 @@
       "AI literacy",
       "responsible use"
     ],
-    "notes": null,
+    "notes": "Dit standaardrecord is de canonieke Atlasvermelding; een latere dubbele handreiking is van publicatie uitgesloten.",
     "changeHistory": [
       {
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      },
+      {
+        "date": "2026-09-14",
+        "type": "updated",
+        "summary": "Officiële bron opnieuw gecontroleerd en dubbele latere vermelding samengevoegd in dit canonieke record."
       }
-    ]
+    ],
+    "offerCategory": "knowledge",
+    "commercialStatus": "unknown"
   },
   {
     "id": "selfie-for-teachers",
@@ -21168,7 +21194,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": "2026-05-22",
-    "lastVerified": "2026-08-28",
+    "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -21210,8 +21236,17 @@
         "date": "2026-08-28",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 8."
+      },
+      {
+        "date": "2026-09-14",
+        "type": "excluded",
+        "summary": "Van de publieke catalogus uitgesloten als duplicaat van ai-go-in-actie; bruikbare metadata is in het canonieke record verwerkt."
       }
-    ]
+    ],
+    "publicationExclusion": {
+      "reason": "Duplicaat van het canonieke record ai-go-in-actie.",
+      "decidedOn": "2026-09-14"
+    }
   },
   {
     "id": "unesco-ai-competency-framework-teachers-2024",
@@ -21248,7 +21283,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": "2024-08-08",
-    "lastVerified": "2026-08-28",
+    "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -21291,8 +21326,17 @@
         "date": "2026-08-28",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 8."
+      },
+      {
+        "date": "2026-09-14",
+        "type": "excluded",
+        "summary": "Van de publieke catalogus uitgesloten als duplicaat van unesco-ai-competency-framework-teachers."
       }
-    ]
+    ],
+    "publicationExclusion": {
+      "reason": "Duplicaat van het canonieke standaardrecord unesco-ai-competency-framework-teachers.",
+      "decidedOn": "2026-09-14"
+    }
   },
   {
     "id": "unesco-ai-competency-framework-students-2024",
@@ -21328,7 +21372,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": "2024-09-03",
-    "lastVerified": "2026-08-28",
+    "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -21371,8 +21415,17 @@
         "date": "2026-08-28",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 8."
+      },
+      {
+        "date": "2026-09-14",
+        "type": "excluded",
+        "summary": "Van de publieke catalogus uitgesloten als duplicaat van unesco-ai-competency-framework-students."
       }
-    ]
+    ],
+    "publicationExclusion": {
+      "reason": "Duplicaat van het canonieke standaardrecord unesco-ai-competency-framework-students.",
+      "decidedOn": "2026-09-14"
+    }
   },
   {
     "id": "unesco-ai-education-rights-learners-2025",
@@ -25805,51 +25858,27 @@
     "commercialStatus": "unknown"
   },
   {
-    "id": "kennisnet-raamwerk-ai-geletterdheid-po-vo-2026",
+    "id": "kennisnet-raamwerk-ai-geletterdheid-2026",
     "title": "Werken met het raamwerk AI-geletterdheid",
     "recordType": "guidance",
     "legacyType": "Handreiking",
-    "subtype": "Toolkit",
-    "organizationIds": [
-      "org-kennisnet"
-    ],
+    "subtype": "Competentieraamwerk en toolkit",
+    "organizationIds": ["org-kennisnet"],
     "providerName": "Kennisnet",
-    "description": "Online handreiking met een PO/VO-raamwerk voor AI-geletterdheid, een zelfevaluatie, een compacte versie, een teampresentatie en achtergrondinformatie.",
-    "purpose": "Scholen ondersteunen bij het bepalen en organiseren van passende AI-geletterdheid voor verschillende rollen en niveaus.",
-    "audiences": [
-      "Docenten",
-      "Schoolleiders",
-      "Ondersteunend personeel"
-    ],
-    "sectors": [
-      "PO",
-      "VO"
-    ],
-    "themes": [
-      "AI-geletterdheid",
-      "Professionalisering",
-      "Beleid en governance"
-    ],
+    "description": "Raamwerk en toolkit voor AI-geletterdheid met competenties rond kundig, kritisch, creatief en professioneel handelen, uitgewerkt op drie beheersingsniveaus.",
+    "purpose": "Schoolteams helpen AI-geletterdheid te bespreken, in kaart te brengen en gericht te ontwikkelen.",
+    "audiences": ["Docenten", "Schoolleiders", "Onderwijsontwikkelaars", "Onderwijsadviseurs"],
+    "sectors": ["PO", "VO"],
+    "themes": ["AI-geletterdheid", "Curriculumontwikkeling", "Professionalisering"],
     "status": "available",
-    "availabilityText": "Online handreiking en vijf materialen zijn direct beschikbaar; inschrijving voor het webinar van 11 november 2026 is geopend.",
+    "availabilityText": "Raamwerk, compacte versie, zelfevaluatie en teamsessie zijn publiek beschikbaar.",
     "startDate": null,
     "endDate": null,
     "publicationDate": "2026-09-09",
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
-    "sourceUrls": [
-      {
-        "label": "Officiële Kennisnet-publicatie",
-        "url": "https://www.kennisnet.nl/artificial-intelligence/werken-met-het-raamwerk-ai-geletterdheid/",
-        "sourceType": "official"
-      }
-    ],
-    "relatedIds": [
-      "ai-go-raamwerk-voor-ai-geletterdheid",
-      "werken-aan-ai-geletterdheid-op-school"
-    ],
-    "parentIds": [],
-    "childIds": [],
+    "sourceUrls": [{"label": "Officiële bron", "url": "https://www.kennisnet.nl/artificial-intelligence/werken-met-het-raamwerk-ai-geletterdheid/", "sourceType": "official"}],
+    "relatedIds": [], "parentIds": [], "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
@@ -25864,26 +25893,502 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": [
-      "nl"
+    "language": ["nl"],
+    "keywords": ["AI-geletterdheid", "competenties", "zelfevaluatie", "teamsessie", "professioneel handelen"],
+    "notes": "Kennisnet vermeldt dat het onderdeel over de professionele rol nog verder wordt ontwikkeld; het record beschrijft daarom de versie die op de controledatum beschikbaar was.",
+    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd na controle van de officiële Kennisnet-pagina en de daar beschreven toolkitonderdelen."}],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "voion-implicaties-ai-werkenden-vo-2025",
+    "title": "Implicaties van AI voor werkenden in het vo",
+    "recordType": "policy_document",
+    "legacyType": "Beleidsdocument",
+    "subtype": "Verkennend onderzoeksrapport",
+    "organizationIds": [],
+    "providerName": "Voion",
+    "description": "Verkenning van mogelijke gevolgen van AI voor werk, autonomie, werkdruk en beleid in het voortgezet onderwijs, gebaseerd op literatuur, experts en 34 schoolleiders.",
+    "purpose": "Schoolleiders, werknemers en beleidsmakers een onderbouwd vertrekpunt geven voor gesprekken en keuzes over AI en werk.",
+    "audiences": ["Schoolleiders", "Bestuurders", "Beleidsmakers", "Docenten", "Onderzoekers"],
+    "sectors": ["VO", "Onderzoek"],
+    "themes": ["Beleid en governance", "Implementatie en adoptie", "Publieke waarden en ethiek", "Onderzoek"],
+    "status": "available",
+    "availabilityText": "Rapport en samenvatting zijn publiek beschikbaar.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-06-10",
+    "lastVerified": "2026-09-14",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {"label": "Officiële publicatiepagina", "url": "https://www.voion.nl/publicaties/implicaties-van-ai-voor-werkenden-in-het-vo", "sourceType": "official"},
+      {"label": "Officieel rapport (pdf)", "url": "https://www.voion.nl/wp-content/uploads/media/vndmskkw/implicaties-van-ai-voor-werkenden-in-het-vo-voion-_def.pdf", "sourceType": "official"}
     ],
-    "keywords": [
-      "raamwerk AI-geletterdheid",
-      "zelfevaluatie",
-      "teamsessie",
-      "AI Act",
-      "PO en VO"
+    "relatedIds": ["voion-impact-ai-onderwijs-dossier"], "parentIds": [], "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": ["nl"],
+    "keywords": ["arbeidskwaliteit", "autonomie", "werkdruk", "schoolbeleid", "scenario's"],
+    "notes": "Het rapport zelf is gedateerd mei 2025; 10 juni 2025 is de datum van de officiële publicatiepagina. De auteurs melden dat directe impactstudies nog ontbreken en formuleren daarom scenario's, geen bewezen effecten.",
+    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd na controle van de officiële publicatiepagina en het volledige Voion-rapport."}],
+    "offerCategory": "knowledge",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "voion-impact-ai-onderwijs-dossier",
+    "title": "Impact van kunstmatige intelligentie (AI)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Themadossier en stappenplan",
+    "organizationIds": [],
+    "providerName": "Voion",
+    "description": "Doorlopend dossier voor het voortgezet onderwijs met onderzoek, instrumenten, praktijkvoorbeelden en zes stappen voor gesprek, experiment, beleid en kennisdeling rond AI.",
+    "purpose": "Vo-scholen ondersteunen bij een stapsgewijze, gezamenlijke aanpak van AI in organisatie en werk.",
+    "audiences": ["Schoolleiders", "Docenten", "Bestuurders", "Beleidsmakers", "Onderwijsondersteuners"],
+    "sectors": ["VO"],
+    "themes": ["Beleid en governance", "Implementatie en adoptie", "Professionalisering", "Praktijkvoorbeelden"],
+    "status": "available",
+    "availabilityText": "Publiek toegankelijk, doorlopend themadossier.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-14",
+    "verificationStatus": "verified",
+    "sourceUrls": [{"label": "Officieel themadossier", "url": "https://www.voion.nl/onderwijsarbeidsmarkt/innovatie-en-organisatie/impact-van-kunstmatige-intelligentie-ai", "sourceType": "official"}],
+    "relatedIds": ["voion-implicaties-ai-werkenden-vo-2025"], "parentIds": [], "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": ["nl"],
+    "keywords": ["vo", "stappenplan", "werkgroep", "experiment", "schoolbeleid", "kennisdeling"],
+    "notes": "Dit levende dossier is onderscheiden van het afzonderlijke onderzoeksrapport: het bundelt ook instrumenten, praktijkinformatie en een handelingsroute.",
+    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd als actuele Voion-vindplaats met een eigen, concreet zesstappenplan."}],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "hu-handreiking-generatieve-ai-toetsing",
+    "title": "Handreiking generatieve AI en toetsing",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Instellingshandreiking",
+    "organizationIds": [],
+    "providerName": "Hogeschool Utrecht",
+    "description": "Handreiking over generatieve AI bij toetsing met toepassingen, ethische en juridische aandachtspunten, instellingsadvies en tips voor examinatoren en docenten.",
+    "purpose": "HU-medewerkers ondersteunen bij verantwoorde keuzes over generatieve AI in toetsing en examinering.",
+    "audiences": ["Docenten", "Examinatoren", "Examencommissies", "Onderwijsontwikkelaars"],
+    "sectors": ["HBO"],
+    "themes": ["Toetsing en examinering", "Beleid en governance", "Publieke waarden en ethiek"],
+    "status": "available",
+    "availabilityText": "De toelichtingspagina is publiek; de Nederlandse en Engelse handreiking staan in de besloten OneHU-omgeving.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-14",
+    "verificationStatus": "verified",
+    "sourceUrls": [{"label": "Officiële toelichtingspagina", "url": "https://husite.nl/toetsing-nieuw/handreiking-generatieve-ai-en-toetsing/", "sourceType": "official"}],
+    "relatedIds": [], "parentIds": [], "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "restricted",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Toegang tot de handreiking vereist een HU-account.",
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": ["nl", "en"],
+    "keywords": ["generatieve AI", "toetsing", "examinatoren", "examencommissie", "OneHU"],
+    "notes": "De inhoud van de afgeschermde bestanden is niet als publiek beschikbaar aangemerkt; alleen de onderwerpen die de officiële toelichtingspagina zelf noemt zijn vastgelegd.",
+    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd met expliciete vermelding van de instellingsgebonden toegang."}],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "publinova-ai-collaboration-canvas-2025",
+    "title": "AI Collaboration Canvas: Supporting students in integrating generative AI in the design process",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Open onderzoeksproduct en ontwerpdocument",
+    "organizationIds": [],
+    "providerName": "Hogeschool Utrecht",
+    "description": "Open onderzoeksproduct dat ontwerpkeuzes voor een AI Collaboration Canvas beschrijft waarmee studenten generatieve AI kritisch, ethisch en doelgericht in ontwerpprocessen kunnen inzetten.",
+    "purpose": "Docenten en ontwerpopleidingen ondersteunen bij het structureren en bespreekbaar maken van samenwerking tussen student en generatieve AI.",
+    "audiences": ["Docenten", "Studenten", "Onderwijsontwikkelaars", "Onderzoekers"],
+    "sectors": ["HBO", "Onderzoek"],
+    "themes": ["Lesgeven en leren met AI", "AI-geletterdheid", "Publieke waarden en ethiek", "Onderzoek"],
+    "status": "available",
+    "availabilityText": "Open access via Publinova.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "publicationYear": 2025,
+    "lastVerified": "2026-09-14",
+    "verificationStatus": "verified",
+    "sourceUrls": [{"label": "Officieel onderzoeksproduct", "url": "https://publinova.nl/product/ai-collaboration-canvas-supporting-students-in-integrating-generative-ai-in-the-design-process-1", "sourceType": "official"}],
+    "relatedIds": ["publinova"], "parentIds": [], "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": ["en"],
+    "keywords": ["AI Collaboration Canvas", "design education", "ontwerpproces", "student-AI-samenwerking", "generatieve AI"],
+    "notes": "Publinova vermeldt Nynke Brandsma en Koen van Turnhout als auteurs en 2025 als jaar. Op de gecontroleerde detailpagina staat geen DOI of expliciete hergebruiklicentie.",
+    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd na controle van de openbare Publinova-detailpagina."}],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "nvao-startverkenning-generatieve-ai-kwaliteitszorg-2026",
+    "title": "Startverkenning Generatieve Artificiële Intelligentie",
+    "recordType": "policy_document",
+    "legacyType": "Beleidsdocument",
+    "subtype": "Thematische analyse kwaliteitszorg",
+    "organizationIds": [],
+    "providerName": "NVAO",
+    "description": "Thematische analyse van visitatierapporten over hoe generatieve AI terugkomt in hoger onderwijs en kwaliteitszorg, met aandacht voor toetsing, leeruitkomsten en AI-geletterdheid.",
+    "purpose": "Instellingen en kwaliteitszorgprofessionals inzicht geven in actuele aandachtspunten en vervolgstappen voor generatieve AI.",
+    "audiences": ["Bestuurders", "Beleidsmakers", "Kwaliteitszorgprofessionals", "Examencommissies", "Onderzoekers"],
+    "sectors": ["HBO", "WO", "Onderzoek", "Overheid"],
+    "themes": ["Beleid en governance", "Toetsing en examinering", "AI-geletterdheid", "Onderzoek"],
+    "status": "available",
+    "availabilityText": "Nieuwsbericht en volledig rapport zijn publiek beschikbaar.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-02-02",
+    "lastVerified": "2026-09-14",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {"label": "Officieel nieuwsbericht", "url": "https://www.nvao.net/nl/nieuws/2026/2/nvao-nederland-publiceert-startverkenning-generatieve-ai", "sourceType": "official"},
+      {"label": "Officieel rapport (pdf)", "url": "https://www.nvao.net/files/attachments/.13866/Startverkenning_Generatieve_Artificiele_Intelligentie.pdf", "sourceType": "official"}
     ],
-    "notes": "Het raamwerk werkt met basis-, gevorderd en expertniveau. De rolgebonden competentie Professioneel wordt volgens Kennisnet nog verder uitgewerkt.",
-    "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "De officiële publicatiepagina bevestigt titel, publicatiedatum, PO/VO-scope, drie niveaus, vijf downloadbare materialen en de aangekondigde webinarinschrijving.",
-    "changeHistory": [
-      {
-        "date": "2026-09-14",
-        "type": "added",
-        "summary": "Nieuwe Kennisnet-toolkit toegevoegd na controle van de officiële publicatie, materialen en doublures."
-      }
+    "relatedIds": [], "parentIds": [], "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": ["nl"],
+    "keywords": ["NVAO", "kwaliteitszorg", "visitatie", "constructive alignment", "toetsvaliditeit"],
+    "notes": "Het rapport is gedateerd januari 2026; 2 februari 2026 is de publicatiedatum van het officiële nieuwsbericht. De analyse beschrijft signalen uit visitatierapporten en is geen effectstudie.",
+    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd na controle van het NVAO-bericht en het volledige rapport."}],
+    "offerCategory": "knowledge",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "jrc-machines-replace-human-workers-2026",
+    "title": "Can machines replace human workers? Notes on agency, automation, and AI",
+    "recordType": "policy_document",
+    "legacyType": "Beleidsdocument",
+    "subtype": "Conceptuele onderzoekspaper",
+    "organizationIds": [],
+    "providerName": "European Commission Joint Research Centre",
+    "description": "Conceptuele paper die onderscheid maakt tussen operationele taken en menselijke handelingsruimte en onderzoekt hoe organisatiekeuzes bepalen of AI werk vervangt, ondersteunt of macht concentreert.",
+    "purpose": "Beleidsmakers, onderzoekers en opleiders een begrippenkader bieden voor de relatie tussen AI, automatisering, menselijk handelen en werkorganisatie.",
+    "audiences": ["Onderzoekers", "Beleidsmakers", "Bestuurders", "Opleiders"],
+    "sectors": ["MBO", "HBO", "WO", "Onderzoek", "Overheid"],
+    "themes": ["Publieke waarden en ethiek", "Beleid en governance", "Onderzoek"],
+    "status": "available",
+    "availabilityText": "Publiek beschikbaar in de JRC-repository.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-07-13",
+    "lastVerified": "2026-09-14",
+    "verificationStatus": "verified",
+    "sourceUrls": [{"label": "Officiële JRC-publicatie", "url": "https://publications.jrc.ec.europa.eu/repository/handle/JRC147594", "sourceType": "official"}],
+    "relatedIds": [], "parentIds": [], "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": ["en"],
+    "keywords": ["agency", "automation", "work organisation", "labour", "human augmentation"],
+    "notes": "JRC Working Papers Series on Labour, Education and Technology 2026/06. De paper is conceptueel en sectoroverstijgend; de onderwijsrelevantie ligt vooral bij beroepsvorming, curriculum en strategische personeelskeuzes.",
+    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd na controle van publicatiedatum, reeks en samenvatting in de officiële JRC-repository."}],
+    "offerCategory": "knowledge",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "cordis-learngenai-project-2026",
+    "title": "LEARNGENAI: Learning analytics and Generative AI to design and facilitate learning",
+    "recordType": "research_project",
+    "legacyType": "Onderzoeksproject",
+    "subtype": "Horizon Europe MSCA-project",
+    "organizationIds": [],
+    "providerName": "Norwegian University of Science and Technology",
+    "description": "Europees onderzoeksproject naar wanneer en hoe generatieve AI en learning analytics onderwijs en leren kunnen ondersteunen, met prototypes, impactonderzoek en een beoogd raamwerk voor goede praktijken.",
+    "purpose": "Succesfactoren, effecten en ontwerpprincipes voor verantwoord gebruik van generatieve AI in onderwijs onderzoeken.",
+    "audiences": ["Onderzoekers", "Docenten", "Onderwijsontwikkelaars", "Beleidsmakers"],
+    "sectors": ["HBO", "WO", "Onderzoek"],
+    "themes": ["Onderzoek", "Lesgeven en leren met AI", "Data en infrastructuur"],
+    "status": "in_development",
+    "availabilityText": "Project loopt van 2 februari 2026 tot en met 1 februari 2028; CORDIS-factsheet is publiek.",
+    "startDate": "2026-02-02",
+    "endDate": "2028-02-01",
+    "publicationDate": null,
+    "lastVerified": "2026-09-14",
+    "verificationStatus": "verified",
+    "sourceUrls": [{"label": "Officiële CORDIS-factsheet", "url": "https://cordis.europa.eu/project/id/101210859", "sourceType": "official"}],
+    "relatedIds": [], "parentIds": [], "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": "EU-bijdrage €251.578,56",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": ["en"],
+    "keywords": ["LEARNGENAI", "learning analytics", "generative AI", "Horizon Europe", "MSCA", "Kahoot"],
+    "notes": "De Atlas vermeldt alleen de projectopzet en nog geen resultaten: op de controledatum was het onderzoek lopend en waren de beoogde prototypes en het raamwerk nog geen beschikbaar eindproduct.",
+    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Lopend Europees onderzoeksproject toegevoegd op basis van de officiële CORDIS-factsheet."}],
+    "offerCategory": "knowledge",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "unicef-guidance-ai-and-children-v3-2025",
+    "title": "Guidance on AI and children, version 3.0",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Kinderrechtenkader en checklist",
+    "organizationIds": [],
+    "providerName": "UNICEF Innocenti",
+    "description": "Geactualiseerde internationale richtlijn met tien kindgerichte vereisten voor AI-beleid en -ontwerp, aangevuld met een checklist en aandacht voor generatieve AI, inclusie en veiligheid.",
+    "purpose": "Overheden, onderwijsorganisaties en ontwikkelaars helpen kinderrechten aantoonbaar mee te nemen bij AI-keuzes die kinderen raken.",
+    "audiences": ["Beleidsmakers", "Bestuurders", "Docenten", "Privacyprofessionals", "Ontwikkelaars"],
+    "sectors": ["PO", "VO", "Onderzoek", "Overheid"],
+    "themes": ["Publieke waarden en ethiek", "Privacy en AVG", "Beleid en governance", "Veilige AI-omgeving"],
+    "status": "available",
+    "availabilityText": "Richtlijn, checklist en ondersteunende materialen zijn publiek beschikbaar.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "publicationYear": 2025,
+    "lastVerified": "2026-09-14",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {"label": "Officiële publicatiepagina", "url": "https://www.unicef.org/innocenti/reports/policy-guidance-ai-children", "sourceType": "official"},
+      {"label": "Officiële richtlijn (pdf)", "url": "https://www.unicef.org/innocenti/media/11991/file/UNICEF-Innocenti-Guidance-on-AI-and-Children-3-2025.pdf", "sourceType": "official"}
     ],
+    "relatedIds": [], "parentIds": [], "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": ["en"],
+    "keywords": ["kinderrechten", "child-centred AI", "generative AI", "inclusie", "veiligheid", "checklist"],
+    "notes": "UNICEF dateert versie 3.0 op december 2025. Omdat geen exacte dag op de gecontroleerde publicatiepagina is vastgesteld, is alleen het jaar als gestructureerd gegeven opgenomen.",
+    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd na controle van de officiële UNICEF-publicatiepagina en versie 3.0 van de richtlijn."}],
+    "offerCategory": "knowledge",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "aacte-ai-framework-educator-preparation-2026",
+    "title": "AI Framework for Educator Preparation",
+    "recordType": "standard",
+    "legacyType": "Standaard",
+    "subtype": "Kader voor lerarenopleidingen",
+    "organizationIds": [],
+    "providerName": "AACTE",
+    "description": "Amerikaans kader voor lerarenopleidingen met vier samenhangende gebieden: ethische en beleidsmatige waarborgen, praktijkimplementatie, cognitieve ontwikkeling en professioneel menselijk oordeel.",
+    "purpose": "Lerarenopleidingen ondersteunen bij programmatische keuzes over AI-geletterdheid, toegang, professionele autonomie en menselijke eindverantwoordelijkheid.",
+    "audiences": ["Lerarenopleiders", "Opleiders", "Beleidsmakers", "Bestuurders"],
+    "sectors": ["HBO", "WO", "PO", "VO"],
+    "themes": ["AI-geletterdheid", "Professionalisering", "Beleid en governance", "Publieke waarden en ethiek"],
+    "status": "available",
+    "availabilityText": "Landingspagina en volledig kader zijn publiek beschikbaar.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-08-20",
+    "lastVerified": "2026-09-14",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {"label": "Officiële landingspagina", "url": "https://aacte.org/report/ai-framework-for-educator-preparation/", "sourceType": "official"},
+      {"label": "Officieel kader (pdf)", "url": "https://aacte.org/wp-content/uploads/2026/08/AACTE-AI-Framework-082026-1.pdf", "sourceType": "official"}
+    ],
+    "relatedIds": [], "parentIds": [], "childIds": [],
+    "geographicScope": "Verenigde Staten",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": ["en"],
+    "keywords": ["teacher education", "human judgment", "right to refuse", "equity", "AI literacy"],
+    "notes": "Het kader is ontwikkeld voor de Amerikaanse context. Opname in de Atlas is ter vergelijking; toepassing in Nederland vraagt vertaling naar Nederlands onderwijsbeleid en regelgeving.",
+    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Recent internationaal kader voor lerarenopleidingen toegevoegd na controle van de officiële publicatie en pdf."}],
+    "offerCategory": "knowledge",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "ai4t-open-textbook-teachers-2024",
+    "title": "AI for Teachers: an Open Textbook",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Open leerboek",
+    "organizationIds": [],
+    "providerName": "AI4T",
+    "authors": ["Colin de la Higuera", "Jotsna Iyer"],
+    "description": "Open Engelstalig leerboek voor docenten over de werking en inzet van AI, met hoofdstukken over data, zoeken, personalisering, taal, generatieve AI, menselijke regie en ethiek.",
+    "purpose": "Docenten en lerarenopleiders een vrij herbruikbare, samenhangende basis bieden voor AI-geletterdheid en onderwijsontwerp.",
+    "audiences": ["Docenten", "Lerarenopleiders", "Onderwijsontwikkelaars"],
+    "sectors": ["VO", "HBO"],
+    "themes": ["AI-geletterdheid", "Lesgeven en leren met AI", "Professionalisering", "Publieke waarden en ethiek"],
+    "status": "available",
+    "availabilityText": "Online te lezen en te downloaden als e-book en pdf.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2024-01-18",
+    "lastVerified": "2026-09-14",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {"label": "Officiële AI4T-pagina", "url": "https://www.ai4t.eu/textbook/", "sourceType": "official"},
+      {"label": "Online leerboek", "url": "https://pressbooks.pub/aiforteachers/", "sourceType": "official"}
+    ],
+    "relatedIds": [], "parentIds": [], "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": ["en"],
+    "license": "CC BY 4.0",
+    "keywords": ["open textbook", "teacher education", "human agency", "generative AI", "CC BY 4.0"],
+    "notes": "Het materiaal komt uit het Europese Erasmus+-project AI4T. Vanwege het ontbreken van een bevestigd ISBN-13 is het volgens het Atlasdataschema als handreiking/open leerboek opgenomen en niet als recordtype boek.",
+    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Vrij herbruikbaar open leerboek toegevoegd na controle van de AI4T- en Pressbooks-pagina's."}],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "uu-werkvormen-kritisch-denken-academisch-schrijven-genai",
+    "title": "GenAI gebruiken om studenten te helpen met kritisch denken en academisch schrijven",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Concrete werkvormen",
+    "organizationIds": [],
+    "providerName": "Universiteit Utrecht",
+    "description": "Open onderwijspraktijk met werkvormen waarin studenten kernartikelen lezen, prompts ontwerpen, AI-teksten en bronnen controleren, peerfeedback geven en eigen syntheses herzien.",
+    "purpose": "Docenten helpen generatieve AI zo in te zetten dat kritisch lezen, academisch schrijven en inhoudelijk redeneren zichtbaar geoefend blijven.",
+    "audiences": ["Docenten", "Onderwijsontwikkelaars", "Studenten"],
+    "sectors": ["WO"],
+    "themes": ["Lesgeven en leren met AI", "AI-geletterdheid", "Curriculumontwikkeling", "Toetsing en examinering"],
+    "status": "available",
+    "availabilityText": "Publiek toegankelijke beschrijving met direct toepasbare werkvormen.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-09-14",
+    "verificationStatus": "verified",
+    "sourceUrls": [{"label": "Officiële onderwijsadviespagina", "url": "https://www.uu.nl/onderwijs/onderwijsadvies-training/kennisdossiers/themadossier-generatieve-ai-in-het-onderwijs/hoe-stimuleer-je-academisch-schrijven-en-denken-met-behulp-van-chatgpt", "sourceType": "official"}],
+    "relatedIds": [], "parentIds": [], "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": ["nl"],
+    "keywords": ["academisch schrijven", "kritisch denken", "broncontrole", "peerfeedback", "prompts", "synthese"],
+    "notes": "De officiële pagina noemt geen publicatiedatum; daarom is die niet afgeleid. Dit record beschrijft concrete werkvormen en niet het bredere UU-themadossier.",
+    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Concrete, publiek toegankelijke UU-werkvormen toegevoegd na inhoudelijke broncontrole."}],
     "offerCategory": "materials",
     "commercialStatus": "unknown"
   },
@@ -25897,26 +26402,9 @@
     "providerName": "UNESCO",
     "description": "Bundel met 26 bijdragen over menselijke handelingsruimte, ontwikkeling, pedagogiek, toetsing, denken en publieke governance van onderwijs in een tijdperk van AI.",
     "purpose": "Onderwijsprofessionals en beleidsmakers helpen urgente bestuurlijke en pedagogische vragen rond AI expliciet te bespreken.",
-    "audiences": [
-      "Beleidsmakers",
-      "Bestuurders",
-      "Docenten",
-      "Onderzoekers"
-    ],
-    "sectors": [
-      "PO",
-      "VO",
-      "MBO",
-      "HBO",
-      "WO",
-      "Onderzoek"
-    ],
-    "themes": [
-      "Beleid en governance",
-      "Publieke waarden en ethiek",
-      "Lesgeven en leren met AI",
-      "Toetsing en examinering"
-    ],
+    "audiences": ["Beleidsmakers", "Bestuurders", "Docenten", "Onderzoekers"],
+    "sectors": ["PO", "VO", "MBO", "HBO", "WO", "Onderzoek"],
+    "themes": ["Beleid en governance", "Publieke waarden en ethiek", "Lesgeven en leren met AI", "Toetsing en examinering"],
     "status": "available",
     "availabilityText": "Engelstalige publicatie direct beschikbaar via UNESCO.",
     "startDate": null,
@@ -25924,20 +26412,14 @@
     "publicationDate": "2026-09-08",
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
-    "sourceUrls": [
-      {
-        "label": "Officiële UNESCO-publicatie",
-        "url": "https://www.unesco.org/en/articles/algorithm-room-seeing-and-confronting-implications-ai-future-education",
-        "sourceType": "official"
-      }
-    ],
+    "sourceUrls": [{"label": "Officiële UNESCO-publicatie", "url": "https://www.unesco.org/en/articles/algorithm-room-seeing-and-confronting-implications-ai-future-education", "sourceType": "official"}],
     "relatedIds": [],
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Internationaal",
     "accessType": "public",
     "costType": "free",
-    "fundingAmount": "Maximaal € 40.000 per aanvraag; subsidieplafond € 1.800.000",
+    "fundingAmount": null,
     "fundingDeadline": null,
     "applicationOpenDate": null,
     "applicationDeadline": null,
@@ -25948,26 +26430,12 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": [
-      "en"
-    ],
-    "keywords": [
-      "UNESCO",
-      "agency",
-      "human oversight",
-      "public good",
-      "future of education"
-    ],
+    "language": ["en"],
+    "keywords": ["UNESCO", "agency", "human oversight", "public good", "future of education"],
     "notes": "De bundel bestaat uit positionerende bijdragen; zij is geen effectevaluatie of norm met bindende status.",
     "verificationMethod": "agent_primary_source_review",
     "verificationNote": "De officiële UNESCO-pagina bevestigt de titel, datum, 26 bijdragen en zes centrale vragen over autonomie, pedagogiek, toetsing en publieke governance.",
-    "changeHistory": [
-      {
-        "date": "2026-09-14",
-        "type": "added",
-        "summary": "Recente UNESCO-essaybundel toegevoegd na controle van de officiële publicatiepagina en doublures."
-      }
-    ],
+    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Recente UNESCO-essaybundel toegevoegd na controle van de officiële publicatiepagina en doublures."}],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
   },
@@ -25981,23 +26449,9 @@
     "providerName": "UNESCO IESALC en UNU-IAS",
     "description": "Onderzoek onder 200 hogeronderwijsinstellingen in 19 landen naar AI-gebruik, institutionele strategie, governance, digitale geletterdheid en capaciteit.",
     "purpose": "Een empirische basis en aanbevelingen bieden voor verantwoorde AI-implementatie in het hoger onderwijs.",
-    "audiences": [
-      "Bestuurders",
-      "Beleidsmakers",
-      "Onderzoekers",
-      "Onderwijsontwikkelaars"
-    ],
-    "sectors": [
-      "HBO",
-      "WO",
-      "Onderzoek"
-    ],
-    "themes": [
-      "Onderzoek",
-      "Beleid en governance",
-      "Implementatie en adoptie",
-      "AI-geletterdheid"
-    ],
+    "audiences": ["Bestuurders", "Beleidsmakers", "Onderzoekers", "Onderwijsontwikkelaars"],
+    "sectors": ["HBO", "WO", "Onderzoek"],
+    "themes": ["Onderzoek", "Beleid en governance", "Implementatie en adoptie", "AI-geletterdheid"],
     "status": "available",
     "availabilityText": "Engelse en Spaanse edities direct beschikbaar via UNESCO.",
     "startDate": null,
@@ -26005,13 +26459,7 @@
     "publicationDate": "2026-09-08",
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
-    "sourceUrls": [
-      {
-        "label": "Officiële UNESCO IESALC-publicatie",
-        "url": "https://www.iesalc.unesco.org/en/articles/ai-implementation-higher-education-latin-america-and-caribbean",
-        "sourceType": "official"
-      }
-    ],
+    "sourceUrls": [{"label": "Officiële UNESCO IESALC-publicatie", "url": "https://www.iesalc.unesco.org/en/articles/ai-implementation-higher-education-latin-america-and-caribbean", "sourceType": "official"}],
     "relatedIds": [],
     "parentIds": [],
     "childIds": [],
@@ -26029,27 +26477,12 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": [
-      "en",
-      "es"
-    ],
-    "keywords": [
-      "UNESCO IESALC",
-      "higher education",
-      "AI adoption",
-      "institutional strategy",
-      "governance"
-    ],
+    "language": ["en", "es"],
+    "keywords": ["UNESCO IESALC", "higher education", "AI adoption", "institutional strategy", "governance"],
     "notes": "De empirische gegevens hebben betrekking op Latijns-Amerika en het Caribisch gebied; toepassing op Nederland vraagt contextuele beoordeling.",
     "verificationMethod": "agent_primary_source_review",
     "verificationNote": "De officiële UNESCO IESALC-pagina bevestigt datum, auteurschap, steekproefomvang, regionale scope en de beschreven bevindingen over gebruik en formele AI-strategieën.",
-    "changeHistory": [
-      {
-        "date": "2026-09-14",
-        "type": "added",
-        "summary": "Recent internationaal onderzoek toegevoegd na controle van de officiële publicatiepagina en doublures."
-      }
-    ],
+    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Recent internationaal onderzoek toegevoegd na controle van de officiële publicatiepagina en doublures."}],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
   },
@@ -26063,23 +26496,9 @@
     "providerName": "UNESCO IESALC",
     "description": "Zeven hoofdstukken over academische integriteit, institutioneel beleid, verantwoord AI-gebruik in onderzoek, nieuwe vormen van wangedrag en risico's van pseudowetenschap.",
     "purpose": "Hogeronderwijsinstellingen ondersteunen bij een integere, transparante en menselijk controleerbare inzet van AI in onderwijs en onderzoek.",
-    "audiences": [
-      "Bestuurders",
-      "Beleidsmakers",
-      "Docenten",
-      "Onderzoekers"
-    ],
-    "sectors": [
-      "HBO",
-      "WO",
-      "Onderzoek"
-    ],
-    "themes": [
-      "Publieke waarden en ethiek",
-      "Beleid en governance",
-      "Onderzoek",
-      "Toetsing en examinering"
-    ],
+    "audiences": ["Bestuurders", "Beleidsmakers", "Docenten", "Onderzoekers"],
+    "sectors": ["HBO", "WO", "Onderzoek"],
+    "themes": ["Publieke waarden en ethiek", "Beleid en governance", "Onderzoek", "Toetsing en examinering"],
     "status": "available",
     "availabilityText": "Spaanstalige publicatie direct beschikbaar via UNESCO.",
     "startDate": null,
@@ -26087,13 +26506,7 @@
     "publicationDate": "2026-09-11",
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
-    "sourceUrls": [
-      {
-        "label": "Officiële UNESCO IESALC-publicatie",
-        "url": "https://www.iesalc.unesco.org/en/articles/new-perspectives-ethics-and-academic-integrity-university-teaching-and-research",
-        "sourceType": "official"
-      }
-    ],
+    "sourceUrls": [{"label": "Officiële UNESCO IESALC-publicatie", "url": "https://www.iesalc.unesco.org/en/articles/new-perspectives-ethics-and-academic-integrity-university-teaching-and-research", "sourceType": "official"}],
     "relatedIds": [],
     "parentIds": [],
     "childIds": [],
@@ -26111,26 +26524,12 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": [
-      "es"
-    ],
-    "keywords": [
-      "UNESCO IESALC",
-      "academic integrity",
-      "responsible AI",
-      "human oversight",
-      "governance"
-    ],
+    "language": ["es"],
+    "keywords": ["UNESCO IESALC", "academic integrity", "responsible AI", "human oversight", "governance"],
     "notes": "De publicatie is voortgekomen uit een UNESCO IESALC-programma uit 2025 en is op de officiële pagina alleen in het Spaans aangeboden.",
     "verificationMethod": "agent_primary_source_review",
     "verificationNote": "De officiële UNESCO IESALC-pagina bevestigt titel, publicatiedatum, taal, zeven hoofdstukken en praktische aandacht voor governance, toezicht en integriteit.",
-    "changeHistory": [
-      {
-        "date": "2026-09-14",
-        "type": "added",
-        "summary": "Recente UNESCO-publicatie over ethiek en academische integriteit toegevoegd na controle van de officiële bron en doublures."
-      }
-    ],
+    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Recente UNESCO-publicatie over ethiek en academische integriteit toegevoegd na controle van de officiële bron en doublures."}],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
   }
