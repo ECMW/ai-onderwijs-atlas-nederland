@@ -27022,7 +27022,11 @@
       "tintara-ai-beleidsroute",
       "tintara-ai-spiegel",
       "tintara-ai-groeiportret",
-      "tintara-ai-zonespel"
+      "tintara-ai-zonespel",
+      "tintara-methode-digitale-geletterdheid",
+      "tintara-school-en-teammaterialen",
+      "tintara-spelcollectie-digitale-geletterdheid",
+      "tintara-grip-op-online-gedrag"
     ],
     "parentIds": [],
     "childIds": [],
@@ -27048,6 +27052,11 @@
         "date": "2026-09-19",
         "type": "added",
         "summary": "Tintara toegevoegd als officiële aanbieder en vindplaats van gecontroleerde AI-onderwijsmaterialen."
+      },
+      {
+        "date": "2026-09-19",
+        "type": "updated",
+        "summary": "Relaties toegevoegd naar de complete methode, school- en teammaterialen, spelcollectie en materialen over online gedrag."
       }
     ],
     "commercialStatus": "unknown"
@@ -27503,6 +27512,415 @@
         "date": "2026-09-19",
         "type": "added",
         "summary": "Teamspel toegevoegd na controle van werkwijze, duur, groepsgrootte en beschikbare speelmodi."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "tintara-methode-digitale-geletterdheid",
+    "title": "Tintara-methode digitale geletterdheid",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Complete methode en lessenbibliotheek",
+    "organizationIds": [
+      "tintara"
+    ],
+    "providerName": "Tintara",
+    "description": "Gratis methode voor digitale geletterdheid met lessen, jaarplanningen, een leerlijn, ik-doelen, kerndoeluitleg, werkbladen en vakintegratie voor groep 1 tot en met 8, met aanvullend materiaal voor het voortgezet onderwijs.",
+    "purpose": "Leraren een samenhangende route bieden om digitale geletterdheid, waaronder AI, mediawijsheid, data, privacy, programmeren en online veiligheid, in lessen en curriculum te verwerken.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "ICT-coördinatoren"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Lesgeven en leren met AI",
+      "Privacy en AVG"
+    ],
+    "status": "available",
+    "availabilityText": "Vrij online beschikbaar; de methodepagina ontsluit lessen, planningen, leerlijn, kerndoelen en werkbladen.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-19",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Complete methode",
+        "url": "https://www.tintara.nl/methode",
+        "sourceType": "official"
+      },
+      {
+        "label": "Lessenbibliotheek",
+        "url": "https://www.tintara.nl/lessen",
+        "sourceType": "official"
+      },
+      {
+        "label": "Kerndoelen digitale geletterdheid",
+        "url": "https://www.tintara.nl/kerndoelen",
+        "sourceType": "official"
+      },
+      {
+        "label": "Leerlijn en ik-doelen",
+        "url": "https://www.tintara.nl/leerlijn",
+        "sourceType": "official"
+      },
+      {
+        "label": "Werkbladen",
+        "url": "https://www.tintara.nl/werkbladen",
+        "sourceType": "official"
+      },
+      {
+        "label": "Vakintegratie",
+        "url": "https://www.tintara.nl/vakintegratie",
+        "sourceType": "official"
+      },
+      {
+        "label": "Materiaal voor het voortgezet onderwijs",
+        "url": "https://www.tintara.nl/vo",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "tintara"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "license": "Gratis gebruik in de eigen klas volgens de Tintara-voorwaarden; commercieel gebruik, herdistributie en publicatie zonder toestemming zijn niet toegestaan.",
+    "keywords": [
+      "digitale geletterdheid",
+      "lessenbibliotheek",
+      "leerlijn",
+      "kerndoelen",
+      "werkbladen",
+      "vakintegratie"
+    ],
+    "notes": "Dit collectie-record maakt de samenhangende methode vindbaar zonder iedere les als afzonderlijk Atlasrecord te dupliceren. Tintara noemt dynamische aantallen; de Atlas legt daarom geen exact lessentotaal vast.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële methode-, lessen- en kerndoelenpagina's bevestigen de gratis toegang, doelgroep, onderdelen en behandelde thema's; de aanvullende detailpagina's bevestigen leerlijn, werkbladen, vakintegratie en VO-materiaal.",
+    "changeHistory": [
+      {
+        "date": "2026-09-19",
+        "type": "added",
+        "summary": "Complete Tintara-methode als collectie toegevoegd na controle van lessen, leerlijn, kerndoelen, werkbladen en sectorbereik."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "tintara-school-en-teammaterialen",
+    "title": "Tintara school- en teammaterialen digitale geletterdheid",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Collectie scans, routekaarten en teamwerkvormen",
+    "organizationIds": [
+      "tintara"
+    ],
+    "providerName": "Tintara",
+    "description": "Collectie met een nulmeting, schoolroutekaart, teampeiling, startpakket, dekkingsmatrix, doelenzoeker en documenthulpen om digitale geletterdheid schoolbreed te bespreken en organiseren.",
+    "purpose": "Schoolleiders, ICT-coördinatoren en teams ondersteunen bij inventarisatie, gezamenlijke keuzes, curriculumdekking en een uitvoerbare schoolroute voor digitale geletterdheid.",
+    "audiences": [
+      "Schoolleiders",
+      "Bestuurders",
+      "ICT-coördinatoren",
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Curriculumontwikkeling",
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "availabilityText": "Vrij online beschikbaar via de centrale school- en teampagina's en de afzonderlijke hulpmiddelen.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-19",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Digitale geletterdheid invoeren op school",
+        "url": "https://www.tintara.nl/voor-de-school",
+        "sourceType": "official"
+      },
+      {
+        "label": "Teamtools",
+        "url": "https://www.tintara.nl/team",
+        "sourceType": "official"
+      },
+      {
+        "label": "Nulmeting digitale geletterdheid",
+        "url": "https://www.tintara.nl/nulmeting",
+        "sourceType": "official"
+      },
+      {
+        "label": "Schoolroutekaart",
+        "url": "https://www.tintara.nl/schoolroutekaart",
+        "sourceType": "official"
+      },
+      {
+        "label": "Teampeiling",
+        "url": "https://www.tintara.nl/teampeiling",
+        "sourceType": "official"
+      },
+      {
+        "label": "Dekkingsmatrix",
+        "url": "https://www.tintara.nl/dekkingsmatrix",
+        "sourceType": "official"
+      },
+      {
+        "label": "Doelenzoeker",
+        "url": "https://www.tintara.nl/doelenzoeker",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "tintara",
+      "tintara-ai-beleidsroute"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "license": "Gratis gebruik in de eigen klas of school volgens de Tintara-voorwaarden; commercieel gebruik, herdistributie en publicatie zonder toestemming zijn niet toegestaan.",
+    "keywords": [
+      "schoolroutekaart",
+      "nulmeting",
+      "teampeiling",
+      "dekkingsmatrix",
+      "doelenzoeker",
+      "schoolplan"
+    ],
+    "notes": "Dit record bundelt samenhangende school- en teaminstrumenten en is geen officiële norm, audit of bewijs dat een school aan kerndoelen of wettelijke verplichtingen voldoet.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële school- en teampagina's bevestigen de collectie; de detailpagina's bevestigen afzonderlijk de nulmeting, routekaart, teampeiling, dekkingsmatrix en doelenzoeker.",
+    "changeHistory": [
+      {
+        "date": "2026-09-19",
+        "type": "added",
+        "summary": "School- en teammaterialen als collectie toegevoegd na controle van centrale overzichten en afzonderlijke instrumentpagina's."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "tintara-spelcollectie-digitale-geletterdheid",
+    "title": "Tintara-spelcollectie digitale geletterdheid",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Klassenspellen en teamspellen",
+    "organizationIds": [
+      "tintara"
+    ],
+    "providerName": "Tintara",
+    "description": "Gratis online collectie met acht grotere spellen voor kinderen en volwassenen rond digitale geletterdheid, beeldinterpretatie, begrippen, samenwerking, reflectie en gezamenlijke koersvorming.",
+    "purpose": "Digitale-geletterdheidsthema's bespreekbaar en oefenbaar maken via klassikale en teamgerichte spelvormen.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen",
+      "Schoolleiders",
+      "Trainers",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Professionalisering",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Gratis en zonder account toegankelijk via het officiële spellenoverzicht.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-19",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Alle Tintara-spellen",
+        "url": "https://www.tintara.nl/spellen",
+        "sourceType": "official"
+      },
+      {
+        "label": "Beeldspel",
+        "url": "https://www.tintara.nl/beeldspel",
+        "sourceType": "official"
+      },
+      {
+        "label": "Woordsprint",
+        "url": "https://www.tintara.nl/woordsprint",
+        "sourceType": "official"
+      },
+      {
+        "label": "Imposterspel",
+        "url": "https://www.tintara.nl/imposter",
+        "sourceType": "official"
+      },
+      {
+        "label": "Horizonspel",
+        "url": "https://www.tintara.nl/horizonspel",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "tintara",
+      "tintara-ai-zonespel"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "license": "Gratis gebruik in de eigen klas of school volgens de Tintara-voorwaarden; commercieel gebruik, herdistributie en publicatie zonder toestemming zijn niet toegestaan.",
+    "keywords": [
+      "spellen",
+      "beeldspel",
+      "woordsprint",
+      "imposter",
+      "horizonspel",
+      "teamwerkvorm"
+    ],
+    "notes": "De collectiepagina noemt acht grote spellen. De Atlas bundelt de collectie en houdt het afzonderlijke AI-Zonespel daarnaast als zelfstandig AI-specifiek teammateriaal vindbaar.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Het officiële spellenoverzicht bevestigt aantal, gratis toegang en gebruik zonder account; meerdere onderliggende spelpagina's zijn op titel en beschikbaarheid gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-09-19",
+        "type": "added",
+        "summary": "Tintara-spelcollectie toegevoegd na controle van het officiële overzicht en onderliggende spelpagina's."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "tintara-grip-op-online-gedrag",
+    "title": "Tintara Grip op online gedrag",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les-, team- en oudermaterialen",
+    "organizationIds": [
+      "tintara"
+    ],
+    "providerName": "Tintara",
+    "description": "Samenhangende collectie over online gedrag met materialen voor de klas, het schoolteam en ouders, aangevuld met een online-normbouwer, een zelfscan van de online sfeer, ouderbrieven en lessen over groepsdynamiek.",
+    "purpose": "Scholen helpen online gedrag, sociale normen, digitale opvoeding en groepsdynamiek gezamenlijk en op meerdere niveaus bespreekbaar te maken.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen",
+      "Schoolleiders",
+      "Ouders",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Privacy en AVG",
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Vrij online beschikbaar voor gebruik in klas, team en oudercommunicatie.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-19",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Grip op online gedrag",
+        "url": "https://www.tintara.nl/grip-op-online-gedrag",
+        "sourceType": "official"
+      },
+      {
+        "label": "Voor de klas",
+        "url": "https://www.tintara.nl/grip-online-voor-de-klas",
+        "sourceType": "official"
+      },
+      {
+        "label": "Voor het team",
+        "url": "https://www.tintara.nl/grip-online-voor-het-team",
+        "sourceType": "official"
+      },
+      {
+        "label": "Voor ouders",
+        "url": "https://www.tintara.nl/grip-online-voor-ouders",
+        "sourceType": "official"
+      },
+      {
+        "label": "Oudercommunicatie",
+        "url": "https://www.tintara.nl/oudercommunicatie",
+        "sourceType": "official"
+      },
+      {
+        "label": "Zelfscan online sfeer",
+        "url": "https://www.tintara.nl/zelfscan-online-sfeer",
+        "sourceType": "official"
+      },
+      {
+        "label": "De Onderstroom",
+        "url": "https://www.tintara.nl/de-onderstroom",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "tintara"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "license": "Gratis gebruik in de eigen klas of school volgens de Tintara-voorwaarden; commercieel gebruik, herdistributie en publicatie zonder toestemming zijn niet toegestaan.",
+    "keywords": [
+      "online gedrag",
+      "digitale opvoeding",
+      "online normen",
+      "online sfeer",
+      "ouderbrieven",
+      "groepsdynamiek"
+    ],
+    "notes": "De collectie biedt gespreks- en lesmateriaal, geen gevalideerde sociale-veiligheidsmeting of vervanging van schoolbeleid, zorgprotocollen of professionele beoordeling.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële collectie- en doelgroep-pagina's bevestigen de onderdelen voor klas, team en ouders; oudercommunicatie en De Onderstroom bevestigen aanvullende brieven en lessen.",
+    "changeHistory": [
+      {
+        "date": "2026-09-19",
+        "type": "added",
+        "summary": "Collectie Grip op online gedrag toegevoegd na controle van materialen voor klas, team, ouders en groepsdynamiek."
       }
     ],
     "offerCategory": "materials",
