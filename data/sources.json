@@ -99,7 +99,7 @@
     "id": "source-nolai",
     "name": "NOLAI",
     "owner": "NOLAI",
-    "baseUrl": "https://www.nolai.nl/",
+    "baseUrl": "https://www.ru.nl/nolai",
     "organizationId": "org-nolai",
     "sourceRole": "primary",
     "trustLevel": "official",
@@ -114,7 +114,8 @@
     "allowedRecordTypes": [
       "research_project",
       "pilot",
-      "programme"
+      "programme",
+      "funding_call"
     ],
     "operational": {
       "lastSuccessfulCheck": null,
@@ -122,7 +123,7 @@
       "lastStatus": "never_checked",
       "consecutiveFailures": 0
     },
-    "notes": null,
+    "notes": "Officieel NOLAI-kanaal bij de Radboud Universiteit. Concrete projecten, publicaties en partneroproepen worden alleen na controle van hun eigen detailpagina opgenomen.",
     "themes": [],
     "sectors": [],
     "sourceType": "official"
@@ -2270,6 +2271,24 @@
     "notes": "Officiële bron voor het Amerikaanse AI-kader voor lerarenopleidingen. Internationale relevantie wordt expliciet als vergelijkingsmateriaal beschreven en niet als Nederlandse norm. Bron gecontroleerd op 14 september 2026.",
     "themes": ["AI-geletterdheid", "Professionalisering"],
     "sectors": ["HBO", "WO"],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-tintara-ai-materialen",
+    "name": "Tintara: AI-materialen",
+    "owner": "Tintara",
+    "baseUrl": "https://www.tintara.nl/overzicht/ai",
+    "organizationId": "tintara",
+    "sourceRole": "discovery",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {"frequency": "monthly"},
+    "extraction": {"type": "html", "scope": "page"},
+    "allowedRecordTypes": ["organization", "guidance", "training", "service"],
+    "operational": {"lastSuccessfulCheck": null, "lastContentHash": null, "lastStatus": "never_checked", "consecutiveFailures": 0},
+    "notes": "Officieel overzicht van Tintara-materialen over AI voor onderwijs. Nieuwe onderdelen worden alleen toegevoegd na controle van de eigen detailpagina; softwarebots blijven buiten de publieke Atlas-scope. Bron gecontroleerd op 19 september 2026.",
+    "themes": ["AI-geletterdheid", "Lesgeven en leren met AI", "Beleid en governance", "Professionalisering"],
+    "sectors": ["PO", "VO", "MBO"],
     "sourceType": "official"
   }
 ]

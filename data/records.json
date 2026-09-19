@@ -26969,5 +26969,783 @@
     ],
     "offerCategory": "materials",
     "commercialStatus": "unknown"
+  },
+  {
+    "id": "tintara",
+    "title": "Tintara",
+    "recordType": "organization",
+    "legacyType": "Organisatie",
+    "subtype": "Platform voor digitale geletterdheid en AI",
+    "organizationIds": [
+      "tintara"
+    ],
+    "providerName": "Tintara",
+    "description": "Gratis online platform van Amélie van Romondt met lessen, cursussen, reflectie-instrumenten en teammaterialen over digitale geletterdheid en AI in het onderwijs.",
+    "purpose": "Leraren, schoolteams en leerlingen ondersteunen bij AI-geletterdheid, onderwijsgebruik en gezamenlijke beleidsvorming.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen",
+      "Schoolleiders",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Beleid en governance",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "De website en geselecteerde materialen zijn zonder account en kosteloos toegankelijk.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-19",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Over Tintara",
+        "url": "https://www.tintara.nl/over-tintara",
+        "sourceType": "official"
+      },
+      {
+        "label": "Overzicht AI-materialen",
+        "url": "https://www.tintara.nl/overzicht/ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "tintara-ai-cursus-13-plus",
+      "tintara-ai-cursus-kinderen",
+      "tintara-ai-beleidsroute",
+      "tintara-ai-spiegel",
+      "tintara-ai-groeiportret",
+      "tintara-ai-zonespel"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "license": "Gratis gebruik in de eigen klas volgens de Tintara-voorwaarden; commercieel gebruik, herdistributie en publicatie zonder toestemming zijn niet toegestaan.",
+    "keywords": [
+      "Tintara",
+      "digitale geletterdheid",
+      "AI-geletterdheid",
+      "lesmateriaal",
+      "schoolbeleid"
+    ],
+    "notes": "Tintara noemt op verschillende pagina's uiteenlopende aantallen lessen. Daarom legt de Atlas geen totaal aantal vast. Opname beschrijft vindbaarheid en broncontrole en is geen beoordeling van kwaliteit of effectiviteit.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële over- en overzichtspagina's bevestigen de maker, onderwijsdoelgroepen, gratis toegang en het aanbod van lessen, cursussen en teaminstrumenten.",
+    "changeHistory": [
+      {
+        "date": "2026-09-19",
+        "type": "added",
+        "summary": "Tintara toegevoegd als officiële aanbieder en vindplaats van gecontroleerde AI-onderwijsmaterialen."
+      }
+    ],
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "tintara-ai-cursus-13-plus",
+    "title": "AI-cursus 13+",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": "Zelfstandige online cursus",
+    "organizationIds": [
+      "tintara"
+    ],
+    "providerName": "Tintara",
+    "description": "Zelfstandige Nederlandstalige cursus in dertien modules over de werking van AI, privacy, prompting, mediawijsheid, professionele afwegingen, beleid en gebruik in onderwijs en werk.",
+    "purpose": "Deelnemers vanaf 13 jaar basiskennis en een kritisch handelingskader voor AI-gebruik laten opbouwen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsprofessionals",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Publieke waarden en ethiek",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Vrij online te volgen zonder account; voortgang wordt volgens de aanbieder lokaal in de browser opgeslagen.",
+    "eligibility": "De cursus is bedoeld voor deelnemers vanaf 13 jaar. Een certificaat is gekoppeld aan de eerste vier modules en een door de aanbieder ingestelde toetsdrempel.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-19",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële cursuspagina",
+        "url": "https://www.tintara.nl/ai-cursus",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "tintara"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "license": "Gratis gebruik in de eigen klas volgens de Tintara-voorwaarden; commercieel gebruik, herdistributie en publicatie zonder toestemming zijn niet toegestaan.",
+    "keywords": [
+      "AI-cursus",
+      "AI-geletterdheid",
+      "privacy",
+      "prompting",
+      "mediawijsheid",
+      "certificaat"
+    ],
+    "notes": "De cursuspagina koppelt de inhoud aan conceptwerk rond AI-geletterdheid van de Europese Commissie en OESO. Die verwijzing is geen vaststelling dat de cursus een officiële of definitieve standaard implementeert.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De volledige openbare cursusnavigatie, moduleonderwerpen, toegang, lokale voortgang en certificaatvoorwaarden zijn op de officiële pagina gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-09-19",
+        "type": "added",
+        "summary": "Open AI-cursus toegevoegd na controle van modules, doelgroep, toegang en certificaatvoorwaarden."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "tintara-ai-cursus-kinderen",
+    "title": "Basiscursus AI voor Kinderen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Online lessenreeks",
+    "organizationIds": [
+      "tintara"
+    ],
+    "providerName": "Tintara",
+    "description": "Online lessenreeks met genummerde modules en een verdiepingsmodule over de werking van AI, vooroordelen, menselijke vermogens, afhankelijkheid, duurzaamheid, privacy, deepfakes en sociale gevolgen.",
+    "purpose": "Leerlingen leren AI te onderzoeken en er ethisch en kritisch over te redeneren, zonder dat generatieve AI voor de eerste inhoudsblokken nodig is.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek",
+      "mediawijsheid"
+    ],
+    "status": "available",
+    "availabilityText": "De lessen zijn vrij online toegankelijk en gericht op groep 7 en 8 en het voortgezet onderwijs.",
+    "eligibility": "De eerste vijf inhoudsblokken behandelen AI zonder leerlingen een generatieve AI-toepassing te laten gebruiken. Een docent bepaalt de passende selectie en begeleiding.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-19",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële cursuspagina",
+        "url": "https://www.tintara.nl/ai-cursus-kinderen",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "tintara"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "license": "Gratis gebruik in de eigen klas volgens de Tintara-voorwaarden; commercieel gebruik, herdistributie en publicatie zonder toestemming zijn niet toegestaan.",
+    "keywords": [
+      "AI voor kinderen",
+      "groep 7",
+      "groep 8",
+      "ethiek",
+      "deepfakes",
+      "privacy",
+      "AI-manifest"
+    ],
+    "notes": "Tintara-pagina's tonen niet overal hetzelfde totale aantal lessen. De Atlas beschrijft daarom de gecontroleerde opbouw en thema's zonder een exact lessentotaal vast te leggen.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële cursuspagina bevestigt doelgroep, moduleopbouw, thema's en de keuze om de eerste inhoudsblokken over AI te geven zonder generatieve AI te gebruiken.",
+    "changeHistory": [
+      {
+        "date": "2026-09-19",
+        "type": "added",
+        "summary": "Lessenreeks voor leerlingen toegevoegd met expliciete vastlegging van doelgroep, thema's en telverschillen op de bronpagina's."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "tintara-ai-beleidsroute",
+    "title": "Tintara AI-beleidsroute voor scholen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Vierstappenroute met scan, casussen, koersdocument en kaarten",
+    "organizationIds": [
+      "tintara"
+    ],
+    "providerName": "Tintara",
+    "description": "Samenhangende vierstappenroute met een schoolscan, een casuschecker, een invulbaar koersdocument en koerskaarten voor het verkennen en bespreken van AI-beleid binnen een school.",
+    "purpose": "Schoolteams helpen huidige keuzes te inventariseren, verschillen te bespreken en een eerste eigen koersdocument en teamafspraken op te stellen.",
+    "audiences": [
+      "Schoolleiders",
+      "Bestuurders",
+      "Beleidsmakers",
+      "Docenten",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "PO",
+      "VSO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "AI-geletterdheid",
+      "Implementatie en adoptie",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "De vier stappen zijn vrij online te gebruiken; onderdelen bieden lokale opslag en exportmogelijkheden naar Word of PDF.",
+    "eligibility": "De uitkomsten en voorbeeldteksten zijn startmateriaal. Tintara adviseert scholen het koersdocument zelf te beoordelen en waar nodig privacy-, IBP- of juridisch deskundigen te betrekken.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-19",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Stap 1: AI-Schoolscan",
+        "url": "https://www.tintara.nl/ai-schoolscan",
+        "sourceType": "official"
+      },
+      {
+        "label": "Stap 2: AI-Beleidscasussen",
+        "url": "https://www.tintara.nl/ai-beleidscasussen",
+        "sourceType": "official"
+      },
+      {
+        "label": "Stap 3: AI-Koersdocument",
+        "url": "https://www.tintara.nl/ai-koersdocument",
+        "sourceType": "official"
+      },
+      {
+        "label": "Stap 4: AI-Koerskaarten",
+        "url": "https://www.tintara.nl/ai-koerskaarten",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "tintara"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "license": "Gratis gebruik in de eigen klas of school volgens de Tintara-voorwaarden; commercieel gebruik, herdistributie en publicatie zonder toestemming zijn niet toegestaan.",
+    "keywords": [
+      "AI-Schoolscan",
+      "AI-Beleidscasussen",
+      "AI-Koersdocument",
+      "AI-Koerskaarten",
+      "schoolbeleid",
+      "teamgesprek"
+    ],
+    "notes": "De route is materiaal van de aanbieder en geen officiële beleidsnorm, juridische toets of bewijs van naleving. De vier stappen zijn als één record gebundeld om versnippering van één samenhangend proces te voorkomen.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Alle vier officiële detailpagina's zijn gecontroleerd op functie, doelgroep, gegevensopslag, export en de expliciete beperking van het koersdocument als voorbeeld en startpunt.",
+    "changeHistory": [
+      {
+        "date": "2026-09-19",
+        "type": "added",
+        "summary": "Vier samenhangende beleidsinstrumenten als één route toegevoegd na controle van de afzonderlijke officiële detailpagina's."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "tintara-ai-spiegel",
+    "title": "AI-Spiegel",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Reflectievragenlijst",
+    "organizationIds": [
+      "tintara"
+    ],
+    "providerName": "Tintara",
+    "description": "Online reflectie-instrument met twaalf vragen dat deelnemers een persoonlijk beeld geeft van hun houding tegenover AI in het onderwijs en ook in een groepsmodus kan worden gebruikt.",
+    "purpose": "Een individueel of gezamenlijk gesprek openen over verwachtingen, zorgen en uitgangspunten rond AI in het onderwijs.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Vrij online te gebruiken, individueel of met een groep.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-19",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële toolpagina",
+        "url": "https://www.tintara.nl/ai-spiegel",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "tintara"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "license": "Gratis gebruik in de eigen klas of school volgens de Tintara-voorwaarden; commercieel gebruik, herdistributie en publicatie zonder toestemming zijn niet toegestaan.",
+    "keywords": [
+      "AI-Spiegel",
+      "houding",
+      "reflectie",
+      "teamgesprek",
+      "vragenlijst"
+    ],
+    "notes": "De uitkomst is een gespreks- en reflectieprofiel zonder goede of foute antwoorden; het is geen gevalideerde meting of beoordeling.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële pagina bevestigt twaalf vragen, een persoonlijk profiel en de mogelijkheid om de werkvorm in een groep te gebruiken.",
+    "changeHistory": [
+      {
+        "date": "2026-09-19",
+        "type": "added",
+        "summary": "Reflectie-instrument toegevoegd na controle van vraagvorm, uitkomst en groepsgebruik."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "tintara-ai-groeiportret",
+    "title": "AI-Groeiportret",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Zelfscan AI-geletterdheid",
+    "organizationIds": [
+      "tintara"
+    ],
+    "providerName": "Tintara",
+    "description": "Online zelfscan met 24 vragen over kennis, vaardigheden, houding en ethiek, gevolgd door een persoonlijk profiel en een voorgestelde vervolgstap.",
+    "purpose": "Onderwijsprofessionals laten reflecteren op hun eigen ontwikkeling in AI-geletterdheid en een passend vervolg laten kiezen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsprofessionals",
+      "Schoolleiders"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Vrij online te gebruiken zonder account; antwoorden blijven volgens de aanbieder op het apparaat.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-19",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële toolpagina",
+        "url": "https://www.tintara.nl/ai-groeiportret",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "tintara",
+      "tintara-ai-cursus-13-plus"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "license": "Gratis gebruik in de eigen klas of school volgens de Tintara-voorwaarden; commercieel gebruik, herdistributie en publicatie zonder toestemming zijn niet toegestaan.",
+    "keywords": [
+      "AI-Groeiportret",
+      "zelfscan",
+      "AI-geletterdheid",
+      "kennis",
+      "vaardigheden",
+      "ethiek"
+    ],
+    "notes": "Het groeiportret is een zelfreflectie en geen officiële competentietoets, certificering of gevalideerd meetinstrument. De aanbieder legt verbanden met AI-GO en DigCompEdu; die kaders onderschrijven dit specifieke instrument niet automatisch.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële pagina bevestigt 24 vragen, de vier beschreven dimensies, lokale verwerking en het ontbreken van een accountvereiste.",
+    "changeHistory": [
+      {
+        "date": "2026-09-19",
+        "type": "added",
+        "summary": "Zelfscan toegevoegd met expliciete begrenzing als reflectie-instrument en niet als officiële beoordeling."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "tintara-ai-zonespel",
+    "title": "AI-Zonespel",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Teamspel over AI-gebruik",
+    "organizationIds": [
+      "tintara"
+    ],
+    "providerName": "Tintara",
+    "description": "Teamactiviteit van ongeveer 45 minuten waarin deelnemers scenario's en stellingen over onderwijsgebruik van AI verdelen over drie zones en gezamenlijke afspraken formuleren.",
+    "purpose": "Schoolteams helpen grenzen, verwachtingen en afspraken voor AI-gebruik expliciet met elkaar te bespreken.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Trainers",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Beleid en governance",
+      "Professionalisering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Vrij online beschikbaar voor vier tot zestien deelnemers, in een live modus met telefoons of klassiek op één scherm.",
+    "publicationDate": null,
+    "lastVerified": "2026-09-19",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële spelpagina",
+        "url": "https://www.tintara.nl/ai-zonespel",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "tintara"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "license": "Gratis gebruik in de eigen klas of school volgens de Tintara-voorwaarden; commercieel gebruik, herdistributie en publicatie zonder toestemming zijn niet toegestaan.",
+    "keywords": [
+      "AI-Zonespel",
+      "teamspel",
+      "scenario's",
+      "schoolafspraken",
+      "U-curve"
+    ],
+    "notes": "Het spel gebruikt een door Tintara beschreven indeling in drie gebruikszones. De Atlas neemt die werkvorm op als gespreksmateriaal en doet geen uitspraak over de empirische validiteit van het onderliggende model.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële pagina bevestigt duur, groepsgrootte, drie zones, scenario's, afsprakenbord en de twee speelmodi.",
+    "changeHistory": [
+      {
+        "date": "2026-09-19",
+        "type": "added",
+        "summary": "Teamspel toegevoegd na controle van werkwijze, duur, groepsgrootte en beschikbare speelmodi."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "vu-slim-studeren-met-ai-ba",
+    "title": "Slim studeren met AI (BA) - Pedagogische Wetenschappen en Universitaire Pabo",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": "Open e-learning",
+    "organizationIds": [
+      "vrije-universiteit-amsterdam"
+    ],
+    "providerName": "Vrije Universiteit Amsterdam",
+    "description": "Open Nederlandstalige e-learning die bachelorstudenten leert AI kritisch te gebruiken voor hun studie.",
+    "purpose": "Studenten ondersteunen bij kritisch en verantwoord gebruik van AI in hun studiepraktijk.",
+    "audiences": [
+      "Studenten"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Vrij toegankelijk via Wikiwijs en als open leermateriaal vindbaar op edusources.",
+    "eligibility": "De titel en samenvatting richten zich op bachelorstudenten Pedagogische Wetenschappen en de Universitaire Pabo. Edusources labelt het materiaal daarnaast voor hbo en wo, inclusief wo-master.",
+    "publicationDate": "2026-09-17",
+    "lastVerified": "2026-09-19",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Edusources-detailpagina en metadata",
+        "url": "https://edusources.nl/materials/wikiwijsmaken:urn:wikiwijsmaken:225860/slim-studeren-met-ai--(ba)---pedagogische-wetenschappen-en-universitaire-pabo",
+        "sourceType": "official"
+      },
+      {
+        "label": "Open e-learning op Wikiwijs",
+        "url": "https://maken.wikiwijs.nl/225860/Slim_studeren_met_AI___BA____Pedagogische_Wetenschappen_en_Universitaire_Pabo_",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "edusources-open-leermaterialen",
+      "vrije-universiteit-amsterdam"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "language": [
+      "nl"
+    ],
+    "license": "CC BY-SA 4.0",
+    "keywords": [
+      "slim studeren",
+      "bachelorstudenten",
+      "Pedagogische Wetenschappen",
+      "Universitaire Pabo",
+      "Wikiwijs",
+      "edusources"
+    ],
+    "notes": "Edusources vermeldt Vrije Universiteit Amsterdam als uitgever en publicatiedatum 17 september 2026. De inhoudelijke effectiviteit is niet door de Atlas beoordeeld.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De edusources-detailpagina bevestigt titel, samenvatting, datum, uitgever, onderwijsniveaus, open toegang en CC BY-SA 4.0; de gekoppelde Wikiwijs-pagina is als directe materiaalbron vastgelegd.",
+    "changeHistory": [
+      {
+        "date": "2026-09-19",
+        "type": "added",
+        "summary": "Nieuwe open e-learning toegevoegd na controle van edusources-metadata, Wikiwijs-toegang en licentie."
+      }
+    ],
+    "offerCategory": "materials",
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "nolai-open-call-onderzoekspartner-creatief-maakonderwijs-2026",
+    "title": "Open call onderzoekspartner: AI-tool voor creatief maakonderwijs",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": "Onderzoekspartner voor co-creatieproject",
+    "organizationIds": [
+      "org-nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Oproep voor een onderzoekspartner in een driejarig co-creatieproject rond een AI-tool die leerlingen in het voortgezet onderwijs ondersteunt bij brainstormen zonder creatief en kritisch denken over te nemen.",
+    "purpose": "Een onderzoekspartner selecteren die de invloed van AI-ondersteuning op creatieve processen onderzoekt en inzichten naar de onderwijspraktijk vertaalt.",
+    "audiences": [
+      "Onderzoekers",
+      "Onderzoeksorganisaties"
+    ],
+    "sectors": [
+      "VO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Lesgeven en leren met AI",
+      "Subsidies en financiering"
+    ],
+    "status": "open_call",
+    "availabilityText": "Open voor aanmelding tot en met 30 september 2026; gesprekken met geselecteerde kandidaten zijn voorzien in de week van 5 tot en met 9 oktober.",
+    "publicationDate": "2026-09-16",
+    "lastVerified": "2026-09-19",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële open call",
+        "url": "https://www.ru.nl/over-ons/nieuws/open-call-onderzoekspartner-ai-tool-voor-creatief-maakonderwijs",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "nolai-open-call-ontwikkelpartner-creatief-maakonderwijs-2026",
+      "nolai-programma",
+      "nolai"
+    ],
+    "parentIds": [
+      "nolai-programma"
+    ],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-09-30",
+    "applicationOpenDate": "2026-09-16",
+    "applicationDeadline": "2026-09-30",
+    "eligibility": "Onderzoeksinstellingen met expertise in creativiteit en de meting daarvan, vertaling naar de onderwijspraktijk en co-creatie; ervaring met ontwerpgericht onderzoek is een pre en inzet voor minimaal drie jaar is vereist.",
+    "applicantTypes": [
+      "Onderzoeksinstellingen"
+    ],
+    "callStatus": "open_call",
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "NOLAI",
+      "open call",
+      "onderzoekspartner",
+      "creativiteit",
+      "maakonderwijs",
+      "co-creatie"
+    ],
+    "notes": "Dit is een partnerselectie voor een door NOLAI gefaciliteerd en gefinancierd co-creatieproject, niet een reguliere subsidieregeling. Een subsidiebedrag is niet gepubliceerd.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële Radboud/NOLAI-pagina bevestigt publicatiedatum, projectduur, partnerprofiel, selectieplanning en deadline.",
+    "changeHistory": [
+      {
+        "date": "2026-09-19",
+        "type": "added",
+        "summary": "Actuele NOLAI-oproep voor een onderzoekspartner toegevoegd na controle van de officiële call."
+      }
+    ]
+  },
+  {
+    "id": "nolai-open-call-ontwikkelpartner-creatief-maakonderwijs-2026",
+    "title": "Open call ontwikkelpartner: AI-tool voor creatief maakonderwijs",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": "Ontwikkelpartner voor co-creatieproject",
+    "organizationIds": [
+      "org-nolai"
+    ],
+    "providerName": "NOLAI",
+    "description": "Oproep voor een ontwikkelpartner in een driejarig co-creatieproject rond een AI-tool die leerlingen in het voortgezet onderwijs ondersteunt bij brainstormen zonder creatief en kritisch denken over te nemen.",
+    "purpose": "Een ontwikkelpartner selecteren die samen met een school en onderzoekers een passende AI-toepassing voor creatief maakonderwijs ontwerpt en beproeft.",
+    "audiences": [
+      "Ontwikkelaars",
+      "Bedrijven",
+      "Onderwijsorganisaties"
+    ],
+    "sectors": [
+      "VO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Onderzoek",
+      "Subsidies en financiering"
+    ],
+    "status": "open_call",
+    "availabilityText": "Open voor aanmelding tot en met 30 september 2026; eerste gesprekken zijn voorzien in de week van 5 tot en met 9 oktober en een tweede ronde in de week van 26 tot en met 30 oktober.",
+    "publicationDate": "2026-09-16",
+    "lastVerified": "2026-09-19",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële open call",
+        "url": "https://www.ru.nl/over-ons/nieuws/open-call-ontwikkelpartner-ai-tool-voor-creatief-maakonderwijs",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "nolai-open-call-onderzoekspartner-creatief-maakonderwijs-2026",
+      "nolai-programma",
+      "nolai"
+    ],
+    "parentIds": [
+      "nolai-programma"
+    ],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": null,
+    "fundingDeadline": "2026-09-30",
+    "applicationOpenDate": "2026-09-16",
+    "applicationDeadline": "2026-09-30",
+    "eligibility": "Organisaties met expertise in AI en creatieve technologie, digitale kunst, edtech of innovatieve leeromgevingen, bij voorkeur met ervaring in het voortgezet onderwijs en co-creatie; inzet voor minimaal drie jaar is vereist.",
+    "applicantTypes": [
+      "Bedrijven",
+      "Ontwikkelorganisaties"
+    ],
+    "callStatus": "open_call",
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "NOLAI",
+      "open call",
+      "ontwikkelpartner",
+      "creatieve technologie",
+      "maakonderwijs",
+      "co-creatie"
+    ],
+    "notes": "Dit is een partnerselectie voor een door NOLAI gefaciliteerd en gefinancierd co-creatieproject, niet een reguliere subsidieregeling. Een subsidiebedrag is niet gepubliceerd.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële Radboud/NOLAI-pagina bevestigt publicatiedatum, projectduur, partnerprofiel, twee selectieronden en deadline.",
+    "changeHistory": [
+      {
+        "date": "2026-09-19",
+        "type": "added",
+        "summary": "Actuele NOLAI-oproep voor een ontwikkelpartner toegevoegd na controle van de officiële call."
+      }
+    ]
   }
 ]
