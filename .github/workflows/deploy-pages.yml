@@ -188,7 +188,7 @@ jobs:
           Path('recovery-recheck.json').write_text(json.dumps(report), encoding='utf-8')
       - name: Stop a superseded or unnecessary publication
         id: gate
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         env:
           RECOVERY_REF: ${{ inputs.recovery_ref }}
           OBSERVED_MAIN_SHA: ${{ inputs.observed_main_sha }}
