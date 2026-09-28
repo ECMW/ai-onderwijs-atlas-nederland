@@ -42,6 +42,17 @@ De website is statische HTML, CSS en vanilla JavaScript. Er is geen applicatiese
 
 Het datamodel en de toegestane enums staan in [docs/data-model.md](docs/data-model.md). De publieke export bevat alleen records met een officiele bron en een bevestigde verificatiestatus.
 
+## Kennis- en bronnenbibliotheek
+
+Naast de directe aanbodbronnen onderhoudt de repository een permanente,
+claimgerichte [kennis- en bronnenbibliotheek](sources/README.md). Deze index
+onderscheidt bindend recht, beleid, niet-bindende guidance, vrijwillige
+standaarden en wetenschappelijk bewijs, inclusief beperkingen, controledatum en
+status. `sources/claim-links.json` maakt belangrijke onderbouwing, tegenbewijs en
+evidence gaps controleerbaar zonder de publieke catalogus met verwijzingen te
+overladen. Het operationele `data/sources.json` blijft uitsluitend bestemd voor
+bronmonitoring en ontdekking.
+
 ## Dagelijks onderhoud
 
 Bezoekersmeting staat los van brononderhoud. De inrichting, telwijze,
@@ -79,6 +90,7 @@ De Atlas gebruikt de herbruikbare huisstijl **Strand**: Aptos, olijfgroen, beige
 Open `index.html` rechtstreeks of start een eenvoudige lokale webserver. Voer voor een inhoudelijke wijziging uit:
 
 ```text
+python scripts/validate_sources.py
 python scripts/validate_data.py
 python scripts/generate_data.py
 python scripts/quality_gate.py --strict

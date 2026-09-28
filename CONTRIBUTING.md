@@ -52,6 +52,7 @@ De canonieke gegevens staan in `data/records.json`. Bewerk geen browserexport lo
 van deze bron. Voer vóór een PR uit:
 
 ```text
+python scripts/validate_sources.py
 python scripts/validate_data.py
 python scripts/generate_data.py
 python scripts/quality_gate.py --strict
@@ -64,4 +65,7 @@ samen op in de PR. De generator vernieuwt de datum van de editie; individuele
 `lastVerified`-datums veranderen alleen na een daadwerkelijke broncontrole.
 Zie ook het [datamodel](docs/data-model.md), het
 [redactioneel beleid](docs/editorial-policy.md) en het
-[releaseproces](docs/release-process.md).
+[releaseproces](docs/release-process.md). Raadpleeg bij feitelijke, juridische,
+technische of onderzoeksmatige claims ook de centrale
+[kennis- en bronnenbibliotheek](sources/README.md). Voeg ontbrekende onderbouwing
+niet als feit toe, maar leg haar vast als evidence gap.

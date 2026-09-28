@@ -2,6 +2,46 @@
 
 Gebruik officiële of aantoonbaar gezaghebbende openbare bronnen. Zoekresultaten, sociale media, persoonlijke blogs en marketingclaims zijn geen primaire bron. Sla geen volledige bronteksten op. Respecteer robotsbeleid, timeouts en gebruiksvoorwaarden. Een verified record vereist minimaal één bron-URL en controledatum.
 
+## Drie gescheiden bronlagen
+
+De Atlas gebruikt drie bronlagen met verschillende functies:
+
+1. `data/records.json[].sourceUrls` onderbouwt een concrete vermelding bij de
+   aanbieder of eigenaar;
+2. `data/sources.json` is een operationeel register voor ontdekking en
+   bereikbaarheidssignalen;
+3. `sources/sources.json` en `sources/claim-links.json` vormen de permanente
+   kennisbibliotheek voor juridische, bestuurlijke, technische en
+   wetenschappelijke claims.
+
+Meng deze schema's niet. Een ontdekkingsbron is geen claimbewijs en een
+bibliografische publicatie wordt niet automatisch een te monitoren aanbieder.
+
+## Bronhiërarchie en bewijsgrenzen
+
+Gebruik in beginsel: primaire officiële bron > peer-reviewed onderzoek >
+transparante institutionele onderzoeksbron > goed onderbouwde technische bron >
+secundaire of journalistieke bron > commerciële of opiniërende bron. Gebruik
+secundaire bronnen vooral om de oorspronkelijke bron te vinden. Leveranciers zijn
+alleen primaire bron voor controleerbare feiten over hun eigen systeem of aanbod;
+hun effectiviteits- en veiligheidsclaims zijn geen onafhankelijk bewijs.
+
+Houd steeds uit elkaar:
+
+- wetgeving, verdragen, beleid, guidance en vrijwillige standaarden;
+- geldend recht, voorstellen en gefaseerde toekomstige verplichtingen;
+- peer-reviewed onderzoek en preprints;
+- benchmarks, gebruiksprestaties en praktijkuitkomsten;
+- correlatie en causaliteit;
+- wat een bron rechtstreeks aantoont, een redelijke afleiding en eigen
+  Atlas-synthese.
+
+Belangrijke claims worden in `sources/claim-links.json` gekoppeld als
+`SUPPORTED`, `SUPPORTED_WITH_LIMITS`, `CONTESTED` of `EVIDENCE_GAP`. Tegenbewijs
+en onzekerheid blijven zichtbaar. Een vervangen bron wordt niet verwijderd maar
+gemarkeerd als `superseded`; een ingetrokken of niet meer bruikbare bron als
+`archived`, steeds met opvolger of reden.
+
 ## Vaste bron voor open leermaterialen
 
 Raadpleeg bij iedere inhoudstranche voor het vervolgonderwijs ook [edusources](https://edusources.nl/) als vaste vindplaats. Publiceer een afzonderlijk leermateriaal alleen wanneer de detailpagina of de oorspronkelijke bron de titel, aanbieder, beschikbaarheid en gebruiksvoorwaarden voldoende onderbouwt. Een zoekresultaat alleen is geen publicatiegrond.

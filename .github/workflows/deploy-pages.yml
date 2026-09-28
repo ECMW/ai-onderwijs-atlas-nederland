@@ -74,7 +74,15 @@ jobs:
         run: python scripts/validate_data.py
       - name: Validate the committed public projection
         working-directory: source
-        run: python ../toolkit/scripts/quality_gate.py --root . --strict --output "${{ runner.temp }}/atlas-quality-report.json"
+        shell: bash
+        env:
+          RECOVERY_REF: ${{ inputs.recovery_ref }}
+        run: |
+          args=(--root . --strict --output "${{ runner.temp }}/atlas-quality-report.json")
+          if [[ -n "$RECOVERY_REF" ]]; then
+            args+=(--allow-missing-source-library)
+          fi
+          python ../toolkit/scripts/quality_gate.py "${args[@]}"
       - name: Run data and browser regression tests
         working-directory: source
         run: python -m unittest discover tests
