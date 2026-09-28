@@ -3062,7 +3062,7 @@
       "org-europese-unie"
     ],
     "providerName": "Europese Unie",
-    "description": "Risicogebaseerde Europese regelgeving voor AI-systemen, met verplichtingen rond onder meer risicomanagement, transparantie, documentatie, human oversight en AI-geletterdheid.",
+    "description": "Bindende risicogebaseerde Europese regelgeving voor AI-systemen, met verplichtingen rond onder meer risicomanagement, transparantie, documentatie, human oversight en AI-geletterdheid. De toepassingsdata zijn gefaseerd en in 2026 gewijzigd.",
     "purpose": "Veilige, grondrechtenconforme en betrouwbare AI bevorderen",
     "audiences": [
       "Bestuurders",
@@ -3080,28 +3080,43 @@
       "Onderzoek",
       "Overheid"
     ],
-    "themes": [],
+    "themes": [
+      "AI Act en wetgeving",
+      "Beleid en governance",
+      "Veilige AI-omgeving",
+      "AI-geletterdheid"
+    ],
     "status": "available",
-    "availabilityText": "In werking sinds 2024; gefaseerde toepassing",
+    "availabilityText": "In werking sinds 1 augustus 2024; gefaseerde toepassing, in 2026 gewijzigd door Verordening (EU) 2026/1744.",
     "startDate": null,
     "endDate": null,
-    "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "publicationDate": "2024-07-12",
+    "lastVerified": "2026-09-28",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële informatie",
-        "url": "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai",
+        "label": "Verordening (EU) 2024/1689 (EUR-Lex)",
+        "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj/nld",
+        "sourceType": "official"
+      },
+      {
+        "label": "Geconsolideerde tekst per 27 juli 2026 (EUR-Lex)",
+        "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/2026-07-27/nld",
+        "sourceType": "official"
+      },
+      {
+        "label": "Wijzigingsverordening (EU) 2026/1744 (EUR-Lex)",
+        "url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj/nld",
         "sourceType": "official"
       }
     ],
     "relatedIds": [],
     "parentIds": [],
     "childIds": [],
-    "geographicScope": "Nederland",
+    "geographicScope": "Europa",
     "accessType": "public",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
+    "costType": "free",
+    "fundingAmount": null,
     "fundingDeadline": null,
     "applicationOpenDate": null,
     "applicationDeadline": null,
@@ -3128,8 +3143,14 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-28",
+        "type": "corrected",
+        "summary": "Primaire EUR-Lex-bronnen, publicatiedatum, thema's en actuele duiding van de gefaseerde toepassing toegevoegd; de wijziging uit 2026 is expliciet gemaakt."
       }
-    ]
+    ],
+    "verificationNote": "De oorspronkelijke verordening, de officiële consolidatie en de wijzigingsverordening zijn gecontroleerd. De Atlas geeft geen casusspecifiek juridisch advies."
   },
   {
     "id": "algemene-verordening-gegevensbescherming-avg",
@@ -3159,28 +3180,37 @@
       "Onderzoek",
       "Overheid"
     ],
-    "themes": [],
+    "themes": [
+      "Privacy en AVG",
+      "Beleid en governance",
+      "Veilige AI-omgeving"
+    ],
     "status": "available",
-    "availabilityText": "2018",
+    "availabilityText": "Van toepassing sinds 25 mei 2018.",
     "startDate": null,
     "endDate": null,
-    "publicationDate": null,
-    "lastVerified": "2026-09-09",
+    "publicationDate": "2016-05-04",
+    "lastVerified": "2026-09-28",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Privacywetgeving en AVG bij de AP",
-        "url": "https://autoriteitpersoonsgegevens.nl/nl/over-privacy/wetten",
+        "label": "Verordening (EU) 2016/679 (EUR-Lex)",
+        "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj/nld",
+        "sourceType": "official"
+      },
+      {
+        "label": "AP: handreiking generatieve AI en de AVG",
+        "url": "https://autoriteitpersoonsgegevens.nl/documenten/handreiking-generatieve-ai-en-de-avg",
         "sourceType": "official"
       }
     ],
     "relatedIds": [],
     "parentIds": [],
     "childIds": [],
-    "geographicScope": "Nederland",
+    "geographicScope": "Europa",
     "accessType": "public",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
+    "costType": "free",
+    "fundingAmount": null,
     "fundingDeadline": null,
     "applicationOpenDate": null,
     "applicationDeadline": null,
@@ -3211,9 +3241,14 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Algemene AP-homepage vervangen door de officiële uitleg over de AVG en het wettelijke kader. Geen nieuwe juridische interpretatie toegevoegd."
+      },
+      {
+        "date": "2026-09-28",
+        "type": "corrected",
+        "summary": "De primaire EUR-Lex-tekst, publicatiedatum, toepassingsdatum en Atlas-thema's toegevoegd; de actuele AP-handreiking blijft als uitvoeringsduiding gekoppeld."
       }
     ],
-    "verificationNote": "Algemene AP-homepage vervangen door de officiële uitleg over de AVG en het wettelijke kader. Geen nieuwe juridische interpretatie toegevoegd."
+    "verificationNote": "De primaire verordening en actuele AP-handreiking zijn gecontroleerd. De toepasselijkheid op een concrete AI-verwerking vraagt een afzonderlijke beoordeling."
   },
   {
     "id": "eu-data-act",
@@ -3240,28 +3275,32 @@
       "Onderzoek",
       "Overheid"
     ],
-    "themes": [],
+    "themes": [
+      "Data en infrastructuur",
+      "Standaarden en interoperabiliteit",
+      "Beleid en governance"
+    ],
     "status": "available",
-    "availabilityText": "Gefaseerd",
+    "availabilityText": "Van toepassing sinds 12 september 2025; specifieke overgangsbepalingen gelden.",
     "startDate": null,
     "endDate": null,
-    "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "publicationDate": "2023-12-22",
+    "lastVerified": "2026-09-28",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "EU Data Act",
-        "url": "https://digital-strategy.ec.europa.eu/en/policies/data-act",
+        "label": "Verordening (EU) 2023/2854 (Data Act, EUR-Lex)",
+        "url": "https://eur-lex.europa.eu/eli/reg/2023/2854/oj/nld",
         "sourceType": "official"
       }
     ],
     "relatedIds": [],
     "parentIds": [],
     "childIds": [],
-    "geographicScope": "Nederland",
+    "geographicScope": "Europa",
     "accessType": "public",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
+    "costType": "free",
+    "fundingAmount": null,
     "fundingDeadline": null,
     "applicationOpenDate": null,
     "applicationDeadline": null,
@@ -3287,15 +3326,21 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-28",
+        "type": "corrected",
+        "summary": "Primaire EUR-Lex-bron, publicatie- en toepassingsdatum en Atlas-thema's toegevoegd; de oude aanduiding 'Gefaseerd' is gepreciseerd."
       }
-    ]
+    ],
+    "verificationNote": "De officiële verordening is gecontroleerd. Concrete toepasselijkheid blijft afhankelijk van product, rol, datatype en overgangsbepaling."
   },
   {
     "id": "digital-education-action-plan-20212027",
     "title": "Digital Education Action Plan 2021–2027",
-    "recordType": "legislation",
-    "legacyType": "Wetgeving",
-    "subtype": null,
+    "recordType": "policy_document",
+    "legacyType": "Beleidsdocument",
+    "subtype": "EU-beleidsactieplan",
     "organizationIds": [
       "org-europese-commissie"
     ],
@@ -3314,28 +3359,33 @@
       "HBO",
       "WO"
     ],
-    "themes": [],
+    "themes": [
+      "Beleid en governance",
+      "Professionalisering",
+      "Curriculumontwikkeling",
+      "Data en infrastructuur"
+    ],
     "status": "available",
-    "availabilityText": "2021",
+    "availabilityText": "Beleidsperiode 2021–2027.",
     "startDate": null,
     "endDate": null,
-    "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "publicationDate": "2020-09-30",
+    "lastVerified": "2026-09-28",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Actieplan",
-        "url": "https://education.ec.europa.eu/focus-topics/digital-education/action-plan",
+        "label": "Digital Education Action Plan 2021–2027 — COM(2020) 624 final",
+        "url": "https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX:52020DC0624",
         "sourceType": "official"
       }
     ],
     "relatedIds": [],
     "parentIds": [],
     "childIds": [],
-    "geographicScope": "Nederland",
+    "geographicScope": "Europa",
     "accessType": "public",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
+    "costType": "free",
+    "fundingAmount": null,
     "fundingDeadline": null,
     "applicationOpenDate": null,
     "applicationDeadline": null,
@@ -3360,20 +3410,26 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-28",
+        "type": "corrected",
+        "summary": "Onjuiste indeling als wetgeving gecorrigeerd naar beleidsdocument; primaire Commissiebron, datum en thema's toegevoegd."
       }
-    ]
+    ],
+    "verificationNote": "De officiële Commissiemededeling is gecontroleerd. Het actieplan is niet-bindend beleid en geen EU-verordening of richtlijn."
   },
   {
     "id": "nederlandse-gedragscode-wetenschappelijke-integriteit",
     "title": "Nederlandse Gedragscode Wetenschappelijke Integriteit",
-    "recordType": "legislation",
-    "legacyType": "Wetgeving",
-    "subtype": null,
+    "recordType": "standard",
+    "legacyType": "Standaard",
+    "subtype": "Gedragscode",
     "organizationIds": [
       "org-universiteiten-van-nederland-en-partners"
     ],
-    "providerName": "Universiteiten van Nederland en partners",
-    "description": "Gedragscode voor zorgvuldigheid, betrouwbaarheid, controleerbaarheid, onpartijdigheid en verantwoordelijkheid in onderzoek, ook relevant voor AI-gebruik.",
+    "providerName": "KNAW, NFU, NWO, TO2-federatie, Vereniging Hogescholen en VSNU",
+    "description": "Nationale gedragscode met vijf leidende principes — eerlijkheid, zorgvuldigheid, transparantie, onafhankelijkheid en verantwoordelijkheid — normen voor goede onderzoekspraktijken en zorgplichten voor onderzoeksinstellingen.",
     "purpose": "Wetenschappelijke integriteit borgen",
     "audiences": [
       "Onderzoekers",
@@ -3385,18 +3441,22 @@
       "WO",
       "Onderzoek"
     ],
-    "themes": [],
+    "themes": [
+      "Onderzoek",
+      "Publieke waarden en ethiek",
+      "Beleid en governance"
+    ],
     "status": "available",
-    "availabilityText": "2018",
+    "availabilityText": "Gedragscode 2018; normatieve werking volgt uit onderschrijving en institutionele regelingen.",
     "startDate": null,
     "endDate": null,
-    "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "publicationDate": "2018-09-19",
+    "lastVerified": "2026-09-28",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Gedragscode",
-        "url": "https://www.universiteitenvannederland.nl/onderwerpen/onderzoek/wetenschappelijke-integriteit",
+        "label": "Nederlandse gedragscode wetenschappelijke integriteit, versie 1.0",
+        "url": "https://doi.org/10.17026/dans-2cj-nvwu",
         "sourceType": "official"
       }
     ],
@@ -3405,8 +3465,8 @@
     "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
-    "costType": "unknown",
-    "fundingAmount": "Nog niet ingevuld",
+    "costType": "free",
+    "fundingAmount": null,
     "fundingDeadline": null,
     "applicationOpenDate": null,
     "applicationDeadline": null,
@@ -3418,7 +3478,8 @@
     "callStatus": null,
     "recurrence": null,
     "language": [
-      "nl"
+      "nl",
+      "en"
     ],
     "keywords": [
       "onderzoek",
@@ -3426,14 +3487,20 @@
       "AI-gebruik",
       "transparantie"
     ],
-    "notes": null,
+    "notes": "Geen wet. De code is een nationaal normatief kader; relevantie voor specifiek AI-gebruik vergt een afzonderlijke Atlas-duiding.",
     "changeHistory": [
       {
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-09-28",
+        "type": "corrected",
+        "summary": "Onjuiste indeling als wetgeving gecorrigeerd naar gedragscode/standaard; primaire DOI, publicatiedatum, principes en betrokken organisaties toegevoegd."
       }
-    ]
+    ],
+    "verificationNote": "De officiële versie 1.0 is gecontroleerd. De bestaande samengestelde organisatie-id is behouden totdat alle uitgevende organisaties afzonderlijk canoniek zijn gemodelleerd."
   },
   {
     "id": "handreiking-ai-in-het-onderwijs-po-vo",

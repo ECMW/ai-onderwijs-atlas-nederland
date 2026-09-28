@@ -25,6 +25,52 @@ class ReleaseQualityTests(unittest.TestCase):
         }]
         self.html = '<script src="data/data-v2.js"></script>'
         self.write_data(self.records)
+        self.write_source_library()
+
+    def write_source_library(self):
+        (self.root / "sources").mkdir(exist_ok=True)
+        source = {
+            "source_id": "official-example",
+            "title": "Official example",
+            "author_or_organisation": "Example authority",
+            "publication_date": "2026-09-01",
+            "url_or_doi": "https://example.org/report",
+            "source_type": "official_guidance",
+            "primary_or_secondary": "primary",
+            "topics": ["Beleid en governance"],
+            "jurisdiction": "Nederland",
+            "claims_supported": ["The source documents the example."],
+            "reliability_notes": "Official fixture source.",
+            "limitations": "Test fixture; no effectiveness claim.",
+            "legal_effect": "non_binding",
+            "peer_review_status": "not_applicable",
+            "last_verified": "2026-09-28",
+            "status": "active",
+            "atlas_record_ids": ["example"],
+        }
+        claim = {
+            "claim_id": "example-claim",
+            "location": {"path": "data/records.json", "record_id": "example", "field": "description"},
+            "claim": "The description is supported as an official source statement.",
+            "claim_kind": "source_statement",
+            "evidence_status": "SUPPORTED_WITH_LIMITS",
+            "source_ids": ["official-example"],
+            "assessment": "The source supports existence, not effectiveness.",
+            "last_reviewed": "2026-09-28",
+            "time_sensitive": False,
+            "review_by": None,
+        }
+        (self.root / "sources/sources.json").write_text(json.dumps({
+            "schema_version": "1.0",
+            "last_reviewed": "2026-09-28",
+            "verification_window_days": 90,
+            "sources": [source],
+        }), encoding="utf-8")
+        (self.root / "sources/claim-links.json").write_text(json.dumps({
+            "schema_version": "1.0",
+            "last_reviewed": "2026-09-28",
+            "claims": [claim],
+        }), encoding="utf-8")
 
     def write_data(self, records, public=None):
         public = records if public is None else public
@@ -40,13 +86,39 @@ class ReleaseQualityTests(unittest.TestCase):
     def version_index(self):
         (self.root / "index.html").write_text(versioned_html(self.root, self.html), encoding="utf-8")
 
-    def gate(self):
+    def gate(self, *, recovery_compatibility=False):
+        command = [
+            sys.executable, str(ROOT / "scripts/quality_gate.py"), "--root", str(self.root),
+            "--strict", "--output", str(self.root / "report.json"),
+        ]
+        if recovery_compatibility:
+            command.append("--allow-missing-source-library")
         result = subprocess.run(
-            [sys.executable, str(ROOT / "scripts/quality_gate.py"), "--root", str(self.root),
-             "--strict", "--output", str(self.root / "report.json")],
+            command,
             capture_output=True, text=True, encoding="utf-8",
         )
         return result, json.loads((self.root / "report.json").read_text())
+
+    def test_missing_source_library_requires_explicit_recovery_compatibility(self):
+        sources = self.root / "sources"
+        hidden = self.root / "sources-hidden"
+        sources.rename(hidden)
+        try:
+            result, report = self.gate()
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("Required source library is missing; recovery must opt in explicitly", report["errors"])
+            result, report = self.gate(recovery_compatibility=True)
+            self.assertEqual(result.returncode, 0, report)
+        finally:
+            hidden.rename(sources)
+
+    def test_source_library_errors_are_included_in_release_report(self):
+        library = json.loads((self.root / "sources/sources.json").read_text())
+        library["sources"][0]["url_or_doi"] = "https://localhost/report"
+        (self.root / "sources/sources.json").write_text(json.dumps(library), encoding="utf-8")
+        result, report = self.gate()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertTrue(any("public HTTPS URL" in error for error in report["errors"]))
 
     def test_healthy_projection_can_be_published(self):
         result, report = self.gate()

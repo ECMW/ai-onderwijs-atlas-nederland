@@ -65,6 +65,12 @@ de actuele kwaliteitspoort en algemene opstartcontrole toe. Nieuwe functiespecif
 tests worden niet over een oudere editie gelegd. De workflow blijft van `main`
 afkomstig en publiceert via hetzelfde beschermde environment.
 
+De actuele kwaliteitspoort vereist bij normale publicaties altijd de permanente
+bronnenbibliotheek. Alleen de gecontroleerde herstelroute mag voor een oudere,
+vooraf vastgelegde release expliciet `--allow-missing-source-library` gebruiken;
+de normale workflow en lokale releasecontrole mogen deze uitzondering niet
+inschakelen.
+
 Dit herstel zet geen branch terug, verwijdert geen commits en verandert de
 canonieke hoofddata niet. Het kan tijdelijk een oudere editie met minder records
 of functies tonen. Per hoofdbranchcommit wordt hoogstens één herstelpoging

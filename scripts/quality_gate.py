@@ -16,6 +16,7 @@ from public_assets import versioned_html
 from contribution_quality import commercial_field_errors
 from offer_categories import offer_category_errors
 from publication_scope import publication_exclusion_errors
+from source_library import source_library_issues
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_STATUSES = {"verified", "recently_checked"}
@@ -68,6 +69,11 @@ def main() -> int:
     parser.add_argument("--root", type=Path, default=ROOT)
     parser.add_argument("--output", type=Path, default=ROOT / "maintenance-output" / "quality-report.json")
     parser.add_argument("--strict", action="store_true")
+    parser.add_argument(
+        "--allow-missing-source-library",
+        action="store_true",
+        help="Recovery-only compatibility for a reviewed release created before sources/ existed.",
+    )
     args = parser.parse_args()
 
     root = args.root.resolve()
@@ -81,6 +87,12 @@ def main() -> int:
     public_records = public_data.get("records", [])
 
     errors, warnings = [], []
+    if (root / "sources").is_dir():
+        source_errors, source_warnings = source_library_issues(root)
+        errors.extend(source_errors)
+        warnings.extend(source_warnings)
+    elif not args.allow_missing_source_library:
+        errors.append("Required source library is missing; recovery must opt in explicitly")
     expected = [record for record in records if is_public(record)]
     expected_ids = [record.get("id") for record in expected]
     public_ids = [record.get("id") for record in public_records]

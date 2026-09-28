@@ -87,13 +87,29 @@ def canonical_url(value: str) -> str:
 
 
 def _host_is_public(host: str) -> bool:
-    if not host or host.lower() in PRIVATE_HOSTS:
+    host = host.strip().rstrip(".").lower()
+    if not host or host in PRIVATE_HOSTS or any(character.isspace() for character in host):
         return False
     try:
         address = ipaddress.ip_address(host)
         return address.is_global and not address.is_multicast
     except ValueError:
-        return "." in host
+        try:
+            ascii_host = host.encode("idna").decode("ascii")
+        except UnicodeError:
+            return False
+        labels = ascii_host.split(".")
+        return (
+            len(labels) > 1
+            and all(
+                label
+                and len(label) <= 63
+                and not label.startswith("-")
+                and not label.endswith("-")
+                and re.fullmatch(r"[a-z0-9-]+", label)
+                for label in labels
+            )
+        )
 
 
 def _public_https_url(url: str) -> urllib.parse.SplitResult:
