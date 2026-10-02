@@ -636,10 +636,10 @@
   function homeFilterPanel(personas) {
     const themes = ['Veilige AI-omgeving', 'Lesgeven en leren met AI', 'Beleid en governance', 'Toetsing en examinering', 'AI Act en wetgeving', 'Privacy en AVG', 'AI-geletterdheid', 'Professionalisering', 'Praktijkvoorbeelden'];
     const types = ['materials', 'Training', 'Boek', 'knowledge', 'Praktijkvoorbeeld', 'Pilot', 'Subsidie of call', 'Subsidie', 'Wetgeving', 'Organisatie', 'Programma', 'Community', 'Standaard', 'Raamwerk', 'Beleidsdocument', 'unclassified'];
-    return `<details class="home-filter-sidebar"><summary>Filter het aanbod</summary><form class="home-filter-form"><header><span class="eyebrow">Snel verfijnen</span><h2>Filter het aanbod</h2><p>Combineer meerdere keuzes.</p></header>
-      ${homeFilterGroup('theme', 'Waar zoekt u hulp bij?', themes, [], false, [{ key: 'type', value: 'Training', label: 'Mijn team scholen — workshops en trainers' }, { key: 'type', value: 'Subsidie of call,Subsidie', label: 'Subsidies en calls vinden' }])}
+    return `<details class="home-filter-sidebar"><summary>Filter het aanbod</summary><form class="home-filter-form"><header><span class="eyebrow">Snel verfijnen</span><h2>Filter het aanbod</h2><p>Kies eerst uw sector en daarna wat u zoekt. Verfijn vervolgens met de andere opties.</p></header>
       ${homeFilterGroup('sector', 'Voor welke sector?', SECTORS)}
       ${homeFilterGroup('type', 'Wat zoekt u?', types)}
+      ${homeFilterGroup('theme', 'Waar zoekt u hulp bij?', themes, [], false, [{ key: 'type', value: 'Training', label: 'Mijn team scholen — workshops en trainers' }, { key: 'type', value: 'Subsidie of call,Subsidie', label: 'Subsidies en calls vinden' }])}
       ${homeFilterGroup('geography', 'Waar is het aanbod beschikbaar?', ['Nederland', 'Europa', 'Internationaal'])}
       ${homeFilterGroup('audience', 'Voor wie?', PRIMARY_AUDIENCES, personas)}
       ${homeFilterGroup('status', 'Beschikbaarheid', ['Direct beschikbaar', 'Open voor aanvragen', 'Pilot', 'In ontwikkeling'])}
@@ -904,6 +904,16 @@
     refreshFacetControls();
     bindResultsControls();
   }
+  function catalogFilterPanel(typeOptions, audienceOptions, organizationOptions) {
+    const hiddenCount = ['access', 'source'].reduce((sum, key) => sum + values(key).length, 0);
+    return `<aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Verfijn</h2><button class="close" aria-label="Sluit filters">×</button></header>
+      <p class="filter-help">Kies eerst uw sector en daarna wat u zoekt. Verfijn vervolgens met de andere opties. Keuzes binnen dezelfde groep werken als OR; verschillende groepen worden gecombineerd.</p>
+      ${facet('sector', '1. Voor welke sector?', SECTORS)}${facet('type', '2. Wat zoekt u?', typeOptions)}${facet('theme', '3. Onderwerp', themeOptions())}${facet('geography', '4. Regio', ['Nederland', 'Europa', 'Internationaal'])}${facet('audience', '5. Doelgroep', audienceOptions)}${facet('status', '6. Beschikbaarheid', Object.values(STATUS_LABELS))}${facet('organization', '7. Aanbieder', organizationOptions)}
+      <details class="more-filters"><summary>8. Meer filters<span data-more-count>${hiddenCount ? ` (${hiddenCount})` : ''}</span> <span aria-hidden="true">▼</span></summary>
+        ${facet('access', 'Toegang', Object.values(ACCESS_LABELS))}${facet('source', 'Bron', ['Met officiële bron', 'Bron nog niet vastgelegd'])}
+      </details><button class="clear btn secondary">Wis alle filters</button><footer><button class="apply btn">Toon ${resultRecords.length} resultaten</button></footer>
+    </aside>`;
+  }
   function renderSearch() {
     if (!hasIntent()) return renderStart();
     const typeOptions = [...new Set(records.map(offerType))].sort((a, b) => filterOptionLabel('type', a).localeCompare(filterOptionLabel('type', b), 'nl'));
@@ -913,15 +923,8 @@
       return primaryDifference || a.localeCompare(b, 'nl');
     });
     resultRecords = sortRecords(records.filter(record => matches(record)));
-    const hiddenCount = ['access', 'source'].reduce((sum, key) => sum + values(key).length, 0);
     main.innerHTML = `<section class="catalog">${searchForm('catalog-search')}<div class="catalog-grid">
-      <aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Verfijn</h2><button class="close" aria-label="Sluit filters">×</button></header>
-        <p class="filter-help">Kies binnen een groep één of meer opties. Keuzes binnen dezelfde groep werken als OR; verschillende groepen worden gecombineerd.</p>
-        ${facet('theme', '1. Onderwerp', themeOptions())}${facet('sector', '2. Sector', SECTORS)}${facet('type', '3. Soort aanbod', typeOptions)}${facet('geography', '4. Regio', ['Nederland', 'Europa', 'Internationaal'])}${facet('audience', '5. Doelgroep', audienceOptions)}${facet('status', '6. Beschikbaarheid', Object.values(STATUS_LABELS))}${facet('organization', '7. Aanbieder', organizationOptions)}
-        <details class="more-filters"><summary>8. Meer filters<span data-more-count>${hiddenCount ? ` (${hiddenCount})` : ''}</span> <span aria-hidden="true">▼</span></summary>
-          ${facet('access', 'Toegang', Object.values(ACCESS_LABELS))}${facet('source', 'Bron', ['Met officiële bron', 'Bron nog niet vastgelegd'])}
-        </details><button class="clear btn secondary">Wis alle filters</button><footer><button class="apply btn">Toon ${resultRecords.length} resultaten</button></footer>
-      </aside><section class="results" id="results-panel">${resultsMarkup()}</section></div></section>`;
+      ${catalogFilterPanel(typeOptions, audienceOptions, organizationOptions)}<section class="results" id="results-panel">${resultsMarkup()}</section></div></section>`;
     bindSearchPage();
     if (sessionGet('atlas.restoreResults') === location.hash) {
       const targetY = Number(sessionGet('atlas.resultsScroll')) || 0;
