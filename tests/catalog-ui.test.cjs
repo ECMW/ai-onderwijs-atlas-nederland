@@ -10,7 +10,7 @@ assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly th
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
-    homeFilterPanel, recordsForCriteria,
+    homeFilterPanel, catalogFilterPanel, recordsForCriteria,
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
     effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
     accessLabel, accessOptions: Object.values(ACCESS_LABELS), recordThemes, themeOptions, route,
@@ -330,6 +330,22 @@ test('VSO is available wherever the catalogue contains that sector', () => {
   const api = load(data);
   assert.ok(api.homeFilterPanel([]).includes('name="sector" value="VSO"'));
   assert.deepEqual(Array.from(api.recordsForCriteria(api.criteriaForQuery('VSO')), item=>item.id), ['vso-offer']);
+});
+
+test('home and search filters lead with sector, then offer type, before other refinements', () => {
+  const data = [{ ...record('training'), recordType: 'training', legacyType: 'Training' }];
+  const api = load(data);
+  const assertGroupOrder = (markup, labels) => {
+    const positions = labels.map(label => markup.indexOf(label));
+    assert.ok(positions.every(position => position >= 0), `Expected all filter groups: ${labels.join(', ')}`);
+    assert.deepEqual(positions, [...positions].sort((left, right) => left - right));
+  };
+
+  const home = api.homeFilterPanel([]);
+  assertGroupOrder(home, ['Voor welke sector?', 'Wat zoekt u?', 'Waar zoekt u hulp bij?', 'Waar is het aanbod beschikbaar?', 'Voor wie?', 'Beschikbaarheid']);
+
+  const search = api.catalogFilterPanel(['Training'], ['Docenten'], ['Voorbeeld']);
+  assertGroupOrder(search, ['1. Voor welke sector?', '2. Wat zoekt u?', '3. Onderwerp', '4. Regio', '5. Doelgroep', '6. Beschikbaarheid', '7. Aanbieder', '8. Meer filters']);
 });
 
 test('route changes release an open mobile filter overlay and its detached keyboard handler', () => {
