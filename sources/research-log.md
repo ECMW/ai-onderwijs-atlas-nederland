@@ -102,3 +102,24 @@ De zichtbaar gemaakte leemtes betreffen onder meer:
 ### Interpretatieregel
 
 Een opgenomen bron bewijst niet automatisch dat een Atlas-record volledig juist, actueel, effectief of geschikt is. `source_statement`, `reasonable_inference` en `atlas_synthesis` hebben verschillende bewijskracht. Een structurele kwaliteitscontrole kan metadata en koppelingen afdwingen, maar geen bronwaarheid of causale geldigheid automatiseren.
+
+## 2026-10-02 — Nederlandstalige boekentranche
+
+De publieke boekencollectie is uitgebreid van elf naar zevenendertig titels. De
+selectie omvat drie Nederlandse uitgaven van of met Viktor Mayer-Schönberger,
+fundamentele werken over data, algoritmische macht, publieke waarden en
+menselijke oordeelsvorming, en onderwijsgerichte titels over AI-geletterdheid,
+didactiek, taalmodellen en toetsing.
+
+Boekrecords blijven catalogusaanbod en zijn niet automatisch toegevoegd aan de
+permanente claim-evidencebibliotheek in `sources/sources.json`. Een boek komt pas
+in die bibliotheek wanneer het een concrete Atlas-claim of beperking beter
+onderbouwt dan de beschikbare primaire rechtsbron, officiële uitgave of
+wetenschappelijke studie. De selectiecriteria, bronlinks, bewijsgrenzen en
+uitgestelde titels staan in
+`docs/books-materials-source-review-2026-10-02.md`.
+
+De technische toelatingspoort controleert vanaf deze tranche ook het
+ISBN-13-controlecijfer en de 978/979-prefix, dubbele ISBN's, niet-lege auteurs en
+het lijsttype van de taalcode. Daarmee is de uitbreiding schaalbaar zonder een
+nieuwe taxonomie, pagina of onderhoudsstroom te introduceren.

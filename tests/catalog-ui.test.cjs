@@ -9,7 +9,7 @@ const boot = "  addEventListener('hashchange', route); addEventListener('popstat
 assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly the route startup');
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
-    facet, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup,
+    facet, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
     homeFilterPanel, recordsForCriteria,
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
     effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
@@ -65,6 +65,18 @@ test('books page separates Dutch reading, study and practice books with metadata
   for (const title of ['Essayboek', 'Studieboek', 'Praktijkboek']) assert.ok(html.includes(title));
   for (const detail of ['A. Auteur', '2025', 'ISBN 9780000000001', '80 pagina&#39;s', '<dt>Uitgever</dt>']) assert.ok(html.includes(detail), detail);
   assert.ok(!html.includes('English book'));
+});
+
+test('book details expose availability and the record-specific evidence limit', () => {
+  const html = load().bookContextMarkup({
+    recordType: 'book',
+    availabilityText: 'Verkrijgbaar bij de uitgever.',
+    notes: 'Auteurssynthese; geen effectbewijs <zonder bron>.',
+  });
+  assert.ok(html.includes('<h2>Praktisch en beschikbaarheid</h2>'));
+  assert.ok(html.includes('Verkrijgbaar bij de uitgever.'));
+  assert.ok(html.includes('<h2>Duiding en bewijsgrens</h2>'));
+  assert.ok(html.includes('geen effectbewijs &lt;zonder bron&gt;'));
 });
 
 test('books and materials page reuses the selected public Dutch materials with costs, access and official sources', () => {

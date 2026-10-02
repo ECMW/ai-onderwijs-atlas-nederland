@@ -44,7 +44,7 @@ De automatische route voor nieuwe bijdragen stelt strengere eisen: de bron moet 
 
 ## Aanbodvorm voor publieksfilters
 
-Boeken gebruiken `recordType: book`, `legacyType: Boek`, een ISBN en minimaal één auteur. Het veld `bookCategory` onderscheidt `reading` (leesboeken en essays), `study` (studieboeken en leerwerkboeken) en `practice` (praktijk- en handboeken). De sectie Boeken beperkt zich tot Nederlandstalige titels die aantoonbaar over AI in een onderwijs- of leercontext gaan.
+Boeken gebruiken `recordType: book`, `legacyType: Boek`, een uniek en rekenkundig geldig ISBN-13 en minimaal één auteur. Het veld `bookCategory` onderscheidt `reading` (leesboeken en essays), `study` (studieboeken en leerwerkboeken) en `practice` (praktijk- en handboeken). De sectie Boeken beperkt zich tot Nederlandstalige titels die rechtstreeks over AI, onderwijs of leren gaan, plus fundamentele werken over data, algoritmische macht, digitale infrastructuur, publieke waarden of menselijke oordeelsvorming met een expliciet beschreven betekenis voor onderwijsbestuur. Opname is geen aanbeveling of effectbewijs; bij indirecte of tijdgevoelige titels benoemt `notes` de overdrachts- en actualiteitsgrens.
 
 De pagina **Boeken en materialen** ontsluit daarnaast een selectie bestaande
 Nederlandstalige records met `offerCategory: materials`, met een verwijzing
