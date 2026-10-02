@@ -118,7 +118,7 @@
     { label: 'Beleid en afspraken maken', detail: 'Afspraken, governance en implementatie', query: { theme: 'Beleid en governance' } },
     { label: 'Praktijkvoorbeelden', detail: 'Ervaringen uit instellingen en scholen', query: { type: 'Praktijkvoorbeeld' } },
     { label: 'Workshops en trainers', detail: 'Trainingen, begeleiders en leren met uw team', query: { type: 'Training' } },
-    { label: 'Boeken en materialen', detail: 'Nederlandstalige boeken, lessen en werkmaterialen', href: '#boeken' },
+    { label: 'Boeken en materialen', detail: 'Nederlandstalige boeken over AI, onderwijs, data en publieke waarden', href: '#boeken' },
     { label: 'Organisatie vinden', detail: 'Vind een organisatie per sector of onderwerp', query: { type: 'Organisatie' } }
   ];
   const BOOKS_MATERIAL_IDS = new Set([
@@ -726,12 +726,17 @@
       <dl class="card-facts"><div><dt>Uitgever</dt><dd>${escapeHtml(factValue(record.providerName))}</dd></div><div><dt>Voor wie</dt><dd>${escapeHtml(factValue((record.audiences || []).join(', ')))}</dd></div><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div></dl>
     </div><div class="card-actions"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">Uitgevers- of auteursbron ↗</a>` : ''}</div></article>`;
   }
+  function bookContextMarkup(record) {
+    if (record.recordType !== 'book') return '';
+    return `${record.availabilityText ? `<h2>Praktisch en beschikbaarheid</h2><p>${escapeHtml(record.availabilityText)}</p>` : ''}
+      ${record.notes ? `<h2>Duiding en bewijsgrens</h2><p>${escapeHtml(record.notes)}</p>` : ''}`;
+  }
   function booksMarkup() {
     const selection = booksPageRecords();
     const books = selection.filter(record => record.recordType === 'book');
     const materials = selection.filter(record => record.recordType !== 'book').sort((a, b) => a.title.localeCompare(b.title, 'nl'));
     const categories = ['reading', 'study', 'practice'];
-    return `<section class="new-offers books"><header class="page-intro"><span class="eyebrow">Nederlandstalige verdieping en toepassing</span><h1>Boeken en materialen</h1><p>Leesboeken en essays om verder te denken, studieboeken om mee te leren, en praktische handboeken voor toepassing in het onderwijs. Daarnaast vindt u een selectie lessen, handvatten en werkmaterialen om zelf of met uw team te gebruiken.</p><p class="listing-notice">${LISTING_NOTICE} Prijzen, toegang en leverbaarheid kunnen wijzigen; controleer die altijd bij de officiële bron.</p></header>
+    return `<section class="new-offers books"><header class="page-intro"><span class="eyebrow">Nederlandstalige verdieping en toepassing</span><h1>Boeken en materialen</h1><p>Leesboeken en essays over AI, data, macht, publieke waarden en menselijke oordeelsvorming; studieboeken om mee te leren; en praktische handboeken voor toepassing in het onderwijs. Daarnaast vindt u een selectie lessen, handvatten en werkmaterialen om zelf of met uw team te gebruiken.</p><p class="listing-notice">${LISTING_NOTICE} Een boekvermelding is geen aanbeveling of effectbewijs. Prijzen, toegang en leverbaarheid kunnen wijzigen; controleer die altijd bij de officiële bron.</p></header>
       <nav class="book-kinds" aria-label="Ga naar boeken of materialen">${categories.filter(category => books.some(book => book.bookCategory === category)).map(category => `<a href="#boeken?groep=${category}">${escapeHtml(bookCategoryLabel(category))}</a>`).join('')}${materials.length ? '<a href="#boeken?groep=materials">Les- en werkmaterialen</a>' : ''}</nav>
       ${categories.map(category => {
         const items = books.filter(book => book.bookCategory === category).sort((a, b) => a.title.localeCompare(b.title, 'nl'));
@@ -974,6 +979,7 @@
         <h2>Feitelijke beschrijving</h2><p>${escapeHtml(factValue(record.description))}</p>
         <h2>Doel en gebruik</h2><p>${escapeHtml(factValue(record.purpose))}</p>
         ${record.recordType === 'training' ? `<h2>Praktisch en beschikbaarheid</h2><p>${escapeHtml(factValue(record.availabilityText))}</p>` : ''}
+        ${bookContextMarkup(record)}
         <h2>Onderwerpen</h2>${recordThemes(record).length ? `<div class="detail-themes">${recordThemes(record).map(theme => `<a href="#zoeken?theme=${encodeURIComponent(theme)}">${escapeHtml(theme)}</a>`).join('')}</div>` : '<p>Niet vastgesteld</p>'}
         <h2>Voorwaarden</h2><p>${escapeHtml(factValue(record.eligibility))}</p>
         ${commercialDetails(record)}

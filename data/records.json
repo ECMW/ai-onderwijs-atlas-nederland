@@ -449,7 +449,9 @@
       "Leveranciers",
       "Beleidsmakers"
     ],
-    "sectors": ["MBO"],
+    "sectors": [
+      "MBO"
+    ],
     "themes": [],
     "status": "available",
     "availabilityText": "Nog niet ingevuld",
@@ -25087,9 +25089,18 @@
     "providerName": "Maastricht University",
     "description": "Open inspiratiedocument met praktijkvoorbeelden, aandachtspunten en uitgewerkte leeractiviteiten voor het gebruik van taalmodellen binnen probleemgestuurd onderwijs.",
     "purpose": "Docenten ondersteunen bij het doordacht verbinden van taalmodellen aan leerdoelen, onderwijsactiviteiten en toetsing.",
-    "audiences": ["Docenten", "Onderwijsontwikkelaars"],
-    "sectors": ["WO"],
-    "themes": ["Lesgeven en leren met AI", "Toetsing en examinering", "Praktijkvoorbeelden"],
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering",
+      "Praktijkvoorbeelden"
+    ],
     "status": "available",
     "availabilityText": "Vrij online raadpleegbaar als pdf.",
     "startDate": null,
@@ -25098,19 +25109,53 @@
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
     "sourceUrls": [
-      {"label": "Officiële kennisbasis", "url": "https://www.maastrichtuniversity.nl/about-um/education-at-um/edlab/ai-education-maastricht-university/artificial-intelligence", "sourceType": "official"},
-      {"label": "Inspiratiedocument (pdf)", "url": "https://www.maastrichtuniversity.nl/file/llmupdated0pdf", "sourceType": "official"}
+      {
+        "label": "Officiële kennisbasis",
+        "url": "https://www.maastrichtuniversity.nl/about-um/education-at-um/edlab/ai-education-maastricht-university/artificial-intelligence",
+        "sourceType": "official"
+      },
+      {
+        "label": "Inspiratiedocument (pdf)",
+        "url": "https://www.maastrichtuniversity.nl/file/llmupdated0pdf",
+        "sourceType": "official"
+      }
     ],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null, "recurrence": null,
-    "language": ["en"],
-    "keywords": ["Maastricht University", "EDLAB", "PBL", "LLM", "use cases", "onderwijsontwerp"],
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Maastricht University",
+      "EDLAB",
+      "PBL",
+      "LLM",
+      "use cases",
+      "onderwijsontwerp"
+    ],
     "notes": "Het document bundelt voorbeelden uit de Maastrichtse onderwijspraktijk; het schrijft geen specifieke AI-tool voor.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Toegevoegd na controle van de openbare UM-kennisbasis en het officiële document."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de openbare UM-kennisbasis en het officiële document."
+      }
+    ],
     "offerCategory": "materials",
     "commercialStatus": "unknown"
   },
@@ -25124,9 +25169,22 @@
     "providerName": "Maastricht University",
     "description": "Instellingsbreed beleidskader met uitgangspunten en richtlijnen voor verantwoord gebruik van generatieve AI in onderwijs, onderzoek en bedrijfsvoering.",
     "purpose": "Richting geven aan de verantwoorde toepassing van generatieve AI binnen de universiteit.",
-    "audiences": ["Bestuurders", "Beleidsmakers", "Docenten", "Onderzoekers", "Onderwijsinstellingen"],
-    "sectors": ["WO", "Onderzoek"],
-    "themes": ["Beleid en governance", "Publieke waarden en ethiek", "Implementatie en adoptie"],
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Docenten",
+      "Onderzoekers",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Publieke waarden en ethiek",
+      "Implementatie en adoptie"
+    ],
     "status": "available",
     "availabilityText": "Vrij online raadpleegbaar via de officiële publicatiepagina.",
     "startDate": null,
@@ -25134,17 +25192,49 @@
     "publicationDate": "2024-12-17",
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële publicatiepagina", "url": "https://www.maastrichtuniversity.nl/news/policy-framework-generative-ai-officially-published", "sourceType": "official"}],
-    "relatedIds": ["maastricht-llm-use-cases-pbl"], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële publicatiepagina",
+        "url": "https://www.maastrichtuniversity.nl/news/policy-framework-generative-ai-officially-published",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "maastricht-llm-use-cases-pbl"
+    ],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null, "recurrence": null,
-    "language": ["en"],
-    "keywords": ["Maastricht University", "GenAI", "beleidskader", "verantwoord gebruik"],
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Maastricht University",
+      "GenAI",
+      "beleidskader",
+      "verantwoord gebruik"
+    ],
     "notes": "Maastricht University beschrijft dit als een levend document dat met ondersteunende materialen wordt aangevuld.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Beleidskader toegevoegd na controle van de officiële aankondiging en toelichting."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Beleidskader toegevoegd na controle van de officiële aankondiging en toelichting."
+      }
+    ],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
   },
@@ -25158,26 +25248,68 @@
     "providerName": "Universiteit Twente",
     "description": "Resourcehub met basiskennis, materiaal over AI als onderwijsassistent, AI-geletterdheid in curricula en aandachtspunten voor valide toetsing met AI.",
     "purpose": "Docenten en opleidingsverantwoordelijken ondersteunen bij onderwijsontwerp, AI-geletterdheid en toetsing.",
-    "audiences": ["Docenten", "Opleidingsdirecteuren", "Onderwijsontwikkelaars"],
-    "sectors": ["WO"],
-    "themes": ["AI-geletterdheid", "Lesgeven en leren met AI", "Toetsing en examinering"],
+    "audiences": [
+      "Docenten",
+      "Opleidingsdirecteuren",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering"
+    ],
     "status": "available",
     "availabilityText": "Publieke overzichtspagina met een externe toegang tot de Canvas-resourcehub.",
-    "startDate": null, "endDate": null,
+    "startDate": null,
+    "endDate": null,
     "publicationDate": null,
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Learning & Teaching Portal", "url": "https://www.utwente.nl/en/learning-teaching/themes/technology-in-education/ai-in-education/", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Learning & Teaching Portal",
+        "url": "https://www.utwente.nl/en/learning-teaching/themes/technology-in-education/ai-in-education/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null, "recurrence": null,
-    "language": ["en"],
-    "keywords": ["Universiteit Twente", "CELT", "resourcehub", "AI literacy", "assessment"],
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Universiteit Twente",
+      "CELT",
+      "resourcehub",
+      "AI literacy",
+      "assessment"
+    ],
     "notes": "De universiteit biedt afzonderlijke toegangsroutes voor medewerkers en externe bezoekers.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Openbare resourcehub toegevoegd na controle van het officiële Learning & Teaching Portal."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Openbare resourcehub toegevoegd na controle van het officiële Learning & Teaching Portal."
+      }
+    ],
     "offerCategory": "materials",
     "commercialStatus": "unknown"
   },
@@ -25191,25 +25323,69 @@
     "providerName": "TU Delft",
     "description": "Ondersteuningspagina voor docenten met richtlijnen, praktische hulpmiddelen en trainingen voor het verantwoord inzetten van AI in onderwijs en toetsing.",
     "purpose": "Docenten helpen beredeneerde keuzes te maken over AI in hun onderwijspraktijk.",
-    "audiences": ["Docenten", "Onderwijsontwikkelaars"],
-    "sectors": ["WO"],
-    "themes": ["Lesgeven en leren met AI", "Toetsing en examinering", "Professionalisering"],
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering",
+      "Professionalisering"
+    ],
     "status": "available",
     "availabilityText": "Vrij online raadpleegbaar.",
-    "startDate": null, "endDate": null, "publicationDate": null,
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "TU Delft Teaching Support", "url": "https://www.tudelft.nl/en/teaching-support/educational-advice/ai-in-education", "sourceType": "official"}],
-    "relatedIds": ["tu-delft-open-textbook-generative-ai"], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "TU Delft Teaching Support",
+        "url": "https://www.tudelft.nl/en/teaching-support/educational-advice/ai-in-education",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "tu-delft-open-textbook-generative-ai"
+    ],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null, "recurrence": null,
-    "language": ["en"],
-    "keywords": ["TU Delft", "Teaching Support", "AI in education", "guidelines", "assessment"],
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "TU Delft",
+      "Teaching Support",
+      "AI in education",
+      "guidelines",
+      "assessment"
+    ],
     "notes": null,
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Toegevoegd na controle van de officiële TU Delft-ondersteuningspagina."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële TU Delft-ondersteuningspagina."
+      }
+    ],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
   },
@@ -25223,28 +25399,75 @@
     "providerName": "TU Delft",
     "description": "Open interactief handboek met theoretische uitleg en direct inzetbare prompts voor docenten die generatieve AI in onderwijsactiviteiten willen integreren.",
     "purpose": "Docenten praktische en conceptuele ondersteuning bieden voor onderwijsontwerp met generatieve AI.",
-    "audiences": ["Docenten", "Onderwijsontwikkelaars"],
-    "sectors": ["HBO", "WO"],
-    "themes": ["Open leermateriaal", "Lesgeven en leren met AI", "AI-geletterdheid"],
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Open leermateriaal",
+      "Lesgeven en leren met AI",
+      "AI-geletterdheid"
+    ],
     "status": "available",
     "availabilityText": "Vrij online raadpleegbaar als interactief boek.",
-    "startDate": null, "endDate": null, "publicationDate": null,
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
     "sourceUrls": [
-      {"label": "Officiële TU Delft-toelichting", "url": "https://www.tudelft.nl/en/tu-delft-teaching-academy/previous-newsletters/the-educator-may-2025/open-ai-textbook-integrating-generative-ai-in-education", "sourceType": "official"},
-      {"label": "Open handboek", "url": "https://www.genaieducationbook.online/", "sourceType": "official"}
+      {
+        "label": "Officiële TU Delft-toelichting",
+        "url": "https://www.tudelft.nl/en/tu-delft-teaching-academy/previous-newsletters/the-educator-may-2025/open-ai-textbook-integrating-generative-ai-in-education",
+        "sourceType": "official"
+      },
+      {
+        "label": "Open handboek",
+        "url": "https://www.genaieducationbook.online/",
+        "sourceType": "official"
+      }
     ],
-    "relatedIds": ["tu-delft-ai-in-education-guide"], "parentIds": [], "childIds": [],
+    "relatedIds": [
+      "tu-delft-ai-in-education-guide"
+    ],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null, "recurrence": null,
-    "language": ["en"],
-    "keywords": ["TU Delft", "open textbook", "GenAI", "prompts", "onderwijsontwerp"],
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "TU Delft",
+      "open textbook",
+      "GenAI",
+      "prompts",
+      "onderwijsontwerp"
+    ],
     "notes": "Het boek is gemaakt door een TU Delft-student in samenwerking met de faculteit Technology, Policy and Management en wordt door TU Delft als open bron ontsloten.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Open handboek toegevoegd op basis van de officiële TU Delft-publicatiepagina."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Open handboek toegevoegd op basis van de officiële TU Delft-publicatiepagina."
+      }
+    ],
     "offerCategory": "materials",
     "commercialStatus": "unknown"
   },
@@ -25258,28 +25481,72 @@
     "providerName": "Tilburg University",
     "description": "Open e-module van circa twee uur met aanbevelingen voor toetsing, docentvoorbeelden, voorbeeldrichtlijnen, prompttips en aanvullende bronnen over generatieve AI.",
     "purpose": "Docenten ondersteunen bij verantwoord gebruik van generatieve AI en aanpassing van onderwijs en toetsing.",
-    "audiences": ["Docenten", "Onderwijsontwikkelaars"],
-    "sectors": ["WO"],
-    "themes": ["Professionalisering", "Toetsing en examinering", "Lesgeven en leren met AI"],
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Toetsing en examinering",
+      "Lesgeven en leren met AI"
+    ],
     "status": "available",
     "availabilityText": "Vrij online te volgen.",
-    "startDate": null, "endDate": null, "publicationDate": null,
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
     "sourceUrls": [
-      {"label": "Officiële toelichting", "url": "https://www.tilburguniversity.edu/intranet-old/education-support-portal/tlc-academy/genai-higher-education", "sourceType": "official"},
-      {"label": "E-module", "url": "https://learn.tilburg.ai/", "sourceType": "official"}
+      {
+        "label": "Officiële toelichting",
+        "url": "https://www.tilburguniversity.edu/intranet-old/education-support-portal/tlc-academy/genai-higher-education",
+        "sourceType": "official"
+      },
+      {
+        "label": "E-module",
+        "url": "https://learn.tilburg.ai/",
+        "sourceType": "official"
+      }
     ],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null, "recurrence": null,
-    "language": ["en"],
-    "keywords": ["Tilburg University", "e-module", "GenAI", "assessment", "prompt engineering"],
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Tilburg University",
+      "e-module",
+      "GenAI",
+      "assessment",
+      "prompt engineering"
+    ],
     "notes": "De module is oorspronkelijk ontwikkeld bij de UvA en aangepast voor Tilburg University.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "E-module toegevoegd na controle van de officiële Tilburg University-pagina en modulelink."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "E-module toegevoegd na controle van de officiële Tilburg University-pagina en modulelink."
+      }
+    ],
     "offerCategory": "materials",
     "commercialStatus": "unknown"
   },
@@ -25293,25 +25560,70 @@
     "providerName": "Universiteit van Amsterdam",
     "description": "Beleidskader met algemene en specifieke richtlijnen voor verantwoord gebruik van generatieve AI in onderwijs, plus een addendum over GenAI in toetsing.",
     "purpose": "Opleidingen en faculteiten ondersteunen bij beleid, curriculumkeuzes en toetsing rond generatieve AI.",
-    "audiences": ["Bestuurders", "Beleidsmakers", "Opleidingsdirecteuren", "Examencommissies", "Docenten"],
-    "sectors": ["WO"],
-    "themes": ["Beleid en governance", "Toetsing en examinering", "Curriculumontwikkeling"],
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Opleidingsdirecteuren",
+      "Examencommissies",
+      "Docenten"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Toetsing en examinering",
+      "Curriculumontwikkeling"
+    ],
     "status": "available",
     "availabilityText": "Vrij online raadpleegbaar met twee downloadbare documenten.",
-    "startDate": null, "endDate": null, "publicationDate": null,
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële beleids- en downloadpagina", "url": "https://www.uva.nl/en/about-the-uva/policy-and-regulations/education/policy-framework-and-guidelines-on-genai-in-education.html", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële beleids- en downloadpagina",
+        "url": "https://www.uva.nl/en/about-the-uva/policy-and-regulations/education/policy-framework-and-guidelines-on-genai-in-education.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null, "recurrence": null,
-    "language": ["en"],
-    "keywords": ["UvA", "GenAI", "beleidskader", "toetsbeleid", "curriculum"],
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "UvA",
+      "GenAI",
+      "beleidskader",
+      "toetsbeleid",
+      "curriculum"
+    ],
     "notes": "De officiële pagina biedt het actuele beleidskader en het addendum bij het toetsbeleidskader aan.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Beleidskader toegevoegd na controle van de officiële UvA-pagina en downloads."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Beleidskader toegevoegd na controle van de officiële UvA-pagina en downloads."
+      }
+    ],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
   },
@@ -25325,28 +25637,76 @@
     "providerName": "4TU.Centre for Engineering Education en TU/e",
     "description": "Projectpagina met het DRIVE-raamwerk, een taxonomie en een praktische docentengids voor procesgerichte beoordeling van interacties tussen studenten en generatieve AI.",
     "purpose": "Docenten helpen leerprocessen zichtbaar te maken wanneer studenten generatieve AI gebruiken bij beoordeeld werk.",
-    "audiences": ["Docenten", "Toetsmakers", "Onderwijsontwikkelaars", "Onderzoekers"],
-    "sectors": ["WO", "Onderzoek"],
-    "themes": ["Toetsing en examinering", "Lesgeven en leren met AI", "Onderzoek"],
+    "audiences": [
+      "Docenten",
+      "Toetsmakers",
+      "Onderwijsontwikkelaars",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Lesgeven en leren met AI",
+      "Onderzoek"
+    ],
     "status": "available",
     "availabilityText": "Vrij online raadpleegbaar; rapporten en docentengids zijn downloadbaar.",
-    "startDate": null, "endDate": null, "publicationDate": "2024-05-14",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2024-05-14",
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
     "sourceUrls": [
-      {"label": "Officiële projectpagina", "url": "https://www.4tu.nl/cee/innovation/project/4368/generative-ai-and-the-assessment-of-academic-writing", "sourceType": "official"},
-      {"label": "Praktische docentengids (pdf)", "url": "https://www.4tu.nl/.wh/ea/uc/f997c890001038fdc00000df79f0291d969e53b359b4200/report-2b.pdf?whs-download=Report_2b.pdf", "sourceType": "official"}
+      {
+        "label": "Officiële projectpagina",
+        "url": "https://www.4tu.nl/cee/innovation/project/4368/generative-ai-and-the-assessment-of-academic-writing",
+        "sourceType": "official"
+      },
+      {
+        "label": "Praktische docentengids (pdf)",
+        "url": "https://www.4tu.nl/.wh/ea/uc/f997c890001038fdc00000df79f0291d969e53b359b4200/report-2b.pdf?whs-download=Report_2b.pdf",
+        "sourceType": "official"
+      }
     ],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null, "recurrence": null,
-    "language": ["en"],
-    "keywords": ["4TU", "TU/e", "DRIVE", "GenAI", "interactielogs", "procesgericht toetsen"],
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "4TU",
+      "TU/e",
+      "DRIVE",
+      "GenAI",
+      "interactielogs",
+      "procesgericht toetsen"
+    ],
     "notes": "De projectpagina bundelt onderzoeksrapporten, een praktische gebruikersgids en aanbevelingen; de vermelding is geen oordeel over toepasbaarheid in iedere onderwijscontext.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Praktische projectresultaten toegevoegd na controle van de 4TU.CEE-pagina en docentengids."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Praktische projectresultaten toegevoegd na controle van de 4TU.CEE-pagina en docentengids."
+      }
+    ],
     "offerCategory": "materials",
     "commercialStatus": "unknown"
   },
@@ -25360,25 +25720,69 @@
     "providerName": "Wageningen University & Research",
     "description": "Praktijkbeschrijving van een eenvoudige citation log en broncontrole-opdracht waarmee studenten claims terugvoeren naar primaire bronnen en hun literatuurgebruik documenteren.",
     "purpose": "Kritische informatievaardigheden en transparant brongebruik ondersteunen wanneer studenten generatieve AI kunnen gebruiken.",
-    "audiences": ["Docenten", "Studenten", "Bibliotheekprofessionals", "Onderwijsontwikkelaars"],
-    "sectors": ["WO"],
-    "themes": ["AI-geletterdheid", "Lesgeven en leren met AI", "Praktijkvoorbeelden"],
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Bibliotheekprofessionals",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Praktijkvoorbeelden"
+    ],
     "status": "available",
     "availabilityText": "Vrij online raadpleegbaar met verwijzing naar de open onderzoekspublicatie.",
-    "startDate": null, "endDate": null, "publicationDate": "2026-07-03",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-07-03",
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële WUR-praktijkbeschrijving", "url": "https://www.wur.nl/en/news/strengthening-literature-evaluation-age-generative-ai", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële WUR-praktijkbeschrijving",
+        "url": "https://www.wur.nl/en/news/strengthening-literature-evaluation-age-generative-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
-    "fundingAmount": null, "fundingDeadline": null, "applicationOpenDate": null, "applicationDeadline": null,
-    "fundingMin": null, "fundingMax": null, "totalBudget": null, "eligibility": null, "applicantTypes": [], "callStatus": null, "recurrence": null,
-    "language": ["en"],
-    "keywords": ["WUR", "citation log", "broncontrole", "informatievaardigheden", "GenAI"],
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "WUR",
+      "citation log",
+      "broncontrole",
+      "informatievaardigheden",
+      "GenAI"
+    ],
     "notes": "De beschreven opdracht gebruikt een spreadsheet met drie kolommen en is gekoppeld aan een open onderzoekspublicatie.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Praktijkvoorbeeld toegevoegd na controle van de officiële WUR-publicatie."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Praktijkvoorbeeld toegevoegd na controle van de officiële WUR-publicatie."
+      }
+    ],
     "offerCategory": "materials",
     "commercialStatus": "unknown"
   },
@@ -25448,7 +25852,9 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["nl"],
+    "language": [
+      "nl"
+    ],
     "keywords": [
       "Eerlijk over Ai",
       "ROC Mondriaan",
@@ -25481,30 +25887,71 @@
     "legacyType": "Boek",
     "subtype": "Paperback en online boek",
     "providerName": "Boom uitgevers Amsterdam",
-    "authors": ["Barend Last", "Thijmen Sprakel"],
+    "authors": [
+      "Barend Last",
+      "Thijmen Sprakel"
+    ],
     "bookCategory": "practice",
     "isbn": "9789024474622",
     "pageCount": 460,
     "publicationYear": 2026,
     "description": "Praktijkboek over verantwoord werken met generatieve AI in het onderwijs, met uitleg over techniek en risico's, hoofdstukken over onder meer AI-geletterdheid, toetsing, schrijven en beleid, en 56 werkvormen.",
     "purpose": "Docenten en onderwijsprofessionals ondersteunen bij weloverwogen en praktisch gebruik van generatieve AI in onderwijs.",
-    "audiences": ["Docenten", "Onderwijsprofessionals", "Leraren in opleiding", "Onderwijsadviseurs"],
-    "sectors": ["PO", "VO", "MBO", "HBO", "WO"],
-    "themes": ["AI-geletterdheid", "Lesgeven en leren met AI", "Toetsing en examinering", "Beleid en governance"],
+    "audiences": [
+      "Docenten",
+      "Onderwijsprofessionals",
+      "Leraren in opleiding",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering",
+      "Beleid en governance"
+    ],
     "status": "available",
     "availabilityText": "Als paperback en online boek verkrijgbaar via de uitgever.",
     "publicationDate": null,
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële uitgeverspagina", "url": "https://www.boom.nl/auteurs/alfabet/100-20321_Chatten-met-Napoleon-3-0", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële uitgeverspagina",
+        "url": "https://www.boom.nl/auteurs/alfabet/100-20321_Chatten-met-Napoleon-3-0",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "paid",
     "costType": "paid",
-    "language": ["nl"],
-    "keywords": ["generatieve AI", "werkvormen", "toetsing", "AI-geletterdheid", "docentprofessionalisering"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "generatieve AI",
+      "werkvormen",
+      "toetsing",
+      "AI-geletterdheid",
+      "docentprofessionalisering"
+    ],
     "notes": "Prijs en leverbaarheid worden niet als vaste boekmetadata bijgehouden; controleer de uitgeverspagina.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Nederlandstalig praktijkboek toegevoegd na controle van de officiële uitgeverspagina."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Nederlandstalig praktijkboek toegevoegd na controle van de officiële uitgeverspagina."
+      }
+    ],
     "commercialStatus": "unknown"
   },
   {
@@ -25514,30 +25961,67 @@
     "legacyType": "Boek",
     "subtype": "Boek met digitaal studiemateriaal",
     "providerName": "Noordhoff",
-    "authors": ["Ruud Huijts", "Danny Bloks", "Erdinç Saçan", "Koen Suilen"],
+    "authors": [
+      "Ruud Huijts",
+      "Danny Bloks",
+      "Erdinç Saçan",
+      "Koen Suilen"
+    ],
     "bookCategory": "study",
     "isbn": "9789001053420",
     "pageCount": 204,
     "publicationYear": 2024,
     "description": "Studieboek over de basisprincipes en concepten van AI en verantwoord gebruik in leerprocessen, met reflectievragen, theorie-opdrachten en aanvullend digitaal oefenmateriaal.",
     "purpose": "Hbo-studenten en professionals ondersteunen bij kritisch, creatief en ethisch verantwoord gebruik van AI in studie en werk.",
-    "audiences": ["Studenten", "Professionals", "Docenten"],
-    "sectors": ["HBO"],
-    "themes": ["AI-geletterdheid", "Lesgeven en leren met AI", "Publieke waarden en ethiek"],
+    "audiences": [
+      "Studenten",
+      "Professionals",
+      "Docenten"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
     "status": "available",
     "availabilityText": "Als boek verkrijgbaar; aanvullend digitaal materiaal is beschikbaar via Studiemeister.",
     "publicationDate": "2024-05-27",
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële uitgeverspagina", "url": "https://www.noordhoff.nl/webshop/product/leven-en-leren-met-ai-9789001053420", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële uitgeverspagina",
+        "url": "https://www.noordhoff.nl/webshop/product/leven-en-leren-met-ai-9789001053420",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "paid",
     "costType": "paid",
-    "language": ["nl"],
-    "keywords": ["AI-basisprincipes", "kritisch denken", "ethiek", "Studiemeister", "hbo-studenten"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-basisprincipes",
+      "kritisch denken",
+      "ethiek",
+      "Studiemeister",
+      "hbo-studenten"
+    ],
     "notes": "Prijs en leverbaarheid worden niet als vaste boekmetadata bijgehouden; controleer de uitgeverspagina.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Nederlandstalig studieboek toegevoegd na controle van de officiële uitgeverspagina."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Nederlandstalig studieboek toegevoegd na controle van de officiële uitgeverspagina."
+      }
+    ],
     "commercialStatus": "unknown"
   },
   {
@@ -25547,30 +26031,62 @@
     "legacyType": "Boek",
     "subtype": "Paperback",
     "providerName": "Acco Uitgeverij",
-    "authors": ["Wouter van der Horst"],
+    "authors": [
+      "Wouter van der Horst"
+    ],
     "bookCategory": "reading",
     "isbn": "9789492398826",
     "pageCount": 90,
     "publicationYear": 2024,
     "description": "Beschouwend boek dat historische technologische ontwikkelingen en mediatheorie gebruikt om kansen, risico's en mogelijke gevolgen van generatieve AI voor onderwijs te onderzoeken.",
     "purpose": "Lezers helpen kritisch na te denken over generatieve AI in onderwijs vanuit historische en mediatheoretische perspectieven.",
-    "audiences": ["Docenten", "Onderwijsprofessionals", "Beleidsmakers", "Onderzoekers"],
+    "audiences": [
+      "Docenten",
+      "Onderwijsprofessionals",
+      "Beleidsmakers",
+      "Onderzoekers"
+    ],
     "sectors": [],
-    "themes": ["Publieke waarden en ethiek", "Lesgeven en leren met AI", "Onderzoek"],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Lesgeven en leren met AI",
+      "Onderzoek"
+    ],
     "status": "available",
     "availabilityText": "Als paperback verkrijgbaar via de uitgever.",
     "publicationDate": null,
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële uitgeverspagina", "url": "https://www.accouitgeverij.nl/winkel/ai-het-onderwijs", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële uitgeverspagina",
+        "url": "https://www.accouitgeverij.nl/winkel/ai-het-onderwijs",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "paid",
     "costType": "paid",
-    "language": ["nl"],
-    "keywords": ["geschiedenis van technologie", "mediatheorie", "generatieve AI", "kritische reflectie"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "geschiedenis van technologie",
+      "mediatheorie",
+      "generatieve AI",
+      "kritische reflectie"
+    ],
     "notes": "De officiële bron specificeert geen afzonderlijke onderwijssector; daarom is geen sectorscope afgeleid.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Nederlandstalig leesboek toegevoegd na controle van de officiële uitgeverspagina."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Nederlandstalig leesboek toegevoegd na controle van de officiële uitgeverspagina."
+      }
+    ],
     "commercialStatus": "unknown"
   },
   {
@@ -25580,33 +26096,70 @@
     "legacyType": "Boek",
     "subtype": "Paperback",
     "providerName": "Owl Press",
-    "authors": ["Robbe Wulgaert"],
+    "authors": [
+      "Robbe Wulgaert"
+    ],
     "bookCategory": "practice",
     "isbn": "9789464946765",
     "pageCount": 240,
     "publicationYear": 2024,
     "description": "Praktische gids met kant-en-klare lessen en didactische inzichten voor AI-competenties en leerlijnen in het secundair onderwijs en lerarenopleidingen.",
     "purpose": "Onderwijsprofessionals ondersteunen bij het ontwikkelen van AI-competenties en het integreren van AI in lessen en leerlijnen.",
-    "audiences": ["Docenten", "Leraren in opleiding", "Onderwijsontwikkelaars"],
-    "sectors": ["VO", "HBO"],
-    "themes": ["AI-geletterdheid", "Lesgeven en leren met AI", "Curriculumontwikkeling"],
+    "audiences": [
+      "Docenten",
+      "Leraren in opleiding",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO",
+      "HBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Curriculumontwikkeling"
+    ],
     "status": "available",
     "availabilityText": "Als paperback verkrijgbaar via de uitgever en boekhandel.",
     "publicationDate": "2024-09-08",
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
     "sourceUrls": [
-      {"label": "Officiële auteurspagina", "url": "https://www.robbewulgaert.be/boek", "sourceType": "official"},
-      {"label": "Bureau ISBN", "url": "https://metadata.isbn.nl/1827986/ai-in-de-klas.html", "sourceType": "authoritative"}
+      {
+        "label": "Officiële auteurspagina",
+        "url": "https://www.robbewulgaert.be/boek",
+        "sourceType": "official"
+      },
+      {
+        "label": "Bureau ISBN",
+        "url": "https://metadata.isbn.nl/1827986/ai-in-de-klas.html",
+        "sourceType": "authoritative"
+      }
     ],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Europa",
     "accessType": "paid",
     "costType": "paid",
-    "language": ["nl"],
-    "keywords": ["AI-competenties", "lesmateriaal", "leerlijnen", "secundair onderwijs", "lerarenopleiding"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-competenties",
+      "lesmateriaal",
+      "leerlijnen",
+      "secundair onderwijs",
+      "lerarenopleiding"
+    ],
     "notes": "De sectorindeling volgt de expliciete doelgroep secundair onderwijs en lerarenopleidingen; controleer leverbaarheid bij de aanbieder.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Nederlandstalig praktijkboek toegevoegd na controle van de auteurspagina en Bureau ISBN."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Nederlandstalig praktijkboek toegevoegd na controle van de auteurspagina en Bureau ISBN."
+      }
+    ],
     "commercialStatus": "unknown"
   },
   {
@@ -25616,30 +26169,66 @@
     "legacyType": "Boek",
     "subtype": "Paperback",
     "providerName": "FLOOT",
-    "authors": ["Merijn Ritmeester", "Esther de Berg", "Marcel Mutsaarts"],
+    "authors": [
+      "Merijn Ritmeester",
+      "Esther de Berg",
+      "Marcel Mutsaarts"
+    ],
     "bookCategory": "practice",
     "isbn": "9789083377469",
     "pageCount": 176,
     "publicationYear": 2026,
     "description": "Praktijkboek over hbo-didactiek in een AI-landschap, met handvatten voor motivatie, lesontwerp, activerende werkvormen en de rolverdeling tussen student, docent en AI.",
     "purpose": "Hbo-docenten ondersteunen bij het ontwerpen en verzorgen van onderwijs waarin AI nadrukkelijk aanwezig is.",
-    "audiences": ["Docenten", "Leraren in opleiding", "Onderwijsontwikkelaars"],
-    "sectors": ["HBO"],
-    "themes": ["Lesgeven en leren met AI", "Curriculumontwikkeling", "Professionalisering"],
+    "audiences": [
+      "Docenten",
+      "Leraren in opleiding",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Curriculumontwikkeling",
+      "Professionalisering"
+    ],
     "status": "available",
     "availabilityText": "Als paperback verkrijgbaar; de auteurs delen online hulpmiddelen per hoofdstuk.",
     "publicationDate": "2026-04-03",
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële auteurs- en materialenpagina", "url": "https://aivoordocenten.nl/boeken/", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële auteurs- en materialenpagina",
+        "url": "https://aivoordocenten.nl/boeken/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "paid",
     "costType": "paid",
-    "language": ["nl"],
-    "keywords": ["hbo-didactiek", "motivatie", "lesontwerp", "activerende werkvormen", "docentrollen"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "hbo-didactiek",
+      "motivatie",
+      "lesontwerp",
+      "activerende werkvormen",
+      "docentrollen"
+    ],
     "notes": "De pagina bevat vrij raadpleegbare aanvullende hulpmiddelen; het boek zelf is betaald.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Nederlandstalig praktijkboek toegevoegd na controle van de officiële auteurs- en materialenpagina."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Nederlandstalig praktijkboek toegevoegd na controle van de officiële auteurs- en materialenpagina."
+      }
+    ],
     "commercialStatus": "unknown"
   },
   {
@@ -25649,33 +26238,72 @@
     "legacyType": "Boek",
     "subtype": "Paperback",
     "providerName": "Owl Press",
-    "authors": ["Thomas Donvil"],
+    "authors": [
+      "Thomas Donvil"
+    ],
     "bookCategory": "reading",
     "isbn": "9789493499652",
     "pageCount": 376,
     "publicationYear": 2026,
     "description": "Boek vanuit de praktijk van een docent-onderzoeker over evaluatie en feedback, integriteit en inclusie, en de veranderende rol van de docent in het hoger onderwijs met AI.",
     "purpose": "Docenten, opleidingshoofden en beleidsmakers laten reflecteren op onderwijskeuzes en menselijke regie in een AI-rijke leeromgeving.",
-    "audiences": ["Docenten", "Bestuurders", "Beleidsmakers", "Onderwijsontwikkelaars"],
-    "sectors": ["HBO", "WO"],
-    "themes": ["Lesgeven en leren met AI", "Toetsing en examinering", "Publieke waarden en ethiek"],
+    "audiences": [
+      "Docenten",
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering",
+      "Publieke waarden en ethiek"
+    ],
     "status": "available",
     "availabilityText": "Als paperback verkrijgbaar via de uitgever; een fragment is online beschikbaar.",
     "publicationDate": "2026-02-23",
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
     "sourceUrls": [
-      {"label": "Officiële auteurspagina", "url": "https://www.ailuminated.org/book", "sourceType": "official"},
-      {"label": "Officiële uitgeverspagina", "url": "https://www.borgerhoff-lamberigts.be/owl-press/shop/boeken/ai-in-de-aula", "sourceType": "official"}
+      {
+        "label": "Officiële auteurspagina",
+        "url": "https://www.ailuminated.org/book",
+        "sourceType": "official"
+      },
+      {
+        "label": "Officiële uitgeverspagina",
+        "url": "https://www.borgerhoff-lamberigts.be/owl-press/shop/boeken/ai-in-de-aula",
+        "sourceType": "official"
+      }
     ],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Europa",
     "accessType": "paid",
     "costType": "paid",
-    "language": ["nl"],
-    "keywords": ["hoger onderwijs", "evaluatie", "feedback", "integriteit", "inclusie", "docentrol"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "hoger onderwijs",
+      "evaluatie",
+      "feedback",
+      "integriteit",
+      "inclusie",
+      "docentrol"
+    ],
     "notes": "Prijs en leverbaarheid worden niet als vaste boekmetadata bijgehouden; controleer de officiële bron.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Nederlandstalig leesboek toegevoegd na controle van de officiële auteurs- en uitgeverspagina."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Nederlandstalig leesboek toegevoegd na controle van de officiële auteurs- en uitgeverspagina."
+      }
+    ],
     "commercialStatus": "unknown"
   },
   {
@@ -25685,30 +26313,61 @@
     "legacyType": "Boek",
     "subtype": "Paperback",
     "providerName": "VanDorp Educatief",
-    "authors": ["Jeroen Basten"],
+    "authors": [
+      "Jeroen Basten"
+    ],
     "bookCategory": "practice",
     "isbn": "9789461853387",
     "pageCount": 241,
     "publicationYear": 2023,
     "description": "Handboek voor docenten en schoolleiders met een inleiding tot AI en ChatGPT, voorbeelden voor verschillende vakgebieden en aandacht voor maatschappelijke, didactische en ethische gevolgen.",
     "purpose": "Docenten en schoolleiders ondersteunen bij het begrijpen en gebruiken van ChatGPT als leermiddel.",
-    "audiences": ["Docenten", "Bestuurders"],
+    "audiences": [
+      "Docenten",
+      "Bestuurders"
+    ],
     "sectors": [],
-    "themes": ["AI-geletterdheid", "Lesgeven en leren met AI", "Publieke waarden en ethiek"],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
     "status": "available",
     "availabilityText": "Als paperback verkrijgbaar via de uitgever.",
     "publicationDate": "2023-08-30",
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële uitgeverspagina", "url": "https://www.vandorp-educatief.nl/product/handboek-chatgpt-in-het-onderwijs/", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële uitgeverspagina",
+        "url": "https://www.vandorp-educatief.nl/product/handboek-chatgpt-in-het-onderwijs/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "paid",
     "costType": "paid",
-    "language": ["nl"],
-    "keywords": ["ChatGPT", "leermiddel", "didactiek", "ethiek", "schoolleiders"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "ChatGPT",
+      "leermiddel",
+      "didactiek",
+      "ethiek",
+      "schoolleiders"
+    ],
     "notes": "De officiële bron specificeert geen afzonderlijke onderwijssector; daarom is geen sectorscope afgeleid.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Nederlandstalig praktijkboek toegevoegd na controle van de officiële uitgeverspagina."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Nederlandstalig praktijkboek toegevoegd na controle van de officiële uitgeverspagina."
+      }
+    ],
     "commercialStatus": "unknown"
   },
   {
@@ -25718,29 +26377,63 @@
     "legacyType": "Boek",
     "subtype": "Digitaal leerwerkboek",
     "providerName": "Educatieve Uitgeversgroep",
-    "authors": ["Kim de Bakker - Teketay"],
+    "authors": [
+      "Kim de Bakker - Teketay"
+    ],
     "bookCategory": "study",
     "isbn": "9789400241947",
     "pageCount": 34,
     "description": "Digitaal leerwerkboek waarin studenten kennismaken met wat AI is, hoe het werkt, wat ermee kan en waar de grenzen liggen; voor docenten is een handleiding beschikbaar.",
     "purpose": "Studenten een gestructureerde introductie bieden tot bewust en verantwoord omgaan met AI.",
-    "audiences": ["Studenten", "Docenten"],
-    "sectors": ["VO", "MBO"],
-    "themes": ["AI-geletterdheid", "Lesgeven en leren met AI", "Publieke waarden en ethiek"],
+    "audiences": [
+      "Studenten",
+      "Docenten"
+    ],
+    "sectors": [
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
     "status": "available",
     "availabilityText": "Na aanschaf geeft de licentie drie schooljaren toegang tot het digitale boek op Digiplein.",
     "publicationDate": null,
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële uitgeverspagina", "url": "https://www.uitgeversgroep.nl/9789400241947-e-licentie-ai-geletterdheid", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële uitgeverspagina",
+        "url": "https://www.uitgeversgroep.nl/9789400241947-e-licentie-ai-geletterdheid",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "paid",
     "costType": "paid",
-    "language": ["nl"],
-    "keywords": ["AI-geletterdheid", "leerwerkboek", "Digiplein", "docentenhandleiding", "digitale vaardigheden"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-geletterdheid",
+      "leerwerkboek",
+      "Digiplein",
+      "docentenhandleiding",
+      "digitale vaardigheden"
+    ],
     "notes": "De uitgever positioneert het materiaal voor vmbo, mbo en praktijkonderwijs; de Atlas gebruikt de beschikbare VO- en MBO-sectorlabels.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Nederlandstalig digitaal studieboek toegevoegd na controle van de officiële uitgeverspagina."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Nederlandstalig digitaal studieboek toegevoegd na controle van de officiële uitgeverspagina."
+      }
+    ],
     "commercialStatus": "unknown"
   },
   {
@@ -25750,33 +26443,69 @@
     "legacyType": "Boek",
     "subtype": "Gedrukt boek",
     "providerName": "Telos Uitgevers",
-    "authors": ["Jan Jaap Hubeek"],
+    "authors": [
+      "Jan Jaap Hubeek"
+    ],
     "bookCategory": "reading",
     "isbn": "9789083660035",
     "pageCount": 340,
     "publicationYear": 2026,
     "description": "Pedagogische verkenning van AI en datasturing in het onderwijs, met aandacht voor menselijke afwegingen, relaties en professionele ruimte.",
     "purpose": "Onderwijsprofessionals laten reflecteren op menswaardig onderwijs en professionele afwegingen bij het gebruik van AI en digitale systemen.",
-    "audiences": ["Docenten", "Schoolleiders", "Bestuurders", "Opleiders", "Beleidsmakers"],
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Bestuurders",
+      "Opleiders",
+      "Beleidsmakers"
+    ],
     "sectors": [],
-    "themes": ["Publieke waarden en ethiek", "Beleid en governance", "Lesgeven en leren met AI"],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Beleid en governance",
+      "Lesgeven en leren met AI"
+    ],
     "status": "available",
     "availabilityText": "Als gedrukt boek verkrijgbaar via de uitgever.",
     "publicationDate": null,
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
     "sourceUrls": [
-      {"label": "Officiële uitgeverspagina", "url": "https://telos-uitgevers.nl/boek/mens-blijven-tussen-systemen/", "sourceType": "official"},
-      {"label": "Toelichting en doelgroep door de auteur", "url": "https://janjaaphubeek.nl/2026/04/03/boek-mens-blijven-tussen-systemen/", "sourceType": "official"}
+      {
+        "label": "Officiële uitgeverspagina",
+        "url": "https://telos-uitgevers.nl/boek/mens-blijven-tussen-systemen/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Toelichting en doelgroep door de auteur",
+        "url": "https://janjaaphubeek.nl/2026/04/03/boek-mens-blijven-tussen-systemen/",
+        "sourceType": "official"
+      }
     ],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "paid",
     "costType": "paid",
-    "language": ["nl"],
-    "keywords": ["pedagogiek", "menswaardig onderwijs", "professionele autonomie", "menselijke regie", "datasturing"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "pedagogiek",
+      "menswaardig onderwijs",
+      "professionele autonomie",
+      "menselijke regie",
+      "datasturing"
+    ],
     "notes": "De uitgever en auteur noemen verschillende verschijningsmaanden; daarom is alleen het jaar vastgelegd. De uitvoering als paperback of hardcover is niet eenduidig bevestigd. De bronnen specificeren geen afzonderlijke onderwijssector.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Nederlandstalig leesboek toegevoegd na controle van de officiële uitgevers- en auteurspagina."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Nederlandstalig leesboek toegevoegd na controle van de officiële uitgevers- en auteurspagina."
+      }
+    ],
     "commercialStatus": "unknown"
   },
   {
@@ -25786,29 +26515,65 @@
     "legacyType": "Boek",
     "subtype": "Paperback en online boek",
     "providerName": "Boom uitgevers Amsterdam",
-    "authors": ["Barend Last", "Ilona Boomsma", "Jean-Luc Laval"],
+    "authors": [
+      "Barend Last",
+      "Ilona Boomsma",
+      "Jean-Luc Laval"
+    ],
     "bookCategory": "practice",
     "isbn": "9789024474639",
     "publicationYear": 2026,
     "description": "Praktijkboek over het begrijpen en gebruiken van generatieve AI bij denken, schrijven, ontwerpen en leren, met aandacht voor risico's en ethische afwegingen.",
     "purpose": "Professionals, docenten en studenten ondersteunen bij het begrijpen en toepassen van generatieve AI in leren en werken.",
-    "audiences": ["Professionals", "Docenten", "Studenten"],
+    "audiences": [
+      "Professionals",
+      "Docenten",
+      "Studenten"
+    ],
     "sectors": [],
-    "themes": ["AI-geletterdheid", "Lesgeven en leren met AI", "Professionalisering", "Publieke waarden en ethiek"],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Professionalisering",
+      "Publieke waarden en ethiek"
+    ],
     "status": "available",
     "availabilityText": "Tweede editie als paperback en online boek verkrijgbaar. De online licentie geeft twee jaar toegang.",
     "publicationDate": null,
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële uitgeverspagina", "url": "https://www.boom.nl/hoger-onderwijs/100-20336_Beter-leuker-sneller-2-0", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële uitgeverspagina",
+        "url": "https://www.boom.nl/hoger-onderwijs/100-20336_Beter-leuker-sneller-2-0",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "paid",
     "costType": "paid",
-    "language": ["nl"],
-    "keywords": ["generatieve AI", "leren", "schrijven", "ontwerpen", "AI-agents", "context engineering"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "generatieve AI",
+      "leren",
+      "schrijven",
+      "ontwerpen",
+      "AI-agents",
+      "context engineering"
+    ],
     "notes": "De uitgever noemt circa 240 pagina's; er is daarom geen exact paginatal vastgelegd. De doelgroeptekst specificeert geen afzonderlijke onderwijssector. Prijs en leverbaarheid staan bij de uitgever.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Nederlandstalig praktijkboek toegevoegd na rechtstreekse controle van de actuele uitgeverspagina; oudere zoekresultaten over reserveren zijn niet gebruikt als beschikbaarheidsbewijs."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Nederlandstalig praktijkboek toegevoegd na rechtstreekse controle van de actuele uitgeverspagina; oudere zoekresultaten over reserveren zijn niet gebruikt als beschikbaarheidsbewijs."
+      }
+    ],
     "commercialStatus": "unknown"
   },
   {
@@ -25818,33 +26583,66 @@
     "legacyType": "Boek",
     "subtype": "Paperback",
     "providerName": "Owl Press",
-    "authors": ["Lieve De Wachter", "Kirsten Fivez", "Carolien Van Soom", "Bert De Groef"],
+    "authors": [
+      "Lieve De Wachter",
+      "Kirsten Fivez",
+      "Carolien Van Soom",
+      "Bert De Groef"
+    ],
     "bookCategory": "study",
     "isbn": "9789464983685",
     "pageCount": 208,
     "publicationYear": 2024,
     "description": "Leerboek voor studenten over wetenschappelijk schrijven met aandacht voor tekststructuur, stijl, kritisch denken en de mogelijkheden en beperkingen van AI tijdens het schrijfproces.",
     "purpose": "Studenten begeleiden bij wetenschappelijk schrijven en het kritisch beoordelen van AI-ondersteuning tijdens het schrijfproces.",
-    "audiences": ["Studenten"],
+    "audiences": [
+      "Studenten"
+    ],
     "sectors": [],
-    "themes": ["AI-geletterdheid", "Lesgeven en leren met AI", "Onderzoek"],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Onderzoek"
+    ],
     "status": "available",
     "availabilityText": "Als paperback verkrijgbaar via de uitgever.",
     "publicationDate": "2024-09-04",
     "lastVerified": "2026-09-11",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële uitgeverspagina", "url": "https://www.borgerhoff-lamberigts.be/owl-press/shop/boeken/wetenschappelijk-schrijven-in-tijden-van-ai", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële uitgeverspagina",
+        "url": "https://www.borgerhoff-lamberigts.be/owl-press/shop/boeken/wetenschappelijk-schrijven-in-tijden-van-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Europa",
     "accessType": "paid",
     "costType": "paid",
-    "language": ["nl"],
-    "keywords": ["wetenschappelijk schrijven", "academisch schrijven", "kritisch denken", "tekststructuur", "taalvaardigheid"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "wetenschappelijk schrijven",
+      "academisch schrijven",
+      "kritisch denken",
+      "tekststructuur",
+      "taalvaardigheid"
+    ],
     "notes": "Bibliografische gegevens volgen de uitgever. De bron noemt studenten, maar specificeert geen afzonderlijke Nederlandse onderwijssector.",
-    "changeHistory": [{"date": "2026-09-11", "type": "added", "summary": "Nederlandstalig studieboek toegevoegd na controle van de officiële uitgeverspagina."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-11",
+        "type": "added",
+        "summary": "Nederlandstalig studieboek toegevoegd na controle van de officiële uitgeverspagina."
+      }
+    ],
     "commercialStatus": "unknown"
   },
-{
+  {
     "id": "publinova",
     "title": "Publinova",
     "recordType": "service",
@@ -25930,13 +26728,27 @@
     "recordType": "guidance",
     "legacyType": "Handreiking",
     "subtype": "Competentieraamwerk en toolkit",
-    "organizationIds": ["org-kennisnet"],
+    "organizationIds": [
+      "org-kennisnet"
+    ],
     "providerName": "Kennisnet",
     "description": "Raamwerk en toolkit voor AI-geletterdheid met competenties rond kundig, kritisch, creatief en professioneel handelen, uitgewerkt op drie beheersingsniveaus.",
     "purpose": "Schoolteams helpen AI-geletterdheid te bespreken, in kaart te brengen en gericht te ontwikkelen.",
-    "audiences": ["Docenten", "Schoolleiders", "Onderwijsontwikkelaars", "Onderwijsadviseurs"],
-    "sectors": ["PO", "VO"],
-    "themes": ["AI-geletterdheid", "Curriculumontwikkeling", "Professionalisering"],
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsontwikkelaars",
+      "Onderwijsadviseurs"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Professionalisering"
+    ],
     "status": "available",
     "availabilityText": "Raamwerk, compacte versie, zelfevaluatie en teamsessie zijn publiek beschikbaar.",
     "startDate": null,
@@ -25944,8 +26756,16 @@
     "publicationDate": "2026-09-09",
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële bron", "url": "https://www.kennisnet.nl/artificial-intelligence/werken-met-het-raamwerk-ai-geletterdheid/", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.kennisnet.nl/artificial-intelligence/werken-met-het-raamwerk-ai-geletterdheid/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
@@ -25960,10 +26780,24 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["nl"],
-    "keywords": ["AI-geletterdheid", "competenties", "zelfevaluatie", "teamsessie", "professioneel handelen"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-geletterdheid",
+      "competenties",
+      "zelfevaluatie",
+      "teamsessie",
+      "professioneel handelen"
+    ],
     "notes": "Kennisnet vermeldt dat het onderdeel over de professionele rol nog verder wordt ontwikkeld; het record beschrijft daarom de versie die op de controledatum beschikbaar was.",
-    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd na controle van de officiële Kennisnet-pagina en de daar beschreven toolkitonderdelen."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-14",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële Kennisnet-pagina en de daar beschreven toolkitonderdelen."
+      }
+    ],
     "offerCategory": "materials",
     "commercialStatus": "unknown"
   },
@@ -25977,9 +26811,23 @@
     "providerName": "Voion",
     "description": "Verkenning van mogelijke gevolgen van AI voor werk, autonomie, werkdruk en beleid in het voortgezet onderwijs, gebaseerd op literatuur, experts en 34 schoolleiders.",
     "purpose": "Schoolleiders, werknemers en beleidsmakers een onderbouwd vertrekpunt geven voor gesprekken en keuzes over AI en werk.",
-    "audiences": ["Schoolleiders", "Bestuurders", "Beleidsmakers", "Docenten", "Onderzoekers"],
-    "sectors": ["VO", "Onderzoek"],
-    "themes": ["Beleid en governance", "Implementatie en adoptie", "Publieke waarden en ethiek", "Onderzoek"],
+    "audiences": [
+      "Schoolleiders",
+      "Bestuurders",
+      "Beleidsmakers",
+      "Docenten",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "VO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Implementatie en adoptie",
+      "Publieke waarden en ethiek",
+      "Onderzoek"
+    ],
     "status": "available",
     "availabilityText": "Rapport en samenvatting zijn publiek beschikbaar.",
     "startDate": null,
@@ -25988,10 +26836,22 @@
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
     "sourceUrls": [
-      {"label": "Officiële publicatiepagina", "url": "https://www.voion.nl/publicaties/implicaties-van-ai-voor-werkenden-in-het-vo", "sourceType": "official"},
-      {"label": "Officieel rapport (pdf)", "url": "https://www.voion.nl/wp-content/uploads/media/vndmskkw/implicaties-van-ai-voor-werkenden-in-het-vo-voion-_def.pdf", "sourceType": "official"}
+      {
+        "label": "Officiële publicatiepagina",
+        "url": "https://www.voion.nl/publicaties/implicaties-van-ai-voor-werkenden-in-het-vo",
+        "sourceType": "official"
+      },
+      {
+        "label": "Officieel rapport (pdf)",
+        "url": "https://www.voion.nl/wp-content/uploads/media/vndmskkw/implicaties-van-ai-voor-werkenden-in-het-vo-voion-_def.pdf",
+        "sourceType": "official"
+      }
     ],
-    "relatedIds": ["voion-impact-ai-onderwijs-dossier"], "parentIds": [], "childIds": [],
+    "relatedIds": [
+      "voion-impact-ai-onderwijs-dossier"
+    ],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
@@ -26006,10 +26866,24 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["nl"],
-    "keywords": ["arbeidskwaliteit", "autonomie", "werkdruk", "schoolbeleid", "scenario's"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "arbeidskwaliteit",
+      "autonomie",
+      "werkdruk",
+      "schoolbeleid",
+      "scenario's"
+    ],
     "notes": "Het rapport zelf is gedateerd mei 2025; 10 juni 2025 is de datum van de officiële publicatiepagina. De auteurs melden dat directe impactstudies nog ontbreken en formuleren daarom scenario's, geen bewezen effecten.",
-    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd na controle van de officiële publicatiepagina en het volledige Voion-rapport."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-14",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële publicatiepagina en het volledige Voion-rapport."
+      }
+    ],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
   },
@@ -26023,9 +26897,22 @@
     "providerName": "Voion",
     "description": "Doorlopend dossier voor het voortgezet onderwijs met onderzoek, instrumenten, praktijkvoorbeelden en zes stappen voor gesprek, experiment, beleid en kennisdeling rond AI.",
     "purpose": "Vo-scholen ondersteunen bij een stapsgewijze, gezamenlijke aanpak van AI in organisatie en werk.",
-    "audiences": ["Schoolleiders", "Docenten", "Bestuurders", "Beleidsmakers", "Onderwijsondersteuners"],
-    "sectors": ["VO"],
-    "themes": ["Beleid en governance", "Implementatie en adoptie", "Professionalisering", "Praktijkvoorbeelden"],
+    "audiences": [
+      "Schoolleiders",
+      "Docenten",
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderwijsondersteuners"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Implementatie en adoptie",
+      "Professionalisering",
+      "Praktijkvoorbeelden"
+    ],
     "status": "available",
     "availabilityText": "Publiek toegankelijk, doorlopend themadossier.",
     "startDate": null,
@@ -26033,8 +26920,18 @@
     "publicationDate": null,
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officieel themadossier", "url": "https://www.voion.nl/onderwijsarbeidsmarkt/innovatie-en-organisatie/impact-van-kunstmatige-intelligentie-ai", "sourceType": "official"}],
-    "relatedIds": ["voion-implicaties-ai-werkenden-vo-2025"], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officieel themadossier",
+        "url": "https://www.voion.nl/onderwijsarbeidsmarkt/innovatie-en-organisatie/impact-van-kunstmatige-intelligentie-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "voion-implicaties-ai-werkenden-vo-2025"
+    ],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
@@ -26049,10 +26946,25 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["nl"],
-    "keywords": ["vo", "stappenplan", "werkgroep", "experiment", "schoolbeleid", "kennisdeling"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "vo",
+      "stappenplan",
+      "werkgroep",
+      "experiment",
+      "schoolbeleid",
+      "kennisdeling"
+    ],
     "notes": "Dit levende dossier is onderscheiden van het afzonderlijke onderzoeksrapport: het bundelt ook instrumenten, praktijkinformatie en een handelingsroute.",
-    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd als actuele Voion-vindplaats met een eigen, concreet zesstappenplan."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-14",
+        "type": "added",
+        "summary": "Toegevoegd als actuele Voion-vindplaats met een eigen, concreet zesstappenplan."
+      }
+    ],
     "offerCategory": "materials",
     "commercialStatus": "unknown"
   },
@@ -26066,9 +26978,20 @@
     "providerName": "Hogeschool Utrecht",
     "description": "Handreiking over generatieve AI bij toetsing met toepassingen, ethische en juridische aandachtspunten, instellingsadvies en tips voor examinatoren en docenten.",
     "purpose": "HU-medewerkers ondersteunen bij verantwoorde keuzes over generatieve AI in toetsing en examinering.",
-    "audiences": ["Docenten", "Examinatoren", "Examencommissies", "Onderwijsontwikkelaars"],
-    "sectors": ["HBO"],
-    "themes": ["Toetsing en examinering", "Beleid en governance", "Publieke waarden en ethiek"],
+    "audiences": [
+      "Docenten",
+      "Examinatoren",
+      "Examencommissies",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Beleid en governance",
+      "Publieke waarden en ethiek"
+    ],
     "status": "available",
     "availabilityText": "De toelichtingspagina is publiek; de Nederlandse en Engelse handreiking staan in de besloten OneHU-omgeving.",
     "startDate": null,
@@ -26076,8 +26999,16 @@
     "publicationDate": null,
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële toelichtingspagina", "url": "https://husite.nl/toetsing-nieuw/handreiking-generatieve-ai-en-toetsing/", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële toelichtingspagina",
+        "url": "https://husite.nl/toetsing-nieuw/handreiking-generatieve-ai-en-toetsing/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "restricted",
     "costType": "unknown",
@@ -26092,10 +27023,25 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["nl", "en"],
-    "keywords": ["generatieve AI", "toetsing", "examinatoren", "examencommissie", "OneHU"],
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "generatieve AI",
+      "toetsing",
+      "examinatoren",
+      "examencommissie",
+      "OneHU"
+    ],
     "notes": "De inhoud van de afgeschermde bestanden is niet als publiek beschikbaar aangemerkt; alleen de onderwerpen die de officiële toelichtingspagina zelf noemt zijn vastgelegd.",
-    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd met expliciete vermelding van de instellingsgebonden toegang."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-14",
+        "type": "added",
+        "summary": "Toegevoegd met expliciete vermelding van de instellingsgebonden toegang."
+      }
+    ],
     "offerCategory": "materials",
     "commercialStatus": "unknown"
   },
@@ -26109,9 +27055,22 @@
     "providerName": "Hogeschool Utrecht",
     "description": "Open onderzoeksproduct dat ontwerpkeuzes voor een AI Collaboration Canvas beschrijft waarmee studenten generatieve AI kritisch, ethisch en doelgericht in ontwerpprocessen kunnen inzetten.",
     "purpose": "Docenten en ontwerpopleidingen ondersteunen bij het structureren en bespreekbaar maken van samenwerking tussen student en generatieve AI.",
-    "audiences": ["Docenten", "Studenten", "Onderwijsontwikkelaars", "Onderzoekers"],
-    "sectors": ["HBO", "Onderzoek"],
-    "themes": ["Lesgeven en leren met AI", "AI-geletterdheid", "Publieke waarden en ethiek", "Onderzoek"],
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderwijsontwikkelaars",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek",
+      "Onderzoek"
+    ],
     "status": "available",
     "availabilityText": "Open access via Publinova.",
     "startDate": null,
@@ -26120,8 +27079,18 @@
     "publicationYear": 2025,
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officieel onderzoeksproduct", "url": "https://publinova.nl/product/ai-collaboration-canvas-supporting-students-in-integrating-generative-ai-in-the-design-process-1", "sourceType": "official"}],
-    "relatedIds": ["publinova"], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officieel onderzoeksproduct",
+        "url": "https://publinova.nl/product/ai-collaboration-canvas-supporting-students-in-integrating-generative-ai-in-the-design-process-1",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "publinova"
+    ],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
@@ -26136,10 +27105,24 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["en"],
-    "keywords": ["AI Collaboration Canvas", "design education", "ontwerpproces", "student-AI-samenwerking", "generatieve AI"],
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "AI Collaboration Canvas",
+      "design education",
+      "ontwerpproces",
+      "student-AI-samenwerking",
+      "generatieve AI"
+    ],
     "notes": "Publinova vermeldt Nynke Brandsma en Koen van Turnhout als auteurs en 2025 als jaar. Op de gecontroleerde detailpagina staat geen DOI of expliciete hergebruiklicentie.",
-    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd na controle van de openbare Publinova-detailpagina."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-14",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de openbare Publinova-detailpagina."
+      }
+    ],
     "offerCategory": "materials",
     "commercialStatus": "unknown"
   },
@@ -26153,9 +27136,25 @@
     "providerName": "NVAO",
     "description": "Thematische analyse van visitatierapporten over hoe generatieve AI terugkomt in hoger onderwijs en kwaliteitszorg, met aandacht voor toetsing, leeruitkomsten en AI-geletterdheid.",
     "purpose": "Instellingen en kwaliteitszorgprofessionals inzicht geven in actuele aandachtspunten en vervolgstappen voor generatieve AI.",
-    "audiences": ["Bestuurders", "Beleidsmakers", "Kwaliteitszorgprofessionals", "Examencommissies", "Onderzoekers"],
-    "sectors": ["HBO", "WO", "Onderzoek", "Overheid"],
-    "themes": ["Beleid en governance", "Toetsing en examinering", "AI-geletterdheid", "Onderzoek"],
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Kwaliteitszorgprofessionals",
+      "Examencommissies",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Toetsing en examinering",
+      "AI-geletterdheid",
+      "Onderzoek"
+    ],
     "status": "available",
     "availabilityText": "Nieuwsbericht en volledig rapport zijn publiek beschikbaar.",
     "startDate": null,
@@ -26164,10 +27163,20 @@
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
     "sourceUrls": [
-      {"label": "Officieel nieuwsbericht", "url": "https://www.nvao.net/nl/nieuws/2026/2/nvao-nederland-publiceert-startverkenning-generatieve-ai", "sourceType": "official"},
-      {"label": "Officieel rapport (pdf)", "url": "https://www.nvao.net/files/attachments/.13866/Startverkenning_Generatieve_Artificiele_Intelligentie.pdf", "sourceType": "official"}
+      {
+        "label": "Officieel nieuwsbericht",
+        "url": "https://www.nvao.net/nl/nieuws/2026/2/nvao-nederland-publiceert-startverkenning-generatieve-ai",
+        "sourceType": "official"
+      },
+      {
+        "label": "Officieel rapport (pdf)",
+        "url": "https://www.nvao.net/files/attachments/.13866/Startverkenning_Generatieve_Artificiele_Intelligentie.pdf",
+        "sourceType": "official"
+      }
     ],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
@@ -26182,10 +27191,24 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["nl"],
-    "keywords": ["NVAO", "kwaliteitszorg", "visitatie", "constructive alignment", "toetsvaliditeit"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "NVAO",
+      "kwaliteitszorg",
+      "visitatie",
+      "constructive alignment",
+      "toetsvaliditeit"
+    ],
     "notes": "Het rapport is gedateerd januari 2026; 2 februari 2026 is de publicatiedatum van het officiële nieuwsbericht. De analyse beschrijft signalen uit visitatierapporten en is geen effectstudie.",
-    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd na controle van het NVAO-bericht en het volledige rapport."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-14",
+        "type": "added",
+        "summary": "Toegevoegd na controle van het NVAO-bericht en het volledige rapport."
+      }
+    ],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
   },
@@ -26199,9 +27222,24 @@
     "providerName": "European Commission Joint Research Centre",
     "description": "Conceptuele paper die onderscheid maakt tussen operationele taken en menselijke handelingsruimte en onderzoekt hoe organisatiekeuzes bepalen of AI werk vervangt, ondersteunt of macht concentreert.",
     "purpose": "Beleidsmakers, onderzoekers en opleiders een begrippenkader bieden voor de relatie tussen AI, automatisering, menselijk handelen en werkorganisatie.",
-    "audiences": ["Onderzoekers", "Beleidsmakers", "Bestuurders", "Opleiders"],
-    "sectors": ["MBO", "HBO", "WO", "Onderzoek", "Overheid"],
-    "themes": ["Publieke waarden en ethiek", "Beleid en governance", "Onderzoek"],
+    "audiences": [
+      "Onderzoekers",
+      "Beleidsmakers",
+      "Bestuurders",
+      "Opleiders"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Beleid en governance",
+      "Onderzoek"
+    ],
     "status": "available",
     "availabilityText": "Publiek beschikbaar in de JRC-repository.",
     "startDate": null,
@@ -26209,8 +27247,16 @@
     "publicationDate": "2026-07-13",
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële JRC-publicatie", "url": "https://publications.jrc.ec.europa.eu/repository/handle/JRC147594", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële JRC-publicatie",
+        "url": "https://publications.jrc.ec.europa.eu/repository/handle/JRC147594",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Europa",
     "accessType": "public",
     "costType": "free",
@@ -26225,10 +27271,24 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["en"],
-    "keywords": ["agency", "automation", "work organisation", "labour", "human augmentation"],
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "agency",
+      "automation",
+      "work organisation",
+      "labour",
+      "human augmentation"
+    ],
     "notes": "JRC Working Papers Series on Labour, Education and Technology 2026/06. De paper is conceptueel en sectoroverstijgend; de onderwijsrelevantie ligt vooral bij beroepsvorming, curriculum en strategische personeelskeuzes.",
-    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd na controle van publicatiedatum, reeks en samenvatting in de officiële JRC-repository."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-14",
+        "type": "added",
+        "summary": "Toegevoegd na controle van publicatiedatum, reeks en samenvatting in de officiële JRC-repository."
+      }
+    ],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
   },
@@ -26242,9 +27302,22 @@
     "providerName": "Norwegian University of Science and Technology",
     "description": "Europees onderzoeksproject naar wanneer en hoe generatieve AI en learning analytics onderwijs en leren kunnen ondersteunen, met prototypes, impactonderzoek en een beoogd raamwerk voor goede praktijken.",
     "purpose": "Succesfactoren, effecten en ontwerpprincipes voor verantwoord gebruik van generatieve AI in onderwijs onderzoeken.",
-    "audiences": ["Onderzoekers", "Docenten", "Onderwijsontwikkelaars", "Beleidsmakers"],
-    "sectors": ["HBO", "WO", "Onderzoek"],
-    "themes": ["Onderzoek", "Lesgeven en leren met AI", "Data en infrastructuur"],
+    "audiences": [
+      "Onderzoekers",
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Lesgeven en leren met AI",
+      "Data en infrastructuur"
+    ],
     "status": "in_development",
     "availabilityText": "Project loopt van 2 februari 2026 tot en met 1 februari 2028; CORDIS-factsheet is publiek.",
     "startDate": "2026-02-02",
@@ -26252,8 +27325,16 @@
     "publicationDate": null,
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële CORDIS-factsheet", "url": "https://cordis.europa.eu/project/id/101210859", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële CORDIS-factsheet",
+        "url": "https://cordis.europa.eu/project/id/101210859",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Europa",
     "accessType": "public",
     "costType": "free",
@@ -26268,10 +27349,25 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["en"],
-    "keywords": ["LEARNGENAI", "learning analytics", "generative AI", "Horizon Europe", "MSCA", "Kahoot"],
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "LEARNGENAI",
+      "learning analytics",
+      "generative AI",
+      "Horizon Europe",
+      "MSCA",
+      "Kahoot"
+    ],
     "notes": "De Atlas vermeldt alleen de projectopzet en nog geen resultaten: op de controledatum was het onderzoek lopend en waren de beoogde prototypes en het raamwerk nog geen beschikbaar eindproduct.",
-    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Lopend Europees onderzoeksproject toegevoegd op basis van de officiële CORDIS-factsheet."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-14",
+        "type": "added",
+        "summary": "Lopend Europees onderzoeksproject toegevoegd op basis van de officiële CORDIS-factsheet."
+      }
+    ],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
   },
@@ -26285,9 +27381,25 @@
     "providerName": "UNICEF Innocenti",
     "description": "Geactualiseerde internationale richtlijn met tien kindgerichte vereisten voor AI-beleid en -ontwerp, aangevuld met een checklist en aandacht voor generatieve AI, inclusie en veiligheid.",
     "purpose": "Overheden, onderwijsorganisaties en ontwikkelaars helpen kinderrechten aantoonbaar mee te nemen bij AI-keuzes die kinderen raken.",
-    "audiences": ["Beleidsmakers", "Bestuurders", "Docenten", "Privacyprofessionals", "Ontwikkelaars"],
-    "sectors": ["PO", "VO", "Onderzoek", "Overheid"],
-    "themes": ["Publieke waarden en ethiek", "Privacy en AVG", "Beleid en governance", "Veilige AI-omgeving"],
+    "audiences": [
+      "Beleidsmakers",
+      "Bestuurders",
+      "Docenten",
+      "Privacyprofessionals",
+      "Ontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "Onderzoek",
+      "Overheid"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Privacy en AVG",
+      "Beleid en governance",
+      "Veilige AI-omgeving"
+    ],
     "status": "available",
     "availabilityText": "Richtlijn, checklist en ondersteunende materialen zijn publiek beschikbaar.",
     "startDate": null,
@@ -26297,10 +27409,20 @@
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
     "sourceUrls": [
-      {"label": "Officiële publicatiepagina", "url": "https://www.unicef.org/innocenti/reports/policy-guidance-ai-children", "sourceType": "official"},
-      {"label": "Officiële richtlijn (pdf)", "url": "https://www.unicef.org/innocenti/media/11991/file/UNICEF-Innocenti-Guidance-on-AI-and-Children-3-2025.pdf", "sourceType": "official"}
+      {
+        "label": "Officiële publicatiepagina",
+        "url": "https://www.unicef.org/innocenti/reports/policy-guidance-ai-children",
+        "sourceType": "official"
+      },
+      {
+        "label": "Officiële richtlijn (pdf)",
+        "url": "https://www.unicef.org/innocenti/media/11991/file/UNICEF-Innocenti-Guidance-on-AI-and-Children-3-2025.pdf",
+        "sourceType": "official"
+      }
     ],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Internationaal",
     "accessType": "public",
     "costType": "free",
@@ -26315,10 +27437,25 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["en"],
-    "keywords": ["kinderrechten", "child-centred AI", "generative AI", "inclusie", "veiligheid", "checklist"],
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "kinderrechten",
+      "child-centred AI",
+      "generative AI",
+      "inclusie",
+      "veiligheid",
+      "checklist"
+    ],
     "notes": "UNICEF dateert versie 3.0 op december 2025. Omdat geen exacte dag op de gecontroleerde publicatiepagina is vastgesteld, is alleen het jaar als gestructureerd gegeven opgenomen.",
-    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Toegevoegd na controle van de officiële UNICEF-publicatiepagina en versie 3.0 van de richtlijn."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-14",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële UNICEF-publicatiepagina en versie 3.0 van de richtlijn."
+      }
+    ],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
   },
@@ -26332,9 +27469,24 @@
     "providerName": "AACTE",
     "description": "Amerikaans kader voor lerarenopleidingen met vier samenhangende gebieden: ethische en beleidsmatige waarborgen, praktijkimplementatie, cognitieve ontwikkeling en professioneel menselijk oordeel.",
     "purpose": "Lerarenopleidingen ondersteunen bij programmatische keuzes over AI-geletterdheid, toegang, professionele autonomie en menselijke eindverantwoordelijkheid.",
-    "audiences": ["Lerarenopleiders", "Opleiders", "Beleidsmakers", "Bestuurders"],
-    "sectors": ["HBO", "WO", "PO", "VO"],
-    "themes": ["AI-geletterdheid", "Professionalisering", "Beleid en governance", "Publieke waarden en ethiek"],
+    "audiences": [
+      "Lerarenopleiders",
+      "Opleiders",
+      "Beleidsmakers",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Beleid en governance",
+      "Publieke waarden en ethiek"
+    ],
     "status": "available",
     "availabilityText": "Landingspagina en volledig kader zijn publiek beschikbaar.",
     "startDate": null,
@@ -26343,10 +27495,20 @@
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
     "sourceUrls": [
-      {"label": "Officiële landingspagina", "url": "https://aacte.org/report/ai-framework-for-educator-preparation/", "sourceType": "official"},
-      {"label": "Officieel kader (pdf)", "url": "https://aacte.org/wp-content/uploads/2026/08/AACTE-AI-Framework-082026-1.pdf", "sourceType": "official"}
+      {
+        "label": "Officiële landingspagina",
+        "url": "https://aacte.org/report/ai-framework-for-educator-preparation/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Officieel kader (pdf)",
+        "url": "https://aacte.org/wp-content/uploads/2026/08/AACTE-AI-Framework-082026-1.pdf",
+        "sourceType": "official"
+      }
     ],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Verenigde Staten",
     "accessType": "public",
     "costType": "free",
@@ -26361,10 +27523,24 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["en"],
-    "keywords": ["teacher education", "human judgment", "right to refuse", "equity", "AI literacy"],
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "teacher education",
+      "human judgment",
+      "right to refuse",
+      "equity",
+      "AI literacy"
+    ],
     "notes": "Het kader is ontwikkeld voor de Amerikaanse context. Opname in de Atlas is ter vergelijking; toepassing in Nederland vraagt vertaling naar Nederlands onderwijsbeleid en regelgeving.",
-    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Recent internationaal kader voor lerarenopleidingen toegevoegd na controle van de officiële publicatie en pdf."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-14",
+        "type": "added",
+        "summary": "Recent internationaal kader voor lerarenopleidingen toegevoegd na controle van de officiële publicatie en pdf."
+      }
+    ],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
   },
@@ -26376,12 +27552,27 @@
     "subtype": "Open leerboek",
     "organizationIds": [],
     "providerName": "AI4T",
-    "authors": ["Colin de la Higuera", "Jotsna Iyer"],
+    "authors": [
+      "Colin de la Higuera",
+      "Jotsna Iyer"
+    ],
     "description": "Open Engelstalig leerboek voor docenten over de werking en inzet van AI, met hoofdstukken over data, zoeken, personalisering, taal, generatieve AI, menselijke regie en ethiek.",
     "purpose": "Docenten en lerarenopleiders een vrij herbruikbare, samenhangende basis bieden voor AI-geletterdheid en onderwijsontwerp.",
-    "audiences": ["Docenten", "Lerarenopleiders", "Onderwijsontwikkelaars"],
-    "sectors": ["VO", "HBO"],
-    "themes": ["AI-geletterdheid", "Lesgeven en leren met AI", "Professionalisering", "Publieke waarden en ethiek"],
+    "audiences": [
+      "Docenten",
+      "Lerarenopleiders",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO",
+      "HBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Professionalisering",
+      "Publieke waarden en ethiek"
+    ],
     "status": "available",
     "availabilityText": "Online te lezen en te downloaden als e-book en pdf.",
     "startDate": null,
@@ -26390,10 +27581,20 @@
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
     "sourceUrls": [
-      {"label": "Officiële AI4T-pagina", "url": "https://www.ai4t.eu/textbook/", "sourceType": "official"},
-      {"label": "Online leerboek", "url": "https://pressbooks.pub/aiforteachers/", "sourceType": "official"}
+      {
+        "label": "Officiële AI4T-pagina",
+        "url": "https://www.ai4t.eu/textbook/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Online leerboek",
+        "url": "https://pressbooks.pub/aiforteachers/",
+        "sourceType": "official"
+      }
     ],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Europa",
     "accessType": "public",
     "costType": "free",
@@ -26408,11 +27609,25 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["en"],
+    "language": [
+      "en"
+    ],
     "license": "CC BY 4.0",
-    "keywords": ["open textbook", "teacher education", "human agency", "generative AI", "CC BY 4.0"],
+    "keywords": [
+      "open textbook",
+      "teacher education",
+      "human agency",
+      "generative AI",
+      "CC BY 4.0"
+    ],
     "notes": "Het materiaal komt uit het Europese Erasmus+-project AI4T. Vanwege het ontbreken van een bevestigd ISBN-13 is het volgens het Atlasdataschema als handreiking/open leerboek opgenomen en niet als recordtype boek.",
-    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Vrij herbruikbaar open leerboek toegevoegd na controle van de AI4T- en Pressbooks-pagina's."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-14",
+        "type": "added",
+        "summary": "Vrij herbruikbaar open leerboek toegevoegd na controle van de AI4T- en Pressbooks-pagina's."
+      }
+    ],
     "offerCategory": "materials",
     "commercialStatus": "unknown"
   },
@@ -26426,9 +27641,20 @@
     "providerName": "Universiteit Utrecht",
     "description": "Open onderwijspraktijk met werkvormen waarin studenten kernartikelen lezen, prompts ontwerpen, AI-teksten en bronnen controleren, peerfeedback geven en eigen syntheses herzien.",
     "purpose": "Docenten helpen generatieve AI zo in te zetten dat kritisch lezen, academisch schrijven en inhoudelijk redeneren zichtbaar geoefend blijven.",
-    "audiences": ["Docenten", "Onderwijsontwikkelaars", "Studenten"],
-    "sectors": ["WO"],
-    "themes": ["Lesgeven en leren met AI", "AI-geletterdheid", "Curriculumontwikkeling", "Toetsing en examinering"],
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Studenten"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Toetsing en examinering"
+    ],
     "status": "available",
     "availabilityText": "Publiek toegankelijke beschrijving met direct toepasbare werkvormen.",
     "startDate": null,
@@ -26436,8 +27662,16 @@
     "publicationDate": null,
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële onderwijsadviespagina", "url": "https://www.uu.nl/onderwijs/onderwijsadvies-training/kennisdossiers/themadossier-generatieve-ai-in-het-onderwijs/hoe-stimuleer-je-academisch-schrijven-en-denken-met-behulp-van-chatgpt", "sourceType": "official"}],
-    "relatedIds": [], "parentIds": [], "childIds": [],
+    "sourceUrls": [
+      {
+        "label": "Officiële onderwijsadviespagina",
+        "url": "https://www.uu.nl/onderwijs/onderwijsadvies-training/kennisdossiers/themadossier-generatieve-ai-in-het-onderwijs/hoe-stimuleer-je-academisch-schrijven-en-denken-met-behulp-van-chatgpt",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
@@ -26452,10 +27686,25 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["nl"],
-    "keywords": ["academisch schrijven", "kritisch denken", "broncontrole", "peerfeedback", "prompts", "synthese"],
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "academisch schrijven",
+      "kritisch denken",
+      "broncontrole",
+      "peerfeedback",
+      "prompts",
+      "synthese"
+    ],
     "notes": "De officiële pagina noemt geen publicatiedatum; daarom is die niet afgeleid. Dit record beschrijft concrete werkvormen en niet het bredere UU-themadossier.",
-    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Concrete, publiek toegankelijke UU-werkvormen toegevoegd na inhoudelijke broncontrole."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-14",
+        "type": "added",
+        "summary": "Concrete, publiek toegankelijke UU-werkvormen toegevoegd na inhoudelijke broncontrole."
+      }
+    ],
     "offerCategory": "materials",
     "commercialStatus": "unknown"
   },
@@ -26469,9 +27718,26 @@
     "providerName": "UNESCO",
     "description": "Bundel met 26 bijdragen over menselijke handelingsruimte, ontwikkeling, pedagogiek, toetsing, denken en publieke governance van onderwijs in een tijdperk van AI.",
     "purpose": "Onderwijsprofessionals en beleidsmakers helpen urgente bestuurlijke en pedagogische vragen rond AI expliciet te bespreken.",
-    "audiences": ["Beleidsmakers", "Bestuurders", "Docenten", "Onderzoekers"],
-    "sectors": ["PO", "VO", "MBO", "HBO", "WO", "Onderzoek"],
-    "themes": ["Beleid en governance", "Publieke waarden en ethiek", "Lesgeven en leren met AI", "Toetsing en examinering"],
+    "audiences": [
+      "Beleidsmakers",
+      "Bestuurders",
+      "Docenten",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Publieke waarden en ethiek",
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering"
+    ],
     "status": "available",
     "availabilityText": "Engelstalige publicatie direct beschikbaar via UNESCO.",
     "startDate": null,
@@ -26479,7 +27745,13 @@
     "publicationDate": "2026-09-08",
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële UNESCO-publicatie", "url": "https://www.unesco.org/en/articles/algorithm-room-seeing-and-confronting-implications-ai-future-education", "sourceType": "official"}],
+    "sourceUrls": [
+      {
+        "label": "Officiële UNESCO-publicatie",
+        "url": "https://www.unesco.org/en/articles/algorithm-room-seeing-and-confronting-implications-ai-future-education",
+        "sourceType": "official"
+      }
+    ],
     "relatedIds": [],
     "parentIds": [],
     "childIds": [],
@@ -26497,12 +27769,26 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["en"],
-    "keywords": ["UNESCO", "agency", "human oversight", "public good", "future of education"],
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "UNESCO",
+      "agency",
+      "human oversight",
+      "public good",
+      "future of education"
+    ],
     "notes": "De bundel bestaat uit positionerende bijdragen; zij is geen effectevaluatie of norm met bindende status.",
     "verificationMethod": "agent_primary_source_review",
     "verificationNote": "De officiële UNESCO-pagina bevestigt de titel, datum, 26 bijdragen en zes centrale vragen over autonomie, pedagogiek, toetsing en publieke governance.",
-    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Recente UNESCO-essaybundel toegevoegd na controle van de officiële publicatiepagina en doublures."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-14",
+        "type": "added",
+        "summary": "Recente UNESCO-essaybundel toegevoegd na controle van de officiële publicatiepagina en doublures."
+      }
+    ],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
   },
@@ -26516,9 +27802,23 @@
     "providerName": "UNESCO IESALC en UNU-IAS",
     "description": "Onderzoek onder 200 hogeronderwijsinstellingen in 19 landen naar AI-gebruik, institutionele strategie, governance, digitale geletterdheid en capaciteit.",
     "purpose": "Een empirische basis en aanbevelingen bieden voor verantwoorde AI-implementatie in het hoger onderwijs.",
-    "audiences": ["Bestuurders", "Beleidsmakers", "Onderzoekers", "Onderwijsontwikkelaars"],
-    "sectors": ["HBO", "WO", "Onderzoek"],
-    "themes": ["Onderzoek", "Beleid en governance", "Implementatie en adoptie", "AI-geletterdheid"],
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderzoekers",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Beleid en governance",
+      "Implementatie en adoptie",
+      "AI-geletterdheid"
+    ],
     "status": "available",
     "availabilityText": "Engelse en Spaanse edities direct beschikbaar via UNESCO.",
     "startDate": null,
@@ -26526,7 +27826,13 @@
     "publicationDate": "2026-09-08",
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële UNESCO IESALC-publicatie", "url": "https://www.iesalc.unesco.org/en/articles/ai-implementation-higher-education-latin-america-and-caribbean", "sourceType": "official"}],
+    "sourceUrls": [
+      {
+        "label": "Officiële UNESCO IESALC-publicatie",
+        "url": "https://www.iesalc.unesco.org/en/articles/ai-implementation-higher-education-latin-america-and-caribbean",
+        "sourceType": "official"
+      }
+    ],
     "relatedIds": [],
     "parentIds": [],
     "childIds": [],
@@ -26544,12 +27850,27 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["en", "es"],
-    "keywords": ["UNESCO IESALC", "higher education", "AI adoption", "institutional strategy", "governance"],
+    "language": [
+      "en",
+      "es"
+    ],
+    "keywords": [
+      "UNESCO IESALC",
+      "higher education",
+      "AI adoption",
+      "institutional strategy",
+      "governance"
+    ],
     "notes": "De empirische gegevens hebben betrekking op Latijns-Amerika en het Caribisch gebied; toepassing op Nederland vraagt contextuele beoordeling.",
     "verificationMethod": "agent_primary_source_review",
     "verificationNote": "De officiële UNESCO IESALC-pagina bevestigt datum, auteurschap, steekproefomvang, regionale scope en de beschreven bevindingen over gebruik en formele AI-strategieën.",
-    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Recent internationaal onderzoek toegevoegd na controle van de officiële publicatiepagina en doublures."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-14",
+        "type": "added",
+        "summary": "Recent internationaal onderzoek toegevoegd na controle van de officiële publicatiepagina en doublures."
+      }
+    ],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
   },
@@ -26563,9 +27884,23 @@
     "providerName": "UNESCO IESALC",
     "description": "Zeven hoofdstukken over academische integriteit, institutioneel beleid, verantwoord AI-gebruik in onderzoek, nieuwe vormen van wangedrag en risico's van pseudowetenschap.",
     "purpose": "Hogeronderwijsinstellingen ondersteunen bij een integere, transparante en menselijk controleerbare inzet van AI in onderwijs en onderzoek.",
-    "audiences": ["Bestuurders", "Beleidsmakers", "Docenten", "Onderzoekers"],
-    "sectors": ["HBO", "WO", "Onderzoek"],
-    "themes": ["Publieke waarden en ethiek", "Beleid en governance", "Onderzoek", "Toetsing en examinering"],
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Docenten",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Beleid en governance",
+      "Onderzoek",
+      "Toetsing en examinering"
+    ],
     "status": "available",
     "availabilityText": "Spaanstalige publicatie direct beschikbaar via UNESCO.",
     "startDate": null,
@@ -26573,7 +27908,13 @@
     "publicationDate": "2026-09-11",
     "lastVerified": "2026-09-14",
     "verificationStatus": "verified",
-    "sourceUrls": [{"label": "Officiële UNESCO IESALC-publicatie", "url": "https://www.iesalc.unesco.org/en/articles/new-perspectives-ethics-and-academic-integrity-university-teaching-and-research", "sourceType": "official"}],
+    "sourceUrls": [
+      {
+        "label": "Officiële UNESCO IESALC-publicatie",
+        "url": "https://www.iesalc.unesco.org/en/articles/new-perspectives-ethics-and-academic-integrity-university-teaching-and-research",
+        "sourceType": "official"
+      }
+    ],
     "relatedIds": [],
     "parentIds": [],
     "childIds": [],
@@ -26591,12 +27932,26 @@
     "applicantTypes": [],
     "callStatus": null,
     "recurrence": null,
-    "language": ["es"],
-    "keywords": ["UNESCO IESALC", "academic integrity", "responsible AI", "human oversight", "governance"],
+    "language": [
+      "es"
+    ],
+    "keywords": [
+      "UNESCO IESALC",
+      "academic integrity",
+      "responsible AI",
+      "human oversight",
+      "governance"
+    ],
     "notes": "De publicatie is voortgekomen uit een UNESCO IESALC-programma uit 2025 en is op de officiële pagina alleen in het Spaans aangeboden.",
     "verificationMethod": "agent_primary_source_review",
     "verificationNote": "De officiële UNESCO IESALC-pagina bevestigt titel, publicatiedatum, taal, zeven hoofdstukken en praktische aandacht voor governance, toezicht en integriteit.",
-    "changeHistory": [{"date": "2026-09-14", "type": "added", "summary": "Recente UNESCO-publicatie over ethiek en academische integriteit toegevoegd na controle van de officiële bron en doublures."}],
+    "changeHistory": [
+      {
+        "date": "2026-09-14",
+        "type": "added",
+        "summary": "Recente UNESCO-publicatie over ethiek en academische integriteit toegevoegd na controle van de officiële bron en doublures."
+      }
+    ],
     "offerCategory": "knowledge",
     "commercialStatus": "unknown"
   },
@@ -28232,5 +29587,1810 @@
         "summary": "Actuele NOLAI-oproep voor een ontwikkelpartner toegevoegd na controle van de officiële call."
       }
     ]
+  },
+  {
+    "id": "boek-de-big-data-revolutie",
+    "title": "De big data-revolutie",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Maven Publishing",
+    "authors": [
+      "Viktor Mayer-Schönberger",
+      "Kenneth Cukier"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789490574901",
+    "publicationYear": 2013,
+    "description": "Vroege synthese over de omslag van steekproeven naar grootschalige data-analyse en de gevolgen daarvan voor voorspellen, beslissen en organiseren.",
+    "purpose": "De ideeëngeschiedenis van dataficatie en datagedreven besluitvorming helpen herkennen bij onderwijs- en organisatievraagstukken.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Informatiemanagers",
+      "Onderzoekers"
+    ],
+    "sectors": [],
+    "themes": [
+      "Data en infrastructuur",
+      "Beleid en governance",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.boom.nl/management/alle-uitgaven/100-4949_De-big-data-revolutie",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "big data",
+      "dataficatie",
+      "voorspellen",
+      "besluitvorming",
+      "Mayer-Schönberger"
+    ],
+    "notes": "Historisch basisboek uit 2013, van vóór de AVG, de AI Act en generatieve AI. Gebruik de voorbeelden en voorspellingen niet als actuele effectevidentie of technische leidraad.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "boek-de-data-economie",
+    "title": "De data-economie",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Maven Publishing",
+    "authors": [
+      "Viktor Mayer-Schönberger",
+      "Thomas Ramge"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789492493330",
+    "publicationYear": 2018,
+    "description": "Analyse van datarijke markten, digitale tussenpersonen, bedrijfscontrole en de mogelijke verschuiving van geld- naar datagedreven coördinatie.",
+    "purpose": "Bestuurders en beleidsmakers laten onderzoeken hoe datatoegang, marktmacht en menselijke keuze samenhangen met digitale infrastructuur.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Informatiemanagers",
+      "Onderzoekers"
+    ],
+    "sectors": [],
+    "themes": [
+      "Data en infrastructuur",
+      "Beleid en governance",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": "2018-01-24",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.mavenpublishing.nl/boeken/de-data-economie",
+        "sourceType": "official"
+      },
+      {
+        "label": "Bureau ISBN",
+        "url": "https://metadata.isbn.nl/1028239/de-data-economie.html",
+        "sourceType": "authoritative"
+      },
+      {
+        "label": "Bibliografische productpagina",
+        "url": "https://www.bol.com/nl/nl/f/data-kapitalisme/9200000078814510/",
+        "sourceType": "secondary"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "data-economie",
+      "marktmacht",
+      "digitale markten",
+      "datatoegang",
+      "Mayer-Schönberger"
+    ],
+    "notes": "Het boek verdedigt een uitgesproken economische these en is niet onderwijsspecifiek. Voorspellingen over marktstructuur en welvaartsverdeling zijn geen vastgestelde uitkomsten. Een Boom-productpagina noemt afwijkend hardback en 304 pagina's; Bureau ISBN en brede bibliografische metadata ondersteunen voor dit ISBN paperback en 280 pagina's, die de Atlas daarom volgt.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 280
+  },
+  {
+    "id": "boek-framers",
+    "title": "Framers: Wat mensen beter kunnen dan computers",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Maven Publishing",
+    "authors": [
+      "Kenneth Cukier",
+      "Viktor Mayer-Schönberger",
+      "Francis de Véricourt"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789493213272",
+    "publicationYear": 2022,
+    "description": "Toegankelijke verkenning van framing: het menselijke vermogen om situaties vanuit verschillende modellen te duiden en zo alternatieven te ontwerpen.",
+    "purpose": "Menselijke oordeelsvorming, perspectiefwisseling en probleemdefinitie expliciet maken naast geautomatiseerde analyse.",
+    "audiences": [
+      "Bestuurders",
+      "Docenten",
+      "Beleidsmakers",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [],
+    "themes": [
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": "2022-05-10",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.mavenpublishing.nl/boeken/framers",
+        "sourceType": "official"
+      },
+      {
+        "label": "Bureau ISBN",
+        "url": "https://metadata.isbn.nl/1535881/framers.html",
+        "sourceType": "authoritative"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "framing",
+      "menselijk oordeel",
+      "probleemdefinitie",
+      "verbeelding",
+      "Mayer-Schönberger"
+    ],
+    "notes": "Argumentatieve publiekssynthese, geen bewijs dat computers principieel nooit kunnen framen of dat de beschreven aanpak onderwijsuitkomsten verbetert.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 256
+  },
+  {
+    "id": "boek-de-glazen-kooi",
+    "title": "De glazen kooi: Wat automatisering met ons doet",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Maven Publishing",
+    "authors": [
+      "Nicholas Carr"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789491845345",
+    "publicationYear": 2014,
+    "description": "Kritische beschouwing van automatisering, uitbesteding van denktaken, automatiseringsbias en het mogelijke verlies van geoefende menselijke vaardigheden.",
+    "purpose": "Vragen aanscherpen over wanneer automatisering ondersteunt en wanneer zij professionele oordeels- en correctiecapaciteit verzwakt.",
+    "audiences": [
+      "Bestuurders",
+      "Docenten",
+      "Beleidsmakers",
+      "Professionals"
+    ],
+    "sectors": [],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Beleid en governance",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.mavenpublishing.nl/boeken/de-glazen-kooi",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "automatisering",
+      "deskilling",
+      "automatiseringsbias",
+      "menselijke regie",
+      "correctiecapaciteit"
+    ],
+    "notes": "Verhalend boek met vooral pre-generatieve-AI-casussen. Gebruik het als kritische lens, niet als actuele effectstudie van AI in het onderwijs.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "boek-de-platformsamenleving",
+    "title": "De platformsamenleving: Strijd om publieke waarden in een online wereld",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Amsterdam University Press",
+    "authors": [
+      "José van Dijck",
+      "Thomas Poell",
+      "Martijn de Waal"
+    ],
+    "bookCategory": "study",
+    "isbn": "9789462984615",
+    "publicationYear": 2016,
+    "description": "Analyse van platformmechanismen zoals dataficatie, selectie en commercialisering en hun gevolgen voor publieke waarden, waaronder in het hoger onderwijs.",
+    "purpose": "Onderwijs als publiek domein verbinden met platformmacht, infrastructuurkeuzes en institutionele verantwoordelijkheid.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderzoekers",
+      "Informatiemanagers"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Overheid"
+    ],
+    "themes": [
+      "Data en infrastructuur",
+      "Publieke waarden en ethiek",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Open access te lezen en als betaalde paperback of e-book verkrijgbaar.",
+    "publicationDate": "2016-11-10",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.aup.nl/nl/book/9789462984615/de-platformsamenleving",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "freemium",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "platformisering",
+      "publieke waarden",
+      "dataficatie",
+      "MOOC",
+      "onderwijsinfrastructuur"
+    ],
+    "notes": "Open-access analyse uit het pre-generatieve-AI-tijdperk. De Nederlandse editie en de uitgebreidere Engelse uitgave zijn geen identieke edities.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 180
+  },
+  {
+    "id": "boek-doe-zelf-normaal",
+    "title": "Doe zelf normaal",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Hardback",
+    "providerName": "Prometheus",
+    "authors": [
+      "Maxim Februari"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789044650853",
+    "publicationYear": 2023,
+    "description": "Filosofisch-juridisch essay over menselijk recht, democratische normering en bestuurlijke verantwoordelijkheid in een samenleving die steeds sterker door data wordt gestuurd.",
+    "purpose": "De vraag centraal stellen wie normen bepaalt en waar menselijke afweging en tegenspraak georganiseerd moeten blijven.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Juristen",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Beleid en governance",
+      "Data en infrastructuur"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.boom.nl/filosofie/alle-uitgaven/100-15130_Doe-zelf-normaal",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "rechtsstaat",
+      "datasturing",
+      "menselijke normering",
+      "democratie",
+      "autonomie"
+    ],
+    "notes": "Normatief essay, geen geldende juridische norm of empirische evaluatie. Juridische actualiteit moet aan primaire rechtsbronnen worden getoetst.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 144
+  },
+  {
+    "id": "boek-de-tech-coup",
+    "title": "De tech coup",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Atlas Contact",
+    "authors": [
+      "Marietje Schaake"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789045052793",
+    "publicationYear": 2025,
+    "description": "Analyse van de groeiende bestuurlijke macht van technologiebedrijven en voorstellen om democratische controle en publieke verantwoordelijkheid te herstellen.",
+    "purpose": "Afhankelijkheden van commerciële AI-infrastructuur en de bestuurlijke ruimte van publieke onderwijsinstellingen bespreekbaar maken.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Informatiemanagers",
+      "Toezichthouders"
+    ],
+    "sectors": [],
+    "themes": [
+      "Beleid en governance",
+      "Data en infrastructuur",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.atlascontact.nl/boek/de-tech-coup/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "big tech",
+      "democratische controle",
+      "marktmacht",
+      "AI-infrastructuur",
+      "toezicht"
+    ],
+    "notes": "Politiek en beleidsmatig betoog met tijdgevoelige voorbeelden. Niet gebruiken als zelfstandige bron voor actuele wetgeving, marktaandelen of causale effecten.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 392
+  },
+  {
+    "id": "boek-atlas-van-de-digitale-wereld",
+    "title": "Atlas van de digitale wereld",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Boom",
+    "authors": [
+      "Haroon Sheikh"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789024468355",
+    "publicationYear": 2024,
+    "description": "Compacte kaart van de digitale wereld als gelaagde infrastructuur, met aandacht voor chips, netwerken, cloud, platforms, data en geopolitieke afhankelijkheden.",
+    "purpose": "AI-keuzes in onderwijs verbinden met de onderliggende digitale stack, soevereiniteit en strategische afhankelijkheden.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Informatiemanagers",
+      "IT-professionals"
+    ],
+    "sectors": [],
+    "themes": [
+      "Data en infrastructuur",
+      "Beleid en governance",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.nt2.nl/nl/auteur/110-385_Sheikh/100-17323_Atlas-van-de-digitale-wereld",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "digitale stack",
+      "digitale soevereiniteit",
+      "geopolitiek",
+      "cloud",
+      "infrastructuur"
+    ],
+    "notes": "Beknopte conceptuele en geopolitieke verkenning; geen volledige technische inventaris of onderwijsspecifieke effectanalyse.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 96
+  },
+  {
+    "id": "boek-het-internet-is-stuk",
+    "title": "Het internet is stuk",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "De Geus",
+    "authors": [
+      "Marleen Stikker"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789044542677",
+    "publicationYear": 2019,
+    "description": "Essay over verlies van digitale soevereiniteit, concentratie van internetmacht en publieke alternatieven waarin mens en democratische waarden centraal staan.",
+    "purpose": "Publieke digitale infrastructuur en alternatieven voor afhankelijkheid van dominante technologiebedrijven helpen doordenken.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Informatiemanagers",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [],
+    "themes": [
+      "Data en infrastructuur",
+      "Publieke waarden en ethiek",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Gratis als PDF onder CC BY-SA; ook in betaalde uitvoeringen verkrijgbaar.",
+    "publicationDate": "2019-11-28",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://waag.org/nl/hetinternetisstuk/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Officiële uitgeverspagina",
+        "url": "https://www.singeluitgeverijen.nl/de-geus/boek/het-internet-is-stuk/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "freemium",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "digitale soevereiniteit",
+      "internet",
+      "big tech",
+      "publieke infrastructuur",
+      "democratie"
+    ],
+    "notes": "Pleidooi uit 2019 en dus van vóór de huidige generatieve-AI-golf. De gratis PDF heeft een CC BY-SA-licentie; andere uitvoeringen zijn betaald.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "boek-algoritmes-aan-de-macht",
+    "title": "Algoritmes aan de macht",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "E-book",
+    "providerName": "De Geus",
+    "authors": [
+      "Hannah Fry"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789044538830",
+    "publicationYear": 2018,
+    "description": "Publieksboek over geautomatiseerde beslissingen, privacy, foutkansen en de afweging tussen menselijk en algoritmisch gezag.",
+    "purpose": "Professionals laten herkennen waar een algoritme ondersteunt, waar het beslist en welke menselijke afweging niet mag verdwijnen.",
+    "audiences": [
+      "Docenten",
+      "Bestuurders",
+      "Beleidsmakers",
+      "Studenten"
+    ],
+    "sectors": [],
+    "themes": [
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Als e-book verkrijgbaar via de uitgever en boekhandel.",
+    "publicationDate": "2018-12-11",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.singeluitgeverijen.nl/de-geus/boek/algoritmes-aan-de-macht/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "algoritmen",
+      "geautomatiseerde besluiten",
+      "privacy",
+      "menselijk oordeel",
+      "risico"
+    ],
+    "notes": "Toegankelijke publiekswetenschap met voorbeelden uit 2018, vóór generatieve AI en de AI Act. Geen actuele technische of juridische handleiding.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "boek-de-ai-revolutie",
+    "title": "De AI-revolutie",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Uitgeverij Balans",
+    "authors": [
+      "Maarten Sukel"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789463823098",
+    "publicationYear": 2024,
+    "description": "Toegankelijke inleiding tot AI en de maatschappelijke invloed ervan op onder meer onderwijs, werk, zorg, oorlog, ongelijkheid en beeldvorming.",
+    "purpose": "Een breed startpunt bieden voor gesprekken over technische mogelijkheden, maatschappelijke gevolgen en bestuurlijke keuzes rond AI.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Bestuurders",
+      "Beleidsmakers"
+    ],
+    "sectors": [],
+    "themes": [
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": "2024-01-24",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.uitgeverijbalans.nl/boeken/de-ai-revolutie/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-inleiding",
+      "maatschappelijke impact",
+      "ChatGPT",
+      "ongelijkheid",
+      "onderwijs"
+    ],
+    "notes": "Breed en snel verouderend overzicht, geen systematische literatuurreview. Controleer actuele modelcapaciteiten en effectclaims in primaire bronnen.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 192
+  },
+  {
+    "id": "boek-ai-alsmaar-intelligenter",
+    "title": "AI: Alsmaar intelligenter",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "E-book",
+    "providerName": "De Bezige Bij",
+    "authors": [
+      "Stefan Buijsman"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789403104317",
+    "publicationYear": 2020,
+    "description": "Inleidend publieksboek over de werking, geschiedenis, mogelijkheden en beperkingen van algoritmen en kunstmatige intelligentie.",
+    "purpose": "Basisbegrippen en kritische vragen toegankelijk maken voor lezers zonder technische vooropleiding.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderwijsprofessionals",
+      "Algemeen publiek"
+    ],
+    "sectors": [],
+    "themes": [
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Als e-book en luisterboek verkrijgbaar via de uitgever.",
+    "publicationDate": "2020-06-11",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.debezigebij.nl/boek/ai-alsmaar-intelligenter/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-basiskennis",
+      "algoritmen",
+      "deepfakes",
+      "gezichtsherkenning",
+      "beperkingen"
+    ],
+    "notes": "Introductie uit 2020 en dus van vóór de brede inzet van generatieve AI. Gebruik niet voor actuele productmogelijkheden of wetgeving.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 224
+  },
+  {
+    "id": "boek-in-de-schaduw-van-ai",
+    "title": "In de schaduw van AI",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Atlas Contact",
+    "authors": [
+      "Madhumita Murgia"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789047016366",
+    "publicationYear": 2024,
+    "description": "Journalistieke casussen over mensen die geraakt worden door AI in onder meer zorg, publieke dienstverlening, gezichtsherkenning en werk.",
+    "purpose": "De menselijke en verdelingseffecten achter abstracte AI-systemen zichtbaar maken en vragen naar zeggenschap en herstel openen.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Docenten",
+      "Onderzoekers"
+    ],
+    "sectors": [],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Beleid en governance",
+      "Data en infrastructuur"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": "2024-07-03",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.atlascontact.nl/boek/in-de-schaduw-van-ai/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "menselijke impact",
+      "discriminatie",
+      "uitbuiting",
+      "zeggenschap",
+      "publieke dienstverlening"
+    ],
+    "notes": "Journalistieke, internationale casussen; geen causale synthese en niet zonder aanvullende bronnen te generaliseren naar Nederlandse onderwijsinstellingen.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 296
+  },
+  {
+    "id": "boek-filterwereld",
+    "title": "Filterwereld",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Uitgeverij Ten Have",
+    "authors": [
+      "Kyle Chayka"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789025911058",
+    "publicationYear": 2024,
+    "description": "Culturele analyse van aanbevelingsalgoritmen en de manier waarop meer-van-hetzelfde selectie, smaak en digitale omgevingen kan homogeniseren.",
+    "purpose": "Monocultuur, convergentie en verlies van keuzeruimte als bestuurlijke gevolgen van algoritmische selectie helpen herkennen.",
+    "audiences": [
+      "Bestuurders",
+      "Docenten",
+      "Beleidsmakers",
+      "Onderzoekers"
+    ],
+    "sectors": [],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Data en infrastructuur",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": "2024-11-07",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.uitgeverijtenhave.nl/boek/filterwereld/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "aanbevelingsalgoritmen",
+      "monocultuur",
+      "convergentie",
+      "selectie",
+      "vrije wil"
+    ],
+    "notes": "Cultureel-journalistiek betoog, geen onderwijsspecifieke causale effectstudie. De paperbackeditie en bibliografische gegevens zijn op de officiële uitgeverspagina gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 320
+  },
+  {
+    "id": "boek-het-masker-van-ai",
+    "title": "Het masker van AI",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "LannooCampus",
+    "authors": [
+      "Wim Casteels"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789020989816",
+    "publicationYear": 2025,
+    "description": "Toegankelijke verkenning van AI-geletterdheid, ecologische kosten, bigtechmacht, discriminatie, autonomie en beïnvloeding van publieke opinie.",
+    "purpose": "Technische basiskennis verbinden met maatschappelijke impact en kritische reflectie over eerlijkheid, inclusie en macht.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Professionals",
+      "Beleidsmakers"
+    ],
+    "sectors": [],
+    "themes": [
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek",
+      "Data en infrastructuur"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": "2025-10-20",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.lannoo.com/nl-nl/economie-management/het-masker-van-ai-9789020989816",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-geletterdheid",
+      "big tech",
+      "ecologische impact",
+      "discriminatie",
+      "autonomie"
+    ],
+    "notes": "Toegankelijke auteurssynthese. De brede maatschappelijke duiding is geen onafhankelijke effectstudie of vervanging voor specialistische juridische en technische bronnen.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 232
+  },
+  {
+    "id": "boek-co-intelligentie-2026",
+    "title": "Co-intelligentie: 2026-editie",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Maven Publishing",
+    "authors": [
+      "Ethan Mollick"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789493434271",
+    "publicationYear": 2025,
+    "description": "Geactualiseerde praktijkgerichte synthese over samenwerken met generatieve AI in werk en onderwijs en over de veranderende rolverdeling tussen mens en model.",
+    "purpose": "Professionals laten experimenteren met AI terwijl menselijk oordeel, controle en verantwoordelijkheid expliciet blijven.",
+    "audiences": [
+      "Docenten",
+      "Professionals",
+      "Bestuurders",
+      "Studenten"
+    ],
+    "sectors": [],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": "2025-11-25",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.mavenpublishing.nl/boeken/co-intelligentie-2026-editie",
+        "sourceType": "official"
+      },
+      {
+        "label": "Bureau ISBN",
+        "url": "https://metadata.isbn.nl/2034768/co-intelligentie-2026-editie.html",
+        "sourceType": "authoritative"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "generatieve AI",
+      "mens-AI samenwerking",
+      "werk",
+      "onderwijs",
+      "experimenteren"
+    ],
+    "notes": "Praktijkgerichte auteursynthese met snel verouderende voorbeelden. Aanbevelingen zijn geen onafhankelijk bewijs van leerwinst, productiviteit of veiligheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "boek-algoritmes-en-grondrechten",
+    "title": "Algoritmes en grondrechten",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Boom Juridisch",
+    "authors": [
+      "Janneke Gerards",
+      "Remco Nehmelman",
+      "Max Vetzo"
+    ],
+    "bookCategory": "study",
+    "isbn": "9789462905412",
+    "publicationYear": 2018,
+    "description": "Juridische studie naar de mogelijke gevolgen van big data, IoT en AI voor vrijheid, gelijkheid, privacy en procedurele rechten in Nederland.",
+    "purpose": "Grondrechten en rechtsbescherming vroeg in ontwerp, inkoop en gebruik van algoritmische systemen laten meewegen.",
+    "audiences": [
+      "Juristen",
+      "Beleidsmakers",
+      "Bestuurders",
+      "Onderzoekers"
+    ],
+    "sectors": [],
+    "themes": [
+      "AI Act en wetgeving",
+      "Publieke waarden en ethiek",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.boom.nl/juridisch/alle-uitgaven/100-12256_Algoritmes-en-grondrechten",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "grondrechten",
+      "autonomie",
+      "gelijke behandeling",
+      "privacy",
+      "rechtsbescherming"
+    ],
+    "notes": "Juridische analyse uit 2018, van vóór de AI Act en latere rechtspraak. Gebruik voor het analysekader; controleer actuele verplichtingen altijd in primaire rechtsbronnen.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 244
+  },
+  {
+    "id": "boek-juridische-aspecten-algoritmen",
+    "title": "Juridische aspecten van algoritmen die besluiten nemen",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Boom Juridisch",
+    "authors": [
+      "Stefan Kulk",
+      "Stijn van Deursen",
+      "Martje Boekema",
+      "Vicky Breemen",
+      "Susanne Heeger",
+      "Stefan Philipsen",
+      "Thom Snijders",
+      "Anouk Wouters"
+    ],
+    "bookCategory": "study",
+    "isbn": "9789462908390",
+    "publicationYear": 2020,
+    "description": "Onderzoeksboek over kansen en risico's van algoritmische besluitvorming voor publieke waarden en rechtsbescherming, gebaseerd op WODC-onderzoek.",
+    "purpose": "Besluitvormingsketens en juridische waarborgen analyseren voordat algoritmen in publieke of onderwijsprocessen worden ingezet.",
+    "audiences": [
+      "Juristen",
+      "Beleidsmakers",
+      "Bestuurders",
+      "Onderzoekers"
+    ],
+    "sectors": [],
+    "themes": [
+      "AI Act en wetgeving",
+      "Publieke waarden en ethiek",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.boom.nl/juridisch/100-12618_Juridische-aspecten-van-algoritmen-die-besluiten-nemen",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "algoritmische besluitvorming",
+      "rechtsbescherming",
+      "publieke waarden",
+      "WODC",
+      "besluiten"
+    ],
+    "notes": "Onderzoek uit 2020, vóór de AI Act. Het biedt juridische probleemanalyse maar geen vaststelling van huidige compliance-eisen of onderwijseffecten.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 276
+  },
+  {
+    "id": "boek-digitale-geletterdheid-werkvormenboek",
+    "title": "Het digitale geletterdheid werkvormenboek",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Boom uitgevers Amsterdam",
+    "authors": [
+      "Pim Renou",
+      "Josien Boetje",
+      "Patrick Dooyeweerd",
+      "Rashida Nanhekhan"
+    ],
+    "bookCategory": "practice",
+    "isbn": "9789024474615",
+    "publicationYear": 2026,
+    "description": "Verzameling activerende werkvormen over digitale systemen, media, data, AI, programmeren, privacy en de gedigitaliseerde wereld.",
+    "purpose": "Leraren concrete manieren bieden om digitale en kritische AI-geletterdheid met leerdoelen en differentiatie in lessen te verwerken.",
+    "audiences": [
+      "Docenten",
+      "Leraren in opleiding",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "HBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": "2026-09-04",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.boom.nl/hoger-onderwijs/docentprofessionalisering/100-20531_Het-digitale-geletterdheid-werkvormenboek",
+        "sourceType": "official"
+      },
+      {
+        "label": "Bureau ISBN",
+        "url": "https://metadata.isbn.nl/2122763/het-digitale-geletterdheid-werkvormenboek.html",
+        "sourceType": "authoritative"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "digitale geletterdheid",
+      "werkvormen",
+      "kritische AI-geletterdheid",
+      "kerndoelen",
+      "differentiatie"
+    ],
+    "notes": "Breder dan AI: artificiële intelligentie is één inhoudsdomein naast media, data, programmeren en veiligheid. De werkvormen zijn aanbod, geen aangetoond leereffect.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 240
+  },
+  {
+    "id": "boek-handboek-digitale-didactiek",
+    "title": "Handboek digitale didactiek",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Boom",
+    "authors": [
+      "Robert Mol"
+    ],
+    "bookCategory": "practice",
+    "isbn": "9789024465743",
+    "publicationYear": 2025,
+    "description": "Handboek voor doelgerichte technologiekeuze in onderwijs, met kaders voor privacy, inclusie en digitale veiligheid en een afzonderlijk hoofdstuk over generatieve AI.",
+    "purpose": "Docenten technologie en generatieve AI laten verbinden aan leerdoelen, didactiek, feedback en professioneel oordeel.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Leraren in opleiding"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Professionalisering",
+      "Privacy en AVG"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.boom.nl/hoger-onderwijs/aanbod-boom-academie/100-19799_Handboek-digitale-didactiek",
+        "sourceType": "official"
+      },
+      {
+        "label": "Officieel inkijkexemplaar",
+        "url": "https://www.boom.nl/media/69/inkijkexemplaar_handboek_digitale_didactiek%281%29.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Bibliografische productpagina",
+        "url": "https://www.bol.com/nl/nl/p/handboek-digitale-didactiek/9300000238153528/",
+        "sourceType": "secondary"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "digitale didactiek",
+      "generatieve AI",
+      "lesontwerp",
+      "privacy",
+      "feedback"
+    ],
+    "notes": "Breed handboek digitale didactiek; generatieve AI is één hoofdstuk en loopt ook door werkvormen. Toolvoorbeelden en prompts verouderen en bewijzen geen effectiviteit. De Boom-productpagina noemt 300 pagina's, maar het officiële inkijkexemplaar loopt tot pagina 366 en bibliografische metadata vermeldt 368; de Atlas volgt daarom 368.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 368
+  },
+  {
+    "id": "boek-ai-ergo-sum",
+    "title": "AI Ergo Sum",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Open Press Tilburg University",
+    "authors": [
+      "Hannah van den Bosch (red.)"
+    ],
+    "bookCategory": "reading",
+    "isbn": "9789403870809",
+    "publicationYear": 2026,
+    "description": "Open essaybundel van Tilburgse wetenschappers over menselijkheid, autonomie, verantwoordelijkheid, kennis en onderwijs in relatie tot AI.",
+    "purpose": "Ruimte bieden voor interdisciplinaire reflectie en professionele weerstand wanneer AI menselijke vorming of verantwoordelijkheid raakt.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderzoekers",
+      "Bestuurders"
+    ],
+    "sectors": [],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Gratis online en als PDF onder CC BY 4.0; paperback verkrijgbaar.",
+    "publicationDate": "2026-06-26",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://openpress.tilburguniversity.edu/projects/ai-ergo-sum",
+        "sourceType": "official"
+      },
+      {
+        "label": "Bureau ISBN",
+        "url": "https://metadata.isbn.nl/2127166/ai-ergo-sum.html",
+        "sourceType": "authoritative"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "freemium",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Bildung",
+      "mensbeeld",
+      "autonomie",
+      "professionele weerstand",
+      "AI-agents"
+    ],
+    "notes": "Interdisciplinaire essaybundel, geen empirische evaluatie van AI-effecten. De online tekst en PDF zijn beschikbaar onder CC BY 4.0; de paperback is betaald.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "boek-universiteit-als-spiegel",
+    "title": "De universiteit als spiegel van de samenleving",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Open Press Tilburg University",
+    "authors": [
+      "Paul van Geest",
+      "Emile Aarts",
+      "Ronald de Jong"
+    ],
+    "bookCategory": "study",
+    "isbn": "9789403874104",
+    "publicationYear": 2026,
+    "description": "Analyse van AI als systeemtechnologie voor universitair onderwijs, onderzoek, bestuur, academische vorming, integriteit, leiderschap en mensbeeld.",
+    "purpose": "Bestuurders en academische professionals helpen expliciteren welke kennis-, waarden- en verantwoordelijkheidskeuzes AI van universiteiten vraagt.",
+    "audiences": [
+      "Bestuurders",
+      "Docenten",
+      "Onderzoekers",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Onderzoek",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Gratis online, als PDF en als epub onder CC BY 4.0; gedrukte uitgave verkrijgbaar.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://openpress.tilburguniversity.edu/projects/de-universiteit-als-spiegel-van-de-samenleving",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "freemium",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "universiteit",
+      "academische integriteit",
+      "mensbeeld",
+      "leiderschap",
+      "AI-governance"
+    ],
+    "notes": "Reflectieve synthese en pleidooi, geen onafhankelijke effectstudie. De online tekst, PDF en epub zijn beschikbaar onder CC BY 4.0; de gedrukte uitgave is betaald.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "boek-toetsen-in-verbinding",
+    "title": "Toetsen in verbinding",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Paperback",
+    "providerName": "Telos Uitgevers",
+    "authors": [
+      "Antoinette van Berkel",
+      "Dominique Sluijsmans"
+    ],
+    "bookCategory": "practice",
+    "isbn": "9789083660011",
+    "publicationYear": 2026,
+    "description": "Bundel met perspectieven en praktijkvoorbeelden voor eerlijk, transparant en leergericht toetsen in het hoger onderwijs, waaronder toetsen met generatieve AI.",
+    "purpose": "Toetsing verbinden met leren, professionele identiteit, curriculum, dialoog en gedeelde verantwoordelijkheid in een AI-rijke context.",
+    "audiences": [
+      "Docenten",
+      "Toetsdeskundigen",
+      "Onderwijsontwikkelaars",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Lesgeven en leren met AI",
+      "Curriculumontwikkeling"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": "2026-03-19",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://telos-uitgevers.nl/boeken/toetsen-in-verbinding/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Bureau ISBN",
+        "url": "https://metadata.isbn.nl/2065469/toetsen-in-verbinding.html",
+        "sourceType": "authoritative"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "toetsing",
+      "generatieve AI",
+      "curriculum",
+      "leergericht toetsen",
+      "hoger onderwijs"
+    ],
+    "notes": "AI is één context binnen een bredere toetsbundel. Bijdragen en praktijkvoorbeelden kunnen in methode en bewijskracht verschillen en bewijzen geen generiek effect.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown"
+  },
+  {
+    "id": "boek-ai-en-taal",
+    "title": "AI & taal",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "E-book",
+    "providerName": "LannooCampus",
+    "authors": [
+      "Walter Daelemans"
+    ],
+    "bookCategory": "study",
+    "isbn": "9789059964938",
+    "publicationYear": 2026,
+    "description": "Kritische introductie tot taaltechnologie, grote taalmodellen en generatieve AI, met historische context en aandacht voor betekenis, redeneren, ethiek en grenzen.",
+    "purpose": "Studenten, docenten en professionals helpen taalmodellen technisch en maatschappelijk te doorgronden zonder in hype of simplificatie te vervallen.",
+    "audiences": [
+      "Studenten",
+      "Docenten",
+      "Onderzoekers",
+      "Professionals"
+    ],
+    "sectors": [],
+    "themes": [
+      "AI-geletterdheid",
+      "Onderzoek",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": "2026-09-15",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.lannoo.com/nl-nl/taal-letterkunde/ai-taal-9789059964938",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "taaltechnologie",
+      "grote taalmodellen",
+      "generatieve AI",
+      "redeneren",
+      "ethiek"
+    ],
+    "notes": "Kritische auteurssynthese, geen benchmark of onafhankelijke evaluatie van afzonderlijke modellen. Capaciteiten en beperkingen blijven tijdgevoelig.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 160
+  },
+  {
+    "id": "boek-ai-voor-de-klas",
+    "title": "AI voor de klas",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Hardcover",
+    "providerName": "Leren met Actie",
+    "authors": [
+      "Jeroen Marbus",
+      "Rogier van 't Veer"
+    ],
+    "bookCategory": "practice",
+    "isbn": "9789090404882",
+    "publicationYear": 2025,
+    "description": "Praktijkboek over AI-didactiek, vakmanschap, beleid, toetsing, oudergesprekken en werkvormen voor PO, VO en MBO.",
+    "purpose": "Onderwijsteams helpen AI-keuzes te verbinden aan visie, vakdidactiek, privacy, autonomie en actief blijven denken.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Opleiders",
+      "Onderwijsteams"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Beleid en governance",
+      "Toetsing en examinering"
+    ],
+    "status": "available",
+    "availabilityText": "Verkrijgbaar via de uitgever of boekhandel.",
+    "publicationDate": "2025-08-22",
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://lerenmetactie.nl/aivoordeklas.php",
+        "sourceType": "official"
+      },
+      {
+        "label": "Bibliografische productpagina",
+        "url": "https://www.bol.com/nl/nl/p/ai-voor-de-klas-vakmanschap-in-tijdens-van-kunstmatige-intelligentie-hardcover/9300000235352597/",
+        "sourceType": "secondary"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-didactiek",
+      "professionele autonomie",
+      "toetsing",
+      "schoolbeleid",
+      "werkvormen"
+    ],
+    "notes": "Door de auteurs zelf uitgegeven praktijkboek. De beschreven aanpak en lezersreacties zijn geen onafhankelijke effectevaluatie; juridische uitspraken moeten apart worden geverifieerd.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown",
+    "pageCount": 150
+  },
+  {
+    "id": "boek-keuzedeel-generatieve-ai",
+    "title": "Keuzedeel: Artificial Intelligence - werken met generatieve AI",
+    "recordType": "book",
+    "legacyType": "Boek",
+    "subtype": "Leerwerkboek met digitale licentie",
+    "providerName": "Educatieve Uitgeversgroep",
+    "authors": [
+      "Suzet Leeuwestein"
+    ],
+    "bookCategory": "study",
+    "isbn": "9789400243323",
+    "publicationYear": 2026,
+    "description": "Leerwerkboek voor het mbo-keuzedeel over de werking van AI-tools en veilig en doelgericht gebruik van generatieve AI in verschillende beroepscontexten.",
+    "purpose": "Mbo-studenten gestructureerd laten oefenen met basiskennis, beroepsgerichte toepassing en verantwoord gebruik van generatieve AI.",
+    "audiences": [
+      "Studenten",
+      "Docenten"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Curriculumontwikkeling",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Papieren leerwerkboek met drie schooljaren toegang tot het digitale boek.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-02",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële bron",
+        "url": "https://www.uitgeversgroep.nl/9789400243323-keuzedeel-artificial-intelligence-werken-met-generatieve-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "keuzedeel",
+      "mbo",
+      "generatieve AI",
+      "beroepscontext",
+      "leerwerkboek"
+    ],
+    "notes": "Commercieel curriculumproduct met uitgeversbeschrijving en docentondersteuning. Opname zegt niets over onafhankelijke kwaliteit, leerwinst of volledige kwalificatiedekking.",
+    "changeHistory": [
+      {
+        "date": "2026-10-02",
+        "type": "added",
+        "summary": "Toegevoegd in de brongecontroleerde boekentranche van 2 oktober 2026."
+      }
+    ],
+    "commercialStatus": "unknown"
   }
 ]
