@@ -496,7 +496,8 @@ test('excluded software stays out of results and filters while materials and leg
   const software = ids({ type: 'software' });
   const materials = ids({ type: 'materials' });
   const knowledge = ids({ type: 'knowledge' });
-  assert.equal(software.length, 0);
+  const educationApps = ['aigo-patientsim', 'aigo-transcribe-tool', 'aigo-docschoon', 'aigo-kennisclip-generator', 'aigo-dicteermachine'];
+  assert.deepEqual(software.sort(), educationApps.filter(id => data.some(item => item.id === id && !item.publicationExclusion)).sort());
   const excluded = data.filter(item => item.publicationExclusion);
   assert.equal(excluded.filter(item => item.offerCategory === 'software').length, 12);
   const publicIds = ids({});
@@ -522,6 +523,13 @@ test('excluded software stays out of results and filters while materials and leg
   const unknown = {...record('new-tool'), legacyType:'Product', recordType:'product'};
   assert.equal(load([unknown]).recordsForCriteria({type:'software'}).length, 0);
   assert.equal(load([unknown]).recordsForCriteria({type:'unclassified'}).length, 1);
+});
+
+test('explicitly admitted education software remains searchable while excluded software stays hidden', () => {
+  const admitted = {...record('education-app'), recordType:'product', legacyType:'Product', offerCategory:'software'};
+  const excluded = {...admitted, id:'excluded-app', publicationExclusion:{reason:'Outside scope',decidedOn:'2026-09-09'}};
+  const unverified = {...admitted, id:'unverified-app', verificationStatus:'needs_review'};
+  assert.deepEqual(Array.from(load([admitted,excluded,unverified]).recordsForCriteria({type:'software'}), item=>item.id), ['education-app']);
 });
 
 test('choosing an AI application is framed as an assessment, not a safety endorsement', () => {
