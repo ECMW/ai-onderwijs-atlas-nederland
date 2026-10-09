@@ -31401,7 +31401,7 @@
     "subtype": "Ontwerphulp voor eindwerken",
     "organizationIds": [],
     "providerName": "AIGovernanceofficer.nl",
-    "description": "Ontwerphulp voor docenten en onderwijsdirecteuren om eindwerken voor bachelor- en masteropleidingen te ontwerpen. De tool bevat uitleg over kaders en rolverdeling, een bibliotheek met zeven eindwerkvormen en een wizard die passende vormen voorstelt.",
+    "description": "Concepttool voor docenten en onderwijsdirecteuren om eindwerkvormen voor bachelor- en masteropleidingen te ontwerpen in het tijdperk van AI. De ontwerphulp bevat uitleg over kaders en rolverdeling, zeven eindwerkvormen en een wizard die passende vormen voorstelt. Volgens de maker werkt de tool met vaste regels en zonder AI-model.",
     "purpose": "Mogelijke eindwerkvormen verkennen en het gesprek over eindkwalificaties, de OER en examinering voorbereiden.",
     "audiences": [
       "Docenten",
@@ -31415,10 +31415,10 @@
       "Toetsing en examinering"
     ],
     "status": "in_development",
-    "availabilityText": "Conceptfase; volgens de door Eva aangeleverde LinkedIn-post wordt de app verder aangevuld, getest en doorontwikkeld. Verhuizing naar de UU GitHub-omgeving is aangekondigd, maar nog niet bevestigd.",
+    "availabilityText": "Concepttool in ontwikkeling; de publieke webversie is bereikbaar. Volgens de aangeleverde LinkedIn-post wordt de app verder aangevuld, getest en doorontwikkeld. Verhuizing naar de UU GitHub-omgeving is aangekondigd, maar nog niet bevestigd.",
     "publicationDate": null,
     "lastVerified": "2026-10-09",
-    "verificationStatus": "needs_review",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "Meesterproef Studio",
@@ -31454,11 +31454,12 @@
       "portfolio",
       "NLQF",
       "OER",
-      "examencommissie"
+      "examencommissie",
+      "masterproef"
     ],
     "notes": "Als concept opgenomen op verzoek van Eva. De door Eva aangeleverde LinkedIn-post beschrijft een bijeenkomst op 6 oktober bij Universiteit Utrecht met deelname vanuit Hogeschool Utrecht en noemt verdere ontwikkeling van de app en een beoogde verhuizing naar de UU GitHub-omgeving. Die verhuizing is nog niet vastgesteld; de huidige projectbeschrijving noemt AIGovernanceofficer.nl. Volgens die projectbeschrijving gebruikt de ontwerphulp vaste regels en geen AI-model. De tool ondersteunt voorbereiding van eindwerkvormen in het tijdperk van AI; formele besluitvorming blijft bij de bevoegde onderwijsorganen. Juridische juistheid, effectiviteit en privacyclaims zijn niet onafhankelijk vastgesteld.",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "Officiële README via GitHub gelezen. Aanvullende concept- en ontwikkelcontext komt uit de door Eva aangeleverde LinkedIn-tekst; de oorspronkelijke post en de bestemming van de verkorte link zijn niet rechtstreeks geverifieerd. Webversie nog niet functioneel getest. Registratie blijft ter beoordeling en buiten de publieke projectie.",
+    "verificationNote": "Officiële projectbeschrijving en publieke webversie rechtstreeks gecontroleerd op 9 oktober 2026: titel, aanbieder, functie, doelgroep en onderdelen bevestigd. De webpagina laadt zonder scriptfouten. De ontwikkelcontext en aangekondigde verhuizing komen uit door Eva aangeleverde LinkedIn-tekst; de verhuizing is niet als voltooid vastgesteld. Verificatie betreft het bestaan en de beschrijving van deze concepttool, niet effectiviteit of juridische juistheid.",
     "changeHistory": [
       {
         "date": "2026-10-09",
@@ -31469,6 +31470,11 @@
         "date": "2026-10-09",
         "type": "updated",
         "summary": "Conceptfase en aangekondigde UU-doorontwikkeling toegelicht op basis van door Eva aangeleverde openbare LinkedIn-tekst; verhuizing niet als voltooid vastgelegd."
+      },
+      {
+        "date": "2026-10-09",
+        "type": "verified",
+        "summary": "Publieke webversie en officiële projectbeschrijving rechtstreeks gecontroleerd; zichtbaar gemaakt in de Atlas met behoud van de status in ontwikkeling."
       }
     ],
     "offerCategory": "materials"
