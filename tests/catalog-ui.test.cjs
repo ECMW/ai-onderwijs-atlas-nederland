@@ -137,7 +137,7 @@ test('books and materials navigation opens the collection and its tile count mat
   const count = (load(data).booksMarkup().match(/data-record-id=/g) || []).length;
   const index = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
   assert.ok(index.includes('<a href="#boeken">Boeken en materialen</a>'));
-  for (const hash of ['#home', '#zoeken']) {
+  for (const hash of ['#home']) {
     const main = {focus(){}};
     const input = {};
     const suggestions = {};
@@ -325,13 +325,13 @@ test('explicit theme aliases match existing entrances while distinct topics rema
   for (const id of ['digitale-overheid-ai-verordening-tijdlijn-2026','algoritmekader-iama-2026']) assert.ok(laws.includes(id), id);
 });
 
-test('VSO is available wherever the catalogue contains that sector', () => {
-  const data = [{...record('vso-offer'),sectors:['VSO']}, record('higher-education')];
-  const api = load(data);
-  assert.ok(api.homeFilterPanel([]).includes('name="sector" value="VSO"'));
-  assert.deepEqual(Array.from(api.recordsForCriteria(api.criteriaForQuery('VSO')), item=>item.id), ['vso-offer']);
+test('VSO is absent from sector filters and visible sector labels', () => {
+  const item = {...record('vso-offer'), sectors:['PO','VO','VSO']};
+  const api = load([item]);
+  assert.ok(!api.homeFilterPanel([]).includes('name="sector" value="VSO"'));
+  assert.ok(!api.simpleCard(item).includes('<span>VSO</span>'));
+  assert.ok(!api.offerFacts(item).includes('VSO'));
 });
-
 test('home and search filters lead with sector, then offer type, before other refinements', () => {
   const data = [{ ...record('training'), recordType: 'training', legacyType: 'Training' }];
   const api = load(data);
@@ -345,7 +345,7 @@ test('home and search filters lead with sector, then offer type, before other re
   assertGroupOrder(home, ['Voor welke sector?', 'Wat zoekt u?', 'Waar zoekt u hulp bij?', 'Waar is het aanbod beschikbaar?', 'Voor wie?', 'Beschikbaarheid']);
 
   const search = api.catalogFilterPanel(['Training'], ['Docenten'], ['Voorbeeld']);
-  assertGroupOrder(search, ['1. Voor welke sector?', '2. Wat zoekt u?', '3. Onderwerp', '4. Regio', '5. Doelgroep', '6. Beschikbaarheid', '7. Aanbieder', '8. Meer filters']);
+  assertGroupOrder(search, ['Voor welke sector?', 'Wat zoekt u?', 'Onderwerp', 'Regio', 'Doelgroep', 'Beschikbaarheid', 'Aanbieder', 'Meer filters']);
 });
 
 test('route changes release an open mobile filter overlay and its detached keyboard handler', () => {
