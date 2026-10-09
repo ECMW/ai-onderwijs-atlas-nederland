@@ -55,6 +55,21 @@ class ContributionQualityTests(unittest.TestCase):
         self.assertFalse(report["eligible"])
         self.assertTrue(any("pilot" in error.lower() for error in report["errors"]))
 
+    def test_merging_historical_duplicate_keeps_original_status(self):
+        base = record()
+        base.update(verificationStatus='verified', lastVerified='2026-07-27', changeHistory=[])
+        changed = copy.deepcopy(base)
+        changed.update(lastVerified='2026-10-09', publicationExclusion={
+            'reason': 'Dubbele algemene vermelding; oorspronkelijke informatie behouden.',
+            'decidedOn': '2026-10-09', 'duplicateOf': 'kept'})
+        changed['changeHistory'].append({'date': '2026-10-09', 'type': 'updated', 'summary': 'Dubbele vermelding samengevoegd.'})
+        report = review_records([base], [changed], ['data/records.json'],
+            source_loader('voorbeeldtool voorbeeldorganisatie pilot'), trusted_automation=True)
+        self.assertTrue(report['eligible'], report['errors'])
+        failed = review_records([base], [changed], ['data/records.json'],
+            lambda url: SourceCheck(url, False, 404, url, 'text/html', '', ''), trusted_automation=True)
+        self.assertFalse(failed['eligible'], 'Excluded corrections still require reachable official sources')
+
     def test_trusted_automation_accepts_verified_addition_and_update(self):
         base = record("bestaand", "Bestaand aanbod")
         base["verificationStatus"] = "verified"

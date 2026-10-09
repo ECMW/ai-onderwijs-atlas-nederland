@@ -283,6 +283,11 @@ def source_matches_record(record: dict, source: SourceCheck) -> bool:
 
 
 def _status_conflicts(record: dict, source_checks: Iterable[SourceCheck]) -> str | None:
+    # An excluded historical record does not advertise availability. Its original
+    # status stays intact when an editor merges a duplicate; source, structure and
+    # change-history checks still apply to the correction.
+    if 'publicationExclusion' in record:
+        return None
     searchable = " ".join(check.searchable_text for check in source_checks if check.reachable)
     status = record.get("status")
     if status == "available" and re.search(r"\bpilot(?:plaatsen|fase)?\b", searchable):
