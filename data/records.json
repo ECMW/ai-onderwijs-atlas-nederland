@@ -1035,7 +1035,7 @@
       "org-mbo-digitaal"
     ],
     "providerName": "MBO Digitaal",
-    "description": "Sectorale aanjager voor digitalisering in het middelbaar beroepsonderwijs via programmalijnen, kennisdeling en ondersteuning.",
+    "description": "Platform van de MBO Raad voor samenwerking aan digitalisering in het mbo. MBO Digitaal ondersteunt kennisdeling en gezamenlijke projecten van mbo-scholen en werkt samen met Kennisnet en SURF.",
     "purpose": "Digitalisering en sectorale ondersteuning",
     "audiences": [
       "Docenten",
@@ -1047,16 +1047,21 @@
     ],
     "themes": [],
     "status": "available",
-    "availabilityText": "Nog niet ingevuld",
+    "availabilityText": "Publieke website met activiteiten, netwerken, programma’s en kennisproducten.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "Website",
         "url": "https://mbodigitaal.nl/",
+        "sourceType": "official"
+      },
+      {
+        "label": "MBO Raad over MBO Digitaal",
+        "url": "https://www.mboraad.nl/mbo-digitaal",
         "sourceType": "official"
       }
     ],
@@ -1092,6 +1097,11 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-10-09",
+        "type": "updated",
+        "summary": "Samengevoegd met de dubbele programmavermelding mbo-digitaal-2. Beide officiële bronnen bevestigen hetzelfde platform van de MBO Raad."
       }
     ]
   },
@@ -1389,16 +1399,16 @@
   },
   {
     "id": "npuls-programma",
-    "title": "Npuls-programma",
-    "recordType": "programme",
-    "legacyType": "Programma",
-    "subtype": null,
+    "title": "Programmaplan Npuls fase 2 (2025–2031)",
+    "recordType": "policy_document",
+    "legacyType": "Handreiking",
+    "subtype": "Programmaplan",
     "organizationIds": [
       "org-npuls"
     ],
     "providerName": "Npuls",
-    "description": "Meerjarig nationaal programma voor digitalisering van MBO en hoger onderwijs, met kennisproducten, communities, proeftuinen en ondersteuning.",
-    "purpose": "Digitalisering en samenwerking in MBO en hoger onderwijs",
+    "description": "Programmaplan voor de tweede fase van Npuls, van 2025 tot 2031. Beschrijft de visie, maatschappelijke opgaven, veranderstrategie, doelen, programmaorganisatie, governance en financiering voor de transformatie van mbo, hbo en wo.",
+    "purpose": "Onderwijsbestuurders, beleidsadviseurs en programmamanagers informeren over de gezamenlijke koers en inrichting van de tweede fase van Npuls.",
     "audiences": [
       "Onderwijsinstellingen",
       "Docenten",
@@ -1412,11 +1422,11 @@
     ],
     "themes": [],
     "status": "available",
-    "availabilityText": "2022",
+    "availabilityText": "Het programmaplan is op de officiële Npuls-pagina te lezen en als PDF te downloaden.",
     "startDate": null,
     "endDate": null,
-    "publicationDate": null,
-    "lastVerified": "2026-09-09",
+    "publicationDate": "2025-04-07",
+    "lastVerified": "2026-10-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -1425,7 +1435,9 @@
         "sourceType": "official"
       }
     ],
-    "relatedIds": [],
+    "relatedIds": [
+      "npuls"
+    ],
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Nederland",
@@ -1450,7 +1462,10 @@
       "Groeifonds",
       "MBO",
       "HBO",
-      "WO"
+      "WO",
+      "programmaplan",
+      "fase 2",
+      "2025–2031"
     ],
     "notes": null,
     "changeHistory": [
@@ -1463,9 +1478,15 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Programma en digitalisering van mbo, hbo en wo gecontroleerd aan het officiële programmaplan; algemene homepage vervangen door concrete programmabron."
+      },
+      {
+        "date": "2026-10-09",
+        "type": "updated",
+        "summary": "Algemene dubbele programmabeschrijving vervangen door het afzonderlijke programmaplan dat de officiële bron beschrijft; titel, categorie, publicatiedatum en functie gecontroleerd."
       }
     ],
-    "verificationNote": "Programma en digitalisering van mbo, hbo en wo gecontroleerd aan het officiële programmaplan; algemene homepage vervangen door concrete programmabron."
+    "verificationNote": "Programma en digitalisering van mbo, hbo en wo gecontroleerd aan het officiële programmaplan; algemene homepage vervangen door concrete programmabron.",
+    "offerCategory": "knowledge"
   },
   {
     "id": "nolai-programma",
@@ -1499,7 +1520,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-09-09",
+    "lastVerified": "2026-10-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -1545,9 +1566,19 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "De officiële programmabeschrijving bevestigt lopende co-creatie, co-implementatie en wetenschappelijk onderzoek. Niet slechts in ontwikkeling."
+      },
+      {
+        "date": "2026-10-09",
+        "type": "updated",
+        "summary": "Doublure uitgesloten van de publieke Atlas; oude detailpagina verwijst naar nolai. Bronbeschrijving opnieuw gecontroleerd."
       }
     ],
-    "verificationNote": "De officiële programmabeschrijving bevestigt lopende co-creatie, co-implementatie en wetenschappelijk onderzoek. Niet slechts in ontwikkeling."
+    "verificationNote": "De officiële programmabeschrijving bevestigt lopende co-creatie, co-implementatie en wetenschappelijk onderzoek. Niet slechts in ontwikkeling.",
+    "publicationExclusion": {
+      "reason": "Dubbele algemene vermelding van hetzelfde initiatief; samengevoegd met nolai na vergelijking van de officiële bronnen. Het oorspronkelijke record blijft bewaard.",
+      "decidedOn": "2026-10-09",
+      "duplicateOf": "nolai"
+    }
   },
   {
     "id": "mbo-digitaal-2",
@@ -1576,7 +1607,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-09-09",
+    "lastVerified": "2026-10-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -1621,9 +1652,19 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "MBO Raad bevestigt het platform, kennisdeling en gezamenlijke digitaliseringsprojecten; concrete bron toegevoegd."
+      },
+      {
+        "date": "2026-10-09",
+        "type": "updated",
+        "summary": "Doublure uitgesloten van de publieke Atlas; oude detailpagina verwijst naar mbo-digitaal. Bronbeschrijving opnieuw gecontroleerd."
       }
     ],
-    "verificationNote": "MBO Raad bevestigt het platform, kennisdeling en gezamenlijke digitaliseringsprojecten; concrete bron toegevoegd."
+    "verificationNote": "MBO Raad bevestigt het platform, kennisdeling en gezamenlijke digitaliseringsprojecten; concrete bron toegevoegd.",
+    "publicationExclusion": {
+      "reason": "Dubbele algemene vermelding van hetzelfde initiatief; samengevoegd met mbo-digitaal na vergelijking van de officiële bronnen. Het oorspronkelijke record blijft bewaard.",
+      "decidedOn": "2026-10-09",
+      "duplicateOf": "mbo-digitaal"
+    }
   },
   {
     "id": "aic4nl-werkpakket-onderwijs",
@@ -31831,10 +31872,15 @@
         "date": "2026-10-09",
         "type": "added",
         "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-10-09",
+        "type": "updated",
+        "summary": "Publieke catalogus en categorie Onderwijs opnieuw gecontroleerd; opnamebeleid afgestemd op Eva’s expliciete toestemming voor de afzonderlijke onderwijsapps."
       }
     ],
     "offerCategory": "knowledge",
-    "notes": "Deze vermelding betreft de catalogus als wegwijzer. De Atlas presenteert aangekondigde onderdelen zonder eigen beschikbare bron niet als beschikbaar materiaal. Zelfstandige AI-software wordt niet als afzonderlijk publiek aanbod toegevoegd binnen de bestaande Atlas-reikwijdte. De catalogus noemt gratis browserapps en CC BY-NC-ND 4.0; externe API-kosten kunnen apart gelden. De README van deze repository beschrijft een oudere maturity-assessment; de actuele catalogus zelf is hier leidend."
+    "notes": "Deze vermelding betreft de catalogus als wegwijzer. Op verzoek van Eva worden op 9 oktober 2026 de afzonderlijke apps uit de categorie Onderwijs opgenomen, zonder doublures van AIGORA en Meesterproef Studio. Aangekondigde onderdelen blijven herkenbaar als in ontwikkeling en hebben nog geen eigen gebruikslink. De catalogus noemt gratis browserapps en CC BY-NC-ND 4.0; externe API-kosten kunnen apart gelden. De README van deze repository beschrijft een oudere maturity-assessment; de actuele catalogus zelf is leidend."
   },
   {
     "id": "aigo-wat-is-ai-governance",
