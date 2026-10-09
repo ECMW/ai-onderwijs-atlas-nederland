@@ -3,6 +3,7 @@ from datetime import date
 from pathlib import Path
 from public_assets import versioned_html
 from promote_contribution import dutch_date
+from publication_scope import duplicate_redirects
 
 R = Path(__file__).parents[1]
 
@@ -30,6 +31,12 @@ def generate(root: Path = R, generated_on: date | None = None) -> None:
     # This is the date of an actual generated edition, not a claim that every
     # individual source was checked today. Record verification dates stay intact.
     public_meta = {**meta, 'updated': dutch_date(generated_on or date.today()), 'recordCount': len(published)}
+    redirects, errors = duplicate_redirects(records, published)
+    if errors:
+        raise ValueError('; '.join(errors))
+    public_meta.pop('recordRedirects', None)
+    if redirects:
+        public_meta['recordRedirects'] = redirects
     (root / 'data/metadata.json').write_text(
         json.dumps(public_meta, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
     )

@@ -11,7 +11,7 @@ const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
     recordContextMarkup, queryMatchQuality, queryMatches, sortRecords,
-    homeFilterPanel, catalogFilterPanel, recordsForCriteria,
+    homeFilterPanel, catalogFilterPanel, recordsForCriteria, renderDetail,
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
     effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
     accessLabel, accessOptions: Object.values(ACCESS_LABELS), recordThemes, themeOptions, route,
@@ -39,6 +39,23 @@ function load(records = [], hash = '#zoeken', overrides = {}) {
   context.window.testCatalogue.parseState();
   return context.window.testCatalogue;
 }
+
+test('merged detail links redirect only to a present public record', () => {
+  let redirected;
+  const data = [record('kept')];
+  const main = {};
+  const api = load(data, '#item/old', {
+    window: { ATLAS_RECORDS: {records: data, metadata: {recordRedirects: {old:'kept', missing:'absent'}}} },
+    document: {querySelector: selector => selector === 'main' ? main : null},
+    location: {hash: '#item/old', replace: value => { redirected = value; }}
+  });
+  api.renderDetail('old');
+  assert.equal(redirected, '#item/kept');
+  redirected = null;
+  api.renderDetail('missing');
+  assert.equal(redirected, null);
+  assert.ok(main.innerHTML.includes('Niet gevonden'));
+});
 
 test('commercial labels require evidence and are independent of price', () => {
   const api = load();

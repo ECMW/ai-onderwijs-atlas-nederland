@@ -93,6 +93,14 @@ beschikbaar; deze uitsluiting is geen vertrouwelijkheidsgrens. Ook een onjuist i
 wordt nooit als toestemming tot weergave behandeld; de datavalidatie blokkeert
 dan de release.
 
+Bij een vastgestelde dubbele vermelding kan `publicationExclusion.duplicateOf`
+verwijzen naar de behouden publieke record-ID. De generator neemt alleen deze
+doorverwijzingen op in `metadata.recordRedirects`, zodat bestaande detailpagina-links
+blijven werken. De releasecontrole blokkeert ontbrekende of uitgesloten doelen,
+verouderde doorverwijzingen en dubbele publieke titels bij dezelfde aanbieder,
+ook wanneer de recordtypen verschillen. Een gedeelde bron of vergelijkbare titel
+alleen is geen bewijs dat twee materialen hetzelfde zijn.
+
 Op 9 september 2026 zijn op verzoek van Eva de 12 zelfstandige
 softwarevermeldingen uitgesloten om verwarring over de reikwijdte te voorkomen.
 De canonieke records, relaties, broncontrole en beschikbaarheid blijven bewaard.

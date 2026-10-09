@@ -15,7 +15,7 @@ from pathlib import Path
 from public_assets import versioned_html
 from contribution_quality import commercial_field_errors
 from offer_categories import offer_category_errors
-from publication_scope import publication_exclusion_errors
+from publication_scope import publication_exclusion_errors, duplicate_redirects, duplicate_title_errors
 from source_library import source_library_issues
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -94,6 +94,11 @@ def main() -> int:
     elif not args.allow_missing_source_library:
         errors.append("Required source library is missing; recovery must opt in explicitly")
     expected = [record for record in records if is_public(record)]
+    redirects, redirect_errors = duplicate_redirects(records, expected)
+    errors.extend(redirect_errors)
+    errors.extend(duplicate_title_errors(expected))
+    if metadata.get('recordRedirects', {}) != redirects:
+        errors.append('Duplicate redirects differ from canonical exclusions')
     expected_ids = [record.get("id") for record in expected]
     public_ids = [record.get("id") for record in public_records]
 
