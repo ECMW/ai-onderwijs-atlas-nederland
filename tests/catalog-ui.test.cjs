@@ -325,13 +325,13 @@ test('explicit theme aliases match existing entrances while distinct topics rema
   for (const id of ['digitale-overheid-ai-verordening-tijdlijn-2026','algoritmekader-iama-2026']) assert.ok(laws.includes(id), id);
 });
 
-test('VSO is available wherever the catalogue contains that sector', () => {
-  const data = [{...record('vso-offer'),sectors:['VSO']}, record('higher-education')];
-  const api = load(data);
-  assert.ok(api.homeFilterPanel([]).includes('name="sector" value="VSO"'));
-  assert.deepEqual(Array.from(api.recordsForCriteria(api.criteriaForQuery('VSO')), item=>item.id), ['vso-offer']);
+test('VSO is absent from sector filters and visible sector labels', () => {
+  const item = {...record('vso-offer'), sectors:['PO','VO','VSO']};
+  const api = load([item]);
+  assert.ok(!api.homeFilterPanel([]).includes('name="sector" value="VSO"'));
+  assert.ok(!api.simpleCard(item).includes('<span>VSO</span>'));
+  assert.ok(!api.offerFacts(item).includes('VSO'));
 });
-
 test('home and search filters lead with sector, then offer type, before other refinements', () => {
   const data = [{ ...record('training'), recordType: 'training', legacyType: 'Training' }];
   const api = load(data);

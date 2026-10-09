@@ -73,7 +73,7 @@
     unclassified: 'Aanbodvorm nog niet ingedeeld'
   };
   const PRIMARY_AUDIENCES = ['Docenten', 'Bestuurders', 'IT-professionals', 'Onderzoekers'];
-  const SECTORS = ['PO', 'VO', 'VSO', 'MBO', 'HBO', 'WO', 'Onderzoek', 'Overheid'];
+  const SECTORS = ['PO', 'VO', 'MBO', 'HBO', 'WO', 'Onderzoek', 'Overheid'];
   const ACCESS_LABELS = {
     public: 'Publiek toegankelijk', registration_required: 'Registratie nodig',
     paid: 'Betaalde toegang', restricted: 'Beperkte toegang', unknown: 'Toegang niet vastgesteld'
@@ -546,7 +546,7 @@
       ...bookFacts,
       ['Vorm', factValue(record.subtype)],
       ['Voor wie', factValue((record.audiences || []).join(', '))],
-      ['Sector', factValue((record.sectors || []).join(', '))],
+      ['Sector', factValue((record.sectors || []).filter(sector => sector !== 'VSO').join(', '))],
       ['Beschikbaarheid', statusLabel(record)],
       ['Kosten', costLabel(record)],
       ['Toegang', accessLabel(record)],
@@ -601,7 +601,7 @@
     return `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
   function simpleCard(record, showPublicationDate = false, recency = null) {
-    const sectors = (record.sectors || []).slice(0, 3);
+    const sectors = (record.sectors || []).filter(sector => sector !== 'VSO').slice(0, 3);
     const sourceItem = primarySource(record);
     return `<article class="result-card" data-record-id="${escapeHtml(record.id)}">
       <div class="card-body"><div class="card-top"><span class="type-label">${escapeHtml(offerLabel(record))}</span></div>
