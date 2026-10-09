@@ -73,7 +73,7 @@
     unclassified: 'Aanbodvorm nog niet ingedeeld'
   };
   const PRIMARY_AUDIENCES = ['Docenten', 'Bestuurders', 'IT-professionals', 'Onderzoekers'];
-  const SECTORS = ['PO', 'VO', 'VSO', 'MBO', 'HBO', 'WO', 'Onderzoek', 'Overheid'];
+  const SECTORS = ['PO', 'VO', 'MBO', 'HBO', 'WO', 'Onderzoek', 'Overheid'];
   const ACCESS_LABELS = {
     public: 'Publiek toegankelijk', registration_required: 'Registratie nodig',
     paid: 'Betaalde toegang', restricted: 'Beperkte toegang', unknown: 'Toegang niet vastgesteld'

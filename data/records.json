@@ -21915,8 +21915,7 @@
     ],
     "sectors": [
       "PO",
-      "VO",
-      "VSO"
+      "VO"
     ],
     "themes": [
       "AI-geletterdheid",
@@ -21977,6 +21976,11 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-10-09",
+        "type": "updated",
+        "summary": "Op verzoek van Eva VSO als afzonderlijke sector verwijderd; bestaande VO-indeling en brongegevens behouden."
       }
     ],
     "offerCategory": "materials"
@@ -28651,7 +28655,6 @@
     ],
     "sectors": [
       "PO",
-      "VSO",
       "VO",
       "MBO"
     ],
@@ -28717,6 +28720,11 @@
         "date": "2026-09-19",
         "type": "added",
         "summary": "Vier samenhangende beleidsinstrumenten als één route toegevoegd na controle van de afzonderlijke officiële detailpagina's."
+      },
+      {
+        "date": "2026-10-09",
+        "type": "updated",
+        "summary": "Op verzoek van Eva VSO als afzonderlijke sector verwijderd; bestaande VO-indeling en brongegevens behouden."
       }
     ],
     "offerCategory": "materials",
