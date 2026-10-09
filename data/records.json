@@ -31415,7 +31415,7 @@
       "Toetsing en examinering"
     ],
     "status": "in_development",
-    "availabilityText": "Concepttool; publieke webversie gelinkt. De werking van de webversie is nog niet gecontroleerd.",
+    "availabilityText": "Conceptfase; volgens de door Eva aangeleverde LinkedIn-post wordt de app verder aangevuld, getest en doorontwikkeld. Verhuizing naar de UU GitHub-omgeving is aangekondigd, maar nog niet bevestigd.",
     "publicationDate": null,
     "lastVerified": "2026-10-09",
     "verificationStatus": "needs_review",
@@ -31429,6 +31429,11 @@
         "label": "Officiële projectbeschrijving",
         "url": "https://github.com/AIgovernanceofficer/Meesterproef-studio/blob/main/README.md",
         "sourceType": "official"
+      },
+      {
+        "label": "LinkedIn-post over eindwerken in het tijdperk van AI (tekst aangeleverd door Eva)",
+        "url": "https://www.linkedin.com/feed/update/urn:li:activity:7514391875328598016/",
+        "sourceType": "secondary"
       }
     ],
     "relatedIds": [],
@@ -31451,14 +31456,19 @@
       "OER",
       "examencommissie"
     ],
-    "notes": "Als concept opgenomen op verzoek van Eva. Volgens de officiële projectbeschrijving werkt de ontwerphulp met vaste regels en bevat zij geen AI-model. De tool ondersteunt voorbereiding; zij vervangt geen formele besluitvorming. Institutioneel eigenaarschap, juridische juistheid, effectiviteit en privacyclaims zijn niet onafhankelijk vastgesteld.",
+    "notes": "Als concept opgenomen op verzoek van Eva. De door Eva aangeleverde LinkedIn-post beschrijft een bijeenkomst op 6 oktober bij Universiteit Utrecht met deelname vanuit Hogeschool Utrecht en noemt verdere ontwikkeling van de app en een beoogde verhuizing naar de UU GitHub-omgeving. Die verhuizing is nog niet vastgesteld; de huidige projectbeschrijving noemt AIGovernanceofficer.nl. Volgens die projectbeschrijving gebruikt de ontwerphulp vaste regels en geen AI-model. De tool ondersteunt voorbereiding van eindwerkvormen in het tijdperk van AI; formele besluitvorming blijft bij de bevoegde onderwijsorganen. Juridische juistheid, effectiviteit en privacyclaims zijn niet onafhankelijk vastgesteld.",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "Officiële README via GitHub gelezen. Functie en doelgroep bevestigd in de projectbeschrijving; webversie niet functioneel getest. Conceptstatus volgt uit het verzoek van Eva. Registratie blijft ter beoordeling en buiten de publieke projectie.",
+    "verificationNote": "Officiële README via GitHub gelezen. Aanvullende concept- en ontwikkelcontext komt uit de door Eva aangeleverde LinkedIn-tekst; de oorspronkelijke post en de bestemming van de verkorte link zijn niet rechtstreeks geverifieerd. Webversie nog niet functioneel getest. Registratie blijft ter beoordeling en buiten de publieke projectie.",
     "changeHistory": [
       {
         "date": "2026-10-09",
         "type": "added",
         "summary": "Meesterproef Studio als concept toegevoegd op verzoek van Eva, op basis van de officiële projectbeschrijving."
+      },
+      {
+        "date": "2026-10-09",
+        "type": "updated",
+        "summary": "Conceptfase en aangekondigde UU-doorontwikkeling toegelicht op basis van door Eva aangeleverde openbare LinkedIn-tekst; verhuizing niet als voltooid vastgelegd."
       }
     ],
     "offerCategory": "materials"
