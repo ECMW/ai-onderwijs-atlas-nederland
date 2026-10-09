@@ -144,22 +144,19 @@ test('a blocked or broken optional analytics script leaves the real Atlas usable
   app.navigate('#zoeken'); assert.match(app.main.innerHTML, /class="atlas-search"/);
 });
 
-test('workshop help and offer-type filters stay synchronized and submit one training filter', () => {
-  const app = boot();
-  const choices = app.document.querySelectorAll('.home-filter-form input[name="type"][value="Training"]');
-  assert.equal(choices.length, 2);
-  assert.match(app.main.innerHTML, /Mijn team scholen/);
-  assert.match(app.main.innerHTML, /Trainingen en workshops/);
-  choices[0].checked = true;
-  choices[0].onchange();
-  assert.ok(choices.every(input => input.checked));
-  const total = app.context.ATLAS_RECORDS.records.filter(record => record.recordType === 'training').length;
-  assert.equal(app.document.querySelector('.home-filter-submit').textContent, `Bekijk ${total} resultaten`);
-  app.document.querySelector('.home-filter-form').onsubmit({ preventDefault() {} });
-  assert.equal(app.context.location.hash.replace(/^#/, ''), 'zoeken?type=Training');
-  choices[1].checked = false;
-  choices[1].onchange();
-  assert.ok(choices.every(input => !input.checked));
+test('home uses the full catalogue and the same query, sector, cost and offer filters as search', () => {
+  const app=boot();
+  assert.deepEqual(app.errors,[]);
+  assert.ok(app.document.querySelector('#home-search'));
+  for(const key of ['sector','type','cost','audience','organization']) {
+    assert.ok(app.document.querySelector(`[data-facet="${key}"]`),key);
+  }
+  assert.match(app.main.innerHTML,/388|resultaten/);
+  assert.ok(!app.main.innerHTML.includes('guide-start'));
+  assert.ok(!app.main.innerHTML.includes('geselecteerde vermeldingen'));
+  app.navigate('#zoeken');
+  assert.ok(app.document.querySelector('#catalog-search'));
+  assert.ok(app.document.querySelector('[data-facet="cost"]'));
 });
 
 test('home rerenders notify optional widgets when a saved role is cleared', () => {

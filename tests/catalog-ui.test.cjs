@@ -10,7 +10,7 @@ assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly th
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
-    guideMarkup, guideItems, knowledgeGuide: KNOWLEDGE_GUIDE, recordContextMarkup,
+    recordContextMarkup, queryMatchQuality, queryMatches, sortRecords,
     homeFilterPanel, catalogFilterPanel, recordsForCriteria,
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
     effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
@@ -91,43 +91,56 @@ test('material details expose practical restrictions and evidence limits without
   assert.equal(api.recordContextMarkup({recordType:'guidance'}).trim(), '');
 });
 
-test('question guide reuses 28 unique public canonical records across eight questions', () => {
-  const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
-  const api = load(data);
-  assert.equal(api.knowledgeGuide.length, 8);
-  const ids = api.knowledgeGuide.flatMap(group => group.items.map(item => item[0]));
-  assert.equal(ids.length, 28);
-  assert.equal(new Set(ids).size, 28);
-  assert.ok(api.guideMarkup().includes('28 geselecteerde vermeldingen'));
-  assert.equal((api.guideMarkup().match(/class="task-tile"/g)||[]).length, 8);
-  for (const group of api.knowledgeGuide) {
-    const html = api.guideMarkup(group.id);
-    assert.ok(html.includes(group.title));
-    assert.equal((html.match(/data-guide-record=/g)||[]).length, group.items.length);
-    for (const [id, kind, use] of group.items) {
-      const item = data.find(item => item.id === id);
-      assert.ok(item, id); assert.ok(!item.publicationExclusion, id);
-      assert.ok(['verified','recently_checked'].includes(item.verificationStatus), id);
-      assert.ok(html.includes(`href="#item/${id}"`));
-      assert.ok(html.includes(kind)); assert.ok(use.length>30);
-    }
-    const more = html.match(/class="guide-more"><a href="([^"]+)"/)[1].replaceAll('&amp;','&');
-    const search = load(data, more);
-    assert.ok(search.recordsForCriteria(search.getState()).length>0, group.id);
+test('provider names do not match arbitrary shorter words inside the query', () => {
+  const data = [{...record('provider'),providerName:'AIGovernanceofficer.nl'},
+    {...record('unrelated'),description:'Informatie over onderwijs',themes:[],keywords:[]}];
+  const api=load(data);
+  assert.deepEqual(Array.from(api.recordsForCriteria({q:'AIGovernanceofficer'}),r=>r.id),['provider']);
+  assert.equal(api.queryMatches(data[1], 'governanceofficer'),false);
+  assert.equal(api.queryMatches(data[1], 'AI'),false);
+});
+
+test('synonyms preserve the other search terms and match complete words', () => {
+  const data=[{...record('uu'),title:'AVG handreiking',providerName:'Universiteit Utrecht',description:'Gegevensbescherming'},
+    {...record('other'),title:'AVG',providerName:'Andere aanbieder'},
+    {...record('partial'),title:'Recall procedure',description:'Informatie',themes:[],keywords:[]}];
+  const api=load(data);
+  assert.deepEqual(Array.from(api.recordsForCriteria({q:'privacy Utrecht'}),r=>r.id),['uu']);
+  assert.equal(api.queryMatches(data[2],'call'),false);
+  assert.equal(api.queryMatches({...data[2],title:'Call voor projecten'},'call'),true);
+});
+
+test('spelling tolerance keeps exact results first and supports known Meesterproef spelling', () => {
+  const data=[{...record('typo'),title:'Privacyy handreiking',description:'Informatie',themes:[]},
+    {...record('exact'),title:'Privacy handreiking',description:'Informatie',themes:[]}];
+  const api=load(data,'#zoeken?q=privacy');
+  assert.ok(api.queryMatches(data[1],'privcy'));
+  assert.equal(api.sortRecords(data).map(r=>r.id).join(','),'exact,typo');
+  const canonical=JSON.parse(fs.readFileSync(path.join(__dirname,'../data/records.json'),'utf8'));
+  const actual=load(canonical,'#zoeken?q=masterproef');
+  assert.equal(actual.sortRecords(Array.from(actual.recordsForCriteria({q:'masterproef'})))[0].id,'meesterproef-studio');
+});
+
+test('ordinary queries stay visible and never replace an explicitly selected filter', () => {
+  const api=load();
+  for (const q of ['privacy','AI Act','workshop','HBO']) {
+    const criteria=api.criteriaForQuery(q,{sector:'PO',type:'Training',sort:'published'});
+    assert.equal(criteria.q,q);
+    assert.equal(criteria.sector,'PO');
+    assert.equal(criteria.type,'Training');
+    assert.equal(criteria.sort,'published');
+    assert.ok(!criteria.theme);
   }
 });
 
-test('question guide excludes unavailable public records and keeps concepts distinct from published guidance', () => {
-  const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
-  const concept = data.find(item=>item.id==='meesterproef-studio');
-  assert.equal(concept.status,'in_development');
-  assert.ok(load(data).guideMarkup('ontwikkeling').includes('In ontwikkeling'));
-  for (const change of [{publicationExclusion:{reason:'Review required'}},{verificationStatus:'needs_review'},{sourceUrls:[]}]) {
-    const changed=data.map(item=>item.id===concept.id?{...item,...change}:item);
-    assert.ok(!load(changed).guideMarkup('ontwikkeling').includes('data-guide-record="meesterproef-studio"'));
-  }
-  assert.ok(load(data).guideMarkup('<script>').includes('Waar zoekt u hulp bij?'));
-  assert.ok(!load(data).guideMarkup('<script>').includes('<script>'));
+test('costs combine with access, sector and query without treating unknown as free', () => {
+  const data=[{...record('free'),costType:'free',accessType:'public'},
+    {...record('members'),costType:'free',accessType:'restricted'},
+    {...record('paid'),costType:'paid',accessType:'public'},record('unknown')];
+  const api=load(data,'#zoeken?q=privacy&sector=HBO&cost=Gratis&access=Publiek%20toegankelijk');
+  assert.equal(api.recordsForCriteria(api.getState()).map(r=>r.id).join(','),'free');
+  assert.equal(load(data,api.stateHref()).recordsForCriteria(api.getState()).map(r=>r.id).join(','),'free');
+  assert.equal(api.recordsForCriteria({cost:'Gratis'}).map(r=>r.id).join(','),'free,members');
 });
 
 test('books and materials page reuses the selected public Dutch materials with costs, access and official sources', () => {
@@ -180,29 +193,6 @@ test('materials selection excludes other records and respects language, category
   ]) {
     const changed = data.map(item => item.id === material.id ? {...item, ...change} : item);
     assert.ok(!load(changed).booksMarkup().includes(`data-record-id="${material.id}"`), JSON.stringify(change));
-  }
-});
-
-test('books and materials navigation opens the collection and its tile count matches the page', () => {
-  const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
-  const count = (load(data).booksMarkup().match(/data-record-id=/g) || []).length;
-  const index = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
-  assert.ok(index.includes('<a href="#boeken">Boeken en materialen</a>'));
-  for (const hash of ['#home']) {
-    const main = {focus(){}};
-    const input = {};
-    const suggestions = {};
-    const form = {querySelector:selector=>selector==='input'?input:suggestions};
-    const doc = {
-      querySelector:selector=>selector==='main'?main:selector==='.atlas-search'?form:null,
-      querySelectorAll:()=>[]
-    };
-    const api = load(data, hash, {document:doc, CSS:{escape:value=>value}, scrollTo:()=>{}, clearTimeout:()=>{}});
-    api.route();
-    const tile = main.innerHTML.match(/<a class="task-tile" href="#boeken">[\s\S]*?<\/a>/);
-    assert.ok(tile, hash);
-    assert.ok(tile[0].includes('<strong>Boeken en materialen</strong>'));
-    assert.ok(tile[0].includes(`<small>${count} resultaten</small>`));
   }
 });
 
@@ -457,16 +447,15 @@ test('refreshed mobile filter controls announce the still-open panel correctly',
   assert.equal(opener.expanded, 'false');
 });
 
-test('workshop and trainer entry uses training filters and preserves a named trainer search', () => {
+test('ordinary training searches preserve visible words and find named trainers', () => {
   const api = load();
   for (const q of ['workshops', 'trainers', 'trainingen', 'workshop', 'trainer']) {
     const criteria = api.criteriaForQuery(q);
-    assert.equal(criteria.type, 'Training', q);
-    assert.equal(criteria.q, '', q);
+    assert.equal(criteria.q, q);
+    assert.ok(!criteria.type);
   }
   const criteria = api.criteriaForQuery('trainer Tanja van Grinsven');
-  assert.equal(criteria.type, 'Training');
-  assert.match(criteria.q, /tanja/);
+  assert.equal(criteria.q, 'trainer Tanja van Grinsven');
   const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
   const live = load(data);
   assert.ok(live.recordsForCriteria(criteria).some(item => item.id === 'han-ai-voor-docenten-basis'));
@@ -515,7 +504,7 @@ test('excluded software stays out of results and filters while materials and leg
 test('choosing an AI application is framed as an assessment, not a safety endorsement', () => {
   const api = load([], '#zoeken?theme=Veilige%20AI-omgeving');
   const html = api.resultsMarkup();
-  assert.ok(html.includes('<h1>Een AI-toepassing kiezen</h1>'));
+  assert.ok(html.includes('Beoordeel de toepassing in uw eigen situatie'));
   assert.ok(html.includes('geen keurmerk'));
 });
 
@@ -797,13 +786,13 @@ test('a delayed clipboard rejection cannot change a different page or use detach
   }
 });
 
-test('meeting sheets include all matching records even when a themed group shows only three cards', () => {
+test('themed results and meeting sheets both include every matching record', () => {
   const matching = Array.from({ length: 5 }, (_, index) => record(`meeting-${index}`, null, `Overlegitem ${index}`));
   const excluded = { ...record('excluded-sheet-item', null), publicationExclusion: { reason: 'Outside public scope', decidedOn: '2026-09-01' } };
   const unverified = { ...record('unverified-sheet-item', null), verificationStatus: 'needs_review' };
   const differentTheme = { ...record('different-theme', null), themes: ['Onderzoek'], description: 'Onderzoeksprogramma' };
   const api = load([...matching, excluded, unverified, differentTheme], '#zoeken?theme=Privacy%20en%20AVG');
-  assert.equal([...api.resultsMarkup().matchAll(/<article class="result-card"/g)].length, 3, 'The fixture must exercise the abbreviated grouped result view');
+  assert.equal([...api.resultsMarkup().matchAll(/<article class="result-card"/g)].length, 5, 'The full matching catalogue remains visible');
   const html = api.meetingSheetMarkup();
   for (const item of matching) {
     assert.ok(html.includes(item.title));
@@ -916,7 +905,7 @@ test('subsidy searches include subsidies and calls even without a financing them
   for(const query of ['subsidie','subsidies','call','calls']) {
     const criteria=api.criteriaForQuery(query);
     assert.deepEqual(Array.from(api.recordsForCriteria(criteria),r=>r.id),['grant','call']);
-    assert.equal(criteria.theme,'');
+    assert.ok(!criteria.theme);
   }
 });
 
