@@ -522,7 +522,7 @@ test('every offering keeps the same facts including explicit unknowns', () => {
 
 test('new contributions and product detail code carry the non-endorsement notice', () => {
   const api = load([record('notice', null)]);
-  assert.ok(api.newOffersMarkup().includes('<h1>Nieuwe bijdragen</h1>'));
+  assert.ok(api.newOffersMarkup().includes('<h1>Nieuw aanbod</h1>'));
   assert.ok(api.newOffersMarkup().includes('geen goedkeuring, kwaliteitsbeoordeling of aanbeveling'));
 });
 

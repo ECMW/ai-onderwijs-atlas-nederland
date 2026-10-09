@@ -381,7 +381,7 @@
     const shown = sorted.slice((page - 1) * 24, page * 24), unknown = records.length - sorted.length;
     const href = number => `#nieuw?volgorde=${mode}&pagina=${number}`;
     const label = published ? 'Gepubliceerd op' : 'Toegevoegd aan de Atlas op';
-    return `<section class="new-offers"><header class="page-intro"><span class="eyebrow">Snel zien wat er is toegevoegd</span><h1>Nieuwe bijdragen</h1><p>Bekijk nieuwe vermeldingen in de Atlas of kies aanbod met een recente publicatiedatum.</p><p class="listing-notice">${LISTING_NOTICE}</p></header>
+    return `<section class="new-offers"><header class="page-intro"><span class="eyebrow">Snel zien wat er is toegevoegd</span><h1>Nieuw aanbod</h1><p>Bekijk nieuwe vermeldingen in de Atlas of kies aanbod met een recente publicatiedatum.</p><p class="listing-notice">${LISTING_NOTICE}</p></header>
       <nav class="new-offers-modes" aria-label="Welke datum wilt u bekijken?">
         <a class="btn${published ? ' secondary' : ''}" href="#nieuw?volgorde=added"${!published ? ' aria-current="page"' : ''}>Nieuw in de Atlas</a>
         <a class="btn${published ? '' : ' secondary'}" href="#nieuw?volgorde=published"${published ? ' aria-current="page"' : ''}>Recent gepubliceerd</a>
@@ -589,8 +589,8 @@
 
   function searchForm(id) {
     return `<form class="atlas-search" role="search" autocomplete="off">
-      <label for="${id}">Waar bent u vandaag naar op zoek?</label>
-      <div class="search-row"><input id="${id}" type="search" role="combobox" value="${escapeHtml(state.q)}" placeholder="Zoek op onderwerp, aanbod of aanbieder" aria-controls="search-suggestions" aria-autocomplete="list" aria-expanded="false"><button class="btn" aria-label="Zoeken">Zoeken</button></div>
+      <label for="${id}">Zoek in de Atlas</label>
+      <div class="search-row"><input id="${id}" type="search" role="combobox" value="${escapeHtml(state.q)}" placeholder="Onderwerp, aanbod of aanbieder" aria-controls="search-suggestions" aria-autocomplete="list" aria-expanded="false"><button class="btn" aria-label="Zoeken">Zoeken</button></div>
       <div class="suggestions" id="search-suggestions" hidden></div>
     </form>`;
   }
@@ -866,7 +866,7 @@
     const sortSummary = isPublicationSort()
       ? `${state.sort === 'published' ? 'Nieuwste' : 'Oudste'} publicaties eerst. Publicatiedatum bekend bij ${knownDates} van ${resultRecords.length} resultaten; onbekende datums staan onderaan.`
       : state.sort === 'az' ? 'Gesorteerd op titel, van A tot Z.' : 'Gesorteerd op relevantie en directe bruikbaarheid.';
-    return `<header class="result-head"><div><span class="eyebrow">Gevonden aanbod</span><h2>${escapeHtml(heading)}</h2><p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p></div><div class="result-tools"><button class="mobile-filter btn secondary" aria-controls="filters" aria-expanded="false">Filters (${activeCount})</button><label>Sorteren<select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select></label></div></header>
+    return `<nav class="catalog-tabs" aria-label="Aanbodoverzicht"><a href="#zoeken" aria-current="page">Al het aanbod</a><a href="#nieuw">Nieuw aanbod →</a></nav><header class="result-head"><div><span class="eyebrow">Gevonden aanbod</span><h2>${escapeHtml(heading)}</h2><p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p></div><div class="result-tools"><button class="mobile-filter btn secondary" aria-controls="filters" aria-expanded="false">Filters (${activeCount})</button><label>Sorteren<select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select></label></div></header>
       ${values('type').length === 1 && values('type')[0] === 'Training' ? '<section class="training-intro"><h2>Workshops en trainers</h2><p>Vind een workshop, cursus of training en de aanbieder die deze verzorgt. Verfijn op onderwerp, doelgroep of aanbieder. Trainer, locatie, kosten en beschikbaarheid staan bij het aanbod voor zover bevestigd. Bespreek maatwerk via de officiële aanbodpagina.</p></section>' : ''}
       ${values('theme').includes('Veilige AI-omgeving') ? '<section class="selection-guidance"><h2>Beoordeel de toepassing in uw eigen situatie</h2><p>Gebruik de officiële bronnen om gegevensgebruik, beheer, menselijke controle, toegankelijkheid en overstapmogelijkheden te beoordelen. Wat passend is, hangt af van uw doel, gegevens, instellingen en afspraken. Deze selectie is geen keurmerk voor veilige of verantwoorde AI.</p></section>' : ''}
       <details class="selection-bar"><summary>Selectie delen of afdrukken</summary><div class="selection-actions"><a href="#bijdragen">Aanbod toevoegen of feedback geven</a><button type="button" data-share-selection>Deel selectie</button>${resultRecords.length ? `<a data-meeting-sheet href="${escapeHtml(stateHref().replace(/^#zoeken/, '#overlegblad'))}">Overlegblad (${resultRecords.length})</a>` : ''}</div></details>
@@ -909,8 +909,8 @@
   }
   function catalogFilterPanel(typeOptions, audienceOptions, organizationOptions) {
     const hiddenCount = ['access', 'source'].reduce((sum, key) => sum + values(key).length, 0);
-    return `<aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Verfijn</h2><button class="close" aria-label="Sluit filters">×</button></header>
-      <p class="filter-help">Kies eerst uw sector en daarna wat u zoekt. Verfijn vervolgens met de andere opties. Meerdere keuzes binnen een filter geven meer mogelijkheden. Met andere filters verfijnt u de resultaten.</p>
+    return `<aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Filters</h2><button class="close" aria-label="Sluit filters">×</button></header>
+      <p class="filter-help">Combineer uw zoekterm met filters. Binnen een filter kunt u meerdere opties kiezen.</p>
       ${facet('sector', 'Voor welke sector?', SECTORS)}${facet('type', 'Wat zoekt u?', typeOptions)}${facet('cost', 'Kosten', ['Gratis', 'Betaald', 'Gratis en betaald', 'Kosten onbekend'])}${facet('theme', 'Onderwerp', themeOptions())}${facet('geography', 'Regio', ['Nederland', 'Europa', 'Internationaal'])}${facet('audience', 'Doelgroep', audienceOptions)}${facet('status', 'Beschikbaarheid', Object.values(STATUS_LABELS))}${facet('organization', 'Aanbieder', organizationOptions)}
       <details class="more-filters"><summary>Meer filters<span data-more-count>${hiddenCount ? ` (${hiddenCount})` : ''}</span> <span aria-hidden="true">▼</span></summary>
         ${facet('access', 'Toegang', Object.values(ACCESS_LABELS))}${facet('source', 'Bron', ['Met officiële bron', 'Bron nog niet vastgelegd'])}
@@ -928,8 +928,7 @@
     resultRecords = sortRecords(records.filter(record => matches(record)));
     const personas = savedPersonas();
     const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
-    main.innerHTML = `<section class="catalog"><header class="catalog-intro"><h1>Zoek AI-aanbod voor uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, boeken, lesmaterialen en meer. Combineer uw zoekterm met de filters.</p>${isHome ? `<p class="visit-proof" data-atlas-visit-count hidden></p>${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}` : ''}</header>${searchForm(isHome ? 'home-search' : 'catalog-search')}<div class="catalog-grid">
-      ${catalogFilterPanel(typeOptions, audienceOptions, organizationOptions)}<section class="results" id="results-panel">${resultsMarkup()}</section></div></section>`;
+    main.innerHTML = `<section class="catalog"><header class="catalog-intro"><h1>Zoek AI-aanbod voor uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, boeken, lesmaterialen en meer. Combineer uw zoekterm met de filters.</p>${isHome ? `<p class="visit-proof" data-atlas-visit-count hidden></p>${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}` : ''}</header><div class="catalog-grid"><div class="catalog-sidebar" aria-label="Zoeken en filteren">${searchForm(isHome ? 'home-search' : 'catalog-search')}${catalogFilterPanel(typeOptions, audienceOptions, organizationOptions)}</div><section class="results" id="results-panel">${resultsMarkup()}</section></div></section>`;
     bindSearchPage(); bindRolePickers();
     if (sessionGet('atlas.restoreResults') === location.hash) {
       const targetY = Number(sessionGet('atlas.resultsScroll')) || 0;
