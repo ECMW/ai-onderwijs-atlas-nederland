@@ -10,6 +10,7 @@ assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly th
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
+    guideMarkup, guideItems, knowledgeGuide: KNOWLEDGE_GUIDE, recordContextMarkup,
     homeFilterPanel, catalogFilterPanel, recordsForCriteria,
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
     effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
@@ -77,6 +78,56 @@ test('book details expose availability and the record-specific evidence limit', 
   assert.ok(html.includes('Verkrijgbaar bij de uitgever.'));
   assert.ok(html.includes('<h2>Duiding en bewijsgrens</h2>'));
   assert.ok(html.includes('geen effectbewijs &lt;zonder bron&gt;'));
+});
+
+test('material details expose practical restrictions and evidence limits without treating verification as validation', () => {
+  const api = load();
+  const html = api.recordContextMarkup({ recordType:'guidance', availabilityText:'Download; fysiek exemplaar alleen voor leden.',
+    notes:'Concept, geen gevalideerde scan <script>bad()</script>.', verificationNote:'Alleen bestaan en doelgroep gecontroleerd.' });
+  assert.ok(html.includes('fysiek exemplaar alleen voor leden'));
+  assert.ok(html.includes('geen gevalideerde scan &lt;script&gt;'));
+  assert.ok(!html.includes('<script>bad()'));
+  assert.ok(html.includes('Alleen bestaan en doelgroep gecontroleerd.'));
+  assert.equal(api.recordContextMarkup({recordType:'guidance'}).trim(), '');
+});
+
+test('question guide reuses 28 unique public canonical records across eight questions', () => {
+  const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
+  const api = load(data);
+  assert.equal(api.knowledgeGuide.length, 8);
+  const ids = api.knowledgeGuide.flatMap(group => group.items.map(item => item[0]));
+  assert.equal(ids.length, 28);
+  assert.equal(new Set(ids).size, 28);
+  assert.ok(api.guideMarkup().includes('28 geselecteerde vermeldingen'));
+  assert.equal((api.guideMarkup().match(/class="task-tile"/g)||[]).length, 8);
+  for (const group of api.knowledgeGuide) {
+    const html = api.guideMarkup(group.id);
+    assert.ok(html.includes(group.title));
+    assert.equal((html.match(/data-guide-record=/g)||[]).length, group.items.length);
+    for (const [id, kind, use] of group.items) {
+      const item = data.find(item => item.id === id);
+      assert.ok(item, id); assert.ok(!item.publicationExclusion, id);
+      assert.ok(['verified','recently_checked'].includes(item.verificationStatus), id);
+      assert.ok(html.includes(`href="#item/${id}"`));
+      assert.ok(html.includes(kind)); assert.ok(use.length>30);
+    }
+    const more = html.match(/class="guide-more"><a href="([^"]+)"/)[1].replaceAll('&amp;','&');
+    const search = load(data, more);
+    assert.ok(search.recordsForCriteria(search.getState()).length>0, group.id);
+  }
+});
+
+test('question guide excludes unavailable public records and keeps concepts distinct from published guidance', () => {
+  const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
+  const concept = data.find(item=>item.id==='meesterproef-studio');
+  assert.equal(concept.status,'in_development');
+  assert.ok(load(data).guideMarkup('ontwikkeling').includes('In ontwikkeling'));
+  for (const change of [{publicationExclusion:{reason:'Review required'}},{verificationStatus:'needs_review'},{sourceUrls:[]}]) {
+    const changed=data.map(item=>item.id===concept.id?{...item,...change}:item);
+    assert.ok(!load(changed).guideMarkup('ontwikkeling').includes('data-guide-record="meesterproef-studio"'));
+  }
+  assert.ok(load(data).guideMarkup('<script>').includes('Waar zoekt u hulp bij?'));
+  assert.ok(!load(data).guideMarkup('<script>').includes('<script>'));
 });
 
 test('books and materials page reuses the selected public Dutch materials with costs, access and official sources', () => {
