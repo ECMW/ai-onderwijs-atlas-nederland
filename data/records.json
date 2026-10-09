@@ -29466,19 +29466,22 @@
   },
   {
     "id": "nolai-open-call-onderzoekspartner-creatief-maakonderwijs-2026",
-    "title": "Open call onderzoekspartner: AI-tool voor creatief maakonderwijs",
+    "title": "AI-tool voor creatief maakonderwijs: partneroproepen",
     "recordType": "funding_call",
     "legacyType": "Call",
-    "subtype": "Onderzoekspartner voor co-creatieproject",
+    "subtype": "Onderzoeks- en ontwikkelpartner voor co-creatieproject",
     "organizationIds": [
       "org-nolai"
     ],
     "providerName": "NOLAI",
-    "description": "Oproep voor een onderzoekspartner in een driejarig co-creatieproject rond een AI-tool die leerlingen in het voortgezet onderwijs ondersteunt bij brainstormen zonder creatief en kritisch denken over te nemen.",
-    "purpose": "Een onderzoekspartner selecteren die de invloed van AI-ondersteuning op creatieve processen onderzoekt en inzichten naar de onderwijspraktijk vertaalt.",
+    "description": "NOLAI zocht een onderzoekspartner en een ontwikkelpartner voor hetzelfde driejarige co-creatieproject: een AI-tool die leerlingen in het voortgezet onderwijs ondersteunt bij brainstormen zonder creatief en kritisch denken over te nemen. De twee partneroproepen zijn hier gebundeld. De aanmeldtermijn verstreek op 30 september 2026.",
+    "purpose": "Onderzoek en ontwikkeling verbinden bij een AI-toepassing voor creatief maakonderwijs. De onderzoekspartner onderzoekt creatieve processen en vertaalt inzichten naar de onderwijspraktijk; de ontwikkelpartner ontwerpt en beproeft de toepassing samen met een school en onderzoekers.",
     "audiences": [
       "Onderzoekers",
-      "Onderzoeksorganisaties"
+      "Onderzoeksorganisaties",
+      "Ontwikkelaars",
+      "Bedrijven",
+      "Onderwijsorganisaties"
     ],
     "sectors": [
       "VO",
@@ -29490,25 +29493,28 @@
       "Lesgeven en leren met AI",
       "Subsidies en financiering"
     ],
-    "status": "open_call",
-    "availabilityText": "Open voor aanmelding tot en met 30 september 2026; gesprekken met geselecteerde kandidaten zijn voorzien in de week van 5 tot en met 9 oktober.",
+    "status": "closed_call",
+    "availabilityText": "Beide partneroproepen zijn gesloten. De aanmeldtermijn verstreek op 30 september 2026. De actuele NOLAI-pagina’s melden dat geselecteerde onderzoekers en bedrijven bericht hebben ontvangen; welke partners dit zijn is hier niet vastgesteld.",
     "publicationDate": "2026-09-16",
-    "lastVerified": "2026-09-19",
+    "lastVerified": "2026-10-09",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële open call",
-        "url": "https://www.ru.nl/over-ons/nieuws/open-call-onderzoekspartner-ai-tool-voor-creatief-maakonderwijs",
+        "label": "NOLAI: oproep onderzoekspartner",
+        "url": "https://www.ru.nl/over-ons/nieuws/open-call-onderzoekspartner-ai-tool-voor-creatief-maakonderwijs-gesloten",
+        "sourceType": "official"
+      },
+      {
+        "label": "NOLAI: oproep ontwikkelpartner",
+        "url": "https://www.ru.nl/over-ons/nieuws/open-call-ontwikkelpartner-ai-tool-voor-creatief-maakonderwijs-gesloten",
         "sourceType": "official"
       }
     ],
     "relatedIds": [
-      "nolai-open-call-ontwikkelpartner-creatief-maakonderwijs-2026",
-      "nolai-programma",
       "nolai"
     ],
     "parentIds": [
-      "nolai-programma"
+      "nolai"
     ],
     "childIds": [],
     "geographicScope": "Nederland",
@@ -29518,11 +29524,13 @@
     "fundingDeadline": "2026-09-30",
     "applicationOpenDate": "2026-09-16",
     "applicationDeadline": "2026-09-30",
-    "eligibility": "Onderzoeksinstellingen met expertise in creativiteit en de meting daarvan, vertaling naar de onderwijspraktijk en co-creatie; ervaring met ontwerpgericht onderzoek is een pre en inzet voor minimaal drie jaar is vereist.",
+    "eligibility": "Onderzoekspartner: onderzoeksinstellingen met expertise in creativiteit, de meting daarvan en vertaling naar de onderwijspraktijk; ervaring met ontwerpgericht onderzoek is een pre en een aanstelling van minimaal drie jaar is vereist. Ontwikkelpartner: organisaties met expertise in AI en creatieve technologie, digitale kunst, edtech of innovatieve leeromgevingen, bij voorkeur met ervaring in het voortgezet onderwijs en co-creatie. Het co-creatieproject doorloopt in drie jaar een concept-, ontwikkel- en validatiefase.",
     "applicantTypes": [
-      "Onderzoeksinstellingen"
+      "Onderzoeksinstellingen",
+      "Bedrijven",
+      "Ontwikkelorganisaties"
     ],
-    "callStatus": "open_call",
+    "callStatus": "closed_call",
     "recurrence": null,
     "language": [
       "nl"
@@ -29533,16 +29541,25 @@
       "onderzoekspartner",
       "creativiteit",
       "maakonderwijs",
-      "co-creatie"
+      "co-creatie",
+      "ontwikkelpartner",
+      "creatieve technologie",
+      "partneroproepen",
+      "gesloten"
     ],
-    "notes": "Dit is een partnerselectie voor een door NOLAI gefaciliteerd en gefinancierd co-creatieproject, niet een reguliere subsidieregeling. Een subsidiebedrag is niet gepubliceerd.",
+    "notes": "Eén publieke projectvermelding bundelt twee afzonderlijke partnerrollen. Dit is een partnerselectie voor een door NOLAI gefaciliteerd en gefinancierd co-creatieproject, geen reguliere subsidieregeling. Een subsidiebedrag is niet gepubliceerd. Beide officiële oproepen blijven als bron beschikbaar; het oorspronkelijke ontwikkelpartnerrecord blijft canoniek bewaard.",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "De officiële Radboud/NOLAI-pagina bevestigt publicatiedatum, projectduur, partnerprofiel, selectieplanning en deadline.",
+    "verificationNote": "Beide actuele officiële Radboud/NOLAI-pagina’s met de toevoeging -gesloten verwijzen naar elkaar als partneroproepen voor hetzelfde project en melden dat de calls gesloten zijn. Partnerprofielen, publicatiedatum en driejarige projectduur vergeleken. De deadline van 30 september 2026 staat in de oorspronkelijke oproep. De actuele pagina’s noemen geen namen van geselecteerde partners.",
     "changeHistory": [
       {
         "date": "2026-09-19",
         "type": "added",
         "summary": "Actuele NOLAI-oproep voor een onderzoekspartner toegevoegd na controle van de officiële call."
+      },
+      {
+        "date": "2026-10-09",
+        "type": "updated",
+        "summary": "Onderzoeks- en ontwikkelpartneroproepen voor hetzelfde project gebundeld na vergelijking van beide officiële bronnen. Beide rollen behouden en aanmelding als gesloten vastgelegd op grond van de deadline van 30 september 2026."
       }
     ]
   },
@@ -29575,9 +29592,14 @@
     "status": "open_call",
     "availabilityText": "Open voor aanmelding tot en met 30 september 2026; eerste gesprekken zijn voorzien in de week van 5 tot en met 9 oktober en een tweede ronde in de week van 26 tot en met 30 oktober.",
     "publicationDate": "2026-09-16",
-    "lastVerified": "2026-09-19",
+    "lastVerified": "2026-10-09",
     "verificationStatus": "verified",
     "sourceUrls": [
+      {
+        "label": "NOLAI: oproep ontwikkelpartner",
+        "url": "https://www.ru.nl/over-ons/nieuws/open-call-ontwikkelpartner-ai-tool-voor-creatief-maakonderwijs-gesloten",
+        "sourceType": "official"
+      },
       {
         "label": "Officiële open call",
         "url": "https://www.ru.nl/over-ons/nieuws/open-call-ontwikkelpartner-ai-tool-voor-creatief-maakonderwijs",
@@ -29626,8 +29648,18 @@
         "date": "2026-09-19",
         "type": "added",
         "summary": "Actuele NOLAI-oproep voor een ontwikkelpartner toegevoegd na controle van de officiële call."
+      },
+      {
+        "date": "2026-10-09",
+        "type": "updated",
+        "summary": "Afzonderlijke ontwikkelpartnerkaart uitgesloten van publieke zoekresultaten en doorgelinkt naar de gebundelde projectvermelding. Oorspronkelijke gegevens behouden; beide officiële bronnen gecontroleerd."
       }
-    ]
+    ],
+    "publicationExclusion": {
+      "reason": "De twee afzonderlijke partneroproepen voor hetzelfde creatieve-maakonderwijsproject zijn gebundeld in één publieke vermelding met beide rollen en officiële bronnen. Het oorspronkelijke ontwikkelpartnerrecord blijft bewaard.",
+      "decidedOn": "2026-10-09",
+      "duplicateOf": "nolai-open-call-onderzoekspartner-creatief-maakonderwijs-2026"
+    }
   },
   {
     "id": "boek-de-big-data-revolutie",

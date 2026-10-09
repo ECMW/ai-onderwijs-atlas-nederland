@@ -2,9 +2,10 @@
   "version": "Werkversie 1.2",
   "updated": "9 oktober 2026",
   "sourceNote": "Canonieke atlasdata met gecontroleerde officiële Nederlandse, Europese en internationale AI-onderwijsbronnen. Publieke resultaten tonen alleen records met een vastgelegde bron en recente verificatie.",
-  "recordCount": 396,
+  "recordCount": 395,
   "recordRedirects": {
     "nolai-programma": "nolai",
-    "mbo-digitaal-2": "mbo-digitaal"
+    "mbo-digitaal-2": "mbo-digitaal",
+    "nolai-open-call-ontwikkelpartner-creatief-maakonderwijs-2026": "nolai-open-call-onderzoekspartner-creatief-maakonderwijs-2026"
   }
 }
