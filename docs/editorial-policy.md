@@ -25,6 +25,18 @@ training over een specifiek product is daarbij een training. Bestaande
 softwaregegevens blijven canoniek bewaard met `publicationExclusion`; een
 broncontrole verandert dit redactionele besluit niet.
 
+Op 9 oktober 2026 heeft Eva daarnaast expliciet toestemming gegeven om de apps
+uit de categorie **Onderwijs** van de AI App Store van AIGovernanceofficer.nl op
+te nemen. Deze gerichte uitbreiding heft de eerdere uitsluitingen van andere
+zelfstandige software niet op. Reeds opgenomen apps krijgen geen tweede
+vermelding. Onderdelen met alleen een aankondiging blijven herkenbaar als in
+ontwikkeling, zonder claim dat de app beschikbaar of getest is. Externe
+API-sleutels en mogelijke modelkosten staan bij de betreffende app vermeld.
+
+Boeken en materialen blijven onderdeel van de volledige zoekcatalogus en de
+filters. Zij hebben op verzoek van Eva geen afzonderlijke link in het hoofdmenu;
+bestaande links naar het boekenoverzicht blijven werken.
+
 ## Feitelijke en vergelijkbare vermeldingen
 
 Gebruik voor iedere vermelding dezelfde velden: titel, aanbieder, soort aanbod,
