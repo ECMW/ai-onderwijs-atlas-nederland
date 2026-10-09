@@ -33554,5 +33554,352 @@
     "offerCategory": "software",
     "notes": "Geselecteerd uit de categorie Onderwijs van https://aigovernanceofficer.github.io/AI-app-store/ op verzoek van Eva. De catalogus noemt de bereikbare apps gratis; eventuele externe API-kosten staan apart vermeld. Bereikbaarheid en zichtbare functies zijn gecontroleerd, niet de volledige werking, veiligheid of onderwijseffectiviteit. UU-vormgeving bewijst geen institutioneel eigenaarschap of goedkeuring.",
     "availabilityText": "De publieke browserapp is bereikbaar. Gratis volgens de App Store van de maker."
+  },
+  {
+    "id": "aigo-statistiekmaatje",
+    "title": "StatistiekMaatje – Kritiek Gebied",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": "Onderwijsapp",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Educatieve escaperoom met vier statistiekstations. Studenten oefenen beschrijvende statistiek en z-scores, standaardfout en steekproefomvang, hypothesetoetsing met de t-toets en regressie. Eigen berekeningen leveren cijfers voor een ontgrendelcode op; hints en foutieve antwoorden beïnvloeden de score.",
+    "purpose": "Studenten laten oefenen met onderzoeksmethoden en statistiek via rekenvragen in spelvorm.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Onderzoek"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Open de onderwijsapp",
+        "url": "https://aigovernanceofficer.github.io/StatistiekMaatje/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "aigo-app-store"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AIGovernanceofficer.nl",
+      "AI Governance Officer",
+      "Yvette Roman",
+      "onderwijsapp",
+      "StatistiekMaatje – Kritiek Gebied",
+      "statistiek",
+      "escaperoom",
+      "Kritiek Gebied",
+      "t-toets",
+      "regressie"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "notes": "Geselecteerd uit de categorie Onderwijs van https://aigovernanceofficer.github.io/AI-app-store/ op verzoek van Eva. De catalogus noemt de bereikbare apps gratis; eventuele externe API-kosten staan apart vermeld. Bereikbaarheid en zichtbare functies zijn gecontroleerd, niet de volledige werking, veiligheid of onderwijseffectiviteit. UU-vormgeving bewijst geen institutioneel eigenaarschap of goedkeuring.",
+    "availabilityText": "De publieke browserapp is bereikbaar. Gratis volgens de App Store van de maker."
+  },
+  {
+    "id": "aigo-dicteermachine",
+    "title": "Dicteermachine",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": "Onderwijsapp",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Browserapp voor dicteren in het Nederlands of Engels, met zelfgekozen spraakcommando’s voor pauzeren en doorgaan. De app biedt transcriptie, vertaling en Word-export. Volgens de maker draaien Whisper-spraakherkenning en OPUS-MT-vertaling in de browser, nadat modelbestanden zijn gedownload.",
+    "purpose": "Studenten en onderwijsprofessionals ondersteunen bij het inspreken, vertalen en bewaren van tekst.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Privacy en AVG"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Open de onderwijsapp",
+        "url": "https://aigovernanceofficer.github.io/Dicteermachine/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "aigo-app-store"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AIGovernanceofficer.nl",
+      "AI Governance Officer",
+      "Yvette Roman",
+      "onderwijsapp",
+      "Dicteermachine"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "software",
+    "notes": "Geselecteerd uit de categorie Onderwijs van https://aigovernanceofficer.github.io/AI-app-store/ op verzoek van Eva. De catalogus noemt de bereikbare apps gratis; eventuele externe API-kosten staan apart vermeld. Bereikbaarheid en zichtbare functies zijn gecontroleerd, niet de volledige werking, veiligheid of onderwijseffectiviteit. UU-vormgeving bewijst geen institutioneel eigenaarschap of goedkeuring.",
+    "availabilityText": "De publieke browserapp is bereikbaar. Gratis volgens de App Store van de maker."
+  },
+  {
+    "id": "aigo-gebruikscondities-ai-tools-docenten",
+    "title": "Gebruikscondities AI-tools voor docenten",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": "Aangekondigde onderwijsapp",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Aangekondigd materiaal over condities en richtlijnen voor docenten en onderwijsondersteuners bij het inzetten van AI-tools. De App Store vermeldt Binnenkort en In ontwikkeling; er is nog geen eigen gebruikslink.",
+    "purpose": "Docenten en onderwijsondersteuners informeren over gebruikscondities voor AI-tools.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "AI-geletterdheid"
+    ],
+    "status": "in_development",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Aankondiging in de App Store",
+        "url": "https://aigovernanceofficer.github.io/AI-app-store/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Gepubliceerde catalogus van de maker",
+        "url": "https://raw.githubusercontent.com/AIgovernanceofficer/AI-app-store/main/index.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "aigo-app-store"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Gebruikscondities AI-tools voor docenten",
+      "concept",
+      "in ontwikkeling",
+      "onderwijsapp",
+      "AIGovernanceofficer.nl"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De maker kondigt dit onderdeel aan als Binnenkort en In ontwikkeling. Geen afzonderlijke app, inhoud, releasedatum of werking geverifieerd.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "In ontwikkeling volgens de maker. Alleen de aankondiging is beschikbaar; geen gebruikslink of releasedatum gepubliceerd.",
+    "notes": "Uitsluitend de aankondiging in de categorie Onderwijs is vastgesteld via een verse browserlading en de gepubliceerde catalogusbron. Functies, doelgroep en sectoren zijn een beschrijving van het aangekondigde onderwijsgebruik, geen getest product. Kosten en toekomstige voorwaarden zijn niet vastgesteld."
+  },
+  {
+    "id": "aigo-ai-tools-afwegingskader-onderwijs",
+    "title": "AI tools afwegingskader onderwijs",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": "Aangekondigde onderwijsapp",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Aangekondigd hulpmiddel over de voorwaarden waaronder het onderwijs wel of niet voor AI kiest. De App Store vermeldt Binnenkort en In ontwikkeling; er is nog geen eigen gebruikslink.",
+    "purpose": "Onderwijsprofessionals ondersteunen bij het afwegen of AI passend is.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "in_development",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Aankondiging in de App Store",
+        "url": "https://aigovernanceofficer.github.io/AI-app-store/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Gepubliceerde catalogus van de maker",
+        "url": "https://raw.githubusercontent.com/AIgovernanceofficer/AI-app-store/main/index.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "aigo-app-store"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI tools afwegingskader onderwijs",
+      "concept",
+      "in ontwikkeling",
+      "onderwijsapp",
+      "AIGovernanceofficer.nl"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De maker kondigt dit onderdeel aan als Binnenkort en In ontwikkeling. Geen afzonderlijke app, inhoud, releasedatum of werking geverifieerd.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "In ontwikkeling volgens de maker. Alleen de aankondiging is beschikbaar; geen gebruikslink of releasedatum gepubliceerd.",
+    "notes": "Uitsluitend de aankondiging in de categorie Onderwijs is vastgesteld via een verse browserlading en de gepubliceerde catalogusbron. Functies, doelgroep en sectoren zijn een beschrijving van het aangekondigde onderwijsgebruik, geen getest product. Kosten en toekomstige voorwaarden zijn niet vastgesteld."
+  },
+  {
+    "id": "aigo-ai-resilience-tester",
+    "title": "AI Resilience Tester",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": "Aangekondigde onderwijsapp",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Aangekondigde app voor het verkennen van de weerbaarheid van onderwijs en toetsing tegen oneigenlijk AI-gebruik. De App Store vermeldt Binnenkort en In ontwikkeling; er is nog geen eigen gebruikslink.",
+    "purpose": "Onderwijsprofessionals laten nadenken over de weerbaarheid van onderwijs en toetsing.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Beleid en governance"
+    ],
+    "status": "in_development",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Aankondiging in de App Store",
+        "url": "https://aigovernanceofficer.github.io/AI-app-store/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Gepubliceerde catalogus van de maker",
+        "url": "https://raw.githubusercontent.com/AIgovernanceofficer/AI-app-store/main/index.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "aigo-app-store"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "unknown",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI Resilience Tester",
+      "concept",
+      "in ontwikkeling",
+      "onderwijsapp",
+      "AIGovernanceofficer.nl"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De maker kondigt dit onderdeel aan als Binnenkort en In ontwikkeling. Geen afzonderlijke app, inhoud, releasedatum of werking geverifieerd.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "In ontwikkeling volgens de maker. Alleen de aankondiging is beschikbaar; geen gebruikslink of releasedatum gepubliceerd.",
+    "notes": "Uitsluitend de aankondiging in de categorie Onderwijs is vastgesteld via een verse browserlading en de gepubliceerde catalogusbron. Functies, doelgroep en sectoren zijn een beschrijving van het aangekondigde onderwijsgebruik, geen getest product. Kosten en toekomstige voorwaarden zijn niet vastgesteld."
   }
 ]
