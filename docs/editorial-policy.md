@@ -1,5 +1,22 @@
 # Redactioneel beleid
 
+## Vraaggerichte startselectie
+
+De wegwijzer biedt acht vraaggerichte ingangen met een beperkte selectie van
+bestaande publieke vermeldingen. Selectie is redactionele navigatie, geen
+ranglijst of kwaliteitskeurmerk. De volledige Atlas blijft doorzoekbaar.
+Elke keuze vermeldt kort waarvoor de bron helpt en onderscheidt de vorm:
+bijvoorbeeld wetgeving, vrijwillig kader, onderzoek, praktijkmateriaal of
+concept. Een praktijkvoorbeeld of werkvorm heet niet zonder evaluatie
+praktijkbeproefd. Een officiële bron bewijst op zichzelf geen effectiviteit.
+
+De selectie hergebruikt canonieke records; kosten, toegang, beschikbaarheid,
+broncontrole en uitsluitingen blijven daar leidend. In ontwikkeling en pilot
+blijven zichtbaar, ook als een project als startpunt wordt getoond. De
+detailpagina ontsluit de vastgelegde praktische informatie, bewijsgrens en
+verificatietoelichting. Wettelijke geldigheid en wetenschappelijke onderbouwing
+zijn afzonderlijke vragen en worden niet in één bewijsrang samengevoegd.
+
 De Atlas beschrijft bestaand aanbod rond AI en onderwijs. Een vermelding is geen
 goedkeuring, kwaliteitsbeoordeling of aanbeveling. De aanwezigheid van een
 officiële bron bewijst niet dat een product geschikt, veilig of effectief is voor

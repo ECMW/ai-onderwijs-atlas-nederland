@@ -136,6 +136,55 @@
     'hu-care-werkvormen-ai-geletterdheid'
   ]);
 
+  // Editorial routes reuse canonical public records. The labels describe the
+  // source form, never effectiveness or a ranking of providers.
+  const KNOWLEDGE_GUIDE = [
+    { id: 'orientatie', title: 'Wat verandert er door AI?', topic: 'Oriëntatie', detail: 'Trends, onderwijsontwikkelingen en vroege signalen', query: { theme: 'Onderzoek' }, items: [
+      ['stanford-hai-ai-index-2026', 'Gegevensrapport', 'Verken welke AI-ontwikkelingen zijn gemeten en controleer de landen, meetjaren en definities achter de cijfers.'],
+      ['oecd-digital-education-outlook-2026', 'Beleids- en onderzoeksrapport', 'Plaats AI in de bredere ontwikkeling van onderwijs en vergelijk internationale beleidskeuzes.'],
+      ['educause-horizon-report-teaching-learning-2026', 'Toekomstverkenning', 'Gebruik trends en vroege signalen als gespreksonderwerp bij uw onderwijsstrategie.']
+    ] },
+    { id: 'onderwijs', title: 'Hoe geef ik AI een plek in onderwijs en leren?', topic: 'Onderwijs en leren', detail: 'Competenties, curriculum en didactische werkvormen', query: { theme: 'Lesgeven en leren met AI' }, items: [
+      ['unesco-ai-competency-framework-teachers', 'Competentiekader', 'Bepaal welke AI-kennis en vaardigheden relevant zijn voor de professionalisering van docenten.'],
+      ['unesco-ai-competency-framework-students', 'Competentiekader', 'Bespreek welke AI-competenties leerlingen en studenten moeten ontwikkelen.'],
+      ['hva-handleiding-ai4students-methodiek', 'Praktijkmateriaal', 'Werk met een opleiding aan veranderende beroepstaken en de gevolgen voor het curriculum.'],
+      ['uu-werkvormen-kritisch-denken-academisch-schrijven-genai', 'Didactische werkvormen', 'Verken opdrachten waarbij studenten kritisch denken en academisch schrijven oefenen.']
+    ] },
+    { id: 'waarden', title: 'Welke waarden en regels moet ik meewegen?', topic: 'Waarden en kaders', detail: 'Publieke waarden, rechten en wettelijke kaders', query: { theme: 'Publieke waarden en ethiek' }, items: [
+      ['surf-kennisnet-waardenwijzer-2025', 'Waardenkader', 'Maak expliciet wat een AI-keuze betekent voor menselijkheid, rechtvaardigheid en autonomie.'],
+      ['europese-ai-verordening-ai-act', 'Wetgeving', 'Ga naar de wettelijke bron en houd toepassingsgebied en gefaseerde verplichtingen uit elkaar.'],
+      ['algemene-verordening-gegevensbescherming-avg', 'Wetgeving', 'Onderzoek welke gegevensbeschermingsvragen spelen bij het verwerken van persoonsgegevens.'],
+      ['unesco-aanbeveling-ethiek-ai', 'Normatieve aanbeveling', 'Plaats onderwijskeuzes in een breder kader van mensenrechten, waardigheid en publieke waarden.']
+    ] },
+    { id: 'governance', title: 'Hoe organiseer ik AI-beleid en verantwoordelijkheid?', topic: 'Regie en governance', detail: 'Rollen, besluitvorming en risicobeheersing', query: { theme: 'Beleid en governance' }, items: [
+      ['nist-ai-risk-management-framework-1-0', 'Vrijwillig kader', 'Structureer de taken voor governance, contextanalyse, metingen en risicobeheersing.'],
+      ['referentiekader-2-0-verantwoord-gebruik-van-studiedata-en-ai', 'Sectorkader', 'Bespreek verantwoord gebruik van studiedata en AI vanuit de onderwijscontext.'],
+      ['rijksoverheid-handreiking-verantwoorde-generatieve-ai', 'Overheidshandreiking', 'Gebruik de overheidsaanpak als vergelijkingsmateriaal voor uw eigen beleid en context.']
+    ] },
+    { id: 'instrumenten', title: 'Met welk instrument kan mijn team aan de slag?', topic: 'Instrumenten', detail: 'Stappenplannen, vragen en werkmaterialen', query: { type: 'materials' }, items: [
+      ['kennisnet-ethiekkompas', 'Gespreksinstrument', 'Onderzoek met uw team één concrete ethische vraag en leg de afweging vast.'],
+      ['nist-ai-rmf-playbook', 'Werkboek', 'Kies passende acties om AI-risicobeheersing concreet uit te werken.'],
+      ['bzk-handreiking-non-discriminatie-ai', 'Handreiking', 'Stel juridische, technische en organisatorische vragen over discriminatierisico’s.'],
+      ['han-toolkit-ai-bestendig-toetsen', 'Praktijkmateriaal', 'Analyseer de relatie tussen leeruitkomsten, toetsvormen en AI-gebruik.']
+    ] },
+    { id: 'onderzoek', title: 'Wat leren onderzoek en praktijk ons?', topic: 'Onderzoek en praktijk', detail: 'Onderzoeksresultaten, methoden en hun grenzen', query: { theme: 'Onderzoek' }, items: [
+      ['rijksoverheid-onderzoek-gebruik-ai-onderwijs', 'Inventariserend onderzoek', 'Bekijk gerapporteerd AI-gebruik en ervaringen; let op de onderzochte groep.'],
+      ['uu-verantwoord-chatbotgebruik-hoger-onderwijs', 'Literatuurreview en handvatten', 'Onderbouw gesprekken over toetsing en chatbotrichtlijnen met onderzoeksinzichten.'],
+      ['cpb-scoren-zonder-doel-te-treffen-2026', 'Onderzoeksmethode', 'Bepaal hoe u effecten van een algoritmisch proces kunt onderzoeken.']
+    ] },
+    { id: 'ontwikkeling', title: 'Welke nieuwe aanpakken kan ik verkennen?', topic: 'Ontwikkelingen', detail: 'Nieuwe inzichten, pilots en concepten', query: { status: 'In ontwikkeling,Pilot' }, items: [
+      ['nist-generative-ai-profile-600-1', 'Vrijwillige guidance', 'Verdiep uw risicoanalyse met aandacht voor generatieve AI. Dit document is gepubliceerd; het is geen concept.'],
+      ['meesterproef-studio', 'Concept', 'Verken mogelijke eindwerkvormen en bespreek wat bij leerdoelen en toetsing past.'],
+      ['cordis-learngenai-project-2026', 'Lopend onderzoek', 'Volg welke vragen en beoogde resultaten dit onderzoeksproject onderzoekt.'],
+      ['nolai-leren-argumenteren-met-ai', 'Pilot', 'Verken de onderzoeksvraag achter AI-ondersteuning bij argumenteren; neem geen bewezen effect aan.']
+    ] },
+    { id: 'samenwerken', title: 'Waar kan ik kennis en ervaringen uitwisselen?', topic: 'Samenwerken', detail: 'Communities en voorbeelden van samenwerking', query: { theme: 'Professionalisering' }, items: [
+      ['surf-community-ai-in-education', 'Community', 'Vind kennisdeling en gesprekken met collega’s over AI in onderwijs.'],
+      ['npuls-community-platform', 'Besloten community', 'Bekijk de deelnamevoorwaarden voor kennisuitwisseling over AI en data in het vervolgonderwijs.'],
+      ['regionale-ai-werkgroep-friesland', 'Praktijkvoorbeeld', 'Gebruik regionale samenwerking tussen VO-scholen als inspiratie voor uw eigen netwerk.']
+    ] }
+  ];
+
   let state = {};
   let resultRecords = [];
   let debounceTimer;
@@ -689,6 +738,7 @@
     const booksAndMaterials = booksPageRecords().sort((a, b) => a.title.localeCompare(b.title, 'nl'));
     main.innerHTML = `<section class="home-market">${homeFilterPanel(personas)}<div class="home-simple">
       <section class="home-search"><span class="eyebrow">De publieke wegwijzer voor AI in het onderwijs</span><h1>Vind AI-aanbod voor uw onderwijs</h1>${searchForm('home-search')}<p>Doorzoek ${records.length} handreikingen, trainingen, boeken, lesmaterialen en meer.</p><div class="home-browse-links"><a href="#zoeken">Bekijk al het aanbod →</a><a href="#nieuw">Nieuwe bijdragen →</a></div><ul class="trust-summary" aria-label="Kenmerken van de atlas"><li>Officiële bron per vermelding</li><li>Gratis zoeken, zonder account</li></ul><p class="visit-proof" data-atlas-visit-count hidden></p>${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}</section>
+      <aside class="guide-start"><div><h2>Begin met een gerichte selectie</h2><p>Kies uw vraag en bekijk een paar passende bronnen, met uitleg over gebruik en onderbouwing.</p></div><a class="btn secondary" href="#wegwijzer">Start bij uw vraag →</a></aside>
       <section><div class="section-title"><div><h2>Waarmee kunnen we u helpen?</h2><p>Begin bij uw vraag, niet bij een organisatie.</p></div></div><div class="task-grid">${TASKS.map(task => taskTile(task, personas)).join('')}</div></section>
       <section><div class="section-title"><div><h2>Veel gezocht</h2><p>Vaste snelkoppelingen naar veelvoorkomende onderwijsvragen.</p></div></div>${popularLinks('', personas.join(','))}</section>
       ${homeShelf('Direct beschikbaar', `#zoeken?status=${encodeURIComponent('Direct beschikbaar')}`, directUsable())}
@@ -728,8 +778,31 @@
   }
   function bookContextMarkup(record) {
     if (record.recordType !== 'book') return '';
+    return recordContextMarkup(record);
+  }
+  function recordContextMarkup(record) {
     return `${record.availabilityText ? `<h2>Praktisch en beschikbaarheid</h2><p>${escapeHtml(record.availabilityText)}</p>` : ''}
-      ${record.notes ? `<h2>Duiding en bewijsgrens</h2><p>${escapeHtml(record.notes)}</p>` : ''}`;
+      ${record.notes ? `<h2>Duiding en bewijsgrens</h2><p>${escapeHtml(record.notes)}</p>` : ''}
+      ${record.verificationNote ? `<details class="source-review"><summary>Wat is bij de broncontrole vastgesteld?</summary><p>${escapeHtml(record.verificationNote)}</p></details>` : ''}`;
+  }
+
+  function guideItems(group) {
+    return group.items.map(([id, kind, use]) => ({ record: records.find(record => record.id === id), kind, use })).filter(item => item.record);
+  }
+  function guideMarkup(groupId = '') {
+    const groups = KNOWLEDGE_GUIDE.filter(group => guideItems(group).length);
+    const selected = groups.find(group => group.id === groupId);
+    const count = new Set(groups.flatMap(group => guideItems(group).map(item => item.record.id))).size;
+    const intro = `<header class="page-intro"><span class="eyebrow">Een gerichte start in de Atlas</span><h1>${escapeHtml(selected ? selected.title : 'Waar zoekt u hulp bij?')}</h1><p>${selected ? escapeHtml(selected.detail) : `${count} geselecteerde vermeldingen, verdeeld over ${groups.length} vragen. Kies een vraag en ontdek waar u kunt beginnen.`}</p></header>`;
+    const explanation = `<details class="guide-explanation"><summary>Hoe is deze selectie bedoeld?</summary><p>Deze redactionele selectie biedt een startpunt. Bij elke vermelding staat waarvoor u de bron kunt gebruiken. De vormlabels onderscheiden bijvoorbeeld wetgeving, onderzoek, praktijkmateriaal en concepten; ze zijn geen kwaliteitsscore.</p><p>Een officiële bron bevestigt de herkomst en de gepubliceerde informatie. Dat bewijst geen effectiviteit. Praktijkmateriaal is pas praktijkbeproefd als daar een passende evaluatie voor beschikbaar is. Bekijk de broncontrole, beschikbaarheid en bewijsgrens op de detailpagina. Wettelijke geldigheid en onderzoeksonderbouwing vragen ieder hun eigen beoordeling.</p></details>`;
+    if (!selected) return `<section class="knowledge-guide">${intro}<div class="task-grid guide-questions">${groups.map(group => `<a class="task-tile" href="#wegwijzer?rubriek=${encodeURIComponent(group.id)}"><span>${escapeHtml(group.topic)}</span><h2>${escapeHtml(group.title)}</h2><p>${escapeHtml(group.detail)}</p><small>${guideItems(group).length} startpunten →</small></a>`).join('')}</div>${explanation}<p><a href="#zoeken">Doorzoek de volledige Atlas →</a></p></section>`;
+    return `<section class="knowledge-guide"><a class="back-results" href="#wegwijzer">← Kies een andere vraag</a>${intro}<div class="guide-list">${guideItems(selected).map(({record, kind, use}) => `<article class="guide-card" data-guide-record="${escapeHtml(record.id)}"><span class="guide-kind">${escapeHtml(kind)}</span><h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2><p class="provider">${escapeHtml(factValue(record.providerName))}</p><p>${escapeHtml(use)}</p><p class="guide-practical">${escapeHtml(statusLabel(record))} · ${escapeHtml(accessLabel(record))} · ${escapeHtml(costLabel(record))}${record.language?.length ? ` · ${escapeHtml(record.language.join(', ').toUpperCase())}` : ''}</p><a class="btn secondary" href="#item/${escapeHtml(record.id)}">Bekijk materiaal en toelichting →</a></article>`).join('')}</div><p class="guide-more"><a href="${escapeHtml(criteriaHref(selected.query))}">Bekijk meer in de volledige Atlas →</a></p>${explanation}</section>`;
+  }
+  function renderGuide() {
+    const groupId = new URLSearchParams(location.hash.split('?')[1] || '').get('rubriek') || '';
+    main.innerHTML = guideMarkup(groupId);
+    // Back from an item returns to the chosen question, not an older search.
+    document.querySelectorAll('.guide-card a').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', location.hash));
   }
   function booksMarkup() {
     const selection = booksPageRecords();
@@ -737,7 +810,7 @@
     const materials = selection.filter(record => record.recordType !== 'book').sort((a, b) => a.title.localeCompare(b.title, 'nl'));
     const categories = ['reading', 'study', 'practice'];
     return `<section class="new-offers books"><header class="page-intro"><span class="eyebrow">Nederlandstalige verdieping en toepassing</span><h1>Boeken en materialen</h1><p>Leesboeken en essays over AI, data, macht, publieke waarden en menselijke oordeelsvorming; studieboeken om mee te leren; en praktische handboeken voor toepassing in het onderwijs. Daarnaast vindt u een selectie lessen, handvatten en werkmaterialen om zelf of met uw team te gebruiken.</p><p class="listing-notice">${LISTING_NOTICE} Een boekvermelding is geen aanbeveling of effectbewijs. Prijzen, toegang en leverbaarheid kunnen wijzigen; controleer die altijd bij de officiële bron.</p></header>
-      <nav class="book-kinds" aria-label="Ga naar boeken of materialen">${categories.filter(category => books.some(book => book.bookCategory === category)).map(category => `<a href="#boeken?groep=${category}">${escapeHtml(bookCategoryLabel(category))}</a>`).join('')}${materials.length ? '<a href="#boeken?groep=materials">Les- en werkmaterialen</a>' : ''}</nav>
+      <nav class="book-kinds" aria-label="Ga naar boeken of materialen"><a href="#wegwijzer">Start bij uw vraag</a>${categories.filter(category => books.some(book => book.bookCategory === category)).map(category => `<a href="#boeken?groep=${category}">${escapeHtml(bookCategoryLabel(category))}</a>`).join('')}${materials.length ? '<a href="#boeken?groep=materials">Les- en werkmaterialen</a>' : ''}</nav>
       ${categories.map(category => {
         const items = books.filter(book => book.bookCategory === category).sort((a, b) => a.title.localeCompare(b.title, 'nl'));
         return items.length ? `<section id="boeken-${category}" class="book-group"><div class="section-title"><div><h2 tabindex="-1">${escapeHtml(bookCategoryLabel(category))}</h2><p>${items.length} ${items.length === 1 ? 'titel' : 'titels'}</p></div></div><div class="result-list">${items.map(bookCard).join('')}</div></section>` : '';
@@ -981,8 +1054,7 @@
       <div class="detail-layout"><article>
         <h2>Feitelijke beschrijving</h2><p>${escapeHtml(factValue(record.description))}</p>
         <h2>Doel en gebruik</h2><p>${escapeHtml(factValue(record.purpose))}</p>
-        ${record.recordType === 'training' ? `<h2>Praktisch en beschikbaarheid</h2><p>${escapeHtml(factValue(record.availabilityText))}</p>` : ''}
-        ${bookContextMarkup(record)}
+        ${recordContextMarkup(record)}
         <h2>Onderwerpen</h2>${recordThemes(record).length ? `<div class="detail-themes">${recordThemes(record).map(theme => `<a href="#zoeken?theme=${encodeURIComponent(theme)}">${escapeHtml(theme)}</a>`).join('')}</div>` : '<p>Niet vastgesteld</p>'}
         <h2>Voorwaarden</h2><p>${escapeHtml(factValue(record.eligibility))}</p>
         ${commercialDetails(record)}
@@ -1241,7 +1313,8 @@
     const path = (location.hash.slice(1) || 'home').split('?')[0];
     document.querySelector('.site-header')?.classList.remove('open');
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
-    if (path === 'home' || (!['nieuw', 'boeken', 'zoeken', 'overlegblad', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
+    if (path === 'home' || (!['wegwijzer', 'nieuw', 'boeken', 'zoeken', 'overlegblad', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
+    if (path === 'wegwijzer') renderGuide();
     if (path === 'nieuw') renderNewOffers();
     const focusedBookGroup = path === 'boeken' && renderBooks();
     if (path === 'zoeken' || path === 'organisaties') { parseState(); if (path === 'organisaties') state.type = 'Organisatie'; renderSearch(); }
