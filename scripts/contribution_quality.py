@@ -491,7 +491,18 @@ def review_records(
                 errors.append(f"{record_id}: de automatische route vereist een HTTPS-bron.")
                 continue
             key = (canonical_url(url), record.get("recordType"))
-            if base_url_owners.get(key, set()) - {record_id}:
+            other_owners = base_url_owners.get(key, set()) - {record_id}
+            # A reviewed merge retains the original source on the historical
+            # record as well as the public target. Only that explicit, direct
+            # redirect permits shared sources; ordinary duplicates still fail.
+            if trusted_automation and 'publicationExclusion' not in record:
+                other_owners = {owner for owner in other_owners if not (
+                    isinstance(candidate_by_id.get(owner, {}).get('publicationExclusion'), dict)
+                    and candidate_by_id[owner]['publicationExclusion'].get('duplicateOf') == record_id
+                    and candidate_by_id[owner]['publicationExclusion'].get('reason')
+                    and candidate_by_id[owner]['publicationExclusion'].get('decidedOn')
+                )}
+            if other_owners:
                 errors.append(f"{record_id}: deze bron is al gekoppeld aan een bestaand record van hetzelfde type.")
             checks.append(source_loader(url))
         source_results[record_id] = [asdict(check) for check in checks]
