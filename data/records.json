@@ -33216,5 +33216,343 @@
     "offerCategory": "materials",
     "availabilityText": "Openbaar Engelstalig rapport, afzonderlijke hoofdstukken en onderliggende gegevens via Stanford HAI.",
     "notes": "Een institutioneel samengesteld overzicht met uiteenlopende onderliggende bronnen; geen afzonderlijk peer-reviewed effectonderzoek. Veel cijfers betreffen specifieke landen, steekproeven, meetjaren of benchmarks en zijn niet automatisch geldig voor Nederland of een onderwijsinstelling. De 2026-editie bevat ook gegevens uit eerdere jaren. Exacte publicatiedag en een uniforme hergebruiklicentie voor alle brongegevens zijn niet vastgesteld."
+  },
+  {
+    "id": "aigo-patientsim",
+    "title": "PatientSim (AI)",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": "Onderwijsapp",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Onderwijssimulatie voor het oefenen van moeilijke patiëntgesprekken. De gebruiker kiest een zorgsetting, patiënttype, scenario, moeilijkheid en coach- of examenmodus. Vereist een eigen API-sleutel voor Claude of GPT. De simulatie is volgens de maker bedoeld voor training en vervangt geen supervisie.",
+    "purpose": "Studenten in zorgopleidingen laten oefenen met gespreksvoering in verschillende patiëntsituaties.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Professionalisering"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Open de onderwijsapp",
+        "url": "https://aigovernanceofficer.github.io/AI-app-store/patientsim-ai.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "aigo-app-store"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "freemium",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AIGovernanceofficer.nl",
+      "AI Governance Officer",
+      "Yvette Roman",
+      "onderwijsapp",
+      "PatientSim (AI)"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "software",
+    "notes": "Geselecteerd uit de categorie Onderwijs van https://aigovernanceofficer.github.io/AI-app-store/ op verzoek van Eva. De catalogus noemt de bereikbare apps gratis; eventuele externe API-kosten staan apart vermeld. Bereikbaarheid en zichtbare functies zijn gecontroleerd, niet de volledige werking, veiligheid of onderwijseffectiviteit. UU-vormgeving bewijst geen institutioneel eigenaarschap of goedkeuring. De interface kan de API-sleutel lokaal in de browser bewaren en verstuurt gesprekstekst naar de gekozen modelaanbieder. Geen echte patiëntgegevens gebruikt tijdens de broncontrole. Geen onafhankelijke toets van klinische of didactische juistheid.",
+    "availabilityText": "De browserapp is bereikbaar; een eigen Claude- of GPT-API-sleutel is nodig. De app is gratis volgens de maker; modelgebruik kan kosten meebrengen."
+  },
+  {
+    "id": "aigo-transcribe-tool",
+    "title": "Transcribe-tool",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": "Onderwijsapp",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Browserapp voor het transcriberen van geüploade audio- en videobestanden voor studenten, onderzoekers en onderwijspersoneel. De interface biedt een transcriptweergave en transcriptiegeschiedenis. Volgens de maker draait spraakherkenning met Whisper lokaal in de browser na het laden van modelbestanden.",
+    "purpose": "Audio- en video-opnamen omzetten naar tekst voor studie en onderzoek.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Lesgeven en leren met AI",
+      "Privacy en AVG"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Open de onderwijsapp",
+        "url": "https://aigovernanceofficer.github.io/Transcribe-tool/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "aigo-app-store"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "AIGovernanceofficer.nl",
+      "AI Governance Officer",
+      "Yvette Roman",
+      "onderwijsapp",
+      "Transcribe-tool"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "software",
+    "notes": "Geselecteerd uit de categorie Onderwijs van https://aigovernanceofficer.github.io/AI-app-store/ op verzoek van Eva. De catalogus noemt de bereikbare apps gratis; eventuele externe API-kosten staan apart vermeld. Bereikbaarheid en zichtbare functies zijn gecontroleerd, niet de volledige werking, veiligheid of onderwijseffectiviteit. UU-vormgeving bewijst geen institutioneel eigenaarschap of goedkeuring.",
+    "availabilityText": "De publieke browserapp is bereikbaar. Gratis volgens de App Store van de maker."
+  },
+  {
+    "id": "aigo-docschoon",
+    "title": "DocSchoon",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": "Onderwijsapp",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Browserapp die herkende persoonsgegevens in Word-, PowerPoint-, Excel- en tekstbestanden vervangt. De standaardmodus gebruikt herkenningsregels voor onder meer e-mailadressen, telefoonnummers, BSN en IBAN. Die modus herkent geen namen, locaties, organisaties of datums. De optionele Claude-modus gebruikt een eigen Anthropic-sleutel en stuurt tekst naar die API.",
+    "purpose": "Onderwijsprofessionals ondersteunen bij het vervangen van herkende persoonsgegevens in documenten, met controle van het resultaat.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Privacy en AVG",
+      "Veilige AI-omgeving"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Open de onderwijsapp",
+        "url": "https://aigovernanceofficer.github.io/DocSchoon/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "aigo-app-store"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "freemium",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AIGovernanceofficer.nl",
+      "AI Governance Officer",
+      "Yvette Roman",
+      "onderwijsapp",
+      "DocSchoon"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "software",
+    "notes": "Geselecteerd uit de categorie Onderwijs van https://aigovernanceofficer.github.io/AI-app-store/ op verzoek van Eva. De catalogus noemt de bereikbare apps gratis; eventuele externe API-kosten staan apart vermeld. Bereikbaarheid en zichtbare functies zijn gecontroleerd, niet de volledige werking, veiligheid of onderwijseffectiviteit. UU-vormgeving bewijst geen institutioneel eigenaarschap of goedkeuring. Automatische herkenning kan gegevens missen; vervanging van gevonden gegevens is geen garantie dat een document anoniem is. De Atlas heeft geen privacy- of beveiligingsaudit uitgevoerd.",
+    "availabilityText": "Standaardmodus zonder API-sleutel beschikbaar. Optionele uitgebreidere detectie gebruikt een eigen Anthropic-sleutel; modelgebruik kan kosten meebrengen."
+  },
+  {
+    "id": "aigo-projectplanner",
+    "title": "Projectplanner – Projectplanning",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": "Onderwijsapp",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Browserapp voor projectplanning met een Kanban-bord, tijdlijn, werkpakketten, kaarten en teamweergave. De projectbeschrijving vermeldt lokale browseropslag, JSON-back-ups en een managementexport naar PowerPoint. De interface is gericht op gebruik voor een portfolioboard. De exportmogelijkheden zijn beschreven door de maker en niet volledig functioneel getest.",
+    "purpose": "Onderwijsprojecten ordenen en de planning, taken en betrokkenen bespreken.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Implementatie en adoptie",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Open de onderwijsapp",
+        "url": "https://aigovernanceofficer.github.io/project-planner/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Projectbeschrijving en exportmogelijkheden",
+        "url": "https://raw.githubusercontent.com/AIgovernanceofficer/project-planner/main/README.md",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "aigo-app-store"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AIGovernanceofficer.nl",
+      "AI Governance Officer",
+      "Yvette Roman",
+      "onderwijsapp",
+      "Projectplanner – Projectplanning"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "notes": "Geselecteerd uit de categorie Onderwijs van https://aigovernanceofficer.github.io/AI-app-store/ op verzoek van Eva. De catalogus noemt de bereikbare apps gratis; eventuele externe API-kosten staan apart vermeld. Bereikbaarheid en zichtbare functies zijn gecontroleerd, niet de volledige werking, veiligheid of onderwijseffectiviteit. UU-vormgeving bewijst geen institutioneel eigenaarschap of goedkeuring.",
+    "availabilityText": "De publieke browserapp is bereikbaar. Gratis volgens de App Store van de maker."
+  },
+  {
+    "id": "aigo-kennisclip-generator",
+    "title": "Kennisclip-generator",
+    "recordType": "product",
+    "legacyType": "Product",
+    "subtype": "Onderwijsapp",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Browserapp die een zelf aangeleverd script of Word-document omzet naar een gesproken educatieve presentatie. De gebruiker kiest taal, stem en eventueel achtergrondbeelden. De interface biedt video-export en export als HTML-slides; voor video-opname noemt de maker Chrome of Edge. De app gebruikt spraaksynthese van de browser.",
+    "purpose": "Docenten ondersteunen bij het maken van een kennisclip op basis van hun eigen onderwijsscript.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Curriculumontwikkeling"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Open de onderwijsapp",
+        "url": "https://aigovernanceofficer.github.io/kennisclip-generator/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "aigo-app-store"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "AIGovernanceofficer.nl",
+      "AI Governance Officer",
+      "Yvette Roman",
+      "onderwijsapp",
+      "Kennisclip-generator"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "software",
+    "notes": "Geselecteerd uit de categorie Onderwijs van https://aigovernanceofficer.github.io/AI-app-store/ op verzoek van Eva. De catalogus noemt de bereikbare apps gratis; eventuele externe API-kosten staan apart vermeld. Bereikbaarheid en zichtbare functies zijn gecontroleerd, niet de volledige werking, veiligheid of onderwijseffectiviteit. UU-vormgeving bewijst geen institutioneel eigenaarschap of goedkeuring.",
+    "availabilityText": "De publieke browserapp is bereikbaar. Gratis volgens de App Store van de maker."
   }
 ]
