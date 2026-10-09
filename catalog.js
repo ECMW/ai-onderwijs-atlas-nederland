@@ -589,8 +589,8 @@
 
   function searchForm(id) {
     return `<form class="atlas-search" role="search" autocomplete="off">
-      <label for="${id}">Zoek in de Atlas</label>
-      <div class="search-row"><input id="${id}" type="search" role="combobox" value="${escapeHtml(state.q)}" placeholder="Onderwerp, aanbod of aanbieder" aria-controls="search-suggestions" aria-autocomplete="list" aria-expanded="false"><button class="btn" aria-label="Zoeken">Zoeken</button></div>
+      <label for="${id}">Zoekterm</label>
+      <div class="search-row"><input id="${id}" type="search" role="combobox" value="${escapeHtml(state.q)}" placeholder="Onderwerp of aanbieder" aria-controls="search-suggestions" aria-autocomplete="list" aria-expanded="false"><button class="btn" aria-label="Zoeken">Zoeken</button></div>
       <div class="suggestions" id="search-suggestions" hidden></div>
     </form>`;
   }
@@ -928,7 +928,7 @@
     resultRecords = sortRecords(records.filter(record => matches(record)));
     const personas = savedPersonas();
     const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
-    main.innerHTML = `<section class="catalog"><header class="catalog-intro"><h1>Zoek AI-aanbod voor uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, boeken, lesmaterialen en meer. Combineer uw zoekterm met de filters.</p>${isHome ? `<p class="visit-proof" data-atlas-visit-count hidden></p>${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}` : ''}</header><div class="catalog-grid"><div class="catalog-sidebar" aria-label="Zoeken en filteren">${searchForm(isHome ? 'home-search' : 'catalog-search')}${catalogFilterPanel(typeOptions, audienceOptions, organizationOptions)}</div><section class="results" id="results-panel">${resultsMarkup()}</section></div></section>`;
+    main.innerHTML = `<section class="catalog"><header class="catalog-intro"><h1>Zoek AI-aanbod voor uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, boeken, lesmaterialen en meer. Combineer uw zoekterm met de filters.</p>${isHome ? `<p class="visit-proof" data-atlas-visit-count hidden></p>${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}` : ''}</header><div class="catalog-grid"><div class="catalog-sidebar" aria-label="Zoeken en filteren"><h2 class="sidebar-title">Zoeken en filteren</h2>${searchForm(isHome ? 'home-search' : 'catalog-search')}${catalogFilterPanel(typeOptions, audienceOptions, organizationOptions)}</div><section class="results" id="results-panel">${resultsMarkup()}</section></div></section>`;
     bindSearchPage(); bindRolePickers();
     if (sessionGet('atlas.restoreResults') === location.hash) {
       const targetY = Number(sessionGet('atlas.resultsScroll')) || 0;
