@@ -32505,5 +32505,302 @@
     "availabilityText": "Openbare handleiding van 21 pagina’s met printbare bijlagen; een printer is nodig. Brightlab noemt 30–60 minuten.",
     "eligibility": "De actuele Brightlab-pagina en handleiding richten zich op 10–15 jaar. De amai!-overzichtspagina noemt 10–16 jaar; volg voor de voorbereiding de concrete handleiding.",
     "notes": "De concrete handleiding is leidend bij het verschil in leeftijdsaanduiding. PO/VO is een redactionele vertaling van deze leeftijdsgroep naar Nederland; de handleiding verwijst naar Vlaamse minimumdoelen. De PDF vermeldt copyright Brightlab; een open hergebruiklicentie is niet vastgesteld. Het spel gebruikt een vereenvoudigde analogie voor taalmodellen, geen volledige technische beschrijving."
+  },
+  {
+    "id": "rijksoverheid-gids-ai-verordening-2025",
+    "title": "Gids AI-verordening",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Overheidsgids met stappenplan",
+    "organizationIds": [],
+    "providerName": "Ministerie van Economische Zaken",
+    "description": "Overheidsgids die organisaties helpt om hun rol en mogelijke verplichtingen onder de Europese AI-verordening te verkennen. De gids behandelt soorten AI-systemen, risicocategorieën, aanbieders en gebruiksverantwoordelijken. Onderwijs en beroepsopleiding komen expliciet aan bod bij toepassingsgebieden zoals toelating, beoordeling en toezicht tijdens examens.",
+    "purpose": "Een eerste inventarisatie van AI-toepassingen en verantwoordelijkheden binnen een onderwijsinstelling ondersteunen.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI Act en wetgeving",
+      "Beleid en governance",
+      "Toetsing en examinering"
+    ],
+    "status": "available",
+    "publicationDate": "2025-09-04",
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële publicatiepagina",
+        "url": "https://www.rijksoverheid.nl/documenten/2024/10/16/gids-ai-verordening",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download de gids",
+        "url": "https://open.overheid.nl/documenten/8d7b5ccb-41fc-4d92-a4c2-a7fa81e66bfb/file",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Gids AI-verordening",
+      "AI Act",
+      "Ministerie van Economische Zaken",
+      "Rijksoverheid",
+      "risicocategorieën",
+      "gebruiksverantwoordelijke"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en gekoppeld materiaal gecontroleerd op 9 oktober 2026 op titel, herkomst, inhoud, doelgroep, toegang en vermelde gebruiksvoorwaarden. Bestaande Atlas-vermeldingen gecontroleerd op overlap. Verificatie bevestigt de publicatie en beschrijving; geen onafhankelijk effectonderzoek of juridische toets.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Openbare PDF van 21 pagina’s. De publicatiepagina vermeldt 4 september 2025, ondanks het oudere jaar in de URL.",
+    "notes": "De gids is sectoroverstijgend; onderwijssectoren zijn redactionele toepassingsduiding. Het colofon noemt het Ministerie van Economische Zaken als uitgever. De registratie beschrijft de gepubliceerde editie en verifieert geen actuele wettelijke termijnen; raadpleeg daarvoor de actuele verordening en officiële uitvoeringsinformatie. Guidance vervangt geen individuele juridische beoordeling. Een specifieke hergebruiklicentie voor de PDF is niet vastgesteld."
+  },
+  {
+    "id": "bzk-handreiking-non-discriminatie-ai",
+    "title": "Handreiking non-discriminatie Artificial Intelligence (AI)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Handreiking met vragen per ontwikkelfase",
+    "organizationIds": [],
+    "providerName": "Ministerie van Binnenlandse Zaken en Koninkrijksrelaties",
+    "description": "Handreiking over het voorkomen van discriminatie bij het ontwikkelen en invoeren van AI-systemen. Juridische, technische en organisatorische vragen worden per ontwikkelfase uitgewerkt. Het materiaal kan worden gebruikt om keuzes over data, modellen, betrokkenen en evaluatie expliciet te bespreken en vast te leggen.",
+    "purpose": "Discriminatierisico’s bespreekbaar maken bij het ontwerpen, inkopen en evalueren van AI-toepassingen.",
+    "audiences": [
+      "Beleidsmakers",
+      "Bestuurders",
+      "Onderzoekers",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Beleid en governance",
+      "Data en infrastructuur"
+    ],
+    "status": "available",
+    "publicationDate": "2022-12-05",
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële publicatiepagina",
+        "url": "https://www.rijksoverheid.nl/documenten/2022/12/05/handreiking-non-discriminatie-artificial-intelligence-ai",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download Handreiking non-discriminatie by design",
+        "url": "https://open.overheid.nl/repository/ronl-f990a3c7e59d38da1f43fb59b91dc51d9ed0e6c4/1/pdf/Handreiking%20non-discriminatie%20by%20design.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "non-discriminatie",
+      "bias",
+      "fairness",
+      "by design",
+      "Binnenlandse Zaken",
+      "Rijksoverheid",
+      "gelijke behandeling"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en gekoppeld materiaal gecontroleerd op 9 oktober 2026 op titel, herkomst, inhoud, doelgroep, toegang en vermelde gebruiksvoorwaarden. Bestaande Atlas-vermeldingen gecontroleerd op overlap. Verificatie bevestigt de publicatie en beschrijving; geen onafhankelijk effectonderzoek of juridische toets.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Openbaar rapport van 69 pagina’s, gepubliceerd op 5 december 2022.",
+    "notes": "Opgesteld in opdracht van BZK. Het colofon noemt auteurs van Tilburg University, TU Eindhoven, de Vrije Universiteit Brussel en het College voor de Rechten van de Mens. Dit is sectoroverstijgend materiaal; relevantie voor AI-keuzes in onderwijs is redactioneel geduid. De editie uit 2022 is geen actuele uitleg van de latere AI-verordening. Een specifieke open hergebruiklicentie is niet vastgesteld."
+  },
+  {
+    "id": "hva-handleiding-ai4students-methodiek",
+    "title": "Handleiding AI4students methodiek: Uitleg en downloads van de materialen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Werkhandleiding voor drie opleidingssessies",
+    "organizationIds": [
+      "hogeschool-van-amsterdam"
+    ],
+    "providerName": "Hogeschool van Amsterdam",
+    "description": "Handleiding om met een opleiding drie groepssessies over AI en het curriculum uit te voeren. Docenten en eventueel werkveldvertegenwoordigers onderzoeken veranderende beroepstaken, het profiel van een AI-ready afgestudeerde en gevolgen voor het onderwijsprogramma. De publicatie bevat sessie-instructies, vervolgstappen en verwijzingen naar bijbehorende materialen.",
+    "purpose": "Een hbo-opleiding gezamenlijk laten bepalen welke AI-competenties relevant zijn voor het werkveld en curriculum.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsprofessionals",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Implementatie en adoptie"
+    ],
+    "status": "available",
+    "publicationDate": "2025-01-16",
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Publicatie en hergebruiklicentie",
+        "url": "https://research.hva.nl/en/publications/handleiding-ai4students-methodiek-uitleg-en-downloads-van-de-mate/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download de handleiding",
+        "url": "https://pure.hva.nl/ws/portalfiles/portal/50509571/Handleiding_AI4Students.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI4Students",
+      "AI-ready",
+      "curriculum",
+      "beroepstaken",
+      "opleidingsprofiel",
+      "Hogeschool van Amsterdam"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en gekoppeld materiaal gecontroleerd op 9 oktober 2026 op titel, herkomst, inhoud, doelgroep, toegang en vermelde gebruiksvoorwaarden. Bestaande Atlas-vermeldingen gecontroleerd op overlap. Verificatie bevestigt de publicatie en beschrijving; geen onafhankelijk effectonderzoek of juridische toets.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Openbare Nederlandstalige handleiding van 9 pagina’s met links naar uitvoeringsmateriaal.",
+    "notes": "De institutionele repository vermeldt CC BY en publicatiedatum 16 januari 2025. Auteurs: N. Piersma, L. Henzen, E.J.P. Wijnen en J.G. Kootstra. De methodiek is volgens de handleiding voor alle soorten hbo-opleidingen bedoeld, niet uitsluitend ICT. De Atlas bevestigt beschikbaarheid en opzet, geen bewezen leer- of arbeidsmarkteffect."
+  },
+  {
+    "id": "uu-verantwoord-chatbotgebruik-hoger-onderwijs",
+    "title": "Generative AI en verantwoord chatbotgebruik in hoger onderwijs",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Onderzoeksrapport met handvatten voor toetsbeleid",
+    "organizationIds": [
+      "universiteit-utrecht"
+    ],
+    "providerName": "Universiteit Utrecht",
+    "description": "Kennisdeling met tien handvatten voor examencommissies, onderwijsdirecteuren en docenten over verantwoord chatbotgebruik. De pagina van Eugène Loos verbindt een narratieve literatuurreview en geïnventariseerde universitaire richtlijnen aan vragen over toetsing, leerdoelen, scholing en samenwerking. Een onderzoeksrapport met verdere uitwerking is openbaar gekoppeld.",
+    "purpose": "Het gesprek over toetsing en chatbotrichtlijnen onderbouwen met onderzoeksinzichten en institutionele voorbeelden.",
+    "audiences": [
+      "Docenten",
+      "Onderzoekers",
+      "Beleidsmakers",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Beleid en governance",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Tien handvatten en toelichting",
+        "url": "https://teaching-and-learning-collection.sites.uu.nl/knowledge-sharing/generative-ai-en-verantwoord-chatbotgebruik-in-hoger-onderwijs/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download de narratieve literatuurreview",
+        "url": "https://research-portal.uu.nl/ws/files/253836063/Narrative_literature_review_Educational_implications_chatbots_examboards.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "chatbotgebruik",
+      "examencommissies",
+      "toetsbeleid",
+      "constructive alignment",
+      "Eugène Loos",
+      "Universiteit Utrecht"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en gekoppeld materiaal gecontroleerd op 9 oktober 2026 op titel, herkomst, inhoud, doelgroep, toegang en vermelde gebruiksvoorwaarden. Bestaande Atlas-vermeldingen gecontroleerd op overlap. Verificatie bevestigt de publicatie en beschrijving; geen onafhankelijk effectonderzoek of juridische toets.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Openbare Nederlandstalige kennisdelingspagina en gekoppeld Engelstalig onderzoeksrapport van 43 pagina’s, gedateerd 31 januari 2025.",
+    "notes": "De Teaching and Learning Collection wordt beheerd door het Centre for Academic Teaching and Learning van de UU. De pagina vermeldt delen en aanpassen met bronvermelding voor niet-commerciële doeleinden (CC BY-NC); het rapport verwijst afzonderlijk naar de hergebruikvoorwaarden van de UU-bibliotheek. De tien handvatten zijn aanbevelingen van de auteur, geen bindende regels voor andere instellingen. HBO is een redactionele verbreding van de hogeronderwijscontext. Tijdgebonden uitspraken over detectie en beleid zijn niet als actuele zelfstandige feiten overgenomen. De publicatiedatum van de kennisdelingspagina is niet vastgesteld."
   }
 ]
