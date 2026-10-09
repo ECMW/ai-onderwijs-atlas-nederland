@@ -103,6 +103,34 @@ class ContributionQualityTests(unittest.TestCase):
         self.assertTrue(report["eligible"], report["errors"])
         self.assertEqual(report["modifiedIds"], ["bestaand"])
 
+    def test_merge_can_retain_both_official_sources_only_with_direct_redirect(self):
+        kept = record('kept', 'Gebundeld aanbod')
+        old = record('old', 'Tweede partnerrol')
+        old['sourceUrls'][0]['url'] = 'https://voorbeeld.nl/tweede-rol'
+        for item in (kept, old):
+            item.update(verificationStatus='verified', lastVerified='2026-09-19',
+                changeHistory=[{'date': '2026-09-19', 'type': 'added', 'summary': 'Toegevoegd.'}])
+        candidate = copy.deepcopy([kept, old])
+        candidate[0]['sourceUrls'].extend(copy.deepcopy(old['sourceUrls']))
+        candidate[1]['publicationExclusion'] = {'duplicateOf': 'kept',
+            'reason': 'Twee partnerrollen van hetzelfde project gebundeld.', 'decidedOn': '2026-10-09'}
+        for item in candidate:
+            item['lastVerified'] = '2026-10-09'
+            item['changeHistory'].append({'date': '2026-10-09', 'type': 'updated', 'summary': 'Gebundeld.'})
+        def review(items):
+            return review_records([kept, old], items, ['data/records.json'],
+                source_loader('voorbeeldorganisatie gebundeld aanbod tweede partnerrol'), trusted_automation=True)
+        self.assertTrue(review(candidate)['eligible'], review(candidate)['errors'])
+        without_redirect = copy.deepcopy(candidate)
+        del without_redirect[1]['publicationExclusion']
+        self.assertFalse(review(without_redirect)['eligible'])
+        unrelated_redirect = copy.deepcopy(candidate)
+        unrelated_redirect[1]['publicationExclusion']['duplicateOf'] = 'unrelated'
+        self.assertFalse(review(unrelated_redirect)['eligible'])
+        external = review_records([kept, old], candidate, ['data/records.json'],
+            source_loader(), trusted_automation=False)
+        self.assertFalse(external['eligible'])
+
     def test_trusted_automation_still_rejects_removal_and_unscoped_file(self):
         base = record("bestaand")
         report = review_records(

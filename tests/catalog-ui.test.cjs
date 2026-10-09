@@ -591,14 +591,30 @@ test('unknown recency dates are disclosed rather than invented from verification
 });
 
 test('new offering pages keep the chosen date mode and cover all dated records once', () => {
-  const data = Array.from({length: 25}, (_, i) => record('item-' + i, '2026-09-09', String(i).padStart(2, '0')));
+  const data = Array.from({length: 26}, (_, i) => record('item-' + i, i < 25 ? '2026-09-09' : '2026-09-08', String(i).padStart(2, '0')));
   const api = load(data);
   const first = api.newOffersMarkup('published', 1), second = api.newOffersMarkup('published', 2);
-  assert.equal((first.match(/data-record-id=/g) || []).length, 24);
+  assert.equal((first.match(/data-record-id=/g) || []).length, 25);
   assert.equal((second.match(/data-record-id=/g) || []).length, 1);
   assert.ok(first.includes('#nieuw?volgorde=published&pagina=2'));
-  assert.ok(second.includes('data-record-id="item-24"'));
+  assert.ok(first.includes('data-record-id="item-24"'));
+  assert.ok(second.includes('data-record-id="item-25"'));
+  assert.ok(!second.includes('data-record-id="item-24"'));
   assert.equal(api.newOffersMarkup('invalid', -8), api.newOffersMarkup('added', 1));
+});
+
+test('all latest-day additions including Meesterproef remain on the first new-offers page', () => {
+  const data = Array.from({length: 34}, (_, i) => ({...record('new-' + i, null, 'Aanbod ' + i),
+    changeHistory: [{type: 'added', date: '2026-10-09'}]}));
+  data.push({...record('meesterproef-studio', null, 'Meesterproef Studio'),
+    changeHistory: [{type: 'added', date: '2026-10-09'}, {type: 'verified', date: '2026-10-10'}]});
+  data.push({...record('older', '2020-01-01'), changeHistory: [{type: 'added', date: '2026-10-08'}]});
+  const api = load(data), first = api.newOffersMarkup('added', 1), second = api.newOffersMarkup('added', 2);
+  assert.equal((first.match(/data-record-id=/g) || []).length, 35);
+  assert.ok(first.includes('data-record-id="meesterproef-studio"'));
+  assert.ok(!first.includes('data-record-id="older"'));
+  assert.ok(second.includes('data-record-id="older"'));
+  assert.ok(!second.includes('data-record-id="meesterproef-studio"'));
 });
 
 test('only real calendar dates qualify; check and import dates are never fallbacks', () => {

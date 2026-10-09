@@ -376,16 +376,25 @@
   function newOffersMarkup(mode = 'added', requestedPage = 1) {
     mode = mode === 'published' ? 'published' : 'added';
     const published = mode === 'published', date = published ? publicationDate : addedDate;
-    const sorted = newestRecords(mode), pages = Math.max(1, Math.ceil(sorted.length / 24));
+    const sorted = newestRecords(mode), batches = [];
+    // Keep a day's additions together, including large imports. An arbitrary
+    // card limit must not hide part of the latest batch behind the next page.
+    for (let start = 0; start < sorted.length;) {
+      let end = Math.min(start + 24, sorted.length);
+      while (end < sorted.length && date(sorted[end]) === date(sorted[end - 1])) end++;
+      batches.push(sorted.slice(start, end));
+      start = end;
+    }
+    const pages = Math.max(1, batches.length);
     const page = Math.min(pages, Math.max(1, Number.isSafeInteger(requestedPage) ? requestedPage : 1));
-    const shown = sorted.slice((page - 1) * 24, page * 24), unknown = records.length - sorted.length;
+    const shown = batches[page - 1] || [], unknown = records.length - sorted.length;
     const href = number => `#nieuw?volgorde=${mode}&pagina=${number}`;
     const label = published ? 'Gepubliceerd op' : 'Toegevoegd aan de Atlas op';
     return `<section class="new-offers"><header class="page-intro"><span class="eyebrow">Snel zien wat er is toegevoegd</span><h1>Nieuw aanbod</h1><p>Bekijk nieuwe vermeldingen in de Atlas of kies aanbod met een recente publicatiedatum.</p><p class="listing-notice">${LISTING_NOTICE}</p></header>
       <nav class="new-offers-modes" aria-label="Welke datum wilt u bekijken?">
         <a class="btn${published ? ' secondary' : ''}" href="#nieuw?volgorde=added"${!published ? ' aria-current="page"' : ''}>Nieuw in de Atlas</a>
         <a class="btn${published ? '' : ' secondary'}" href="#nieuw?volgorde=published"${published ? ' aria-current="page"' : ''}>Recent gepubliceerd</a>
-      </nav><p class="new-offers-explanation">${published ? 'Gesorteerd op de vastgelegde publicatiedatum van het aanbod bij de aanbieder.' : 'Gesorteerd op de eerste vastgelegde toevoeging aan de Atlas. Het aanbod zelf kan al langer bestaan.'} Een latere broncontrole verandert deze volgorde niet.</p>
+      </nav><p class="new-offers-explanation">${published ? 'Gesorteerd op de vastgelegde publicatiedatum van het aanbod bij de aanbieder.' : 'Gesorteerd op de eerste vastgelegde toevoeging aan de Atlas. Het aanbod zelf kan al langer bestaan.'} Een latere broncontrole verandert deze volgorde niet. Vermeldingen met dezelfde datum blijven op één pagina.</p>
       <p class="sort-summary">${sorted.length} vermeldingen met een bekende ${published ? 'publicatiedatum' : 'toevoegdatum'}.${unknown ? ` Bij ${unknown} vermeldingen is deze datum niet vastgelegd; die staan wel bij <a href="#zoeken?all=1">al het aanbod</a>.` : ''}</p>
       <div class="result-list">${shown.length ? shown.map(record => simpleCard(record, false, { date: date(record), label })).join('') : '<div class="empty"><p>Er zijn nog geen vermeldingen met deze datum vastgelegd.</p><a href="#zoeken?all=1">Bekijk al het aanbod</a></div>'}</div>
       ${pages > 1 ? `<nav class="new-offers-pagination" aria-label="Meer nieuwe bijdragen">${page > 1 ? `<a class="btn secondary" href="${href(page - 1)}">Vorige</a>` : ''}<span>Pagina ${page} van ${pages}</span>${page < pages ? `<a class="btn secondary" href="${href(page + 1)}">Volgende</a>` : ''}</nav>` : ''}</section>`;
