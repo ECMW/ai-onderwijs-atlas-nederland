@@ -32111,5 +32111,399 @@
     "availabilityText": "Volgende datum nog niet bekend; interesseformulier beschikbaar. Twee dagbijeenkomsten in Utrecht, in het Nederlands. Gepubliceerde prijs: € 1.995.",
     "eligibility": "De aanbieder gaat uit van hbo/wo werk- en denkniveau en verantwoordelijkheid voor AI-beleid, ethiek of compliance. Maximaal 25 deelnemers.",
     "notes": "De actuele rechtstreeks opgehaalde cursuspagina vermeldt Datum volgt nog en een interesseformulier. Oudere zoekresultaten noemen 25 september en 9 oktober 2026; die zijn niet als nieuwe inschrijfmogelijkheid overgenomen. Interesse is geen inschrijving. De doelgroep is sectoroverstijgend; HBO/WO duidt hier de relevantie voor onderwijsprofessionals. De cursus is aanbod van Universiteit Utrecht; Yvette Roman is als docent genoemd, niet als zelfstandig aanbieder."
+  },
+  {
+    "id": "kennisnet-ethiekkompas",
+    "title": "Ethiekkompas",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Stappenplan voor moreel beraad",
+    "organizationIds": [
+      "kennisnet"
+    ],
+    "providerName": "Kennisnet",
+    "description": "Stappenplan voor onderwijsteams om een ethische vraag rond digitalisering te bespreken, bijvoorbeeld over het inzetten van AI-chatbots. Deelnemers benoemen waarden, verzamelen argumenten, wegen die af en formuleren samen een antwoord. Er is een online versie en een downloadbare offline versie met achtergrondvragen over ethiek.",
+    "purpose": "Een onderbouwd teamgesprek over een concrete AI- of digitaliseringskeuze voorbereiden en vastleggen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsprofessionals",
+      "Bestuurders",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Beleid en governance"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Uitleg, online versie en download",
+        "url": "https://www.kennisnet.nl/tools/ethiekkompas/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download het offline stappenplan",
+        "url": "https://www.kennisnet.nl/app/uploads/kennisnet-stappenplan-waarden-wegen-mei-2021.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Ethiekkompas",
+      "moreel beraad",
+      "waarden wegen",
+      "AI-chatbots",
+      "ethische afweging",
+      "Kennisnet"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en gekoppeld materiaal gecontroleerd op 9 oktober 2026 op titel, herkomst, inhoud, doelgroep, toegang en vermelde gebruiksvoorwaarden. Bestaande Atlas-vermeldingen gecontroleerd op overlap. Verificatie bevestigt de publicatie en beschrijving; geen onafhankelijk effectonderzoek of juridische toets.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Openbaar stappenplan en online versie. Kennisnet noemt 1,5 tot 2,5 uur voor het teamgesprek, bij voorkeur met gespreksleider.",
+    "notes": "Het instrument behandelt digitalisering breder dan AI; de officiële pagina noemt AI-chatbots als toepassingsvoorbeeld en labelt PO, VO en MBO. De offline PDF dateert uit mei 2021. Openbare toegang is geen bewijs van een open hergebruiklicentie; daarvoor zijn geen specifieke voorwaarden vastgesteld."
+  },
+  {
+    "id": "surf-kennisnet-waardenwijzer-2025",
+    "title": "WaardenWijzer voor digitalisering in onderwijs en onderzoek",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Waardenoverzicht met werkvoorbeelden",
+    "organizationIds": [
+      "surf",
+      "kennisnet"
+    ],
+    "providerName": "SURF en Kennisnet",
+    "description": "Handreiking met een waardenoverzicht en praktijkvoorbeelden voor keuzes over digitale middelen in onderwijs en onderzoek. Menselijkheid, rechtvaardigheid en autonomie vormen de kern. De editie van december 2025 bespreekt expliciet AI, big tech en afhankelijkheden, met toepassingen bij ontwerp, inkoop, gebruik en sectorale samenwerking.",
+    "purpose": "Publieke waarden expliciet meewegen bij AI-beleid en het kiezen, ontwerpen en gebruiken van technologie.",
+    "audiences": [
+      "Docenten",
+      "Onderzoekers",
+      "Onderwijsprofessionals",
+      "Bestuurders",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Beleid en governance",
+      "Data en infrastructuur"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Toelichting en actuele editie",
+        "url": "https://www.surf.nl/themas/publieke-waarden/waardenwijzer",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download WaardenWijzer december 2025",
+        "url": "https://www.surf.nl/files/2025-12/waardenwijzer_v2_final_15_dec_2025_nederlands.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "kennisnet-ethiekkompas",
+      "surf-waardenwijzer-het-spel"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "WaardenWijzer",
+      "publieke waarden",
+      "autonomie",
+      "menselijkheid",
+      "rechtvaardigheid",
+      "inkoop",
+      "Kennisnet",
+      "SURF"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en gekoppeld materiaal gecontroleerd op 9 oktober 2026 op titel, herkomst, inhoud, doelgroep, toegang en vermelde gebruiksvoorwaarden. Bestaande Atlas-vermeldingen gecontroleerd op overlap. Verificatie bevestigt de publicatie en beschrijving; geen onafhankelijk effectonderzoek of juridische toets.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Openbare PDF van 14 pagina’s; editie december 2025, actualisatie van de editie uit 2021.",
+    "notes": "Het colofon vermeldt CC BY 4.0, met een uitzondering voor afbeeldingen: die vallen niet onder deze licentie. De exacte publicatiedag is niet vastgesteld en blijft leeg. Dit is een handreiking, geen wettelijke norm of certificering."
+  },
+  {
+    "id": "surf-waardenwijzer-het-spel",
+    "title": "WaardenWijzer – Het Spel",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Dilemmaspel en gesprekskaarten",
+    "organizationIds": [
+      "surf"
+    ],
+    "providerName": "SURF",
+    "description": "Gespreksmateriaal en een bordspel om digitaliseringsdilemma’s vanuit verschillende betrokkenen te onderzoeken. De openbare online casussen gaan onder meer over een ChatGPT-detectietool, leveranciersafhankelijkheid en een stagemarktplaats. Deelnemers bespreken welke publieke waarden een keuze bevordert of onder druk zet. De casussen kunnen ook zonder het fysieke bordspel worden gebruikt.",
+    "purpose": "Met collega’s argumenten en perspectieven bij AI- en digitaliseringsbesluiten verkennen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsprofessionals",
+      "Bestuurders",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "Beleid en governance",
+      "Toetsing en examinering"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Speluitleg en online dilemma’s",
+        "url": "https://www.surf.nl/waardenwijzer-het-spel-bespreek-dilemmas-van-digitalisering",
+        "sourceType": "official"
+      },
+      {
+        "label": "Dilemma: inzet van ChatGPT-detectietool",
+        "url": "https://www.surf.nl/dilemma-inzet-van-chatgpt-detectietool",
+        "sourceType": "official"
+      },
+      {
+        "label": "Handleiding voor spelbegeleiders",
+        "url": "https://www.surf.nl/files/2024-08/waardenwijzer_handleiding-voor-spelbegeleiders.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "surf-kennisnet-waardenwijzer-2025"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "WaardenWijzer",
+      "spel",
+      "dilemmakaarten",
+      "ChatGPT-detectie",
+      "rollen",
+      "leveranciersafhankelijkheid",
+      "SURF"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en gekoppeld materiaal gecontroleerd op 9 oktober 2026 op titel, herkomst, inhoud, doelgroep, toegang en vermelde gebruiksvoorwaarden. Bestaande Atlas-vermeldingen gecontroleerd op overlap. Verificatie bevestigt de publicatie en beschrijving; geen onafhankelijk effectonderzoek of juridische toets.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Online dilemma’s en handleiding openbaar. Het bordspel is voor 4 tot 8 spelers en duurt ongeveer 60 minuten.",
+    "notes": "De gratis toegang betreft hier de openbare online materialen. SURF vermeldt één gratis fysiek exemplaar voor zijn leden; dat is geen algemeen gratis aanbod voor iedereen. Het spel is gebaseerd op het Moral Design Game van het Fontys-lectoraat Moral design strategy. De casus over detectiesoftware is gespreksmateriaal, geen aanbeveling om zo’n detector te gebruiken. Een open hergebruiklicentie voor het volledige spel is niet vastgesteld."
+  },
+  {
+    "id": "dwengo-ai-in-de-zorg-kaartenset",
+    "title": "AI in de Zorg – kaartenset",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Kaartenset met docentenhandleiding",
+    "organizationIds": [],
+    "providerName": "Dwengo",
+    "description": "Downloadbare kaartenset met 32 stellingen en een docentenhandleiding voor gesprekken over ethische aspecten van technologie in de zorg. Leerlingen bekijken situaties vanuit een patiënt, zorgverlener of kritische burger. De kaarten behandelen onder meer innovatie, sociaal contact, data en privacy en kunnen worden gebruikt voor debat, filosofie en vakoverstijgende lessen.",
+    "purpose": "Leerlingen laten oefenen met perspectiefwisseling en argumentatie over AI en publieke waarden.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Projectpagina en alle downloads",
+        "url": "https://www.dwengo.org/care/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download de kaarten",
+        "url": "https://www.dwengo.org/assets/files/care/Kaartset_AIIndeZorg_AIOpSchool_Dwengo.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download de docentenhandleiding",
+        "url": "https://www.dwengo.org/assets/files/care/AIIndeZorgKaartenset_UitlegVoorLeerkracht.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Vlaanderen; Nederlandstalig materiaal online bruikbaar in Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI in de Zorg",
+      "Dwengo",
+      "kaartenset",
+      "stellingen",
+      "privacy",
+      "zorgrobots",
+      "debat",
+      "unplugged"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en gekoppeld materiaal gecontroleerd op 9 oktober 2026 op titel, herkomst, inhoud, doelgroep, toegang en vermelde gebruiksvoorwaarden. Bestaande Atlas-vermeldingen gecontroleerd op overlap. Verificatie bevestigt de publicatie en beschrijving; geen onafhankelijk effectonderzoek of juridische toets.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Kaarten en handleiding zijn openbaar te downloaden. De vermelding betreft de digitale set.",
+    "notes": "Dwengo biedt het lesmateriaal volgens de projectpagina onder CC BY-SA aan; een versienummer is daar niet vermeld. De handleiding verwijst naar Vlaamse onderwijsdoelen in het secundair onderwijs. VO is de redactionele Nederlandse sectorvertaling, geen vastgestelde aansluiting op Nederlandse kerndoelen. Eventuele fysieke exemplaren hebben afzonderlijke bestelvoorwaarden. Dit is lesmateriaal over ethiek, geen medisch advies."
+  },
+  {
+    "id": "brightlab-gpt-woordspelen",
+    "title": "GPT-woordspelen: ChatGPT kaart- en improspel",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Lespakket met printbare spelkaarten",
+    "organizationIds": [],
+    "providerName": "Brightlab en amai!",
+    "description": "Lespakket met een kaartspel, improvisatieopdracht en printbare bijlagen om taalmodellen te introduceren. Leerlingen vergelijken hun eigen taalgebruik met het voorspellen van volgende woorden en bespreken patronen, waarschijnlijkheid, prompten en betrouwbaarheid. De handleiding beschrijft lesdoelen, het lesverloop en begeleiding zonder vereiste voorkennis van de docent.",
+    "purpose": "Leerlingen met een spelactiviteit laten kennismaken met hoe taalmodellen tekst genereren.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Lespakket bij Brightlab",
+        "url": "https://rvo-eclassroom.be/brightlab/ai/lesChatgpt.html",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download handleiding en spelmateriaal",
+        "url": "https://rvo-eclassroom.be/brightlab/ai/docs/AI%20-%20GPT%20woordspelen%20-%20Handleiding.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Doelgroep en samenwerking bij amai!",
+        "url": "https://amai.vlaanderen/activiteit-onderwijs",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Vlaanderen; Nederlandstalig materiaal online bruikbaar in Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "GPT-woordspelen",
+      "ChatGPT kaartspel",
+      "improspel",
+      "taalmodellen",
+      "Brightlab",
+      "amai",
+      "neuraal netwerk"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en gekoppeld materiaal gecontroleerd op 9 oktober 2026 op titel, herkomst, inhoud, doelgroep, toegang en vermelde gebruiksvoorwaarden. Bestaande Atlas-vermeldingen gecontroleerd op overlap. Verificatie bevestigt de publicatie en beschrijving; geen onafhankelijk effectonderzoek of juridische toets.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Openbare handleiding van 21 pagina’s met printbare bijlagen; een printer is nodig. Brightlab noemt 30–60 minuten.",
+    "eligibility": "De actuele Brightlab-pagina en handleiding richten zich op 10–15 jaar. De amai!-overzichtspagina noemt 10–16 jaar; volg voor de voorbereiding de concrete handleiding.",
+    "notes": "De concrete handleiding is leidend bij het verschil in leeftijdsaanduiding. PO/VO is een redactionele vertaling van deze leeftijdsgroep naar Nederland; de handleiding verwijst naar Vlaamse minimumdoelen. De PDF vermeldt copyright Brightlab; een open hergebruiklicentie is niet vastgesteld. Het spel gebruikt een vereenvoudigde analogie voor taalmodellen, geen volledige technische beschrijving."
   }
 ]
