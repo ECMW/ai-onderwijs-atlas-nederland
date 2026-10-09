@@ -31392,5 +31392,75 @@
       }
     ],
     "commercialStatus": "unknown"
+  },
+  {
+    "id": "meesterproef-studio",
+    "title": "Meesterproef Studio",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Ontwerphulp voor eindwerken",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Ontwerphulp voor docenten en onderwijsdirecteuren om eindwerken voor bachelor- en masteropleidingen te ontwerpen. De tool bevat uitleg over kaders en rolverdeling, een bibliotheek met zeven eindwerkvormen en een wizard die passende vormen voorstelt.",
+    "purpose": "Mogelijke eindwerkvormen verkennen en het gesprek over eindkwalificaties, de OER en examinering voorbereiden.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Toetsing en examinering"
+    ],
+    "status": "in_development",
+    "availabilityText": "Concepttool; publieke webversie gelinkt. De werking van de webversie is nog niet gecontroleerd.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "needs_review",
+    "sourceUrls": [
+      {
+        "label": "Meesterproef Studio",
+        "url": "https://aigovernanceofficer.github.io/Meesterproef-studio/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Officiële projectbeschrijving",
+        "url": "https://github.com/AIgovernanceofficer/Meesterproef-studio/blob/main/README.md",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "meesterproef",
+      "eindwerk",
+      "afstuderen",
+      "scriptie",
+      "portfolio",
+      "NLQF",
+      "OER",
+      "examencommissie"
+    ],
+    "notes": "Als concept opgenomen op verzoek van Eva. Volgens de officiële projectbeschrijving werkt de ontwerphulp met vaste regels en bevat zij geen AI-model. De tool ondersteunt voorbereiding; zij vervangt geen formele besluitvorming. Institutioneel eigenaarschap, juridische juistheid, effectiviteit en privacyclaims zijn niet onafhankelijk vastgesteld.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële README via GitHub gelezen. Functie en doelgroep bevestigd in de projectbeschrijving; webversie niet functioneel getest. Conceptstatus volgt uit het verzoek van Eva. Registratie blijft ter beoordeling en buiten de publieke projectie.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Meesterproef Studio als concept toegevoegd op verzoek van Eva, op basis van de officiële projectbeschrijving."
+      }
+    ],
+    "offerCategory": "materials"
   }
 ]
