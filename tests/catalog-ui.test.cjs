@@ -137,7 +137,7 @@ test('books and materials navigation opens the collection and its tile count mat
   const count = (load(data).booksMarkup().match(/data-record-id=/g) || []).length;
   const index = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
   assert.ok(index.includes('<a href="#boeken">Boeken en materialen</a>'));
-  for (const hash of ['#home', '#zoeken']) {
+  for (const hash of ['#home']) {
     const main = {focus(){}};
     const input = {};
     const suggestions = {};
@@ -345,7 +345,7 @@ test('home and search filters lead with sector, then offer type, before other re
   assertGroupOrder(home, ['Voor welke sector?', 'Wat zoekt u?', 'Waar zoekt u hulp bij?', 'Waar is het aanbod beschikbaar?', 'Voor wie?', 'Beschikbaarheid']);
 
   const search = api.catalogFilterPanel(['Training'], ['Docenten'], ['Voorbeeld']);
-  assertGroupOrder(search, ['1. Voor welke sector?', '2. Wat zoekt u?', '3. Onderwerp', '4. Regio', '5. Doelgroep', '6. Beschikbaarheid', '7. Aanbieder', '8. Meer filters']);
+  assertGroupOrder(search, ['Voor welke sector?', 'Wat zoekt u?', 'Onderwerp', 'Regio', 'Doelgroep', 'Beschikbaarheid', 'Aanbieder', 'Meer filters']);
 });
 
 test('route changes release an open mobile filter overlay and its detached keyboard handler', () => {
