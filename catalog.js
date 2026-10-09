@@ -967,6 +967,11 @@
   }
 
   function renderDetail(id) {
+    const target = source.metadata?.recordRedirects?.[id];
+    if (typeof target === 'string' && records.some(item => item.id === target)) {
+      location.replace(`#item/${encodeURIComponent(target)}`);
+      return;
+    }
     const record = records.find(item => item.id === id);
     if (!record) {
       main.innerHTML = `<section class="detail-missing"><h1>Niet gevonden</h1><p>Dit item staat niet in de huidige dataset.</p><a class="btn" href="#zoeken">Terug naar zoeken</a></section>`;
