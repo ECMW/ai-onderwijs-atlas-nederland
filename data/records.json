@@ -31835,5 +31835,281 @@
     ],
     "offerCategory": "knowledge",
     "notes": "Deze vermelding betreft de catalogus als wegwijzer. De Atlas presenteert aangekondigde onderdelen zonder eigen beschikbare bron niet als beschikbaar materiaal. Zelfstandige AI-software wordt niet als afzonderlijk publiek aanbod toegevoegd binnen de bestaande Atlas-reikwijdte. De catalogus noemt gratis browserapps en CC BY-NC-ND 4.0; externe API-kosten kunnen apart gelden. De README van deze repository beschrijft een oudere maturity-assessment; de actuele catalogus zelf is hier leidend."
+  },
+  {
+    "id": "aigo-wat-is-ai-governance",
+    "title": "Wat is AI Governance?",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Uitlegpagina",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Uitleg van AIGovernanceofficer.nl over AI-governance als samenhang van regels, normen, procedures en rollen gedurende de levenscyclus van AI. De pagina bespreekt menselijk toezicht en illustreert de positionering van een AI Governance Officer met het three-lines-model.",
+    "purpose": "Een eerste gesprek over AI-governance en de verdeling van rollen en verantwoordelijkheden ondersteunen.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Lees de uitleg",
+        "url": "https://www.aigovernanceofficer.nl/wat-is-ai-governance.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI Governance Officer",
+      "AIGO",
+      "three lines",
+      "rollen",
+      "verantwoordelijkheden",
+      "Yvette Roman"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "knowledge",
+    "notes": "De rolverdeling is de door de maker gepresenteerde benadering, geen algemeen bindende inrichtingseis. De onderwijscontext en sectoren volgen uit de algemene doelgroep van de website. Geen claim van wettelijke verplichting of onafhankelijk getoetste implementatie."
+  },
+  {
+    "id": "aigo-ai-tools-for-academics",
+    "title": "AI Tools for Academics",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Tooloverzicht met beperkte toegang",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Overzicht van AI-tools voor Nederlandse docenten en onderzoekers die verbonden zijn aan een hogeronderwijsinstelling in Nederland. De publieke toegangspagina biedt een verzoek om inloggegevens; de inhoud van het overzicht is afgeschermd. De contactpagina van AIGovernanceofficer.nl noemt Yvette Roman als oprichter.",
+    "purpose": "In aanmerking komende docenten en onderzoekers toegang laten aanvragen tot een overzicht van AI-tools.",
+    "audiences": [
+      "Docenten",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Onderzoek",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Toegang aanvragen en doelgroep bekijken",
+        "url": "https://www.aitoolsvooracademici.nl/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Maker en eigenaarschap",
+        "url": "https://www.aigovernanceofficer.nl/contact.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "registration_required",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "AI Tools for Academics",
+      "AI tools voor academici",
+      "tooloverzicht",
+      "onderzoekers",
+      "Yvette Roman"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "knowledge",
+    "eligibility": "Volgens de toegangspagina uitsluitend voor Nederlandse docenten en onderzoekers verbonden aan hogeronderwijsorganisaties in Nederland. Inloggegevens moeten worden aangevraagd.",
+    "availabilityText": "Publieke toegangspagina met inlogaanvraag. Het overzicht zelf vereist toegang; kosten niet vastgesteld.",
+    "notes": "Alleen de openbare toegangspagina en de eigenaarschapvermelding zijn gecontroleerd. Er is geen toegang aangevraagd en de inhoud achter de login is niet geïnspecteerd. Opname bevestigt geen kwaliteit, actualiteit of veiligheid van afzonderlijke tools."
+  },
+  {
+    "id": "aigo-presentaties-ai-onderwijs",
+    "title": "Presentaties over AI voor het onderwijs",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": "Lezing en interactieve presentatie",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Presentaties van Yvette Roman over AI-beleid en AI-governance voor topmanagement en bestuurders in het MBO, HBO en WO. Volgens de aanbieder kunnen presentaties worden aangevuld met interactieve uitwisseling. De dienst is betaald en kan binnen heel Nederland worden aangevraagd.",
+    "purpose": "Onderwijsbestuurders en topmanagement informeren en in gesprek brengen over AI-beleid en governance.",
+    "audiences": [
+      "Bestuurders",
+      "Schoolleiders"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Professionalisering",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Aanbod, doelgroep en boekingsinformatie",
+        "url": "https://www.aigovernanceofficer.nl/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Thema’s en presentatieportfolio",
+        "url": "https://www.aigovernanceofficer.nl/portfolio.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "presentatie",
+      "lezing",
+      "onderwijsbestuur",
+      "AI-beleid",
+      "AI Governance Officer",
+      "Yvette Roman"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Op aanvraag in heel Nederland. Betaalde dienst; prijs, duur en datum in overleg, niet openbaar vastgesteld.",
+    "eligibility": "De aanbieder richt dit aanbod uitsluitend op topmanagement en bestuurders in MBO, HBO, WO, onderwijsorganisaties en wetenschappelijk onderzoek.",
+    "notes": "De portfoliovermeldingen beschrijven eerdere presentaties en zijn niet als nieuwe, toekomstige evenementen toegevoegd. Een betaling bewijst op zichzelf geen commerciële classificatie; die blijft onbekend."
+  },
+  {
+    "id": "uu-cursus-ai-governance-officer",
+    "title": "Cursus AI Governance Officer",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": "Cursus voor professionals",
+    "organizationIds": [
+      "universiteit-utrecht"
+    ],
+    "providerName": "Universiteit Utrecht",
+    "description": "Cursus van Universiteit Utrecht voor professionals met verantwoordelijkheid voor AI-beleid, ethiek of compliance. In twee dagbijeenkomsten komen juridische, technische, organisatorische en ethische aspecten van AI-governance aan bod, met praktijkcasussen. Yvette Roman staat op de officiële cursuspagina vermeld als docent. Voor een volgende editie kan belangstelling worden doorgegeven; de datum volgt nog.",
+    "purpose": "Professionals ondersteunen bij het organiseren van AI-beleid, rollen, risicoafweging en verantwoord AI-gebruik.",
+    "audiences": [
+      "Beleidsmakers",
+      "Bestuurders",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Professionalisering",
+      "AI Act en wetgeving"
+    ],
+    "status": "planned",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Actuele cursusinformatie, docenten en interesseformulier",
+        "url": "https://professionals.uu.nl/nl/cursus/cursus-ai-governance-officer-word-de-ai-strateeg-voor-jouw-organisatie",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "paid",
+    "costType": "paid",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI Governance Officer",
+      "cursus",
+      "Universiteit Utrecht",
+      "Yvette Roman",
+      "AIGovernanceofficer.nl",
+      "AI-strateeg"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Volgende datum nog niet bekend; interesseformulier beschikbaar. Twee dagbijeenkomsten in Utrecht, in het Nederlands. Gepubliceerde prijs: € 1.995.",
+    "eligibility": "De aanbieder gaat uit van hbo/wo werk- en denkniveau en verantwoordelijkheid voor AI-beleid, ethiek of compliance. Maximaal 25 deelnemers.",
+    "notes": "De actuele rechtstreeks opgehaalde cursuspagina vermeldt Datum volgt nog en een interesseformulier. Oudere zoekresultaten noemen 25 september en 9 oktober 2026; die zijn niet als nieuwe inschrijfmogelijkheid overgenomen. Interesse is geen inschrijving. De doelgroep is sectoroverstijgend; HBO/WO duidt hier de relevantie voor onderwijsprofessionals. De cursus is aanbod van Universiteit Utrecht; Yvette Roman is als docent genoemd, niet als zelfstandig aanbieder."
   }
 ]
