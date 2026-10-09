@@ -32802,5 +32802,373 @@
     "offerCategory": "materials",
     "availabilityText": "Openbare Nederlandstalige kennisdelingspagina en gekoppeld Engelstalig onderzoeksrapport van 43 pagina’s, gedateerd 31 januari 2025.",
     "notes": "De Teaching and Learning Collection wordt beheerd door het Centre for Academic Teaching and Learning van de UU. De pagina vermeldt delen en aanpassen met bronvermelding voor niet-commerciële doeleinden (CC BY-NC); het rapport verwijst afzonderlijk naar de hergebruikvoorwaarden van de UU-bibliotheek. De tien handvatten zijn aanbevelingen van de auteur, geen bindende regels voor andere instellingen. HBO is een redactionele verbreding van de hogeronderwijscontext. Tijdgebonden uitspraken over detectie en beleid zijn niet als actuele zelfstandige feiten overgenomen. De publicatiedatum van de kennisdelingspagina is niet vastgesteld."
+  },
+  {
+    "id": "nist-ai-risk-management-framework-1-0",
+    "title": "Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+    "recordType": "standard",
+    "legacyType": "Standaard",
+    "subtype": "Vrijwillig risicomanagementkader",
+    "organizationIds": [],
+    "providerName": "National Institute of Standards and Technology (NIST)",
+    "description": "Vrijwillig raamwerk voor het organiseren van AI-risicobeheersing gedurende de levenscyclus van een systeem. De vier functies Govern, Map, Measure en Manage verbinden governance, contextanalyse, metingen en beheersmaatregelen. Het kader is sectoroverstijgend en kan onderwijsinstellingen helpen om verantwoordelijkheden en risicoafwegingen te structureren.",
+    "purpose": "AI-risicobeheersing inrichten en bepalen welke kennis, rollen, controles en evaluaties nodig zijn.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "IT-professionals",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Publieke waarden en ethiek",
+      "Data en infrastructuur"
+    ],
+    "status": "available",
+    "publicationDate": "2023-01-26",
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Kader, status en aanvullende hulpmiddelen",
+        "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download AI RMF 1.0",
+        "url": "https://nvlpubs.nist.gov/nistpubs/ai/nist.ai.100-1.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "nist-ai-rmf-playbook",
+      "nist-generative-ai-profile-600-1"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "NIST",
+      "AI RMF",
+      "Govern",
+      "Map",
+      "Measure",
+      "Manage",
+      "risicobeheersing"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en gekoppeld materiaal gecontroleerd op 9 oktober 2026 op titel, herkomst, inhoud, doelgroep, toegang en vermelde gebruiksvoorwaarden. Bestaande Atlas-vermeldingen gecontroleerd op overlap. Verificatie bevestigt de publicatie en beschrijving; geen onafhankelijk effectonderzoek of juridische toets.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Gratis Engelstalige PDF van 48 pagina’s. De NIST-pagina vermeldt dat AI RMF 1.0 wordt herzien; deze vermelding betreft de gepubliceerde versie 1.0.",
+    "notes": "Vrijwillig Amerikaans kader, geen Nederlandse wet, certificering of bewijs dat een toepassing veilig is. Onderwijsrelevantie is redactioneel geduid. De aankondiging van herziening betekent niet dat al een nieuwe definitieve editie beschikbaar is. De PDF verwijst naar de NIST-gebruiksvoorwaarden; eventuele rechten van derden moeten afzonderlijk worden gecontroleerd."
+  },
+  {
+    "id": "nist-ai-rmf-playbook",
+    "title": "NIST AI RMF Playbook",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Werkboek met acties en verwijzingen",
+    "organizationIds": [],
+    "providerName": "National Institute of Standards and Technology (NIST)",
+    "description": "Praktische aanvulling op AI RMF 1.0 met voorgestelde acties, verwijzingen en voorbeelden voor de functies Govern, Map, Measure en Manage. Organisaties kunnen onderdelen kiezen en aanpassen aan hun eigen toepassing en context. Het online materiaal ondersteunt het uitwerken van governance en risicobeheersing.",
+    "purpose": "Van algemene AI-governanceprincipes naar concrete acties en bespreekpunten voor een instelling gaan.",
+    "audiences": [
+      "Beleidsmakers",
+      "IT-professionals",
+      "Bestuurders",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Implementatie en adoptie",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "publicationDate": "2023-03-30",
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Toelichting, scope en versiebeheer",
+        "url": "https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook",
+        "sourceType": "official"
+      },
+      {
+        "label": "Open het Playbook",
+        "url": "https://airc.nist.gov/airmf-resources/playbook/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "nist-ai-risk-management-framework-1-0",
+      "nist-generative-ai-profile-600-1"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "NIST",
+      "AI RMF Playbook",
+      "werkboek",
+      "governance",
+      "risicobeheersing",
+      "acties"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en gekoppeld materiaal gecontroleerd op 9 oktober 2026 op titel, herkomst, inhoud, doelgroep, toegang en vermelde gebruiksvoorwaarden. Bestaande Atlas-vermeldingen gecontroleerd op overlap. Verificatie bevestigt de publicatie en beschrijving; geen onafhankelijk effectonderzoek of juridische toets.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Openbaar online Playbook. Eerste volledige versie aangekondigd op 30 maart 2023; de inhoud wordt onderhouden.",
+    "notes": "NIST noemt het gebruik vrijwillig en contextafhankelijk. De acties zijn geen volledige verplichte checklist en het volgen ervan levert geen certificaat of wettelijke conformiteitsgarantie op. De officiële toelichting meldt dat het Playbook na herziening van AI RMF 1.0 zal worden bijgewerkt. Onderwijsrelevantie is redactioneel geduid. Geen specifieke open licentie voor alle gelinkte materialen vastgesteld."
+  },
+  {
+    "id": "nist-generative-ai-profile-600-1",
+    "title": "Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Risicoprofiel voor generatieve AI",
+    "organizationIds": [],
+    "providerName": "National Institute of Standards and Technology (NIST)",
+    "description": "Profiel bij het NIST AI Risk Management Framework dat risico’s en mogelijke beheersacties voor generatieve AI uitwerkt. Het document bespreekt onder meer onjuiste gegenereerde informatie, privacy, informatie-integriteit, menselijke interactie en afhankelijkheden in de AI-keten. De acties zijn gekoppeld aan de functies en uitkomsten van het algemene raamwerk.",
+    "purpose": "Bij AI-beleid en toepassingsevaluaties expliciet rekening houden met risico’s van generatieve modellen.",
+    "audiences": [
+      "Beleidsmakers",
+      "IT-professionals",
+      "Onderzoekers",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Privacy en AVG",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "publicationDate": "2024-07-26",
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Publicatie, auteurs en datum",
+        "url": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download NIST AI 600-1",
+        "url": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "nist-ai-risk-management-framework-1-0",
+      "nist-ai-rmf-playbook"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "NIST AI 600-1",
+      "generative AI profile",
+      "generatieve AI",
+      "hallucinaties",
+      "risicobeheersing"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en gekoppeld materiaal gecontroleerd op 9 oktober 2026 op titel, herkomst, inhoud, doelgroep, toegang en vermelde gebruiksvoorwaarden. Bestaande Atlas-vermeldingen gecontroleerd op overlap. Verificatie bevestigt de publicatie en beschrijving; geen onafhankelijk effectonderzoek of juridische toets.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Gratis Engelstalige PDF van 64 pagina’s, gepubliceerd in juli 2024.",
+    "notes": "Definitieve publicatie NIST AI 600-1, onderscheiden van eerdere concepten. Het profiel is vrijwillige Amerikaanse guidance, geen uitleg of vervanging van Europese verplichtingen. Onderwijsrelevantie is redactioneel geduid. De Atlas bevestigt de gepubliceerde aanpak, geen volledigheid of effectiviteit voor een specifieke instelling. Controleer NIST-gebruiksvoorwaarden en afzonderlijke rechten van derden."
+  },
+  {
+    "id": "educause-horizon-report-teaching-learning-2026",
+    "title": "2026 EDUCAUSE Horizon Report: Teaching and Learning Edition",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Trendrapport en toekomstverkenning",
+    "organizationIds": [],
+    "providerName": "EDUCAUSE",
+    "description": "Trendrapport voor het hoger onderwijs op basis van een expertpanel en het STEEP-raamwerk: sociale, technologische, economische, ecologische en politieke ontwikkelingen. De editie 2026 bevat praktijkvoorbeelden en vroege signalen van verandering. AI komt terug in vraagstukken over toetsing, onderwijsontwerp, ondersteuning, privacy en institutionele strategie.",
+    "purpose": "Toekomstgesprekken en onderwijsbeleid voeden met trends, praktijkvoorbeelden en expliciete onzekerheden.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Docenten",
+      "IT-professionals",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Beleid en governance",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "publicationDate": "2026-05-18",
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Download het officiële EDUCAUSE-rapport",
+        "url": "https://library.educause.edu/-/media/files/library/2026/5/2026hrteachinglearning.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "EDUCAUSE",
+      "Horizon Report 2026",
+      "STEEP",
+      "toekomstverkenning",
+      "signals of change",
+      "hoger onderwijs"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en gekoppeld materiaal gecontroleerd op 9 oktober 2026 op titel, herkomst, inhoud, doelgroep, toegang en vermelde gebruiksvoorwaarden. Bestaande Atlas-vermeldingen gecontroleerd op overlap. Verificatie bevestigt de publicatie en beschrijving; geen onafhankelijk effectonderzoek of juridische toets.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Openbare Engelstalige PDF van 46 pagina’s en aanvullende materialen bij de uitgever.",
+    "notes": "Auteurs: Jenay Robert, Nicole Muscanell, Mark McCormack en Kim Arnold. Het rapport vermeldt CC BY-NC-ND 4.0. Dit is expertgestuurde toekomstverkenning, geen voorspelling met zekerheid of bewijs dat de genoemde praktijken overal effectief zijn. Internationale voorbeelden vragen vertaling naar de Nederlandse context. Vroege signalen zijn afzonderlijk van waargenomen trends beschreven."
+  },
+  {
+    "id": "stanford-hai-ai-index-2026",
+    "title": "AI Index Report 2026",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Jaarlijks trend- en gegevensrapport",
+    "organizationIds": [],
+    "providerName": "Stanford Institute for Human-Centered Artificial Intelligence (HAI)",
+    "description": "Jaarlijkse bundeling van gegevens en analyses over AI-onderzoek, technische prestaties, economie, verantwoord AI-gebruik, onderwijs en beleid. Het hoofdstuk Education behandelt ontwikkelingen in onderwijs en AI-vaardigheden; Policy and Governance en Responsible AI bieden aanvullende context voor institutionele keuzes. De officiële pagina ontsluit het rapport, de hoofdstukken en openbare gegevens.",
+    "purpose": "Onderwijsbestuur en onderzoek ondersteunen bij het onderscheiden van gemeten trends, benchmarks en verwachtingen over AI.",
+    "audiences": [
+      "Onderzoekers",
+      "Beleidsmakers",
+      "Bestuurders",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Beleid en governance",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Rapport en openbare gegevens",
+        "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+        "sourceType": "official"
+      },
+      {
+        "label": "Hoofdstuk Education",
+        "url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/education",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Stanford HAI",
+      "AI Index 2026",
+      "Education",
+      "Responsible AI",
+      "Policy and Governance",
+      "AI-trends"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en gekoppeld materiaal gecontroleerd op 9 oktober 2026 op titel, herkomst, inhoud, doelgroep, toegang en vermelde gebruiksvoorwaarden. Bestaande Atlas-vermeldingen gecontroleerd op overlap. Verificatie bevestigt de publicatie en beschrijving; geen onafhankelijk effectonderzoek of juridische toets.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Openbaar Engelstalig rapport, afzonderlijke hoofdstukken en onderliggende gegevens via Stanford HAI.",
+    "notes": "Een institutioneel samengesteld overzicht met uiteenlopende onderliggende bronnen; geen afzonderlijk peer-reviewed effectonderzoek. Veel cijfers betreffen specifieke landen, steekproeven, meetjaren of benchmarks en zijn niet automatisch geldig voor Nederland of een onderwijsinstelling. De 2026-editie bevat ook gegevens uit eerdere jaren. Exacte publicatiedag en een uniforme hergebruiklicentie voor alle brongegevens zijn niet vastgesteld."
   }
 ]
