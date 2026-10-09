@@ -317,7 +317,7 @@
     const {text, words} = searchDocuments.get(record);
     const tokenMatches = (token, fuzzy) => words.some(word => {
       if (word === token || (token.length >= 3 && word.startsWith(token))) return true;
-      if (!fuzzy || token.length < 4 || word.length < 4 || token[0] !== word[0]) return false;
+      if (!fuzzy || token.length < 4 || word.length < 4 || token[0] !== word[0] || /[0-9]/.test(token + word)) return false;
       const limit = Math.min(token.length, word.length) >= 10 ? 2 : 1;
       return Math.abs(token.length - word.length) <= limit && levenshtein(token, word) <= limit;
     });

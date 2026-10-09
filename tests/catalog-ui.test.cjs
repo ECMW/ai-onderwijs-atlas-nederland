@@ -133,6 +133,12 @@ test('ordinary queries stay visible and never replace an explicitly selected fil
   }
 });
 
+test('spelling correction never changes requested years or document numbers', () => {
+  const api=load();
+  assert.equal(api.queryMatches({...record('old'),title:'AI rapport 2025'},'2026'),false);
+  assert.equal(api.queryMatches({...record('current'),title:'AI rapport 2026'},'2026'),true);
+});
+
 test('costs combine with access, sector and query without treating unknown as free', () => {
   const data=[{...record('free'),costType:'free',accessType:'public'},
     {...record('members'),costType:'free',accessType:'restricted'},
