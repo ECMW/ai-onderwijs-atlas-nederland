@@ -31478,5 +31478,362 @@
       }
     ],
     "offerCategory": "materials"
+  },
+  {
+    "id": "aigo-aigora",
+    "title": "AIGORA – AI Governance Readiness Assessment",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Zelfreflectiescan",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Zelfreflectievragenlijst voor de AI-readiness van een faculteit of een bachelor- of masteropleiding. Twintig stellingen bestrijken onderwijsvisie en beleid, AI-tools, docentcompetenties, curriculum en toetsing, en integriteit en governance. De uitkomst bevat scores en vaste aanbevelingen; dit is een gesprekshulpmiddel, geen audit of certificering.",
+    "purpose": "Het gesprek over de voorbereiding van onderwijs op AI ondersteunen aan de hand van eigen inschattingen.",
+    "audiences": [
+      "Bestuurders",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Implementatie en adoptie",
+      "Toetsing en examinering"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Open het materiaal",
+        "url": "https://aigovernanceofficer.github.io/ai-maturity-app/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Projectbeschrijving van de maker",
+        "url": "https://github.com/AIgovernanceofficer/ai-maturity-app/blob/master/README.md",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AIGORA",
+      "AI maturity",
+      "AI-readiness",
+      "volwassenheid",
+      "faculteit",
+      "opleiding",
+      "zelfreflectie",
+      "Yvette Roman"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "De publieke webversie is bereikbaar; de repository gebruikt nog de naam ai-maturity-app.",
+    "notes": "De maker beschrijft een regelgebaseerde vragenlijst zonder AI-model tijdens gebruik. Scores berusten op zelfrapportage en zijn geen onafhankelijke meting. De oudere AI Maturity Assessment in de AI-app-store-repository is niet als tweede scan opgenomen om doublures te voorkomen. Privacyclaims zijn niet onafhankelijk geaudit."
+  },
+  {
+    "id": "aigo-ai-verslavingsmeter",
+    "title": "AI-Verslavingsmeter",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Zelfreflectievragenlijst",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Zelfreflectie-instrument voor studenten over de plek van AI in het dagelijks leven en bij het studeren. Beide varianten bevatten 24 stellingen en geven een reflectie op onder meer afhankelijkheid en het zelf blijven leren. Volgens de maker werkt de vragenlijst met vaste rekenregels. De uitkomst is geen medische test of diagnose.",
+    "purpose": "Studenten laten reflecteren op hun AI-gebruik, eigen leerproces en contact met anderen.",
+    "audiences": [
+      "Studenten",
+      "Docenten",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Open het materiaal",
+        "url": "https://aigovernanceofficer.github.io/AI-Verslavingsmeter/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Projectbeschrijving van de maker",
+        "url": "https://github.com/AIgovernanceofficer/AI-Verslavingsmeter/blob/main/README.md",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-verslavingsmeter",
+      "AI-afhankelijkheid",
+      "zelfreflectie",
+      "studentenwelzijn",
+      "eigen leren",
+      "Yvette Roman"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Twee openbare varianten: dagelijks leven en studie; ongeveer vijf minuten per vragenlijst.",
+    "notes": "De titel is overgenomen van de maker; het instrument stelt geen verslaving vast. De studievariant verwijst naar UU-beleid, dat niet automatisch geldt bij andere instellingen. Onderwijssectoren duiden de hogeronderwijscontext. Validiteit en privacyclaims zijn niet onafhankelijk vastgesteld; geen institutioneel eigenaarschap afgeleid uit UU-vormgeving."
+  },
+  {
+    "id": "aigo-ai-taxonomie",
+    "title": "AI-taxonomie – van rekenregel tot foundation model",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Interactieve taxonomie en naslagmateriaal",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Werkversie van een interactieve taxonomie van AI-technieken voor de governancepraktijk in het hoger onderwijs. Het materiaal ordent technieken naar methode en bevat voorbeelden, een matrix van technieken en functies, en een indicatieve governance-lens. Kaart, afdruk en JSON-export zijn beschikbaar in het Nederlands en Engels. Het materiaal is geen juridisch classificatie-instrument.",
+    "purpose": "AI-technieken uitleggen en gesprekken over intake, registratie en beoordeling van toepassingen voorbereiden.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Docenten",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Beleid en governance",
+      "Data en infrastructuur"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Open het materiaal",
+        "url": "https://aigovernanceofficer.github.io/AI-taxonomie/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Projectbeschrijving van de maker",
+        "url": "https://github.com/AIgovernanceofficer/AI-taxonomie/blob/main/README.md",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "AI-taxonomie",
+      "techniekfamilies",
+      "rekenregels",
+      "foundation model",
+      "algoritmeregister",
+      "Yvette Roman"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Openbare werkversie ter bespreking, met SVG-, afdruk- en JSON-export.",
+    "notes": "De maker noemt dit een werkversie ter bespreking; status beschikbaar betreft de bereikbare versie en betekent niet dat de inhoud definitief is. Het colofon noemt de praktijk van AI-governance in het Nederlandse hoger onderwijs. Juridische kwalificaties en aansluiting op standaarden zijn niet onafhankelijk vastgesteld. De README verwijst naar ai-taxonomie.html; de gecontroleerde werkende versie staat op de projecthomepage."
+  },
+  {
+    "id": "aigo-ai-kapitaalkringloop",
+    "title": "De AI-kapitaalkringloop",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Interactieve visualisatie met bronverantwoording",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Interactief naslagmateriaal over investeringen en afnameverplichtingen tussen chipmakers, cloudbedrijven, AI-labs en publieke spelers. Een netwerkdiagram en Sankey-diagram tonen de relaties en verwijzen naar dealbronnen. Het materiaal ondersteunt bespreking van leveranciersafhankelijkheid bij AI-governance. De gegevens lopen volgens de webversie tot augustus 2026; bedragen zijn deels indicatief.",
+    "purpose": "De verwevenheid van AI-leveranciers bespreken bij onderwijsbestuur en keuzes over AI-infrastructuur.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Data en infrastructuur",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Open het materiaal",
+        "url": "https://aigovernanceofficer.github.io/AIkapitaalkringloop/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Projectbeschrijving van de maker",
+        "url": "https://github.com/AIgovernanceofficer/AIkapitaalkringloop/blob/main/README.md",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-kapitaalkringloop",
+      "AI kapitaal kringloop",
+      "hyperscalers",
+      "leveranciersafhankelijkheid",
+      "AI-infrastructuur",
+      "Yvette Roman"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "materials",
+    "availabilityText": "Openbare visualisatie met filters en verantwoording per deal; de webversie vermeldt een update van 4 augustus 2026.",
+    "notes": "Onderwijsrelevantie is een redactionele duiding voor onderwijsbestuur en AI-infrastructuur; de visualisatie is sectoroverstijgend. De Atlas heeft het bestaan en de uitleg gecontroleerd, niet alle onderliggende transacties of hun actuele status. De bron noemt maximale toezeggingen, intentieverklaringen en geschatte bedragen. Geen financieel of juridisch advies. De live webversie vermeldt 4 augustus 2026 als bijwerkdatum en gegevens tot augustus 2026; de README noemt nog juli 2026. De huidige webversie is leidend voor de beschreven actualiteit."
+  },
+  {
+    "id": "aigo-app-store",
+    "title": "App Store – AIGovernanceofficer.nl",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Aanbodcatalogus",
+    "organizationIds": [],
+    "providerName": "AIGovernanceofficer.nl",
+    "description": "Openbare catalogus van hulpmiddelen voor AI en onderwijs van AIGovernanceofficer.nl, met uitleg en links naar de afzonderlijke projecten. De catalogus bevat onder meer AIGORA, Meesterproef Studio, de AI-Verslavingsmeter en de AI-kapitaalkringloop. Per onderdeel onderscheidt de maker bereikbare apps en aangekondigd aanbod. Sommige gelinkte toepassingen vragen een eigen API-sleutel.",
+    "purpose": "Het onderwijsaanbod van de maker verkennen en de oorspronkelijke projectpagina en gebruiksvoorwaarden vinden.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsprofessionals",
+      "Studenten",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Beleid en governance",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-10-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Bekijk de catalogus en voorwaarden",
+        "url": "https://aigovernanceofficer.github.io/AI-app-store/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "aigo-aigora",
+      "aigo-ai-verslavingsmeter",
+      "aigo-ai-kapitaalkringloop",
+      "meesterproef-studio"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "app store",
+      "AI-tools",
+      "AIGovernanceofficer.nl",
+      "AI Governance Officer",
+      "Yvette Roman"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële bron rechtstreeks gecontroleerd op 9 oktober 2026 op titel, maker, functie, doelgroep en toegang. Verificatie betreft het bestaan en de beschrijving; geen onafhankelijk bewijs van effectiviteit, veiligheid of juridische juistheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-09",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      }
+    ],
+    "offerCategory": "knowledge",
+    "notes": "Deze vermelding betreft de catalogus als wegwijzer. De Atlas presenteert aangekondigde onderdelen zonder eigen beschikbare bron niet als beschikbaar materiaal. Zelfstandige AI-software wordt niet als afzonderlijk publiek aanbod toegevoegd binnen de bestaande Atlas-reikwijdte. De catalogus noemt gratis browserapps en CC BY-NC-ND 4.0; externe API-kosten kunnen apart gelden. De README van deze repository beschrijft een oudere maturity-assessment; de actuele catalogus zelf is hier leidend."
   }
 ]
