@@ -34389,5 +34389,360 @@
         "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
       }
     ]
+  },
+  {
+    "id": "experience-ai-understanding-ai-11-14",
+    "title": "Experience AI – Understanding AI (11–14)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Lesmodule",
+    "organizationIds": [],
+    "providerName": "Raspberry Pi Foundation / Google DeepMind",
+    "description": "Engelstalige module met vier lessen over AI, machine learning, classificatie en vertekening door trainingsdata. Het openbare overzicht bevat leerdoelen en begrippen; lesplannen, presentaties en activiteiten worden via een gratis account aangeboden.",
+    "purpose": "Leerlingen van 11 tot 14 jaar laten onderzoeken hoe AI-systemen werken en waar beperkingen ontstaan.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Overzicht en leerdoelen openbaar; voor lesplannen, slides en activiteiten is een gratis Raspberry Pi Foundation-account vereist.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Experience AI: moduleoverzicht",
+        "url": "https://experience-ai.org/en/units/understanding-ai-11-14",
+        "sourceType": "official"
+      },
+      {
+        "label": "Les 1: leerdoelen en toegangsvoorwaarden",
+        "url": "https://experience-ai.org/en/units/understanding-ai-11-14/lessons/12",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "registration",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Experience AI",
+      "machine learning",
+      "classificatie",
+      "bias",
+      "trainingsdata",
+      "Raspberry Pi"
+    ],
+    "notes": "Het moduleoverzicht noemt een update op 21 augustus 2026; dit is niet als oorspronkelijke publicatiedatum overgenomen. De accountgebonden downloads zijn niet ingezien. De registratiecontrole betreft het openbare aanbod en de toegangsvoorwaarden. Les 3 gebruikt Quick, Draw!; beoordeel externe tools voor de eigen klas. Geen hergebruiklicentie voor de afgeschermde downloads vastgesteld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Openbaar moduleoverzicht en detailpagina van les 1 gecontroleerd op 23 oktober 2026. Vier lessen, leeftijd en accountvereiste bevestigd; de downloads achter registratie en de uitvoering van de lessen zijn niet gecontroleerd. Geen effectiviteitsclaim.",
+    "changeHistory": [
+      {
+        "date": "2026-10-23",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "dwengo-kiks-ai-klimaat-lespakket",
+    "title": "KIKS – AI en klimaat",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "STEM-lespakket",
+    "organizationIds": [],
+    "providerName": "Dwengo vzw",
+    "description": "Nederlandstalig STEM-lesproject over planten, klimaat en beeldherkenning. Leerlingen onderzoeken huidmondjes met AI. Het pakket omvat een leerlingencursus, leerkrachtenhandleiding en Python-notebooks.",
+    "purpose": "Biologie, wiskunde en informatica verbinden in een onderzoek naar data en beeldherkenning.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Digitale cursus en handleiding openbaar en gratis beschikbaar.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Dwengo: KIKS en materiaal",
+        "url": "https://www.dwengo.org/kiks/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Leerlingencursus KIKS (PDF)",
+        "url": "https://www.dwengo.org/assets/files/kiks/KIKS_leerlingencursus_eerstedruk.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "KIKS",
+      "klimaat",
+      "huidmondjes",
+      "beeldherkenning",
+      "Python",
+      "STEM"
+    ],
+    "notes": "Vlaams materiaal voor de derde graad secundair onderwijs; VO is de redactionele Atlasindeling, geen bevestigde Nederlandse curriculumdekking. Leerlingencursus: eerste druk oktober 2020, CC BY-SA, Natacha Gesquière met coauteurs. Geen exacte publicatiedag vastgesteld. Programmeeronderdelen vragen Python; notebooks zijn niet uitgevoerd en afhankelijkheden kunnen verouderd zijn.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en beschikbaar materiaal gecontroleerd op 23 oktober 2026 op titel, herkomst, functie, doelgroep, toegang en beperkingen. Vergeleken met de actuele canonieke Atlasdata op titel, bron-URL en inhoud. Dit bevestigt de registratie, niet de effectiviteit of juridische geschiktheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-23",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "dwengo-taaltechnologie-chatbot-lespakket",
+    "title": "Taaltechnologie – Chatbot, sentimentanalyse en woordembeddings",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Lespakket met docentenhandleiding",
+    "organizationIds": [],
+    "providerName": "Dwengo vzw / Universiteit Gent",
+    "description": "Nederlandstalig lespakket over taalverwerking, chatbots en sentimentanalyse. Bevat een docentenhandleiding, programmeeractiviteiten en een losse oefening over woordembeddings. Ethische vragen over taaldata komen aan bod.",
+    "purpose": "Leerlingen kennis laten maken met kennisgebaseerde en datagebaseerde taaltechnologie.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Handleiding en opdracht zijn openbaar en gratis te downloaden.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Dwengo: taaltechnologie en downloads",
+        "url": "https://www.dwengo.org/chatbot/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Docentenhandleiding Chatbot (PDF)",
+        "url": "https://www.dwengo.org/assets/files/chatbot/Chatbot_handleiding_eerstedruk.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Opdracht woordembeddings (PDF)",
+        "url": "https://www.dwengo.org/assets/files/chatbot/opdracht_embedding.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "NLP",
+      "taaltechnologie",
+      "chatbot",
+      "sentimentanalyse",
+      "woordembeddings",
+      "Python"
+    ],
+    "notes": "Voor de tweede en derde graad van het Vlaamse secundair onderwijs; VO is een redactionele indeling. Handleiding: eerste druk augustus 2021, Natacha Gesquière met coauteurs, CC BY-SA. Geen actuele beschrijving van de volledige generatieve-AI-markt. Python-onderdelen zijn niet uitgevoerd. De losse opdracht woordembeddings is afzonderlijk inhoudelijk gecontroleerd.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en beschikbaar materiaal gecontroleerd op 23 oktober 2026 op titel, herkomst, functie, doelgroep, toegang en beperkingen. Vergeleken met de actuele canonieke Atlasdata op titel, bron-URL en inhoud. Dit bevestigt de registratie, niet de effectiviteit of juridische geschiktheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-23",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "ai-assessment-scale-21-werkmaterialen",
+    "title": "AI Assessment Scale 2.1 – werkmaterialen voor toetsontwerp",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Toetsontwerpschaal met bewerkbaar materiaal",
+    "organizationIds": [],
+    "providerName": "Learning Innovation Practice Ltd.",
+    "description": "Engelstalige schaal met vijf vormen van AI-gebruik bij toetsopdrachten. Het pakket bevat een PDF en bewerkbare presentaties voor het bespreken en vastleggen van verwachtingen rond AI in toetsing.",
+    "purpose": "Docenten en toetsontwerpers helpen om AI-gebruik en de beoordeling daarvan per opdracht expliciet te maken.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Examencommissies"
+    ],
+    "sectors": [
+      "VO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "PDF en PowerPoint zonder abonnement beschikbaar; sommige onderdelen van de optionele Canva-template vragen Canva Pro.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "AIAS: materialen en gebruiksvoorwaarden",
+        "url": "https://aiassessmentscale.com/resources/",
+        "sourceType": "official"
+      },
+      {
+        "label": "AIAS 2.1 design assets (PDF)",
+        "url": "https://aiassessmentscale.com/wp-content/uploads/2026/09/ai-assessment-scale-2-1.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "AIAS",
+      "AI Assessment Scale",
+      "toetsontwerp",
+      "beoordeling",
+      "AI-gebruik",
+      "rubric"
+    ],
+    "notes": "AIAS 2.1 (2026) is gebaseerd op werk van Perkins, Roe, Furze en MacVaugh. De aangewezen ontwerpbestanden vallen onder CC BY-NC-SA 4.0; de websitetekst niet. Nederlandse vertalingen staan bij eerdere versies en zijn niet als vertaling van 2.1 geregistreerd. Geen certificering of bewijs dat een toets AI-bestendig is. De PDF is inhoudelijk gecontroleerd; de PowerPoint is alleen als downloadaanbod bevestigd.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en beschikbaar materiaal gecontroleerd op 23 oktober 2026 op titel, herkomst, functie, doelgroep, toegang en beperkingen. Vergeleken met de actuele canonieke Atlasdata op titel, bron-URL en inhoud. Dit bevestigt de registratie, niet de effectiviteit of juridische geschiktheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-23",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "ai-unplugged-lesactiviteiten",
+    "title": "AI Unplugged – lesactiviteiten zonder computer",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Printbare lesactiviteiten",
+    "organizationIds": [],
+    "providerName": "Stefan Seegerer / Annabel Lindner",
+    "description": "Verzameling van vijf activiteiten om AI-principes tastbaar te maken met kaarten, spelborden en spelregels. De officiële site biedt printmateriaal en presentaties in verschillende talen, waaronder Engels.",
+    "purpose": "Docenten praktische werkvormen bieden om AI te bespreken en te verkennen zonder computers voor leerlingen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Activiteitenoverzicht en gecontroleerde printbestanden zijn gratis openbaar toegankelijk.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "AI Unplugged: activiteiten en makers",
+        "url": "https://www.aiunplugged.org/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Printbare kaarten bij activiteit 1 (PDF)",
+        "url": "https://www.aiunplugged.org/activity1.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Engelse spelregels bij activiteit 3 (PDF)",
+        "url": "https://www.aiunplugged.org/activity3-english.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en",
+      "de"
+    ],
+    "keywords": [
+      "unplugged",
+      "kaartspel",
+      "spelbord",
+      "zonder computer",
+      "AI-principes"
+    ],
+    "notes": "Kaarten en Engelse spelregels zijn rechtstreeks geopend. Geen Nederlandse versie, exacte publicatiedatum of expliciete hergebruiklicentie vastgesteld in de gecontroleerde bestanden. VO is een redactionele toepassingsinschatting; kies en pas activiteiten aan het niveau van de klas aan. Afzonderlijk project van de gelijknamige Northwestern-collectie, die in deze scan niet betrouwbaar kon worden geopend.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en beschikbaar materiaal gecontroleerd op 23 oktober 2026 op titel, herkomst, functie, doelgroep, toegang en beperkingen. Vergeleken met de actuele canonieke Atlasdata op titel, bron-URL en inhoud. Dit bevestigt de registratie, niet de effectiviteit of juridische geschiktheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-23",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
+      }
+    ]
   }
 ]

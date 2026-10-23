@@ -82,6 +82,7 @@
   const FILTER_KEYS = ['theme', 'audience', 'sector', 'status', 'type', 'geography', 'organization', 'cost', 'access', 'source'];
   const SORT_OPTIONS = {
     relevant: 'Meest relevant',
+    added: 'Nieuwste in de Atlas eerst',
     published: 'Nieuwste publicatie eerst',
     'published-oldest': 'Oudste publicatie eerst',
     az: 'Titel A–Z'
@@ -407,11 +408,12 @@
 
   function sortRecords(list) {
     if (state.sort === 'az') return list.sort((a, b) => a.title.localeCompare(b.title, 'nl'));
-    if (isPublicationSort()) return list.sort((a, b) => {
-      const aDate = publicationDate(a), bDate = publicationDate(b);
-      // Een controle- of toevoegdatum is geen publicatiedatum. Onbekend blijft onderaan.
+    if (state.sort === 'added' || isPublicationSort()) return list.sort((a, b) => {
+      const dateOf = state.sort === 'added' ? addedDate : publicationDate;
+      const aDate = dateOf(a), bDate = dateOf(b);
+      // Gebruik uitsluitend de gekozen datumsoort; onbekende datums blijven onderaan.
       if (Boolean(aDate) !== Boolean(bDate)) return aDate ? -1 : 1;
-      const order = state.sort === 'published' ? bDate.localeCompare(aDate) : aDate.localeCompare(bDate);
+      const order = state.sort === 'published-oldest' ? aDate.localeCompare(bDate) : bDate.localeCompare(aDate);
       return order || a.title.localeCompare(b.title, 'nl') || a.id.localeCompare(b.id);
     });
     return list.sort((a, b) => relevance(b) - relevance(a));
@@ -648,6 +650,7 @@
         <p class="description">${escapeHtml(factValue(record.description))}</p>
         <dl class="card-facts"><div><dt>Voor wie</dt><dd>${escapeHtml(factValue((record.audiences || []).join(', ')))}</dd></div><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div><div><dt>Toegang</dt><dd>${escapeHtml(accessLabel(record))}</dd></div></dl>
         ${recency ? `<p class="publication-date">${escapeHtml(recency.label)} <time datetime="${escapeHtml(recency.date)}">${escapeHtml(dateLabel(recency.date))}</time></p>` : ''}
+        ${showPublicationDate && state.sort === 'added' ? `<p class="publication-date">${addedDate(record) ? `Toegevoegd aan de Atlas op <time datetime="${addedDate(record)}">${escapeHtml(dateLabel(addedDate(record)))}</time>` : 'Toevoegdatum onbekend'}</p>` : ''}
         ${showPublicationDate && isPublicationSort() ? `<p class="publication-date">${publicationDate(record) ? `Verschenen op <time datetime="${publicationDate(record)}">${escapeHtml(dateLabel(publicationDate(record)))}</time>` : 'Publicatiedatum onbekend'}</p>` : ''}
         ${sectors.length ? `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>` : ''}
         <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span></div>
@@ -719,7 +722,7 @@
     update();
   }
   function renderHome() {
-    state = { q: '', sort: 'relevant', audience: savedPersonas().join(',') };
+    state = { q: '', sort: 'added', audience: savedPersonas().join(',') };
     renderSearch(true);
     window.dispatchEvent?.(new Event('atlas:home-rendered'));
   }
@@ -872,7 +875,9 @@
     const activeCount = FILTER_KEYS.reduce((sum, key) => sum + values(key).length, 0) + Number(Boolean(state.q));
     const heading = `${resultRecords.length} ${resultRecords.length === 1 ? 'resultaat' : 'resultaten'}${state.q ? ` voor ‘${state.q}’` : ''}`;
     const knownDates = resultRecords.filter(record => publicationDate(record)).length;
-    const sortSummary = isPublicationSort()
+    const sortSummary = state.sort === 'added'
+      ? 'Nieuwste toevoegingen aan de Atlas eerst; onbekende toevoegdatums staan onderaan. Een broncontrole verandert de toevoegdatum niet.'
+      : isPublicationSort()
       ? `${state.sort === 'published' ? 'Nieuwste' : 'Oudste'} publicaties eerst. Publicatiedatum bekend bij ${knownDates} van ${resultRecords.length} resultaten; onbekende datums staan onderaan.`
       : state.sort === 'az' ? 'Gesorteerd op titel, van A tot Z.' : 'Gesorteerd op relevantie en directe bruikbaarheid.';
     return `<nav class="catalog-tabs" aria-label="Aanbodoverzicht"><a href="#zoeken" aria-current="page">Al het aanbod</a><a href="#nieuw">Nieuw aanbod →</a></nav><header class="result-head"><div><span class="eyebrow">Gevonden aanbod</span><h2>${escapeHtml(heading)}</h2><p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p></div><div class="result-tools"><button class="mobile-filter btn secondary" aria-controls="filters" aria-expanded="false">Filters (${activeCount})</button><label>Sorteren<select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select></label></div></header>

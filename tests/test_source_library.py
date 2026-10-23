@@ -221,7 +221,8 @@ class SourceLibraryTests(unittest.TestCase):
         self.assertEqual(warnings[0]["kind"], "source_verification_overdue")
 
     def test_repository_library_passes_current_validator(self):
-        errors, warnings = source_library_issues(ROOT, today=date(2026, 9, 28))
+        # The live library advances; only synthetic fixtures use a frozen date.
+        errors, warnings = source_library_issues(ROOT, today=date.today())
         self.assertEqual(errors, [])
         self.assertEqual(warnings, [])
 
