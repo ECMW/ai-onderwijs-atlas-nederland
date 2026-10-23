@@ -33933,5 +33933,461 @@
     "offerCategory": "materials",
     "availabilityText": "In ontwikkeling volgens de maker. Alleen de aankondiging is beschikbaar; geen gebruikslink of releasedatum gepubliceerd.",
     "notes": "Uitsluitend de aankondiging in de categorie Onderwijs is vastgesteld via een verse browserlading en de gepubliceerde catalogusbron. Functies, doelgroep en sectoren zijn een beschrijving van het aangekondigde onderwijsgebruik, geen getest product. Kosten en toekomstige voorwaarden zijn niet vastgesteld."
+  },
+  {
+    "id": "surf-pec-fg-gesprekskaart-ai-algoritmen",
+    "title": "FG-gesprekskaart AI & Algoritmen voor het onderwijs",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Gesprekskaart met toelichting",
+    "organizationIds": [
+      "surf"
+    ],
+    "providerName": "SURF Privacy Expertise Centrum",
+    "description": "Gesprekskaart met toelichting voor functionarissen gegevensbescherming en privacy officers in het onderwijs. De vragen behandelen bestuurlijke verantwoording, ethiek, persoonsgegevens, inkoop, informatiebeveiliging en techniek bij AI-toepassingen.",
+    "purpose": "Het gesprek over AI en persoonsgegevens ondersteunen vanuit de toezichthoudende rol van de FG.",
+    "audiences": [
+      "Privacyprofessionals",
+      "Beleidsmakers",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Privacy en AVG",
+      "Beleid en governance",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Versie 1.0, september 2026; kaart en toelichting zijn openbaar te downloaden als PDF.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "SURF: toelichting en onderwijscontext",
+        "url": "https://pec.surf.nl/fg-gesprekskaart-ai-algoritmen/",
+        "sourceType": "official"
+      },
+      {
+        "label": "SURF: versie en download",
+        "url": "https://pec.surf.nl/assets/fg-gesprekskaart-ai-algoritmen/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Gesprekskaart en toelichting (PDF)",
+        "url": "https://pec.surf.nl/wp-content/uploads/FG-gesprekskaart-AI-Algoritme.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "surf-pec-praatplaat-ai-en-privacy"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "FG",
+      "functionaris gegevensbescherming",
+      "gesprekskaart",
+      "algoritmen",
+      "AVG",
+      "privacy officer"
+    ],
+    "notes": "De kaart beschrijft de FG-rol vanuit de AVG; de FG is niet de toezichthouder op de AI-verordening. De PDF vermeldt CC BY-NC-SA 4.0 en is gebaseerd op materiaal van VNG/IBD. De productiedatum 15 september en de update van de toelichtingspagina op 16 oktober 2026 zijn niet als oorspronkelijke publicatiedatum overgenomen. Dit is een ander materiaal dan de bestaande Praatplaat AI en Privacy.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en beschikbaar materiaal gecontroleerd op 23 oktober 2026 op titel, herkomst, functie, doelgroep, toegang en beperkingen. Vergeleken met de actuele canonieke Atlasdata op titel, bron-URL en inhoud. Dit bevestigt de registratie, niet de effectiviteit of juridische geschiktheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-23",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "npuls-raise-risicobeoordeling-ai",
+    "title": "RAISE – raamwerk voor risicobeoordeling van AI",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Risicobeoordelingsraamwerk met documentatiesjabloon",
+    "organizationIds": [
+      "npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Eerste versie van een stappenplan voor het beoordelen van AI-systemen en impactvolle algoritmes in mbo, hbo en wo. Het raamwerk omvat signaleren, identificeren, classificeren, aanvullende risicobeoordeling en beheersen en opvolgen, met een Excel-sjabloon voor documentatie. De versie wordt nog in de praktijk getoetst.",
+    "purpose": "Risicoafwegingen, betrokken rollen, beheersmaatregelen en vervolgacties rond AI vastleggen.",
+    "audiences": [
+      "Beleidsmakers",
+      "Privacyprofessionals",
+      "IT-professionals",
+      "Onderwijsprofessionals",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI Act en wetgeving",
+      "Beleid en governance",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "pilot",
+    "availabilityText": "Eerste versie openbaar beschikbaar. Zes mbo-, hbo- en wo-instellingen toetsen het raamwerk in het najaar van 2026; werkwijze en uitkomsten kunnen nog veranderen.",
+    "publicationDate": "2026-09-28",
+    "lastVerified": "2026-10-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Npuls: raamwerk, status en downloads",
+        "url": "https://npuls.nl/kennisbank/raise-raamwerk-voor-risicobeoordeling-van-ai",
+        "sourceType": "official"
+      },
+      {
+        "label": "Risicobeoordelingsraamwerk – concept (PDF)",
+        "url": "https://npuls.nl/_assets/a105ee2c-7f95-42ee-8740-32d7ba952b26/Risicobeoordelingsraamwerk%20voor%20AI-systemen%20-%20concept.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Template RAISE documentatie (Excel)",
+        "url": "https://npuls.nl/_assets/e0ad3d74-7995-4ece-bb89-fdc82f645e15/Template%20RAISE%20documentatie.xlsx",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "RAISE",
+      "risicobeoordeling",
+      "AI-systemen",
+      "algoritmen",
+      "inkoop",
+      "beheersmaatregelen",
+      "documentatiesjabloon"
+    ],
+    "notes": "Onderzoek en shadow AI/IT vallen volgens de actuele Npuls-detailpagina buiten de huidige scope. De PDF is een conceptversie van 14 september 2026 onder CC BY-SA 4.0. Gebruik onder eigen verantwoordelijkheid; geen uitputtend juridisch oordeel of certificering. Niet hetzelfde als de bestaande Europese RAISE-oproep voor een Academic Advisory Board.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en beschikbaar materiaal gecontroleerd op 23 oktober 2026 op titel, herkomst, functie, doelgroep, toegang en beperkingen. Vergeleken met de actuele canonieke Atlasdata op titel, bron-URL en inhoud. Dit bevestigt de registratie, niet de effectiviteit of juridische geschiktheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-23",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "ecio-ai-toetsing-praktische-handvatten",
+    "title": "AI en toetsing: praktische handvatten",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Handreiking met checklist",
+    "organizationIds": [],
+    "providerName": "ECIO",
+    "description": "Online handreiking met stappenplan en checklist voor AI-gebruik bij toetsing en examinering. Behandelt leerdoelen, afspraken met studenten, eigen prestaties, transparantie, toegankelijkheid, gelijke kansen en menselijke beoordeling.",
+    "purpose": "Docenten, toetsdeskundigen en examencommissies ondersteunen bij het ontwerpen en evalueren van toetsing met AI.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Examencommissies",
+      "Beleidsmakers",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Publieke waarden en ethiek",
+      "Privacy en AVG"
+    ],
+    "status": "available",
+    "availabilityText": "De volledige handreiking en checklist zijn publiek leesbaar zonder account.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "ECIO: handreiking, stappenplan en checklist",
+        "url": "https://ecio.nl/handreiking/ai-en-toetsing-praktische-handvatten/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "ECIO",
+      "inclusief onderwijs",
+      "toetsing",
+      "examinering",
+      "checklist",
+      "toegankelijkheid",
+      "eigen prestatie"
+    ],
+    "notes": "De bron vermeldt een update op 4 augustus 2026; de oorspronkelijke publicatiedatum is niet vastgesteld. Bevoegdheden en procedures verschillen per sector en instelling. De Atlas beschrijft het materiaal en neemt de juridische tijdlijnen op de bronpagina niet over als zelfstandige rechtsinformatie. Geen specifieke hergebruiklicentie vastgesteld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en beschikbaar materiaal gecontroleerd op 23 oktober 2026 op titel, herkomst, functie, doelgroep, toegang en beperkingen. Vergeleken met de actuele canonieke Atlasdata op titel, bron-URL en inhoud. Dit bevestigt de registratie, niet de effectiviteit of juridische geschiktheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-23",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "npuls-ai-duurzaamheid-verkenning-2026",
+    "title": "AI en duurzaamheid: verkenning van de milieu-impact van AI",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Verkenning met handelingsperspectieven",
+    "organizationIds": [
+      "npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Verkenning van de milieu-impact van generatieve AI in mbo, hbo en wo. Bespreekt energie, water, hardware en infrastructuur en biedt zeven handelingsperspectieven voor beleid, monitoring, AI-geletterdheid en samenwerking.",
+    "purpose": "Onderwijsinstellingen ondersteunen bij afwegingen over de milieu-impact van AI en mogelijke maatregelen.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsmakers",
+      "IT-professionals",
+      "Onderwijsprofessionals"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Publieke waarden en ethiek",
+      "Data en infrastructuur"
+    ],
+    "status": "available",
+    "availabilityText": "De Nederlandstalige verkenning is openbaar te downloaden als PDF.",
+    "publicationDate": "2026-06-29",
+    "lastVerified": "2026-10-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Npuls: verkenning en publicatiedatum",
+        "url": "https://npuls.nl/kennisbank/ai-en-duurzaamheid",
+        "sourceType": "official"
+      },
+      {
+        "label": "Verkenning Duurzaamheid en AI (PDF)",
+        "url": "https://npuls.nl/_assets/2a12dc7d-f33a-4270-9aaa-853013e103da/Verkenning%20Duurzaamheid%20en%20AI.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "duurzaamheid",
+      "milieu-impact",
+      "energie",
+      "water",
+      "hardware",
+      "datacenters",
+      "monitoring",
+      "inkoop"
+    ],
+    "notes": "Uitgave onder CC BY-SA 4.0. Dit is een verkenning met onzekerheden en handelingsperspectieven, geen meetstandaard of gevalideerde impactberekening. De Atlas neemt geen afzonderlijke verbruikscijfers over. Afzonderlijke Npuls-publicatie voor vervolgonderwijs; geen duplicaat van het Kennisnet-onderzoek Klimaat en rekenkracht of de NOLAI-checklist.",
+    "offerCategory": "knowledge",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en beschikbaar materiaal gecontroleerd op 23 oktober 2026 op titel, herkomst, functie, doelgroep, toegang en beperkingen. Vergeleken met de actuele canonieke Atlasdata op titel, bron-URL en inhoud. Dit bevestigt de registratie, niet de effectiviteit of juridische geschiktheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-23",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "klokhuis-ai-lespakket",
+    "title": "Het Klokhuis over AI – lespakket",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Lespakket met lesbrief en werkbladen",
+    "organizationIds": [],
+    "providerName": "NTR / Het Klokhuis",
+    "description": "Lespakket bij vier Klokhuisafleveringen over AI, taal, beeld en gedrag, met een lesbrief en werkbladen. Ontwikkeld in samenspraak met leerkrachten van groep 6, 7 en 8. Leerlingen bespreken voorbeelden en onderzoeken hoe AI werkt.",
+    "purpose": "Leerlingen in de bovenbouw van het basisonderwijs laten kennismaken met de werking en toepassingen van AI.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "PO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Lespakket en bijbehorende afleveringen zijn publiek toegankelijk. Gericht op groep 6, 7 en 8.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Het Klokhuis: lespakket en downloads",
+        "url": "https://hetklokhuis.nl/dossier/168/het-klokhuis-over-ai/826/lespakket",
+        "sourceType": "official"
+      },
+      {
+        "label": "Het Klokhuis: docentenhandleiding (PDF)",
+        "url": "https://assets.hetklokhuis.nl/attachments/HetKlokhuis_AI_Docentenhandleiding-1.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Klokhuis",
+      "NTR",
+      "lesbrief",
+      "werkbladen",
+      "groep 6",
+      "groep 7",
+      "groep 8",
+      "taal",
+      "beeld"
+    ],
+    "notes": "De vermelding betreft het lespakket, niet de AI Studio als zelfstandige software. Publicatiedatum en specifieke hergebruiklicentie zijn niet vastgesteld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en beschikbaar materiaal gecontroleerd op 23 oktober 2026 op titel, herkomst, functie, doelgroep, toegang en beperkingen. Vergeleken met de actuele canonieke Atlasdata op titel, bron-URL en inhoud. Dit bevestigt de registratie, niet de effectiviteit of juridische geschiktheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-23",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "generation-ai-basislessen-6-8",
+    "title": "Generation AI – basislessen voor 6–8 jaar",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Lessenserie met docentenmateriaal",
+    "organizationIds": [],
+    "providerName": "Generation AI",
+    "description": "Nederlandstalige lessenserie voor leerlingen van 6 tot 8 jaar met vijf onderwerpen: informatie- en mediageletterdheid, verantwoord gebruik, communicatie, probleemoplossing en contentcreatie. De les Verantwoord gebruik bevat een docentenhandleiding, leeractiviteit en uitdaging over mogelijke schade en vertekening door AI.",
+    "purpose": "Leraren ondersteunen bij een eerste kennismaking met AI en digitale competenties voor jonge leerlingen.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "PO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Nederlandstalige overzichts- en lespagina met materiaal zijn openbaar toegankelijk. De uitgever biedt ook andere taalversies.",
+    "publicationDate": null,
+    "lastVerified": "2026-10-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Generation AI: Nederlandstalige lessenserie 6–8",
+        "url": "https://www.elearning.generation-ai.eu/nl/courses/lesson-plans-basic-6-8/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Generation AI: Verantwoord gebruik en lesmateriaal",
+        "url": "https://www.elearning.generation-ai.eu/nl/lessons/responsible-use/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Docentenhandleiding Verantwoord gebruik 6–8 (PDF)",
+        "url": "https://www.elearning.generation-ai.eu/wp-content/uploads/2022/11/ResponsibleUse-TutorHandbook-Dutch_6-8.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal; Nederlandstalige materialen online bruikbaar in Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "Generation AI",
+      "6-8 jaar",
+      "basisonderwijs",
+      "verantwoord gebruik",
+      "machine learning",
+      "bias",
+      "docentenhandleiding"
+    ],
+    "notes": "Het cursusoverzicht richt zich op 6–8 jaar; de algemene toelichting van de les Verantwoord gebruik noemt 6–12 jaar. De gekoppelde docentenhandleiding is gelabeld 6–8. Voor die les vermeldt de aanbieder 120 minuten en een laptop met internet voor leerlingen. Publicatiedatum en precieze hergebruiklicentie zijn niet vastgesteld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële detailpagina en beschikbaar materiaal gecontroleerd op 23 oktober 2026 op titel, herkomst, functie, doelgroep, toegang en beperkingen. Vergeleken met de actuele canonieke Atlasdata op titel, bron-URL en inhoud. Dit bevestigt de registratie, niet de effectiviteit of juridische geschiktheid.",
+    "changeHistory": [
+      {
+        "date": "2026-10-23",
+        "type": "added",
+        "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
+      }
+    ]
   }
 ]
