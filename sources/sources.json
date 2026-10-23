@@ -857,6 +857,85 @@
       "last_verified": "2026-09-28",
       "status": "active",
       "atlas_record_ids": ["nederlandse-gedragscode-wetenschappelijke-integriteit"]
+    },
+    {
+      "source_id": "dwengo-kiks-ai-klimaat-lespakket-primary",
+      "title": "Leerlingencursus KIKS (PDF)",
+      "author_or_organisation": "Natacha Gesquière; Sofie Meeus; Jan Van den Bulcke; Francis wyffels",
+      "publication_date": "2020-10",
+      "url_or_doi": "https://www.dwengo.org/assets/files/kiks/KIKS_leerlingencursus_eerstedruk.pdf",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "AI-geletterdheid",
+        "Lesgeven en leren met AI"
+      ],
+      "jurisdiction": "Educatief materiaal; geen bindende juridische werking",
+      "claims_supported": [
+        "Nederlandstalig STEM-lesproject over planten, klimaat en beeldherkenning. Leerlingen onderzoeken huidmondjes met AI. Het pakket omvat een leerlingencursus, leerkrachtenhandleiding en Python-notebooks."
+      ],
+      "reliability_notes": "Officieel aangeboden document inhoudelijk gecontroleerd op 23 oktober 2026; educatief werkmateriaal, geen onafhankelijk effectonderzoek.",
+      "limitations": "Vlaams materiaal voor de derde graad secundair onderwijs; VO is de redactionele Atlasindeling, geen bevestigde Nederlandse curriculumdekking. Leerlingencursus: eerste druk oktober 2020, CC BY-SA, Natacha Gesquière met coauteurs. Geen exacte publicatiedag vastgesteld. Programmeeronderdelen vragen Python; notebooks zijn niet uitgevoerd en afhankelijkheden kunnen verouderd zijn.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-10-23",
+      "status": "active",
+      "atlas_record_ids": [
+        "dwengo-kiks-ai-klimaat-lespakket"
+      ]
+    },
+    {
+      "source_id": "dwengo-taaltechnologie-chatbot-lespakket-primary",
+      "title": "Docentenhandleiding Chatbot (PDF)",
+      "author_or_organisation": "Natacha Gesquière; Veronique Hoste; Cynthia Van Hee; Francis wyffels",
+      "publication_date": "2021-08",
+      "url_or_doi": "https://www.dwengo.org/assets/files/chatbot/Chatbot_handleiding_eerstedruk.pdf",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "AI-geletterdheid",
+        "Lesgeven en leren met AI",
+        "Publieke waarden en ethiek"
+      ],
+      "jurisdiction": "Educatief materiaal; geen bindende juridische werking",
+      "claims_supported": [
+        "Nederlandstalig lespakket over taalverwerking, chatbots en sentimentanalyse. Bevat een docentenhandleiding, programmeeractiviteiten en een losse oefening over woordembeddings. Ethische vragen over taaldata komen aan bod."
+      ],
+      "reliability_notes": "Officieel aangeboden document inhoudelijk gecontroleerd op 23 oktober 2026; educatief werkmateriaal, geen onafhankelijk effectonderzoek.",
+      "limitations": "Voor de tweede en derde graad van het Vlaamse secundair onderwijs; VO is een redactionele indeling. Handleiding: eerste druk augustus 2021, Natacha Gesquière met coauteurs, CC BY-SA. Geen actuele beschrijving van de volledige generatieve-AI-markt. Python-onderdelen zijn niet uitgevoerd. De losse opdracht woordembeddings is afzonderlijk inhoudelijk gecontroleerd.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-10-23",
+      "status": "active",
+      "atlas_record_ids": [
+        "dwengo-taaltechnologie-chatbot-lespakket"
+      ]
+    },
+    {
+      "source_id": "ai-assessment-scale-21-werkmaterialen-primary",
+      "title": "AIAS 2.1 design assets (PDF)",
+      "author_or_organisation": "Learning Innovation Practice Ltd.; gebaseerd op Perkins, Roe, Furze en MacVaugh",
+      "publication_date": "2026",
+      "url_or_doi": "https://aiassessmentscale.com/wp-content/uploads/2026/09/ai-assessment-scale-2-1.pdf",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Toetsing en examinering",
+        "Lesgeven en leren met AI"
+      ],
+      "jurisdiction": "Educatief materiaal; geen bindende juridische werking",
+      "claims_supported": [
+        "Engelstalige schaal met vijf vormen van AI-gebruik bij toetsopdrachten. Het pakket bevat een PDF en bewerkbare presentaties voor het bespreken en vastleggen van verwachtingen rond AI in toetsing."
+      ],
+      "reliability_notes": "Officieel aangeboden document inhoudelijk gecontroleerd op 23 oktober 2026; educatief werkmateriaal, geen onafhankelijk effectonderzoek.",
+      "limitations": "AIAS 2.1 (2026) is gebaseerd op werk van Perkins, Roe, Furze en MacVaugh. De aangewezen ontwerpbestanden vallen onder CC BY-NC-SA 4.0; de websitetekst niet. Nederlandse vertalingen staan bij eerdere versies en zijn niet als vertaling van 2.1 geregistreerd. Geen certificering of bewijs dat een toets AI-bestendig is. De PDF is inhoudelijk gecontroleerd; de PowerPoint is alleen als downloadaanbod bevestigd.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-10-23",
+      "status": "active",
+      "atlas_record_ids": [
+        "ai-assessment-scale-21-werkmaterialen"
+      ]
     }
   ]
 }

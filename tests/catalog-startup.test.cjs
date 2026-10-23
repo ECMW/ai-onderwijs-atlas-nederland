@@ -159,6 +159,26 @@ test('home uses the full catalogue and the same query, sector, cost and offer fi
   assert.ok(app.document.querySelector('[data-facet="cost"]'));
 });
 
+test('root and every return home open the entire catalogue newest first', () => {
+  const app = boot({href:'https://example.org/atlas/'});
+  const expected = app.context.ATLAS_RECORDS.records.slice().sort((a,b) => {
+    const first = r => (r.changeHistory || []).filter(c => c.type === 'added' && /^\d{4}-\d{2}-\d{2}$/.test(c.date)).map(c => c.date).sort()[0] || '';
+    const ad = first(a), bd = first(b);
+    return bd.localeCompare(ad) || a.title.localeCompare(b.title, 'nl') || a.id.localeCompare(b.id);
+  }).map(r => r.id);
+  const check = () => {
+    assert.match(app.main.innerHTML, /value="added" selected/);
+    const actual = [...app.main.innerHTML.matchAll(/data-record-id="([^"]+)"/g)].map(m => m[1]);
+    assert.deepEqual(actual, Array.from(expected));
+  };
+  check();
+  app.navigate('#zoeken?sort=az');
+  assert.match(app.main.innerHTML, /value="az" selected/);
+  app.navigate('#home'); check();
+  app.navigate('#zoeken?sort=published-oldest');
+  app.navigate(''); check();
+});
+
 test('home rerenders notify optional widgets when a saved role is cleared', () => {
   const app = boot();
   let stored = JSON.stringify(['Docenten']);
@@ -166,6 +186,7 @@ test('home rerenders notify optional widgets when a saved role is cleared', () =
   app.context.localStorage.setItem = (key, value) => { stored = value; };
   app.context.localStorage.removeItem = () => { stored = null; };
   app.navigate('#home');
+  assert.match(app.main.innerHTML, /value="added" selected/);
   const clear = app.document.querySelector('.persona-clear');
   assert.ok(clear, 'Saved roles expose the clear control');
   let rendered = 0;

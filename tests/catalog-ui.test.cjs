@@ -648,7 +648,30 @@ test('removed and invalid sorting modes safely fall back without discarding filt
     assert.equal(api.getState().sort, 'relevant');
     assert.equal(api.getState().sector, 'PO');
   }
-  assert.deepEqual(Object.keys(load().options), ['relevant', 'published', 'published-oldest', 'az']);
+  assert.deepEqual(Object.keys(load().options), ['relevant', 'added', 'published', 'published-oldest', 'az']);
+});
+
+test('newest Atlas sorting uses the first valid addition and never a fresh verification', () => {
+  const item = (id, history, title = id) => ({...record(id, '2099-12-31', title), changeHistory: history});
+  const added = date => ({date, type:'added'});
+  const data = [
+    item('unknown', []),
+    item('old', [added('2020-01-01'), added('2026-10-23'), {date:'2099-12-31',type:'verified'}]),
+    item('b', [added('2026-10-23')], 'Same'),
+    item('a', [added('2026-10-23')], 'Same'),
+    item('invalid', [added('2026-02-30')])
+  ];
+  const api = load(data, '#zoeken?sort=added&sector=HBO');
+  assert.equal(api.getState().sort, 'added');
+  assert.deepEqual(api.sortRecords([...data]).map(r => r.id), ['a','b','old','invalid','unknown']);
+  const params = new URLSearchParams(api.stateHref().split('?')[1]);
+  assert.equal(params.get('sort'), 'added');
+  assert.equal(params.get('sector'), 'HBO');
+  const html = api.resultsMarkup();
+  assert.ok(html.indexOf('data-record-id="a"') < html.indexOf('data-record-id="old"'));
+  assert.ok(html.includes('Toegevoegd aan de Atlas op'));
+  assert.ok(html.includes('Toevoegdatum onbekend'));
+  assert.ok(html.includes('Een broncontrole verandert de toevoegdatum niet'));
 });
 test('chronological results are globally ordered, not grouped by type', () => {
   const api = load([record('unknown', null), record('dated', '2026-09-03')],
