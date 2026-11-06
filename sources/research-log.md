@@ -123,3 +123,12 @@ De technische toelatingspoort controleert vanaf deze tranche ook het
 ISBN-13-controlecijfer en de 978/979-prefix, dubbele ISBN's, niet-lege auteurs en
 het lijsttype van de taalcode. Daarmee is de uitbreiding schaalbaar zonder een
 nieuwe taxonomie, pagina of onderhoudsstroom te introduceren.
+
+
+## 2026-11-06 — Les- en werkmaterialen
+
+Veertien concrete materialen en collecties toegevoegd na primaire broncontrole,
+controle van toegang en vergelijking met de bestaande Atlas. Details en
+aangehouden kandidaten staan in `reports/materialen-broncontrole-2026-11-06.md`.
+De gedateerde CRAFT-voorbeeldles heeft een begrensde claimkoppeling; ongedateerde
+aanbodpagina's blijven in record.sourceUrls. Geen effectclaims toegevoegd.

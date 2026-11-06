@@ -936,6 +936,32 @@
       "atlas_record_ids": [
         "ai-assessment-scale-21-werkmaterialen"
       ]
+    },
+    {
+      "source_id": "stanford-craft-storytelling-2025",
+      "title": "Can AI help with storytelling?",
+      "author_or_organisation": "Imama Owaisi; aangepast door Julie Braly; Stanford CRAFT",
+      "publication_date": "2025-08-01",
+      "url_or_doi": "https://craft.stanford.edu/resource/can-ai-help-with-storytelling/",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "AI-geletterdheid",
+        "Lesgeven en leren met AI"
+      ],
+      "jurisdiction": "Educatief materiaal; geen juridische werking",
+      "claims_supported": [
+        "De CRAFT-collectie bevat een les over storytelling met AI met een docentenhandleiding en reflectie op creatieve keuzes."
+      ],
+      "reliability_notes": "Officiële lespagina en volledige gekoppelde handleiding gelezen. Oorspronkelijke publicatiedatum staat op de lespagina; laatst gewijzigd 7 september 2026.",
+      "limitations": "Eén gecontroleerde les onderbouwt geen kwaliteitsclaim over de hele collectie. Externe artikelen en tools kunnen eigen toegangseisen hebben. Geen uniforme open licentie vastgesteld.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-06",
+      "status": "active",
+      "atlas_record_ids": [
+        "stanford-craft-ai-lescollectie"
+      ]
     }
   ]
 }
