@@ -84,3 +84,9 @@ accountgebonden materiaal zijn zichtbaar.
 
 GitHub-controles, merge en live releasecontrole worden afzonderlijk vastgelegd;
 dit rapport is op zichzelf geen bewijs van publicatie.
+
+
+De automatische inzendingsscreening herkende drie samengestelde aanbiedersnamen
+niet letterlijk. Deze zijn aangescherpt naar de op de bronpagina zichtbare
+namen AI Pedagogy Project, Barefoot en Day of AI. De context over Harvard, BCS
+en MIT RAISE is behouden in de toelichting. Dit wijzigt geen controlebeleid.
