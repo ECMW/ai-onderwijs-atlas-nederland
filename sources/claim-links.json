@@ -343,6 +343,24 @@
       "last_reviewed": "2026-10-23",
       "time_sensitive": true,
       "review_by": "2027-01-21"
+    },
+    {
+      "claim_id": "stanford-craft-storytelling-aanbod",
+      "location": {
+        "path": "data/records.json",
+        "record_id": "stanford-craft-ai-lescollectie",
+        "field": "description"
+      },
+      "claim": "De CRAFT-collectie bevat een les over storytelling met AI met een docentenhandleiding en reflectie op creatieve keuzes.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "stanford-craft-storytelling-2025"
+      ],
+      "assessment": "Eén gecontroleerde les onderbouwt geen kwaliteitsclaim over de hele collectie. Externe artikelen en tools kunnen eigen toegangseisen hebben. Geen uniforme open licentie vastgesteld.",
+      "last_reviewed": "2026-11-06",
+      "time_sensitive": true,
+      "review_by": "2027-02-04"
     }
   ]
 }

@@ -34744,5 +34744,984 @@
         "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
       }
     ]
+  },
+  {
+    "id": "codeerschool-behind-the-chat-nl",
+    "title": "Behind the Chat – Nederlandse interactieve verhalen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "Cyberlite Books en Microsoft; Nederlandse vertaling door Dé Codeerschool",
+    "description": "Drie interactieve verhalen voor 12–18 jaar over privacy, afhankelijkheid van AI-advies en hechting aan chatbots. Elk verhaal duurt ongeveer een kwartier en biedt een aanleiding voor een klassengesprek.",
+    "purpose": "Leerlingen laten bespreken welke informatie en beslissingen zij aan een chatbot willen toevertrouwen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Gratis verhalen zonder account of registratie volgens de Nederlandse aanbiederspagina.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-06",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Nederlandse collectie",
+        "url": "https://codeerschool.nl/behind-the-chat/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Voorbeeld: Luistert er iemand mee?",
+        "url": "https://codeerschool.nl/behind-the-chat/luistert-er-iemand-mee/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-vriendschap",
+      "privacy",
+      "chatbots",
+      "oversharing",
+      "Cyberlite"
+    ],
+    "notes": "Nederlandse vertaling: CC BY-NC-SA 4.0 volgens de aanbieder. De collectie en voorbeeldpagina zijn gelezen; de interactieve verhalen zijn niet volledig doorgespeeld. Algemene uitspraken op de promotiepagina over alle chatbots zijn niet als feiten overgenomen.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Collectie, makers, gebruiksinstructie, licentievermelding en openbare beschrijving van het privacyverhaal gecontroleerd. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-06",
+        "type": "added",
+        "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "vu-vijf-activerende-ai-werkvormen",
+    "title": "Vijf activerende werkvormen om studenten te leren omgaan met AI",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [
+      "vrije-universiteit-amsterdam"
+    ],
+    "providerName": "Vrije Universiteit Amsterdam – Centre for Teaching & Learning",
+    "description": "Vijf uitgewerkte werkvormen: stellingen bespreken, teksten vergelijken, prompts reconstrueren, misvattingen onderzoeken en een probleem met AI verkennen. De pagina bevat instructies en reflectievragen.",
+    "purpose": "Kritisch bronnengebruik en bewuste keuzes rond AI in het onderwijs oefenen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Het beschreven werkmateriaal is gratis openbaar toegankelijk.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-06",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Werkvormen en instructies",
+        "url": "https://vu.nl/nl/medewerker/didactiek/5-activerende-werkvormen-om-studenten-te-leren-omgaan-met-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "activerend onderwijs",
+      "bronnen beoordelen",
+      "prompten",
+      "misinformatie"
+    ],
+    "notes": "Sommige opdrachten vragen toegang tot een AI-tool; eventuele toolkosten vallen buiten het gratis materiaal. Gebruik de tekstvergelijking niet als bewijs van AI-auteurschap. Voorbeeldstellingen zijn discussievragen, geen vaststaande feiten. HBO is een redactionele toepassingsindeling. Pagina gewijzigd op 8 september 2026; oorspronkelijke publicatiedatum en open licentie niet vastgesteld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Alle vijf werkvormen op de officiële VU-pagina inhoudelijk gelezen. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-06",
+        "type": "added",
+        "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "eur-teacheur-ai-assistent-bouwen",
+    "title": "TeachEUR – AI-assistent bouwen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [
+      "erasmus-universiteit-rotterdam"
+    ],
+    "providerName": "Erasmus Universiteit Rotterdam – Community for Learning & Innovation",
+    "description": "Werkvorm van meer dan 60 minuten waarin studenten een AI-assistent ontwerpen, laten beoordelen, testen en documenteren. Inclusief voorbeeldprompt en aandacht voor doelgroep, bronnen, risico’s en ontwerpkeuzes.",
+    "purpose": "Studenten onderbouwd laten beslissen welke taken zij aan een AI-assistent delegeren en hoe zij de uitkomsten beoordelen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Het beschreven werkmateriaal is gratis openbaar toegankelijk.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-06",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "TeachEUR: stappenplan en materialen",
+        "url": "https://www.eur.nl/onderwijsinnovatie/teacheur/ai-assistent-bouwen",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-assistent",
+      "peerfeedback",
+      "testscenario",
+      "rubric",
+      "delegatie"
+    ],
+    "notes": "Gratis instructies; uitvoering vraagt een laptop en toegang tot een passend AI-platform. De docent bereidt een voorbeeld en beoordelingscriteria voor. Platformtoegang kan betaald zijn. HBO is een redactionele toepassingsindeling. Geen open hergebruiklicentie of oorspronkelijke publicatiedatum vastgesteld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Alle zes stappen, benodigde materialen en toegangseisen gelezen op de officiële EUR-pagina. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-06",
+        "type": "added",
+        "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "hva-activitool-ai-werkvormen",
+    "title": "ActiviTool – vier AI-werkvormen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [
+      "hogeschool-van-amsterdam"
+    ],
+    "providerName": "Hogeschool van Amsterdam – ActiviTool",
+    "description": "Vier werkvormen over feedback en bewuste AI-inzet: Feedback van een Guru, De AI-joker, Kwaliteitsbesef met AI-feedback en Prompt-battle. Met lesstappen en aanwijzingen voor voorbereiding en reflectie.",
+    "purpose": "Studenten hun AI-keuzes laten onderbouwen en de kwaliteit van AI-uitvoer laten bespreken.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Het beschreven werkmateriaal is gratis openbaar toegankelijk.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-06",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "HvA: overzicht van de vier werkvormen",
+        "url": "https://www.hva.nl/nieuws/2026/1/ontdek-de-nieuwe-ai-werkvormen",
+        "sourceType": "official"
+      },
+      {
+        "label": "Prompt-battle: instructies",
+        "url": "https://activitool.nl/werkvormen/prompt-battle-wie-verkrijgt-de-beste-output/",
+        "sourceType": "official"
+      },
+      {
+        "label": "De AI-joker: instructies",
+        "url": "https://activitool.nl/werkvormen/de-ai-joker-een-kans-gebruik-m-wijs/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AI-joker",
+      "prompt-battle",
+      "feedback",
+      "kwaliteitsbesef"
+    ],
+    "notes": "De aankondiging noemt vier werkvormen; Prompt-battle en De AI-joker zijn inhoudelijk gecontroleerd. Uitvoering vraagt passende AI-toegang; mogelijke toolkosten zijn niet inbegrepen. Gesimuleerde expertfeedback is geen echte beoordeling door die expert. Geen algemene open licentie of oorspronkelijke publicatiedatum van de collectie vastgesteld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële HvA-aankondiging en twee volledige ActiviTool-stappenplannen gelezen. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-06",
+        "type": "added",
+        "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "stanford-craft-ai-lescollectie",
+    "title": "Stanford CRAFT – vakgerichte AI-lessen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "Stanford CRAFT; verschillende lesmakers en partnerorganisaties",
+    "description": "Collectie lesplannen voor het voortgezet onderwijs over AI in onder meer taal, maatschappij en wetenschap. Lespagina’s verwijzen naar docentenmateriaal; onderwerpen omvatten verhalen maken en algoritmen onderzoeken.",
+    "purpose": "AI-geletterdheid verbinden aan vakinhoud en kritisch onderzoek naar AI-toepassingen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "De gecontroleerde lespagina’s en docentenhandleiding zijn openbaar. Externe tools en artikelen kunnen aanvullende toegang vereisen.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-06",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "CRAFT-lescollectie",
+        "url": "https://craft.stanford.edu/resources/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Gecontroleerde voorbeeldles: storytelling",
+        "url": "https://craft.stanford.edu/resource/can-ai-help-with-storytelling/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Docentenhandleiding storytelling",
+        "url": "https://docs.google.com/document/d/1YSm80gA3o2TLc9v5e4QgztLFlmSzek-vvOeuY3rUD7w/edit",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "CRAFT",
+      "vakintegratie",
+      "storytelling",
+      "algoritmen",
+      "bias"
+    ],
+    "notes": "Steekproef: de storytellinghandleiding van Imama Owaisi, aangepast door Julie Braly, is volledig gelezen. Deze les vraagt externe artikelen en AI-tools; toegang en kosten daarvan kunnen verschillen. De collectie omvat ook materiaal van partners. Geen uniforme hergebruiklicentie vastgesteld; controleer die per les. VO is een redactionele vertaling van de Amerikaanse doelgroep.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Collectie, twee lesdetailpagina’s en de rechtstreeks opgehaalde storytellinghandleiding gecontroleerd. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-06",
+        "type": "added",
+        "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "ai-pedagogy-project-opdrachten",
+    "title": "AI Pedagogy Project – opdrachten voor kritisch AI-gebruik",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "AI Pedagogy Project",
+    "description": "Verzameling onderwijsopdrachten over kritisch en verantwoord AI-gebruik. Voorbeelden zijn het terugkijken op een AI-ervaring en het verbinden van persoonlijke waarden aan ethische vragen.",
+    "purpose": "Docenten werkvormen bieden om menselijke afwegingen, eigen ervaringen en waarden rond AI bespreekbaar te maken.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Het beschreven werkmateriaal is gratis openbaar toegankelijk.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-06",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Opdrachtencollectie",
+        "url": "https://aipedagogy.org/assignments/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Map a Moment",
+        "url": "https://aipedagogy.org/assignment/map-a-moment-reflecting-on-ai-experiences/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Values Bridge",
+        "url": "https://aipedagogy.org/assignment/values-bridge-connecting-values-to-ethical-perspectives/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Herkomst en makers",
+        "url": "https://aipedagogy.org/about/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Hergebruikvoorwaarden",
+        "url": "https://aipedagogy.org/using-our-content/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "reflectie",
+      "waarden",
+      "ethiek",
+      "Harvard",
+      "menselijke regie"
+    ],
+    "notes": "Het project is ontstaan bij metaLAB (at) Harvard en verzamelt bijdragen van afzonderlijke docenten. De opdrachten hebben eigen auteurs; vermeld deze naast het project bij hergebruik. Het project vermeldt CC BY-NC-SA 4.0. Map a Moment kan ook met een gehoorde ervaring worden uitgevoerd. Niet iedere opdracht vereist een AI-account; externe tools kunnen eigen voorwaarden hebben. HBO/WO zijn redactionele toepassingslabels.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Collectie, herkomst, licentiepagina en instructies van Map a Moment en Values Bridge gelezen. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-06",
+        "type": "added",
+        "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "microbit-developing-ai-literacy-lessen",
+    "title": "Developing AI literacy with the micro:bit – acht lessen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "Micro:bit Educational Foundation",
+    "description": "Lessenreeks voor 11–14 jaar met lesplannen, presentaties en werkbladen. Leerlingen bespreken AI en datagebruik, verzamelen bewegingsdata en trainen, testen en verbeteren een model voor een bewegingstimer.",
+    "purpose": "Leerlingen laten onderzoeken hoe data, menselijke keuzes en modeltests samenhangen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Het beschreven werkmateriaal is gratis openbaar toegankelijk.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-06",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Volledige lessenreeks",
+        "url": "https://microbit.org/teach/lessons/developing-ai-literacy-with-the-microbit/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Les 1 en werkmateriaal",
+        "url": "https://microbit.org/teach/lessons/talking-about-ai/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Gecontroleerd lesplan 1 (DOCX)",
+        "url": "https://cdn.sanity.io/files/ajwvhvgo/production/12372b97bb8020eee18a432ae73a4dd6e55a8944.docx",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "micro:bit",
+      "CreateAI",
+      "bewegingsdata",
+      "machine learning",
+      "unplugged"
+    ],
+    "notes": "Lessen 1, 2, 5 en 8 zijn unplugged; andere lessen gebruiken micro:bit CreateAI en micro:bit-hardware. Hardwarekosten vallen buiten het gratis materiaal. Site vermeldt CC BY-SA 4.0. Lesplan 1 is inhoudelijk gelezen; de volledige reeks is niet uitgevoerd. VO is een redactionele toepassingsindeling.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Reeksoverzicht, les 1, downloadspecificatie, licentievermelding en DOCX-lesplan gecontroleerd. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-06",
+        "type": "added",
+        "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "thetech-machine-learning-unplugged",
+    "title": "Machine Learning Unplugged – dieren classificeren met data",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "The Tech Interactive",
+    "description": "Printbare groepsactiviteit van ongeveer 45 minuten voor grades 4–12. Leerlingen testen en verbeteren classificatieregels met kaarten van dieren; de site biedt een lesplan, datasets en antwoorden.",
+    "purpose": "Zonder computer het verschil tussen trainingsdata, testen en bijstellen van classificaties verkennen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Het beschreven werkmateriaal is gratis openbaar toegankelijk.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-06",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Activiteit en downloads",
+        "url": "https://www.thetech.org/education/education-resources/lessons/machine-learning-unplugged/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Lesplan (PDF)",
+        "url": "https://www.thetech.org/media/x5bgn0mj/lesson-machinelearningunplugged.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "unplugged",
+      "trainingsdata",
+      "testdata",
+      "dieren",
+      "classificatie"
+    ],
+    "notes": "De PDF vermeldt een update in maart 2024; oorspronkelijke publicatiedatum onbekend. Geen expliciete open hergebruiklicentie vastgesteld. Een papieren simulatie, geen uitvoering van een echt getraind model. PO betreft de bovenbouw; sectorindeling is redactioneel.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële activiteit en PDF gecontroleerd op voorbereiding, opbouw, doelgroep en benodigde materialen. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-06",
+        "type": "added",
+        "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "barefoot-ai-explorers-lesreeksen",
+    "title": "Barefoot AI Explorers – lesreeksen voor 5–11 jaar",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "Barefoot",
+    "description": "Twee opeenvolgende lessenreeksen: vier lessen voor 5–7 jaar en zeven voor 7–11 jaar. Praktische activiteiten en gesprekken over data, training, gegenereerde inhoud en de maatschappelijke rol van AI.",
+    "purpose": "Basisschoolleerlingen leeftijdsgericht laten kennismaken met AI en de keuzes achter systemen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Gratis lesmateriaal; registratie nodig om de bestanden te downloaden. De downloads zijn niet inhoudelijk gecontroleerd.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-06",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Level 1: 5–7 jaar",
+        "url": "https://www.barefootcomputing.org/resources/ai-explorers-level-1",
+        "sourceType": "official"
+      },
+      {
+        "label": "Level 2: 7–11 jaar",
+        "url": "https://www.barefootcomputing.org/resources/ai-explorers-level-2",
+        "sourceType": "official"
+      },
+      {
+        "label": "Officiële toelichting",
+        "url": "https://www.computingatschool.org.uk/resources/2026/april/barefoot-ai-explorers/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "registration_required",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Barefoot",
+      "basisonderwijs",
+      "AI Explorers",
+      "data",
+      "unplugged"
+    ],
+    "notes": "Barefoot is een onderwijsproject van BCS. De twee actuele aanbodpagina’s zijn gecontroleerd. Downloads vereisen registratie en zijn niet ingezien. Niet verwarren met de oudere drie losse AI Explorers-activiteiten. Britse curriculumkoppelingen zijn geen bevestiging van Nederlandse kerndoeldekking. Hergebruiklicentie niet vastgesteld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Doelgroepen, lesaantallen, inhoudsopgave en registratievereiste op de officiële detailpagina’s vastgesteld. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-06",
+        "type": "added",
+        "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "day-of-ai-curriculum-materialen",
+    "title": "Day of AI – lessen en werkmaterialen voor AI-geletterdheid",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "Day of AI",
+    "description": "Engelstalige curriculumcollectie met leeftijdsgerichte lessen en docentenmateriaal. Voorbeelden zijn patroonherkenning voor 6–7 jaar en broncontrole van AI-inhoud voor leerlingen vanaf 11 jaar.",
+    "purpose": "Docenten lessen bieden over de werking van AI, menselijk oordeel en kritisch informatiegebruik.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Gratis aanbod; aanmelden of registreren nodig voor alle lesbestanden. Overzichten en lesbeschrijvingen zijn openbaar.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-06",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Curriculum en materialen",
+        "url": "https://dayofai.org/curriculum-resources",
+        "sourceType": "official"
+      },
+      {
+        "label": "Learning from Patterns",
+        "url": "https://dayofai.org/units/grade-1-learning-from-patterns",
+        "sourceType": "official"
+      },
+      {
+        "label": "Truth, Tricks, and AI",
+        "url": "https://dayofai.org/units/truth-tricks-and-ai-learning-to-verify-information",
+        "sourceType": "official"
+      },
+      {
+        "label": "MIT RAISE: herkomst",
+        "url": "https://raise.mit.edu/resources/curricula/day-of-ai/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "registration_required",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Day of AI",
+      "MIT",
+      "patronen",
+      "broncontrole",
+      "lateral reading"
+    ],
+    "notes": "Het curriculuminitiatief wordt ook beschreven door MIT RAISE. Openbare beschrijvingen van twee modules gecontroleerd. Volledige docenten- en leerlingdownloads vragen registratie en zijn niet ingezien; een kopieerlink naar slides vraagt Google-aanmelding. Geen algemene hergebruiklicentie vastgesteld. PO/VO zijn redactionele doelgroepindelingen.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Curriculumoverzicht, MIT-projectpagina en twee modulepagina’s gecontroleerd, inclusief de zichtbare toegangsdrempel. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-06",
+        "type": "added",
+        "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "samen-leren-redeneren-generatieve-ai",
+    "title": "Samen leren redeneren over generatieve AI",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "Emmy Stevens en Leonie Sliepenbeek; gepubliceerd via Neerlandistiek",
+    "description": "Docentenhandleiding voor een werkvorm waarin leerlingen romanfragmenten en een zakelijk artikel vergelijken, argumenten bespreken en een beargumenteerde tekst schrijven over technologie in hun schoolleven.",
+    "purpose": "Literatuuronderwijs en argumentatie verbinden aan reflectie op generatieve AI en technologische invloed.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Het beschreven werkmateriaal is gratis openbaar toegankelijk.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-06",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Docentenhandleiding (PDF)",
+        "url": "https://neerlandistiek.nl/wp-content/uploads/2026/01/Docentenhandleiding-bij-werkvorm-samen-leren-redeneren-over-generatieve-AI.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "literatuur",
+      "Alter",
+      "argumentatie",
+      "Nederlands",
+      "schrijven"
+    ],
+    "notes": "Ontwikkeld voor de HSN-conferentie 2025. De twee pagina’s tellende handleiding is gelezen. Vereist fragmenten uit hoofdstuk 2 en 13 van Alter en een passend zakelijk artikel; die teksten zijn niet in deze handleiding opgenomen. Beschikbaarheid en gebruiksrechten daarvan moet de docent regelen. Geen open licentie of exacte oorspronkelijke publicatiedatum vastgesteld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Titel, auteurs, volledige werkvorm, differentiatie en benodigde aanvullende teksten rechtstreeks in de PDF gecontroleerd. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-06",
+        "type": "added",
+        "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "common-sense-ai-literacy-lessons",
+    "title": "Common Sense – AI Literacy Lessons voor grades 6–12",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "Common Sense Education",
+    "description": "Lessen over AI-basiskennis, trainingsdata, bias, chatbots, deepfakes en bronbeoordeling. De collectie combineert korte activiteiten voor grades 6–8 met langere lessen voor grades 9–12.",
+    "purpose": "Leerlingen laten nadenken over de werking en sociale gevolgen van AI.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Gratis lessen na aanmelding of registratie. Openbare samenvattingen; accountgebonden materialen niet ingezien.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-06",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Lescollectie",
+        "url": "https://www.commonsense.org/education/collections/ai-literacy-lessons-for-grades-k-12",
+        "sourceType": "official"
+      },
+      {
+        "label": "Voorbeeldles: What is AI?",
+        "url": "https://www.commonsense.org/education/digital-literacy/what-is-ai-0",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "registration_required",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Common Sense",
+      "bias",
+      "deepfakes",
+      "chatbots",
+      "mediawijsheid"
+    ],
+    "notes": "De bredere collectie bevat ook algemene mediawijsheid voor K–5; deze Atlas-vermelding betreft de AI-lessen voor grades 6–12. Voorbeeldles en toegang in een verse browser gecontroleerd: slides, video en handouts zijn afgeschermd tot aanmelding. Deze bestanden zijn niet ingezien. Geen volledige hergebruiklicentie vastgesteld; gratis betekent niet vrij te bewerken. VO is redactioneel.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Collectie en voorbeeldles gecontroleerd; de browser bevestigt gratis toegang na aanmelding en toont de typen lesbestanden. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-06",
+        "type": "added",
+        "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "codeai-ai-for-oceans",
+    "title": "AI for Oceans – interactieve les over machine learning",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "CodeAI (voorheen Code.org)",
+    "description": "Interactieve introductieles waarin leerlingen afbeeldingen labelen en onderzoeken hoe trainingsvoorbeelden de classificatie beïnvloeden. Met een docentenhandleiding van ongeveer 45 minuten en gesprekken over bias.",
+    "purpose": "Leerlingen laten oefenen met trainen en testen en laten zien hoe menselijke labels modeluitkomsten beïnvloeden.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Gecontroleerde start, eerste oefening en handleiding zijn gratis toegankelijk zonder account.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-06",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Start de activiteit",
+        "url": "https://code.org/oceans",
+        "sourceType": "official"
+      },
+      {
+        "label": "Docentenhandleiding (PDF)",
+        "url": "https://lesson-plans.code.org/oceans/fallback/teacher-lesson-plans/AI-for-Oceans.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "AI for Oceans",
+      "Code.org",
+      "CodeAI",
+      "trainingsdata",
+      "bias"
+    ],
+    "notes": "De start en eerste classificatieoefening zijn zonder account geopend; de volledige activiteit is niet doorlopen. Engels gecontroleerd; geen Nederlandse versie vastgesteld. De historische voorbeelden in de handleiding zijn niet als actuele maatschappelijke feiten overgenomen. PO betreft midden- en bovenbouw; sectorindeling is redactioneel. Hergebruikvoorwaarden van afzonderlijke media niet vastgesteld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële PDF inhoudelijk gelezen en de actuele interactieve oefening in een verse browser geopend. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-06",
+        "type": "added",
+        "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "rocva-f-werken-met-generatieve-ai-lespakket",
+    "title": "Werken met generatieve AI – mbo-lespakket",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "ROC van Amsterdam – Flevoland, House of Digital en Team Content Creation",
+    "description": "Nederlandstalig pakket met negen lessen en een examenonderdeel. Het biedt e-learnings, presentaties, challenges, zelftesten, feedbackformulieren en een docentenhandleiding voor beroepsgericht werken met generatieve AI.",
+    "purpose": "Mbo-studenten laten oefenen met AI-toepassingen, bronbeoordeling en het onderbouwen van eigen keuzes.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Lespakket en docentenhandleiding openbaar en gratis. Aanvullende assistent is instellingsgebonden; externe AI-tools hebben eigen voorwaarden.",
+    "publicationDate": "2026-09-23",
+    "lastVerified": "2026-11-06",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Oorspronkelijk lespakket",
+        "url": "https://xerte.talnet.nl/play.php?template_id=8993",
+        "sourceType": "official"
+      },
+      {
+        "label": "Edusources: herkomst en publicatie",
+        "url": "https://edusources.nl/materials/cxp:learning_material:edurep::dGFsbmV0Omh0dHBzOi8veGVydGUudGFsbmV0Lm5sLzg5OTM",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "mbo",
+      "keuzedeel 1499",
+      "beroepsonderwijs",
+      "challenges",
+      "peerfeedback",
+      "Xerte"
+    ],
+    "notes": "Edusources vermeldt 23 september 2026 en keuzedeel 1499. De originele site vermeldt doorontwikkeling tot november 2026. Docentenhandleiding noemt mbo 2–4 en LLO. De aanvullende GenAI-assistent is alleen voor ROCvA–F. Oorspronkelijke bron: tekst en educatieve inhoud CC BY-NC-SA 4.0, video/animatie CC BY-NC-ND en afzonderlijke hergebruikbeperking voor afbeeldingen. Edusources toont algemeen BY-NC-ND; raadpleeg daarom de specifieke voorwaarden in het materiaal. Geen examenvaliditeit of juridische volledigheid vastgesteld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Edusources-detail, originele startpagina, lesoverzicht en docentenhandleiding in de browser gelezen. Niet alle downloads of examens zijn uitgevoerd. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-06",
+        "type": "added",
+        "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      }
+    ]
   }
 ]
