@@ -193,7 +193,7 @@ test('home rerenders notify optional widgets when a saved role is cleared', () =
   app.context.addEventListener('atlas:home-rendered', () => { rendered++; });
   clear.onclick();
   assert.equal(rendered, 1);
-  assert.ok(app.document.querySelector('[data-atlas-visit-count]'));
+  assert.equal(app.document.querySelector('[data-atlas-visit-count]'), null);
   assert.equal(app.context.ATLAS_STARTUP.status, 'ready');
 });
 
