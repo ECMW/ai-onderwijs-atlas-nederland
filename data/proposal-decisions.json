@@ -27,6 +27,41 @@
       "decision": "rejected",
       "decidedAt": "2026-09-14T14:09:00Z",
       "reason": "De actuele artikelen tonen activiteit binnen de bestaande SURF-community, maar geen wijziging van het geregistreerde community-aanbod."
+    },
+    {
+      "proposalId": "proposal-d0c430d5d51b7b9c",
+      "evidenceHash": "4671529e12aa4dfea37723b7c61d52894b25ae3d931fa02f664d650acfb329a0",
+      "decision": "rejected",
+      "decidedAt": "2026-11-07T16:42:00Z",
+      "reason": "Archiefsignaal is een false positive: de officiële Radboud/NOLAI-pagina en whitepaperdownload zijn bereikbaar."
+    },
+    {
+      "proposalId": "proposal-e1d675d3cc8dadb0",
+      "evidenceHash": "87222bee857775268f7505d3d6f756799c95f2818beef3e6d5dbb7b84fa68f38",
+      "decision": "rejected",
+      "decidedAt": "2026-11-07T16:42:00Z",
+      "reason": "Archiefsignaal is een false positive: de officiële Radboud/NOLAI-pagina en whitepaperdownload zijn bereikbaar."
+    },
+    {
+      "proposalId": "proposal-31ef0270c03a1fba",
+      "evidenceHash": "1142779dc7f64efcd8ad84b5381b3f87ad483d397e94363331fe8c5c594ce709",
+      "decision": "rejected",
+      "decidedAt": "2026-11-07T16:42:00Z",
+      "reason": "De bronlink is niet verdwenen: de officiële Npuls- en SURF-pagina's zijn bereikbaar. Het verstreken event is afzonderlijk als gearchiveerd verwerkt."
+    },
+    {
+      "proposalId": "proposal-43306acd3ea469f0",
+      "evidenceHash": "76c0379e47ab85fa595702ba23ce39b6018316950bc5fb24028c55d3b05112bf",
+      "decision": "rejected",
+      "decidedAt": "2026-11-07T16:42:00Z",
+      "reason": "Archiefsignaal is een false positive: de officiële SURF-communitypagina is bereikbaar en toont actuele activiteit."
+    },
+    {
+      "proposalId": "proposal-050c4b0c2f15c4de",
+      "evidenceHash": "e10b99d8d1211ecc345784c70a20199f1199b4d078a886ec4181d80abb41356e",
+      "decision": "rejected",
+      "decidedAt": "2026-11-07T16:42:00Z",
+      "reason": "Archivering is onjuist: de officiële Regieorgaan SIA-call is bereikbaar. De inmiddels gesloten status is afzonderlijk in het bestaande record bijgewerkt."
     }
   ]
 }
