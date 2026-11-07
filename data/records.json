@@ -4897,12 +4897,12 @@
       "Onderzoek",
       "Implementatie en adoptie"
     ],
-    "status": "open_call",
-    "availabilityText": "Aanvragen kan tot 15 september 2026 om 14.00 uur CEST; de ronde kan eerder sluiten als het subsidieplafond wordt bereikt.",
+    "status": "closed_call",
+    "availabilityText": "Gesloten: de uiterste indieningsdatum was 15 september 2026 om 14.00 uur CEST.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-09-14",
+    "lastVerified": "2026-11-07",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -4930,7 +4930,7 @@
       "Universiteiten",
       "Onderzoeksorganisaties"
     ],
-    "callStatus": "open_call",
+    "callStatus": "closed_call",
     "recurrence": null,
     "language": [
       "nl"
@@ -4943,7 +4943,7 @@
     ],
     "notes": "De regeling vereist minimaal twee praktijkpartners, waaronder minimaal één in Nederland gevestigde mkb-onderneming, en 25% cofinanciering door de praktijkpartners.",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "De officiële Regieorgaan SIA-call bevestigt de open status, sluiting op 15 september 2026 om 14.00 uur CEST, maximaal € 40.000 per aanvraag en een subsidieplafond van € 1.800.000.",
+    "verificationNote": "Gerichte actualiteitscontrole op 7 november 2026: de officiële Regieorgaan SIA-call toont de status Gesloten en bevestigt de sluiting op 15 september 2026 om 14.00 uur CEST. Bedragen en deelnamevoorwaarden zijn ongewijzigd.",
     "changeHistory": [
       {
         "date": "2026-07-12",
@@ -4954,6 +4954,11 @@
         "date": "2026-09-14",
         "type": "updated",
         "summary": "Actuele officiële call-URL, exacte sluitingstijd, aanvragerstypen en cofinancieringsvoorwaarde toegevoegd na broncontrole."
+      },
+      {
+        "date": "2026-11-07",
+        "type": "updated",
+        "summary": "Status gesloten verwerkt na controle van de actuele officiële SIA-call."
       }
     ]
   },
@@ -20898,12 +20903,12 @@
       "Beleid en governance",
       "Professionalisering"
     ],
-    "status": "planned",
-    "availabilityText": "Gratis workshop; inschrijving geopend voor 25 september 2026",
+    "status": "archived",
+    "availabilityText": "De gratis workshop vond plaats op 25 september 2026; de officiële bronpagina blijft als documentatie beschikbaar.",
     "startDate": "2026-09-25",
     "endDate": "2026-09-25",
     "publicationDate": null,
-    "lastVerified": "2026-08-28",
+    "lastVerified": "2026-11-07",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -20939,12 +20944,19 @@
       "governance",
       "onderwijscases"
     ],
-    "notes": "Fysieke workshop bij SURF in Utrecht.",
+    "notes": "Fysieke workshop bij SURF in Utrecht. Geen nieuwe editie op deze bronpagina vastgesteld.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Gerichte actualiteitscontrole op 7 november 2026: de officiële Npuls-agenda bevestigt datum, tijd, locatie en doelgroep van de verstreken workshop; geen nieuwe editie op deze pagina vastgesteld.",
     "changeHistory": [
       {
         "date": "2026-08-28",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      },
+      {
+        "date": "2026-11-07",
+        "type": "updated",
+        "summary": "Verstreken workshop gearchiveerd na controle van de nog bereikbare officiële agenda."
       }
     ]
   },
@@ -35721,6 +35733,83 @@
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      }
+    ]
+  },
+  {
+    "id": "npuls-ai-onderwijspraktijk-edugenai-training",
+    "title": "AI in de Onderwijspraktijk met eduGenAI – trainingsmateriaal",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [
+      "org-npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Open driedaags trainingspakket voor onderwijsprofessionals met presentaties, opdrachten, reflectie, verdieping, gesprekskaarten, een promptframework, good practices en materiaal voor het uitwerken van een eigen AI-usecase.",
+    "purpose": "Docenten en ondersteuners laten oefenen met bewuste, didactische, pedagogische en ethische inzet van generatieve AI.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Ondersteunend personeel"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Professionalisering"
+    ],
+    "status": "pilot",
+    "availabilityText": "Het Nederlandstalige trainingsmateriaal is gratis openbaar te lezen, downloaden en aanpassen; gebruik van het eduGenAI-platform zelf vraagt deelname van de instelling aan de pilot.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-07",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Nederlandstalig trainingsmateriaal op Wikiwijs",
+        "url": "https://maken.wikiwijs.nl/224649#!page-8705636",
+        "sourceType": "official"
+      },
+      {
+        "label": "Npuls-aankondiging van landelijke beschikbaarheid",
+        "url": "https://npuls.nl/nieuws/trainingen-ai-in-de-onderwijspraktijk-van-start",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "edugenai-uitbreiding-pilot",
+      "npuls"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "eduGenAI",
+      "prompting",
+      "pedagogiek",
+      "didactiek",
+      "gesprekskaarten",
+      "usecase"
+    ],
+    "notes": "Wikiwijs vermeldt CC BY 4.0 en laatste wijziging op 13 oktober 2026; een oorspronkelijke publicatiedatum is niet vastgesteld. De welkomspagina, colofon, inhoudsopgaven en inleidingen van alle drie trainingsdagen zijn gelezen. Afzonderlijke presentaties en alle opdrachten zijn niet volledig inhoudelijk doorgelopen. De materialen zijn publiek; eduGenAI zelf is alleen beschikbaar voor instellingen die aan de pilot deelnemen.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Landelijke beschikbaarheid, drie trainingsdagen, materiaaltypen, doelgroep, openbare toegang, downloadmogelijkheden, Nederlandstalige en Engelstalige variant en CC BY 4.0 gecontroleerd via de officiële Npuls- en Wikiwijs-pagina's. Steekproef op de drie daginleidingen; niet elk afzonderlijk bestand volledig gelezen. Controle op 7 november 2026 en vergeleken met alle canonieke records op titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-07",
+        "type": "added",
+        "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
       }
     ]
   }
