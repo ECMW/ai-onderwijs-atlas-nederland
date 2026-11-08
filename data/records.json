@@ -35812,5 +35812,372 @@
         "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
       }
     ]
+  },
+  {
+    "id": "experience-ai-llms-learning-13-16",
+    "title": "Experience AI – Using LLMs strategically for learning (13–16)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "Raspberry Pi Foundation / Google DeepMind",
+    "description": "Engelstalige lessenreeks van vijf lessen over de werking van taalmodellen, typen feedback, prompten, het beoordelen van AI-uitvoer en verantwoord gebruik van LLM's bij het leren.",
+    "purpose": "Leerlingen laten onderzoeken hoe taalmodellen werken en hen laten oefenen met kritisch en doelgericht gebruik bij het leren.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Het moduleoverzicht en de lesdoelen zijn openbaar; lesplannen, slides en activiteiten zijn gratis na aanmelding met een Raspberry Pi Foundation-account.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-08",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Experience AI: moduleoverzicht",
+        "url": "https://experience-ai.org/en/units/using-llms-strategically-for-learning-13-16",
+        "sourceType": "official"
+      },
+      {
+        "label": "Les 1: What are large language models?",
+        "url": "https://experience-ai.org/en/units/using-llms-strategically-for-learning-13-16/lessons/32",
+        "sourceType": "official"
+      },
+      {
+        "label": "Les 5: My responsible use of LLMs",
+        "url": "https://experience-ai.org/en/units/using-llms-strategically-for-learning-13-16/lessons/36",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "experience-ai-understanding-ai-11-14"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "registration_required",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Experience AI",
+      "large language models",
+      "prompting",
+      "factchecking",
+      "overreliance"
+    ],
+    "notes": "De bron noemt 24 september 2026 als update van het moduleoverzicht; dit is niet als oorspronkelijke publicatiedatum overgenomen. Lesdoelen en lesstructuren van les 1 en les 5 zijn gelezen. De downloads zijn accountgebonden en niet ingezien. Een hergebruiklicentie voor de afzonderlijke bestanden is niet vastgesteld; gratis betekent niet vrij te bewerken.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officieel moduleoverzicht en de openbare detailpagina's van de eerste en laatste les gecontroleerd. De vijf lessen, leeftijd, leerdoelen, gratis accounttoegang en aanbieders zijn bevestigd. De accountgebonden bestanden zijn niet volledig gelezen en er is geen effectiviteitsclaim vastgesteld. Controle op 8 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-08",
+        "type": "added",
+        "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      }
+    ]
+  },
+  {
+    "id": "experience-ai-ai-safety-11-14",
+    "title": "Experience AI – AI safety (11–14)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "Raspberry Pi Foundation / Google DeepMind",
+    "description": "Engelstalige lessenreeks met drie lessen over persoonsgegevens en AI, mediawijsheid en desinformatie, en verantwoordelijk gebruik van generatieve AI.",
+    "purpose": "Leerlingen laten oefenen met privacy, factchecking en verantwoordelijk gebruik van AI-toepassingen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Het moduleoverzicht en de lesdoelen zijn openbaar; lesplannen, slides en activiteiten zijn gratis na aanmelding met een Raspberry Pi Foundation-account.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-08",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Experience AI: moduleoverzicht",
+        "url": "https://experience-ai.org/en/units/ai-safety-11-14",
+        "sourceType": "official"
+      },
+      {
+        "label": "Les: Your data and AI",
+        "url": "https://experience-ai.org/en/units/ai-safety-11-14/lessons/9",
+        "sourceType": "official"
+      },
+      {
+        "label": "Les: Using AI tools responsibly",
+        "url": "https://experience-ai.org/en/units/ai-safety-11-14/lessons/11",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "experience-ai-understanding-ai-11-14"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "registration_required",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Experience AI",
+      "privacy",
+      "desinformatie",
+      "deepfakes",
+      "verantwoord gebruik"
+    ],
+    "notes": "De bron noemt 11 juli 2025 als update van de docentenhandleiding; dit is niet als oorspronkelijke publicatiedatum overgenomen. Lesdoelen en lesstructuren van twee van de drie lessen zijn gelezen. De downloads zijn accountgebonden en niet ingezien. Een hergebruiklicentie is niet vastgesteld. De leeftijd 11–14 is redactioneel gekoppeld aan PO en VO.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officieel moduleoverzicht en twee openbare lesdetailpagina's gecontroleerd. De drie lessen, leeftijd, leerdoelen, gratis accounttoegang en aanbieders zijn bevestigd. De accountgebonden bestanden zijn niet volledig gelezen en er is geen effectiviteitsclaim vastgesteld. Controle op 8 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-08",
+        "type": "added",
+        "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      }
+    ]
+  },
+  {
+    "id": "experience-ai-social-media-8-12",
+    "title": "Experience AI – AI and Social Media (8–12)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "Raspberry Pi Foundation / Google DeepMind",
+    "description": "Engelstalige lessenreeks van drie lessen waarin leerlingen via een klassensimulatie onderzoeken hoe sociale-mediafeeds reageren op gedrag, hoe engagement wordt gestuurd en hoe berichten aandacht trekken.",
+    "purpose": "Leerlingen laten onderzoeken hoe data en ontwerpkeuzes de werking van sociale-mediafeeds en hun aandacht beïnvloeden.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Het moduleoverzicht en de lesdoelen zijn openbaar; lesplannen, slides en activiteiten zijn gratis na aanmelding met een Raspberry Pi Foundation-account.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-08",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Experience AI: moduleoverzicht",
+        "url": "https://experience-ai.org/en/units/ai-and-social-media-8-12",
+        "sourceType": "official"
+      },
+      {
+        "label": "Les 1: Exploring Social Media",
+        "url": "https://experience-ai.org/en/units/ai-and-social-media-8-12/lessons/25",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "experience-ai-understanding-ai-11-14"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "registration_required",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Experience AI",
+      "sociale media",
+      "aanbevelingssystemen",
+      "engagement",
+      "digitale geletterdheid"
+    ],
+    "notes": "De bron toont een wijzigingsdatum voor de algemene woordenlijst, niet voor de lessenreeks; daarom is geen publicatiedatum vastgelegd. Het moduleoverzicht en les 1 zijn gelezen. De downloads zijn accountgebonden en niet ingezien. Een hergebruiklicentie is niet vastgesteld. De leeftijd 8–12 is redactioneel gekoppeld aan PO en VO.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officieel moduleoverzicht en de openbare detailpagina van les 1 gecontroleerd. De drie lessen, leeftijd, klassensimulatie, gratis accounttoegang en aanbieders zijn bevestigd. De accountgebonden bestanden zijn niet volledig gelezen en er is geen effectiviteitsclaim vastgesteld. Controle op 8 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-08",
+        "type": "added",
+        "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      }
+    ]
+  },
+  {
+    "id": "vu-scholingstraject-ai-geletterdheid-ubvu",
+    "title": "Scholingstraject AI-geletterdheid (UBVU)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Trainings- en werkmateriaal",
+    "organizationIds": [
+      "vrije-universiteit-amsterdam"
+    ],
+    "providerName": "Vrije Universiteit Amsterdam",
+    "description": "Nederlandstalig scholingspakket met vier sessies, slides, interactieve opdrachten, een e-learning, eindopdracht, rubric, toetsmatrijs en exit-ticket over AI, prompten, kritisch gebruik en AI-tools in het werk.",
+    "purpose": "Universiteitsbibliotheekmedewerkers en aangepaste doelgroepen een herbruikbaar traject bieden voor kritische en praktische AI-geletterdheid.",
+    "audiences": [
+      "Onderwijsontwikkelaars",
+      "Ondersteunend personeel"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "pilot",
+    "availabilityText": "De collectie, downloads en gekoppelde Wikiwijs-e-learning zijn gratis openbaar toegankelijk zonder account.",
+    "publicationDate": "2026-02-02",
+    "lastVerified": "2026-11-08",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Edusources: collectie en metadata",
+        "url": "https://edusources.nl/nl/materials/cxp:learning_material:surfsharekit:edusources:8647829a-28e5-444f-a550-e99b604885b9",
+        "sourceType": "official"
+      },
+      {
+        "label": "Wikiwijs: AI-geletterdheid voor UB-medewerkers",
+        "url": "https://maken.wikiwijs.nl/219496#!page-8416144",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "vrije-universiteit-amsterdam"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "universiteitsbibliotheek",
+      "prompten",
+      "e-learning",
+      "rubric",
+      "toetsmatrijs",
+      "professionalisering"
+    ],
+    "notes": "Edusources vermeldt CC BY 4.0 voor de collectie; de gekoppelde Wikiwijs-e-learning vermeldt CC BY-SA 4.0. Raadpleeg per bestand de specifieke licentie. De Edusources-detailpagina, alle genoemde downloadlinks, de Wikiwijs-inhoudsopgave, inleiding, leerdoelen en colofon zijn gecontroleerd. Niet alle slides en opdrachten zijn volledig gelezen. De bron noemt medewerkers van de Universiteitsbibliotheek VU als oorspronkelijke doelgroep en geeft aan dat aanpassing voor andere doelgroepen mogelijk is.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Actuele Edusources-detailpagina met negen materiaalonderdelen en metadata gecontroleerd; de gekoppelde Wikiwijs-e-learning steekproefsgewijs gelezen op inleiding, leerdoelen, inhoudsopgave en licentie. Controle op 8 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-08",
+        "type": "added",
+        "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      }
+    ]
+  },
+  {
+    "id": "rocva-f-burgerschapsnack-ai-mentale-gezondheid",
+    "title": "Burgerschapsnack Thema Mentale gezondheid",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "ROC van Amsterdam - Flevoland",
+    "description": "Nederlandstalig mbo-lespakket over wanneer een AI-chatbot kan helpen bij mentale vragen en wanneer een gesprek met een echt persoon passender is, met klassikale activiteit, video's, animaties en e-learning.",
+    "purpose": "Mbo-studenten kritisch laten nadenken over AI-advies bij mentale vragen en over de grens tussen chatbotgebruik en menselijke hulp.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Studenten"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "De collectie en de kernles zijn gratis openbaar. Voor de kernles heeft iedere student een laptop of telefoon en toegang tot een AI-chatbot nodig; voorwaarden en kosten van die externe tool zijn niet vastgesteld.",
+    "publicationDate": "2026-10-22",
+    "lastVerified": "2026-11-08",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Edusources: lespakket en metadata",
+        "url": "https://edusources.nl/nl/materials/cxp:learning_material:surfsharekit:edusources:e0c8e277-5e1e-4093-8932-62089ad86d18",
+        "sourceType": "official"
+      },
+      {
+        "label": "Kernles: Praat jij over je gevoelens met AI?",
+        "url": "https://xerte.talnet.nl/play.php?template_id=9213",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "rocva-f-werken-met-generatieve-ai-lespakket"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "burgerschap",
+      "mentale gezondheid",
+      "AI-chatbot",
+      "kritisch denken",
+      "menselijke hulp",
+      "Xerte"
+    ],
+    "notes": "Edusources vermeldt CC BY-NC-SA 4.0, een totale duur van één lesuur en materiaal van Green Office en Team Content Creation. De kernles noemt 15 minuten en vraagt per student toegang tot een AI-chatbot. De eerste drie lespagina's, leerdoelen en benodigdheden zijn gelezen; de gekoppelde video's en verdiepende e-learning zijn niet volledig bekeken. De vermelding beschrijft het lesmateriaal en doet geen medische of effectiviteitsclaim.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Actuele Edusources-detailpagina, alle componentlinks, metadata en licentie gecontroleerd; de werkende Xerte-kernles steekproefsgewijs gelezen op introductie, benodigdheden en leerdoelen. Controle op 8 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-08",
+        "type": "added",
+        "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      }
+    ]
   }
 ]
