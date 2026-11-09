@@ -54,7 +54,7 @@ jobs:
       - name: Dispatch one recovery only for a stable confirmed site fault
         id: recovery
         if: steps.health.outputs.exit_code == '1'
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             const fs = require('fs');
@@ -109,7 +109,7 @@ jobs:
             await core.summary.addRaw('A confirmed site fault triggered one publication of the verified recovery baseline. Git history and main are unchanged.\n').write();
       - name: Maintain one incident and report recovery once
         if: always() && steps.health.outputs.exit_code != ''
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         env:
           RECOVERY_OUTCOME: ${{ steps.recovery.outputs.outcome }}
           RECOVERY_DETAIL: ${{ steps.recovery.outputs.detail }}
