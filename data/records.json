@@ -36179,5 +36179,377 @@
         "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
       }
     ]
+  },
+  {
+    "id": "experience-ai-solving-problems-11-14",
+    "title": "Experience AI – Solving problems with AI (11–14)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "Raspberry Pi Foundation / Google DeepMind",
+    "description": "Engelstalige module met vijf lessen waarin leerlingen voorspellende en generatieve AI onderscheiden, een AI-projectcyclus toepassen, een machinelearningmodel trainen en testen en hun model met een model card evalueren.",
+    "purpose": "Leerlingen een probleemgericht AI-project laten ontwerpen, uitvoeren en kritisch beoordelen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Moduleoverzicht, leerdoelen, woordenlijst, toets en enkele ondersteunende bestanden zijn openbaar; voor de volledige lesplannen, slides en activiteiten is een gratis Raspberry Pi Foundation-account nodig.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Experience AI: moduleoverzicht",
+        "url": "https://experience-ai.org/en/units/solving-problems-with-ai-11-14",
+        "sourceType": "official"
+      },
+      {
+        "label": "Les 1: AI around you",
+        "url": "https://experience-ai.org/en/units/solving-problems-with-ai-11-14/lessons/16",
+        "sourceType": "official"
+      },
+      {
+        "label": "Les 5: Model cards and careers",
+        "url": "https://experience-ai.org/en/units/solving-problems-with-ai-11-14/lessons/20",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "experience-ai-understanding-ai-11-14"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "registration_required",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Experience AI",
+      "AI-projectcyclus",
+      "machine learning",
+      "model cards",
+      "trainingsdata"
+    ],
+    "notes": "Het moduleoverzicht noemt updates in augustus en september 2026; die wijzigingsdata zijn niet als oorspronkelijke publicatiedatum overgenomen. Het overzicht en de openbare detailpagina's van de eerste en laatste les zijn gelezen. De accountgebonden lesbestanden zijn niet ingezien. Een algemene hergebruiklicentie voor de lesbestanden is niet vastgesteld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officieel moduleoverzicht en de openbare detailpagina's van les 1 en les 5 gecontroleerd op inhoud, leerdoelen, leeftijd, materiaaltypen en toegang. De accountgebonden bestanden en uitvoering zijn niet volledig beoordeeld. Controle op 9 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-09",
+        "type": "added",
+        "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      }
+    ]
+  },
+  {
+    "id": "experience-ai-detectives-8-12",
+    "title": "Experience AI – AI Detectives (8–12)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "Raspberry Pi Foundation / Google DeepMind",
+    "description": "Engelstalige lessenreeks met drie fictieve onderzoekscases over AI-marketingclaims, verantwoordelijkheid voor een AI-uitspraak over studentenwerk en het gebruik van een AI-chatbot door een reisorganisatie.",
+    "purpose": "Leerlingen via rollenspel bewijs laten onderzoeken, claims laten bevragen en onderbouwde keuzes over alledaagse AI-toepassingen laten formuleren.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "De casusbeschrijvingen en leerstructuur zijn openbaar; voor lesplannen, slides en activiteiten is een gratis Raspberry Pi Foundation-account nodig.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Experience AI: reeks AI Detectives",
+        "url": "https://experience-ai.org/en/units/ai-detectives-8-12",
+        "sourceType": "official"
+      },
+      {
+        "label": "Casus: The case of the clever claim",
+        "url": "https://experience-ai.org/en/units/ai-detectives-8-12/lessons/31",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "experience-ai-understanding-ai-11-14"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "registration_required",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "Experience AI",
+      "rollenspel",
+      "marketingclaims",
+      "AI-detectie",
+      "chatbots"
+    ],
+    "notes": "De algemene woordenlijst toont een wijzigingsdatum uit 2024; die is niet als publicatiedatum van de lessenreeks gebruikt. Het reeksoverzicht en de eerste casuspagina zijn gelezen. De accountgebonden lesbestanden zijn niet ingezien. De leeftijd 8–12 is redactioneel gekoppeld aan PO en VO; een algemene hergebruiklicentie is niet vastgesteld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officieel reeksoverzicht en de openbare detailpagina van de eerste casus gecontroleerd op drie cases, leeftijd, werkvorm, lesstructuur en accounttoegang. De accountgebonden bestanden en uitvoering zijn niet volledig beoordeeld. Controle op 9 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-09",
+        "type": "added",
+        "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      }
+    ]
+  },
+  {
+    "id": "codeai-how-ai-works-6-12",
+    "title": "CodeAI – How AI Works (grades 6–12)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Les- en werkmateriaal",
+    "organizationIds": [],
+    "providerName": "CodeAI (voorheen Code.org)",
+    "description": "Engelstalige reeks van zeven lessen met video's en klasactiviteiten over machine learning, computer vision, neurale netwerken, taalmodellen, generatieve beelden, algoritmische bias en een gezamenlijke AI-ethiekcode.",
+    "purpose": "Leerlingen kernmechanismen van AI laten onderzoeken en de technische en ethische gevolgen van ontwerpkeuzes laten bespreken.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Het overzicht, de video's en leslinks zijn gratis online beschikbaar. Een account is nodig om voortgang te bewaren en kan voor delen van de docentomgeving nodig zijn.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "CodeAI: How AI Works",
+        "url": "https://code.org/en-US/curriculum/how-artificial-intelligence-works",
+        "sourceType": "official"
+      },
+      {
+        "label": "CodeAI: licenties en gebruiksvoorwaarden",
+        "url": "https://code.org/en-US/terms-of-service",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "codeai-ai-for-oceans"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "non_commercial",
+    "commercialEvidence": {
+      "url": "https://code.org/en-US/terms-of-service",
+      "note": "CodeAI beschrijft zichzelf als een Amerikaanse 501(c)(3)-onderwijsorganisatie zonder winstoogmerk.",
+      "checkedOn": "2026-11-09"
+    },
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "CodeAI",
+      "machine learning",
+      "neurale netwerken",
+      "large language models",
+      "algoritmische bias"
+    ],
+    "notes": "Het curriculumoverzicht en de zichtbare beschrijvingen van alle zeven lessen en de eendaagse variant zijn gelezen; de lessen zijn niet volledig uitgevoerd. CodeAI vermeldt CC BY-NC-SA 4.0 voor eigen curriculum- en tutorialmateriaal, CC BY-NC-ND 4.0 voor eigen video's en afzonderlijke beperkingen voor derde-partij-kunstwerken. Raadpleeg de voorwaarden per onderdeel.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officieel curriculumoverzicht, een openbare lesroute en de actuele gebruiksvoorwaarden gecontroleerd op lesomvang, onderwerpen, doelgroep, taal, kosten en licentieverschillen. Geen effectiviteitsclaim en geen volledige uitvoering. Controle op 9 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-09",
+        "type": "added",
+        "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      }
+    ]
+  },
+  {
+    "id": "codeai-ai-discoveries-6-8",
+    "title": "CodeAI – AI Discoveries (grades 6–8)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Curriculum",
+    "organizationIds": [],
+    "providerName": "CodeAI (voorheen Code.org)",
+    "description": "Engelstalig flexibel curriculum voor een kwartaal, semester of schooljaar over kritisch denken over AI, machine learning, webontwikkeling, programmeren, mensgericht ontwerpen, data, privacy en fysieke computing.",
+    "purpose": "Leerlingen AI-geletterdheid en digitale maakvaardigheden in een samenhangend, aanpasbaar curriculum laten ontwikkelen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Het curriculumoverzicht is openbaar en het aanbod is gratis; voor volledige docentenmaterialen, voortgang en ingebedde AI-hulpmiddelen is een CodeAI-account nodig.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "CodeAI: AI Discoveries",
+        "url": "https://code.org/en-US/curriculum/artificial-intelligence-discoveries",
+        "sourceType": "official"
+      },
+      {
+        "label": "CodeAI: licenties en gebruiksvoorwaarden",
+        "url": "https://code.org/en-US/terms-of-service",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "codeai-ai-for-oceans",
+      "codeai-ai-foundations-9-12"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "registration_required",
+    "costType": "free",
+    "commercialStatus": "non_commercial",
+    "commercialEvidence": {
+      "url": "https://code.org/en-US/terms-of-service",
+      "note": "CodeAI beschrijft zichzelf als een Amerikaanse 501(c)(3)-onderwijsorganisatie zonder winstoogmerk.",
+      "checkedOn": "2026-11-09"
+    },
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "CodeAI",
+      "AI Discoveries",
+      "digitale geletterdheid",
+      "programmeren",
+      "data en privacy"
+    ],
+    "notes": "De officiële pagina beschrijft kwartaal-, semester- en schooljaarvarianten en zelfstandig inzetbare onderdelen. De curriculumroute achter de docentomgeving is niet volledig doorlopen. CodeAI vermeldt CC BY-NC-SA 4.0 voor eigen curriculum- en tutorialmateriaal; video's en derde-partij-assets hebben afwijkende voorwaarden. De Amerikaanse grades 6–8 zijn redactioneel aan VO gekoppeld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële curriculumpagina en actuele gebruiksvoorwaarden gelezen op doelgroep, formats, inhoud, materiaaltypen, kosten, accounttoegang en licenties. De docentomgeving en ingebedde AI-tools zijn niet uitgevoerd. Controle op 9 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-09",
+        "type": "added",
+        "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      }
+    ]
+  },
+  {
+    "id": "codeai-ai-foundations-9-12",
+    "title": "CodeAI – AI Foundations (grades 9–12)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Curriculum",
+    "organizationIds": [],
+    "providerName": "CodeAI (voorheen Code.org)",
+    "description": "Engelstalig curriculum van één of twee semesters waarin leerlingen AI-geletterdheid, data, cybersecurity, internet, JavaScript en webapps combineren en AI als creatieve programmeerpartner leren beoordelen.",
+    "purpose": "Leerlingen een doorlopende leerroute bieden van kritisch begrip van AI naar het ontwerpen en bouwen van digitale toepassingen met AI-ondersteuning.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Het curriculumoverzicht is openbaar en het aanbod is gratis; voor volledige lesplannen, slides, toetsen, voortgang en AI-tools is een CodeAI-account nodig.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-09",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "CodeAI: AI Foundations",
+        "url": "https://code.org/en-US/curriculum/artificial-intelligence-foundations",
+        "sourceType": "official"
+      },
+      {
+        "label": "CodeAI: licenties en gebruiksvoorwaarden",
+        "url": "https://code.org/en-US/terms-of-service",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "codeai-ai-discoveries-6-8"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "registration_required",
+    "costType": "free",
+    "commercialStatus": "non_commercial",
+    "commercialEvidence": {
+      "url": "https://code.org/en-US/terms-of-service",
+      "note": "CodeAI beschrijft zichzelf als een Amerikaanse 501(c)(3)-onderwijsorganisatie zonder winstoogmerk.",
+      "checkedOn": "2026-11-09"
+    },
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "CodeAI",
+      "AI Foundations",
+      "JavaScript",
+      "cybersecurity",
+      "webontwikkeling"
+    ],
+    "notes": "De officiële pagina beschrijft een volledige jaarroute van 180 lesuren, twee semesterroutes en kortere losse units. De accountgebonden materialen en AI Chat Lab zijn niet uitgevoerd. CodeAI vermeldt CC BY-NC-SA 4.0 voor eigen curriculum- en tutorialmateriaal; video's en derde-partij-assets hebben afwijkende voorwaarden. De Amerikaanse grades 9–12 zijn redactioneel aan de bovenbouw van VO gekoppeld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële curriculumpagina en actuele gebruiksvoorwaarden gelezen op doelgroep, duur, inhoud, materiaaltypen, kosten, accounttoegang en licenties. De volledige docentomgeving en AI-tools zijn niet uitgevoerd. Controle op 9 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-09",
+        "type": "added",
+        "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      }
+    ]
   }
 ]

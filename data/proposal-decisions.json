@@ -62,6 +62,69 @@
       "decision": "rejected",
       "decidedAt": "2026-11-07T16:42:00Z",
       "reason": "Archivering is onjuist: de officiële Regieorgaan SIA-call is bereikbaar. De inmiddels gesloten status is afzonderlijk in het bestaande record bijgewerkt."
+    },
+    {
+      "proposalId": "proposal-144606599a0370d5",
+      "evidenceHash": "a9eeed5cc3ed8467b0f7b29ab3836dcf9dae6a832b4721acd9f390e48aa46030",
+      "decision": "rejected",
+      "decidedAt": "2026-11-09T07:36:00Z",
+      "reason": "Het signaal betreft verdwenen deadline-tekst op een algemene AI Office-bronpagina, zonder gekoppeld Atlas-record of concrete wijziging van AI-onderwijsaanbod."
+    },
+    {
+      "proposalId": "proposal-3eb7658f7b047c9c",
+      "evidenceHash": "3cf8d401066a55629c5bf36a7028ec75c6ea0b192327558ac18fbca7eb1fc533",
+      "decision": "rejected",
+      "decidedAt": "2026-11-09T07:36:00Z",
+      "reason": "De gedetecteerde datum is publicatiemetadata van een MBO Digitaal-nieuwsbericht en geen deadline of wijziging van een concreet Atlas-aanbod."
+    },
+    {
+      "proposalId": "proposal-8bd9cfcb972ba9a5",
+      "evidenceHash": "e5ae423c92b3dac808a99ce35cca43305b3a7ca4e88848afe374c1c7d9bd8108",
+      "decision": "rejected",
+      "decidedAt": "2026-11-09T07:36:00Z",
+      "reason": "De primaire Kennisnet-pagina is al canoniek opgenomen als kennisnet-raamwerk-ai-geletterdheid-2026; een tweede record zou een doublure zijn."
+    },
+    {
+      "proposalId": "proposal-772ca0009c9d1729",
+      "evidenceHash": "5e0a778007698e2fd17c5a16931379856175a6ccbc49d3f41902acc7ec79fb7e",
+      "decision": "rejected",
+      "decidedAt": "2026-11-09T07:36:00Z",
+      "reason": "Dit is uitsluitend een Facebook-deellink voor een reeds opgenomen Kennisnet-pagina en geen zelfstandig onderwijsaanbod of primaire materiaalbron."
+    },
+    {
+      "proposalId": "proposal-9131773d09208f8b",
+      "evidenceHash": "3985ca96b134699bf188c75c908eea6a26b2c90a34a1a5a338f1751cb6a9f751",
+      "decision": "rejected",
+      "decidedAt": "2026-11-09T07:36:00Z",
+      "reason": "Dit is uitsluitend een X-deellink voor een reeds opgenomen Kennisnet-pagina en geen zelfstandig onderwijsaanbod of primaire materiaalbron."
+    },
+    {
+      "proposalId": "proposal-a5f338a5c8a47cb9",
+      "evidenceHash": "5a1e906f51cb89d7021f6fef0fdf9f7b7196944975b03f78aea1a1017e8d667d",
+      "decision": "rejected",
+      "decidedAt": "2026-11-09T07:36:00Z",
+      "reason": "Dit is uitsluitend een LinkedIn-deellink voor een reeds opgenomen Kennisnet-pagina en geen zelfstandig onderwijsaanbod of primaire materiaalbron."
+    },
+    {
+      "proposalId": "proposal-b87221fa1c0727b3",
+      "evidenceHash": "49dc8c4cd5e62b6e604e2bea56c5f699b5f1bc248a53ea7658add28155f53fa5",
+      "decision": "rejected",
+      "decidedAt": "2026-11-09T07:36:00Z",
+      "reason": "Dezelfde primaire Kennisnet-pagina is al opgenomen als kennisnet-raamwerk-ai-geletterdheid-2026; dit signaal is een URL-variant van die doublure."
+    },
+    {
+      "proposalId": "proposal-74dd23856bc89bf0",
+      "evidenceHash": "f18d86604fee6041170ef8da43b03bf28a993e051e475567b489b7e1ddbe001d",
+      "decision": "rejected",
+      "decidedAt": "2026-11-09T07:36:00Z",
+      "reason": "De UNESCO-publicatie is al canoniek opgenomen als unesco-algorithm-in-the-room-2026; een nieuwe vermelding zou een inhoudelijke en URL-doublure zijn."
+    },
+    {
+      "proposalId": "proposal-26ddd2da62cea2c5",
+      "evidenceHash": "d7ca8e8da06a389c20dd0bf8d9a9f82a2d63f209689165461dd0044e54ff4e29",
+      "decision": "rejected",
+      "decidedAt": "2026-11-09T07:36:00Z",
+      "reason": "Het SURF Community-artikel beschrijft een infrastructuurbehoefte en is geen zelfstandig lesmateriaal, training, handreiking of ander concreet Atlas-aanbod."
     }
   ]
 }
