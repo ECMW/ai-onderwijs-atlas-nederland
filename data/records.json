@@ -4505,13 +4505,13 @@
     "title": "AI-waaier voor toetsen",
     "recordType": "product",
     "legacyType": "Product",
-    "subtype": null,
+    "subtype": "Toets- en werkmateriaal",
     "organizationIds": [
       "org-npuls"
     ],
     "providerName": "Npuls",
-    "description": "Praktisch instrument met vijf niveaus van AI-gebruik voor bewuste keuzes bij toetsing en examinering.",
-    "purpose": "Een gemeenschappelijke taal bieden voor toegestane niveaus van AI-gebruik bij toetsing",
+    "description": "Praktische waaier voor studenten, docenten en examencommissies met vijf niveaus van AI-gebruik bij toetsing: van volledig zonder AI tot co-creatie met AI.",
+    "purpose": "Een gemeenschappelijke taal bieden om per toets expliciet te maken welk AI-gebruik is toegestaan en welke verantwoording daarbij hoort.",
     "audiences": [
       "Docenten",
       "Examencommissies",
@@ -4522,18 +4522,32 @@
       "HBO",
       "WO"
     ],
-    "themes": [],
+    "themes": [
+      "AI-geletterdheid",
+      "Toetsing en examinering",
+      "Publieke waarden en ethiek"
+    ],
     "status": "available",
-    "availabilityText": "2026",
+    "availabilityText": "De landingspagina en afzonderlijke Nederlandstalige waaiers voor studenten en docenten zijn openbaar en zonder account te downloaden.",
     "startDate": null,
     "endDate": null,
-    "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "publicationDate": "2026-05-11",
+    "lastVerified": "2026-11-12",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
+        "label": "Npuls: AI-waaier voor toetsen",
         "url": "https://www.npuls.nl/kennisbank/ai-waaier",
+        "sourceType": "official"
+      },
+      {
+        "label": "Waaier voor docenten (PDF)",
+        "url": "https://www.npuls.nl/_assets/14c646de-de55-4427-9ea6-0a5f4f57851f/AI-waaier%20toetsen%20voor%20docenten.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Waaier voor studenten (PDF)",
+        "url": "https://www.npuls.nl/_assets/24f2cd67-e9f7-4a4a-aa92-2edd96e0f262/AI-waaier%20toetsen%20voor%20studenten.pdf",
         "sourceType": "official"
       }
     ],
@@ -4542,7 +4556,8 @@
     "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
-    "costType": "unknown",
+    "costType": "free",
+    "commercialStatus": "unknown",
     "fundingAmount": null,
     "fundingDeadline": null,
     "applicationOpenDate": null,
@@ -4563,7 +4578,7 @@
       "AI Assessment Scale",
       "hulpmiddel"
     ],
-    "notes": null,
+    "notes": "De docent- en studentenwaaier vermelden CC BY 4.0. De bron beschrijft ontwikkeling met mbo-instellingen; de waaier is volgens Npuls ook bruikbaar in hbo en wo. Er is geen aparte commerciële status vastgesteld.",
     "changeHistory": [
       {
         "date": "2026-07-12",
@@ -4574,9 +4589,16 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-11-12",
+        "type": "updated",
+        "summary": "Actuele landingspagina en beide waaiers gecontroleerd; publicatiedatum, inhoud, toegang, licentie en bronlinks aangevuld."
       }
     ],
-    "offerCategory": "materials"
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële Npuls-landingspagina en de volledige docent- en studentenwaaier gecontroleerd op doelgroep, inhoud, beschikbaarheid, publicatiedatum en licentie. Controle op 12 november 2026; record opnieuw vergeleken met alle canonieke records."
   },
   {
     "id": "ai-en-kansengelijkheid-handreiking-voor-een-zo-positief-mogelijke-impact",
@@ -36547,6 +36569,76 @@
     "changeHistory": [
       {
         "date": "2026-11-09",
+        "type": "added",
+        "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      }
+    ]
+  },
+  {
+    "id": "unesco-ai-answers-you-decide-2026",
+    "title": "AI Answers. You Decide",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Curriculumonderdeel",
+    "organizationIds": [
+      "org-unesco"
+    ],
+    "providerName": "UNESCO",
+    "description": "Engelstalige UNESCO-handreiking met praktische hulpmiddelen en klasactiviteiten om AI-gegenereerde inhoud te beoordelen, vooringenomenheid te herkennen en de werking van algoritmen te bespreken.",
+    "purpose": "Docenten ondersteunen bij media- en informatiegeletterd onderwijs waarin leerlingen AI-uitkomsten kritisch wegen en menselijke handelingsruimte behouden.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "De officiële UNESCO-detailpagina en documentverwijzing zijn openbaar; de onderliggende volledige gids kon bij deze controle niet volledig worden uitgelezen.",
+    "publicationDate": "2026-11-10",
+    "lastVerified": "2026-11-12",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "UNESCO: AI Answers. You Decide",
+        "url": "https://www.unesco.org/en/articles/ai-answers-you-decide",
+        "sourceType": "official"
+      },
+      {
+        "label": "UNESDOC-documentrecord",
+        "url": "https://unesdoc.unesco.org/ark:/48223/pf0000400013_eng",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "media- en informatiegeletterdheid",
+      "AI-uitkomsten beoordelen",
+      "bias",
+      "algoritmen",
+      "human agency"
+    ],
+    "notes": "De officiële detailpagina is volledig gelezen. De gekoppelde UNESDOC-gids was tijdens deze controle niet volledig toegankelijk; concrete inhoudsclaims zijn daarom beperkt tot wat UNESCO op de detailpagina zelf vermeldt. UNESCO benoemt educatie van jongeren, maar geen Nederlands onderwijsniveau; de Atlas koppelt het materiaal daarom conservatief alleen aan VO. Een hergebruiklicentie is niet vastgesteld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële UNESCO-detailpagina gelezen en documentrecord gecontroleerd op titel, datum, doel, doelgroep en beschreven activiteiten. De volledige gids is niet gelezen. Controle op 12 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-12",
         "type": "added",
         "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
       }
