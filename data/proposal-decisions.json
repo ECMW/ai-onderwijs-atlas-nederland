@@ -125,6 +125,48 @@
       "decision": "rejected",
       "decidedAt": "2026-11-09T07:36:00Z",
       "reason": "Het SURF Community-artikel beschrijft een infrastructuurbehoefte en is geen zelfstandig lesmateriaal, training, handreiking of ander concreet Atlas-aanbod."
+    },
+    {
+      "proposalId": "proposal-8ca8cd3e6905d684",
+      "evidenceHash": "6d676445b6dcc32addd7a5915cb373056613f6ed21db713b0e0628d5d2279356",
+      "decision": "rejected",
+      "decidedAt": "2026-11-13T07:35:03Z",
+      "reason": "Het signaal bevat alleen gewijzigde publicatie- of navigatietekst van MBO Digitaal, zonder gekoppeld Atlas-record of verifieerbare wijziging van concreet AI-onderwijsaanbod."
+    },
+    {
+      "proposalId": "proposal-566cbdcb74633047",
+      "evidenceHash": "9d74c6a53af6c5de2d16da3b02b079c1d0d92cb33524eae4ef685a093285c55c",
+      "decision": "rejected",
+      "decidedAt": "2026-11-13T07:35:03Z",
+      "reason": "Het SURF Community-artikel is een beschouwend scenario over AI- en data-infrastructuur en geen zelfstandig lesmateriaal, training, handreiking of ander concreet Atlas-aanbod."
+    },
+    {
+      "proposalId": "proposal-2a7504d21b80e2ba",
+      "evidenceHash": "ddd72505c2bf0ac4772cb90ee919fc66a220fa7571cb88ec7fc94d3b98a73076",
+      "decision": "rejected",
+      "decidedAt": "2026-11-13T07:35:03Z",
+      "reason": "Dit UNESCO-bericht verslaat een ministeriele bijeenkomst en biedt geen zelfstandig onderwijs- of professionaliseringsmateriaal voor de Atlas."
+    },
+    {
+      "proposalId": "proposal-15a6e39cad8c0ffc",
+      "evidenceHash": "9aeb62cec0c7b5deaa3688282774c025a46d9ed2761a997ad83886760b1c357c",
+      "decision": "rejected",
+      "decidedAt": "2026-11-13T07:35:03Z",
+      "reason": "Het nieuwsbericht verwijst naar de publicatie die al canoniek is opgenomen als unesco-iesalc-ai-implementation-higher-education-2026; een extra record zou dubbelop zijn."
+    },
+    {
+      "proposalId": "proposal-888574d373c48d96",
+      "evidenceHash": "340f46fbb5d4467adc61070342ce73216337a251e104e482db41003b76c86d5a",
+      "decision": "rejected",
+      "decidedAt": "2026-11-13T07:35:03Z",
+      "reason": "De primaire UNESCO IESALC-publicatie is al canoniek opgenomen als unesco-iesalc-ai-implementation-higher-education-2026; een tweede vermelding zou een doublure zijn."
+    },
+    {
+      "proposalId": "proposal-f9da8777f75ec60f",
+      "evidenceHash": "f997c85b291c271ce5d5afbc2a697ffe0cad2c773d974a75e4efc248ca5cea3b",
+      "decision": "rejected",
+      "decidedAt": "2026-11-13T07:35:03Z",
+      "reason": "Het UNESCO UIL-bericht rapporteert over een afgerond trainingsprogramma en biedt geen aantoonbaar actueel toegankelijk lesmateriaal of open inschrijving."
     }
   ]
 }

@@ -36643,5 +36643,77 @@
         "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
       }
     ]
+  },
+  {
+    "id": "inholland-handleiding-ai-bewust-onderwijsontwerp",
+    "title": "Handleiding AI-bewust onderwijsontwerp voor hbo-docenten",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Methodologische handreiking",
+    "organizationIds": [],
+    "providerName": "Hogeschool Inholland",
+    "description": "Open methodiek met een herontwerpcyclus, ontwerpvragen, toets- en validatievormen en uitgewerkte opdrachten om bestaand hbo-onderwijs AI-bewust te herontwerpen.",
+    "purpose": "Docenten en opleidingsteams helpen bepalen wat studenten zelfstandig moeten blijven beheersen en hoe leren, AI-gebruik en valide toetsing daarop worden afgestemd.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Toetscommissies"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "De Nederlandstalige handleiding is gratis, zonder account en als bewerkbaar Word-document te downloaden via edusources en SURFsharekit.",
+    "publicationDate": "2026-07-16",
+    "lastVerified": "2026-11-13",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Edusources: beschrijving en metadata",
+        "url": "https://edusources.nl/materials/ad882edc-4ee2-40b5-8ead-458f5851d030",
+        "sourceType": "official"
+      },
+      {
+        "label": "Handleiding via SURFsharekit",
+        "url": "https://surfsharekit.nl/objectstore/c73fc011-2297-4f9d-83f7-779765aaf9c3",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "hogeschool-inholland"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "onderwijsontwerp",
+      "constructive alignment",
+      "two-lane approach",
+      "toetsvaliditeit",
+      "professionele oordeelsvorming",
+      "time-constrained opdracht"
+    ],
+    "notes": "Auteurs: Hans Rader en Michael Hendriks, CTL AI en Onderwijstechnologie van Hogeschool Inholland. Edusources vermeldt CC BY 4.0; materiaal van derden valt volgens de handleiding niet automatisch onder die licentie. De methodiek bevat acht herontwerpstappen, een doorlopend hbo-praktijkvoorbeeld en uitgewerkte opdrachten voor onder meer schrijfvaardigheid, geschiedenis, biologie, ICT, verpleegkunde en social work. De Atlas heeft de bruikbaarheid en inhoud gecontroleerd, niet de onderwijskundige effectiviteit of de juistheid van iedere literatuurverwijzing.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële edusources-pagina en het volledige Word-document van 32 pagina's gecontroleerd op titel, auteurs, aanbieder, datum, doelgroep, toegang, licentie, ontwerpcyclus, toetsvormen en praktijkvoorbeelden. Controle op 13 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-13",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de primaire metadata, de volledige handleiding en canonieke doublures."
+      }
+    ]
   }
 ]
