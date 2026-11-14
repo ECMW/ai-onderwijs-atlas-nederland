@@ -167,6 +167,34 @@
       "decision": "rejected",
       "decidedAt": "2026-11-13T07:35:03Z",
       "reason": "Het UNESCO UIL-bericht rapporteert over een afgerond trainingsprogramma en biedt geen aantoonbaar actueel toegankelijk lesmateriaal of open inschrijving."
+    },
+    {
+      "proposalId": "proposal-396c3dcfe89a9ce3",
+      "evidenceHash": "248f8d49080b1a386a6275b1e10f9dcb710b9960a52d4115b4f1b5e2618bc75c",
+      "decision": "rejected",
+      "decidedAt": "2026-11-14T07:30:00Z",
+      "reason": "De werkgroepbijeenkomst over onderwijssemantiek is geen zelfstandig AI-lesmateriaal, training, handreiking of ander concreet AI-onderwijsaanbod."
+    },
+    {
+      "proposalId": "proposal-bfadd21a11b4e347",
+      "evidenceHash": "f20a82e151984052728e2df8c161fa0834081b32cb6bdfdcfb692070ee007fbd",
+      "decision": "rejected",
+      "decidedAt": "2026-11-14T07:30:00Z",
+      "reason": "Het SURF Community-bericht kondigt een trendverkenning aan en biedt geen zelfstandig lesmateriaal, training, handreiking of ander concreet Atlas-aanbod."
+    },
+    {
+      "proposalId": "proposal-e63d2addbfab2039",
+      "evidenceHash": "1cd2ba8b4b6ce6de80ce24b2406e369131e2e0d1052c96fec5d774eae95c73da",
+      "decision": "rejected",
+      "decidedAt": "2026-11-14T07:30:00Z",
+      "reason": "Dit is navigatie- en evenementtekst over de Onderwijsdagen 2026 zonder een zelfstandig, duurzaam toegankelijk AI-onderwijsmateriaal."
+    },
+    {
+      "proposalId": "proposal-d8820d3752bbbe2c",
+      "evidenceHash": "b8362966a3f9baff04b240bb9f4e32c8d66d06210369c77ceafc103b1a9a0411",
+      "decision": "rejected",
+      "decidedAt": "2026-11-14T07:30:00Z",
+      "reason": "Het TNO-profiel over een photonic-chip-pilot is geen AI-onderwijsaanbod en bevat geen lesmateriaal, training of praktische onderwijsinstructie."
     }
   ]
 }

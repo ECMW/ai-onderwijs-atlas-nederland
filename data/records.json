@@ -36715,5 +36715,76 @@
         "summary": "Toegevoegd na controle van de primaire metadata, de volledige handleiding en canonieke doublures."
       }
     ]
+  },
+  {
+    "id": "codeai-how-ai-makes-decisions-3-5",
+    "title": "CodeAI – How AI Makes Decisions (grades 3–5)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Lessenreeks met docentenmateriaal",
+    "organizationIds": [],
+    "providerName": "CodeAI (voorheen Code.org)",
+    "description": "Engelstalige reeks van vijf lessen voor de bovenbouw van het primair onderwijs over voorspellen, trainingsdata, classificatie, bias en menselijke controle, met lesplannen, slides, interactieve oefeningen en een afsluitende keuzeopdracht.",
+    "purpose": "Leerlingen laten onderzoeken hoe AI patronen uit data gebruikt en hen een onderbouwd standpunt laten formuleren over AI-tools op school.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Het curriculumoverzicht, de vijf lesroutes en printbare docentenplannen zijn gratis online toegankelijk. Een account is niet nodig om ze te bekijken; inloggen is beschikbaar om voortgang te bewaren of lessen toe te wijzen.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-14",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "CodeAI: How AI Makes Decisions",
+        "url": "https://studio.code.org/courses/k5-ai-data-2024/units/1?viewAs=Instructor",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "codeai-ai-for-oceans",
+      "codeai-how-ai-works-6-12"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "non_commercial",
+    "commercialEvidence": {
+      "url": "https://code.org/en-US/terms-of-service",
+      "note": "CodeAI beschrijft zichzelf als een Amerikaanse 501(c)(3)-onderwijsorganisatie zonder winstoogmerk.",
+      "checkedOn": "2026-11-14"
+    },
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "CodeAI",
+      "trainingsdata",
+      "classificatie",
+      "bias",
+      "menselijke controle"
+    ],
+    "notes": "De Amerikaanse grades 3–5 zijn redactioneel aan de bovenbouw van PO gekoppeld. De officiële docentenroute, vijf lesbeschrijvingen, doelen, activiteiten, standaarden en een openbaar lesplan zijn gelezen; de interactieve lessen zijn niet volledig uitgevoerd. CodeAI vermeldt CC BY-NC-SA 4.0 voor eigen curriculum- en tutorialmateriaal, CC BY-NC-ND 4.0 voor eigen video's en afzonderlijke beperkingen voor materiaal van derden.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Officiële curriculum-, lesplan-, catalogus- en voorwaardenpagina's gecontroleerd op titel, doelgroep, duur, lesopbouw, inhoud, toegang, kosten en licentieverschillen. Controle op 14 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap. Geen effectiviteitsclaim en geen volledige uitvoering.",
+    "changeHistory": [
+      {
+        "date": "2026-11-14",
+        "type": "added",
+        "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      }
+    ]
   }
 ]
