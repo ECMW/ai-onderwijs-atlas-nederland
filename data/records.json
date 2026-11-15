@@ -36786,5 +36786,85 @@
         "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
       }
     ]
+  },
+  {
+    "id": "eur-generative-ai-in-research-emodule",
+    "title": "Generative AI in Research",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": "Zelfstudie-e-module",
+    "organizationIds": [
+      "erasmus-universiteit-rotterdam"
+    ],
+    "providerName": "Erasmus University Library – Erasmus University Rotterdam",
+    "description": "Engelstalige zelfstudiemodule van 60 tot 90 minuten over generatieve AI in onderzoek, met uitleg over taalmodellen en prompten, beperkingen en risico's, verantwoord gebruik en toepassingen bij schrijven, literatuur zoeken, programmeren en wetenschapscommunicatie.",
+    "purpose": "Onderzoekers en onderzoeksondersteuners helpen generatieve AI kritisch, verantwoord en doelgericht in het onderzoeksproces te gebruiken.",
+    "audiences": [
+      "Onderzoekers",
+      "Promovendi",
+      "Ondersteunend personeel"
+    ],
+    "sectors": [
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Onderzoek",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "De e-module is gratis, zonder account en rechtstreeks in de browser te volgen; de geschatte studieduur is 60 tot 90 minuten.",
+    "publicationDate": "2026-08-01",
+    "lastVerified": "2026-11-15",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Erasmus University Library: beschrijving en leerdoelen",
+        "url": "https://www.eur.nl/en/library/generative-ai-research",
+        "sourceType": "official"
+      },
+      {
+        "label": "Publieke e-module",
+        "url": "https://share.eu.articulate.com/lC1wlzJFTvJSMaK1ZPGUN",
+        "sourceType": "official"
+      },
+      {
+        "label": "Edusources: metadata",
+        "url": "https://edusources.nl/en/materials/1862b6f3-21f4-4d85-89c6-01cbcf464b3b",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "eur-generative-ai-academic-questions"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "generatieve AI",
+      "onderzoek",
+      "prompten",
+      "literatuur zoeken",
+      "programmeren",
+      "verantwoord gebruik"
+    ],
+    "notes": "De module is gemaakt door Erasmus University Library en bevat zowel algemeen bruikbare onderzoekstoepassingen als onderdelen die specifiek zijn voor de EUR. De module vermeldt CC BY-NC-SA 4.0 voor het eigen materiaal; voor gekoppelde bronnen van derden is geen hergebruikrecht vastgesteld. Edusources vermeldt 1 augustus 2026 als publicatiedatum; de module zelf vermeldt dat zij in oktober 2026 is bijgewerkt.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële EUR-pagina is volledig gelezen. De publieke moduletoegang, inleiding, leerdoelen, duur, licentievermelding en structuur met 22 inhoudelijke lesonderdelen zijn gecontroleerd; representatieve inhoud is steekproefsgewijs beoordeeld, maar de module is niet als cursist volledig doorlopen. Edusources-metadata is gecontroleerd op titel, aanbieder, taal en publicatiedatum. Controle op 15 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-15",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de primaire aanbiederpagina, publieke e-module, edusources-metadata en canonieke doublures."
+      }
+    ]
   }
 ]
