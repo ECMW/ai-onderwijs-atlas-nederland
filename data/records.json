@@ -36866,5 +36866,79 @@
         "summary": "Toegevoegd na controle van de primaire aanbiederpagina, publieke e-module, edusources-metadata en canonieke doublures."
       }
     ]
+  },
+  {
+    "id": "microsoft-generatieve-ai-veilig-verantwoord-klassentoolkit",
+    "title": "Unlock generative AI safely and responsibly—classroom toolkit",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Lespakket en docenthandleiding",
+    "organizationIds": [],
+    "providerName": "Microsoft",
+    "description": "Nederlandstalige klassenset voor 13- tot 15-jarigen met een docentenhandleiding, 51-dia-les, klasafspraken en promptkaart. De lessen behandelen generatieve AI, prompten, verzinsels en broncontrole, privacy, bias, AI-relaties, digitaal welzijn en veilig omgaan met gegenereerde code.",
+    "purpose": "Docenten een direct inzetbare lesstructuur bieden waarmee leerlingen generatieve AI kritisch, veilig en verantwoord leren beoordelen en gebruiken.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Privacy en AVG",
+      "Veilige AI-omgeving"
+    ],
+    "status": "available",
+    "availabilityText": "De Nederlandstalige kernbestanden zijn gratis en zonder account rechtstreeks te downloaden. Voor optionele oefeningen met externe AI-diensten of andere online hulpmiddelen kunnen accounts, leeftijdsvoorwaarden en het AI-beleid van de school gelden.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-16",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Microsoft Learn: klassentoolkit en alle taalversies",
+        "url": "https://learn.microsoft.com/en-us/training/educator-center/instructor-materials/classroom-toolkit-unlock-generative-ai-safely-responsibly",
+        "sourceType": "official"
+      },
+      {
+        "label": "Nederlandstalige docentenhandleiding",
+        "url": "https://download.microsoft.com/download/e/0/2/e02c3739-b334-4240-b789-9c363eeeaf8d/Dutch-NL-Teachers-Guide.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "codeerschool-behind-the-chat-nl"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "generatieve AI",
+      "prompten",
+      "factchecking",
+      "privacy",
+      "bias",
+      "digitaal welzijn",
+      "klassentoolkit"
+    ],
+    "notes": "Microsoft ontwikkelde de toolkit met Cyberlite. De Nederlandstalige downloadset bevat de oorspronkelijke lesstructuur van ongeveer 90 minuten; de nieuwere Engelstalige uitbreidingslessen en quiz zijn volgens de officiële pagina nog niet als Nederlandse downloads beschikbaar en vallen buiten dit record. Voor de downloadbestanden is geen expliciete hergebruiklicentie vastgesteld. De Atlas beoordeelt de onderwijskundige effectiviteit niet.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële Microsoft Learn-pagina is volledig gelezen. Alle vier Nederlandstalige kernbestanden zijn rechtstreeks gedownload: de docentenhandleiding van 2 pagina's, de presentatie van 51 dia's, de klasafspraak van 2 pagina's en de promptkaart van 1 pagina. De volledige tekstinhoud is gelezen en representatieve pagina's zijn visueel gecontroleerd; de optionele oefeningen zijn niet met externe AI-diensten uitgevoerd. Controle op 16 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, canonieke URL, aanbieder en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-16",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële landingspagina, alle Nederlandstalige kernbestanden en canonieke doublures."
+      }
+    ]
   }
 ]
