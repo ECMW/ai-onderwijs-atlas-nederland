@@ -195,6 +195,69 @@
       "decision": "rejected",
       "decidedAt": "2026-11-14T07:30:00Z",
       "reason": "Het TNO-profiel over een photonic-chip-pilot is geen AI-onderwijsaanbod en bevat geen lesmateriaal, training of praktische onderwijsinstructie."
+    },
+    {
+      "proposalId": "proposal-51aca99a079160a1",
+      "evidenceHash": "0fe8daeae6df2bd7376a8ce821c23f05ff6cc9f8006854d11816d934a2c0d372",
+      "decision": "rejected",
+      "decidedAt": "2026-11-16T07:33:00Z",
+      "reason": "Het SURF Community-artikel beschrijft een cloudinfrastructuurexperiment en biedt geen zelfstandig AI-lesmateriaal, training, handreiking of ander concreet Atlas-aanbod."
+    },
+    {
+      "proposalId": "proposal-7551c561465cd18b",
+      "evidenceHash": "d514af1c238b91213d44a8f87ea5e11e742d0cff91bff83f7ec8a6a656a91a3f",
+      "decision": "rejected",
+      "decidedAt": "2026-11-16T07:33:00Z",
+      "reason": "Het SURF Community-artikel over studentenpodcasts en video's bevat geen aantoonbaar AI-onderwijsaanbod en is daarom geen zelfstandig Atlas-record."
+    },
+    {
+      "proposalId": "proposal-cacb8bf7894d9521",
+      "evidenceHash": "9fa3b6ce150eec3db34d9118990e349faab7b4f1520eac7772632bae68bd398e",
+      "decision": "rejected",
+      "decidedAt": "2026-11-16T07:33:00Z",
+      "reason": "Het verdwenen LAK25-workshopbericht is geen actueel toegankelijk aanbod en het signaal koppelt niet aan een canoniek Atlas-record dat moet worden gewijzigd."
+    },
+    {
+      "proposalId": "proposal-4038282a04cd4d4c",
+      "evidenceHash": "7fb4ccb3b5e35f276bed5ad27ff7c9e90d51a36eb6096894807029dcbba25c11",
+      "decision": "rejected",
+      "decidedAt": "2026-11-16T07:33:00Z",
+      "reason": "Het SURF Community-artikel over AI in het examenlokaal is een beschouwend praktijkartikel en biedt geen zelfstandig lesmateriaal, training of praktische handreiking."
+    },
+    {
+      "proposalId": "proposal-4c24a7d4106cf6e8",
+      "evidenceHash": "d24a65ad029206cdcf5791ce4e91a1bfe2daa6f9cf3c400c7b630ed402ad4688",
+      "decision": "rejected",
+      "decidedAt": "2026-11-16T07:33:00Z",
+      "reason": "Het bericht over het ECIO-schakelteam gaat over inclusieondersteuning en bevat geen zelfstandig AI-onderwijsaanbod."
+    },
+    {
+      "proposalId": "proposal-654192822160517a",
+      "evidenceHash": "fa7d46fa875c0683f8d51f9917a70990edd44fec98a7f0b1f2dc9b7274ab2cbb",
+      "decision": "rejected",
+      "decidedAt": "2026-11-16T07:33:00Z",
+      "reason": "De Publieke Waarden Academie-workshop is al canoniek als verstreken aanbod gearchiveerd; het verdwijnen uit de SURF-navigatie vraagt geen nieuwe statuswijziging."
+    },
+    {
+      "proposalId": "proposal-86aa0977a82b30d7",
+      "evidenceHash": "f53133809ff48b4d736f3e919440659647246f0ff824b79355f26ee9fe30b3af",
+      "decision": "rejected",
+      "decidedAt": "2026-11-16T07:33:00Z",
+      "reason": "Het SURF Community-artikel over vertrouwelijke transcripties is een praktijkbeschouwing en biedt geen zelfstandig lesmateriaal, training of praktische handreiking."
+    },
+    {
+      "proposalId": "proposal-8e59e53e4eefdc40",
+      "evidenceHash": "55385ebe327f72715d5f39b2162b147394f0e116da001fb4027b3dcca3d19abd",
+      "decision": "rejected",
+      "decidedAt": "2026-11-16T07:33:00Z",
+      "reason": "De SURF-communitypagina is inhoudelijk nog beschikbaar; alleen navigatie en een volgersaantal veranderden, zonder materiële wijziging van het canonieke aanbod."
+    },
+    {
+      "proposalId": "proposal-99bbf465fed3e04a",
+      "evidenceHash": "120d24b5c476d45825f8ae492a57425263c3ee8311b0b15295ff274bc186c3c8",
+      "decision": "rejected",
+      "decidedAt": "2026-11-16T07:33:00Z",
+      "reason": "Het verdwenen bericht over een verstreken AI-en-milieuactiviteit is geen actueel aanbod en het signaal koppelt niet aan een canoniek record dat moet worden gewijzigd."
     }
   ]
 }
