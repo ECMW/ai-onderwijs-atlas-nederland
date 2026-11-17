@@ -12,6 +12,8 @@ De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijze
 - filters binnen een groep werken als OR, verschillende groepen als AND;
 - meerdere rollen, zoals Docent en Onderzoeker, kunnen gecombineerd worden;
 - zoek- en filterstaat staat in de URL en is deelbaar;
+- op de startpagina leiden vier praktijkvragen naar lessen, toetsontwerp, AI-afspraken en scholing. De sectorkeuze werkt ook door in het aanbod en de filters. Elke ingang telt de actuele matches;
+- een vraag als “Een les over AI geven voor groep 7” combineert lesmateriaal en AI-geletterdheid met de zoekterm “groep 7”. De gekozen filters zijn zichtbaar en afzonderlijk te verwijderen;
 - elk zoekresultaat heeft een knop **Delen via e-mail**, die een e-mailconcept opent met de titel, aanbieder en directe Atlas-link;
 - bronknoppen benoemen de bestemming, bijvoorbeeld **Bekijk training** of **Bekijk materiaal**;
 - op de detailpagina kopieert **Kopieer bronvermelding** de titel, aanbieder, eventuele publicatiedatum, officiële bronnen en Atlas-link; bij geblokkeerd klembord verschijnt selecteerbare tekst;

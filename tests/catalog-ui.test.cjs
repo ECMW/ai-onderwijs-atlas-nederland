@@ -57,6 +57,67 @@ test('merged detail links redirect only to a present public record', () => {
   assert.ok(main.innerHTML.includes('Niet gevonden'));
 });
 
+test('education practice questions lead to applicable public records and retain specific details', () => {
+  const api = load([
+    {...record('lesson'), title:'Les over AI voor groep 7', themes:['AI-geletterdheid'], sectors:['PO'], offerCategory:'materials', costType:'free'},
+    {...record('lesson-design'), title:'Lesontwerp met AI', themes:['Lesgeven en leren met AI'], sectors:['MBO'], offerCategory:'materials'},
+    {...record('assessment'), title:'Een toets aanpassen', themes:['Toetsing en examinering'], sectors:['HBO'], offerCategory:'knowledge'},
+    {...record('agreements'), title:'Afspraken voor het schoolteam', themes:['Beleid en governance'], sectors:['VO']},
+    {...record('workshop'), title:'Workshop voor het onderwijsteam', sectors:['WO'], recordType:'training', legacyType:'Training'}
+  ]);
+  const examples = [
+    ['Waar vind ik gratis lesmateriaal voor het basisonderwijs?', {sector:'PO', type:'materials', cost:'Gratis'}, 'lesson'],
+    ['Een les over AI geven voor groep 7', {theme:'AI-geletterdheid', type:'materials', q:'groep 7'}, 'lesson'],
+    ['Ik wil met AI een les voorbereiden voor het middelbaar beroepsonderwijs', {theme:'Lesgeven en leren met AI', sector:'MBO'}, 'lesson-design'],
+    ['Hoe herontwerp ik een toets voor het hoger beroepsonderwijs?', {theme:'Toetsing en examinering', sector:'HBO'}, 'assessment'],
+    ['Teamafspraken maken voor de middelbare school', {q:'afspraken', sector:'VO'}, 'agreements'],
+    ['Teamscholing vinden voor het hoger onderwijs', {type:'Training', sector:'HBO,WO'}, 'workshop']
+  ];
+  for (const [query, expected, id] of examples) {
+    const criteria = api.criteriaForQuery(query);
+    for (const [key, value] of Object.entries(expected)) assert.equal(criteria[key], value, query);
+    assert.deepEqual(Array.from(api.recordsForCriteria(criteria), record => record.id), [id], query);
+  }
+});
+
+test('sector names stay visible in ordinary searches and questions respect selected filters', () => {
+  const data = [{...record('hbo'), title:'HBO cursus'}, {...record('vo'), sectors:['VO']}, {...record('wo'), sectors:['WO']}];
+  const api = load(data);
+  for (const [query, ids] of [['voortgezet onderwijs', ['vo']], ['hoger onderwijs', ['hbo', 'wo']], ['hogeschool', ['hbo']]]) {
+    const criteria = api.criteriaForQuery(query);
+    assert.equal(criteria.q, query);
+    assert.deepEqual(Array.from(api.recordsForCriteria(criteria), record => record.id), ids);
+  }
+  for (const query of ['Universiteit Utrecht', 'Hogeschool Rotterdam', 'Schoolafspraken over het gebruik van generatieve AI']) {
+    assert.equal(api.criteriaForQuery(query).q, query);
+  }
+  const explicit = {sector:'WO', theme:'Privacy en AVG', type:'Boek', cost:'Betaald', sort:'published'};
+  const combined = api.criteriaForQuery('Ik zoek gratis lesmateriaal voor de basisschool over klimaat', explicit);
+  for (const [key, value] of Object.entries(explicit)) assert.equal(combined[key], value);
+  assert.equal(combined.q, 'klimaat');
+});
+
+test('practice links count matching offers and retain the chosen sectors and audience', () => {
+  const lesson = { ...record('lesson'), title: 'Een les over AI', offerCategory: 'materials' };
+  const data = [lesson, { ...lesson, id: 'other-audience', audiences: ['Onderzoekers'] },
+    { ...lesson, id: 'other-sector', sectors: ['PO'] }];
+  const api = load(data, '#zoeken?sector=HBO,WO&audience=Docenten');
+  const html = api.resultsMarkup();
+  assert.ok(html.includes('Meerdere sectoren'));
+  const links = [...html.matchAll(/<a class="practice-link" href="([^"]+)">/g)];
+  assert.equal(links.length, 1);
+  const href = links[0][1].replaceAll('&amp;', '&');
+  const params = new URLSearchParams(href.split('?')[1]);
+  assert.equal(params.get('sector'), 'HBO,WO');
+  assert.equal(params.get('audience'), 'Docenten');
+  assert.equal(params.get('type'), 'materials');
+  assert.ok(html.includes('<small>1 resultaat '));
+  const destination = load(data, href).resultsMarkup();
+  assert.match(destination, /class="practice-back"/);
+  assert.ok(destination.includes('data-record-id="lesson"'));
+  assert.ok(!destination.includes('data-record-id="other-'));
+});
+
 test('commercial labels require evidence and are independent of price', () => {
   const api = load();
   const paid = { ...record('course', null), costType: 'paid' };
@@ -395,6 +456,25 @@ test('VSO is absent from sector filters and visible sector labels', () => {
   assert.ok(!api.homeFilterPanel([]).includes('name="sector" value="VSO"'));
   assert.ok(!api.simpleCard(item).includes('<span>VSO</span>'));
   assert.ok(!api.offerFacts(item).includes('VSO'));
+});
+test('offer cards show all public sectors and give the official source after the access terms', () => {
+  const item = {
+    ...record('leskaart'),
+    offerCategory: 'materials',
+    sectors: ['PO', 'VO', 'MBO', 'HBO', 'WO'],
+    sourceUrls: [
+      {url: 'https://example.org/secondary', sourceType: 'secondary'},
+      {url: 'https://example.org/leskaart', sourceType: 'official'}
+    ]
+  };
+  const html = load([item]).simpleCard(item);
+  for (const sector of item.sectors) assert.ok(html.includes(`<span>${sector}</span>`), sector);
+  const officialAction = html.match(/<a [^>]*href="https:\/\/example\.org\/leskaart"[^>]*>Bekijk materiaal ↗<\/a>/);
+  assert.ok(officialAction);
+  assert.ok(html.indexOf('<dt>Toegang</dt>') < officialAction.index);
+  assert.ok(officialAction.index < html.indexOf('>Bekijk details</a>'));
+  assert.ok(html.includes('>Delen via e-mail</a>'));
+  assert.ok(!html.includes('https://example.org/secondary'));
 });
 test('home and search filters lead with sector, then offer type, before other refinements', () => {
   const data = [{ ...record('training'), recordType: 'training', legacyType: 'Training' }];
@@ -1020,4 +1100,38 @@ test('actual catalogue suggestions have exact counts across roles, sectors and t
     }
   }
   assert.ok(checked>50);
+});
+
+test('facet counts omit only their own filter and count each record once', () => {
+  const data = [
+    { ...record('a'), sectors: ['HBO', 'HBO'], providerName: 'Team A, Team B' },
+    { ...record('b'), sectors: ['VO'], providerName: 'Team A, Team B' },
+    { ...record('c'), sectors: ['HBO'], providerName: 'Ander' },
+    { ...record('d'), sectors: ['PO'], providerName: 'Ander' },
+    { ...record('e'), sectors: ['HBO'], providerName: 'Team C' }
+  ];
+  const api = load(data);
+  api.setState({ q: 'privacy', sector: 'HBO,MBO', organization: JSON.stringify(['Team A, Team B', 'Team C']) });
+  const sectors = api.facet('sector', 'Sector', ['HBO', 'VO', 'PO']);
+  assert.match(sectors, /<span>HBO<\/span><small>2<\/small>/);
+  assert.match(sectors, /<span>VO<\/span><small>1<\/small>/);
+  assert.match(sectors, /<span>PO<\/span><small>0<\/small>/);
+  const providers = api.facet('organization', 'Aanbieder', ['Team A, Team B','Ander']);
+  assert.match(providers, /<span>Team A, Team B<\/span><small>1<\/small>/);
+  assert.match(providers, /<span>Ander<\/span><small>1<\/small>/);
+  api.setState({ q: 'zzzzzz' });
+  assert.match(api.facet('sector', 'Sector', ['HBO']), /<span>HBO<\/span><small>0<\/small>/);
+});
+
+test('facet options refresh when an open call expires during a browser session', () => {
+  let now = Date.parse('2026-11-17T22:59:55Z');
+  class Clock extends Date { static now() { return now; } }
+  const data = [{ ...record('call'), recordType: 'funding_call', legacyType: 'Call',
+    status: 'open_call', applicationDeadline: '2026-11-17' }];
+  const api = load(data, '#zoeken', { Date: Clock });
+  const statuses = () => api.facet('status', 'Beschikbaarheid', ['Open voor aanvragen', 'Aanvraag gesloten']);
+  assert.match(statuses(), /<span>Open voor aanvragen<\/span><small>1<\/small>/);
+  now = Date.parse('2026-11-17T23:01:05Z');
+  assert.doesNotMatch(statuses(), /<span>Open voor aanvragen<\/span>/);
+  assert.match(statuses(), /<span>Aanvraag gesloten<\/span><small>1<\/small>/);
 });
