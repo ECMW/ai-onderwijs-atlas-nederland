@@ -214,3 +214,49 @@ footer{
 .selection-bar[open]>summary::after{content:'−'}
 .selection-bar .selection-actions{margin:.5rem 0;flex-wrap:wrap}
 .results>.related{margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--line)}
+
+.practice-start{
+  margin:0 0 1.2rem;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--brand-shell);
+  overflow:hidden;
+}
+.practice-heading{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:1rem 1.25rem;background:#e9ede4;
+}
+.practice-heading h2{margin:0;font-size:clamp(1.3rem,2.2vw,1.85rem);line-height:1.15}
+.practice-heading label{display:flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:650}
+.practice-heading select{
+  min-height:44px;max-width:13rem;padding:.35rem .5rem;
+  font:inherit;color:var(--brand-ink);background:#fffefa;border:1px solid #859083;border-radius:6px;
+}
+.practice-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line)}
+.practice-link{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;align-content:center;align-items:center;
+  gap:.15rem .5rem;padding:.8rem 1.2rem;background:#fffdf9;text-decoration:none;color:var(--brand-ink);
+}
+.practice-link strong{font-size:1.06rem;line-height:1.25}
+.practice-link>span{grid-column:1;font-size:.84rem;color:#495b63}
+.practice-link small{grid-column:2;grid-row:1 / span 2;color:var(--brand-olive-deep);font-size:.78rem;white-space:nowrap}
+.practice-link small span{padding-left:.2rem}
+a.practice-link:hover,a.practice-link:focus-visible{background:#f0f3ea}
+a.practice-link:hover strong{text-decoration:underline}
+.practice-link:focus-visible{outline-offset:-4px!important}
+.practice-link.unavailable{background:#f4f2ed}
+.action-feedback:empty{min-height:0;margin:0}
+.practice-back{display:flex;align-items:center;flex-wrap:wrap;gap:.25rem 1rem;margin-bottom:.6rem;color:var(--brand-ink)}
+.practice-back a{display:inline-flex;align-items:center;min-height:44px;color:var(--brand-bluegray-deep);font-weight:650}
+@media(min-width:900px) and (max-width:1140px), (max-width:680px){
+  .practice-link{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:.2rem}
+}
+@media(max-width:680px){
+  .practice-heading{flex-wrap:wrap;gap:.5rem;padding:.8rem}
+  .practice-heading h2{font-size:1.35rem}
+  .practice-heading select{max-width:100%}
+  .practice-link{padding:.7rem .8rem}
+  .practice-link strong{font-size:1rem}
+  .practice-link>span{display:none}
+  .practice-start{margin-bottom:.85rem}
+}

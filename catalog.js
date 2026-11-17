@@ -50,6 +50,7 @@
   };
   const SYNONYMS = [
     ['ai literacy', 'ai geletterdheid'], ['toetsen', 'toetsing', 'examinering'],
+    ['lesontwerp', 'lesvoorbereiding', 'lesplanning', 'lesplan', 'lesplannen'],
     ['privacy', 'avg', 'persoonsgegevens'], ['ai wet', 'ai act', 'ai verordening'],
     ['veilige ai', 'ai werkplek', 'veilige omgeving'], ['subsidie', 'subsidies', 'financiering', 'call', 'calls', 'regeling'],
     ['beleid', 'beleidskader', 'richtlijn', 'voorbeeldbeleid'], ['training', 'trainingen', 'scholing', 'professionalisering', 'workshop', 'workshops', 'cursus', 'trainer', 'trainers'],
@@ -103,6 +104,28 @@
     'Subsidie of call,Subsidie': ['subsidie', 'subsidies', 'call', 'calls']
   };
   const QUERY_STOPWORDS = new Set(['ik', 'ben', 'wij', 'zijn', 'zoek', 'zoeken', 'iets', 'over', 'voor', 'de', 'het', 'een', 'en', 'of', 'naar', 'graag', 'wil', 'willen', 'nodig', 'informatie']);
+  const SECTOR_QUERY_NAMES = {
+    PO: ['primair onderwijs', 'basisonderwijs', 'basisschool', 'basisscholen'],
+    VO: ['voortgezet onderwijs', 'middelbare school', 'middelbare scholen'],
+    MBO: ['middelbaar beroepsonderwijs'],
+    HBO: ['hoger beroepsonderwijs', 'hogeschool', 'hogescholen'],
+    WO: ['wetenschappelijk onderwijs', 'universitair onderwijs', 'universiteit', 'universiteiten'],
+    'HBO,WO': ['hoger onderwijs']
+  };
+  const PRACTICE_QUERIES = [
+    { terms: ['les over ai', 'lessen over ai', 'lesgeven over ai', 'les over generatieve ai', 'lessen over generatieve ai'], type: 'materials', theme: 'AI-geletterdheid', fallback: 'les' },
+    { terms: ['met ai een les voorbereiden', 'met ai lessen voorbereiden', 'les voorbereiden met ai', 'les met ai voorbereiden', 'les ontwerpen met ai'], type: 'materials,knowledge', theme: 'Lesgeven en leren met AI', keyword: 'lesontwerp' },
+    { terms: ['les met ai', 'lessen met ai', 'lesgeven met ai', 'met ai een les'], theme: 'Lesgeven en leren met AI' },
+    { terms: ['lesmateriaal', 'lesmaterialen', 'lespakket', 'werkblad'], type: 'materials', fallback: 'les' },
+    { terms: ['toets', 'toetsen', 'tentamen', 'examen'], action: /\b(?:herontwerp|herontwerpen|ontwerp|ontwerpen|herzie|herzien|aanpassen|pas)\b/, type: 'materials,knowledge', theme: 'Toetsing en examinering', keyword: 'toets' },
+    { terms: ['teamafspraken', 'schoolafspraken', 'afspraken maken', 'afspraken over ai'], theme: 'Beleid en governance', keyword: 'afspraken' },
+    { terms: ['teamscholing', 'teamtraining', 'team scholen', 'training voor mijn team', 'scholing voor mijn team', 'scholing voor ons team'], type: 'Training' }
+  ];
+  const REQUEST_WORDS = new Set([
+    'we', 'hoe', 'waar', 'wat', 'welk', 'welke', 'vind', 'vinden', 'kan', 'kunnen', 'geef', 'geven',
+    'maak', 'maken', 'met', 'op', 'in', 'aan', 'bij', 'mijn', 'ons', 'onze', 'herontwerp', 'herontwerpen',
+    'ontwerp', 'ontwerpen', 'herzie', 'herzien', 'pas', 'aanpassen', 'voorbereiden'
+  ]);
   const PRACTICAL_PRIORITY = {
     software: 50, materials: 50, knowledge: 70,
     Handreiking: 70, Voorziening: 65, Training: 60, Boek: 58, Praktijkvoorbeeld: 55,
@@ -252,13 +275,22 @@
     });
     return [...new Set(terms)];
   };
-  const facetValues = (record, key) => ({
-    theme: recordThemes(record), sector: record.sectors || [], status: [statusLabel(record)],
-    type: [...new Set([offerType(record), typeLabel(record)])], audience: record.audiences || [], organization: [record.providerName],
-    geography: [record.geographicScope || 'Reikwijdte niet ingevuld'],
-    cost: [costLabel(record)], access: [accessLabel(record)],
-    source: [(record.sourceUrls || []).length ? 'Met officiële bron' : 'Bron nog niet vastgelegd']
-  }[key] || []);
+  const facetValues = {
+    theme: recordThemes,
+    sector: record => record.sectors || [],
+    status: record => [statusLabel(record)],
+    type: record => [offerType(record), typeLabel(record)],
+    audience: record => record.audiences || [],
+    organization: record => [record.providerName],
+    geography: record => [record.geographicScope || 'Reikwijdte niet ingevuld'],
+    cost: record => [costLabel(record)],
+    access: record => [accessLabel(record)],
+    source: record => [(record.sourceUrls || []).length ? 'Met officiële bron' : 'Bron nog niet vastgelegd']
+  };
+  function activeFilters(criteria) {
+    return FILTER_KEYS.map(key => [key, filterValues(key, criteria[key])])
+      .filter(([, selected]) => selected.length);
+  }
 
   function parseState() {
     const params = new URLSearchParams(location.hash.split('?')[1] || '');
@@ -302,7 +334,10 @@
       else { if (!QUERY_STOPWORDS.has(tokens[i])) groups.push([[tokens[i]]]); i++; }
     }
     if (!groups.length && normalized) groups.push([tokens]);
-    const plan = {normalized, groups, scores: new WeakMap()};
+    // An unqualified sector name is also searchable through the sector metadata.
+    // Keep an institution's complete name available for a literal provider search.
+    const sector = Object.entries(SECTOR_QUERY_NAMES).find(([, names]) => names.includes(normalized));
+    const plan = {normalized, groups, sectors: sector ? sector[0].split(',') : [], scores: new WeakMap()};
     if (searchPlans.size >= 50) searchPlans.delete(searchPlans.keys().next().value);
     searchPlans.set(normalized, plan);
     return plan;
@@ -324,18 +359,12 @@
     });
     const allGroupsMatch = fuzzy => plan.groups.every(group =>
       group.some(alternative => alternative.every(token => tokenMatches(token, fuzzy))));
-    const score = phrasePresent(text, plan.normalized) ? 3 : allGroupsMatch(false) ? 2 : allGroupsMatch(true) ? 1 : 0;
+    const sectorMatch = plan.sectors.some(sector => (record.sectors || []).includes(sector));
+    const score = phrasePresent(text, plan.normalized) ? 3 : sectorMatch || allGroupsMatch(false) ? 2 : allGroupsMatch(true) ? 1 : 0;
     plan.scores.set(record, score);
     return score;
   }
   function queryMatches(record, query) { return queryMatchQuality(record, query) > 0; }
-  function matches(record, omittedFacet = '', criteria = state) {
-    if (!queryMatches(record, criteria.q)) return false;
-    return FILTER_KEYS.every(key => {
-      const selected = filterValues(key, criteria[key]);
-      return key === omittedFacet || !selected.length || selected.some(value => facetValues(record, key).includes(value));
-    });
-  }
   function relevance(record, criteria = state) {
     const practical = PRACTICAL_PRIORITY[typeLabel(record)] || 10;
     const trusted = record.verificationStatus === 'verified' && (record.sourceUrls || []).length ? 5 : 0;
@@ -408,18 +437,40 @@
 
   function sortRecords(list) {
     if (state.sort === 'az') return list.sort((a, b) => a.title.localeCompare(b.title, 'nl'));
-    if (state.sort === 'added' || isPublicationSort()) return list.sort((a, b) => {
+    if (state.sort === 'added' || isPublicationSort()) {
       const dateOf = state.sort === 'added' ? addedDate : publicationDate;
-      const aDate = dateOf(a), bDate = dateOf(b);
-      // Gebruik uitsluitend de gekozen datumsoort; onbekende datums blijven onderaan.
-      if (Boolean(aDate) !== Boolean(bDate)) return aDate ? -1 : 1;
-      const order = state.sort === 'published-oldest' ? aDate.localeCompare(bDate) : bDate.localeCompare(aDate);
-      return order || a.title.localeCompare(b.title, 'nl') || a.id.localeCompare(b.id);
-    });
-    return list.sort((a, b) => relevance(b) - relevance(a));
+      const dates = new Map(list.map(record => [record, dateOf(record)]));
+      return list.sort((a, b) => {
+        const aDate = dates.get(a), bDate = dates.get(b);
+        // Gebruik uitsluitend de gekozen datumsoort; onbekende datums blijven onderaan.
+        if (Boolean(aDate) !== Boolean(bDate)) return aDate ? -1 : 1;
+        const order = state.sort === 'published-oldest' ? aDate.localeCompare(bDate) : bDate.localeCompare(aDate);
+        return order || a.title.localeCompare(b.title, 'nl') || a.id.localeCompare(b.id);
+      });
+    }
+    return sortByRelevance(list, state);
   }
-  function facetCount(key, option) {
-    return records.filter(record => matches(record, key) && facetValues(record, key).includes(option)).length;
+  function sortByRelevance(list, criteria) {
+    const scores = new Map(list.map(record => [record, relevance(record, criteria)]));
+    return list.sort((a, b) => scores.get(b) - scores.get(a));
+  }
+  function facetCounts() {
+    const counts = Object.fromEntries(FILTER_KEYS.map(key => [key, new Map()]));
+    const selected = activeFilters(state);
+    for (const record of records) {
+      const options = Object.fromEntries(FILTER_KEYS.map(key => [key, new Set(facetValues[key](record))]));
+      const failed = selected.filter(([key, choices]) => !choices.some(value => options[key].has(value)));
+      const queryMatchesRecord = queryMatches(record, state.q);
+      for (const key of FILTER_KEYS) {
+        // A choice counts matches with the other filters still applied.
+        const matchesOthers = !failed.length || (failed.length === 1 && failed[0][0] === key);
+        const increment = Number(queryMatchesRecord && matchesOthers);
+        for (const option of options[key]) {
+          counts[key].set(option, (counts[key].get(option) || 0) + increment);
+        }
+      }
+    }
+    return counts;
   }
   function hasIntent() {
     return Boolean(state.all === '1' || state.q || FILTER_KEYS.some(key => values(key).length) || state.sort !== 'relevant');
@@ -428,38 +479,58 @@
   function phrasePresent(text, phrase) {
     return (` ${text} `).includes(` ${normalize(phrase)} `);
   }
-  function interpretNaturalQuery(rawQuery) {
-    const normalized = normalize(rawQuery);
+  function interpretNaturalQuery(rawQuery, normalized, practice) {
     let residual = ` ${normalized} `;
-    const found = { audience: [], theme: [], sector: [], type: [] };
+    const found = { audience: [], theme: [], sector: [], type: [], cost: [] };
     const consume = phrase => { residual = residual.replaceAll(` ${normalize(phrase)} `, ' '); };
+    if (practice) {
+      if (practice.type) found.type.push(practice.type);
+      if (practice.theme) found.theme.push(practice.theme);
+      practice.terms.forEach(consume);
+      if (practice.keyword === 'afspraken') ['met mijn team', 'met ons team', 'met het team'].forEach(consume);
+    }
+    if (phrasePresent(residual, 'gratis')) { found.cost.push('Gratis'); consume('gratis'); }
+    Object.entries(SECTOR_QUERY_NAMES).forEach(([sector, names]) => {
+      for (const name of names) {
+        if (phrasePresent(residual, name)) { found.sector.push(...sector.split(',')); consume(name); }
+      }
+    });
+    const remaining = residual;
     Object.entries(ROLE_ALIASES).forEach(([alias, role]) => {
-      if (phrasePresent(normalized, alias)) { found.audience.push(role); consume(alias); }
+      if (phrasePresent(remaining, alias)) { found.audience.push(role); consume(alias); }
     });
     Object.entries(THEME_RULES).forEach(([theme, terms]) => {
-      const matches = terms.filter(term => phrasePresent(normalized, term));
+      const matches = terms.filter(term => phrasePresent(remaining, term));
       if (matches.length) { found.theme.push(theme); matches.forEach(consume); }
     });
     SECTORS.forEach(sector => { if (phrasePresent(normalized, sector)) { found.sector.push(sector); consume(sector); } });
     Object.entries(TYPE_QUERY_RULES).forEach(([type, terms]) => {
-      const matches = terms.filter(term => phrasePresent(normalized, term));
+      const matches = terms.filter(term => phrasePresent(remaining, term));
       if (matches.length) { found.type.push(type); matches.forEach(consume); }
     });
     if (found.type.includes('Subsidie of call,Subsidie')) {
       found.theme = found.theme.filter(theme => theme !== 'Subsidies en financiering');
     }
-    const rest = residual.trim().split(/\s+/).filter(token => token.length > 1 && !QUERY_STOPWORDS.has(token)).join(' ');
+    const rest = residual.trim().split(/\s+/).filter(token => token && !QUERY_STOPWORDS.has(token) &&
+      !REQUEST_WORDS.has(token) && !(practice && token === 'ai'));
+    if (practice?.keyword) rest.push(practice.keyword);
+    if (!rest.length && practice?.fallback) rest.push(practice.fallback);
     const structured = Object.values(found).some(items => items.length);
-    return { q: structured ? rest : rawQuery.trim(), ...Object.fromEntries(Object.entries(found).map(([key, items]) => [key, [...new Set(items)].join(',')])) };
+    return { q: structured ? rest.join(' ') : rawQuery.trim(), ...Object.fromEntries(Object.entries(found).map(([key, items]) => [key, [...new Set(items)].join(',')])) };
   }
   function criteriaForQuery(rawQuery, base = state) {
     // Keep ordinary searches visible and combine them with explicit filters.
-    // Only full first-person requests opt into the older role/topic interpreter.
     const query = rawQuery.trim();
-    if (!/^(ik|wij)\b/i.test(query)) return {...base, q:query};
-    const interpreted = interpretNaturalQuery(query);
+    const normalized = normalize(query);
+    const practice = PRACTICE_QUERIES.find(rule => (!rule.action || rule.action.test(normalized)) &&
+      rule.terms.some(term => phrasePresent(normalized, term)));
+    const isQuestion = /^(?:ik|wij|we|hoe|waar|welke?|kan ik|kunnen we)\b/.test(normalized);
+    const taskFragment = practice && (practice.action || /\b(?:vinden|zoeken|geven|maken|voorbereiden)\b/.test(normalized) ||
+      /^(?:een )?(?:les(?:sen|geven)? (?:over|met) ai|teamafspraken|teamscholing|teamtraining)\b/.test(normalized));
+    if (!isQuestion && !taskFragment) return {...base, q:query};
+    const interpreted = interpretNaturalQuery(query, normalized, practice);
     const criteria = { ...base, q: interpreted.q };
-    ['audience', 'theme', 'sector', 'type'].forEach(key => {
+    ['audience', 'theme', 'sector', 'type', 'cost'].forEach(key => {
       if (interpreted[key] && !base[key]) criteria[key] = interpreted[key];
     });
     return criteria;
@@ -478,7 +549,9 @@
     return Number.isNaN(date.getTime()) ? value : new Intl.DateTimeFormat('nl-NL', { day: 'numeric', month: 'short', year: 'numeric' }).format(date);
   }
   function recordsForCriteria(criteria = {}) {
-    return records.filter(record => matches(record, '', criteria));
+    const selected = activeFilters(criteria);
+    return records.filter(record => queryMatches(record, criteria.q) &&
+      selected.every(([key, choices]) => facetValues[key](record).some(value => choices.includes(value))));
   }
   function criteriaHref(criteria = {}) {
     const params = new URLSearchParams();
@@ -600,8 +673,8 @@
 
   function searchForm(id) {
     return `<form class="atlas-search" role="search" autocomplete="off">
-      <label for="${id}">Zoekterm</label>
-      <div class="search-row"><input id="${id}" type="search" role="combobox" value="${escapeHtml(state.q)}" placeholder="Onderwerp of aanbieder" aria-controls="search-suggestions" aria-autocomplete="list" aria-expanded="false"><button class="btn" aria-label="Zoeken">Zoeken</button></div>
+      <label for="${id}">Uw vraag of zoekterm</label>
+      <div class="search-row"><input id="${id}" type="search" role="combobox" value="${escapeHtml(state.q)}" placeholder="Bijv. les over AI" aria-controls="search-suggestions" aria-autocomplete="list" aria-expanded="false"><button class="btn" aria-label="Zoeken">Zoeken</button></div>
       <div class="suggestions" id="search-suggestions" hidden></div>
     </form>`;
   }
@@ -641,20 +714,28 @@
     return `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
   function simpleCard(record, showPublicationDate = false, recency = null) {
-    const sectors = (record.sectors || []).filter(sector => sector !== 'VSO').slice(0, 3);
+    const sectors = (record.sectors || []).filter(sector => sector !== 'VSO');
     const sourceItem = primarySource(record);
-    return `<article class="result-card" data-record-id="${escapeHtml(record.id)}">
-      <div class="card-body"><div class="card-top"><span class="type-label">${escapeHtml(offerLabel(record))}</span></div>
+    return `<article class="result-card" data-record-id="${escapeHtml(record.id)}" data-offer-card>
+      <div class="card-body offer-intro"><div class="card-top"><span class="type-label">${escapeHtml(offerLabel(record))}</span></div>
         <h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
         <p class="provider">Aanbieder: ${escapeHtml(factValue(record.providerName))}</p>${commercialBadge(record)}
+        <dl class="offer-terms"><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div><div><dt>Toegang</dt><dd>${escapeHtml(accessLabel(record))}</dd></div></dl>
+      </div>
+      <div class="card-actions offer-links">
+        ${sourceItem ? `<a class="card-cta primary" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record))}: ${escapeHtml(record.title)}">${escapeHtml(sourceActionLabel(record))} ↗</a>` : ''}
+        <a class="card-cta" href="#item/${escapeHtml(record.id)}" aria-label="Bekijk details: ${escapeHtml(record.title)}">Bekijk details</a>
+        <a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a>
+      </div>
+      <div class="card-body offer-context">
         <p class="description">${escapeHtml(factValue(record.description))}</p>
-        <dl class="card-facts"><div><dt>Voor wie</dt><dd>${escapeHtml(factValue((record.audiences || []).join(', ')))}</dd></div><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div><div><dt>Toegang</dt><dd>${escapeHtml(accessLabel(record))}</dd></div></dl>
+        <dl class="offer-audience"><dt>Voor wie</dt><dd>${escapeHtml(factValue((record.audiences || []).join(', ')))}</dd></dl>
         ${recency ? `<p class="publication-date">${escapeHtml(recency.label)} <time datetime="${escapeHtml(recency.date)}">${escapeHtml(dateLabel(recency.date))}</time></p>` : ''}
         ${showPublicationDate && state.sort === 'added' ? `<p class="publication-date">${addedDate(record) ? `Toegevoegd aan de Atlas op <time datetime="${addedDate(record)}">${escapeHtml(dateLabel(addedDate(record)))}</time>` : 'Toevoegdatum onbekend'}</p>` : ''}
         ${showPublicationDate && isPublicationSort() ? `<p class="publication-date">${publicationDate(record) ? `Verschenen op <time datetime="${publicationDate(record)}">${escapeHtml(dateLabel(publicationDate(record)))}</time>` : 'Publicatiedatum onbekend'}</p>` : ''}
         ${sectors.length ? `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>` : ''}
         <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span></div>
-      </div><div class="card-actions"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record))}: ${escapeHtml(record.title)}">${escapeHtml(sourceActionLabel(record))} ↗</a>` : ''}<a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a></div>
+      </div>
     </article>`;
   }
 
@@ -808,13 +889,14 @@
     };
     return values(key).map(value => filterOptionLabel(key, value)).join(', ') || defaults[key] || 'Alle opties';
   }
-  function facet(key, title, options) {
-    const present = options.filter(option => records.some(record => facetValues(record, key).includes(option)));
+  function facet(key, title, options, counts = facetCounts()[key]) {
+    const present = options.filter(option => counts.has(option));
+    const selected = values(key);
     const supportsMultiple = ['sector', 'audience'].includes(key);
     return `<details class="facet${supportsMultiple ? ' facet-multi' : ''}" data-facet-block="${escapeHtml(key)}"${supportsMultiple ? ' open' : ''}><summary><span class="facet-heading">${escapeHtml(title)}<b aria-label="${values(key).length} geselecteerd" ${values(key).length ? '' : 'hidden'}>${values(key).length}</b></span><span class="facet-value">${escapeHtml(facetSelectionLabel(key))}</span></summary><div>
       ${supportsMultiple ? '<p class="facet-note">Kies één of meer opties tegelijk.</p>' : ''}
       ${key === 'organization' && present.length > 12 ? '<input class="facet-search" type="search" placeholder="Zoek aanbieder…" aria-label="Zoek binnen aanbieders">' : ''}
-      <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => { const count = facetCount(key, option); const checked = values(key).includes(option); return `<label data-facet-option="${escapeHtml(option)}"><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${!count && !checked ? 'disabled' : ''}><span>${escapeHtml(filterOptionLabel(key, option))}</span><small>${count}</small></label>`; }).join('')}</div>
+      <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => { const count = counts.get(option); const checked = selected.includes(option); return `<label data-facet-option="${escapeHtml(option)}"><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${!count && !checked ? 'disabled' : ''}><span>${escapeHtml(filterOptionLabel(key, option))}</span><small>${count}</small></label>`; }).join('')}</div>
       ${present.length > 8 ? '<button class="facet-more" type="button" aria-expanded="false">Toon meer</button>' : ''}
     </div></details>`;
   }
@@ -859,28 +941,60 @@
   }
   function relaxationSuggestions() {
     return FILTER_KEYS.filter(key => values(key).length).map(key => {
-      const count = records.filter(record => matches(record, key)).length;
+      const count = recordsForCriteria({ ...state, [key]: '' }).length;
       return { key, values: values(key), count };
     }).filter(item => item.count > 0).sort((a, b) => b.count - a.count).slice(0, 3);
   }
+  const PRACTICE_ROUTES = [
+    { label: 'Een les voorbereiden', detail: 'Lesbrieven en werkvormen', criteria: { q: 'les', type: 'materials' } },
+    { label: 'Een toets herontwerpen', detail: 'Handreikingen en toetsmateriaal', criteria: { q: 'toets', theme: 'Toetsing en examinering', type: 'materials,knowledge' } },
+    { label: 'AI-afspraken maken', detail: 'Gesprekskaarten en voorbeelden', criteria: { q: 'afspraken', type: 'materials,knowledge' } },
+    { label: 'Scholing vinden', detail: 'Cursussen, workshops en trainerskits', criteria: { type: 'Training', status: 'Direct beschikbaar' } }
+  ];
+  const SECTOR_NAMES = {
+    PO: 'Primair onderwijs', VO: 'Voortgezet onderwijs', MBO: 'Middelbaar beroepsonderwijs',
+    HBO: 'Hoger beroepsonderwijs', WO: 'Wetenschappelijk onderwijs'
+  };
+  function practiceNavigation() {
+    const context = { sector: state.sector, audience: state.audience };
+    if (state.sort !== 'relevant' && new URLSearchParams(location.hash.split('?')[1]).has('sort')) context.sort = state.sort;
+    if (state.q || FILTER_KEYS.some(key => !['sector', 'audience'].includes(key) && values(key).length)) {
+      const task = PRACTICE_ROUTES.find(route => Object.entries(route.criteria).every(([key, value]) => state[key] === value));
+      if (task) return `<nav class="practice-back" aria-label="Praktijkvragen"><a href="${escapeHtml(criteriaHref(context))}">← Andere taak</a><strong>${escapeHtml(task.label)}</strong></nav>`;
+      return '<nav class="catalog-tabs" aria-label="Aanbodoverzicht"><a href="#zoeken">Al het aanbod</a><a href="#nieuw">Nieuw aanbod →</a></nav>';
+    }
+    const selected = values('sector');
+    const links = PRACTICE_ROUTES.map(route => {
+      const criteria = { ...context, ...route.criteria };
+      const count = recordsForCriteria(criteria).length;
+      const content = `<strong>${escapeHtml(route.label)}</strong><span>${escapeHtml(route.detail)}</span>`;
+      if (!count) return `<span class="practice-link unavailable">${content}<small>Geen resultaten</small></span>`;
+      return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${count} ${count === 1 ? 'resultaat' : 'resultaten'} <span aria-hidden="true">→</span></small></a>`;
+    });
+    return `<section class="practice-start" aria-labelledby="practice-title"><div class="practice-heading"><h2 id="practice-title" tabindex="-1">Waar wilt u mee aan de slag?</h2>
+      <label for="practice-sector">Sector<select id="practice-sector">
+        <option value="">Alle sectoren</option>${selected.length > 1 ? '<option selected disabled>Meerdere sectoren</option>' : ''}
+        ${SECTORS.map(sector => `<option value="${escapeHtml(sector)}" ${selected.length === 1 && selected[0] === sector ? 'selected' : ''}>${escapeHtml(SECTOR_NAMES[sector] ? `${sector} · ${SECTOR_NAMES[sector]}` : sector)}</option>`).join('')}
+      </select></label></div><div class="practice-links">${links.join('')}</div></section>`;
+  }
   function resultsMarkup() {
-    resultRecords = sortRecords(records.filter(record => matches(record)));
+    resultRecords = sortRecords(recordsForCriteria(state));
     const chips = [
       ...(state.q ? [`<button class="chip" data-clear-query>Zoekterm: ${escapeHtml(state.q)} ×</button>`] : []),
       ...FILTER_KEYS.flatMap(key => values(key).map(value => `<button class="chip" data-remove="${key}|${escapeHtml(value)}">${escapeHtml(filterOptionLabel(key, value))} ×</button>`))
     ].join('');
     const related = values('theme').length ? relatedThemes(values('theme')[0]) : [];
     const alternative = alternativeSuggestion();
-    const relaxations = relaxationSuggestions();
+    const relaxations = resultRecords.length ? [] : relaxationSuggestions();
     const activeCount = FILTER_KEYS.reduce((sum, key) => sum + values(key).length, 0) + Number(Boolean(state.q));
     const heading = `${resultRecords.length} ${resultRecords.length === 1 ? 'resultaat' : 'resultaten'}${state.q ? ` voor ‘${state.q}’` : ''}`;
-    const knownDates = resultRecords.filter(record => publicationDate(record)).length;
+    const knownDates = isPublicationSort() && resultRecords.filter(record => publicationDate(record)).length;
     const sortSummary = state.sort === 'added'
       ? 'Nieuwste toevoegingen aan de Atlas eerst; onbekende toevoegdatums staan onderaan. Een broncontrole verandert de toevoegdatum niet.'
       : isPublicationSort()
       ? `${state.sort === 'published' ? 'Nieuwste' : 'Oudste'} publicaties eerst. Publicatiedatum bekend bij ${knownDates} van ${resultRecords.length} resultaten; onbekende datums staan onderaan.`
       : state.sort === 'az' ? 'Gesorteerd op titel, van A tot Z.' : 'Gesorteerd op relevantie en directe bruikbaarheid.';
-    return `<nav class="catalog-tabs" aria-label="Aanbodoverzicht"><a href="#zoeken" aria-current="page">Al het aanbod</a><a href="#nieuw">Nieuw aanbod →</a></nav><header class="result-head"><div><span class="eyebrow">Gevonden aanbod</span><h2>${escapeHtml(heading)}</h2><p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p></div><div class="result-tools"><button class="mobile-filter btn secondary" aria-controls="filters" aria-expanded="false">Filters (${activeCount})</button><label>Sorteren<select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select></label></div></header>
+    return `${practiceNavigation()}<header class="result-head"><div><h2 tabindex="-1">${escapeHtml(heading)}</h2><p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p></div><div class="result-tools"><button class="mobile-filter btn secondary" aria-controls="filters" aria-expanded="false">Filters (${activeCount})</button><label>Sorteren<select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select></label></div></header>
       ${values('type').length === 1 && values('type')[0] === 'Training' ? '<section class="training-intro"><h2>Workshops en trainers</h2><p>Vind een workshop, cursus of training en de aanbieder die deze verzorgt. Verfijn op onderwerp, doelgroep of aanbieder. Trainer, locatie, kosten en beschikbaarheid staan bij het aanbod voor zover bevestigd. Bespreek maatwerk via de officiële aanbodpagina.</p></section>' : ''}
       ${values('theme').includes('Veilige AI-omgeving') ? '<section class="selection-guidance"><h2>Beoordeel de toepassing in uw eigen situatie</h2><p>Gebruik de officiële bronnen om gegevensgebruik, beheer, menselijke controle, toegankelijkheid en overstapmogelijkheden te beoordelen. Wat passend is, hangt af van uw doel, gegevens, instellingen en afspraken. Deze selectie is geen keurmerk voor veilige of verantwoorde AI.</p></section>' : ''}
       <details class="selection-bar"><summary>Selectie delen of afdrukken</summary><div class="selection-actions"><a href="#bijdragen">Aanbod toevoegen of feedback geven</a><button type="button" data-share-selection>Deel selectie</button>${resultRecords.length ? `<a data-meeting-sheet href="${escapeHtml(stateHref().replace(/^#zoeken/, '#overlegblad'))}">Overlegblad (${resultRecords.length})</a>` : ''}</div></details>
@@ -890,10 +1004,12 @@
       ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="${escapeHtml(stateHref({ theme }))}">${escapeHtml(theme)} <span>${count} ${count === 1 ? 'resultaat' : 'resultaten'}</span></a>`).join('')}</nav>` : ''}`;
   }
   function refreshFacetControls() {
+    const counts = facetCounts();
+    const selections = Object.fromEntries(FILTER_KEYS.map(key => [key, values(key)]));
     document.querySelectorAll('[data-facet]').forEach(input => {
       const key = input.dataset.facet;
-      const checked = values(key).includes(input.value);
-      const count = facetCount(key, input.value);
+      const checked = selections[key].includes(input.value);
+      const count = counts[key].get(input.value) || 0;
       input.checked = checked;
       input.disabled = !count && !checked;
       const counter = input.closest('label')?.querySelector('small');
@@ -922,12 +1038,14 @@
     bindResultsControls();
   }
   function catalogFilterPanel(typeOptions, audienceOptions, organizationOptions) {
+    const counts = facetCounts();
+    const filter = (key, title, options) => facet(key, title, options, counts[key]);
     const hiddenCount = ['access', 'source'].reduce((sum, key) => sum + values(key).length, 0);
     return `<aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Filters</h2><button class="close" aria-label="Sluit filters">×</button></header>
       <p class="filter-help">Combineer uw zoekterm met filters. Binnen een filter kunt u meerdere opties kiezen.</p>
-      ${facet('sector', 'Voor welke sector?', SECTORS)}${facet('type', 'Wat zoekt u?', typeOptions)}${facet('cost', 'Kosten', ['Gratis', 'Betaald', 'Gratis en betaald', 'Kosten onbekend'])}${facet('theme', 'Onderwerp', themeOptions())}${facet('geography', 'Regio', ['Nederland', 'Europa', 'Internationaal'])}${facet('audience', 'Doelgroep', audienceOptions)}${facet('status', 'Beschikbaarheid', Object.values(STATUS_LABELS))}${facet('organization', 'Aanbieder', organizationOptions)}
+      ${filter('sector', 'Voor welke sector?', SECTORS)}${filter('type', 'Wat zoekt u?', typeOptions)}${filter('cost', 'Kosten', ['Gratis', 'Betaald', 'Gratis en betaald', 'Kosten onbekend'])}${filter('theme', 'Onderwerp', themeOptions())}${filter('geography', 'Regio', ['Nederland', 'Europa', 'Internationaal'])}${filter('audience', 'Doelgroep', audienceOptions)}${filter('status', 'Beschikbaarheid', Object.values(STATUS_LABELS))}${filter('organization', 'Aanbieder', organizationOptions)}
       <details class="more-filters"><summary>Meer filters<span data-more-count>${hiddenCount ? ` (${hiddenCount})` : ''}</span> <span aria-hidden="true">▼</span></summary>
-        ${facet('access', 'Toegang', Object.values(ACCESS_LABELS))}${facet('source', 'Bron', ['Met officiële bron', 'Bron nog niet vastgelegd'])}
+        ${filter('access', 'Toegang', Object.values(ACCESS_LABELS))}${filter('source', 'Bron', ['Met officiële bron', 'Bron nog niet vastgelegd'])}
       </details><button class="clear btn secondary">Wis alle filters</button><footer><button class="apply btn">Toon ${resultRecords.length} resultaten</button></footer>
     </aside>`;
   }
@@ -939,10 +1057,10 @@
       const primaryDifference = Number(!PRIMARY_AUDIENCES.includes(a)) - Number(!PRIMARY_AUDIENCES.includes(b));
       return primaryDifference || a.localeCompare(b, 'nl');
     });
-    resultRecords = sortRecords(records.filter(record => matches(record)));
+    const results = resultsMarkup();
     const personas = savedPersonas();
     const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
-    main.innerHTML = `<section class="catalog"><header class="catalog-intro"><h1>Zoek AI-aanbod voor uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, boeken, lesmaterialen en meer. Combineer uw zoekterm met de filters.</p>${isHome ? `${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}` : ''}</header><div class="catalog-grid"><div class="catalog-sidebar" aria-label="Zoeken en filteren"><h2 class="sidebar-title">Zoeken en filteren</h2>${searchForm(isHome ? 'home-search' : 'catalog-search')}${catalogFilterPanel(typeOptions, audienceOptions, organizationOptions)}</div><section class="results" id="results-panel">${resultsMarkup()}</section></div></section>`;
+    main.innerHTML = `<section class="catalog"><header class="catalog-intro"><h1>Zoek AI-aanbod voor uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, boeken, lesmaterialen en meer. Combineer uw zoekterm met de filters.</p>${isHome ? `${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}` : ''}</header><div class="catalog-grid"><div class="catalog-sidebar" aria-label="Zoeken en filteren"><h2 class="sidebar-title">Zoeken en filteren</h2>${searchForm(isHome ? 'home-search' : 'catalog-search')}${catalogFilterPanel(typeOptions, audienceOptions, organizationOptions)}</div><section class="results" id="results-panel">${results}</section></div></section>`;
     bindSearchPage(); bindRolePickers();
     if (sessionGet('atlas.restoreResults') === location.hash) {
       const targetY = Number(sessionGet('atlas.resultsScroll')) || 0;
@@ -952,7 +1070,7 @@
   }
 
   function meetingSheetMarkup() {
-    const items = sortRecords(records.filter(record => matches(record)));
+    const items = sortRecords(recordsForCriteria(state));
     const labels = { theme: 'Onderwerp', audience: 'Doelgroep', sector: 'Sector', status: 'Beschikbaarheid',
       type: 'Soort aanbod', geography: 'Regio', organization: 'Aanbieder', cost: 'Kosten', access: 'Toegang', source: 'Bron' };
     const criteria = [
@@ -1049,7 +1167,7 @@
     const normalized = normalize(query);
     if (normalized.length < 2) return [];
     const criteria = criteriaForQuery(query);
-    const matching = recordsForCriteria(criteria).sort((a, b) => relevance(b, criteria) - relevance(a, criteria));
+    const matching = sortByRelevance(recordsForCriteria(criteria), criteria);
     const collection = (label, next) => {
       const count = recordsForCriteria(next).length;
       return { label, count, meta: `${count} ${count === 1 ? 'resultaat' : 'resultaten'}`, href: criteriaHref(next) };
@@ -1087,7 +1205,14 @@
       if (top < headerBottom) scrollBy({ top: top - headerBottom, behavior: 'instant' });
     };
     input.onfocus = () => requestAnimationFrame(keepSearchVisible);
-    form.onsubmit = event => { event.preventDefault(); closeSuggestions(); applyNaturalQuery(input.value); setUrl(); };
+    form.onsubmit = event => {
+      event.preventDefault();
+      closeSuggestions();
+      if (input.value.trim() && ['#home', ''].includes(location.hash)) state.sort = 'relevant';
+      applyNaturalQuery(input.value);
+      setUrl();
+      input.value = state.q || '';
+    };
     input.oninput = () => {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
@@ -1181,6 +1306,20 @@
   function bindResultsControls() {
     const panel = document.querySelector('#results-panel');
     if (!panel) return;
+    const sector = panel.querySelector('#practice-sector');
+    panel.querySelectorAll('a.practice-link,.practice-back a').forEach(link => {
+      link.onclick = event => {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        const heading = link.classList.contains('practice-link') ? '.result-head h2' : '#practice-title';
+        addEventListener('hashchange', () => document.querySelector(heading)?.focus(), { once: true });
+      };
+    });
+    if (sector) sector.onchange = () => {
+      state.sector = sector.value;
+      if (['#home', ''].includes(location.hash)) state.sort = 'relevant';
+      setUrl();
+      document.querySelector('#practice-sector')?.focus({ preventScroll: true });
+    };
     panel.querySelectorAll('[data-remove]').forEach(button => button.onclick = () => {
       const [key, value] = button.dataset.remove.split('|');
       state[key] = serializeFilterValues(key, values(key).filter(item => item !== value));
