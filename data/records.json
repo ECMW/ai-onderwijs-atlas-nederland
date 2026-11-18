@@ -5074,12 +5074,12 @@
     "title": "Visietool Toetsen",
     "recordType": "product",
     "legacyType": "Product",
-    "subtype": null,
+    "subtype": "Gesprekstool met printmaterialen",
     "organizationIds": [
       "org-npuls"
     ],
     "providerName": "Npuls",
-    "description": "Vrij toegankelijke gesprekstool met materialen voor gestructureerde gesprekken over toetsing, examinering, kwaliteitsborging en AI.",
+    "description": "Gesprekstool van Npuls met hand-outs en posters voor gestructureerde teamsessies over toetsing, examinering en AI. Teams brengen hun praktijk, ambities en zorgen in kaart en formuleren uitgangspunten en vervolgstappen.",
     "purpose": "Teams ondersteunen bij een gedeelde visie op toetsen, examineren en AI",
     "audiences": [
       "Docenten",
@@ -5088,22 +5088,29 @@
       "Beleidsmakers"
     ],
     "sectors": [
-      "MBO",
       "HBO",
       "WO"
     ],
-    "themes": [],
+    "themes": [
+      "Toetsing en examinering",
+      "Beleid en governance"
+    ],
     "status": "available",
-    "availabilityText": "2026",
+    "availabilityText": "De Visietool en de printmaterialen zijn publiek en kosteloos toegankelijk. Eventuele begeleiding door Npuls valt buiten deze kostenvermelding.",
     "startDate": null,
     "endDate": null,
-    "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "publicationDate": "2026-07-06",
+    "lastVerified": "2026-11-18",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "Officiële bron",
         "url": "https://www.npuls.nl/kennisbank/visietool-toetsen",
+        "sourceType": "official"
+      },
+      {
+        "label": "Visietool Toetsen: hand-outs en posters",
+        "url": "https://community-dto.github.io/visietool-toetsen/materialen.html",
         "sourceType": "official"
       }
     ],
@@ -5112,7 +5119,7 @@
     "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
-    "costType": "unknown",
+    "costType": "free",
     "fundingAmount": null,
     "fundingDeadline": null,
     "applicationOpenDate": null,
@@ -5134,7 +5141,7 @@
       "visievorming",
       "gesprekstool"
     ],
-    "notes": null,
+    "notes": "Npuls noemt de tool ontwikkeld voor hbo en wo en kondigt een mbo-variant aan. Een afzonderlijke mbo-versie is bij deze broncontrole niet vastgesteld.",
     "changeHistory": [
       {
         "date": "2026-07-12",
@@ -5145,9 +5152,16 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-11-18",
+        "type": "updated",
+        "summary": "Kosten, publicatiedatum en doelgroep vastgesteld. Directe link naar de printmaterialen toegevoegd."
       }
     ],
-    "offerCategory": "materials"
+    "offerCategory": "materials",
+    "verificationNote": "De officiële aanbiederspagina, de materialenpagina en de vrije toegang tot de hand-outs zijn gecontroleerd. De datum en de doelgroep komen van Npuls.",
+    "verificationMethod": "agent_primary_source_review"
   },
   {
     "id": "train-de-trainer-visietool-toetsen-examineren-en-ai",
@@ -5615,7 +5629,7 @@
     "title": "In gesprek over digitale geletterdheid",
     "recordType": "guidance",
     "legacyType": "Handreiking",
-    "subtype": null,
+    "subtype": "Gespreksplaat (PDF)",
     "organizationIds": [
       "org-npuls"
     ],
@@ -5640,16 +5654,21 @@
       "Beleid en governance"
     ],
     "status": "available",
-    "availabilityText": "Direct beschikbaar",
+    "availabilityText": "De Nederlandstalige gespreksplaat is als PDF zonder betaling of account te downloaden.",
     "startDate": null,
     "endDate": null,
     "publicationDate": "2026-06-23",
-    "lastVerified": "2026-07-12",
+    "lastVerified": "2026-11-18",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "Officiële bron",
         "url": "https://www.npuls.nl/kennisbank/in-gesprek-over-digitale-geletterdheid",
+        "sourceType": "official"
+      },
+      {
+        "label": "Npuls: Aan de slag met digitale geletterdheid (PDF)",
+        "url": "https://www.npuls.nl/_assets/be8aea8c-9c1e-4988-b422-04027b177f2e/Aan%20de%20slag%20met%20digitale%20geletterdheid.pdf",
         "sourceType": "official"
       }
     ],
@@ -5660,7 +5679,7 @@
     "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
-    "costType": "unknown",
+    "costType": "free",
     "fundingAmount": null,
     "fundingDeadline": null,
     "applicationOpenDate": null,
@@ -5693,9 +5712,16 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-11-18",
+        "type": "updated",
+        "summary": "Gratis download bevestigd en rechtstreeks gekoppeld."
       }
     ],
-    "offerCategory": "materials"
+    "offerCategory": "materials",
+    "verificationNote": "De officiële Npuls-pagina en de rechtstreeks publiek toegankelijke PDF van vier pagina's zijn gecontroleerd op toegang en inhoud.",
+    "verificationMethod": "agent_primary_source_review"
   },
   {
     "id": "kit-workshop-ai-assistenten-in-het-onderwijs",
@@ -6027,7 +6053,7 @@
     "title": "AI Impact Game",
     "recordType": "product",
     "legacyType": "Product",
-    "subtype": null,
+    "subtype": "Rollenspel en begeleiderspakket",
     "organizationIds": [
       "org-kennisnet"
     ],
@@ -6050,16 +6076,26 @@
       "Publieke waarden en ethiek"
     ],
     "status": "available",
-    "availabilityText": "Direct beschikbaar",
+    "availabilityText": "Het Nederlandstalige workshopmateriaal is gratis en zonder account te downloaden. Kennisnet noemt 3–5 uur voorbereiding, 15–25 spelers en 3 uur speeltijd.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
+    "lastVerified": "2026-11-18",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "Officiële bron",
         "url": "https://www.kennisnet.nl/tools/ai-impact-game/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Kennisnet: instructie voor de workshopleider (PDF)",
+        "url": "https://www.kennisnet.nl/app/uploads/Instructie-AI-Impact-Game-Kennisnet.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Kennisnet: bevestiging gratis download",
+        "url": "https://www.kennisnet.nl/bijeenkomsten/congres-de-staat-van-het-onderwijs-2026/",
         "sourceType": "official"
       }
     ],
@@ -6070,7 +6106,7 @@
     "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
-    "costType": "unknown",
+    "costType": "free",
     "fundingAmount": null,
     "fundingDeadline": null,
     "applicationOpenDate": null,
@@ -6103,9 +6139,16 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-11-18",
+        "type": "updated",
+        "summary": "Gratis download bevestigd, begeleidersinstructie en praktische tijds- en groepsindicatie toegevoegd."
       }
     ],
-    "offerCategory": "materials"
+    "offerCategory": "materials",
+    "verificationNote": "De aanbodpagina, de publieke PDF met begeleidersinstructies en de kostenvermelding bij Kennisnet zijn gecontroleerd. De kostenvermelding betreft het zelf te downloaden materiaal.",
+    "verificationMethod": "agent_primary_source_review"
   },
   {
     "id": "ai-gebruik-op-school-in-kaart-brengen",
@@ -37320,6 +37363,152 @@
         "date": "2026-11-17",
         "type": "added",
         "summary": "Toegevoegd na controle van de vierdelige toolkit, toegang en canonieke doublures."
+      }
+    ]
+  },
+  {
+    "id": "dt-hub-ai-herkent-tekeningen",
+    "title": "Can an AI recognise what you are drawing",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Lesplan met werkblad en beoordelingssuggesties",
+    "organizationIds": [],
+    "providerName": "Digital Technologies Hub (Education Services Australia)",
+    "description": "Engelstalige tekenles voor de jongste basisschoolleerlingen. Ze kiezen kenmerkende vormen, vergelijken hun tekening met een suggestie van AutoDraw en bespreken wanneer de voorspelling klopt. Het werkblad en observatievragen helpen de leraar om beeldrepresentatie formatief te beoordelen.",
+    "purpose": "Leerlingen laten uitleggen welke kenmerken een tekening herkenbaar maken en waarom AI bij dezelfde schets iets anders kan voorspellen.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "PO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering"
+    ],
+    "status": "available",
+    "availabilityText": "Het lesplan en werkblad zijn gratis en zonder account toegankelijk. De digitale lesstap gebruikt AutoDraw op een internetapparaat of digibord.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-18",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Digital Technologies Hub: lesplan en beoordelingssuggesties",
+        "url": "https://www.digitaltechnologieshub.edu.au/teach-and-assess/classroom-resources/lesson-ideas/can-an-ai-recognise-what-you-are-drawing/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Digital Technologies Hub: vergelijkingswerkblad (PDF)",
+        "url": "https://www.digitaltechnologieshub.edu.au/media/sa3nfaq5/can-an-ai-recognise-what-you-are-drawing_can-ai-guess-my-drawing-worksheet.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "dt-hub-rock-paper-scissors-ai"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "tekenles",
+      "AutoDraw",
+      "formatief beoordelen",
+      "observatievragen",
+      "beeldherkenning"
+    ],
+    "notes": "Australische Foundation–Year 2. Het werkblad vermeldt CC BY 4.0, tenzij anders aangegeven. Voor AutoDraw en eventueel extern beeldmateriaal gelden afzonderlijke voorwaarden.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De openbare lespagina, de beoordelingssectie, beide pagina's van het werkblad en de officiële uitleg van AutoDraw zijn gecontroleerd. Publicatiedatum van de les onbekend. De les is niet uitgevoerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-18",
+        "type": "added",
+        "summary": "Toegevoegd na controle van het officiële lesplan, de beoordelingsonderdelen en de publieke downloads."
+      }
+    ]
+  },
+  {
+    "id": "dt-hub-rock-paper-scissors-ai",
+    "title": "Rock, Paper, Scissors AI!",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Programmeertaak met werkbladen en rubric",
+    "organizationIds": [],
+    "providerName": "Digital Technologies Hub (Education Services Australia)",
+    "description": "Engelstalige programmeeropdracht voor de onderbouw van het voortgezet onderwijs. Leerlingen trainen en testen een model voor handgebaren en verwerken dit in een steen-papier-schaarspel. De voorbeeldrubric beoordeelt onder meer ontwerp, algoritme en hoe goed het spel voor verschillende gebruikers werkt.",
+    "purpose": "Docenten een opdracht met werkbladen en rubric geven om modeltraining, bias en onderbouwd testen te bespreken en te beoordelen.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Toetsing en examinering"
+    ],
+    "status": "available",
+    "availabilityText": "Het lesplan, de rubric en de werkbladen zijn gratis en zonder account toegankelijk. Voor de volledige bouwopdracht gebruikt de bron een webcam, Teachable Machine en de p5.js-webeditor. De les noemt gratis registratie bij de p5.js-stap.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-18",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Digital Technologies Hub: lesplan en voorbeeldrubric",
+        "url": "https://www.digitaltechnologieshub.edu.au/teach-and-assess/classroom-resources/lesson-ideas/rock-paper-scissors-ai/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Digital Technologies Hub: werkblad over labels en bias (PDF)",
+        "url": "https://www.digitaltechnologieshub.edu.au/media/4hpn13pk/rock-paper-scissors_worksheet-labelling-and-classifying-images.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Digital Technologies Hub: planningswerkblad (PDF)",
+        "url": "https://www.digitaltechnologieshub.edu.au/media/umhjo0y1/rock-paper-scissors_worksheet-ai-powered-rock-paper-scissors-game.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "dt-hub-ai-herkent-tekeningen"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "rubric",
+      "werkblad",
+      "machine learning",
+      "bias",
+      "model testen",
+      "JavaScript"
+    ],
+    "notes": "Australische Years 7–8. De werkbladen vermelden CC BY 4.0, tenzij anders aangegeven. Volg bij webcamgebruik de schoolafspraken en leg alleen handgebaren vast, zonder herkenbare leerlingen. Externe diensten hebben eigen voorwaarden.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De openbare lespagina met rubric en veiligheidsparagraaf en beide volledige werkbladen zijn gecontroleerd. Publicatiedatum van de les onbekend. Externe tools zijn niet met leerlingaccounts getest.",
+    "changeHistory": [
+      {
+        "date": "2026-11-18",
+        "type": "added",
+        "summary": "Toegevoegd na controle van het officiële lesplan, de beoordelingsonderdelen en de publieke downloads."
       }
     ]
   }
