@@ -5385,13 +5385,13 @@
     "title": "Toetsing en generatieve AI in het voortgezet onderwijs",
     "recordType": "guidance",
     "legacyType": "Handreiking",
-    "subtype": null,
+    "subtype": "Handreiking met beslisboom",
     "organizationIds": [
       "org-kennisnet"
     ],
     "providerName": "Kennisnet",
-    "description": "Handreiking over het herijken van toetsactiviteiten en bewuste keuzes voor AI in het leer- en toetsproces.",
-    "purpose": "Scholen ondersteunen bij valide toetsing in tijden van generatieve AI",
+    "description": "Nederlandstalige handreiking met een beslisboom voor het kiezen van toetsvormen in het voortgezet onderwijs. De beslisboom onderscheidt besluitvormende en ontwikkelingsgerichte toetsing en helpt bepalen welke rol AI krijgt en hoe het eigen werk van leerlingen zichtbaar wordt.",
+    "purpose": "Docenten en toetsmakers helpen om vanuit het toetsdoel passende toetsvormen en afspraken over AI-gebruik te kiezen.",
     "audiences": [
       "Docenten",
       "Schoolleiders",
@@ -5400,18 +5400,26 @@
     "sectors": [
       "VO"
     ],
-    "themes": [],
+    "themes": [
+      "Toetsing en examinering",
+      "Lesgeven en leren met AI"
+    ],
     "status": "available",
-    "availabilityText": "2026",
+    "availabilityText": "De handreiking en de beslisboom (PDF) zijn gratis en zonder account te bekijken op de website van Kennisnet.",
     "startDate": null,
     "endDate": null,
-    "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "publicationDate": "2026-01-15",
+    "lastVerified": "2026-11-18",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
+        "label": "Kennisnet: handreiking voor het voortgezet onderwijs",
         "url": "https://www.kennisnet.nl/artificial-intelligence/toetsing-en-generatieve-ai-in-het-voortgezet-onderwijs/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Kennisnet: beslisboom toetsing en AI (PDF)",
+        "url": "https://www.kennisnet.nl/app/uploads/Beslisboom-toetsing-en-AI.pdf",
         "sourceType": "official"
       }
     ],
@@ -5420,7 +5428,7 @@
     "childIds": [],
     "geographicScope": "Nederland",
     "accessType": "public",
-    "costType": "unknown",
+    "costType": "free",
     "fundingAmount": null,
     "fundingDeadline": null,
     "applicationOpenDate": null,
@@ -5439,14 +5447,24 @@
       "toetsing",
       "generatieve AI",
       "toetsontwerp",
-      "validiteit"
+      "validiteit",
+      "beslisboom",
+      "toetsvormen"
     ],
-    "notes": null,
+    "notes": "Auteurs van de handreiking: Michel Cents en Eugenie Zwanenburg. Voor de beslisboom is geen afzonderlijke open licentie vastgesteld. Raadpleeg voor bewerken of verspreiden de gebruiksvoorwaarden van Kennisnet.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële handreiking, de volledige beslisboom van één pagina en de auteursrechtvoorwaarden van Kennisnet zijn gecontroleerd. De publicatiedatum betreft de handreiking.",
     "changeHistory": [
       {
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-11-18",
+        "type": "updated",
+        "summary": "Directe beslisboom, publicatiedatum, toegang en thema toegevoegd na controle van de Kennisnet-bronnen. Ingedeeld als les- en werkmateriaal vanwege de bruikbare beslisboom."
       }
     ]
   },
