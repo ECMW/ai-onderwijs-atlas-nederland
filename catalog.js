@@ -79,8 +79,12 @@
     public: 'Publiek toegankelijk', registration_required: 'Registratie nodig',
     paid: 'Betaalde toegang', restricted: 'Beperkte toegang', unknown: 'Toegang niet vastgesteld'
   };
+  const LANGUAGE_LABELS = {
+    nl: 'Nederlands', en: 'Engels', de: 'Duits', fr: 'Frans', es: 'Spaans',
+    Meertalig: 'Meertalig (talen niet gespecificeerd)', unknown: 'Taal niet vastgesteld'
+  };
   const PERSONA_KEY = 'atlas.persona';
-  const FILTER_KEYS = ['theme', 'audience', 'sector', 'status', 'type', 'geography', 'organization', 'cost', 'access', 'source'];
+  const FILTER_KEYS = ['theme', 'audience', 'sector', 'status', 'type', 'geography', 'organization', 'cost', 'language', 'access', 'source'];
   const SORT_OPTIONS = {
     relevant: 'Meest relevant',
     added: 'Nieuwste in de Atlas eerst',
@@ -284,6 +288,7 @@
     organization: record => [record.providerName],
     geography: record => [record.geographicScope || 'Reikwijdte niet ingevuld'],
     cost: record => [costLabel(record)],
+    language: recordLanguages,
     access: record => [accessLabel(record)],
     source: record => [(record.sourceUrls || []).length ? 'Met officiële bron' : 'Bron nog niet vastgelegd']
   };
@@ -630,6 +635,15 @@
   function accessLabel(record) {
     return ACCESS_LABELS[record.accessType] || ACCESS_LABELS.unknown;
   }
+  function recordLanguages(record) {
+    return record.language?.length ? [...new Set(record.language)] : ['unknown'];
+  }
+  function languageLabel(code) {
+    return Object.hasOwn(LANGUAGE_LABELS, code) ? LANGUAGE_LABELS[code] : code;
+  }
+  function languageList(record) {
+    return recordLanguages(record).map(languageLabel).join(', ');
+  }
   function commercialLabel(record) {
     const evidence = record.commercialEvidence;
     const supported = evidence && /^https:\/\//.test(evidence.url || '') && evidence.note && validDate(evidence.checkedOn);
@@ -663,6 +677,7 @@
       ['Beschikbaarheid', statusLabel(record)],
       ['Kosten', costLabel(record)],
       ['Toegang', accessLabel(record)],
+      ['Taal', languageList(record)],
       ['Geografische reikwijdte', factValue(record.geographicScope)],
       ['Verschenen op', publicationDate(record) ? dateLabel(publicationDate(record)) : 'Publicatiedatum onbekend'],
       ['Nieuw in de Atlas sinds', addedDate(record) ? dateLabel(addedDate(record)) : 'Datum niet vastgelegd'],
@@ -720,7 +735,7 @@
       <div class="card-body offer-intro"><div class="card-top"><span class="type-label">${escapeHtml(offerLabel(record))}</span></div>
         <h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
         <p class="provider">Aanbieder: ${escapeHtml(factValue(record.providerName))}</p>${commercialBadge(record)}
-        <dl class="offer-terms"><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div><div><dt>Toegang</dt><dd>${escapeHtml(accessLabel(record))}</dd></div></dl>
+        <dl class="offer-terms"><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div><div><dt>Toegang</dt><dd>${escapeHtml(accessLabel(record))}</dd></div><div><dt>Taal</dt><dd>${escapeHtml(languageList(record))}</dd></div></dl>
       </div>
       <div class="card-actions offer-links">
         ${sourceItem ? `<a class="card-cta primary" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record))}: ${escapeHtml(record.title)}">${escapeHtml(sourceActionLabel(record))} ↗</a>` : ''}
@@ -749,7 +764,7 @@
     'Veilige AI-omgeving': 'Een AI-toepassing kiezen',
     'Lesgeven en leren met AI': 'AI gebruiken in mijn onderwijs',
     'Beleid en governance': 'Beleid en afspraken maken'
-  }[value] || value) : value;
+  }[value] || value) : key === 'language' ? languageLabel(value) : value;
   function homeFilterGroup(key, title, options, selected = [], open = false, extraOptions = []) {
     const present = [...options.map(value => ({ key, value, label: filterOptionLabel(key, value) })), ...extraOptions]
       .filter(option => recordsForCriteria({ [option.key]: option.value }).length);
@@ -884,7 +899,7 @@
     const defaults = {
       theme: 'Alle onderwerpen', sector: 'Alle sectoren', type: 'Alle soorten aanbod',
       geography: 'Alle regio’s', audience: 'Alle doelgroepen', status: 'Alle statussen',
-      organization: 'Alle aanbieders', cost: 'Alle kosten', access: 'Alle toegangsopties',
+      organization: 'Alle aanbieders', cost: 'Alle kosten', language: 'Alle talen', access: 'Alle toegangsopties',
       source: 'Alle bronnen'
     };
     return values(key).map(value => filterOptionLabel(key, value)).join(', ') || defaults[key] || 'Alle opties';
@@ -956,9 +971,9 @@
     HBO: 'Hoger beroepsonderwijs', WO: 'Wetenschappelijk onderwijs'
   };
   function practiceNavigation() {
-    const context = { sector: state.sector, audience: state.audience };
+    const context = { sector: state.sector, audience: state.audience, language: state.language };
     if (state.sort !== 'relevant' && new URLSearchParams(location.hash.split('?')[1]).has('sort')) context.sort = state.sort;
-    if (state.q || FILTER_KEYS.some(key => !['sector', 'audience'].includes(key) && values(key).length)) {
+    if (state.q || FILTER_KEYS.some(key => !['sector', 'audience', 'language'].includes(key) && values(key).length)) {
       const task = PRACTICE_ROUTES.find(route => Object.entries(route.criteria).every(([key, value]) => state[key] === value));
       if (task) return `<nav class="practice-back" aria-label="Praktijkvragen"><a href="${escapeHtml(criteriaHref(context))}">← Andere taak</a><strong>${escapeHtml(task.label)}</strong></nav>`;
       return '<nav class="catalog-tabs" aria-label="Aanbodoverzicht"><a href="#zoeken">Al het aanbod</a><a href="#nieuw">Nieuw aanbod →</a></nav>';
@@ -1040,10 +1055,11 @@
   function catalogFilterPanel(typeOptions, audienceOptions, organizationOptions) {
     const counts = facetCounts();
     const filter = (key, title, options) => facet(key, title, options, counts[key]);
+    const languages = [...new Set([...Object.keys(LANGUAGE_LABELS), ...counts.language.keys()])];
     const hiddenCount = ['access', 'source'].reduce((sum, key) => sum + values(key).length, 0);
     return `<aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Filters</h2><button class="close" aria-label="Sluit filters">×</button></header>
       <p class="filter-help">Combineer uw zoekterm met filters. Binnen een filter kunt u meerdere opties kiezen.</p>
-      ${filter('sector', 'Voor welke sector?', SECTORS)}${filter('type', 'Wat zoekt u?', typeOptions)}${filter('cost', 'Kosten', ['Gratis', 'Betaald', 'Gratis en betaald', 'Kosten onbekend'])}${filter('theme', 'Onderwerp', themeOptions())}${filter('geography', 'Regio', ['Nederland', 'Europa', 'Internationaal'])}${filter('audience', 'Doelgroep', audienceOptions)}${filter('status', 'Beschikbaarheid', Object.values(STATUS_LABELS))}${filter('organization', 'Aanbieder', organizationOptions)}
+      ${filter('sector', 'Voor welke sector?', SECTORS)}${filter('type', 'Wat zoekt u?', typeOptions)}${filter('language', 'Taal', languages)}${filter('cost', 'Kosten', ['Gratis', 'Betaald', 'Gratis en betaald', 'Kosten onbekend'])}${filter('theme', 'Onderwerp', themeOptions())}${filter('geography', 'Regio', ['Nederland', 'Europa', 'Internationaal'])}${filter('audience', 'Doelgroep', audienceOptions)}${filter('status', 'Beschikbaarheid', Object.values(STATUS_LABELS))}${filter('organization', 'Aanbieder', organizationOptions)}
       <details class="more-filters"><summary>Meer filters<span data-more-count>${hiddenCount ? ` (${hiddenCount})` : ''}</span> <span aria-hidden="true">▼</span></summary>
         ${filter('access', 'Toegang', Object.values(ACCESS_LABELS))}${filter('source', 'Bron', ['Met officiële bron', 'Bron nog niet vastgelegd'])}
       </details><button class="clear btn secondary">Wis alle filters</button><footer><button class="apply btn">Toon ${resultRecords.length} resultaten</button></footer>
@@ -1072,7 +1088,7 @@
   function meetingSheetMarkup() {
     const items = sortRecords(recordsForCriteria(state));
     const labels = { theme: 'Onderwerp', audience: 'Doelgroep', sector: 'Sector', status: 'Beschikbaarheid',
-      type: 'Soort aanbod', geography: 'Regio', organization: 'Aanbieder', cost: 'Kosten', access: 'Toegang', source: 'Bron' };
+      type: 'Soort aanbod', geography: 'Regio', organization: 'Aanbieder', cost: 'Kosten', language: 'Taal', access: 'Toegang', source: 'Bron' };
     const criteria = [
       ...(state.q ? [['Zoekterm', state.q]] : []),
       ...FILTER_KEYS.filter(key => values(key).length).map(key => [labels[key], values(key).map(value => filterOptionLabel(key, value)).join(' of ')]),

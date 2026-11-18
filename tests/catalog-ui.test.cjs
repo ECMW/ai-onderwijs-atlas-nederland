@@ -1135,3 +1135,28 @@ test('facet options refresh when an open call expires during a browser session',
   assert.doesNotMatch(statuses(), /<span>Open voor aanvragen<\/span>/);
   assert.match(statuses(), /<span>Aanvraag gesloten<\/span><small>1<\/small>/);
 });
+
+test('language can be combined with sector and is preserved in task links and the meeting sheet', () => {
+  const data = [
+    { ...record('nl'), title: 'Les A', offerCategory: 'materials', language: ['nl'] },
+    { ...record('both'), title: 'Les B', offerCategory: 'materials', language: ['nl', 'en'] },
+    { ...record('en'), title: 'Les C', offerCategory: 'materials', language: ['en'] },
+    { ...record('multilingual'), title: 'Les D', offerCategory: 'materials', language: ['Meertalig'] },
+    { ...record('unknown'), title: 'Les E', offerCategory: 'materials' },
+    { ...record('po'), title: 'Les F', sectors: ['PO'], offerCategory: 'materials', language: ['nl'] }
+  ];
+  const api = load(data, '#zoeken?sector=HBO&language=nl');
+  const selected = criteria => Array.from(api.recordsForCriteria(criteria), item => item.id);
+  assert.deepEqual(selected(api.getState()), ['nl', 'both']);
+  assert.deepEqual(selected({ language: 'nl,en', sector: 'HBO' }), ['nl', 'both', 'en']);
+  assert.deepEqual(selected({ language: 'Meertalig' }), ['multilingual']);
+  assert.deepEqual(selected({ language: 'unknown' }), ['unknown']);
+  const filters = api.catalogFilterPanel(['materials'], ['Docenten'], ['Voorbeeld']);
+  assert.match(filters, /data-facet="language" value="nl"\s+checked\s*><span>Nederlands<\/span><small>2<\/small>/);
+  assert.match(filters, /<span>Engels<\/span><small>2<\/small>/);
+  assert.match(api.resultsMarkup(), /class="practice-link" href="[^"]*language=nl[^"]*q=les/);
+  assert.match(api.resultsMarkup(), /data-remove="language\|nl">Nederlands ×/);
+  assert.match(api.resultsMarkup(), /<dt>Taal<\/dt><dd>Nederlands, Engels<\/dd>/);
+  assert.match(api.meetingSheetMarkup(), /<dt>Taal<\/dt><dd>Nederlands<\/dd>/);
+  assert.match(api.stateHref(), /language=nl/);
+});
