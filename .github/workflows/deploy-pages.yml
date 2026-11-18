@@ -113,11 +113,11 @@ jobs:
           site = Path(os.environ['RUNNER_TEMP']) / 'atlas-site'
           site.mkdir()
           files = [root / name for name in (
-              'index.html', 'manifest.webmanifest', 'robots.txt', 'sitemap.xml'
+              'index.html', 'manifest.webmanifest', 'robots.txt', 'sitemap.xml',
+              'platform.css', 'catalog.css', 'brand.css', 'platform.js', 'catalog.js',
+              'governance.js', 'analytics.js', 'data/data-v2.js',
+              'assets/icons/favicon.svg', 'assets/social-preview.png', 'assets/strand-horizon.svg',
           )]
-          files += list(root.glob('*.css')) + list(root.glob('*.js'))
-          files += list((root / 'data').glob('*.json')) + list((root / 'data').glob('*.js'))
-          files += [path for path in (root / 'assets').rglob('*') if path.is_file()]
           for source in files:
               if source.is_symlink():
                   raise ValueError(f'Public assets must be regular files: {source}')
