@@ -258,6 +258,48 @@
       "decision": "rejected",
       "decidedAt": "2026-11-16T07:33:00Z",
       "reason": "Het verdwenen bericht over een verstreken AI-en-milieuactiviteit is geen actueel aanbod en het signaal koppelt niet aan een canoniek record dat moet worden gewijzigd."
+    },
+    {
+      "proposalId": "proposal-b480030105acf6f5",
+      "evidenceHash": "8d2cfa9d67e28ace7eab819d9af9241983a9d63596e61267bd25258a67987919",
+      "decision": "rejected",
+      "decidedAt": "2026-11-17T07:35:00Z",
+      "reason": "De officiële SURF Community AI in Education is bij verse controle volledig bereikbaar en toont actuele inhoud; het verdwijnsignaal is navigatieruis en rechtvaardigt geen archivering."
+    },
+    {
+      "proposalId": "proposal-b176e7f74494104d",
+      "evidenceHash": "6a598f0c4e899cf0cea39cad4f5c47c1baf052663c62cc0d6ebeed2bd02e7849",
+      "decision": "rejected",
+      "decidedAt": "2026-11-17T07:35:00Z",
+      "reason": "Het bereikbare SURF Community-artikel over AI in het examenlokaal is een beschouwende praktijkpublicatie en biedt geen zelfstandig lesmateriaal, training of uitvoerbare handreiking."
+    },
+    {
+      "proposalId": "proposal-3c17341a3bf567ec",
+      "evidenceHash": "d44a29e2ba84230aa9d85491f0eb5104e5df573dd573528e0c12036412f99e54",
+      "decision": "rejected",
+      "decidedAt": "2026-11-17T07:35:00Z",
+      "reason": "Het bereikbare SURF Community-artikel beschrijft een persoonlijk software-experiment met vertrouwelijke transcripties en is geen zelfstandig onderwijs- of professionaliseringsmateriaal."
+    },
+    {
+      "proposalId": "proposal-39aa1c2ae3ceac52",
+      "evidenceHash": "c2a82ba2c0e5cc197fe08aa4a1e46fdc70c85883da7c9f1458a37d871859e7c3",
+      "decision": "rejected",
+      "decidedAt": "2026-11-17T07:35:00Z",
+      "reason": "Het SURF Community-bericht vat een seminar over spraakherkenningsinfrastructuur uit 2024 samen; de gekoppelde presentaties vormen geen samenhangend zelfstandig AI-onderwijsmateriaal."
+    },
+    {
+      "proposalId": "proposal-6eed1ede59122c32",
+      "evidenceHash": "a11216862a8241e2b8632281cfe17961a0825d85af22bc1f64103af7d4d68581",
+      "decision": "rejected",
+      "decidedAt": "2026-11-17T07:35:00Z",
+      "reason": "De gesloten NWO-call voor wetenschappelijke bijeenkomsten en ontmoetingen is geen specifiek AI-onderwijsaanbod en het signaal koppelt niet aan een canoniek Atlas-record."
+    },
+    {
+      "proposalId": "proposal-8bd6428bb21b60c7",
+      "evidenceHash": "fc59468de5dae03e240dbe5fb5a53be24fc9343ec1cf083b9fdcfede0679a433",
+      "decision": "rejected",
+      "decidedAt": "2026-11-17T07:35:00Z",
+      "reason": "De UNESCO-broncontrole meldt alleen een gewijzigde extractiestructuur en bevat geen verifieerbare wijziging van een specifiek canoniek record of nieuw zelfstandig materiaal."
     }
   ]
 }

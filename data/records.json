@@ -36940,5 +36940,369 @@
         "summary": "Toegevoegd na controle van de officiële landingspagina, alle Nederlandstalige kernbestanden en canonieke doublures."
       }
     ]
+  },
+  {
+    "id": "eu-school-ai-literacy-project-kit-2026",
+    "title": "AI literacy: explore, create and think critically",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Projectkit met lesactiviteiten",
+    "organizationIds": [],
+    "providerName": "European School Education Platform (Europese Commissie)",
+    "description": "Engelstalige projectkit voor 11- tot 16-jarigen met vijf samenwerkende activiteiten over AI in het dagelijks leven, promptverbetering, factchecking, menselijk corrigeren van AI-output en synthetische beelden. De kit sluit af met een door leerlingen gemaakte gids voor verantwoord AI-gebruik.",
+    "purpose": "Docenten een direct inzetbaar project bieden waarin leerlingen generatieve AI kritisch onderzoeken, bronnen controleren en afspraken maken over privacy, auteurschap en verantwoord gebruik.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen",
+      "Lerarenopleiders",
+      "Schoolleiders"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Privacy en AVG",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "De volledige projectkit is gratis en zonder account op de officiële Europese onderwijswebsite te lezen. Voor gekozen externe AI-tools of samenwerking in eTwinning kunnen accounts, leeftijdsvoorwaarden en schoolbeleid gelden; de activiteiten kunnen ook klassikaal via één door de docent bediend scherm worden uitgevoerd.",
+    "publicationDate": "2026-10-13",
+    "lastVerified": "2026-11-17",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "European School Education Platform: projectkit",
+        "url": "https://school-education.ec.europa.eu/en/teach/project-kits/ai-literacy-explore-create-and-think-critically",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "eu-school-ai-literacy-learning-activities-2026"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "projectkit",
+      "prompten",
+      "factchecking",
+      "synthetische media",
+      "privacy",
+      "menselijke correctie"
+    ],
+    "notes": "De kit is geïnspireerd op een eTwinning-project met leerlingen uit zeven landen. De Europese Commissie vermeldt voor eigen websitecontent standaard CC BY 4.0, tenzij anders aangegeven; voor afbeeldingen, externe tools en ander materiaal van derden kunnen afzonderlijke rechten gelden. De Atlas heeft de inhoud en inzetbaarheid gecontroleerd, niet de onderwijskundige effectiviteit.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De volledige officiële projectpagina is gelezen, inclusief doelen, vijf activiteiten, eindproduct, beoordelingssuggesties, doelgroep, leeftijd en veiligheidsinstructies. De officiële gebruiksvoorwaarden en juridische hergebruiknotitie zijn gecontroleerd. Controle op 17 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, canonieke URL, aanbieder en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-17",
+        "type": "added",
+        "summary": "Toegevoegd na volledige controle van de officiële projectkit, gebruiksvoorwaarden en canonieke doublures."
+      }
+    ]
+  },
+  {
+    "id": "eu-school-ai-literacy-learning-activities-2026",
+    "title": "Learning activities for building AI literacy",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Lesplannen en actieplannen",
+    "organizationIds": [],
+    "providerName": "European School Education Platform (Europese Commissie)",
+    "description": "Engelstalige collectie van zes uitgewerkte actieplannen voor AI-geletterdheid: ouderondersteuning in het kleuteronderwijs, ondersteuning van leerlingen met een gehoorbeperking, twee taalonderwijsvarianten, wetenschappelijk onderzoekend leren en verantwoord AI-gebruik in literatuuronderwijs.",
+    "purpose": "Docenten concrete voorbeelden en een herbruikbare planningsstructuur bieden om AI-geletterdheid, menselijke oordeelsvorming, privacy en broncontrole in bestaande vakken te integreren.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen",
+      "Ouders",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Curriculumontwikkeling",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "De overzichtspagina en alle zes Engelstalige actieplannen zijn gratis, zonder account en als PDF beschikbaar.",
+    "publicationDate": "2026-10-14",
+    "lastVerified": "2026-11-17",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "European School Education Platform: lesactiviteitencollectie",
+        "url": "https://school-education.ec.europa.eu/en/teach/lesson-plans/learning-activities-building-ai-literacy",
+        "sourceType": "official"
+      },
+      {
+        "label": "Voorbeeld: AI-ondersteund wetenschappelijk onderzoek",
+        "url": "https://school-education.ec.europa.eu/system/files/2026-10/ai-supported_scientific_inquiry_and_experiment_design.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "eu-school-developing-students-ai-literacy-course-2026",
+      "eu-school-ai-literacy-project-kit-2026"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "actieplannen",
+      "kleuteronderwijs",
+      "gehoorbeperking",
+      "taalonderwijs",
+      "onderzoekend leren",
+      "broncontrole"
+    ],
+    "notes": "De zes actieplannen zijn gemaakt door deelnemers aan de cursus Developing students' AI literacy en door de cursuscoördinator beoordeeld en gecureerd. De Europese Commissie vermeldt voor eigen websitecontent standaard CC BY 4.0, tenzij anders aangegeven; de afzonderlijke auteurs en eventuele externe hulpmiddelen kunnen aanvullende rechten of voorwaarden hebben. De Atlas heeft de materialen inhoudelijk gecontroleerd, niet hun effectiviteit in andere onderwijscontexten.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De volledige officiële overzichtspagina en alle zes gekoppelde PDF-actieplannen van 7 tot 10 pagina's zijn geopend. Doelgroepen, onderwijsniveaus, auteurs, inhoud, toegang en publicatiedatum zijn gecontroleerd; representatieve onderdelen van ieder plan zijn gelezen. Controle op 17 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-17",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële collectie, alle zes actieplannen en canonieke doublures."
+      }
+    ]
+  },
+  {
+    "id": "eu-school-developing-students-ai-literacy-course-2026",
+    "title": "Developing students' AI literacy",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": "Zelfstudiecursus voor onderwijsprofessionals",
+    "organizationIds": [],
+    "providerName": "Europese Commissie via European School Education Platform",
+    "description": "Engelstalige zelfstudiecursus van 15 tot 20 uur waarin leraren AI-geletterdheidsraamwerken vergelijken, ethische, sociale en emotionele aspecten onderzoeken en een actieplan maken voor curriculum, lesgeven en beoordeling.",
+    "purpose": "Leraren, schoolleiders en lerarenopleiders helpen AI-geletterdheid vakoverstijgend en mensgericht in onderwijs en toetsing te integreren.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Lerarenopleiders"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Professionalisering",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "De cursusbeschrijving is openbaar. De actuele zelfstudiesessie heeft geen einddatum of verplichte bijeenkomsten; deelname vereist een gratis account op de European School Education Platform.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-17",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "European School Education Platform: cursusbeschrijving",
+        "url": "https://school-education.ec.europa.eu/en/learn/courses/developing-students-ai-literacy",
+        "sourceType": "official"
+      },
+      {
+        "label": "Selectie van de zelfstudiesessie",
+        "url": "https://school-education.ec.europa.eu/en/learn/courses/6579528/select-session",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "eu-school-ai-literacy-learning-activities-2026"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "registration_required",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "zelfstudie",
+      "AI-geletterdheidsraamwerk",
+      "curriculumontwerp",
+      "toetsing",
+      "actieplan",
+      "mensgerichte AI"
+    ],
+    "notes": "De cursuspagina is op 26 augustus 2026 bijgewerkt; dit is geen vastgestelde oorspronkelijke publicatiedatum. De huidige zelfstudieversie is afgeleid van een begeleide editie van 11 mei tot 17 juni 2026 en kent geen gemodereerde forums of peerreview. De cursusinhoud achter de accountgrens is niet volledig ingezien en een expliciete hergebruiklicentie is niet vastgesteld.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële cursuspagina is volledig gelezen op leerdoelen, methodiek, doelgroep, onderwijsniveaus, taal, studieduur, certificaat en actuele beschikbaarheid. De sessieselectie is rechtstreeks gecontroleerd en bevestigt een actieve zelfstudiesessie en accountplicht; de afgeschermde cursusinhoud is niet volledig doorlopen. Controle op 17 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-17",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële cursus- en sessiepagina en canonieke doublures."
+      }
+    ]
+  },
+  {
+    "id": "edinburgh-digital-twin-ai-activity",
+    "title": "Learning about AI: Digital Twin activity",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Werkvorm en docentenmateriaal",
+    "organizationIds": [],
+    "providerName": "University of Edinburgh Open.Ed",
+    "description": "Open werkvorm waarin studenten met vijf verschillende gesimuleerde personen in taalmodellen praten en daarna individueel en met medestudenten reflecteren op ervaring, bias, empathie, waarheid, ethiek en menselijke uniciteit. De set bevat uitleg, docentinstructies, een aanpasbaar personagesjabloon en voorbeeldprompts.",
+    "purpose": "Docenten een korte, aanpasbare werkvorm bieden waarmee studenten de mogelijkheden en risico's van taalmodellen uit eigen ervaring leren onderzoeken en bespreken.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Lerarenopleiders"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Het volledige Engelstalige pakket is gratis, zonder account en in PDF- en bewerkbare Word-formaten te downloaden. Voor uitvoering is een gekozen taalmodel nodig; daarvoor kunnen eigen accounts, kosten en voorwaarden gelden.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-17",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "University of Edinburgh Open.Ed: resourcepakket",
+        "url": "https://open.ed.ac.uk/learning-about-ai-digital-twin-activity/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Volledige voorbeeldinstructies en personages",
+        "url": "https://open.ed.ac.uk/wp-content/uploads/Digital-Twin-Example-instructions.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "werkvorm",
+      "gesimuleerde personen",
+      "bias",
+      "reflectie",
+      "peerdiscussie",
+      "prompttemplate"
+    ],
+    "notes": "Auteurs: Dr Pawel Orzechowski en Elaine Mowat. De werkvorm ontstond in de vijfweekse mastercursus AI for Care in the Digital Age en is volgens Open.Ed aanpasbaar voor uiteenlopende leeftijden en contexten. Het volledige pakket is gelicentieerd onder CC BY-SA 4.0. De voorbeeldinstructies waarschuwen dat gesprekken met externe taalmodellen onder voorwaarden van die aanbieders vallen.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële landingspagina, het volledige instructiedocument met vijf voorbeeldpersonages, de uitlegset en het voorblad zijn gelezen. Titel, auteurs, herkomst, toegang, licentie, werkvorm, tijdsindicatie en bewerkbare formaten zijn gecontroleerd. Controle op 17 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-17",
+        "type": "added",
+        "summary": "Toegevoegd na volledige controle van het Open.Ed-resourcepakket, de licentie en canonieke doublures."
+      }
+    ]
+  },
+  {
+    "id": "york-st-john-critical-ai-toolkit",
+    "title": "Your Critical AI Toolkit",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Zelfstudietoolkit met reflectieopdrachten",
+    "organizationIds": [],
+    "providerName": "York St John University",
+    "description": "Open Engelstalige toolkit in vier delen over wat generatieve AI is, kritisch beoordelen van mogelijkheden en beperkingen, communiceren met AI-tools en verantwoord gebruik bij loopbaanontwikkeling. De pagina's combineren uitleg met reflectievragen, taken en aanwijzingen voor docenten en studenten.",
+    "purpose": "Studenten en onderwijsprofessionals ondersteunen bij contextbewuste keuzes over AI-gebruik, kritische evaluatie van output en het behouden van eigen vaardigheden en verantwoordelijkheid.",
+    "audiences": [
+      "Studenten",
+      "Docenten",
+      "Onderwijsondersteuners",
+      "Loopbaanbegeleiders"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Professionalisering",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "Alle vier delen zijn gratis, zonder account en rechtstreeks op de website te lezen. Voor genoemde externe AI-tools, video's en bronnen kunnen afzonderlijke voorwaarden of toegangsbeperkingen gelden.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-17",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "York St John University: volledige toolkit",
+        "url": "https://www.yorksj.ac.uk/library/library-study-and-digital-skills/critical-ai-toolkit/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Toolkit deel 3: vaardigheden om AI te gebruiken",
+        "url": "https://www.yorksj.ac.uk/library/library-study-and-digital-skills/critical-ai-toolkit/skills-to-use-ai/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "kritische AI-geletterdheid",
+      "reflectieopdrachten",
+      "prompten",
+      "ethiek",
+      "loopbaan",
+      "menselijke vaardigheden"
+    ],
+    "notes": "De toolkit is ontwikkeld door meerdere teams van York St John University voor eigen studenten en medewerkers én bredere gemeenschappen. Instellingsrichtlijnen en verwijzingen naar werkgevers zijn contextgebonden. Er is geen expliciete algemene hergebruiklicentie voor de toolkit vastgesteld; linken en lezen zijn openbaar, maar hergebruikrechten blijven onbekend. De Atlas heeft niet iedere gekoppelde video of externe bron afzonderlijk gevalideerd.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële hoofdpagina en alle vier inhoudsdelen zijn geopend. Doelgroep, structuur, publieke toegang en de kernonderwerpen zijn gecontroleerd; representatieve uitleg en opdrachten uit ieder deel zijn gelezen. Publicatiedatum en hergebruiklicentie zijn niet op de gecontroleerde pagina's vastgesteld. Controle op 17 november 2026; vergeleken met alle canonieke records op ID, titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-17",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de vierdelige toolkit, toegang en canonieke doublures."
+      }
+    ]
   }
 ]
