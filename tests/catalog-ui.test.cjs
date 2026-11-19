@@ -577,9 +577,14 @@ test('excluded software stays out of results and filters while materials and leg
   const materials = ids({ type: 'materials' });
   const knowledge = ids({ type: 'knowledge' });
   const educationApps = ['aigo-patientsim', 'aigo-transcribe-tool', 'aigo-docschoon', 'aigo-kennisclip-generator', 'aigo-dicteermachine'];
-  assert.deepEqual(software.sort(), educationApps.filter(id => data.some(item => item.id === id && !item.publicationExclusion)).sort());
+  const iris = 'iris-connect-ai-inzichten';
+  const publicApps = educationApps.filter(id => data.some(item => item.id === id && !item.publicationExclusion));
+  assert.deepEqual(software.sort(), [...publicApps, iris].sort());
+  for (const sector of ['PO', 'HBO']) {
+    assert.ok(ids({ theme: 'Professionalisering', sector }).includes(iris), sector);
+  }
   const excluded = data.filter(item => item.publicationExclusion);
-  assert.equal(excluded.filter(item => item.offerCategory === 'software').length, 12);
+  assert.equal(excluded.filter(item => item.offerCategory === 'software').length, 11);
   const publicIds = ids({});
   for (const item of excluded) assert.ok(!publicIds.includes(item.id), item.id);
   for (const id of ['selfie-for-teachers', 'ai-waaier-voor-toetsen', 'vista-promptdatabase-ai-onderwijs', 'open-inspiratielessen-over-ai']) {

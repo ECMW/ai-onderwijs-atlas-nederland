@@ -33,6 +33,10 @@ vermelding. Onderdelen met alleen een aankondiging blijven herkenbaar als in
 ontwikkeling, zonder claim dat de app beschikbaar of getest is. Externe
 API-sleutels en mogelijke modelkosten staan bij de betreffende app vermeld.
 
+Op 19 november 2026 is IRIS Connect AI-Inzichten opnieuw toegelaten als
+software voor professionele ontwikkeling door reflectie op lesopnames.
+Deze uitzondering geldt voor dit specifieke aanbod.
+
 Boeken en materialen blijven onderdeel van de volledige zoekcatalogus en de
 filters. Zij hebben op verzoek van Eva geen afzonderlijke link in het hoofdmenu;
 bestaande links naar het boekenoverzicht blijven werken.

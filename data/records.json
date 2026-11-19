@@ -24121,7 +24121,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-09-09",
+    "lastVerified": "2026-11-19",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -24131,7 +24131,7 @@
       },
       {
         "label": "AI Insights: werking en gebruik",
-        "url": "https://help.irisconnect.com/hc/en-gb/articles/18967216778898-AI-Insights",
+        "url": "https://help.irisconnect.com/hc/en-gb/articles/18967216778898-Using-AI-Insights",
         "sourceType": "official"
       },
       {
@@ -24147,6 +24147,11 @@
       {
         "label": "Contractvoorwaarden en commerciële dienstverlening, versie 1.5",
         "url": "https://help.irisconnect.com/hc/en-gb/articles/33914027460498",
+        "sourceType": "official"
+      },
+      {
+        "label": "Onderwijssectoren waarin het platform wordt gebruikt",
+        "url": "https://irisconnect.nl/",
         "sourceType": "official"
       }
     ],
@@ -24196,19 +24201,22 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Uit de publieke Atlas gehaald op verzoek van Eva: zelfstandige AI-software valt buiten de gekozen reikwijdte. Broncontrole en beschikbaarheid zijn niet gewijzigd."
+      },
+      {
+        "date": "2026-11-19",
+        "type": "updated",
+        "summary": "Opnieuw publiek opgenomen als software voor videoreflectie en professionalisering na herziening van de eerdere uitsluiting en controle van de productbronnen."
       }
     ],
     "commercialStatus": "commercial",
     "commercialEvidence": {
       "url": "https://help.irisconnect.com/hc/en-gb/articles/33914027460498",
       "note": "IRIS Connect biedt de AI-optie aan binnen contractuele softwaredienstverlening aan klantinstellingen. Sectie 3 van overeenkomst 1.5 benoemt commerciële voorwaarden, bestellingen en facturatie van softwarelicenties en verlenging van abonnementen. De Nederlandse FAQ vermeldt AI-inzichten als aanvullende optie in de offerte.",
-      "checkedOn": "2026-09-09"
+      "checkedOn": "2026-11-19"
     },
     "offerCategory": "software",
-    "publicationExclusion": {
-      "reason": "Zelfstandige AI-software valt buiten de publieke Atlas om verwarring over de reikwijdte te voorkomen. Uitgesloten op verzoek van Eva.",
-      "decidedOn": "2026-09-09"
-    }
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De productpagina, gebruikershandleiding, sectorinformatie, toepassingen, FAQ en contractvoorwaarden van de aanbieder zijn op 19 november 2026 gecontroleerd. De sectorinformatie betreft het platform. Gebruik van de AI-optie op individuele scholen is niet vastgesteld."
   },
   {
     "id": "kennisnet-effectieve-professionalisering-digitalisering",
