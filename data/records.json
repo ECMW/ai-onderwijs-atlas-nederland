@@ -24130,11 +24130,6 @@
         "sourceType": "official"
       },
       {
-        "label": "AI Insights: werking en gebruik",
-        "url": "https://help.irisconnect.com/hc/en-gb/articles/18967216778898-Using-AI-Insights",
-        "sourceType": "official"
-      },
-      {
         "label": "Kosten en toegang tot IRIS Connect",
         "url": "https://irisconnect.nl/faq/",
         "sourceType": "official"
@@ -24216,7 +24211,7 @@
     },
     "offerCategory": "software",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "De productpagina, gebruikershandleiding, sectorinformatie, toepassingen, FAQ en contractvoorwaarden van de aanbieder zijn op 19 november 2026 gecontroleerd. De sectorinformatie betreft het platform. Gebruik van de AI-optie op individuele scholen is niet vastgesteld."
+    "verificationNote": "De productpagina, sectorinformatie, toepassingen, FAQ en contractvoorwaarden van de aanbieder zijn op 19 november 2026 gecontroleerd. De sectorinformatie betreft het platform. Gebruik van de AI-optie op individuele scholen is niet vastgesteld."
   },
   {
     "id": "kennisnet-effectieve-professionalisering-digitalisering",
