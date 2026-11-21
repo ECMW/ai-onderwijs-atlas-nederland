@@ -37514,5 +37514,252 @@
         "summary": "Toegevoegd na controle van het officiële lesplan, de beoordelingsonderdelen en de publieke downloads."
       }
     ]
+  },
+  {
+    "id": "hr-toolkit-ai-curriculum-toetsing-2026",
+    "title": "Toolkit 'AI, curriculum en toetsing', versie 2.0",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Toolkit met scans, flowcharts, gesprekskaarten en werkvormen",
+    "organizationIds": [],
+    "providerName": "Hogeschool Rotterdam",
+    "description": "Nederlandstalige toolkit voor het AI-bewust herzien van curricula en toetsprogramma's, met een toetsscan, flowcharts, gesprekskaarten, invulformats, AI-gebruiksniveaus en concrete werkvormen.",
+    "purpose": "Docenten en opleidingsteams helpen de invloed van generatieve AI op leerdoelen, leeractiviteiten en toetsing systematisch te analyseren en passende keuzes vast te leggen.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Examencommissies",
+      "Toetsdeskundigen"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [
+      "Curriculumontwikkeling",
+      "Toetsing en examinering",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "De volledige Wikiwijs-toolkit en PDF-export zijn gratis en zonder account toegankelijk; meerdere scans, flowcharts, kaarten en formats zijn afzonderlijk downloadbaar.",
+    "publicationDate": "2026-09-07",
+    "lastVerified": "2026-11-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Wikiwijs: volledige Toolkit AI, curriculum en toetsing",
+        "url": "https://maken.wikiwijs.nl/223515/Toolkit__AI__curriculum_en_toetsing___versie_2_0",
+        "sourceType": "official"
+      },
+      {
+        "label": "Edusources: beschrijving en metadata",
+        "url": "https://edusources.nl/nl/materials/cxp:learning_material:surfsharekit:edusources:4e012cd9-7f6c-45a9-aca1-f756757760c0",
+        "sourceType": "official"
+      },
+      {
+        "label": "Wikiwijs: volledige PDF-export",
+        "url": "https://export.wikiwijs.nl/asset/arrangement/223515.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "toolkit-ai-in-je-toetsontwerp",
+      "ai-waaier-voor-toetsen"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "curriculum",
+      "toetsprogramma",
+      "toetsscan",
+      "flowchart",
+      "gesprekskaarten",
+      "AI Assessment Scale",
+      "werkvormen"
+    ],
+    "notes": "De toolkit vermeldt CC BY-SA 4.0 en is bedoeld voor bachelor- en masteronderwijs in het hbo. De PDF telt 55 pagina's en bevat ook instellingsspecifieke regels en interne verwijzingen van Hogeschool Rotterdam; gebruikers buiten de instelling moeten die vervangen door eigen beleid. Wikiwijs vermeldt 15 november 2026 als laatste wijzigingsdatum. De Atlas heeft de bruikbaarheid en bronstatus gecontroleerd, niet de juistheid van iedere externe verwijzing of de onderwijskundige effectiviteit.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële Edusources-detailpagina, de volledige Wikiwijs-toolkit en alle 55 pagina's van de PDF-export zijn gecontroleerd op titel, aanbieder, doelgroep, inhoud, toegang, datum en licentie; representatieve pagina's met routekaart, tools, gesprekskaarten en colofon zijn ook visueel beoordeeld. Controle op 21 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-21",
+        "type": "added",
+        "summary": "Toegevoegd na volledige controle van de open toolkit, downloads, licentie en canonieke doublures."
+      }
+    ]
+  },
+  {
+    "id": "vu-ai-wijs-informatie-zoeken-beoordelen-2026",
+    "title": "AI-wijs: verantwoord informatie zoeken en beoordelen (Algemeen, BA)",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": "Zelfstudie-e-learning met oefeningen en checklists",
+    "organizationIds": [
+      "vrije-universiteit-amsterdam"
+    ],
+    "providerName": "Vrije Universiteit Amsterdam",
+    "description": "Nederlandstalige bachelor-e-learning over generatieve AI bij informatie- en literatuuronderzoek, met oefeningen over prompten, zoeksystemen, bronselectie, hallucinaties, bias, beeldverificatie en transparante bronvermelding.",
+    "purpose": "Studenten leren AI-ondersteunde informatie kritisch te selecteren, controleren, analyseren en verantwoord te verwerken zonder menselijke oordeelsvorming uit te besteden.",
+    "audiences": [
+      "Studenten",
+      "Docenten",
+      "Bibliotheekprofessionals"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Onderzoek",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "De volledige Wikiwijs-e-learning en PDF-export zijn gratis, zonder account en rechtstreeks toegankelijk.",
+    "publicationDate": "2026-04-21",
+    "lastVerified": "2026-11-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Wikiwijs: volledige AI-wijs-e-learning",
+        "url": "https://maken.wikiwijs.nl/223513/AI_wijs__verantwoord_informatie_zoeken_en_beoordelen__Algemeen__BA_",
+        "sourceType": "official"
+      },
+      {
+        "label": "Edusources: beschrijving en metadata",
+        "url": "https://edusources.nl/nl/materials/wikiwijsmaken:urn:wikiwijsmaken:223513",
+        "sourceType": "official"
+      },
+      {
+        "label": "Wikiwijs: volledige PDF-export",
+        "url": "https://export.wikiwijs.nl/asset/arrangement/223513.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "vrije-universiteit-amsterdam",
+      "vu-scholingstraject-ai-geletterdheid-ubvu"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "informatievaardigheden",
+      "literatuuronderzoek",
+      "prompten",
+      "hallucinaties",
+      "bias",
+      "beeldverificatie",
+      "bronvermelding"
+    ],
+    "notes": "De e-learning vermeldt CC BY 4.0, is gemaakt door de AI Literacy-werkgroep van de SHB/UKB Werkgroep Information Literacy en is gericht op hbo- en wo-bachelorstudenten. De PDF-export telt 50 pagina's; interactieve oefeningen en enkele externe embeds zijn in de statische export als link zichtbaar. Wikiwijs vermeldt 22 juni 2026 als laatste wijzigingsdatum. De Atlas heeft het materiaal en de bronstatus gecontroleerd, niet de juistheid van iedere gekoppelde externe bron of de leeropbrengst.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële Edusources-detailpagina, de volledige Wikiwijs-e-learning en alle 50 pagina's van de PDF-export zijn gecontroleerd op titel, aanbieder, doelgroep, inhoud, toegang, datum, auteurs en licentie; representatieve pagina's over zoeksystemen, GenAI-output en het colofon zijn ook visueel beoordeeld. Controle op 21 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-21",
+        "type": "added",
+        "summary": "Toegevoegd na volledige controle van de open e-learning, oefeningen, licentie en canonieke doublures."
+      }
+    ]
+  },
+  {
+    "id": "uk-dfe-ai-education-support-materials",
+    "title": "Using AI in education settings: support materials",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": "Modulaire personeels- en leiderschapstraining",
+    "organizationIds": [],
+    "providerName": "UK Department for Education",
+    "description": "Engelstalig trainingspakket voor scholen en colleges met vier personeelsmodules en een leiderschapsdeel over AI-basiskennis, interactie met generatieve AI, veilig gebruik, praktijktoepassingen, risicoanalyse en implementatieplanning.",
+    "purpose": "Onderwijspersoneel en schoolleiders ondersteunen om generatieve AI veilig, kritisch en doelgericht te gebruiken en de inzet ervan in de organisatie te plannen.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Ondersteunend personeel"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Veilige AI-omgeving",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "De collectie, presentaties, videoplaylists en transcripties zijn gratis en zonder account toegankelijk via GOV.UK en YouTube.",
+    "publicationDate": "2025-06-10",
+    "lastVerified": "2026-11-21",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "GOV.UK: volledige collectie en moduleoverzicht",
+        "url": "https://www.gov.uk/government/collections/using-ai-in-education-settings-support-materials",
+        "sourceType": "official"
+      },
+      {
+        "label": "GOV.UK: verplichte veiligheidsmodule voor personeel",
+        "url": "https://www.gov.uk/government/publications/safe-use-of-generative-ai-in-education-module-3",
+        "sourceType": "official"
+      },
+      {
+        "label": "GOV.UK: materiaal voor school- en collegeleiders",
+        "url": "https://www.gov.uk/government/publications/using-ai-in-education-support-for-school-and-college-leaders",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "dfe-generative-ai-product-safety-standards"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "non_commercial",
+    "commercialEvidence": {
+      "url": "https://www.gov.uk/government/collections/using-ai-in-education-settings-support-materials",
+      "note": "De officiële collectie is een gratis overheidspublicatie van het UK Department for Education.",
+      "checkedOn": "2026-11-21"
+    },
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "schoolpersoneel",
+      "schoolleiders",
+      "veilig gebruik",
+      "safeguarding",
+      "prompten",
+      "implementatieplanning",
+      "toegankelijkheid"
+    ],
+    "notes": "Het pakket is ontwikkeld door Chiltern Learning Trust en Chartered College of Teaching voor de Engelse onderwijscontext en is op 19 mei 2026 bijgewerkt voor studiejaar 2026-2027. De vier personeelsmodules behandelen begrijpen, interactie, veiligheid en use cases; het leiderschapsdeel bevat onder meer een audit en koppeling aan de digitale strategie. De collectiepagina valt onder de Open Government Licence v3.0, behalve waar anders vermeld; controleer per download eventuele uitzonderingen. De volledige presentaties en video's zijn niet integraal doorlopen.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële GOV.UK-collectie en de detailpagina's van alle vier personeelsmodules en het leiderschapsdeel zijn volledig gelezen op doelgroep, inhoud, beschikbaarheid, publicatie- en actualisatiedatum en documentvormen. De downloadlinks naar presentaties en transcripties zijn gecontroleerd op aanwezigheid; de grote presentaties en video's zijn niet volledig gelezen of bekeken. Controle op 21 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap.",
+    "changeHistory": [
+      {
+        "date": "2026-11-21",
+        "type": "added",
+        "summary": "Toegevoegd na controle van de officiële collectie, alle modulepagina's, toegang en canonieke doublures."
+      }
+    ]
   }
 ]
