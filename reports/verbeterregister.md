@@ -1,5 +1,13 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Nu aanvragen of een aanvraag voorbereiden
+
+De starttegel voor subsidies toonde drie open rondes. Een aangekondigde ronde was pas na doorklikken vindbaar. De tegel toont nu voor de gekozen onderwijssector apart hoeveel rondes open zijn en hoeveel zijn aangekondigd. De bezoeker kan beide groepen samen bekijken of één groep kiezen.
+
+Zes rondes zijn gecontroleerd bij de verstrekkers. Drie zijn open, voor cultuureducatie met digitale technologie, STEM-onderwijs met een bedrijfspartner en praktijkonderzoek door hbo-docenten. Drie zijn aangekondigd, voor Europese lerarenopleidingen, kleinschalige onderwijspartnerschappen en onderzoek naar AI in het jongekindonderwijs. Bij de brede regelingen beschrijft de Atlas onder welke voorwaarden een AI-project kan passen. Elke kaart vermeldt de aanvrager en de indieningsdeadline en verwijst naar de officiële voorwaarden.
+
+In Edge op 390 en 1280 pixels opende de tegel zes open en vier aangekondigde rondes. De aantallen kwamen ook voor PO en mbo overeen met de getoonde resultaten. Alle zes nieuwe detailpagina’s leidden naar de gecontroleerde bron. Bij het openen van de aanvraagformulieren voor Erasmus+ is de eerstvolgende vraag of de Nederlandse en Europese loketten hun aangekondigde openstelling hebben bevestigd. Of de extra zichtbaarheid tot aanvragen leidt, is onbekend.
+
 ## Nieuw aanbod op de telefoon · 22 november 2026
 
 Bij een scherm van 390 × 740 CSS-pixels begon de eerste kaarttitel onder de vouw. De twee datumkeuzes staan nu naast elkaar en de sorteeruitleg is uitklapbaar. De volledige disclaimer blijft boven de lijst staan. In de mobiele browsertest eindigde de eerste kaartdatum op 448 pixels bij **Nieuw in de Atlas** en op 423 pixels bij **Recent gepubliceerd**. Ook bij 320 × 568 pixels waren titel en datum zonder scrollen te lezen. Controleer beide standen opnieuw bij wijzigingen aan de paginakop of resultaatkaart. Hoe bezoekers de datumkeuze gebruiken, is niet gemeten.
