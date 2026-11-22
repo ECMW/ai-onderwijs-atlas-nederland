@@ -6,7 +6,7 @@ Status: voorstel voor gefaseerde professionalisering; geen toezegging van live f
 **AI & Onderwijs Atlas Nederland** helpt onderwijsprofessionals binnen twee minuten een betrouwbare volgende stap te vinden: een les, een experiment, een toetsafspraak, een teamgesprek of een onderbouwd besluit. De AI-catalogus blijft het fundament; 'Ontdek & probeer' is een herkenbaar, afzonderlijk gemarkeerde experimentele collectie, inclusief niet-AI-simulaties.
 
 ## Principes
-1. Start bij de vraag van de gebruiker, niet bij de databank.
+1. Bied **twee gelijkwaardige routes**: doelgericht vanuit een vraag én vrij verkennen via de volledige catalogus. De gebruiker kiest zelf; geen van beide wordt verstopt of vervangen.
 2. Elke inhoudelijke kaart biedt één concrete handeling en de originele bron.
 3. Onderscheid AI, geen AI en onbekend expliciet.
 4. Maak onzekerheid en beperkingen zichtbaar; geen impliciete keurmerken.
@@ -23,8 +23,8 @@ Status: voorstel voor gefaseerde professionalisering; geen toezegging van live f
 - Pas na bovenstaande checks PR mergen en de exacte Pages-release verifiëren.
 
 ### R2 — vraaggerichte homepage
-- Vier primaire taken: les voorbereiden, ontdekken en proberen, AI-afspraken maken, onderzoek/ontwikkelingen volgen.
-- Heldere zoekingang met één prominente actie; geen grote ongesorteerde kaartmuur.
+- Twee even prominente ingangen: **Wat wil je doen?** (vier primaire taken: les voorbereiden, ontdekken en proberen, AI-afspraken maken, onderzoek/ontwikkelingen volgen) en **Ontdek het volledige aanbod** (vrij zoeken, bladeren, filteren, sorteren en vergelijken).
+- Twee even prominente acties, met directe toegang tot de bestaande volledige catalogus; geen grote ongesorteerde kaartmuur. Beide routes delen dezelfde zoek- en filterlogica en canonieke records.
 - Relevante filters en deelbare resultaten, hergebruik bestaande cataloguslogica.
 - Uitgebreide, rustige mobielweergave; WCAG-toets.
 
