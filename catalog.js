@@ -519,10 +519,14 @@
     const entries = papers.map(paper => {
       const authors = Array.isArray(paper.authors) ? paper.authors.filter(name => typeof name === 'string' && name.trim()).join(', ') : '';
       const publicationType = Object.hasOwn(types, paper.publicationType) ? types[paper.publicationType] : 'Publicatietype niet vastgesteld';
-      return `<li><article><p class="paper-meta">${paperDate(paper.published)} <span>· ${publicationType}</span></p>
-        <h2><a href="${escapeHtml(paperUrl(paper.url))}" target="_blank" rel="noopener noreferrer">${escapeHtml(paper.title)} <span aria-hidden="true">↗</span></a></h2>
+      const url = paperUrl(paper.url);
+      const citation = [`${authors || 'Auteurs niet vermeld'} (${paper.published.slice(0, 4)}).`, paper.title, paper.source, url].filter(Boolean).join('\n');
+      return `<li><article><p class="paper-meta">${paperDate(paper.published)} <span>· ${publicationType}</span>${paper.access === 'open' ? ' <span>· Open access</span>' : ''}</p>
+        <h2><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(paper.title)} <span aria-hidden="true">↗</span></a></h2>
         <p class="paper-byline">${escapeHtml(authors || 'Auteurs niet vermeld')}${paper.source ? ` · <cite>${escapeHtml(paper.source)}</cite>` : ''}</p>
-        ${typeof paper.summary === 'string' && paper.summary.trim() ? `<p class="paper-summary">${escapeHtml(paper.summary)}</p>` : ''}</article></li>`;
+        ${typeof paper.summary === 'string' && paper.summary.trim() ? `<p class="paper-summary">${escapeHtml(paper.summary)}</p>` : ''}
+        <div class="paper-citation"><button class="btn secondary" type="button" data-copy-paper="${escapeHtml(citation)}" aria-label="Kopieer bronvermelding: ${escapeHtml(paper.title)}">Kopieer bronvermelding</button>
+          <span role="status"></span><textarea rows="4" readonly hidden aria-label="Bronvermelding van ${escapeHtml(paper.title)}"></textarea></div></article></li>`;
     }).join('');
     const checked = validDate(data.checkedAt) ? `Laatste geslaagde controle op ${paperDate(data.checkedAt)}.` : 'Datum van de laatste geslaagde controle onbekend.';
     const partial = sources.some(item => !validDate(item.checkedAt) || item.checkedAt < data.checkedAt);
@@ -552,7 +556,15 @@
     main.innerHTML = `<section class="new-offers papers-page"><header class="page-intro"><h1 id="papers-heading" tabindex="-1">Papers over AI en onderwijs</h1>
       <p>De Atlas controleert de gevolgde tijdschriften dagelijks op oorspronkelijk onderzoek, overzichtsartikelen en overige tijdschriftartikelen met een expliciete AI-term in de titel.</p>
       <p>Elke geslaagde broncontrole bestrijkt de afgelopen 60 dagen. U ziet maximaal 6 papers per tijdschrift en 20 in totaal. Ze staan van nieuw naar oud op eerste publicatiedatum, waar bekend die van de online publicatie.</p></header><div data-papers></div></section>`;
-    loadPapers(main.querySelector('[data-papers]'));
+    const panel = main.querySelector('[data-papers]');
+    panel.onclick = event => {
+      const button = event.target.closest('[data-copy-paper]');
+      if (!button) return;
+      const controls = button.closest('.paper-citation');
+      return copyTextWithFallback(button, button.dataset.copyPaper, controls.querySelector('[role="status"]'), controls.querySelector('textarea'),
+        'Bronvermelding gekopieerd.', 'Kopieer de geselecteerde bronvermelding.');
+    };
+    loadPapers(panel);
   }
 
   function sortRecords(list) {

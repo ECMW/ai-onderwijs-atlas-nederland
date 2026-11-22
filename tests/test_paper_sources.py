@@ -38,6 +38,31 @@ def article(doi=DOI, title=TITLE, online="2026/11/20", kind="OriginalPaper",
 
 
 class PaperSourcesTests(unittest.TestCase):
+    def test_open_access_requires_free_cc_licensed_main_article_with_matching_doi(self):
+        entity = {"@type": "ScholarlyArticle", "sameAs": "https://doi.org/" + DOI,
+                  "license": "http://creativecommons.org/licenses/by-nc-nd/4.0/",
+                  "isAccessibleForFree": True}
+        def schema(main_entity, page_type="WebPage"):
+            body = json.dumps({"@type": page_type, "mainEntity": main_entity})
+            return f'<script type="application/ld+json">{body}</script>'
+        cases = [
+            (schema(entity), True),
+            (schema(dict(entity, sameAs="https://doi.org/10.1007/other")), False),
+            (schema(dict(entity, license="https://example.org/claims-open")), False),
+            (schema(dict(entity, isAccessibleForFree=False)), False),
+            (schema(dict(entity, isAccessibleForFree="true")), False),
+            (schema({k:v for k,v in entity.items() if k != "license"}), False),
+            (schema(entity, "Advertisement"), False),
+            ('<a data-test="open-access" href="https://creativecommons.org/licenses/by/4.0/">Open access</a>', False),
+            ('<script type="application/ld+json">not-json</script>', False),
+        ]
+        for markup, open_access in cases:
+            with self.subTest(markup=markup), patch.object(
+                papers, "_fetch", side_effect=[feed(item()), article().replace(b"</head>", markup.encode() + b"</head>")]
+            ):
+                result, = papers.get_papers(SOURCE, TODAY)
+            self.assertEqual(result.get("access"), "open" if open_access else None)
+
     def test_first_online_date_authors_doi_and_reviewed_summary(self):
         with patch.object(papers, "_fetch", side_effect=[feed(item()), article()]) as fetch:
             result, = papers.get_papers(SOURCE, TODAY)

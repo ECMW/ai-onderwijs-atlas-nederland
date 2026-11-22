@@ -36,6 +36,7 @@
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s11423-026-10749-1",
       "language": "en",
+      "access": "open",
       "summary": "Dertig bachelorstudenten aan een Duitse universiteit oefenden met een GPT-examenassistent en later met Moodle. De onderzoekers vergeleken hun gebruik en ervaren eerlijkheid. Door de vaste volgorde en de kleine groep blijft onzeker of een van beide vormen beter werkt."
     },
     {
@@ -50,6 +51,7 @@
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s10763-026-10747-y",
       "language": "en",
+      "access": "open",
       "summary": "Elf Zweedse basisschoolleraren probeerden zes maanden generatieve AI uit bij rekenen en natuuronderwijs. Ze beschreven bruikbare lesideeën en rekenfouten in AI-antwoorden. De studie onderzocht docentervaringen. Leerprestaties zijn niet gemeten."
     },
     {
@@ -119,7 +121,8 @@
       "source": "Educational Technology Research and Development",
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s11423-026-10753-5",
-      "language": "en"
+      "language": "en",
+      "access": "open"
     },
     {
       "id": "10.1007/s10956-026-10374-w",
@@ -135,6 +138,7 @@
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s10956-026-10374-w",
       "language": "en",
+      "access": "open",
       "summary": "Bij een ecologietaak werden 185 studenten willekeurig verdeeld over drie groepen. Studenten met alleen ChatGPT scoorden op de aansluitende kennistoets lager dan studenten die de bronteksten konden lezen, met of zonder ChatGPT. Het onderzoek betrof één taak."
     },
     {
@@ -199,7 +203,8 @@
       "source": "Journal of Science Education and Technology",
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s10956-026-10369-7",
-      "language": "en"
+      "language": "en",
+      "access": "open"
     },
     {
       "id": "10.1007/s11423-026-10756-2",
@@ -216,6 +221,7 @@
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s11423-026-10756-2",
       "language": "en",
+      "access": "open",
       "summary": "Zeven wiskundedocenten pasten met ChatGPT opgaven aan de interesses van hun leerlingen aan. Leerlingen gaven aan welke verwijzingen zij herkenbaar vonden. De studie onderzocht de werkwijze en reacties op de opgaven. Leerwinst is niet vastgesteld."
     },
     {
@@ -279,7 +285,8 @@
       "source": "Journal of Science Education and Technology",
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s10956-026-10363-z",
-      "language": "en"
+      "language": "en",
+      "access": "open"
     }
   ]
 }

@@ -186,6 +186,44 @@ test('papers open directly and from home or research; an optional feed failure c
   assert.deepEqual(direct.errors, []);
 });
 
+test('each paper copies its own citation and selects only its own field when clipboard access is denied', async () => {
+  const papers = [
+    {authors:['Clara Smit','Jo Li'], title:'Learning with AI', source:'Journal A', url:'https://doi.org/10.1234/first', published:'2026-01-01'},
+    {authors:['Yun Kim'], title:'Teaching about AI', source:'Journal B', url:'https://doi.org/10.1234/second', published:'2025-09-20'}
+  ].map(paper => ({...paper, summary:'Summary omitted from citation.', publicationType:'journal-article'}));
+  const app = boot({href:'https://example.org/atlas/#papers', fetch:async () => ({ok:true, json:async () => ({papers})})});
+  await new Promise(setImmediate);
+  const panel = app.document.querySelector('[data-papers]');
+  const buttons = panel.querySelectorAll('[data-copy-paper]');
+  assert.equal(buttons.length, 2);
+  const writes = [];
+  const expected = [
+    'Clara Smit, Jo Li (2026).\nLearning with AI\nJournal A\nhttps://doi.org/10.1234/first',
+    'Yun Kim (2025).\nTeaching about AI\nJournal B\nhttps://doi.org/10.1234/second'
+  ];
+  app.context.navigator = {clipboard:{writeText:async text => { writes.push(text); }}};
+  const controls = buttons.map(button => button.closest('.paper-citation'));
+  const fields = controls.map(group => group.querySelector('textarea'));
+  const focusAndSelection = [];
+  for (const [index, button] of buttons.entries()) {
+    button.isConnected = true;
+    assert.equal(button.attributes['aria-label'], 'Kopieer bronvermelding: ' + papers[index].title);
+    assert.ok('readonly' in fields[index].attributes && 'hidden' in fields[index].attributes);
+    fields[index].focus = () => focusAndSelection.push(['focus', index]);
+    fields[index].select = () => focusAndSelection.push(['select', index]);
+    await panel.onclick({target:button});
+    assert.equal(controls[index].querySelector('[role="status"]').textContent, 'Bronvermelding gekopieerd.');
+  }
+  assert.deepEqual(writes, expected);
+  app.context.navigator.clipboard.writeText = async () => { throw new Error('Clipboard denied'); };
+  await panel.onclick({target:buttons[1]});
+  assert.equal(fields[1].value, expected[1]);
+  assert.equal(fields[1].hidden, false);
+  assert.equal(fields[0].hidden, true);
+  assert.equal(controls[1].querySelector('[role="status"]').textContent, 'Kopieer de geselecteerde bronvermelding.');
+  assert.deepEqual(focusAndSelection, [['focus',1],['select',1]]);
+});
+
 test('home uses the full catalogue and the same query, sector, cost and offer filters as search', () => {
   const app=boot();
   assert.deepEqual(app.errors,[]);

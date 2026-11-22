@@ -76,15 +76,44 @@ class _CitationMetadata(HTMLParser):
     def __init__(self):
         super().__init__()
         self.values = defaultdict(list)
+        self.in_schema_script = False
+        self.open_article_urls = set()
 
     def handle_starttag(self, tag, attrs):
+        fields = dict(attrs)
+        if tag == "script":
+            self.in_schema_script = (fields.get("type") or "").casefold() == "application/ld+json"
         if tag != "meta":
             return
-        fields = dict(attrs)
         name = (fields.get("name") or "").lower()
         value = " ".join((fields.get("content") or "").split())
         if value and name in METADATA_FIELDS:
             self.values[name].append(value)
+
+    def handle_endtag(self, tag):
+        if tag == "script":
+            self.in_schema_script = False
+
+    def handle_data(self, data):
+        if not self.in_schema_script:
+            return
+        try:
+            page = json.loads(data)
+        except (ValueError, RecursionError):
+            return
+        if not isinstance(page, dict) or page.get("@type") != "WebPage":
+            return
+        entity = page.get("mainEntity")
+        if not isinstance(entity, dict) or entity.get("@type") != "ScholarlyArticle":
+            return
+        license_url = entity.get("license")
+        if entity.get("isAccessibleForFree") is not True or not isinstance(license_url, str):
+            return
+        if not re.fullmatch(r"https?://creativecommons\.org/(?:licenses/by(?:-nc)?(?:-nd|-sa)?|publicdomain/zero)/\d+\.\d+/?", license_url):
+            return
+        identity = entity.get("sameAs")
+        if isinstance(identity, str):
+            self.open_article_urls.add(identity.casefold())
 
     def first(self, name):
         return next(iter(self.values[name]), "")
@@ -210,6 +239,8 @@ def _article(source: dict, doi: str, start: date, today: date, timeout: float) -
         authors.append(f"{given} {family}" if comma else author)
     paper = {"id": doi, "title": title, "authors": authors, "published": published.isoformat(),
              "source": source["name"], "publicationType": "peer-reviewed", "url": "https://doi.org/" + doi}
+    if paper["url"] in metadata.open_article_urls:
+        paper["access"] = "open"
     if language := metadata.first("citation_language").lower():
         paper["language"] = language
     if doi in SUMMARIES:

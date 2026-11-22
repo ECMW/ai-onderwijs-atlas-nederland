@@ -46,6 +46,8 @@ def paper_row(raw, source_name, today):
     for key, maximum in [("summary", 1500), ("language", 50)]:
         if raw.get(key):
             result[key] = clean_text(raw[key], maximum)
+    if raw.get("access") == "open":
+        result["access"] = "open"
     return result
 
 
