@@ -54,6 +54,26 @@ class DailyMaintenanceTests(unittest.TestCase):
         event, _ = classify(self.source, state, self.result("same_cosmetic"), self.config)
         self.assertEqual("NO_CHANGE", event["type"])
 
+    def test_new_call_url_with_identical_listing_text_reaches_review(self):
+        source = dict(self.source, allowedRecordTypes=["subsidy", "funding_call"])
+
+        def listing(round_id):
+            page = self.result("base")
+            link = f'<a href="/calls/{round_id}">Subsidie voor onderwijsinnovatie</a>'
+            page.body = page.body.replace("</main>", link + "</main>")
+            return page
+
+        _, baseline = classify(source, {}, listing("eerste-ronde"), self.config)
+        event, state = classify(source, baseline, listing("tweede-ronde"), self.config)
+        self.assertEqual("CHANGED", event["type"])
+        self.assertEqual([], event["removedUnits"])
+        proposals = enrich_and_validate(proposals_for_event(source, event, [], self.config))
+        self.assertEqual(["https://example.test/calls/tweede-ronde"], [p["target"] for p in proposals])
+        self.assertFalse(proposals[0]["publicationAllowed"])
+        repeated, _ = classify(source, state, listing("tweede-ronde"), self.config)
+        self.assertEqual([], repeated["addedUnits"])
+        self.assertEqual(["https://example.test/calls/eerste-ronde"], [u["url"] for u in repeated["removedUnits"]])
+
     def test_04_deadline_change_has_high_priority_proposal(self):
         state = self.baseline()
         event, _ = classify(self.source, state, self.result("deadline_changed"), self.config)

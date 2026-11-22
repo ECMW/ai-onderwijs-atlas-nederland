@@ -83,6 +83,21 @@ pas na respectievelijk zeven en 28 dagen opnieuw gecontroleerd. Kennisnet, SURF,
 SLO, UNESCO AI en onderwijs, edusources en de bestaande TNO-bronnen staan op `daily`. Hun bronrollen
 zijn ongewijzigd: een ontdekkingsbron geldt niet automatisch als bewijs voor andermans aanbod.
 
+### Subsidies en calls
+
+De dagelijkse signaalcyclus volgt de rondeoverzichten van NWO, NKO en Regieorgaan SIA, het AIDO-programma
+van Npuls, de Europese Digital Europe-oproepen bij RVO en de Nederlandse Erasmus+-deadlines. Nieuwe
+relevante links en herkenbare datumwijzigingen komen in het bestaande onderhoudsrapport. Kijk bij de
+inhoudelijke dagronde ook op de officiële oproeppagina’s als het rapport geen nieuwe signalen geeft.
+Een leeg nationaal overzicht kan bijvoorbeeld voorafgaan aan de Nederlandse publicatie van een Europese ronde.
+
+Controleer per kandidaat de relatie met AI en onderwijs, wie vanuit Nederland mag aanvragen, eventuele
+consortiumpartners en de eerste nog haalbare aanvraagstap. Onderscheid subsidie, aanbesteding en partneroproep.
+Controleer de uiterste datum en, waar vermeld, tijd en tijdzone voor zowel de intentieverklaring als het
+volledige voorstel. Gebruik voor Europese calls de voorwaarden van de afzonderlijke actie en de officiële
+programmagids of oproep. Hercontroleer bestaande kaarten bij een verlenging, sluiting of nieuwe ronde.
+Een brede regeling kan een onderwijsproject passen; benoem die toepasselijkheid als redactionele duiding.
+
 ### Bron toevoegen of aanpassen
 
 1. Gebruik een stabiele ID met prefix `source-`.
