@@ -38405,6 +38405,11 @@
         "date": "2026-11-22",
         "type": "added",
         "summary": "Biologieles toegevoegd met directe toegang tot de simulatie, het werkblad en een Atlas-lesstart voor het controleren van een voorspelling."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
       }
     ],
     "lessonStart": {
@@ -38416,7 +38421,9 @@
       "preparation": "Open de simulatie op het scherm Inleiding. Laat de docent vooraf een AI-voorspelling verzamelen over het aantal konijnen wanneer het voedsel beperkt wordt. Noteer de precieze voorspelling.",
       "task": "Voeg een maatje toe en volg het aantal konijnen vijf generaties. Begin opnieuw en kies nu ook ‘Beperkt voedsel’. Noteer in beide rondes de aantallen en vergelijk de grafieken met de voorspelling.",
       "reflection": "Welke uitspraak kun je met deze twee grafieken beoordelen? Welke uitkomst kan toeval zijn, en wat zou je opnieuw moeten testen?",
-      "sourceUrl": "https://phet.colorado.edu/sims/html/natural-selection/latest/natural-selection_nl.html"
+      "sourceUrl": "https://phet.colorado.edu/sims/html/natural-selection/latest/natural-selection_nl.html",
+      "learningGoal": "Met twee populatiegrafieken bepalen welke delen van een voorspelling over voedsel en konijnenaantallen steun krijgen.",
+      "activityType": "Simulatie onderzoeken"
     },
     "subjects": [
       "Biologie"
@@ -38768,13 +38775,20 @@
       "preparation": "Open het onderdeel “Any learner in DML” in de leesversie van het notebook. Laat studenten de tabel met drie effectschattingen en de bijbehorende standaardfouten gebruiken.",
       "task": "Vergelijk de schattingen van lasso en random forest. Noteer welke vraag beide beantwoorden, hoe cross-fitting de huishoudens over trainen en schatten verdeelt en welke aanname nodig is om van een causaal effect te spreken.",
       "reflection": "Noem een denkbare ongemeten factor die zowel toegang tot de regeling als spaarvermogen beïnvloedt. Kan cross-fitting dat probleem oplossen?",
-      "sourceUrl": "https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.html"
+      "sourceUrl": "https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.html",
+      "learningGoal": "Een effectschatting onderscheiden van een voorspelling en uitleggen welke aanname nodig is voor een causale interpretatie.",
+      "activityType": "Schattingen vergelijken"
     },
     "changeHistory": [
       {
         "date": "2026-11-22",
         "type": "added",
         "summary": "Universitair econometriepracticum op onderwerp, leesversie, oorspronkelijke code en bijbehorende data gecontroleerd."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
       }
     ]
   },
@@ -38983,6 +38997,11 @@
         "date": "2026-11-22",
         "type": "added",
         "summary": "Het vakmateriaal en de Nederlandstalige lesstart van de Atlas zijn toegevoegd na controle van de bron en de leerlingactiviteit."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
       }
     ],
     "subtype": "Interactief wiskundewerkblad",
@@ -39024,7 +39043,9 @@
       "preparation": "Open ‘Verken de constructie’ in het werkblad. Vraag vooraf aan een AI-assistent om m en q uit te leggen, of geef de klas deze te toetsen uitspraak: ‘Als m groter wordt, schuift het snijpunt met de y-as omhoog.’",
       "task": "Zet q op 1 en verander m van 0,5 naar 2. Noteer het snijpunt met de y-as. Houd daarna m op 2 en zet q op 3. Vul voor beide lijnen x = 0 en x = 1 in en vergelijk de uitkomsten met de grafiek.",
       "reflection": "Welk getal weerlegt of bevestigt de uitspraak over het snijpunt? Leg in eigen woorden uit wat er bij één stap naar rechts verandert.",
-      "sourceUrl": "https://www.geogebra.org/m/bfIaujSj"
+      "sourceUrl": "https://www.geogebra.org/m/bfIaujSj",
+      "learningGoal": "Met twee gekozen punten uitleggen wat de richtingscoëfficiënt en het snijpunt met de y-as aan een rechte lijn veranderen.",
+      "activityType": "Grafieken onderzoeken"
     }
   },
   {
@@ -39066,6 +39087,11 @@
         "date": "2026-11-22",
         "type": "added",
         "summary": "Het vakmateriaal en de Nederlandstalige lesstart van de Atlas zijn toegevoegd na controle van de bron en de leerlingactiviteit."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
       }
     ],
     "subtype": "Interactieve natuurkundeles met simulatie",
@@ -39116,7 +39142,9 @@
       "preparation": "Open het scherm ‘Wrijving’ en klap linksboven ‘Energie’ open. Laat de klas een AI-uitleg toetsen of gebruik deze voorbeeldbewering: ‘Door wrijving verdwijnt een deel van de totale energie.’",
       "task": "Zet de wrijving op ‘Geen’. Laat de skater vanaf een herkenbaar punt op de baan los en pauzeer de rit. Herhaal vanaf hetzelfde punt met meer wrijving. Vergelijk de terugkeerhoogte en de staven ‘Thermisch’ en ‘Totaal’.",
       "reflection": "Welke staaf verklaart de lagere terugkeerhoogte? Welke waarneming gebruik je om de bewering te verbeteren?",
-      "sourceUrl": "https://phet.colorado.edu/sims/html/energy-skate-park-basics/latest/energy-skate-park-basics_nl.html"
+      "sourceUrl": "https://phet.colorado.edu/sims/html/energy-skate-park-basics/latest/energy-skate-park-basics_nl.html",
+      "learningGoal": "Met de energiestaven uitleggen waarom een skater bij wrijving lager terugkomt en hoe de totale energie in het model verandert of gelijk blijft.",
+      "activityType": "Simulatie onderzoeken"
     }
   },
   {
