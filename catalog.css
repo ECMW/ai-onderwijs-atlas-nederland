@@ -199,6 +199,11 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 .funding-nav nav > span { color: var(--muted); }
 .funding-nav a[aria-current] { color: var(--ink); font-weight: 700; text-decoration-thickness: 2px; }
 .funding-conditions { border-left: 3px solid var(--green); padding-left: 1rem; margin-bottom: 1.5rem; }
+.research-page { max-width: 62rem; }
+.research-page .page-intro { margin: 1.25rem 0; }
+.research-page h2 { margin: 0 0 .65rem; }
+.research-page li + li { margin-top: .75rem; }
+.research-page li p { margin: .2rem 0; }
 .offer-audience { gap: 0 .35rem; margin: .5rem 0; }
 @media (max-width: 899px) {
   .result-card[data-offer-card] {

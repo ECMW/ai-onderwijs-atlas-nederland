@@ -11,7 +11,7 @@ const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, bindFacetLists, subjectPage, subjectForEnter, subjectSearchHref, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
     recordContextMarkup, queryMatchQuality, queryMatches, sortRecords,
-    homeFilterPanel, catalogFilterPanel, recordsForCriteria, renderDetail, renderAssessment, readAssessmentDraft, assessmentParts, renderTeamTrial,
+    homeFilterPanel, catalogFilterPanel, recordsForCriteria, renderDetail, researchPage, renderAssessment, readAssessmentDraft, assessmentParts, renderTeamTrial,
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
     effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
     accessLabel, accessOptions: Object.values(ACCESS_LABELS), recordThemes, themeOptions, route,
@@ -105,7 +105,7 @@ test('practice links count matching offers and retain the chosen sectors and aud
   const html = api.resultsMarkup();
   assert.ok(html.includes('Meerdere sectoren'));
   const links = [...html.matchAll(/<a class="practice-link" href="([^"]+)"><strong>([^<]+)/g)];
-  assert.deepEqual(links.map(match => match[2]), ['Een les voorbereiden', 'AI-afspraken maken', 'Subsidies en calls']);
+  assert.deepEqual(links.map(match => match[2]), ['Een les voorbereiden', 'AI-afspraken maken', 'Subsidies en calls', 'Onderzoek doen of promoveren']);
   assert.match(load(data, links[1][1].replaceAll('&amp;', '&')).resultsMarkup(), /href="#teamproef"/);
   const href = links[0][1].replaceAll('&amp;', '&');
   const params = new URLSearchParams(href.split('?')[1]);
@@ -980,6 +980,39 @@ test('the classroom task drilldown and return link preserve the selected subject
   assert.equal(new URLSearchParams(link.split('?')[1]).get('vak'), 'Biologie');
   const back = load(data, link).resultsMarkup().match(/aria-label="Praktijkvragen"><a href="([^"]+)"/)[1].replaceAll('&amp;', '&');
   assert.equal(new URLSearchParams(back.split('?')[1]).get('vak'), 'Biologie');
+});
+
+test('free Dutch teaching materials keep sector and subject and can find material with no lesson keyword', () => {
+  const sample = {...record('experiment', null, 'Dataproef met grafieken'), offerCategory:'materials', subjects:['Biologie'], sectors:['VO'], language:['nl'], costType:'free'};
+  const data = [sample, {...sample,id:'english',language:['en']}, {...sample,id:'paid',costType:'paid'}, {...sample,id:'sector',sectors:['HBO']}];
+  const start = load(data, '#zoeken?q=les&type=materials&sector=VO&vak=Biologie');
+  assert.equal(start.recordsForCriteria(start.getState()).length, 0);
+  const href = start.resultsMarkup().match(/href="([^"]+)">Gratis Nederlandstalig lesmateriaal<\/a>/)[1].replaceAll('&amp;', '&');
+  const next = load(data, href);
+  assert.deepEqual(Object.fromEntries(new URLSearchParams(href.split('?')[1])), {sector:'VO', vak:'Biologie', type:'materials', cost:'Gratis', language:'nl'});
+  assert.deepEqual(Array.from(next.recordsForCriteria(next.getState()), record => record.id), ['experiment']);
+});
+
+test('research page exposes only public record links, current call statuses and precise PhD navigation suggestions', () => {
+  const eur = record('eur-generative-ai-in-research-emodule'), talis = record('oecd-talis-2024-database-ai-onderwijs');
+  const aido = {...record('npuls-aido-praktijkgericht-ai-en-dataonderzoek-2026'), status:'planned'};
+  const main = {querySelectorAll:()=>[], querySelector:()=>({})};
+  const setup = data => load(data, '#onderzoek?sector=MBO&vak=Wiskunde', {document:{querySelector: selector => selector === 'main' ? main : null}});
+  const api = setup([eur, {...talis, publicationExclusion: 'test'}, aido]);
+  api.researchPage();
+  assert.match(main.innerHTML, /href="#item\/eur-generative-ai-in-research-emodule"/);
+  assert.doesNotMatch(main.innerHTML, /href="#item\/oecd-talis|href="#item\/professional-doctorate/);
+  assert.match(main.innerHTML, /Npuls AIDO voor mbo, hbo en wo<\/a> · Gepland/);
+  assert.match(main.innerHTML, /sector=MBO&amp;vak=Wiskunde[^"]*">Bekijk open subsidies en calls/);
+  setup([talis]).researchPage();
+  assert.match(main.innerHTML, /href="#item\/oecd-talis-2024-database-ai-onderwijs"/);
+  assert.match(main.innerHTML, /zelfrapportage[\s\S]+formulier/);
+  for (const query of ['phd','promotieplek','promoveren','promovendi']) {
+    assert.ok(api.suggestionData(query).flatMap(group => group.items).some(item => item.href.startsWith('#onderzoek')));
+    const results = load([], '#zoeken?q=' + query + '&sector=WO').resultsMarkup();
+    assert.match(results, /href="#onderzoek\?[^"]*sector=WO[^"]*">Onderzoek doen of promoveren<\/a>/);
+  }
+  assert.ok(!api.suggestionData('onderzoek').flatMap(group => group.items).some(item => item.href.startsWith('#onderzoek')));
 });
 
 test('route changes release an open mobile filter overlay and its detached keyboard handler', () => {

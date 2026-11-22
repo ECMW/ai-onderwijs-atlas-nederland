@@ -203,6 +203,23 @@ test('the actual homepage links to open subsidies and calls, with all statuses r
   assert.deepEqual(app.errors, []);
 });
 
+test('the sixth homepage task and direct research links open all three goals and preserve the return context', () => {
+  const app = boot({href:'https://example.org/atlas/'});
+  assert.equal(app.document.querySelectorAll('.practice-links .practice-link').length, 6);
+  assert.match(app.main.innerHTML, /<a class="practice-link" href="#onderzoek"><strong>Onderzoek doen of promoveren/);
+  app.navigate('#onderzoek');
+  assert.ok(app.document.querySelector('#research-heading'));
+  assert.match(app.main.innerHTML, /Ik zoek een promotieplaats[\s\S]*Ik doe al onderzoek[\s\S]*Met mijn onderwijsinstelling praktijkonderzoek doen/);
+  assert.match(app.main.innerHTML, /www\.kennisrotonde\.nl\/vraag-en-antwoord/);
+  app.navigate('#zoeken?sector=HBO&vak=Wiskunde&type=Subsidie&status=Gepland');
+  const target = app.main.innerHTML.match(/href="([^"]+)">Ik zoek een promotieplaats/)[1].replaceAll('&amp;', '&');
+  assert.ok(target.startsWith('#onderzoek?'));
+  app.navigate(target);
+  const back = app.main.innerHTML.match(/href="([^"]+)">← Terug naar subsidies en calls/)[1].replaceAll('&amp;', '&');
+  assert.deepEqual(Object.fromEntries(new URLSearchParams(back.split('?')[1])), {sector:'HBO', vak:'Wiskunde', type:'Subsidie', status:'Gepland'});
+  assert.deepEqual(app.errors, []);
+});
+
 test('home and search expose one filter opener beside the search form, before the practice routes', () => {
   const app = boot({href: 'https://example.org/atlas/'});
   for (const route of ['', '#home', '#zoeken']) {
