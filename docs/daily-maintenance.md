@@ -254,6 +254,8 @@ beschikbaar is, maakt zij geen lege commit of PR.
 
 ### Praktijkgids bijhouden in dezelfde ronde
 
+Gebruik het [verbeterregister](../reports/verbeterregister.md) voor productverbeteringen. Begin bij de laatst gepubliceerde editie en de open PR's. Werk bij een afgeronde verbetering de oorspronkelijke taak, het aangetoonde resultaat, de resterende aanname en de volgende controle bij. Het register bevat publieke productbevindingen. Individuele meldingen en privéstatistieken blijven in hun bestaande omgeving.
+
 Controleer bij een gewijzigde bron ook de bijbehorende lesvraag, toetsopdracht of onderzoekssamenvatting in de praktijkgids. De bron- en claimkoppelingen in `sources/` leggen vast op welke uitkomst, doelgroep of gebruiksvoorwaarde de tekst berust. Geef bij lesduur aan welke concrete bronles de aanbieder heeft getimed. Houd een ervaring van één instelling herkenbaar als praktijkverslag.
 
 Gebruik bij herhaalde zoekacties zonder resultaat de bestaande geaggregeerde tellers en vrijwillig gemelde voorbeelden. De telling bevat geen zoekwoorden. Controleer een concrete verbetering met een zoekvraag, een passend lesmateriaal en de oorspronkelijke bron. De beslisregels hierboven blijven gelden voor wijzigingen in de reikwijdte en voor privacykeuzes.
