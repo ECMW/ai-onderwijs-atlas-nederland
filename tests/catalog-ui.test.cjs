@@ -784,7 +784,10 @@ test('books page separates Dutch reading, study and practice books with metadata
   const html = load(books).booksMarkup();
   for (const heading of ['Leesboeken en essays', 'Studieboeken', 'Praktijk- en handboeken']) assert.ok(html.includes(heading));
   for (const title of ['Essayboek', 'Studieboek', 'Praktijkboek']) assert.ok(html.includes(title));
-  for (const detail of ['A. Auteur', '2025', 'ISBN 9780000000001', '80 pagina&#39;s', '<dt>Uitgever</dt>']) assert.ok(html.includes(detail), detail);
+  for (const [label, value] of [['Auteur(s)','A. Auteur'], ['Jaar','2025'], ['ISBN','9780000000001'], ['Omvang','80 pagina&#39;s'], ['Uitgever','Voorbeeld']]) {
+    assert.ok(html.includes(`<dt>${label}</dt><dd>${value}</dd>`), label);
+  }
+  assert.match(html, /<article class="result-card book-card"[^>]*>[\s\S]*?<h2>[\s\S]*?<dl class="offer-facts">[\s\S]*?<\/dl>\s*<p class="description">[^<]+<\/p>\s*<\/div><div class="card-actions/);
   assert.ok(!html.includes('English book'));
 });
 
@@ -1018,13 +1021,70 @@ test('results show the effective status and practical dates before source action
   const call = {...record('call'), recordType:'funding_call', status:'closed_call',
     applicationDeadline:'invalid', fundingDeadline:'2026-09-15'};
   const card = api.simpleCard(call);
-  assert.match(card, /Aanvraag gesloten[\s\S]*Aanvraagdeadline <time datetime="2026-09-15">[^<]+<\/time>[\s\S]*class="card-actions/);
+  assert.match(card, /Aanvraag gesloten[\s\S]*<dt>Aanvraagdeadline<\/dt><dd><time datetime="2026-09-15">[^<]+<\/time>[\s\S]*class="card-actions/);
   const course = {...record('course'), recordType:'training', startDate:'2027-01-14', endDate:'2027-05-13'};
-  assert.match(api.simpleCard(course), /Periode <time datetime="2027-01-14">.*datetime="2027-05-13"/);
-  assert.match(api.simpleCard({...course, endDate:course.startDate}), /Datum <time/);
-  assert.match(api.simpleCard({...course, endDate:null}), /Startdatum <time/);
-  assert.match(api.simpleCard({...course, startDate:null}), /Einddatum <time/);
+  assert.match(api.simpleCard(course), /<dt>Periode<\/dt><dd><time datetime="2027-01-14">.*datetime="2027-05-13"/);
+  assert.match(api.simpleCard({...course, endDate:course.startDate}), /<dt>Datum<\/dt><dd><time/);
+  assert.match(api.simpleCard({...course, endDate:null}), /<dt>Startdatum<\/dt><dd><time/);
+  assert.match(api.simpleCard({...course, startDate:null}), /<dt>Einddatum<\/dt><dd><time/);
   assert.doesNotMatch(api.simpleCard({...course, startDate:null, endDate:'2027-02-30'}), /<time/);
+});
+
+test('one definition list holds the offer facts before the description, actions and comparison control', () => {
+  const item = {...record('workshop', '2026-10-05'), recordType:'training', legacyType:'Training',
+    description:'Beschrijving met <persoonlijke> keuze.', language:['nl'], costType:'free', sectors:['HBO','WO'],
+    applicationDeadline:'2026-11-20', startDate:'2026-12-01', endDate:'2026-12-03', commercialStatus:'commercial',
+    commercialEvidence:{url:'https://example.org/workshop', note:'De aanbieder bevestigt de voorwaarden.', checkedOn:'2026-10-05'}};
+  const api = load([item], '#zoeken?sort=published');
+  const html = api.simpleCard(item, true);
+  const facts = html.match(/<dl class="offer-facts">([\s\S]*?)<\/dl>/)[1];
+  const labels = [...facts.matchAll(/<dt>([^<]+)<\/dt><dd>/g)].map(match => match[1]);
+  assert.deepEqual(labels, ['Verschenen op','Aanbieder','Status','Aanmelddeadline','Periode','Commercieel karakter','Kosten','Toegang','Taal','Voor wie','Sectoren']);
+  assert.match(facts, /commercial-label is-commercial/);
+  assert.match(facts, /<div class="sector-chips"><span>HBO<\/span><span>WO<\/span><\/div>/);
+  const sections = ['class="type-label"','<h2>','<dl','</dl>','<p class="description">Beschrijving met &lt;persoonlijke&gt; keuze.</p>',
+    'class="card-actions','>Bekijk details</a>','>Delen via e-mail</a>','data-sheet-pick='];
+  const order = sections.map(section => html.indexOf(section));
+  assert.ok(order.every((position,index) => position >= 0 && (!index || position > order[index-1])));
+  assert.doesNotMatch(api.simpleCard(item), /data-sheet-pick=|<dt>Verschenen op<\/dt>/);
+});
+
+test('funding cards preserve the documented amount and only show a valid checked opening date', () => {
+  const api = load();
+  const amount = 'Maximaal € 30.000 per aanvraag; totaal voor de ronde € 500.000.';
+  const call = {...record('funding'), recordType:'funding_call', status:'planned', applicationOpenDate:'2027-01-05',
+    applicationDeadline:'2027-03-30', fundingAmount:amount, applicantTypes:['Hogescholen']};
+  const facts = api.simpleCard(call).match(/<dl class="offer-facts">([\s\S]*?)<\/dl>/)[1];
+  assert.ok(facts.includes('<dt>Bedrag</dt><dd>' + amount + '</dd>'));
+  assert.match(facts, /<dt>Aanvragen vanaf<\/dt><dd><time datetime="2027-01-05">/);
+  assert.match(facts, /<dt>Aanvraagdeadline<\/dt><dd><time datetime="2027-03-30">/);
+  assert.match(facts, /<dt>Aanvragers<\/dt><dd>Hogescholen<\/dd>/);
+  assert.doesNotMatch(facts, /<dt>Kosten<\/dt>/);
+  for (const fundingAmount of [null, '  Nog niet ingevuld ', 'Varieert']) {
+    assert.doesNotMatch(api.simpleCard({...call, fundingAmount, applicationOpenDate:'2027-02-30'}), /<dt>(Bedrag|Aanvragen vanaf)<\/dt>/);
+  }
+  assert.doesNotMatch(api.simpleCard({...call, verificationStatus:'needs_review'}), /<dt>(Bedrag|Aanvragen vanaf)<\/dt>/);
+});
+
+test('cards group details and email beside an optional primary source, before the comparison choice', () => {
+  const item = {...record('call'), recordType:'funding_call'};
+  const api = load([item]);
+  for (const sourceUrls of [item.sourceUrls, []]) {
+    const card = api.simpleCard({...item, sourceUrls}, true);
+    const mainActions = card.match(/<div class="offer-main-actions">([\s\S]*?)<\/div>\s*<\/div>\s*<label class="sheet-pick">/)[1];
+    const secondary = mainActions.split('<div class="offer-secondary-actions">');
+    assert.equal(secondary.length, 2);
+    if (sourceUrls.length) assert.match(secondary[0], /class="card-cta primary"[^>]*>Officiële oproep en voorwaarden/);
+    else assert.equal(secondary[0].trim(), '');
+    const labels = [...secondary[1].matchAll(/<a [^>]*>([^<]+)<\/a>/g)].map(match => match[1]);
+    assert.deepEqual(labels, ['Bekijk details','Delen via e-mail']);
+    assert.ok(card.indexOf('<p class="description">') < card.indexOf(mainActions));
+  }
+  const book = {...record('boek'),recordType:'book',bookCategory:'reading',language:['nl']};
+  const bookPage = load([book]).booksMarkup().match(/<article class="result-card book-card"[\s\S]*?<\/article>/)[0];
+  assert.match(bookPage, /class="card-cta primary"[^>]*>Bekijk details/);
+  assert.match(bookPage, /Uitgevers- of auteursbron/);
+  assert.doesNotMatch(bookPage, /offer-secondary-actions|share-email/);
 });
 
 test('a zoned call deadline closes exactly at the published instant and appears in Dutch local time', () => {
@@ -1618,8 +1678,9 @@ test('new offers show the active date mode, full notice and date next to each ti
     assert.deepEqual([...nav.matchAll(/href="([^"]+)"/g)].map(match => match[1]), [`#nieuw?volgorde=${other}`]);
     assert.match(html, /<header[^>]*>\s*<h1>Nieuw aanbod<\/h1><p class="listing-notice">Opname in de Atlas betekent geen goedkeuring, kwaliteitsbeoordeling of aanbeveling van het aanbod of de aanbieder\.<\/p><\/header>/);
     assert.match(html, /<details class="new-offers-explanation"><summary>[^<]+<\/summary>[\s\S]*?bekende (publicatie|toevoeg)datum\.<\/p>\s*<\/details>/);
-    assert.ok(html.includes(`</h2>\n        <p class="publication-date">${dateLabel} <time datetime="`));
-    assert.equal((html.match(/class="publication-date"/g) || []).length, 1);
+    const firstCard = html.match(/<article class="result-card"[\s\S]*?<\/article>/)[0];
+    assert.ok(firstCard.includes(`<dl class="offer-facts"><dt>${dateLabel}</dt><dd><time datetime="`));
+    assert.equal((firstCard.match(/<time /g) || []).length, 1);
   }
 });
 
