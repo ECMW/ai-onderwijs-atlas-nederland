@@ -6,7 +6,7 @@ Vijf rondes toegevoegd na controle bij de verstrekkers. Het open aanbod omvat de
 
 De sectorbrede Erasmus- en MSCA-rondes hebben verschillende voorwaarden en tijdstippen. Voor KA220 heeft het Nederlandse agentschap de aanvraagformulieren aangekondigd. De openingsdatum blijft leeg tot bevestiging. Voor de Franse prijs is de laatste volledige indieningsdag 21 januari. Het loket sluit op 22 januari om middernacht. De dagelijkse bronmonitor volgt voortaan ook het indienportaal van de prijs en de actuele rondekalender van MSCA Staff Exchanges.
 
-Op deze peildatum zijn er acht open en zeven aangekondigde rondes. De eerstvolgende inhoudelijke controle is de Nederlandse openstelling van KA220. Of bezoekers met de kaarten een passende aanvraag voorbereiden is nog onbekend.
+De monitor is met beide echte loketten beproefd. Hij herkent de Franse sluitingstijd van 00.00 uur afzonderlijk van de starttijd en vindt de april-deadline in de Engelstalige MSCA-kalender. Op deze peildatum zijn er acht open en zeven aangekondigde rondes. De eerstvolgende inhoudelijke controle is de Nederlandse openstelling van KA220. Of bezoekers met de kaarten een passende aanvraag voorbereiden is nog onbekend.
 
 ## 23 november 2026 · Resultaten lezen en terugvinden
 
