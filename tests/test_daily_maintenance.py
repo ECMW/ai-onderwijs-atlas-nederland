@@ -66,6 +66,31 @@ class DailyMaintenanceTests(unittest.TestCase):
         self.assertTrue(enriched["proposedValues"]["deadlineFacts"])
         enrich_and_validate(proposals)
 
+    def test_listing_absence_needs_verification_and_keeps_proposal_identity(self):
+        unit = {"url": "https://example.test/ai", "label": "AI"}
+        event = {"type": "CHANGED", "actionable": True, "detectedAt": "2026-11-21T00:00:00Z",
+                 "removedUnits": [unit]}
+        record = {"id": "ai", "title": "AI", "sourceUrls": [unit]}
+        original = proposals_for_event(self.source, event, [record], self.config)[0]
+        report = build_daily_report([event], enrich_and_validate([original.copy()]))
+        self.assertEqual(0, report["summary"]["readyForDecision"])
+        self.assertEqual([], report["timeSensitive"])
+        self.assertEqual(original["id"], report["priorityVerification"][0]["proposalId"])
+
+    def test_closed_prior_year_deadlines_only_leave_urgent_queue_if_all_are_historical(self):
+        old = {"dateText": "13 mei 2025", "context": "sluitingsdatum 13 mei 2025 status gesloten"}
+        for after, urgent in [([], False), ([dict(old, dateText="14 januari 2027")], True),
+                              ([dict(old, context="status onbekend")], True)]:
+            with self.subTest(after=after):
+                event = {"type": "CHANGED", "actionable": True, "detectedAt": "2026-11-21T00:00:00Z",
+                         "deadlineChanged": True, "previous": {"deadlineFacts": [old]},
+                         "current": {"deadlineFacts": after}}
+                proposals = enrich_and_validate(proposals_for_event(self.source, event, [], self.config))
+                report = build_daily_report([event], proposals)
+                self.assertEqual(1, report["summary"]["needsExtraVerification"])
+                self.assertEqual(urgent, bool(report["timeSensitive"]))
+                self.assertEqual(not urgent, bool(report["priorityVerification"]))
+
     def test_05_temporary_unreachable_preserves_snapshot(self):
         state = self.baseline()
         event, after = classify(self.source, state, FetchResult(False, 0, self.source["baseUrl"], error="timeout"), self.config)
