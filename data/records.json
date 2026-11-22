@@ -9951,12 +9951,17 @@
     "startDate": "2025-01-01",
     "endDate": "2028-12-31",
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "Officiële bron",
         "url": "https://www.ru.nl/onderzoek/onderzoeksprojecten/slimme-wiskundefeedback-met-ai",
+        "sourceType": "official"
+      },
+      {
+        "label": "Radboud Universiteit over de kleinschalige pilot met wiskundeopgaven",
+        "url": "https://www.ru.nl/over-ons/nieuws/slimme-wiskundefeedback-met-ai-van-misconceptie-naar-maatwerk",
         "sourceType": "official"
       }
     ],
@@ -9992,7 +9997,15 @@
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2b."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "NOLAI onderzoekt feedback bij tussenstappen, misconcepties en oplossingsstrategieën in vmbo-wiskunde."
       }
+    ],
+    "subjects": [
+      "Wiskunde"
     ]
   },
   {
@@ -34617,7 +34630,7 @@
     "status": "available",
     "availabilityText": "Digitale cursus en handleiding openbaar en gratis beschikbaar.",
     "publicationDate": null,
-    "lastVerified": "2026-10-23",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -34658,7 +34671,18 @@
         "date": "2026-10-23",
         "type": "added",
         "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Dwengo verbindt onderzoek aan huidmondjes en klimaat met wiskunde, en biedt Python-notebooks voor programmeeronderwijs en opdrachten voor aardrijkskunde."
       }
+    ],
+    "subjects": [
+      "Aardrijkskunde",
+      "Biologie",
+      "Informatica",
+      "Wiskunde"
     ]
   },
   {
@@ -36299,7 +36323,7 @@
     "status": "available",
     "availabilityText": "De collectie en de kernles zijn gratis openbaar. Voor de kernles heeft iedere student een laptop of telefoon en toegang tot een AI-chatbot nodig; voorwaarden en kosten van die externe tool zijn niet vastgesteld.",
     "publicationDate": "2026-10-22",
-    "lastVerified": "2026-11-08",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -36342,7 +36366,15 @@
         "date": "2026-11-08",
         "type": "added",
         "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "ROC van Amsterdam-Flevoland biedt een concrete mbo-burgerschapsles over chatbots, mentale gezondheid en hulp zoeken."
       }
+    ],
+    "subjects": [
+      "Burgerschap"
     ]
   },
   {
@@ -37183,7 +37215,7 @@
     "status": "available",
     "availabilityText": "De overzichtspagina en alle zes Engelstalige actieplannen zijn gratis, zonder account en als PDF beschikbaar.",
     "publicationDate": "2026-10-14",
-    "lastVerified": "2026-11-17",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -37227,7 +37259,20 @@
         "date": "2026-11-17",
         "type": "added",
         "summary": "Toegevoegd na controle van de officiële collectie, alle zes actieplannen en canonieke doublures."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "De Europese onderwijswebsite geeft lesplannen voor Frans als vreemde taal, Engels en Frans, Armeense taal en literatuur, en experimentontwerp voor natuurkunde, scheikunde en biologie."
       }
+    ],
+    "subjects": [
+      "Armeens",
+      "Biologie",
+      "Engels",
+      "Frans",
+      "Natuurkunde",
+      "Scheikunde"
     ]
   },
   {
@@ -38411,6 +38456,95 @@
     ],
     "subjects": [
       "Biologie"
+    ]
+  },
+  {
+    "id": "ubc-praxis-double-machine-learning",
+    "title": "Double Machine Learning",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Econometrisch practicum in een Jupyter-notebook",
+    "organizationIds": [],
+    "providerName": "Praxis Project, University of British Columbia",
+    "description": "In dit Python-practicum onderzoekt een student of toegang tot een Amerikaanse 401(k)-pensioenregeling het financieel vermogen van huishoudens beïnvloedt. De student gebruikt cross-fitting en vergelijkt de effectschattingen van lasso, random forest en gradient boosting.",
+    "purpose": "Met econometrie en machine learning onderscheid maken tussen een nauwkeurige voorspelling en een verdedigbare schatting van een causaal effect.",
+    "audiences": [
+      "Studenten",
+      "Docenten"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "subjects": [
+      "Econometrie"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "De Engelstalige les met code, figuren en uitkomsten is direct leesbaar. Voor zelf rekenen zijn het Jupyter-notebook, het meegeleverde gegevensbestand en een Python-omgeving met NumPy, pandas, Matplotlib en scikit-learn nodig. Plaats het CSV-bestand in de map datasets naast het notebook.",
+    "publicationDate": "2026-06-21",
+    "lastVerified": "2026-11-22",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Lezen – practicum met voorbeelden en resultaten",
+        "url": "https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.html",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download het oorspronkelijke Jupyter-notebook",
+        "url": "https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.ipynb",
+        "sourceType": "official"
+      },
+      {
+        "label": "Gegevensbestand Pension401k.csv uit de cursusrepository",
+        "url": "https://raw.githubusercontent.com/ubcecon/praxis-ubc/praxis-notebooks/docs/Causal_ML/datasets/Pension401k.csv",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "econometrie",
+      "causale inferentie",
+      "double machine learning",
+      "cross-fitting",
+      "effectschatting",
+      "pensioenregeling",
+      "Jupyter",
+      "Python",
+      "lesstart"
+    ],
+    "notes": "Alex Ronczewski schreef dit zevende notebook van de universitaire Praxis-reeks Causal Machine Learning. Het veronderstelt meervoudige regressie, basisvaardigheid in Python en pandas en de stof van het vorige notebook. De causale interpretatie vergt aannames over onder meer ongemeten verstorende factoren.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De primaire les, het oorspronkelijke notebook met negen Python-codecellen en het door de code ingelezen bronbestand met 9.915 huishoudens zijn op 22 november 2026 zonder account geopend. De code en de getoonde uitkomsten zijn geïnspecteerd. De modellen zijn bij deze controle niet opnieuw getraind.",
+    "lessonStart": {
+      "sectors": [
+        "WO"
+      ],
+      "level": "Universiteit · econometrie",
+      "question": "Waarom bewijst een nauwkeurige voorspelling van spaarvermogen nog geen effect van een pensioenregeling?",
+      "preparation": "Open het onderdeel “Any learner in DML” in de leesversie van het notebook. Laat studenten de tabel met drie effectschattingen en de bijbehorende standaardfouten gebruiken.",
+      "task": "Vergelijk de schattingen van lasso en random forest. Noteer welke vraag beide beantwoorden, hoe cross-fitting de huishoudens over trainen en schatten verdeelt en welke aanname nodig is om van een causaal effect te spreken.",
+      "reflection": "Noem een denkbare ongemeten factor die zowel toegang tot de regeling als spaarvermogen beïnvloedt. Kan cross-fitting dat probleem oplossen?",
+      "sourceUrl": "https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.html"
+    },
+    "changeHistory": [
+      {
+        "date": "2026-11-22",
+        "type": "added",
+        "summary": "Universitair econometriepracticum op onderwerp, leesversie, oorspronkelijke code en bijbehorende data gecontroleerd."
+      }
     ]
   }
 ]
