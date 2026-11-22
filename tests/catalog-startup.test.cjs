@@ -88,7 +88,7 @@ class Element {
   getBoundingClientRect() { return { top: 0, bottom: 0 }; }
 }
 
-function boot({ replacements = {}, omitted = [], omitGuard = false, href = 'https://example.org/atlas/?view=public#home' } = {}) {
+function boot({ replacements = {}, omitted = [], omitGuard = false, fetch, href = 'https://example.org/atlas/?view=public#home' } = {}) {
   const document = new Element('document');
   document.innerHTML = page.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '');
   document.body = document.querySelector('body');
@@ -100,7 +100,7 @@ function boot({ replacements = {}, omitted = [], omitGuard = false, href = 'http
   };
   const location = new URL(href); location.replace = value => { location.href = new URL(value, location).href; };
   const storage = { getItem: () => null, setItem() {}, removeItem() {} };
-  const context = vm.createContext({ document, location, URL, URLSearchParams, Intl, Event,
+  const context = vm.createContext({ document, location, URL, URLSearchParams, Intl, Event, fetch,
     dispatchEvent: event => dispatch(event.type, event),
     localStorage: storage, sessionStorage: storage, CSS: { escape: value => value },
     matchMedia: () => ({ matches: false }), scrollTo() {}, scrollBy() {}, scrollY: 0,
@@ -144,6 +144,46 @@ test('a blocked or broken optional analytics script leaves the real Atlas usable
   assert.equal(app.context.ATLAS_STARTUP.status, 'ready');
   app.navigate('#over'); assert.match(app.main.innerHTML, /Over de atlas/);
   app.navigate('#zoeken'); assert.match(app.main.innerHTML, /class="atlas-search"/);
+});
+
+test('papers open directly and from home or research; an optional feed failure can be retried without affecting the catalogue', async () => {
+  const requests = [];
+  const fetch = (url, options) => new Promise(resolve => requests.push({url, options, resolve}));
+  const app = boot({fetch});
+  assert.equal(requests.length, 0);
+  assert.ok(app.document.querySelector('#nav').querySelectorAll('a').some(link => link.attributes.href === '#papers'));
+  assert.ok(app.document.querySelector('.practice-start').querySelectorAll('a').some(link => link.attributes.href === '#papers'));
+  app.navigate('#onderzoek');
+  assert.ok(app.document.querySelector('.research-page').querySelectorAll('a').some(link => link.attributes.href === '#papers'));
+  app.navigate('#papers');
+  const panel = app.document.querySelector('[data-papers]');
+  assert.match(panel.innerHTML, /Papers worden geladen/);
+  assert.equal(requests[0].url, 'data/papers.json');
+  requests[0].resolve({ok:false});
+  await new Promise(setImmediate);
+  assert.match(panel.innerHTML, /paperlijst kon niet worden geladen/);
+  panel.querySelector('button').onclick();
+  requests[1].resolve({ok:true,json:async () => ({checkedAt:'2026-11-22', sources:[], papers:[]})});
+  await new Promise(setImmediate);
+  assert.match(panel.innerHTML, /geen papers voor deze selectie/);
+  app.navigate('#zoeken');
+  assert.ok(app.document.querySelector('#catalog-search'));
+  app.navigate('#papers');
+  requests[2].resolve({ok:false});
+  await new Promise(setImmediate);
+  assert.match(app.document.querySelector('[data-papers]').innerHTML, /eerder geladen editie[\s\S]+2026-11-22/);
+  assert.equal(app.context.ATLAS_STARTUP.status, 'ready');
+  assert.deepEqual(app.errors, []);
+
+  const direct = boot({href:'https://example.org/atlas/#papers', fetch});
+  assert.ok(direct.document.querySelector('#papers-heading'));
+  const old = direct.document.querySelector('[data-papers]');
+  direct.navigate('#onderzoek');
+  requests[3].resolve({ok:true, json:async () => ({papers:[]})});
+  await new Promise(setImmediate);
+  assert.match(old.innerHTML, /Papers worden geladen/);
+  assert.ok(direct.document.querySelector('#research-heading'));
+  assert.deepEqual(direct.errors, []);
 });
 
 test('home uses the full catalogue and the same query, sector, cost and offer filters as search', () => {

@@ -204,6 +204,20 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 .research-page h2 { margin: 0 0 .65rem; }
 .research-page li + li { margin-top: .75rem; }
 .research-page li p { margin: .2rem 0; }
+.papers-page { max-width: 62rem; }
+.home-papers { margin: 0; padding: .55rem 1rem; border-top: 1px solid var(--line); }
+.home-papers a { display: inline-flex; align-items: center; min-height: 44px; }
+.papers-page .page-intro { margin-bottom: 1rem; }
+.papers-checked, .paper-meta, .paper-byline { color: var(--muted); }
+.papers-sources { margin: .5rem 0 1.5rem; }
+.papers-sources summary { width: fit-content; padding: .55rem 0; cursor: pointer; font-weight: 650; }
+.papers-sources li + li { margin-top: .35rem; }
+.papers-list { list-style: none; padding: 0; }
+.papers-list li { border-top: 1px solid var(--line); padding: 1.25rem 0; overflow-wrap: anywhere; }
+.papers-list p { margin: .4rem 0 0; }
+.papers-list h2 { font-size: clamp(1.15rem, 2.4vw, 1.5rem); line-height: 1.35; margin: .3rem 0; }
+.papers-list .paper-meta { font-size: .9rem; margin: 0; }
+.papers-list .paper-summary { max-width: 75ch; }
 .offer-audience { gap: 0 .35rem; margin: .5rem 0; }
 @media (max-width: 899px) {
   .result-card[data-offer-card] {

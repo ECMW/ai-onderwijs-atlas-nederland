@@ -468,6 +468,68 @@
     main.innerHTML = newOffersMarkup(params.get('volgorde'), Number(params.get('pagina') || 1));
   }
 
+  function paperUrl(value) {
+    if (typeof value !== 'string') return '';
+    try {
+      const url = new URL(value);
+      return ['https:', 'http:'].includes(url.protocol) && !url.username && !url.password ? url.href : '';
+    } catch { return ''; }
+  }
+  function paperDate(value) {
+    return `<time datetime="${value}">${escapeHtml(dateLabel(value))}</time>`;
+  }
+  function papersMarkup(data) {
+    if (!Array.isArray(data?.papers)) throw new Error('Paperlijst ontbreekt');
+    const types = {preprint:'Preprint', 'journal-article':'Gepubliceerd tijdschriftartikel', 'peer-reviewed':'Peer-reviewed artikel'};
+    const papers = data.papers.filter(paper => typeof paper?.title === 'string' && paper.title.trim() &&
+      validDate(paper.published) && paperUrl(paper.url));
+    papers.sort((a, b) => b.published.localeCompare(a.published) || a.title.localeCompare(b.title, 'nl') ||
+      String(a.id || a.url).localeCompare(String(b.id || b.url), 'en'));
+    const sources = Array.isArray(data.sources) ? data.sources.filter(item => typeof item?.name === 'string' && item.name.trim()) : [];
+    const sourceList = sources.map(item => {
+      const href = paperUrl(item.url);
+      const name = href ? `<a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.name)} ↗</a>` : escapeHtml(item.name);
+      return `<li>${name} · ${validDate(item.checkedAt) ? `laatst gecontroleerd op ${paperDate(item.checkedAt)}` : 'controledatum onbekend'}</li>`;
+    }).join('');
+    const entries = papers.map(paper => {
+      const authors = Array.isArray(paper.authors) ? paper.authors.filter(name => typeof name === 'string' && name.trim()).join(', ') : '';
+      const publicationType = Object.hasOwn(types, paper.publicationType) ? types[paper.publicationType] : 'Publicatietype niet vastgesteld';
+      return `<li><article><p class="paper-meta">${paperDate(paper.published)} <span>· ${publicationType}</span></p>
+        <h2><a href="${escapeHtml(paperUrl(paper.url))}" target="_blank" rel="noopener noreferrer">${escapeHtml(paper.title)} <span aria-hidden="true">↗</span></a></h2>
+        <p class="paper-byline">${escapeHtml(authors || 'Auteurs niet vermeld')}${paper.source ? ` · <cite>${escapeHtml(paper.source)}</cite>` : ''}</p>
+        ${typeof paper.summary === 'string' && paper.summary.trim() ? `<p class="paper-summary">${escapeHtml(paper.summary)}</p>` : ''}</article></li>`;
+    }).join('');
+    const checked = validDate(data.checkedAt) ? `Laatste geslaagde controle op ${paperDate(data.checkedAt)}.` : 'Datum van de laatste geslaagde controle onbekend.';
+    const partial = sources.some(item => !validDate(item.checkedAt) || item.checkedAt < data.checkedAt);
+    return `<p class="papers-checked">${checked}${partial ? ' De laatste geslaagde controle verschilt per bron.' : ''} Publicaties na de laatste broncontrole kunnen ontbreken.</p>
+      ${sourceList ? `<details class="papers-sources"><summary>Gevolgde bronnen en controledatums</summary><ul>${sourceList}</ul></details>` : '<p>De gevolgde bronnen zijn voor deze lijst niet vermeld.</p>'}
+      ${papers.length < data.papers.length ? '<p role="status">Enkele vermeldingen missen een bruikbare titel, publicatiedatum of bronlink.</p>' : ''}
+      ${entries ? `<ol class="papers-list">${entries}</ol>` : `<p role="status">${data.papers.length ? 'Er zijn geen complete vermeldingen om te tonen.' : 'De laatste broncontrole bevatte geen papers voor deze selectie.'}</p>`}`;
+  }
+  let lastPapersHtml = '';
+  async function loadPapers(panel) {
+    panel.innerHTML = '<p role="status">Papers worden geladen…</p>';
+    try {
+      const response = await fetch('data/papers.json', {cache:'no-cache'});
+      if (!response.ok) throw new Error('Paperlijst niet beschikbaar');
+      const html = papersMarkup(await response.json());
+      if (main.querySelector('[data-papers]') === panel) {
+        lastPapersHtml = html;
+        panel.innerHTML = html;
+      }
+    } catch {
+      if (main.querySelector('[data-papers]') !== panel) return;
+      panel.innerHTML = `<p role="status">${lastPapersHtml ? 'Verversen is niet gelukt. Hieronder staat de eerder geladen editie.' : 'De paperlijst kon niet worden geladen.'}</p><button class="btn secondary" type="button">Probeer opnieuw</button>${lastPapersHtml}`;
+      panel.querySelector('button').onclick = () => { document.querySelector('#papers-heading')?.focus(); loadPapers(panel); };
+    }
+  }
+  function renderPapers() {
+    main.innerHTML = `<section class="new-offers papers-page"><header class="page-intro"><h1 id="papers-heading" tabindex="-1">Papers over AI en onderwijs</h1>
+      <p>De Atlas controleert de gevolgde tijdschriften dagelijks op oorspronkelijk onderzoek, overzichtsartikelen en overige tijdschriftartikelen met een expliciete AI-term in de titel.</p>
+      <p>Elke geslaagde broncontrole bestrijkt de afgelopen 60 dagen. U ziet maximaal 6 papers per tijdschrift en 20 in totaal. Ze staan van nieuw naar oud op eerste publicatiedatum, waar bekend die van de online publicatie.</p></header><div data-papers></div></section>`;
+    loadPapers(main.querySelector('[data-papers]'));
+  }
+
   function sortRecords(list) {
     if (state.sort === 'az') return list.sort((a, b) => a.title.localeCompare(b.title, 'nl'));
     if (state.sort === 'added' || isPublicationSort()) {
@@ -1510,6 +1572,9 @@
     return ['phd', 'promoveren', 'promovendus', 'promovenda', 'promovendi', 'promotieonderzoek',
       'promotieplek', 'promotieplaats', 'phd vacature', 'phd vacatures'].includes(normalize(query));
   }
+  function papersQuery(query) {
+    return /^(?:(?:recente |nieuwe )?(?:papers?|wetenschappelijk artikel|wetenschappelijke artikelen)(?: over ai (?:en|in het) onderwijs)?|artikelen over ai (?:en|in het) onderwijs)$/.test(normalize(query));
+  }
   function researchPage() {
     const backHref = location.hash.replace(/^#onderzoek/, '#zoeken');
     const params = new URLSearchParams(backHref.split('?')[1]);
@@ -1534,7 +1599,7 @@
       <section><h2>Ik zoek een promotieplaats</h2><p>U solliciteert bij het project of de werkgever die de PhD-vacature publiceert. Bij MSCA Doctoral Networks vraagt het consortium de financiering aan.</p>
         <ul><li><a href="https://www.academictransfer.com/nl/functietype/phd/" target="_blank" rel="noopener noreferrer">PhD-vacatures in Nederland op AcademicTransfer ↗</a></li>
           <li><a href="https://euraxess.ec.europa.eu/jobs/search" target="_blank" rel="noopener noreferrer">Onderzoeksvacatures in Europa op EURAXESS ↗</a><p>Kies bij ‘Academic Level’ voor ‘PhD Positions’. Voor Nederland kiest u bij ‘Country’ voor ‘Netherlands’.</p></li></ul></section>
-      <section><h2>Ik doe al onderzoek</h2>${methods ? `<ul>${methods}</ul>` : '<p>Leg uw onderzoeksvraag, databron en keuzes rond AI-gebruik vast in uw onderzoeksplan.</p>'}</section>
+      <section><h2>Ik doe al onderzoek</h2><p><a href="#papers">Recente papers over AI en onderwijs</a></p>${methods ? `<ul>${methods}</ul>` : '<p>Leg uw onderzoeksvraag, databron en keuzes rond AI-gebruik vast in uw onderzoeksplan.</p>'}</section>
       <section><h2>Met mijn onderwijsinstelling praktijkonderzoek doen</h2>
         <p>Bespreek een vraag uit uw onderwijspraktijk met de onderzoekscoördinator van uw instelling. Bekijk per regeling wie kan indienen.</p>
         <ul><li><a href="https://www.kennisrotonde.nl/vraag-en-antwoord" target="_blank" rel="noopener noreferrer">Zoek een antwoord op uw onderwijsvraag bij de Kennisrotonde ↗</a></li>${practice}</ul>
@@ -1583,6 +1648,7 @@
       else if (researchQuery(state.q)) {
         work = `<p><a class="btn secondary" href="${escapeHtml(stateHref().replace('#zoeken', '#onderzoek'))}">Onderzoek doen of promoveren</a></p>`;
       }
+      else if (papersQuery(state.q)) work = '<p><a class="btn secondary" href="#papers">Papers over AI en onderwijs</a></p>';
       else if (normalize(state.q) === 'afspraken') work = teamTrialEntry() + assessmentEntry();
       else if (teamTrialQuery(state.q)) work = teamTrialEntry();
       else if (values('theme').includes(ASSESSMENT_CRITERIA.theme) ||
@@ -1606,7 +1672,8 @@
       <label for="practice-sector">Sector<select id="practice-sector">
         <option value="">Alle sectoren</option>${selected.length > 1 ? '<option selected disabled>Meerdere sectoren</option>' : ''}
         ${SECTORS.map(sector => `<option value="${escapeHtml(sector)}" ${selected.length === 1 && selected[0] === sector ? 'selected' : ''}>${escapeHtml(SECTOR_NAMES[sector] ? `${sector} · ${SECTOR_NAMES[sector]}` : sector)}</option>`).join('')}
-      </select></label></div><div class="practice-links">${links.join('')}</div></section>`;
+      </select></label></div><div class="practice-links">${links.join('')}</div>
+      <p class="home-papers"><a href="#papers">Recente papers over AI en onderwijs</a></p></section>`;
   }
   function resultsMarkup() {
     resultRecords = sortRecords(recordsForCriteria(state));
@@ -1960,6 +2027,7 @@
       .map(name => collection(name, { ...criteria, organization: name }))
       .filter(item => item.count > 0).slice(0, 4);
     const sections = [];
+    if (papersQuery(query)) sections.push({label:'Onderzoek', items:[{label:'Papers over AI en onderwijs', meta:'Nieuwste publicaties uit de gevolgde bronnen', href:'#papers'}]});
     if (researchQuery(query)) {
       sections.push({ label: 'Praktijkvraag', items: [{label:'Onderzoek doen of promoveren', meta:'Promotieplaatsen en praktijkonderzoek', href:stateHref().replace('#zoeken', '#onderzoek')}] });
     }
@@ -2307,9 +2375,10 @@
     const path = (location.hash.slice(1) || 'home').split('?')[0];
     document.querySelector('.site-header')?.classList.remove('open');
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
-    if (path === 'home' || (!['wegwijzer', 'nieuw', 'boeken', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
+    if (path === 'home' || (!['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
     if (path === 'wegwijzer') { location.replace('#zoeken'); return; }
     if (path === 'nieuw') renderNewOffers();
+    if (path === 'papers') renderPapers();
     if (path === 'onderzoek') researchPage();
     const focusedBookGroup = path === 'boeken' && renderBooks();
     if (path === 'zoeken' || path === 'organisaties') { parseState(); if (path === 'organisaties') state.type = 'Organisatie'; renderSearch(); }
@@ -2326,7 +2395,7 @@
     const updated = document.querySelector('[data-updated]'); if (updated) updated.textContent = source.metadata.updated || '';
     if (!['zoeken', 'organisaties'].includes(path) && !focusedBookGroup) {
       scrollTo({ top: 0, behavior: 'instant' });
-      (path === 'onderzoek' ? document.querySelector('#research-heading') : main).focus({ preventScroll: true });
+      (path === 'onderzoek' ? document.querySelector('#research-heading') : path === 'papers' ? document.querySelector('#papers-heading') : main).focus({ preventScroll: true });
     }
   }
   let hiddenAt = 0;

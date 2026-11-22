@@ -4,6 +4,11 @@ on:
   push: {branches: [main]}
   workflow_dispatch:
     inputs:
+      refresh_papers:
+        description: 'Check followed journals and publish a changed papers edition'
+        required: false
+        type: boolean
+        default: false
       recovery_ref:
         description: 'Verified recovery source SHA; leave empty for a normal publication'
         required: false
@@ -26,6 +31,8 @@ jobs:
     timeout-minutes: 10
     outputs:
       source_sha: ${{ steps.source.outputs.sha }}
+      papers_sha: ${{ steps.papers.outputs.papers_sha }}
+      papers_changed: ${{ steps.papers.outputs.changed }}
     steps:
       - name: Checkout the current trusted validation toolkit
         uses: actions/checkout@v7
@@ -133,6 +140,19 @@ jobs:
           }
           (site / 'release.json').write_text(json.dumps(release, indent=2) + '\n', encoding='utf-8')
           print(f'Staged {len(files)} public files from {release["sourceSha"]}')
+      - name: Preserve or refresh the last verified papers edition
+        id: papers
+        if: inputs.recovery_ref == '' && hashFiles('source/data/papers.json') != ''
+        working-directory: source
+        env:
+          REFRESH_PAPERS: ${{ inputs.refresh_papers }}
+        shell: bash
+        run: |
+          args=(--use-live --output "$RUNNER_TEMP/atlas-site/data/papers.json" --release "$RUNNER_TEMP/atlas-site/release.json")
+          if [[ "$REFRESH_PAPERS" == "true" ]]; then
+            args+=(--refresh)
+          fi
+          python scripts/update_papers.py "${args[@]}"
       - name: Check JavaScript loaded by the page
         working-directory: ${{ runner.temp }}/atlas-site
         shell: python
@@ -161,6 +181,7 @@ jobs:
         with:
           path: ${{ runner.temp }}/atlas-site
   deploy:
+    if: needs.build.result == 'success' && (!inputs.refresh_papers || inputs.recovery_ref != '' || needs.build.outputs.papers_changed == 'true')
     environment: {name: github-pages, url: '${{ steps.deployment.outputs.page_url }}'}
     runs-on: ubuntu-latest
     timeout-minutes: 12
@@ -235,13 +256,17 @@ jobs:
         env:
           EXPECTED_SOURCE_SHA: ${{ needs.build.outputs.source_sha }}
           EXPECTED_WORKFLOW_RUN_ID: ${{ github.run_id }}
+          EXPECTED_PAPERS_SHA: ${{ needs.build.outputs.papers_sha }}
         run: |
           import json
+          import hashlib
           import os
           import subprocess
           import sys
           import time
           from pathlib import Path
+          from urllib.request import urlopen
+          from urllib.parse import urljoin
 
           config = json.loads(Path('config/site-recovery.json').read_text())
           for attempt in range(6):
@@ -254,7 +279,16 @@ jobs:
               latest = (report.get('attempts') or [{}])[-1]
               release = latest.get('release') or {}
               served = report.get('sourceSha') or latest.get('sourceSha') or release.get('sourceSha')
-              if result.returncode == 0 and served == os.environ['EXPECTED_SOURCE_SHA'] and str(release.get('workflowRunId')) == os.environ['EXPECTED_WORKFLOW_RUN_ID']:
+              edition_ok = True
+              digest = os.environ.get('EXPECTED_PAPERS_SHA')
+              if digest and result.returncode == 0:
+                  try:
+                      with urlopen(urljoin(config['siteUrl'], f'data/papers.json?edition={digest}'), timeout=12) as response:
+                          payload = response.read(512001)
+                      edition_ok = release.get('papersSha256') == digest and hashlib.sha256(payload).hexdigest() == digest
+                  except OSError:
+                      edition_ok = False
+              if result.returncode == 0 and edition_ok and served == os.environ['EXPECTED_SOURCE_SHA'] and str(release.get('workflowRunId')) == os.environ['EXPECTED_WORKFLOW_RUN_ID']:
                   print(f'Live catalogue and release verified: {served}')
                   break
               if attempt < 5:

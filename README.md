@@ -12,7 +12,7 @@ De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijze
 - filters binnen een groep werken als OR, verschillende groepen als AND;
 - meerdere rollen, zoals Docent en Onderzoeker, kunnen gecombineerd worden;
 - zoek- en filterstaat staat in de URL en is deelbaar;
-- op de startpagina leiden vier praktijkvragen naar lessen, toetsontwerp, AI-afspraken en scholing. De sectorkeuze werkt ook door in het aanbod en de filters. Elke ingang telt de actuele matches;
+- de startpagina helpt bij lesvoorbereiding, toetsontwerp, AI-afspraken, scholing, financiering en onderzoek of promoveren. De sectorkeuze werkt door in het aanbod en de filters.
 - [Maak een toetsafspraak](https://ecmw.github.io/ai-onderwijs-atlas-nederland/#toetsafspraak) levert bij een eigen leerdoel een kopieerbare opdrachttekst op. Docenten kunnen de AI-hulp, inlevervorm en beoordeling afstemmen op hun opdracht.
 - Met de [Teamproef met AI](https://ecmw.github.io/ai-onderwijs-atlas-nederland/#teamproef) kunnen onderwijsteams één les uitproberen en de reacties van de klas meenemen in hun volgende besluit. De proefkaart is te kopiëren, af te drukken en op uitdrukkelijke keuze in de eigen browser te bewaren.
 - een vraag als “Een les over AI geven voor groep 7” combineert lesmateriaal en AI-geletterdheid met de zoekterm “groep 7”. De gekozen filters zijn zichtbaar en afzonderlijk te verwijderen;
@@ -58,6 +58,10 @@ overladen. Het operationele `data/sources.json` blijft uitsluitend bestemd voor
 bronmonitoring en ontdekking.
 
 ## Dagelijks onderhoud
+
+De sectie [Papers over AI en onderwijs](https://aionderwijsatlas.nl/#papers) toont de eerste online publicatiedatum, auteurs en DOI. De actuele selectie en de laatste geslaagde controle per tijdschrift staan in dezelfde publieke editie. De ochtendronde van het bestaande brononderhoud vraagt om 06.17 UTC een verversing aan via GitHub Pages. Daarvoor hoeft er geen computer van een beheerder aan te staan.
+
+De verversing gebruikt `scripts/paper_sources.py` en `scripts/update_papers.py`. De ingecheckte `data/papers.json` is de starteditie. Gewone publicaties nemen de meest recente gecontroleerde editie per tijdschrift over. Als een bron onbereikbaar is, blijven de laatste geslaagde resultaten en hun oorspronkelijke controledatum beschikbaar. GitHub controleert de checksum van de gepubliceerde selectie. De optie `refresh_papers` in de bestaande Pages-workflow kan dezelfde verversing op aanvraag uitvoeren.
 
 Bezoekersmeting staat los van brononderhoud. De inrichting, telwijze,
 privacyinstellingen en activatiestappen staan in
