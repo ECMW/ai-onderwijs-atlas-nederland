@@ -54,7 +54,12 @@ Het filter **Vakgebied** gebruikt deze expliciete indeling. Met twee geselecteer
 vermeldingen voor elk van beide vakken in beeld. Een aanvullende keuze zoals **VO** beperkt
 die resultaten tot die sector. Records zonder vastgelegd vak blijven in het volledige aanbod en
 in de gewone tekstzoekfunctie beschikbaar. Een deelbare zoeklink kan bijvoorbeeld
-`#zoeken?vak=Biologie&sector=VO` bevatten.
+`#zoeken?vak=Biologie&sector=VO` bevatten. Voor biologiemateriaal in het voortgezet onderwijs
+combineert een docent **VO**, **Biologie** en **Les- en werkmaterialen**. De bijbehorende link is
+`#zoeken?sector=VO&vak=Biologie&type=materials`.
+
+Het invulveld doorzoekt de vaknamen uit het gepubliceerde aanbod. Nieuwe, onderbouwde vaknamen
+verschijnen daardoor vanzelf. Het intypen van een term maakt geen nieuw vak aan.
 
 ## Aanbodvorm voor publieksfilters
 

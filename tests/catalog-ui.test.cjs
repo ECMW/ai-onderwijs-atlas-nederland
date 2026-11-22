@@ -9,7 +9,7 @@ const boot = "  addEventListener('hashchange', route); addEventListener('popstat
 assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly the route startup');
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
-    facet, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
+    facet, bindFacetLists, subjectPage, subjectForEnter, subjectSearchHref, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
     recordContextMarkup, queryMatchQuality, queryMatches, sortRecords,
     homeFilterPanel, catalogFilterPanel, recordsForCriteria, renderDetail, renderAssessment, readAssessmentDraft, assessmentParts, renderTeamTrial,
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
@@ -803,6 +803,76 @@ test('subjects use explicit public metadata, allow multiple choices and combine 
   assert.match(sheet, /<dt>Vakgebied<\/dt><dd>Biologie of Econometrie<\/dd>/);
   assert.equal((sheet.match(/class="sheet-entry"/g) || []).length, 2);
   assert.match(load(data, '#zoeken?vak=Biologie&sector=HBO').resultsMarkup(), /Geen exacte match/);
+});
+
+test('subject search is present even without any choices, while provider search retains its original threshold', () => {
+  const api = load();
+  function list(key, length) {
+    const options = Array.from({length}, (_, index) => String(index + 1));
+    return api.facet(key, key, options, new Map(options.map(value => [value, 1])));
+  }
+  assert.match(list('vak', 0), /aria-label="Zoek binnen vakgebieden"/);
+  assert.match(list('vak', 1), /aria-label="Zoek binnen vakgebieden"/);
+  assert.match(list('vak', 9), /type="search"[^>]+aria-label="Zoek binnen vakgebieden"/);
+  assert.match(list('vak', 9), /role="status">1–6 van 9/);
+  assert.doesNotMatch(list('organization', 12), /class="facet-search"/);
+  assert.match(list('organization', 13), /aria-label="Zoek binnen aanbieders"/);
+  assert.doesNotMatch(list('sector', 13), /class="facet-search"/);
+});
+
+test('a hundred subjects use bounded pages, current availability and predictable full-list name matching', () => {
+  const api = load([], '#zoeken?vak=Wiskunde&sector=VO&type=materials&q=les');
+  const counts = new Map(Array.from({length: 100}, (_, i) => ['Vak ' + String(i).padStart(2, '0'), 1]));
+  counts.set('Vak 99', 20).set('Biologie', 5).set('Biologie en milieu', 2).set('Marine biologie', 6).set('Wiskunde', 0).set('Aardrijkskunde', 0);
+  const initial = api.subjectPage(counts);
+  assert.deepEqual(Array.from(initial.visible), ['Vak 99', 'Marine biologie', 'Biologie', 'Biologie en milieu', 'Vak 00', 'Vak 01']);
+  assert.equal(initial.range, '1–6 van 104');
+  const markup = api.facet('vak', 'Vakgebied', [...counts.keys()], counts);
+  assert.equal((markup.match(/type="checkbox"/g) || []).length, 6);
+  assert.doesNotMatch(markup, /Toon meer/);
+  let visited = [];
+  for (let page = 0; page < initial.pages; page++) visited.push(...api.subjectPage(counts, '', page).visible);
+  assert.equal(visited.length, 104);
+  assert.equal(new Set(visited).size, 104);
+  assert.ok(visited.includes('Wiskunde'), 'a selected subject can be removed even with zero matches');
+  assert.ok(!visited.includes('Aardrijkskunde'));
+  assert.equal(api.subjectPage(counts, '', 99).range, '103–104 van 104');
+  assert.equal(api.subjectPage(counts, 'vak', 1).range, '7–12 van 100');
+  const matches = api.subjectPage(counts, 'BÍO').matches;
+  assert.deepEqual(Array.from(matches), ['Biologie', 'Biologie en milieu', 'Marine biologie']);
+  assert.equal(api.subjectForEnter(matches, 'bio'), '');
+  assert.equal(api.subjectForEnter(matches, 'biologie'), 'Biologie');
+  assert.equal(api.subjectForEnter(api.subjectPage(counts, 'marine').matches, 'marine'), 'Marine biologie');
+  assert.equal(api.subjectPage(counts, 'filosofie').matches.length, 0);
+  const later = new Map(counts).set('Vak 50', 21).set('Vak 99', 0);
+  assert.equal(api.subjectPage(later).visible[0], 'Vak 50');
+  const shared = new URLSearchParams(api.subjectSearchHref('filosofie').split('?')[1]);
+  assert.deepEqual(Object.fromEntries(shared), {q:'les filosofie', vak:'Wiskunde', sector:'VO', type:'materials'});
+  assert.equal(api.getState().q, 'les');
+});
+
+test('expanding a facet focuses its first newly visible enabled checkbox and collapsing keeps focus on the button', () => {
+  let expanded = false;
+  let focus = 'button';
+  const inputs = ['visible', 'already selected', 'first hidden', 'next hidden'].map((name, index) => ({
+    getClientRects: () => index < 2 || expanded ? [{}] : [], focus: () => { focus = name; }
+  }));
+  const options = {classList: {contains: () => expanded, toggle: () => expanded = !expanded},
+    querySelectorAll(selector) { assert.equal(selector, 'input:enabled'); return inputs; }};
+  const more = {previousElementSibling: options, setAttribute(name, value) { this[name] = value; }};
+  const api = load([], '#zoeken', {document: {querySelector: selector => selector === 'main' ? {} : null,
+    querySelectorAll: selector => selector === '.facet-more' ? [more] : []}});
+  api.bindFacetLists();
+  more.onclick();
+  assert.equal(focus, 'first hidden');
+  assert.equal(more['aria-expanded'], 'true');
+  focus = 'button';
+  more.onclick();
+  assert.equal(focus, 'button');
+  assert.equal(more['aria-expanded'], 'false');
+  inputs.splice(2);
+  more.onclick();
+  assert.equal(focus, 'button', 'no newly available checkbox leaves focus on the button');
 });
 
 test('the classroom task drilldown and return link preserve the selected subject', () => {
