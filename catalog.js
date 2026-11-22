@@ -1443,13 +1443,15 @@
   const ASSESSMENT_CRITERIA = { q: 'toets', theme: 'Toetsing en examinering', type: 'materials,knowledge' };
   const AGREEMENT_CRITERIA = { q: 'afspraken', type: 'materials,knowledge' };
   const FUNDING_TYPES = ['Subsidie of call', 'Subsidie'];
-  const FUNDING_CRITERIA = { type: FUNDING_TYPES.join(','), status: STATUS_LABELS.open_call };
+  const ANNOUNCED_FUNDING_STATUSES = [STATUS_LABELS.planned, STATUS_LABELS.in_development];
+  const CURRENT_FUNDING_STATUSES = [STATUS_LABELS.open_call, ...ANNOUNCED_FUNDING_STATUSES];
+  const FUNDING_CRITERIA = { type: FUNDING_TYPES.join(','), status: CURRENT_FUNDING_STATUSES.join(',') };
   const PRACTICE_ROUTES = [
     { label: 'Een les voorbereiden', detail: 'Opdrachten voor de klas en lesmateriaal', criteria: { q: 'les', type: 'materials' } },
     { label: 'Een toets herontwerpen', detail: 'Een toetsafspraak maken en toetsmateriaal vinden', criteria: ASSESSMENT_CRITERIA },
     { label: 'AI-afspraken maken', detail: 'Een teamproef opzetten en afspraken vinden', criteria: AGREEMENT_CRITERIA },
     { label: 'Scholing vinden', detail: 'Cursussen, workshops en trainerskits', criteria: { type: 'Training', status: 'Direct beschikbaar' } },
-    { label: 'Subsidies en calls', detail: 'Open oproepen, aanvragers en deadlines', criteria: FUNDING_CRITERIA }
+    { label: 'Subsidies en calls', detail: 'Open en aangekondigde rondes, voorwaarden en deadlines', criteria: FUNDING_CRITERIA }
   ];
   const SECTOR_NAMES = {
     PO: 'Primair onderwijs', VO: 'Voortgezet onderwijs', MBO: 'Middelbaar beroepsonderwijs',
@@ -2028,7 +2030,7 @@
     const backHref = location.hash.replace(/^#onderzoek/, '#zoeken');
     const params = new URLSearchParams(backHref.split('?')[1]);
     const fromFunding = filterValues('type', params.get('type')).some(type => FUNDING_TYPES.includes(type));
-    const fundingHref = criteriaHref({sector:params.get('sector'), vak:params.get('vak'), ...FUNDING_CRITERIA});
+    const fundingHref = criteriaHref({sector:params.get('sector'), vak:params.get('vak'), ...FUNDING_CRITERIA, status:STATUS_LABELS.open_call});
     function resource(id, label, description, showStatus = false) {
       const record = publicRecordsById.get(id);
       if (!record) return '';
@@ -2064,19 +2066,20 @@
       const status = statusLabel(record);
       counts.set(status, (counts.get(status) || 0) + 1);
     }
+    const closed = [STATUS_LABELS.closed_call, STATUS_LABELS.archived];
+    const other = [...counts.keys()].filter(status => !CURRENT_FUNDING_STATUSES.includes(status) && !closed.includes(status));
     const categories = [
-      ['Open', [STATUS_LABELS.open_call]], ['Aangekondigd', [STATUS_LABELS.planned, STATUS_LABELS.in_development]],
-      ['Gesloten', [STATUS_LABELS.closed_call, STATUS_LABELS.archived]]
+      ['Open en aangekondigd', CURRENT_FUNDING_STATUSES], ['Open', [STATUS_LABELS.open_call]],
+      ['Aangekondigd', ANNOUNCED_FUNDING_STATUSES], ['Regelingen en overige oproepen', other], ['Gesloten', closed]
     ];
-    const namedStatuses = categories.flatMap(([, statuses]) => statuses);
-    categories.splice(2, 0, ['Regelingen en overige oproepen', [...counts.keys()].filter(status => !namedStatuses.includes(status))]);
     const current = values('status');
     const links = categories.map(([label, statuses]) => {
       const count = statuses.reduce((sum, status) => sum + (counts.get(status) || 0), 0);
-      const selected = current.length && current.every(status => statuses.includes(status));
+      const selected = current.length > 0 && current.every(status => statuses.includes(status)) &&
+        (statuses !== CURRENT_FUNDING_STATUSES || current.length === statuses.length);
       const content = `${label} (${count})`;
       if (!count && !selected) return `<span>${content}</span>`;
-      return `<a href="${escapeHtml(stateHref({ status: statuses.filter(status => counts.has(status) || current.includes(status)).join(',') }))}"${selected ? ' aria-current="page"' : ''}>${content}</a>`;
+      return `<a href="${escapeHtml(stateHref({ status: statuses.join(',') }))}"${selected ? ' aria-current="page"' : ''}>${content}</a>`;
     });
     links.push(`<a href="${escapeHtml(stateHref({ status: '' }))}"${!current.length ? ' aria-current="page"' : ''}>Alle (${pool.length})</a>`);
     return `<nav class="practice-back" aria-label="Praktijkvragen"><a href="${escapeHtml(criteriaHref(context))}">← Andere taak</a></nav>
@@ -2111,9 +2114,13 @@
     const selected = values('sector');
     const links = PRACTICE_ROUTES.map(route => {
       const criteria = { ...context, ...route.criteria };
-      const count = recordsForCriteria(criteria).length;
+      const matches = recordsForCriteria(criteria);
       const content = `<strong>${escapeHtml(route.label)}</strong><span>${escapeHtml(route.detail)}</span>`;
-      if (route.criteria === FUNDING_CRITERIA) return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${count} open <span aria-hidden="true">→</span></small></a>`;
+      if (route.criteria === FUNDING_CRITERIA) {
+        const open = matches.filter(record => statusLabel(record) === STATUS_LABELS.open_call).length;
+        return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${open} open · ${matches.length - open} aangekondigd <span aria-hidden="true">→</span></small></a>`;
+      }
+      const count = matches.length;
       if (!count && route.criteria === AGREEMENT_CRITERIA) return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>Teamproef <span aria-hidden="true">→</span></small></a>`;
       if (!count) return `<span class="practice-link unavailable">${content}<small>Geen resultaten</small></span>`;
       return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${count} ${count === 1 ? 'resultaat' : 'resultaten'} <span aria-hidden="true">→</span></small></a>`;

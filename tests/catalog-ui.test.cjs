@@ -1072,34 +1072,69 @@ test('returning to an open detail after its published cutoff refreshes the statu
   assert.doesNotMatch(main.innerHTML, /Open voor aanvragen/);
 });
 
-test('funding entry opens current calls; status navigation preserves the sector and separates portals and closed calls', () => {
+test('funding entry shows open and announced rounds, with matching status links and sector-preserving return', () => {
   const grant = {...record('open'), recordType:'funding_call', legacyType:'Call', status:'open_call',
     availabilityText:'Doorlopend tot het subsidieplafond is bereikt', sectors:['HBO']};
-  const data = [grant, {...grant, id:'planned', status:'planned'}, {...grant, id:'closed', status:'closed_call'},
+  const data = [grant, {...grant, id:'planned', status:'planned'}, {...grant, id:'developing', status:'in_development'}, {...grant, id:'closed', status:'closed_call'},
     {...grant, id:'portal', recordType:'subsidy', legacyType:'Subsidie', status:'available', availabilityText:'Doorlopend / per call'},
     {...grant, id:'other', sectors:['WO']}];
   const home = load(data, '#zoeken?sector=HBO').resultsMarkup();
-  const entry = home.match(/<a class="practice-link" href="([^"]+)"><strong>Subsidies en calls<\/strong>[\s\S]*?<small>1 open/)[1].replaceAll('&amp;', '&');
+  const entry = home.match(/<a class="practice-link" href="([^"]+)"><strong>Subsidies en calls<\/strong>[\s\S]*?<small>1 open · 2 aangekondigd/)[1].replaceAll('&amp;', '&');
   const api = load(data, entry);
   const html = api.resultsMarkup();
-  assert.equal(api.getState().status, 'Open voor aanvragen');
+  assert.equal(api.getState().status, 'Open voor aanvragen,Gepland,In ontwikkeling');
   assert.match(html, /Doorlopend tot het subsidieplafond is bereikt/);
   assert.match(html, /data-record-id="open"/);
-  assert.doesNotMatch(html, /data-record-id="(?:closed|planned|other|portal)"/);
+  assert.match(html, /data-record-id="planned"/);
+  assert.match(html, /data-record-id="developing"/);
+  assert.doesNotMatch(html, /data-record-id="(?:closed|other|portal)"/);
+  assert.match(html, /href="#zoeken\?sector=HBO">← Andere taak/);
   const nav = html.match(/<nav aria-label="Aanvraagstatus">([\s\S]+?)<\/nav>/)[1];
+  assert.match(nav, /aria-current="page">Open en aangekondigd \(3\)/);
+  assert.equal((nav.match(/aria-current="page"/g) || []).length, 1);
   for (const [href, label] of [...nav.matchAll(/<a href="([^"]+)"[^>]*>([^<]+)<\/a>/g)].map(match => match.slice(1))) {
     const target = load(data, href.replaceAll('&amp;', '&'));
     assert.equal(target.getState().sector, 'HBO');
     assert.equal(target.recordsForCriteria(target.getState()).length, Number(label.match(/\((\d+)\)/)[1]));
+    if (label === 'Open (1)') assert.equal(target.getState().status, 'Open voor aanvragen');
+    if (label === 'Aangekondigd (2)') assert.equal(target.getState().status, 'Gepland,In ontwikkeling');
+    assert.ok(target.resultsMarkup().includes('>Open en aangekondigd (3)</a>'));
   }
   assert.match(nav, /Regelingen en overige oproepen \(1\)/);
+  const legacy = load(data, '#zoeken?sector=HBO&type=Subsidie+of+call&status=Gepland').resultsMarkup()
+    .match(/<nav aria-label="Aanvraagstatus">([\s\S]+?)<\/nav>/)[1];
+  assert.match(legacy, /aria-current="page">Aangekondigd \(2\)/);
+  assert.equal((legacy.match(/aria-current="page"/g) || []).length, 1);
   const all = load(data, entry.replace(/&status=[^&]+/, '')).resultsMarkup();
-  assert.deepEqual([...all.matchAll(/data-record-id="([^"]+)"/g)].map(match => match[1]), ['open', 'planned', 'portal', 'closed']);
-  assert.match(api.simpleCard(data[3]), /Regeling of informatiebron/);
+  const sorted = [...all.matchAll(/data-record-id="([^"]+)"/g)].map(match => match[1]);
+  assert.equal(sorted[0], 'open');
+  assert.deepEqual(sorted.slice(1,3).sort(), ['developing', 'planned']);
+  assert.deepEqual(sorted.slice(3), ['portal', 'closed']);
+  assert.match(api.simpleCard(data.find(item => item.id === 'portal')), /Regeling of informatiebron/);
   const empty = load(data, entry.replace('sector=HBO', 'sector=PO')).resultsMarkup();
-  assert.match(empty, /Geen open oproepen bij deze selectie/);
+  assert.match(empty, /Geen subsidies of calls bij deze selectie/);
+  assert.match(load(data, '#zoeken?sector=PO').resultsMarkup(), /0 open · 0 aangekondigd/);
   assert.match(empty, /href="#zoeken\?[^"]*sector=PO[^"]*">Bekijk alle aanvraagstatussen/);
   assert.match(api.simpleCard({...grant, availabilityText:''}), /Geen uiterste datum bevestigd/);
+});
+
+test('funding tile and status links update when an open call closes while an announced round remains', () => {
+  let now = Date.parse('2026-11-23T12:59:59.999Z');
+  const clock = {Date:class extends Date { static now() { return now; } }};
+  const grant = {...record('cutoff'), recordType:'funding_call', legacyType:'Call', status:'open_call'};
+  const data = [{...grant, applicationDeadlineAt:'2026-11-23T14:00:00+01:00'}, {...grant, id:'future', applicationOpenDate:'2026-11-25'}];
+  const home = load(data, '#home', clock);
+  assert.match(home.resultsMarkup(), /1 open · 1 aangekondigd/);
+  now++;
+  const tile = home.resultsMarkup().match(/<a class="practice-link" href="([^"]+)"><strong>Subsidies en calls<\/strong>[\s\S]*?<small>0 open · 1 aangekondigd/);
+  const landing = load(data, tile[1].replaceAll('&amp;', '&'), clock).resultsMarkup();
+  assert.doesNotMatch(landing, /data-record-id="cutoff"/);
+  assert.match(landing, /data-record-id="future"/);
+  assert.match(landing, /aria-current="page">Open en aangekondigd \(1\)/);
+  assert.match(landing, /<span>Open \(0\)<\/span>/);
+  assert.match(load(data, '#zoeken?type=Subsidie+of+call&status=Open+voor+aanvragen', clock).resultsMarkup(), /Geen open oproepen bij deze selectie/);
+  const announced = landing.match(/<a href="([^"]+)">Aangekondigd \(1\)<\/a>/)[1];
+  assert.equal(load(data, announced.replaceAll('&amp;', '&'), clock).getState().status, 'Gepland,In ontwikkeling');
 });
 
 test('funding details show the documented scope of an amount, application conditions and official source before generic facts', () => {
@@ -1360,7 +1395,10 @@ test('research page exposes only public record links, current call statuses and 
   assert.match(main.innerHTML, /href="#item\/eur-generative-ai-in-research-emodule"/);
   assert.doesNotMatch(main.innerHTML, /href="#item\/oecd-talis|href="#item\/professional-doctorate/);
   assert.match(main.innerHTML, /Npuls AIDO voor mbo, hbo en wo<\/a> · Gepland/);
-  assert.match(main.innerHTML, /sector=MBO&amp;vak=Wiskunde[^"]*">Bekijk open subsidies en calls/);
+  const open = main.innerHTML.match(/data-open-funding href="([^"]+)">Bekijk open subsidies en calls/)[1];
+  assert.deepEqual(Object.fromEntries(new URLSearchParams(open.replaceAll('&amp;', '&').split('?')[1])), {
+    sector:'MBO', vak:'Wiskunde', type:'Subsidie of call,Subsidie', status:'Open voor aanvragen'
+  });
   setup([talis]).researchPage();
   assert.match(main.innerHTML, /href="#item\/oecd-talis-2024-database-ai-onderwijs"/);
   assert.match(main.innerHTML, /zelfrapportage[\s\S]+formulier/);

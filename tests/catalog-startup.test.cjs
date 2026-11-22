@@ -401,10 +401,11 @@ test('the free subject form applies only the current input and preserves the oth
   assert.deepEqual(Object.fromEntries(new URLSearchParams(history[2].split('?')[1])), {q:'les', sector:'VO', type:'materials'});
 });
 
-test('the actual homepage links to open subsidies and calls, with all statuses reachable', () => {
+test('the actual homepage opens both funding statuses and keeps the full funding catalogue reachable', () => {
   const app = boot({href:'https://example.org/atlas/'});
   const home = app.main.innerHTML.match(/<a class="practice-link" href="([^"]+)"><strong>Subsidies en calls<\/strong>/);
   assert.ok(home);
+  assert.equal(new URLSearchParams(home[1].replaceAll('&amp;', '&').split('?')[1]).get('status'), 'Open voor aanvragen,Gepland,In ontwikkeling');
   app.navigate(home[1].replaceAll('&amp;', '&'));
   assert.ok(app.document.querySelector('#funding-heading'));
   assert.ok(app.document.querySelector('[aria-label="Aanvraagstatus"]'));
