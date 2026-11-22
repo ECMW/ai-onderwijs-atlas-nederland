@@ -123,7 +123,12 @@
       document.querySelectorAll('main[data-atlas-lesson-directory] article a[data-atlas-item-id]').forEach(link => {
         const {atlasItemId:id, atlasItemTitle:title} = link.dataset;
         const detail = link.closest('article').querySelector('.directory-card-link')?.getAttribute('href');
-        if (detail === '../#item/' + id && title === link.textContent.trim()) directoryLinks.set(link, {id,title,href:link.href});
+        const canonical = '../#item/' + id;
+        const query = detail?.startsWith(canonical + '?') ? new URLSearchParams(detail.slice(canonical.length + 1)) : null;
+        const directoryContext = query?.get('van') === 'lesgids' && [...query].every(([key, value]) =>
+          ['van', 'sector', 'vak', 'doel', 'activiteit', 'minuten'].includes(key) &&
+          query.getAll(key).length === 1 && value && value.length <= 160 && !/[\u0000-\u001f\u007f]/.test(value));
+        if ((detail === canonical || directoryContext) && title === link.textContent.trim()) directoryLinks.set(link, {id,title,href:link.href});
       });
     }
     function selectedMaterial(link) {

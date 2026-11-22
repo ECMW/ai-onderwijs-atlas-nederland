@@ -204,6 +204,23 @@ function materialLink(id, title, href) {
 const selectLink = (app, link) => app.fire('click',{isTrusted:true,button:0,target:{closest:() => link}});
 const materialRequests = app => app.requests.map(req => new URL(req.url).searchParams).filter(params => params.get('p').startsWith('materiaal-'));
 
+test('lesson directory selections keep official material counts without transmitting filter text or return links', () => {
+  const canonical = '../#item/les-een';
+  for (const [href, accepted] of [
+    [canonical, true], [canonical + '?van=lesgids&sector=VO&doel=PRIVATE+lesdoel', true],
+    [canonical + '?van=lesgids&terug=https%3A%2F%2Fexample.org', false],
+    [canonical + '?van=lesgids&van=anders', false], [canonical + '?van=anders', false],
+    ['https://example.org/' + canonical + '?van=lesgids', false], ['../#item/andere-les?van=lesgids', false]
+  ]) {
+    const link = materialLink('les-een', 'Publieke brontitel', 'https://example.org/materiaal');
+    link.closest = () => ({querySelector:() => ({getAttribute:() => href})});
+    const app = run({now:pilot, href:'https://aionderwijsatlas.nl/lesmateriaal/#selectie?doel=PRIVATE', directory:true, directoryLinks:[link]});
+    selectLink(app, link);
+    assert.equal(materialRequests(app).length, Number(accepted), href);
+    assert.ok(app.requests.every(request => !request.url.includes('PRIVATE') && !request.url.includes('lesgids%26')));
+  }
+});
+
 test('material choices use only the public canonical code and title and deduplicate by material and document', () => {
   const href = 'https://example.org/official?PRIVATE=at-source';
   const study = {id:'les-een',title:'Één les voor de klas',offerCategory:'materials',verificationStatus:'verified',

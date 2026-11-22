@@ -58,6 +58,20 @@ test('merged detail links redirect only to a present public record', () => {
   assert.ok(main.innerHTML.includes('Niet gevonden'));
 });
 
+test('lesson detail returns fresh tabs to the local directory selection and rejects foreign or unknown return targets', () => {
+  for (const [context, expected] of [
+    ['van=lesgids&sector=VO&vak=Biologie&doel=poolvos', 'lesmateriaal/#selectie?sector=VO&amp;vak=Biologie&amp;doel=poolvos'],
+    ['van=lesgids', 'lesmateriaal/'], ['van=https%3A%2F%2Fexample.org', '#zoeken'],
+    ['van=lesgids&terug=https%3A%2F%2Fexample.org', '#zoeken'], ['van=lesgids&minuten=-4', '#zoeken'],
+    ['van=lesgids&sector=niet-bestaand', '#zoeken'], ['van=lesgids&vak=Nederlands&vak=Duits', '#zoeken']
+  ]) {
+    const main = {querySelectorAll:() => []};
+    const document = {querySelector:selector => selector === 'main' ? main : selector === '.lesson-detail a[href^="#leerlingblad?"]' ? null : {}, querySelectorAll:() => []};
+    load([record('les-een')], '#item/les-een?' + context, {document}).renderDetail('les-een');
+    assert.ok(main.innerHTML.includes('class="back-results" href="' + expected + '"'), context);
+  }
+});
+
 test('paper list sorts by the published day, keeps equal dates stable and distinguishes publication types', () => {
   const paper = {id:'one', title:'A study', authors:['A. Boer','B. Chen'], published:'2026-11-20',
     publicationType:'journal-article', source:'Journal of Education', url:'https://doi.org/10.1000/paper', summary:'Education & AI.'};

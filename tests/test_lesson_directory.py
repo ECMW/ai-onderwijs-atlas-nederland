@@ -71,6 +71,10 @@ class LessonDirectoryTests(unittest.TestCase):
             self.assertIn('href="../#item/les-een"', local)
             self.assertIn('href="../#zoeken?type=materials"', local)
             self.assertIn('data-atlas-lesson-directory', local)
+            self.assertIn('name="referrer" content="no-referrer"', local)
+            self.assertIn('data-filter-sector', local)
+            self.assertIn('<option value="HBO">Hoger beroepsonderwijs</option>', local)
+            self.assertIn('<option value="WO">Wetenschappelijk onderwijs</option>', local)
             self.assertRegex(local, r'src="\.\./analytics\.js\?v=[a-f0-9]{16}"')
             self.assertRegex(local, r'src="\.\./lesgids-filter\.js\?v=[a-f0-9]{16}"')
             self.assertIn('<dd data-directory-goal>Bron A &amp; B vergelijken</dd>', local)
@@ -91,6 +95,8 @@ class LessonDirectoryTests(unittest.TestCase):
             self.assertEqual(across.count('<article>'), 3)
             for group in ('vo', 'mbo', 'ho'):
                 self.assertIn(f'<section aria-labelledby="{group}">', across)
+            for sectors_in_group in ('VO', 'MBO', 'HBO WO'):
+                self.assertEqual(across.count(f'data-directory-sectors="{sectors_in_group}"'), 1)
 
     def test_invalid_identifiers_or_titles_keep_the_source_link_without_an_item_marker(self):
         record = next(row for row in json.loads((ROOT / 'data/records.json').read_text(encoding='utf-8')) if row.get('lessonStart'))

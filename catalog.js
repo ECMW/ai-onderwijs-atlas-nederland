@@ -2387,6 +2387,18 @@
     );
   }
 
+  function lessonDirectoryReturn() {
+    const params = new URLSearchParams(location.hash.split('?')[1]);
+    if (params.get('van') !== 'lesgids' || params.getAll('van').length !== 1) return '';
+    params.delete('van');
+    for (const [key, value] of params) {
+      if (!['sector', 'vak', 'doel', 'activiteit', 'minuten'].includes(key) || params.getAll(key).length !== 1 ||
+          !value.trim() || value.length > 160 || /[\u0000-\u001f\u007f]/.test(value)) return '';
+      if (key === 'minuten' && (!/^[1-9]\d*$/.test(value) || !Number.isSafeInteger(Number(value)))) return '';
+      if (key === 'sector' && !SECTORS.includes(value) && !records.some(item => item.lessonStart?.sectors?.includes(value))) return '';
+    }
+    return 'lesmateriaal/' + (params.size ? '#selectie?' + params : '');
+  }
   function renderDetail(id) {
     const target = source.metadata?.recordRedirects?.[id];
     if (typeof target === 'string' && records.some(item => item.id === target)) {
@@ -2398,8 +2410,10 @@
       main.innerHTML = `<section class="detail-missing"><h1>Niet gevonden</h1><p>Dit item staat niet in de huidige dataset.</p><a class="btn" href="#zoeken">Terug naar zoeken</a></section>`;
       return;
     }
-    const lastSearch = sessionGet('atlas.lastSearch') || '#zoeken';
-    const backLabel = lastSearch.startsWith('#onderzoek') ? '← Terug naar Onderzoek doen of promoveren'
+    const directoryReturn = lessonDirectoryReturn();
+    const lastSearch = directoryReturn || sessionGet('atlas.lastSearch') || '#zoeken';
+    const fromDirectory = lastSearch.startsWith('lesmateriaal/');
+    const backLabel = fromDirectory ? '← Terug naar uw lesselectie' : lastSearch.startsWith('#onderzoek') ? '← Terug naar Onderzoek doen of promoveren'
       : lastSearch === '#praktijkgids' ? '← Terug naar de praktijkgids'
       : lastSearch.startsWith('#vergelijken?') ? 'Terug naar vergelijking' : '← Terug naar resultaten';
     const related = records.filter(item => item.id !== record.id)
@@ -2416,7 +2430,7 @@
     const sourceLinks = `<h3>Officiële bronnen</h3>${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}`;
     const lesson = hasAvailableLesson(record) && lessonStartBody(record);
     main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(offerLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
-      <section class="detail-shell"${materialDetail ? ` data-atlas-material-detail="${escapeHtml(record.id)}"` : ''}><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${backLabel}</a><span>Home / ${lastSearch.startsWith('#onderzoek') ? 'Onderzoek' : 'Resultaten'} / ${escapeHtml(record.title)}</span></nav>
+      <section class="detail-shell"${materialDetail ? ` data-atlas-material-detail="${escapeHtml(record.id)}"` : ''}><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${backLabel}</a><span>Home / ${fromDirectory ? 'Lesgids' : lastSearch.startsWith('#onderzoek') ? 'Onderzoek' : 'Resultaten'} / ${escapeHtml(record.title)}</span></nav>
       <div class="detail-layout"><article>
         ${funding ? `<section class="funding-conditions"><h2>Aanvraag en voorwaarden</h2><dl>
           <div><dt>Aanvragers</dt><dd>${escapeHtml(applicants)}</dd></div>
@@ -2443,7 +2457,8 @@
     if (lesson) bindLessonCopy(main);
     if (materialDetail) window.dispatchEvent?.(new Event('atlas-material-detail'));
     const back = document.querySelector('.back-results');
-    back.onclick = () => sessionSet('atlas.restoreResults', lastSearch);
+    back.onclick = () => { if (!fromDirectory) sessionSet('atlas.restoreResults', lastSearch); };
+    if (directoryReturn) document.querySelector('.lesson-detail a[href^="#leerlingblad?"]')?.addEventListener('click', () => sessionSet('atlas.lastSearch', directoryReturn));
     document.querySelectorAll('.related-cards a[href^="#item/"]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', lastSearch));
     const copy = document.querySelector('[data-copy-citation]');
     if (copy) copy.onclick = () => copySourceCitation(record);
