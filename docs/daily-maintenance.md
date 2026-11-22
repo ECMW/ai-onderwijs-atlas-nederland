@@ -260,6 +260,17 @@ Controleer bij een gewijzigde bron ook de bijbehorende lesvraag, toetsopdracht o
 
 Gebruik bij herhaalde zoekacties zonder resultaat de bestaande geaggregeerde tellers en vrijwillig gemelde voorbeelden. De telling bevat geen zoekwoorden. Controleer een concrete verbetering met een zoekvraag, een passend lesmateriaal en de oorspronkelijke bron. De beslisregels hierboven blijven gelden voor wijzigingen in de reikwijdte en voor privacykeuzes.
 
+### Dagelijkse productverbetering
+
+Open elke dag de actuele uitgave op het publieke domein, het [verbeterregister](../reports/verbeterregister.md), de open PR's en issues en de vorige taakuitkomst. Gebruik de resultaten van de bestaande broncontroles. Ligt een wijziging nog ter beoordeling, controleer de kandidaat en de publieke versie apart.
+
+Bekijk bij elke uitvoering welke doelgroepen en taken in recente rondes weinig aandacht kregen. Voor wie ontbreekt een bruikbare route, en waar is dat aan te zien? Vergelijk waar relevant met oorspronkelijke onderwijsbronnen en kennisplatforms. Gebruik beschikbare, rechtmatig verzamelde signalen en houd privécijfers buiten de repository.
+
+1. Kies een concrete vraag van een onderwijsprofessional, leerling of student. Probeer de hele taak, bijvoorbeeld van vak en leerdoel naar een opdracht die een leerling daadwerkelijk kan uitvoeren. Onderzoek daarbij ook de vormgeving en gebruikservaring. Is de juiste informatie herkenbaar, blijft ze leesbaar bij inzoomen en is de volgende handeling bereikbaar? Leg de beginsituatie en de bron vast. Bij een visuele wijziging vergelijk je dezelfde taak vóór en na de ingreep op dezelfde schermbreedte. Geef aan of het knelpunt in de browser is gereproduceerd, door een bezoeker is gemeld of nog een vermoeden is.
+2. Maak een korte selectie uit de kansen in het register. Weeg elke dag gebruikerswaarde, bereik, wat de Atlas toevoegt aan bestaande platforms en de sterkte van het bewijs af tegen bouwkosten, terugkerend onderhoud en risico. Vergelijk toevoegen, vereenvoudigen en behouden. Kies de kleinste ingreep die de onderzochte taak aantoonbaar verder helpt. Als die taak al slaagt en verdere aanwijzingen ontbreken, volstaat behouden. Een uitgelichte toepassing kan blijven staan zolang ze de bezoeker helpt.
+3. Werk in een eigen schone werkboom. Hergebruik een passende PR en kies vooraf de beoordelingsroute. Een correctie van bestaande canonieke records doorloopt de afzonderlijke gegevenscontrole van de gemachtigde actualisator. Als zo'n correctie samenhangt met een interfaceverbetering, koppel de voorstellen en test ook de combinatie. Controleer bronnen, dataprojectie en de gebruikelijke tests. Herhaal de oorspronkelijke taak op telefoon en desktop, ook met het toetsenbord. Controleer de echte afdruk, bron of download als die bij de taak hoort.
+4. Noteer in de taakuitkomst welke doelgroep en taak aandacht verdienen en welke keuze de onderhoudslast waard is. Leg bij een materiële verbetering de bevinding, wijziging, controles, resterende aanname en eerstvolgende proef vast in het register. Een productronde levert hoogstens één afgebakende product-PR op. Een ronde zonder wijziging eindigt met de korte taakuitkomst. Publicatie volgt het bestaande releaseproces.
+
 ## Lokaal testen en handmatig starten
 
 Voer vanuit de repository uit:

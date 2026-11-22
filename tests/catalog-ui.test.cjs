@@ -413,15 +413,19 @@ function assessmentFormFixture() {
   const compareGoal = {}, applied = {}, preview = {focus() { this.focused = true; }};
   const picks = ['zelfstandig','feedback'].map(key => ({dataset:{assessmentApply:key}}));
   const compare = {open:true,querySelector:() => compareGoal,querySelectorAll:() => picks};
+  const radios = ['zelfstandig','feedback','controleren'].map(key => ({value:key, set checked(value) {
+    if (value) mode.value = key;
+    else if (mode.value === key) mode.value = '';
+  }}));
   const form = {elements:{namedItem:() => mode}, querySelector:s => ({
     '#assessment-goal':goal,'#assessment-evidence':evidence,'#assessment-criterion':criterion,'#assessment-task':task,
     '#assessment-alternative':alternative,'[data-assessment-clear]':clear,'.assessment-compare':compare,'[data-assessment-apply-note]':applied
-  })[s], querySelectorAll:() => [{value:'feedback', set checked(value) { if (!value) mode.value = ''; }}]};
-  const copy = {isConnected:true}, feedback = {}, field = {hidden:true,focus() {},select() { this.selected = true; }};
-  const result = {querySelector:s => ({'[data-assessment-copy]':copy,'[role="status"]':feedback,textarea:field})[s]};
+  })[s], querySelectorAll:() => radios};
+  const copy = {isConnected:true,focus() { this.focused = true; }}, review = {}, feedback = {}, field = {hidden:true,focus() {},select() { this.selected = true; }};
+  const result = {querySelector:s => ({'[data-assessment-copy]':copy,'[data-assessment-review]':review,'[role="status"]':feedback,textarea:field})[s]};
   const main = {querySelector:s => ({'.assessment-form':form,'[data-assessment-result]':result,'#assessment-start':start,'#assessment-preview-title':preview,'[data-assessment-jump]':jump})[s]};
   const document = {querySelector:s => s === 'main' ? main : null};
-  return {document, main, form, goal, mode, task, evidence, criterion, alternative, start, clear, compare, compareGoal, picks, applied, preview, result, copy, feedback, field};
+  return {document, main, form, goal, mode, task, evidence, criterion, alternative, start, clear, compare, compareGoal, picks, applied, preview, result, copy, review, feedback, field};
 }
 
 test('the spotlight opens the saved own question, requires its text and preserves the full question when switching examples', async () => {
@@ -530,6 +534,96 @@ test('the editable concept preserves choices in its tab and copies the exact cla
   }
 });
 
+test('switching AI roles preserves custom instructions and requires a review before copying, including after a reload', async () => {
+  const stored = new Map();
+  const storage = {getItem:key => stored.get(key),setItem:(key,value) => stored.set(key,value)};
+  let copied;
+  function open(choice = '') {
+    const ui = assessmentFormFixture();
+    const hash = '#toetsafspraak?start=' + (choice || 'eigen');
+    const api = load([], hash, {document:ui.document, sessionStorage:storage,
+      navigator:{clipboard:{writeText:async text => { copied = text; }}}});
+    const draft = api.readAssessmentDraft(choice);
+    for (const key of ['task','goal','mode','evidence','criterion','alternative']) ui[key].value = draft[key];
+    api.renderAssessment();
+    return ui;
+  }
+  const pending = ui => {
+    assert.match(ui.applied.textContent,/Controleer of de ingevulde opdracht/);
+    assert.match(ui.result.innerHTML,/data-assessment-review aria-describedby="assessment-apply-note"/);
+    assert.doesNotMatch(ui.result.innerHTML,/data-assessment-copy/);
+  };
+  let ui = open();
+  assert.match(ui.main.innerHTML,/id="assessment-apply-note" data-assessment-apply-note role="status"/);
+  ui.task.value = 'Schrijf een adviesbrief aan de beheerder.';
+  ui.goal.value = 'Een advies onderbouwen.';
+  ui.evidence.value = 'Vraag AI om twee suggesties.';
+  ui.mode.value = 'feedback';
+  ui.form.oninput();
+  assert.match(ui.result.innerHTML,/data-assessment-copy/);
+  ui.picks[1].onclick();
+  assert.match(ui.result.innerHTML,/data-assessment-copy/);
+  ui.mode.value = 'zelfstandig';
+  ui.form.oninput();
+  pending(ui);
+  assert.match(ui.result.innerHTML,/Vraag AI om twee suggesties/);
+  const adjusted = 'Verdedig mondeling één keuze uit je adviesbrief.';
+  ui.evidence.value = adjusted;
+  ui.form.oninput();
+  const notice = ui.applied.textContent;
+  pending(ui);
+  assert.equal(JSON.parse(stored.get('atlas.toetsafspraak')).reviewRequired,true);
+  const example = open('adviesmail');
+  assert.match(example.result.innerHTML,/data-assessment-copy/);
+  example.picks[0].onclick();
+  pending(example);
+  assert.equal(JSON.parse(stored.get('atlas.toetsafspraak.adviesmail')).reviewRequired,true);
+  ui = open();
+  pending(ui);
+  assert.equal(ui.applied.textContent, notice);
+  assert.equal(ui.evidence.value,adjusted);
+  ui.review.onclick();
+  assert.match(ui.result.innerHTML,/data-assessment-copy/);
+  assert.doesNotMatch(ui.result.innerHTML,/data-assessment-review/);
+  assert.equal(ui.applied.textContent,'');
+  assert.ok(ui.copy.focused);
+  await ui.copy.onclick();
+  assert.ok(copied.includes(adjusted) && copied.includes(ui.task.value));
+  assert.match(open().result.innerHTML,/data-assessment-copy/);
+  const restoredExample = open('adviesmail');
+  pending(restoredExample);
+  restoredExample.clear.onclick();
+  assert.equal(restoredExample.mode.value,'feedback');
+  assert.match(restoredExample.result.innerHTML,/data-assessment-copy/);
+  assert.equal(JSON.parse(stored.get('atlas.toetsafspraak.adviesmail')).reviewRequired,false);
+});
+
+test('each custom assessment field triggers review on changing roles and empty fields use the new defaults immediately', () => {
+  for (const key of ['evidence','criterion','alternative']) {
+    const ui = assessmentFormFixture();
+    const api = load([], '#toetsafspraak?start=eigen', {document:ui.document});
+    api.renderAssessment();
+    ui.task.value = 'Toets de conclusie aan de twee gegeven bronnen.';
+    ui.goal.value = 'Een conclusie verantwoorden.';
+    ui.mode.value = 'controleren';
+    ui.form.oninput();
+    ui.picks[1].onclick();
+    assert.match(ui.result.innerHTML,/data-assessment-copy/);
+    ui[key].value = 'Gebruik één tip om de conclusie te verbeteren.';
+    ui.form.oninput();
+    assert.match(ui.result.innerHTML,/data-assessment-copy/);
+    ui.picks[0].onclick();
+    assert.doesNotMatch(ui.result.innerHTML,/data-assessment-copy/);
+    assert.match(ui.result.innerHTML,/data-assessment-review/);
+    assert.ok(ui.result.innerHTML.includes(ui[key].value));
+    ui[key].value = '  ';
+    ui.form.oninput();
+    assert.match(ui.result.innerHTML,/data-assessment-copy/);
+    assert.doesNotMatch(ui.result.innerHTML,/data-assessment-review|Gebruik één tip/);
+    assert.equal(ui.applied.textContent,'');
+  }
+});
+
 test('two adaptable assessments each supply classroom instructions, independent work, a no-AI route and three rubric levels', () => {
   const api = load();
   for (const [key, task] of [['voedselweb','rupsen'], ['adviesmail','30 studenten']]) {
@@ -614,7 +708,7 @@ test('copying a classroom assignment includes the learner task, reflection and b
     load([item], lessonRoute, { navigator }).bindLessonCopy({ querySelectorAll: () => [button] });
     await button.onclick();
     const text = allowed ? copied : field.value;
-    for (const part of [lesson.question, lesson.task, lesson.reflection, lesson.sourceUrl,
+    for (const part of [lesson.question, 'Leerdoel: ' + lesson.learningGoal, lesson.task, lesson.reflection, lesson.sourceUrl,
       `https://aionderwijsatlas.nl/#item/${item.id}`]) assert.ok(text.includes(part));
     assert.ok(!text.includes(lesson.preparation));
     assert.equal(field.hidden, allowed);
@@ -626,7 +720,9 @@ test('copying a classroom assignment includes the learner task, reflection and b
 test('a shared learner sheet opens independently, prints one assignment and shares its public URL', async () => {
   const location = { hash:'', href:'http://localhost:8000/?atlas-no-count=1' };
   const archived = { ...classroomLessons[0], id:'vorige-editie', status:'archived' };
-  const data = { records:[...classroomLessons, archived], metadata:{} };
+  const older = { ...classroomLessons[0], id:'les-zonder-leerdoel', lessonStart:{...classroomLessons[0].lessonStart} };
+  delete older.lessonStart.learningGoal;
+  const data = { records:[...classroomLessons, archived, older], metadata:{} };
   const main = { focus() {} }, print = {}, share = {}, feedback = {};
   const document = { body:{classList:{remove() {}}}, querySelectorAll: () => [],
     querySelector: selector => ({ main, '[data-print-sheet]':print, '[data-share-sheet]':share, '#action-feedback':feedback })[selector] || null };
@@ -639,6 +735,7 @@ test('a shared learner sheet opens independently, prints one assignment and shar
     assert.ok(cards.includes(`href="${location.hash}">Open leerlingblad</a>`));
     api.route();
     assert.ok(main.innerHTML.includes(item.lessonStart.question));
+    if (item.lessonStart.learningGoal) assert.ok(main.innerHTML.includes(item.lessonStart.learningGoal));
     assert.ok(main.innerHTML.includes(item.lessonStart.task));
     assert.ok(main.innerHTML.includes(item.lessonStart.reflection));
     assert.ok(main.innerHTML.includes(`href="${item.lessonStart.sourceUrl}"`));
@@ -651,6 +748,10 @@ test('a shared learner sheet opens independently, prints one assignment and shar
     assert.match(feedback.textContent, /leerlingblad gekopieerd/);
   }
   assert.equal(printCount, classroomLessons.length);
+  location.hash = '#leerlingblad?item=' + older.id;
+  api.route();
+  assert.ok(main.innerHTML.includes(older.lessonStart.task));
+  assert.ok(!main.innerHTML.includes('learner-goal'));
   for (const hash of ['#leerlingblad', '#leerlingblad?item=onbekend', '#leerlingblad?item=vorige-editie']) {
     location.hash = hash;
     api.route();

@@ -9,6 +9,14 @@
   }
   if (!source || !main) return;
 
+  // The fragment already identifies the visitor's current page and filters.
+  const skipLink = document.querySelector('a.skip');
+  if (skipLink) skipLink.onclick = event => {
+    event.preventDefault();
+    main.focus({preventScroll:true});
+    window.scrollTo({top:0, behavior:'instant'});
+  };
+
   const allRecords = source.records || [];
   const records = allRecords.filter(record =>
     !Object.hasOwn(record, 'publicationExclusion') &&
@@ -1556,7 +1564,8 @@
       task: typeof saved?.task === 'string' ? saved.task : '',
       alternative: typeof saved?.alternative === 'string' ? saved.alternative.slice(0, 500) : '',
       evidence: typeof saved?.evidence === 'string' ? saved.evidence.slice(0, 500) : '',
-      criterion: typeof saved?.criterion === 'string' ? saved.criterion.slice(0, 500) : ''
+      criterion: typeof saved?.criterion === 'string' ? saved.criterion.slice(0, 500) : '',
+      reviewRequired: saved?.reviewRequired === true
     };
   }
 
@@ -1639,7 +1648,7 @@
       </div>
       <section class="assessment-preview" aria-labelledby="assessment-preview-title">
         <h2 id="assessment-preview-title" tabindex="-1">Opdrachttekst voor uw klas</h2>
-        <p class="assessment-note" data-assessment-apply-note role="status"></p>
+        <p class="assessment-note" id="assessment-apply-note" data-assessment-apply-note role="status"></p>
         <div data-assessment-result></div>
       </section></div></form>
       <details class="assessment-sources"><summary>Over de voorbeelden en bronnen</summary>
@@ -1659,14 +1668,19 @@
     const comparison = form.querySelector('.assessment-compare');
     const comparisonGoal = comparison.querySelector('[data-assessment-compare-goal]');
     const applied = form.querySelector('[data-assessment-apply-note]');
+    let previousMode = draft.mode;
+    let reviewRequired = draft.reviewRequired;
     const current = () => ({goal:goal.value, mode:mode.value, task:task.value, alternative:alternative.value, evidence:evidence.value, criterion:criterion.value});
     function updatePreview() {
       const value = current();
       const missingTask = ownTest && !value.task.trim();
       const parts = missingTask ? [] : assessmentParts(value);
       comparisonGoal.textContent = value.goal.trim() ? 'Uw leerdoel: ' + value.goal.trim() : 'Vul hierboven uw eigen leerdoel in om een aanpak te gebruiken.';
-      applied.textContent = '';
-      clear.hidden = example ? Object.entries(value).every(([key, text]) => text === example[key]) : !Object.values(value).some(Boolean);
+      const reviewNote = reviewRequired && ASSESSMENT_MODES[value.mode]
+        ? `U koos ‘${ASSESSMENT_MODES[value.mode].label}’. Controleer of de ingevulde opdracht, het werk dat leerlingen laten zien, de beoordeling en de afspraken zonder AI bij deze aanpak passen. Pas de tekst waar nodig aan en bevestig uw controle onder de opdrachttekst.`
+        : '';
+      if (applied.textContent !== reviewNote) applied.textContent = reviewNote;
+      clear.hidden = !reviewRequired && (example ? Object.entries(value).every(([key, text]) => text === example[key]) : !Object.values(value).some(Boolean));
       goal.setCustomValidity(value.goal && !value.goal.trim() ? 'Vul een leerdoel in.' : '');
       if (ownTest) task.setCustomValidity(missingTask ? 'Vul uw bestaande toetsvraag of opdracht in.' : '');
       if (!parts.length) {
@@ -1675,10 +1689,20 @@
       }
       const selected = ASSESSMENT_MODES[value.mode];
       result.innerHTML = `<dl>${parts.map(([label, text]) => `<div><dt>${label}</dt><dd>${escapeHtml(text)}</dd></div>`).join('')}</dl>
-        <button class="btn" type="button" data-assessment-copy>Kopieer opdrachttekst</button>
+        ${reviewRequired
+          ? '<button class="btn" type="button" data-assessment-review aria-describedby="assessment-apply-note">Ik heb de opdracht en beoordeling gecontroleerd</button>'
+          : '<button class="btn" type="button" data-assessment-copy>Kopieer opdrachttekst</button>'}
         <p class="assessment-feedback" role="status"></p>
         <textarea class="lesson-copy" aria-label="Opdrachttekst om te kopiëren" readonly hidden></textarea>
         <aside><h3>Suggestie voor de beoordeling</h3><p>${selected.teacher}</p></aside>`;
+      if (reviewRequired) {
+        result.querySelector('[data-assessment-review]').onclick = () => {
+          reviewRequired = false;
+          saveAndPreview();
+          result.querySelector('[data-assessment-copy]').focus();
+        };
+        return;
+      }
       const copy = result.querySelector('[data-assessment-copy]');
       copy.onclick = () => copyTextWithFallback(copy, parts.map(pair => pair.join('\n')).join('\n\n'),
         result.querySelector('[role="status"]'), result.querySelector('textarea'),
@@ -1686,8 +1710,13 @@
     }
     function saveAndPreview() {
       const value = current();
-      assessmentDrafts.set(choice, value);
-      sessionSet(assessmentStorageKey(choice), JSON.stringify(value));
+      const hasCustomTerms = [value.evidence, value.criterion, value.alternative].some(text => text.trim());
+      if (!hasCustomTerms || !value.mode) reviewRequired = false;
+      else if (previousMode && previousMode !== value.mode) reviewRequired = true;
+      previousMode = value.mode;
+      const saved = {...value, reviewRequired};
+      assessmentDrafts.set(choice, saved);
+      sessionSet(assessmentStorageKey(choice), JSON.stringify(saved));
       updatePreview();
     }
     form.oninput = saveAndPreview;
@@ -1698,9 +1727,7 @@
         mode.value = button.dataset.assessmentApply;
         saveAndPreview();
         comparison.open = false;
-        applied.textContent = 'Gekozen aanpak: ' + ASSESSMENT_MODES[mode.value].label + '.' +
-          ([task, alternative, evidence, criterion].some(field => field.value.trim())
-            ? ' Controleer of de ingevulde opdracht, inlevervorm en beoordeling aansluiten bij deze keuze.' : '');
+        if (!reviewRequired) applied.textContent = 'Gekozen aanpak: ' + ASSESSMENT_MODES[mode.value].label + '.';
         main.querySelector('#assessment-preview-title').focus();
       };
     }
@@ -1719,6 +1746,8 @@
       goal.value = example?.goal || ''; evidence.value = example?.evidence || ''; criterion.value = example?.criterion || '';
       task.value = example?.task || ''; alternative.value = example?.alternative || '';
       for (const radio of form.querySelectorAll('[name="mode"]')) radio.checked = radio.value === example?.mode;
+      reviewRequired = false;
+      previousMode = mode.value;
       saveAndPreview();
       (ownTest ? task : goal).focus();
     };
@@ -1968,9 +1997,9 @@
         const panel = button.closest('[data-lesson-id]');
         const record = publicRecordsById.get(panel.dataset.lessonId);
         const lesson = record.lessonStart;
-        const text = [lesson.question, lesson.task, lesson.reflection,
+        const text = [lesson.question, lesson.learningGoal && 'Leerdoel: ' + lesson.learningGoal, lesson.task, lesson.reflection,
           `Lesstart van de AI & Onderwijs Atlas Nederland: ${publicItemUrl(record)}`,
-          `Lesmateriaal van ${record.providerName}: ${lesson.sourceUrl}`].join('\n\n');
+          `Lesmateriaal van ${record.providerName}: ${lesson.sourceUrl}`].filter(Boolean).join('\n\n');
         await copyTextWithFallback(button, text, panel.querySelector('.lesson-feedback'), panel.querySelector('.lesson-copy'),
           'Klasopdracht en bronlinks gekopieerd.', 'De opdracht is geselecteerd. Kopieer de tekst om deze te delen.');
       };
@@ -2486,7 +2515,8 @@
         <div class="learner-actions"><button type="button" class="btn secondary" data-share-sheet>Deel leerlingblad</button>
           <button type="button" class="btn" data-print-sheet>Afdrukken of opslaan als pdf</button></div></div>
       <p id="action-feedback" role="status"></p>
-      <header><p class="lesson-level">Leerlingblad · ${escapeHtml(lesson.level)}</p><h1 id="learner-question">${escapeHtml(lesson.question)}</h1></header>
+      <header><p class="lesson-level">Leerlingblad · ${escapeHtml(lesson.level)}</p><h1 id="learner-question">${escapeHtml(lesson.question)}</h1>
+        ${lesson.learningGoal ? `<p class="learner-goal"><strong>Leerdoel</strong> · ${escapeHtml(lesson.learningGoal)}</p>` : ''}</header>
       <section><h2>Opdracht</h2><p>${escapeHtml(lesson.task)}</p></section>
       <section><h2>Bespreek samen</h2><p>${escapeHtml(lesson.reflection)}</p></section>
       <div class="learner-answer">Ruimte voor je antwoord of tekening</div>

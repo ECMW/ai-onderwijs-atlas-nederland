@@ -178,3 +178,9 @@ De vergelijking van 36 lerarenkaders door [UNESCO IITE](https://iite.unesco.org/
 ## 2026-11-22 — Besluitblad voor schoolleiding, onderwijs en ICT
 
 De bestaande bronkaarten bieden drie verschillende ingangen voor een school- of opleidingsbesluit. Kennisnet behandelt afspraken over onderwijs en gebruik, Npuls de risicoafweging en opvolging voor het vervolgonderwijs en de WaardenWijzer het gesprek over de belangen van betrokkenen. De bespreekversie, de keuze tussen uitvoeren, een kleine proef en uitstellen, en het voorbeeld zijn redactionele uitwerkingen. Het plaatselijke mandaat en het bewijs bij de concrete toepassing blijven bepalend. [Kennisnet](https://www.kennisnet.nl/artificial-intelligence/schoolafspraken-over-het-gebruik-van-generatieve-ai/) · [Npuls](https://npuls.nl/kennisbank/raise-raamwerk-voor-risicobeoordeling-van-ai) · [SURF en Kennisnet](https://www.surf.nl/themas/publieke-waarden/waardenwijzer)
+
+## 2026-11-22 — Twee bronopdrachten op het leerlingblad
+
+Figuur 2 van het HHMI-werkblad vergelijkt eilanden met en zonder poolvossen. Grafiek A gaat over fosfor in de bodem, grafiek B over stikstof in het gras. De Nederlandse voorbeeldzin die de klas met de grafieken onderzoekt, komt uit de bestaande Atlas-lesstart. [HHMI, Introduction to Systems](https://docs.google.com/document/d/1dhy_ADiJ6wpG3MRSvv4qYatKZEe7MQGkTLNDcNtV9Gk/preview)
+
+In onderdeel 3.1 van het UBC-notebook staan de effectschattingen en standaardfouten voor lasso, random forest en boosting onder het codeblok. Studenten kunnen de getoonde uitkomsten voor de Atlas-opdracht in de leesversie raadplegen. [UBC, Double Machine Learning](https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.html#any-learner-in-dml)

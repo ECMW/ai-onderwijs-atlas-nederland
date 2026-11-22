@@ -89,6 +89,21 @@ class Element {
   getBoundingClientRect() { return { top: 0, bottom: 0 }; }
 }
 
+function checkSkipLink(document, location, window) {
+  const href = location.href;
+  const main = document.querySelector('main');
+  let focused, scrolledTo;
+  main.focus = () => { focused = main; };
+  window.scrollTo = options => { scrolledTo = options.top; };
+  const skip = document.querySelector('a.skip');
+  const activation = new Event('click', {cancelable:true});
+  skip.onclick?.(activation);
+  if (!activation.defaultPrevented) location.hash = skip.getAttribute('href');
+  assert.equal(location.href, href);
+  assert.equal(focused, main);
+  assert.equal(scrolledTo, 0);
+}
+
 test('a shared lesson directory selection reopens with the same sector, subject and goal, and reset restores all lessons', async () => {
   const script = fs.readFileSync(path.join(root, 'lesgids-filter.js'), 'utf8');
   const template = fs.readFileSync(path.join(__dirname, '../scripts/lesson_directory.html'), 'utf8');
@@ -111,10 +126,12 @@ test('a shared lesson directory selection reopens with the same sector, subject 
     form.addEventListener = events.addEventListener.bind(events);
     form.reportValidity = () => true;
     let copied;
-    vm.runInNewContext(script, {document, location, URLSearchParams, window:new EventTarget(),
+    const window = new EventTarget();
+    vm.runInNewContext(script, {document, location, URLSearchParams, window,
       history:{replaceState:(_, __, url) => { location.href = new URL(url, location).href; }},
       navigator:{clipboard:{writeText:async url => { copied = url; }}}, requestAnimationFrame:callback => callback()});
-    return {form, location, events, visible:() => document.querySelectorAll('article').filter(card => !card.hidden).map(card => card.dataset.id),
+    return {form, location, events, skip:() => checkSkipLink(document, location, window),
+      visible:() => document.querySelectorAll('article').filter(card => !card.hidden).map(card => card.dataset.id),
       share:async () => { await form.querySelector('[data-share-lessons]').onclick(); return copied; },
       reset:() => { fields.forEach(field => { field.value = ''; }); events.dispatchEvent(new Event('reset')); }};
   }
@@ -130,6 +147,7 @@ test('a shared lesson directory selection reopens with the same sector, subject 
   const shared = await original.share();
   assert.equal(shared, base + hash);
   const reopened = open(shared);
+  reopened.skip();
   assert.deepEqual(reopened.visible(), ['doelles']);
   reopened.reset();
   assert.deepEqual(reopened.visible(), cases.map(row => row[0]));
@@ -184,6 +202,18 @@ function assertFailure(app) {
     assert.match(app.main.innerHTML, /De atlas kon niet worden geladen/, 'Later routes must preserve the failure');
   }
 }
+
+test('skipping navigation keeps the filtered results and the current learner sheet', () => {
+  const app = boot({href:'https://example.org/atlas/#zoeken?vak=Biologie&sector=VO&type=materials'});
+  for (const content of ['#results-panel', '.learner-sheet']) {
+    if (content === '.learner-sheet') app.navigate('#leerlingblad?item=hhmi-introduction-to-systems');
+    const displayed = app.main.querySelector(content);
+    assert.ok(displayed);
+    checkSkipLink(app.document, app.context.location, app.context);
+    assert.equal(app.main.querySelector(content), displayed);
+  }
+  assert.deepEqual(app.errors, []);
+});
 
 test('a blocked or broken optional analytics script leaves the real Atlas usable', () => {
   const app = boot({ omitted: ['analytics.js'] });
