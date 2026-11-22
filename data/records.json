@@ -23904,18 +23904,16 @@
       "MBO"
     ],
     "themes": [
-      "AI in het onderwijs",
-      "mediawijsheid",
-      "ethiek",
-      "digitale geletterdheid",
-      "generatieve AI"
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
     ],
     "status": "available",
     "availabilityText": "Direct beschikbaar",
     "startDate": null,
     "endDate": null,
     "publicationDate": "2026-09-08",
-    "lastVerified": "2026-09-09",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -23963,7 +23961,12 @@
       "lesplan",
       "praatplaat",
       "verantwoord AI-gebruik",
-      "lesstart"
+      "lesstart",
+      "AI in het onderwijs",
+      "mediawijsheid",
+      "ethiek",
+      "digitale geletterdheid",
+      "generatieve AI"
     ],
     "notes": "Toegevoegd naar aanleiding van de op 8 september 2026 gedeelde collectiepagina.",
     "changeHistory": [
@@ -23986,10 +23989,15 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Lesstart van de Atlas toegevoegd op basis van het gekoppelde lesmateriaal."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd. Vakgebied aan de hand van de gekoppelde lesbron vastgelegd. De aanbieder noemt 90 minuten voor de volledige bronles. De vrije themanamen zijn ondergebracht bij de bestaande Atlas-thema’s en blijven als trefwoord terug te vinden."
       }
     ],
     "offerCategory": "materials",
-    "verificationNote": "Lessenoverzicht, concrete AI-lessen en de verklaring over open leermiddelen gecontroleerd. Het vaste aantal 20 is niet opnieuw vastgesteld en daarom weggelaten.",
+    "verificationNote": "Lessenoverzicht, concrete AI-lessen en de verklaring over open leermiddelen gecontroleerd. Het vaste aantal 20 is niet opnieuw vastgesteld en daarom weggelaten. De vaklabels beschrijven de les over verantwoord AI-gebruik uit het mbo-overzicht. De maker noemt burgerschap en mediawijsheid als inzetgebieden en de opleiding Mediavormgever als ontwikkelcontext. De 90 minuten gelden voor deze volledige tweede les.",
     "lessonStart": {
       "sectors": [
         "MBO"
@@ -23999,8 +24007,16 @@
       "preparation": "Leg een ontwerpbriefing, een eerste AI-beeld en een door de maker bewerkte versie klaar. Bewaar de toelichting van de maker voor de nabespreking. Voor de volledige bronles noemt de aanbieder een beeldgenerator en Photoshop.",
       "task": "Vergelijk beide beelden met de briefing. Markeer twee zichtbare veranderingen en schrijf op wat de maker daarmee kan hebben bedoeld. Pak de toelichting van de maker erbij. Welke keuze had je goed herkend? Wat kon je uit het beeld alleen niet afleiden?",
       "reflection": "Welke beslissing wil je als ontwerper zelf houden? Gebruik één detail uit het beeld om je antwoord uit te leggen.",
-      "sourceUrl": "https://mbomediawijs.nl/openleermaterialen/ai-ethiek-verantwoord-gebruik/"
-    }
+      "sourceUrl": "https://mbomediawijs.nl/openleermaterialen/ai-ethiek-verantwoord-gebruik/",
+      "learningGoal": "Een eigen ontwerpkeuze onderscheiden van een door AI gegenereerd beeldkenmerk en dat verschil toelichten.",
+      "activityType": "Ontwerpen vergelijken",
+      "sourceMinutes": 90
+    },
+    "subjects": [
+      "Burgerschap",
+      "Mediavormgeving",
+      "Mediawijsheid"
+    ]
   },
   {
     "id": "vista-ai-in-onderwijs-kennissite",
@@ -35645,6 +35661,11 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "LabXchange-uitgave van dezelfde makersles gekoppeld. De biologietoepassing en een lesstart over testen met ongeziene dierenkaarten zijn toegevoegd."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
       }
     ],
     "lessonStart": {
@@ -35656,7 +35677,9 @@
       "preparation": "Print de twee kaartensets en houd de antwoordsleutel apart. Geef elk groepje eerst de kaarten uit deel 1.",
       "task": "Sorteer de dieren met de eerste regel. Schrijf op welk kenmerk de doorslag geeft. Pas de regel aan zodra een kaart verkeerd terechtkomt. Test de aangepaste regel met de ongeziene kaarten uit deel 2 en tel de fouten.",
       "reflection": "Welke kaart bracht een zwakte in jullie regel aan het licht? Leg uit waarom het helpt om aparte testkaarten te bewaren.",
-      "sourceUrl": "https://www.labxchange.org/library/items/lb:LabXchange:647a5050:lx_teaching_guide:1"
+      "sourceUrl": "https://www.labxchange.org/library/items/lb:LabXchange:647a5050:lx_teaching_guide:1",
+      "learningGoal": "Een classificatieregel met ongeziene dierenkaarten testen en een fout met een voorbeeld verklaren.",
+      "activityType": "Kaarten sorteren"
     },
     "subjects": [
       "Biologie",
@@ -38155,7 +38178,7 @@
     "notes": "De lessen bevatten respectievelijk 11, 11 en 13 slides en verwijzen naar docentinstructies en werkbladen. De reeks kan volgens de lanceringspagina ook unplugged worden gebruikt, maar sluit inhoudelijk aan op de DigiDuck-verhaallijnen. De LessonUp-pagina's waren zonder login leesbaar; de interactieve start en de bijlagen zijn niet volledig uitgevoerd of gedownload. Een expliciete licentie voor alle strip- en bijlage-elementen is niet vastgesteld.",
     "offerCategory": "materials",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "De officiële lanceringspagina en alle drie LessonUp-lespagina's zijn volledig gelezen op doelgroep, lesdoelen, werkvormen, voorbereiding, lesduur, materiaalvormen en openbare zichtbaarheid. De interactieve lesstart en DOCX-bijlagen zijn niet volledig geopend. Controle op 22 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap.",
+    "verificationNote": "De officiële lanceringspagina en alle drie LessonUp-lespagina's zijn volledig gelezen op doelgroep, lesdoelen, werkvormen, voorbereiding, lesduur, materiaalvormen en openbare zichtbaarheid. De interactieve lesstart en DOCX-bijlagen zijn niet volledig geopend. Controle op 22 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap. Digitale geletterdheid is het overkoepelende Atlas-vaklabel. Kidsweek benoemt ICT-basisvaardigheden en werkt in les 2 analyse van voorbeelden, vertekening en veilig omgaan met gegevens uit.",
     "changeHistory": [
       {
         "date": "2026-11-22",
@@ -38166,6 +38189,11 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Lesstart van de Atlas toegevoegd op basis van het gekoppelde lesmateriaal."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd. Vakgebied aan de hand van de gekoppelde lesbron vastgelegd."
       }
     ],
     "lessonStart": {
@@ -38177,8 +38205,13 @@
       "preparation": "Leg papier en potloden klaar. Open de tekenactiviteit in DigiDuck, les 2. Voor deze werkvorm hebben leerlingen geen apparaat nodig.",
       "task": "Teken een dier met vier poten. Geef je vel door en laat een klasgenoot een kenmerk toevoegen. Leg de tekeningen bij elkaar. Welk dier is het vaakst getekend? Schrijf twee kenmerken op waarmee een computer dat dier kan herkennen. Bedenk een ander dier dat ook aan jullie regel voldoet.",
       "reflection": "Welke nieuwe tekening zou je toevoegen om de computer een beter voorbeeld te geven? Leg uit waarom.",
-      "sourceUrl": "https://www.lessonup.com/nl/channel/kidsweek/lesson/65EQLYwfipPBh3oYr"
-    }
+      "sourceUrl": "https://www.lessonup.com/nl/channel/kidsweek/lesson/65EQLYwfipPBh3oYr",
+      "learningGoal": "Met een tekening uitleggen hoe eenzijdige voorbeelden een herkenningsregel kunnen vertekenen.",
+      "activityType": "Tekenen en vergelijken"
+    },
+    "subjects": [
+      "Digitale geletterdheid"
+    ]
   },
   {
     "id": "ai-slim-bekeken-doorlopende-leerlijn",
@@ -38636,13 +38669,20 @@
       "preparation": "Toon figuur 2 van het leerlingwerkblad. Zet dit verzonnen chatbotantwoord ernaast: “De vos eet geen gras, dus zijn komst heeft geen invloed op de planten.”",
       "task": "Vergelijk de gemeten waarden voor de eilanden met en zonder vos. Teken de route van zeevogels via hun uitwerpselen en de bodem naar planten. Geef aan waar een vos deze route kan beïnvloeden. Onderstreep het deel van het voorbeeldantwoord dat je met de figuur kunt controleren.",
       "reflection": "Welke vergelijking laat de figuur werkelijk zien? Herschrijf het antwoord en geef aan welke stap in jullie verklaring op het model berust.",
-      "sourceUrl": "https://docs.google.com/document/d/1dhy_ADiJ6wpG3MRSvv4qYatKZEe7MQGkTLNDcNtV9Gk/preview"
+      "sourceUrl": "https://docs.google.com/document/d/1dhy_ADiJ6wpG3MRSvv4qYatKZEe7MQGkTLNDcNtV9Gk/preview",
+      "learningGoal": "Een indirect effect in een ecosysteem uitleggen en aanwijzen welke stap met metingen wordt onderbouwd.",
+      "activityType": "Grafieken interpreteren"
     },
     "changeHistory": [
       {
         "date": "2026-11-22",
         "type": "added",
         "summary": "HHMI-les over ecologische systemen opgenomen met directe toegang tot werkblad en figuren. De Atlas voegt een lesstart over de bewijsvoering in een chatbotantwoord toe."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
       }
     ],
     "subjects": [
