@@ -1,4 +1,4 @@
-"""Decision-oriented daily report derived only from events and validated proposals."""
+"""Source research queue derived from maintenance events and validated proposals."""
 import json
 import re
 from datetime import datetime, timezone
@@ -35,19 +35,19 @@ def build_daily_report(events: list[dict], proposals: list[dict]) -> dict:
               "jsonPath": f"proposals/{item['proposalId']}.json",
               "markdownPath": f"proposals/{item['proposalId']}.md"} for item in proposals]
     return {
+        "reportType": "source_research",
         "generatedAt": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "summary": {
             "sourcesChecked": len(events),
             "successfulChecks": len(events) - len(failed),
             "failedChecks": len(failed),
             "events": counts,
-            "proposalsForReview": len(proposals),
-            "readyForDecision": len(proposals) - len(verification),
+            "researchQueueSize": len(proposals),
+            "proposalsForReview": len(proposals),  # Count retained for existing artifact readers.
             "needsExtraVerification": len(verification),
             "insufficientEvidence": len(insufficient),
             "unreachableOrStructurallyFailing": len(failed) + counts["SOURCE_CHANGED"],
             "timeSensitiveChanges": len(urgent),
-            "actionRequired": bool(proposals),
         },
         "timeSensitive": urgent,
         "priorityVerification": priority_checks,
@@ -59,20 +59,18 @@ def build_daily_report(events: list[dict], proposals: list[dict]) -> dict:
 
 def daily_report_markdown(report: dict) -> str:
     s = report["summary"]
-    lines = ["# Dagelijkse Atlas-controle", "",
+    proposals = report["proposals"]
+    lines = ["# Dagelijkse broncontrole van de Atlas", "",
+             "Dit rapport verzamelt signalen voor brononderzoek.", "",
              f"- Bronnen gecontroleerd: **{s['sourcesChecked']}**",
              f"- Succesvol: **{s['successfulChecks']}**; mislukt: **{s['failedChecks']}**",
-             f"- Gereed voor beslissing: **{s['readyForDecision']}**",
+             f"- Signalen in de werkvoorraad voor brononderzoek: **{len(proposals)}**",
              f"- Extra verificatie nodig: **{s['needsExtraVerification']}**",
              f"- Onvoldoende bewijs: **{s['insufficientEvidence']}**",
              f"- Onbereikbaar of structureel afwijkend: **{s['unreachableOrStructurallyFailing']}**",
-             f"- Tijdgevoelige wijzigingen: **{s['timeSensitiveChanges']}**"]
-    if not s["actionRequired"]:
-        lines += ["", "## Geen actie nodig", "",
-                  "Er zijn geen betekenisvolle wijzigingen die menselijke beoordeling vragen."]
-        return "\n".join(lines) + "\n"
+             f"- Tijdgevoelige signalen: **{s['timeSensitiveChanges']}**"]
     if report["timeSensitive"]:
-        lines += ["", "## Eerst beoordelen: tijdgevoelig", ""]
+        lines += ["", "## Eerst onderzoeken wegens tijdsdruk", ""]
         for item in report["timeSensitive"]:
             lines.append(f"- [{item['title']}](proposals/{item['proposalId']}.md)")
     if report.get("priorityVerification"):
@@ -80,8 +78,9 @@ def daily_report_markdown(report: dict) -> str:
         for item in report["priorityVerification"]:
             target = item.get("targetRecordId") or item["source"]["sourceName"]
             lines.append(f"- `{target}` · {item['uncertainties'][-1]} Voorstel `{item['proposalId']}`.")
-    lines += ["", "## Voorstellen", ""]
-    for item in report["proposals"]:
+    if proposals:
+        lines += ["", "## Onderzoeksvoorstellen", ""]
+    for item in proposals:
         uncertainties = "; ".join(item["uncertainties"]) or "geen vastgelegd"
         lines += [f"### {item['title']}",
                   f"- Actie: `{item['action']}`; materialiteit: {item['materiality']}",
@@ -91,12 +90,11 @@ def daily_report_markdown(report: dict) -> str:
                   f"- [Leesbaar voorstel](proposals/{item['proposalId']}.md)",
                   f"- [Machineleesbaar voorstel](proposals/{item['proposalId']}.json)", ""]
     if report["failedSources"]:
-        lines += ["## Falende bronnen", ""]
+        lines += ["", "## Falende bronnen", ""]
         for event in report["failedSources"]:
             lines.append(f"- `{event['sourceId']}`: {event['type']} ({event.get('reason', 'onbekend')})")
         lines.append("")
-    lines += ["Niets is automatisch gepubliceerd, gewijzigd, gearchiveerd of verwijderd.", ""]
-    return "\n".join(lines)
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def proposal_markdown(item: dict) -> str:
@@ -112,8 +110,7 @@ def proposal_markdown(item: dict) -> str:
              f"- Bron: {source['sourceName']} ({source['sourceUrl']})",
              f"- Bronrol: {source['sourceRole']}; vertrouwen: {source['trustLevel']}",
              f"- Zekerheid: {item['confidence']}; materialiteit: {item['materiality']}",
-             f"- Doublurerisico: {item['duplicateRisk']}",
-             f"- Aanbevolen beslissing: {item['recommendedDecision']}", "",
+             f"- Doublurerisico: {item['duplicateRisk']}", "",
              "## Reden", "", item["reason"], "", "## Bewijs", "", "```json",
              json.dumps(item.get("evidence"), ensure_ascii=False, indent=2), "```", "",
              "## Oude waarden", "", "```json", json.dumps(item.get("oldValues"), ensure_ascii=False, indent=2), "```", "",
@@ -128,5 +125,5 @@ def proposal_markdown(item: dict) -> str:
               or ["- Geen relatie voorgesteld."])
     lines += ["", "## Uitgevoerde controles", ""]
     lines += [f"- {value}" for value in item.get("checksPerformed", [])]
-    lines += ["", "Menselijke beoordeling is vereist. Dit voorstel kan niet automatisch worden gepubliceerd, gewijzigd, gearchiveerd of verwijderd.", ""]
+    lines += ["", "Controleer de officiële detailbron voordat deze informatie voor een Atlas-wijziging wordt gebruikt.", ""]
     return "\n".join(lines)

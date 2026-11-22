@@ -2,14 +2,14 @@
 
 Gecontroleerde bronnen: **6**.
 
-## 3 voorstellen vragen beoordeling
+## Drie signalen voor brononderzoek
 
 ### Deadline information changed at NWO calls
 - Actie: `update`
 - Materialiteit: hoog
 - Bron: NWO calls
 - Zekerheid: hoog
-- Advies: menselijke controle
+- Vervolg: open de officiële detailpagina en vergelijk de deadline met de gepubliceerde vermelding.
 
 ### Potential new official offer
 - Actie: `add`
@@ -29,5 +29,5 @@ Gecontroleerde bronnen: **6**.
 
 Niets is automatisch gepubliceerd, gewijzigd of verwijderd.
 
-Wanneer er geen voorstellen zijn, bevat het rapport uitsluitend de aantallen en de expliciete melding:
-**Geen actie nodig.** Er wordt dan geen GitHub Issue gemaakt.
+De onderhoudstaak pakt deze drie signalen op. Voor een keuze over de grenzen van de Atlas
+kan zij na het brononderzoek een afzonderlijke vraag aan de eigenaar voorleggen.
