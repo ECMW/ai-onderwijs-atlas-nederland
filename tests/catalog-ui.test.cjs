@@ -84,6 +84,15 @@ test('paper list sorts by the published day, keeps equal dates stable and distin
   assert.throws(() => api.papersMarkup({metadata:{}}));
 });
 
+test('a paper only shows open access for an explicit verified open value', () => {
+  const api = load([], '#papers', {URL});
+  const paper = {title:'Evidence in education', published:'2026-11-20', url:'https://doi.org/10.1000/study'};
+  assert.match(api.papersMarkup({papers:[{...paper, access:'open'}]}), /class="paper-meta">.*Open access<\/span><\/p>/);
+  for (const access of [undefined, 'Open', 'unknown', false]) {
+    assert.doesNotMatch(api.papersMarkup({papers:[{...paper, access}]}), /Open access/);
+  }
+});
+
 test('specific paper searches offer the papers page and keep regular matching records', () => {
   const data = [{...record('method'), title:'Wetenschappelijke artikelen', description:'Papers voor onderzoekers'}];
   for (const query of ['paper', 'recente papers', 'artikelen over AI in het onderwijs', 'wetenschappelijke artikelen']) {

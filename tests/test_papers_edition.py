@@ -80,6 +80,10 @@ class PapersEditionTests(unittest.TestCase):
             with self.subTest(change=change), self.assertRaises(ValueError):
                 edition.paper_row({**row(), **change}, "A", DAY)
 
+    def test_only_confirmed_open_access_is_exposed(self):
+        self.assertEqual(edition.paper_row({**row(), "access": "open"}, "A", DAY)["access"], "open")
+        self.assertNotIn("access", edition.paper_row({**row(), "access": "unknown"}, "A", DAY))
+
     def test_confirmed_empty_window_removes_expired_or_withdrawn_papers(self):
         base = snapshot([row()])
         built, count = edition.build_edition(base, None, DAY, True, lambda *_: [])
