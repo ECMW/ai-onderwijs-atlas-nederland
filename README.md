@@ -19,6 +19,7 @@ De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijze
 - bronknoppen benoemen de bestemming, bijvoorbeeld **Bekijk training** of **Bekijk materiaal**;
 - op de detailpagina kopieert **Kopieer bronvermelding** de titel, aanbieder, eventuele publicatiedatum, officiële bronnen en Atlas-link; bij geblokkeerd klembord verschijnt selecteerbare tekst;
 - **Overlegblad** bij de zoekresultaten maakt een afdrukbaar overzicht van alle matches, inclusief volledige zoekcriteria, sortering en bronlinks; via de afdrukdialoog kan het ook als PDF worden opgeslagen;
+- met **Kies voor vergelijking of overleg** zet u twee of meer vermeldingen naast elkaar. De vergelijking kan gelijke kenmerken verbergen en is deelbaar met collega's. [Bekijk twee lessen voor het vo](https://ecmw.github.io/ai-onderwijs-atlas-nederland/#vergelijken?item=codeerschool-behind-the-chat-nl&item=mediawijs-edubox-artificiele-intelligentie).
 - persoonlijke rolvoorkeuren blijven lokaal in de browser;
 - er zijn geen cookies, externe autocomplete of eigen backend nodig;
 - GoatCounter telt bezoeken per dag zonder zoektermen of filters te ontvangen;
