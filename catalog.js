@@ -1499,6 +1499,50 @@
     const types = values('type');
     return types.length > 0 && types.every(type => FUNDING_TYPES.includes(type));
   }
+  function focusAfterNavigation(link, selector) {
+    if (!link) return;
+    link.onclick = event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      addEventListener('hashchange', () => document.querySelector(selector)?.focus(), {once: true});
+    };
+  }
+  function researchQuery(query) {
+    return ['phd', 'promoveren', 'promovendus', 'promovenda', 'promovendi', 'promotieonderzoek',
+      'promotieplek', 'promotieplaats', 'phd vacature', 'phd vacatures'].includes(normalize(query));
+  }
+  function researchPage() {
+    const backHref = location.hash.replace(/^#onderzoek/, '#zoeken');
+    const params = new URLSearchParams(backHref.split('?')[1]);
+    const fromFunding = filterValues('type', params.get('type')).some(type => FUNDING_TYPES.includes(type));
+    const fundingHref = criteriaHref({sector:params.get('sector'), vak:params.get('vak'), ...FUNDING_CRITERIA});
+    function resource(id, label, description, showStatus = false) {
+      const record = publicRecordsById.get(id);
+      if (!record) return '';
+      const status = showStatus ? ` · ${escapeHtml(displayStatus(record))}` : '';
+      return `<li><a href="#item/${encodeURIComponent(id)}">${escapeHtml(label)}</a>${status}<p>${escapeHtml(description)}</p></li>`;
+    }
+    const methods = [
+      resource('eur-generative-ai-in-research-emodule', 'E-module Generative AI in Research', 'Oefen met verantwoord AI-gebruik bij literatuur zoeken en schrijven in deze Engelstalige zelfstudiemodule van de Erasmus Universiteit Rotterdam.'),
+      resource('oecd-talis-2024-database-ai-onderwijs', 'Onderzoeksdata van TALIS 2024', 'Welke docenten geven aan dat zij AI gebruiken om lessen of activiteiten voor te bereiden? Dit is zelfrapportage. De vragenlijst is openbaar. Voor microdata vraagt de OESO om een formulier en akkoord met de gebruiksvoorwaarden.')
+    ].join('');
+    const practice = [
+      resource('npuls-aido-praktijkgericht-ai-en-dataonderzoek-2026', 'Npuls AIDO voor mbo, hbo en wo', 'Verken met uw instelling een onderzoeksvraag over AI of data in uw eigen onderwijspraktijk.', true),
+      resource('professional-doctorate-technologie-digitalisering-2026', 'Professional Doctorate in het hbo', 'Bij deze praktijkgerichte pilot vraagt een bekostigde hogeschool financiering aan voor een kandidaat. Bekijk de voorwaarden voor het voorstel en de vereiste praktijkervaring.', true)
+    ].join('');
+    main.innerHTML = `<article class="personal-page research-page"><nav class="practice-back"><a href="${escapeHtml(backHref)}">← ${fromFunding ? 'Terug naar subsidies en calls' : 'Terug naar praktijktaken'}</a></nav>
+      <header class="page-intro"><h1 id="research-heading" tabindex="-1">Onderzoek doen of promoveren</h1></header>
+      <section><h2>Ik zoek een promotieplaats</h2><p>U solliciteert bij het project of de werkgever die de PhD-vacature publiceert. Bij MSCA Doctoral Networks vraagt het consortium de financiering aan.</p>
+        <ul><li><a href="https://www.academictransfer.com/nl/functietype/phd/" target="_blank" rel="noopener noreferrer">PhD-vacatures in Nederland op AcademicTransfer ↗</a></li>
+          <li><a href="https://euraxess.ec.europa.eu/jobs/search" target="_blank" rel="noopener noreferrer">Onderzoeksvacatures in Europa op EURAXESS ↗</a><p>Kies bij ‘Academic Level’ voor ‘PhD Positions’. Voor Nederland kiest u bij ‘Country’ voor ‘Netherlands’.</p></li></ul></section>
+      <section><h2>Ik doe al onderzoek</h2>${methods ? `<ul>${methods}</ul>` : '<p>Leg uw onderzoeksvraag, databron en keuzes rond AI-gebruik vast in uw onderzoeksplan.</p>'}</section>
+      <section><h2>Met mijn onderwijsinstelling praktijkonderzoek doen</h2>
+        <p>Bespreek een vraag uit uw onderwijspraktijk met de onderzoekscoördinator van uw instelling. Bekijk per regeling wie kan indienen.</p>
+        <ul><li><a href="https://www.kennisrotonde.nl/vraag-en-antwoord" target="_blank" rel="noopener noreferrer">Zoek een antwoord op uw onderwijsvraag bij de Kennisrotonde ↗</a></li>${practice}</ul>
+        <p><a data-open-funding href="${escapeHtml(fundingHref)}">Bekijk open subsidies en calls</a></p></section></article>`;
+    main.querySelectorAll('a[href^="#item/"]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', location.hash));
+    focusAfterNavigation(main.querySelector('.practice-back a'), fromFunding ? '#funding-heading' : '#practice-title, .result-head h2');
+    focusAfterNavigation(main.querySelector('[data-open-funding]'), '#funding-heading');
+  }
   function fundingNavigation(context) {
     const pool = recordsForCriteria({ ...state, status: '' });
     const counts = new Map();
@@ -1523,7 +1567,7 @@
     links.push(`<a href="${escapeHtml(stateHref({ status: '' }))}"${!current.length ? ' aria-current="page"' : ''}>Alle (${pool.length})</a>`);
     return `<nav class="practice-back" aria-label="Praktijkvragen"><a href="${escapeHtml(criteriaHref(context))}">← Andere taak</a></nav>
       <section class="funding-nav"><h2 id="funding-heading" tabindex="-1">Subsidies en calls</h2>
-      <nav aria-label="Aanvraagstatus">${links.join('')}</nav></section>`;
+      <nav aria-label="Aanvraagstatus">${links.join('')}</nav><p><a href="${escapeHtml(stateHref().replace('#zoeken', '#onderzoek'))}">Ik zoek een promotieplaats</a></p></section>`;
   }
   function practiceNavigation() {
     const context = { sector: state.sector, vak: state.vak, audience: state.audience, language: state.language };
@@ -1532,7 +1576,13 @@
     if (state.q || FILTER_KEYS.some(key => !['sector', 'vak', 'audience', 'language'].includes(key) && values(key).length)) {
       const task = PRACTICE_ROUTES.find(route => Object.entries(route.criteria).every(([key, value]) => state[key] === value));
       let work = '';
-      if (task?.criteria.q === 'les' || ['lesstart', 'lesstarts'].includes(normalize(state.q))) work = lessonStartSection();
+      if (task?.criteria.q === 'les' || ['lesstart', 'lesstarts'].includes(normalize(state.q))) {
+        const materials = stateHref({ q: '', type: 'materials', language: 'nl', cost: 'Gratis' });
+        work = `<p class="lesson-shortcut"><a class="btn secondary" href="${escapeHtml(materials)}">Gratis Nederlandstalig lesmateriaal</a></p>` + lessonStartSection();
+      }
+      else if (researchQuery(state.q)) {
+        work = `<p><a class="btn secondary" href="${escapeHtml(stateHref().replace('#zoeken', '#onderzoek'))}">Onderzoek doen of promoveren</a></p>`;
+      }
       else if (normalize(state.q) === 'afspraken') work = teamTrialEntry() + assessmentEntry();
       else if (teamTrialQuery(state.q)) work = teamTrialEntry();
       else if (values('theme').includes(ASSESSMENT_CRITERIA.theme) ||
@@ -1550,6 +1600,8 @@
       if (!count) return `<span class="practice-link unavailable">${content}<small>Geen resultaten</small></span>`;
       return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${count} ${count === 1 ? 'resultaat' : 'resultaten'} <span aria-hidden="true">→</span></small></a>`;
     });
+    const researchHref = criteriaHref(context).replace('#zoeken', '#onderzoek');
+    links.push(`<a class="practice-link" href="${escapeHtml(researchHref)}"><strong>Onderzoek doen of promoveren</strong><span>Promotieplaatsen, onderzoeksdata en praktijkonderzoek</span><small>Bekijk routes <span aria-hidden="true">→</span></small></a>`);
     return `<section class="practice-start" aria-labelledby="practice-title"><div class="practice-heading"><h2 id="practice-title" tabindex="-1">Waar wilt u mee aan de slag?</h2>
       <label for="practice-sector">Sector<select id="practice-sector">
         <option value="">Alle sectoren</option>${selected.length > 1 ? '<option selected disabled>Meerdere sectoren</option>' : ''}
@@ -1821,6 +1873,8 @@
       return;
     }
     const lastSearch = sessionGet('atlas.lastSearch') || '#zoeken';
+    const backLabel = lastSearch.startsWith('#onderzoek') ? '← Terug naar Onderzoek doen of promoveren'
+      : lastSearch.startsWith('#vergelijken?') ? 'Terug naar vergelijking' : '← Terug naar resultaten';
     const related = records.filter(item => item.id !== record.id)
       .map(item => ({ item, score: relationScore(record, item) }))
       .filter(candidate => candidate.score > 0)
@@ -1834,7 +1888,7 @@
     const sourceLinks = `<h3>Officiële bronnen</h3>${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}`;
     const lesson = hasAvailableLesson(record) && lessonStartBody(record);
     main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(offerLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
-      <section class="detail-shell"><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${lastSearch.startsWith('#vergelijken?') ? 'Terug naar vergelijking' : '← Terug naar resultaten'}</a><span>Home / Resultaten / ${escapeHtml(record.title)}</span></nav>
+      <section class="detail-shell"><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${backLabel}</a><span>Home / ${lastSearch.startsWith('#onderzoek') ? 'Onderzoek' : 'Resultaten'} / ${escapeHtml(record.title)}</span></nav>
       <div class="detail-layout"><article>
         ${funding ? `<section class="funding-conditions"><h2>Aanvraag en voorwaarden</h2><dl>
           <div><dt>Aanvragers</dt><dd>${escapeHtml(applicants)}</dd></div>
@@ -1906,6 +1960,9 @@
       .map(name => collection(name, { ...criteria, organization: name }))
       .filter(item => item.count > 0).slice(0, 4);
     const sections = [];
+    if (researchQuery(query)) {
+      sections.push({ label: 'Praktijkvraag', items: [{label:'Onderzoek doen of promoveren', meta:'Promotieplaatsen en praktijkonderzoek', href:stateHref().replace('#zoeken', '#onderzoek')}] });
+    }
     if (teamTrialQuery(query)) sections.push({ label: 'Zelf aan de slag', items: [
       { label: 'Teamproef met AI', meta: 'Proefkaart voor het teamoverleg', href: '#teamproef' }
     ] });
@@ -2077,15 +2134,10 @@
     });
     const sector = panel.querySelector('#practice-sector');
     panel.querySelectorAll('a.practice-link,.practice-back a').forEach(link => {
-      link.onclick = event => {
-        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-        const forward = link.classList.contains('practice-link');
-        addEventListener('hashchange', () => {
-          const heading = forward ? document.querySelector('#lesson-heading, #trial-entry-heading, #assessment-entry-heading, #funding-heading, .result-head h2') : document.querySelector('#practice-title');
-          heading?.focus();
-        }, { once: true });
-      };
+      const target = link.classList.contains('practice-link') ? '#lesson-heading, #trial-entry-heading, #assessment-entry-heading, #funding-heading, #research-heading, .result-head h2' : '#practice-title';
+      focusAfterNavigation(link, target);
     });
+    focusAfterNavigation(panel.querySelector('.lesson-shortcut a'), '.result-head h2');
     if (sector) sector.onchange = () => {
       state.sector = sector.value;
       if (['#home', ''].includes(location.hash)) state.sort = 'relevant';
@@ -2255,9 +2307,10 @@
     const path = (location.hash.slice(1) || 'home').split('?')[0];
     document.querySelector('.site-header')?.classList.remove('open');
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
-    if (path === 'home' || (!['wegwijzer', 'nieuw', 'boeken', 'zoeken', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
+    if (path === 'home' || (!['wegwijzer', 'nieuw', 'boeken', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
     if (path === 'wegwijzer') { location.replace('#zoeken'); return; }
     if (path === 'nieuw') renderNewOffers();
+    if (path === 'onderzoek') researchPage();
     const focusedBookGroup = path === 'boeken' && renderBooks();
     if (path === 'zoeken' || path === 'organisaties') { parseState(); if (path === 'organisaties') state.type = 'Organisatie'; renderSearch(); }
     if (path === 'overlegblad') { parseState(); renderMeetingSheet(); }
@@ -2273,7 +2326,7 @@
     const updated = document.querySelector('[data-updated]'); if (updated) updated.textContent = source.metadata.updated || '';
     if (!['zoeken', 'organisaties'].includes(path) && !focusedBookGroup) {
       scrollTo({ top: 0, behavior: 'instant' });
-      main.focus({ preventScroll: true });
+      (path === 'onderzoek' ? document.querySelector('#research-heading') : main).focus({ preventScroll: true });
     }
   }
   let hiddenAt = 0;
