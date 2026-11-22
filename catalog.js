@@ -992,9 +992,10 @@
       return { key, values: values(key), count };
     }).filter(item => item.count > 0).sort((a, b) => b.count - a.count).slice(0, 3);
   }
+  const ASSESSMENT_CRITERIA = { q: 'toets', theme: 'Toetsing en examinering', type: 'materials,knowledge' };
   const PRACTICE_ROUTES = [
     { label: 'Een les voorbereiden', detail: 'Opdrachten voor de klas en lesmateriaal', criteria: { q: 'les', type: 'materials' } },
-    { label: 'Een toets herontwerpen', detail: 'Handreikingen en toetsmateriaal', criteria: { q: 'toets', theme: 'Toetsing en examinering', type: 'materials,knowledge' } },
+    { label: 'Een toets herontwerpen', detail: 'Een toetsafspraak maken en toetsmateriaal vinden', criteria: ASSESSMENT_CRITERIA },
     { label: 'AI-afspraken maken', detail: 'Gesprekskaarten en voorbeelden', criteria: { q: 'afspraken', type: 'materials,knowledge' } },
     { label: 'Scholing vinden', detail: 'Cursussen, workshops en trainerskits', criteria: { type: 'Training', status: 'Direct beschikbaar' } }
   ];
@@ -1002,6 +1003,152 @@
     PO: 'Primair onderwijs', VO: 'Voortgezet onderwijs', MBO: 'Middelbaar beroepsonderwijs',
     HBO: 'Hoger beroepsonderwijs', WO: 'Wetenschappelijk onderwijs'
   };
+
+  const ASSESSMENT_MODES = {
+    zelfstandig: {
+      label: 'Zelfstandig uitwerken',
+      rule: 'Werk dit onderdeel zelf uit, zonder generatieve AI. Gebruik de overige hulpmiddelen die vooraf met je docent zijn afgesproken.',
+      evidence: 'Lever je uitwerking in. Leg tijdens het toetsmoment één keuze uit en laat zien hoe je die keuze aanpast als een gegeven verandert.',
+      criterion: 'Je kunt uitleggen welke informatie je keuze ondersteunt en wat er verandert bij de nieuwe situatie.',
+      teacher: 'Bereid een kleine variant op de opdracht voor. Leg vooraf vast waaraan u in de uitleg kunt zien of iemand het leerdoel beheerst.'
+    },
+    feedback: {
+      label: 'AI mag feedback geven',
+      rule: 'Maak eerst zelf een concept. Daarna mag je AI om feedback vragen. Schrijf de uiteindelijke uitwerking zelf.',
+      evidence: 'Lever je concept en eindversie in. Licht één wijziging toe. Gebruikte je AI, leg dan uit wat je met één advies hebt gedaan. Werkte je zonder AI, leg dan uit waarom je zelf de wijziging aanbracht.',
+      criterion: 'Je laat aan een concreet verschil tussen de versies zien hoe je wijziging bijdraagt aan het leerdoel.',
+      teacher: 'Leg beide versies naast elkaar. Gebruik voor iedereen hetzelfde criterium, ook wanneer iemand het werk zonder AI heeft herzien.'
+    },
+    controleren: {
+      label: 'Een AI-antwoord onderzoeken',
+      rule: 'Je krijgt een AI-antwoord van je docent. Zoek zelf bewijs in de oorspronkelijke bron en schrijf je eigen oordeel zonder verdere AI-hulp.',
+      evidence: 'Kies één controleerbare bewering uit het antwoord. Geef de vindplaats in de bron en leg uit in hoeverre de passage de bewering ondersteunt. Verbeter de bewering waar dat nodig is.',
+      criterion: 'De passage is terug te vinden en je legt precies uit welk deel van de bewering het bewijs ondersteunt.',
+      teacher: 'Geef iedereen hetzelfde AI-antwoord en toegang tot de bron. Kijk of de aangehaalde passage het oordeel draagt, ook als iemand tot een andere conclusie komt.'
+    }
+  };
+  const assessmentToolQuery = query => ['toetsafspraak', 'toetsafspraken', 'toetsafspraak maken'].includes(normalize(query));
+  let assessmentDraft;
+
+  function assessmentEntry() {
+    const sectors = values('sector');
+    if (sectors.length && !sectors.some(sector => ['VO', 'MBO', 'HBO', 'WO'].includes(sector))) return '';
+    return `<section class="assessment-entry" aria-labelledby="assessment-entry-heading"><div>
+      <h2 id="assessment-entry-heading" tabindex="-1">Wat mag AI bij deze opdracht?</h2>
+      <p>Maak een tekst voor uw klas over de toegestane hulp, het eigen werk en de beoordeling.</p></div>
+      <a class="btn" href="#toetsafspraak">Maak een toetsafspraak</a></section>`;
+  }
+
+  function readAssessmentDraft() {
+    if (assessmentDraft) return assessmentDraft;
+    let saved;
+    try { saved = JSON.parse(sessionGet('atlas.toetsafspraak')); } catch { /* Eerste bezoek of een ouder concept. */ }
+    return {
+      goal: typeof saved?.goal === 'string' ? saved.goal.slice(0, 500) : '',
+      mode: typeof saved?.mode === 'string' && Object.hasOwn(ASSESSMENT_MODES, saved.mode) ? saved.mode : '',
+      evidence: typeof saved?.evidence === 'string' ? saved.evidence.slice(0, 500) : '',
+      criterion: typeof saved?.criterion === 'string' ? saved.criterion.slice(0, 500) : ''
+    };
+  }
+
+  function assessmentParts(draft) {
+    if (!draft.goal.trim() || !Object.hasOwn(ASSESSMENT_MODES, draft.mode)) return [];
+    const mode = ASSESSMENT_MODES[draft.mode];
+    return [['Leerdoel', draft.goal.trim()], ['Gebruik van AI', mode.rule],
+      ['Wat je laat zien', draft.evidence.trim() || mode.evidence], ['Hierop word je beoordeeld', draft.criterion.trim() || mode.criterion]];
+  }
+
+  function renderAssessment() {
+    const draft = readAssessmentDraft();
+    const sources = [
+      ['toetsing-en-generatieve-ai-in-het-voortgezet-onderwijs', 'Kennisnet over toetsing in het vo'],
+      ['visie-op-toetsing-examinering-en-ai-en-handreikingen', 'Npuls over toetsing in het mbo, hbo en wo']
+    ].flatMap(([id, label]) => {
+      const record = publicRecordsById.get(id);
+      const official = record && effectiveStatus(record) === 'available' && primarySource(record);
+      return official ? [`<li><a href="${escapeHtml(official.url)}" target="_blank" rel="noopener noreferrer">${label} ↗</a></li>`] : [];
+    });
+    main.innerHTML = `<section class="assessment-page">
+      <a href="${escapeHtml(criteriaHref(ASSESSMENT_CRITERIA))}">← Naar toetsmateriaal</a>
+      <header><h1>Maak een toetsafspraak</h1><p>Welke AI-hulp past bij uw leerdoel? Maak een instructie voor een schrijf- of ontwerpopdracht in het vo, mbo, hbo of wo.</p></header>
+      <div class="assessment-layout"><form class="assessment-form">
+        <label for="assessment-goal">Wat moet de leerling of student zelf kunnen?</label>
+        <textarea id="assessment-goal" rows="2" maxlength="500" required placeholder="Bijv. twee bronnen vergelijken en een conclusie onderbouwen.">${escapeHtml(draft.goal)}</textarea>
+        <button class="assessment-example" type="button" data-assessment-example>Vul een voorbeeld in</button>
+        <fieldset><legend>Welke rol krijgt AI bij deze opdracht?</legend>
+          ${Object.entries(ASSESSMENT_MODES).map(([key, mode]) => `<label class="assessment-choice"><input required type="radio" name="mode" value="${key}" ${key === draft.mode ? 'checked' : ''}>${mode.label}</label>`).join('')}
+        </fieldset>
+        <details class="assessment-custom" ${draft.evidence || draft.criterion ? 'open' : ''}>
+          <summary>Pas de inlevervorm en het criterium aan</summary>
+          <label for="assessment-evidence">Wat wilt u terugzien?</label>
+          <textarea id="assessment-evidence" rows="2" maxlength="500" placeholder="Bijv. een schets met een korte mondelinge toelichting.">${escapeHtml(draft.evidence)}</textarea>
+          <label for="assessment-criterion">Waar let u op bij de beoordeling?</label>
+          <textarea id="assessment-criterion" rows="2" maxlength="500" placeholder="Bijv. elke ontwerpkeuze is onderbouwd met een gegeven uit de opdracht.">${escapeHtml(draft.criterion)}</textarea>
+          <p class="assessment-note">Een leeg veld gebruikt het voorstel bij de gekozen rol van AI.</p>
+        </details>
+        <div class="assessment-actions"><button class="btn" type="submit">Bekijk opdrachttekst</button>
+          <button class="assessment-clear" type="button" data-assessment-clear>Wis concept</button></div>
+        <p class="assessment-note">Uw concept blijft in dit tabblad. Kopieer de opdrachttekst om die te bewaren.</p>
+      </form>
+      <section class="assessment-preview" aria-labelledby="assessment-preview-title">
+        <h2 id="assessment-preview-title" tabindex="-1">Opdrachttekst voor uw klas</h2>
+        <div data-assessment-result></div>
+      </section></div>
+      <details class="assessment-sources"><summary>Over de voorbeelden en bronnen</summary>
+        <p>De drie voorbeeldafspraken zijn geschreven door de AI &amp; Onderwijs Atlas Nederland. Stem de tekst af op uw toetsbeleid en de ondersteuning die met leerlingen of studenten is afgesproken.</p>
+        ${sources.length ? `<ul>${sources.join('')}</ul>` : ''}</details></section>`;
+    const form = main.querySelector('.assessment-form');
+    const goal = form.querySelector('#assessment-goal');
+    const mode = form.elements.namedItem('mode');
+    const evidence = form.querySelector('#assessment-evidence');
+    const criterion = form.querySelector('#assessment-criterion');
+    const result = main.querySelector('[data-assessment-result]');
+    const example = form.querySelector('[data-assessment-example]');
+    const clear = form.querySelector('[data-assessment-clear]');
+    const current = () => ({goal: goal.value, mode: mode.value, evidence: evidence.value, criterion: criterion.value});
+    function updatePreview() {
+      const value = current();
+      const parts = assessmentParts(value);
+      example.hidden = Boolean(value.goal.trim() || value.evidence.trim() || value.criterion.trim());
+      clear.hidden = !(value.goal || value.evidence || value.criterion || value.mode);
+      goal.setCustomValidity(value.goal && !value.goal.trim() ? 'Vul een leerdoel in.' : '');
+      if (!parts.length) {
+        result.innerHTML = '<p class="assessment-prompt">Vul een leerdoel in en kies de rol van AI. Hier verschijnt de tekst voor uw klas.</p>';
+        return;
+      }
+      const selected = ASSESSMENT_MODES[value.mode];
+      result.innerHTML = `<dl>${parts.map(([label, text]) => `<div><dt>${label}</dt><dd>${escapeHtml(text)}</dd></div>`).join('')}</dl>
+        <button class="btn" type="button" data-assessment-copy>Kopieer opdrachttekst</button>
+        <p class="assessment-feedback" role="status"></p>
+        <textarea class="lesson-copy" aria-label="Opdrachttekst om te kopiëren" readonly hidden></textarea>
+        <aside><h3>Suggestie voor de beoordeling</h3><p>${selected.teacher}</p></aside>`;
+      const copy = result.querySelector('[data-assessment-copy]');
+      copy.onclick = () => copyTextWithFallback(copy, parts.map(pair => pair.join('\n')).join('\n\n'),
+        result.querySelector('[role="status"]'), result.querySelector('textarea'),
+        'Opdrachttekst gekopieerd.', 'De opdrachttekst is geselecteerd. Kopieer deze naar uw leeromgeving.');
+    }
+    function saveAndPreview() {
+      assessmentDraft = current();
+      sessionSet('atlas.toetsafspraak', JSON.stringify(assessmentDraft));
+      updatePreview();
+    }
+    form.oninput = saveAndPreview;
+    form.onsubmit = event => { event.preventDefault(); main.querySelector('#assessment-preview-title').focus(); };
+    example.onclick = () => {
+      goal.value = 'De betrouwbaarheid van een bewering beoordelen met twee aanwijzingen uit de bron.';
+      criterion.value = 'Je noemt twee concrete aanwijzingen uit de bron en legt uit waarom die de bewering sterker of zwakker maken.';
+      if (!mode.value) mode.value = 'feedback';
+      saveAndPreview();
+      main.querySelector('#assessment-preview-title').focus();
+    };
+    clear.onclick = () => {
+      goal.value = ''; evidence.value = ''; criterion.value = '';
+      for (const radio of form.querySelectorAll('[name="mode"]')) radio.checked = false;
+      saveAndPreview();
+      goal.focus();
+    };
+    updatePreview();
+  }
 
   function hasAvailableLesson(record) {
     const lesson = record?.lessonStart;
@@ -1048,6 +1195,22 @@
       <h2 id="lesson-heading" tabindex="-1">Lesstarts voor de klas</h2>${panels}</section>` : '';
   }
 
+  async function copyTextWithFallback(button, text, feedback, field, successMessage, manualMessage) {
+    try {
+      await navigator.clipboard.writeText(text);
+      if (!button.isConnected) return;
+      field.hidden = true;
+      feedback.textContent = successMessage;
+    } catch {
+      if (!button.isConnected) return;
+      field.value = text;
+      field.hidden = false;
+      field.focus();
+      field.select();
+      feedback.textContent = manualMessage;
+    }
+  }
+
   function bindLessonCopy(container) {
     container.querySelectorAll('[data-copy-lesson]').forEach(button => {
       button.onclick = async () => {
@@ -1057,20 +1220,8 @@
         const text = [lesson.question, lesson.task, lesson.reflection,
           `Lesstart van de AI & Onderwijs Atlas Nederland: ${publicItemUrl(record)}`,
           `Lesmateriaal van ${record.providerName}: ${lesson.sourceUrl}`].join('\n\n');
-        const feedback = panel.querySelector('.lesson-feedback');
-        const field = panel.querySelector('.lesson-copy');
-        try {
-          await navigator.clipboard.writeText(text);
-          field.hidden = true;
-          feedback.textContent = 'Klasopdracht en bronlinks gekopieerd.';
-        } catch {
-          if (!button.isConnected) return;
-          field.value = text;
-          field.hidden = false;
-          field.focus();
-          field.select();
-          feedback.textContent = 'De opdracht is geselecteerd. Kopieer de tekst om deze te delen.';
-        }
+        await copyTextWithFallback(button, text, panel.querySelector('.lesson-feedback'), panel.querySelector('.lesson-copy'),
+          'Klasopdracht en bronlinks gekopieerd.', 'De opdracht is geselecteerd. Kopieer de tekst om deze te delen.');
       };
     });
   }
@@ -1080,9 +1231,12 @@
     if (state.sort !== 'relevant' && new URLSearchParams(location.hash.split('?')[1]).has('sort')) context.sort = state.sort;
     if (state.q || FILTER_KEYS.some(key => !['sector', 'audience', 'language'].includes(key) && values(key).length)) {
       const task = PRACTICE_ROUTES.find(route => Object.entries(route.criteria).every(([key, value]) => state[key] === value));
-      if (task) return `<nav class="practice-back" aria-label="Praktijkvragen"><a href="${escapeHtml(criteriaHref(context))}">← Andere taak</a><strong>${escapeHtml(task.label)}</strong></nav>${task.criteria.q === 'les' ? lessonStartSection() : ''}`;
-      const lessons = ['lesstart', 'lesstarts'].includes(normalize(state.q)) ? lessonStartSection() : '';
-      return `<nav class="catalog-tabs" aria-label="Aanbodoverzicht"><a href="#zoeken">Al het aanbod</a><a href="#nieuw">Nieuw aanbod →</a></nav>${lessons}`;
+      let work = '';
+      if (task?.criteria.q === 'les' || ['lesstart', 'lesstarts'].includes(normalize(state.q))) work = lessonStartSection();
+      else if (task?.criteria.q === 'afspraken' || values('theme').includes(ASSESSMENT_CRITERIA.theme) ||
+        ['toets', 'toetsontwerp'].includes(normalize(state.q)) || assessmentToolQuery(state.q)) work = assessmentEntry();
+      if (task) return `<nav class="practice-back" aria-label="Praktijkvragen"><a href="${escapeHtml(criteriaHref(context))}">← Andere taak</a><strong>${escapeHtml(task.label)}</strong></nav>${work}`;
+      return `<nav class="catalog-tabs" aria-label="Aanbodoverzicht"><a href="#zoeken">Al het aanbod</a><a href="#nieuw">Nieuw aanbod →</a></nav>${work}`;
     }
     const selected = values('sector');
     const links = PRACTICE_ROUTES.map(route => {
@@ -1342,6 +1496,9 @@
       .map(name => collection(name, { ...criteria, organization: name }))
       .filter(item => item.count > 0).slice(0, 4);
     const sections = [];
+    if (assessmentToolQuery(query)) sections.push({ label: 'Zelf aan de slag', items: [
+      { label: 'Maak een toetsafspraak', meta: 'Opdrachttekst voor uw klas', href: '#toetsafspraak' }
+    ] });
     if (themes.length) sections.push({ label: 'Onderwerpen', items: themes });
     if (organizations.length) sections.push({ label: 'Aanbieders', items: organizations });
     const definitions = [
@@ -1369,6 +1526,7 @@
     form.onsubmit = event => {
       event.preventDefault();
       closeSuggestions();
+      if (assessmentToolQuery(input.value)) { location.hash = '#toetsafspraak'; return; }
       if (input.value.trim() && ['#home', ''].includes(location.hash)) state.sort = 'relevant';
       applyNaturalQuery(input.value);
       setUrl();
@@ -1487,7 +1645,7 @@
         if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
         const forward = link.classList.contains('practice-link');
         addEventListener('hashchange', () => {
-          const heading = forward ? document.querySelector('#lesson-heading') || document.querySelector('.result-head h2') : document.querySelector('#practice-title');
+          const heading = forward ? document.querySelector('#lesson-heading') || document.querySelector('#assessment-entry-heading') || document.querySelector('.result-head h2') : document.querySelector('#practice-title');
           heading?.focus();
         }, { once: true });
       };
@@ -1580,13 +1738,14 @@
     const path = (location.hash.slice(1) || 'home').split('?')[0];
     document.querySelector('.site-header')?.classList.remove('open');
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
-    if (path === 'home' || (!['wegwijzer', 'nieuw', 'boeken', 'zoeken', 'overlegblad', 'leerlingblad', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
+    if (path === 'home' || (!['wegwijzer', 'nieuw', 'boeken', 'zoeken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
     if (path === 'wegwijzer') { location.replace('#zoeken'); return; }
     if (path === 'nieuw') renderNewOffers();
     const focusedBookGroup = path === 'boeken' && renderBooks();
     if (path === 'zoeken' || path === 'organisaties') { parseState(); if (path === 'organisaties') state.type = 'Organisatie'; renderSearch(); }
     if (path === 'overlegblad') { parseState(); renderMeetingSheet(); }
     if (path === 'leerlingblad') renderLearnerSheet();
+    if (path === 'toetsafspraak') renderAssessment();
     if (path.startsWith('item/')) renderDetail(decodeURIComponent(path.slice(5)));
     if (path === 'mijn-atlas') { location.replace('#home'); return; }
     if (path === 'bijdragen') renderContribute();

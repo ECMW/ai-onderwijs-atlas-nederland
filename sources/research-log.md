@@ -132,3 +132,11 @@ controle van toegang en vergelijking met de bestaande Atlas. Details en
 aangehouden kandidaten staan in `reports/materialen-broncontrole-2026-11-06.md`.
 De gedateerde CRAFT-voorbeeldles heeft een begrensde claimkoppeling; ongedateerde
 aanbodpagina's blijven in record.sourceUrls. Geen effectclaims toegevoegd.
+
+## 2026-11-22 — Een toetsafspraak voor de klas
+
+De handreiking voor het vo van Kennisnet en de visie en eerste handreiking van
+Npuls zijn opnieuw geopend. Ze behandelen hoe een docent een leerdoel verbindt
+aan de rol van AI en de eigen prestatie die zichtbaar moet worden. De drie
+opdrachtteksten in de toetsafspraak zijn door de Atlas geschreven. De
+beoordelingssuggesties zijn voorbeelden die de docent kan aanpassen.

@@ -11,7 +11,7 @@ const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
     recordContextMarkup, queryMatchQuality, queryMatches, sortRecords,
-    homeFilterPanel, catalogFilterPanel, recordsForCriteria, renderDetail,
+    homeFilterPanel, catalogFilterPanel, recordsForCriteria, renderDetail, renderAssessment, readAssessmentDraft, assessmentParts,
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
     effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
     accessLabel, accessOptions: Object.values(ACCESS_LABELS), recordThemes, themeOptions, route,
@@ -116,6 +116,89 @@ test('practice links count matching offers and retain the chosen sectors and aud
   assert.match(destination, /class="practice-back"/);
   assert.ok(destination.includes('data-record-id="lesson"'));
   assert.ok(!destination.includes('data-record-id="other-'));
+});
+
+test('teachers can reach an assessment agreement from the redesign route, agreement route and named search', () => {
+  const recordList = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'));
+  const items = recordList.filter(row => ['visie-op-toetsing-examinering-en-ai-en-handreikingen', 'toetsing-en-generatieve-ai-in-het-voortgezet-onderwijs'].includes(row.id));
+  const home = load(items, '#zoeken?sector=HBO').resultsMarkup();
+  const destination = home.match(/<a class="practice-link" href="([^"]+)"><strong>Een toets herontwerpen/)[1].replaceAll('&amp;', '&');
+  const html = load(items, destination).resultsMarkup();
+  assert.match(html, /href="#toetsafspraak">Maak een toetsafspraak/);
+  assert.ok(html.includes('data-record-id="visie-op-toetsing-examinering-en-ai-en-handreikingen"'));
+  assert.ok(load(items, '#zoeken?q=afspraken&type=materials,knowledge').resultsMarkup().includes('href="#toetsafspraak"'));
+  assert.ok(load(items, '#zoeken?q=toetsafspraak').suggestionData('Toetsafspraak maken')
+    .some(section => section.items.some(item => item.href === '#toetsafspraak')));
+  assert.ok(!load(items, '#zoeken?q=toets&sector=PO').resultsMarkup().includes('href="#toetsafspraak"'));
+  assert.ok(!load(items, '#zoeken?q=privacy').resultsMarkup().includes('href="#toetsafspraak"'));
+});
+
+test('assessment agreements distinguish independent work, optional AI feedback and verifying a supplied answer', () => {
+  const api = load();
+  const goal = 'Twee bronnen op betrouwbaarheid beoordelen.';
+  const parts = mode => Object.fromEntries(api.assessmentParts({goal, mode, evidence:'', criterion:''}));
+  assert.match(parts('zelfstandig')['Wat je laat zien'], /een gegeven verandert/);
+  assert.match(parts('feedback')['Gebruik van AI'], /eerst zelf een concept/);
+  assert.match(parts('feedback')['Wat je laat zien'], /Werkte je zonder AI/);
+  assert.match(parts('controleren')['Gebruik van AI'], /AI-antwoord van je docent/);
+  assert.match(parts('controleren')['Wat je laat zien'], /vindplaats in de bron/);
+  for (const mode of ['zelfstandig', 'feedback', 'controleren']) {
+    assert.equal(parts(mode).Leerdoel, goal);
+    assert.ok(parts(mode)['Hierop word je beoordeeld']);
+  }
+  assert.equal(api.assessmentParts({goal:' ',mode:'zelfstandig',criterion:''}).length, 0);
+  assert.equal(api.assessmentParts({goal,mode:'__proto__',criterion:''}).length, 0);
+});
+
+test('the editable concept preserves choices in its tab and copies the exact classroom text or selects it for manual copying', async () => {
+  const stored = new Map(), storage = {getItem:k => stored.get(k), setItem:(k,v) => stored.set(k,v)};
+  const goal = {value:'',setCustomValidity() {},focus() { this.focused = true; }};
+  const mode = {value:''}, evidence = {value:''}, criterion = {value:''}, example = {}, clear = {};
+  const form = {elements:{namedItem:() => mode}, querySelector:s => ({
+    '#assessment-goal':goal,'#assessment-evidence':evidence,'#assessment-criterion':criterion,'[data-assessment-example]':example,'[data-assessment-clear]':clear
+  })[s], querySelectorAll:() => [{set checked(value) { if (!value) mode.value = ''; }}]};
+  const copy = {isConnected:true}, feedback = {}, field = {hidden:true,focus() {},select() { this.selected = true; }};
+  const result = {querySelector:s => ({'[data-assessment-copy]':copy,'[role="status"]':feedback,textarea:field})[s]};
+  const main = {querySelector:s => ({'.assessment-form':form,'[data-assessment-result]':result,'#assessment-preview-title':{focus(){}}})[s]};
+  const document = {querySelector:s => s === 'main' ? main : null};
+  let copied = '';
+  const navigator = {clipboard:{writeText:async value => { copied = value; }}};
+  const location = {hash:'#toetsafspraak'};
+  const api = load([], location.hash, {document,sessionStorage:storage,navigator,location});
+  api.renderAssessment();
+  assert.ok(!result.innerHTML.includes('data-assessment-copy'));
+  example.onclick();
+  assert.equal(mode.value, 'feedback');
+  assert.ok(criterion.value && goal.value);
+  goal.value = 'Argumenten uit <twee bronnen> wegen.';
+  evidence.value = 'Een geannoteerde schets met twee controleerbare verwijzingen.';
+  criterion.value = 'De gekozen passage draagt het argument.';
+  mode.value = 'controleren';
+  form.oninput();
+  assert.match(result.innerHTML, /&lt;twee bronnen&gt;/);
+  assert.ok(result.innerHTML.includes('Suggestie voor de beoordeling'));
+  await copy.onclick();
+  const expected = api.assessmentParts({goal:goal.value,mode:mode.value,evidence:evidence.value,criterion:criterion.value}).map(pair => pair.join('\n')).join('\n\n');
+  assert.equal(copied, expected);
+  assert.ok(copied.includes(criterion.value) && copied.includes(evidence.value) && !copied.includes('Geef iedereen hetzelfde'));
+  assert.match(feedback.textContent, /gekopieerd/);
+  assert.equal(location.hash, '#toetsafspraak');
+  const fresh = () => load([], '#toetsafspraak', {sessionStorage:storage}).readAssessmentDraft();
+  assert.equal(fresh().goal, goal.value);
+  assert.equal(fresh().mode, mode.value);
+  assert.equal(fresh().evidence, evidence.value);
+  assert.equal(fresh().criterion, criterion.value);
+  navigator.clipboard.writeText = async () => { throw Error('Geblokkeerd'); };
+  await copy.onclick();
+  assert.equal(field.value, expected);
+  assert.ok(field.selected && !field.hidden);
+  clear.onclick();
+  assert.ok(goal.focused && !fresh().goal && !fresh().mode && !fresh().criterion && !fresh().evidence);
+  assert.ok(!result.innerHTML.includes('data-assessment-copy'));
+  for (const damaged of ['{', 'null', '{"goal":false,"mode":"__proto__","criterion":[]}']) {
+    stored.set('atlas.toetsafspraak', damaged);
+    assert.ok(!fresh().goal && !fresh().mode);
+  }
 });
 
 const classroomLessons = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'))
