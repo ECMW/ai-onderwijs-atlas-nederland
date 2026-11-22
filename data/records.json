@@ -38864,5 +38864,180 @@
         "summary": "Onderzoeksdataset en vragenlijst toegevoegd met een concrete AI-vraag, de relevante respondentengroep en de voorwaarden voor toegang tot microdata."
       }
     ]
+  },
+  {
+    "id": "geogebra-parameters-lineaire-vergelijkingen",
+    "title": "Parameters van lineaire vergelijkingen",
+    "recordType": "guidance",
+    "offerCategory": "materials",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "providerName": "chris cambré, Judith, GeoGebra Materials Team en GeoGebra Team (via GeoGebra)",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "subjects": [
+      "Wiskunde"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-11-22",
+    "verificationStatus": "verified",
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De werkbladpagina noemt de makers. De eerste constructie werkt na het afwijzen van optionele cookies. De lijnvergelijking en het snijpunt zijn in een nieuwe browsersessie gecontroleerd bij verschillende waarden van m en q.",
+    "changeHistory": [
+      {
+        "date": "2026-11-22",
+        "type": "added",
+        "summary": "Het vakmateriaal en de Nederlandstalige lesstart van de Atlas zijn toegevoegd na controle van de bron en de leerlingactiviteit."
+      }
+    ],
+    "subtype": "Interactief wiskundewerkblad",
+    "language": [
+      "nl"
+    ],
+    "description": "In dit Nederlandstalige werkblad op GeoGebra verkennen leerlingen de lijn y = mx + q. Ze veranderen de helling en het snijpunt met de y-as. Er is een voorbeeldconstructie en een tweede werkvlak om de lijn zelf te tekenen.",
+    "purpose": "Met een grafiek en twee invulwaarden vaststellen welke parameter de helling bepaalt en welke het snijpunt met de y-as.",
+    "availabilityText": "Het werkblad en de voorbeeldconstructie waren gratis te openen zonder account. Bij de controle kon de cookiekeuze worden afgewezen.",
+    "keywords": [
+      "GeoGebra",
+      "lineaire functies",
+      "grafieken",
+      "hellingsgetal",
+      "richtingscoëfficiënt",
+      "snijpunt",
+      "schuifknoppen",
+      "lesstart"
+    ],
+    "sourceUrls": [
+      {
+        "label": "Start het Nederlandstalige GeoGebra-werkblad",
+        "url": "https://www.geogebra.org/m/bfIaujSj",
+        "sourceType": "official"
+      },
+      {
+        "label": "GeoGebra – gegevens bij dit werkblad",
+        "url": "https://api.geogebra.org/v1.0/materials/bfIaujSj",
+        "sourceType": "official"
+      }
+    ],
+    "notes": "De makers bieden een wiskundeopdracht met een grafiek. De Atlas voegt een lesstart toe waarin leerlingen een uitleg van AI kunnen controleren. De indeling bij het voortgezet onderwijs is een redactionele inschatting.",
+    "lessonStart": {
+      "sectors": [
+        "VO"
+      ],
+      "level": "VO · wiskunde",
+      "question": "Welke verandering aan y = mx + q maakt de lijn steiler, en welke verplaatst het snijpunt met de y-as?",
+      "preparation": "Open ‘Verken de constructie’ in het werkblad. Vraag vooraf aan een AI-assistent om m en q uit te leggen, of geef de klas deze te toetsen uitspraak: ‘Als m groter wordt, schuift het snijpunt met de y-as omhoog.’",
+      "task": "Zet q op 1 en verander m van 0,5 naar 2. Noteer het snijpunt met de y-as. Houd daarna m op 2 en zet q op 3. Vul voor beide lijnen x = 0 en x = 1 in en vergelijk de uitkomsten met de grafiek.",
+      "reflection": "Welk getal weerlegt of bevestigt de uitspraak over het snijpunt? Leg in eigen woorden uit wat er bij één stap naar rechts verandert.",
+      "sourceUrl": "https://www.geogebra.org/m/bfIaujSj"
+    }
+  },
+  {
+    "id": "phet-energie-skatepark-wrijving",
+    "title": "Energie in het schaatspark: eenvoudig",
+    "recordType": "guidance",
+    "offerCategory": "materials",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "providerName": "PhET Interactive Simulations, University of Colorado Boulder",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "subjects": [
+      "Natuurkunde"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "publicationDate": null,
+    "lastVerified": "2026-11-22",
+    "verificationStatus": "verified",
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De Nederlandstalige simulatie startte zonder account. In het scherm Wrijving zijn de schuifknop, de bewegende skater op de baan en de energiewaarden in het staafdiagram gecontroleerd. De officiële lespagina bevestigt de doelen voor energie en wrijving.",
+    "changeHistory": [
+      {
+        "date": "2026-11-22",
+        "type": "added",
+        "summary": "Het vakmateriaal en de Nederlandstalige lesstart van de Atlas zijn toegevoegd na controle van de bron en de leerlingactiviteit."
+      }
+    ],
+    "subtype": "Interactieve natuurkundeles met simulatie",
+    "language": [
+      "nl",
+      "en"
+    ],
+    "description": "Leerlingen laten een skater over een U-vormige baan rijden. In het energiediagram volgen ze de kinetische, potentiële en thermische energie en de totale energie. Met dezelfde baan kunnen ze een rit zonder wrijving vergelijken met een rit met wrijving.",
+    "purpose": "Met twee ritten op één baan onderzoeken waar de energie blijft als de skater minder hoog terugkomt.",
+    "availabilityText": "De simulatie opent rechtstreeks zonder account. De bediening en energielabels zijn Nederlands. Een deel van de gesproken en toetsenbordondersteuning is Engelstalig. Voor de aanvullende bestanden bij de Engelstalige bronles vraagt PhET om in te loggen.",
+    "keywords": [
+      "PhET",
+      "natuurkunde",
+      "energiebehoud",
+      "wrijving",
+      "kinetische energie",
+      "potentiële energie",
+      "thermische energie",
+      "skatepark",
+      "schaatspark",
+      "simulatie",
+      "lesstart"
+    ],
+    "sourceUrls": [
+      {
+        "label": "Start de Nederlandstalige PhET-simulatie",
+        "url": "https://phet.colorado.edu/sims/html/energy-skate-park-basics/latest/energy-skate-park-basics_nl.html",
+        "sourceType": "official"
+      },
+      {
+        "label": "PhET – informatie over de simulatie",
+        "url": "https://phet.colorado.edu/en/simulations/energy-skate-park-basics",
+        "sourceType": "official"
+      },
+      {
+        "label": "PhET – Mechanical Energy Lab van Trish Loeblein",
+        "url": "https://phet.colorado.edu/en/activities/6375",
+        "sourceType": "official"
+      }
+    ],
+    "notes": "De simulatie komt van PhET. Trish Loeblein schreef de aanvullende bronles over mechanische energie. De Nederlandstalige lesstart over het controleren van een AI-uitleg is van de Atlas.",
+    "lessonStart": {
+      "sectors": [
+        "VO"
+      ],
+      "level": "VO · natuurkunde",
+      "question": "Als de skater door wrijving minder hoog terugkomt, wat gebeurt er dan met de totale energie in dit model?",
+      "preparation": "Open het scherm ‘Wrijving’ en klap linksboven ‘Energie’ open. Laat de klas een AI-uitleg toetsen of gebruik deze voorbeeldbewering: ‘Door wrijving verdwijnt een deel van de totale energie.’",
+      "task": "Zet de wrijving op ‘Geen’. Laat de skater vanaf een herkenbaar punt op de baan los en pauzeer de rit. Herhaal vanaf hetzelfde punt met meer wrijving. Vergelijk de terugkeerhoogte en de staven ‘Thermisch’ en ‘Totaal’.",
+      "reflection": "Welke staaf verklaart de lagere terugkeerhoogte? Welke waarneming gebruik je om de bewering te verbeteren?",
+      "sourceUrl": "https://phet.colorado.edu/sims/html/energy-skate-park-basics/latest/energy-skate-park-basics_nl.html"
+    }
   }
 ]
