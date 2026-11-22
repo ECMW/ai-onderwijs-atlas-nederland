@@ -313,6 +313,11 @@ test('teachers can reach an assessment agreement from the redesign route, agreem
   assert.ok(load(items, '#zoeken?q=afspraken&type=materials,knowledge').resultsMarkup().includes('href="#toetsafspraak"'));
   assert.ok(load(items, '#zoeken?q=toetsafspraak').suggestionData('Toetsafspraak maken')
     .some(section => section.items.some(item => item.href === '#toetsafspraak')));
+  for (const query of ['AI-bestendige toets', 'toets AI resilient']) {
+    const api = load(items, '#zoeken?q=' + encodeURIComponent(query));
+    assert.ok(api.suggestionData(query).some(section => section.items.some(item => item.href === '#toetsafspraak?start=eigen')));
+    assert.match(api.resultsMarkup(), /href="#toetsafspraak\?start=eigen"/);
+  }
   assert.ok(!load(items, '#zoeken?q=toets&sector=PO').resultsMarkup().includes('href="#toetsafspraak"'));
   assert.ok(!load(items, '#zoeken?q=privacy').resultsMarkup().includes('href="#toetsafspraak"'));
 });
@@ -401,10 +406,10 @@ test('assessment agreements distinguish independent work, optional AI feedback a
   assert.equal(api.assessmentParts({goal,mode:'__proto__',criterion:''}).length, 0);
 });
 
-test('the editable concept preserves choices in its tab and copies the exact classroom text or selects it for manual copying', async () => {
-  const stored = new Map(), storage = {getItem:k => stored.get(k), setItem:(k,v) => stored.set(k,v)};
+function assessmentFormFixture() {
   const goal = {value:'',setCustomValidity() {},focus() { this.focused = true; },reportValidity() { this.validated = true; }};
-  const mode = {value:''}, evidence = {value:''}, criterion = {value:''}, task = {value:''}, alternative = {value:''}, start = {value:''}, clear = {};
+  const mode = {value:''}, evidence = {value:''}, criterion = {value:''}, task = {...goal}, alternative = {value:''};
+  const start = {value:'',focus() {}}, clear = {}, jump = {};
   const compareGoal = {}, applied = {}, preview = {focus() { this.focused = true; }};
   const picks = ['zelfstandig','feedback'].map(key => ({dataset:{assessmentApply:key}}));
   const compare = {open:true,querySelector:() => compareGoal,querySelectorAll:() => picks};
@@ -414,8 +419,60 @@ test('the editable concept preserves choices in its tab and copies the exact cla
   })[s], querySelectorAll:() => [{value:'feedback', set checked(value) { if (!value) mode.value = ''; }}]};
   const copy = {isConnected:true}, feedback = {}, field = {hidden:true,focus() {},select() { this.selected = true; }};
   const result = {querySelector:s => ({'[data-assessment-copy]':copy,'[role="status"]':feedback,textarea:field})[s]};
-  const main = {querySelector:s => ({'.assessment-form':form,'[data-assessment-result]':result,'#assessment-start':start,'#assessment-preview-title':preview})[s]};
+  const main = {querySelector:s => ({'.assessment-form':form,'[data-assessment-result]':result,'#assessment-start':start,'#assessment-preview-title':preview,'[data-assessment-jump]':jump})[s]};
   const document = {querySelector:s => s === 'main' ? main : null};
+  return {document, main, form, goal, mode, task, evidence, criterion, alternative, start, clear, compare, compareGoal, picks, applied, preview, result, copy, feedback, field};
+}
+
+test('the spotlight opens the saved own question, requires its text and preserves the full question when switching examples', async () => {
+  const ui = assessmentFormFixture();
+  const longQuestion = 'Onderbouw met een gegeven uit de casus. '.repeat(35) + 'Einde van de vraag.';
+  const stored = new Map([
+    ['atlas.toetsafspraak.start','adviesmail'],
+    ['atlas.toetsafspraak', JSON.stringify({task:longQuestion,mode:'feedback',goal:'Een bron wegen.'})]
+  ]);
+  const location = {hash:'#toetsafspraak?start=eigen'};
+  const history = {replaceState:(_state, _title, hash) => { location.hash = hash; }};
+  const storage = {getItem:key => stored.get(key),setItem:(key,value) => stored.set(key,value)};
+  let copied;
+  const api = load([], location.hash, {document:ui.document, location, history, sessionStorage:storage,
+    navigator:{clipboard:{writeText:async text => { copied = text; }}}});
+  api.renderAssessment();
+  assert.ok(ui.main.innerHTML.includes(longQuestion));
+  assert.match(ui.main.innerHTML, /id="assessment-task" rows="4" required/);
+  assert.ok(ui.main.innerHTML.indexOf('id="assessment-task"') < ui.main.innerHTML.indexOf('id="assessment-goal"'));
+  assert.ok(!ui.main.innerHTML.includes('value="adviesmail" selected'));
+  ui.goal.value = 'Een bron wegen.';
+  ui.mode.value = 'feedback';
+  ui.task.value = '  ';
+  ui.form.oninput();
+  assert.ok(!ui.result.innerHTML.includes('data-assessment-copy'));
+  ui.picks[1].onclick();
+  assert.ok(ui.task.focused && ui.task.validated);
+  ui.task.value = longQuestion;
+  ui.form.oninput();
+  await ui.copy.onclick();
+  assert.ok(copied.includes(longQuestion) && copied.includes('Lever je concept en eindversie in.'));
+  ui.evidence.value = 'Verdedig één bronkeuze aan de hand van de casus.';
+  ui.form.oninput();
+  await ui.copy.onclick();
+  assert.ok(copied.includes(ui.evidence.value));
+  ui.start.value = 'voedselweb';
+  ui.start.onchange();
+  assert.equal(location.hash, '#toetsafspraak?start=voedselweb');
+  assert.ok(ui.main.innerHTML.includes('value="voedselweb" selected'));
+  ui.start.value = '';
+  ui.start.onchange();
+  assert.equal(location.hash, '#toetsafspraak?start=eigen');
+  assert.ok(ui.main.innerHTML.includes(longQuestion) && ui.main.innerHTML.includes(ui.evidence.value));
+  assert.match(ui.main.innerHTML, /id="assessment-task" rows="4" required/);
+  assert.equal(stored.get('atlas.toetsafspraak.start'), '');
+  assert.equal(load([], location.hash, {sessionStorage:storage}).readAssessmentDraft().task,longQuestion);
+});
+
+test('the editable concept preserves choices in its tab and copies the exact classroom text or selects it for manual copying', async () => {
+  const stored = new Map(), storage = {getItem:k => stored.get(k), setItem:(k,v) => stored.set(k,v)};
+  const {document, main, form, goal, mode, task, evidence, criterion, alternative, clear, compare, compareGoal, picks, applied, preview, result, copy, feedback, field} = assessmentFormFixture();
   let copied = '';
   const navigator = {clipboard:{writeText:async value => { copied = value; }}};
   const location = {hash:'#toetsafspraak'};
