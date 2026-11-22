@@ -1467,12 +1467,29 @@ test('newest additions and newest publications are separate ordered views', () =
   assert.ok(api.newOffersMarkup('published').includes('Gepubliceerd op'));
 });
 
+test('new offers show the active date mode, full notice and date next to each title', () => {
+  const api = load([record('example', '2026-09-09')]);
+  for (const [current, other, activeLabel, dateLabel] of [
+    ['added', 'published', 'Nieuw in de Atlas', 'Toegevoegd aan de Atlas op'],
+    ['published', 'added', 'Recent gepubliceerd', 'Gepubliceerd op']
+  ]) {
+    const html = api.newOffersMarkup(current);
+    const nav = html.match(/<nav class="new-offers-modes"[^>]*>([\s\S]*?)<\/nav>/)[1];
+    assert.ok(nav.includes(`<span aria-current="page">${activeLabel}</span>`));
+    assert.deepEqual([...nav.matchAll(/href="([^"]+)"/g)].map(match => match[1]), [`#nieuw?volgorde=${other}`]);
+    assert.match(html, /<header[^>]*>\s*<h1>Nieuw aanbod<\/h1><p class="listing-notice">Opname in de Atlas betekent geen goedkeuring, kwaliteitsbeoordeling of aanbeveling van het aanbod of de aanbieder\.<\/p><\/header>/);
+    assert.match(html, /<details class="new-offers-explanation"><summary>[^<]+<\/summary>[\s\S]*?bekende (publicatie|toevoeg)datum\.<\/p>\s*<\/details>/);
+    assert.ok(html.includes(`</h2>\n        <p class="publication-date">${dateLabel} <time datetime="`));
+    assert.equal((html.match(/class="publication-date"/g) || []).length, 1);
+  }
+});
+
 test('unknown recency dates are disclosed rather than invented from verification', () => {
   const unknown = record('unknown-date', null); unknown.changeHistory = [];
   const api = load([unknown]);
   for (const mode of ['added', 'published']) {
     const html = api.newOffersMarkup(mode);
-    assert.ok(html.includes('Bij 1 vermeldingen is deze datum niet vastgelegd'));
+    assert.ok(html.includes('Bij één vermelding ontbreekt deze datum'));
     assert.ok(!html.includes('data-record-id="unknown-date"'));
     assert.ok(html.includes('#zoeken?all=1'));
   }
