@@ -21,6 +21,14 @@ with sync_playwright() as playwright:
         search.fill("biologie")
         assert page.locator("article.tool:visible").count() == 2
         assert "2 lesproeven" in page.locator("#count").inner_text()
+        subject = page.locator("#vak")
+        subject.select_option("biologie")
+        assert page.locator("article.tool:visible").count() == 2
+        search.fill("genexpressie")
+        assert page.locator("article.tool:visible").count() == 1
+        page.get_by_role("button", name="Wis filters").click()
+        assert subject.input_value() == ""
+        assert page.locator("article.tool:visible").count() == 5
         search.fill("niet-bestaand-vak")
         assert page.locator("article.tool:visible").count() == 0
         search.fill("")
