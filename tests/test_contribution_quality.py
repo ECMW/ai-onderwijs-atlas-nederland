@@ -30,6 +30,24 @@ def source_loader(text="voorbeeldtool voorbeeldorganisatie direct beschikbaar"):
 
 
 class ContributionQualityTests(unittest.TestCase):
+    def test_contribution_subjects_are_optional_unique_plain_labels(self):
+        for fields in ({}, {"subjects": []}, {"subjects": ["Wiskunde", "Filosofie van de techniek"]}):
+            with self.subTest(fields=fields):
+                result = review_records([], [{**record(), **fields}], ["data/records.json"], source_loader())
+                self.assertTrue(result["eligible"], result["errors"])
+        for invalid in (None, "Biologie", {}, [1], [""], ["  "], [" Wiskunde"],
+                        ["Dubbele  spatie"], ["Vak\ngebied"], ["Vak|gebied"], ["Wiskunde,Biologie"],
+                        ["<em>Biologie</em>"], ["Wiskunde", "wiskunde"], ["Café", "Cafe\u0301"]):
+            with self.subTest(invalid=invalid):
+                result = review_records([], [{**record(), "subjects": invalid}], ["data/records.json"], source_loader())
+                self.assertFalse(result["eligible"])
+                self.assertTrue(any("subjects" in error for error in result["errors"]))
+        base = {**record("eerder", "Eerder materiaal"), "subjects": ["Biologie"]}
+        addition = {**record(), "subjects": ["biologie"]}
+        result = review_records([base], [base, addition], ["data/records.json"], source_loader())
+        self.assertFalse(result["eligible"])
+        self.assertTrue(any("bestaande schrijfwijze 'Biologie'" in error for error in result["errors"]))
+
     def test_safe_addition_is_eligible(self):
         report = review_records([], [record()], ["data/records.json"], source_loader())
         self.assertTrue(report["eligible"], report["errors"])

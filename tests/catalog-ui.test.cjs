@@ -15,7 +15,7 @@ const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
     effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
     accessLabel, accessOptions: Object.values(ACCESS_LABELS), recordThemes, themeOptions, route,
-    searchForm, bindResultsControls, bindLessonCopy, sourceActionLabel, sourceCitation, copySourceCitation, meetingSheetMarkup, renderComparison,
+    searchForm, bindResultsControls, bindFilterDrawer, bindLessonCopy, sourceActionLabel, sourceCitation, copySourceCitation, meetingSheetMarkup, renderComparison,
     options: SORT_OPTIONS, getState: () => state, setState: value => { state = value; }
   };`);
 
@@ -760,10 +760,58 @@ test('home and search filters lead with sector, then offer type, before other re
   };
 
   const home = api.homeFilterPanel([]);
-  assertGroupOrder(home, ['Voor welke sector?', 'Wat zoekt u?', 'Waar zoekt u hulp bij?', 'Waar is het aanbod beschikbaar?', 'Voor wie?', 'Beschikbaarheid']);
+  assertGroupOrder(home, ['Voor welke sector?', 'Vakgebied', 'Wat zoekt u?', 'Waar zoekt u hulp bij?', 'Waar is het aanbod beschikbaar?', 'Voor wie?', 'Beschikbaarheid']);
 
   const search = api.catalogFilterPanel(['Training'], ['Docenten'], ['Voorbeeld']);
-  assertGroupOrder(search, ['Voor welke sector?', 'Wat zoekt u?', 'Onderwerp', 'Regio', 'Doelgroep', 'Beschikbaarheid', 'Aanbieder', 'Meer filters']);
+  assertGroupOrder(search, ['Voor welke sector?', 'Vakgebied', 'Wat zoekt u?', 'Onderwerp', 'Regio', 'Doelgroep', 'Beschikbaarheid', 'Aanbieder', 'Meer filters']);
+});
+
+test('subjects use explicit public metadata, allow multiple choices and combine with sector and offer type', () => {
+  const data = [
+    { ...record('math'), subjects: ['Wiskunde', 'Econometrie'], sectors: ['VO'], offerCategory: 'materials' },
+    { ...record('biology'), subjects: ['Biologie'], sectors: ['VO'], offerCategory: 'materials' },
+    { ...record('higher'), subjects: ['Wiskunde'], sectors: ['HBO'], offerCategory: 'materials' },
+    { ...record('reference'), subjects: ['Biologie'], sectors: ['VO'], offerCategory: 'knowledge' },
+    { ...record('legacy'), keywords: ['Biologie'], sectors: ['VO'], offerCategory: 'materials' }
+  ];
+  const api = load(data);
+  const ids = criteria => Array.from(api.recordsForCriteria(criteria), item => item.id);
+  assert.equal(api.facetSelectionLabel('vak'), 'Alle vakgebieden');
+  assert.deepEqual(ids({}), data.map(item => item.id));
+  assert.deepEqual(ids({vak: 'Biologie'}), ['biology', 'reference']);
+  assert.deepEqual(ids({vak: 'Wiskunde,Biologie', sector: 'VO', type: 'materials'}), ['math', 'biology']);
+  assert.deepEqual(ids({vak: 'Econometrie', sector: 'HBO'}), []);
+  assert.deepEqual(ids({q: 'Econometrie'}), ['math']);
+  assert.ok(ids({q: 'Biologie'}).includes('legacy'));
+
+  const selected = load(data, '#zoeken?vak=Biologie%2CEconometrie&sector=VO&type=materials&sort=az');
+  const panel = selected.catalogFilterPanel(['materials', 'knowledge'], ['Docenten'], ['Voorbeeld']);
+  const block = panel.match(/<details[^>]+data-facet-block="vak"[\s\S]+?<\/details>/)[0];
+  assert.match(block, /aria-label="2 geselecteerd"/);
+  assert.equal((block.match(/type="checkbox"/g) || []).length, 3);
+  assert.equal((block.match(/ checked /g) || []).length, 2);
+  assert.match(block, /<span>Biologie<\/span><small>1<\/small>/);
+  assert.deepEqual([...block.matchAll(/data-facet-option="([^"]+)"/g)].map(match => match[1]),
+    ['Biologie', 'Econometrie', 'Wiskunde']);
+  const results = selected.resultsMarkup();
+  assert.match(results, /data-remove="vak\|Econometrie"/);
+  assert.match(results, /data-record-id="biology"[\s\S]*data-record-id="math"/);
+  const shared = new URLSearchParams(selected.stateHref().split('?')[1]);
+  assert.equal(shared.get('vak'), 'Biologie,Econometrie');
+  assert.equal(shared.get('sector'), 'VO');
+  const sheet = load(data, '#overlegblad?' + shared).meetingSheetMarkup();
+  assert.match(sheet, /<dt>Vakgebied<\/dt><dd>Biologie of Econometrie<\/dd>/);
+  assert.equal((sheet.match(/class="sheet-entry"/g) || []).length, 2);
+  assert.match(load(data, '#zoeken?vak=Biologie&sector=HBO').resultsMarkup(), /Geen exacte match/);
+});
+
+test('the classroom task drilldown and return link preserve the selected subject', () => {
+  const data = [{...record('example', null, 'Les voor de klas'), subjects: ['Biologie'], sectors: ['VO'], offerCategory: 'materials'}];
+  const root = load(data, '#zoeken?sector=VO&vak=Biologie').resultsMarkup();
+  const link = root.match(/<a class="practice-link" href="([^"]+)"><strong>Een les voorbereiden/)[1].replaceAll('&amp;', '&');
+  assert.equal(new URLSearchParams(link.split('?')[1]).get('vak'), 'Biologie');
+  const back = load(data, link).resultsMarkup().match(/aria-label="Praktijkvragen"><a href="([^"]+)"/)[1].replaceAll('&amp;', '&');
+  assert.equal(new URLSearchParams(back.split('?')[1]).get('vak'), 'Biologie');
 });
 
 test('route changes release an open mobile filter overlay and its detached keyboard handler', () => {
@@ -792,36 +840,45 @@ test('search buttons have an explicit accessible name across both search forms',
   }
 });
 
-test('refreshed mobile filter controls announce the still-open panel correctly', () => {
-  const filterClasses = new Set();
-  const bodyClasses = new Set();
-  let focusedClose = false;
-  const makeOpener = () => ({expanded:'false', setAttribute(name,value){if(name==='aria-expanded')this.expanded=value;}});
-  let opener = makeOpener();
+test('the mobile filter opener survives a results update and restores focus on close', () => {
+  const classes = () => {
+    const members = new Set();
+    return { add: key => members.add(key), remove: key => members.delete(key), contains: key => members.has(key) };
+  };
+  const attributes = {};
+  const opener = { setAttribute: (name, value) => { attributes[name] = value; }, focus: () => { focused = 'opener'; } };
+  let focused;
+  const closer = {focus: () => { focused = 'close'; }};
+  const apply = {};
   const filters = {
-    classList:{contains:value=>filterClasses.has(value), add:value=>filterClasses.add(value)},
-    querySelector:selector=>selector==='.close'?{focus:()=>{focusedClose=true;}}:null
+    classList: classes(), setAttribute() {}, removeAttribute() {},
+    querySelector: selector => ({'.close': closer, '.apply': apply, summary: {focus: () => { focused = 'facet'; }}})[selector]
   };
-  const panel = {querySelectorAll:()=>[],querySelector:selector=>selector==='.mobile-filter'?opener:null};
-  const doc = {
-    body:{classList:{add:value=>bodyClasses.add(value)}},
-    querySelector:selector=>selector==='main'?{}:selector==='#results-panel'?panel:selector==='#filters'?filters:null
+  const results = {querySelectorAll: () => [], querySelector: () => null};
+  const media = {};
+  const document = {
+    body: {classList: classes()},
+    querySelector: selector => ({'main': {}, '#results-panel': results, '.result-head h2': {focus: () => { focused = 'results'; }}})[selector]
   };
-  const api = load([], '#zoeken?all=1', {document:doc});
-  api.bindResultsControls();
-  assert.equal(opener.expanded, 'false');
+  const api = load([], '#zoeken', {document, matchMedia: () => media});
+  api.bindFilterDrawer(filters, opener);
   opener.onclick();
-  assert.equal(opener.expanded, 'true');
-  assert.ok(focusedClose);
-  assert.ok(bodyClasses.has('locked'));
-  opener = makeOpener(); // updateSearchResults replaces only the results panel.
   api.bindResultsControls();
-  assert.equal(opener.expanded, 'true');
-  assert.ok(filterClasses.has('open'));
-  assert.ok(bodyClasses.has('locked'));
-  filterClasses.clear();
-  api.bindResultsControls();
-  assert.equal(opener.expanded, 'false');
+  assert.equal(attributes['aria-expanded'], 'true');
+  assert.ok(filters.classList.contains('open'));
+  assert.ok(document.body.classList.contains('locked'));
+  assert.equal(focused, 'close');
+  document.onkeydown({key: 'Escape'});
+  assert.equal(focused, 'opener');
+  assert.equal(attributes['aria-expanded'], 'false');
+  opener.onclick();
+  apply.onclick();
+  assert.equal(focused, 'results');
+  opener.onclick();
+  media.onchange({matches: false});
+  assert.equal(focused, 'facet');
+  assert.equal(attributes['aria-expanded'], 'false');
+  assert.ok(!document.body.classList.contains('locked'));
 });
 
 test('ordinary training searches preserve visible words and find named trainers', () => {

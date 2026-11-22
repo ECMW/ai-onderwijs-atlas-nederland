@@ -1,6 +1,7 @@
 import json
 from datetime import date
 from pathlib import Path
+from contribution_quality import subject_field_errors
 from public_assets import versioned_html
 from promote_contribution import dutch_date
 from publication_scope import duplicate_redirects
@@ -32,6 +33,7 @@ def generate(root: Path = R, generated_on: date | None = None) -> None:
     # individual source was checked today. Record verification dates stay intact.
     public_meta = {**meta, 'updated': dutch_date(generated_on or date.today()), 'recordCount': len(published)}
     redirects, errors = duplicate_redirects(records, published)
+    errors.extend(subject_field_errors(records))
     if errors:
         raise ValueError('; '.join(errors))
     public_meta.pop('recordRedirects', None)
@@ -47,7 +49,8 @@ def generate(root: Path = R, generated_on: date | None = None) -> None:
     )
     (root / 'data/search-index.json').write_text(json.dumps([
         {'id': item['id'], 'text': ' '.join(str(value) for value in [
-            item['title'], item.get('providerName'), item.get('description'), *item.get('keywords', [])
+            item['title'], item.get('providerName'), item.get('description'), *item.get('keywords', []),
+            *item.get('subjects', [])
         ] if value)} for item in published
     ], ensure_ascii=False), encoding='utf-8')
 
