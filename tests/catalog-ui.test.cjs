@@ -371,6 +371,20 @@ test('expired dated training and application calls never retain an active status
   assert.equal(JSON.stringify([training, call]), original, 'Display status must not rewrite canonical data');
 });
 
+test('results show the effective status and practical dates before source actions', () => {
+  const api = load();
+  const call = {...record('call'), recordType:'funding_call', status:'closed_call',
+    applicationDeadline:'invalid', fundingDeadline:'2026-09-15'};
+  const card = api.simpleCard(call);
+  assert.match(card, /Aanvraag gesloten[\s\S]*Aanvraagdeadline <time datetime="2026-09-15">[^<]+<\/time>[\s\S]*class="card-actions/);
+  const course = {...record('course'), recordType:'training', startDate:'2027-01-14', endDate:'2027-05-13'};
+  assert.match(api.simpleCard(course), /Periode <time datetime="2027-01-14">.*datetime="2027-05-13"/);
+  assert.match(api.simpleCard({...course, endDate:course.startDate}), /Datum <time/);
+  assert.match(api.simpleCard({...course, endDate:null}), /Startdatum <time/);
+  assert.match(api.simpleCard({...course, startDate:null}), /Einddatum <time/);
+  assert.doesNotMatch(api.simpleCard({...course, startDate:null, endDate:'2027-02-30'}), /<time/);
+});
+
 test('expired availability is consistent across cards and availability filters', () => {
   const data = [
     {...record('old-training'), recordType:'training', legacyType:'Training', endDate:'2000-01-01'},
@@ -941,6 +955,22 @@ test('a delayed clipboard rejection cannot change a different page or use detach
       assert.equal(current['#detail-feedback'].textContent, '');
     }
   }
+});
+
+test('chosen meeting sheets travel by URL, retain order and only show public records', () => {
+  const items = [record('first'), record('second'), {...record('private'), verificationStatus:'needs_review'}];
+  const api = load(items, '#overlegblad?item=second&item=private&item=missing&item=first&item=second');
+  const html = api.meetingSheetMarkup();
+  assert.match(html, /Gekozen voor het overleg/);
+  assert.match(html, /data-share-sheet/);
+  assert.equal((html.match(/class="sheet-entry"/g) || []).length, 2);
+  assert.ok(html.indexOf('<h2>second</h2>') < html.indexOf('<h2>first</h2>'));
+  assert.ok(!html.includes('example.org/private'));
+  assert.ok(!load(items, '#overlegblad?item=missing').meetingSheetMarkup().includes('class="sheet-entry"'));
+  const storage = {getItem: key => key === 'atlas.sheetPicks' ? 'item=second' : ''};
+  const search = load(items, '#zoeken', {sessionStorage:storage}).resultsMarkup();
+  assert.match(search, /href="#overlegblad\?item=second"/);
+  assert.match(search, /data-sheet-pick="second"[^>]* checked/);
 });
 
 test('themed results and meeting sheets both include every matching record', () => {

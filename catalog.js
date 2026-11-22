@@ -184,6 +184,17 @@
   }
   function sessionGet(key) { try { return sessionStorage.getItem(key) || ''; } catch { return ''; } }
   function sessionSet(key, value) { try { sessionStorage.setItem(key, String(value)); } catch { /* sessieopslag kan geblokkeerd zijn */ } }
+  const publicRecordsById = new Map(records.map(record => [record.id, record]));
+  function selectedPublicIds(ids) {
+    return [...new Set(ids.map(id => publicRecordsById.has(id) ? id : source.metadata?.recordRedirects?.[id])
+      .filter(id => publicRecordsById.has(id)))];
+  }
+  const sheetPicks = new Set(selectedPublicIds(new URLSearchParams(sessionGet('atlas.sheetPicks')).getAll('item')));
+  function pickedSheetHref() {
+    const params = new URLSearchParams();
+    for (const id of sheetPicks) params.append('item', id);
+    return '#overlegblad?' + params.toString();
+  }
   const personaLabel = value => ({ Docenten: 'Docent', Bestuurders: 'Bestuurder', 'IT-professionals': 'IT-professional', Onderzoekers: 'Onderzoeker' }[value] || value);
   const personaSummary = selected => selected.map(personaLabel).join(' + ');
 
@@ -728,19 +739,38 @@
     ].join('\r\n');
     return `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
+  function practicalDates(record) {
+    const deadline = validDate(record.applicationDeadline) || validDate(record.fundingDeadline);
+    const parts = [];
+    const time = date => `<time datetime="${date}">${escapeHtml(dateLabel(date))}</time>`;
+    const training = record.recordType === 'training' || record.legacyType === 'Training';
+    if (deadline) parts.push(`${training ? 'Aanmelddeadline' : 'Aanvraagdeadline'} ${time(deadline)}`);
+    if (training) {
+      const start = validDate(record.startDate);
+      const end = validDate(record.endDate);
+      if (start && end && start < end) parts.push(`Periode ${time(start)} – ${time(end)}`);
+      else if (start && start === end) parts.push(`Datum ${time(start)}`);
+      else if (start && !end) parts.push(`Startdatum ${time(start)}`);
+      else if (end && !start) parts.push(`Einddatum ${time(end)}`);
+    }
+    return parts.join(' · ');
+  }
   function simpleCard(record, showPublicationDate = false, recency = null) {
+    const dates = practicalDates(record);
     const sectors = (record.sectors || []).filter(sector => sector !== 'VSO');
     const sourceItem = primarySource(record);
     return `<article class="result-card" data-record-id="${escapeHtml(record.id)}" data-offer-card>
       <div class="card-body offer-intro"><div class="card-top"><span class="type-label">${escapeHtml(offerLabel(record))}</span></div>
         <h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
         <p class="provider">Aanbieder: ${escapeHtml(factValue(record.providerName))}</p>${commercialBadge(record)}
+        <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span>${dates ? `<span>${dates}</span>` : ''}</div>
         <dl class="offer-terms"><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div><div><dt>Toegang</dt><dd>${escapeHtml(accessLabel(record))}</dd></div><div><dt>Taal</dt><dd>${escapeHtml(languageList(record))}</dd></div></dl>
       </div>
       <div class="card-actions offer-links">
         ${sourceItem ? `<a class="card-cta primary" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record))}: ${escapeHtml(record.title)}">${escapeHtml(sourceActionLabel(record))} ↗</a>` : ''}
         <a class="card-cta" href="#item/${escapeHtml(record.id)}" aria-label="Bekijk details: ${escapeHtml(record.title)}">Bekijk details</a>
         <a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a>
+        ${showPublicationDate ? `<label class="sheet-pick"><input type="checkbox" data-sheet-pick="${escapeHtml(record.id)}" aria-label="Op mijn overlegblad: ${escapeHtml(record.title)}" ${sheetPicks.has(record.id) ? 'checked' : ''}> Op mijn overlegblad</label>` : ''}
       </div>
       <div class="card-body offer-context">
         <p class="description">${escapeHtml(factValue(record.description))}</p>
@@ -749,7 +779,6 @@
         ${showPublicationDate && state.sort === 'added' ? `<p class="publication-date">${addedDate(record) ? `Toegevoegd aan de Atlas op <time datetime="${addedDate(record)}">${escapeHtml(dateLabel(addedDate(record)))}</time>` : 'Toevoegdatum onbekend'}</p>` : ''}
         ${showPublicationDate && isPublicationSort() ? `<p class="publication-date">${publicationDate(record) ? `Verschenen op <time datetime="${publicationDate(record)}">${escapeHtml(dateLabel(publicationDate(record)))}</time>` : 'Publicatiedatum onbekend'}</p>` : ''}
         ${sectors.length ? `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>` : ''}
-        <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span></div>
       </div>
     </article>`;
   }
@@ -1012,6 +1041,7 @@
     return `${practiceNavigation()}<header class="result-head"><div><h2 tabindex="-1">${escapeHtml(heading)}</h2><p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p></div><div class="result-tools"><button class="mobile-filter btn secondary" aria-controls="filters" aria-expanded="false">Filters (${activeCount})</button><label>Sorteren<select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select></label></div></header>
       ${values('type').length === 1 && values('type')[0] === 'Training' ? '<section class="training-intro"><h2>Workshops en trainers</h2><p>Vind een workshop, cursus of training en de aanbieder die deze verzorgt. Verfijn op onderwerp, doelgroep of aanbieder. Trainer, locatie, kosten en beschikbaarheid staan bij het aanbod voor zover bevestigd. Bespreek maatwerk via de officiële aanbodpagina.</p></section>' : ''}
       ${values('theme').includes('Veilige AI-omgeving') ? '<section class="selection-guidance"><h2>Beoordeel de toepassing in uw eigen situatie</h2><p>Gebruik de officiële bronnen om gegevensgebruik, beheer, menselijke controle, toegankelijkheid en overstapmogelijkheden te beoordelen. Wat passend is, hangt af van uw doel, gegevens, instellingen en afspraken. Deze selectie is geen keurmerk voor veilige of verantwoorde AI.</p></section>' : ''}
+      <a class="btn secondary" data-picked-sheet href="${escapeHtml(pickedSheetHref())}" ${sheetPicks.size ? '' : 'hidden'}>Open mijn overlegblad (${sheetPicks.size})</a>
       <details class="selection-bar"><summary>Selectie delen of afdrukken</summary><div class="selection-actions"><a href="#bijdragen">Aanbod toevoegen of feedback geven</a><button type="button" data-share-selection>Deel selectie</button>${resultRecords.length ? `<a data-meeting-sheet href="${escapeHtml(stateHref().replace(/^#zoeken/, '#overlegblad'))}">Overlegblad (${resultRecords.length})</a>` : ''}</div></details>
       ${chips ? `<div class="chips">${chips}<button class="clear-link">Wis alles</button></div>` : ''}
       <div id="action-feedback" class="action-feedback" aria-live="polite"></div>
@@ -1086,7 +1116,12 @@
   }
 
   function meetingSheetMarkup() {
-    const items = sortRecords(recordsForCriteria(state));
+    const params = new URLSearchParams(location.hash.split('?')[1] || '');
+    const picked = params.has('item');
+    const ids = params.getAll('item');
+    const items = picked ? selectedPublicIds(ids).map(id => publicRecordsById.get(id)) : sortRecords(recordsForCriteria(state));
+    const previousSearch = sessionGet('atlas.lastSearch');
+    const backHref = picked && /^#zoeken(?:\?|$)/.test(previousSearch) ? previousSearch : stateHref();
     const labels = { theme: 'Onderwerp', audience: 'Doelgroep', sector: 'Sector', status: 'Beschikbaarheid',
       type: 'Soort aanbod', geography: 'Regio', organization: 'Aanbieder', cost: 'Kosten', language: 'Taal', access: 'Toegang', source: 'Bron' };
     const criteria = [
@@ -1094,23 +1129,26 @@
       ...FILTER_KEYS.filter(key => values(key).length).map(key => [labels[key], values(key).map(value => filterOptionLabel(key, value)).join(' of ')]),
       ['Sortering', SORT_OPTIONS[state.sort] || SORT_OPTIONS.relevant]
     ];
-    return `<section class="meeting-sheet"><nav class="sheet-controls" aria-label="Overlegblad"><a class="back-results" href="${escapeHtml(stateHref())}">← Terug naar resultaten</a>${items.length ? '<button class="btn" type="button" data-print-sheet>Afdrukken / opslaan als PDF</button>' : ''}</nav>
-      <header><span class="eyebrow">AI & Onderwijs Atlas Nederland</span><h1>Overlegblad</h1><p>${items.length} ${items.length === 1 ? 'resultaat' : 'resultaten'} · Samengesteld op ${escapeHtml(dateLabel(todayInNetherlands()))}</p>
-      <p class="sheet-help">Dit overzicht bevat alle resultaten van uw zoekselectie. Verfijn uw zoekopdracht als u een korter overzicht wilt.</p>
-      <dl class="meeting-criteria">${criteria.map(([key, value]) => `<div><dt>${escapeHtml(key)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl>
+    return `<section class="meeting-sheet"><nav class="sheet-controls" aria-label="Overlegblad"><a class="back-results" href="${escapeHtml(backHref)}">← Terug naar resultaten</a>${items.length ? '<button class="btn" type="button" data-print-sheet>Afdrukken / opslaan als PDF</button>' : ''}${picked && items.length ? '<button class="btn secondary" type="button" data-share-sheet>Deel overlegblad</button>' : ''}</nav><p id="action-feedback" aria-live="polite"></p>
+      <header><span class="eyebrow">AI & Onderwijs Atlas Nederland</span><h1>${picked ? 'Gekozen voor het overleg' : 'Overlegblad'}</h1><p>${items.length} ${items.length === 1 ? 'resultaat' : 'resultaten'} · Samengesteld op ${escapeHtml(dateLabel(todayInNetherlands()))}</p>
+      <p class="sheet-help">${picked ? 'Dit blad bevat de gekozen vermeldingen. Deel de link met een collega of sla het blad op als PDF.' : 'Dit overzicht bevat alle resultaten van uw zoekselectie. Verfijn uw zoekopdracht als u een korter overzicht wilt.'}</p>
+      ${picked ? '' : `<dl class="meeting-criteria">${criteria.map(([key, value]) => `<div><dt>${escapeHtml(key)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl>`}
       <p class="listing-notice">${LISTING_NOTICE}</p></header>
       ${items.length ? `<ol class="sheet-list">${items.map(record => `<li class="sheet-entry"><article><h2>${escapeHtml(record.title)}</h2>
         <p class="sheet-meta">Aanbieder: ${escapeHtml(factValue(record.providerName))} · ${escapeHtml(offerLabel(record))}</p>
         <p>${escapeHtml(factValue(record.description))}</p>
-        <p class="sheet-meta">${escapeHtml(statusLabel(record))} · ${escapeHtml(costLabel(record))} · ${escapeHtml(accessLabel(record))}${publicationDate(record) ? ` · Verschenen op ${escapeHtml(dateLabel(publicationDate(record)))}` : ''}</p>
+        <p class="sheet-meta">${[escapeHtml(statusLabel(record)), practicalDates(record)].filter(Boolean).join(' · ')} · ${escapeHtml(costLabel(record))} · ${escapeHtml(accessLabel(record))}${publicationDate(record) ? ` · Verschenen op ${escapeHtml(dateLabel(publicationDate(record)))}` : ''}</p>
         <dl class="sheet-links">${officialSources(record).map(item => `<div><dt>${escapeHtml(item.label || 'Officiële bron')}</dt><dd><a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.url)}</a></dd></div>`).join('')}<div><dt>In de Atlas</dt><dd><a href="${escapeHtml(publicItemUrl(record))}">${escapeHtml(publicItemUrl(record))}</a></dd></div></dl>
         </article></li>`).join('')}</ol>` : '<p class="empty">Deze zoekselectie heeft geen resultaten. Pas uw zoekopdracht aan.</p>'}
       <p class="sheet-credit">AI & Onderwijs Atlas Nederland · Gemaakt door E.C.M. Willems</p></section>`;
   }
   function renderMeetingSheet() {
     main.innerHTML = meetingSheetMarkup();
-    document.querySelector('.back-results').onclick = () => sessionSet('atlas.restoreResults', stateHref());
+    const back = document.querySelector('.back-results');
+    back.onclick = () => sessionSet('atlas.restoreResults', back.getAttribute('href'));
     const print = document.querySelector('[data-print-sheet]');
+    const share = document.querySelector('[data-share-sheet]');
+    if (share) share.onclick = () => shareCurrentSelection('Bekijk de gekozen materialen en bronnen voor ons overleg.');
     if (print) print.onclick = () => window.print();
   }
 
@@ -1309,8 +1347,8 @@
     const feedback = document.querySelector('#action-feedback');
     if (feedback) feedback.textContent = message;
   }
-  async function shareCurrentSelection() {
-    const shareData = { title: 'AI & Onderwijs Atlas Nederland', text: `Bekijk deze selectie: ${currentSearchLabel()}`, url: location.href };
+  async function shareCurrentSelection(text = `Bekijk deze selectie: ${currentSearchLabel()}`) {
+    const shareData = { title: 'AI & Onderwijs Atlas Nederland', text, url: location.href };
     try {
       if (navigator.share) await navigator.share(shareData);
       else if (navigator.clipboard) { await navigator.clipboard.writeText(location.href); setActionFeedback('Link naar deze selectie gekopieerd.'); }
@@ -1322,6 +1360,19 @@
   function bindResultsControls() {
     const panel = document.querySelector('#results-panel');
     if (!panel) return;
+    const pickedLink = panel.querySelector('[data-picked-sheet]');
+    if (pickedLink) pickedLink.onclick = () => { sessionSet('atlas.lastSearch', stateHref()); sessionSet('atlas.resultsScroll', scrollY); };
+    panel.querySelectorAll('[data-sheet-pick]').forEach(input => input.onchange = () => {
+      const id = input.dataset.sheetPick;
+      if (input.checked) sheetPicks.add(id);
+      else sheetPicks.delete(id);
+      const href = pickedSheetHref();
+      sessionSet('atlas.sheetPicks', href.split('?')[1]);
+      pickedLink.href = href;
+      pickedLink.hidden = !sheetPicks.size;
+      pickedLink.textContent = `Open mijn overlegblad (${sheetPicks.size})`;
+      setActionFeedback(`${sheetPicks.size} gekozen voor uw overlegblad.`);
+    });
     const sector = panel.querySelector('#practice-sector');
     panel.querySelectorAll('a.practice-link,.practice-back a').forEach(link => {
       link.onclick = event => {
@@ -1347,7 +1398,7 @@
     const sort = panel.querySelector('#sort');
     if (sort) sort.onchange = event => { state.sort = event.target.value; setUrl(); document.querySelector('#sort')?.focus(); };
     const share = panel.querySelector('[data-share-selection]');
-    if (share) share.onclick = shareCurrentSelection;
+    if (share) share.onclick = () => shareCurrentSelection();
     const sheet = panel.querySelector('[data-meeting-sheet]');
     if (sheet) sheet.onclick = () => {
       sessionSet('atlas.lastSearch', stateHref()); sessionSet('atlas.resultsScroll', scrollY);
