@@ -1,5 +1,9 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## Nieuw aanbod op de telefoon · 22 november 2026
+
+Bij een scherm van 390 × 740 CSS-pixels begon de eerste kaarttitel onder de vouw. De twee datumkeuzes staan nu naast elkaar en de sorteeruitleg is uitklapbaar. De volledige disclaimer blijft boven de lijst staan. In de mobiele browsertest eindigde de eerste kaartdatum op 448 pixels bij **Nieuw in de Atlas** en op 423 pixels bij **Recent gepubliceerd**. Ook bij 320 × 568 pixels waren titel en datum zonder scrollen te lezen. Controleer beide standen opnieuw bij wijzigingen aan de paginakop of resultaatkaart. Hoe bezoekers de datumkeuze gebruiken, is niet gemeten.
+
 ## Cyclus van 22 november 2026
 
 Vertrekpunt was de [gepubliceerde praktijkgids](https://github.com/ECMW/ai-onderwijs-atlas-nederland/commit/fc970650091fa5d18bdc7a04dee2914db7458aa3). De uitgave bevatte 459 publieke vermeldingen, 11 uitgewerkte lesstarts en 17 papers. De zoekfunctie vond de Stanford-les en de vraag over leerlingwerk bereikte de praktijkregels. De nieuwe verkenning begon één stap later in die taken. Er waren geen open GitHub-issues. De conceptproef in PR #162 en het technisch onderhoud in #95 hadden een andere opdracht.
