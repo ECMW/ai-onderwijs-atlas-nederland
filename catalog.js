@@ -504,12 +504,18 @@
     const shown = batches[page - 1] || [], unknown = records.length - sorted.length;
     const href = number => `#nieuw?volgorde=${mode}&pagina=${number}`;
     const label = published ? 'Gepubliceerd op' : 'Toegevoegd aan de Atlas op';
-    return `<section class="new-offers"><header class="page-intro"><span class="eyebrow">Snel zien wat er is toegevoegd</span><h1>Nieuw aanbod</h1><p>Bekijk nieuwe vermeldingen in de Atlas of kies aanbod met een recente publicatiedatum.</p><p class="listing-notice">${LISTING_NOTICE}</p></header>
-      <nav class="new-offers-modes" aria-label="Welke datum wilt u bekijken?">
-        <a class="btn${published ? ' secondary' : ''}" href="#nieuw?volgorde=added"${!published ? ' aria-current="page"' : ''}>Nieuw in de Atlas</a>
-        <a class="btn${published ? '' : ' secondary'}" href="#nieuw?volgorde=published"${published ? ' aria-current="page"' : ''}>Recent gepubliceerd</a>
-      </nav><p class="new-offers-explanation">${published ? 'Gesorteerd op de vastgelegde publicatiedatum van het aanbod bij de aanbieder.' : 'Gesorteerd op de eerste vastgelegde toevoeging aan de Atlas. Het aanbod zelf kan al langer bestaan.'} Een latere broncontrole verandert deze volgorde niet. Vermeldingen met dezelfde datum blijven op één pagina.</p>
-      <p class="sort-summary">${sorted.length} vermeldingen met een bekende ${published ? 'publicatiedatum' : 'toevoegdatum'}.${unknown ? ` Bij ${unknown} vermeldingen is deze datum niet vastgelegd; die staan wel bij <a href="#zoeken?all=1">al het aanbod</a>.` : ''}</p>
+    const modeChoice = (value, title) => value === mode
+      ? `<span aria-current="page">${title}</span>`
+      : `<a href="#nieuw?volgorde=${value}">${title}</a>`;
+    return `<section class="new-offers new-offers-page"><header class="page-intro"><h1>Nieuw aanbod</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
+      <nav class="new-offers-modes" aria-label="Sorteer op datum">
+        ${modeChoice('added', 'Nieuw in de Atlas')}
+        ${modeChoice('published', 'Recent gepubliceerd')}
+      </nav>
+      <details class="new-offers-explanation"><summary>Hoe werkt deze sortering?</summary>
+        <p>${published ? 'De nieuwste publicatie bij de aanbieder staat bovenaan.' : 'De nieuwste toevoeging aan de Atlas staat bovenaan. Het aanbod zelf kan al langer bestaan.'} Een latere broncontrole verandert deze volgorde niet. Vermeldingen met dezelfde datum blijven op één pagina.</p>
+        <p>${sorted.length} ${sorted.length === 1 ? 'vermelding heeft' : 'vermeldingen hebben'} een bekende ${published ? 'publicatiedatum' : 'toevoegdatum'}.${unknown ? ` Bij ${unknown === 1 ? 'één vermelding' : `${unknown} vermeldingen`} ontbreekt deze datum. U vindt ${unknown === 1 ? 'die vermelding' : 'deze vermeldingen'} bij <a href="#zoeken?all=1">al het aanbod</a>.` : ''}</p>
+      </details>
       <div class="result-list">${shown.length ? shown.map(record => simpleCard(record, false, { date: date(record), label })).join('') : '<div class="empty"><p>Er zijn nog geen vermeldingen met deze datum vastgelegd.</p><a href="#zoeken?all=1">Bekijk al het aanbod</a></div>'}</div>
       ${pages > 1 ? `<nav class="new-offers-pagination" aria-label="Meer nieuwe bijdragen">${page > 1 ? `<a class="btn secondary" href="${href(page - 1)}">Vorige</a>` : ''}<span>Pagina ${page} van ${pages}</span>${page < pages ? `<a class="btn secondary" href="${href(page + 1)}">Volgende</a>` : ''}</nav>` : ''}</section>`;
   }
@@ -1093,6 +1099,7 @@
     return `<article class="result-card" data-record-id="${escapeHtml(record.id)}" data-offer-card>
       <div class="card-body offer-intro"><div class="card-top"><span class="type-label">${escapeHtml(offerLabel(record))}</span></div>
         <h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
+        ${recency ? `<p class="publication-date">${escapeHtml(recency.label)} <time datetime="${escapeHtml(recency.date)}">${escapeHtml(dateLabel(recency.date))}</time></p>` : ''}
         <p class="provider">Aanbieder: ${escapeHtml(factValue(record.providerName))}</p>${commercialBadge(record)}
         <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(displayStatus(record))}</span>${dates ? `<span>${dates}</span>` : ''}</div>
         ${isFunding(record) ? `<dl class="offer-terms funding-terms"><div><dt>Aanvragers</dt><dd>${escapeHtml(fundingApplicants(record))}</dd></div></dl>` :
@@ -1107,7 +1114,6 @@
       <div class="card-body offer-context">
         <p class="description">${escapeHtml(factValue(record.description))}</p>
         <dl class="offer-audience"><dt>Voor wie</dt><dd>${escapeHtml(factValue((record.audiences || []).join(', ')))}</dd></dl>
-        ${recency ? `<p class="publication-date">${escapeHtml(recency.label)} <time datetime="${escapeHtml(recency.date)}">${escapeHtml(dateLabel(recency.date))}</time></p>` : ''}
         ${showPublicationDate && state.sort === 'added' ? `<p class="publication-date">${addedDate(record) ? `Toegevoegd aan de Atlas op <time datetime="${addedDate(record)}">${escapeHtml(dateLabel(addedDate(record)))}</time>` : 'Toevoegdatum onbekend'}</p>` : ''}
         ${showPublicationDate && isPublicationSort() ? `<p class="publication-date">${publicationDate(record) ? `Verschenen op <time datetime="${publicationDate(record)}">${escapeHtml(dateLabel(publicationDate(record)))}</time>` : 'Publicatiedatum onbekend'}</p>` : ''}
         ${sectors.length ? `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>` : ''}
