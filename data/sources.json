@@ -326,11 +326,12 @@
     "trustLevel": "official",
     "enabled": true,
     "schedule": {
-      "frequency": "weekly"
+      "frequency": "daily"
     },
     "extraction": {
       "type": "html",
-      "scope": "page"
+      "scope": "listing",
+      "deadlineAware": true
     },
     "allowedRecordTypes": [
       "subsidy",
@@ -342,7 +343,7 @@
       "lastStatus": "never_checked",
       "consecutiveFailures": 0
     },
-    "notes": "Officiële Nederlandse toegang tot actuele Digital Europe-calls.",
+    "notes": "RVO verwijst naar de afzonderlijke Europese topics. Verifieer bij de Europese Commissie welke aanvraagfase openstaat en of een Nederlandse onderwijspartner kan deelnemen. Nationale cofinanciering heeft eigen voorwaarden.",
     "themes": [],
     "sectors": [],
     "sourceType": "official"
@@ -2324,6 +2325,41 @@
     "notes": "Volg de officiële oproeplink en indienvoorwaarden bij de bestaande AIDO-vermelding. Verifieer de openstelling bij Npuls.",
     "themes": ["Subsidies en financiering"],
     "sectors": ["MBO", "HBO", "WO"],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-nko-financieringsrondes",
+    "name": "NKO: financieringsrondes voor onderwijsonderzoek en onderwijsinnovatie",
+    "owner": "Nationaal Kennisinstituut Onderwijs",
+    "organizationId": "nationaal-regieorgaan-onderwijsonderzoek-nro",
+    "baseUrl": "https://www.nko.nl/calls?f%5B0%5D=calls_bw_call_status%3A2414&f%5B1%5D=calls_bw_call_status%3A2415&f%5B2%5D=calls_bw_call_status%3A2457&f%5B3%5D=calls_bw_call_status%3A2479",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {"frequency": "daily"},
+    "extraction": {"type": "html", "scope": "listing", "deadlineAware": true},
+    "allowedRecordTypes": ["subsidy", "funding_call"],
+    "operational": {"lastSuccessfulCheck": null, "lastContentHash": null, "lastStatus": "never_checked", "consecutiveFailures": 0},
+    "notes": "Volgt de NKO-filters voor voorbereiding, open calls, intentieverklaringen en inschrijvingen. Controleer bij de ronde of nieuwe aanvragers nog kunnen instappen en of het gaat om een subsidie of een opdracht.",
+    "themes": ["Subsidies en financiering"],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-erasmus-nl-deadlines",
+    "name": "Erasmus+ Nederland: deadlines voor aanvragen",
+    "owner": "Nederlandse Nationale Agentschappen Erasmus+",
+    "baseUrl": "https://www.erasmusplus.nl/actueel/deadlines",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {"frequency": "daily"},
+    "extraction": {"type": "html", "scope": "listing", "deadlineAware": true},
+    "allowedRecordTypes": ["subsidy", "funding_call"],
+    "operational": {"lastSuccessfulCheck": null, "lastContentHash": null, "lastStatus": "never_checked", "consecutiveFailures": 0},
+    "notes": "Controleer onderwijsacties bij het Nederlandse agentschap en in de Europese oproep en programmagids. Het Nederlandse overzicht kan tussen rondes leeg zijn.",
+    "themes": ["Subsidies en financiering"],
+    "sectors": [],
     "sourceType": "official"
   }
 ]

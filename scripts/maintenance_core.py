@@ -160,7 +160,8 @@ def classify(source: dict, previous: dict, result: FetchResult, config: dict) ->
             confirmed_removed.append(pending.pop(url)["unit"])
     state["pendingMissing"] = pending
 
-    if snapshot["contentHash"] == old.get("contentHash") and not confirmed_removed:
+    if (snapshot["contentHash"] == old.get("contentHash")
+            and old_units.keys() == new_units.keys() and not confirmed_removed):
         return ({"type": "NO_CHANGE", "sourceId": source["id"], "detectedAt": stamp,
                  "reason": "Normalized content unchanged", "actionable": False}, state)
 
