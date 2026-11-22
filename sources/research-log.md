@@ -140,3 +140,15 @@ Npuls zijn opnieuw geopend. Ze behandelen hoe een docent een leerdoel verbindt
 aan de rol van AI en de eigen prestatie die zichtbaar moet worden. De drie
 opdrachtteksten in de toetsafspraak zijn door de Atlas geschreven. De
 beoordelingssuggesties zijn voorbeelden die de docent kan aanpassen.
+
+## 2026-11-22 — Twee lessen vergelijken bij de lesvoorbereiding
+
+Voor *Behind the Chat* onderscheidt de Atlas nu de tijd voor het verhaal zelf
+(circa 15 minuten) en voor één verhaal met een klassikaal nagesprek (circa 20
+minuten). De Nederlandse aanbieder noemt gebruik op het digibord of de telefoon.
+[Lesinstructie van Dé Codeerschool](https://codeerschool.nl/behind-the-chat/)
+
+Mediawijs vermeldt voor de EDUbox twee tot drie lesuren, een computer met
+internet en de mogelijkheid om individueel of in groepjes te werken. De
+bestaande Atlas-vermelding bevat deze gegevens. Beide bronnen geven een
+tijdsindicatie van de aanbieder. [Lesinstructie van Mediawijs](https://www.mediawijs.be/nl/tools/edubox-artificiele-intelligentie)

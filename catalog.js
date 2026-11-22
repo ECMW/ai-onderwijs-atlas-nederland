@@ -190,10 +190,14 @@
       .filter(id => publicRecordsById.has(id)))];
   }
   const sheetPicks = new Set(selectedPublicIds(new URLSearchParams(sessionGet('atlas.sheetPicks')).getAll('item')));
-  function pickedSheetHref() {
+  function selectedHref(page, ids = sheetPicks, differences = false) {
     const params = new URLSearchParams();
-    for (const id of sheetPicks) params.append('item', id);
-    return '#overlegblad?' + params.toString();
+    for (const id of ids) params.append('item', id);
+    if (differences) params.set('verschillen', '1');
+    return '#' + page + (params.size ? '?' + params : '');
+  }
+  function persistSheetPicks() {
+    sessionSet('atlas.sheetPicks', selectedHref('overlegblad').split('?')[1] || '');
   }
   const personaLabel = value => ({ Docenten: 'Docent', Bestuurders: 'Bestuurder', 'IT-professionals': 'IT-professional', Onderzoekers: 'Onderzoeker' }[value] || value);
   const personaSummary = selected => selected.map(personaLabel).join(' + ');
@@ -741,10 +745,10 @@
     ].join('\r\n');
     return `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
-  function practicalDates(record) {
+  function practicalDates(record, markup = true) {
     const deadline = validDate(record.applicationDeadline) || validDate(record.fundingDeadline);
     const parts = [];
-    const time = date => `<time datetime="${date}">${escapeHtml(dateLabel(date))}</time>`;
+    const time = date => markup ? `<time datetime="${date}">${escapeHtml(dateLabel(date))}</time>` : dateLabel(date);
     const training = record.recordType === 'training' || record.legacyType === 'Training';
     if (deadline) parts.push(`${training ? 'Aanmelddeadline' : 'Aanvraagdeadline'} ${time(deadline)}`);
     if (training) {
@@ -773,7 +777,7 @@
         ${sourceItem ? `<a class="card-cta primary" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record))}: ${escapeHtml(record.title)}">${escapeHtml(sourceActionLabel(record))} ↗</a>` : ''}
         <a class="card-cta" href="#item/${escapeHtml(record.id)}" aria-label="${escapeHtml(detailLabel)}: ${escapeHtml(record.title)}">${escapeHtml(detailLabel)}</a>
         <a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a>
-        ${showPublicationDate ? `<label class="sheet-pick"><input type="checkbox" data-sheet-pick="${escapeHtml(record.id)}" aria-label="Op mijn overlegblad: ${escapeHtml(record.title)}" ${sheetPicks.has(record.id) ? 'checked' : ''}> Op mijn overlegblad</label>` : ''}
+        ${showPublicationDate ? `<label class="sheet-pick"><input type="checkbox" data-sheet-pick="${escapeHtml(record.id)}" aria-label="Kies voor vergelijking of overleg: ${escapeHtml(record.title)}" ${sheetPicks.has(record.id) ? 'checked' : ''}> Kies voor vergelijking of overleg</label>` : ''}
       </div>
       <div class="card-body offer-context">
         <p class="description">${escapeHtml(factValue(record.description))}</p>
@@ -1272,8 +1276,11 @@
     return `${practiceNavigation()}<header class="result-head"><div><h2 tabindex="-1">${escapeHtml(heading)}</h2><p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p></div><div class="result-tools"><button class="mobile-filter btn secondary" aria-controls="filters" aria-expanded="false">Filters (${activeCount})</button><label>Sorteren<select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select></label></div></header>
       ${values('type').length === 1 && values('type')[0] === 'Training' ? '<section class="training-intro"><h2>Workshops en trainers</h2><p>Vind een workshop, cursus of training en de aanbieder die deze verzorgt. Verfijn op onderwerp, doelgroep of aanbieder. Trainer, locatie, kosten en beschikbaarheid staan bij het aanbod voor zover bevestigd. Bespreek maatwerk via de officiële aanbodpagina.</p></section>' : ''}
       ${values('theme').includes('Veilige AI-omgeving') ? '<section class="selection-guidance"><h2>Beoordeel de toepassing in uw eigen situatie</h2><p>Gebruik de officiële bronnen om gegevensgebruik, beheer, menselijke controle, toegankelijkheid en overstapmogelijkheden te beoordelen. Wat passend is, hangt af van uw doel, gegevens, instellingen en afspraken. Deze selectie is geen keurmerk voor veilige of verantwoorde AI.</p></section>' : ''}
-      <a class="btn secondary" data-picked-sheet href="${escapeHtml(pickedSheetHref())}" ${sheetPicks.size ? '' : 'hidden'}>Open mijn overlegblad (${sheetPicks.size})</a>
-      <details class="selection-bar"><summary>Selectie delen of afdrukken</summary><div class="selection-actions"><a href="#bijdragen">Aanbod toevoegen of feedback geven</a><button type="button" data-share-selection>Deel selectie</button>${resultRecords.length ? `<a data-meeting-sheet href="${escapeHtml(stateHref().replace(/^#zoeken/, '#overlegblad'))}">Overlegblad (${resultRecords.length})</a>` : ''}</div></details>
+      <div class="picked-actions" ${sheetPicks.size ? '' : 'hidden'}>
+        <a class="btn" data-picked-compare href="${escapeHtml(selectedHref('vergelijken'))}" ${sheetPicks.size >= 2 ? '' : 'hidden'}>Vergelijk mijn keuzes (${sheetPicks.size})</a>
+        <a class="btn secondary" data-picked-sheet href="${escapeHtml(selectedHref('overlegblad'))}" ${sheetPicks.size ? '' : 'hidden'}>Open mijn overlegblad (${sheetPicks.size})</a>
+        <span data-pick-hint ${sheetPicks.size === 1 ? '' : 'hidden'}>Kies nog een vermelding om te vergelijken.</span></div>
+      <details class="selection-bar"><summary>Vergelijken, delen of afdrukken</summary><div class="selection-actions"><a href="#vergelijken" data-compare-guide>Aanbod vergelijken</a><a href="#bijdragen">Aanbod toevoegen of feedback geven</a><button type="button" data-share-selection>Deel selectie</button>${resultRecords.length ? `<a data-meeting-sheet href="${escapeHtml(stateHref().replace(/^#zoeken/, '#overlegblad'))}">Overlegblad (${resultRecords.length})</a>` : ''}</div></details>
       ${chips ? `<div class="chips">${chips}<button class="clear-link">Wis alles</button></div>` : ''}
       <div id="action-feedback" class="action-feedback" aria-live="polite"></div>
       <div class="results-content">${resultRecords.length ? `<div class="result-list">${resultRecords.map(record => simpleCard(record, true)).join('')}</div>` : `<div class="empty"><span class="eyebrow">Geen exacte match</span><h2>We helpen u verder</h2>${alternative ? `<a class="alternative" href="${stateHref({ q: alternative.candidate })}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` : '<p>Voor deze zoekterm is geen aantoonbaar werkend alternatief gevonden.</p>'}${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${stateHref({ [item.key]: '' })}">Zonder ${escapeHtml(item.values.join(' of '))} <strong>${item.count}</strong></a>`).join('')}</div>` : ''}<button class="clear btn">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`}</div>
@@ -1346,6 +1353,87 @@
     }
   }
 
+  function comparisonRows(items) {
+    const facts = items.map(record => new Map(offerFacts(record)));
+    const rows = [];
+    const unknown = new Set(['Niet vastgesteld', 'Kosten onbekend', ACCESS_LABELS.unknown,
+      LANGUAGE_LABELS.unknown, 'Te verifiëren', 'Datum niet vastgelegd']);
+    function row(label, values, keys = values) {
+      const equal = values.every(value => !unknown.has(value)) && keys.every(key => key === keys[0]);
+      rows.push({ label, values, equal });
+    }
+    row('Wat biedt het?', items.map(record => factValue(record.description)));
+    row('Gebruik in de praktijk', items.map(record => factValue(record.availabilityText)));
+    for (const label of ['Kosten', 'Toegang', 'Taal', 'Voor wie', 'Sector', 'Soort aanbod', 'Beschikbaarheid']) {
+      const values = facts.map(record => record.get(label));
+      // Een andere volgorde van dezelfde talen, doelgroepen of sectoren is geen inhoudelijk verschil.
+      const keys = ['Taal', 'Voor wie', 'Sector'].includes(label)
+        ? values.map(value => value.split(', ').sort().join(', ')) : values;
+      row(label, values, keys);
+    }
+    const dates = items.map(record => practicalDates(record, false));
+    if (dates.some(Boolean)) row('Datum of deadline', dates.map(factValue));
+    row('Voorwaarden en benodigdheden', items.map(record => factValue(record.eligibility)));
+    row('Bron gecontroleerd op', facts.map(record => record.get('Broncontrole')));
+    return rows;
+  }
+
+  function renderComparison() {
+    const params = new URLSearchParams(location.hash.split('?')[1] || '');
+    const requested = params.has('item') ? params.getAll('item') : [...sheetPicks];
+    const ids = selectedPublicIds(requested);
+    const items = ids.map(id => publicRecordsById.get(id));
+    const missing = requested.some(id => !selectedPublicIds([id]).length);
+    const previous = sessionGet('atlas.compareSearch');
+    const backHref = /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
+    const incomplete = items.length < 2;
+    const differences = params.get('verschillen') === '1';
+    const example = ['codeerschool-behind-the-chat-nl', 'mediawijs-edubox-artificiele-intelligentie'];
+    const hasExample = example.every(id => publicRecordsById.has(id) && effectiveStatus(publicRecordsById.get(id)) === 'available');
+    const sourceLink = record => {
+      const link = primarySource(record);
+      return link ? `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record) + ': ' + record.title)}">${escapeHtml(sourceActionLabel(record))}</a>` : 'Geen officiële link beschikbaar';
+    };
+    main.innerHTML = `<section class="compare-page">
+      <a class="back-results" href="${escapeHtml(backHref)}">Terug naar zoekresultaten</a>
+      <header><h1>Vergelijk aanbod</h1><p>${incomplete ? 'Vink in de zoekresultaten aan welke lessen, trainingen of andere vermeldingen u naast elkaar wilt bekijken.' : `U vergelijkt ${items.length} vermeldingen. Open de officiële bronnen voor de materialen en de actuele voorwaarden.`}</p></header>
+      ${missing ? '<p class="compare-notice" role="status">Een of meer vermeldingen uit deze link staan niet meer in de publieke Atlas.</p>' : ''}
+      ${incomplete ? `<div class="compare-empty">${items.length ? `<p>Al gekozen: <strong>${escapeHtml(items[0].title)}</strong></p>` : ''}
+        <a class="btn" data-comparison-choose href="${escapeHtml(backHref)}">${items.length ? 'Kies een tweede vermelding' : 'Kies aanbod om te vergelijken'}</a>
+        ${hasExample ? `<a href="${escapeHtml(selectedHref('vergelijken', example))}">Bekijk een voorbeeld met twee VO-lessen</a>` : ''}</div>` : `
+      <div class="compare-tools"><label><input id="compare-differences" type="checkbox" ${differences ? 'checked' : ''}> Verberg gelijke kenmerken</label>
+        <div><button type="button" class="btn" data-share-comparison>Deel vergelijking</button>
+        <a class="btn secondary" data-comparison-sheet href="${escapeHtml(selectedHref('overlegblad', ids))}">Open als overlegblad</a></div></div>
+      <p id="action-feedback" role="status"></p>
+      ${items.length > 2 ? '<p class="compare-scroll-hint">Bij een brede tabel kunt u binnen het overzicht opzij scrollen.</p>' : ''}
+      <div class="compare-scroll" ${items.length > 2 ? 'role="region" aria-label="Vergelijkingstabel, horizontaal verschuifbaar" tabindex="0"' : ''}>
+      <table class="compare-table ${items.length === 2 ? 'compare-pair' : 'compare-many'}" style="--compare-count:${items.length}">
+        <caption>Kenmerken van de gekozen vermeldingen</caption>
+        <thead><tr><th scope="col">Kenmerk</th>${items.map(record => `<th scope="col"><a data-comparison-item href="#item/${encodeURIComponent(record.id)}">${escapeHtml(record.title)}</a><small>${escapeHtml(factValue(record.providerName))}</small></th>`).join('')}</tr></thead>
+        <tbody>${comparisonRows(items).map(row => `<tr${row.equal ? ' data-compare-equal' : ''}${differences && row.equal ? ' hidden' : ''}><th scope="row">${escapeHtml(row.label)}</th>${row.values.map(value => `<td>${escapeHtml(value)}</td>`).join('')}</tr>`).join('')}
+        <tr><th scope="row">Officiële bron</th>${items.map(record => `<td>${sourceLink(record)}</td>`).join('')}</tr></tbody>
+      </table></div>`}</section>`;
+    main.querySelector('.back-results').onclick = () => sessionSet('atlas.restoreResults', backHref);
+    if (incomplete) {
+      main.querySelector('[data-comparison-choose]').onclick = () => {
+        ids.forEach(id => sheetPicks.add(id));
+        persistSheetPicks();
+      };
+      return;
+    }
+    const toggle = main.querySelector('#compare-differences');
+    const currentHref = () => selectedHref('vergelijken', ids, toggle.checked);
+    if (!params.has('item')) history.replaceState(null, '', currentHref());
+    toggle.onchange = () => {
+      main.querySelectorAll('[data-compare-equal]').forEach(row => { row.hidden = toggle.checked; });
+      history.replaceState(null, '', currentHref());
+    };
+    main.querySelector('[data-share-comparison]').onclick = () =>
+      shareCurrentSelection('Bekijk deze vermeldingen naast elkaar in de Atlas.', PUBLIC_ATLAS + currentHref(), 'de vergelijking');
+    main.querySelector('[data-comparison-sheet]').onclick = () => sessionSet('atlas.lastSearch', backHref);
+    main.querySelectorAll('[data-comparison-item]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', currentHref()));
+  }
+
   function meetingSheetMarkup() {
     const params = new URLSearchParams(location.hash.split('?')[1] || '');
     const picked = params.has('item');
@@ -1360,7 +1448,7 @@
       ...FILTER_KEYS.filter(key => values(key).length).map(key => [labels[key], values(key).map(value => filterOptionLabel(key, value)).join(' of ')]),
       ['Sortering', SORT_OPTIONS[state.sort] || SORT_OPTIONS.relevant]
     ];
-    return `<section class="meeting-sheet"><nav class="sheet-controls" aria-label="Overlegblad"><a class="back-results" href="${escapeHtml(backHref)}">← Terug naar resultaten</a>${items.length ? '<button class="btn" type="button" data-print-sheet>Afdrukken / opslaan als PDF</button>' : ''}${picked && items.length ? '<button class="btn secondary" type="button" data-share-sheet>Deel overlegblad</button>' : ''}</nav><p id="action-feedback" aria-live="polite"></p>
+    return `<section class="meeting-sheet"><nav class="sheet-controls" aria-label="Overlegblad"><a class="back-results" href="${escapeHtml(backHref)}">← Terug naar resultaten</a>${picked && items.length >= 2 ? `<a class="btn secondary" data-sheet-compare href="${escapeHtml(selectedHref('vergelijken', items.map(record => record.id)))}">Vergelijk deze vermeldingen</a>` : ''}${items.length ? '<button class="btn" type="button" data-print-sheet>Afdrukken / opslaan als PDF</button>' : ''}${picked && items.length ? '<button class="btn secondary" type="button" data-share-sheet>Deel overlegblad</button>' : ''}</nav><p id="action-feedback" aria-live="polite"></p>
       <header><span class="eyebrow">AI & Onderwijs Atlas Nederland</span><h1>${picked ? 'Gekozen voor het overleg' : 'Overlegblad'}</h1><p>${items.length} ${items.length === 1 ? 'resultaat' : 'resultaten'} · Samengesteld op ${escapeHtml(dateLabel(todayInNetherlands()))}</p>
       <p class="sheet-help">${picked ? 'Dit blad bevat de gekozen vermeldingen. Deel de link met een collega of sla het blad op als PDF.' : 'Dit overzicht bevat alle resultaten van uw zoekselectie. Verfijn uw zoekopdracht als u een korter overzicht wilt.'}</p>
       ${picked ? '' : `<dl class="meeting-criteria">${criteria.map(([key, value]) => `<div><dt>${escapeHtml(key)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl>`}
@@ -1379,6 +1467,8 @@
     back.onclick = () => sessionSet('atlas.restoreResults', back.getAttribute('href'));
     const print = document.querySelector('[data-print-sheet]');
     const share = document.querySelector('[data-share-sheet]');
+    const compare = document.querySelector('[data-sheet-compare]');
+    if (compare) compare.onclick = () => sessionSet('atlas.compareSearch', back.getAttribute('href'));
     if (share) share.onclick = () => shareCurrentSelection('Bekijk de gekozen materialen en bronnen voor ons overleg.');
     if (print) print.onclick = () => window.print();
   }
@@ -1430,7 +1520,7 @@
     const factRows = offerFacts(record);
     const lesson = hasAvailableLesson(record) && lessonStartBody(record);
     main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(offerLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
-      <section class="detail-shell"><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">← Terug naar resultaten</a><span>Home / Resultaten / ${escapeHtml(record.title)}</span></nav>
+      <section class="detail-shell"><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${lastSearch.startsWith('#vergelijken?') ? 'Terug naar vergelijking' : '← Terug naar resultaten'}</a><span>Home / Resultaten / ${escapeHtml(record.title)}</span></nav>
       <div class="detail-layout"><article>
         ${lesson ? `<section class="lesson-starts lesson-detail"><h2>Lesstart voor de klas</h2>
           <p class="lesson-level">${escapeHtml(record.lessonStart.level)}</p><h3>${escapeHtml(record.lessonStart.question)}</h3>${lesson}</section>` : ''}
@@ -1627,17 +1717,38 @@
     if (!panel) return;
     bindLessonCopy(panel);
     const pickedLink = panel.querySelector('[data-picked-sheet]');
-    if (pickedLink) pickedLink.onclick = () => { sessionSet('atlas.lastSearch', stateHref()); sessionSet('atlas.resultsScroll', scrollY); };
+    const compareLink = panel.querySelector('[data-picked-compare]');
+    const guide = panel.querySelector('[data-compare-guide]');
+    function rememberResults() {
+      sessionSet('atlas.lastSearch', stateHref());
+      sessionSet('atlas.compareSearch', stateHref());
+      sessionSet('atlas.resultsScroll', scrollY);
+    }
+    if (pickedLink) pickedLink.onclick = rememberResults;
+    if (compareLink) compareLink.onclick = rememberResults;
+    if (guide) guide.onclick = rememberResults;
     panel.querySelectorAll('[data-sheet-pick]').forEach(input => input.onchange = () => {
       const id = input.dataset.sheetPick;
       if (input.checked) sheetPicks.add(id);
       else sheetPicks.delete(id);
-      const href = pickedSheetHref();
-      sessionSet('atlas.sheetPicks', href.split('?')[1]);
-      pickedLink.href = href;
+      persistSheetPicks();
+      pickedLink.href = selectedHref('overlegblad');
       pickedLink.hidden = !sheetPicks.size;
       pickedLink.textContent = `Open mijn overlegblad (${sheetPicks.size})`;
-      setActionFeedback(`${sheetPicks.size} gekozen voor uw overlegblad.`);
+      compareLink.href = selectedHref('vergelijken');
+      compareLink.hidden = sheetPicks.size < 2;
+      compareLink.textContent = `Vergelijk mijn keuzes (${sheetPicks.size})`;
+      panel.querySelector('.picked-actions').hidden = !sheetPicks.size;
+      panel.querySelector('[data-pick-hint]').hidden = sheetPicks.size !== 1;
+      panel.querySelector('[data-inline-compare]')?.remove();
+      if (input.checked && sheetPicks.size >= 2) {
+        const shortcut = compareLink.cloneNode(true);
+        shortcut.removeAttribute('data-picked-compare');
+        shortcut.setAttribute('data-inline-compare', '');
+        shortcut.onclick = rememberResults;
+        input.closest('.offer-links').append(shortcut);
+      }
+      setActionFeedback(sheetPicks.size === 1 ? 'Eén vermelding gekozen. Kies nog een vermelding om te vergelijken.' : `${sheetPicks.size} vermeldingen gekozen.`);
     });
     const sector = panel.querySelector('#practice-sector');
     panel.querySelectorAll('a.practice-link,.practice-back a').forEach(link => {
@@ -1669,9 +1780,7 @@
     const share = panel.querySelector('[data-share-selection]');
     if (share) share.onclick = () => shareCurrentSelection();
     const sheet = panel.querySelector('[data-meeting-sheet]');
-    if (sheet) sheet.onclick = () => {
-      sessionSet('atlas.lastSearch', stateHref()); sessionSet('atlas.resultsScroll', scrollY);
-    };
+    if (sheet) sheet.onclick = rememberResults;
     panel.querySelectorAll('.result-card a[href^="#item/"]').forEach(link => link.onclick = () => {
       sessionSet('atlas.lastSearch', location.hash); sessionSet('atlas.resultsScroll', scrollY);
     });
@@ -1738,12 +1847,13 @@
     const path = (location.hash.slice(1) || 'home').split('?')[0];
     document.querySelector('.site-header')?.classList.remove('open');
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
-    if (path === 'home' || (!['wegwijzer', 'nieuw', 'boeken', 'zoeken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
+    if (path === 'home' || (!['wegwijzer', 'nieuw', 'boeken', 'zoeken', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
     if (path === 'wegwijzer') { location.replace('#zoeken'); return; }
     if (path === 'nieuw') renderNewOffers();
     const focusedBookGroup = path === 'boeken' && renderBooks();
     if (path === 'zoeken' || path === 'organisaties') { parseState(); if (path === 'organisaties') state.type = 'Organisatie'; renderSearch(); }
     if (path === 'overlegblad') { parseState(); renderMeetingSheet(); }
+    if (path === 'vergelijken') renderComparison();
     if (path === 'leerlingblad') renderLearnerSheet();
     if (path === 'toetsafspraak') renderAssessment();
     if (path.startsWith('item/')) renderDetail(decodeURIComponent(path.slice(5)));

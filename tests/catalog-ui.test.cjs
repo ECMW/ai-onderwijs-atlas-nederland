@@ -15,7 +15,7 @@ const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
     effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
     accessLabel, accessOptions: Object.values(ACCESS_LABELS), recordThemes, themeOptions, route,
-    searchForm, bindResultsControls, bindLessonCopy, sourceActionLabel, sourceCitation, copySourceCitation, meetingSheetMarkup,
+    searchForm, bindResultsControls, bindLessonCopy, sourceActionLabel, sourceCitation, copySourceCitation, meetingSheetMarkup, renderComparison,
     options: SORT_OPTIONS, getState: () => state, setState: value => { state = value; }
   };`);
 
@@ -1163,6 +1163,81 @@ test('chosen meeting sheets travel by URL, retain order and only show public rec
   const search = load(items, '#zoeken', {sessionStorage:storage}).resultsMarkup();
   assert.match(search, /href="#overlegblad\?item=second"/);
   assert.match(search, /data-sheet-pick="second"[^>]* checked/);
+});
+
+function compareAt(data, hash, sessionValues = {}) {
+  const location = {hash, href: 'http://localhost/?voorbeeld=1' + hash};
+  const stored = new Map(Object.entries(sessionValues));
+  const nodes = new Map();
+  function control(selector) {
+    if (!nodes.has(selector)) nodes.set(selector, {checked: hash.includes('verschillen=1')});
+    return nodes.get(selector);
+  }
+  const knownRows = [{hidden:false}];
+  const main = {querySelector:control, querySelectorAll:selector => selector === '[data-compare-equal]' ? knownRows : []};
+  const clipboard = {text:'', async writeText(value) { this.text = value; }};
+  const api = load(data.records, hash, {
+    window:{ATLAS_RECORDS:data}, location, document:{querySelector:selector => selector === 'main' ? main : control(selector)},
+    sessionStorage:{getItem:key => stored.get(key), setItem:(key, value) => stored.set(key, value)},
+    history:{replaceState:(_state, _title, value) => { location.hash = value; }}, navigator:{clipboard}
+  });
+  api.renderComparison();
+  return {main, control, knownRows, stored, clipboard, location};
+}
+
+test('comparison links resolve public selections in order, keep unknowns and source links visible', () => {
+  const a = {...record('a', null, 'A & B'), sectors:['VO', 'MBO'], language:['en', 'nl'], costType:'unknown', accessType:'public'};
+  const b = {...record('b'), sectors:['MBO', 'VO'], language:['nl', 'en'], costType:'unknown', accessType:'registration_required'};
+  const unavailable = {...record('private'), publicationExclusion:{reason:'niet publiek'}};
+  const data = {records:[a,b,unavailable], metadata:{recordRedirects:{old:'a'}}};
+  const view = compareAt(data, '#vergelijken?item=b&item=private&item=old&item=a&verschillen=1');
+  const html = view.main.innerHTML;
+  assert.ok(html.includes('U vergelijkt 2 vermeldingen'));
+  assert.ok(html.indexOf('href="#item/b"') < html.indexOf('href="#item/a"'));
+  assert.ok(html.includes('A &amp; B') && html.includes('niet meer in de publieke Atlas'));
+  assert.ok(!html.includes('example.org/private'));
+  assert.match(html, /<tr data-compare-equal hidden><th scope="row">Sector/);
+  assert.match(html, /<tr data-compare-equal hidden><th scope="row">Taal/);
+  assert.match(html, /<tr><th scope="row">Kosten<\/th><td>Kosten onbekend<\/td><td>Kosten onbekend/);
+  assert.match(html, /<tr><th scope="row">Toegang<\/th><td>Registratie nodig<\/td><td>Publiek toegankelijk/);
+  assert.match(html, /<tr><th scope="row">Officiële bron/);
+  assert.ok(html.includes('https://example.org/a') && html.includes('https://example.org/b'));
+  assert.ok(html.includes('#overlegblad?item=b&amp;item=a'));
+});
+
+test('a personal comparison becomes shareable on fresh load and preserves the chosen view', async () => {
+  const data = {records:['a','b','c'].map(id => record(id)), metadata:{}};
+  const values = {'atlas.sheetPicks':'item=c&item=a&item=b','atlas.compareSearch':'#zoeken?sector=HBO'};
+  const view = compareAt(data, '#vergelijken', values);
+  assert.equal(view.location.hash, '#vergelijken?item=c&item=a&item=b');
+  assert.ok(view.main.innerHTML.includes('compare-many'));
+  assert.ok(view.main.innerHTML.includes('href="#zoeken?sector=HBO"'));
+  const toggle = view.control('#compare-differences');
+  toggle.checked = true;
+  toggle.onchange();
+  assert.equal(view.knownRows[0].hidden, true);
+  await view.control('[data-share-comparison]').onclick();
+  const url = new URL(view.clipboard.text);
+  assert.equal(url.origin + url.pathname, 'https://ecmw.github.io/ai-onderwijs-atlas-nederland/');
+  assert.equal(url.hash, '#vergelijken?item=c&item=a&item=b&verschillen=1');
+  assert.ok(compareAt(data, url.hash).main.innerHTML.includes('U vergelijkt 3 vermeldingen'));
+  toggle.checked = false;
+  toggle.onchange();
+  assert.equal(view.knownRows[0].hidden, false);
+  assert.ok(!view.location.hash.includes('verschillen=1'));
+});
+
+test('incomplete and outdated links let visitors continue choosing without silently changing their own selection', () => {
+  const data = {records:[record('local'), record('a')], metadata:{}};
+  const view = compareAt(data, '#vergelijken?item=removed&item=a', {'atlas.sheetPicks':'item=local'});
+  assert.ok(view.main.innerHTML.includes('Kies een tweede vermelding'));
+  assert.ok(!view.main.innerHTML.includes('<table'));
+  assert.equal(view.stored.get('atlas.sheetPicks'), 'item=local');
+  view.control('[data-comparison-choose]').onclick();
+  assert.equal(view.stored.get('atlas.sheetPicks'), 'item=local&item=a');
+  const empty = compareAt(data, '#vergelijken?item=removed', {'atlas.sheetPicks':'item=local&item=a'});
+  assert.ok(!empty.main.innerHTML.includes('<table'));
+  assert.ok(empty.main.innerHTML.includes('Kies aanbod om te vergelijken'));
 });
 
 test('themed results and meeting sheets both include every matching record', () => {

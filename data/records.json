@@ -34901,9 +34901,9 @@
       "Lesgeven en leren met AI"
     ],
     "status": "available",
-    "availabilityText": "Gratis verhalen zonder account of registratie volgens de Nederlandse aanbiederspagina.",
+    "availabilityText": "Een verhaal duurt ongeveer 15 minuten. Reken voor één verhaal met klassikaal nagesprek op circa 20 minuten. De verhalen zijn gratis en zonder account te openen.",
     "publicationDate": null,
-    "lastVerified": "2026-11-06",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -34937,14 +34937,20 @@
     "notes": "Nederlandse vertaling: CC BY-NC-SA 4.0 volgens de aanbieder. De collectie en voorbeeldpagina zijn gelezen; de interactieve verhalen zijn niet volledig doorgespeeld. Algemene uitspraken op de promotiepagina over alle chatbots zijn niet als feiten overgenomen.",
     "offerCategory": "materials",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "Collectie, makers, gebruiksinstructie, licentievermelding en openbare beschrijving van het privacyverhaal gecontroleerd. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "verificationNote": "De Nederlandse collectie en het privacyverhaal zijn op 22 november 2026 opnieuw geopend. De aanbieder vermeldt de tijd per verhaal en voor een mentorles met nagesprek, de leeftijd, het gebruik op digibord of telefoon, de toegang en de licentie.",
     "changeHistory": [
       {
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Tijd voor een verhaal met nagesprek en gebruik op digibord of telefoon toegevoegd op basis van de lesinstructie van Dé Codeerschool."
       }
-    ]
+    ],
+    "eligibility": "Voor leerlingen van 12 tot 18 jaar. Toon het verhaal op het digibord of laat leerlingen op hun telefoon meelezen."
   },
   {
     "id": "vu-vijf-activerende-ai-werkvormen",
