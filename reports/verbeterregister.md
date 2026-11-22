@@ -1,5 +1,13 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Financiering met een aanvraagroute vanuit Nederland
+
+Vijf rondes toegevoegd na controle bij de verstrekkers. Het open aanbod omvat de onderzoeksprijs van het Institut de France voor lopend onderzoek naar AI en leren, en de maart-ronde van RAAK-mkb voor bekostigde hogescholen met een mkb-consortium. Drie aangekondigde rondes bieden een andere ingang. Een school kan een Erasmus+ Cooperation Partnership voorbereiden, een mbo-instelling kan met werkgevers een Centre of Vocational Excellence vormen en een kennisinstelling kan personeelsuitwisseling voor onderzoek organiseren via MSCA Staff Exchanges. Elke kaart beschrijft wie kan meedoen en welke partners nodig zijn.
+
+De sectorbrede Erasmus- en MSCA-rondes hebben verschillende voorwaarden en tijdstippen. Voor KA220 heeft het Nederlandse agentschap de aanvraagformulieren aangekondigd. De openingsdatum blijft leeg tot bevestiging. Voor de Franse prijs is de laatste volledige indieningsdag 21 januari. Het loket sluit op 22 januari om middernacht. De dagelijkse bronmonitor volgt voortaan ook het indienportaal van de prijs en de actuele rondekalender van MSCA Staff Exchanges.
+
+De monitor is met beide echte loketten beproefd. Hij herkent de Franse sluitingstijd van 00.00 uur afzonderlijk van de starttijd en vindt de april-deadline in de Engelstalige MSCA-kalender. Op deze peildatum zijn er acht open en zeven aangekondigde rondes. De eerstvolgende inhoudelijke controle is de Nederlandse openstelling van KA220. Of bezoekers met de kaarten een passende aanvraag voorbereiden is nog onbekend.
+
 ## 23 november 2026 · Resultaten lezen en terugvinden
 
 - **Kenmerken vergelijken.** Op een telefoon bestond elke rij uit één label en de bijbehorende waarde. Nu staan er twee complete kenmerken naast elkaar, elk met het label boven de waarde. De eerste rij van *AI, slim bekeken* toont bijvoorbeeld **Toegevoegd** en **Aanbieder**. Elk label en elke waarde beslaan één regel. Lange tekst is opvraagbaar op hetzelfde scherm. De volledige beschrijving volgt onder de kenmerken. Op 320, 390 en 1280 pixels zijn ook lange doelgroepen, subsidiebedragen, deadlines en de acties naast de bronknop bekeken.
