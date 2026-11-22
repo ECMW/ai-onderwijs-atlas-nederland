@@ -32,7 +32,12 @@ class DataTests(unittest.TestCase):
   item=next(row for row in D if row.get('lessonStart'))
   lesson=item['lessonStart']
   self.assertTrue(valid_lesson_start(item))
-  for patch in [{'sectors':[]},{'sectors':['onbekend']},{'task':'  '},{'sourceUrl':'https://example.org/other'}]:
+  older={key:value for key,value in lesson.items() if key not in ('learningGoal','activityType','sourceMinutes')}
+  self.assertTrue(valid_lesson_start({**item,'lessonStart':older}))
+  self.assertTrue(valid_lesson_start({**item,'lessonStart':{**older,'sourceMinutes':60}}))
+  for patch in [{'sectors':[]},{'sectors':['onbekend']},{'task':'  '},{'sourceUrl':'https://example.org/other'},
+                {'learningGoal':' '},{'activityType':[]},{'sourceMinutes':True},{'sourceMinutes':'50'},
+                {'sourceMinutes':0},{'sourceMinutes':-1},{'sourceMinutes':2.5},{'sourceMinutes':None}]:
    with self.subTest(patch=patch):
     self.assertFalse(valid_lesson_start({**item,'lessonStart':{**lesson,**patch}}))
   self.assertFalse(valid_lesson_start({**item,'sourceUrls':[{'url':lesson['sourceUrl'],'sourceType':'secondary'}]}))

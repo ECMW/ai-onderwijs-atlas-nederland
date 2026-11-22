@@ -28,9 +28,16 @@ def lesson_card(record):
     languages = ", ".join(LANGUAGES[code] for code in record.get("language", []) if code in LANGUAGES)
     facts = [f'<div><dt>Niveau</dt><dd>{level}</dd></div>']
     if subjects:
-        facts.append(f'<div><dt>Vakgebied</dt><dd>{subjects}</dd></div>')
+        facts.append(f'<div><dt>Vakgebied</dt><dd data-directory-subject>{subjects}</dd></div>')
     if languages:
         facts.append(f'<div><dt>Materiaaltaal</dt><dd>{languages}</dd></div>')
+    if lesson.get("learningGoal"):
+        facts.append(f'<div><dt>Leerdoel</dt><dd data-directory-goal>{escape(lesson["learningGoal"])}</dd></div>')
+    if lesson.get("activityType"):
+        facts.append(f'<div><dt>Activiteit</dt><dd data-directory-activity>{escape(lesson["activityType"])}</dd></div>')
+    minutes = lesson.get("sourceMinutes")
+    if type(minutes) is int and minutes > 0:
+        facts.append(f'<div><dt>Duur bronles</dt><dd><data value="{minutes}" data-directory-minutes>{minutes} minuten</data></dd></div>')
     public_id = record["id"]
     record_id = quote(public_id, safe="")
     title = record["title"]
@@ -43,7 +50,7 @@ def lesson_card(record):
     return f"""<article>
   <h3>{escape(lesson['question'])}</h3>
   <dl>{''.join(facts)}</dl>
-  <p>{escape(lesson['task'])}</p>
+  <p data-directory-task>{escape(lesson['task'])}</p>
   <details><summary>Voorbereiding en nabespreking</summary>
     <p><strong>Voorbereiding</strong> {escape(lesson['preparation'])}</p>
     <p><strong>Nabespreking</strong> {escape(lesson['reflection'])}</p>

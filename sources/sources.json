@@ -4,6 +4,286 @@
   "verification_window_days": 90,
   "sources": [
     {
+      "source_id": "kennisnet-generatieve-ai-en-privacy-leerlingwerk",
+      "title": "Generatieve AI en privacy: hier moeten scholen op letten",
+      "author_or_organisation": "Loes van Zuijdam, Kennisnet",
+      "publication_date": "2024-06-13",
+      "url_or_doi": "https://www.kennisnet.nl/artificial-intelligence/privacy-en-ai-hier-moeten-scholen-op-letten/",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Privacy en AVG",
+        "Veilige AI-omgeving"
+      ],
+      "jurisdiction": "Nederland, scholen",
+      "claims_supported": [
+        "Een prompt of geüpload bestand kan persoonsgegevens bevatten. Scholen kunnen afspraken over accounts, invoer, gebruik van persoonsgegevens en de dienst vastleggen."
+      ],
+      "reliability_notes": "Publicatiemetadata vermelden 13 juni 2024. Kennisnet vermeldt een inhoudelijke bijwerking op 22 september 2025. De aanbevelingen staan bij concrete schoolvoorbeelden.",
+      "limitations": "Voorlichting van Kennisnet. De bron stelt geen grondslag vast voor een specifieke school en beoordeelt geen individuele leverancier.",
+      "legal_effect": "non_binding",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-22",
+      "status": "active",
+      "atlas_record_ids": [
+        "generatieve-ai-en-privacy-hier-moeten-scholen-op-letten"
+      ]
+    },
+    {
+      "source_id": "cc-by-4-0-internationale-licentie",
+      "title": "Naamsvermelding 4.0 Internationaal (CC BY 4.0)",
+      "author_or_organisation": "Creative Commons",
+      "publication_date": "2013-11-25",
+      "url_or_doi": "https://creativecommons.org/licenses/by/4.0/legalcode.nl",
+      "source_type": "copyright_license",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Lesgeven en leren met AI",
+        "Publieke waarden en ethiek"
+      ],
+      "jurisdiction": "Internationale auteursrechtlicentie. De voorwaarden binden degene die de verleende rechten uitoefent.",
+      "claims_supported": [
+        "Artikel 2 verleent rechten om het gelicenseerde werk te delen en te bewerken. Bij delen gelden de naamsvermeldings- en wijzigingsvoorwaarden van artikel 3, inclusief het behouden van meegeleverde vermeldingen en een verwijzing naar de licentie."
+      ],
+      "reliability_notes": "Officiële Nederlandstalige juridische tekst van CC BY 4.0. De datum hoort bij de internationale licentieversie. Creative Commons bevestigt de publicatiegeschiedenis op https://wiki.creativecommons.org/wiki/4.0 .",
+      "limitations": "De voorwaarden gelden voor het materiaal en de rechten die de licentiegever daadwerkelijk onder de licentie verleent. Voor gebruik dat al onder een uitzondering of beperking valt, is geen beroep op deze licentie nodig. De licentie is geen wet.",
+      "legal_effect": "binding",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-22",
+      "status": "active",
+      "atlas_record_ids": []
+    },
+    {
+      "source_id": "unesco-iite-2026-lerarenkaders-vergelijking",
+      "title": "Teacher AI Competency Frameworks: Analytical Report",
+      "author_or_organisation": "UNESCO Institute for Information Technologies in Education en Shanghai Open University",
+      "publication_date": "2026-09",
+      "url_or_doi": "https://iite.unesco.org/publications/analytical-report-teacher-ai-competency-frameworks/",
+      "source_type": "research_report",
+      "primary_or_secondary": "secondary",
+      "topics": [
+        "AI-geletterdheid",
+        "Professionalisering",
+        "Curriculumontwikkeling"
+      ],
+      "jurisdiction": "Internationale vergelijking van kaders voor docenten",
+      "claims_supported": [
+        "Thematische documentanalyse van 36 openbare nationale, institutionele en academische kaders. Het rapport vergelijkt competenties, invoering en beoordeling en geeft een checklist voor ontwerp en uitvoering."
+      ],
+      "reliability_notes": "De toelatingscriteria op pagina 11 vereisen openbare beschikbaarheid uiterlijk 10 april 2025 en tekst in het Engels of een geschikte vertaling. De analyse verscheen in september 2026.",
+      "limitations": "De onderzochte kaders zijn geen 36 interventies. De vergelijking meet geen leerwinst bij docenten of leerlingen en dekt later uitgekomen of onvoldoende toegankelijke kaders niet.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-22",
+      "status": "active",
+      "atlas_record_ids": []
+    },
+    {
+      "source_id": "kennispunt-npuls-2025-mbo-richtlijn-ai-examinering",
+      "title": "Gebruik van AI bij toetsing en examinering in het mbo: landelijke richtlijn als vertrekpunt",
+      "author_or_organisation": "Kennispunt MBO Onderwijs & Examinering, SURF, Npuls en Netwerk Examencommissies",
+      "publication_date": "2025",
+      "url_or_doi": "https://www.onderwijsenexaminering.nl/publicaties/gebruik-van-ai-bij-toetsing-en-examinering-in-het-mbo-landelijke-richtlijn-als-vertrekpunt/",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Toetsing en examinering",
+        "Beleid en governance"
+      ],
+      "jurisdiction": "Nederland, mbo-scholen en examenleveranciers",
+      "claims_supported": [
+        "De gezamenlijke werkgroep geeft instellingen een basis voor eigen afspraken en twee gedragscodes, voor studenten en medewerkers. De richtlijn vraagt te vermelden welke hulp is toegestaan en hoe het gebruik wordt verantwoord."
+      ],
+      "reliability_notes": "De publicatiepagina en de gekoppelde landelijke richtlijn met beide gedragscodes zijn inhoudelijk gecontroleerd. Het Kennispunt vermeldt 2025 als publicatiejaar en SintLucas als inspiratie.",
+      "limitations": "Dit landelijke basisdocument laat ruimte voor schooleigen vertaling. Het beoordeelt geen individuele toets of student en verleent zelf geen toestemming bij een specifiek examen.",
+      "legal_effect": "non_binding",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-22",
+      "status": "active",
+      "atlas_record_ids": []
+    },
+    {
+      "source_id": "stanford-craft-natuurbehoud-2024",
+      "title": "How can AI be used to help conserve natural ecosystems?",
+      "author_or_organisation": "Wendi Cocita, Stanford CRAFT",
+      "publication_date": "2024-09-27",
+      "url_or_doi": "https://craft.stanford.edu/resource/how-can-ai-be-used-to-help-conserve-natural-ecosystems/",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Lesgeven en leren met AI",
+        "AI-geletterdheid",
+        "Curriculumontwikkeling"
+      ],
+      "jurisdiction": "Verenigde Staten, middle school science. De koppeling aan Nederlands VO-biologie is een redactionele keuze.",
+      "claims_supported": [
+        "Leerlingen onderzoeken voorbeelden van AI voor natuurbehoud. Ze bespreken in een simulatie welke toepassingen voor een ecosysteem een bijdrage zouden kunnen leveren. De lespagina bevat een docentenhandleiding en leerlingwerkblad en vermeldt 60 minuten."
+      ],
+      "reliability_notes": "Officiële CRAFT-les van 27 september 2024, door de uitgever bijgewerkt op 20 november 2024.",
+      "limitations": "De leerdoelen beschrijven de bedoeling van de les. Er is geen uitkomstmeting of Nederlandse curriculumvalidatie op de lespagina. De specifieke vraag en beoordeling in de Atlas-praktijkgids zijn door de Atlas uitgewerkt.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-22",
+      "status": "active",
+      "atlas_record_ids": [
+        "stanford-craft-ai-lescollectie",
+        "stanford-craft-ai-ecosystemen"
+      ]
+    },
+    {
+      "source_id": "sci-meyer-et-al-2024-writing-feedback",
+      "title": "Using LLMs to bring evidence-based feedback into the classroom: AI-generated feedback increases secondary students’ text revision, motivation, and positive emotions",
+      "author_or_organisation": "Jennifer Meyer, Thorben Jansen, Ronja Schiller, Lucas W. Liebenow, Marlene Steinbach, Andrea Horbach en Johanna Fleckenstein",
+      "publication_date": "2023-12-29",
+      "url_or_doi": "https://doi.org/10.1016/j.caeai.2023.100199",
+      "source_type": "randomized_controlled_trial",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Lesgeven en leren met AI",
+        "Onderzoek",
+        "Toetsing en examinering"
+      ],
+      "jurisdiction": "Duitse bovenbouw, leerjaar 10, Engels als vreemde taal",
+      "claims_supported": [
+        "De verbetering bij het herschrijven met GPT-3.5-feedback was groter dan bij revisie zonder feedback (d = 0,19). Op de volgende schrijftaak was er geen statistisch aantoonbaar verschil."
+      ],
+      "reliability_notes": "Peer-reviewed experiment met loting binnen klassen, een eerste betoog, revisie en een nieuw betoog. Eerste online publicatie 29 december 2023, opgenomen in jaargang 2024.",
+      "limitations": "459 van 552 deelnemers geanalyseerd. Technische uitval trof de feedbackverstrekking. Automatische tekstbeoordeling, één sessie en een controlegroep zonder feedback. Geen vergelijking met feedback van een docent of medeleerling.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "peer_reviewed",
+      "last_verified": "2026-11-22",
+      "status": "active",
+      "atlas_record_ids": []
+    },
+    {
+      "source_id": "sci-dietrich-et-al-2026-ecology-text-chat",
+      "title": "What Makes Learning with GenAI Effective? Text Support and Deeper Engagement are Associated with Higher Performance in an Ecology Context",
+      "author_or_organisation": "Lars Dietrich, Laura Fink, Detlef Urhahne en Kerstin Kremer",
+      "publication_date": "2026-11-12",
+      "url_or_doi": "https://doi.org/10.1007/s10956-026-10374-w",
+      "source_type": "randomized_controlled_trial",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Onderzoek",
+        "Lesgeven en leren met AI",
+        "AI-geletterdheid"
+      ],
+      "jurisdiction": "185 studenten van één Duitse universiteit, ecologie",
+      "claims_supported": [
+        "Op de kennistoets zonder hulpmiddelen was de gemiddelde score hoger met alleen bronteksten (50,54) dan met alleen de op die teksten gebaseerde chatbot (47,48). Het verschil was statistisch significant. Tekst plus chat (49,51) bood geen aantoonbaar voordeel boven alleen tekst."
+      ],
+      "reliability_notes": "Peer-reviewed experiment met willekeurige toewijzing aan drie condities. De auteurs rapporteren groepsgemiddelden, gecorrigeerde groepsvergelijkingen en een afzonderlijke analyse van chatgedrag.",
+      "limitations": "Korte interventie, één universiteit, één ecologieonderwerp en één chatbotconfiguratie. Het verband tussen verdiepende vragen en toetsscore is observationeel. Duurzame taal- of vakontwikkeling is niet onderzocht.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "peer_reviewed",
+      "last_verified": "2026-11-22",
+      "status": "active",
+      "atlas_record_ids": []
+    },
+    {
+      "source_id": "stanford-scale-2026-november-evidence-review",
+      "title": "The Evidence Base on AI in K-12: A November 2026 Review",
+      "author_or_organisation": "Seth Walker, Lily Fesler, JP Martinez Claeys, Chris Agnew en Susanna Loeb, Stanford SCALE Initiative",
+      "publication_date": "2026-11-10",
+      "url_or_doi": "https://scale.stanford.edu/ai/evidence-base-review/evidence-base-ai-k12-november-review",
+      "source_type": "research_report",
+      "primary_or_secondary": "secondary",
+      "topics": [
+        "Onderzoek",
+        "Lesgeven en leren met AI",
+        "Toetsing en examinering"
+      ],
+      "jurisdiction": "Internationaal, met onderzoek in school- en hoger onderwijs",
+      "claims_supported": [
+        "Het rapport voegt 32 gerandomiseerde en quasi-experimentele papers toe aan de 20 uit maart. Resultaten van ondersteuning bij het leren variëren naar toepassing en onderwijscontext. Blijvende leerwinst is onvoldoende aangetoond."
+      ],
+      "reliability_notes": "Institutionele onderzoekssynthese met openbaar selectieprotocol en bronlijst. De auteurs selecteerden nieuwe publicaties van oktober 2025 tot en met juni 2026. Op de officiële pagina staat DOI 10.26300/80wn-ca81.",
+      "limitations": "Veel onderzoek betreft het hoger onderwijs. Het doorzochte register steunt sterk op preprints. Automatische voorselectie kan relevante studies missen. Het rapport geeft geen algemeen effectcijfer voor AI in de klas.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-22",
+      "status": "active",
+      "atlas_record_ids": []
+    },
+    {
+      "source_id": "impuls-open-leermateriaal-pilotscholen-2025",
+      "title": "AI in de klas: zo doen pilotscholen het",
+      "author_or_organisation": "Impuls Open Leermateriaal, met een praktijkverslag van Fortior en STIP Hilversum",
+      "publication_date": "2025-10-04",
+      "url_or_doi": "https://www.openleermateriaal.nl/ai-in-de-klas-zo-doen-pilots-het/",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Praktijkvoorbeelden",
+        "Lesgeven en leren met AI"
+      ],
+      "jurisdiction": "Nederland, primair onderwijs, scholen van Fortior en STIP Hilversum",
+      "claims_supported": [
+        "Fortior beschrijft de ontwikkeling van wetenschaps- en technologielessen voor ontdeklabs met een eigen GPT. De opbrengst bestond uit kortere, minder gedetailleerde lesideeën waarvan ook de afbeeldingen verdere aandacht vroegen."
+      ],
+      "reliability_notes": "Het eigen programma laat de betrokken scholen aan het woord en beschrijft hun werkwijze en eerste resultaten. De zichtbare publicatiedatum is gebruikt.",
+      "limitations": "Praktijkverhaal en tips, zonder controlegroep, tijdmeting of meting van leerprestaties. Het aangehaalde oordeel over bruikbaarheid komt van de uitvoerders.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-22",
+      "status": "active",
+      "atlas_record_ids": [
+        "open-leermateriaal-ai-in-de-klas-pilotscholen"
+      ]
+    },
+    {
+      "source_id": "surf-uva-praktijkverslag-onderwijspilots-2024",
+      "title": "UvA doet AI-onderwijspilots in eigen beveiligde omgeving: “Het systeem is dienend aan de leerdoelen”",
+      "author_or_organisation": "SURF Communities, Vraagbaak Online Onderwijs, in gesprek met UvA-projectbegeleiders Sabine Uijl en Emma Wiersma",
+      "publication_date": "2024-11-15",
+      "url_or_doi": "https://communities.surf.nl/vraagbaak-online-onderwijs/artikel/uva-doet-ai-onderwijspilots-in-eigen-beveiligde-omgeving-het",
+      "source_type": "technical_report",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Praktijkvoorbeelden",
+        "Lesgeven en leren met AI"
+      ],
+      "jurisdiction": "Nederland, Universiteit van Amsterdam, bachelor Future Planet Studies",
+      "claims_supported": [
+        "In Future Planet Studies gaf een speciaal ingestelde chatbot enkele eerste aanwijzingen bij een onderzoeksvraag. De projectbegeleider meldde dat dit hielp om verder te komen en begeleiders tijd scheelde."
+      ],
+      "reliability_notes": "Direct interview met twee uitvoerders, verschenen op 15 en bijgewerkt op 21 november 2024. De UvA beschrijft het vak en de feedbacktaak ook zelf: https://tlc.uva.nl/en/article/ai-pilot-bsc-future-planet-studies/.",
+      "limitations": "Kwalitatieve projectervaring, verzameld in het bredere pilotprogramma met vrijwillige deelname. Geen specifieke tijdmeting of vergelijking van kwaliteit van onderzoeksvragen gepubliceerd in het interview.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-22",
+      "status": "active",
+      "atlas_record_ids": [
+        "uva-pilots-generatieve-ai-beveiligde-omgeving"
+      ]
+    },
+    {
+      "source_id": "tno-werkzekerheid-scenariodialoog-2026",
+      "title": "Werkzekerheid in een veranderende arbeidsmarkt: Vier toekomstscenario’s werkzekerheid 2035–2040",
+      "author_or_organisation": "TNO",
+      "publication_date": "2026",
+      "url_or_doi": "https://publications.tno.nl/publication/34646519/BCdweC4U/TNO-2026-Werkzekerheid.pdf",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Professionalisering",
+        "Praktijkvoorbeelden"
+      ],
+      "jurisdiction": "Nederland, arbeidsmarkt en werkzekerheid",
+      "claims_supported": [
+        "De scenariodialoog gebruikt vier mogelijke toekomsten en rolperspectieven om maatregelen te kiezen, te beoordelen en te agenderen."
+      ],
+      "reliability_notes": "Originele Nederlandstalige handleiding en werkbladen van TNO. De instructies beschrijven de vier scenario’s expliciet als een verkenning.",
+      "limitations": "De scenario’s zijn geen prognoses van werk- of inkomenseffecten. De concrete onderwijsvraag over zelfstandig afwegen en de lescheck zijn redactionele suggesties van de Atlas.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-22",
+      "status": "active",
+      "atlas_record_ids": [
+        "tno-scenariospel-werkzekerheid"
+      ]
+    },
+    {
       "source_id": "kennisnet-schoolafspraken-generatieve-ai-2025",
       "title": "Schoolafspraken over het gebruik van generatieve AI",
       "author_or_organisation": "Astrid Buijs en Michel Cents, Kennisnet",
@@ -113,7 +393,7 @@
       "limitations": "De toepasselijkheid en rechtmatigheid moeten per verwerking, rol en context worden beoordeeld; de bron bewijst geen AVG-conformiteit van een product.",
       "legal_effect": "binding",
       "peer_review_status": "not_applicable",
-      "last_verified": "2026-09-28",
+      "last_verified": "2026-11-22",
       "status": "active",
       "atlas_record_ids": ["algemene-verordening-gegevensbescherming-avg"]
     },
@@ -797,7 +1077,7 @@
       "limitations": "One school, one subject, short duration and a 2023 model; the guardrails depended on labour-intensive teacher-authored solutions and error patterns.",
       "legal_effect": "not_applicable",
       "peer_review_status": "peer_reviewed",
-      "last_verified": "2026-09-28",
+      "last_verified": "2026-11-22",
       "status": "active",
       "atlas_record_ids": []
     },

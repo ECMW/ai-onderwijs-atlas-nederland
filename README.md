@@ -2,7 +2,8 @@
 
 De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijzer voor bestaand aanbod rond AI in het onderwijs. Bezoekers kunnen een zoekterm combineren met een vakgebied, onderwijssector, thema, soort aanbod of doelgroep. [Bekijk lesmaterialen voor biologie in het voortgezet onderwijs](https://aionderwijsatlas.nl/#zoeken?vak=Biologie&sector=VO&type=materials).
 
-- [Publieke Atlas](https://ecmw.github.io/ai-onderwijs-atlas-nederland/)
+- [Publieke Atlas](https://aionderwijsatlas.nl/)
+- [Praktijkgids](https://aionderwijsatlas.nl/#praktijkgids) met uitgewerkte toetsvoorbeelden, vragen over leerlingwerk en korte onderzoekssamenvattingen. De [lesgids](https://aionderwijsatlas.nl/lesmateriaal/) laat docenten zelf een vak, leerdoel of activiteit invullen.
 - [Bijdragen en broncode](https://github.com/ECMW/ai-onderwijs-atlas-nederland)
 
 ## Uitgangspunten

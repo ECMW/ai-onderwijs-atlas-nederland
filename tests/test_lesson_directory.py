@@ -30,6 +30,8 @@ class LessonDirectoryTests(unittest.TestCase):
         original = next(row for row in json.loads((ROOT / 'data/records.json').read_text(encoding='utf-8'))
                         if row.get('lessonStart') and row.get('subjects'))
         public = {**original, 'id': 'les-een', 'title': 'Een les "<met>" & uitleg'}
+        public['lessonStart'] = {**public['lessonStart'], 'learningGoal': 'Bron A & B vergelijken',
+                                 'activityType': 'Vergelijkend lezen', 'sourceMinutes': 45}
         local_url = 'https://localhost/verborgen'
         records = [
             public,
@@ -47,7 +49,7 @@ class LessonDirectoryTests(unittest.TestCase):
             (root / 'data').mkdir()
             (root / 'scripts').mkdir()
             shutil.copyfile(ROOT / 'scripts/lesson_directory.html', root / 'scripts/lesson_directory.html')
-            for asset in ('platform.css', 'brand.css', 'analytics.js'):
+            for asset in ('platform.css', 'brand.css', 'analytics.js', 'lesgids-filter.js'):
                 shutil.copyfile(ROOT / asset, root / asset)
             (root / 'index.html').write_text('<title>Atlas</title>', encoding='utf-8')
             (root / 'data/metadata.json').write_text('{}', encoding='utf-8')
@@ -70,6 +72,13 @@ class LessonDirectoryTests(unittest.TestCase):
             self.assertIn('href="../#zoeken?type=materials"', local)
             self.assertIn('data-atlas-lesson-directory', local)
             self.assertRegex(local, r'src="\.\./analytics\.js\?v=[a-f0-9]{16}"')
+            self.assertRegex(local, r'src="\.\./lesgids-filter\.js\?v=[a-f0-9]{16}"')
+            self.assertIn('<dd data-directory-goal>Bron A &amp; B vergelijken</dd>', local)
+            self.assertIn('<dd data-directory-activity>Vergelijkend lezen</dd>', local)
+            self.assertIn('<data value="45" data-directory-minutes>45 minuten</data>', local)
+            self.assertRegex(local, r'<form data-directory-filter [^>]*hidden>')
+            for field in ('subject', 'goal', 'activity', 'minutes'):
+                self.assertIn(f'data-filter-{field}', local)
             self.assertNotIn('window.ATLAS_RECORDS', local)
             for record in records[1:]:
                 self.assertNotIn(record['title'], local)
@@ -89,6 +98,18 @@ class LessonDirectoryTests(unittest.TestCase):
             with self.subTest(fields=fields):
                 primary = Links(lesson_card({**record, **fields})).links[0]
                 self.assertEqual(primary, {'href': record['lessonStart']['sourceUrl'], 'data-atlas-usage': 'lesson-open'})
+
+    def test_cards_omit_unknown_durations_and_do_not_infer_goals_or_activities(self):
+        record = next(row for row in json.loads((ROOT / 'data/records.json').read_text(encoding='utf-8')) if row.get('lessonStart'))
+        lesson = {key: value for key, value in record['lessonStart'].items()
+                  if key not in ('sourceMinutes', 'learningGoal', 'activityType')}
+        for minutes in (None, True, 0, -1, '45', 12.5):
+            with self.subTest(minutes=minutes):
+                card = lesson_card({**record, 'lessonStart': {**lesson, 'sourceMinutes': minutes}})
+                self.assertNotIn('data-directory-minutes', card)
+                self.assertNotIn('data-directory-goal', card)
+                self.assertNotIn('data-directory-activity', card)
+                self.assertIn(escape(lesson['task']), card)
 
     def test_sitemap_and_page_use_the_same_canonical_address(self):
         address = 'https://aionderwijsatlas.nl/lesmateriaal/'

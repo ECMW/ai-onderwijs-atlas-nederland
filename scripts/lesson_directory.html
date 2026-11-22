@@ -11,6 +11,7 @@
   <link rel="icon" href="../assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../platform.css">
   <link rel="stylesheet" href="../brand.css">
+  <script defer src="../lesgids-filter.js"></script>
   <script defer src="../analytics.js"></script>
 </head>
 <body>
@@ -22,10 +23,20 @@
   <main id="inhoud" class="lesson-directory" data-atlas-lesson-directory tabindex="-1">
     <header><h1>Lesmateriaal over AI voor in de klas</h1>
       <p>Kies een onderwijssector en bekijk de leerlingvraag en klasopdracht. De Atlas schreef deze lesstarts bij materiaal van de vermelde aanbieders.</p>
+      <form data-directory-filter role="search" aria-label="Lesstarts filteren" autocomplete="off" hidden>
+        <div class="directory-fields">
+          <label>Vakgebied<input type="search" data-filter-subject placeholder="Bijvoorbeeld biologie"></label>
+          <label>Leerdoel of leerlingvraag<input type="search" data-filter-goal></label>
+          <label>Activiteit of opdracht<input type="search" data-filter-activity></label>
+          <label data-duration-field hidden>Maximale duur bronles (minuten)<input type="number" min="1" step="1" inputmode="numeric" data-filter-minutes aria-describedby="source-duration-hint"></label>
+        </div>
+        <p id="source-duration-hint" hidden>Met een maximumduur ziet u alleen lessen waarvoor de aanbieder een duur heeft opgegeven.</p>
+        <div class="directory-filter-status"><button type="reset">Wis filters</button><p role="status" aria-atomic="true"></p></div>
+      </form>
       $navigation
     </header>
     $sections
   </main>
-  <footer><div><strong>AI &amp; Onderwijs Atlas Nederland</strong><br>Gemaakt door E.C.M. Willems</div><a href="../#zoeken?type=materials">Bekijk alle les- en werkmaterialen in de Atlas</a></footer>
+  <footer><div><strong>AI &amp; Onderwijs Atlas Nederland</strong><br>Gemaakt door <a href="../#over">E.C.M. Willems</a></div><a href="../#zoeken?type=materials">Bekijk alle les- en werkmaterialen in de Atlas</a></footer>
 </body>
 </html>

@@ -49,6 +49,7 @@
     'ai infrastructuur': 'Data en infrastructuur', ethiek: 'Publieke waarden en ethiek'
   };
   const SYNONYMS = [
+    ['ecosysteem', 'ecosystemen'],
     ['ai literacy', 'ai geletterdheid'], ['toetsen', 'toetsing', 'examinering'],
     ['lesontwerp', 'lesvoorbereiding', 'lesplanning', 'lesplan', 'lesplannen'],
     ['privacy', 'avg', 'persoonsgegevens'], ['ai wet', 'ai act', 'ai verordening'],
@@ -220,7 +221,8 @@
 
   const recordText = record => normalize([
     record.title, record.description, record.purpose, record.providerName,
-    record.lessonStart?.question, record.lessonStart?.level, record.lessonStart?.task,
+    record.lessonStart ? 'les lesstart lesstarts' : '', record.lessonStart?.question, record.lessonStart?.level,
+    record.lessonStart?.task, record.lessonStart?.learningGoal, record.lessonStart?.activityType,
     ...(record.authors || []), record.isbn, record.bookCategory, record.legacyType, record.subtype, record.status, ...(record.audiences || []), ...(record.sectors || []),
     ...(record.subjects || []), ...(record.themes || []), ...(record.keywords || [])
   ].join(' '));
@@ -635,7 +637,8 @@
   function renderPapers() {
     main.innerHTML = `<section class="new-offers papers-page"><header class="page-intro"><h1 id="papers-heading" tabindex="-1">Papers over AI en onderwijs</h1>
       <p>De Atlas controleert de gevolgde tijdschriften dagelijks op oorspronkelijk onderzoek, overzichtsartikelen en overige tijdschriftartikelen met een expliciete AI-term in de titel.</p>
-      <p>Elke geslaagde broncontrole bestrijkt de afgelopen 60 dagen. U ziet maximaal 6 papers per tijdschrift en 20 in totaal. Ze staan van nieuw naar oud op eerste publicatiedatum, waar bekend die van de online publicatie.</p></header><div data-papers></div></section>`;
+      <p>Elke geslaagde broncontrole bestrijkt de afgelopen 60 dagen. U ziet maximaal 6 papers per tijdschrift en 20 in totaal. Ze staan van nieuw naar oud op eerste publicatiedatum, waar bekend die van de online publicatie.</p>
+      <p><a href="#wat-werkt">Wat werkt? Onderzoek over schrijven, wiskunde en brongebruik in de les</a></p></header><div data-papers></div></section>`;
     const panel = main.querySelector('[data-papers]');
     panel.onclick = event => {
       const button = event.target.closest('[data-copy-paper]');
@@ -645,6 +648,85 @@
         'Bronvermelding gekopieerd.', 'Kopieer de geselecteerde bronvermelding.');
     };
     loadPapers(panel);
+  }
+
+  function renderLearningEvidence() {
+    const cards = [
+      {
+        id: 'schrijven-feedback',
+        question: 'Helpt AI-feedback een leerling om een betoog te verbeteren?',
+        finding: 'Met AI-feedback verbeterden leerlingen hun eerste tekst iets meer dan bij zelfstandig herschrijven zonder feedback (d = 0,19). Bij een nieuw betoog vonden de onderzoekers geen aantoonbaar verschil.',
+        comparison: '459 Duitse bovenbouwleerlingen schreven een betoog in het Engels als vreemde taal. Via loting binnen elke klas kreeg een deel feedback van GPT-3.5. De andere leerlingen kregen alleen de opdracht hun betoog te herzien.',
+        limit: 'De teksten werden automatisch beoordeeld. De studie vergeleek één feedbackronde met geen feedback. Hoe AI-feedback zich verhoudt tot feedback van een docent of medeleerling blijft open.',
+        independent: 'Laat de leerling zelf een standpunt formuleren, een argument kiezen en de alinea herschrijven. Vraag welke suggestie de leerling overneemt of verwerpt en waarom.',
+        check: 'Geef morgen een andere stelling. Laat elke leerling zonder AI een alinea schrijven en beoordeel met hetzelfde criterium of het argument het standpunt ondersteunt.',
+        doi: '10.1016/j.caeai.2023.100199', citation: 'Meyer e.a. · Computers and Education: Artificial Intelligence',
+        date: '2023-12-29', dateLabel: '29 december 2023 online (jaargang 2024)'
+      },
+      {
+        id: 'wiskunde-hints',
+        question: 'Wat kan een leerling nog zelf na wiskunde oefenen met een chatbot?',
+        finding: 'Tijdens het oefenen scoorden beide chatgroepen hoger. Op de toets direct erna scoorde de groep met de gewone chat gemiddeld 17% lager dan de groep zonder AI. Bij de hinttutor was het verschil met de groep zonder AI statistisch niet aantoonbaar.',
+        comparison: 'Bijna 1.000 leerlingen van één Turkse middelbare school oefenden in vier wiskundelessen. Klassen werden door loting ingedeeld bij gewone GPT-4-chat, een tutor met door docenten voorbereide hints of oefenen met boek en aantekeningen. Iedereen maakte daarna een toets zonder hulpmiddelen.',
+        limit: 'De 17% is een relatief verschil in toetsscore. Dit onderzoek volgde één school, één vak en één model. Of het effect later aanhield, is onbekend.',
+        independent: 'Laat leerlingen zelf de eerste rekenstap zetten. Geef zo nodig één hint en laat ze uitleggen waarom de volgende stap uit hun eigen berekening volgt.',
+        check: 'Geef morgen een vergelijkbare opgave met andere getallen, zonder chat of hints. Kijk afzonderlijk naar de gekozen aanpak en het antwoord.',
+        doi: '10.1073/pnas.2422633122', citation: 'Bastani e.a. · PNAS',
+        date: '2025-06-25', dateLabel: '25 juni 2025'
+      },
+      {
+        id: 'ecologie-bronteksten',
+        question: 'Kunnen studenten bij ecologie de bronteksten vervangen door een chatbot?',
+        finding: 'Op de kennistoets zonder hulpmiddelen scoorde de groep met alleen tekst gemiddeld 50,54 punten. De groep met alleen de chatbot behaalde 47,48 punten, een aantoonbaar verschil. Tekst plus chatbot (49,51 punten) leverde geen aantoonbaar voordeel op boven alleen tekst.',
+        comparison: '185 studenten van één Duitse universiteit werkten aan vragen over voedselverrijking en herstel van meren. Loting bepaalde welk materiaal zij kregen: twee bronteksten, een chatbot die alleen die teksten mocht gebruiken, of beide.',
+        limit: 'Dit was één korte ecologietaak. Verdiepende vragen in de chats hingen samen met hogere toetsscores. De onderzoekers hebben het stellen van zulke vragen niet door loting toegewezen.',
+        independent: 'Laat een student een verklaring van de chatbot naast de brontekst leggen. Vraag welke passage de verklaring ondersteunt en welke stap nog onderbouwing vraagt.',
+        check: 'Leg morgen een ander voorbeeld van een meer voor. Laat studenten eerst zonder hulpmiddelen uitleggen wat er gebeurt en daarna in de tekst aanwijzen waarop hun uitleg steunt.',
+        doi: '10.1007/s10956-026-10374-w', citation: 'Dietrich e.a. · Journal of Science Education and Technology',
+        date: '2026-11-12', dateLabel: '12 november 2026'
+      }
+    ];
+    main.innerHTML = `<section class="new-offers papers-page" aria-labelledby="evidence-heading">
+      <header class="page-intro"><h1 id="evidence-heading" tabindex="-1">Wat werkt?</h1>
+        <p>Wat blijft er over als de AI-hulp wegvalt? Drie lesvragen verbinden uitkomsten uit de klas met iets dat u morgen zelf kunt bekijken.</p></header>
+      <ul class="papers-list">${cards.map(card => `<li><article aria-labelledby="${card.id}">
+        <h2 id="${card.id}">${escapeHtml(card.question)}</h2><p class="paper-summary">${escapeHtml(card.finding)}</p>
+        <details class="papers-sources"><summary>Wie deden mee en wat is vergeleken?</summary>
+          <p class="paper-summary">${escapeHtml(card.comparison)}</p><p class="paper-summary">${escapeHtml(card.limit)}</p></details>
+        <p class="paper-summary"><strong>Zelf doen</strong> · ${escapeHtml(card.independent)}</p>
+        <p class="paper-summary"><strong>Check voor morgen</strong> · ${escapeHtml(card.check)}</p>
+        <p class="paper-meta"><a href="https://doi.org/${card.doi}">${escapeHtml(card.citation)}</a> · <time datetime="${card.date}">${escapeHtml(card.dateLabel)}</time></p>
+      </article></li>`).join('')}</ul>
+      <aside class="source-policy"><h2>Hoe breed gelden deze resultaten?</h2>
+        <p>Stanford SCALE bundelde op 10 november 2026 in totaal 52 gerandomiseerde en quasi-experimentele onderzoeken. Hulp bij oefenen en feedback gaf wisselende resultaten. Veel onderzoek betrof het hoger onderwijs. Of leerwinst op lange termijn aanhoudt, is nog onzeker. <a href="https://scale.stanford.edu/ai/evidence-base-review/evidence-base-ai-k12-november-review">Lees het overzicht van Stanford SCALE</a>.</p>
+        <p>De lesvoorstellen en checks zijn redactionele uitwerkingen van de Atlas. U kunt ermee zien wat uw leerlingen of studenten zelfstandig laten zien.</p>
+      </aside></section>`;
+  }
+
+  function practiceCasesMarkup() {
+    return `<section class="guide-block" aria-labelledby="praktijkvoorbeelden-heading">
+      <h2 id="praktijkvoorbeelden-heading">Hoe ging het op een school en een universiteit?</h2>
+      <div class="guide-examples">
+        <article><h3>Fortior · Een les voor het ontdeklab</h3>
+          <p>Voor de leerlijn wetenschap en technologie van groep 1 tot en met 8 maakte Fortior al lessen met experts. Het team gaf een eigen chatbot stapsgewijs informatie om nieuwe lesideeën in hetzelfde format te ontwerpen.</p>
+          <p><strong>Wat kwam eruit?</strong> Volgens Fortior waren de ideeën bruikbaar als opstap voor leerlingen die al zelfstandiger werkten. De lessen waren korter en minder gedetailleerd. Ook de afbeeldingen vroegen nog aandacht. Het praktijkverhaal rapporteert geen meting van leerwinst of bespaarde tijd.</p>
+          <p><strong>Vraag voor uw team</strong> · Welke instructiestap of afbeelding moet een collega eerst met een beginnende leerling doorlopen?</p>
+          <p><a href="#item/open-leermateriaal-ai-in-de-klas-pilotscholen">Bekijk de Atlas-kaart van de pilotscholen</a> · <a href="https://www.openleermateriaal.nl/ai-in-de-klas-zo-doen-pilots-het/">Praktijkverhaal bij Impuls Open Leermateriaal</a> (4 oktober 2025)</p>
+        </article>
+        <article><h3>Universiteit van Amsterdam · Feedback op de eerste onderzoeksvraag</h3>
+          <p>Studenten in de bachelor Future Planet Studies legden hun onderzoeksvraag voor aan een speciaal ingestelde chatbot. Die reageerde met vragen en feedback op onderdelen. De student moest de onderzoeksvraag zelf aanscherpen.</p>
+          <p><strong>Wat viel op?</strong> De projectbegeleider meldde dat studenten met die eerste stap verder konden en dat begeleiders tijd wonnen. Deelname aan de pilots was vrijwillig. De bron geeft voor dit vak geen tijdmeting of vergelijking van de kwaliteit van onderzoeksvragen.</p>
+          <p><strong>Vraag voor uw team</strong> · Kan de student na de feedback zelf uitleggen waarom de vraag uitvoerbaar is en welke afbakening nodig was?</p>
+          <p><a href="#item/uva-pilots-generatieve-ai-beveiligde-omgeving">Bekijk de Atlas-kaart van de UvA-pilots</a> · <a href="https://communities.surf.nl/vraagbaak-online-onderwijs/artikel/uva-doet-ai-onderwijspilots-in-eigen-beveiligde-omgeving-het">Interview met de UvA-projectbegeleiders bij SURF</a> (15 november 2024)</p>
+        </article>
+      </div></section>
+      <section class="guide-block" aria-labelledby="toekomstgesprek-heading">
+        <h2 id="toekomstgesprek-heading">Wat willen we dat iemand straks zelf kan beslissen?</h2>
+        <p>Stel dat een beginnend professional morgen een overtuigend AI-advies krijgt dat niet past bij de persoon tegenover hem of haar. Welke ervaring heeft die professional vandaag nodig om dat te herkennen, bij te sturen en de keuze uit te leggen?</p>
+        <p><strong>Maak één keuze voor de volgende les</strong> · Laat studenten eerst zelf een afweging maken en daarna AI om een tegenargument vragen. Of geef een AI-advies als vertrekpunt en laat studenten eerst de ontbrekende informatie zoeken bij de mensen om wie het gaat. Bespreek welke aanpak de vaardigheid oefent die u wilt behouden.</p>
+        <p><strong>Kom erop terug</strong> · Geef de volgende les een nieuwe situatie zonder AI. Laat elke student benoemen wiens perspectief telt, wat onzeker blijft en wie de beslissing kan herzien.</p>
+        <p>Dit is een gespreksvoorstel van de Atlas. TNO gebruikt vier mogelijke toekomstbeelden voor werk en verschillende betrokkenen om keuzes van nu te bespreken. UNESCO benoemt mensgericht en kritisch oordelen als leerdoel. <a href="#item/tno-scenariospel-werkzekerheid">TNO-scenariospel werkzekerheid</a> · <a href="#item/unesco-ai-competency-framework-students">UNESCO-kader voor leerlingen</a></p>
+      </section>`;
   }
 
   function sortRecords(list) {
@@ -754,9 +836,13 @@
     const isQuestion = /^(?:ik|wij|we|hoe|waar|welke?|kan ik|kunnen we)\b/.test(normalized);
     const taskFragment = practice && (practice.action || /\b(?:vinden|zoeken|geven|maken|voorbereiden)\b/.test(normalized) ||
       /^(?:een )?(?:les(?:sen|geven)? (?:over|met) ai|teamafspraken|teamscholing|teamtraining)\b/.test(normalized));
-    if (!isQuestion && !taskFragment) return {...base, q:query};
+    const task = teacherQuestion(normalized);
+    if (!isQuestion && !taskFragment && !task) return {...base, q:query};
     const interpreted = interpretNaturalQuery(query, normalized, practice);
-    const criteria = { ...base, q: interpreted.q };
+    const criteria = { ...base, q: task ? query : interpreted.q };
+    if (task === 'ecology' && !base.vak && /\b(?:biologie|biologieles)\b/.test(normalized) && subjectNames.has('biologie')) {
+      criteria.vak = subjectNames.get('biologie');
+    }
     ['audience', 'theme', 'sector', 'type', 'cost'].forEach(key => {
       if (interpreted[key] && !base[key]) criteria[key] = interpreted[key];
     });
@@ -1142,6 +1228,48 @@
       }).join('')}
       ${materials.length ? `<section id="boeken-materialen" class="book-group"><div class="section-title"><div><h2 tabindex="-1">Les- en werkmaterialen</h2><p>${materials.length} Nederlandstalige materialen voor lessen, AI-geletterdheid en toetsing.</p></div><a href="#zoeken?type=materials">Bekijk alle les- en werkmaterialen →</a></div><div class="result-list">${materials.map(record => simpleCard(record)).join('')}</div></section>` : ''}</section>`;
   }
+  function renderPracticeGuide() {
+    const routes = [
+      ['lesmateriaal/', 'Een les voorbereiden', 'Vind een leerlingvraag, lesopdracht en werkblad bij uw vak.'],
+      ['#toetsafspraak', 'Een toets aanpassen', 'Kies welke AI-hulp past en wat de leerling zelf moet laten zien.'],
+      ['#toolkeuze', 'Een AI-toepassing kiezen', 'Vergelijk de functie, voorwaarden en open vragen voor uw klas.'],
+      ['#regels-in-de-praktijk', 'Leerlingwerk of lesmateriaal gebruiken', 'Controleer gegevens, licentie en afspraken op uw school.'],
+      ['#wat-werkt', 'Beoordelen wat werkt', 'Bekijk wat leerlingen met hulp presteerden en wat ze daarna zelf konden.'],
+      [criteriaHref(FUNDING_CRITERIA), 'Subsidies en calls vinden', 'Controleer wie kan aanvragen en wanneer de ronde sluit.']
+    ];
+    const practices = [
+      ['PO · digitale geletterdheid', 'digiduck-ai-lespakket-groep-7-8', 'Leg uit hoe voorbeelden de voorspelling van een model beïnvloeden.',
+        'Sorteer met de klas kaartjes op een zelfgekozen kenmerk. Laat een ander een nieuw kaartje indelen. Welke extra voorbeelden zouden de regel duidelijker maken?',
+        'Het kind geeft een eigen voorbeeld en legt uit waarom de regel daar wel of niet werkt.'],
+      ['VO · biologie', 'stanford-craft-ai-ecosystemen', 'Beoordeel een AI-toepassing voor natuurbehoud aan de hand van een biologisch doel.',
+        'Vergelijk twee toepassingen uit de CRAFT-les. Kies eerst zelfstandig welke helpt bij een bedreiging voor een ecosysteem. Bespreek daarna welke gegevens die keuze zouden kunnen weerleggen.',
+        'De leerling noemt een ecologisch gevolg, een benodigde meting en een situatie waarin de toepassing tekortschiet.'],
+      ['MBO · mediavormgeving', 'mbo-mediawijs-open-ai-leermaterialen', 'Verantwoord welke ontwerpkeuze van de maker is.',
+        'Leg een eerste beeld en een bewerking naast dezelfde ontwerpbriefing. Laat een medestudent aanwijzen wat er is veranderd. De maker licht één keuze toe.',
+        'De student koppelt een concrete bewerking aan het doel van de opdrachtgever en wijst aan welk deel met AI tot stand is gekomen.'],
+      ['HBO en WO · informatievaardigheden', 'vu-ai-wijs-informatie-zoeken-beoordelen-2026', 'Beoordeel of een aangehaalde bron een bewering daadwerkelijk ondersteunt.',
+        'Zoek bij één bewering uit een AI-antwoord de oorspronkelijke publicatie op. Vergelijk de passage met de bewering en formuleer een conclusie die de bron wel kan dragen.',
+        'De student vermeldt een vindplaats, legt een beperking uit en verantwoordt een wijziging in de eigen conclusie.']
+    ];
+    const cards = practices.map(([level, id, goal, task, check]) => {
+      const record = publicRecordsById.get(id);
+      return `<details class="guide-block"><summary>${escapeHtml(level)}</summary><h3>${escapeHtml(goal)}</h3>
+        <p>${escapeHtml(task)}</p><p><strong>Waar let u op?</strong> ${escapeHtml(check)}</p>
+        ${record ? `<p><a href="#item/${encodeURIComponent(id)}">Lesmateriaal: ${escapeHtml(record.title)}</a></p>` : ''}</details>`;
+    }).join('');
+    main.innerHTML = `<article class="new-offers practice-guide"><header class="page-intro">
+      <h1 tabindex="-1">Praktijkgids voor AI in het onderwijs</h1><p>Waar werkt u aan?</p></header>
+      <nav class="practice-links guide-routes" aria-label="Kies een werkvraag">${routes.map(([href, title, description]) =>
+        `<a class="practice-link" href="${escapeHtml(href)}"><strong>${escapeHtml(title)}</strong><span>${escapeHtml(description)}</span></a>`).join('')}</nav>
+      <section class="guide-section"><h2>AI-geletterdheid in mijn les</h2>
+        <p>Kies een onderwijssector voor een leerdoel, opdracht en voorbeeld van wat u kunt beoordelen. De Atlas werkte deze voorbeelden uit bij bestaand lesmateriaal.</p>
+        ${cards}
+        <p>Kies voor uw leerlijn een leerdoel uit het <a href="#item/unesco-ai-competency-framework-students">UNESCO-kader voor leerlingen</a>. Bepaal met het <a href="#item/unesco-ai-competency-framework-teachers">docentenkader</a> of <a href="#item/ai-go-in-actie">AI-GO in Actie voor mbo, hbo en wo</a> wat docenten zelf moeten kunnen om het oefenen te begeleiden.</p>
+        <p>Vergelijkt uw team kaders? UNESCO IITE onderzocht 36 kaders voor leraren die op 10 april 2025 beschikbaar waren. Gebruik de vergelijking om na te gaan wie de vaardigheid onderwijst, waar deze terugkomt in het curriculum en welk werk laat zien dat iemand haar beheerst. De analyse beschrijft inhoud en invoering. Of leerlingen hierdoor meer leren, is niet onderzocht. <a href="https://iite.unesco.org/publications/analytical-report-teacher-ai-competency-frameworks/">Vergelijking en checklist van UNESCO IITE</a>.</p></section>
+      ${practiceCasesMarkup()}</article>`;
+    main.querySelectorAll('a[href^="#item/"]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', '#praktijkgids'));
+  }
+
   function renderBooks() {
     sessionSet('atlas.lastSearch', '#boeken');
     main.innerHTML = booksMarkup();
@@ -1226,8 +1354,55 @@
     }
     return row[b.length];
   }
+  function teacherQuestion(normalized) {
+    if (/\bai (?:tools?|toepassing(?:en)?|software|hulpmiddel(?:en)?)\b/.test(normalized) &&
+        /\b(?:vergelijk\w*|kiezen|kies|past|passen|verantwoord)\b/.test(normalized)) return 'tools';
+    if (/\b(?:ecosysteem|ecosystemen)\b/.test(normalized) &&
+        /\b(?:biologieles|lessen?|les|lesmateriaal|lesidee|werkblad|onderbouw|bovenbouw)\b/.test(normalized)) return 'ecology';
+    if (/\b(?:leerlingwerk|leerlingenwerk|leerlinggegevens|studentgegevens|studentenwerk|werk van (?:een |mijn |de )?(?:leerling(?:en)?|student(?:en)?))\b/.test(normalized) &&
+        (/\b(?:upload\w*|invoer\w*|delen|privacy|avg|schoolafspraken|persoonsgegevens|regels)\b/.test(normalized) ||
+        (/\b(?:mag|mogen|toegestaan)\b/.test(normalized) && /\b(?:ai|chatgpt|chatbot)\b/.test(normalized)) ||
+        /^(?:leerlingwerk|leerlingenwerk|leerlinggegevens|studentgegevens|studentenwerk)$/.test(normalized))) return 'privacy';
+    if (/\bfeedback\b/.test(normalized) && /\b(?:ai|chatgpt|chatbot|kunstmatige intelligentie)\b/.test(normalized) &&
+        (/\b(?:leerwinst|leereffect\w*|leerresulta\w*|leereffectiviteit|leren|effect\w*|helpt|werkt|onderzoek)\b/.test(normalized) ||
+        normalized === 'ai feedback')) return 'evidence';
+    return '';
+  }
+  const SCHOOL_PRIVACY_ID = 'generatieve-ai-en-privacy-hier-moeten-scholen-op-letten';
+  function teacherRoutes(query, criteria) {
+    switch (teacherQuestion(normalize(query))) {
+      case 'tools':
+        return [{label:'Welke AI-toepassing past bij mijn les?', meta:'Vergelijk dicteren en transcriberen en controleer de voorwaarden voor uw klas.', href:'#toolkeuze'}];
+      case 'privacy': {
+        const guide = publicRecordsById.get(SCHOOL_PRIVACY_ID);
+        const items = [{label:'Kan ik dit leerlingwerk met AI delen?', meta:'Controleer gegevens, toepassing en schoolafspraken.', href:'#regels-in-de-praktijk'}];
+        if (guide && primarySource(guide)) items.push({label:guide.title, meta:`Kennisnet · algemene uitleg voor ${guide.sectors?.join(', ') || 'scholen'}`, href:'#item/' + encodeURIComponent(guide.id)});
+        return items;
+      }
+      case 'evidence':
+        return [{label:'Wat weten we over AI-feedback en leren?', meta:'Bekijk wat onderzocht is, bij welke leerlingen en met welk resultaat.', href:'#wat-werkt'}];
+      case 'ecology': {
+        const types = filterValues('type', criteria.type);
+        if (types.length && !types.includes('materials')) return [];
+        const next = {...criteria, q:'ecosystemen', type:'materials'};
+        const count = recordsForCriteria(next).length;
+        if (!count) return [];
+        return [{label:'Bekijk lesmateriaal over ecosystemen', meta:'Controleer in de les of het niveau bij uw klas past.', href:criteriaHref(next), count}];
+      }
+      default: return [];
+    }
+  }
   function alternativeSuggestion() {
     if (!state.q || resultRecords.length) return null;
+    const question = normalize(state.q);
+    if (/^(?:waar|hoe|wat|welke?|heeft de atlas|hebben jullie|is er|zijn er|bestaat er|ik zoek)\b/.test(question)) {
+      const framing = new Set(['er', 'te', 'van', 'vinden', 'vind', 'bestaat', 'is', 'heeft', 'hebben', 'jullie', 'atlas', 'meer', 'materiaal', 'materiaalvoorbeelden', 'beschikbaar']);
+      const topic = question.split(' ').filter(word => !REQUEST_WORDS.has(word) && !QUERY_STOPWORDS.has(word) && !framing.has(word)).join(' ');
+      if (topic && topic !== question) {
+        const count = recordsForCriteria({...state, q:topic}).length;
+        if (count) return {candidate:topic, count};
+      }
+    }
     const rawCandidates = [
       ...themeOptions(), ...SYNONYMS.flat(),
       ...records.map(record => record.providerName).filter(Boolean)
@@ -1266,6 +1441,26 @@
     HBO: 'Hoger beroepsonderwijs', WO: 'Wetenschappelijk onderwijs'
   };
 
+  function renderPracticeRules() {
+    const previous = sessionGet('atlas.lastSearch');
+    const back = /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
+    main.innerHTML = `<article class="personal-page research-page practice-rules">
+      <nav class="practice-back"><a href="${escapeHtml(back)}">← Terug naar zoeken</a></nav>
+      <header class="page-intro"><h1 id="rules-heading" tabindex="-1">Regels in de praktijk</h1><p>Loop de vragen langs voordat u leerlingwerk deelt of lesmateriaal van iemand anders bewerkt.</p></header>
+      <section><h2>Mag ik leerlingwerk uploaden naar ChatGPT?</h2>
+        <ol><li><strong>Kan iemand de leerling herkennen?</strong> Bekijk de tekst, de bestandsnaam, opmerkingen en details over de klas. Ook zonder naam kan een leerling herkenbaar zijn. Kunt u hetzelfde oefenen met een zelfgeschreven voorbeeld? Gebruik dat dan.</li>
+        <li><strong>Welke gegevens zijn nodig?</strong> Leg vast waarvoor u de toepassing wilt gebruiken. Voor persoonsgegevens is een grondslag nodig. Beperk de gegevens tot wat voor dit doel noodzakelijk is. <a href="https://eur-lex.europa.eu/eli/reg/2016/679/2016-05-04?locale=nl">AVG, artikelen 4, 5 en 6</a>.</li>
+        <li><strong>Welke afspraak geldt bij uw instelling?</strong> Vraag de verantwoordelijke voor privacy of informatiebeveiliging of deze toepassing, dit account en dit gebruik onder de afspraken met de leverancier vallen. Zolang dat onduidelijk is, houd het echte bestand buiten de toepassing. De docent controleert zelf de feedback voordat de leerling die krijgt.</li></ol>
+        <p><a href="https://www.kennisnet.nl/artificial-intelligence/privacy-en-ai-hier-moeten-scholen-op-letten/">Kennisnet over persoonsgegevens in prompts en uploads</a> geeft voorbeelden voor scholen. Gebruik de <a href="https://www.kennisnet.nl/artificial-intelligence/schoolafspraken-over-het-gebruik-van-generatieve-ai/">werkbladen voor schoolafspraken</a> om met het team een eigen werkwijze vast te leggen.</p></section>
+      <section><h2>Welke AI-hulp mag bij deze mbo-toets of dit examen?</h2>
+        <p>Pak de schooleigen afspraken en de instructie bij het examen erbij. Leg vóór de start vast voor welk onderdeel AI-hulp is toegestaan, wat de student zelf moet aantonen en hoe die het gebruik vermeldt. Als de instructie hierover zwijgt, laat de examencommissie of de verantwoordelijke op school dit verduidelijken.</p>
+        <p>De landelijke richtlijn uit 2025 bevat een gedragscode voor studenten en een voor medewerkers. Scholen vertalen die naar hun eigen situatie. <a href="https://www.onderwijsenexaminering.nl/publicaties/gebruik-van-ai-bij-toetsing-en-examinering-in-het-mbo-landelijke-richtlijn-als-vertrekpunt/">Lees de mbo-richtlijn van Kennispunt, Npuls en partners</a> · <a href="#toetsafspraak">Werk een toetsafspraak uit</a>.</p></section>
+      <section><h2>Kan ik een werkblad met CC BY 4.0 aanpassen en delen?</h2>
+        <p>Stel dat u een opdracht wilt vertalen. Controleer eerst op het origineel of de rechthebbende CC BY 4.0 vermeldt en of die licentie ook geldt voor de afbeeldingen die u wilt gebruiken.</p>
+        <p>Voor het materiaal onder CC BY 4.0 zijn bewerken en delen toegestaan onder de licentievoorwaarden. Vermeld de maker, verwijs naar het origineel en de licentie en geef aan wat u hebt veranderd. Behoud eerdere wijzigingsvermeldingen en de meegeleverde auteursrechtvermelding en verwijzing naar de uitsluiting van garanties. Voor een onderdeel met een andere licentie bekijkt u de afzonderlijke voorwaarden.</p>
+        <p><a href="https://creativecommons.org/licenses/by/4.0/legalcode.nl">Creative Commons, officiële licentie CC BY 4.0, artikelen 2 en 3</a>.</p></section>
+      <footer><p>Bronnen gecontroleerd op <time datetime="2026-11-22">22 november 2026</time>. Controleer voor uw concrete geval ook de actuele afspraken van uw instelling.</p></footer></article>`;
+  }
   const ASSESSMENT_MODES = {
     zelfstandig: {
       label: 'Zelfstandig uitwerken',
@@ -1290,7 +1485,34 @@
     }
   };
   const assessmentToolQuery = query => ['toetsafspraak', 'toetsafspraken', 'toetsafspraak maken'].includes(normalize(query));
-  let assessmentDraft;
+  const ASSESSMENT_EXAMPLES = {
+    voedselweb: {
+      title: 'VO-biologie · Een voedselweb verklaren',
+      original: 'Wat gebeurt er met koolmezen als er minder rupsen zijn?',
+      answer: '“Er zijn minder rupsen, dus er komen zeker minder koolmezen.”',
+      feedback: 'Je benoemt één voedselroute. Teken ook de route via vliegen en spinnen. Welke telling mis je om het woord “zeker” te kunnen verdedigen?',
+      goal: 'Met twee voedselroutes uitleggen wat je wel en niet kunt voorspellen over het aantal koolmezen.',
+      mode: 'controleren',
+      task: 'In dit vereenvoudigde voedselweb eten rupsen eikenblad, spinnen eten vliegen en koolmezen eten zowel rupsen als spinnen. Er zijn dit voorjaar minder rupsen. Beoordeel de uitspraak “Dan komen er zeker minder koolmezen.” Teken twee routes met pijlen van voedsel naar eter. Leg in drie zinnen uit welke verandering mogelijk is en wat je nog moet weten.',
+      evidence: 'Lever je eigen tekening en uitleg in. Onderstreep het woord uit de uitspraak dat je zou aanpassen en licht je keuze toe met beide routes.',
+      criterion: 'Criterium: je onderbouwt de voorspelling met het voedselweb.\nIn opbouw — Je noemt een mogelijk gevolg, maar laat de bijbehorende voedselroute nog niet zien.\nVoldoende — Je tekent beide routes correct en legt uit waarom minder rupsen geen zekere daling van het aantal koolmezen betekent.\nSterk — Je benoemt bovendien een ontbrekend gegeven en legt uit hoe dat je voorspelling kan veranderen.',
+      alternative: 'Gebruik de afgedrukte uitspraak uit de opdracht als stelling van de docent. Je werkt op papier met hetzelfde voedselweb en dezelfde beoordelingscriteria.'
+    },
+    adviesmail: {
+      title: 'Mbo-Nederlands · Een adviesmail onderbouwen',
+      original: 'Schrijf een overtuigende mail over langere openingstijden van de schoolkantine.',
+      answer: '“Iedereen wil dat de kantine dinsdag vroeger opengaat. Dat is beter voor de hele school.”',
+      feedback: 'Je voorkeur is duidelijk. “Iedereen” past niet bij 18 van de 30 reacties. Gebruik het getal en schrijf één zin waarin je de andere groep serieus neemt.',
+      goal: 'Een advies aan een beheerder onderbouwen met gegevens en een afgewogen tegenargument.',
+      mode: 'feedback',
+      task: 'De schoolkantine kan één extra uur open: dinsdag vanaf 8.00 uur of donderdag tot 17.00 uur. In deze fictieve peiling kiezen 18 van de 30 studenten dinsdag en 12 donderdag. Schrijf de beheerder een adviesmail van 80–120 woorden. Adviseer één optie, onderbouw je keuze met de verdeling en bespreek een nadeel voor de andere groep. Eindig met een concrete vraag aan de beheerder.',
+      evidence: 'Schrijf zelf je eerste versie. Vraag feedback op één bewering en beslis zelf wat je wijzigt. Lever beide versies in en licht in één zin toe welk advies je gebruikte of verwierp en waarom.',
+      criterion: 'Criterium: je weegt de peiling in je advies.\nIn opbouw — Je kiest een openingstijd, maar gebruikt de verdeling nog niet juist als argument.\nVoldoende — Je gebruikt de cijfers correct en benoemt een concreet nadeel voor de andere groep.\nSterk — Je legt bovendien uit waarom je keuze ondanks dat nadeel passend is en stelt de beheerder een uitvoerbare vervolgvraag.',
+      alternative: 'Herlees je eigen concept met de vraag “Klopt mijn bewering voor alle 30 studenten?” of vraag een klasgenoot dezelfde feedback. Lever dezelfde twee versies en toelichting in.'
+    }
+  };
+  const assessmentDrafts = new Map();
+  let assessmentChoice;
 
   function assessmentEntry() {
     const sectors = values('sector');
@@ -1301,13 +1523,19 @@
       <a class="btn" href="#toetsafspraak">Maak een toetsafspraak</a></section>`;
   }
 
-  function readAssessmentDraft() {
-    if (assessmentDraft) return assessmentDraft;
+  function assessmentStorageKey(choice) {
+    return choice ? 'atlas.toetsafspraak.' + choice : 'atlas.toetsafspraak';
+  }
+  function readAssessmentDraft(choice = '') {
+    if (assessmentDrafts.has(choice)) return assessmentDrafts.get(choice);
     let saved;
-    try { saved = JSON.parse(sessionGet('atlas.toetsafspraak')); } catch { /* Eerste bezoek of een ouder concept. */ }
+    try { saved = JSON.parse(sessionGet(assessmentStorageKey(choice))); } catch { /* Eerste bezoek of een ouder concept. */ }
+    if (!saved && Object.hasOwn(ASSESSMENT_EXAMPLES, choice)) saved = ASSESSMENT_EXAMPLES[choice];
     return {
       goal: typeof saved?.goal === 'string' ? saved.goal.slice(0, 500) : '',
       mode: typeof saved?.mode === 'string' && Object.hasOwn(ASSESSMENT_MODES, saved.mode) ? saved.mode : '',
+      task: typeof saved?.task === 'string' ? saved.task.slice(0, 1000) : '',
+      alternative: typeof saved?.alternative === 'string' ? saved.alternative.slice(0, 500) : '',
       evidence: typeof saved?.evidence === 'string' ? saved.evidence.slice(0, 500) : '',
       criterion: typeof saved?.criterion === 'string' ? saved.criterion.slice(0, 500) : ''
     };
@@ -1316,12 +1544,18 @@
   function assessmentParts(draft) {
     if (!draft.goal.trim() || !Object.hasOwn(ASSESSMENT_MODES, draft.mode)) return [];
     const mode = ASSESSMENT_MODES[draft.mode];
-    return [['Leerdoel', draft.goal.trim()], ['Gebruik van AI', mode.rule],
+    return [['Leerdoel', draft.goal.trim()], ...(draft.task?.trim() ? [['Opdracht', draft.task.trim()]] : []),
+      ['Gebruik van AI', mode.rule], ...(draft.alternative?.trim() ? [['Zonder AI', draft.alternative.trim()]] : []),
       ['Wat je laat zien', draft.evidence.trim() || mode.evidence], ['Hierop word je beoordeeld', draft.criterion.trim() || mode.criterion]];
   }
 
   function renderAssessment() {
-    const draft = readAssessmentDraft();
+    if (assessmentChoice === undefined) {
+      const saved = sessionGet('atlas.toetsafspraak.start');
+      assessmentChoice = Object.hasOwn(ASSESSMENT_EXAMPLES, saved) ? saved : '';
+    }
+    const example = ASSESSMENT_EXAMPLES[assessmentChoice];
+    const draft = readAssessmentDraft(assessmentChoice);
     const sources = [
       ['toetsing-en-generatieve-ai-in-het-voortgezet-onderwijs', 'Kennisnet over toetsing in het vo'],
       ['visie-op-toetsing-examinering-en-ai-en-handreikingen', 'Npuls over toetsing in het mbo, hbo en wo']
@@ -1332,24 +1566,36 @@
     });
     main.innerHTML = `<section class="assessment-page">
       <a href="${escapeHtml(criteriaHref(ASSESSMENT_CRITERIA))}">← Naar toetsmateriaal</a>
-      <header><h1>Maak een toetsafspraak</h1><p>Welke AI-hulp past bij uw leerdoel? Maak een instructie voor een schrijf- of ontwerpopdracht in het vo, mbo, hbo of wo.</p></header>
+      <header><h1>Maak een toetsafspraak</h1><p>Werk met uw eigen leerdoel of pas een uitgewerkt toetsvoorbeeld aan voor uw klas.</p></header>
+      <div class="assessment-start"><label for="assessment-start">Kies een startpunt</label>
+        <select id="assessment-start"><option value="">Mijn eigen opdracht</option>
+          ${Object.entries(ASSESSMENT_EXAMPLES).map(([key, item]) => `<option value="${key}" ${key === assessmentChoice ? 'selected' : ''}>${escapeHtml(item.title)}</option>`).join('')}</select>
+        <p class="assessment-note">Uw eigen opdracht en aanpassingen aan elk voorbeeld blijven apart bewaard in dit tabblad.</p>
+        ${example ? `<button class="assessment-example" type="button" data-assessment-jump>Ga naar de kopieerbare opdracht</button>
+          <details class="assessment-custom"><summary>Oorspronkelijke vraag en voorbeeldfeedback</summary>
+          <dl><dt>Oorspronkelijke vraag</dt><dd>${escapeHtml(example.original)}</dd>
+          <dt>Voorbeeldantwoord van een leerling</dt><dd>${escapeHtml(example.answer)}</dd>
+          <dt>Feedback bij dit antwoord</dt><dd>${escapeHtml(example.feedback)}</dd></dl></details>` : ''}</div>
       <div class="assessment-layout"><form class="assessment-form">
         <label for="assessment-goal">Wat moet de leerling of student zelf kunnen?</label>
         <textarea id="assessment-goal" rows="2" maxlength="500" required placeholder="Bijv. twee bronnen vergelijken en een conclusie onderbouwen.">${escapeHtml(draft.goal)}</textarea>
-        <button class="assessment-example" type="button" data-assessment-example>Vul een voorbeeld in</button>
         <fieldset><legend>Welke rol krijgt AI bij deze opdracht?</legend>
           ${Object.entries(ASSESSMENT_MODES).map(([key, mode]) => `<label class="assessment-choice"><input required type="radio" name="mode" value="${key}" ${key === draft.mode ? 'checked' : ''}>${mode.label}</label>`).join('')}
         </fieldset>
-        <details class="assessment-custom" ${draft.evidence || draft.criterion ? 'open' : ''}>
-          <summary>Pas de inlevervorm en het criterium aan</summary>
+        <details class="assessment-custom" ${!example && (draft.task || draft.evidence || draft.criterion || draft.alternative) ? 'open' : ''}>
+          <summary>Pas opdracht, inlevervorm en beoordeling aan</summary>
+          <label for="assessment-task">Wat is de opdracht?</label>
+          <textarea id="assessment-task" rows="4" maxlength="1000">${escapeHtml(draft.task)}</textarea>
+          <label for="assessment-alternative">Hoe kan de leerling zonder AI meedoen?</label>
+          <textarea id="assessment-alternative" rows="2" maxlength="500">${escapeHtml(draft.alternative)}</textarea>
           <label for="assessment-evidence">Wat wilt u terugzien?</label>
           <textarea id="assessment-evidence" rows="2" maxlength="500" placeholder="Bijv. een schets met een korte mondelinge toelichting.">${escapeHtml(draft.evidence)}</textarea>
           <label for="assessment-criterion">Waar let u op bij de beoordeling?</label>
           <textarea id="assessment-criterion" rows="2" maxlength="500" placeholder="Bijv. elke ontwerpkeuze is onderbouwd met een gegeven uit de opdracht.">${escapeHtml(draft.criterion)}</textarea>
-          <p class="assessment-note">Een leeg veld gebruikt het voorstel bij de gekozen rol van AI.</p>
+          <p class="assessment-note">Een lege inlevervorm of beoordeling gebruikt het voorstel bij de gekozen rol van AI.</p>
         </details>
         <div class="assessment-actions"><button class="btn" type="submit">Bekijk opdrachttekst</button>
-          <button class="assessment-clear" type="button" data-assessment-clear>Wis concept</button></div>
+          <button class="assessment-clear" type="button" data-assessment-clear>${example ? 'Herstel dit voorbeeld' : 'Wis concept'}</button></div>
         <p class="assessment-note">Uw concept blijft in dit tabblad. Kopieer de opdrachttekst om die te bewaren.</p>
       </form>
       <section class="assessment-preview" aria-labelledby="assessment-preview-title">
@@ -1357,22 +1603,24 @@
         <div data-assessment-result></div>
       </section></div>
       <details class="assessment-sources"><summary>Over de voorbeelden en bronnen</summary>
-        <p>De drie voorbeeldafspraken zijn geschreven door de AI &amp; Onderwijs Atlas Nederland. Stem de tekst af op uw toetsbeleid en de ondersteuning die met leerlingen of studenten is afgesproken.</p>
-        ${sources.length ? `<ul>${sources.join('')}</ul>` : ''}</details></section>`;
+        <p>De Atlas schreef de opdrachten, fictieve leerlingantwoorden, feedback en beoordelingscriteria. Stem ze af op uw leerdoel en de afspraken op uw school.</p>
+        ${sources.length ? `<p>Achtergrond bij het toetsontwerp</p><ul>${sources.join('')}</ul>` : ''}</details>
+      <p><a href="#wat-werkt">Wat zegt onderzoek over AI-feedback?</a></p></section>`;
     const form = main.querySelector('.assessment-form');
     const goal = form.querySelector('#assessment-goal');
     const mode = form.elements.namedItem('mode');
     const evidence = form.querySelector('#assessment-evidence');
     const criterion = form.querySelector('#assessment-criterion');
+    const task = form.querySelector('#assessment-task');
+    const alternative = form.querySelector('#assessment-alternative');
     const result = main.querySelector('[data-assessment-result]');
-    const example = form.querySelector('[data-assessment-example]');
+    const start = main.querySelector('#assessment-start');
     const clear = form.querySelector('[data-assessment-clear]');
-    const current = () => ({goal: goal.value, mode: mode.value, evidence: evidence.value, criterion: criterion.value});
+    const current = () => ({goal:goal.value, mode:mode.value, task:task.value, alternative:alternative.value, evidence:evidence.value, criterion:criterion.value});
     function updatePreview() {
       const value = current();
       const parts = assessmentParts(value);
-      example.hidden = Boolean(value.goal.trim() || value.evidence.trim() || value.criterion.trim());
-      clear.hidden = !(value.goal || value.evidence || value.criterion || value.mode);
+      clear.hidden = example ? Object.entries(value).every(([key, text]) => text === example[key]) : !Object.values(value).some(Boolean);
       goal.setCustomValidity(value.goal && !value.goal.trim() ? 'Vul een leerdoel in.' : '');
       if (!parts.length) {
         result.innerHTML = '<p class="assessment-prompt">Vul een leerdoel in en kies de rol van AI. Hier verschijnt de tekst voor uw klas.</p>';
@@ -1390,22 +1638,24 @@
         'Opdrachttekst gekopieerd.', 'De opdrachttekst is geselecteerd. Kopieer deze naar uw leeromgeving.');
     }
     function saveAndPreview() {
-      assessmentDraft = current();
-      sessionSet('atlas.toetsafspraak', JSON.stringify(assessmentDraft));
+      const value = current();
+      assessmentDrafts.set(assessmentChoice, value);
+      sessionSet(assessmentStorageKey(assessmentChoice), JSON.stringify(value));
       updatePreview();
     }
     form.oninput = saveAndPreview;
     form.onsubmit = event => { event.preventDefault(); main.querySelector('#assessment-preview-title').focus(); };
-    example.onclick = () => {
-      goal.value = 'De betrouwbaarheid van een bewering beoordelen met twee aanwijzingen uit de bron.';
-      criterion.value = 'Je noemt twee concrete aanwijzingen uit de bron en legt uit waarom die de bewering sterker of zwakker maken.';
-      if (!mode.value) mode.value = 'feedback';
-      saveAndPreview();
-      main.querySelector('#assessment-preview-title').focus();
+    start.onchange = () => {
+      assessmentChoice = Object.hasOwn(ASSESSMENT_EXAMPLES, start.value) ? start.value : '';
+      sessionSet('atlas.toetsafspraak.start', assessmentChoice);
+      renderAssessment();
+      main.querySelector('#assessment-start').focus();
     };
+    if (example) main.querySelector('[data-assessment-jump]').onclick = () => main.querySelector('#assessment-preview-title').focus();
     clear.onclick = () => {
-      goal.value = ''; evidence.value = ''; criterion.value = '';
-      for (const radio of form.querySelectorAll('[name="mode"]')) radio.checked = false;
+      goal.value = example?.goal || ''; evidence.value = example?.evidence || ''; criterion.value = example?.criterion || '';
+      task.value = example?.task || ''; alternative.value = example?.alternative || '';
+      for (const radio of form.querySelectorAll('[name="mode"]')) radio.checked = radio.value === example?.mode;
       saveAndPreview();
       goal.focus();
     };
@@ -1603,6 +1853,9 @@
     const lesson = record.lessonStart;
     return `<div class="lesson-body" data-lesson-id="${escapeHtml(record.id)}">
       <dl class="lesson-plan">
+        ${lesson.learningGoal ? `<div><dt>Leerdoel</dt><dd>${escapeHtml(lesson.learningGoal)}</dd></div>` : ''}
+        ${lesson.activityType ? `<div><dt>Activiteit</dt><dd>${escapeHtml(lesson.activityType)}</dd></div>` : ''}
+        ${lesson.sourceMinutes ? `<div><dt>Duur van de bronles</dt><dd>${escapeHtml(lesson.sourceMinutes)} minuten volgens de aanbieder</dd></div>` : ''}
         <div><dt>Voorbereiding</dt><dd>${escapeHtml(lesson.preparation)}</dd></div>
         <div class="lesson-assignment"><dt>Opdracht voor de klas</dt><dd>${escapeHtml(lesson.task)}</dd></div>
         <div><dt>Nabespreking</dt><dd>${escapeHtml(lesson.reflection)}</dd></div>
@@ -1777,7 +2030,7 @@
         <option value="">Alle sectoren</option>${selected.length > 1 ? '<option selected disabled>Meerdere sectoren</option>' : ''}
         ${SECTORS.map(sector => `<option value="${escapeHtml(sector)}" ${selected.length === 1 && selected[0] === sector ? 'selected' : ''}>${escapeHtml(SECTOR_NAMES[sector] ? `${sector} · ${SECTOR_NAMES[sector]}` : sector)}</option>`).join('')}
       </select></label></div><div class="practice-links">${links.join('')}</div>
-      <p class="home-papers"><a href="#papers">Recente papers over AI en onderwijs</a></p></section>`;
+      <p class="home-papers"><a href="#wat-werkt">Wat werkt bij leren met AI?</a> · <a href="#papers">Recente papers over AI en onderwijs</a></p></section>`;
   }
   function resultsMarkup() {
     resultRecords = sortRecords(recordsForCriteria(state));
@@ -1786,7 +2039,10 @@
       ...FILTER_KEYS.flatMap(key => values(key).map(value => `<button class="chip" data-remove="${key}|${escapeHtml(value)}">${escapeHtml(filterOptionLabel(key, value))} ×</button>`))
     ].join('');
     const related = values('theme').length ? relatedThemes(values('theme')[0]) : [];
-    const alternative = alternativeSuggestion();
+    const routes = teacherRoutes(state.q, state);
+    const routeGuide = routes.length ? `<section class="selection-guidance teacher-routes" aria-label="Verder met uw vraag"><h2>Verder met uw vraag</h2>
+      <ul>${routes.map(item => `<li><a data-question-route href="${escapeHtml(item.href)}">${escapeHtml(item.label)}</a><span>${escapeHtml(item.meta)}</span></li>`).join('')}</ul></section>` : '';
+    const alternative = routes.length ? null : alternativeSuggestion();
     const relaxations = resultRecords.length ? [] : relaxationSuggestions();
     const heading = `${resultRecords.length} ${resultRecords.length === 1 ? 'resultaat' : 'resultaten'}${state.q ? ` voor ‘${state.q}’` : ''}`;
     const knownDates = isPublicationSort() && resultRecords.filter(record => publicationDate(record)).length;
@@ -1806,6 +2062,7 @@
           <a href="#zoeken">Al het aanbod</a><a href="#nieuw">Nieuw aanbod</a><a href="#bijdragen">Aanbod toevoegen of feedback geven</a></div></div>
       </details>
       ${chips ? `<div class="chips">${chips}<button class="clear-link">Wis alles</button></div>` : ''}</header>
+      ${routeGuide}
       ${values('type').length === 1 && values('type')[0] === 'Training' ? '<section class="training-intro"><h2>Workshops en trainers</h2><p>Vind een workshop, cursus of training en de aanbieder die deze verzorgt. Verfijn op onderwerp, doelgroep of aanbieder. Trainer, locatie, kosten en beschikbaarheid staan bij het aanbod voor zover bevestigd. Bespreek maatwerk via de officiële aanbodpagina.</p></section>' : ''}
       ${values('theme').includes('Veilige AI-omgeving') ? '<section class="selection-guidance"><h2>Beoordeel de toepassing in uw eigen situatie</h2><p>Gebruik de officiële bronnen om gegevensgebruik, beheer, menselijke controle, toegankelijkheid en overstapmogelijkheden te beoordelen. Wat passend is, hangt af van uw doel, gegevens, instellingen en afspraken. Deze selectie is geen keurmerk voor veilige of verantwoorde AI.</p></section>' : ''}
       <div class="picked-actions" ${sheetPicks.size ? '' : 'hidden'}>
@@ -1813,7 +2070,7 @@
         <a class="btn secondary" data-picked-sheet href="${escapeHtml(selectedHref('overlegblad'))}" ${sheetPicks.size ? '' : 'hidden'}>Open mijn overlegblad (${sheetPicks.size})</a>
         <span data-pick-hint ${sheetPicks.size === 1 ? '' : 'hidden'}>Kies nog een vermelding om te vergelijken.</span></div>
       <div id="action-feedback" class="action-feedback" aria-live="polite"></div>
-      <div class="results-content">${resultRecords.length ? resultListMarkup() : isFundingSelection() ? `<div class="empty"><h2>${state.status === STATUS_LABELS.open_call ? 'Geen open oproepen bij deze selectie' : 'Geen subsidies of calls bij deze selectie'}</h2><p>Kijk bij een andere aanvraagstatus of verruim uw filters.</p>${state.status ? `<a href="${escapeHtml(stateHref({ status: '' }))}">Bekijk alle aanvraagstatussen binnen deze selectie</a>` : `<a href="${escapeHtml(criteriaHref({ sector: state.sector }))}">Bekijk ander aanbod${state.sector ? ' in deze sectorselectie' : ''}</a>`}</div>` : `<div class="empty"><span class="eyebrow">Geen exacte match</span><h2>We helpen u verder</h2>${alternative ? `<a class="alternative" href="${stateHref({ q: alternative.candidate })}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` : '<p>Voor deze zoekterm is geen aantoonbaar werkend alternatief gevonden.</p>'}${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${stateHref({ [item.key]: '' })}">Zonder ${escapeHtml(item.values.join(' of '))} <strong>${item.count}</strong></a>`).join('')}</div>` : ''}<button class="clear btn">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`}</div>
+      <div class="results-content">${resultRecords.length ? resultListMarkup() : isFundingSelection() ? `<div class="empty"><h2>${state.status === STATUS_LABELS.open_call ? 'Geen open oproepen bij deze selectie' : 'Geen subsidies of calls bij deze selectie'}</h2><p>Kijk bij een andere aanvraagstatus of verruim uw filters.</p>${state.status ? `<a href="${escapeHtml(stateHref({ status: '' }))}">Bekijk alle aanvraagstatussen binnen deze selectie</a>` : `<a href="${escapeHtml(criteriaHref({ sector: state.sector }))}">Bekijk ander aanbod${state.sector ? ' in deze sectorselectie' : ''}</a>`}</div>` : `<div class="empty"><span class="eyebrow">Geen exacte match</span><h2>We helpen u verder</h2>${alternative ? `<a class="alternative" href="${escapeHtml(stateHref({ q: alternative.candidate }))}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` : routes.length ? '<p>De volledige zoekvraag levert binnen deze selectie geen catalogusvermeldingen op.</p>' : '<p>Voor deze zoekterm is geen aantoonbaar werkend alternatief gevonden.</p>'}${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${stateHref({ [item.key]: '' })}">Zonder ${escapeHtml(item.values.join(' of '))} <strong>${item.count}</strong></a>`).join('')}</div>` : ''}<button class="clear btn">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`}</div>
       ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="${escapeHtml(stateHref({ theme }))}">${escapeHtml(theme)} <span>${count} ${count === 1 ? 'resultaat' : 'resultaten'}</span></a>`).join('')}</nav>` : ''}`;
   }
   function filterButtonText() {
@@ -1932,6 +2189,50 @@
     row('Voorwaarden en benodigdheden', items.map(record => factValue(record.eligibility)));
     row('Bron gecontroleerd op', facts.map(record => record.get('Broncontrole')));
     return rows;
+  }
+
+  function renderToolChoice() {
+    const examples = [
+      {id:'aigo-transcribe-tool', guide:'https://github.com/AIgovernanceofficer/Transcribe-tool#readme',
+        goal:'Een bestaande opname uitschrijven', task:'Open een zelf opgenomen uitleg en vergelijk het transcript met wat u hebt gezegd.',
+        privacy:'Volgens de maker verwerkt de browser het gekozen audio- of videobestand lokaal. De app heeft een transcriptiegeschiedenis. Controleer wat op een gedeeld apparaat achterblijft.',
+        access:'Een oefenbestand is nodig. Geef ook de uitgeschreven passage, zodat luisteren geen voorwaarde is om mee te doen.'},
+      {id:'aigo-dicteermachine', guide:'https://github.com/AIgovernanceofficer/Dicteermachine#readme',
+        goal:'Tijdens het spreken een concept schrijven', task:'Dicteer een eigen uitleg, lees de herkende tekst terug en corrigeer een verkeerd overgenomen vakterm.',
+        privacy:'De browser vraagt toegang tot de microfoon. Volgens de maker wordt de spraak lokaal verwerkt. Een opgeslagen Word-bestand blijft op de gekozen opslaglocatie.',
+        access:'Dicteren vereist een microfoon en kunnen spreken. Bied typen aan als gelijkwaardige manier om dezelfde tekst te maken.'}
+    ].flatMap(example => {
+      const record = publicRecordsById.get(example.id);
+      return record && offerType(record) === 'software' && effectiveStatus(record) === 'available' && primarySource(record)
+        ? [{...example, record}] : [];
+    });
+    const decisions = [
+      ['Gebruiken', 'Kies dit als de tekstbewerking uw leerdoel dient, de toepassing past binnen de schoolafspraken en iedereen dezelfde opdracht kan uitvoeren. Laat de leerling de tekst zelf controleren.'],
+      ['Eerst zelf proberen', 'Gebruik een eigen, fictieve oefenzin met één vakterm. Vergelijk de herkende tekst met uw origineel. Controleer ook of u de tekst met het toetsenbord kunt verbeteren en weer kunt verwijderen.'],
+      ['Afzien', 'Geef de passage als tekst of laat de leerling zelf typen. Beoordeel dezelfde inhoud en onderbouwing.']
+    ];
+    const previous = sessionGet('atlas.lastSearch');
+    const back = /^#zoeken(?:\?|$)/.test(previous) ? `<a href="${escapeHtml(previous)}">Terug naar uw zoekopdracht</a> · ` : '';
+    main.innerHTML = `<section class="assessment-page tool-choice"><nav aria-label="Terug naar het aanbod">${back}<a href="#zoeken?type=software">Naar alle AI-software in de Atlas</a></nav>
+      <header><h1 tabindex="-1">Welke AI-toepassing past bij mijn les?</h1><p>Wilt u een bestaande opname laten uitschrijven of een tekst dicteren? Kies op basis van wat de leerling zelf moet oefenen.</p></header>
+      ${examples.length ? `<div class="assessment-layout">${examples.map(({id, record, guide, goal, task, privacy, access}) => `<article class="assessment-preview">
+        <h2>${goal}</h2><p><a href="#item/${escapeHtml(id)}">${escapeHtml(record.title)}</a></p><dl>
+          <div><dt>Leshandeling</dt><dd>${task}</dd></div>
+          <div><dt>Kosten en toegang</dt><dd>${escapeHtml(costLabel(record))} · ${escapeHtml(accessLabel(record))}. Bij het eerste gebruik wordt een taalmodel gedownload.</dd></div>
+          <div><dt>Gegevens en privacy</dt><dd>${privacy}</dd></div>
+          <div><dt>Toegankelijkheid</dt><dd>${access}</dd></div></dl>
+          <a href="${guide}" target="_blank" rel="noopener noreferrer">Handleiding van ${escapeHtml(record.title)} ↗</a></article>`).join('')}</div>
+        <p>De Atlas selecteerde deze voorbeelden voor hbo en wo. Ze komen van dezelfde maker, AIGovernanceofficer.nl. De handleidingen zijn geraadpleegd op <time datetime="2026-11-22">22 november 2026</time>. Een minimumleeftijd en ondersteuning van schermlezers zijn daarin niet vastgesteld. De Atlas heeft de privacywerking en de effecten op leren niet onafhankelijk getoetst.</p>
+        ${examples.length === 2 ? `<a href="${escapeHtml(selectedHref('vergelijken', examples.map(item => item.id)))}">Vergelijk beide Atlas-vermeldingen</a>` : ''}` :
+        '<p>Deze praktijkvoorbeelden zijn momenteel niet beschikbaar. Via het overzicht hierboven kunt u andere software bekijken.</p>'}
+      <div class="assessment-form"><fieldset><legend>Wat besluit u voor deze les?</legend>
+        ${decisions.map(([label], index) => `<label class="assessment-choice"><input type="radio" name="tool-choice" value="${index}">${label}</label>`).join('')}
+      </fieldset><p role="status" data-tool-decision></p></div></section>`;
+    const fieldset = main.querySelector('fieldset');
+    fieldset.onchange = event => {
+      const choice = decisions[event.target.value];
+      if (choice) main.querySelector('[data-tool-decision]').textContent = choice[1];
+    };
   }
 
   function renderComparison() {
@@ -2068,6 +2369,7 @@
     }
     const lastSearch = sessionGet('atlas.lastSearch') || '#zoeken';
     const backLabel = lastSearch.startsWith('#onderzoek') ? '← Terug naar Onderzoek doen of promoveren'
+      : lastSearch === '#praktijkgids' ? '← Terug naar de praktijkgids'
       : lastSearch.startsWith('#vergelijken?') ? 'Terug naar vergelijking' : '← Terug naar resultaten';
     const related = records.filter(item => item.id !== record.id)
       .map(item => ({ item, score: relationScore(record, item) }))
@@ -2156,6 +2458,8 @@
       .map(name => collection(name, { ...criteria, organization: name }))
       .filter(item => item.count > 0).slice(0, 4);
     const sections = [];
+    const guidance = teacherRoutes(query, criteria);
+    if (guidance.length) sections.push({label:'Verder met uw vraag', items:guidance});
     if (papersQuery(query)) sections.push({label:'Onderzoek', items:[{label:'Papers over AI en onderwijs', meta:'Nieuwste publicaties uit de gevolgde bronnen', href:'#papers'}]});
     if (researchQuery(query)) {
       sections.push({ label: 'Praktijkvraag', items: [{label:'Onderzoek doen of promoveren', meta:'Promotieplaatsen en praktijkonderzoek', href:stateHref().replace('#zoeken', '#onderzoek')}] });
@@ -2210,6 +2514,11 @@
         suggestions.innerHTML = sections.map(section => `<section><h2>${escapeHtml(section.label)}</h2>${section.items.map(item => `<a href="${escapeHtml(item.href)}"><span>${escapeHtml(item.label)}</span>${item.meta ? `<small>${escapeHtml(item.meta)}</small>` : ''}</a>`).join('')}</section>`).join('');
         keepSearchVisible();
       }, 150);
+    };
+    suggestions.onclick = event => {
+      if (event.target.closest('a[href^="#item/"], a[href="#regels-in-de-praktijk"], a[href="#wat-werkt"], a[href="#toolkeuze"]')) {
+        sessionSet('atlas.lastSearch', criteriaHref(criteriaForQuery(input.value)));
+      }
     };
     const closeSuggestions = () => { clearTimeout(debounceTimer); suggestions.hidden = true; input.setAttribute('aria-expanded', 'false'); };
     input.onkeydown = event => {
@@ -2375,6 +2684,7 @@
     if (share) share.onclick = () => shareCurrentSelection();
     const sheet = panel.querySelector('[data-meeting-sheet]');
     if (sheet) sheet.onclick = rememberResults;
+    panel.querySelectorAll('[data-question-route]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', stateHref()));
     panel.querySelectorAll('.result-card a[href^="#item/"]').forEach(link => link.onclick = () => {
       rememberResults(link.closest('[data-record-id]').dataset.recordId);
       sessionSet('atlas.lastSearch', location.hash || '#home');
@@ -2474,7 +2784,12 @@
     const path = (location.hash.slice(1) || 'home').split('?')[0];
     document.querySelector('.site-header')?.classList.remove('open');
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
-    if (path === 'home' || (!['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
+    const guides = {
+      'praktijkgids': renderPracticeGuide, 'wat-werkt': renderLearningEvidence,
+      'toolkeuze': renderToolChoice, 'regels-in-de-praktijk': renderPracticeRules
+    };
+    if (path === 'home' || (!Object.hasOwn(guides, path) && !['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
+    if (Object.hasOwn(guides, path)) guides[path]();
     if (path === 'wegwijzer') { location.replace('#zoeken'); return; }
     if (path === 'nieuw') renderNewOffers();
     if (path === 'papers') renderPapers();
@@ -2494,7 +2809,8 @@
     const updated = document.querySelector('[data-updated]'); if (updated) updated.textContent = source.metadata.updated || '';
     if (!['zoeken', 'organisaties'].includes(path) && !focusedBookGroup) {
       scrollTo({ top: 0, behavior: 'instant' });
-      (path === 'onderzoek' ? document.querySelector('#research-heading') : path === 'papers' ? document.querySelector('#papers-heading') : main).focus({ preventScroll: true });
+      const target = Object.hasOwn(guides, path) ? main.querySelector('h1') : path === 'onderzoek' ? document.querySelector('#research-heading') : path === 'papers' ? document.querySelector('#papers-heading') : main;
+      (target || main).focus({ preventScroll: true });
     }
   }
   let hiddenAt = 0;

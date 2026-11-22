@@ -36,6 +36,11 @@ instrument juridisch bindend is of dat een beschreven interventie effectief is.
 Die reikwijdte hoort expliciet in `legal_effect`, `reliability_notes` en
 `limitations`.
 
+Gebruik `source_type: copyright_license` voor een auteursrechtlicentie. De
+waarde `legal_effect: binding` betekent hier dat de voorwaarden gelden voor
+degene die de verleende rechten uitoefent. De reikwijdte hoort bij de
+specifieke licentie en het materiaal waarop de rechthebbende haar toepast.
+
 ## Claimkoppeling
 
 Een claimkoppeling verwijst naar een bestaand bestand en, bij records, naar een

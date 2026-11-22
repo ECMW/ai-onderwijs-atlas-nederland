@@ -3,6 +3,194 @@
   "last_reviewed": "2026-11-22",
   "claims": [
     {
+      "claim_id": "regels-herkenbaar-leerlingwerk",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "Een leraar die AI-feedback op leerlingwerk overweegt controleert herkenbaarheid, doel en grondslag, noodzakelijke gegevens en de schooleigen afspraken over toepassing en account.",
+      "claim_kind": "reasonable_inference",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "eu-gdpr-2016-679",
+        "kennisnet-generatieve-ai-en-privacy-leerlingwerk",
+        "kennisnet-schoolafspraken-generatieve-ai-2025"
+      ],
+      "assessment": "Artikelen 4, 5 en 6 AVG betreffen persoonsgegevens, de verwerkingsbeginselen en rechtmatigheid. De werkvolgorde en het voorstel om bij twijfel een verzonnen voorbeeld te gebruiken zijn een Atlas-uitwerking van de juridische tekst en onderwijsvoorlichting.",
+      "last_reviewed": "2026-11-22",
+      "time_sensitive": true,
+      "review_by": "2027-02-20"
+    },
+    {
+      "claim_id": "regels-werkblad-cc-by-4-0",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "Een rechthebbende kan met CC BY 4.0 toestemming geven voor het delen en bewerken van gelicenseerd lesmateriaal. Wie het materiaal deelt onder de licentie, moet onder meer de toepasselijke naams-, licentie- en wijzigingsvermeldingen behouden.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "cc-by-4-0-internationale-licentie"
+      ],
+      "assessment": "Artikelen 2 en 3 van de juridische tekst bepalen de omvang en de voorwaarden. Verwijzingen en vermeldingen hangen mede af van wat de licentiegever meeleverde en wat redelijkerwijs mogelijk is. Het voorbeeld verleent geen rechten op afzonderlijk materiaal van derden.",
+      "last_reviewed": "2026-11-22",
+      "time_sensitive": true,
+      "review_by": "2027-02-20"
+    },
+    {
+      "claim_id": "regels-mbo-examen-en-toegestane-ai-hulp",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "De landelijke mbo-richtlijn biedt instellingen uitgangspunten en twee gedragscodes om vooraf toegestane AI-hulp en verantwoording bij toetsing en examinering te verduidelijken.",
+      "claim_kind": "reasonable_inference",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "kennispunt-npuls-2025-mbo-richtlijn-ai-examinering"
+      ],
+      "assessment": "De keuze in een concrete examenomgeving volgt uit de schooleigen afspraken en het examen. Navragen bij de verantwoordelijke bij een ontbrekende instructie is de Atlasvertaling naar de praktijk.",
+      "last_reviewed": "2026-11-22",
+      "time_sensitive": true,
+      "review_by": "2027-02-20"
+    },
+    {
+      "claim_id": "praktijkgids-unesco-lerarenkaders",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "UNESCO IITE analyseerde 36 beschikbare lerarenkaders op inhoud, implementatie en beoordeling. Die vergelijking geeft teams aanknopingspunten voor de plaats van AI-geletterdheid in hun curriculum.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "unesco-iite-2026-lerarenkaders-vergelijking",
+        "unesco-ai-competency-teachers-2024",
+        "unesco-ai-competency-students-2024"
+      ],
+      "assessment": "De grens voor beschikbare kaders was 10 april 2025. De teamvragen zijn een redactionele uitwerking en de documentanalyse toont geen leerwinst aan.",
+      "last_reviewed": "2026-11-22",
+      "time_sensitive": false
+    },
+    {
+      "claim_id": "praktijkgids-stanford-craft-leren-over-natuurbehoud",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "Voor het VO-voorbeeld bij natuurbehoud laat de Atlas leerlingen een AI-toepassing vergelijken met een andere en met ecologische gegevens uitleggen hoe zij de keuze kunnen toetsen.",
+      "claim_kind": "atlas_synthesis",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "stanford-craft-natuurbehoud-2024"
+      ],
+      "assessment": "De lespagina levert het natuurbehoudthema, het vergelijken van toepassingen en de simulatie. De formulering van de opdracht, de beoordelingsvraag en de indeling als Nederlands VO-biologie zijn door de Atlas uitgewerkt.",
+      "last_reviewed": "2026-11-22",
+      "time_sensitive": false
+    },
+    {
+      "claim_id": "wat-werkt-revisie-en-nieuwe-tekst",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "Bij eenmalige, door AI gegenereerde feedback op een Engels betoog verbeterde de revisiescore iets meer dan bij herschrijven zonder feedback (d = 0,19). Bij de nieuwe schrijftaak werd geen verschil aangetoond.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "sci-meyer-et-al-2024-writing-feedback"
+      ],
+      "assessment": "459 leerlingen in de analyse, loting binnen klassen. De vergelijking betrof geen feedback en één automatisch beoordeelde revisie. De suggestie om de volgende dag zelfstandig te schrijven is van de Atlas.",
+      "last_reviewed": "2026-11-22",
+      "time_sensitive": false
+    },
+    {
+      "claim_id": "wat-werkt-wiskunde-zonder-hulp",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "De standaardchat hielp bij oefenen met wiskunde, maar de groep scoorde direct erna zonder hulpmiddelen 17% lager dan de controlegroep. Met een hinttutor werd geen statistisch verschil op die toets gevonden.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "sci-bastani-et-al-2025-guardrails-rct"
+      ],
+      "assessment": "Relatief verschil bij één Turkse school in vier lessen. De auteurs vergeleken op klasniveau toegewezen groepen. Een lokale vervolgopgave is een redactionele suggestie, geen herhaling van het hele experiment.",
+      "last_reviewed": "2026-11-22",
+      "time_sensitive": false
+    },
+    {
+      "claim_id": "wat-werkt-ecologie-bronteksten",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "Bij de ecologietaak scoorde de groep met alleen tekst hoger dan de groep met alleen de op die teksten gebaseerde chatbot. Tekst met chatbot leverde geen aantoonbaar voordeel op boven alleen tekst.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "sci-dietrich-et-al-2026-ecology-text-chat"
+      ],
+      "assessment": "185 studenten aan één universiteit, drie gelote groepen en een directe kennistoets zonder materiaal. Verdiepend vragen hangt samen met toetsscores. De voorgestelde broncontrole is een praktische uitwerking van de Atlas en is hier niet afzonderlijk causaal getoetst.",
+      "last_reviewed": "2026-11-22",
+      "time_sensitive": false
+    },
+    {
+      "claim_id": "wat-werkt-reikwijdte-stanford-november-2026",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "Het novemberoverzicht van Stanford SCALE bevat 52 gerandomiseerde en quasi-experimentele papers. Onderzoek naar ondersteuning bij oefenen en feedback levert wisselende resultaten en onzekerheid over langdurige leerwinst op.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "stanford-scale-2026-november-evidence-review"
+      ],
+      "assessment": "Institutionele synthese van diverse interventies en onderwijscontexten. De 32 toegevoegde studies lopen tot en met juni 2026. Veel resultaten gaan over hoger onderwijs en de verzameling omvat ook preprints.",
+      "last_reviewed": "2026-11-22",
+      "time_sensitive": false
+    },
+    {
+      "claim_id": "praktijkgids-fortior-ontdeklab",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "Fortior rapporteert dat lesideeën uit de eigen chatbot voor ontdeklabs korter en minder gedetailleerd waren, en als opstap bruikbaar konden zijn voor leerlingen die al zelfstandig werkten.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "impuls-open-leermateriaal-pilotscholen-2025"
+      ],
+      "assessment": "Ervaring en product binnen één scholengroep. Het programma rapporteert geen effectmeting. De vraag over instructiestappen bij beginners is van de Atlas.",
+      "last_reviewed": "2026-11-22",
+      "time_sensitive": false
+    },
+    {
+      "claim_id": "praktijkgids-uva-onderzoeksvragen",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "Een UvA-projectbegeleider meldde hulp bij de eerste afbakening van onderzoeksvragen en ervaren tijdwinst voor begeleiders bij Future Planet Studies.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "surf-uva-praktijkverslag-onderwijspilots-2024"
+      ],
+      "assessment": "De studieonderdelen en feedbackopzet zijn ook bevestigd door het UvA Teaching and Learning Centre. De uitkomsten blijven kwalitatieve ervaringen van een vrijwillige pilot.",
+      "last_reviewed": "2026-11-22",
+      "time_sensitive": false
+    },
+    {
+      "claim_id": "praktijkgids-teamgesprek-menselijk-oordeel",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "De Atlas laat een team expliciet kiezen welke afweging een lerende zelfstandig moet kunnen maken en hoe die keuze in één les zichtbaar wordt.",
+      "claim_kind": "atlas_synthesis",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "tno-werkzekerheid-scenariodialoog-2026",
+        "unesco-ai-competency-students-2024"
+      ],
+      "assessment": "TNO gebruikt scenario’s en rollen om keuzen te bespreken. UNESCO benoemt kritisch oordeel en mensgericht handelen als onderwijsdoelen. De opdracht en de twee mogelijke lessen zijn redactionele uitwerkingen. Er is geen effectonderzoek naar deze teamvraag.",
+      "last_reviewed": "2026-11-22",
+      "time_sensitive": false
+    },
+    {
       "claim_id": "atlas-teamproef-les-en-terugblik",
       "location": {"path": "catalog.js"},
       "claim": "De Atlas biedt teams een proefkaart om in één les iets uit te proberen, met een vooraf gekozen beslisregel en een vraag aan de klas.",
