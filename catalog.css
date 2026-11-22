@@ -196,3 +196,6 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
     text-underline-offset: .18em;
   }
 }
+
+.sheet-pick { display: flex; align-items: center; gap: .45rem; min-height: 44px; cursor: pointer; }
+[data-picked-sheet][hidden] { display: none; }
