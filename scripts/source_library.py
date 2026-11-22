@@ -19,6 +19,7 @@ from contribution_quality import _host_is_public
 SOURCE_TYPES = {
     "regulation",
     "consolidated_legislation",
+    "copyright_license",
     "treaty",
     "official_guidance",
     "official_framework",
@@ -272,6 +273,8 @@ def source_library_issues(root: Path, *, today: date | None = None):
             errors.append(f"{prefix}: scientific evidence must use legal_effect=not_applicable")
         if source.get("source_type") == "regulation" and source.get("legal_effect") != "binding":
             errors.append(f"{prefix}: regulations must be distinguished as binding law")
+        if source.get("source_type") == "copyright_license" and source.get("legal_effect") != "binding":
+            errors.append(f"{prefix}: copyright licenses are binding when relying on the licensed rights")
         if source.get("source_type") == "consolidated_legislation" and source.get("legal_effect") != "not_applicable":
             errors.append(f"{prefix}: consolidated legislation has no independent legal effect")
         if source.get("source_type") == "standard" and source.get("legal_effect") != "voluntary":

@@ -284,4 +284,17 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 }
 
 .sheet-pick { display: flex; align-items: center; gap: .45rem; min-height: 44px; cursor: pointer; }
+.practice-guide { max-width: 66rem; }
+.guide-routes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: .65rem; }
+.guide-section { max-width: 78ch; margin: 2rem 0; }
+.guide-block { margin: .45rem 0; padding: .35rem .85rem; border: 1px solid var(--brand-border, #c6cfcb); border-radius: .5rem; }
+.guide-block summary { padding: .65rem 0; color: var(--brand-bluegray-deep, #344f5d); font-weight: 700; cursor: pointer; }
+.guide-block p { line-height: 1.5; }
 [data-picked-sheet][hidden] { display: none; }
+
+.teacher-routes ul { list-style: none; padding: 0; margin: .5rem 0 0; }
+.teacher-routes li + li, .practice-rules li + li { margin-top: .7rem; }
+.teacher-routes a, .teacher-routes span { display: block; }
+.teacher-routes span { color: var(--muted); }
+.practice-rules section { max-width: 74ch; }
+.practice-rules li { line-height: 1.65; }

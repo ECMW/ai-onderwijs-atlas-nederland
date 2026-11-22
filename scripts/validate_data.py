@@ -46,6 +46,11 @@ def valid_lesson_start(record: dict) -> bool:
     fields = ("level", "question", "preparation", "task", "reflection", "sourceUrl")
     if not isinstance(lesson, dict) or not all(isinstance(lesson.get(key), str) and lesson[key].strip() for key in fields):
         return False
+    for key in ("learningGoal", "activityType"):
+        if key in lesson and (not isinstance(lesson[key], str) or not lesson[key].strip()):
+            return False
+    if "sourceMinutes" in lesson and (type(lesson["sourceMinutes"]) is not int or lesson["sourceMinutes"] < 1):
+        return False
     sectors = lesson.get("sectors")
     if not isinstance(sectors, list) or not sectors or not all(sector in record.get("sectors", []) for sector in sectors):
         return False

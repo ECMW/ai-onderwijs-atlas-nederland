@@ -160,3 +160,17 @@ leerlingen en leraren. Npuls beschrijft hoe teams in het mbo, hbo en wo in
 kleine stappen kunnen uitproberen en bijstellen. De twee proefkaarten, de vraag
 aan de klas en de voorgestelde beslisregels zijn ontworpen door de Atlas. De
 uitkomst van één les is bedoeld voor de volgende lokale keuze. [Kennisnet](https://www.kennisnet.nl/artificial-intelligence/schoolafspraken-over-het-gebruik-van-generatieve-ai/) · [Npuls](https://npuls.nl/kennisbank/ai-go-in-actie)
+
+## 2026-11-22 — Zelfstandig leren na AI-hulp
+
+De drie docentvragen koppelen een klasproef aan de werkelijke vergelijkingsgroep en meettaak. Meyer vond een klein revisieverschil en geen aantoonbaar verschil op een volgende schrijftaak. Bastani vergeleek begeleid oefenen met een directe toets zonder hulpmiddelen. Dietrich hield de ecologische bronteksten gelijk voor lezen en chatten. De gerapporteerde verbanden tussen vraaggedrag en kennis zijn observationeel. De Atlas heeft de suggesties voor de volgende les zelf uitgewerkt. Het institutionele novemberoverzicht van Stanford begrenst de overdraagbaarheid naar andere groepen en langere perioden. [Meyer](https://doi.org/10.1016/j.caeai.2023.100199) · [Bastani](https://doi.org/10.1073/pnas.2422633122) · [Dietrich](https://doi.org/10.1007/s10956-026-10374-w) · [Stanford SCALE](https://scale.stanford.edu/ai/evidence-base-review/evidence-base-ai-k12-november-review)
+
+## 2026-11-22 — Twee Nederlandse praktijkervaringen en een toekomstgesprek
+
+Fortior rapporteerde beperkingen van lesontwerpen uit een eigen chatbot, onder meer in detail en illustraties. In het vak Future Planet Studies meldde de UvA-begeleider ervaren tijdwinst bij de eerste feedback op onderzoeksvragen. De voorbeelden zijn aan bestaande Atlas-kaarten gekoppeld en als praktijkervaring aangeduid. De nieuwe teamvraag over zelfstandig afwegen gebruikt TNO's scenariomethode en UNESCO's mensgerichte leerdoelen. [Impuls Open Leermateriaal](https://www.openleermateriaal.nl/ai-in-de-klas-zo-doen-pilots-het/) · [UvA-pilot](https://tlc.uva.nl/en/article/ai-pilot-bsc-future-planet-studies/) · [TNO](https://publications.tno.nl/publication/34646519/BCdweC4U/TNO-2026-Werkzekerheid.pdf) · [UNESCO](https://www.unesco.org/en/articles/ai-competency-framework-students)
+
+## 2026-11-22 — Leerlingwerk, mbo-examens en hergebruik in de praktijkgids
+
+De beslissing over herkenbaar leerlingwerk steunt op de [AVG](https://eur-lex.europa.eu/eli/reg/2016/679/oj) en [voorlichting van Kennisnet](https://www.kennisnet.nl/artificial-intelligence/privacy-en-ai-hier-moeten-scholen-op-letten/). De [landelijke mbo-richtlijn](https://www.onderwijsenexaminering.nl/publicaties/gebruik-van-ai-bij-toetsing-en-examinering-in-het-mbo-landelijke-richtlijn-als-vertrekpunt/) geeft ruimte voor een schooleigen exameninstructie. De Nederlandse [CC BY 4.0-licentie](https://creativecommons.org/licenses/by/4.0/legalcode.nl) levert de voorwaarden voor delen en bewerken onder die licentie.
+
+De vergelijking van 36 lerarenkaders door [UNESCO IITE](https://iite.unesco.org/publications/analytical-report-teacher-ai-competency-frameworks/) onderbouwt de vragen over curriculum en beoordeling. Het lesdoel voor VO-biologie hoort bij de concrete [natuurbehoudles van Wendi Cocita](https://craft.stanford.edu/resource/how-can-ai-be-used-to-help-conserve-natural-ecosystems/). De taak en het beoordelingsvoorbeeld in de gids zijn redactionele uitwerkingen.

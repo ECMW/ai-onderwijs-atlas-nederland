@@ -93,6 +93,13 @@ class SourceLibraryTests(unittest.TestCase):
         self.assertEqual(errors, [])
         self.assertEqual(warnings, [])
 
+    def test_copyright_license_distinguishes_binding_use_conditions_from_guidance(self):
+        license_source = {**self.source, "source_type": "copyright_license", "legal_effect": "binding"}
+        self.write_fixture([license_source], [self.claim])
+        self.assertEqual(self.validate()[0], [])
+        self.write_fixture([{**license_source, "legal_effect": "voluntary"}], [self.claim])
+        self.assertTrue(any("copyright licenses" in error for error in self.validate()[0]))
+
     def test_duplicate_source_identifiers_and_urls_fail(self):
         duplicate = {**self.source}
         self.write_fixture([self.source, duplicate], [self.claim])

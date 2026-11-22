@@ -8954,6 +8954,11 @@
         "label": "Europese Commissie: werkprogramma 2026–2027, kies MSCA",
         "url": "https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/horizon-europe-work-programmes_en",
         "sourceType": "official"
+      },
+      {
+        "label": "Herzien werkprogramma MSCA 2026–2027, p. 13: deadline en Brusselse tijd",
+        "url": "https://ec.europa.eu/transparency/documents-register/api/files/C%282026%296687_2/090166e534337d6f",
+        "sourceType": "official"
       }
     ],
     "relatedIds": [],
@@ -8997,6 +9002,11 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Uiterste indieningstijd en consortiumnormen gecontroleerd. Het herziene werkprogramma verhoogt het indicatieve budget voor de gehele call."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Officiële PDF van het herziene werkprogramma toegevoegd. Pagina 13 bevestigt 24 november 2026 om 17.00 uur in Brussel."
       }
     ],
     "applicationDeadlineAt": "2026-11-24T17:00:00+01:00"
@@ -23905,7 +23915,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": "2026-09-08",
-    "lastVerified": "2026-09-09",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -23976,10 +23986,15 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Lesstart van de Atlas toegevoegd op basis van het gekoppelde lesmateriaal."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd. Vakgebied aan de hand van de gekoppelde lesbron vastgelegd. De aanbieder noemt 90 minuten voor de volledige bronles."
       }
     ],
     "offerCategory": "materials",
-    "verificationNote": "Lessenoverzicht, concrete AI-lessen en de verklaring over open leermiddelen gecontroleerd. Het vaste aantal 20 is niet opnieuw vastgesteld en daarom weggelaten.",
+    "verificationNote": "Lessenoverzicht, concrete AI-lessen en de verklaring over open leermiddelen gecontroleerd. Het vaste aantal 20 is niet opnieuw vastgesteld en daarom weggelaten. De vaklabels beschrijven de les over verantwoord AI-gebruik uit het mbo-overzicht. De maker noemt burgerschap en mediawijsheid als inzetgebieden en de opleiding Mediavormgever als ontwikkelcontext. De 90 minuten gelden voor deze volledige tweede les.",
     "lessonStart": {
       "sectors": [
         "MBO"
@@ -23989,8 +24004,16 @@
       "preparation": "Leg een ontwerpbriefing, een eerste AI-beeld en een door de maker bewerkte versie klaar. Bewaar de toelichting van de maker voor de nabespreking. Voor de volledige bronles noemt de aanbieder een beeldgenerator en Photoshop.",
       "task": "Vergelijk beide beelden met de briefing. Markeer twee zichtbare veranderingen en schrijf op wat de maker daarmee kan hebben bedoeld. Pak de toelichting van de maker erbij. Welke keuze had je goed herkend? Wat kon je uit het beeld alleen niet afleiden?",
       "reflection": "Welke beslissing wil je als ontwerper zelf houden? Gebruik één detail uit het beeld om je antwoord uit te leggen.",
-      "sourceUrl": "https://mbomediawijs.nl/openleermaterialen/ai-ethiek-verantwoord-gebruik/"
-    }
+      "sourceUrl": "https://mbomediawijs.nl/openleermaterialen/ai-ethiek-verantwoord-gebruik/",
+      "learningGoal": "Een eigen ontwerpkeuze onderscheiden van een door AI gegenereerd beeldkenmerk en dat verschil toelichten.",
+      "activityType": "Ontwerpen vergelijken",
+      "sourceMinutes": 90
+    },
+    "subjects": [
+      "Burgerschap",
+      "Mediavormgeving",
+      "Mediawijsheid"
+    ]
   },
   {
     "id": "vista-ai-in-onderwijs-kennissite",
@@ -35334,7 +35357,9 @@
     ],
     "relatedIds": [],
     "parentIds": [],
-    "childIds": [],
+    "childIds": [
+      "stanford-craft-ai-ecosystemen"
+    ],
     "geographicScope": "Internationaal",
     "accessType": "public",
     "costType": "free",
@@ -35363,6 +35388,11 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Vier afzonderlijke vaklessen in de collectie gecontroleerd en rechtstreeks gekoppeld aan hun lespagina's."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "De biologieles over ecosystemen gekoppeld aan een eigen lesvermelding met docentengids en lesstart."
       }
     ],
     "subjects": [
@@ -35628,6 +35658,11 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "LabXchange-uitgave van dezelfde makersles gekoppeld. De biologietoepassing en een lesstart over testen met ongeziene dierenkaarten zijn toegevoegd."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
       }
     ],
     "lessonStart": {
@@ -35639,7 +35674,9 @@
       "preparation": "Print de twee kaartensets en houd de antwoordsleutel apart. Geef elk groepje eerst de kaarten uit deel 1.",
       "task": "Sorteer de dieren met de eerste regel. Schrijf op welk kenmerk de doorslag geeft. Pas de regel aan zodra een kaart verkeerd terechtkomt. Test de aangepaste regel met de ongeziene kaarten uit deel 2 en tel de fouten.",
       "reflection": "Welke kaart bracht een zwakte in jullie regel aan het licht? Leg uit waarom het helpt om aparte testkaarten te bewaren.",
-      "sourceUrl": "https://www.labxchange.org/library/items/lb:LabXchange:647a5050:lx_teaching_guide:1"
+      "sourceUrl": "https://www.labxchange.org/library/items/lb:LabXchange:647a5050:lx_teaching_guide:1",
+      "learningGoal": "Een classificatieregel met ongeziene dierenkaarten testen en een fout met een voorbeeld verklaren.",
+      "activityType": "Kaarten sorteren"
     },
     "subjects": [
       "Biologie",
@@ -37900,7 +37937,7 @@
     "status": "available",
     "availabilityText": "De volledige Wikiwijs-e-learning en PDF-export zijn gratis, zonder account en rechtstreeks toegankelijk.",
     "publicationDate": "2026-04-21",
-    "lastVerified": "2026-11-21",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -37945,7 +37982,7 @@
     "notes": "De e-learning vermeldt CC BY 4.0, is gemaakt door de AI Literacy-werkgroep van de SHB/UKB Werkgroep Information Literacy en is gericht op hbo- en wo-bachelorstudenten. De PDF-export telt 50 pagina's; interactieve oefeningen en enkele externe embeds zijn in de statische export als link zichtbaar. Wikiwijs vermeldt 22 juni 2026 als laatste wijzigingsdatum. De Atlas heeft het materiaal en de bronstatus gecontroleerd, niet de juistheid van iedere gekoppelde externe bron of de leeropbrengst.",
     "offerCategory": "materials",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "De officiële Edusources-detailpagina, de volledige Wikiwijs-e-learning en alle 50 pagina's van de PDF-export zijn gecontroleerd op titel, aanbieder, doelgroep, inhoud, toegang, datum, auteurs en licentie; representatieve pagina's over zoeksystemen, GenAI-output en het colofon zijn ook visueel beoordeeld. Controle op 21 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap.",
+    "verificationNote": "De officiële Edusources-detailpagina, de volledige Wikiwijs-e-learning en alle 50 pagina's van de PDF-export zijn gecontroleerd op titel, aanbieder, doelgroep, inhoud, toegang, datum, auteurs en licentie; representatieve pagina's over zoeksystemen, GenAI-output en het colofon zijn ook visueel beoordeeld. Controle op 21 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap. Informatievaardigheden is het vaklabel van de Atlas bij de beschreven bachelormodule over het zoeken, selecteren en beoordelen van informatie. De module noemt geen specifiek opleidingsvak.",
     "changeHistory": [
       {
         "date": "2026-11-21",
@@ -37956,6 +37993,11 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Lesstart van de Atlas toegevoegd op basis van het gekoppelde lesmateriaal."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd. Vakgebied aan de hand van de gekoppelde lesbron vastgelegd."
       }
     ],
     "lessonStart": {
@@ -37968,8 +38010,13 @@
       "preparation": "Kies een kort AI-antwoord met een verwijzing naar een artikel dat de studenten kunnen openen. Gebruik uit AI-wijs het onderdeel over het beoordelen van gegenereerde tekst.",
       "task": "Onderstreep één controleerbare bewering in het AI-antwoord. Open het aangehaalde artikel en zoek de passage die daarvoor bewijs zou leveren. Noteer je vindplaats en beslis of de passage de hele bewering draagt, slechts een deel, of helemaal niets.",
       "reflection": "Herschrijf de bewering zo dat een medestudent haar met jouw bron kan controleren. Wat moest je afzwakken of schrappen?",
-      "sourceUrl": "https://maken.wikiwijs.nl/223513/AI_wijs__verantwoord_informatie_zoeken_en_beoordelen__Algemeen__BA_"
-    }
+      "sourceUrl": "https://maken.wikiwijs.nl/223513/AI_wijs__verantwoord_informatie_zoeken_en_beoordelen__Algemeen__BA_",
+      "learningGoal": "Nagaan welk deel van een AI-bewering door een concrete passage in de aangehaalde bron wordt gedragen.",
+      "activityType": "Bronnen vergelijken"
+    },
+    "subjects": [
+      "Informatievaardigheden"
+    ]
   },
   {
     "id": "uk-dfe-ai-education-support-materials",
@@ -38128,7 +38175,7 @@
     "notes": "De lessen bevatten respectievelijk 11, 11 en 13 slides en verwijzen naar docentinstructies en werkbladen. De reeks kan volgens de lanceringspagina ook unplugged worden gebruikt, maar sluit inhoudelijk aan op de DigiDuck-verhaallijnen. De LessonUp-pagina's waren zonder login leesbaar; de interactieve start en de bijlagen zijn niet volledig uitgevoerd of gedownload. Een expliciete licentie voor alle strip- en bijlage-elementen is niet vastgesteld.",
     "offerCategory": "materials",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "De officiële lanceringspagina en alle drie LessonUp-lespagina's zijn volledig gelezen op doelgroep, lesdoelen, werkvormen, voorbereiding, lesduur, materiaalvormen en openbare zichtbaarheid. De interactieve lesstart en DOCX-bijlagen zijn niet volledig geopend. Controle op 22 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap.",
+    "verificationNote": "De officiële lanceringspagina en alle drie LessonUp-lespagina's zijn volledig gelezen op doelgroep, lesdoelen, werkvormen, voorbereiding, lesduur, materiaalvormen en openbare zichtbaarheid. De interactieve lesstart en DOCX-bijlagen zijn niet volledig geopend. Controle op 22 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap. Digitale geletterdheid is het overkoepelende Atlas-vaklabel. Kidsweek benoemt ICT-basisvaardigheden en werkt in les 2 analyse van voorbeelden, vertekening en veilig omgaan met gegevens uit.",
     "changeHistory": [
       {
         "date": "2026-11-22",
@@ -38139,6 +38186,11 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Lesstart van de Atlas toegevoegd op basis van het gekoppelde lesmateriaal."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd. Vakgebied aan de hand van de gekoppelde lesbron vastgelegd."
       }
     ],
     "lessonStart": {
@@ -38150,8 +38202,13 @@
       "preparation": "Leg papier en potloden klaar. Open de tekenactiviteit in DigiDuck, les 2. Voor deze werkvorm hebben leerlingen geen apparaat nodig.",
       "task": "Teken een dier met vier poten. Geef je vel door en laat een klasgenoot een kenmerk toevoegen. Leg de tekeningen bij elkaar. Welk dier is het vaakst getekend? Schrijf twee kenmerken op waarmee een computer dat dier kan herkennen. Bedenk een ander dier dat ook aan jullie regel voldoet.",
       "reflection": "Welke nieuwe tekening zou je toevoegen om de computer een beter voorbeeld te geven? Leg uit waarom.",
-      "sourceUrl": "https://www.lessonup.com/nl/channel/kidsweek/lesson/65EQLYwfipPBh3oYr"
-    }
+      "sourceUrl": "https://www.lessonup.com/nl/channel/kidsweek/lesson/65EQLYwfipPBh3oYr",
+      "learningGoal": "Met een tekening uitleggen hoe eenzijdige voorbeelden een herkenningsregel kunnen vertekenen.",
+      "activityType": "Tekenen en vergelijken"
+    },
+    "subjects": [
+      "Digitale geletterdheid"
+    ]
   },
   {
     "id": "ai-slim-bekeken-doorlopende-leerlijn",
@@ -38226,7 +38283,7 @@
     "notes": "De collectie beschrijft drie PO-niveaus en vier VO-trajecten, elk met vier lessen: in totaal 28 lessen van 45 of 50 minuten. De twee representatieve lessen zijn volledig gelezen; aanvullende lespagina's voor alle niveaus zijn steekproefsgewijs gecontroleerd. De PO-lessen werken zonder leerlinggebruik van een chatbot; VO-lessen verwijzen waar nodig naar een door de school goedgekeurde tool. LessonUp toont bij meerdere lessen oktober 2026, maar een eenduidige oorspronkelijke publicatiedatum van de collectie is niet vastgesteld. De interactieve start en alle PDF-handleidingen zijn niet volledig uitgevoerd of gelezen; een expliciete auteursnaam is op de gecontroleerde kanaalpagina niet aangetroffen.",
     "offerCategory": "materials",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "De officiële kanaalpagina en twee representatieve volledige lessen voor PO en VO zijn gelezen; aanvullende pagina's voor groep 3-4, 5-6, 7-8, vmbo en havo-vwo zijn steekproefsgewijs gecontroleerd op niveau, lesdoelen, duur, werkvormen en handleidingen. De kanaalpagina is ook in een verse Edge-lading geopend. De interactieve start en alle bijlagen zijn niet volledig gecontroleerd. Controle op 22 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap.",
+    "verificationNote": "De officiële kanaalpagina en twee representatieve volledige lessen voor PO en VO zijn gelezen; aanvullende pagina's voor groep 3-4, 5-6, 7-8, vmbo en havo-vwo zijn steekproefsgewijs gecontroleerd op niveau, lesdoelen, duur, werkvormen en handleidingen. De kanaalpagina is ook in een verse Edge-lading geopend. De interactieve start en alle bijlagen zijn niet volledig gecontroleerd. Controle op 22 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap. De vmbo-les over een afvalsorteerder noemt zowel burgerschap als digitale geletterdheid. De 50 minuten gelden voor deze specifieke les in leerjaar 2–3.",
     "changeHistory": [
       {
         "date": "2026-11-22",
@@ -38237,6 +38294,11 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Lesstart van de Atlas toegevoegd op basis van het gekoppelde lesmateriaal."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd. Vakgebied aan de hand van de gekoppelde lesbron vastgelegd. De aanbieder noemt 50 minuten voor de volledige bronles."
       }
     ],
     "lessonStart": {
@@ -38248,8 +38310,15 @@
       "preparation": "Leg schoon papier, plastic en blik klaar. Test de webcam en Teachable Machine op een schoollaptop. De aanbieder rekent 50 minuten voor de volledige les.",
       "task": "Train in tweetallen een model om papier, plastic en blik te herkennen. Houd van elke soort één verpakking apart. Test het model met die drie voorwerpen en noteer de voorspellingen. Verander de achtergrond bij één verpakking en test opnieuw.",
       "reflection": "Wat bleef hetzelfde en wat veranderde? Welke voorbeelden zouden jullie toevoegen om te testen waarop het model let?",
-      "sourceUrl": "https://www.lessonup.com/nl/lesson/em4CAELtbcCNrnAMo"
-    }
+      "sourceUrl": "https://www.lessonup.com/nl/lesson/em4CAELtbcCNrnAMo",
+      "learningGoal": "Een afvalherkenner met nieuwe verpakkingen testen en een verandering in de voorspelling verklaren.",
+      "activityType": "Een model trainen en testen",
+      "sourceMinutes": 50
+    },
+    "subjects": [
+      "Burgerschap",
+      "Digitale geletterdheid"
+    ]
   },
   {
     "id": "phet-natural-selection",
@@ -38333,6 +38402,11 @@
         "date": "2026-11-22",
         "type": "added",
         "summary": "Biologieles toegevoegd met directe toegang tot de simulatie, het werkblad en een Atlas-lesstart voor het controleren van een voorspelling."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
       }
     ],
     "lessonStart": {
@@ -38344,7 +38418,9 @@
       "preparation": "Open de simulatie op het scherm Inleiding. Laat de docent vooraf een AI-voorspelling verzamelen over het aantal konijnen wanneer het voedsel beperkt wordt. Noteer de precieze voorspelling.",
       "task": "Voeg een maatje toe en volg het aantal konijnen vijf generaties. Begin opnieuw en kies nu ook ‘Beperkt voedsel’. Noteer in beide rondes de aantallen en vergelijk de grafieken met de voorspelling.",
       "reflection": "Welke uitspraak kun je met deze twee grafieken beoordelen? Welke uitkomst kan toeval zijn, en wat zou je opnieuw moeten testen?",
-      "sourceUrl": "https://phet.colorado.edu/sims/html/natural-selection/latest/natural-selection_nl.html"
+      "sourceUrl": "https://phet.colorado.edu/sims/html/natural-selection/latest/natural-selection_nl.html",
+      "learningGoal": "Met twee populatiegrafieken bepalen welke delen van een voorspelling over voedsel en konijnenaantallen steun krijgen.",
+      "activityType": "Simulatie onderzoeken"
     },
     "subjects": [
       "Biologie"
@@ -38597,13 +38673,20 @@
       "preparation": "Toon figuur 2 van het leerlingwerkblad. Zet dit verzonnen chatbotantwoord ernaast: “De vos eet geen gras, dus zijn komst heeft geen invloed op de planten.”",
       "task": "Vergelijk de gemeten waarden voor de eilanden met en zonder vos. Teken de route van zeevogels via hun uitwerpselen en de bodem naar planten. Geef aan waar een vos deze route kan beïnvloeden. Onderstreep het deel van het voorbeeldantwoord dat je met de figuur kunt controleren.",
       "reflection": "Welke vergelijking laat de figuur werkelijk zien? Herschrijf het antwoord en geef aan welke stap in jullie verklaring op het model berust.",
-      "sourceUrl": "https://docs.google.com/document/d/1dhy_ADiJ6wpG3MRSvv4qYatKZEe7MQGkTLNDcNtV9Gk/preview"
+      "sourceUrl": "https://docs.google.com/document/d/1dhy_ADiJ6wpG3MRSvv4qYatKZEe7MQGkTLNDcNtV9Gk/preview",
+      "learningGoal": "Een indirect effect in een ecosysteem uitleggen en aanwijzen welke stap met metingen wordt onderbouwd.",
+      "activityType": "Grafieken interpreteren"
     },
     "changeHistory": [
       {
         "date": "2026-11-22",
         "type": "added",
         "summary": "HHMI-les over ecologische systemen opgenomen met directe toegang tot werkblad en figuren. De Atlas voegt een lesstart over de bewijsvoering in een chatbotantwoord toe."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
       }
     ],
     "subjects": [
@@ -38689,13 +38772,20 @@
       "preparation": "Open het onderdeel “Any learner in DML” in de leesversie van het notebook. Laat studenten de tabel met drie effectschattingen en de bijbehorende standaardfouten gebruiken.",
       "task": "Vergelijk de schattingen van lasso en random forest. Noteer welke vraag beide beantwoorden, hoe cross-fitting de huishoudens over trainen en schatten verdeelt en welke aanname nodig is om van een causaal effect te spreken.",
       "reflection": "Noem een denkbare ongemeten factor die zowel toegang tot de regeling als spaarvermogen beïnvloedt. Kan cross-fitting dat probleem oplossen?",
-      "sourceUrl": "https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.html"
+      "sourceUrl": "https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.html",
+      "learningGoal": "Een effectschatting onderscheiden van een voorspelling en uitleggen welke aanname nodig is voor een causale interpretatie.",
+      "activityType": "Schattingen vergelijken"
     },
     "changeHistory": [
       {
         "date": "2026-11-22",
         "type": "added",
         "summary": "Universitair econometriepracticum op onderwerp, leesversie, oorspronkelijke code en bijbehorende data gecontroleerd."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
       }
     ]
   },
@@ -38904,6 +38994,11 @@
         "date": "2026-11-22",
         "type": "added",
         "summary": "Het vakmateriaal en de Nederlandstalige lesstart van de Atlas zijn toegevoegd na controle van de bron en de leerlingactiviteit."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
       }
     ],
     "subtype": "Interactief wiskundewerkblad",
@@ -38945,7 +39040,9 @@
       "preparation": "Open ‘Verken de constructie’ in het werkblad. Vraag vooraf aan een AI-assistent om m en q uit te leggen, of geef de klas deze te toetsen uitspraak: ‘Als m groter wordt, schuift het snijpunt met de y-as omhoog.’",
       "task": "Zet q op 1 en verander m van 0,5 naar 2. Noteer het snijpunt met de y-as. Houd daarna m op 2 en zet q op 3. Vul voor beide lijnen x = 0 en x = 1 in en vergelijk de uitkomsten met de grafiek.",
       "reflection": "Welk getal weerlegt of bevestigt de uitspraak over het snijpunt? Leg in eigen woorden uit wat er bij één stap naar rechts verandert.",
-      "sourceUrl": "https://www.geogebra.org/m/bfIaujSj"
+      "sourceUrl": "https://www.geogebra.org/m/bfIaujSj",
+      "learningGoal": "Met twee gekozen punten uitleggen wat de richtingscoëfficiënt en het snijpunt met de y-as aan een rechte lijn veranderen.",
+      "activityType": "Grafieken onderzoeken"
     }
   },
   {
@@ -38987,6 +39084,11 @@
         "date": "2026-11-22",
         "type": "added",
         "summary": "Het vakmateriaal en de Nederlandstalige lesstart van de Atlas zijn toegevoegd na controle van de bron en de leerlingactiviteit."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
       }
     ],
     "subtype": "Interactieve natuurkundeles met simulatie",
@@ -39037,7 +39139,99 @@
       "preparation": "Open het scherm ‘Wrijving’ en klap linksboven ‘Energie’ open. Laat de klas een AI-uitleg toetsen of gebruik deze voorbeeldbewering: ‘Door wrijving verdwijnt een deel van de totale energie.’",
       "task": "Zet de wrijving op ‘Geen’. Laat de skater vanaf een herkenbaar punt op de baan los en pauzeer de rit. Herhaal vanaf hetzelfde punt met meer wrijving. Vergelijk de terugkeerhoogte en de staven ‘Thermisch’ en ‘Totaal’.",
       "reflection": "Welke staaf verklaart de lagere terugkeerhoogte? Welke waarneming gebruik je om de bewering te verbeteren?",
-      "sourceUrl": "https://phet.colorado.edu/sims/html/energy-skate-park-basics/latest/energy-skate-park-basics_nl.html"
+      "sourceUrl": "https://phet.colorado.edu/sims/html/energy-skate-park-basics/latest/energy-skate-park-basics_nl.html",
+      "learningGoal": "Met de energiestaven uitleggen waarom een skater bij wrijving lager terugkomt en hoe de totale energie in het model verandert of gelijk blijft.",
+      "activityType": "Simulatie onderzoeken"
     }
+  },
+  {
+    "id": "stanford-craft-ai-ecosystemen",
+    "title": "Hoe kan AI helpen om ecosystemen te beschermen? (Stanford CRAFT)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Biologieles met docentengids en discussieblad",
+    "offerCategory": "materials",
+    "organizationIds": [],
+    "providerName": "Stanford CRAFT",
+    "description": "Engelstalige biologieles over het gebruik van AI bij natuurbescherming. Leerlingen vergelijken praktijkvoorbeelden, bespreken wat een toepassing kan bijdragen en verdelen een fictief budget. Het bijbehorende discussieblad helpt een groep een gezamenlijke keuze te onderbouwen.",
+    "purpose": "Met een concreet ecologisch probleem onderbouwen waarvoor je AI zou inzetten en bespreken welk effect onzeker blijft.",
+    "audiences": [
+      "Docenten"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "subjects": [
+      "Biologie"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "De Engelstalige docentengids en het discussieblad openen zonder account. De volledige bronles duurt volgens Stanford 60 minuten. De docentengids verwijst ook naar een extern krantenartikel.",
+    "publicationDate": "2024-09-27",
+    "lastVerified": "2026-11-22",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Open de Engelstalige docentengids",
+        "url": "https://docs.google.com/document/d/1z9YnK68zLDU6qEDcnqC_ucpudNINkE2O_z-PhpnhBQs/preview",
+        "sourceType": "official"
+      },
+      {
+        "label": "Lespagina van Stanford CRAFT",
+        "url": "https://craft.stanford.edu/resource/how-can-ai-be-used-to-help-conserve-natural-ecosystems/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Discussion Diamond: discussieblad voor leerlingen",
+        "url": "https://docs.google.com/document/d/18UwwsbA0z4c6519rzLmUkZzDdL0FZuTS7JH-obuqqRo/preview",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [
+      "stanford-craft-ai-lescollectie"
+    ],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "ecosystemen",
+      "natuurbescherming",
+      "AI",
+      "ecologie",
+      "Stanford CRAFT"
+    ],
+    "notes": "De docentengids vermeldt science, grades 6–8. VO-onderbouw is een Nederlandse niveau-inschatting. Wendi Cocita schreef de les, Chris Mah bewerkte haar. De budgetverdeling is een rollenspel. De volledige bronles gebruikt een extern artikel. Voor dat artikel en voor herpublicatie van de materialen zijn geen rechten vastgesteld.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Op 22 november 2026 zijn de Stanford-lespagina, de volledige docentengids en de openbare leesweergave van het discussieblad zonder inloggen geopend. De gids beschrijft de doelgroep, de duur en de bespreking van vijf toepassingen. De Atlas-werkvorm hieronder is een redactionele verkorting.",
+    "lessonStart": {
+      "sectors": [
+        "VO"
+      ],
+      "level": "VO-onderbouw · biologie",
+      "question": "Voor welk natuurprobleem zou je AI inzetten als je maar één toepassing kunt kiezen?",
+      "preparation": "Open de Engelstalige docentengids en kies twee voorbeelden uit de bronles, zoals dieren tellen met beeldherkenning en waterverlies opsporen. Zet bij elk voorbeeld in het Nederlands het natuurprobleem en de waarneming op het bord.",
+      "task": "Kies één van de twee toepassingen. Schrijf op wat de AI waarneemt, wie daarna iets moet doen en welke verandering voor het ecosysteem zou tellen als succes. Verdeel samen honderd fictieve punten over de twee toepassingen. Noteer welk argument jullie verdeling het meest beïnvloedde.",
+      "reflection": "Meer dieren herkend op beelden: welke extra waarneming heb je nodig om te kunnen zeggen dat hun leefgebied beter beschermd is?",
+      "sourceUrl": "https://docs.google.com/document/d/1z9YnK68zLDU6qEDcnqC_ucpudNINkE2O_z-PhpnhBQs/preview",
+      "learningGoal": "Voor twee AI-toepassingen uitleggen hoe een waarneming kan bijdragen aan natuurbescherming en welke gegevens nodig zijn om het effect te beoordelen.",
+      "activityType": "Casussen vergelijken",
+      "sourceMinutes": 60
+    },
+    "changeHistory": [
+      {
+        "date": "2026-11-22",
+        "type": "added",
+        "summary": "Afzonderlijke bronles uit de bestaande CRAFT-collectie toegevoegd met docentengids, discussieblad en Nederlandse lesstart."
+      }
+    ]
   }
 ]

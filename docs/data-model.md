@@ -156,6 +156,12 @@ velden `level` en `sectors` beschrijven het toepassingsniveau van deze werkvorm
 binnen het bereik van het bronrecord. `question`, `preparation`, `task` en
 `reflection` bevatten de lesvraag, voorbereiding, klasopdracht en nabespreking.
 `sourceUrl` verwijst naar een bestaande officiële lesbron van de vermelding.
+Beschrijf bij nieuwe lesstarts in `learningGoal` wat de leerling na de opdracht
+kan uitleggen of laten zien. Geef de werkvorm in enkele woorden aan in
+`activityType`. Gebruik `sourceMinutes` alleen als de aanbieder voor de volledige
+gekoppelde bronles een duur in hele minuten vermeldt. Laat het veld weg bij een
+onbekende duur, een bandbreedte of een schatting. De redactionele lesstart kan
+korter zijn. Oudere lesstarts zonder deze drie velden blijven geldig.
 De interface schrijft de werkvorm toe aan de Atlas en noemt de aanbieder van
 het bijbehorende materiaal. Een selectie op sector gebruikt het niveau van de
 werkvorm, ook wanneer de volledige collectie meerdere sectoren beslaat.

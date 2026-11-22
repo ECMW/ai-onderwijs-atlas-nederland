@@ -53,7 +53,9 @@ def generate(root: Path = R, generated_on: date | None = None) -> None:
     (root / 'data/search-index.json').write_text(json.dumps([
         {'id': item['id'], 'text': ' '.join(str(value) for value in [
             item['title'], item.get('providerName'), item.get('description'), *item.get('keywords', []),
-            *item.get('subjects', [])
+            *item.get('subjects', []),
+            'les lesstart lesstarts' if item.get('lessonStart') else None,
+            item.get('lessonStart', {}).get('learningGoal'), item.get('lessonStart', {}).get('activityType')
         ] if value)} for item in published
     ], ensure_ascii=False), encoding='utf-8')
 
