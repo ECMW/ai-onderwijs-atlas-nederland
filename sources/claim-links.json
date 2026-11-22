@@ -1,7 +1,18 @@
 {
   "schema_version": "1.0",
-  "last_reviewed": "2026-09-28",
+  "last_reviewed": "2026-11-22",
   "claims": [
+    {
+      "claim_id": "atlas-toetsafspraak-ontwerpkeuzes",
+      "location": {"path": "catalog.js"},
+      "claim": "De Atlas zet het leerdoel, de toegestane AI-hulp, het eigen werk en het beoordelingscriterium bij elkaar in één opdrachttekst.",
+      "claim_kind": "atlas_synthesis",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": ["npuls-assessment-ai-guidance-2025", "kennisnet-toetsing-generatieve-ai-vo-2026"],
+      "assessment": "Npuls en Kennisnet onderbouwen het verband tussen leerdoel, toetsvorm en zicht op eigen prestaties. De drie voorbeeldteksten en de beoordelingssuggesties zijn uitwerkingen van de Atlas. De docent bepaalt de geschiktheid voor de eigen opdracht en de plaatselijke afspraken.",
+      "last_reviewed": "2026-11-22",
+      "time_sensitive": false
+    },
     {
       "claim_id": "ai-act-is-binding-and-phased",
       "location": {"path": "data/records.json", "record_id": "europese-ai-verordening-ai-act", "field": "description"},

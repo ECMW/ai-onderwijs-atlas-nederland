@@ -337,3 +337,45 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
   .learner-credit a { color: #000; text-decoration: none; }
   .learner-credit a::after { content: " (" attr(href) ")"; }
 }
+
+.assessment-entry {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem 1.5rem;
+  margin-bottom: 1.25rem; padding: 1rem 1.2rem; background: var(--brand-mist);
+  border-inline-start: .25rem solid var(--brand-bluegray-deep); border-radius: .5rem;
+}
+.assessment-entry h2 { margin: 0; font-size: 1.25rem; }
+.assessment-entry p { margin: .3rem 0 0; max-width: 56ch; }
+.assessment-page { max-width: 72rem; margin: auto; padding: 1.3rem clamp(1rem, 4vw, 2.6rem) 3rem; }
+.assessment-page [hidden] { display: none !important; }
+.assessment-page > header { margin: 1.1rem 0 1.5rem; }
+.assessment-page h1 { margin: 0 0 .5rem; font-size: clamp(1.9rem, 4vw, 3rem); }
+.assessment-page header p { max-width: 70ch; margin: 0; }
+.assessment-layout { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr); gap: clamp(1rem, 3vw, 2.5rem); align-items: start; }
+.assessment-form > label, .assessment-form legend, .assessment-custom label, .assessment-preview dt { display: block; font-weight: 700; color: var(--brand-bluegray-deep); }
+.assessment-custom { border-block: 1px solid var(--line); padding: .3rem 0; }
+.assessment-custom summary { min-height: 44px; padding: .55rem 0; cursor: pointer; font-weight: 650; }
+.assessment-custom label { margin-top: .6rem; }
+.assessment-form textarea {
+  display: block; width: 100%; padding: .7rem .85rem; margin: .35rem 0 0; resize: vertical;
+  min-height: 4rem; border: 1px solid var(--brand-bluegray); border-radius: .4rem; background: #fff; color: var(--brand-ink); font: inherit;
+}
+.assessment-form fieldset { padding: 0; margin: 1.2rem 0; border: 0; min-width: 0; }
+.assessment-form legend { padding: 0; margin-bottom: .2rem; }
+.assessment-choice { display: flex; align-items: center; gap: .65rem; min-height: 44px; padding: .5rem .7rem; margin: .35rem 0 0; border: 1px solid var(--line); border-radius: .4rem; cursor: pointer; }
+.assessment-choice:has(:checked) { border-color: var(--brand-olive-deep); background: #eef1e8; }
+.assessment-choice input { accent-color: var(--brand-olive-deep); margin: 0; }
+.assessment-actions { display: flex; flex-wrap: wrap; gap: .55rem 1rem; align-items: center; margin-top: 1rem; }
+.assessment-example, .assessment-clear { min-height: 44px; border: 0; background: transparent; color: var(--brand-bluegray-deep); padding: .4rem .1rem; text-decoration: underline; cursor: pointer; }
+.assessment-note, .assessment-feedback { font-size: .9rem; margin: .5rem 0 0; }
+.assessment-preview { padding: clamp(1rem, 2.4vw, 1.6rem); border: 1px solid var(--line); border-top: .3rem solid var(--brand-olive); border-radius: .6rem; background: #fff; }
+.assessment-preview h2 { font-size: clamp(1.25rem, 2vw, 1.6rem); margin: 0; scroll-margin-top: 7rem; }
+.assessment-preview dl { display: grid; gap: .9rem; margin: 1rem 0 1.2rem; }
+.assessment-preview dd { margin: .15rem 0 0; white-space: pre-line; overflow-wrap: anywhere; }
+.assessment-preview aside { margin-top: 1.1rem; padding: .8rem 1rem; background: #eef1e8; border-radius: .35rem; }
+.assessment-preview h3 { margin: 0; font-size: 1rem; }
+.assessment-preview aside p, .assessment-prompt { margin: .3rem 0 0; }
+.assessment-preview .lesson-copy { margin-top: .6rem; }
+.assessment-sources { border-top: 1px solid var(--line); margin-top: 1.6rem; padding-top: .4rem; }
+.assessment-sources summary { min-height: 44px; padding: .55rem 0; cursor: pointer; font-weight: 650; }
+.assessment-sources ul, .assessment-sources p { margin: .55rem 0; }
+@media (max-width: 760px) { .assessment-layout { grid-template-columns: minmax(0, 1fr); } }

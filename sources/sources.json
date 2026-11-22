@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_reviewed": "2026-09-28",
+  "last_reviewed": "2026-11-22",
   "verification_window_days": 90,
   "sources": [
     {
@@ -531,9 +531,28 @@
       "limitations": "Sector guidance rather than binding regulation or comparative evidence of effectiveness.",
       "legal_effect": "non_binding",
       "peer_review_status": "not_applicable",
-      "last_verified": "2026-09-28",
+      "last_verified": "2026-11-22",
       "status": "active",
-      "atlas_record_ids": []
+      "atlas_record_ids": ["visie-op-toetsing-examinering-en-ai-en-handreikingen"]
+    },
+    {
+      "source_id": "kennisnet-toetsing-generatieve-ai-vo-2026",
+      "title": "Toetsing en generatieve AI in het voortgezet onderwijs",
+      "author_or_organisation": "Michel Cents en Eugenie Zwanenburg (Kennisnet)",
+      "publication_date": "2026-01-15",
+      "url_or_doi": "https://www.kennisnet.nl/artificial-intelligence/toetsing-en-generatieve-ai-in-het-voortgezet-onderwijs/",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": ["Toetsing en examinering", "Lesgeven en leren met AI"],
+      "jurisdiction": "Nederland, voortgezet onderwijs",
+      "claims_supported": ["Kennisnet bespreekt de afstemming tussen leerdoel, leeractiviteit en toetsvorm en de vraag hoe de docent zicht krijgt op het eigen werk van een leerling."],
+      "reliability_notes": "De publicatie en de bijbehorende beslisboom zijn uitgebracht door Kennisnet. De auteurs richten zich op het voortgezet onderwijs.",
+      "limitations": "De school maakt eigen keuzes over de inzet van AI bij een toets. De publicatie geeft geen effectmeting van de voorbeeldafspraken in de Atlas.",
+      "legal_effect": "non_binding",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-22",
+      "status": "active",
+      "atlas_record_ids": ["toetsing-en-generatieve-ai-in-het-voortgezet-onderwijs"]
     },
     {
       "source_id": "kennisnet-ai-literacy-framework-2026",
