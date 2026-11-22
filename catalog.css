@@ -43,7 +43,6 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 .result-head .result-tools{flex:0 0 auto;max-width:100%}
 .result-head .result-tools label{display:block;max-width:100%}
 .result-head .result-tools select{min-height:44px;max-width:100%;width:100%;font-size:1rem}
-.publication-date{font-size:.85rem;color:var(--muted);margin:.5rem 0}
 
 /* Compacte pulldowns behouden meervoudige filterkeuzes en native toetsenbordbediening. */
 .filter-help{margin:.2rem 0 .9rem;color:var(--muted);font-size:.82rem;line-height:1.5}
@@ -135,10 +134,9 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 }
 .commercial-label{display:inline-block;align-self:flex-start;margin:.35rem 0;padding:.3rem .55rem;border:1px solid #ccd4d7;border-radius:4px;color:#465861;background:#f4f6f7;font-size:.75rem;line-height:1.4}
 .commercial-label.is-commercial{color:#654800;background:#fff4d8;border-color:#bea566;font-weight:750}
-.card-facts{display:grid;grid-template-columns:2fr 1fr 1.4fr;gap:.75rem;margin:.8rem 0 0;font-size:.8rem}.card-facts dt{font-weight:750;color:var(--muted)}.card-facts dd{margin:.2rem 0 0;overflow-wrap:anywhere}
 .listing-notice{font-size:.9rem!important;line-height:1.55;border-left:3px solid #9da99b;padding-left:.8rem;color:#465861!important}
 .detail-facts{position:static}.detail-hero-top{flex-wrap:wrap}
-@media(max-width:600px){.card-facts{grid-template-columns:1fr 1fr}.card-facts>div:first-child{grid-column:1/-1}.detail-hero .commercial-label{max-width:100%}}
+@media(max-width:600px){.detail-hero .commercial-label{max-width:100%}}
 .home-new-contributions{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem 1rem;margin:1.4rem 0}.home-new-contributions .btn{display:inline-flex;align-items:center;gap:1.1rem;min-height:52px;padding:.85rem 1.3rem;font-weight:800;text-decoration:none}.home-new-contributions>span{font-size:.9rem;color:#465861}
 
 /* Reusable citations and a complete, printable search selection. */
@@ -237,22 +235,30 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 
 
 /* De aanbodkaart houdt voorwaarden en de officiële bron bij de titel. */
-.result-card[data-offer-card] {
+.result-card { display: block; }
+.result-card h2 { overflow-wrap: anywhere; }
+.offer-facts {
   display: grid;
-  grid-template-areas: "intro links" "context links";
-  grid-template-columns: minmax(0, 1fr) minmax(9rem, 13rem);
-  gap: 0;
+  grid-template-columns: minmax(0, min(35%, 11rem)) minmax(0, 1fr);
+  gap: .25rem .85rem;
+  margin: .7rem 0;
+  font-size: .9rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
 }
-.offer-intro { grid-area: intro; padding-bottom: .35rem; }
-.offer-intro h2 { overflow-wrap: anywhere; }
-.offer-context { grid-area: context; padding-top: 0; min-width: 0; }
-.offer-context .sector-chips { flex-wrap: wrap; }
-.offer-links { grid-area: links; justify-content: flex-start; }
-.offer-terms, .offer-audience { display: flex; flex-wrap: wrap; margin: .55rem 0 0; font-size: .86rem; }
-.offer-terms { gap: .25rem 1.25rem; }
-.offer-terms > div { display: flex; flex-wrap: wrap; gap: 0 .35rem; }
-.offer-terms dt, .offer-audience dt { font-weight: 700; }
-.offer-terms dd, .offer-audience dd { margin: 0; overflow-wrap: anywhere; }
+.offer-facts dt { color: var(--muted); font-weight: 700; }
+.offer-facts dd, .offer-facts .commercial-label { margin: 0; }
+.offer-facts .sector-chips { flex-wrap: wrap; }
+.result-card .offer-links {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: .35rem .75rem;
+  padding: .5rem 1.2rem;
+  border-left: 0;
+  border-top: 1px solid var(--line);
+}
 .funding-nav { margin-bottom: 1rem; }
 .funding-nav h2 { margin: .5rem 0; }
 .funding-nav nav { display: flex; flex-wrap: wrap; gap: .25rem .85rem; align-items: center; }
@@ -287,24 +293,9 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 .paper-citation { margin-top: .75rem; }
 .paper-citation [role="status"] { margin-left: .45rem; }
 .paper-citation textarea { width: 100%; margin-top: .5rem; font: inherit; }
-.offer-audience { gap: 0 .35rem; margin: .5rem 0; }
 @media (max-width: 899px) {
-  .result-card[data-offer-card] {
-    grid-template-areas: "intro" "links" "context";
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .offer-intro, .offer-context { padding: .75rem .9rem; }
-  .offer-intro { padding-bottom: .5rem; }
-  .offer-context { padding-top: .25rem; }
-  .result-card .offer-links {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    gap: .2rem .55rem;
-    padding: 0 .9rem;
-    border: 0;
-    background: transparent;
-  }
+  .result-card .card-body { padding: .75rem .9rem; }
+  .result-card .offer-links { padding-inline: .9rem; }
   .offer-links .card-cta { font-size: .88rem; }
   .offer-links .card-cta:not(.primary) {
     border: 0;

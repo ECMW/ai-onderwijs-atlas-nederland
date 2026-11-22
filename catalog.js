@@ -1063,60 +1063,83 @@
   function fundingApplicants(record) {
     return (record.applicantTypes || []).join(', ') || record.eligibility || 'Zie de officiële voorwaarden';
   }
-  function practicalDates(record, markup = true) {
+  function fundingAmount(record) {
+    const amount = typeof record.fundingAmount === 'string' ? record.fundingAmount.trim() : '';
+    return amount === 'Nog niet ingevuld' ? '' : amount;
+  }
+  function practicalDateRows(record, markup = true) {
     const deadline = validDate(record.applicationDeadline) || validDate(record.fundingDeadline);
     if (isFunding(record)) {
       const instant = deadlineInstant(record);
       if (instant) {
         const label = new Intl.DateTimeFormat('nl-NL', {dateStyle:'medium', timeStyle:'short', timeZone:'Europe/Amsterdam'}).format(new Date(instant));
-        return `Aanvraagdeadline ${markup ? `<time datetime="${escapeHtml(instant)}">${escapeHtml(label)}</time>` : label} (Nederlandse tijd)`;
+        return [['Aanvraagdeadline', `${markup ? `<time datetime="${escapeHtml(instant)}">${escapeHtml(label)}</time>` : label} (Nederlandse tijd)`]];
       }
       if (!deadline) {
         const period = record.availabilityText?.trim();
         const text = period && /doorlopend|per call|subsidieplafond|ophaalmoment/i.test(period) ? period : 'Geen uiterste datum bevestigd';
-        return markup ? escapeHtml(text) : text;
+        return [['', markup ? escapeHtml(text) : text]];
       }
     }
     const parts = [];
     const time = date => markup ? `<time datetime="${date}">${escapeHtml(dateLabel(date))}</time>` : dateLabel(date);
     const training = record.recordType === 'training' || record.legacyType === 'Training';
-    if (deadline) parts.push(`${training ? 'Aanmelddeadline' : 'Aanvraagdeadline'} ${time(deadline)}`);
+    if (deadline) parts.push([training ? 'Aanmelddeadline' : 'Aanvraagdeadline', time(deadline)]);
     if (training) {
       const start = validDate(record.startDate);
       const end = validDate(record.endDate);
-      if (start && end && start < end) parts.push(`Periode ${time(start)} – ${time(end)}`);
-      else if (start && start === end) parts.push(`Datum ${time(start)}`);
-      else if (start && !end) parts.push(`Startdatum ${time(start)}`);
-      else if (end && !start) parts.push(`Einddatum ${time(end)}`);
+      if (start && end && start < end) parts.push(['Periode', `${time(start)} – ${time(end)}`]);
+      else if (start && start === end) parts.push(['Datum', time(start)]);
+      else if (start && !end) parts.push(['Startdatum', time(start)]);
+      else if (end && !start) parts.push(['Einddatum', time(end)]);
     }
-    return parts.join(' · ');
+    return parts;
+  }
+  function practicalDates(record, markup = true) {
+    return practicalDateRows(record, markup).map(parts => parts.filter(Boolean).join(' ')).join(' · ');
+  }
+  function cardFact(label, valueHtml) {
+    return `<dt>${escapeHtml(label)}</dt><dd>${valueHtml}</dd>`;
   }
   function simpleCard(record, showPublicationDate = false, recency = null) {
-    const dates = practicalDates(record);
     const sectors = (record.sectors || []).filter(sector => sector !== 'VSO');
     const sourceItem = primarySource(record);
     const detailLabel = lessonForSectors(record, values('sector')) ? `Lesstart · ${record.lessonStart.level}` : 'Bekijk details';
+    const commercial = commercialBadge(record);
+    const funding = isFunding(record);
+    const checkedFunding = funding && ['verified', 'recently_checked'].includes(record.verificationStatus);
+    const opening = checkedFunding && validDate(record.applicationOpenDate);
+    const amount = checkedFunding && fundingAmount(record);
+    let dateFact = '';
+    if (recency || (showPublicationDate && (state.sort === 'added' || isPublicationSort()))) {
+      const added = state.sort === 'added';
+      const label = recency?.label || (added ? 'Toegevoegd aan de Atlas op' : 'Verschenen op');
+      const date = recency?.date || (added ? addedDate(record) : publicationDate(record));
+      dateFact = cardFact(label, date ? `<time datetime="${escapeHtml(date)}">${escapeHtml(dateLabel(date))}</time>` :
+        (added ? 'Toevoegdatum onbekend' : 'Publicatiedatum onbekend'));
+    }
     return `<article class="result-card" data-record-id="${escapeHtml(record.id)}" data-offer-card>
-      <div class="card-body offer-intro"><div class="card-top"><span class="type-label">${escapeHtml(offerLabel(record))}</span></div>
+      <div class="card-body"><span class="type-label">${escapeHtml(offerLabel(record))}</span>
         <h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
-        ${recency ? `<p class="publication-date">${escapeHtml(recency.label)} <time datetime="${escapeHtml(recency.date)}">${escapeHtml(dateLabel(recency.date))}</time></p>` : ''}
-        <p class="provider">Aanbieder: ${escapeHtml(factValue(record.providerName))}</p>${commercialBadge(record)}
-        <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(displayStatus(record))}</span>${dates ? `<span>${dates}</span>` : ''}</div>
-        ${isFunding(record) ? `<dl class="offer-terms funding-terms"><div><dt>Aanvragers</dt><dd>${escapeHtml(fundingApplicants(record))}</dd></div></dl>` :
-          `<dl class="offer-terms"><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div><div><dt>Toegang</dt><dd>${escapeHtml(accessLabel(record))}</dd></div><div><dt>Taal</dt><dd>${escapeHtml(languageList(record))}</dd></div></dl>`}
+        <dl class="offer-facts">${dateFact}
+          ${cardFact('Aanbieder', escapeHtml(factValue(record.providerName)))}
+          ${cardFact('Status', `<span class="status-text ${trustTone(record)}">${escapeHtml(displayStatus(record))}</span>`)}
+          ${opening ? cardFact('Aanvragen vanaf', `<time datetime="${opening}">${escapeHtml(dateLabel(opening))}</time>`) : ''}
+          ${practicalDateRows(record).map(([label, value]) => cardFact(label || 'Aanvraagperiode', value)).join('')}
+          ${commercial ? cardFact('Commercieel karakter', commercial) : ''}
+          ${funding ? cardFact('Aanvragers', escapeHtml(fundingApplicants(record))) :
+            cardFact('Kosten', escapeHtml(costLabel(record))) + cardFact('Toegang', escapeHtml(accessLabel(record))) + cardFact('Taal', escapeHtml(languageList(record)))}
+          ${amount && amount !== 'Varieert' ? cardFact('Bedrag', escapeHtml(amount)) : ''}
+          ${cardFact('Voor wie', escapeHtml(factValue((record.audiences || []).join(', '))))}
+          ${sectors.length ? cardFact('Sectoren', `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>`) : ''}
+        </dl>
+        <p class="description">${escapeHtml(factValue(record.description))}</p>
       </div>
       <div class="card-actions offer-links">
         ${sourceItem ? `<a class="card-cta primary" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record))}: ${escapeHtml(record.title)}">${escapeHtml(sourceActionLabel(record))}&nbsp;↗</a>` : ''}
         <a class="card-cta" href="#item/${escapeHtml(record.id)}" aria-label="${escapeHtml(detailLabel)}: ${escapeHtml(record.title)}">${escapeHtml(detailLabel)}</a>
         <a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a>
         ${showPublicationDate ? `<label class="sheet-pick"><input type="checkbox" data-sheet-pick="${escapeHtml(record.id)}" aria-label="Kies voor vergelijking of overleg: ${escapeHtml(record.title)}" ${sheetPicks.has(record.id) ? 'checked' : ''}> Kies voor vergelijking of overleg</label>` : ''}
-      </div>
-      <div class="card-body offer-context">
-        <p class="description">${escapeHtml(factValue(record.description))}</p>
-        <dl class="offer-audience"><dt>Voor wie</dt><dd>${escapeHtml(factValue((record.audiences || []).join(', ')))}</dd></dl>
-        ${showPublicationDate && state.sort === 'added' ? `<p class="publication-date">${addedDate(record) ? `Toegevoegd aan de Atlas op <time datetime="${addedDate(record)}">${escapeHtml(dateLabel(addedDate(record)))}</time>` : 'Toevoegdatum onbekend'}</p>` : ''}
-        ${showPublicationDate && isPublicationSort() ? `<p class="publication-date">${publicationDate(record) ? `Verschenen op <time datetime="${publicationDate(record)}">${escapeHtml(dateLabel(publicationDate(record)))}</time>` : 'Publicatiedatum onbekend'}</p>` : ''}
-        ${sectors.length ? `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>` : ''}
       </div>
     </article>`;
   }
@@ -1205,18 +1228,18 @@
   function bookCard(record) {
     const sourceItem = primarySource(record);
     const details = [
-      (record.authors || []).join(', '),
-      record.publicationYear || (publicationDate(record) || '').slice(0, 4),
-      record.isbn ? `ISBN ${record.isbn}` : '',
-      record.pageCount ? `${record.pageCount} pagina's` : ''
-    ].filter(Boolean);
+      ['Auteur(s)', (record.authors || []).join(', ')],
+      ['Jaar', record.publicationYear || (publicationDate(record) || '').slice(0, 4)],
+      ['ISBN', record.isbn], ['Omvang', record.pageCount ? `${record.pageCount} pagina's` : ''],
+      ['Uitgever', factValue(record.providerName)], ['Voor wie', factValue((record.audiences || []).join(', '))],
+      ['Kosten', costLabel(record)]
+    ];
     return `<article class="result-card book-card" data-record-id="${escapeHtml(record.id)}"><div class="card-body">
       <div class="card-top"><span class="type-label">${escapeHtml(bookCategoryLabel(record.bookCategory))}</span></div>
       <h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
-      <p class="provider">${escapeHtml(details.join(' · ') || factValue(record.providerName))}</p>
+      <dl class="offer-facts">${details.filter(([, value]) => value).map(([label, value]) => cardFact(label, escapeHtml(value))).join('')}</dl>
       <p class="description">${escapeHtml(factValue(record.description))}</p>
-      <dl class="card-facts"><div><dt>Uitgever</dt><dd>${escapeHtml(factValue(record.providerName))}</dd></div><div><dt>Voor wie</dt><dd>${escapeHtml(factValue((record.audiences || []).join(', ')))}</dd></div><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div></dl>
-    </div><div class="card-actions"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">Uitgevers- of auteursbron ↗</a>` : ''}</div></article>`;
+    </div><div class="card-actions offer-links"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">Uitgevers- of auteursbron ↗</a>` : ''}</div></article>`;
   }
   function bookContextMarkup(record) {
     if (record.recordType !== 'book') return '';
@@ -2575,7 +2598,7 @@
     const materialDetail = record.offerCategory === 'materials' && effectiveStatus(record) === 'available' && sources.length;
     const factRows = offerFacts(record).filter(([label]) => !funding || label !== 'Beschikbaarheid');
     const applicants = funding && fundingApplicants(record);
-    const amount = funding && typeof record.fundingAmount === 'string' && record.fundingAmount.trim();
+    const amount = funding && fundingAmount(record);
     const sourceLinks = `<h3>Officiële bronnen</h3>${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}`;
     const lesson = hasAvailableLesson(record) && lessonStartBody(record);
     main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(offerLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
@@ -2585,7 +2608,7 @@
           <div><dt>Aanvragers</dt><dd>${escapeHtml(applicants)}</dd></div>
           ${record.eligibility && record.eligibility !== applicants ? `<div><dt>Wie komt in aanmerking?</dt><dd>${escapeHtml(record.eligibility)}</dd></div>` : ''}
           <div><dt>Indiening</dt><dd>${escapeHtml(displayStatus(record))} · ${practicalDates(record)}</dd></div>
-          ${amount && amount !== 'Nog niet ingevuld' ? `<div><dt>Bedrag</dt><dd>${escapeHtml(amount)}</dd></div>` : ''}
+          ${amount ? `<div><dt>Bedrag</dt><dd>${escapeHtml(amount)}</dd></div>` : ''}
           </dl>${sourceLinks}</section>` : ''}
         ${lesson ? `<section class="lesson-starts lesson-detail"><h2>Lesstart voor de klas</h2>
           <p class="lesson-level">${escapeHtml(record.lessonStart.level)}</p><h3>${escapeHtml(record.lessonStart.question)}</h3>${lesson}</section>` : ''}
