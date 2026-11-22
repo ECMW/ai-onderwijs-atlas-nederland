@@ -1467,14 +1467,16 @@
       rule: 'Werk dit onderdeel zelf uit, zonder generatieve AI. Gebruik de overige hulpmiddelen die vooraf met je docent zijn afgesproken.',
       evidence: 'Lever je uitwerking in. Leg tijdens het toetsmoment één keuze uit en laat zien hoe je die keuze aanpast als een gegeven verandert.',
       criterion: 'Je kunt uitleggen welke informatie je keuze ondersteunt en wat er verandert bij de nieuwe situatie.',
-      teacher: 'Bereid een kleine variant op de opdracht voor. Leg vooraf vast waaraan u in de uitleg kunt zien of iemand het leerdoel beheerst.'
+      teacher: 'Bereid een kleine variant op de opdracht voor en reserveer tijd voor ieders toelichting. Leg vooraf vast waar u bij die uitleg op let.',
+      interpretation: 'De toelichting laat zien of de leerling de redenering zelf kan toepassen wanneer één gegeven verandert. Hoe de leerling feedback gebruikt, blijft buiten beeld.'
     },
     feedback: {
       label: 'AI mag feedback geven',
       rule: 'Maak eerst zelf een concept. Daarna mag je AI om feedback vragen. Schrijf de uiteindelijke uitwerking zelf.',
       evidence: 'Lever je concept en eindversie in. Licht één wijziging toe. Gebruikte je AI, leg dan uit wat je met één advies hebt gedaan. Werkte je zonder AI, leg dan uit waarom je zelf de wijziging aanbracht.',
       criterion: 'Je laat aan een concreet verschil tussen de versies zien hoe je wijziging bijdraagt aan het leerdoel.',
-      teacher: 'Leg beide versies naast elkaar. Gebruik voor iedereen hetzelfde criterium, ook wanneer iemand het werk zonder AI heeft herzien.'
+      teacher: 'Plan twee inlevermomenten. Leg concept en eindversie naast elkaar en gebruik voor iedereen hetzelfde criterium, ook bij herziening zonder AI.',
+      interpretation: 'De versies en de toelichting laten zien hoe de leerling een advies weegt. Uit een goed eindproduct alleen kunt u geen zelfstandige beheersing afleiden.'
     },
     controleren: {
       label: 'Een AI-antwoord onderzoeken',
@@ -1576,9 +1578,20 @@
           <dl><dt>Oorspronkelijke vraag</dt><dd>${escapeHtml(example.original)}</dd>
           <dt>Voorbeeldantwoord van een leerling</dt><dd>${escapeHtml(example.answer)}</dd>
           <dt>Feedback bij dit antwoord</dt><dd>${escapeHtml(example.feedback)}</dd></dl></details>` : ''}</div>
-      <div class="assessment-layout"><form class="assessment-form">
+      <form class="assessment-form">
         <label for="assessment-goal">Wat moet de leerling of student zelf kunnen?</label>
         <textarea id="assessment-goal" rows="2" maxlength="500" required placeholder="Bijv. twee bronnen vergelijken en een conclusie onderbouwen.">${escapeHtml(draft.goal)}</textarea>
+        <details class="assessment-custom assessment-compare"><summary>Vergelijk twee toetsaanpakken voor dit leerdoel</summary>
+          <p data-assessment-compare-goal></p><div class="assessment-compare-grid">
+          ${Object.entries(ASSESSMENT_MODES).filter(([, mode]) => mode.interpretation).map(([key, mode]) => `<section>
+            <h2>${mode.label}</h2><dl>
+              <dt>Wat levert de leerling in of laat die zien?</dt><dd>${mode.evidence}</dd>
+              <dt>Wat kunt u daaruit afleiden?</dt><dd>${mode.interpretation}</dd>
+              <dt>Wat organiseert u?</dt><dd>${mode.teacher}</dd></dl>
+            <button class="btn secondary" type="button" data-assessment-apply="${key}" aria-label="Gebruik deze aanpak: ${mode.label}">Gebruik deze aanpak</button></section>`).join('')}
+          </div><p class="assessment-note">De Atlas werkte de twee aanpakken uit. <a href="https://npuls.nl/_assets/9235efab-b04a-4c63-aeb9-ccd71518a0cf/Npuls-Handreiking-2-AI-B5.pdf" target="_blank" rel="noopener noreferrer">Npuls over leerdoelen, bewijs van beheersing en de uitvoerbaarheid van toetsing (pdf, p. 24–25) ↗</a></p>
+        </details>
+        <div class="assessment-layout"><div>
         <fieldset><legend>Welke rol krijgt AI bij deze opdracht?</legend>
           ${Object.entries(ASSESSMENT_MODES).map(([key, mode]) => `<label class="assessment-choice"><input required type="radio" name="mode" value="${key}" ${key === draft.mode ? 'checked' : ''}>${mode.label}</label>`).join('')}
         </fieldset>
@@ -1597,11 +1610,12 @@
         <div class="assessment-actions"><button class="btn" type="submit">Bekijk opdrachttekst</button>
           <button class="assessment-clear" type="button" data-assessment-clear>${example ? 'Herstel dit voorbeeld' : 'Wis concept'}</button></div>
         <p class="assessment-note">Uw concept blijft in dit tabblad. Kopieer de opdrachttekst om die te bewaren.</p>
-      </form>
+      </div>
       <section class="assessment-preview" aria-labelledby="assessment-preview-title">
         <h2 id="assessment-preview-title" tabindex="-1">Opdrachttekst voor uw klas</h2>
+        <p class="assessment-note" data-assessment-apply-note role="status"></p>
         <div data-assessment-result></div>
-      </section></div>
+      </section></div></form>
       <details class="assessment-sources"><summary>Over de voorbeelden en bronnen</summary>
         <p>De Atlas schreef de opdrachten, fictieve leerlingantwoorden, feedback en beoordelingscriteria. Stem ze af op uw leerdoel en de afspraken op uw school.</p>
         ${sources.length ? `<p>Achtergrond bij het toetsontwerp</p><ul>${sources.join('')}</ul>` : ''}</details>
@@ -1616,10 +1630,15 @@
     const result = main.querySelector('[data-assessment-result]');
     const start = main.querySelector('#assessment-start');
     const clear = form.querySelector('[data-assessment-clear]');
+    const comparison = form.querySelector('.assessment-compare');
+    const comparisonGoal = comparison.querySelector('[data-assessment-compare-goal]');
+    const applied = form.querySelector('[data-assessment-apply-note]');
     const current = () => ({goal:goal.value, mode:mode.value, task:task.value, alternative:alternative.value, evidence:evidence.value, criterion:criterion.value});
     function updatePreview() {
       const value = current();
       const parts = assessmentParts(value);
+      comparisonGoal.textContent = value.goal.trim() ? 'Uw leerdoel: ' + value.goal.trim() : 'Vul hierboven uw eigen leerdoel in om een aanpak te gebruiken.';
+      applied.textContent = '';
       clear.hidden = example ? Object.entries(value).every(([key, text]) => text === example[key]) : !Object.values(value).some(Boolean);
       goal.setCustomValidity(value.goal && !value.goal.trim() ? 'Vul een leerdoel in.' : '');
       if (!parts.length) {
@@ -1644,6 +1663,18 @@
       updatePreview();
     }
     form.oninput = saveAndPreview;
+    for (const button of comparison.querySelectorAll('[data-assessment-apply]')) {
+      button.onclick = () => {
+        if (!goal.value.trim()) { goal.focus(); goal.reportValidity(); return; }
+        mode.value = button.dataset.assessmentApply;
+        saveAndPreview();
+        comparison.open = false;
+        applied.textContent = 'Gekozen aanpak: ' + ASSESSMENT_MODES[mode.value].label + '.' +
+          ([task, alternative, evidence, criterion].some(field => field.value.trim())
+            ? ' Controleer of de ingevulde opdracht, inlevervorm en beoordeling aansluiten bij deze keuze.' : '');
+        main.querySelector('#assessment-preview-title').focus();
+      };
+    }
     form.onsubmit = event => { event.preventDefault(); main.querySelector('#assessment-preview-title').focus(); };
     start.onchange = () => {
       assessmentChoice = Object.hasOwn(ASSESSMENT_EXAMPLES, start.value) ? start.value : '';

@@ -338,15 +338,18 @@ test('assessment agreements distinguish independent work, optional AI feedback a
 
 test('the editable concept preserves choices in its tab and copies the exact classroom text or selects it for manual copying', async () => {
   const stored = new Map(), storage = {getItem:k => stored.get(k), setItem:(k,v) => stored.set(k,v)};
-  const goal = {value:'',setCustomValidity() {},focus() { this.focused = true; }};
+  const goal = {value:'',setCustomValidity() {},focus() { this.focused = true; },reportValidity() { this.validated = true; }};
   const mode = {value:''}, evidence = {value:''}, criterion = {value:''}, task = {value:''}, alternative = {value:''}, start = {value:''}, clear = {};
+  const compareGoal = {}, applied = {}, preview = {focus() { this.focused = true; }};
+  const picks = ['zelfstandig','feedback'].map(key => ({dataset:{assessmentApply:key}}));
+  const compare = {open:true,querySelector:() => compareGoal,querySelectorAll:() => picks};
   const form = {elements:{namedItem:() => mode}, querySelector:s => ({
     '#assessment-goal':goal,'#assessment-evidence':evidence,'#assessment-criterion':criterion,'#assessment-task':task,
-    '#assessment-alternative':alternative,'[data-assessment-clear]':clear
+    '#assessment-alternative':alternative,'[data-assessment-clear]':clear,'.assessment-compare':compare,'[data-assessment-apply-note]':applied
   })[s], querySelectorAll:() => [{value:'feedback', set checked(value) { if (!value) mode.value = ''; }}]};
   const copy = {isConnected:true}, feedback = {}, field = {hidden:true,focus() {},select() { this.selected = true; }};
   const result = {querySelector:s => ({'[data-assessment-copy]':copy,'[role="status"]':feedback,textarea:field})[s]};
-  const main = {querySelector:s => ({'.assessment-form':form,'[data-assessment-result]':result,'#assessment-start':start,'#assessment-preview-title':{focus(){}}})[s]};
+  const main = {querySelector:s => ({'.assessment-form':form,'[data-assessment-result]':result,'#assessment-start':start,'#assessment-preview-title':preview})[s]};
   const document = {querySelector:s => s === 'main' ? main : null};
   let copied = '';
   const navigator = {clipboard:{writeText:async value => { copied = value; }}};
@@ -354,11 +357,20 @@ test('the editable concept preserves choices in its tab and copies the exact cla
   const api = load([], location.hash, {document,sessionStorage:storage,navigator,location});
   api.renderAssessment();
   assert.ok(!result.innerHTML.includes('data-assessment-copy'));
+  const comparison = main.innerHTML.match(/<details class="assessment-custom assessment-compare">([\s\S]*?)<\/details>/)[1];
+  assert.equal((comparison.match(/Wat kunt u daaruit afleiden/g)||[]).length,2);
+  assert.match(comparison,/een gegeven verandert[\s\S]+hoe de leerling een advies weegt/);
+  assert.match(comparison,/Wat organiseert u\?[\s\S]+twee inlevermomenten/);
+  assert.ok(comparison.includes('href="https://npuls.nl/_assets/9235efab-b04a-4c63-aeb9-ccd71518a0cf/Npuls-Handreiking-2-AI-B5.pdf"'));
+  picks[0].onclick();
+  assert.ok(goal.focused && goal.validated && compare.open);
+  assert.equal(mode.value,'');
   goal.value = 'Argumenten uit <twee bronnen> wegen.';
   evidence.value = 'Een geannoteerde schets met twee controleerbare verwijzingen.';
   criterion.value = 'De gekozen passage draagt het argument.';
   mode.value = 'controleren';
   form.oninput();
+  assert.equal(compareGoal.textContent,'Uw leerdoel: '+goal.value);
   assert.match(result.innerHTML, /&lt;twee bronnen&gt;/);
   assert.ok(result.innerHTML.includes('Suggestie voor de beoordeling'));
   await copy.onclick();
@@ -376,6 +388,17 @@ test('the editable concept preserves choices in its tab and copies the exact cla
   await copy.onclick();
   assert.equal(field.value, expected);
   assert.ok(field.selected && !field.hidden);
+  task.value = 'Werk met twee bronnen.'; alternative.value = 'Werk met papier.';
+  for (const pick of picks) {
+    compare.open = true;
+    pick.onclick();
+    assert.equal(fresh().mode,pick.dataset.assessmentApply);
+    assert.equal(compare.open,false);
+    assert.ok(preview.focused);
+    assert.match(applied.textContent,/Controleer of de ingevulde opdracht/);
+    assert.deepEqual([fresh().goal,fresh().task,fresh().alternative,fresh().evidence,fresh().criterion],
+      [goal.value,task.value,alternative.value,evidence.value,criterion.value]);
+  }
   clear.onclick();
   assert.ok(goal.focused && !fresh().goal && !fresh().mode && !fresh().criterion && !fresh().evidence);
   assert.ok(!result.innerHTML.includes('data-assessment-copy'));

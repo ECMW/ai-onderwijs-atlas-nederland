@@ -354,6 +354,17 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
 .assessment-start > label, .assessment-start dt { display: block; font-weight: 700; }
 .assessment-start select { display: block; max-width: 100%; min-height: 44px; margin-top: .3rem; padding: .4rem; font: inherit; }
 .assessment-start dd { margin: .25rem 0 .75rem; }
+.assessment-form > #assessment-goal { max-width: 60ch; }
+.assessment-compare { margin: 1rem 0; }
+.assessment-compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; }
+.assessment-compare-grid section { display: flex; flex-direction: column; align-items: start; border-left: .2rem solid var(--brand-olive); padding-left: 1rem; }
+.assessment-compare-grid h2 { margin: 0; font-size: 1.2rem; }
+.assessment-compare-grid dl { flex: 1; }
+.assessment-compare-grid dt { font-weight: 700; }
+.assessment-compare-grid dd { margin: .15rem 0 .75rem; }
+.assessment-compare > p { overflow-wrap: anywhere; }
+.assessment-compare > .assessment-note { margin: .8rem 0; }
+.assessment-preview [data-assessment-apply-note]:empty { margin: 0; }
 .assessment-layout { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr); gap: clamp(1rem, 3vw, 2.5rem); align-items: start; }
 .assessment-form > label, .assessment-form legend, .assessment-custom label, .assessment-preview dt { display: block; font-weight: 700; color: var(--brand-bluegray-deep); }
 .assessment-custom { border-block: 1px solid var(--line); padding: .3rem 0; }
