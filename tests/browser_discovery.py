@@ -29,6 +29,11 @@ with sync_playwright() as playwright:
         page.get_by_role("button", name="Wis filters").click()
         assert subject.input_value() == ""
         assert page.locator("article.tool:visible").count() == 5
+        page.locator("#sortering").select_option("titel")
+        titles = page.locator("article.tool h2").all_inner_texts()
+        assert titles == sorted(titles, key=lambda x: x.lower()), titles
+        page.get_by_role("button", name="Wis filters").click()
+        assert page.locator("#sortering").input_value() == "standaard"
         search.fill("niet-bestaand-vak")
         assert page.locator("article.tool:visible").count() == 0
         search.fill("")
