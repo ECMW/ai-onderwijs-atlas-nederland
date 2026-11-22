@@ -11,7 +11,10 @@ verwijderen. De Atlas haalt dit totaal niet meer op en toont het nergens.
 De bestaande dagelijkse meting en accountinstellingen zijn niet gewijzigd.
 De tijdzone staat op Nederland. De eerste live ontvangst is op 9 september 2026
 bevestigd in het privé dashboard na publicatie via pull request #77.
-De code telt uitsluitend op de publieke Atlas-origin, niet in lokale previews.
+Sinds de domeinwisseling op 22 november 2026 is ook de productiepagina op
+`aionderwijsatlas.nl` toegestaan. Het telpad blijft gelijk zodat de dagreeks
+doorloopt. Tussen de omschakeling en het herstel werden bezoeken op het nieuwe
+domein gemist. Dat tijdvak is achteraf niet uit deze meting te reconstrueren.
 Eerdere bezoekersaantallen worden hiermee niet teruggehaald.
 
 ## Wat Eva krijgt
@@ -78,8 +81,9 @@ De controles vóór publicatie blijven ook dit JavaScriptbestand strikt validere
 Tests simuleren de verzoeken lokaal;
 er worden geen fictieve bezoeken naar een echte teller gestuurd.
 
-Alleen de productie-origin `https://ecmw.github.io` en de Atlas-startpagina
-(ook `index.html`) mogen tellen. Do Not Track, Global Privacy Control,
+Alleen de startdocumenten op `https://aionderwijsatlas.nl/` en het oorspronkelijke
+GitHub Pages-projectpad (ook `index.html`) mogen tellen. De doorverwijzing
+naar het eigen domein telt zo als één paginalading. Do Not Track, Global Privacy Control,
 `navigator.webdriver`, prerendering en iframes zijn uitgesloten. Eigen bezoeken
 kunnen per opening worden overgeslagen met `?atlas-no-count=1` vóór de hash.
 Blokkering van alle bots is niet gegarandeerd.

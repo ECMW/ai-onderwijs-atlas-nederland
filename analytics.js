@@ -4,8 +4,9 @@
   const site = document.querySelector('meta[name="atlas-goatcounter-site"]')?.content || '';
   const atlasPath = '/ai-onderwijs-atlas-nederland/';
   if (!/^[a-z0-9](?:[a-z0-9-]{0,60}[a-z0-9])?$/.test(site)) return;
-  if (location.origin !== 'https://ecmw.github.io' ||
-      ![atlasPath, `${atlasPath}index.html`].includes(location.pathname)) return;
+  const root = location.origin === 'https://aionderwijsatlas.nl' ? '/' :
+    location.origin === 'https://ecmw.github.io' ? atlasPath : null;
+  if (!root || ![root, `${root}index.html`].includes(location.pathname)) return;
 
   const count = () => {
     // Analytics must never interfere with the Atlas, even if requests are blocked.

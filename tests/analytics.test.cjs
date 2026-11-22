@@ -5,7 +5,7 @@ const vm = require('node:vm');
 const { test } = require('node:test');
 const code = fs.readFileSync(path.join(__dirname, '../analytics.js'), 'utf8');
 
-function run({ site = 'atlas-test', href = 'https://ecmw.github.io/ai-onderwijs-atlas-nederland/',
+function run({ site = 'atlas-test', href = 'https://aionderwijsatlas.nl/',
   navigator = {}, status = 'ready', blocked = false, embedded = false, prerendering = false } = {}) {
   const requests = [], notices = [], listeners = [];
   const context = vm.createContext({ URL, URLSearchParams, navigator, location: new URL(href),
@@ -41,7 +41,7 @@ test('disabled or invalid configuration never sends data', () => {
 });
 
 test('daily counter sends only a fixed Atlas path and no visitor search state or credentials', () => {
-  const app = run({ href: 'https://ecmw.github.io/ai-onderwijs-atlas-nederland/?q=PRIVATE&utm_source=PRIVATE#zoeken?q=PRIVATE&sector=PO' });
+  const app = run({ href: 'https://aionderwijsatlas.nl/?q=PRIVATE&utm_source=PRIVATE#zoeken?q=PRIVATE&sector=PO' });
   assert.equal(app.measurementRequests().length, 1);
   assert.equal(app.requests.length, 1);
   const { url, options } = app.measurementRequests()[0];
@@ -58,11 +58,24 @@ test('daily counter sends only a fixed Atlas path and no visitor search state or
   assert.equal(app.notices.length, 1);
 });
 
+test('both public entry documents use the same historical counter path', () => {
+  for (const root of ['https://aionderwijsatlas.nl/', 'https://ecmw.github.io/ai-onderwijs-atlas-nederland/']) {
+    for (const entry of ['', 'index.html']) {
+      const requests = run({href: root + entry + '#papers'}).requests;
+      assert.equal(requests.length, 1);
+      assert.equal(new URL(requests[0].url).searchParams.get('p'), '/ai-onderwijs-atlas-nederland/');
+    }
+  }
+});
+
 test('local copies, other sites, opt-outs, automated visits and failed startups are excluded', () => {
   for (const overrides of [
     { href: 'http://localhost:8000/' },
     { href: 'https://preview.example/ai-onderwijs-atlas-nederland/' },
     { href: 'https://ecmw.github.io/kies-ai/' },
+    { href: 'https://aionderwijsatlas.nl/data/papers.json' },
+    { href: 'https://aionderwijsatlas.nl.example/' },
+    { href: 'https://aionderwijsatlas.nl/?atlas-no-count=1#papers' },
     { href: 'https://ecmw.github.io/ai-onderwijs-atlas-nederland/?atlas-no-count=1' },
     { navigator: { doNotTrack: '1' } }, { navigator: { globalPrivacyControl: true } },
     { navigator: { webdriver: true } }, { status: 'failed' },

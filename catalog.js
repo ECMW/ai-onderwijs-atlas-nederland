@@ -740,7 +740,7 @@
       policy_document: 'Bekijk beleid', product: 'Bekijk aanbod', service: 'Bekijk aanbod'
     })[record.recordType] || 'Bekijk bron';
   }
-  const PUBLIC_ATLAS = 'https://ecmw.github.io/ai-onderwijs-atlas-nederland/';
+  const PUBLIC_ATLAS = 'https://aionderwijsatlas.nl/';
   function publicItemUrl(record) {
     return `${PUBLIC_ATLAS}#item/${encodeURIComponent(record.id)}`;
   }
@@ -2155,7 +2155,7 @@
     const params = new URLSearchParams({ template: templates[kind] || templates.feedback });
     if (kind === 'correction' && record) {
       params.set('title', `[Correctie] ${record.title}`);
-      params.set('record', `${record.title}\nhttps://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${encodeURIComponent(record.id)}`);
+      params.set('record', `${record.title}\n${PUBLIC_ATLAS}#item/${encodeURIComponent(record.id)}`);
     }
     return `https://github.com/ECMW/ai-onderwijs-atlas-nederland/issues/new?${params}`;
   }
