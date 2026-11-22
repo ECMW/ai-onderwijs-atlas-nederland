@@ -39589,7 +39589,7 @@
   },
   {
     "id": "horizon-ai-leeromgeving-basisonderwijs-2027",
-    "title": "The effective use of artificial intelligence in learning environments in pre-primary and primary education",
+    "title": "HORIZON-CL2-2027-01-TRANSFO-05 — AI in de voorschool en het basisonderwijs",
     "recordType": "funding_call",
     "legacyType": "Call",
     "subtype": null,
@@ -39628,8 +39628,8 @@
         "sourceType": "official"
       },
       {
-        "label": "Frans nationaal contactpunt Horizon Europe — Engelstalige oproeptekst",
-        "url": "https://www.horizon-europe.gouv.fr/effective-use-artificial-intelligence-learning-environments-pre-primary-and-primary-education-42828",
+        "label": "Europese Commissie — officiële oproepgegevens, status en termijnen (JSON)",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/data/topicDetails/horizon-cl2-2027-01-transfo-05.json",
         "sourceType": "official"
       },
       {
@@ -39687,7 +39687,8 @@
       }
     ],
     "applicationDeadlineAt": "2027-09-23T17:00:00+02:00",
-    "verificationMethod": "agent_primary_source_review"
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Het werkprogramma en de officiële topicgegevens bevestigen de onderzoeksvraag, het rondebudget en de beoogde openstelling. De algemene bijlagen beschrijven de consortiumvoorwaarden."
   },
   {
     "id": "erasmus-kleinschalige-samenwerkingsprojecten-onderwijs-2027",
@@ -39732,8 +39733,8 @@
         "sourceType": "official"
       },
       {
-        "label": "Publicatieblad van de EU – deadlines voor de oproep 2027",
-        "url": "https://eur-lex.europa.eu/eli/C/2026/6148/oj/eng",
+        "label": "Europese Commissie — Nederlandstalige programmagids Erasmus+ 2027 (PDF)",
+        "url": "https://erasmus-plus.ec.europa.eu/sites/default/files/2026-11/programme-guide-erasmus-27_nl.pdf",
         "sourceType": "official"
       }
     ],
@@ -39778,6 +39779,7 @@
         "summary": "Deadline, vaste bedragen, voorwaarden en stand van de Nederlandse aanvraagroute gecontroleerd bij het Nationaal Agentschap en de Europese Commissie."
       }
     ],
-    "applicationDeadlineAt": "2027-03-09T12:00:00+01:00"
+    "applicationDeadlineAt": "2027-03-09T12:00:00+01:00",
+    "verificationNote": "De Europese actiepagina en programmagids 2027 bevestigen de thema-onafhankelijke voorwaarden, twee vaste subsidiebedragen en de sluiting op 9 maart om 12.00 uur (Brusselse tijd). Het Nederlandse agentschap publiceerde de oproep op 19 november 2026."
   }
 ]
