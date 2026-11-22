@@ -8933,16 +8933,26 @@
       "Professionalisering"
     ],
     "status": "open_call",
-    "availabilityText": "Open tot 24 november 2026",
+    "availabilityText": "Indienen via het EU Funding & Tenders Portal tot 24 november 2026, 17.00 uur Brusselse en Nederlandse tijd.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
+        "label": "Europese Commissie: MSCA Doctoral Networks 2026",
         "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/funding/msca-doctoral-networks-2026",
+        "sourceType": "official"
+      },
+      {
+        "label": "MSCA: consortium en deelnamevoorwaarden",
+        "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/doctoral-networks",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europese Commissie: werkprogramma 2026–2027, kies MSCA",
+        "url": "https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/horizon-europe-work-programmes_en",
         "sourceType": "official"
       }
     ],
@@ -8952,21 +8962,21 @@
     "geographicScope": "Internationaal",
     "accessType": "public",
     "costType": "unknown",
-    "fundingAmount": null,
+    "fundingAmount": "Het indicatieve budget voor de hele ronde is € 628,03 miljoen. De bijdrage per netwerk hangt onder meer af van het aantal maanden waarvoor promovendi worden aangesteld.",
     "fundingDeadline": "2026-11-24",
     "applicationOpenDate": "2026-05-28",
     "applicationDeadline": "2026-11-24",
     "fundingMin": null,
     "fundingMax": null,
-    "totalBudget": "€593,034 miljoen indicatief",
-    "eligibility": "Consortia van organisaties uit verschillende sectoren en landen; voorstellen kunnen elk wetenschapsgebied betreffen.",
+    "totalBudget": 628030000,
+    "eligibility": "Minimaal drie onafhankelijke rechtspersonen uit drie verschillende EU-lidstaten of met Horizon Europe geassocieerde landen, waarvan minimaal één in de EU is gevestigd. Een Nederlandse universiteit of hogeschool kan binnen zo'n consortium deelnemen.",
     "applicantTypes": [
       "Internationale consortia",
       "Universiteiten",
       "Onderzoeksinstellingen",
       "Publieke en private organisaties"
     ],
-    "callStatus": "open",
+    "callStatus": "open_call",
     "recurrence": null,
     "language": [
       "en"
@@ -8976,14 +8986,20 @@
       "doctoral networks",
       "Horizon Europe"
     ],
-    "notes": null,
+    "notes": "Het herziene werkprogramma (2026–2027, onderdeel MSCA, pagina 12) vermeldt het rondebudget. Promotiekandidaten solliciteren op vacatures bij toegekende projecten.",
     "changeHistory": [
       {
         "date": "2026-07-12",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 2: Europese en internationale AI-onderwijsbronnen."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Uiterste indieningstijd en consortiumnormen gecontroleerd. Het herziene werkprogramma verhoogt het indicatieve budget voor de gehele call."
       }
-    ]
+    ],
+    "applicationDeadlineAt": "2026-11-24T17:00:00+01:00"
   },
   {
     "id": "msca-postdoctoral-fellowships-2026",
@@ -14875,13 +14891,13 @@
   },
   {
     "id": "professional-doctorate-technologie-digitalisering-2026",
-    "title": "Professional Doctorate – Technologie & Digitalisering 2026",
+    "title": "Professional Doctorate – Techniek & Digitalisering, ronde 2026–2027",
     "recordType": "funding_call",
     "legacyType": "Call",
     "subtype": null,
     "organizationIds": [],
     "providerName": "Regieorgaan SIA",
-    "description": "Financiering voor kandidaten in een Professional Doctorate-traject, waaronder het domein Technologie & Digitalisering. De regeling is breder dan AI.",
+    "description": "Bekostigde hogescholen kunnen financiering aanvragen voor een kandidaat die in de pilot Professional Doctorate een praktijkvraag onderzoekt. Techniek & Digitalisering is een van de zeven domeinen. Het budget geldt voor alle domeinen samen.",
     "purpose": "Professionals opleiden die complexe praktijkvraagstukken door onderzoekend handelen vernieuwen.",
     "audiences": [
       "Hogescholen",
@@ -14898,16 +14914,21 @@
       "Onderzoek"
     ],
     "status": "open_call",
-    "availabilityText": "Ophaalmomenten op 10 september en 12 november 2026",
+    "availabilityText": "Doorlopend indienen. Een ophaalmoment is 4 maart 2027 om 14.00 uur Nederlandse tijd. De ronde sluit op 17 juni 2027 om 14.00 uur of eerder als het budget is uitgeput.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-21",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
-        "url": "https://regieorgaan-sia.nl/financiering/professional-doctorate/",
+        "label": "SIA: regeling en volgende ophaalmomenten",
+        "url": "https://regieorgaan-sia.nl/calls/financiering-professional-doctorate-kandidaten-2026-2027",
+        "sourceType": "official"
+      },
+      {
+        "label": "Staatscourant: besluit tot verlenging",
+        "url": "https://zoek.officielebekendmakingen.nl/stcrt-2026-39007.html",
         "sourceType": "official"
       }
     ],
@@ -14917,19 +14938,19 @@
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
-    "fundingAmount": null,
-    "fundingDeadline": "2026-11-12",
-    "applicationOpenDate": null,
-    "applicationDeadline": "2026-11-12",
+    "fundingAmount": "Maximaal € 271.400 per traject. Het totale budget voor alle zeven domeinen is € 16.284.000.",
+    "fundingDeadline": "2027-06-17",
+    "applicationOpenDate": "2026-01-08",
+    "applicationDeadline": "2027-06-17",
     "fundingMin": null,
     "fundingMax": 271400,
-    "totalBudget": null,
-    "eligibility": "Nederlandse hogescholen met een erkend PD-programma; regeling is breder dan AI.",
+    "totalBudget": 16284000,
+    "eligibility": "Een door de Nederlandse overheid bekostigde hogeschool dient in. De graduatecommissie moet de kandidaat, het voorstel en het consortium positief hebben beoordeeld. De kandidaat heeft een master of een gelijkwaardig diploma en relevante praktijkervaring.",
     "applicantTypes": [
-      "Hogescholen"
+      "Bekostigde hogescholen"
     ],
     "callStatus": "open_call",
-    "recurrence": "Meerdere ophaalmomenten per jaar",
+    "recurrence": "Meerdere ophaalmomenten binnen de ronde 2026–2027",
     "language": [
       "nl"
     ],
@@ -14944,19 +14965,25 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "De gewijzigde regeling voegt twee ophaalmomenten in 2027 toe. De uiterste indieningstijd, doelgroep en het rondebudget zijn gecontroleerd."
       }
-    ]
+    ],
+    "applicationDeadlineAt": "2027-06-17T14:00:00+02:00"
   },
   {
     "id": "take-off-hbo-najaar-2026",
-    "title": "Take-off hbo – najaarsronde 2026",
+    "title": "Take-off hbo – haalbaarheidsstudies, december 2026",
     "recordType": "funding_call",
     "legacyType": "Call",
     "subtype": null,
     "organizationIds": [],
     "providerName": "Regieorgaan SIA",
-    "description": "Verwachte najaarsronde voor haalbaarheidsstudies naar commerciële toepassing van kennis en innovaties uit hogescholen. Niet uitsluitend voor AI of onderwijs.",
-    "purpose": "Onderzoekers en studenten helpen een innovatieve kennisgedreven onderneming te verkennen.",
+    "description": "Een bekostigde hogeschool kan onderzoeken of een innovatie uit haar praktijkgerichte onderzoek praktisch en commercieel haalbaar is. Ook een digitale innovatie kan passen. De haalbaarheidsstudie duurt maximaal negen maanden.",
+    "purpose": "De praktische toepassing van producten, processen of diensten uit hogeschoolonderzoek verkennen.",
     "audiences": [
       "Hogescholen",
       "Onderzoekers",
@@ -14971,17 +14998,22 @@
       "Subsidies en financiering",
       "Implementatie en adoptie"
     ],
-    "status": "planned",
-    "availabilityText": "Najaarsronde verwacht in september 2026; exacte deadline nog niet gepubliceerd",
+    "status": "open_call",
+    "availabilityText": "Indienen bij Regieorgaan SIA vóór 1 december 2026, 14.00 uur Nederlandse tijd.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-21",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
-        "url": "https://regieorgaan-sia.nl/financiering/take-off-hbo/",
+        "label": "SIA: aanvraagronde en werkwijze",
+        "url": "https://regieorgaan-sia.nl/calls/take-off-hbo-december-2026",
+        "sourceType": "official"
+      },
+      {
+        "label": "Staatscourant: voorwaarden en deadline",
+        "url": "https://zoek.officielebekendmakingen.nl/stcrt-2026-29439.html",
         "sourceType": "official"
       }
     ],
@@ -14991,20 +15023,18 @@
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
-    "fundingAmount": null,
-    "fundingDeadline": null,
-    "applicationOpenDate": null,
-    "applicationDeadline": null,
+    "fundingAmount": "Maximaal € 50.000 per aanvraag. Het totale budget voor deze ronde is € 500.000.",
+    "fundingDeadline": "2026-12-01",
+    "applicationOpenDate": "2026-08-26",
+    "applicationDeadline": "2026-12-01",
     "fundingMin": null,
     "fundingMax": 50000,
-    "totalBudget": null,
-    "eligibility": "Onderzoekers, studenten en kennisbenutters verbonden aan een Nederlandse hogeschool; regeling is breder dan AI.",
+    "totalBudget": 500000,
+    "eligibility": "Alleen door de Nederlandse overheid bekostigde hogescholen kunnen aanvragen. De innovatie moet voortbouwen op resultaten van praktijkgericht onderzoek.",
     "applicantTypes": [
-      "Hogescholen",
-      "Onderzoekers",
-      "Studenten"
+      "Bekostigde hogescholen"
     ],
-    "callStatus": "forthcoming",
+    "callStatus": "open_call",
     "recurrence": "Periodiek",
     "language": [
       "nl"
@@ -15015,14 +15045,20 @@
       "startup",
       "AI"
     ],
-    "notes": null,
+    "notes": "De formele oproep stelt geen consortium of cofinanciering verplicht.",
     "changeHistory": [
       {
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "SIA heeft de najaarsronde geopend. De indienperiode, de officiële aanvrager en het bedrag per aanvraag en voor de hele ronde zijn gecontroleerd."
       }
-    ]
+    ],
+    "applicationDeadlineAt": "2026-12-01T14:00:00+01:00"
   },
   {
     "id": "comenius-leadership-fellows-2027",
@@ -15110,7 +15146,7 @@
     "subtype": null,
     "organizationIds": [],
     "providerName": "Nationaal Kennisinstituut Onderwijs",
-    "description": "Doorlopende subsidie voor Nederlandse wetenschappelijke tijdschriften over onderwijsonderzoek die volledig open access willen werken. Niet specifiek voor AI.",
+    "description": "Regeling voor Nederlandse uitgevers van bestaande Nederlandstalige, peer-reviewed onderwijstijdschriften op Open Journals. De bijdrage is bedoeld voor publicatiekosten in de kalenderjaren 2026 en 2027.",
     "purpose": "Open toegang tot resultaten van onderwijsonderzoek bevorderen.",
     "audiences": [
       "Onderzoekers",
@@ -15127,17 +15163,17 @@
       "Onderzoek",
       "Data en infrastructuur"
     ],
-    "status": "open_call",
-    "availabilityText": "Doorlopend tot het subsidieplafond is bereikt",
+    "status": "available",
+    "availabilityText": "Geen vaste deadline. Volledige aanvragen worden behandeld op volgorde van ontvangst tot het subsidieplafond is bereikt. Op 22 november 2026 is niet bevestigd of er nog budget is.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-21",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
-        "url": "https://www.officielebekendmakingen.nl/stcrt-2026-7642.html",
+        "label": "Staatscourant: regeling en voorwaarden voor tijdschriften",
+        "url": "https://zoek.officielebekendmakingen.nl/stcrt-2026-7642.html",
         "sourceType": "official"
       }
     ],
@@ -15147,19 +15183,18 @@
     "geographicScope": "Nederland",
     "accessType": "public",
     "costType": "free",
-    "fundingAmount": null,
+    "fundingAmount": "Maximaal € 17.500 per aanvraag voor 2026 en 2027 samen. Het oorspronkelijke subsidieplafond was € 70.000. Het resterende budget is onbekend.",
     "fundingDeadline": null,
     "applicationOpenDate": null,
     "applicationDeadline": null,
     "fundingMin": null,
     "fundingMax": 17500,
     "totalBudget": 70000,
-    "eligibility": "Nederlandse wetenschappelijke tijdschriften die onderwijsonderzoek publiceren en aan de regeling voldoen.",
+    "eligibility": "De aanvrager is een in Nederland gevestigde rechtspersoon met volledige rechtsbevoegdheid die het tijdschrift produceert en uitgeeft. Het tijdschrift stond al in 2025 op Open Journals, valt onder Jeugd en Onderwijs en publiceert daar minimaal vijf artikelen per jaar.",
     "applicantTypes": [
-      "Wetenschappelijke tijdschriften",
-      "Onderzoeksorganisaties"
+      "Uitgevers van openaccess-onderwijstijdschriften"
     ],
-    "callStatus": "open_call",
+    "callStatus": null,
     "recurrence": null,
     "language": [
       "nl"
@@ -15176,6 +15211,11 @@
         "date": "2026-07-21",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 4."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "De regeling kent geen vaste deadline. De formele publicatie bevestigt de voorwaarden, maar vermeldt geen actueel resterend budget."
       }
     ]
   },
@@ -38656,6 +38696,87 @@
         "date": "2026-11-22",
         "type": "added",
         "summary": "Universitair econometriepracticum op onderwerp, leesversie, oorspronkelijke code en bijbehorende data gecontroleerd."
+      }
+    ]
+  },
+  {
+    "id": "npuls-aido-praktijkgericht-ai-en-dataonderzoek-2026",
+    "title": "Npuls AIDO – oproep voor praktijkgericht onderzoek naar AI en data",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": "Oproep voor deelname aan gefinancierd onderzoek",
+    "organizationIds": [
+      "org-npuls"
+    ],
+    "providerName": "Npuls",
+    "description": "Npuls wil zes onderzoeken naar het gebruik van AI en data in de eigen onderwijspraktijk ondersteunen. Het programma voorziet twee projecten in het mbo, twee in het hbo en twee in het wo. Een overkoepelend onderzoek verbindt de uitkomsten.",
+    "purpose": "Vragen uit Nederlandse onderwijsinstellingen onderzoeken en kennis over AI en data delen tussen mbo, hbo en wo.",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen",
+      "Docenten"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Lesgeven en leren met AI",
+      "Subsidies en financiering"
+    ],
+    "status": "planned",
+    "callStatus": "forthcoming",
+    "availabilityText": "Aangekondigd. Npuls noemt midden november en verwacht de oproeplink in de laatste week van november 2026. Op 22 november stonden de indienroute, de sluitingsdatum en het bedrag nog niet op de programmapagina.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-11-22",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Npuls: onderzoekslijn en aankondiging van de oproep",
+        "url": "https://www.npuls.nl/ai-en-data-onderzoeksprogramma-aido",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "npuls"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Het aangekondigde onderzoek richt zich op praktijkvragen binnen Nederlandse mbo-, hbo- en wo-instellingen. De formele eisen aan de aanvrager volgen bij de oproep.",
+    "applicantTypes": [],
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "AIDO",
+      "AI en data",
+      "praktijkgericht onderzoek",
+      "onderzoeksvoorstel",
+      "Npuls"
+    ],
+    "notes": "Npuls meldt dat er per geselecteerd onderzoek geld beschikbaar zal zijn. De programmapagina beschrijft de selectie en kondigt de publicatie van de oproeplink aan.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Op 22 november zijn de twee passages over praktijkgericht onderzoek en de openbare links op de Npuls-pagina gecontroleerd. Het aantal beoogde onderzoeken en de sectorverdeling zijn bevestigd. Bij publicatie van de oproep kunnen de voorwaarden en indienroute worden geverifieerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-22",
+        "type": "added",
+        "summary": "Oproep als aangekondigd vastgelegd op basis van de programmapagina van Npuls. De indienroute en exacte termijnen zijn nog niet bevestigd."
       }
     ]
   }
