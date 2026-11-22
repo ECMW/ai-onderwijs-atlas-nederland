@@ -2361,5 +2361,71 @@
     "themes": ["Subsidies en financiering"],
     "sectors": [],
     "sourceType": "official"
+  },
+  {
+    "id": "source-institut-de-france-prix-sopra-steria",
+    "name": "Institut de France – onderzoeksprijs Sopra Steria",
+    "owner": "Institut de France",
+    "baseUrl": "https://fondations.institutdefrance.fr/fondation-sopra-steria-grand-prix?view=programme",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "daily"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "listing",
+      "deadlineAware": true
+    },
+    "allowedRecordTypes": [
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Volg de nieuwe editie, het thema en de lokale tijd van het indienportaal. Controleer of onderzoekers verbonden aan een Nederlandse instelling mogen indienen.",
+    "themes": [
+      "Subsidies en financiering"
+    ],
+    "sectors": [],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-rea-msca-staff-exchanges",
+    "name": "Europese Commissie – oproepkalender MSCA Staff Exchanges",
+    "owner": "European Research Executive Agency",
+    "baseUrl": "https://rea.ec.europa.eu/funding-and-grants/horizon-europe-marie-sklodowska-curie-actions/msca-staff-exchanges_en",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "daily"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "listing",
+      "deadlineAware": true
+    },
+    "allowedRecordTypes": [
+      "subsidy",
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "notes": "Volg de actuele oproep per jaar. Controleer bij gewijzigde data het EU-indienportaal en het herziene werkprogramma. Bevestig Nederlandse deelname en de relatie met onderwijsonderzoek.",
+    "themes": [
+      "Subsidies en financiering"
+    ],
+    "sectors": [],
+    "sourceType": "official"
   }
 ]

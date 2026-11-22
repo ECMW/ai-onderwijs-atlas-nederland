@@ -39781,5 +39781,479 @@
     ],
     "applicationDeadlineAt": "2027-03-09T12:00:00+01:00",
     "verificationNote": "De Europese actiepagina en programmagids 2027 bevestigen de thema-onafhankelijke voorwaarden, twee vaste subsidiebedragen en de sluiting op 9 maart om 12.00 uur (Brusselse tijd). Het Nederlandse agentschap publiceerde de oproep op 19 november 2026."
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "status": "open_call",
+    "callStatus": "open_call",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "verificationMethod": "agent_primary_source_review",
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingMin": null,
+    "totalBudget": null,
+    "recurrence": null,
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Aanvraagroute, deelnemers uit Nederland, bedrag en uiterste indieningstijd gecontroleerd bij de verstrekker."
+      }
+    ],
+    "id": "sopra-steria-institut-de-france-ai-leren-2027",
+    "title": "Grand Prix 2027 voor onderzoek naar AI en leren bij jongeren",
+    "providerName": "Fondation Sopra Steria – Institut de France",
+    "description": "Onderzoeksprijs voor lopend onderzoek dat al eerste betekenisvolle resultaten heeft over hoe AI het leren van kinderen, jongeren of jongvolwassenen beïnvloedt. Ook onderzoekers en promovendi aan een Nederlandse onderzoeksorganisatie zonder winstoogmerk kunnen meedingen.",
+    "purpose": "Onderzoek naar de effecten van AI op kennisverwerving, cognitieve en sociale vaardigheden of kritisch denken verder brengen.",
+    "audiences": [
+      "Onderzoekers",
+      "Promovendi"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Lesgeven en leren met AI"
+    ],
+    "geographicScope": "Europa",
+    "applicationOpenDate": "2026-10-20",
+    "applicationDeadline": "2027-01-22",
+    "fundingDeadline": "2027-01-22",
+    "applicationDeadlineAt": "2027-01-22T00:00:00+01:00",
+    "availabilityText": "Dien het dossier in het Frans of Engels in via het Institut de France. Het loket sluit in de nacht van 21 op 22 januari 2027 om 00.00 uur Nederlandse tijd.",
+    "eligibility": "Onderzoekers en promovendi bij een Europese onderzoeksorganisatie zonder winstoogmerk die het algemeen belang dient. De kandidaat toont eerste resultaten en licht het vervolgonderzoek toe. De stichting verlangt open verspreiding van de resultaten.",
+    "applicantTypes": [
+      "Onderzoekers bij Europese onderzoeksorganisaties zonder winstoogmerk",
+      "Promovendi bij die organisaties"
+    ],
+    "fundingAmount": "€ 100.000 voor de onderzoeksprijs, uitbetaald aan de instelling die het onderzoek huisvest.",
+    "fundingMax": 100000,
+    "language": [
+      "fr",
+      "en"
+    ],
+    "keywords": [
+      "onderzoeksprijs",
+      "AI en leren",
+      "kennisverwerving",
+      "promovendi",
+      "Grand Prix Sopra Steria"
+    ],
+    "notes": "Selecteer voor het dossier wetenschappelijke resultaten en regel een aanbevelingsbrief. Een nieuw onderzoeksvoorstel zonder eerste resultaten voldoet niet aan de oproep.",
+    "verificationNote": "Het indienportaal geeft de opening, sluiting en tijdzone Europe/Paris, het prijsbedrag en de voorwaarden voor Europese onderzoeksorganisaties. De Engelstalige oproep bevestigt de indieningstalen en vereiste bijlagen.",
+    "sourceUrls": [
+      {
+        "label": "Institut de France – oproep, voorwaarden en indiening",
+        "url": "https://fondations.institutdefrance.fr/fondation-sopra-steria-grand-prix?view=programme",
+        "sourceType": "official"
+      },
+      {
+        "label": "Sopra Steria – Engelstalige oproep en indieningsinstructies",
+        "url": "https://www.soprasteria.com/newsroom/press-releases/details/the-sopra-steria-institut-de-france-foundation-dedicates-its-2027-grand-prize-for-research-to-the-impact-of-ai-on-how-young-people-acquire-knowledge",
+        "sourceType": "official"
+      }
+    ]
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "status": "open_call",
+    "callStatus": "open_call",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "verificationMethod": "agent_primary_source_review",
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingMin": null,
+    "totalBudget": 6750000,
+    "recurrence": null,
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Aanvraagroute, deelnemers uit Nederland, bedrag en uiterste indieningstijd gecontroleerd bij de verstrekker."
+      }
+    ],
+    "id": "raak-mkb-maart-2027",
+    "title": "RAAK-mkb – indieningsronde maart 2027",
+    "providerName": "Regieorgaan SIA",
+    "description": "Een bekostigde Nederlandse hogeschool kan met mkb-partners twee jaar praktijkgericht onderzoek doen naar een vraag uit hun beroepspraktijk. Onderzoek naar AI in onderwijssoftware kan passen als mkb-bedrijven zelf het praktijkprobleem aandragen en actief deelnemen.",
+    "purpose": "Een onderbouwde praktijkvraag van mkb-professionals onderzoeken en de opbrengsten benutten in het hbo en de beroepspraktijk.",
+    "audiences": [
+      "Hogescholen",
+      "Onderzoekers",
+      "Bedrijven"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Implementatie en adoptie"
+    ],
+    "geographicScope": "Nederland",
+    "applicationOpenDate": "2026-11-05",
+    "applicationDeadline": "2027-03-02",
+    "fundingDeadline": "2027-03-02",
+    "applicationDeadlineAt": "2027-03-02T14:00:00+01:00",
+    "availabilityText": "De aanvragende hogeschool dient in via ISAAC, vóór 2 maart 2027 om 14.00 uur Nederlandse tijd.",
+    "eligibility": "Een bekostigde hogeschool dient onder verantwoordelijkheid van een lector in en werkt met minimaal zes mkb-ondernemingen, waarvan minstens vijf in het Koninkrijk der Nederlanden gevestigd zijn, en een partij die de mkb-praktijk vertegenwoordigt. Leg samen de praktijkvraag en cofinanciering vast. Bij € 375.000 subsidie draagt het consortium € 325.000 bij, in geld of in natura. Bij een lagere aanvraag daalt de vereiste bijdrage naar rato.",
+    "applicantTypes": [
+      "Bekostigde hogescholen met een mkb-consortium"
+    ],
+    "fundingAmount": "Maximaal € 375.000 per project. Het rondebudget is € 6.750.000.",
+    "fundingMax": 375000,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "RAAK-mkb",
+      "praktijkgericht onderzoek",
+      "onderwijstechnologie",
+      "mkb",
+      "EdTech"
+    ],
+    "notes": "Dit is de afzonderlijke ronde van maart 2027. AI en onderwijssoftware zijn een mogelijke toepassing volgens de Atlas. De regeling staat open voor uiteenlopende onderzoeksthema’s. De regeling sluit reguliere onderwijsactiviteiten en het ontwikkelen van een eigen nieuw curriculum uit.",
+    "verificationNote": "De SIA-rondepagina bevestigt de actuele openstelling, sluitingsdatum en tijdzone, consortiumvoorwaarden, aanvraagbedrag, cofinanciering en rondebudget.",
+    "sourceUrls": [
+      {
+        "label": "Regieorgaan SIA – aanvraag, bedragen en consortiumvoorwaarden",
+        "url": "https://regieorgaan-sia.nl/calls/raak-mkb-maart-2027",
+        "sourceType": "official"
+      },
+      {
+        "label": "Formele call – aanvragers en uitsluitingen (pdf)",
+        "sourceType": "official",
+        "url": "https://regieorgaan-sia.nl/sites/sia/files/media-files/Call_for_proposals_RAAK-mkb_september_2026_en_maart_2027.pdf"
+      }
+    ]
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "status": "planned",
+    "startDate": null,
+    "endDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "verificationMethod": "agent_primary_source_review",
+    "id": "erasmus-centres-vocational-excellence-2027",
+    "title": "Erasmus+ Centres of Vocational Excellence 2027 — beroepsonderwijs en werkplekleren",
+    "providerName": "Europees Uitvoerend Agentschap onderwijs en cultuur (EACEA)",
+    "description": "Ontwikkel met beroepsopleiders en werkgevers in vier of meer landen onderwijs voor leren op school en op de werkplek. De programmagids noemt AI als mogelijke techniek om lesmateriaal en leermethoden te vernieuwen. Bespreek met een opleider en een werkgever in elk partnerland welke beroepsvaardigheden het project gaat versterken.",
+    "purpose": "Vernieuw het beroepsonderwijs met een internationaal partnerschap van opleiders en werkgevers. Het project omvat onderwijs, samenwerking en bestuur en financiering.",
+    "audiences": [
+      "Onderwijsontwikkelaars",
+      "MBO-docenten",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Lesgeven en leren met AI"
+    ],
+    "availabilityText": "Het Europese loket opent volgens de planning op 8 juni 2027. Indienen kan tot 16 september 2027 om 17.00 uur Nederlandse tijd.",
+    "publicationDate": "2026-11-20",
+    "sourceUrls": [
+      {
+        "label": "Europese oproep en aanvraagloket voor Topic 1",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/erasmus-edu-2027-pex-cove-top1",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europese Commissie – projectvoorwaarden en subsidiebedrag",
+        "url": "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/centres-of-vocational-excellence",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europese Commissie – Nederlandstalige programmagids 2027 (pdf)",
+        "url": "https://erasmus-plus.ec.europa.eu/sites/default/files/2026-11/programme-guide-erasmus-27_nl.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "erasmus"
+    ],
+    "fundingAmount": "Maximaal €4 miljoen per project. Voor Topic 1 is in totaal €73 miljoen begroot.",
+    "fundingDeadline": "2027-09-16",
+    "applicationOpenDate": "2027-06-08",
+    "applicationDeadline": "2027-09-16",
+    "applicationDeadlineAt": "2027-09-16T17:00:00+02:00",
+    "fundingMin": null,
+    "fundingMax": 4000000,
+    "totalBudget": 73000000,
+    "eligibility": "Een Nederlandse mbo-instelling, onderneming of andere rechtspersoon die actief is in het beroepsonderwijs of op de arbeidsmarkt kan coördineren. Nodig zijn minstens acht begunstigden uit minstens vier EU-lidstaten of geassocieerde landen. Elk van die landen levert minstens één beroepsopleider en één werkgever of sectorvertegenwoordiger. De focus ligt op EQF-niveau 3 tot en met 5. Een hogeschool kan meedoen met een project dat ook deze niveaus bedient.",
+    "applicantTypes": [
+      "Internationale consortia",
+      "Mbo-instellingen",
+      "Bedrijven"
+    ],
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "ERASMUS-EDU-2027-PEX-COVE-TOP1",
+      "Erasmus+",
+      "CoVE",
+      "werkplekleren",
+      "beroepsonderwijs",
+      "AI in het beroepsonderwijs"
+    ],
+    "notes": "Deze vermelding gaat over Topic 1 van de CoVE-oproep. Het aparte budget voor de Europese praktijkgemeenschap (Topic 2) valt buiten dit rondebudget.",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Openstelling, deadline en topicbudget gecontroleerd in het EU-portaal. Projectmaximum, voorwaarden en AI-toepassing gecontroleerd in de Europese programmagids."
+      }
+    ]
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "status": "planned",
+    "startDate": null,
+    "endDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "verificationMethod": "agent_primary_source_review",
+    "id": "erasmus-samenwerkingspartnerschappen-onderwijs-ka220-2027",
+    "title": "Erasmus+ Cooperation Partnerships 2027 — samenwerkingspartnerschappen in het onderwijs (KA220)",
+    "providerName": "Nationaal Agentschap Erasmus+ Onderwijs & Training",
+    "description": "Wilt u met onderwijsorganisaties in andere landen een gezamenlijke aanpak voor AI-geletterdheid ontwikkelen en beproeven? KA220 financiert samenwerking in schoolonderwijs, beroepsonderwijs, hoger onderwijs en volwasseneneducatie. Kies met partners in minstens twee andere programmalanden een gedeeld onderwijsprobleem en een Erasmus+-prioriteit en werk die uit in een projectopzet.",
+    "purpose": "Ontwikkel en beproef met buitenlandse partners een onderwijsaanpak die de betrokken organisaties na afloop in hun praktijk kunnen gebruiken.",
+    "audiences": [
+      "Onderwijsontwikkelaars",
+      "Docenten",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "AI-geletterdheid"
+    ],
+    "availabilityText": "De oproep is aangekondigd. Het Nederlandse agentschap meldt dat de aanvraagformulieren volgen. De eerste onderwijsronde sluit op 9 maart 2027 om 12.00 uur Nederlandse tijd.",
+    "publicationDate": "2026-11-18",
+    "sourceUrls": [
+      {
+        "label": "Europese Commissie – voorwaarden, bedragen en deadline voor KA220",
+        "url": "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/cooperation-partnerships",
+        "sourceType": "official"
+      },
+      {
+        "label": "Nationaal Agentschap – stand van de Nederlandse aanvraagformulieren",
+        "url": "https://www.erasmusplus.nl/actueel/nieuws/erasmus-programmagids-2027-gepubliceerd",
+        "sourceType": "official"
+      },
+      {
+        "label": "Nationaal Agentschap – projectopzet KA220 voor hoger onderwijs, ronde 2027",
+        "url": "https://www.erasmusplus.nl/subsidie/hoger-onderwijs/aanvragen/documenten/call-2027",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europese Commissie – prioriteiten voor samenwerking en AI in het onderwijs",
+        "url": "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/partnerships-for-cooperation",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "erasmus",
+      "erasmus-kleinschalige-samenwerkingsprojecten-onderwijs-2027"
+    ],
+    "fundingAmount": "U kiest een vast totaalbedrag voor het project van €120.000, €250.000 of €400.000. Erasmus+ verwacht medefinanciering.",
+    "fundingDeadline": "2027-03-09",
+    "applicationOpenDate": null,
+    "applicationDeadline": "2027-03-09",
+    "applicationDeadlineAt": "2027-03-09T12:00:00+01:00",
+    "fundingMin": 120000,
+    "fundingMax": 400000,
+    "totalBudget": null,
+    "eligibility": "Minstens drie organisaties uit drie verschillende EU-lidstaten of geassocieerde landen werken samen. Een Nederlandse onderwijsorganisatie kan bij het Nederlandse Nationaal Agentschap indienen als coördinator en moet dan op de deadline minstens twee jaar formeel bestaan. Een deelnemende Nederlandse hogeschool of universiteit heeft een geldig Erasmus Charter for Higher Education (ECHE) nodig. Europese ngo’s hebben een eigen centrale aanvraagroute.",
+    "applicantTypes": [
+      "Scholen",
+      "Mbo-instellingen",
+      "Hogescholen",
+      "Universiteiten",
+      "Organisaties voor volwasseneneducatie"
+    ],
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "Erasmus+",
+      "KA220",
+      "cooperation partnerships",
+      "samenwerkingspartnerschappen",
+      "AI-geletterdheid",
+      "volwasseneneducatie"
+    ],
+    "notes": "AI-geletterdheid is een mogelijke invulling binnen de oproep. De programmagids noemt het Europese AI-geletterdheidskader en ethische AI-richtlijnen voor onderwijs als aanknopingspunten voor dergelijke projecten.",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Voorwaarden, bedragen, AI-prioriteiten en sluitingstijd gecontroleerd bij de Europese Commissie. De Nederlandse aanvraagroute en projectopzet gecontroleerd bij het Nationaal Agentschap."
+      }
+    ]
+  },
+  {
+    "id": "msca-staff-exchanges-2027",
+    "title": "MSCA Staff Exchanges 2027 – onderzoek via personeelsuitwisseling",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie – Marie Skłodowska-Curie Actions",
+    "description": "Zet met buitenlandse partners een onderzoeksproject op waarin medewerkers tijdelijk bij elkaar werken. Ook onderzoek naar AI in het onderwijs kan passen. Via een eerdere ronde kreeg het project HUMAN-AI financiering voor onderzoek naar de menselijke kant van lesgeven en leren met AI in het hoger onderwijs.",
+    "purpose": "Financier internationale uitwisselingen van medewerkers die bijdragen aan een gezamenlijk onderzoeks- en innovatieproject.",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Professionalisering"
+    ],
+    "status": "planned",
+    "availabilityText": "Het Europese indienloket opent op 15 december 2026. Dien in vóór de deadline van 13 april 2027 om 17.00 uur Nederlandse tijd.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Europees indienloket voor Staff Exchanges 2027",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-MSCA-2027-SE-01-01",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europees Uitvoerend Agentschap onderzoek – kalender voor 2027",
+        "url": "https://rea.ec.europa.eu/funding-and-grants/horizon-europe-marie-sklodowska-curie-actions/msca-staff-exchanges_en",
+        "sourceType": "official"
+      },
+      {
+        "label": "Marie Skłodowska-Curie Actions – deelnamevoorwaarden",
+        "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/staff-exchanges",
+        "sourceType": "official"
+      },
+      {
+        "label": "Herzien Europees werkprogramma MSCA 2026–2027, p. 38–40 (pdf)",
+        "url": "https://ec.europa.eu/transparency/documents-register/api/files/C%282026%296687_2/090166e534337d6f",
+        "sourceType": "official"
+      },
+      {
+        "label": "CORDIS – HUMAN-AI, een toegekend onderwijsproject uit de ronde van 2025",
+        "url": "https://cordis.europa.eu/project/id/101299940",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "horizon-europe"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Het indicatieve budget voor de hele ronde is €95,15 miljoen. De projectbijdrage hangt af van het aantal aangevraagde persoonsmaanden.",
+    "fundingDeadline": "2027-04-13",
+    "applicationOpenDate": "2026-12-15",
+    "applicationDeadline": "2027-04-13",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": 95150000,
+    "eligibility": "Minstens drie onafhankelijke organisaties uit drie verschillende landen, waarvan twee in verschillende EU-lidstaten of met Horizon Europe geassocieerde landen. Zowel de academische als de niet-academische sector doet mee. Een Nederlandse hogeschool of universiteit kan met passende partners deelnemen.",
+    "applicantTypes": [
+      "Internationale consortia",
+      "Hogescholen",
+      "Universiteiten",
+      "Onderzoeksinstellingen",
+      "Publieke en private organisaties"
+    ],
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "HORIZON-MSCA-2027-SE-01-01",
+      "MSCA Staff Exchanges",
+      "personeelsuitwisseling",
+      "onderzoek naar AI in het onderwijs"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Openstelling en indieningstijd gecontroleerd in het herziene werkprogramma. De programmapagina en CORDIS onderbouwen de deelnamevoorwaarden en het eerdere onderwijsproject."
+      }
+    ],
+    "applicationDeadlineAt": "2027-04-13T17:00:00+02:00",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Het herziene werkprogramma en de kalender van de Europese uitvoerder noemen beide 13 april 2027. Het eerdere project HUMAN-AI illustreert de thematische ruimte; projectvoorstellen worden afzonderlijk beoordeeld."
   }
 ]

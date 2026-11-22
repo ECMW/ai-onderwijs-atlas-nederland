@@ -86,7 +86,8 @@ zijn ongewijzigd: een ontdekkingsbron geldt niet automatisch als bewijs voor and
 ### Subsidies en calls
 
 De dagelijkse signaalcyclus volgt de rondeoverzichten van NWO, NKO en Regieorgaan SIA, het AIDO-programma
-van Npuls, de Europese Digital Europe-oproepen bij RVO en de Nederlandse Erasmus+-deadlines. Nieuwe
+van Npuls, de Europese Digital Europe-oproepen bij RVO, de Nederlandse Erasmus+-deadlines,
+de MSCA Staff Exchanges-kalender en het aanvraagloket van de onderzoeksprijs Sopra Steria – Institut de France. Nieuwe
 relevante links en herkenbare datumwijzigingen komen in het bestaande onderhoudsrapport. Kijk bij de
 inhoudelijke dagronde ook op de officiële oproeppagina’s als het rapport geen nieuwe signalen geeft.
 Een leeg nationaal overzicht kan bijvoorbeeld voorafgaan aan de Nederlandse publicatie van een Europese ronde.
