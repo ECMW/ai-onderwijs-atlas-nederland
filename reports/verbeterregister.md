@@ -1,5 +1,15 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Resultaten lezen en terugvinden
+
+- **Kenmerken vergelijken.** Op een telefoon bestond elke rij uit één label en de bijbehorende waarde. Nu staan er twee complete kenmerken naast elkaar, elk met het label boven de waarde. De eerste rij van *AI, slim bekeken* toont bijvoorbeeld **Toegevoegd** en **Aanbieder**. Elk label en elke waarde beslaan één regel. Lange tekst is opvraagbaar op hetzelfde scherm. De volledige beschrijving volgt onder de kenmerken. Op 320, 390 en 1280 pixels zijn ook lange doelgroepen, subsidiebedragen, deadlines en de acties naast de bronknop bekeken.
+- **Een zoekopdracht bijstellen.** ‘Zonsverduistering’ gaf binnen VO-lesmaterialen nul treffers. De bezoeker kan nu de tekst aanpassen of alleen de zoekterm wissen. Die tweede keuze leverde in deze editie 67 materialen op met behoud van filters en sortering.
+- **Verdergaan bij dezelfde kaart.** Na een keuze staan het overlegblad en, vanaf twee keuzes, de vergelijking bij het selectievak. Teruggaan brengt de bezoeker bij de gebruikte bediening. Bij *Nieuw aanbod* stond een eerder geopende kaart op de telefoon ruim 4.000 pixels onder de terugkeerpositie. De twee datumvolgordes, een vervolgpagina, de teruglink en de browserknop zijn afzonderlijk beproefd. Ook het mobiele menu sluit wanneer de toetsenbordfocus naar de pagina gaat.
+- **Dashboard.** Onder *Call* en *Product* telde het dashboard 26 en 20 vermeldingen, terwijl de bijbehorende zoeklinks nul resultaten gaven. De links en de eerder gedeelde adressen gebruiken nu de bijpassende zoekfilters.
+- **Technisch onderhoud.** De inventaris van 146 bijgehouden bestanden omvatte de publieke schermen, projectie en bronbestanden, bronmonitoring, onderhoudsscripts, tests en acht workflows. Zes onbereikbare functies konden uit het geladen platformscript. Bij 34 browservergelijkingen bleven inhoud en navigatie gelijk. Bij *Nieuw in de Atlas* daalde het aantal datumcontroles op de eerste pagina in dezelfde editie van 5.442 naar 632, met identieke HTML voor deze optimalisatie. De eerste twee pagina’s van beide datumvolgordes zijn vergeleken.
+
+**Vervolg.** Toets met een docent of die vanuit twee zoekresultaten een passende bron kan kiezen en daarna bij de juiste kaart verder kan. De browserproeven meten werking en plaatsing. Tijdwinst voor bezoekers is nog onbekend.
+
 ## 23 november 2026 · Kenmerken van een resultaat naast elkaar lezen
 
 Op de kaart van de Utrechtse handreiking over geschreven eindproducten stonden kosten en toegang boven de beschrijving, en doelgroep en sectoren eronder. De kaart zet nu de naam van elk kenmerk links en de waarde rechts. Daarna volgen de volledige beschrijving en de acties. Dezelfde indeling geldt voor Nieuw aanbod, gerelateerde resultaten en boekkaarten. Bij een financieringsronde zijn onderbouwde bedragen en aanvraagdata direct af te lezen.

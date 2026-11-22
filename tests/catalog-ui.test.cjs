@@ -10,13 +10,13 @@ assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly th
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     pilotSheetText, renderPilotDecision,
     renderLearningEvidence, renderPracticeGuide, practiceCasesMarkup,
-    commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, papersMarkup, paperRis, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
+    commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, datedOffers, newOffersMarkup, papersMarkup, paperRis, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, bindFacetLists, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
     recordContextMarkup, queryMatchQuality, queryMatches, sortRecords,
     homeFilterPanel, catalogFilterPanel, recordsForCriteria, renderDetail, researchPage, renderAssessment, readAssessmentDraft, assessmentParts, renderTeamTrial,
     suggestionData, criteriaForQuery, relatedThemes, renderPracticeRules, filterKeys: FILTER_KEYS,
     effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
-    accessLabel, accessOptions: Object.values(ACCESS_LABELS), recordThemes, themeOptions, route,
+    accessLabel, accessOptions: Object.values(ACCESS_LABELS), recordThemes, themeOptions, route, syncFactDisclosure,
     searchForm, bindResultsControls, bindFilterDrawer, bindLessonCopy, sourceActionLabel, sourceCitation, copySourceCitation, meetingSheetMarkup, renderComparison, renderToolChoice,
     options: SORT_OPTIONS, getState: () => state, setState: value => { state = value; }
   };`);
@@ -785,7 +785,7 @@ test('books page separates Dutch reading, study and practice books with metadata
   for (const heading of ['Leesboeken en essays', 'Studieboeken', 'Praktijk- en handboeken']) assert.ok(html.includes(heading));
   for (const title of ['Essayboek', 'Studieboek', 'Praktijkboek']) assert.ok(html.includes(title));
   for (const [label, value] of [['Auteur(s)','A. Auteur'], ['Jaar','2025'], ['ISBN','9780000000001'], ['Omvang','80 pagina&#39;s'], ['Uitgever','Voorbeeld']]) {
-    assert.ok(html.includes(`<dt>${label}</dt><dd>${value}</dd>`), label);
+    assert.ok(html.includes(`<div><dt>${label}</dt><dd>${value}</dd></div>`), label);
   }
   assert.match(html, /<article class="result-card book-card"[^>]*>[\s\S]*?<h2>[\s\S]*?<dl class="offer-facts">[\s\S]*?<\/dl>\s*<p class="description">[^<]+<\/p>\s*<\/div><div class="card-actions/);
   assert.ok(!html.includes('English book'));
@@ -1030,7 +1030,7 @@ test('results show the effective status and practical dates before source action
   assert.doesNotMatch(api.simpleCard({...course, startDate:null, endDate:'2027-02-30'}), /<time/);
 });
 
-test('one definition list holds the offer facts before the description, actions and comparison control', () => {
+test('every offer fact groups its own label and value before the description, actions and comparison control', () => {
   const item = {...record('workshop', '2026-10-05'), recordType:'training', legacyType:'Training',
     description:'Beschrijving met <persoonlijke> keuze.', language:['nl'], costType:'free', sectors:['HBO','WO'],
     applicationDeadline:'2026-11-20', startDate:'2026-12-01', endDate:'2026-12-03', commercialStatus:'commercial',
@@ -1038,7 +1038,9 @@ test('one definition list holds the offer facts before the description, actions 
   const api = load([item], '#zoeken?sort=published');
   const html = api.simpleCard(item, true);
   const facts = html.match(/<dl class="offer-facts">([\s\S]*?)<\/dl>/)[1];
-  const labels = [...facts.matchAll(/<dt>([^<]+)<\/dt><dd>/g)].map(match => match[1]);
+  const factGroup = /<div><dt>([^<]+)<\/dt><dd>[\s\S]*?<\/dd><\/div>/g;
+  const labels = [...facts.matchAll(factGroup)].map(match => match[1]);
+  assert.equal(facts.replace(factGroup, '').trim(), '');
   assert.deepEqual(labels, ['Verschenen op','Aanbieder','Status','Aanmelddeadline','Periode','Commercieel karakter','Kosten','Toegang','Taal','Voor wie','Sectoren']);
   assert.match(facts, /commercial-label is-commercial/);
   assert.match(facts, /<div class="sector-chips"><span>HBO<\/span><span>WO<\/span><\/div>/);
@@ -1047,6 +1049,38 @@ test('one definition list holds the offer facts before the description, actions 
   const order = sections.map(section => html.indexOf(section));
   assert.ok(order.every((position,index) => position >= 0 && (!index || position > order[index-1])));
   assert.doesNotMatch(api.simpleCard(item), /data-sheet-pick=|<dt>Verschenen op<\/dt>/);
+});
+
+test('a clipped label or value gains one keyboard control and releases it when both fit', () => {
+  let button, focusedTitle = false;
+  const document = {
+    querySelector: selector => selector === 'main' ? {} : null,
+    createElement: tag => {
+      assert.equal(tag, 'button');
+      return {setAttribute(name, value) { this[name] = value; }, remove() { button = null; }};
+    }
+  };
+  const {syncFactDisclosure} = load([], '#zoeken', {document});
+  const label = {textContent:'Commercieel karakter', clientWidth:120, scrollWidth:120};
+  const value = {clientWidth:120, scrollWidth:120, querySelector:() => button, append:control => { button = control; }};
+  const group = {children:[label, value], closest:() => ({querySelector:() => ({focus:() => { focusedTitle = true; }})})};
+  syncFactDisclosure(group);
+  assert.equal(button, undefined);
+  label.scrollWidth = 140;
+  syncFactDisclosure(group);
+  const first = button;
+  assert.equal(first.type, 'button');
+  assert.equal(first['aria-label'], 'Lees het volledige kenmerk: Commercieel karakter');
+  assert.equal(first['aria-haspopup'], 'dialog');
+  label.scrollWidth = 120;
+  value.scrollWidth = 240;
+  syncFactDisclosure(group);
+  assert.equal(button, first);
+  value.clientWidth = 240;
+  document.activeElement = button;
+  syncFactDisclosure(group);
+  assert.equal(button, null);
+  assert.equal(focusedTitle, true);
 });
 
 test('funding cards preserve the documented amount and only show a valid checked opening date', () => {
@@ -1660,16 +1694,28 @@ test('newest additions and newest publications are separate ordered views', () =
   const newOffer = record('just-published', '2026-09-08');
   newOffer.changeHistory = [{type: 'added', date: '2026-09-08'}];
   const api = load([oldOffer, newOffer]);
-  assert.deepEqual(Array.from(api.newestRecords('added'), r => r.id), ['just-added', 'just-published']);
-  assert.deepEqual(Array.from(api.newestRecords('published'), r => r.id), ['just-published', 'just-added']);
+  assert.deepEqual(Array.from(api.datedOffers('added'), entry => entry.record.id), ['just-added', 'just-published']);
+  assert.deepEqual(Array.from(api.datedOffers('published'), entry => entry.record.id), ['just-published', 'just-added']);
   assert.ok(api.newOffersMarkup('added').includes('Het aanbod zelf kan al langer bestaan'));
   assert.ok(api.newOffersMarkup('published').includes('Gepubliceerd op'));
+});
+
+test('sorting Nieuw aanbod reads each publication date once, including unknown dates', () => {
+  const items = [record('b', '2026-09-09'), record('unknown', ''), record('a', '2026-09-09')];
+  let reads = 0;
+  const api = load(items);
+  for (const item of items) {
+    const date = item.publicationDate;
+    Object.defineProperty(item, 'publicationDate', {get() { reads++; return date; }});
+  }
+  assert.deepEqual(Array.from(api.datedOffers('published'), entry => entry.record.id), ['a', 'b']);
+  assert.equal(reads, items.length);
 });
 
 test('new offers show the active date mode, full notice and date next to each title', () => {
   const api = load([record('example', '2026-09-09')]);
   for (const [current, other, activeLabel, dateLabel] of [
-    ['added', 'published', 'Nieuw in de Atlas', 'Toegevoegd aan de Atlas op'],
+    ['added', 'published', 'Nieuw in de Atlas', 'Toegevoegd'],
     ['published', 'added', 'Recent gepubliceerd', 'Gepubliceerd op']
   ]) {
     const html = api.newOffersMarkup(current);
@@ -1679,7 +1725,7 @@ test('new offers show the active date mode, full notice and date next to each ti
     assert.match(html, /<header[^>]*>\s*<h1>Nieuw aanbod<\/h1><p class="listing-notice">Opname in de Atlas betekent geen goedkeuring, kwaliteitsbeoordeling of aanbeveling van het aanbod of de aanbieder\.<\/p><\/header>/);
     assert.match(html, /<details class="new-offers-explanation"><summary>[^<]+<\/summary>[\s\S]*?bekende (publicatie|toevoeg)datum\.<\/p>\s*<\/details>/);
     const firstCard = html.match(/<article class="result-card"[\s\S]*?<\/article>/)[0];
-    assert.ok(firstCard.includes(`<dl class="offer-facts"><dt>${dateLabel}</dt><dd><time datetime="`));
+    assert.ok(firstCard.includes(`<dl class="offer-facts"><div><dt>${dateLabel}</dt><dd><time datetime="`));
     assert.equal((firstCard.match(/<time /g) || []).length, 1);
   }
 });
@@ -1774,7 +1820,7 @@ test('newest Atlas sorting uses the first valid addition and never a fresh verif
   assert.equal(params.get('sector'), 'HBO');
   const html = api.resultsMarkup();
   assert.ok(html.indexOf('data-record-id="a"') < html.indexOf('data-record-id="old"'));
-  assert.ok(html.includes('Toegevoegd aan de Atlas op'));
+  assert.ok(html.includes('<div><dt>Toegevoegd</dt><dd><time'));
   assert.ok(html.includes('Toevoegdatum onbekend'));
   assert.ok(html.includes('Een broncontrole verandert de toevoegdatum niet'));
 });
@@ -1975,6 +2021,59 @@ test('chosen meeting sheets travel by URL, retain order and only show public rec
   const search = load(items, '#zoeken', {sessionStorage:storage}).resultsMarkup();
   assert.match(search, /href="#overlegblad\?item=second"/);
   assert.match(search, /data-sheet-pick="second"[^>]* checked/);
+});
+
+test('the last operated card offers the next available actions and remembers its checkbox on return', () => {
+  const records = [record('a'), record('b')];
+  const route = '#zoeken?type=materials&sector=VO';
+  const history = {state: {}, replaceState(next) { this.state = next; }};
+  const summary = {};
+  let inline;
+  function checkbox(id) {
+    const links = {
+      insertAdjacentHTML(_position, html) {
+        inline = {id, html, remove() { inline = null; }};
+      },
+      querySelector: () => inline
+    };
+    return {dataset: {sheetPick: id}, closest: () => links};
+  }
+  const inputs = records.map(row => checkbox(row.id));
+  const panel = {
+    querySelector: selector => ({
+      '[data-picked-actions]': summary, '[data-inline-picks]': inline,
+      '[data-result-list]': {children: {length: 48}}
+    })[selector],
+    querySelectorAll: selector => selector === '[data-sheet-pick]' ? inputs : []
+  };
+  const api = load(records, route, {
+    document: {querySelector: selector => selector === 'main' || selector === '#results-panel' ? panel : null},
+    window: {ATLAS_RECORDS: {records, metadata: {}}, history},
+    scrollY: 800
+  });
+  api.bindResultsControls();
+  function choose(index, checked) {
+    inputs[index].checked = checked;
+    inputs[index].onchange();
+  }
+  choose(0, true);
+  assert.equal(inline.id, 'a');
+  assert.match(inline.html, /data-inline-compare[^>]*hidden/);
+  assert.match(inline.html, /data-inline-sheet href="#overlegblad\?item=a"\s*>Open mijn overlegblad \(1\)/);
+  assert.match(inline.html, /<span\s*>Kies nog een/);
+  choose(1, true);
+  assert.equal(inline.id, 'b');
+  assert.match(inline.html, /data-inline-compare href="#vergelijken\?item=a&amp;item=b"\s*>/);
+  assert.match(inline.html, /data-inline-sheet href="#overlegblad\?item=a&amp;item=b"\s*>/);
+  inline.onclick({target: {closest: () => true}});
+  assert.deepEqual({...history.state.atlasResults}, {route, shown: 48, y: 800, focusId: 'b', focusControl: 'pick'});
+  choose(1, false);
+  assert.equal(inline.id, 'b');
+  assert.match(inline.html, /data-inline-compare[^>]*hidden/);
+  assert.match(inline.html, /Open mijn overlegblad \(1\)/);
+  choose(0, false);
+  assert.equal(inline, null);
+  assert.equal(summary.hidden, true);
 });
 
 test('the tool guide contrasts two published teaching situations, preserves source limits and keeps decisions on the page', () => {

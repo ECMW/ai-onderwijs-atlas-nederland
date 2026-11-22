@@ -239,8 +239,8 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 .result-card h2 { overflow-wrap: anywhere; }
 .offer-facts {
   display: grid;
-  grid-template-columns: minmax(0, min(35%, 11rem)) minmax(0, 1fr);
-  gap: .25rem .85rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .55rem .85rem;
   margin: .7rem 0;
   font-size: .9rem;
   line-height: 1.45;
@@ -249,6 +249,22 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 .offer-facts dt { color: var(--muted); font-weight: 700; }
 .offer-facts dd, .offer-facts .commercial-label { margin: 0; }
 .offer-facts .sector-chips { flex-wrap: wrap; }
+.offer-facts > div { min-width: 0; position: relative; }
+@media screen {
+  .single-line-facts :is(dt, dd) { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .single-line-facts :is(.status-text, .sector-chips, .commercial-label) { display: inline; }
+  .single-line-facts .status-text::before { display: inline-block; margin-inline-end: .35rem; }
+  .single-line-facts .sector-chips span + span { margin-inline-start: .3rem; }
+  .single-line-facts > div:has(.fact-disclosure) dt { text-decoration: underline dotted; text-underline-offset: .2em; }
+  .fact-disclosure { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; border-radius: .15rem; background: transparent; cursor: pointer; }
+}
+.fact-dialog { width: min(26rem, calc(100% - 2rem)); max-height: calc(100% - 2rem); box-sizing: border-box; overflow: auto; padding: 1.2rem; border: 1px solid var(--line); border-radius: .5rem; background: var(--surface, white); color: var(--ink); overflow-wrap: anywhere; }
+.fact-dialog h2 { margin: 0; font-size: 1.1rem; }
+.fact-dialog p { margin-block: .5rem 1rem; }
+.fact-dialog::backdrop { background: rgb(20 35 42 / 32%); }
+@media print {
+  .fact-dialog, .fact-disclosure, .fact-dialog::backdrop { display: none; }
+}
 .result-card .offer-links {
   display: flex;
   flex-flow: row wrap;

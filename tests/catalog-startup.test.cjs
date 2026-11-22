@@ -48,7 +48,8 @@ class Element {
     selector = selector.replace(/:checked/g, '');
     const tag = /^[a-z][\w-]*/i.exec(selector)?.[0];
     if (tag && this.tagName !== tag.toUpperCase()) return false;
-    for (const [, kind, value] of selector.matchAll(/([.#])([\w-]+)/g)) {
+    const outsideAttributes = selector.replace(/\[[^\]]*\]/g, '');
+    for (const [, kind, value] of outsideAttributes.matchAll(/([.#])([\w-]+)/g)) {
       if (kind === '.' ? !this.classList.contains(value) : this.attributes.id !== value) return false;
     }
     for (const [, key, operation, value] of selector.matchAll(/\[([\w-]+)(?:(\^?=)"([^"]*)")?\]/g)) {
@@ -85,7 +86,7 @@ class Element {
   setAttribute(name, value) { this.attributes[name] = String(value); }
   removeAttribute(name) { delete this.attributes[name]; }
   addEventListener() {}
-  focus() {}
+  focus() { this.closest('document').activeElement = this; }
   getBoundingClientRect() { return { top: 0, bottom: 0 }; }
 }
 
@@ -202,6 +203,37 @@ function assertFailure(app) {
     assert.match(app.main.innerHTML, /De atlas kon niet worden geladen/, 'Later routes must preserve the failure');
   }
 }
+
+test('Nieuw aanbod keeps the originating card control on the same page and sort', () => {
+  const app = boot();
+  const saved = new Map();
+  app.context.sessionStorage = {getItem: key => saved.get(key), setItem: (key, value) => saved.set(key, value)};
+  app.context.history = {state: null, replaceState(value) { this.state = value; }};
+  const route = '#nieuw?volgorde=published&pagina=2';
+  app.navigate(route);
+  const link = app.main.querySelectorAll('.offer-secondary-actions a[href^="#item/"]')[6];
+  app.context.scrollY = 2400;
+  link.onclick();
+  const cardId = link.closest('[data-record-id]').dataset.recordId;
+  const outgoing = app.context.history.state.atlasResults;
+  assert.equal(outgoing.focusId, cardId);
+  assert.equal(outgoing.focusControl, 'details');
+  assert.equal(outgoing.y, 2400);
+  app.context.history.state = null;
+  app.navigate(link.getAttribute('href'));
+  const back = app.main.querySelector('.back-results');
+  assert.match(app.main.innerHTML, /Terug naar Nieuw aanbod/);
+  assert.equal(back.getAttribute('href').replaceAll('&amp;', '&'), route);
+  back.onclick();
+  let scrollTop;
+  app.context.scrollTo = options => { scrollTop = options.top; };
+  app.navigate(route);
+  assert.equal(app.context.history.state.atlasResults.focusId, cardId);
+  assert.equal(app.document.activeElement, app.main.querySelector(`[data-record-id="${cardId}"] .offer-secondary-actions a`));
+  assert.equal(scrollTop, 2400);
+  app.navigate('#nieuw?volgorde=added');
+  assert.equal(scrollTop, 0, 'a new sort starts at the page heading');
+});
 
 test('skipping navigation keeps the filtered results and the current learner sheet', () => {
   const app = boot({href:'https://example.org/atlas/#zoeken?vak=Biologie&sector=VO&type=materials'});
@@ -401,6 +433,47 @@ test('the free subject form applies only the current input and preserves the oth
   assert.deepEqual(Object.fromEntries(new URLSearchParams(history[2].split('?')[1])), {q:'les', sector:'VO', type:'materials'});
 });
 
+test('empty search can edit the query or remove just the term, preserving filters, sort and keyboard focus', t => {
+  const app = boot({href:'https://example.org/atlas/#zoeken?q=zonsverduistering&sector=VO&type=materials&sort=az'});
+  app.context.history = {pushState(_state, _title, href) { app.context.location.hash = href; }};
+  let focused;
+  t.mock.method(Element.prototype, 'focus', function () { focused = this; });
+  const doc = app.document;
+  const query = doc.querySelector('.atlas-search input');
+  let selected = false;
+  query.select = () => { selected = true; };
+  const initial = app.context.location.hash;
+  doc.querySelector('.empty [data-edit-query]').onclick();
+  assert.equal(focused,query);
+  assert.ok(selected);
+  assert.equal(app.context.location.hash, initial);
+  const panel = doc.querySelector('#results-panel');
+  const count = Number(app.main.innerHTML.match(/Toon (\d+) resultaten? zonder zoekterm/)[1]);
+  assert.ok(count > 0);
+  doc.querySelector('.empty [data-clear-query]').onclick();
+  assert.deepEqual(Object.fromEntries(new URLSearchParams(app.context.location.hash.split('?')[1])),
+    {sort:'az',sector:'VO',type:'materials'});
+  assert.match(panel.innerHTML, new RegExp('>' + count + ' resultaten?</h2>'));
+  assert.equal(focused,doc.querySelector('.result-head h2'));
+  doc.querySelector('[data-remove]').onclick();
+  assert.equal(focused,doc.querySelector('.result-head h2'));
+  doc.querySelector('.clear-link').onclick();
+  assert.equal(focused,query);
+  assert.equal(query.value,'');
+  assert.equal(app.context.location.hash,'#zoeken');
+});
+
+test('empty results offer a query edit without promising matches when filters alone also have none', () => {
+  for (const selection of ['vak=onbekend-keuzevak', 'type=Subsidie&vak=onbekend-keuzevak']) {
+    const app = boot({href:'https://example.org/atlas/#zoeken?q=zonsverduistering&' + selection});
+    assert.ok(app.document.querySelector('.empty [data-edit-query]'));
+    assert.equal(app.document.querySelector('.empty [data-clear-query]'), null);
+  }
+  const filtersOnly = boot({href:'https://example.org/atlas/#zoeken?vak=onbekend-keuzevak'});
+  assert.equal(filtersOnly.document.querySelector('.empty [data-edit-query]'), null);
+  assert.match(filtersOnly.main.innerHTML,/geen aanbod met deze combinatie van filters/);
+});
+
 test('the actual homepage opens both funding statuses and keeps the full funding catalogue reachable', () => {
   const app = boot({href:'https://example.org/atlas/'});
   const home = app.main.innerHTML.match(/<a class="practice-link" href="([^"]+)"><strong>Subsidies en calls<\/strong>/);
@@ -537,6 +610,33 @@ test('home rerenders notify optional widgets when a saved role is cleared', () =
   assert.equal(app.context.ATLAS_STARTUP.status, 'ready');
 });
 
+test('every dashboard type opens exactly the records counted under its label', () => {
+  const app = boot({href: 'https://example.org/atlas/#dashboard'});
+  const records = Array.from(app.context.ATLAS_RECORDS.records).filter(app.context.ATLAS_STARTUP.published);
+  const entries = [...app.main.innerHTML.matchAll(/<a class="stat" href="([^"]+)"><strong>(\d+)<\/strong><span>([^<]+)<\/span>/g)];
+  assert.deepEqual(entries.map(entry => entry[3]).sort(), [...new Set(records.map(record => record.legacyType))].sort());
+
+  for (const [, href, count, label] of entries) {
+    const expected = records.filter(record => record.legacyType === label).map(record => record.id).sort();
+    assert.equal(Number(count), expected.length, label);
+    const oldHref = '#zoeken?type=' + encodeURIComponent(label);
+    for (const route of new Set([href, oldHref])) {
+      app.navigate(route);
+      const list = app.main.querySelector('[data-result-list]');
+      assert.ok(list, route);
+      list.insertAdjacentHTML = (position, html) => {
+        assert.equal(position, 'beforeend');
+        const fragment = new Element();
+        fragment.innerHTML = html;
+        for (const card of fragment.children) { card.parent = list; list.children.push(card); }
+      };
+      const more = app.main.querySelector('[data-more-results]');
+      while (more && !more.hidden) more.onclick();
+      assert.deepEqual(list.children.map(card => card.dataset.recordId).sort(), expected, route);
+    }
+  }
+});
+
 test('the real script order starts the catalogue and retains the mobile menu and informational routes', () => {
   const app = boot();
   assert.deepEqual(app.errors, []);
@@ -605,4 +705,35 @@ test('a resource load error after startup keeps the Dutch failure visible during
   const app = boot();
   app.dispatch('error', { target: { tagName: 'SCRIPT' } });
   assertFailure(app);
+});
+
+test('the mobile menu returns focus on Escape and closes when focus leaves the header', t => {
+  const handlers = {};
+  t.mock.method(Element.prototype, 'addEventListener', function (type, handler) {
+    if (this.classList.contains('site-header')) handlers[type] = handler;
+  });
+  const { document, main, errors } = boot();
+  assert.deepEqual(errors, []);
+  const header = document.querySelector('.site-header');
+  const menu = document.querySelector('.menu');
+  const firstLink = header.querySelector('nav a');
+  header.contains = target => target?.closest('.site-header') === header;
+  let focused = firstLink;
+  menu.focus = () => { focused = menu; };
+  menu.onclick();
+  handlers.focusout({ relatedTarget: firstLink });
+  assert.equal(menu.getAttribute('aria-expanded'), 'true');
+  let prevented = false;
+  handlers.keydown({ key: 'Escape', preventDefault() { prevented = true; } });
+  assert.ok(prevented);
+  assert.equal(focused, menu);
+  assert.equal(menu.getAttribute('aria-expanded'), 'false');
+  assert.equal(header.classList.contains('open'), false);
+
+  menu.onclick();
+  focused = main;
+  handlers.focusout({ relatedTarget: main });
+  assert.equal(focused, main);
+  assert.equal(menu.getAttribute('aria-expanded'), 'false');
+  assert.equal(header.classList.contains('open'), false);
 });
