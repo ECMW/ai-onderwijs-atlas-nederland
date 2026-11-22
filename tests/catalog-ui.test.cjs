@@ -143,6 +143,10 @@ test('a specific lesson level and audience take precedence over a collection’s
   assert.match(html, /data-lesson-id="digiduck-ai-lespakket-groep-7-8"/);
   assert.ok(!html.includes('data-lesson-id="ai-slim-bekeken-doorlopende-leerlijn"'));
   assert.ok(html.includes('data-record-id="ai-slim-bekeken-doorlopende-leerlijn"'));
+  assert.ok(html.includes('>Lesstart · Groep 7–8</a>'));
+  assert.ok(!html.includes('>Lesstart · Vmbo'));
+  const ordinary = load(classroomLessons, '#zoeken?q=afvalsorteerder').resultsMarkup();
+  assert.ok(ordinary.includes('>Lesstart · Vmbo · leerjaar 2–3</a>'));
   const mbo = load(classroomLessons, lessonRoute + '&sector=MBO&audience=Docenten').resultsMarkup();
   assert.match(mbo, /data-lesson-id="mbo-mediawijs-open-ai-leermaterialen"/);
   assert.ok(!load(classroomLessons, lessonRoute + '&sector=PO&cost=Betaald').resultsMarkup().includes('class="lesson-starts"'));

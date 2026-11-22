@@ -760,6 +760,7 @@
     const dates = practicalDates(record);
     const sectors = (record.sectors || []).filter(sector => sector !== 'VSO');
     const sourceItem = primarySource(record);
+    const detailLabel = lessonForSectors(record, values('sector')) ? `Lesstart · ${record.lessonStart.level}` : 'Bekijk details';
     return `<article class="result-card" data-record-id="${escapeHtml(record.id)}" data-offer-card>
       <div class="card-body offer-intro"><div class="card-top"><span class="type-label">${escapeHtml(offerLabel(record))}</span></div>
         <h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
@@ -769,7 +770,7 @@
       </div>
       <div class="card-actions offer-links">
         ${sourceItem ? `<a class="card-cta primary" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record))}: ${escapeHtml(record.title)}">${escapeHtml(sourceActionLabel(record))} ↗</a>` : ''}
-        <a class="card-cta" href="#item/${escapeHtml(record.id)}" aria-label="Bekijk details: ${escapeHtml(record.title)}">Bekijk details</a>
+        <a class="card-cta" href="#item/${escapeHtml(record.id)}" aria-label="${escapeHtml(detailLabel)}: ${escapeHtml(record.title)}">${escapeHtml(detailLabel)}</a>
         <a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a>
         ${showPublicationDate ? `<label class="sheet-pick"><input type="checkbox" data-sheet-pick="${escapeHtml(record.id)}" aria-label="Op mijn overlegblad: ${escapeHtml(record.title)}" ${sheetPicks.has(record.id) ? 'checked' : ''}> Op mijn overlegblad</label>` : ''}
       </div>
@@ -1007,6 +1008,10 @@
       officialSources(record).some(item => item.url === lesson.sourceUrl);
   }
 
+  function lessonForSectors(record, selected) {
+    return hasAvailableLesson(record) && (!selected.length || record.lessonStart.sectors.some(sector => selected.includes(sector)));
+  }
+
   function lessonStartBody(record) {
     const lesson = record.lessonStart;
     return `<div class="lesson-body" data-lesson-id="${escapeHtml(record.id)}">
@@ -1027,8 +1032,7 @@
 
   function lessonStartSection() {
     const selected = values('sector');
-    const choices = resultRecords.filter(record => hasAvailableLesson(record) &&
-      (!selected.length || record.lessonStart.sectors.some(sector => selected.includes(sector))))
+    const choices = resultRecords.filter(record => lessonForSectors(record, selected))
       .sort((a, b) => SECTORS.indexOf(a.lessonStart.sectors[0]) - SECTORS.indexOf(b.lessonStart.sectors[0]));
     const panels = choices.map(record => `<details class="lesson-choice" name="atlas-lesson-starts"${choices.length === 1 ? ' open' : ''}>
         <summary><span class="lesson-level">${escapeHtml(record.lessonStart.level)}</span><strong>${escapeHtml(record.lessonStart.question)}</strong></summary>
