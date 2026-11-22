@@ -38779,5 +38779,90 @@
         "summary": "Oproep als aangekondigd vastgelegd op basis van de programmapagina van Npuls. De indienroute en exacte termijnen zijn nog niet bevestigd."
       }
     ]
+  },
+  {
+    "id": "oecd-talis-2024-database-ai-onderwijs",
+    "title": "OECD TALIS 2024 – onderzoeksdata over AI-gebruik door leraren",
+    "recordType": "service",
+    "legacyType": "Voorziening",
+    "subtype": "Onderzoeksdatabase",
+    "offerCategory": "knowledge",
+    "organizationIds": [],
+    "providerName": "OECD",
+    "description": "De TALIS-database bevat vragenlijsten en gegevens over het werk van leraren. Onderzoek bijvoorbeeld waarvoor leraren AI gebruiken. Vraag 37c in de internationale lerarenvragenlijst gaat over het maken van lesplannen of activiteiten met AI (variabele TT4G37C). Alleen leraren die in vraag 36 AI-gebruik in de afgelopen twaalf maanden meldden, kregen vraag 37.",
+    "purpose": "Een onderzoeksvraag over gerapporteerd AI-gebruik afbakenen en uitzoeken voor welke landen en onderwijsniveaus gegevens beschikbaar zijn. De database verwijst naar een statistisch overzicht met codeboek.",
+    "audiences": [
+      "Onderzoekers",
+      "Promovendi",
+      "Docenten"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "De toelichting en de internationale lerarenvragenlijst zijn openbaar. Voor het downloaden van microdata vraagt de OECD om instellings- en contactgegevens, informatie over het onderzoeksproject en akkoord met de gebruiksvoorwaarden.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-11-22",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "OECD – internationale lerarenvragenlijst, vraag 37 op pagina 23 (pdf)",
+        "url": "https://www.oecd.org/content/dam/oecd/en/about/programmes/edu/talis/talis2024questionnaires/TALIS2024TeacherQuestionnaireISCED1-2-3.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "OECD – TALIS 2024, statistisch overzicht en codeboek",
+        "url": "https://webfs.oecd.org/talis/redirect.html",
+        "sourceType": "official"
+      },
+      {
+        "label": "OECD – toegangsvoorwaarden voor microdata",
+        "url": "https://survey.oecd.org/index.php?lang=en&r=survey/index&sid=581415",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "oecd-education"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "registration_required",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "TALIS",
+      "onderzoek",
+      "promotieonderzoek",
+      "PhD",
+      "OECD",
+      "OESO",
+      "dataset",
+      "lerarenvragenlijst",
+      "lesvoorbereiding",
+      "TT4G37C"
+    ],
+    "notes": "Vraag 37 meet wat leraren zelf rapporteren. Voor onderzoek naar effecten op leerprestaties zijn aanvullende gegevens nodig. Controleer per onderwijsstelsel en onderwijsniveau de dekking en de aanwijzingen voor interpretatie voordat je uitkomsten vergelijkt.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële databasepagina, de routes naar het codeboek en de downloadvoorwaarden en de internationale vragenlijst (vragen 36 en 37) zijn gecontroleerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-22",
+        "type": "added",
+        "summary": "Onderzoeksdataset en vragenlijst toegevoegd met een concrete AI-vraag, de relevante respondentengroep en de voorwaarden voor toegang tot microdata."
+      }
+    ]
   }
 ]
