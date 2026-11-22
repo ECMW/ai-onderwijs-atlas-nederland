@@ -114,3 +114,14 @@ Elke vermelding gebruikt dezelfde feitelijke velden: titel, aanbieder, soort aan
 Een vermelding is geen goedkeuring, kwaliteitsbeoordeling of aanbeveling door de Atlas of Eva. De commerciële kwalificatie is informatie over de aard van het aanbod, geen kwaliteitsoordeel. Bestaande records worden door deze modeluitbreiding niet massaal geherclassificeerd.
 
 Relaties staan los in `data/relations.json` met `sourceId`, `relationType`, `targetId`, `sourceUrl` en `verificationStatus`. Toegestane relatietypen zijn `offered_by`, `part_of`, `funded_by`, `relevant_for`, `related_to`, `replaces`, `successor_of`, `based_on`, `implements`, `governed_by`.
+
+## Lesstart van de Atlas
+
+Een vermelding kan één redactionele werkvorm bevatten in `lessonStart`. De
+velden `level` en `sectors` beschrijven het toepassingsniveau van deze werkvorm
+binnen het bereik van het bronrecord. `question`, `preparation`, `task` en
+`reflection` bevatten de lesvraag, voorbereiding, klasopdracht en nabespreking.
+`sourceUrl` verwijst naar een bestaande officiële lesbron van de vermelding.
+De interface schrijft de werkvorm toe aan de Atlas en noemt de aanbieder van
+het bijbehorende materiaal. Een selectie op sector gebruikt het niveau van de
+werkvorm, ook wanneer de volledige collectie meerdere sectoren beslaat.

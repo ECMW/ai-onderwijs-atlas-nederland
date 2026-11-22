@@ -200,6 +200,7 @@
 
   const recordText = record => normalize([
     record.title, record.description, record.purpose, record.providerName,
+    record.lessonStart?.question, record.lessonStart?.level, record.lessonStart?.task,
     ...(record.authors || []), record.isbn, record.bookCategory, record.legacyType, record.subtype, record.status, ...(record.audiences || []), ...(record.sectors || []),
     ...(record.themes || []), ...(record.keywords || [])
   ].join(' '));
@@ -990,7 +991,7 @@
     }).filter(item => item.count > 0).sort((a, b) => b.count - a.count).slice(0, 3);
   }
   const PRACTICE_ROUTES = [
-    { label: 'Een les voorbereiden', detail: 'Lesbrieven en werkvormen', criteria: { q: 'les', type: 'materials' } },
+    { label: 'Een les voorbereiden', detail: 'Opdrachten voor de klas en lesmateriaal', criteria: { q: 'les', type: 'materials' } },
     { label: 'Een toets herontwerpen', detail: 'Handreikingen en toetsmateriaal', criteria: { q: 'toets', theme: 'Toetsing en examinering', type: 'materials,knowledge' } },
     { label: 'AI-afspraken maken', detail: 'Gesprekskaarten en voorbeelden', criteria: { q: 'afspraken', type: 'materials,knowledge' } },
     { label: 'Scholing vinden', detail: 'Cursussen, workshops en trainerskits', criteria: { type: 'Training', status: 'Direct beschikbaar' } }
@@ -999,13 +1000,79 @@
     PO: 'Primair onderwijs', VO: 'Voortgezet onderwijs', MBO: 'Middelbaar beroepsonderwijs',
     HBO: 'Hoger beroepsonderwijs', WO: 'Wetenschappelijk onderwijs'
   };
+
+  function hasAvailableLesson(record) {
+    const lesson = record.lessonStart;
+    return lesson && effectiveStatus(record) === 'available' &&
+      officialSources(record).some(item => item.url === lesson.sourceUrl);
+  }
+
+  function lessonStartBody(record) {
+    const lesson = record.lessonStart;
+    return `<div class="lesson-body" data-lesson-id="${escapeHtml(record.id)}">
+      <dl class="lesson-plan">
+        <div><dt>Voorbereiding</dt><dd>${escapeHtml(lesson.preparation)}</dd></div>
+        <div class="lesson-assignment"><dt>Opdracht voor de klas</dt><dd>${escapeHtml(lesson.task)}</dd></div>
+        <div><dt>Nabespreking</dt><dd>${escapeHtml(lesson.reflection)}</dd></div>
+      </dl>
+      <div class="lesson-actions">
+        <button type="button" class="btn" data-copy-lesson>Kopieer klasopdracht</button>
+        <a class="lesson-material" href="${escapeHtml(lesson.sourceUrl)}" target="_blank" rel="noopener noreferrer">Open lesmateriaal ↗</a>
+      </div>
+      <p class="lesson-credit">Lesstart van de Atlas bij materiaal van ${escapeHtml(record.providerName)}.</p>
+      <p class="lesson-feedback" role="status"></p>
+      <textarea class="lesson-copy" aria-label="Klasopdracht om te kopiëren" readonly hidden></textarea>
+    </div>`;
+  }
+
+  function lessonStartSection() {
+    const selected = values('sector');
+    const choices = resultRecords.filter(record => hasAvailableLesson(record) &&
+      (!selected.length || record.lessonStart.sectors.some(sector => selected.includes(sector))))
+      .sort((a, b) => SECTORS.indexOf(a.lessonStart.sectors[0]) - SECTORS.indexOf(b.lessonStart.sectors[0]));
+    const panels = choices.map(record => `<details class="lesson-choice" name="atlas-lesson-starts"${choices.length === 1 ? ' open' : ''}>
+        <summary><span class="lesson-level">${escapeHtml(record.lessonStart.level)}</span><strong>${escapeHtml(record.lessonStart.question)}</strong></summary>
+        ${lessonStartBody(record)}
+      </details>`).join('');
+    return panels ? `<section class="lesson-starts" aria-labelledby="lesson-heading">
+      <h2 id="lesson-heading" tabindex="-1">Lesstarts voor de klas</h2>${panels}</section>` : '';
+  }
+
+  function bindLessonCopy(container) {
+    container.querySelectorAll('[data-copy-lesson]').forEach(button => {
+      button.onclick = async () => {
+        const panel = button.closest('[data-lesson-id]');
+        const record = publicRecordsById.get(panel.dataset.lessonId);
+        const lesson = record.lessonStart;
+        const text = [lesson.question, lesson.task, lesson.reflection,
+          `Lesstart van de AI & Onderwijs Atlas Nederland: ${publicItemUrl(record)}`,
+          `Lesmateriaal van ${record.providerName}: ${lesson.sourceUrl}`].join('\n\n');
+        const feedback = panel.querySelector('.lesson-feedback');
+        const field = panel.querySelector('.lesson-copy');
+        try {
+          await navigator.clipboard.writeText(text);
+          field.hidden = true;
+          feedback.textContent = 'Klasopdracht en bronlinks gekopieerd.';
+        } catch {
+          if (!button.isConnected) return;
+          field.value = text;
+          field.hidden = false;
+          field.focus();
+          field.select();
+          feedback.textContent = 'De opdracht is geselecteerd. Kopieer de tekst om deze te delen.';
+        }
+      };
+    });
+  }
+
   function practiceNavigation() {
     const context = { sector: state.sector, audience: state.audience, language: state.language };
     if (state.sort !== 'relevant' && new URLSearchParams(location.hash.split('?')[1]).has('sort')) context.sort = state.sort;
     if (state.q || FILTER_KEYS.some(key => !['sector', 'audience', 'language'].includes(key) && values(key).length)) {
       const task = PRACTICE_ROUTES.find(route => Object.entries(route.criteria).every(([key, value]) => state[key] === value));
-      if (task) return `<nav class="practice-back" aria-label="Praktijkvragen"><a href="${escapeHtml(criteriaHref(context))}">← Andere taak</a><strong>${escapeHtml(task.label)}</strong></nav>`;
-      return '<nav class="catalog-tabs" aria-label="Aanbodoverzicht"><a href="#zoeken">Al het aanbod</a><a href="#nieuw">Nieuw aanbod →</a></nav>';
+      if (task) return `<nav class="practice-back" aria-label="Praktijkvragen"><a href="${escapeHtml(criteriaHref(context))}">← Andere taak</a><strong>${escapeHtml(task.label)}</strong></nav>${task.criteria.q === 'les' ? lessonStartSection() : ''}`;
+      const lessons = ['lesstart', 'lesstarts'].includes(normalize(state.q)) ? lessonStartSection() : '';
+      return `<nav class="catalog-tabs" aria-label="Aanbodoverzicht"><a href="#zoeken">Al het aanbod</a><a href="#nieuw">Nieuw aanbod →</a></nav>${lessons}`;
     }
     const selected = values('sector');
     const links = PRACTICE_ROUTES.map(route => {
@@ -1171,9 +1238,12 @@
       .slice(0, 4).map(candidate => candidate.item);
     const sources = officialSources(record);
     const factRows = offerFacts(record);
+    const lesson = hasAvailableLesson(record) && lessonStartBody(record);
     main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(offerLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
       <section class="detail-shell"><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">← Terug naar resultaten</a><span>Home / Resultaten / ${escapeHtml(record.title)}</span></nav>
       <div class="detail-layout"><article>
+        ${lesson ? `<section class="lesson-starts lesson-detail"><h2>Lesstart voor de klas</h2>
+          <p class="lesson-level">${escapeHtml(record.lessonStart.level)}</p><h3>${escapeHtml(record.lessonStart.question)}</h3>${lesson}</section>` : ''}
         <h2>Feitelijke beschrijving</h2><p>${escapeHtml(factValue(record.description))}</p>
         <h2>Doel en gebruik</h2><p>${escapeHtml(factValue(record.purpose))}</p>
         ${recordContextMarkup(record)}
@@ -1188,6 +1258,7 @@
         <p id="detail-feedback" class="action-feedback" aria-live="polite"></p>
         <aside class="item-contribution"><h3>Klopt deze informatie nog?</h3><p>Help mee met een correctie of aanvulling.</p><a class="btn secondary" href="#bijdragen?item=${encodeURIComponent(record.id)}">Fout of aanvulling doorgeven</a></aside>
       </aside></div></section>`;
+    if (lesson) bindLessonCopy(main);
     const back = document.querySelector('.back-results');
     back.onclick = () => sessionSet('atlas.restoreResults', lastSearch);
     document.querySelectorAll('.related-cards a[href^="#item/"]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', lastSearch));
@@ -1360,6 +1431,7 @@
   function bindResultsControls() {
     const panel = document.querySelector('#results-panel');
     if (!panel) return;
+    bindLessonCopy(panel);
     const pickedLink = panel.querySelector('[data-picked-sheet]');
     if (pickedLink) pickedLink.onclick = () => { sessionSet('atlas.lastSearch', stateHref()); sessionSet('atlas.resultsScroll', scrollY); };
     panel.querySelectorAll('[data-sheet-pick]').forEach(input => input.onchange = () => {
@@ -1377,8 +1449,11 @@
     panel.querySelectorAll('a.practice-link,.practice-back a').forEach(link => {
       link.onclick = event => {
         if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-        const heading = link.classList.contains('practice-link') ? '.result-head h2' : '#practice-title';
-        addEventListener('hashchange', () => document.querySelector(heading)?.focus(), { once: true });
+        const forward = link.classList.contains('practice-link');
+        addEventListener('hashchange', () => {
+          const heading = forward ? document.querySelector('#lesson-heading') || document.querySelector('.result-head h2') : document.querySelector('#practice-title');
+          heading?.focus();
+        }, { once: true });
       };
     });
     if (sector) sector.onchange = () => {

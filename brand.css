@@ -260,3 +260,48 @@ a.practice-link:hover strong{text-decoration:underline}
   .practice-link>span{display:none}
   .practice-start{margin-bottom:.85rem}
 }
+
+/* A lesson can be chosen by level and opened without losing the search results. */
+.lesson-starts {
+  margin: 0 0 1.25rem;
+  padding: clamp(.85rem, 2.4vw, 1.6rem);
+  color: var(--brand-ink);
+  background: var(--brand-shell);
+  border: 1px solid var(--line);
+  border-top: .3rem solid var(--brand-olive);
+  border-radius: .7rem;
+}
+.lesson-starts h2 { margin: 0 0 .85rem; font-size: clamp(1.3rem, 2vw, 1.65rem); line-height: 1.2; }
+.lesson-choice { border-top: 1px solid var(--line); }
+.lesson-choice summary {
+  display: grid; grid-template-columns: minmax(7.5rem, 9rem) 1fr auto;
+  align-items: center; gap: .8rem;
+  min-height: 50px; padding: .7rem .3rem;
+  cursor: pointer; list-style: none;
+}
+.lesson-choice summary::-webkit-details-marker { display: none; }
+.lesson-choice summary::after {
+  content: ''; width: .55rem; height: .55rem; margin: 0 .35rem;
+  border: solid var(--brand-bluegray-deep); border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.lesson-choice[open] summary::after { transform: rotate(225deg); }
+.lesson-choice summary:hover strong, .lesson-choice summary:focus-visible strong { text-decoration: underline; }
+.lesson-level { color: var(--brand-olive-deep); font-size: .88rem; font-weight: 700; }
+.lesson-detail .lesson-level { margin: 0; }
+.lesson-detail h3 { margin: .25rem 0 .8rem; font-size: 1.2rem; }
+.lesson-plan { display: grid; gap: .75rem; margin: .25rem 0 1rem; }
+.lesson-plan dt { color: var(--brand-bluegray-deep); font-weight: 700; }
+.lesson-plan dd { margin: .15rem 0 0; max-width: 72ch; line-height: 1.55; }
+.lesson-assignment { padding: .75rem 1rem; border-left: .2rem solid var(--brand-olive); background: #eef1e8; }
+.lesson-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .35rem 1rem; }
+.lesson-actions > * { min-height: 44px; }
+.lesson-material { display: inline-flex; align-items: center; color: var(--brand-bluegray-deep); font-weight: 650; }
+.lesson-credit, .lesson-feedback { margin: .45rem 0 .8rem; font-size: .88rem; }
+.lesson-feedback:empty { margin: 0; }
+.lesson-copy { box-sizing: border-box; width: 100%; min-height: 8rem; margin-bottom: .8rem; font: inherit; }
+@media (max-width: 680px) {
+  .lesson-choice summary { grid-template-columns: 1fr auto; gap: .15rem .5rem; }
+  .lesson-choice summary strong { grid-column: 1; }
+  .lesson-choice summary::after { grid-column: 2; grid-row: 1 / span 2; }
+}
