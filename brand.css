@@ -305,3 +305,35 @@ a.practice-link:hover strong{text-decoration:underline}
   .lesson-choice summary strong { grid-column: 1; }
   .lesson-choice summary::after { grid-column: 2; grid-row: 1 / span 2; }
 }
+
+body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { display: none; }
+.learner-sheet {
+  max-width: 52rem; margin: 0 auto; padding: clamp(1rem, 4vw, 2.5rem);
+  color: var(--brand-ink); overflow-wrap: anywhere;
+}
+.learner-sheet .sheet-controls { gap: .5rem 1rem; margin-bottom: 1.3rem; }
+.learner-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.learner-sheet header { padding: 1rem 0; border-top: .3rem solid var(--brand-olive); border-bottom: 1px solid var(--line); }
+.learner-sheet header p { margin: 0 0 .4rem; }
+.learner-sheet h1 { margin: 0; font-size: clamp(1.75rem, 4.2vw, 2.8rem); line-height: 1.14; }
+.learner-sheet section { margin: 1.4rem 0; }
+.learner-sheet h2 { margin: 0 0 .35rem; font-size: 1.25rem; }
+.learner-sheet section p { margin: 0; font-size: clamp(1.08rem, 2.4vw, 1.4rem); line-height: 1.55; }
+.learner-credit { margin-top: 2rem; font-size: .9rem; }
+.learner-answer, .learner-sheet #action-feedback:empty { display: none; }
+@media print {
+  html:has(.learner-sheet), body:has(.learner-sheet) { background: #fff; }
+  body:has(.learner-sheet) .skip,
+  .learner-sheet .sheet-controls, .learner-sheet #action-feedback { display: none !important; }
+  .learner-sheet { max-width: none; margin: 0; padding: 0; color: #000; }
+  .learner-sheet header { padding: 0 0 4mm; border-top: none; }
+  .learner-sheet h1 { font-size: 22pt; }
+  .learner-sheet .lesson-level, .learner-sheet h1, .learner-sheet h2 { color: #000; }
+  .learner-sheet section { margin: 6mm 0; break-inside: avoid; }
+  .learner-sheet h2 { font-size: 14pt; }
+  .learner-sheet section p { font-size: 12pt; line-height: 1.45; }
+  .learner-answer { display: block; min-height: 100mm; padding: 3mm; border: 1px solid #888; font-size: 10pt; }
+  .learner-credit { margin: 5mm 0 0; font-size: 9pt; }
+  .learner-credit a { color: #000; text-decoration: none; }
+  .learner-credit a::after { content: " (" attr(href) ")"; }
+}

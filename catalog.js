@@ -607,8 +607,9 @@
       policy_document: 'Bekijk beleid', product: 'Bekijk aanbod', service: 'Bekijk aanbod'
     })[record.recordType] || 'Bekijk bron';
   }
+  const PUBLIC_ATLAS = 'https://ecmw.github.io/ai-onderwijs-atlas-nederland/';
   function publicItemUrl(record) {
-    return `https://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${encodeURIComponent(record.id)}`;
+    return `${PUBLIC_ATLAS}#item/${encodeURIComponent(record.id)}`;
   }
   function sourceCitation(record) {
     return [record.title,
@@ -1003,13 +1004,17 @@
   };
 
   function hasAvailableLesson(record) {
-    const lesson = record.lessonStart;
+    const lesson = record?.lessonStart;
     return lesson && effectiveStatus(record) === 'available' &&
       officialSources(record).some(item => item.url === lesson.sourceUrl);
   }
 
   function lessonForSectors(record, selected) {
     return hasAvailableLesson(record) && (!selected.length || record.lessonStart.sectors.some(sector => selected.includes(sector)));
+  }
+
+  function learnerSheetHref(record) {
+    return '#leerlingblad?' + new URLSearchParams({item: record.id});
   }
 
   function lessonStartBody(record) {
@@ -1022,6 +1027,7 @@
       </dl>
       <div class="lesson-actions">
         <button type="button" class="btn" data-copy-lesson>Kopieer klasopdracht</button>
+        <a class="btn secondary" href="${escapeHtml(learnerSheetHref(record))}">Open leerlingblad</a>
         <a class="lesson-material" href="${escapeHtml(lesson.sourceUrl)}" target="_blank" rel="noopener noreferrer">Open lesmateriaal ↗</a>
       </div>
       <p class="lesson-credit">Lesstart van de Atlas bij materiaal van ${escapeHtml(record.providerName)}.</p>
@@ -1223,6 +1229,32 @@
     if (print) print.onclick = () => window.print();
   }
 
+  function renderLearnerSheet() {
+    const id = new URLSearchParams(location.hash.split('?')[1]).get('item');
+    const record = publicRecordsById.get(selectedPublicIds([id])[0]);
+    if (!hasAvailableLesson(record)) {
+      main.innerHTML = '<section class="detail-missing"><h1>Dit leerlingblad is niet beschikbaar</h1><a class="btn" href="#zoeken?q=les&amp;type=materials">Kies een andere lesstart</a></section>';
+      return;
+    }
+    const lesson = record.lessonStart;
+    main.innerHTML = `<article class="learner-sheet" aria-labelledby="learner-question">
+      <div class="sheet-controls"><a href="#item/${encodeURIComponent(record.id)}">← Naar de lesstart</a>
+        <div class="learner-actions"><button type="button" class="btn secondary" data-share-sheet>Deel leerlingblad</button>
+          <button type="button" class="btn" data-print-sheet>Afdrukken of opslaan als pdf</button></div></div>
+      <p id="action-feedback" role="status"></p>
+      <header><p class="lesson-level">Leerlingblad · ${escapeHtml(lesson.level)}</p><h1 id="learner-question">${escapeHtml(lesson.question)}</h1></header>
+      <section><h2>Opdracht</h2><p>${escapeHtml(lesson.task)}</p></section>
+      <section><h2>Bespreek samen</h2><p>${escapeHtml(lesson.reflection)}</p></section>
+      <div class="learner-answer">Ruimte voor je antwoord of tekening</div>
+      <p class="learner-credit">Werkvorm van de AI &amp; Onderwijs Atlas Nederland. Lesmateriaal van
+        <a href="${escapeHtml(lesson.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(record.providerName)}</a>.</p>
+    </article>`;
+    document.querySelector('[data-print-sheet]').onclick = () => window.print();
+    document.querySelector('[data-share-sheet]').onclick = () => shareCurrentSelection(
+      lesson.question, PUBLIC_ATLAS + learnerSheetHref(record), 'het leerlingblad'
+    );
+  }
+
   function renderDetail(id) {
     const target = source.metadata?.recordRedirects?.[id];
     if (typeof target === 'string' && records.some(item => item.id === target)) {
@@ -1422,12 +1454,12 @@
     const feedback = document.querySelector('#action-feedback');
     if (feedback) feedback.textContent = message;
   }
-  async function shareCurrentSelection(text = `Bekijk deze selectie: ${currentSearchLabel()}`) {
-    const shareData = { title: 'AI & Onderwijs Atlas Nederland', text, url: location.href };
+  async function shareCurrentSelection(text = `Bekijk deze selectie: ${currentSearchLabel()}`, url = location.href, label = 'deze selectie') {
+    const shareData = { title: 'AI & Onderwijs Atlas Nederland', text, url };
     try {
       if (navigator.share) await navigator.share(shareData);
-      else if (navigator.clipboard) { await navigator.clipboard.writeText(location.href); setActionFeedback('Link naar deze selectie gekopieerd.'); }
-      else setActionFeedback('Kopieer de URL uit de adresbalk om deze selectie te delen.');
+      else if (navigator.clipboard) { await navigator.clipboard.writeText(url); setActionFeedback(`Link naar ${label} gekopieerd.`); }
+      else setActionFeedback(`Kopieer de URL uit de adresbalk om ${label} te delen.`);
     } catch (error) {
       if (error?.name !== 'AbortError') setActionFeedback('Delen lukte niet. Kopieer de URL uit de adresbalk.');
     }
@@ -1548,12 +1580,13 @@
     const path = (location.hash.slice(1) || 'home').split('?')[0];
     document.querySelector('.site-header')?.classList.remove('open');
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
-    if (path === 'home' || (!['wegwijzer', 'nieuw', 'boeken', 'zoeken', 'overlegblad', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
+    if (path === 'home' || (!['wegwijzer', 'nieuw', 'boeken', 'zoeken', 'overlegblad', 'leerlingblad', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
     if (path === 'wegwijzer') { location.replace('#zoeken'); return; }
     if (path === 'nieuw') renderNewOffers();
     const focusedBookGroup = path === 'boeken' && renderBooks();
     if (path === 'zoeken' || path === 'organisaties') { parseState(); if (path === 'organisaties') state.type = 'Organisatie'; renderSearch(); }
     if (path === 'overlegblad') { parseState(); renderMeetingSheet(); }
+    if (path === 'leerlingblad') renderLearnerSheet();
     if (path.startsWith('item/')) renderDetail(decodeURIComponent(path.slice(5)));
     if (path === 'mijn-atlas') { location.replace('#home'); return; }
     if (path === 'bijdragen') renderContribute();
