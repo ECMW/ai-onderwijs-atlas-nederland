@@ -41,6 +41,18 @@ def isbn13_is_valid(value: object) -> bool:
     return digits[-1] == expected
 
 
+def valid_lesson_start(record: dict) -> bool:
+    lesson = record["lessonStart"]
+    fields = ("level", "question", "preparation", "task", "reflection", "sourceUrl")
+    if not isinstance(lesson, dict) or not all(isinstance(lesson.get(key), str) and lesson[key].strip() for key in fields):
+        return False
+    sectors = lesson.get("sectors")
+    if not isinstance(sectors, list) or not sectors or not all(sector in record.get("sectors", []) for sector in sectors):
+        return False
+    return any(source.get("sourceType") == "official" and source.get("url") == lesson["sourceUrl"]
+               for source in record.get("sourceUrls", []))
+
+
 def validation_errors(root: Path) -> tuple[list[str], int]:
     records = json.loads((root / "data" / "records.json").read_text(encoding="utf-8"))
     errors: list[str] = []
@@ -54,6 +66,8 @@ def validation_errors(root: Path) -> tuple[list[str], int]:
         errors.extend(offer_category_errors(record))
         errors.extend(publication_exclusion_errors(record))
         identifier = record.get("id")
+        if "lessonStart" in record and not valid_lesson_start(record):
+            errors.append(f"{identifier}: onvolledige lesstart, afwijkende sector of ontbrekende officiële lesbron")
         if not isinstance(identifier, str) or not identifier.strip():
             errors.append("Record mist een geldige ID")
         if not record.get("title"):

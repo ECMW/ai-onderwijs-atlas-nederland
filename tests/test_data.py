@@ -3,7 +3,7 @@ from pathlib import Path
 import sys
 R=Path(__file__).parents[1]; D=json.loads((R/'data/records.json').read_text(encoding='utf-8'))
 sys.path.insert(0,str(R/'scripts'))
-from validate_data import isbn13_is_valid
+from validate_data import isbn13_is_valid, valid_lesson_start
 class DataTests(unittest.TestCase):
  def test_unique_ids(self): self.assertEqual(len(D),len({x['id'] for x in D}))
  def test_titles(self): self.assertTrue(all(x.get('title') for x in D))
@@ -28,6 +28,14 @@ class DataTests(unittest.TestCase):
  def test_relations(self):
   ids={x['id'] for x in D}; self.assertTrue(all(r in ids for x in D for r in x.get('relatedIds',[])))
  def test_no_html(self): self.assertFalse(any(re.search(r'<[^>]+>',str(x.get('description') or '')) for x in D))
+ def test_lesson_start_requires_its_own_level_task_and_official_source(self):
+  item=next(row for row in D if row.get('lessonStart'))
+  lesson=item['lessonStart']
+  self.assertTrue(valid_lesson_start(item))
+  for patch in [{'sectors':[]},{'sectors':['onbekend']},{'task':'  '},{'sourceUrl':'https://example.org/other'}]:
+   with self.subTest(patch=patch):
+    self.assertFalse(valid_lesson_start({**item,'lessonStart':{**lesson,**patch}}))
+  self.assertFalse(valid_lesson_start({**item,'sourceUrls':[{'url':lesson['sourceUrl'],'sourceType':'secondary'}]}))
  def test_book_isbns_are_valid_and_unique(self):
   books=[x for x in D if x.get('recordType')=='book']; isbns=[x.get('isbn') for x in books]
   self.assertTrue(all(x.get('legacyType')=='Boek' for x in books))

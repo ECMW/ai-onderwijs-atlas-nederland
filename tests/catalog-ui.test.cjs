@@ -15,7 +15,7 @@ const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
     effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
     accessLabel, accessOptions: Object.values(ACCESS_LABELS), recordThemes, themeOptions, route,
-    searchForm, bindResultsControls, sourceActionLabel, sourceCitation, copySourceCitation, meetingSheetMarkup,
+    searchForm, bindResultsControls, bindLessonCopy, sourceActionLabel, sourceCitation, copySourceCitation, meetingSheetMarkup,
     options: SORT_OPTIONS, getState: () => state, setState: value => { state = value; }
   };`);
 
@@ -116,6 +116,79 @@ test('practice links count matching offers and retain the chosen sectors and aud
   assert.match(destination, /class="practice-back"/);
   assert.ok(destination.includes('data-record-id="lesson"'));
   assert.ok(!destination.includes('data-record-id="other-'));
+});
+
+const classroomLessons = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/records.json'), 'utf8'))
+  .filter(item => item.lessonStart);
+const lessonRoute = '#zoeken?q=les&type=materials';
+
+test('the lesson route and direct searches show usable lessons in teaching-level order', () => {
+  for (const hash of [lessonRoute, '#zoeken?q=lesstart', '#zoeken?q=lesstarts']) {
+    const html = load(classroomLessons, hash).resultsMarkup();
+    const levels = [...html.matchAll(/<summary><span class="lesson-level">([^<]+)</g)].map(match => match[1]);
+    for (const level of ['Groep 7–8', 'Vmbo · leerjaar 2–3', 'Mbo · mediavormgeving', 'Hbo en wo · bachelor']) {
+      assert.ok(levels.includes(level), level);
+    }
+    assert.ok(levels.indexOf('Groep 7–8') < levels.indexOf('Vmbo · leerjaar 2–3'));
+    for (const item of classroomLessons) {
+      assert.ok(html.includes(`class="lesson-material" href="${item.lessonStart.sourceUrl}"`));
+    }
+  }
+  assert.ok(!load(classroomLessons, '#zoeken?q=privacy').resultsMarkup().includes('class="lesson-choice"'));
+});
+
+test('a specific lesson level and audience take precedence over a collection’s broader scope', () => {
+  const html = load(classroomLessons, lessonRoute + '&sector=PO&audience=Docenten').resultsMarkup();
+  assert.match(html, /name="atlas-lesson-starts" open/);
+  assert.match(html, /data-lesson-id="digiduck-ai-lespakket-groep-7-8"/);
+  assert.ok(!html.includes('data-lesson-id="ai-slim-bekeken-doorlopende-leerlijn"'));
+  assert.ok(html.includes('data-record-id="ai-slim-bekeken-doorlopende-leerlijn"'));
+  assert.ok(html.includes('>Lesstart · Groep 7–8</a>'));
+  assert.ok(!html.includes('>Lesstart · Vmbo'));
+  const ordinary = load(classroomLessons, '#zoeken?q=afvalsorteerder').resultsMarkup();
+  assert.ok(ordinary.includes('>Lesstart · Vmbo · leerjaar 2–3</a>'));
+  const mbo = load(classroomLessons, lessonRoute + '&sector=MBO&audience=Docenten').resultsMarkup();
+  assert.match(mbo, /data-lesson-id="mbo-mediawijs-open-ai-leermaterialen"/);
+  assert.ok(!load(classroomLessons, lessonRoute + '&sector=PO&cost=Betaald').resultsMarkup().includes('class="lesson-starts"'));
+});
+
+test('item details show only available lessons backed by a known official material link', () => {
+  const lesson = classroomLessons.find(item => item.id === 'digiduck-ai-lespakket-groep-7-8');
+  for (const [item, available] of [
+    [lesson, true], [{ ...lesson, status: 'archived' }, false],
+    [{ ...lesson, sourceUrls: [lesson.sourceUrls[0], { url:lesson.lessonStart.sourceUrl, sourceType:'secondary' }] }, false]
+  ]) {
+    const main = { querySelectorAll: () => [] };
+    const document = { querySelector: selector => selector === 'main' ? main : {}, querySelectorAll: () => [] };
+    load([item], '#item/' + item.id, { document }).renderDetail(item.id);
+    assert.equal(main.innerHTML.includes('Lesstart voor de klas'), available);
+    assert.ok(main.innerHTML.includes('Feitelijke beschrijving'));
+    assert.equal(load([item], lessonRoute).resultsMarkup().includes('class="lesson-choice"'), available);
+  }
+});
+
+test('copying a classroom assignment includes the learner task, reflection and both sources', async () => {
+  const item = classroomLessons.find(row => row.id === 'mbo-mediawijs-open-ai-leermaterialen');
+  const lesson = item.lessonStart;
+  let copied = '';
+  for (const [navigator, allowed] of [
+    [{ clipboard: { writeText: async value => { copied = value; } } }, true], [{}, false]
+  ]) {
+    const feedback = {};
+    const field = { hidden:true, focus() {}, select() { this.selected = true; } };
+    const panel = { dataset: { lessonId:item.id },
+      querySelector: selector => selector === '.lesson-copy' ? field : feedback };
+    const button = { closest: () => panel, isConnected:true };
+    load([item], lessonRoute, { navigator }).bindLessonCopy({ querySelectorAll: () => [button] });
+    await button.onclick();
+    const text = allowed ? copied : field.value;
+    for (const part of [lesson.question, lesson.task, lesson.reflection, lesson.sourceUrl,
+      `https://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${item.id}`]) assert.ok(text.includes(part));
+    assert.ok(!text.includes(lesson.preparation));
+    assert.equal(field.hidden, allowed);
+    assert.equal(/gekopieerd/i.test(feedback.textContent), allowed);
+    if (!allowed) assert.equal(field.selected, true);
+  }
 });
 
 test('commercial labels require evidence and are independent of price', () => {

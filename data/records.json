@@ -23816,7 +23816,9 @@
     "audiences": [
       "MBO-docenten",
       "MBO-studenten",
-      "Onderwijsprofessionals"
+      "Onderwijsprofessionals",
+      "Docenten",
+      "Studenten"
     ],
     "sectors": [
       "MBO"
@@ -23880,7 +23882,8 @@
       "prompten",
       "lesplan",
       "praatplaat",
-      "verantwoord AI-gebruik"
+      "verantwoord AI-gebruik",
+      "lesstart"
     ],
     "notes": "Toegevoegd naar aanleiding van de op 8 september 2026 gedeelde collectiepagina.",
     "changeHistory": [
@@ -23898,10 +23901,26 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Lessenoverzicht, concrete AI-lessen en de verklaring over open leermiddelen gecontroleerd. Het vaste aantal 20 is niet opnieuw vastgesteld en daarom weggelaten."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Lesstart van de Atlas toegevoegd op basis van het gekoppelde lesmateriaal."
       }
     ],
     "offerCategory": "materials",
-    "verificationNote": "Lessenoverzicht, concrete AI-lessen en de verklaring over open leermiddelen gecontroleerd. Het vaste aantal 20 is niet opnieuw vastgesteld en daarom weggelaten."
+    "verificationNote": "Lessenoverzicht, concrete AI-lessen en de verklaring over open leermiddelen gecontroleerd. Het vaste aantal 20 is niet opnieuw vastgesteld en daarom weggelaten.",
+    "lessonStart": {
+      "sectors": [
+        "MBO"
+      ],
+      "level": "Mbo · mediavormgeving",
+      "question": "Welke ontwerpkeuze heb jij zelf gemaakt?",
+      "preparation": "Leg een ontwerpbriefing, een eerste AI-beeld en een door de maker bewerkte versie klaar. Bewaar de toelichting van de maker voor de nabespreking. Voor de volledige bronles noemt de aanbieder een beeldgenerator en Photoshop.",
+      "task": "Vergelijk beide beelden met de briefing. Markeer twee zichtbare veranderingen en schrijf op wat de maker daarmee kan hebben bedoeld. Pak de toelichting van de maker erbij. Welke keuze had je goed herkend? Wat kon je uit het beeld alleen niet afleiden?",
+      "reflection": "Welke beslissing wil je als ontwerper zelf houden? Gebruik één detail uit het beeld om je antwoord uit te leggen.",
+      "sourceUrl": "https://mbomediawijs.nl/openleermaterialen/ai-ethiek-verantwoord-gebruik/"
+    }
   },
   {
     "id": "vista-ai-in-onderwijs-kennissite",
@@ -37680,7 +37699,8 @@
       "hallucinaties",
       "bias",
       "beeldverificatie",
-      "bronvermelding"
+      "bronvermelding",
+      "lesstart"
     ],
     "notes": "De e-learning vermeldt CC BY 4.0, is gemaakt door de AI Literacy-werkgroep van de SHB/UKB Werkgroep Information Literacy en is gericht op hbo- en wo-bachelorstudenten. De PDF-export telt 50 pagina's; interactieve oefeningen en enkele externe embeds zijn in de statische export als link zichtbaar. Wikiwijs vermeldt 22 juni 2026 als laatste wijzigingsdatum. De Atlas heeft het materiaal en de bronstatus gecontroleerd, niet de juistheid van iedere gekoppelde externe bron of de leeropbrengst.",
     "offerCategory": "materials",
@@ -37691,8 +37711,25 @@
         "date": "2026-11-21",
         "type": "added",
         "summary": "Toegevoegd na volledige controle van de open e-learning, oefeningen, licentie en canonieke doublures."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Lesstart van de Atlas toegevoegd op basis van het gekoppelde lesmateriaal."
       }
-    ]
+    ],
+    "lessonStart": {
+      "sectors": [
+        "HBO",
+        "WO"
+      ],
+      "level": "Hbo en wo · bachelor",
+      "question": "Ondersteunt de bron wat het AI-antwoord beweert?",
+      "preparation": "Kies een kort AI-antwoord met een verwijzing naar een artikel dat de studenten kunnen openen. Gebruik uit AI-wijs het onderdeel over het beoordelen van gegenereerde tekst.",
+      "task": "Onderstreep één controleerbare bewering in het AI-antwoord. Open het aangehaalde artikel en zoek de passage die daarvoor bewijs zou leveren. Noteer je vindplaats en beslis of de passage de hele bewering draagt, slechts een deel, of helemaal niets.",
+      "reflection": "Herschrijf de bewering zo dat een medestudent haar met jouw bron kan controleren. Wat moest je afzwakken of schrappen?",
+      "sourceUrl": "https://maken.wikiwijs.nl/223513/AI_wijs__verantwoord_informatie_zoeken_en_beoordelen__Algemeen__BA_"
+    }
   },
   {
     "id": "uk-dfe-ai-education-support-materials",
@@ -37845,7 +37882,8 @@
       "prompts",
       "deepfakes",
       "online veiligheid",
-      "unplugged"
+      "unplugged",
+      "lesstart"
     ],
     "notes": "De lessen bevatten respectievelijk 11, 11 en 13 slides en verwijzen naar docentinstructies en werkbladen. De reeks kan volgens de lanceringspagina ook unplugged worden gebruikt, maar sluit inhoudelijk aan op de DigiDuck-verhaallijnen. De LessonUp-pagina's waren zonder login leesbaar; de interactieve start en de bijlagen zijn niet volledig uitgevoerd of gedownload. Een expliciete licentie voor alle strip- en bijlage-elementen is niet vastgesteld.",
     "offerCategory": "materials",
@@ -37856,8 +37894,24 @@
         "date": "2026-11-22",
         "type": "added",
         "summary": "Toegevoegd na controle van de officiële lancering, de drie volledige lespagina's, toegangsgrenzen en canonieke doublures."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Lesstart van de Atlas toegevoegd op basis van het gekoppelde lesmateriaal."
       }
-    ]
+    ],
+    "lessonStart": {
+      "sectors": [
+        "PO"
+      ],
+      "level": "Groep 7–8",
+      "question": "Wat leert een AI van onze dierentekeningen?",
+      "preparation": "Leg papier en potloden klaar. Open de tekenactiviteit in DigiDuck, les 2. Voor deze werkvorm hebben leerlingen geen apparaat nodig.",
+      "task": "Teken een dier met vier poten. Geef je vel door en laat een klasgenoot een kenmerk toevoegen. Leg de tekeningen bij elkaar. Welk dier is het vaakst getekend? Schrijf twee kenmerken op waarmee een computer dat dier kan herkennen. Bedenk een ander dier dat ook aan jullie regel voldoet.",
+      "reflection": "Welke nieuwe tekening zou je toevoegen om de computer een beter voorbeeld te geven? Leg uit waarom.",
+      "sourceUrl": "https://www.lessonup.com/nl/channel/kidsweek/lesson/65EQLYwfipPBh3oYr"
+    }
   },
   {
     "id": "ai-slim-bekeken-doorlopende-leerlijn",
@@ -37926,7 +37980,8 @@
       "AI-systemen",
       "taalmodellen",
       "bias",
-      "AI-verordening"
+      "AI-verordening",
+      "lesstart"
     ],
     "notes": "De collectie beschrijft drie PO-niveaus en vier VO-trajecten, elk met vier lessen: in totaal 28 lessen van 45 of 50 minuten. De twee representatieve lessen zijn volledig gelezen; aanvullende lespagina's voor alle niveaus zijn steekproefsgewijs gecontroleerd. De PO-lessen werken zonder leerlinggebruik van een chatbot; VO-lessen verwijzen waar nodig naar een door de school goedgekeurde tool. LessonUp toont bij meerdere lessen oktober 2026, maar een eenduidige oorspronkelijke publicatiedatum van de collectie is niet vastgesteld. De interactieve start en alle PDF-handleidingen zijn niet volledig uitgevoerd of gelezen; een expliciete auteursnaam is op de gecontroleerde kanaalpagina niet aangetroffen.",
     "offerCategory": "materials",
@@ -37937,7 +37992,23 @@
         "date": "2026-11-22",
         "type": "added",
         "summary": "Toegevoegd als één collectierecord om doublures tussen 28 samenhangende lesonderdelen te voorkomen."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Lesstart van de Atlas toegevoegd op basis van het gekoppelde lesmateriaal."
       }
-    ]
+    ],
+    "lessonStart": {
+      "sectors": [
+        "VO"
+      ],
+      "level": "Vmbo · leerjaar 2–3",
+      "question": "Herkent jullie afvalsorteerder een nieuwe verpakking?",
+      "preparation": "Leg schoon papier, plastic en blik klaar. Test de webcam en Teachable Machine op een schoollaptop. De aanbieder rekent 50 minuten voor de volledige les.",
+      "task": "Train in tweetallen een model om papier, plastic en blik te herkennen. Houd van elke soort één verpakking apart. Test het model met die drie voorwerpen en noteer de voorspellingen. Verander de achtergrond bij één verpakking en test opnieuw.",
+      "reflection": "Wat bleef hetzelfde en wat veranderde? Welke voorbeelden zouden jullie toevoegen om te testen waarop het model let?",
+      "sourceUrl": "https://www.lessonup.com/nl/lesson/em4CAELtbcCNrnAMo"
+    }
   }
 ]
