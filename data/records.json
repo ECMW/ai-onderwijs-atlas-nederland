@@ -39491,5 +39491,295 @@
     ],
     "applicationDeadlineAt": "2026-12-14T17:00:00+01:00",
     "verificationMethod": "agent_primary_source_review"
+  },
+  {
+    "id": "erasmus-teacher-academies-2027",
+    "title": "Erasmus+ Teacher Academies 2027",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europees Uitvoerend Agentschap onderwijs en cultuur (EACEA)",
+    "description": "Werk met Europese lerarenopleidingen, scholen en onderwijsautoriteiten aan de opleiding van leraren en schoolleiders. Een van de aandachtsgebieden is het kindgericht gebruik van digitale technologie en AI bij lesgeven en leren. Het Europese loket opent op 9 december 2026.",
+    "purpose": "Ontwikkel en beproef samen een aanpak voor de initiële lerarenopleiding en begeleiding van beginnende leraren of schoolleiders.",
+    "audiences": [
+      "Lerarenopleiders",
+      "Schoolleiders",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Professionalisering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "planned",
+    "availabilityText": "Indienen via het Europese portaal van 9 december 2026 tot 23 februari 2027 om 17.00 uur Nederlandse tijd.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-11-20",
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële oproep en indiening",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/erasmus-edu-2027-pex-teach-aca",
+        "sourceType": "official"
+      },
+      {
+        "label": "Programmagids 2027, onderdeel Erasmus+ Teacher Academies (pdf)",
+        "url": "https://erasmus-plus.ec.europa.eu/sites/default/files/2026-11/programme-guide-erasmus-27_en.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Fins nationaal agentschap — Engelstalige uitleg van de aanvraagronde",
+        "url": "https://www.oph.fi/en/funding/erasmus-higher-education-vocational-education-and-training-and-school-education-teacher-0",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "erasmus"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Maximaal €1,5 miljoen per project. Het rondebudget bedraagt €37,5 miljoen.",
+    "fundingDeadline": "2027-02-23",
+    "applicationOpenDate": "2026-12-09",
+    "applicationDeadline": "2027-02-23",
+    "fundingMin": null,
+    "fundingMax": 1500000,
+    "totalBudget": 37500000,
+    "eligibility": "Een hogeronderwijsinstelling met een initiële lerarenopleiding en Erasmus Charter for Higher Education coördineert. Vereist zijn minstens negen organisaties uit drie of meer EU- of geassocieerde landen. Ieder vertegenwoordigd land levert een dergelijke lerarenopleiding, een onderwijsautoriteit of coördinatieorgaan en een school.",
+    "applicantTypes": [
+      "Internationale consortia",
+      "Hogescholen",
+      "Universiteiten"
+    ],
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "ERASMUS-EDU-2027-PEX-TEACH-ACA",
+      "Erasmus+ Teacher Academies",
+      "lerarenopleiding",
+      "AI in de klas",
+      "professionalisering"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Specifieke openstelling en deadlines bevestigd in het EACEA-portaal. Samenstelling en projectmaximum gecontroleerd in de programmagids 2027."
+      }
+    ],
+    "applicationDeadlineAt": "2027-02-23T17:00:00+01:00",
+    "verificationMethod": "agent_primary_source_review"
+  },
+  {
+    "id": "horizon-ai-leeromgeving-basisonderwijs-2027",
+    "title": "HORIZON-CL2-2027-01-TRANSFO-05 — AI in de voorschool en het basisonderwijs",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie",
+    "description": "Onderzoek wat het gebruik van AI in de voorschool en het basisonderwijs betekent voor leerprestaties, welzijn en kansengelijkheid. Projecten leveren ook praktisch advies op voor leraren over verantwoord gebruik en het beoordelen van leerresultaten. De geplande openingsdatum is 13 mei 2027.",
+    "purpose": "Europese onderzoekers en onderwijspraktijk kunnen gezamenlijk onderbouwen welke AI-toepassingen jonge kinderen en hun leraren helpen en onder welke omstandigheden.",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen",
+      "Leraren",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "planned",
+    "availabilityText": "Geplande indiening van 13 mei tot 23 september 2027 om 17.00 uur Nederlandse tijd.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-12-12",
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële oproep en indiening",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/horizon-cl2-2027-01-transfo-05",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europese Commissie — officiële oproepgegevens, status en termijnen (JSON)",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/data/topicDetails/horizon-cl2-2027-01-transfo-05.json",
+        "sourceType": "official"
+      },
+      {
+        "label": "Werkprogramma, topic TRANSFO-05 (pdf)",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-5-culture-creativity-and-inclusive-society_horizon-2026-2027_en.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Algemene deelnamevoorwaarden, bijlage B (pdf)",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-15-general-annexes_horizon-2026-2027_en.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "horizon-europe"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Indicatieve EU-bijdrage van €3 tot €4 miljoen per project, bij een topicbudget van €12 miljoen. Het werkprogramma laat aanvragen voor een ander bedrag toe.",
+    "fundingDeadline": "2027-09-23",
+    "applicationOpenDate": "2027-05-13",
+    "applicationDeadline": "2027-09-23",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": 12000000,
+    "eligibility": "Nederlandse kennis- en onderwijsinstellingen kunnen deelnemen aan een internationaal onderzoeksconsortium. Voor deze Research and Innovation Action gelden de algemene voorwaarden voor Horizon Europe, waaronder ten minste drie onafhankelijke rechtspersonen in drie verschillende EU- of geassocieerde landen en minstens één deelnemer uit een EU-lidstaat.",
+    "applicantTypes": [
+      "Internationale consortia",
+      "Onderzoeksinstellingen",
+      "Onderwijsinstellingen"
+    ],
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "HORIZON-CL2-2027-01-TRANSFO-05",
+      "Horizon Europe",
+      "primair onderwijs",
+      "voorschool",
+      "AI",
+      "leerresultaten",
+      "welzijn"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Onderzoeksthema, indicatieve bijdrage en aanvraagdata gecontroleerd in het Europese portaal en bijbehorend werkprogramma."
+      }
+    ],
+    "applicationDeadlineAt": "2027-09-23T17:00:00+02:00",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Het werkprogramma en de officiële topicgegevens bevestigen de onderzoeksvraag, het rondebudget en de beoogde openstelling. De algemene bijlagen beschrijven de consortiumvoorwaarden."
+  },
+  {
+    "id": "erasmus-kleinschalige-samenwerkingsprojecten-onderwijs-2027",
+    "title": "Erasmus+ Small-scale partnerships 2027 — kleinschalige samenwerking (KA210)",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Nationaal Agentschap Erasmus+ Onderwijs & Training",
+    "description": "Een school of mbo-instelling kan met een onderwijsorganisatie in een ander programmaland een kleinschalig project opzetten. Een team kan bijvoorbeeld samen lesactiviteiten over AI-geletterdheid ontwikkelen. Het project moet aansluiten op een Erasmus+-prioriteit. De regeling staat ook open voor andere onderwijsthema’s. Het Nederlandse agentschap heeft de aanvraagformulieren aangekondigd.",
+    "purpose": "Kleinere organisaties laten samenwerken over de grens, ook als zij voor het eerst aan Erasmus+ meedoen.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "AI-geletterdheid"
+    ],
+    "status": "planned",
+    "availabilityText": "De ronde is aangekondigd. Het Nederlandse agentschap meldde op 19 november dat de aanvraagformulieren nog volgen. De eerste deadline voor onderwijsprojecten is 9 maart 2027 om 12.00 uur Nederlandse tijd.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-11-18",
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Europese Commissie – voorwaarden en subsidiebedragen KA210",
+        "url": "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/small-scale-partnerships",
+        "sourceType": "official"
+      },
+      {
+        "label": "Nationaal Agentschap – stand van de Nederlandse aanvraagformulieren",
+        "url": "https://www.erasmusplus.nl/actueel/nieuws/erasmus-programmagids-2027-gepubliceerd",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europese Commissie — Nederlandstalige programmagids Erasmus+ 2027 (PDF)",
+        "url": "https://erasmus-plus.ec.europa.eu/sites/default/files/2026-11/programme-guide-erasmus-27_nl.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": "Keuze uit twee vaste projectbedragen: € 30.000 of € 60.000.",
+    "fundingDeadline": "2027-03-09",
+    "applicationOpenDate": null,
+    "applicationDeadline": "2027-03-09",
+    "fundingMin": 30000,
+    "fundingMax": 60000,
+    "totalBudget": null,
+    "eligibility": "Minstens twee organisaties uit twee verschillende EU-lidstaten of met het programma geassocieerde landen. Een Nederlandse coördinator dient voor schoolonderwijs, beroepsonderwijs of volwasseneneducatie in bij het Nederlandse Nationaal Agentschap.",
+    "applicantTypes": [
+      "Scholen",
+      "Mbo-instellingen",
+      "Organisaties voor volwasseneneducatie"
+    ],
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "Erasmus+",
+      "KA210",
+      "kleinschalige partnerschappen",
+      "AI-geletterdheid",
+      "digitale transformatie",
+      "volwasseneneducatie"
+    ],
+    "notes": "Het genoemde AI-project is een mogelijke invulling door de Atlas. De programmagids 2027 noemt digitale technologie en AI bij de prioriteiten voor partnerschappen. Het agentschap bepaalt de ontvankelijkheid.",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Deadline, vaste bedragen, voorwaarden en stand van de Nederlandse aanvraagroute gecontroleerd bij het Nationaal Agentschap en de Europese Commissie."
+      }
+    ],
+    "applicationDeadlineAt": "2027-03-09T12:00:00+01:00",
+    "verificationNote": "De Europese actiepagina en programmagids 2027 bevestigen de thema-onafhankelijke voorwaarden, twee vaste subsidiebedragen en de sluiting op 9 maart om 12.00 uur (Brusselse tijd). Het Nederlandse agentschap publiceerde de oproep op 19 november 2026."
   }
 ]
