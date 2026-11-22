@@ -299,6 +299,33 @@ def _status_conflicts(record: dict, source_checks: Iterable[SourceCheck]) -> str
     return None
 
 
+def subject_field_errors(records: list[dict]) -> list[str]:
+    """Subjects are explicit, optional labels used verbatim in filter links."""
+    errors = []
+    spellings = {}
+    for record in records:
+        labels = record.get("subjects", [])
+        identifier = record.get("id") or "<zonder id>"
+        if not isinstance(labels, list):
+            errors.append(f"{identifier}: subjects moet een lijst van vaknamen zijn.")
+            continue
+        seen = set()
+        for label in labels:
+            if (not isinstance(label, str) or not label or not label.isprintable()
+                    or label != " ".join(label.split()) or any(char in label for char in ",<>|")):
+                errors.append(f"{identifier}: subjects bevat een lege of ongeldige vaknaam.")
+                break
+            key = unicodedata.normalize("NFC", label).casefold()
+            if key in seen:
+                errors.append(f"{identifier}: subjects bevat een dubbele vaknaam.")
+                break
+            if spellings.setdefault(key, label) != label:
+                errors.append(f"{identifier}: gebruik in subjects de bestaande schrijfwijze {spellings[key]!r}.")
+                break
+            seen.add(key)
+    return errors
+
+
 def commercial_field_errors(record: dict) -> list[str]:
     """Additive schema: old records remain explicitly unclassified."""
     prefix = f"{record.get('id') or '<zonder id>'}: "
@@ -421,7 +448,7 @@ def review_records(
     base_decisions: dict | None = None,
     candidate_decisions: dict | None = None,
 ) -> dict:
-    errors: list[str] = []
+    errors: list[str] = subject_field_errors(candidate_records)
     warnings: list[str] = []
     if changed_files is not None:
         changed_set = set(changed_files)

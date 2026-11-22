@@ -7,7 +7,7 @@ import json
 import re
 from pathlib import Path
 
-from contribution_quality import commercial_field_errors
+from contribution_quality import commercial_field_errors, subject_field_errors
 from offer_categories import offer_category_errors
 from publication_scope import publication_exclusion_errors
 from source_library import source_library_errors
@@ -55,7 +55,7 @@ def valid_lesson_start(record: dict) -> bool:
 
 def validation_errors(root: Path) -> tuple[list[str], int]:
     records = json.loads((root / "data" / "records.json").read_text(encoding="utf-8"))
-    errors: list[str] = []
+    errors: list[str] = subject_field_errors(records)
     identifiers = [record.get("id") for record in records]
     if len(identifiers) != len(set(identifiers)):
         errors.append("IDs zijn niet uniek")

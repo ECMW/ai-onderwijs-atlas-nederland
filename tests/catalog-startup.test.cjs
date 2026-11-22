@@ -159,6 +159,32 @@ test('home uses the full catalogue and the same query, sector, cost and offer fi
   assert.ok(app.document.querySelector('[data-facet="cost"]'));
 });
 
+test('home and search expose one filter opener beside the search form, before the practice routes', () => {
+  const app = boot({href: 'https://example.org/atlas/'});
+  for (const route of ['', '#home', '#zoeken']) {
+    if (route) app.navigate(route);
+    const sidebar = app.document.querySelector('.catalog-sidebar');
+    const opener = sidebar.querySelector('.mobile-filter');
+    const panel = sidebar.querySelector('#filters');
+    assert.ok(sidebar.querySelector('.atlas-search input'));
+    assert.equal(app.document.querySelectorAll('.mobile-filter').length, 1);
+    assert.equal(app.document.querySelectorAll('#filters').length, 1);
+    assert.equal(opener.attributes['aria-controls'], panel.attributes.id);
+    assert.ok(!('open' in panel.querySelector('[data-facet-block="sector"]').attributes));
+    assert.ok('open' in panel.querySelector('[data-facet-block="vak"]').attributes);
+    assert.ok(app.main.innerHTML.indexOf('class="mobile-filter') < app.main.innerHTML.indexOf('class="practice-start'));
+    opener.onclick();
+    assert.equal(opener.attributes['aria-expanded'], 'true');
+    assert.equal(panel.attributes['aria-modal'], 'true');
+    assert.ok(app.document.body.classList.contains('locked'));
+    panel.querySelector('.close').onclick();
+    assert.equal(opener.attributes['aria-expanded'], 'false');
+    assert.ok(!app.document.body.classList.contains('locked'));
+  }
+  app.navigate('#zoeken?sector=VO');
+  assert.ok('open' in app.document.querySelector('[data-facet-block="sector"]').attributes);
+});
+
 test('root and every return home open the entire catalogue newest first', () => {
   const app = boot({href:'https://example.org/atlas/'});
   const expected = app.context.ATLAS_RECORDS.records.slice().sort((a,b) => {
@@ -236,7 +262,8 @@ test('a cached older index without the startup guard still renders healthy catal
 });
 
 test('empty and malformed data are rejected before any catalogue renders', () => {
-  for (const records of [[], {}, [null], [{ id: 'broken', title: 'Broken', sourceUrls: 'invalid' }]]) {
+  for (const records of [[], {}, [null], [{ id: 'broken', title: 'Broken', sourceUrls: 'invalid' }],
+    [{ id: 'broken-subjects', title: 'Broken subjects', sourceUrls: [], subjects: 'Biologie' }]]) {
     assertFailure(boot({ replacements: { 'data/data-v2.js': `window.ATLAS_RECORDS=${JSON.stringify({ metadata: {}, records })};` } }));
   }
 });

@@ -9,6 +9,8 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 from public_assets import versioned_html
+from generate_data import generate
+from validate_data import validation_errors
 
 
 class ReleaseQualityTests(unittest.TestCase):
@@ -124,6 +126,31 @@ class ReleaseQualityTests(unittest.TestCase):
         result, report = self.gate()
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertTrue(report["passed"])
+
+    def test_invalid_subjects_fail_canonical_and_release_checks_before_generation(self):
+        self.write_data([{**self.records[0], "subjects": ["Wiskunde", "wiskunde"]}])
+        errors, _ = validation_errors(self.root)
+        self.assertTrue(any("subjects" in error for error in errors))
+        result, report = self.gate()
+        self.assertNotEqual(result.returncode, 0)
+        self.assertTrue(any("subjects" in error for error in report["errors"]))
+        metadata = (self.root / "data/metadata.json").read_bytes()
+        with self.assertRaisesRegex(ValueError, "subjects"):
+            generate(self.root)
+        self.assertEqual((self.root / "data/metadata.json").read_bytes(), metadata)
+
+    def test_search_index_includes_explicit_subjects_only_on_their_public_records(self):
+        base = self.records[0]
+        tagged = {**base, "subjects": ["Biologie", "Geografie"]}
+        legacy = {**base, "id": "legacy", "title": "Klasgesprek"}
+        hidden = {**base, "id": "not-reviewed", "subjects": ["Informatica"], "verificationStatus": "needs_review"}
+        self.write_data([tagged, legacy, hidden], [tagged, legacy])
+        generate(self.root)
+        entries = json.loads((self.root / "data/search-index.json").read_text(encoding="utf-8"))
+        self.assertEqual(entries, [
+            {"id": tagged["id"], "text": "AI-geletterdheid Gecontroleerde uitleg Biologie Geografie"},
+            {"id": legacy["id"], "text": "Klasgesprek Gecontroleerde uitleg"},
+        ])
 
     def test_empty_catalogue_cannot_be_published_even_with_matching_counts(self):
         self.write_data([])
