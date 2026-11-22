@@ -39234,5 +39234,552 @@
         "summary": "Afzonderlijke bronles uit de bestaande CRAFT-collectie toegevoegd met docentengids, discussieblad en Nederlandse lesstart."
       }
     ]
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "audiences": [
+      "Docenten",
+      "Onderwijsinstellingen",
+      "Professionals"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "open_call",
+    "callStatus": "open_call",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "applicationOpenDate": "2026-10-19",
+    "fundingMin": 10000,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "De doelgroep, aanvraagroute, bedragen en sluitingstijd zijn gecontroleerd bij de verstrekker."
+      }
+    ],
+    "id": "cultuureducatie-en-digitale-technologie-2026",
+    "title": "Cultuureducatie en digitale technologie — open oproep 2026",
+    "providerName": "Fonds voor Cultuurparticipatie",
+    "description": "Leerlingen kunnen met een cultureel professional en hun school bijvoorbeeld verhalen, muziek of beelden maken met AI en onderzoeken hoe de technologie hun keuzes beïnvloedt. De oproep ondersteunt cultuureducatie in Amsterdam, Friesland, Noord-Brabant en Caribisch Nederland.",
+    "purpose": "Leerlingen in het primair, voortgezet en gespecialiseerd onderwijs laten experimenteren met digitale technologie als onderdeel van een artistiek maakproces.",
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "availabilityText": "Indienen bij het Fonds van 19 oktober 2026 om 15.00 uur tot 16 december 2026 om 15.00 uur Nederlandse tijd. Op de sluitingsdag is dat 10.00 uur op Bonaire, Sint Eustatius en Saba. Het Fonds kan eerder sluiten bij grote overinschrijving.",
+    "applicationDeadlineAt": "2026-12-16T15:00:00+01:00",
+    "fundingDeadline": "2026-12-16",
+    "applicationDeadline": "2026-12-16",
+    "fundingAmount": "€ 10.000 tot € 25.000 per project, tot 100% van de projectkosten. Het subsidieplafond van de oproep is € 500.000.",
+    "fundingMax": 25000,
+    "totalBudget": 500000,
+    "eligibility": "Een culturele instelling of cultuurprofessional uit Amsterdam, Friesland, Noord-Brabant of Caribisch Nederland vraagt aan. Minstens één school en de regionale penvoerder van Cultuureducatie met Kwaliteit zijn samenwerkingspartners. Het project vindt plaats in een van deze regio’s. De regionale penvoerder kan zelf geen aanvraag doen. Bij grote overinschrijving kan het Fonds de oproep eerder sluiten.",
+    "applicantTypes": [
+      "Culturele instellingen",
+      "Cultuurprofessionals"
+    ],
+    "keywords": [
+      "cultuureducatie",
+      "creatief werken met AI",
+      "gespecialiseerd onderwijs",
+      "Caribisch Nederland",
+      "kunstonderwijs",
+      "VSO"
+    ],
+    "notes": "De ontwikkeling van een nieuwe app, tool of digitaal platform valt buiten de oproep.",
+    "verificationNote": "De oproeppagina noemt de open status, de regio’s, de culturele aanvragers en kunst maken met AI als voorbeeld. De Staatscourant bevestigt de indieningstermijn, het bedrag per project, het subsidieplafond en de mogelijkheid van eerdere sluiting.",
+    "sourceUrls": [
+      {
+        "label": "Fonds voor Cultuurparticipatie — oproep en aanvraagroute",
+        "url": "https://www.cultuurparticipatie.nl/subsidie/open-oproep-cultuureducatie-en-digitale-technologie/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Staatscourant — regeling en indieningstermijn",
+        "url": "https://zoek.officielebekendmakingen.nl/stcrt-2026-31942.html",
+        "sourceType": "official"
+      }
+    ]
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "audiences": [
+      "Docenten",
+      "Onderzoekers",
+      "Hogescholen"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Professionalisering"
+    ],
+    "status": "open_call",
+    "callStatus": "open_call",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "applicationOpenDate": null,
+    "fundingMin": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "De doelgroep, aanvraagroute, bedragen en sluitingstijd zijn gecontroleerd bij de verstrekker."
+      }
+    ],
+    "id": "sia-fellowships-docent-onderzoekers-januari-2027",
+    "title": "Fellowships voor docent-onderzoekers — januari 2027",
+    "providerName": "Regieorgaan SIA",
+    "description": "Een bekostigde hogeschool kan een docent of onderzoeker 12 tot 18 maanden vrijmaken voor verkennend praktijkgericht onderzoek. Een vraag over AI in de onderwijspraktijk kan passen als deze aansluit op de onderzoekseenheid en de opbrengst bruikbaar is voor onderwijs en beroepspraktijk.",
+    "purpose": "De onderzoeksvaardigheden van hbo-docenten en onderzoekers versterken en hun bevindingen laten doorwerken in onderwijs en beroepspraktijk.",
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "availabilityText": "De hogeschool kan vóór 12 januari 2027 om 14.00 uur Nederlandse tijd (CET) een aanvraag voor de beoogde fellow indienen.",
+    "fundingDeadline": "2027-01-12",
+    "applicationDeadline": "2027-01-12",
+    "applicationDeadlineAt": "2027-01-12T14:00:00+01:00",
+    "fundingAmount": "Maximaal € 50.000 per fellow. De hogeschool draagt minimaal 25% van de totale trajectkosten. Het rondebudget is € 2.000.000.",
+    "fundingMax": 50000,
+    "totalBudget": 2000000,
+    "eligibility": "De bekostigde hogeschool dient in onder verantwoordelijkheid van een lector en met een opleidingsmanager. De fellow werkt minstens twee jaar in het hbo en heeft voor het traject een aanstelling van minimaal 0,6 fte, waarvan minstens 0,4 fte als fellow. Promovendi en gepromoveerden vallen buiten de regeling. Bij de start resteert voor de fellow minstens vijf jaar tot de pensioengerechtigde leeftijd.",
+    "applicantTypes": [
+      "Bekostigde hogescholen"
+    ],
+    "keywords": [
+      "docent-onderzoeker",
+      "fellowship",
+      "hbo",
+      "praktijkgericht onderzoek"
+    ],
+    "notes": "De regeling is thematisch breed. De mogelijke toepassing op AI in het onderwijs is een duiding van de Atlas. SIA beoordeelt het onderzoeksvoorstel en de professionele ontwikkeling van de fellow.",
+    "verificationNote": "De SIA-rondepagina vermeldt dat aanvragen openstaat. De formele call bevestigt 12 januari 2027 vóór 14.00 uur CET, het rondebudget, het maximum per fellow en de eisen aan hogeschool en kandidaat.",
+    "sourceUrls": [
+      {
+        "label": "Regieorgaan SIA — aanvraagronde en voorwaarden",
+        "url": "https://regieorgaan-sia.nl/calls/fellowships-voor-docent-onderzoekers-januari-2027",
+        "sourceType": "official"
+      },
+      {
+        "label": "Regieorgaan SIA — formele oproep met deadline en budget (PDF)",
+        "url": "https://regieorgaan-sia.nl/sites/sia/files/media-files/call_for_proposals_fellowships_voor_docentonderzoekers_januari_2027.pdf",
+        "sourceType": "official"
+      }
+    ]
+  },
+  {
+    "id": "eit-stem-tech-talent-induction-2026",
+    "title": "EIT STEM Tech Talent 2026: introductietrajecten rond AI en techniek",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "EIT STEM Tech Talent Induction (28DIGITAL)",
+    "description": "Ontwikkel met een bedrijf een STEM-introductietraject dat leerlingen of studenten voorbereidt op verder leren en werken in techniek. AI kan het onderwerp van de lessen zijn of worden ingezet als hulpmiddel. De oproep legt de nadruk op beroepsonderwijs.",
+    "purpose": "Onderwijs en bedrijfsleven ontwikkelen trainingen rond een aantoonbare vaardigheidsvraag. EIT verwacht per project ten minste 1.200 deelnemers, met als doel 40% vrouwen en meisjes en 30% deelnemers uit EIT RIS-landen.",
+    "audiences": [
+      "Onderwijsinstellingen",
+      "MBO-docenten",
+      "Bedrijven",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "AI-geletterdheid",
+      "Curriculumontwikkeling"
+    ],
+    "status": "open_call",
+    "availabilityText": "Indienen van 14 oktober tot 14 december 2026 om 17.00 uur Nederlandse tijd.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-10-14",
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Oproep, voorwaarden en aanvraagformulier",
+        "url": "https://eitstemtalent.eu/calls-and-opportunities/now-open-eit-stem-talent-call-for-proposals-2026/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Officiële oproeptekst (pdf)",
+        "url": "https://eitstemtalent.eu/wp-content/uploads/gb/2026/10/call_for_proposals_2026.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Maximaal €80.000 per project voor vergoeding van subsidiabele werkelijke kosten. Totaal voor de ronde is €2 miljoen.",
+    "fundingDeadline": "2026-12-14",
+    "applicationOpenDate": "2026-10-14",
+    "applicationDeadline": "2026-12-14",
+    "fundingMin": null,
+    "fundingMax": 80000,
+    "totalBudget": 2000000,
+    "eligibility": "Een Nederlandse onderwijsaanbieder kan meedoen in een consortium van rechtspersonen. Minimaal één onderwijsaanbieder en één bedrijfs- of industriepartner moeten als begunstigden deelnemen. De doelgroep is vooral ISCED 3–5, met nadruk op beroepsonderwijs. Ook hoger onderwijs en volwasseneneducatie zijn mogelijk.",
+    "applicantTypes": [
+      "Onderwijsinstellingen",
+      "Bedrijven",
+      "Consortia"
+    ],
+    "callStatus": "open",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "EIT STEM Tech Talent",
+      "AI",
+      "STEM",
+      "techniek",
+      "beroepsonderwijs",
+      "bedrijf"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Aanvraagperiode, doelgroep, consortiumvoorwaarden en vergoeding gecontroleerd in de open EIT-oproep."
+      }
+    ],
+    "applicationDeadlineAt": "2026-12-14T17:00:00+01:00",
+    "verificationMethod": "agent_primary_source_review"
+  },
+  {
+    "id": "erasmus-teacher-academies-2027",
+    "title": "Erasmus+ Teacher Academies 2027",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europees Uitvoerend Agentschap onderwijs en cultuur (EACEA)",
+    "description": "Werk met Europese lerarenopleidingen, scholen en onderwijsautoriteiten aan de opleiding van leraren en schoolleiders. Een van de aandachtsgebieden is het kindgericht gebruik van digitale technologie en AI bij lesgeven en leren. Het Europese loket opent op 9 december 2026.",
+    "purpose": "Ontwikkel en beproef samen een aanpak voor de initiële lerarenopleiding en begeleiding van beginnende leraren of schoolleiders.",
+    "audiences": [
+      "Lerarenopleiders",
+      "Schoolleiders",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Professionalisering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "planned",
+    "availabilityText": "Indienen via het Europese portaal van 9 december 2026 tot 23 februari 2027 om 17.00 uur Nederlandse tijd.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-11-20",
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële oproep en indiening",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/erasmus-edu-2027-pex-teach-aca",
+        "sourceType": "official"
+      },
+      {
+        "label": "Programmagids 2027, onderdeel Erasmus+ Teacher Academies (pdf)",
+        "url": "https://erasmus-plus.ec.europa.eu/sites/default/files/2026-11/programme-guide-erasmus-27_en.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Fins nationaal agentschap — Engelstalige uitleg van de aanvraagronde",
+        "url": "https://www.oph.fi/en/funding/erasmus-higher-education-vocational-education-and-training-and-school-education-teacher-0",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "erasmus"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Maximaal €1,5 miljoen per project. Het rondebudget bedraagt €37,5 miljoen.",
+    "fundingDeadline": "2027-02-23",
+    "applicationOpenDate": "2026-12-09",
+    "applicationDeadline": "2027-02-23",
+    "fundingMin": null,
+    "fundingMax": 1500000,
+    "totalBudget": 37500000,
+    "eligibility": "Een hogeronderwijsinstelling met een initiële lerarenopleiding en Erasmus Charter for Higher Education coördineert. Vereist zijn minstens negen organisaties uit drie of meer EU- of geassocieerde landen. Ieder vertegenwoordigd land levert een dergelijke lerarenopleiding, een onderwijsautoriteit of coördinatieorgaan en een school.",
+    "applicantTypes": [
+      "Internationale consortia",
+      "Hogescholen",
+      "Universiteiten"
+    ],
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "ERASMUS-EDU-2027-PEX-TEACH-ACA",
+      "Erasmus+ Teacher Academies",
+      "lerarenopleiding",
+      "AI in de klas",
+      "professionalisering"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Specifieke openstelling en deadlines bevestigd in het EACEA-portaal. Samenstelling en projectmaximum gecontroleerd in de programmagids 2027."
+      }
+    ],
+    "applicationDeadlineAt": "2027-02-23T17:00:00+01:00",
+    "verificationMethod": "agent_primary_source_review"
+  },
+  {
+    "id": "horizon-ai-leeromgeving-basisonderwijs-2027",
+    "title": "HORIZON-CL2-2027-01-TRANSFO-05 — AI in de voorschool en het basisonderwijs",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie",
+    "description": "Onderzoek wat het gebruik van AI in de voorschool en het basisonderwijs betekent voor leerprestaties, welzijn en kansengelijkheid. Projecten leveren ook praktisch advies op voor leraren over verantwoord gebruik en het beoordelen van leerresultaten. De geplande openingsdatum is 13 mei 2027.",
+    "purpose": "Europese onderzoekers en onderwijspraktijk kunnen gezamenlijk onderbouwen welke AI-toepassingen jonge kinderen en hun leraren helpen en onder welke omstandigheden.",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen",
+      "Leraren",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "planned",
+    "availabilityText": "Geplande indiening van 13 mei tot 23 september 2027 om 17.00 uur Nederlandse tijd.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-12-12",
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële oproep en indiening",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/horizon-cl2-2027-01-transfo-05",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europese Commissie — officiële oproepgegevens, status en termijnen (JSON)",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/data/topicDetails/horizon-cl2-2027-01-transfo-05.json",
+        "sourceType": "official"
+      },
+      {
+        "label": "Werkprogramma, topic TRANSFO-05 (pdf)",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-5-culture-creativity-and-inclusive-society_horizon-2026-2027_en.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Algemene deelnamevoorwaarden, bijlage B (pdf)",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-15-general-annexes_horizon-2026-2027_en.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "horizon-europe"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Indicatieve EU-bijdrage van €3 tot €4 miljoen per project, bij een topicbudget van €12 miljoen. Het werkprogramma laat aanvragen voor een ander bedrag toe.",
+    "fundingDeadline": "2027-09-23",
+    "applicationOpenDate": "2027-05-13",
+    "applicationDeadline": "2027-09-23",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": 12000000,
+    "eligibility": "Nederlandse kennis- en onderwijsinstellingen kunnen deelnemen aan een internationaal onderzoeksconsortium. Voor deze Research and Innovation Action gelden de algemene voorwaarden voor Horizon Europe, waaronder ten minste drie onafhankelijke rechtspersonen in drie verschillende EU- of geassocieerde landen en minstens één deelnemer uit een EU-lidstaat.",
+    "applicantTypes": [
+      "Internationale consortia",
+      "Onderzoeksinstellingen",
+      "Onderwijsinstellingen"
+    ],
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "HORIZON-CL2-2027-01-TRANSFO-05",
+      "Horizon Europe",
+      "primair onderwijs",
+      "voorschool",
+      "AI",
+      "leerresultaten",
+      "welzijn"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Onderzoeksthema, indicatieve bijdrage en aanvraagdata gecontroleerd in het Europese portaal en bijbehorend werkprogramma."
+      }
+    ],
+    "applicationDeadlineAt": "2027-09-23T17:00:00+02:00",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Het werkprogramma en de officiële topicgegevens bevestigen de onderzoeksvraag, het rondebudget en de beoogde openstelling. De algemene bijlagen beschrijven de consortiumvoorwaarden."
+  },
+  {
+    "id": "erasmus-kleinschalige-samenwerkingsprojecten-onderwijs-2027",
+    "title": "Erasmus+ Small-scale partnerships 2027 — kleinschalige samenwerking (KA210)",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Nationaal Agentschap Erasmus+ Onderwijs & Training",
+    "description": "Een school of mbo-instelling kan met een onderwijsorganisatie in een ander programmaland een kleinschalig project opzetten. Een team kan bijvoorbeeld samen lesactiviteiten over AI-geletterdheid ontwikkelen. Het project moet aansluiten op een Erasmus+-prioriteit. De regeling staat ook open voor andere onderwijsthema’s. Het Nederlandse agentschap heeft de aanvraagformulieren aangekondigd.",
+    "purpose": "Kleinere organisaties laten samenwerken over de grens, ook als zij voor het eerst aan Erasmus+ meedoen.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "AI-geletterdheid"
+    ],
+    "status": "planned",
+    "availabilityText": "De ronde is aangekondigd. Het Nederlandse agentschap meldde op 19 november dat de aanvraagformulieren nog volgen. De eerste deadline voor onderwijsprojecten is 9 maart 2027 om 12.00 uur Nederlandse tijd.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-11-18",
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Europese Commissie – voorwaarden en subsidiebedragen KA210",
+        "url": "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/small-scale-partnerships",
+        "sourceType": "official"
+      },
+      {
+        "label": "Nationaal Agentschap – stand van de Nederlandse aanvraagformulieren",
+        "url": "https://www.erasmusplus.nl/actueel/nieuws/erasmus-programmagids-2027-gepubliceerd",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europese Commissie — Nederlandstalige programmagids Erasmus+ 2027 (PDF)",
+        "url": "https://erasmus-plus.ec.europa.eu/sites/default/files/2026-11/programme-guide-erasmus-27_nl.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": "Keuze uit twee vaste projectbedragen: € 30.000 of € 60.000.",
+    "fundingDeadline": "2027-03-09",
+    "applicationOpenDate": null,
+    "applicationDeadline": "2027-03-09",
+    "fundingMin": 30000,
+    "fundingMax": 60000,
+    "totalBudget": null,
+    "eligibility": "Minstens twee organisaties uit twee verschillende EU-lidstaten of met het programma geassocieerde landen. Een Nederlandse coördinator dient voor schoolonderwijs, beroepsonderwijs of volwasseneneducatie in bij het Nederlandse Nationaal Agentschap.",
+    "applicantTypes": [
+      "Scholen",
+      "Mbo-instellingen",
+      "Organisaties voor volwasseneneducatie"
+    ],
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "Erasmus+",
+      "KA210",
+      "kleinschalige partnerschappen",
+      "AI-geletterdheid",
+      "digitale transformatie",
+      "volwasseneneducatie"
+    ],
+    "notes": "Het genoemde AI-project is een mogelijke invulling door de Atlas. De programmagids 2027 noemt digitale technologie en AI bij de prioriteiten voor partnerschappen. Het agentschap bepaalt de ontvankelijkheid.",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Deadline, vaste bedragen, voorwaarden en stand van de Nederlandse aanvraagroute gecontroleerd bij het Nationaal Agentschap en de Europese Commissie."
+      }
+    ],
+    "applicationDeadlineAt": "2027-03-09T12:00:00+01:00",
+    "verificationNote": "De Europese actiepagina en programmagids 2027 bevestigen de thema-onafhankelijke voorwaarden, twee vaste subsidiebedragen en de sluiting op 9 maart om 12.00 uur (Brusselse tijd). Het Nederlandse agentschap publiceerde de oproep op 19 november 2026."
   }
 ]
