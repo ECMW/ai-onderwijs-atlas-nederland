@@ -300,6 +300,83 @@
       "decision": "rejected",
       "decidedAt": "2026-11-17T07:35:00Z",
       "reason": "De UNESCO-broncontrole meldt alleen een gewijzigde extractiestructuur en bevat geen verifieerbare wijziging van een specifiek canoniek record of nieuw zelfstandig materiaal."
+    },
+    {
+      "proposalId": "proposal-6f1495bcc97b6558",
+      "evidenceHash": "62657ceb7aa2db860d8fd94ffcc4599077a6eaf42eeb1baf9ba7fc2e222b969a",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T07:40:00Z",
+      "reason": "De SURF-call vraagt voorstellen voor een evenement en biedt geen zelfstandig lesmateriaal, training, handreiking of ander concreet Atlas-aanbod."
+    },
+    {
+      "proposalId": "proposal-aa6008b660d8c38b",
+      "evidenceHash": "5a8f5f7724b9a56c12adf42472732c20df4ef9dbb0091dac40c654b7e9836af9",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T07:40:00Z",
+      "reason": "Het verdwijnsignaal betreft een losse SURF-praktijkbeschouwing over Perusall zonder aantoonbaar AI-onderwijsaanbod of gekoppeld canoniek record."
+    },
+    {
+      "proposalId": "proposal-c7d616b9fbd6601b",
+      "evidenceHash": "b1c8c5729ff23c577cd663983da4f951adfad2b129441b190df7e5689eb78e97",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T07:40:00Z",
+      "reason": "De verdwenen navigatielink naar een bibliotheekwerkgroep is geen zelfstandig AI-onderwijsaanbod en koppelt niet aan een canoniek Atlas-record."
+    },
+    {
+      "proposalId": "proposal-169b58190a5edb10",
+      "evidenceHash": "bde4d5bd599c734224a9a664d9790af8d279ee2172602b1a16fc3556db3a696e",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T07:40:00Z",
+      "reason": "Dit is een roterende CPB-contactformulier-URL en geen inhoudelijke bron of zelfstandig onderwijsaanbod."
+    },
+    {
+      "proposalId": "proposal-27a4faff58fce66c",
+      "evidenceHash": "7246cb2c97f91c7e9a337112c30774d1f3d6684634b2b4d58119f31d895ac61e",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T07:40:00Z",
+      "reason": "Dit is een roterende CPB-contactformulier-URL en geen inhoudelijke bron of zelfstandig onderwijsaanbod."
+    },
+    {
+      "proposalId": "proposal-341de78b952a2d74",
+      "evidenceHash": "aa877b4c1198f575e05669c03b3f30e6c858b8f27dff89ec3591db3bb4c3e453",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T07:40:00Z",
+      "reason": "Dit is een roterende CPB-contactformulier-URL en geen inhoudelijke bron of zelfstandig onderwijsaanbod."
+    },
+    {
+      "proposalId": "proposal-7399fe4da1a1e1e0",
+      "evidenceHash": "63147efb0bd9244e182c32dd1a1f99de5c3fe284d4b508c915b859cc48a8f14a",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T07:40:00Z",
+      "reason": "Dit is een roterende CPB-contactformulier-URL en geen inhoudelijke bron of zelfstandig onderwijsaanbod."
+    },
+    {
+      "proposalId": "proposal-8435d4e410c870ad",
+      "evidenceHash": "66ae478b0e305b66993f779837d8a0b0cae2ed166e2392ed8d290ee84a4c685d",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T07:40:00Z",
+      "reason": "Dit is een roterende CPB-contactformulier-URL en geen inhoudelijke bron of zelfstandig onderwijsaanbod."
+    },
+    {
+      "proposalId": "proposal-aa1da10e06a474c5",
+      "evidenceHash": "2125c956b178e17844aeb5cc65964d3026fa9961164864d6760f50233d14fe3d",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T07:40:00Z",
+      "reason": "Dit is een roterende CPB-contactformulier-URL en geen inhoudelijke bron of zelfstandig onderwijsaanbod."
+    },
+    {
+      "proposalId": "proposal-ac88221e45c16a4b",
+      "evidenceHash": "2f14f88709332214c4210ed1e6229a1519d7e5db284b2ec23359f0c2ea2630c2",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T07:40:00Z",
+      "reason": "Dit is een roterende CPB-contactformulier-URL en geen inhoudelijke bron of zelfstandig onderwijsaanbod."
+    },
+    {
+      "proposalId": "proposal-dde337c77b75502f",
+      "evidenceHash": "8a29b474e961f44746eb737f887dc504484bfcabbfe9d5e410dae768cca09850",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T07:40:00Z",
+      "reason": "Dit is een roterende CPB-contactformulier-URL en geen inhoudelijke bron of zelfstandig onderwijsaanbod."
     }
   ]
 }
