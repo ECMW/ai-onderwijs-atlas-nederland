@@ -4902,7 +4902,7 @@
       "org-regieorgaan-sia"
     ],
     "providerName": "Regieorgaan SIA",
-    "description": "Open KIEM-ronde voor praktijkgericht onderzoek naar testbare bestaande AI-toepassingen in organisaties.",
+    "description": "Gesloten subsidieronde voor praktijkgericht onderzoek naar bestaande, testbare AI-toepassingen die arbeid kunnen besparen in organisaties.",
     "purpose": "Kortlopend praktijkgericht onderzoek naar arbeidsbesparende AI stimuleren",
     "audiences": [
       "Hogescholen",
@@ -4924,7 +4924,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-11-07",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -4965,7 +4965,7 @@
     ],
     "notes": "De regeling vereist minimaal twee praktijkpartners, waaronder minimaal één in Nederland gevestigde mkb-onderneming, en 25% cofinanciering door de praktijkpartners.",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "Gerichte actualiteitscontrole op 7 november 2026: de officiële Regieorgaan SIA-call toont de status Gesloten en bevestigt de sluiting op 15 september 2026 om 14.00 uur CEST. Bedragen en deelnamevoorwaarden zijn ongewijzigd.",
+    "verificationNote": "Regieorgaan SIA bevestigt dat de ronde op 15 september 2026 om 14.00 uur CEST sloot. De beschrijving is in overeenstemming gebracht met de geregistreerde sluitingsdatum en status.",
     "changeHistory": [
       {
         "date": "2026-07-12",
@@ -4981,6 +4981,11 @@
         "date": "2026-11-07",
         "type": "updated",
         "summary": "Status gesloten verwerkt na controle van de actuele officiële SIA-call."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Regieorgaan SIA bevestigt dat de ronde op 15 september 2026 om 14.00 uur CEST sloot. De beschrijving is in overeenstemming gebracht met de geregistreerde sluitingsdatum en status."
       }
     ]
   },
@@ -21221,16 +21226,16 @@
       "Lesgeven en leren met AI"
     ],
     "status": "planned",
-    "availabilityText": "Gratis webinars vanaf 17 september 2026; meerdere vervolgdata gepubliceerd",
+    "availabilityText": "Komende webinars op 14 januari, 11 maart en 13 mei 2027. De bijeenkomst op 14 januari is online van 15.30 tot 16.30 uur.",
     "startDate": "2026-09-17",
     "endDate": "2027-05-13",
     "publicationDate": null,
-    "lastVerified": "2026-08-28",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
-        "url": "https://www.ru.nl/over-ons/agenda/nolai-webinar-algemene-en-educatieve-ai",
+        "label": "Radboud Universiteit: webinar van 14 januari en vervolgdata",
+        "url": "https://www.ru.nl/over-ons/agenda/nolai-webinar-algemene-en-educatieve-ai-1",
         "sourceType": "official"
       }
     ],
@@ -21267,8 +21272,15 @@
         "date": "2026-08-28",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 6."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "De officiële agendapagina van 14 januari 2027 bevestigt het tijdstip en de vervolgdata in maart en mei. De bronknop verwijst naar deze editie."
       }
-    ]
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële agendapagina van 14 januari 2027 bevestigt het tijdstip en de vervolgdata in maart en mei. De bronknop verwijst naar deze editie."
   },
   {
     "id": "edusources-open-leermaterialen",
@@ -24847,10 +24859,10 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": "2026-09-08",
-    "lastVerified": "2026-09-11",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "De officiële CPB-publicatiepagina, de gekoppelde handreiking en de infographic zijn gecontroleerd op titel, aanbieder, publicatiedatum, functie, aanbevelingen en publieke beschikbaarheid.",
+    "verificationNote": "De CPB-publicatiepagina, de volledige handreiking en de infographic zijn rechtstreeks geopend. Beide PDF-links op de publicatiepagina komen overeen met de geregistreerde bronnen. De documenten zijn op titel en inhoud gecontroleerd.",
     "sourceUrls": [
       {
         "label": "CPB: publicatiepagina",
@@ -24910,6 +24922,11 @@
         "date": "2026-09-11",
         "type": "added",
         "summary": "Toegevoegd na inhoudelijke controle van de officiële CPB-publicatie, PDF en infographic en na duplicaatcontrole."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "De CPB-publicatiepagina, de volledige handreiking en de infographic zijn rechtstreeks geopend. Beide PDF-links op de publicatiepagina komen overeen met de geregistreerde bronnen. De documenten zijn op titel en inhoud gecontroleerd."
       }
     ],
     "offerCategory": "knowledge"

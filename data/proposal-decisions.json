@@ -377,6 +377,132 @@
       "decision": "rejected",
       "decidedAt": "2026-11-22T07:40:00Z",
       "reason": "Dit is een roterende CPB-contactformulier-URL en geen inhoudelijke bron of zelfstandig onderwijsaanbod."
+    },
+    {
+      "proposalId": "proposal-86865d2e8df94c25",
+      "evidenceHash": "a967d4e14d89f76582d889d912609b259c33573e67e26175a0b170a097725635",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "De geregistreerde SURF-detailpagina over de Rotterdamse pilot is bereikbaar en beschrijft het project."
+    },
+    {
+      "proposalId": "proposal-7222214eec4d6aac",
+      "evidenceHash": "b685cb1428a92b35494588367a926043c59c4a23b65289d2e52f67596c63756d",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "De workshop van 25 september is al gearchiveerd. Npuls bevestigt de datum en de SURF-publicatie is bereikbaar."
+    },
+    {
+      "proposalId": "proposal-e4238e02a4a8ac69",
+      "evidenceHash": "f741ced2aedae1d0c458b20d41395fcf9d4f1d8d9860f8945c64ab0579c86870",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "Een verstreken editielink komt op de algemene agenda uit. Radboud bevestigt de vervolgdata voor 2027."
+    },
+    {
+      "proposalId": "proposal-835c9f33b8f6dc5d",
+      "evidenceHash": "0dc606a899432fdbca3177b542114d1c0f8f0b07cd9628c36837f9352453c63e",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "Npuls bevestigt de reeds gearchiveerde workshop van 25 september. De SURF-publicatie is bereikbaar."
+    },
+    {
+      "proposalId": "proposal-247dc7d07c65df07",
+      "evidenceHash": "a7a544d6fb3b571b5c0df82cd601efe8e28e6b658e91bce183bd068b37eda2f0",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "De oude oproep is vervangen door een gesloten oproep. De publieke projectkaart bundelt beide gesloten partnerrollen met actuele bronnen."
+    },
+    {
+      "proposalId": "proposal-e1b119f1b111cfc6",
+      "evidenceHash": "7ba5070b2bad659b56d0b713282fc1809d23a1dca60c9056459def15db5e191d",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "De oude ontwikkelpartnerkaart verwijst door naar het gebundelde, gesloten project. Radboud publiceert de gesloten oproep."
+    },
+    {
+      "proposalId": "proposal-3ac4620aab9108a6",
+      "evidenceHash": "64233a4636ad88fe3e87db3d3e3311c5bf6dcac89a369aae96ad1d611a070519",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "De gemelde detailpagina beschrijft het webinar op 14 januari 2027 en noemt vervolgdata."
+    },
+    {
+      "proposalId": "proposal-c6ffe76985bf8105",
+      "evidenceHash": "78a39c437acb5672ef01fda268063af3ffdc250fea1ac3ed9ef6edc86bce46e1",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "De officiële gesloten onderzoeksoproep is bereikbaar en correct gekoppeld aan de gebundelde publieke kaart."
+    },
+    {
+      "proposalId": "proposal-3210c4246cb2fff4",
+      "evidenceHash": "b1c3c48497564246d923f56ecb9f2aed1db781703986f6ff31da91508a1646f8",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "De officiële gesloten ontwikkeloproep is bereikbaar en correct gekoppeld aan de gebundelde publieke kaart."
+    },
+    {
+      "proposalId": "proposal-4fa6a09b85b3d759",
+      "evidenceHash": "648fd6a66557f44374936b0cd0d859b02afb91bfddd6feae4ac5467e3ea46b95",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "De reeds gearchiveerde workshop is bevestigd op de officiële Npuls-agenda en de SURF-publicatie is bereikbaar."
+    },
+    {
+      "proposalId": "proposal-4863b242088e55d8",
+      "evidenceHash": "c206328a63d0bdb77912b3a91292c5e281a874d247996f3b5cfccf7b77e2569b",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "De workshop heeft al de juiste archiefstatus. Zowel de officiële Npuls-agenda als het SURF-bericht is bereikbaar."
+    },
+    {
+      "proposalId": "proposal-7515ace447bb1111",
+      "evidenceHash": "0f2985e64b238d453421a4bfca316cc2cf5c58b5cd68520158c78dd2b3bb0633",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "De geregistreerde SURF-communitypagina is bereikbaar en toont de community AI in Education."
+    },
+    {
+      "proposalId": "proposal-676db5e19f0bbcd8",
+      "evidenceHash": "c09aa88ae8d780bdfdbede38be7888b1b542f4067758629b672cf89b7a3a6009",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "De geregistreerde CPB-publicatiepagina en beide PDF-bestanden zijn rechtstreeks opgehaald en inhoudelijk herkend."
+    },
+    {
+      "proposalId": "proposal-1a257dd2a346c5b5",
+      "evidenceHash": "a1920e48cda732ca76dfce7b2a59648ff7504348eb4c4c54d29165393249851b",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "Kennisnet publiceert het raamwerk en de toolkit op de geregistreerde inhoudelijke pagina."
+    },
+    {
+      "proposalId": "proposal-e672cdc1e20aba07",
+      "evidenceHash": "80a75f570daab644fa3501b24166cef15d76b75e11d01431d06e80c72d732063",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "Het overzicht toont twee gesloten calls uit 2025. Het voorstel bevat geen gekoppeld Atlas-record of gewijzigde actuele indieningstermijn."
+    },
+    {
+      "proposalId": "proposal-021b66b1a2b215b6",
+      "evidenceHash": "00901e519a9f4567d0470747631d964da0d64e75b455579124f32d6b7afbba0d",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "De workshop is al gearchiveerd en de officiële Npuls-agenda en het SURF-bericht bevestigen de bijeenkomst."
+    },
+    {
+      "proposalId": "proposal-faa0c50127b533e8",
+      "evidenceHash": "c6e4c87c1fa36c3f39a46edbd20de00cd40705ecc89dcffd112e53754a957ece",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "De geregistreerde SIA-bron bevestigt de gesloten ronde en deadline. De verdwenen link uit het NWO-overzicht rechtvaardigt geen archivering."
+    },
+    {
+      "proposalId": "proposal-33581fbce9a38678",
+      "evidenceHash": "16c846bc734a25a3a979b0e98d6537cc0486b0ce076000e96b9677b58c1b34f1",
+      "decision": "rejected",
+      "decidedAt": "2026-11-22T10:46:11Z",
+      "reason": "Het overzicht wisselt tussen gesloten calls uit 2025. Er is geen gekoppeld Atlas-record of onderbouwde termijnwijziging."
     }
   ]
 }
