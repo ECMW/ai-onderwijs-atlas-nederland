@@ -10,7 +10,8 @@ const afterPilot = '2026-12-20T00:00:00+01:00';
 function run({ site = 'atlas-test', href = 'https://aionderwijsatlas.nl/', now = afterPilot,
   navigator = {}, status = 'ready', blocked = false, embedded = false, prerendering = false,
   directory = false, directoryLinks = [], records = [], empty = false, visibilityState = 'visible', referrer = 'https://private.example/?secret=PRIVATE',
-  navigation = {type:'navigate',loadEventStart:500}, fetchSupported = true, detail = null, hits = false } = {}) {
+  navigation = {type:'navigate',loadEventStart:500}, fetchSupported = true, detail = null, hits = false,
+  footerDisclosure = true } = {}) {
   const requests = [], notices = [], listeners = [];
   const dom = {directory,empty,detail,hits};
   let time = Date.parse(now);
@@ -25,7 +26,11 @@ function run({ site = 'atlas-test', href = 'https://aionderwijsatlas.nl/', now =
       querySelectorAll: selector => selector.includes('article a[data-atlas-item-id]') ? directoryLinks : [],
       querySelector: selector => {
         if (selector.startsWith('meta')) return {content:site};
-        if (selector === 'body > footer') return {append:item => notices.push(item)};
+        if (selector === '[data-footer-notes]' && footerDisclosure) return {append:item => notices.push(item)};
+        if (selector === 'body > footer') return {append:item => {
+          assert.ok(!footerDisclosure, 'Keep the notice inside the disclosure when it is present');
+          notices.push(item);
+        }};
         if (selector === 'main[data-atlas-lesson-directory]') return dom.directory && {};
         if (selector === '[data-atlas-search-hits]') return dom.hits ? {} : null;
         if (selector === '[data-atlas-material-detail]') return dom.detail;
@@ -99,6 +104,12 @@ test('local copies, other sites, opt-outs, automated visits and failed startups 
     { navigator: { webdriver: true } }, { status: 'failed' },
     { embedded: true }, { prerendering: true }
   ]) assert.equal(run(overrides).requests.length, 0, JSON.stringify(overrides));
+});
+
+test('an older cached page without the footer disclosure still shows its privacy notice', () => {
+  const app = run({footerDisclosure:false, now:pilot});
+  assert.equal(app.notices.length, 1);
+  assert.match(app.notices[0].textContent, /19 december 2026/);
 });
 
 test('a blocked analytics service does not break Atlas startup or navigation', async () => {
