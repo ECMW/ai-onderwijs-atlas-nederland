@@ -525,7 +525,8 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
 .picked-actions [hidden], .picked-actions[hidden], .compare-page [hidden] { display: none !important; }
 .picked-actions { margin: .8rem 0; }
 .picked-actions span { font-size: .93rem; }
-.offer-links [data-inline-compare] { white-space: normal; }
+.offer-links [data-inline-picks] { flex-basis: 100%; margin: 0; }
+.offer-links [data-inline-picks] .btn { white-space: normal; }
 .compare-page { max-width: 76rem; margin: auto; padding: 1.2rem clamp(.9rem, 4vw, 2.5rem) 3rem; }
 .compare-page > header { margin: 1.1rem 0 1.35rem; }
 .compare-page h1 { font-size: clamp(1.9rem, 4vw, 3rem); margin: 0 0 .4rem; }

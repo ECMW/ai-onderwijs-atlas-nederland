@@ -181,8 +181,50 @@
     const view = window.history?.state?.atlasResults;
     return view?.route === (location.hash || '#home') ? view : {};
   }
+  function isResultRoute(route) {
+    return /^#(?:home|zoeken|organisaties)(?:\?|$)/.test(route);
+  }
+  function resultFocusTarget(container, focusId, focusControl) {
+    if (!focusId) return null;
+    const control = focusControl === 'pick' ? '[data-sheet-pick]'
+      : focusControl === 'details' ? '.offer-secondary-actions a[href^="#item/"]' : 'h2 a';
+    return container.querySelector(`[data-record-id="${CSS.escape(focusId)}"] ${control}`);
+  }
   function saveResultView(view) {
     window.history?.replaceState?.({ ...window.history.state, atlasResults: { ...view, route: location.hash || '#home' } }, '');
+  }
+  function restoreCardFocus(target, y) {
+    target?.focus({preventScroll: true});
+    requestAnimationFrame(() => {
+      if (target && !main.contains(target)) return;
+      if (target && document.activeElement !== target) {
+        if (document.activeElement !== main && document.activeElement !== document.body) return;
+        target.focus({preventScroll: true});
+      }
+      scrollTo({top: y || 0, behavior: 'instant'});
+      if (!target) return;
+      const rect = target.getBoundingClientRect();
+      const headerBottom = document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0;
+      if (rect.top < headerBottom || rect.bottom > window.innerHeight) {
+        const freeSpace = Math.max(0, window.innerHeight - headerBottom - rect.height);
+        scrollBy({top: rect.top - headerBottom - freeSpace / 2, behavior: 'instant'});
+      }
+    });
+  }
+  function saveReturnView(view, route = location.hash || '#home') {
+    saveResultView(view);
+    sessionSet('atlas.returnView', JSON.stringify({...view, route}));
+    sessionSet('atlas.lastSearch', route);
+  }
+  function restoreReturnView() {
+    const route = sessionGet('atlas.restoreResults');
+    if (!route || route !== (location.hash || '#home')) return false;
+    sessionSet('atlas.restoreResults', '');
+    try {
+      const view = JSON.parse(sessionGet('atlas.returnView'));
+      if (view?.route === route) saveResultView(view);
+    } catch { /* Older visits can have a scroll position without a card. */ }
+    return true;
   }
   function resultListMarkup() {
     const shown = Math.min(resultRecords.length, Math.max(RESULT_BATCH, Number(resultView().shown) || 0));
@@ -383,7 +425,9 @@
       .forEach(key => state[key] = params.get(key) || '');
     state.vak = filterValues('vak', state.vak).join(',');
     if (!state.audience && params.get('aud')) state.audience = params.get('aud');
-    if (params.get('cat')) state.type = params.get('cat').split(',').map(value => TYPE_LABELS[value] || value).join(',');
+    // Earlier dashboard links used the record type under either parameter name.
+    const types = params.get('cat') || state.type;
+    state.type = types.split(',').map(value => Object.hasOwn(TYPE_LABELS, value) ? TYPE_LABELS[value] : value).join(',');
     // Retired freshness links still open the catalogue, without a misleading filter.
     if (params.get('all') === '1' || (params.has('freshness') && !hasIntent())) state.all = '1';
   }
@@ -480,22 +524,24 @@
   function addedDate(record) {
     // The first documented addition is distinct from later checks or edits.
     return (record.changeHistory || []).filter(change => change.type === 'added')
-      .map(change => publicationDate({ publicationDate: change.date })).filter(Boolean).sort()[0] || '';
+      .map(change => validDate(change.date)).filter(Boolean).sort()[0] || '';
   }
-  function newestRecords(mode = 'added') {
-    const date = mode === 'published' ? publicationDate : addedDate;
-    return records.filter(record => date(record)).sort((a, b) =>
-      date(b).localeCompare(date(a)) || a.title.localeCompare(b.title, 'nl') || a.id.localeCompare(b.id));
+  function datedOffers(mode) {
+    const dateOf = mode === 'published' ? publicationDate : addedDate;
+    return records.map(record => ({record, date: dateOf(record)}))
+      .filter(entry => entry.date)
+      .sort((a, b) => b.date.localeCompare(a.date) || a.record.title.localeCompare(b.record.title, 'nl') ||
+        a.record.id.localeCompare(b.record.id));
   }
   function newOffersMarkup(mode = 'added', requestedPage = 1) {
     mode = mode === 'published' ? 'published' : 'added';
-    const published = mode === 'published', date = published ? publicationDate : addedDate;
-    const sorted = newestRecords(mode), batches = [];
+    const published = mode === 'published';
+    const sorted = datedOffers(mode), batches = [];
     // Keep a day's additions together, including large imports. An arbitrary
     // card limit must not hide part of the latest batch behind the next page.
     for (let start = 0; start < sorted.length;) {
       let end = Math.min(start + 24, sorted.length);
-      while (end < sorted.length && date(sorted[end]) === date(sorted[end - 1])) end++;
+      while (end < sorted.length && sorted[end].date === sorted[end - 1].date) end++;
       batches.push(sorted.slice(start, end));
       start = end;
     }
@@ -503,7 +549,7 @@
     const page = Math.min(pages, Math.max(1, Number.isSafeInteger(requestedPage) ? requestedPage : 1));
     const shown = batches[page - 1] || [], unknown = records.length - sorted.length;
     const href = number => `#nieuw?volgorde=${mode}&pagina=${number}`;
-    const label = published ? 'Gepubliceerd op' : 'Toegevoegd aan de Atlas op';
+    const label = published ? 'Gepubliceerd op' : 'Toegevoegd';
     const modeChoice = (value, title) => value === mode
       ? `<span aria-current="page">${title}</span>`
       : `<a href="#nieuw?volgorde=${value}">${title}</a>`;
@@ -516,13 +562,26 @@
         <p>${published ? 'De nieuwste publicatie bij de aanbieder staat bovenaan.' : 'De nieuwste toevoeging aan de Atlas staat bovenaan. Het aanbod zelf kan al langer bestaan.'} Een latere broncontrole verandert deze volgorde niet. Vermeldingen met dezelfde datum blijven op één pagina.</p>
         <p>${sorted.length} ${sorted.length === 1 ? 'vermelding heeft' : 'vermeldingen hebben'} een bekende ${published ? 'publicatiedatum' : 'toevoegdatum'}.${unknown ? ` Bij ${unknown === 1 ? 'één vermelding' : `${unknown} vermeldingen`} ontbreekt deze datum. U vindt ${unknown === 1 ? 'die vermelding' : 'deze vermeldingen'} bij <a href="#zoeken?all=1">al het aanbod</a>.` : ''}</p>
       </details>
-      <div class="result-list">${shown.length ? shown.map(record => simpleCard(record, false, { date: date(record), label })).join('') : '<div class="empty"><p>Er zijn nog geen vermeldingen met deze datum vastgelegd.</p><a href="#zoeken?all=1">Bekijk al het aanbod</a></div>'}</div>
+      <div class="result-list">${shown.length ? shown.map(({record, date}) => simpleCard(record, false, {date, label})).join('') : '<div class="empty"><p>Er zijn nog geen vermeldingen met deze datum vastgelegd.</p><a href="#zoeken?all=1">Bekijk al het aanbod</a></div>'}</div>
       ${pages > 1 ? `<nav class="new-offers-pagination" aria-label="Meer nieuwe bijdragen">${page > 1 ? `<a class="btn secondary" href="${href(page - 1)}">Vorige</a>` : ''}<span>Pagina ${page} van ${pages}</span>${page < pages ? `<a class="btn secondary" href="${href(page + 1)}">Volgende</a>` : ''}</nav>` : ''}</section>`;
   }
   function renderNewOffers() {
     const params = new URLSearchParams(location.hash.split('?')[1] || '');
     sessionSet('atlas.lastSearch', location.hash);
     main.innerHTML = newOffersMarkup(params.get('volgorde'), Number(params.get('pagina') || 1));
+    main.querySelectorAll('.result-card a[href^="#item/"]').forEach(link => {
+      link.onclick = () => saveReturnView({
+        focusId: link.closest('[data-record-id]').dataset.recordId,
+        focusControl: link.closest('h2') ? 'title' : 'details',
+        y: scrollY
+      });
+    });
+    restoreReturnView();
+    const view = resultView();
+    const target = resultFocusTarget(main, view.focusId, view.focusControl);
+    if (!target) return false;
+    restoreCardFocus(target, view.y);
+    return true;
   }
 
   function paperUrl(value) {
@@ -1099,8 +1158,67 @@
     return practicalDateRows(record, markup).map(parts => parts.filter(Boolean).join(' ')).join(' · ');
   }
   function cardFact(label, valueHtml) {
-    return `<dt>${escapeHtml(label)}</dt><dd>${valueHtml}</dd>`;
+    return `<div><dt>${escapeHtml(label)}</dt><dd>${valueHtml}</dd></div>`;
   }
+  let factDialog;
+  let factOpener;
+  function readFact(button) {
+    const value = button.parentElement, label = value.previousElementSibling.textContent;
+    if (!factDialog) {
+      factDialog = document.createElement('dialog');
+      factDialog.className = 'fact-dialog';
+      factDialog.setAttribute('aria-labelledby', 'full-fact-label');
+      factDialog.setAttribute('aria-describedby', 'full-fact-value');
+      factDialog.innerHTML = '<h2 id="full-fact-label"></h2><p id="full-fact-value"></p><form method="dialog"><button class="btn secondary" autofocus>Sluiten</button></form>';
+      document.body.append(factDialog);
+      factDialog.onclick = event => {
+        if (event.target !== factDialog) return;
+        const {top, bottom, left, right} = factDialog.getBoundingClientRect();
+        if (event.clientY < top || event.clientY > bottom || event.clientX < left || event.clientX > right) factDialog.close();
+      };
+      factDialog.onclose = () => {
+        const opener = factOpener;
+        factOpener = null;
+        if (opener?.isConnected) {
+          opener.focus({preventScroll:true});
+          syncFactDisclosure(opener.parentElement.parentElement);
+        }
+      };
+    }
+    const sectors = [...value.querySelectorAll('.sector-chips span')];
+    factDialog.querySelector('h2').textContent = label;
+    factDialog.querySelector('p').textContent = sectors.length ? sectors.map(chip => chip.textContent).join(', ') : value.textContent;
+    factOpener = button;
+    factDialog.showModal();
+  }
+  function syncFactDisclosure(group) {
+    const [label, value] = group.children;
+    const button = value.querySelector('.fact-disclosure');
+    const clipped = label.scrollWidth > label.clientWidth || value.scrollWidth > value.clientWidth;
+    if (clipped && !button) {
+      const open = document.createElement('button');
+      open.type = 'button';
+      open.className = 'fact-disclosure';
+      open.setAttribute('aria-label', `Lees het volledige kenmerk: ${label.textContent}`);
+      open.setAttribute('aria-haspopup', 'dialog');
+      open.onclick = () => readFact(open);
+      value.append(open);
+    } else if (!clipped && button && button !== factOpener) {
+      if (button === document.activeElement) group.closest('.result-card')?.querySelector('h2 a')?.focus({preventScroll:true});
+      button.remove();
+    }
+  }
+  const factResize = window.ResizeObserver && window.HTMLDialogElement?.prototype.showModal
+    ? new window.ResizeObserver(entries => entries.forEach(({target}) => [...target.children].forEach(syncFactDisclosure))) : null;
+  function observeCardFacts() {
+    if (!factResize) return;
+    factResize.disconnect();
+    main.querySelectorAll('.offer-facts').forEach(list => {
+      list.classList.add('single-line-facts');
+      factResize.observe(list);
+    });
+  }
+  document.fonts?.addEventListener('loadingdone', observeCardFacts);
   function simpleCard(record, showPublicationDate = false, recency = null) {
     const sectors = (record.sectors || []).filter(sector => sector !== 'VSO');
     const sourceItem = primarySource(record);
@@ -1113,7 +1231,7 @@
     let dateFact = '';
     if (recency || (showPublicationDate && (state.sort === 'added' || isPublicationSort()))) {
       const added = state.sort === 'added';
-      const label = recency?.label || (added ? 'Toegevoegd aan de Atlas op' : 'Verschenen op');
+      const label = recency?.label || (added ? 'Toegevoegd' : 'Verschenen op');
       const date = recency?.date || (added ? addedDate(record) : publicationDate(record));
       dateFact = cardFact(label, date ? `<time datetime="${escapeHtml(date)}">${escapeHtml(dateLabel(date))}</time>` :
         (added ? 'Toevoegdatum onbekend' : 'Publicatiedatum onbekend'));
@@ -2168,6 +2286,33 @@
     action: 'Pas mijn toetsvraag aan',
     href: '#toetsafspraak?start=eigen'
   };
+  function emptyQueryActions() {
+    if (!state.q?.trim()) return '';
+    const count = activeFilters(state).length ? recordsForCriteria({...state, q: ''}).length : 0;
+    return `<p><button class="btn secondary" type="button" data-edit-query>Zoekterm aanpassen</button>
+      ${count ? `<button class="btn secondary" type="button" data-clear-query>Toon ${count} ${count === 1 ? 'resultaat' : 'resultaten'} zonder zoekterm</button>` : ''}</p>`;
+  }
+  function emptyResultsMarkup(routes) {
+    const actions = emptyQueryActions();
+    if (isFundingSelection()) {
+      return `<div class="empty"><h2>${state.status === STATUS_LABELS.open_call ? 'Geen open oproepen bij deze selectie' : 'Geen subsidies of calls bij deze selectie'}</h2>
+        <p>Kijk bij een andere aanvraagstatus of verruim uw filters.</p>${actions}
+        ${state.status ? `<a href="${escapeHtml(stateHref({ status: '' }))}">Bekijk alle aanvraagstatussen binnen deze selectie</a>` : `<a href="${escapeHtml(criteriaHref({ sector: state.sector }))}">Bekijk ander aanbod${state.sector ? ' in deze sectorselectie' : ''}</a>`}</div>`;
+    }
+    const alternative = routes.length ? null : alternativeSuggestion();
+    const relaxations = relaxationSuggestions();
+    return `<div class="empty"><span class="eyebrow">Geen exacte match</span><h2>We helpen u verder</h2>
+      ${alternative ? `<a class="alternative" href="${escapeHtml(stateHref({ q: alternative.candidate }))}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` :
+        `<p>${state.q ? 'Uw zoekopdracht levert binnen deze selectie geen resultaten op.' : 'Er is geen aanbod met deze combinatie van filters.'}</p>`}
+      ${actions}
+      ${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${escapeHtml(stateHref({ [item.key]: '' }))}">Zonder ${escapeHtml(item.values.join(' of '))} <strong>${item.count}</strong></a>`).join('')}</div>` : ''}
+      <button class="clear-link" type="button">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`;
+  }
+  function pickedActionLinks(scope) {
+    return `<a class="btn" data-${scope}-compare href="${escapeHtml(selectedHref('vergelijken'))}" ${sheetPicks.size >= 2 ? '' : 'hidden'}>Vergelijk mijn keuzes (${sheetPicks.size})</a>
+      <a class="btn secondary" data-${scope}-sheet href="${escapeHtml(selectedHref('overlegblad'))}" ${sheetPicks.size ? '' : 'hidden'}>Open mijn overlegblad (${sheetPicks.size})</a>
+      <span ${sheetPicks.size === 1 ? '' : 'hidden'}>Kies nog een vermelding om te vergelijken.</span>`;
+  }
   function resultsMarkup() {
     resultRecords = sortRecords(recordsForCriteria(state));
     const chips = [
@@ -2178,8 +2323,6 @@
     const routes = teacherRoutes(state.q, state);
     const routeGuide = routes.length ? `<section class="selection-guidance teacher-routes" aria-label="Verder met uw vraag"><h2>Verder met uw vraag</h2>
       <ul>${routes.map(item => `<li><a data-question-route href="${escapeHtml(item.href)}">${escapeHtml(item.label)}</a><span>${escapeHtml(item.meta)}</span></li>`).join('')}</ul></section>` : '';
-    const alternative = routes.length ? null : alternativeSuggestion();
-    const relaxations = resultRecords.length ? [] : relaxationSuggestions();
     const heading = `${resultRecords.length} ${resultRecords.length === 1 ? 'resultaat' : 'resultaten'}${state.q ? ` voor ‘${state.q}’` : ''}`;
     const knownDates = isPublicationSort() && resultRecords.filter(record => publicationDate(record)).length;
     const sortSummary = state.sort === 'added'
@@ -2206,12 +2349,9 @@
       ${routeGuide}
       ${values('type').length === 1 && values('type')[0] === 'Training' ? '<section class="training-intro"><h2>Workshops en trainers</h2><p>Vind een workshop, cursus of training en de aanbieder die deze verzorgt. Verfijn op onderwerp, doelgroep of aanbieder. Trainer, locatie, kosten en beschikbaarheid staan bij het aanbod voor zover bevestigd. Bespreek maatwerk via de officiële aanbodpagina.</p></section>' : ''}
       ${values('theme').includes('Veilige AI-omgeving') ? '<section class="selection-guidance"><h2>Beoordeel de toepassing in uw eigen situatie</h2><p>Gebruik de officiële bronnen om gegevensgebruik, beheer, menselijke controle, toegankelijkheid en overstapmogelijkheden te beoordelen. Wat passend is, hangt af van uw doel, gegevens, instellingen en afspraken. Deze selectie is geen keurmerk voor veilige of verantwoorde AI.</p></section>' : ''}
-      <div class="picked-actions" ${sheetPicks.size ? '' : 'hidden'}>
-        <a class="btn" data-picked-compare href="${escapeHtml(selectedHref('vergelijken'))}" ${sheetPicks.size >= 2 ? '' : 'hidden'}>Vergelijk mijn keuzes (${sheetPicks.size})</a>
-        <a class="btn secondary" data-picked-sheet href="${escapeHtml(selectedHref('overlegblad'))}" ${sheetPicks.size ? '' : 'hidden'}>Open mijn overlegblad (${sheetPicks.size})</a>
-        <span data-pick-hint ${sheetPicks.size === 1 ? '' : 'hidden'}>Kies nog een vermelding om te vergelijken.</span></div>
+      <div class="picked-actions" data-picked-actions ${sheetPicks.size ? '' : 'hidden'}>${pickedActionLinks('picked')}</div>
       <div id="action-feedback" class="action-feedback" aria-live="polite"></div>
-      <div class="results-content">${resultRecords.length ? resultListMarkup() : isFundingSelection() ? `<div class="empty"><h2>${state.status === STATUS_LABELS.open_call ? 'Geen open oproepen bij deze selectie' : 'Geen subsidies of calls bij deze selectie'}</h2><p>Kijk bij een andere aanvraagstatus of verruim uw filters.</p>${state.status ? `<a href="${escapeHtml(stateHref({ status: '' }))}">Bekijk alle aanvraagstatussen binnen deze selectie</a>` : `<a href="${escapeHtml(criteriaHref({ sector: state.sector }))}">Bekijk ander aanbod${state.sector ? ' in deze sectorselectie' : ''}</a>`}</div>` : `<div class="empty"><span class="eyebrow">Geen exacte match</span><h2>We helpen u verder</h2>${alternative ? `<a class="alternative" href="${escapeHtml(stateHref({ q: alternative.candidate }))}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` : routes.length ? '<p>De volledige zoekvraag levert binnen deze selectie geen catalogusvermeldingen op.</p>' : '<p>Voor deze zoekterm is geen aantoonbaar werkend alternatief gevonden.</p>'}${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${stateHref({ [item.key]: '' })}">Zonder ${escapeHtml(item.values.join(' of '))} <strong>${item.count}</strong></a>`).join('')}</div>` : ''}<button class="clear btn">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`}</div>
+      <div class="results-content">${resultRecords.length ? resultListMarkup() : emptyResultsMarkup(routes)}</div>
       ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="${escapeHtml(stateHref({ theme }))}">${escapeHtml(theme)} <span>${count} ${count === 1 ? 'resultaat' : 'resultaten'}</span></a>`).join('')}</nav>` : ''}`;
   }
   function filterButtonText() {
@@ -2276,15 +2416,7 @@
     </aside>`;
   }
   function renderSearch(isHome = false) {
-    const returnRoute = sessionGet('atlas.restoreResults');
-    const restoring = returnRoute && returnRoute === (location.hash || '#home');
-    if (restoring) {
-      try {
-        const view = JSON.parse(sessionGet('atlas.returnView'));
-        if (view?.route === returnRoute) saveResultView(view);
-      } catch { /* Earlier visits have only a scroll position. */ }
-      sessionSet('atlas.restoreResults', '');
-    }
+    const restoring = restoreReturnView();
     // Opening the catalogue is itself a request to browse all available offers.
     const typeOptions = [...new Set(records.map(offerType))].sort((a, b) => filterOptionLabel('type', a).localeCompare(filterOptionLabel('type', b), 'nl'));
     const organizationOptions = [...new Set(records.map(record => record.providerName).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'nl'));
@@ -2300,10 +2432,7 @@
     const view = resultView();
     if (restoring || view.focusId) {
       const targetY = view.y ?? Number(sessionGet('atlas.resultsScroll'));
-      requestAnimationFrame(() => {
-        if (view.focusId) document.querySelector(`[data-record-id="${CSS.escape(view.focusId)}"] h2 a`)?.focus({preventScroll:true});
-        scrollTo(0, targetY || 0);
-      });
+      restoreCardFocus(resultFocusTarget(main, view.focusId, view.focusControl), targetY);
     }
   }
 
@@ -2448,7 +2577,7 @@
     const items = ids.map(id => publicRecordsById.get(id));
     const missing = requested.some(id => !selectedPublicIds([id]).length);
     const previous = sessionGet('atlas.compareSearch');
-    const backHref = /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
+    const backHref = isResultRoute(previous) ? previous : '#zoeken';
     const incomplete = items.length < 2;
     const differences = params.get('verschillen') === '1';
     const example = ['codeerschool-behind-the-chat-nl', 'mediawijs-edubox-artificiele-intelligentie'];
@@ -2503,7 +2632,7 @@
     const ids = params.getAll('item');
     const items = picked ? selectedPublicIds(ids).map(id => publicRecordsById.get(id)) : sortRecords(recordsForCriteria(state));
     const previousSearch = sessionGet('atlas.lastSearch');
-    const backHref = picked && /^#zoeken(?:\?|$)/.test(previousSearch) ? previousSearch : stateHref();
+    const backHref = picked && isResultRoute(previousSearch) ? previousSearch : stateHref();
     const labels = { theme: 'Onderwerp', audience: 'Doelgroep', sector: 'Sector', vak: 'Vakgebied', status: 'Beschikbaarheid',
       type: 'Soort aanbod', geography: 'Regio', organization: 'Aanbieder', cost: 'Kosten', language: 'Taal', access: 'Toegang', source: 'Bron' };
     const criteria = [
@@ -2589,7 +2718,9 @@
     const directoryReturn = lessonDirectoryReturn();
     const lastSearch = directoryReturn || sessionGet('atlas.lastSearch') || '#zoeken';
     const fromDirectory = lastSearch.startsWith('lesmateriaal/');
+    const fromNewOffers = lastSearch.split('?')[0] === '#nieuw';
     const backLabel = fromDirectory ? '← Terug naar uw lesselectie' : lastSearch.startsWith('#onderzoek') ? '← Terug naar Onderzoek doen of promoveren'
+      : fromNewOffers ? '← Terug naar Nieuw aanbod'
       : lastSearch === '#praktijkgids' ? '← Terug naar de praktijkgids'
       : lastSearch.startsWith('#vergelijken?') ? 'Terug naar vergelijking' : '← Terug naar resultaten';
     const related = records.filter(item => item.id !== record.id)
@@ -2606,7 +2737,7 @@
     const sourceLinks = `<h3>Officiële bronnen</h3>${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}`;
     const lesson = hasAvailableLesson(record) && lessonStartBody(record);
     main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(offerLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
-      <section class="detail-shell"${materialDetail ? ` data-atlas-material-detail="${escapeHtml(record.id)}"` : ''}><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${backLabel}</a><span>Home / ${fromDirectory ? 'Lesgids' : lastSearch.startsWith('#onderzoek') ? 'Onderzoek' : 'Resultaten'} / ${escapeHtml(record.title)}</span></nav>
+      <section class="detail-shell"${materialDetail ? ` data-atlas-material-detail="${escapeHtml(record.id)}"` : ''}><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${backLabel}</a><span>Home / ${fromDirectory ? 'Lesgids' : fromNewOffers ? 'Nieuw aanbod' : lastSearch.startsWith('#onderzoek') ? 'Onderzoek' : 'Resultaten'} / ${escapeHtml(record.title)}</span></nav>
       <div class="detail-layout"><article>
         ${funding ? `<section class="funding-conditions"><h2>Aanvraag en voorwaarden</h2><dl>
           <div><dt>Aanvragers</dt><dd>${escapeHtml(applicants)}</dd></div>
@@ -2825,6 +2956,7 @@
   function bindResultsControls() {
     const panel = document.querySelector('#results-panel');
     if (!panel) return;
+    observeCardFacts();
     if (panel.querySelector('[data-atlas-empty-search]')) window.dispatchEvent?.(new Event('atlas-empty-search'));
     else if (panel.querySelector('[data-atlas-search-hits]')) window.dispatchEvent?.(new Event('atlas-search-results'));
     bindLessonCopy(panel);
@@ -2841,41 +2973,39 @@
       bindResultsControls();
       list.children[first]?.querySelector('h2 a')?.focus();
     };
-    const pickedLink = panel.querySelector('[data-picked-sheet]');
-    const compareLink = panel.querySelector('[data-picked-compare]');
+    const pickedActions = panel.querySelector('[data-picked-actions]');
     const guide = panel.querySelector('[data-compare-guide]');
-    function rememberResults(focusId) {
-      const view = {shown: list?.children.length || RESULT_BATCH, y: scrollY, focusId: typeof focusId === 'string' ? focusId : ''};
-      saveResultView(view);
-      sessionSet('atlas.returnView', JSON.stringify({...view, route: location.hash || '#home'}));
-      sessionSet('atlas.lastSearch', stateHref());
-      sessionSet('atlas.compareSearch', stateHref());
+    function rememberResults(focusId = '', focusControl = '', route = location.hash || '#home') {
+      const view = {shown: list?.children.length || RESULT_BATCH, y: scrollY, focusId, focusControl};
+      saveReturnView(view, route);
+      sessionSet('atlas.compareSearch', route);
       sessionSet('atlas.resultsScroll', scrollY);
     }
-    if (pickedLink) pickedLink.onclick = rememberResults;
-    if (compareLink) compareLink.onclick = rememberResults;
-    if (guide) guide.onclick = rememberResults;
+    if (pickedActions) pickedActions.onclick = event => {
+      if (event.target.closest('a')) rememberResults();
+    };
+    if (guide) guide.onclick = () => rememberResults();
+    function showPickedActions(input) {
+      panel.querySelector('[data-inline-picks]')?.remove();
+      if (!input || !sheetPicks.size) return;
+      const links = input.closest('.offer-links');
+      links.insertAdjacentHTML('beforeend', `<div class="picked-actions" data-inline-picks>${pickedActionLinks('inline')}</div>`);
+      links.querySelector('[data-inline-picks]').onclick = event => {
+        if (event.target.closest('a')) rememberResults(input.dataset.sheetPick, 'pick');
+      };
+    }
+    const view = resultView();
+    if (view.focusControl === 'pick' && !panel.querySelector('[data-inline-picks]')) {
+      showPickedActions(resultFocusTarget(panel, view.focusId, 'pick'));
+    }
     panel.querySelectorAll('[data-sheet-pick]').forEach(input => input.onchange = () => {
       const id = input.dataset.sheetPick;
       if (input.checked) sheetPicks.add(id);
       else sheetPicks.delete(id);
       persistSheetPicks();
-      pickedLink.href = selectedHref('overlegblad');
-      pickedLink.hidden = !sheetPicks.size;
-      pickedLink.textContent = `Open mijn overlegblad (${sheetPicks.size})`;
-      compareLink.href = selectedHref('vergelijken');
-      compareLink.hidden = sheetPicks.size < 2;
-      compareLink.textContent = `Vergelijk mijn keuzes (${sheetPicks.size})`;
-      panel.querySelector('.picked-actions').hidden = !sheetPicks.size;
-      panel.querySelector('[data-pick-hint]').hidden = sheetPicks.size !== 1;
-      panel.querySelector('[data-inline-compare]')?.remove();
-      if (input.checked && sheetPicks.size >= 2) {
-        const shortcut = compareLink.cloneNode(true);
-        shortcut.removeAttribute('data-picked-compare');
-        shortcut.setAttribute('data-inline-compare', '');
-        shortcut.onclick = rememberResults;
-        input.closest('.offer-links').append(shortcut);
-      }
+      pickedActions.hidden = !sheetPicks.size;
+      pickedActions.innerHTML = pickedActionLinks('picked');
+      showPickedActions(input);
       setActionFeedback(sheetPicks.size === 1 ? 'Eén vermelding gekozen. Kies nog een vermelding om te vergelijken.' : `${sheetPicks.size} vermeldingen gekozen.`);
     });
     const sector = panel.querySelector('#practice-sector');
@@ -2896,20 +3026,33 @@
       const key = raw.slice(0, separator), value = raw.slice(separator + 1);
       state[key] = serializeFilterValues(key, values(key).filter(item => item !== value));
       setUrl();
+      panel.querySelector('.result-head h2')?.focus();
     });
-    const clearQuery = panel.querySelector('[data-clear-query]');
-    if (clearQuery) clearQuery.onclick = () => { state.q = ''; setUrl(); };
-    panel.querySelectorAll('.clear-link,.empty .clear').forEach(button => button.onclick = () => { state = { q: '', sort: 'relevant' }; setUrl(); });
+    panel.querySelectorAll('[data-clear-query]').forEach(button => button.onclick = () => {
+      state.q = '';
+      setUrl();
+      panel.querySelector('.result-head h2')?.focus();
+    });
+    const queryInput = document.querySelector('.atlas-search input');
+    const editQuery = panel.querySelector('[data-edit-query]');
+    if (editQuery) editQuery.onclick = () => {
+      queryInput.focus();
+      queryInput.select();
+    };
+    panel.querySelectorAll('.clear-link').forEach(button => button.onclick = () => {
+      state = { q: '', sort: 'relevant' };
+      setUrl();
+      queryInput.focus();
+    });
     const sort = panel.querySelector('#sort');
     if (sort) sort.onchange = event => { state.sort = event.target.value; setUrl(); document.querySelector('#sort')?.focus(); };
     const share = panel.querySelector('[data-share-selection]');
     if (share) share.onclick = () => shareCurrentSelection();
     const sheet = panel.querySelector('[data-meeting-sheet]');
-    if (sheet) sheet.onclick = rememberResults;
+    if (sheet) sheet.onclick = () => rememberResults('', '', stateHref());
     panel.querySelectorAll('[data-question-route]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', stateHref()));
     panel.querySelectorAll('.result-card a[href^="#item/"]').forEach(link => link.onclick = () => {
-      rememberResults(link.closest('[data-record-id]').dataset.recordId);
-      sessionSet('atlas.lastSearch', location.hash || '#home');
+      rememberResults(link.closest('[data-record-id]').dataset.recordId, link.closest('h2') ? 'title' : 'details');
     });
   }
   function bindFacetLists() {
@@ -2996,6 +3139,7 @@
   function route() {
     // Back/forward can replace an open mobile panel without invoking its close
     // button. Release scrolling and detached keyboard handlers before rendering.
+    if (factDialog?.open) factDialog.close();
     document.body?.classList.remove('locked');
     document.querySelector('#filters')?.classList.remove('open');
     document.querySelector('.mobile-filter')?.setAttribute('aria-expanded', 'false');
@@ -3015,7 +3159,7 @@
     if (path === 'home' || (!Object.hasOwn(guides, path) && !['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
     if (Object.hasOwn(guides, path)) guides[path]();
     if (path === 'wegwijzer') { location.replace('#zoeken'); return; }
-    if (path === 'nieuw') renderNewOffers();
+    const focusedNewOffer = path === 'nieuw' && renderNewOffers();
     if (path === 'papers') renderPapers();
     if (path === 'onderzoek') researchPage();
     const focusedBookGroup = path === 'boeken' && renderBooks();
@@ -3028,10 +3172,11 @@
     if (path.startsWith('item/')) renderDetail(decodeURIComponent(path.slice(5)));
     if (path === 'mijn-atlas') { location.replace('#home'); return; }
     if (path === 'bijdragen') renderContribute();
+    if (!['home', 'zoeken', 'organisaties'].includes(path)) observeCardFacts();
     document.querySelectorAll('.site-header nav a').forEach(link => link.removeAttribute('aria-current'));
     document.querySelector(`.site-header nav a[href="#${CSS.escape(path)}"]`)?.setAttribute('aria-current', 'page');
     const updated = document.querySelector('[data-updated]'); if (updated) updated.textContent = source.metadata.updated || '';
-    if (!['zoeken', 'organisaties'].includes(path) && !focusedBookGroup) {
+    if (!['zoeken', 'organisaties'].includes(path) && !focusedBookGroup && !focusedNewOffer) {
       scrollTo({ top: 0, behavior: 'instant' });
       const target = Object.hasOwn(guides, path) ? main.querySelector('h1') : path === 'onderzoek' ? document.querySelector('#research-heading') : path === 'papers' ? document.querySelector('#papers-heading') : main;
       (target || main).focus({ preventScroll: true });
