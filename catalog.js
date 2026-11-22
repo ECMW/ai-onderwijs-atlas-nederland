@@ -945,16 +945,57 @@
     };
     return values(key).map(value => filterOptionLabel(key, value)).join(', ') || defaults[key] || 'Alle opties';
   }
+  const SUBJECT_PAGE_SIZE = 6;
+  let currentSubjectCounts;
+  function subjectPage(counts, text = '', requestedPage = 0) {
+    const query = normalize(text);
+    const selected = values('vak');
+    const matches = [...counts.keys()].filter(name => (counts.get(name) || selected.includes(name)) && normalize(name).includes(query));
+    matches.sort((a, b) => {
+      const order = query ? Number(normalize(b).startsWith(query)) - Number(normalize(a).startsWith(query)) : counts.get(b) - counts.get(a);
+      return order || a.localeCompare(b, 'nl');
+    });
+    const pages = Math.ceil(matches.length / SUBJECT_PAGE_SIZE);
+    const page = Math.max(0, Math.min(requestedPage, pages - 1));
+    const start = page * SUBJECT_PAGE_SIZE;
+    const visible = matches.slice(start, start + SUBJECT_PAGE_SIZE);
+    const range = pages > 1 ? `${start + 1}–${start + visible.length} van ${matches.length}` :
+      matches.length ? `${matches.length} ${matches.length === 1 ? 'vakgebied' : 'vakgebieden'}` : 'Geen vakgebied gevonden bij deze filters.';
+    return { matches, visible, range, page, pages };
+  }
+  function facetOption(key, option, count, selected) {
+    const checked = selected.includes(option);
+    return `<label data-facet-option="${escapeHtml(option)}"><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${!count && !checked ? 'disabled' : ''}><span>${escapeHtml(filterOptionLabel(key, option))}</span><small>${count}</small></label>`;
+  }
+  function subjectPickerMarkup(counts, selected) {
+    const view = subjectPage(counts);
+    return `<div data-subject-picker>
+      <label class="subject-question" for="subject-search">Welk schoolvak of studievak zoekt u?</label>
+      <p id="subject-examples" class="facet-note">Bijvoorbeeld biologie, burgerschap of econometrie.</p>
+      <input id="subject-search" class="facet-search" type="search" placeholder="Typ een vaknaam" aria-describedby="subject-examples subject-help">
+      <p id="subject-help" class="facet-note">Kies een vak hieronder of druk bij één treffer op Enter.</p>
+      <div class="facet-options">${view.visible.map(name => facetOption('vak', name, counts.get(name), selected)).join('')}</div>
+      <div class="subject-pages"><button type="button" data-page-step="-1" aria-label="Vorige vakgebieden" disabled ${view.pages < 2 ? 'hidden' : ''}>Vorige</button><span role="status">${view.range}</span><button type="button" data-page-step="1" aria-label="Volgende vakgebieden" ${view.pages < 2 ? 'disabled hidden' : ''}>Volgende</button></div>
+      <a data-subject-fallback hidden></a></div>`;
+  }
+  function subjectForEnter(matches, text) {
+    return matches.find(name => normalize(name) === normalize(text)) || (matches.length === 1 ? matches[0] : '');
+  }
+  function subjectSearchHref(term) {
+    const q = [...new Set([state.q?.trim(), term.trim()].filter(Boolean))].join(' ');
+    return stateHref({ q });
+  }
   function facet(key, title, options, counts = facetCounts()[key]) {
     const present = options.filter(option => counts.has(option));
     const selected = values(key);
     const supportsMultiple = ['sector', 'vak', 'audience'].includes(key);
     const startsOpen = supportsMultiple && (key !== 'sector' || selected.length > 0);
     return `<details class="facet${supportsMultiple ? ' facet-multi' : ''}" data-facet-block="${escapeHtml(key)}"${startsOpen ? ' open' : ''}><summary><span class="facet-heading">${escapeHtml(title)}<b aria-label="${values(key).length} geselecteerd" ${values(key).length ? '' : 'hidden'}>${values(key).length}</b></span><span class="facet-value">${escapeHtml(facetSelectionLabel(key))}</span></summary><div>
+      ${key === 'vak' ? subjectPickerMarkup(counts, selected) : `
       ${supportsMultiple ? '<p class="facet-note">Kies één of meer opties tegelijk.</p>' : ''}
       ${key === 'organization' && present.length > 12 ? '<input class="facet-search" type="search" placeholder="Zoek aanbieder…" aria-label="Zoek binnen aanbieders">' : ''}
-      <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => { const count = counts.get(option); const checked = selected.includes(option); return `<label data-facet-option="${escapeHtml(option)}"><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${!count && !checked ? 'disabled' : ''}><span>${escapeHtml(filterOptionLabel(key, option))}</span><small>${count}</small></label>`; }).join('')}</div>
-      ${present.length > 8 ? '<button class="facet-more" type="button" aria-expanded="false">Toon meer</button>' : ''}
+      <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => facetOption(key, option, counts.get(option), selected)).join('')}</div>
+      ${present.length > 8 ? '<button class="facet-more" type="button" aria-expanded="false">Toon meer</button>' : ''}`}
     </div></details>`;
   }
   function relatedThemes(activeTheme) {
@@ -1474,6 +1515,9 @@
   }
   function refreshFacetControls() {
     const counts = facetCounts();
+    currentSubjectCounts = counts.vak;
+    const subjectPicker = document.querySelector('[data-subject-picker]');
+    if (subjectPicker) updateSubjectPicker(subjectPicker);
     const selections = Object.fromEntries(FILTER_KEYS.map(key => [key, values(key)]));
     document.querySelectorAll('[data-facet]').forEach(input => {
       const key = input.dataset.facet;
@@ -1510,6 +1554,7 @@
   }
   function catalogFilterPanel(typeOptions, audienceOptions, organizationOptions) {
     const counts = facetCounts();
+    currentSubjectCounts = counts.vak;
     const filter = (key, title, options) => facet(key, title, options, counts[key]);
     const languages = [...new Set([...Object.keys(LANGUAGE_LABELS), ...counts.language.keys()])];
     const hiddenCount = ['access', 'source'].reduce((sum, key) => sum + values(key).length, 0);
@@ -1978,28 +2023,94 @@
       sessionSet('atlas.lastSearch', location.hash); sessionSet('atlas.resultsScroll', scrollY);
     });
   }
-  function bindSearchPage() {
-    bindSearchForm();
-    document.querySelectorAll('[data-facet]').forEach(input => input.onchange = () => {
-      const selected = values(input.dataset.facet);
-      input.checked ? selected.push(input.value) : selected.splice(selected.indexOf(input.value), 1);
-      state[input.dataset.facet] = serializeFilterValues(input.dataset.facet, selected); setUrl();
+  function updateSubjectPicker(picker, page = Number(picker.dataset.page || 0), focusFirst = false) {
+    const search = picker.querySelector('input[type="search"]');
+    const list = picker.querySelector('.facet-options');
+    const previousFocus = list.contains(document.activeElement) ? document.activeElement.value : '';
+    const view = subjectPage(currentSubjectCounts, search.value, page);
+    const selected = values('vak');
+    picker.dataset.page = view.page;
+    list.innerHTML = view.visible.map(name => facetOption('vak', name, currentSubjectCounts.get(name), selected)).join('');
+    picker.querySelector('[role="status"]').textContent = view.range;
+    picker.querySelectorAll('[data-page-step]').forEach(button => {
+      button.hidden = view.pages < 2;
+      button.disabled = Number(button.dataset.pageStep) < 0 ? view.page === 0 : view.page + 1 >= view.pages;
     });
+    const fallback = picker.querySelector('[data-subject-fallback]');
+    const term = search.value.trim();
+    fallback.hidden = !term || Boolean(view.matches.length);
+    if (!fallback.hidden) {
+      fallback.href = subjectSearchHref(term);
+      fallback.textContent = `Zoek “${term}” in het aanbod`;
+    }
+    if (focusFirst) list.querySelector('input')?.focus();
+    else if (previousFocus) ([...list.querySelectorAll('input')].find(input => input.value === previousFocus) || search).focus({preventScroll: true});
+  }
+  function bindSubjectPicker(picker) {
+    const search = picker.querySelector('input[type="search"]');
+    search.oninput = () => updateSubjectPicker(picker, 0);
+    search.onkeydown = event => {
+      if (event.key === 'Escape' && search.value) {
+        event.preventDefault();
+        event.stopPropagation();
+        search.value = '';
+        updateSubjectPicker(picker, 0);
+      } else if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        picker.querySelector('.facet-options input')?.focus();
+      } else if (event.key === 'Enter' && normalize(search.value) && !event.isComposing) {
+        event.preventDefault();
+        const { matches } = subjectPage(currentSubjectCounts, search.value);
+        const choice = subjectForEnter(matches, search.value);
+        if (choice) {
+          const selected = values('vak');
+          if (!selected.includes(choice)) {
+            state.vak = serializeFilterValues('vak', [...selected, choice]);
+            setUrl();
+          }
+        } else {
+          picker.querySelector('.facet-options input, [data-subject-fallback]:not([hidden])')?.focus();
+        }
+      }
+    };
+    picker.querySelectorAll('[data-page-step]').forEach(button => {
+      button.onclick = () => updateSubjectPicker(picker, Number(picker.dataset.page || 0) + Number(button.dataset.pageStep), true);
+    });
+  }
+  function bindFacetLists() {
     document.querySelectorAll('.facet-more').forEach(button => button.onclick = () => {
       const options = button.previousElementSibling;
-      options.classList.toggle('expanded');
-      button.textContent = options.classList.contains('expanded') ? 'Toon minder' : 'Toon meer';
-      button.setAttribute('aria-expanded', String(options.classList.contains('expanded')));
+      const nextOption = !options.classList.contains('expanded') &&
+        [...options.querySelectorAll('input:enabled')].find(input => !input.getClientRects().length);
+      const expanded = options.classList.toggle('expanded');
+      button.textContent = expanded ? 'Toon minder' : 'Toon meer';
+      button.setAttribute('aria-expanded', String(expanded));
+      if (nextOption) nextOption.focus();
     });
-    document.querySelectorAll('.facet-search').forEach(input => input.oninput = () => {
-      const query = normalize(input.value);
+    document.querySelectorAll('[data-facet-block="organization"] .facet-search').forEach(input => input.oninput = () => {
       const options = input.nextElementSibling;
+      const query = normalize(input.value);
       options.classList.toggle('searching', Boolean(query));
-      options.querySelectorAll('label').forEach(label => { label.hidden = !normalize(label.textContent).includes(query); });
+      options.querySelectorAll('label').forEach(label => { label.hidden = !normalize(label.dataset.facetOption).includes(query); });
       const more = options.nextElementSibling;
-      if (more?.classList.contains('facet-more')) more.hidden = Boolean(query);
+      if (more) more.hidden = Boolean(query);
     });
+  }
+  function bindSearchPage() {
+    bindSearchForm();
     const panel = document.querySelector('#filters');
+    panel.onchange = event => {
+      const input = event.target;
+      const key = input.dataset.facet;
+      if (!key) return;
+      const selected = new Set(values(key));
+      if (input.checked) selected.add(input.value);
+      else selected.delete(input.value);
+      state[key] = serializeFilterValues(key, [...selected]); setUrl();
+    };
+    const subjectPicker = panel.querySelector('[data-subject-picker]');
+    if (subjectPicker) bindSubjectPicker(subjectPicker);
+    bindFacetLists();
     panel.querySelector('.clear').onclick = () => { state = { q: state.q, sort: state.sort }; setUrl(); };
     bindFilterDrawer(panel, document.querySelector('.mobile-filter'));
     bindResultsControls();

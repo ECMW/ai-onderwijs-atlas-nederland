@@ -79,6 +79,8 @@ class Element {
     walk(this); return found;
   }
   querySelector(selector) { return this.querySelectorAll(selector)[0] || null; }
+  closest(selector) { return this.matches(selector) ? this : this.parent?.closest(selector) || null; }
+  contains(other) { return Boolean(other && (other === this || this.contains(other.parent))); }
   setAttribute(name, value) { this.attributes[name] = String(value); }
   removeAttribute(name) { delete this.attributes[name]; }
   addEventListener() {}
@@ -157,6 +159,34 @@ test('home uses the full catalogue and the same query, sector, cost and offer fi
   app.navigate('#zoeken');
   assert.ok(app.document.querySelector('#catalog-search'));
   assert.ok(app.document.querySelector('[data-facet="cost"]'));
+});
+
+test('typing a subject and pressing Enter applies it once alongside sector and type; unknown names link to free search', () => {
+  const app = boot({href: 'https://example.org/atlas/#zoeken?sector=VO&type=materials'});
+  const history = [];
+  app.context.history = {pushState(_state, _title, href) { app.context.location.hash = href; history.push(href); }};
+  const picker = app.document.querySelector('[data-subject-picker]');
+  const search = picker.querySelector('input[type="search"]');
+  const list = picker.querySelector('.facet-options');
+  const enter = () => search.onkeydown({key: 'Enter', preventDefault() {}});
+  search.value = 'biologie';
+  search.oninput();
+  enter();
+  enter();
+  assert.equal(history.length, 1);
+  assert.deepEqual(Object.fromEntries(new URLSearchParams(history[0].split('?')[1])), {sector:'VO', vak:'Biologie', type:'materials'});
+  assert.equal(list.querySelector('input[value="Biologie"]').checked, true);
+  assert.match(app.document.querySelector('#results-panel').innerHTML, /data-record-id="/);
+  search.value = 'onbekend-keuzevak';
+  search.oninput();
+  const fallback = picker.querySelector('[data-subject-fallback]');
+  assert.equal(list.querySelectorAll('input').length, 0);
+  assert.equal(fallback.hidden, false);
+  assert.deepEqual(Object.fromEntries(new URLSearchParams(fallback.href.split('?')[1])), {q:'onbekend-keuzevak', sector:'VO', vak:'Biologie', type:'materials'});
+  search.onkeydown({key: 'Escape', preventDefault() {}, stopPropagation() {}});
+  assert.equal(search.value, '');
+  assert.equal(fallback.hidden, true);
+  assert.equal(history.length, 1);
 });
 
 test('home and search expose one filter opener beside the search form, before the practice routes', () => {
