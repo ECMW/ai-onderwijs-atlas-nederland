@@ -19738,7 +19738,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": "2026-01-06",
-    "lastVerified": "2026-07-30",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -19780,7 +19780,15 @@
         "date": "2026-07-30",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "SLO werkt het leergebied digitale geletterdheid uit voor primair onderwijs en de onderbouw van het voortgezet onderwijs. De herziene inhoudslijnen beschrijven vier ontwikkelingsfasen."
       }
+    ],
+    "subjects": [
+      "Digitale geletterdheid"
     ]
   },
   {
@@ -19901,7 +19909,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-30",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -19942,7 +19950,16 @@
         "date": "2026-07-30",
         "type": "added",
         "summary": "Toegevoegd in gecontroleerde inhoudstranche 5."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Universiteit Leiden combineert historische broninterpretatie met informatica door leerlingen machine learning bij het lezen van archiefbronnen te laten onderzoeken."
       }
+    ],
+    "subjects": [
+      "Geschiedenis",
+      "Informatica"
     ]
   },
   {
@@ -31941,7 +31958,7 @@
     ],
     "status": "available",
     "publicationDate": null,
-    "lastVerified": "2026-10-09",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -31980,11 +31997,19 @@
         "date": "2026-10-09",
         "type": "added",
         "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "De interactieve bron brengt aandelenbelangen, kapitaalstromen en afnameverplichtingen van marktpartijen in kaart; bezoekers kunnen financiële relaties en transactietypen vergelijken."
       }
     ],
     "offerCategory": "materials",
     "availabilityText": "Openbare visualisatie met filters en verantwoording per deal; de webversie vermeldt een update van 4 augustus 2026.",
-    "notes": "Onderwijsrelevantie is een redactionele duiding voor onderwijsbestuur en AI-infrastructuur; de visualisatie is sectoroverstijgend. De Atlas heeft het bestaan en de uitleg gecontroleerd, niet alle onderliggende transacties of hun actuele status. De bron noemt maximale toezeggingen, intentieverklaringen en geschatte bedragen. Geen financieel of juridisch advies. De live webversie vermeldt 4 augustus 2026 als bijwerkdatum en gegevens tot augustus 2026; de README noemt nog juli 2026. De huidige webversie is leidend voor de beschreven actualiteit."
+    "notes": "Onderwijsrelevantie is een redactionele duiding voor onderwijsbestuur en AI-infrastructuur; de visualisatie is sectoroverstijgend. De Atlas heeft het bestaan en de uitleg gecontroleerd, niet alle onderliggende transacties of hun actuele status. De bron noemt maximale toezeggingen, intentieverklaringen en geschatte bedragen. Geen financieel of juridisch advies. De live webversie vermeldt 4 augustus 2026 als bijwerkdatum en gegevens tot augustus 2026; de README noemt nog juli 2026. De huidige webversie is leidend voor de beschreven actualiteit.",
+    "subjects": [
+      "Economie"
+    ]
   },
   {
     "id": "aigo-app-store",
@@ -32603,7 +32628,7 @@
     ],
     "status": "available",
     "publicationDate": null,
-    "lastVerified": "2026-10-09",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -32649,11 +32674,19 @@
         "date": "2026-10-09",
         "type": "added",
         "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Dwengo levert een kaartenset met zorgsituaties rond AI en expliciete opdrachten over ethische afwegingen in de gezondheidszorg."
       }
     ],
     "offerCategory": "materials",
     "availabilityText": "Kaarten en handleiding zijn openbaar te downloaden. De vermelding betreft de digitale set.",
-    "notes": "Dwengo biedt het lesmateriaal volgens de projectpagina onder CC BY-SA aan; een versienummer is daar niet vermeld. De handleiding verwijst naar Vlaamse onderwijsdoelen in het secundair onderwijs. VO is de redactionele Nederlandse sectorvertaling, geen vastgestelde aansluiting op Nederlandse kerndoelen. Eventuele fysieke exemplaren hebben afzonderlijke bestelvoorwaarden. Dit is lesmateriaal over ethiek, geen medisch advies."
+    "notes": "Dwengo biedt het lesmateriaal volgens de projectpagina onder CC BY-SA aan; een versienummer is daar niet vermeld. De handleiding verwijst naar Vlaamse onderwijsdoelen in het secundair onderwijs. VO is de redactionele Nederlandse sectorvertaling, geen vastgestelde aansluiting op Nederlandse kerndoelen. Eventuele fysieke exemplaren hebben afzonderlijke bestelvoorwaarden. Dit is lesmateriaal over ethiek, geen medisch advies.",
+    "subjects": [
+      "Zorg en gezondheid"
+    ]
   },
   {
     "id": "brightlab-gpt-woordspelen",
@@ -33759,7 +33792,7 @@
     ],
     "status": "available",
     "publicationDate": null,
-    "lastVerified": "2026-10-09",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -33799,11 +33832,20 @@
         "date": "2026-10-09",
         "type": "added",
         "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "De vier statistiekstations oefenen beschrijvende statistiek, standaardfout, hypothesetoetsing en regressie met eigen berekeningen."
       }
     ],
     "offerCategory": "materials",
     "notes": "Geselecteerd uit de categorie Onderwijs van https://aigovernanceofficer.github.io/AI-app-store/ op verzoek van Eva. De catalogus noemt de bereikbare apps gratis; eventuele externe API-kosten staan apart vermeld. Bereikbaarheid en zichtbare functies zijn gecontroleerd, niet de volledige werking, veiligheid of onderwijseffectiviteit. UU-vormgeving bewijst geen institutioneel eigenaarschap of goedkeuring.",
-    "availabilityText": "De publieke browserapp is bereikbaar. Gratis volgens de App Store van de maker."
+    "availabilityText": "De publieke browserapp is bereikbaar. Gratis volgens de App Store van de maker.",
+    "subjects": [
+      "Statistiek",
+      "Wiskunde"
+    ]
   },
   {
     "id": "aigo-dicteermachine",
