@@ -1,6 +1,22 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
-## Cyclus van 22 november 2026
+## 22 november 2026 · Van lesselectie naar leerlingblad
+
+De drie verbeteringen uit [PR #184](https://github.com/ECMW/ai-onderwijs-atlas-nederland/pull/184) zijn op het eigen domein opnieuw beproefd. Een verse browser op 320 en 1280 pixels opende dezelfde gedeelde lesselectie, kon voor één leerdoel twee toetsaanpakken vergelijken en een besluitblad kopiëren. De publieke editie was bij aanvang en afsluiting van deze controle [f55b846](https://github.com/ECMW/ai-onderwijs-atlas-nederland/commit/f55b8464f3a0400d87b4632606cbbd26bfa1cee8).
+
+| Prioriteit en gebruikerstaak | Waargenomen in de beginsituatie | Wijziging en toets in de kandidaat |
+| --- | --- | --- |
+| 1. Met het toetsenbord doorwerken in dezelfde les of selectie | Enter op **Ga naar inhoud** verving het leerlingblad door de startpagina. In de gefilterde lesgids ging één resultaat terug naar elf. | De link verplaatst de focus naar de hoofdinhoud. Op 320 en 1280 pixels bleven de zoekresultaten, de lesgidsselectie en het geopende leerlingblad op hun eigen adres en ging de volgende Tab binnen de hoofdinhoud verder. |
+| 2. Als leerling of student de benodigde informatie vinden | Het HHMI-blad verwees naar een voorbeeldantwoord dat alleen de docent te zien kreeg. In de UBC-opdracht ontbrak de vindplaats van de modeluitkomsten. | De biologieopdracht geeft de voorbeeldzin en wijst de twee grafieken in figuur 2 aan. De econometrieopdracht verwijst naar onderdeel 3.1 en de regels voor lasso en random forest. Beide opdrachten zijn met de oorspronkelijke bron gecontroleerd. [HHMI-werkblad](https://docs.google.com/document/d/1dhy_ADiJ6wpG3MRSvv4qYatKZEe7MQGkTLNDcNtV9Gk/preview) · [UBC-notebook](https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.html#any-learner-in-dml) |
+| 3. Als docent een opdracht mét leerdoel uitreiken | Het leerdoel stond op de leskaart. Zowel op het leerlingblad als bij kopiëren verdween het. | Hetzelfde veld gaat nu mee naar scherm, klembord en afdruk. Bij beide proeflessen bleef de opdracht ook bij geweigerde klembordtoegang volledig selecteerbaar. Een ouder record zonder leerdoel houdt een bruikbaar leerlingblad. |
+
+De geblokkeerde toetsenbordroute kreeg voorrang vanwege haar bereik over verschillende doelgroepen. Voor de twee inhoudelijke verbeteringen volstonden bestaande lesgegevens en componenten. Extra lesmateriaal en een tweede versie van het werkblad zouden de aangetroffen problemen laten bestaan en meer redactie vragen.
+
+De twee proeflessen zijn gecontroleerd op 320, 390 en 1280 pixels. Alle elf leerlingbladen pasten in Edge op één A4 met 15 mm marges, inclusief opdracht, doel, reflectie en klikbaar bronadres. Op de twee visueel geïnspecteerde afdrukken bleef ook de schrijfruimte beschikbaar. Zonder JavaScript bevatte de lesgids elf unieke lesstarts. De validatie van bronnen en 496 canonieke records, 222 Python-tests en 155 JavaScript-tests slaagden. De strikte controle gaf nul fouten en zes bestaande waarschuwingen over gedeelde bronadressen.
+
+**Volgende proef.** Controleer na publicatie eerst deze drie taken op de exacte release. Kijk daarna bij de VU-les over bronbeoordeling of de student op het gedeelde blad kan zien welk AI-fragment en welk artikel de docent aanlevert. Blijkt die overdracht al eenduidig, sluit de proef dan af. Zelfstandigheid in de klas, tijdwinst en leerwinst zijn bij deze controle niet gemeten.
+
+## 22 november 2026 · Lesselectie, toetsaanpakken en besluitblad
 
 Vertrekpunt was de [gepubliceerde praktijkgids](https://github.com/ECMW/ai-onderwijs-atlas-nederland/commit/fc970650091fa5d18bdc7a04dee2914db7458aa3). De uitgave bevatte 459 publieke vermeldingen, 11 uitgewerkte lesstarts en 17 papers. De zoekfunctie vond de Stanford-les en de vraag over leerlingwerk bereikte de praktijkregels. De nieuwe verkenning begon één stap later in die taken. Er waren geen open GitHub-issues. De conceptproef in PR #162 en het technisch onderhoud in #95 hadden een andere opdracht.
 

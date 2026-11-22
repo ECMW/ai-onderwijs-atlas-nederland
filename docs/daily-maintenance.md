@@ -260,6 +260,17 @@ Controleer bij een gewijzigde bron ook de bijbehorende lesvraag, toetsopdracht o
 
 Gebruik bij herhaalde zoekacties zonder resultaat de bestaande geaggregeerde tellers en vrijwillig gemelde voorbeelden. De telling bevat geen zoekwoorden. Controleer een concrete verbetering met een zoekvraag, een passend lesmateriaal en de oorspronkelijke bron. De beslisregels hierboven blijven gelden voor wijzigingen in de reikwijdte en voor privacykeuzes.
 
+### Wekelijkse productverbetering
+
+De productronde sluit aan op de dagelijkse controles. Open de actuele uitgave op het publieke domein, het [verbeterregister](../reports/verbeterregister.md), de open PR's en issues en de vorige taakuitkomst. Ligt een wijziging nog ter beoordeling, controleer de kandidaat en de publieke versie apart.
+
+1. Kies een concrete vraag van een onderwijsprofessional, leerling of student. Probeer de hele taak, bijvoorbeeld van vak en leerdoel naar een opdracht die een leerling daadwerkelijk kan uitvoeren. Leg de beginsituatie en de bron vast. Geef aan of het knelpunt in de browser is gereproduceerd, door een bezoeker is gemeld of nog een vermoeden is.
+2. Rangschik de kansen in het bestaande register op gebruikerswaarde, bereik, wat de Atlas toevoegt aan bestaande platforms, bewijs, bouwkosten, onderhoud en risico. Neem vereenvoudiging en behoud van wat al werkt mee. Kies de kleinste zinvolle ingreep. Als een taak slaagt en verdere aanwijzingen ontbreken, sluit de proef af met die uitkomst.
+3. Werk in een eigen schone werkboom. Hergebruik een passende PR. Controleer bronnen, dataprojectie en de gebruikelijke tests. Herhaal de oorspronkelijke taak op telefoon en desktop, ook met het toetsenbord. Controleer de echte afdruk, bron of download als die bij de taak hoort.
+4. Leg bij een materiële verbetering de bevinding, wijziging, controles, resterende aanname en eerstvolgende proef vast in het register. Een productronde levert hoogstens één afgebakende PR op. Een ronde zonder wijziging eindigt met een korte taakuitkomst. Publicatie volgt het bestaande releaseproces.
+
+De eerste uitgevoerde productronde van elke kalendermaand onderzoekt ook welke doelgroepen en gebruikstaken de afgelopen maand onderbelicht bleven. Vergelijk relevante oorspronkelijke onderwijsbronnen en kennisplatforms met de Atlas. Beoordeel bestaande verbetersuggesties opnieuw, ook op onderhoudslast. Gebruik alleen beschikbare, rechtmatig verzamelde signalen en houd privécijfers buiten de repository. Vermeld de maand van de verdieping in de taakuitkomst zodat een gemiste ronde bij de volgende uitvoering kan worden ingehaald.
+
 ## Lokaal testen en handmatig starten
 
 Voer vanuit de repository uit:
