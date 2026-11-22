@@ -1,5 +1,11 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Kenmerken van een resultaat naast elkaar lezen
+
+Op de kaart van de Utrechtse handreiking over geschreven eindproducten stonden kosten en toegang boven de beschrijving, en doelgroep en sectoren eronder. De kaart zet nu de naam van elk kenmerk links en de waarde rechts. Daarna volgen de volledige beschrijving en de acties. Dezelfde indeling geldt voor Nieuw aanbod, gerelateerde resultaten en boekkaarten. Bij een financieringsronde zijn onderbouwde bedragen en aanvraagdata direct af te lezen.
+
+Op 320, 390 en 1280 pixels zijn de Utrechtse kaart, lange waarden en subsidievoorwaarden nagekeken. Bij Take-off hbo bleven de € 50.000 per aanvraag en het rondebudget van € 500.000 herkenbaar. Twee resultaten selecteren, vergelijken en teruggaan naar de gefilterde lijst werkte ook met het toetsenbord. Of bezoekers sneller vinden wat ze zoeken, blijft een praktijkvraag.
+
 ## 23 november 2026 · Nu aanvragen of een aanvraag voorbereiden
 
 De starttegel voor subsidies toonde drie open rondes. Een aangekondigde ronde was pas na doorklikken vindbaar. De tegel toont nu voor de gekozen onderwijssector apart hoeveel rondes open zijn en hoeveel zijn aangekondigd. De bezoeker kan beide groepen samen bekijken of één groep kiezen.
