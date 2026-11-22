@@ -8,7 +8,7 @@ const catalogue = fs.readFileSync(path.join(__dirname, '..', 'catalog.js'), 'utf
 const boot = "  addEventListener('hashchange', route); addEventListener('popstate', route); route();";
 assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly the route startup');
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
-    commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
+    commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, papersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, bindFacetLists, subjectPage, subjectForEnter, subjectSearchHref, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
     recordContextMarkup, queryMatchQuality, queryMatches, sortRecords,
     homeFilterPanel, catalogFilterPanel, recordsForCriteria, renderDetail, researchPage, renderAssessment, readAssessmentDraft, assessmentParts, renderTeamTrial,
@@ -55,6 +55,45 @@ test('merged detail links redirect only to a present public record', () => {
   api.renderDetail('missing');
   assert.equal(redirected, null);
   assert.ok(main.innerHTML.includes('Niet gevonden'));
+});
+
+test('paper list sorts by the published day, keeps equal dates stable and distinguishes publication types', () => {
+  const paper = {id:'one', title:'A study', authors:['A. Boer','B. Chen'], published:'2026-11-20',
+    publicationType:'journal-article', source:'Journal of Education', url:'https://doi.org/10.1000/paper', summary:'Education & AI.'};
+  const data = {checkedAt:'2026-11-22', sources:[{name:'Crossref',url:'https://crossref.org/',checkedAt:'2026-11-22'},
+    {name:'arXiv',url:'https://arxiv.org/',checkedAt:'2026-11-18'}],
+    papers:[{...paper, title:'Older', published:'2026-11-15', publicationType:'peer-reviewed'},
+      {...paper, id:'two', title:'Second paper', publicationType:'preprint',source:'arXiv',url:'https://arxiv.org/abs/1234'},
+      paper, {...paper, id:'unsafe', title:'Invisible', url:'javascript:alert(1)'}]};
+  const api = load([], '#papers', {URL});
+  const html = api.papersMarkup(data);
+  const list = html.split('<ol class="papers-list">')[1];
+  assert.match(list, /Gepubliceerd tijdschriftartikel[\s\S]+A study[\s\S]+Preprint[\s\S]+Second paper[\s\S]+Peer-reviewed artikel[\s\S]+Older/);
+  assert.equal((html.match(/Peer-reviewed artikel/g) || []).length, 1);
+  assert.match(html, /A\. Boer, B\. Chen · <cite>Journal of Education/);
+  assert.match(html, /href="https:\/\/doi\.org\/10\.1000\/paper"/);
+  assert.match(html, /Education &amp; AI\./);
+  assert.match(html, /datetime="2026-11-22"/);
+  assert.match(html, /controle verschilt per bron/);
+  assert.match(html, /arXiv ↗<\/a> · laatst gecontroleerd op <time datetime="2026-11-18"/);
+  assert.doesNotMatch(html, /javascript:|Invisible/);
+  assert.deepEqual(data.papers.map(item => item.title), ['Older','Second paper','A study','Invisible']);
+  const sparse = api.papersMarkup({papers:[]});
+  assert.match(sparse, /geen papers voor deze selectie/);
+  assert.match(sparse, /controle onbekend/);
+  assert.throws(() => api.papersMarkup({metadata:{}}));
+});
+
+test('specific paper searches offer the papers page and keep regular matching records', () => {
+  const data = [{...record('method'), title:'Wetenschappelijke artikelen', description:'Papers voor onderzoekers'}];
+  for (const query of ['paper', 'recente papers', 'artikelen over AI in het onderwijs', 'wetenschappelijke artikelen']) {
+    const api = load(data, '#zoeken?' + new URLSearchParams({q:query}));
+    assert.ok(api.suggestionData(query).flatMap(section => section.items).some(item => item.href === '#papers'));
+    assert.match(api.resultsMarkup(), /href="#papers">Papers over AI en onderwijs<\/a>/);
+    if (query === 'wetenschappelijke artikelen') assert.match(api.resultsMarkup(), /data-record-id="method"/);
+  }
+  const api = load(data, '#zoeken?q=AI');
+  assert.ok(!api.suggestionData('AI').flatMap(section => section.items).some(item => item.href === '#papers'));
 });
 
 test('education practice questions lead to applicable public records and retain specific details', () => {

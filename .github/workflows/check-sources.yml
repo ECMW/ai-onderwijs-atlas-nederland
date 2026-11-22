@@ -2,7 +2,8 @@ name: Daily Atlas maintenance review
 
 on:
   schedule:
-    - cron: '17 6,11,16 * * *'
+    - cron: '17 6 * * *'
+    - cron: '17 11,16 * * *'
   workflow_dispatch:
 
 permissions:
@@ -15,6 +16,18 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  refresh-papers:
+    if: github.ref == 'refs/heads/main' && github.event.schedule == '17 6 * * *'
+    runs-on: ubuntu-latest
+    permissions: {actions: write}
+    steps:
+      - name: Refresh the papers through the protected Pages publication
+        uses: actions/github-script@v8
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              ...context.repo, workflow_id: 'deploy-pages.yml', ref: 'main', inputs: {refresh_papers: 'true'}
+            });
   check:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest

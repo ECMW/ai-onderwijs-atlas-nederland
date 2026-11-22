@@ -1,0 +1,285 @@
+{
+  "checkedAt": "2026-11-22",
+  "sources": [
+    {
+      "name": "Educational Technology Research and Development",
+      "url": "https://link.springer.com/journal/11423/articles",
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "name": "International Journal of Science and Mathematics Education",
+      "url": "https://link.springer.com/journal/10763/articles",
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "name": "Journal of Science Education and Technology",
+      "url": "https://link.springer.com/journal/10956/articles",
+      "checkedAt": "2026-11-22"
+    },
+    {
+      "name": "British Journal of Educational Technology",
+      "url": "https://bera-journals.onlinelibrary.wiley.com/journal/14678535",
+      "checkedAt": "2026-11-22"
+    }
+  ],
+  "papers": [
+    {
+      "id": "10.1007/s11423-026-10749-1",
+      "title": "Utilizing a GPT-based exam assistant to support practice and assessment in higher education: an exploratory study on learner engagement and perceptions",
+      "authors": [
+        "Katharina Frosch",
+        "Friederike Lindauer",
+        "Carmen Winkel"
+      ],
+      "published": "2026-11-20",
+      "source": "Educational Technology Research and Development",
+      "publicationType": "peer-reviewed",
+      "url": "https://doi.org/10.1007/s11423-026-10749-1",
+      "language": "en",
+      "summary": "Dertig bachelorstudenten aan een Duitse universiteit oefenden met een GPT-examenassistent en later met Moodle. De onderzoekers vergeleken hun gebruik en ervaren eerlijkheid. Door de vaste volgorde en de kleine groep blijft onzeker of een van beide vormen beter werkt."
+    },
+    {
+      "id": "10.1007/s10763-026-10747-y",
+      "title": "Generative AI-Enhanced STEM-Education: Investigating Teachers’ Experiences from Implementation in Primary School Settings",
+      "authors": [
+        "Susanne Walan",
+        "Mirela Vinerean-Bernhoff"
+      ],
+      "published": "2026-11-18",
+      "source": "International Journal of Science and Mathematics Education",
+      "publicationType": "peer-reviewed",
+      "url": "https://doi.org/10.1007/s10763-026-10747-y",
+      "language": "en",
+      "summary": "Elf Zweedse basisschoolleraren probeerden zes maanden generatieve AI uit bij rekenen en natuuronderwijs. Ze beschreven bruikbare lesideeën en rekenfouten in AI-antwoorden. De studie onderzocht docentervaringen. Leerprestaties zijn niet gemeten."
+    },
+    {
+      "id": "10.1007/s10956-026-10373-x",
+      "title": "When Clarity Masks Correctness: Rural Secondary Students’ Evaluation of AI-Generated Physics Explanations",
+      "authors": [
+        "Nailya Shertayeva",
+        "Ganiya Ormanova",
+        "Bibigul Shagraуеva",
+        "Gaukhar Abdushukurova"
+      ],
+      "published": "2026-11-16",
+      "source": "Journal of Science Education and Technology",
+      "publicationType": "peer-reviewed",
+      "url": "https://doi.org/10.1007/s10956-026-10373-x",
+      "language": "en"
+    },
+    {
+      "id": "10.1111/bjet.70101",
+      "title": "Generative AI empowered contextual educational games as facilitators of elementary school students' computational thinking tendencies",
+      "authors": [
+        "Wen‐Li Zhou",
+        "Qing‐Ke Fu",
+        "Jian‐Wen Fang",
+        "Gwo‐Jen Hwang"
+      ],
+      "published": "2026-11-13",
+      "source": "British Journal of Educational Technology",
+      "publicationType": "journal-article",
+      "url": "https://doi.org/10.1111/bjet.70101"
+    },
+    {
+      "id": "10.1111/bjet.70100",
+      "title": "Human tutoring, generative AI tutoring and independent internet search: A randomised between‐subjects experiment on students' responses to academic challenge",
+      "authors": [
+        "Megan Ennion",
+        "Ros McLellan"
+      ],
+      "published": "2026-11-13",
+      "source": "British Journal of Educational Technology",
+      "publicationType": "journal-article",
+      "url": "https://doi.org/10.1111/bjet.70100"
+    },
+    {
+      "id": "10.1007/s11423-026-10763-3",
+      "title": "From information delivery to cognitive co-creation: how generative AI enhances computational thinking education through student-authored visualizations",
+      "authors": [
+        "Jian Zhou",
+        "Wuwen Zhang",
+        "Mo Zhou"
+      ],
+      "published": "2026-11-13",
+      "source": "Educational Technology Research and Development",
+      "publicationType": "peer-reviewed",
+      "url": "https://doi.org/10.1007/s11423-026-10763-3",
+      "language": "en"
+    },
+    {
+      "id": "10.1007/s11423-026-10753-5",
+      "title": "Developing and validating the human-AI collaboration competency scale",
+      "authors": [
+        "Hyeeun Kim",
+        "Eun Hye Ham",
+        "Young Hoan Cho"
+      ],
+      "published": "2026-11-13",
+      "source": "Educational Technology Research and Development",
+      "publicationType": "peer-reviewed",
+      "url": "https://doi.org/10.1007/s11423-026-10753-5",
+      "language": "en"
+    },
+    {
+      "id": "10.1007/s10956-026-10374-w",
+      "title": "What Makes Learning with GenAI Effective? Text Support and Deeper Engagement are Associated with Higher Performance in an Ecology Context",
+      "authors": [
+        "Lars Dietrich",
+        "Laura Fink",
+        "Detlef Urhahne",
+        "Kerstin Kremer"
+      ],
+      "published": "2026-11-12",
+      "source": "Journal of Science Education and Technology",
+      "publicationType": "peer-reviewed",
+      "url": "https://doi.org/10.1007/s10956-026-10374-w",
+      "language": "en",
+      "summary": "Bij een ecologietaak werden 185 studenten willekeurig verdeeld over drie groepen. Studenten met alleen ChatGPT scoorden op de aansluitende kennistoets lager dan studenten die de bronteksten konden lezen, met of zonder ChatGPT. Het onderzoek betrof één taak."
+    },
+    {
+      "id": "10.1007/s11423-026-10762-4",
+      "title": "Development and validation of a framework and scale for K–12 teacher–AI collaborative teaching competence",
+      "authors": [
+        "Hongchao Peng",
+        "Mingrui Zhang"
+      ],
+      "published": "2026-11-07",
+      "source": "Educational Technology Research and Development",
+      "publicationType": "peer-reviewed",
+      "url": "https://doi.org/10.1007/s11423-026-10762-4",
+      "language": "en"
+    },
+    {
+      "id": "10.1111/bjet.70098",
+      "title": "The impact of an AI‐driven multimodal teaching analytics dashboard on pre‐service teachers' reflective learning in microteaching",
+      "authors": [
+        "Ming Liu",
+        "Zhongming Wu",
+        "Haimin Dai",
+        "Laiba Malik",
+        "Xiangqian Li",
+        "Golam Ali Azgar Hossain Maruf",
+        "Teng Li",
+        "Jian Liao",
+        "JingXian Wang",
+        "Qixing Xu",
+        "Shuo Guo",
+        "Min Yang",
+        "Yiling Ren",
+        "Li Liu",
+        "Junqiang Zhao"
+      ],
+      "published": "2026-11-06",
+      "source": "British Journal of Educational Technology",
+      "publicationType": "journal-article",
+      "url": "https://doi.org/10.1111/bjet.70098"
+    },
+    {
+      "id": "10.1007/s11423-026-10759-z",
+      "title": "To chat or not to chat? Incorporating GenAI chatbot into flipped classroom to enhance learners’ task engagement",
+      "authors": [
+        "Zhiyong Li",
+        "Jie Bao"
+      ],
+      "published": "2026-11-06",
+      "source": "Educational Technology Research and Development",
+      "publicationType": "peer-reviewed",
+      "url": "https://doi.org/10.1007/s11423-026-10759-z",
+      "language": "en"
+    },
+    {
+      "id": "10.1007/s10956-026-10369-7",
+      "title": "Student-Initiated Questioning in LLM-based Physics Tutoring: Metacognitive Regulation and Dialogic Uptake",
+      "authors": [
+        "Eunhye Kim",
+        "Hunkoog Jho"
+      ],
+      "published": "2026-11-04",
+      "source": "Journal of Science Education and Technology",
+      "publicationType": "peer-reviewed",
+      "url": "https://doi.org/10.1007/s10956-026-10369-7",
+      "language": "en"
+    },
+    {
+      "id": "10.1007/s11423-026-10756-2",
+      "title": "Should there be a teacher in-the-loop? A study of generative AI-personalized tasks middle school",
+      "authors": [
+        "Candace Walkington",
+        "Mingyu Feng",
+        "Tiffini Pruitt-Britton",
+        "Theodora Beauchamp",
+        "Andrew Lan"
+      ],
+      "published": "2026-11-02",
+      "source": "Educational Technology Research and Development",
+      "publicationType": "peer-reviewed",
+      "url": "https://doi.org/10.1007/s11423-026-10756-2",
+      "language": "en",
+      "summary": "Zeven wiskundedocenten pasten met ChatGPT opgaven aan de interesses van hun leerlingen aan. Leerlingen gaven aan welke verwijzingen zij herkenbaar vonden. De studie onderzocht de werkwijze en reacties op de opgaven. Leerwinst is niet vastgesteld."
+    },
+    {
+      "id": "10.1111/bjet.70095",
+      "title": "GenAI‐based metacognitive prompting in collaborative inquiry: A comparison across diverse preconception groups",
+      "authors": [
+        "Mengke Wang",
+        "Joni Lämsä",
+        "Marta Sobocinski",
+        "Justin Edwards",
+        "Ridwan Whitehead",
+        "Sanna Järvelä"
+      ],
+      "published": "2026-10-25",
+      "source": "British Journal of Educational Technology",
+      "publicationType": "journal-article",
+      "url": "https://doi.org/10.1111/bjet.70095"
+    },
+    {
+      "id": "10.1007/s10956-026-10368-8",
+      "title": "Deskilling the Laboratory: A Systematic Review of Artificial Intelligence as a Threat to Embodied and Tacit Knowledge in Hands-On Science Practical Work",
+      "authors": [
+        "Rivan Gestiardi",
+        "Subanji"
+      ],
+      "published": "2026-10-23",
+      "source": "Journal of Science Education and Technology",
+      "publicationType": "peer-reviewed",
+      "url": "https://doi.org/10.1007/s10956-026-10368-8",
+      "language": "en"
+    },
+    {
+      "id": "10.1007/s10956-026-10365-x",
+      "title": "“Heavier Objects Fall Faster”: Exploring Conceptual Reconstruction in Pre-Service Primary Teachers Through Refutational and AI-Supported Reflective Learning",
+      "authors": [
+        "Nuzulira Janeusse Fratiwi",
+        "Nor Farahwahidah Abdul Rahman",
+        "Fanni Zulaiha",
+        "Nur Habib Muhammad Iqbal",
+        "Achmad Samsudin",
+        "Kuang Han Yong"
+      ],
+      "published": "2026-10-16",
+      "source": "Journal of Science Education and Technology",
+      "publicationType": "peer-reviewed",
+      "url": "https://doi.org/10.1007/s10956-026-10365-x",
+      "language": "en"
+    },
+    {
+      "id": "10.1007/s10956-026-10363-z",
+      "title": "The Effectiveness of the ARAI-Land (AR-AI for Wetland Ecosystem) e-Module to Improve Students’ 6 C Skills in Chemistry Learning",
+      "authors": [
+        "Rusmansyah",
+        "Syahmani",
+        "Farah Erika",
+        "Arief Ertha Kusuma",
+        "Tien Tien Lee",
+        "Mohamad Nor Aufa"
+      ],
+      "published": "2026-09-30",
+      "source": "Journal of Science Education and Technology",
+      "publicationType": "peer-reviewed",
+      "url": "https://doi.org/10.1007/s10956-026-10363-z",
+      "language": "en"
+    }
+  ]
+}
