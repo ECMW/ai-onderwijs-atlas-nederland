@@ -265,12 +265,37 @@
     return STATUS_LABELS[effectiveStatus(record, today)] || 'Te verifiëren';
   };
   const displayStatus = record => isFunding(record) && record.status === 'available' ? 'Regeling of informatiebron' : statusLabel(record);
-  const subjectOptions = [...new Set(records.flatMap(record => record.subjects || []))]
-    .sort((left, right) => left.localeCompare(right, 'nl'));
+  const subjectNames = new Map(records.flatMap(record =>
+    (record.subjects || []).map(name => [normalize(name), name])));
+  const subjectWords = new WeakMap();
+  function subjectMatches(record, value) {
+    const term = normalize(value);
+    if (!term) return false;
+    const name = subjectNames.get(term);
+    if (name) return (record.subjects || []).includes(name);
+    if (!subjectWords.has(record)) {
+      const content = [record.title, record.description, record.purpose, ...(record.subjects || []),
+        ...(record.keywords || []), ...(record.themes || []), record.lessonStart?.level,
+        record.lessonStart?.question, record.lessonStart?.task].filter(Boolean);
+      subjectWords.set(record, new Set(normalize(content.join(' ')).split(' ')));
+    }
+    const words = subjectWords.get(record);
+    return term.split(' ').every(word => words.has(word));
+  }
   const organizationNames = [...new Set(records.map(record => record.providerName).filter(Boolean))]
     .sort((left, right) => right.length - left.length);
   function filterValues(key, value) {
     const raw = String(value || '');
+    if (key === 'vak') {
+      const text = raw.trim().replace(/\s+/g, ' ');
+      if (!text) return [];
+      // Previously shared links could select several catalogue subjects.
+      const parts = text.split(',').map(item => item.trim());
+      if (parts.every(item => subjectNames.has(normalize(item)))) {
+        return [...new Set(parts.map(item => subjectNames.get(normalize(item))))];
+      }
+      return [text];
+    }
     if (key === 'organization') {
       // New comma-containing selections use a JSON array; old shared URLs keep
       // working by matching the longest complete known provider name first.
@@ -309,7 +334,6 @@
   const facetValues = {
     theme: recordThemes,
     sector: record => record.sectors || [],
-    vak: record => record.subjects || [],
     status: record => [statusLabel(record)],
     type: record => [offerType(record), typeLabel(record)],
     audience: record => record.audiences || [],
@@ -331,6 +355,7 @@
     state = { q: params.get('q') || '', sort: Object.hasOwn(SORT_OPTIONS, sort) ? sort : 'relevant' };
     FILTER_KEYS
       .forEach(key => state[key] = params.get(key) || '');
+    state.vak = filterValues('vak', state.vak).join(',');
     if (!state.audience && params.get('aud')) state.audience = params.get('aud');
     if (params.get('cat')) state.type = params.get('cat').split(',').map(value => TYPE_LABELS[value] || value).join(',');
     // Retired freshness links still open the catalogue, without a misleading filter.
@@ -563,13 +588,15 @@
     return list.sort((a, b) => scores.get(b) - scores.get(a));
   }
   function facetCounts() {
-    const counts = Object.fromEntries(FILTER_KEYS.map(key => [key, new Map()]));
-    const selected = activeFilters(state);
+    const keys = Object.keys(facetValues);
+    const counts = Object.fromEntries(keys.map(key => [key, new Map()]));
+    const selected = activeFilters(state).filter(([key]) => key !== 'vak');
+    const subjects = values('vak');
     for (const record of records) {
-      const options = Object.fromEntries(FILTER_KEYS.map(key => [key, new Set(facetValues[key](record))]));
+      const options = Object.fromEntries(keys.map(key => [key, new Set(facetValues[key](record))]));
       const failed = selected.filter(([key, choices]) => !choices.some(value => options[key].has(value)));
-      const queryMatchesRecord = queryMatches(record, state.q);
-      for (const key of FILTER_KEYS) {
+      const queryMatchesRecord = (!subjects.length || subjects.some(value => subjectMatches(record, value))) && queryMatches(record, state.q);
+      for (const key of keys) {
         // A choice counts matches with the other filters still applied.
         const matchesOthers = !failed.length || (failed.length === 1 && failed[0][0] === key);
         const increment = Number(queryMatchesRecord && matchesOthers);
@@ -659,7 +686,9 @@
   function recordsForCriteria(criteria = {}) {
     const selected = activeFilters(criteria);
     return records.filter(record => queryMatches(record, criteria.q) &&
-      selected.every(([key, choices]) => facetValues[key](record).some(value => choices.includes(value))));
+      selected.every(([key, choices]) => key === 'vak'
+        ? choices.some(value => subjectMatches(record, value))
+        : facetValues[key](record).some(value => choices.includes(value))));
   }
   function criteriaHref(criteria = {}) {
     const params = new URLSearchParams();
@@ -917,7 +946,7 @@
     const types = ['materials', 'Training', 'Boek', 'knowledge', 'Praktijkvoorbeeld', 'Pilot', 'Subsidie of call', 'Subsidie', 'Wetgeving', 'Organisatie', 'Programma', 'Community', 'Standaard', 'Raamwerk', 'Beleidsdocument', 'unclassified'];
     return `<details class="home-filter-sidebar"><summary>Filter het aanbod</summary><form class="home-filter-form"><header><span class="eyebrow">Snel verfijnen</span><h2>Filter het aanbod</h2><p>Kies eerst uw sector en daarna wat u zoekt. Verfijn vervolgens met de andere opties.</p></header>
       ${homeFilterGroup('sector', 'Voor welke sector?', SECTORS)}
-      ${homeFilterGroup('vak', 'Vakgebied', subjectOptions)}
+      ${subjectInput('home-subject-search')}
       ${homeFilterGroup('type', 'Wat zoekt u?', types)}
       ${homeFilterGroup('theme', 'Waar zoekt u hulp bij?', themes, [], false, [{ key: 'type', value: 'Training', label: 'Mijn team scholen — workshops en trainers' }, { key: 'type', value: 'Subsidie of call,Subsidie', label: 'Subsidies en calls vinden' }])}
       ${homeFilterGroup('geography', 'Waar is het aanbod beschikbaar?', ['Nederland', 'Europa', 'Internationaal'])}
@@ -937,6 +966,8 @@
         const selected = [...form.querySelectorAll(`input[name="${key}"]:checked`)].map(input => input.value);
         if (selected.length) criteria[key] = [...new Set(selected.flatMap(value => value.split(',')))].join(',');
       });
+      const subject = form.querySelector('[name="vak"]').value;
+      if (subject.trim()) criteria.vak = filterValues('vak', subject).join(',');
       return criteria;
     };
     const update = () => {
@@ -1048,57 +1079,34 @@
     };
     return values(key).map(value => filterOptionLabel(key, value)).join(', ') || defaults[key] || 'Alle opties';
   }
-  const SUBJECT_PAGE_SIZE = 6;
-  let currentSubjectCounts;
-  function subjectPage(counts, text = '', requestedPage = 0) {
-    const query = normalize(text);
-    const selected = values('vak');
-    const matches = [...counts.keys()].filter(name => (counts.get(name) || selected.includes(name)) && normalize(name).includes(query));
-    matches.sort((a, b) => {
-      const order = query ? Number(normalize(b).startsWith(query)) - Number(normalize(a).startsWith(query)) : counts.get(b) - counts.get(a);
-      return order || a.localeCompare(b, 'nl');
-    });
-    const pages = Math.ceil(matches.length / SUBJECT_PAGE_SIZE);
-    const page = Math.max(0, Math.min(requestedPage, pages - 1));
-    const start = page * SUBJECT_PAGE_SIZE;
-    const visible = matches.slice(start, start + SUBJECT_PAGE_SIZE);
-    const range = pages > 1 ? `${start + 1}–${start + visible.length} van ${matches.length}` :
-      matches.length ? `${matches.length} ${matches.length === 1 ? 'vakgebied' : 'vakgebieden'}` : 'Geen vakgebied gevonden bij deze filters.';
-    return { matches, visible, range, page, pages };
-  }
   function facetOption(key, option, count, selected) {
     const checked = selected.includes(option);
     return `<label data-facet-option="${escapeHtml(option)}"><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${!count && !checked ? 'disabled' : ''}><span>${escapeHtml(filterOptionLabel(key, option))}</span><small>${count}</small></label>`;
   }
-  function subjectPickerMarkup(counts, selected) {
-    const view = subjectPage(counts);
-    return `<div data-subject-picker>
-      <label class="subject-question" for="subject-search">Welk schoolvak of studievak zoekt u?</label>
-      <p id="subject-examples" class="facet-note">Bijvoorbeeld biologie, burgerschap of econometrie.</p>
-      <input id="subject-search" class="facet-search" type="search" placeholder="Typ een vaknaam" aria-describedby="subject-examples subject-help">
-      <p id="subject-help" class="facet-note">Kies een vak hieronder of druk bij één treffer op Enter.</p>
-      <div class="facet-options">${view.visible.map(name => facetOption('vak', name, counts.get(name), selected)).join('')}</div>
-      <div class="subject-pages"><button type="button" data-page-step="-1" aria-label="Vorige vakgebieden" disabled ${view.pages < 2 ? 'hidden' : ''}>Vorige</button><span role="status">${view.range}</span><button type="button" data-page-step="1" aria-label="Volgende vakgebieden" ${view.pages < 2 ? 'disabled hidden' : ''}>Volgende</button></div>
-      <a data-subject-fallback hidden></a></div>`;
+  function subjectInput(id) {
+    const value = values('vak').join(', ');
+    return `<label for="${id}">Vakgebied</label>
+      <input id="${id}" name="vak" type="text" autocomplete="off" placeholder="Typ zelf een vak" value="${escapeHtml(value)}" data-applied="${escapeHtml(value)}">`;
   }
-  function subjectForEnter(matches, text) {
-    return matches.find(name => normalize(name) === normalize(text)) || (matches.length === 1 ? matches[0] : '');
-  }
-  function subjectSearchHref(term) {
-    const q = [...new Set([state.q?.trim(), term.trim()].filter(Boolean))].join(' ');
-    return stateHref({ q });
+  function applySubject(input) {
+    const choices = filterValues('vak', input.value);
+    input.value = choices.join(', ');
+    const subject = serializeFilterValues('vak', choices);
+    if (subject !== (state.vak || '')) {
+      state.vak = subject;
+      setUrl();
+    }
   }
   function facet(key, title, options, counts = facetCounts()[key]) {
     const present = options.filter(option => counts.has(option));
     const selected = values(key);
-    const supportsMultiple = ['sector', 'vak', 'audience'].includes(key);
+    const supportsMultiple = ['sector', 'audience'].includes(key);
     const startsOpen = supportsMultiple && (key !== 'sector' || selected.length > 0);
     return `<details class="facet${supportsMultiple ? ' facet-multi' : ''}" data-facet-block="${escapeHtml(key)}"${startsOpen ? ' open' : ''}><summary><span class="facet-heading">${escapeHtml(title)}<b aria-label="${values(key).length} geselecteerd" ${values(key).length ? '' : 'hidden'}>${values(key).length}</b></span><span class="facet-value">${escapeHtml(facetSelectionLabel(key))}</span></summary><div>
-      ${key === 'vak' ? subjectPickerMarkup(counts, selected) : `
       ${supportsMultiple ? '<p class="facet-note">Kies één of meer opties tegelijk.</p>' : ''}
       ${key === 'organization' && present.length > 12 ? '<input class="facet-search" type="search" placeholder="Zoek aanbieder…" aria-label="Zoek binnen aanbieders">' : ''}
       <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => facetOption(key, option, counts.get(option), selected)).join('')}</div>
-      ${present.length > 8 ? '<button class="facet-more" type="button" aria-expanded="false">Toon meer</button>' : ''}`}
+      ${present.length > 8 ? '<button class="facet-more" type="button" aria-expanded="false">Toon meer</button>' : ''}
     </div></details>`;
   }
   function relatedThemes(activeTheme) {
@@ -1711,9 +1719,12 @@
   }
   function refreshFacetControls() {
     const counts = facetCounts();
-    currentSubjectCounts = counts.vak;
-    const subjectPicker = document.querySelector('[data-subject-picker]');
-    if (subjectPicker) updateSubjectPicker(subjectPicker);
+    const subject = document.querySelector('#subject-search');
+    const applied = values('vak').join(', ');
+    if (subject && subject.dataset.applied !== applied) {
+      subject.value = applied;
+      subject.dataset.applied = applied;
+    }
     const selections = Object.fromEntries(FILTER_KEYS.map(key => [key, values(key)]));
     document.querySelectorAll('[data-facet]').forEach(input => {
       const key = input.dataset.facet;
@@ -1750,13 +1761,12 @@
   }
   function catalogFilterPanel(typeOptions, audienceOptions, organizationOptions) {
     const counts = facetCounts();
-    currentSubjectCounts = counts.vak;
     const filter = (key, title, options) => facet(key, title, options, counts[key]);
     const languages = [...new Set([...Object.keys(LANGUAGE_LABELS), ...counts.language.keys()])];
     const hiddenCount = ['access', 'source'].reduce((sum, key) => sum + values(key).length, 0);
     return `<aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Filters</h2><button class="close" aria-label="Sluit filters">×</button></header>
-      <p class="filter-help">Combineer uw zoekterm met filters. Binnen een filter kunt u meerdere opties kiezen.</p>
-      ${filter('sector', 'Voor welke sector?', SECTORS)}${filter('vak', 'Vakgebied', subjectOptions)}${filter('type', 'Wat zoekt u?', typeOptions)}${filter('language', 'Taal', languages)}${filter('cost', 'Kosten', ['Gratis', 'Betaald', 'Gratis en betaald', 'Kosten onbekend'])}${filter('theme', 'Onderwerp', themeOptions())}${filter('geography', 'Regio', ['Nederland', 'Europa', 'Internationaal'])}${filter('audience', 'Doelgroep', audienceOptions)}${filter('status', 'Beschikbaarheid', Object.values(STATUS_LABELS))}${filter('organization', 'Aanbieder', organizationOptions)}
+      <p class="filter-help">Combineer uw zoekterm met een vakgebied of andere filters.</p>
+      ${filter('sector', 'Voor welke sector?', SECTORS)}<form class="subject-filter">${subjectInput('subject-search')}<button class="btn secondary" type="submit">Toepassen</button></form>${filter('type', 'Wat zoekt u?', typeOptions)}${filter('language', 'Taal', languages)}${filter('cost', 'Kosten', ['Gratis', 'Betaald', 'Gratis en betaald', 'Kosten onbekend'])}${filter('theme', 'Onderwerp', themeOptions())}${filter('geography', 'Regio', ['Nederland', 'Europa', 'Internationaal'])}${filter('audience', 'Doelgroep', audienceOptions)}${filter('status', 'Beschikbaarheid', Object.values(STATUS_LABELS))}${filter('organization', 'Aanbieder', organizationOptions)}
       <details class="more-filters"><summary>Meer filters<span data-more-count>${hiddenCount ? ` (${hiddenCount})` : ''}</span> <span aria-hidden="true">▼</span></summary>
         ${filter('access', 'Toegang', Object.values(ACCESS_LABELS))}${filter('source', 'Bron', ['Met officiële bron', 'Bron nog niet vastgelegd'])}
       </details><button class="clear btn secondary">Wis alle filters</button><footer><button class="apply btn">Toon ${resultRecords.length} resultaten</button></footer>
@@ -2213,7 +2223,9 @@
       document.querySelector('#practice-sector')?.focus({ preventScroll: true });
     };
     panel.querySelectorAll('[data-remove]').forEach(button => button.onclick = () => {
-      const [key, value] = button.dataset.remove.split('|');
+      const raw = button.dataset.remove;
+      const separator = raw.indexOf('|');
+      const key = raw.slice(0, separator), value = raw.slice(separator + 1);
       state[key] = serializeFilterValues(key, values(key).filter(item => item !== value));
       setUrl();
     });
@@ -2228,60 +2240,6 @@
     if (sheet) sheet.onclick = rememberResults;
     panel.querySelectorAll('.result-card a[href^="#item/"]').forEach(link => link.onclick = () => {
       sessionSet('atlas.lastSearch', location.hash); sessionSet('atlas.resultsScroll', scrollY);
-    });
-  }
-  function updateSubjectPicker(picker, page = Number(picker.dataset.page || 0), focusFirst = false) {
-    const search = picker.querySelector('input[type="search"]');
-    const list = picker.querySelector('.facet-options');
-    const previousFocus = list.contains(document.activeElement) ? document.activeElement.value : '';
-    const view = subjectPage(currentSubjectCounts, search.value, page);
-    const selected = values('vak');
-    picker.dataset.page = view.page;
-    list.innerHTML = view.visible.map(name => facetOption('vak', name, currentSubjectCounts.get(name), selected)).join('');
-    picker.querySelector('[role="status"]').textContent = view.range;
-    picker.querySelectorAll('[data-page-step]').forEach(button => {
-      button.hidden = view.pages < 2;
-      button.disabled = Number(button.dataset.pageStep) < 0 ? view.page === 0 : view.page + 1 >= view.pages;
-    });
-    const fallback = picker.querySelector('[data-subject-fallback]');
-    const term = search.value.trim();
-    fallback.hidden = !term || Boolean(view.matches.length);
-    if (!fallback.hidden) {
-      fallback.href = subjectSearchHref(term);
-      fallback.textContent = `Zoek “${term}” in het aanbod`;
-    }
-    if (focusFirst) list.querySelector('input')?.focus();
-    else if (previousFocus) ([...list.querySelectorAll('input')].find(input => input.value === previousFocus) || search).focus({preventScroll: true});
-  }
-  function bindSubjectPicker(picker) {
-    const search = picker.querySelector('input[type="search"]');
-    search.oninput = () => updateSubjectPicker(picker, 0);
-    search.onkeydown = event => {
-      if (event.key === 'Escape' && search.value) {
-        event.preventDefault();
-        event.stopPropagation();
-        search.value = '';
-        updateSubjectPicker(picker, 0);
-      } else if (event.key === 'ArrowDown') {
-        event.preventDefault();
-        picker.querySelector('.facet-options input')?.focus();
-      } else if (event.key === 'Enter' && normalize(search.value) && !event.isComposing) {
-        event.preventDefault();
-        const { matches } = subjectPage(currentSubjectCounts, search.value);
-        const choice = subjectForEnter(matches, search.value);
-        if (choice) {
-          const selected = values('vak');
-          if (!selected.includes(choice)) {
-            state.vak = serializeFilterValues('vak', [...selected, choice]);
-            setUrl();
-          }
-        } else {
-          picker.querySelector('.facet-options input, [data-subject-fallback]:not([hidden])')?.focus();
-        }
-      }
-    };
-    picker.querySelectorAll('[data-page-step]').forEach(button => {
-      button.onclick = () => updateSubjectPicker(picker, Number(picker.dataset.page || 0) + Number(button.dataset.pageStep), true);
     });
   }
   function bindFacetLists() {
@@ -2315,10 +2273,11 @@
       else selected.delete(input.value);
       state[key] = serializeFilterValues(key, [...selected]); setUrl();
     };
-    const subjectPicker = panel.querySelector('[data-subject-picker]');
-    if (subjectPicker) bindSubjectPicker(subjectPicker);
+    const subjectForm = panel.querySelector('.subject-filter');
+    const subjectInput = subjectForm.querySelector('input');
+    subjectForm.onsubmit = event => { event.preventDefault(); applySubject(subjectInput); };
     bindFacetLists();
-    panel.querySelector('.clear').onclick = () => { state = { q: state.q, sort: state.sort }; setUrl(); };
+    panel.querySelector('.clear').onclick = () => { subjectInput.value = ''; state = { q: state.q, sort: state.sort }; setUrl(); };
     bindFilterDrawer(panel, document.querySelector('.mobile-filter'));
     bindResultsControls();
   }
@@ -2342,6 +2301,8 @@
     };
     closer.onclick = () => { closePanel(); opener.focus(); };
     panel.querySelector('.apply').onclick = () => {
+      const subject = panel.querySelector('#subject-search');
+      if (subject) applySubject(subject);
       closePanel();
       document.querySelector('.result-head h2')?.focus();
     };

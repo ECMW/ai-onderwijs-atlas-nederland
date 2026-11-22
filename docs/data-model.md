@@ -66,16 +66,15 @@ dat vak beschrijft. Een Engelstalig werkblad over biologie krijgt bijvoorbeeld `
 vak en `en` als taal. Gebruik dezelfde schrijfwijze als in vergelijkbare records. Wanneer er
 geen specifiek vak is onderbouwd, blijft het veld leeg of ontbreekt het.
 
-Het filter **Vakgebied** gebruikt deze expliciete indeling. Met twee geselecteerde vakken komen
-vermeldingen voor elk van beide vakken in beeld. Een aanvullende keuze zoals **VO** beperkt
-die resultaten tot die sector. Records zonder vastgelegd vak blijven in het volledige aanbod en
-in de gewone tekstzoekfunctie beschikbaar. Een deelbare zoeklink kan bijvoorbeeld
-`#zoeken?vak=Biologie&sector=VO` bevatten. Voor biologiemateriaal in het voortgezet onderwijs
-combineert een docent **VO**, **Biologie** en **Les- en werkmaterialen**. De bijbehorende link is
-`#zoeken?sector=VO&vak=Biologie&type=materials`.
+Bezoekers typen hun eigen vak in **Vakgebied** en passen het toe met Enter of de knop
+**Toepassen**. Bij een bestaande vaknaam gebruikt de Atlas de vastgelegde vakindeling.
+Een andere invoer zoekt de getypte woorden in titel, beschrijving, doel, trefwoorden,
+thema's en lesactiviteiten. De zoekterm bovenaan en de andere filters blijven actief.
+Leegmaken en toepassen verwijdert het vakfilter.
 
-Het invulveld doorzoekt de vaknamen uit het gepubliceerde aanbod. Nieuwe, onderbouwde vaknamen
-verschijnen daardoor vanzelf. Het intypen van een term maakt geen nieuw vak aan.
+Een link zoals `#zoeken?sector=VO&vak=Biologie&type=materials` opent lesmaterialen
+voor biologie in het voortgezet onderwijs. Bestaande links met meerdere vastgelegde
+vaknamen blijven werken en tonen vermeldingen voor elk van die vakken.
 
 ## Aanbodvorm voor publieksfilters
 
