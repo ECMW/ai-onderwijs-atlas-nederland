@@ -11,7 +11,7 @@ const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
     recordContextMarkup, queryMatchQuality, queryMatches, sortRecords,
-    homeFilterPanel, catalogFilterPanel, recordsForCriteria, renderDetail, renderAssessment, readAssessmentDraft, assessmentParts,
+    homeFilterPanel, catalogFilterPanel, recordsForCriteria, renderDetail, renderAssessment, readAssessmentDraft, assessmentParts, renderTeamTrial,
     suggestionData, criteriaForQuery, relatedThemes, filterKeys: FILTER_KEYS,
     effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
     accessLabel, accessOptions: Object.values(ACCESS_LABELS), recordThemes, themeOptions, route,
@@ -104,8 +104,9 @@ test('practice links count matching offers and retain the chosen sectors and aud
   const api = load(data, '#zoeken?sector=HBO,WO&audience=Docenten');
   const html = api.resultsMarkup();
   assert.ok(html.includes('Meerdere sectoren'));
-  const links = [...html.matchAll(/<a class="practice-link" href="([^"]+)">/g)];
-  assert.equal(links.length, 1);
+  const links = [...html.matchAll(/<a class="practice-link" href="([^"]+)"><strong>([^<]+)/g)];
+  assert.deepEqual(links.map(match => match[2]), ['Een les voorbereiden', 'AI-afspraken maken']);
+  assert.match(load(data, links[1][1].replaceAll('&amp;', '&')).resultsMarkup(), /href="#teamproef"/);
   const href = links[0][1].replaceAll('&amp;', '&');
   const params = new URLSearchParams(href.split('?')[1]);
   assert.equal(params.get('sector'), 'HBO,WO');
@@ -131,6 +132,73 @@ test('teachers can reach an assessment agreement from the redesign route, agreem
     .some(section => section.items.some(item => item.href === '#toetsafspraak')));
   assert.ok(!load(items, '#zoeken?q=toets&sector=PO').resultsMarkup().includes('href="#toetsafspraak"'));
   assert.ok(!load(items, '#zoeken?q=privacy').resultsMarkup().includes('href="#toetsafspraak"'));
+});
+
+test('the team card keeps private notes out of links, supports a later review and prints the actual decision', async () => {
+  const memory = new Map();
+  const tab = new Map();
+  const store = map => ({getItem: key => map.get(key) || null, setItem: (key, value) => map.set(key, value), removeItem: key => map.delete(key)});
+  const fields = ['group', 'owner', 'date', 'rule', 'observation', 'decision'].map(name => ({name, value: ''}));
+  const form = {elements: fields};
+  const nodes = new Map();
+  const main = {querySelector(selector) {
+    if (selector === '.trial-form form') return form;
+    if (!nodes.has(selector)) nodes.set(selector, {isConnected: true, focus(){}, select(){}});
+    return nodes.get(selector);
+  }};
+  let printed = 0;
+  let copied = '';
+  const open = (hash, session = tab, device = store(memory)) => {
+    const api = load([], hash, {
+      sessionStorage: store(session), localStorage: device,
+      document: {querySelector: selector => selector === 'main' ? main : null},
+      window: {ATLAS_RECORDS: {records: [], metadata: {}}, print() { printed++; }},
+      navigator: {clipboard: {writeText(text) { copied = text; }}}
+    });
+    api.renderTeamTrial();
+    return api;
+  };
+  const api = open('#teamproef?casus=feedback');
+  assert.match(main.innerHTML, /dezelfde tekst met één tip/);
+  assert.match(main.innerHTML, /name="rule"[^>]*>We proberen de AI-tip/);
+  assert.equal(memory.size, 0);
+  assert.equal(tab.size, 0);
+  assert.ok(api.suggestionData('teamproef met AI').some(section => section.items.some(item => item.href === '#teamproef')));
+  Object.assign(fields[0], {value:'Nederlands <klas 2>'});
+  Object.assign(fields[2], {value:'2026-12-08'});
+  Object.assign(fields[3], {value:'Vergelijk de uitleg bij dezelfde tekst.'});
+  Object.assign(fields[4], {value:'De korte tip was begrijpelijker.'});
+  Object.assign(fields[5], {value:'Aanpassen en opnieuw proberen'});
+  form.oninput();
+  assert.equal(memory.size, 0);
+  assert.equal(tab.size, 1);
+  assert.match(main.querySelector('.trial-print').innerHTML, /Nederlands &lt;klas 2&gt;/);
+  await main.querySelector('[data-trial-copy]').onclick();
+  assert.ok(copied.includes('Nederlands <klas 2>') && copied.includes('Aanpassen en opnieuw proberen'));
+  assert.match(copied, /#teamproef\?casus=feedback$/);
+  assert.match(copied, /8 dec\.? 2026/);
+  main.querySelector('[data-trial-print]').onclick();
+  assert.equal(printed, 1);
+  main.querySelector('[data-trial-save]').onclick();
+  assert.equal(memory.size, 1);
+  open('#teamproef?casus=feedback', new Map());
+  assert.match(main.innerHTML, /value="Nederlands &lt;klas 2&gt;"/);
+  assert.match(main.innerHTML, /class="trial-review" open/);
+  assert.match(main.innerHTML, /<option selected>Aanpassen en opnieuw proberen/);
+  open('#teamproef?casus=lesvoorbereiding', new Map());
+  assert.match(main.innerHTML, /totale voorbereidingstijd/);
+  assert.doesNotMatch(main.innerHTML, /Nederlands &lt;klas 2&gt;/);
+  const recalledTab = new Map();
+  open('#teamproef', recalledTab);
+  main.querySelector('[data-trial-remove]').onclick();
+  assert.equal(memory.size, 0);
+  assert.equal(JSON.parse(recalledTab.get('atlas.teamproef.feedback')).group, 'Nederlands <klas 2>');
+  const blocked = {getItem(){throw Error();},setItem(){throw Error();}};
+  tab.set('atlas.teamproef.feedback', 'beschadigd');
+  open('#teamproef?casus=__proto__', tab, blocked);
+  assert.match(main.innerHTML, /name="rule"[^>]*>We proberen de AI-tip/);
+  main.querySelector('[data-trial-save]').onclick();
+  assert.match(main.querySelector('.trial-feedback').textContent, /Kopieer de kaart/);
 });
 
 test('assessment agreements distinguish independent work, optional AI feedback and verifying a supplied answer', () => {

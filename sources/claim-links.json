@@ -3,6 +3,17 @@
   "last_reviewed": "2026-11-22",
   "claims": [
     {
+      "claim_id": "atlas-teamproef-les-en-terugblik",
+      "location": {"path": "catalog.js"},
+      "claim": "De Atlas biedt teams een proefkaart om in één les iets uit te proberen, met een vooraf gekozen beslisregel en een vraag aan de klas.",
+      "claim_kind": "atlas_synthesis",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": ["kennisnet-schoolafspraken-generatieve-ai-2025", "npuls-ai-go-in-actie-2026"],
+      "assessment": "Kennisnet verbindt teamafspraken aan onderwijsdoelen en de betrokkenen op school. Npuls beschrijft een cyclische aanpak voor het vervolgonderwijs. De werkvorm, vergelijkingen en beslisregels zijn door de Atlas geschreven. Een uitkomst is een lokale observatie die meerdere verklaringen kan hebben.",
+      "last_reviewed": "2026-11-22",
+      "time_sensitive": false
+    },
+    {
       "claim_id": "atlas-toetsafspraak-ontwerpkeuzes",
       "location": {"path": "catalog.js"},
       "claim": "De Atlas zet het leerdoel, de toegestane AI-hulp, het eigen werk en het beoordelingscriterium bij elkaar in één opdrachttekst.",
