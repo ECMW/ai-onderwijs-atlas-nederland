@@ -1,0 +1,28 @@
+name: Ontdek & probeer browser smoke
+
+on:
+  pull_request:
+    paths:
+      - 'ontdek-en-probeer.html'
+      - 'tests/browser_discovery.py'
+      - '.github/workflows/discovery-browser.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser testing tools
+        run: |
+          python -m pip install 'playwright==1.56.0'
+          python -m playwright install --with-deps chromium
+      - name: Test mobile and desktop interaction
+        run: python tests/browser_discovery.py
