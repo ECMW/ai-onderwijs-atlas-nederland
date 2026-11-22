@@ -191,6 +191,42 @@ test('copying a classroom assignment includes the learner task, reflection and b
   }
 });
 
+test('a shared learner sheet opens independently, prints one assignment and shares its public URL', async () => {
+  const location = { hash:'', href:'http://localhost:8000/?atlas-no-count=1' };
+  const archived = { ...classroomLessons[0], id:'vorige-editie', status:'archived' };
+  const data = { records:[...classroomLessons, archived], metadata:{} };
+  const main = { focus() {} }, print = {}, share = {}, feedback = {};
+  const document = { body:{classList:{remove() {}}}, querySelectorAll: () => [],
+    querySelector: selector => ({ main, '[data-print-sheet]':print, '[data-share-sheet]':share, '#action-feedback':feedback })[selector] || null };
+  let printCount = 0, copied = '';
+  const api = load(data.records, '#home', { document, location, window:{ATLAS_RECORDS:data, print:() => printCount++},
+    navigator:{clipboard:{writeText:async text => { copied = text; }}}, CSS:{escape:text => text}, scrollTo() {}, clearTimeout() {} });
+  const cards = load(classroomLessons, lessonRoute).resultsMarkup();
+  for (const item of classroomLessons) {
+    location.hash = '#leerlingblad?item=' + item.id;
+    assert.ok(cards.includes(`href="${location.hash}">Open leerlingblad</a>`));
+    api.route();
+    assert.ok(main.innerHTML.includes(item.lessonStart.question));
+    assert.ok(main.innerHTML.includes(item.lessonStart.task));
+    assert.ok(main.innerHTML.includes(item.lessonStart.reflection));
+    assert.ok(main.innerHTML.includes(`href="${item.lessonStart.sourceUrl}"`));
+    assert.ok(!main.innerHTML.includes(item.lessonStart.preparation));
+    assert.equal((main.innerHTML.match(/<h1 /g) || []).length, 1);
+    for (const other of classroomLessons.filter(row => row !== item)) assert.ok(!main.innerHTML.includes(other.lessonStart.question));
+    print.onclick();
+    await share.onclick();
+    assert.equal(copied, 'https://ecmw.github.io/ai-onderwijs-atlas-nederland/' + location.hash);
+    assert.match(feedback.textContent, /leerlingblad gekopieerd/);
+  }
+  assert.equal(printCount, classroomLessons.length);
+  for (const hash of ['#leerlingblad', '#leerlingblad?item=onbekend', '#leerlingblad?item=vorige-editie']) {
+    location.hash = hash;
+    api.route();
+    assert.ok(main.innerHTML.includes('Kies een andere lesstart'));
+    assert.ok(!main.innerHTML.includes('data-print-sheet'));
+  }
+});
+
 test('commercial labels require evidence and are independent of price', () => {
   const api = load();
   const paid = { ...record('course', null), costType: 'paid' };
