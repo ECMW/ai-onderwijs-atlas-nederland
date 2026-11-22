@@ -35389,11 +35389,12 @@
     "subtype": "Les- en werkmateriaal",
     "organizationIds": [],
     "providerName": "The Tech Interactive",
-    "description": "Printbare groepsactiviteit van ongeveer 45 minuten voor grades 4–12. Leerlingen testen en verbeteren classificatieregels met kaarten van dieren; de site biedt een lesplan, datasets en antwoorden.",
+    "description": "Leerlingen spelen een team dat beelden van wilde dieren moet sorteren voor een natuurbeschermer. Met twee sets dierenkaarten testen ze een indelingsregel, zoeken ze naar verkeerde voorspellingen en passen ze de regel aan. De Engelstalige les duurt 45 minuten en is bedoeld voor grades 4–12.",
     "purpose": "Zonder computer het verschil tussen trainingsdata, testen en bijstellen van classificaties verkennen.",
     "audiences": [
       "Docenten",
-      "Onderwijsontwikkelaars"
+      "Onderwijsontwikkelaars",
+      "Leerlingen"
     ],
     "sectors": [
       "PO",
@@ -35404,9 +35405,9 @@
       "Lesgeven en leren met AI"
     ],
     "status": "available",
-    "availabilityText": "Het beschreven werkmateriaal is gratis openbaar toegankelijk.",
+    "availabilityText": "De lesgids en de printbare kaarten met antwoordsleutel zijn zonder account te openen bij The Tech Interactive en via LabXchange. Leerlingen werken op papier.",
     "publicationDate": null,
-    "lastVerified": "2026-11-06",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -35417,6 +35418,16 @@
       {
         "label": "Lesplan (PDF)",
         "url": "https://www.thetech.org/media/x5bgn0mj/lesson-machinelearningunplugged.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Lesgids op LabXchange",
+        "url": "https://www.labxchange.org/library/items/lb:LabXchange:647a5050:lx_teaching_guide:1",
+        "sourceType": "official"
+      },
+      {
+        "label": "Printbare versie op LabXchange",
+        "url": "https://www.labxchange.org/library/items/lb:LabXchange:859cd142:lx_document:1",
         "sourceType": "official"
       }
     ],
@@ -35435,18 +35446,44 @@
       "trainingsdata",
       "testdata",
       "dieren",
-      "classificatie"
+      "classificatie",
+      "biologie",
+      "soortherkenning",
+      "natuurbescherming",
+      "wildlife",
+      "LabXchange",
+      "lesstart"
     ],
     "notes": "De PDF vermeldt een update in maart 2024; oorspronkelijke publicatiedatum onbekend. Geen expliciete open hergebruiklicentie vastgesteld. Een papieren simulatie, geen uitvoering van een echt getraind model. PO betreft de bovenbouw; sectorindeling is redactioneel.",
     "offerCategory": "materials",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "Officiële activiteit en PDF gecontroleerd op voorbereiding, opbouw, doelgroep en benodigde materialen. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "verificationNote": "De makerspagina en de lesgids op LabXchange zijn op 22 november 2026 geopend. Beide aanbiedingsroutes leverden dezelfde PDF van dertien pagina’s met docentinstructies, kaarten voor twee rondes en antwoorden. LabXchange schrijft het materiaal toe aan The Tech Interactive.",
     "changeHistory": [
       {
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "LabXchange-uitgave van dezelfde makersles gekoppeld. De biologietoepassing en een lesstart over testen met ongeziene dierenkaarten zijn toegevoegd."
       }
+    ],
+    "lessonStart": {
+      "sectors": [
+        "VO"
+      ],
+      "level": "Voortgezet onderwijs · biologie",
+      "question": "Werkt jullie regel voor het herkennen van dieren ook bij kaarten die jullie nog niet hebben gezien?",
+      "preparation": "Print de twee kaartensets en houd de antwoordsleutel apart. Geef elk groepje eerst de kaarten uit deel 1.",
+      "task": "Sorteer de dieren met de eerste regel. Schrijf op welk kenmerk de doorslag geeft. Pas de regel aan zodra een kaart verkeerd terechtkomt. Test de aangepaste regel met de ongeziene kaarten uit deel 2 en tel de fouten.",
+      "reflection": "Welke kaart bracht een zwakte in jullie regel aan het licht? Leg uit waarom het helpt om aparte testkaarten te bewaren.",
+      "sourceUrl": "https://www.labxchange.org/library/items/lb:LabXchange:647a5050:lx_teaching_guide:1"
+    },
+    "subjects": [
+      "Biologie",
+      "Informatica"
     ]
   },
   {
@@ -38016,5 +38053,364 @@
       "reflection": "Wat bleef hetzelfde en wat veranderde? Welke voorbeelden zouden jullie toevoegen om te testen waarop het model let?",
       "sourceUrl": "https://www.lessonup.com/nl/lesson/em4CAELtbcCNrnAMo"
     }
+  },
+  {
+    "id": "phet-natural-selection",
+    "title": "PhET Natural Selection – natuurlijke selectie",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Interactieve biologieles met simulatie en werkblad",
+    "organizationIds": [],
+    "providerName": "PhET Interactive Simulations, University of Colorado Boulder",
+    "description": "Biologieles met een Nederlandstalige simulatie van een konijnenpopulatie. Leerlingen veranderen het voedselaanbod of de aanwezigheid van wolven en volgen de populatie over generaties. Een Engelstalig werkblad en een docentenhandleiding begeleiden het onderzoek.",
+    "purpose": "Aan de hand van een model onderzoeken hoe omgevingsfactoren de omvang en samenstelling van een populatie beïnvloeden.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "De simulatie start in de browser zonder inloggen. De Engelstalige handleiding en het werkblad zijn rechtstreeks te openen als pdf.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-22",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "PhET – start de Nederlandstalige simulatie",
+        "url": "https://phet.colorado.edu/sims/html/natural-selection/latest/natural-selection_nl.html",
+        "sourceType": "official"
+      },
+      {
+        "label": "PhET – informatie over Natural Selection",
+        "url": "https://phet.colorado.edu/en/simulations/natural-selection",
+        "sourceType": "official"
+      },
+      {
+        "label": "PhET – docentenhandleiding (Engels, pdf)",
+        "url": "https://phet.colorado.edu/assets/virtual-workshop/Teacher-Guide-Natural-Selection.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "PhET – werkblad voor leerlingen (Engels, pdf)",
+        "url": "https://phet.colorado.edu/assets/virtual-workshop/Activity_Sheet_Natural_Selection.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "PhET – gratis toegang voor leerlingen en docenten",
+        "url": "https://phet.colorado.edu/en/about",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "biologie",
+      "ecologie",
+      "evolutie",
+      "natuurlijke selectie",
+      "konijnen",
+      "populatiedynamiek",
+      "simulatie",
+      "lesstart"
+    ],
+    "notes": "De bronles van PhET gaat over natuurlijke selectie. De vergelijking met een AI-voorspelling is een lesstart van de Atlas. De docentenhandleiding noemt circa 50 minuten voor de volledige bronles. De inzet in het Nederlandse voortgezet onderwijs is een redactionele niveau-inschatting.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De Nederlandstalige simulatie geopend, een tweede konijn toegevoegd en de optie voor beperkt voedsel ingeschakeld. De officiële docentengids en het werkblad zijn ingezien. De volledige les is niet met leerlingen uitgevoerd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-22",
+        "type": "added",
+        "summary": "Biologieles toegevoegd met directe toegang tot de simulatie, het werkblad en een Atlas-lesstart voor het controleren van een voorspelling."
+      }
+    ],
+    "lessonStart": {
+      "sectors": [
+        "VO"
+      ],
+      "level": "VO · biologie",
+      "question": "Kun je met een populatiegrafiek een AI-voorspelling controleren?",
+      "preparation": "Open de simulatie op het scherm Inleiding. Laat de docent vooraf een AI-voorspelling verzamelen over het aantal konijnen wanneer het voedsel beperkt wordt. Noteer de precieze voorspelling.",
+      "task": "Voeg een maatje toe en volg het aantal konijnen vijf generaties. Begin opnieuw en kies nu ook ‘Beperkt voedsel’. Noteer in beide rondes de aantallen en vergelijk de grafieken met de voorspelling.",
+      "reflection": "Welke uitspraak kun je met deze twee grafieken beoordelen? Welke uitkomst kan toeval zijn, en wat zou je opnieuw moeten testen?",
+      "sourceUrl": "https://phet.colorado.edu/sims/html/natural-selection/latest/natural-selection_nl.html"
+    },
+    "subjects": [
+      "Biologie"
+    ]
+  },
+  {
+    "recordType": "guidance",
+    "offerCategory": "materials",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-22",
+    "verificationStatus": "verified",
+    "verificationMethod": "agent_primary_source_review",
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "id": "geogebra-greg-petrics-artificial-neural-network-example",
+    "title": "Artificial Neural Network Example",
+    "subtype": "Interactief werkblad over een neuraal netwerk",
+    "providerName": "Greg Petrics (via GeoGebra)",
+    "description": "Engelstalig interactief wiskundewerkblad van Greg Petrics op GeoGebra. Een klein neuraal netwerk toont de invoer, gewichten, voorspellingen en totale fout. De leerling kan een gewicht aanpassen en met de knop Backpropagate één leerstap uitvoeren.",
+    "purpose": "Onderzoeken hoe de voorspelling en fout van een neuraal netwerk veranderen na het aanpassen van gewichten.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen",
+      "Studenten"
+    ],
+    "sectors": [
+      "VO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "keywords": [
+      "GeoGebra",
+      "wiskunde",
+      "informatica",
+      "machine learning",
+      "neuraal netwerk",
+      "backpropagation",
+      "terugpropagatie",
+      "gradiëntafdaling",
+      "gewichten",
+      "voorspelfout"
+    ],
+    "publicationDate": "2020-10-21",
+    "availabilityText": "De animatie start op de lespagina zonder account. Niet-commercieel klasgebruik is gratis volgens GeoGebra. Bij de controle verscheen een cookiekeuze. Na afwijzen daarvan werkte het model.",
+    "sourceUrls": [
+      {
+        "label": "GeoGebra – werkblad van Greg Petrics",
+        "url": "https://www.geogebra.org/m/dyq2rcup",
+        "sourceType": "official"
+      },
+      {
+        "label": "GeoGebra – publicatiemetadata",
+        "url": "https://api.geogebra.org/v1.0/materials/dyq2rcup",
+        "sourceType": "official"
+      },
+      {
+        "label": "GeoGebra – gebruik en licentie",
+        "url": "https://www.geogebra.org/license",
+        "sourceType": "official"
+      }
+    ],
+    "notes": "De auteur noemt differentiaalrekening en lineaire functies. VO-bovenbouw en hoger onderwijs zijn een redactionele inschatting voor gebruik met passende voorkennis. Voor het werkblad is geen formele leeftijdsgrens vastgesteld.",
+    "verificationNote": "De officiële materiaalpagina, metadata en licentie zijn gecontroleerd. In een schone browser zonder login is het applet gestart. Met de standaardinstellingen verhoogde Backpropagate de epoch van 0 naar 1 en daalde de getoonde totale fout van 0,29837 naar 0,29101.",
+    "changeHistory": [
+      {
+        "date": "2026-11-22",
+        "type": "added",
+        "summary": "Interactief wiskundewerkblad toegevoegd na controle van de bron en een uitgevoerde leerstap."
+      }
+    ],
+    "subjects": [
+      "Informatica",
+      "Wiskunde"
+    ]
+  },
+  {
+    "recordType": "guidance",
+    "offerCategory": "materials",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-22",
+    "verificationStatus": "verified",
+    "verificationMethod": "agent_primary_source_review",
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "id": "concord-consortium-storyq-math-ai",
+    "title": "StoryQ – SY25-26: Math & AI",
+    "subtype": "Interactieve lessenreeks over tekstclassificatie",
+    "providerName": "The Concord Consortium (StoryQ)",
+    "description": "In deze Engelstalige lessenreeks onderzoeken leerlingen hoe een model het sentiment in klantrecensies voorspelt. Ze testen voorbeeldteksten en verkennen de bijdrage van woorden aan de voorspelling. De reeks telt vijf activiteiten.",
+    "purpose": "Voorspellingen van een tekstclassificatiemodel vergelijken met eigen oordelen en onderzoeken hoe woordkeuze en weging de uitkomst beïnvloeden.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "keywords": [
+      "The Concord Consortium",
+      "Concord Consortium",
+      "StoryQ",
+      "wiskunde",
+      "informatica",
+      "Engels",
+      "tekstclassificatie",
+      "sentimentanalyse",
+      "machine learning",
+      "kunstmatige intelligentie",
+      "klantrecensies"
+    ],
+    "publicationDate": null,
+    "availabilityText": "De preview opent zonder account. De eerste activiteit vermeldt 60 minuten en de volledige reeks 300 minuten. De algemene licentie van Concord staat gratis niet-commercieel onderwijsgebruik toe, behoudens afzonderlijke voorwaarden bij onderdelen.",
+    "sourceUrls": [
+      {
+        "label": "The Concord Consortium – concrete lessenreeks",
+        "url": "https://learn.concord.org/resources/3173/sy25-26-math-ai",
+        "sourceType": "official"
+      },
+      {
+        "label": "StoryQ – project en lesmodules",
+        "url": "https://learn.concord.org/storyq",
+        "sourceType": "official"
+      },
+      {
+        "label": "The Concord Consortium – gebruiksvoorwaarden voor lesmateriaal",
+        "url": "https://concord.org/licensing/",
+        "sourceType": "official"
+      }
+    ],
+    "notes": "De aanbieder noemt de Amerikaanse grades 7–8 en 9–12. Het lesmateriaal is samen met partneruniversiteiten en docenten ontworpen. Het anoniem uitproberen van de les en het toewijzen of volgen van werk in een klas zijn verschillende functies.",
+    "verificationNote": "Bronpagina en anonieme Preview gecontroleerd. De reeks opende met vijf activiteiten. Vanuit Sentiment Analysis opende Try a model met instructies voor het invoeren van een recensie en het lezen van de voorspelling. Klasadministratie, leerlingopslag en de volledige cursus zijn niet getest.",
+    "changeHistory": [
+      {
+        "date": "2026-11-22",
+        "type": "added",
+        "summary": "Lesmodule over sentimentanalyse toegevoegd na controle van de officiële bron en de anonieme leerlingroute."
+      }
+    ],
+    "subjects": [
+      "Informatica",
+      "Wiskunde"
+    ]
+  },
+  {
+    "id": "hhmi-introduction-to-systems",
+    "title": "Introduction to Systems",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Biologieles met werkblad en onderzoeksgrafieken",
+    "organizationIds": [],
+    "providerName": "HHMI BioInteractive",
+    "description": "Leerlingen tekenen hoe zeevogels voedingsstoffen van zee naar het land brengen op de Aleoeten. Daarna gebruiken ze grafieken van negen eilanden mét en negen zonder poolvossen om te verklaren hoe een roofdier de vegetatie indirect kan beïnvloeden.",
+    "purpose": "Directe en indirecte relaties in een ecosysteem modelleren en een voorspelling toetsen met ecologische gegevens.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen",
+      "Studenten"
+    ],
+    "sectors": [
+      "VO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "Het vier pagina’s tellende Engelse werkblad met figuren is zonder account te lezen en te printen. Leerlingen hebben papier en potlood of een eigen tekentoepassing nodig. HHMI rekent ongeveer 50 minuten voor de les.",
+    "publicationDate": "2024-10-28",
+    "lastVerified": "2026-11-22",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Volledige HHMI-opdracht met figuren (leesversie)",
+        "url": "https://docs.google.com/document/d/1dhy_ADiJ6wpG3MRSvv4qYatKZEe7MQGkTLNDcNtV9Gk/preview",
+        "sourceType": "official"
+      },
+      {
+        "label": "Printbaar leerlingwerkblad met onderzoeksgrafieken (PDF)",
+        "url": "https://docs.google.com/document/d/1dhy_ADiJ6wpG3MRSvv4qYatKZEe7MQGkTLNDcNtV9Gk/export?format=pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Oorspronkelijke lesmap van HHMI BioInteractive",
+        "url": "https://drive.google.com/drive/folders/1flzmPwwJGiBIkyiaxE2PXufOXFHMkbyM",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "biologie",
+      "ecologie",
+      "biodiversiteit",
+      "Aleoeten",
+      "poolvos",
+      "zeevogels",
+      "ecosysteem",
+      "voedselrelaties",
+      "voedingsstoffen",
+      "systeemmodel",
+      "lesstart"
+    ],
+    "notes": "HHMI noemt high school en college als doelgroep; de Nederlandse sectorindeling is een redactionele vertaling. De HHMI-bronles behandelt systeemdenken in de biologie. De controle van een fictief AI-antwoord is een afzonderlijke werkvorm van de Atlas.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële HHMI-lespagina koppelt naar de lesmap en vermeldt de doelgroep, duur en publicatiedatum. De volledige HTML-leesversie, printbare versie en gegevens in figuur 2 zijn op 22 november 2026 zonder inloggen gecontroleerd. De oorspronkelijke opdracht is toepasbaar met het werkblad en tekenmateriaal. De les is niet in een klas getest.",
+    "lessonStart": {
+      "sectors": [
+        "VO"
+      ],
+      "level": "Voortgezet onderwijs · biologie",
+      "question": "Merkt het gras op een eiland iets van de komst van een poolvos?",
+      "preparation": "Toon figuur 2 van het leerlingwerkblad. Zet dit verzonnen chatbotantwoord ernaast: “De vos eet geen gras, dus zijn komst heeft geen invloed op de planten.”",
+      "task": "Vergelijk de gemeten waarden voor de eilanden met en zonder vos. Teken de route van zeevogels via hun uitwerpselen en de bodem naar planten. Geef aan waar een vos deze route kan beïnvloeden. Onderstreep het deel van het voorbeeldantwoord dat je met de figuur kunt controleren.",
+      "reflection": "Welke vergelijking laat de figuur werkelijk zien? Herschrijf het antwoord en geef aan welke stap in jullie verklaring op het model berust.",
+      "sourceUrl": "https://docs.google.com/document/d/1dhy_ADiJ6wpG3MRSvv4qYatKZEe7MQGkTLNDcNtV9Gk/preview"
+    },
+    "changeHistory": [
+      {
+        "date": "2026-11-22",
+        "type": "added",
+        "summary": "HHMI-les over ecologische systemen opgenomen met directe toegang tot werkblad en figuren. De Atlas voegt een lesstart over de bewijsvoering in een chatbotantwoord toe."
+      }
+    ],
+    "subjects": [
+      "Biologie"
+    ]
   }
 ]
