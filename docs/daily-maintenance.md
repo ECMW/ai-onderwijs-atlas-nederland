@@ -51,12 +51,12 @@ dit zijn geplande tijdstippen, geen garantie. De signaalcyclus:
 7. classificeert als `NEW`, `CHANGED`, `REMOVED`, `UNREACHABLE`, `SOURCE_CHANGED` of `NO_CHANGE`;
 8. zoekt exacte URL-doublures en sterk gelijkende titels;
 9. maakt en valideert reviewvoorstellen en behoudt eerdere open voorstellen;
-10. levert een JSON- en Markdownrapport op;
-11. maakt of actualiseert hoogstens een open review-Issue wanneer menselijk handelen nodig is.
+10. bewaart de werkvoorraad voor brononderzoek in het JSON- en Markdownrapport bij de run.
 
 Bij een eerste succesvolle controle wordt alleen een baseline opgeslagen (`NEW`). Dat voorkomt een
-stroom voorstellen bij ingebruikname. Wanneer er geen nieuwe of open voorstellen zijn, eindigt de
-signaalcyclus succesvol met `Geen actie nodig` in het run-overzicht en zonder nieuw review-Issue.
+stroom voorstellen bij ingebruikname. Ook wanneer er werk voor het onderhoud ligt, verschijnt
+de werkvoorraad alleen bij de workflowrun. Het aantal signalen zegt niets over het aantal
+keuzes dat aan de eigenaar moet worden voorgelegd.
 De linkextractie ziet veranderingen op geregistreerde pagina's; zij doorzoekt niet zelfstandig het hele
 internet. De aanvullende cloudverkenning controleert een begrensde selectie officiële detailpagina's
 en moet iedere voorgestelde toevoeging door de strikte inhoudelijke toelating laten beoordelen.
@@ -144,11 +144,13 @@ uit de organisatievorm afgeleid. Onbekende velden blijven onbekend.
 van de inzendingsroute. Een gesloten of bewerkte botinzending blijft herkenbaar afgehandeld of ter
 beoordeling en kan daardoor niet iedere nieuwe ronde vullen. Een mislukte brokerstap kan veilig
 opnieuw worden gestart: bestaande GitHub-issues blijven ook na verlies van een cache herkenbaar.
-De bestaande review-Issue en runsummary tonen zowel onderhoudssignalen als kandidaten waarvoor
-verdere broncontrole nodig is. Ongewijzigde signalen geven geen herhaalde wijzigingsmelding.
+Het artifact bij de run bevat de voorstellen met hun bewijs en de resultaten van de verkenning.
+In `discovery-output/research-queue.json` staan de bronlinks die ook na deze run verder
+onderzoek vragen, met hun laatst bekende status.
 
 De cloudroute werkt zelfstandig zonder lokale Codex-automation, extra API-sleutels of een taalmodel.
-De eerder aanwezige lokale actualisator is gepauzeerd om dubbele geplande uitvoeringen te voorkomen.
+De aanvullende inhoudelijke beoordeling gebruikt de bestaande lokale actualisator en kan
+plaatsvinden zodra die beschikbaar is.
 
 ## Voorstelformaat
 
@@ -168,7 +170,7 @@ Ieder voorstel bestaat als JSON in `maintenance-output/proposals/` en bevat onde
 Ontbrekende feiten blijven `Nog niet ingevuld`, leeg of expliciet onzeker. Er worden geen nieuwe
 categorieen bedacht. Gelijke voorstellen houden dezelfde ID en verhogen alleen `occurrences` bij een
 nieuwe waarneming. De ledger bewaart ook de volledige open voorstellen. Daardoor blijven ze zichtbaar
-bij een run zonder nieuwe verandering en wanneer een later signaal het review-Issue bijwerkt. Een
+in volgende runrapporten, ook zonder nieuwe verandering. Een
 beslissing `accepted` of `rejected` in `data/proposal-decisions.json` handelt uitsluitend het bijbehorende
 voorstel met dezelfde bewijs-hash af. Acceptatie in dit bestand publiceert zelf niets.
 
@@ -190,21 +192,42 @@ Voorbeeld afwijzing:
 
 ## Beoordelingsprocedure voor signalen
 
-1. Open het enige Issue met label `atlas-daily-review`.
-2. Download het artifact van de gelinkte workflowrun.
-3. Begin met hoge materialiteit: deadlines, calls, beeindiging, wetgeving en gebroken officiele links.
+1. Open de laatste geslaagde run van de workflow `Daily Atlas maintenance review` op `main`.
+2. Download het artifact `atlas-maintenance-<run-id>`. De voorstellen staan in
+   `maintenance-output/daily-report.json`, de resultaten van de verkenning in `discovery-output/`.
+3. Begin met aantoonbare belemmeringen voor bezoekers, gemelde fouten en wijzigingen die bestaand
+   aanbod onbruikbaar of misleidend maken. Controleer bijvoorbeeld of het lesmateriaal nog opent
+   of een workshop nog toegankelijk is. Geef een naderende deadline voorrang als die op een concrete
+   vermelding van toepassing is.
 4. Open de primaire bron zelf en controleer titel, status, doelgroep, sector en datum.
 5. Controleer mogelijke doublures en relaties.
 6. Kies accepteren, afwijzen, aanpassen of aanvullend onderzoek.
 7. Verwerk een geaccepteerd voorstel via de normale pull-requestroute.
-8. Registreer afgehandelde voorstellen met `accepted` of `rejected`, proposal- en evidence-hash.
+8. Registreer afgehandelde voorstellen met `accepted` of `rejected`, de voorstel-ID en de bijbehorende bewijs-hash.
+
+### Wanneer beslist de eigenaar?
+
+De actualisator verwerkt controleerbare correcties binnen het bestaande mandaat. Een nieuwe
+aanvulling heeft voorrang als die een concrete leemte vult bij lesvoorbereiding, toetsing,
+teamafspraken over AI of professionalisering. Feedback van een bezoeker kan laten zien waar
+iemand vastloopt. Controleer bij een herstel dezelfde handeling van begin tot eind.
+
+Een feit dat nog onzeker is, blijft in onderzoek. Leg een keuze privé voor zodra de primaire
+bronnen zijn gecontroleerd en verdere afhandeling een bevoegdheid van de eigenaar vraagt.
+Dat kan bijvoorbeeld spelen als relevant lesmateriaal uitsluitend met toestemming van de
+rechthebbende mag worden overgenomen en verwijzen naar de officiële bron het probleem niet oplost.
+Vermeld de getroffen gebruikers, de concrete keuze, de opties met hun gevolgen, het advies en wat
+er bij uitstel gebeurt. Houd bij welke keuze al is voorgelegd. Breng die pas opnieuw onder de
+aandacht bij nieuwe informatie die het besluit wezenlijk verandert.
+
+### Inzendingen via de website
 
 Website-inzendingen hebben een aparte actieve route: `process-atlas-submission.yml` laat uitsluitend
 volledig brononderbouwde aanvullingen toe. `publish-auto-verified-contribution.yml` controleert de
 onveranderlijke kandidaatcommit, beide geslaagde validaties, de actuele inzending en de bron opnieuw.
 Pas daarna kan de eigen bot-PR worden gemerged en de gecontroleerde Pages-publicatie worden gestart.
-De cloudverkenning gebruikt dezezelfde toelating voor complete, bronbewezen nieuwe aanvullingen;
-een samenvattend review-Issue wordt niet als inzending behandeld. Onzekere inzendingen, correcties,
+De cloudverkenning gebruikt dezezelfde toelating voor complete, bronbewezen nieuwe aanvullingen.
+Onzekere inzendingen, correcties,
 feedback en willekeurige externe PR's worden niet via deze toelating gepubliceerd.
 Zie `docs/release-process.md`.
 

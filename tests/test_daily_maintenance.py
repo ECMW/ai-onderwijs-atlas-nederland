@@ -10,7 +10,7 @@ from maintenance_core import classify
 from maintenance_normalize import FetchResult, fold, normalize_html
 from maintenance_proposals import active_proposals, proposals_for_event
 from maintenance_validation import enrich, validate, enrich_and_validate
-from maintenance_reporting import build_daily_report, proposal_markdown
+from maintenance_reporting import build_daily_report, daily_report_markdown, proposal_markdown
 
 
 class DailyMaintenanceTests(unittest.TestCase):
@@ -73,7 +73,7 @@ class DailyMaintenanceTests(unittest.TestCase):
         record = {"id": "ai", "title": "AI", "sourceUrls": [unit]}
         original = proposals_for_event(self.source, event, [record], self.config)[0]
         report = build_daily_report([event], enrich_and_validate([original.copy()]))
-        self.assertEqual(0, report["summary"]["readyForDecision"])
+        self.assertEqual(1, report["summary"]["researchQueueSize"])
         self.assertEqual([], report["timeSensitive"])
         self.assertEqual(original["id"], report["priorityVerification"][0]["proposalId"])
 
@@ -244,11 +244,38 @@ class DailyMaintenanceTests(unittest.TestCase):
         report = build_daily_report([event], [proposal])
         self.assertTrue(report["proposalLinks"][0]["jsonPath"].endswith(".json"))
         self.assertTrue(report["proposalLinks"][0]["markdownPath"].endswith(".md"))
-        self.assertIn("Menselijke beoordeling", proposal_markdown(proposal))
+        self.assertIn("officiële detailbron", proposal_markdown(proposal))
 
-    def test_report_says_no_action_needed(self):
-        report = build_daily_report([{"type": "NO_CHANGE", "detectedAt": "2026-01-01T00:00:00Z"}], [])
-        self.assertFalse(report["summary"]["actionRequired"])
+    def test_empty_research_queue_still_reports_source_failures(self):
+        event = {"type": "UNREACHABLE", "sourceId": "source-test", "reason": "timeout"}
+        report = build_daily_report([event], [])
+        self.assertEqual("source_research", report["reportType"])
+        self.assertEqual(0, report["summary"]["researchQueueSize"])
+        self.assertEqual([event], report["failedSources"])
+        self.assertIn("timeout", daily_report_markdown(report))
+
+    def test_source_signal_stays_in_research_even_without_recorded_uncertainties(self):
+        event = {"type": "CHANGED", "actionable": True, "detectedAt": "2026-11-22T00:00:00Z",
+                 "addedUnits": [{"url": "https://example.test/training", "label": "Training AI"}]}
+        record = {"id": "existing", "title": "Training AI", "sourceUrls": []}
+        proposals = enrich_and_validate(proposals_for_event(self.source, event, [record], self.config))
+        self.assertEqual("update", proposals[0]["action"])
+        self.assertEqual([], proposals[0]["uncertainties"])
+        self.assertIn("sourceSignal", proposals[0]["proposedValues"])
+        report = build_daily_report([event], proposals)
+        summary = report["summary"]
+        self.assertEqual(1, summary["researchQueueSize"])
+        self.assertEqual(summary["researchQueueSize"], summary["proposalsForReview"])
+        self.assertNotIn("readyForDecision", summary)
+        self.assertNotIn("actionRequired", summary)
+        self.assertEqual(proposals, report["proposals"])
+        self.assertEqual(proposals[0]["proposalId"], report["proposalLinks"][0]["proposalId"])
+        # Older artifacts used these counts to request human attention for the same signal.
+        old_summary = dict(summary, readyForDecision=1, actionRequired=True)
+        del old_summary["researchQueueSize"]
+        old_markdown = daily_report_markdown(dict(report, summary=old_summary))
+        self.assertEqual(daily_report_markdown(report), old_markdown)
+        self.assertIn("Signalen in de werkvoorraad voor brononderzoek: **1**", old_markdown)
 
 
 if __name__ == "__main__":

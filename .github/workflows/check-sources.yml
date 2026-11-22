@@ -70,10 +70,14 @@ jobs:
           path: discovery-state
           key: atlas-discovery-${{ github.run_id }}
 
+      - name: Prepare the research summary and discovery queue
+        run: python scripts/maintenance_summary.py
+
       - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: atlas-maintenance-${{ github.run_id }}
+          if-no-files-found: error
           path: |
             maintenance-output
             discovery-output
@@ -84,67 +88,3 @@ jobs:
         with:
           path: maintenance-state
           key: atlas-maintenance-${{ github.run_id }}
-
-      - name: Publish compact review signal
-        uses: actions/github-script@v9
-        with:
-          script: |
-            const fs = require('fs');
-            const crypto = require('crypto');
-            const report = JSON.parse(fs.readFileSync('maintenance-output/daily-report.json', 'utf8'));
-            const markdown = fs.readFileSync('maintenance-output/daily-report.md', 'utf8');
-            const discovery = JSON.parse(fs.readFileSync('discovery-output/review.json', 'utf8'));
-            const intake = JSON.parse(fs.readFileSync('discovery-output/intake-result.json', 'utf8'));
-            const discoveryState = JSON.parse(fs.readFileSync('discovery-state/state.json', 'utf8'));
-            const pending = Object.values(discoveryState.urls || {}).filter(item =>
-              ['blocked', 'unavailable', 'broker_review'].includes(item.status));
-            await core.summary.addHeading('Bronverkenning op GitHub').addRaw(
-              `Detailbezoeken: ${discovery.summary.visits}; broncontrole geslaagd: ${discovery.summary.approved}; ` +
-              `doorgezet naar onafhankelijke intake: ${intake.filter(item => item.action === 'independent_admission_requested').length}; ` +
-              `bewaard voor verdere beoordeling: ${pending.length}; nog te bezoeken: ${discovery.summary.deferred}.`
-            ).write();
-            const { owner, repo } = context.repo;
-            const label = 'atlas-daily-review';
-            if (!report.summary.actionRequired && pending.length === 0) {
-              await core.summary.addHeading('Geen actie nodig').addRaw(
-                `${report.summary.sourcesChecked} bronnen gecontroleerd; geen betekenisvolle wijziging.`
-              ).write();
-              return;
-            }
-            try {
-              await github.rest.issues.getLabel({ owner, repo, name: label });
-            } catch (error) {
-              if (error.status !== 404) throw error;
-              await github.rest.issues.createLabel({
-                owner, repo, name: label, color: 'D4A72C',
-                description: 'Dagelijkse broncontrole vraagt menselijke beoordeling'
-              });
-            }
-            const open = await github.paginate(github.rest.issues.listForRepo, {
-              owner, repo, state: 'open', labels: label, per_page: 100
-            });
-            const title = 'Dagelijkse Atlas-controle vraagt beoordeling';
-            const existing = open.find(issue => issue.title === title);
-            const signal = [
-              ...report.proposals.map(item => [item.proposalId, item.evidenceHash]),
-              ...pending.map(item => [item.url, item.status, item.evidenceHash, item.reasons])
-            ].sort();
-            const fingerprint = crypto.createHash('sha256').update(JSON.stringify(signal)).digest('hex');
-            const marker = `<!-- atlas-review:${fingerprint} -->`;
-            const clean = value => String(value || '').replaceAll('@', '&#64;').replace(/[\r\n]/g, ' ');
-            const discoveryText = pending.length ? '\n## Bronverkenning: verdere beoordeling nodig\n\n' +
-              pending.slice(0, 25).map(item => `- ${clean(item.url)} — ${clean((item.reasons || []).join('; '))}`).join('\n') +
-              `\n\n${pending.length} kandidaatbronnen bewaard. Dit zijn onbevestigde signalen, geen goedgekeurd aanbod.\n` : '';
-            const body = `${marker}\n${markdown.replaceAll('@', '&#64;').slice(0, 35000)}\n${discoveryText.slice(0, 20000)}\n` +
-              `Volledige controle en bronbeslissingen in het workflow-artifact: ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}\n`;
-            if (existing) {
-              if (!existing.body?.includes(marker)) {
-                await github.rest.issues.update({ owner, repo, issue_number: existing.number, body });
-              }
-            } else {
-              await github.rest.issues.create({ owner, repo, title, body, labels: [label] });
-            }
-            await core.summary.addHeading('Beoordeling nodig').addRaw(
-              `${report.summary.proposalsForReview} onderhoudsvoorstel(len) en ${pending.length} ontdekking(en) vragen verdere beoordeling. ` +
-              'Alleen afzonderlijk bronbewezen vondsten zijn doorgezet naar de beschermde inzendingsroute.'
-            ).write();
