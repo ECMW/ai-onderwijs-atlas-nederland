@@ -997,10 +997,11 @@
     }).filter(item => item.count > 0).sort((a, b) => b.count - a.count).slice(0, 3);
   }
   const ASSESSMENT_CRITERIA = { q: 'toets', theme: 'Toetsing en examinering', type: 'materials,knowledge' };
+  const AGREEMENT_CRITERIA = { q: 'afspraken', type: 'materials,knowledge' };
   const PRACTICE_ROUTES = [
     { label: 'Een les voorbereiden', detail: 'Opdrachten voor de klas en lesmateriaal', criteria: { q: 'les', type: 'materials' } },
     { label: 'Een toets herontwerpen', detail: 'Een toetsafspraak maken en toetsmateriaal vinden', criteria: ASSESSMENT_CRITERIA },
-    { label: 'AI-afspraken maken', detail: 'Gesprekskaarten en voorbeelden', criteria: { q: 'afspraken', type: 'materials,knowledge' } },
+    { label: 'AI-afspraken maken', detail: 'Een teamproef opzetten en afspraken vinden', criteria: AGREEMENT_CRITERIA },
     { label: 'Scholing vinden', detail: 'Cursussen, workshops en trainerskits', criteria: { type: 'Training', status: 'Direct beschikbaar' } }
   ];
   const SECTOR_NAMES = {
@@ -1154,6 +1155,179 @@
     updatePreview();
   }
 
+  const TEAM_TRIALS = {
+    feedback: {
+      title: 'Feedback op schrijfwerk',
+      goal: 'Kunnen leerlingen of studenten na de feedback zelf een tekst verbeteren en hun keuze uitleggen?',
+      activity: 'Schrijf één korte voorbeeldtekst zonder persoonsgegevens. Geef zelf één tip en laat AI voor hetzelfde criterium ook een tip maken. Controleer de AI-tip. Vertel de klas hoe de twee tips tot stand kwamen.',
+      comparison: 'Verdeel de tips willekeurig over de klas. Iedereen verbetert dezelfde tekst met één tip. Noteer per groep hoeveel deelnemers hun verbetering kunnen uitleggen, bijvoorbeeld 8 van de 12. Bespreek daarna beide tips.',
+      voice: 'Wat heb je met jouw tip veranderd? Welke woorden hielpen je en waar had je nog uitleg nodig?',
+      rule: 'We proberen de AI-tip nog een les als leerlingen of studenten hun verbetering daarmee minstens zo vaak kunnen uitleggen als met onze eigen tip. Bij een inhoudelijke fout houden we de tip tegen en bespreken we wat er misging.'
+    },
+    lesvoorbereiding: {
+      title: 'Oefenmateriaal voorbereiden',
+      goal: 'Kunnen we voorbereidingstijd winnen terwijl de klas even goed zelfstandig oefent?',
+      activity: 'Maak één oefenopgave zoals u gewend bent. Laat AI een tweede opgave voor hetzelfde leerdoel voorstellen. Houd per opgave de tijd bij, inclusief nakijken, verbeteren en toegankelijk maken. Controleer ook het antwoord.',
+      comparison: 'Laat de klas beide opgaven maken en wissel de volgorde af. Turf bij elke opgave wie zelfstandig de beoogde denkstap laat zien. Leg deze uitkomst naast de totale voorbereidingstijd.',
+      voice: 'Bij welke opgave wist je wat je zelf moest uitzoeken? Waar zat je vast door de formulering?',
+      rule: 'We gaan nog een les door als de totale voorbereiding korter is én minstens evenveel deelnemers de denkstap zelfstandig laten zien. Bij een onjuist antwoord of een onduidelijke opdracht passen we het materiaal eerst aan.'
+    }
+  };
+  const TRIAL_DECISIONS = ['Opnieuw proberen', 'Aanpassen en opnieuw proberen', 'Stoppen'];
+  const trialDrafts = new Map();
+  const teamTrialQuery = query => ['teamproef', 'teamproef met ai', 'proefkaart', 'proefkaart voor het team'].includes(normalize(query));
+
+  function teamTrialEntry() {
+    return `<section class="assessment-entry" aria-labelledby="trial-entry-heading"><div>
+      <h2 id="trial-entry-heading" tabindex="-1">Is dit AI-gebruik de moeite waard in onze les?</h2>
+      <p>Probeer één aanpak uit. Spreek met uw team af wat u wilt zien in het werk en horen van de klas.</p></div>
+      <a class="btn" href="#teamproef">Open de teamproef</a></section>`;
+  }
+
+  function readTrialDraft(raw) {
+    try {
+      const value = JSON.parse(raw);
+      if (typeof value?.rule !== 'string') return null;
+      const clean = {};
+      for (const key of ['group', 'owner', 'date', 'rule', 'observation', 'decision']) {
+        clean[key] = typeof value[key] === 'string' ? value[key].slice(0, 800) : '';
+      }
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(clean.date)) clean.date = '';
+      if (!TRIAL_DECISIONS.includes(clean.decision)) clean.decision = '';
+      return clean;
+    } catch { return null; }
+  }
+
+  function savedTrial(id) {
+    try { return readTrialDraft(localStorage.getItem(`atlas.teamproef.${id}`)); }
+    catch { return null; }
+  }
+
+  function trialFields(id, draft) {
+    const scenario = TEAM_TRIALS[id];
+    return [
+      ['Vraag voor deze les', scenario.goal], ['Aanpak', scenario.activity],
+      ['Wat vergelijken we?', scenario.comparison], ['Vraag aan de klas', scenario.voice],
+      ['Les of groep', draft.group], ['Wie koppelt terug?', draft.owner],
+      ['Datum van het teamoverleg', draft.date ? dateLabel(draft.date) : ''],
+      ['Wanneer gaan we door, passen we iets aan of stoppen we?', draft.rule],
+      ['Wat zagen we in het werk en wat zei de klas?', draft.observation], ['Besluit', draft.decision]
+    ];
+  }
+
+  function renderTeamTrial() {
+    const requested = new URLSearchParams(location.hash.split('?')[1]).get('casus');
+    const id = Object.hasOwn(TEAM_TRIALS, requested) ? requested :
+      (!savedTrial('feedback') && savedTrial('lesvoorbereiding') ? 'lesvoorbereiding' : 'feedback');
+    const scenario = TEAM_TRIALS[id];
+    const storageKey = `atlas.teamproef.${id}`;
+    const saved = savedTrial(id);
+    const draft = trialDrafts.get(id) || readTrialDraft(sessionGet(storageKey)) || saved ||
+      {group: '', owner: '', date: '', rule: scenario.rule, observation: '', decision: ''};
+    const href = key => `#teamproef?casus=${key}`;
+    const back = criteriaHref({...AGREEMENT_CRITERIA, sector: state.sector, audience: state.audience, language: state.language});
+    const sources = [
+      ['schoolafspraken-over-het-gebruik-van-generatieve-ai', 'Kennisnet over AI-afspraken op school'],
+      ['ai-go-in-actie', 'Npuls over klein beginnen en bijstellen in het mbo, hbo en wo']
+    ].flatMap(([recordId, label]) => {
+      const record = publicRecordsById.get(recordId);
+      const link = record && effectiveStatus(record) === 'available' && primarySource(record);
+      return link ? [`<li><a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${label} ↗</a></li>`] : [];
+    });
+    main.innerHTML = `<article class="trial-page">
+      <div class="trial-screen"><a href="${escapeHtml(back)}">← Naar AI-afspraken</a>
+        <header><h1>Teamproef met AI</h1><p>Probeer één verandering uit in één les. Spreek eerst af wat die moet opleveren. Neem het werk en de reacties van de klas mee naar het volgende overleg.</p></header>
+        <nav class="trial-choices" aria-label="Kies een praktijksituatie">${Object.entries(TEAM_TRIALS).map(([key, item]) =>
+          `<a href="${href(key)}"${key === id ? ' aria-current="page"' : ''}>${item.title}<small data-trial-badge="${key}"${savedTrial(key) ? '' : ' hidden'}>Bewaard</small></a>`).join('')}</nav>
+        <button type="button" class="trial-jump">Naar onze proefkaart ↓</button>
+        <div class="trial-layout"><section class="trial-guide" aria-labelledby="trial-goal"><h2 id="trial-goal">${scenario.goal}</h2>
+          <dl><div><dt>Aanpak</dt><dd>${scenario.activity}</dd></div><div><dt>Wat vergelijken we?</dt><dd>${scenario.comparison}</dd></div>
+          <div class="trial-voice"><dt>Vraag aan de klas</dt><dd>${scenario.voice}</dd></div></dl>
+          <p class="trial-note">Gebruik een hulpmiddel dat uw instelling toestaat. De klas werkt zonder AI-account. Eén les helpt u kiezen wat u hierna probeert.</p>
+        </section>
+        <section class="trial-form" aria-labelledby="trial-form-title"><h2 id="trial-form-title" tabindex="-1">Onze proefkaart</h2>
+          <p>Vul dit samen in. Noteer alleen informatie over de groep.</p>
+          <form autocomplete="off">
+            <label for="trial-group">In welke les of groep?</label><input id="trial-group" name="group" maxlength="140" placeholder="Bijv. Nederlands, klas 2" value="${escapeHtml(draft.group)}">
+            <div class="trial-pair"><div><label for="trial-owner">Wie koppelt terug?</label><input id="trial-owner" name="owner" maxlength="140" placeholder="Bijv. de vakdocent" value="${escapeHtml(draft.owner)}"></div>
+              <div><label for="trial-date">Datum van het teamoverleg</label><input type="date" id="trial-date" name="date" value="${escapeHtml(draft.date)}"></div></div>
+            <label for="trial-rule">Wanneer gaan we door, passen we iets aan of stoppen we?</label>
+            <textarea id="trial-rule" name="rule" rows="4" maxlength="800" aria-describedby="trial-rule-note">${escapeHtml(draft.rule)}</textarea>
+            <small id="trial-rule-note">Pas deze voorbeeldafspraak aan vóór de les.</small>
+            <details class="trial-review"${draft.observation || draft.decision ? ' open' : ''}><summary>Na de les · Vul de terugblik in</summary>
+              <label for="trial-observation">Wat zagen we in het werk en wat zei de klas?</label>
+              <textarea id="trial-observation" name="observation" rows="3" maxlength="800" placeholder="Wat lukte, wie had extra hulp nodig en wat doen we de volgende keer?">${escapeHtml(draft.observation)}</textarea>
+              <label for="trial-decision">Besluit van het team</label>
+              <select id="trial-decision" name="decision"><option value="">Nog te bespreken</option>${TRIAL_DECISIONS.map(choice => `<option${choice === draft.decision ? ' selected' : ''}>${choice}</option>`).join('')}</select>
+            </details></form>
+          <div class="trial-actions"><button type="button" class="btn" data-trial-copy>Kopieer proefkaart</button>
+            <button type="button" class="btn secondary" data-trial-print>Druk proefkaart af</button></div>
+          <textarea class="lesson-copy" aria-label="Proefkaart om te kopiëren" readonly hidden></textarea>
+          <div class="trial-storage"><button type="button" data-trial-save>Bewaar op dit apparaat</button>
+            <button type="button" data-trial-remove${saved ? '' : ' hidden'}>Verwijder bewaarde versie</button></div>
+          <p class="trial-note">Uw invulling blijft in dit tabblad. Kies ‘Bewaar op dit apparaat’ om de kaart in deze browser later terug te vinden.</p>
+          <p class="trial-feedback" role="status"></p>
+        </section></div>
+        <details class="assessment-sources"><summary>Herkomst van de proefkaarten</summary>
+          <p>De voorbeelden en beslisregels zijn geschreven door de AI &amp; Onderwijs Atlas Nederland. Ze helpen een team een eigen keuze te maken.</p>
+          ${sources.length ? `<ul>${sources.join('')}</ul>` : ''}</details>
+      </div><section class="trial-print" aria-label="Afdrukbare proefkaart"></section></article>`;
+    const form = main.querySelector('.trial-form form');
+    const copy = main.querySelector('[data-trial-copy]');
+    const remove = main.querySelector('[data-trial-remove]');
+    const feedback = main.querySelector('.trial-feedback');
+    const manual = main.querySelector('.lesson-copy');
+    const badge = main.querySelector(`[data-trial-badge="${id}"]`);
+    function current() {
+      return Object.fromEntries([...form.elements].filter(field => field.name).map(field => [field.name, field.value]));
+    }
+    function keepInTab() {
+      const value = current();
+      trialDrafts.set(id, value);
+      sessionSet(storageKey, JSON.stringify(value));
+    }
+    function refreshCard() {
+      const value = current();
+      main.querySelector('.trial-print').innerHTML = `<h1>Teamproef met AI</h1><h2>${scenario.title}</h2>
+        <dl>${trialFields(id, value).map(([label, answer]) => `<div><dt>${escapeHtml(label)}</dt><dd${answer.trim() ? '' : ' class="trial-write"'}>${escapeHtml(answer.trim())}</dd></div>`).join('')}</dl>
+        <p>AI &amp; Onderwijs Atlas Nederland · <a href="${PUBLIC_ATLAS}${href(id)}">Open deze proefkaart in de Atlas</a></p>`;
+    }
+    form.onsubmit = event => { event.preventDefault(); };
+    main.querySelector('.trial-jump').onclick = () => main.querySelector('#trial-form-title').focus();
+    form.oninput = () => {
+      keepInTab();
+      const notice = remove.hidden ? '' : 'Uw wijzigingen blijven in dit tabblad tot u de kaart opnieuw bewaart.';
+      if (feedback.textContent !== notice) feedback.textContent = notice;
+      manual.hidden = true;
+      refreshCard();
+    };
+    copy.onclick = () => {
+      const text = ['Teamproef met AI · ' + scenario.title, ...trialFields(id, current()).map(([label, answer]) => `${label}\n${answer.trim() || 'Nog in te vullen'}`),
+        `AI & Onderwijs Atlas Nederland\n${PUBLIC_ATLAS}${href(id)}`].join('\n\n');
+      return copyTextWithFallback(copy, text, feedback, manual, 'Proefkaart gekopieerd.', 'De proefkaart is geselecteerd. Kopieer de tekst voor uw team.');
+    };
+    main.querySelector('[data-trial-print]').onclick = () => { refreshCard(); window.print(); };
+    main.querySelector('[data-trial-save]').onclick = () => {
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(current()));
+        remove.hidden = false;
+        badge.hidden = false;
+        feedback.textContent = 'Proefkaart bewaard. Open deze situatie in dezelfde browser voor uw volgende overleg.';
+      } catch { feedback.textContent = 'Bewaren op dit apparaat lukt niet. Kopieer de kaart of druk deze af.'; }
+    };
+    remove.onclick = () => {
+      try {
+        localStorage.removeItem(storageKey);
+        keepInTab();
+        remove.hidden = true;
+        badge.hidden = true;
+        feedback.textContent = 'De bewaarde versie is verwijderd. Uw huidige invulling blijft in dit tabblad.';
+        main.querySelector('[data-trial-save]').focus();
+      } catch { feedback.textContent = 'De bewaarde versie kon niet worden verwijderd.'; }
+    };
+    refreshCard();
+  }
+
   function hasAvailableLesson(record) {
     const lesson = record?.lessonStart;
     return lesson && effectiveStatus(record) === 'available' &&
@@ -1237,7 +1411,9 @@
       const task = PRACTICE_ROUTES.find(route => Object.entries(route.criteria).every(([key, value]) => state[key] === value));
       let work = '';
       if (task?.criteria.q === 'les' || ['lesstart', 'lesstarts'].includes(normalize(state.q))) work = lessonStartSection();
-      else if (task?.criteria.q === 'afspraken' || values('theme').includes(ASSESSMENT_CRITERIA.theme) ||
+      else if (normalize(state.q) === 'afspraken') work = teamTrialEntry() + assessmentEntry();
+      else if (teamTrialQuery(state.q)) work = teamTrialEntry();
+      else if (values('theme').includes(ASSESSMENT_CRITERIA.theme) ||
         ['toets', 'toetsontwerp'].includes(normalize(state.q)) || assessmentToolQuery(state.q)) work = assessmentEntry();
       if (task) return `<nav class="practice-back" aria-label="Praktijkvragen"><a href="${escapeHtml(criteriaHref(context))}">← Andere taak</a><strong>${escapeHtml(task.label)}</strong></nav>${work}`;
       return `<nav class="catalog-tabs" aria-label="Aanbodoverzicht"><a href="#zoeken">Al het aanbod</a><a href="#nieuw">Nieuw aanbod →</a></nav>${work}`;
@@ -1247,6 +1423,7 @@
       const criteria = { ...context, ...route.criteria };
       const count = recordsForCriteria(criteria).length;
       const content = `<strong>${escapeHtml(route.label)}</strong><span>${escapeHtml(route.detail)}</span>`;
+      if (!count && route.criteria === AGREEMENT_CRITERIA) return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>Teamproef <span aria-hidden="true">→</span></small></a>`;
       if (!count) return `<span class="practice-link unavailable">${content}<small>Geen resultaten</small></span>`;
       return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${count} ${count === 1 ? 'resultaat' : 'resultaten'} <span aria-hidden="true">→</span></small></a>`;
     });
@@ -1586,6 +1763,9 @@
       .map(name => collection(name, { ...criteria, organization: name }))
       .filter(item => item.count > 0).slice(0, 4);
     const sections = [];
+    if (teamTrialQuery(query)) sections.push({ label: 'Zelf aan de slag', items: [
+      { label: 'Teamproef met AI', meta: 'Proefkaart voor het teamoverleg', href: '#teamproef' }
+    ] });
     if (assessmentToolQuery(query)) sections.push({ label: 'Zelf aan de slag', items: [
       { label: 'Maak een toetsafspraak', meta: 'Opdrachttekst voor uw klas', href: '#toetsafspraak' }
     ] });
@@ -1616,6 +1796,7 @@
     form.onsubmit = event => {
       event.preventDefault();
       closeSuggestions();
+      if (teamTrialQuery(input.value)) { location.hash = '#teamproef'; return; }
       if (assessmentToolQuery(input.value)) { location.hash = '#toetsafspraak'; return; }
       if (input.value.trim() && ['#home', ''].includes(location.hash)) state.sort = 'relevant';
       applyNaturalQuery(input.value);
@@ -1756,7 +1937,7 @@
         if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
         const forward = link.classList.contains('practice-link');
         addEventListener('hashchange', () => {
-          const heading = forward ? document.querySelector('#lesson-heading') || document.querySelector('#assessment-entry-heading') || document.querySelector('.result-head h2') : document.querySelector('#practice-title');
+          const heading = forward ? document.querySelector('#lesson-heading, #trial-entry-heading, #assessment-entry-heading, .result-head h2') : document.querySelector('#practice-title');
           heading?.focus();
         }, { once: true });
       };
@@ -1847,7 +2028,7 @@
     const path = (location.hash.slice(1) || 'home').split('?')[0];
     document.querySelector('.site-header')?.classList.remove('open');
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
-    if (path === 'home' || (!['wegwijzer', 'nieuw', 'boeken', 'zoeken', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
+    if (path === 'home' || (!['wegwijzer', 'nieuw', 'boeken', 'zoeken', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
     if (path === 'wegwijzer') { location.replace('#zoeken'); return; }
     if (path === 'nieuw') renderNewOffers();
     const focusedBookGroup = path === 'boeken' && renderBooks();
@@ -1856,6 +2037,7 @@
     if (path === 'vergelijken') renderComparison();
     if (path === 'leerlingblad') renderLearnerSheet();
     if (path === 'toetsafspraak') renderAssessment();
+    if (path === 'teamproef') renderTeamTrial();
     if (path.startsWith('item/')) renderDetail(decodeURIComponent(path.slice(5)));
     if (path === 'mijn-atlas') { location.replace('#home'); return; }
     if (path === 'bijdragen') renderContribute();

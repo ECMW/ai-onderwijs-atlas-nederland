@@ -152,3 +152,11 @@ Mediawijs vermeldt voor de EDUbox twee tot drie lesuren, een computer met
 internet en de mogelijkheid om individueel of in groepjes te werken. De
 bestaande Atlas-vermelding bevat deze gegevens. Beide bronnen geven een
 tijdsindicatie van de aanbieder. [Lesinstructie van Mediawijs](https://www.mediawijs.be/nl/tools/edubox-artificiele-intelligentie)
+
+## 2026-11-22 — Teamproef met AI in één les
+
+Kennisnet koppelt schoolafspraken aan onderwijsdoelen en aan de behoeften van
+leerlingen en leraren. Npuls beschrijft hoe teams in het mbo, hbo en wo in
+kleine stappen kunnen uitproberen en bijstellen. De twee proefkaarten, de vraag
+aan de klas en de voorgestelde beslisregels zijn ontworpen door de Atlas. De
+uitkomst van één les is bedoeld voor de volgende lokale keuze. [Kennisnet](https://www.kennisnet.nl/artificial-intelligence/schoolafspraken-over-het-gebruik-van-generatieve-ai/) · [Npuls](https://npuls.nl/kennisbank/ai-go-in-actie)

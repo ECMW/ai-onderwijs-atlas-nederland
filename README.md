@@ -14,6 +14,7 @@ De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijze
 - zoek- en filterstaat staat in de URL en is deelbaar;
 - op de startpagina leiden vier praktijkvragen naar lessen, toetsontwerp, AI-afspraken en scholing. De sectorkeuze werkt ook door in het aanbod en de filters. Elke ingang telt de actuele matches;
 - [Maak een toetsafspraak](https://ecmw.github.io/ai-onderwijs-atlas-nederland/#toetsafspraak) levert bij een eigen leerdoel een kopieerbare opdrachttekst op. Docenten kunnen de AI-hulp, inlevervorm en beoordeling afstemmen op hun opdracht.
+- Met de [Teamproef met AI](https://ecmw.github.io/ai-onderwijs-atlas-nederland/#teamproef) kunnen onderwijsteams één les uitproberen en de reacties van de klas meenemen in hun volgende besluit. De proefkaart is te kopiëren, af te drukken en op uitdrukkelijke keuze in de eigen browser te bewaren.
 - een vraag als “Een les over AI geven voor groep 7” combineert lesmateriaal en AI-geletterdheid met de zoekterm “groep 7”. De gekozen filters zijn zichtbaar en afzonderlijk te verwijderen;
 - elk zoekresultaat heeft een knop **Delen via e-mail**, die een e-mailconcept opent met de titel, aanbieder en directe Atlas-link;
 - bronknoppen benoemen de bestemming, bijvoorbeeld **Bekijk training** of **Bekijk materiaal**;
