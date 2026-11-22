@@ -8954,6 +8954,11 @@
         "label": "Europese Commissie: werkprogramma 2026–2027, kies MSCA",
         "url": "https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe/horizon-europe-work-programmes_en",
         "sourceType": "official"
+      },
+      {
+        "label": "Herzien werkprogramma MSCA 2026–2027, p. 13: deadline en Brusselse tijd",
+        "url": "https://ec.europa.eu/transparency/documents-register/api/files/C%282026%296687_2/090166e534337d6f",
+        "sourceType": "official"
       }
     ],
     "relatedIds": [],
@@ -8997,6 +9002,11 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Uiterste indieningstijd en consortiumnormen gecontroleerd. Het herziene werkprogramma verhoogt het indicatieve budget voor de gehele call."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Officiële PDF van het herziene werkprogramma toegevoegd. Pagina 13 bevestigt 24 november 2026 om 17.00 uur in Brussel."
       }
     ],
     "applicationDeadlineAt": "2026-11-24T17:00:00+01:00"
@@ -35334,7 +35344,9 @@
     ],
     "relatedIds": [],
     "parentIds": [],
-    "childIds": [],
+    "childIds": [
+      "stanford-craft-ai-ecosystemen"
+    ],
     "geographicScope": "Internationaal",
     "accessType": "public",
     "costType": "free",
@@ -35363,6 +35375,11 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Vier afzonderlijke vaklessen in de collectie gecontroleerd en rechtstreeks gekoppeld aan hun lespagina's."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "De biologieles over ecosystemen gekoppeld aan een eigen lesvermelding met docentengids en lesstart."
       }
     ],
     "subjects": [
@@ -37900,7 +37917,7 @@
     "status": "available",
     "availabilityText": "De volledige Wikiwijs-e-learning en PDF-export zijn gratis, zonder account en rechtstreeks toegankelijk.",
     "publicationDate": "2026-04-21",
-    "lastVerified": "2026-11-21",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -37945,7 +37962,7 @@
     "notes": "De e-learning vermeldt CC BY 4.0, is gemaakt door de AI Literacy-werkgroep van de SHB/UKB Werkgroep Information Literacy en is gericht op hbo- en wo-bachelorstudenten. De PDF-export telt 50 pagina's; interactieve oefeningen en enkele externe embeds zijn in de statische export als link zichtbaar. Wikiwijs vermeldt 22 juni 2026 als laatste wijzigingsdatum. De Atlas heeft het materiaal en de bronstatus gecontroleerd, niet de juistheid van iedere gekoppelde externe bron of de leeropbrengst.",
     "offerCategory": "materials",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "De officiële Edusources-detailpagina, de volledige Wikiwijs-e-learning en alle 50 pagina's van de PDF-export zijn gecontroleerd op titel, aanbieder, doelgroep, inhoud, toegang, datum, auteurs en licentie; representatieve pagina's over zoeksystemen, GenAI-output en het colofon zijn ook visueel beoordeeld. Controle op 21 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap.",
+    "verificationNote": "De officiële Edusources-detailpagina, de volledige Wikiwijs-e-learning en alle 50 pagina's van de PDF-export zijn gecontroleerd op titel, aanbieder, doelgroep, inhoud, toegang, datum, auteurs en licentie; representatieve pagina's over zoeksystemen, GenAI-output en het colofon zijn ook visueel beoordeeld. Controle op 21 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap. Informatievaardigheden is het vaklabel van de Atlas bij de beschreven bachelormodule over het zoeken, selecteren en beoordelen van informatie. De module noemt geen specifiek opleidingsvak.",
     "changeHistory": [
       {
         "date": "2026-11-21",
@@ -37956,6 +37973,11 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Lesstart van de Atlas toegevoegd op basis van het gekoppelde lesmateriaal."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd. Vakgebied aan de hand van de gekoppelde lesbron vastgelegd."
       }
     ],
     "lessonStart": {
@@ -37968,8 +37990,13 @@
       "preparation": "Kies een kort AI-antwoord met een verwijzing naar een artikel dat de studenten kunnen openen. Gebruik uit AI-wijs het onderdeel over het beoordelen van gegenereerde tekst.",
       "task": "Onderstreep één controleerbare bewering in het AI-antwoord. Open het aangehaalde artikel en zoek de passage die daarvoor bewijs zou leveren. Noteer je vindplaats en beslis of de passage de hele bewering draagt, slechts een deel, of helemaal niets.",
       "reflection": "Herschrijf de bewering zo dat een medestudent haar met jouw bron kan controleren. Wat moest je afzwakken of schrappen?",
-      "sourceUrl": "https://maken.wikiwijs.nl/223513/AI_wijs__verantwoord_informatie_zoeken_en_beoordelen__Algemeen__BA_"
-    }
+      "sourceUrl": "https://maken.wikiwijs.nl/223513/AI_wijs__verantwoord_informatie_zoeken_en_beoordelen__Algemeen__BA_",
+      "learningGoal": "Nagaan welk deel van een AI-bewering door een concrete passage in de aangehaalde bron wordt gedragen.",
+      "activityType": "Bronnen vergelijken"
+    },
+    "subjects": [
+      "Informatievaardigheden"
+    ]
   },
   {
     "id": "uk-dfe-ai-education-support-materials",
@@ -38226,7 +38253,7 @@
     "notes": "De collectie beschrijft drie PO-niveaus en vier VO-trajecten, elk met vier lessen: in totaal 28 lessen van 45 of 50 minuten. De twee representatieve lessen zijn volledig gelezen; aanvullende lespagina's voor alle niveaus zijn steekproefsgewijs gecontroleerd. De PO-lessen werken zonder leerlinggebruik van een chatbot; VO-lessen verwijzen waar nodig naar een door de school goedgekeurde tool. LessonUp toont bij meerdere lessen oktober 2026, maar een eenduidige oorspronkelijke publicatiedatum van de collectie is niet vastgesteld. De interactieve start en alle PDF-handleidingen zijn niet volledig uitgevoerd of gelezen; een expliciete auteursnaam is op de gecontroleerde kanaalpagina niet aangetroffen.",
     "offerCategory": "materials",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "De officiële kanaalpagina en twee representatieve volledige lessen voor PO en VO zijn gelezen; aanvullende pagina's voor groep 3-4, 5-6, 7-8, vmbo en havo-vwo zijn steekproefsgewijs gecontroleerd op niveau, lesdoelen, duur, werkvormen en handleidingen. De kanaalpagina is ook in een verse Edge-lading geopend. De interactieve start en alle bijlagen zijn niet volledig gecontroleerd. Controle op 22 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap.",
+    "verificationNote": "De officiële kanaalpagina en twee representatieve volledige lessen voor PO en VO zijn gelezen; aanvullende pagina's voor groep 3-4, 5-6, 7-8, vmbo en havo-vwo zijn steekproefsgewijs gecontroleerd op niveau, lesdoelen, duur, werkvormen en handleidingen. De kanaalpagina is ook in een verse Edge-lading geopend. De interactieve start en alle bijlagen zijn niet volledig gecontroleerd. Controle op 22 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap. De vmbo-les over een afvalsorteerder noemt zowel burgerschap als digitale geletterdheid. De 50 minuten gelden voor deze specifieke les in leerjaar 2–3.",
     "changeHistory": [
       {
         "date": "2026-11-22",
@@ -38237,6 +38264,11 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Lesstart van de Atlas toegevoegd op basis van het gekoppelde lesmateriaal."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd. Vakgebied aan de hand van de gekoppelde lesbron vastgelegd. De aanbieder noemt 50 minuten voor de volledige bronles."
       }
     ],
     "lessonStart": {
@@ -38248,8 +38280,15 @@
       "preparation": "Leg schoon papier, plastic en blik klaar. Test de webcam en Teachable Machine op een schoollaptop. De aanbieder rekent 50 minuten voor de volledige les.",
       "task": "Train in tweetallen een model om papier, plastic en blik te herkennen. Houd van elke soort één verpakking apart. Test het model met die drie voorwerpen en noteer de voorspellingen. Verander de achtergrond bij één verpakking en test opnieuw.",
       "reflection": "Wat bleef hetzelfde en wat veranderde? Welke voorbeelden zouden jullie toevoegen om te testen waarop het model let?",
-      "sourceUrl": "https://www.lessonup.com/nl/lesson/em4CAELtbcCNrnAMo"
-    }
+      "sourceUrl": "https://www.lessonup.com/nl/lesson/em4CAELtbcCNrnAMo",
+      "learningGoal": "Een afvalherkenner met nieuwe verpakkingen testen en een verandering in de voorspelling verklaren.",
+      "activityType": "Een model trainen en testen",
+      "sourceMinutes": 50
+    },
+    "subjects": [
+      "Burgerschap",
+      "Digitale geletterdheid"
+    ]
   },
   {
     "id": "phet-natural-selection",
@@ -39039,5 +39078,93 @@
       "reflection": "Welke staaf verklaart de lagere terugkeerhoogte? Welke waarneming gebruik je om de bewering te verbeteren?",
       "sourceUrl": "https://phet.colorado.edu/sims/html/energy-skate-park-basics/latest/energy-skate-park-basics_nl.html"
     }
+  },
+  {
+    "id": "stanford-craft-ai-ecosystemen",
+    "title": "How can AI be used to help conserve natural ecosystems?",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Biologieles met docentengids en discussieblad",
+    "offerCategory": "materials",
+    "organizationIds": [],
+    "providerName": "Stanford CRAFT",
+    "description": "Engelstalige biologieles over het gebruik van AI bij natuurbescherming. Leerlingen vergelijken praktijkvoorbeelden, bespreken wat een toepassing kan bijdragen en verdelen een fictief budget. Het bijbehorende discussieblad helpt een groep een gezamenlijke keuze te onderbouwen.",
+    "purpose": "Met een concreet ecologisch probleem onderbouwen waarvoor je AI zou inzetten en bespreken welk effect onzeker blijft.",
+    "audiences": [
+      "Docenten"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "subjects": [
+      "Biologie"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "De Engelstalige docentengids en het discussieblad openen zonder account. De volledige bronles duurt volgens Stanford 60 minuten. De docentengids verwijst ook naar een extern krantenartikel.",
+    "publicationDate": "2024-09-27",
+    "lastVerified": "2026-11-22",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Open de Engelstalige docentengids",
+        "url": "https://docs.google.com/document/d/1z9YnK68zLDU6qEDcnqC_ucpudNINkE2O_z-PhpnhBQs/preview",
+        "sourceType": "official"
+      },
+      {
+        "label": "Discussion Diamond: discussieblad voor leerlingen",
+        "url": "https://docs.google.com/document/d/18UwwsbA0z4c6519rzLmUkZzDdL0FZuTS7JH-obuqqRo/preview",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [
+      "stanford-craft-ai-lescollectie"
+    ],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "ecosystemen",
+      "natuurbescherming",
+      "AI",
+      "ecologie",
+      "Stanford CRAFT",
+      "les",
+      "lesstart",
+      "lesstarts"
+    ],
+    "notes": "De docentengids vermeldt science, grades 6–8. VO-onderbouw is een Nederlandse niveau-inschatting. Wendi Cocita schreef de les, Chris Mah bewerkte haar. De budgetverdeling is een rollenspel. De volledige bronles gebruikt een extern artikel. Voor dat artikel en voor herpublicatie van de materialen zijn geen rechten vastgesteld.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Op 22 november 2026 zijn de Stanford-lespagina, de volledige docentengids en de openbare leesweergave van het discussieblad zonder inloggen geopend. De gids beschrijft de doelgroep, de duur en de bespreking van vijf toepassingen. De Atlas-werkvorm hieronder is een redactionele verkorting.",
+    "lessonStart": {
+      "sectors": [
+        "VO"
+      ],
+      "level": "VO-onderbouw · biologie",
+      "question": "Voor welk natuurprobleem zou je AI inzetten als je maar één toepassing kunt kiezen?",
+      "preparation": "Open de Engelstalige docentengids en kies twee voorbeelden uit de bronles, zoals dieren tellen met beeldherkenning en waterverlies opsporen. Zet bij elk voorbeeld in het Nederlands het natuurprobleem en de waarneming op het bord.",
+      "task": "Kies één van de twee toepassingen. Schrijf op wat de AI waarneemt, wie daarna iets moet doen en welke verandering voor het ecosysteem zou tellen als succes. Verdeel samen honderd fictieve punten over de twee toepassingen. Noteer welk argument jullie verdeling het meest beïnvloedde.",
+      "reflection": "Meer dieren herkend op beelden: welke extra waarneming heb je nodig om te kunnen zeggen dat hun leefgebied beter beschermd is?",
+      "sourceUrl": "https://docs.google.com/document/d/1z9YnK68zLDU6qEDcnqC_ucpudNINkE2O_z-PhpnhBQs/preview",
+      "learningGoal": "Voor twee AI-toepassingen uitleggen hoe een waarneming kan bijdragen aan natuurbescherming en welke gegevens nodig zijn om het effect te beoordelen.",
+      "activityType": "Casussen vergelijken",
+      "sourceMinutes": 60
+    },
+    "changeHistory": [
+      {
+        "date": "2026-11-22",
+        "type": "added",
+        "summary": "Afzonderlijke bronles uit de bestaande CRAFT-collectie toegevoegd met docentengids, discussieblad en Nederlandse lesstart."
+      }
+    ]
   }
 ]
