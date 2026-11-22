@@ -37,6 +37,11 @@
       "url": "https://doi.org/10.1007/s11423-026-10749-1",
       "language": "en",
       "access": "open",
+      "risAuthors": [
+        "Frosch, Katharina",
+        "Lindauer, Friederike",
+        "Winkel, Carmen"
+      ],
       "summary": "Dertig bachelorstudenten aan een Duitse universiteit oefenden met een GPT-examenassistent en later met Moodle. De onderzoekers vergeleken hun gebruik en ervaren eerlijkheid. Door de vaste volgorde en de kleine groep blijft onzeker of een van beide vormen beter werkt."
     },
     {
@@ -52,6 +57,10 @@
       "url": "https://doi.org/10.1007/s10763-026-10747-y",
       "language": "en",
       "access": "open",
+      "risAuthors": [
+        "Walan, Susanne",
+        "Vinerean-Bernhoff, Mirela"
+      ],
       "summary": "Elf Zweedse basisschoolleraren probeerden zes maanden generatieve AI uit bij rekenen en natuuronderwijs. Ze beschreven bruikbare lesideeën en rekenfouten in AI-antwoorden. De studie onderzocht docentervaringen. Leerprestaties zijn niet gemeten."
     },
     {
@@ -67,7 +76,13 @@
       "source": "Journal of Science Education and Technology",
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s10956-026-10373-x",
-      "language": "en"
+      "language": "en",
+      "risAuthors": [
+        "Shertayeva, Nailya",
+        "Ormanova, Ganiya",
+        "Shagraуеva, Bibigul",
+        "Abdushukurova, Gaukhar"
+      ]
     },
     {
       "id": "10.1111/bjet.70101",
@@ -81,7 +96,13 @@
       "published": "2026-11-13",
       "source": "British Journal of Educational Technology",
       "publicationType": "journal-article",
-      "url": "https://doi.org/10.1111/bjet.70101"
+      "url": "https://doi.org/10.1111/bjet.70101",
+      "risAuthors": [
+        "Zhou, Wen‐Li",
+        "Fu, Qing‐Ke",
+        "Fang, Jian‐Wen",
+        "Hwang, Gwo‐Jen"
+      ]
     },
     {
       "id": "10.1111/bjet.70100",
@@ -93,7 +114,11 @@
       "published": "2026-11-13",
       "source": "British Journal of Educational Technology",
       "publicationType": "journal-article",
-      "url": "https://doi.org/10.1111/bjet.70100"
+      "url": "https://doi.org/10.1111/bjet.70100",
+      "risAuthors": [
+        "Ennion, Megan",
+        "McLellan, Ros"
+      ]
     },
     {
       "id": "10.1007/s11423-026-10763-3",
@@ -107,7 +132,12 @@
       "source": "Educational Technology Research and Development",
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s11423-026-10763-3",
-      "language": "en"
+      "language": "en",
+      "risAuthors": [
+        "Zhou, Jian",
+        "Zhang, Wuwen",
+        "Zhou, Mo"
+      ]
     },
     {
       "id": "10.1007/s11423-026-10753-5",
@@ -122,7 +152,12 @@
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s11423-026-10753-5",
       "language": "en",
-      "access": "open"
+      "access": "open",
+      "risAuthors": [
+        "Kim, Hyeeun",
+        "Ham, Eun Hye",
+        "Cho, Young Hoan"
+      ]
     },
     {
       "id": "10.1007/s10956-026-10374-w",
@@ -139,6 +174,12 @@
       "url": "https://doi.org/10.1007/s10956-026-10374-w",
       "language": "en",
       "access": "open",
+      "risAuthors": [
+        "Dietrich, Lars",
+        "Fink, Laura",
+        "Urhahne, Detlef",
+        "Kremer, Kerstin"
+      ],
       "summary": "Bij een ecologietaak werden 185 studenten willekeurig verdeeld over drie groepen. Studenten met alleen ChatGPT scoorden op de aansluitende kennistoets lager dan studenten die de bronteksten konden lezen, met of zonder ChatGPT. Het onderzoek betrof één taak."
     },
     {
@@ -152,7 +193,11 @@
       "source": "Educational Technology Research and Development",
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s11423-026-10762-4",
-      "language": "en"
+      "language": "en",
+      "risAuthors": [
+        "Peng, Hongchao",
+        "Zhang, Mingrui"
+      ]
     },
     {
       "id": "10.1111/bjet.70098",
@@ -177,7 +222,24 @@
       "published": "2026-11-06",
       "source": "British Journal of Educational Technology",
       "publicationType": "journal-article",
-      "url": "https://doi.org/10.1111/bjet.70098"
+      "url": "https://doi.org/10.1111/bjet.70098",
+      "risAuthors": [
+        "Liu, Ming",
+        "Wu, Zhongming",
+        "Dai, Haimin",
+        "Malik, Laiba",
+        "Li, Xiangqian",
+        "Maruf, Golam Ali Azgar Hossain",
+        "Li, Teng",
+        "Liao, Jian",
+        "Wang, JingXian",
+        "Xu, Qixing",
+        "Guo, Shuo",
+        "Yang, Min",
+        "Ren, Yiling",
+        "Liu, Li",
+        "Zhao, Junqiang"
+      ]
     },
     {
       "id": "10.1007/s11423-026-10759-z",
@@ -190,7 +252,11 @@
       "source": "Educational Technology Research and Development",
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s11423-026-10759-z",
-      "language": "en"
+      "language": "en",
+      "risAuthors": [
+        "Li, Zhiyong",
+        "Bao, Jie"
+      ]
     },
     {
       "id": "10.1007/s10956-026-10369-7",
@@ -204,7 +270,11 @@
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s10956-026-10369-7",
       "language": "en",
-      "access": "open"
+      "access": "open",
+      "risAuthors": [
+        "Kim, Eunhye",
+        "Jho, Hunkoog"
+      ]
     },
     {
       "id": "10.1007/s11423-026-10756-2",
@@ -222,6 +292,13 @@
       "url": "https://doi.org/10.1007/s11423-026-10756-2",
       "language": "en",
       "access": "open",
+      "risAuthors": [
+        "Walkington, Candace",
+        "Feng, Mingyu",
+        "Pruitt-Britton, Tiffini",
+        "Beauchamp, Theodora",
+        "Lan, Andrew"
+      ],
       "summary": "Zeven wiskundedocenten pasten met ChatGPT opgaven aan de interesses van hun leerlingen aan. Leerlingen gaven aan welke verwijzingen zij herkenbaar vonden. De studie onderzocht de werkwijze en reacties op de opgaven. Leerwinst is niet vastgesteld."
     },
     {
@@ -238,7 +315,15 @@
       "published": "2026-10-25",
       "source": "British Journal of Educational Technology",
       "publicationType": "journal-article",
-      "url": "https://doi.org/10.1111/bjet.70095"
+      "url": "https://doi.org/10.1111/bjet.70095",
+      "risAuthors": [
+        "Wang, Mengke",
+        "Lämsä, Joni",
+        "Sobocinski, Marta",
+        "Edwards, Justin",
+        "Whitehead, Ridwan",
+        "Järvelä, Sanna"
+      ]
     },
     {
       "id": "10.1007/s10956-026-10368-8",
@@ -251,7 +336,11 @@
       "source": "Journal of Science Education and Technology",
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s10956-026-10368-8",
-      "language": "en"
+      "language": "en",
+      "risAuthors": [
+        "Gestiardi, Rivan",
+        "Subanji"
+      ]
     },
     {
       "id": "10.1007/s10956-026-10365-x",
@@ -268,7 +357,15 @@
       "source": "Journal of Science Education and Technology",
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s10956-026-10365-x",
-      "language": "en"
+      "language": "en",
+      "risAuthors": [
+        "Fratiwi, Nuzulira Janeusse",
+        "Abdul Rahman, Nor Farahwahidah",
+        "Zulaiha, Fanni",
+        "Iqbal , Nur Habib Muhammad",
+        "Samsudin , Achmad",
+        "Yong, Kuang Han"
+      ]
     },
     {
       "id": "10.1007/s10956-026-10363-z",
@@ -286,7 +383,15 @@
       "publicationType": "peer-reviewed",
       "url": "https://doi.org/10.1007/s10956-026-10363-z",
       "language": "en",
-      "access": "open"
+      "access": "open",
+      "risAuthors": [
+        "Rusmansyah",
+        "Syahmani",
+        "Erika, Farah",
+        "Kusuma, Arief Ertha",
+        "Lee, Tien Tien",
+        "Aufa, Mohamad Nor"
+      ]
     }
   ]
 }

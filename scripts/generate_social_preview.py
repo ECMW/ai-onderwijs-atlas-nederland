@@ -3,15 +3,14 @@
 from PIL import Image, ImageDraw, ImageFont
 
 WIDTH, HEIGHT = 1200, 630
-BULLET = " \u2022 "
 TEXT_LINES = [
     "AI & ONDERWIJS",
     "ATLAS NEDERLAND",
-    "Vind wat er al bestaat.",
-    "Voor AI in het onderwijs.",
-    BULLET.join(["Handreikingen", "trainingen", "voorzieningen", "subsidies"]),
-    BULLET.join(["praktijkvoorbeelden", "wetgeving", "organisaties"]),
-    BULLET.join(["OPEN", "BRONGEBASEERD", "GEEN TRACKING"]),
+    "Lesmateriaal, subsidies",
+    "en onderzoek over AI.",
+    "Zoek op vakgebied en onderwijssector.",
+    "Vind lesstarts, open oproepen en recente papers.",
+    "aionderwijsatlas.nl",
     "E.C.M. Willems",
 ]
 
@@ -42,7 +41,7 @@ def generate(output: Path) -> None:
     draw.text((74, 300), TEXT_LINES[3], font=bold66, fill="#344f5d")
     draw.text((78, 398), TEXT_LINES[4], font=regular, fill="#52656d")
     draw.text((78, 438), TEXT_LINES[5], font=regular, fill="#52656d")
-    draw.rounded_rectangle((75, 505, 700, 555), radius=25, fill="#fcfaf6", outline="#b8b6aa", width=2)
+    draw.rounded_rectangle((75, 505, 290, 555), radius=25, fill="#fcfaf6", outline="#b8b6aa", width=2)
     draw.text((98, 516), TEXT_LINES[6], font=semibold20, fill="#4f583d")
     draw.text((894, 588), TEXT_LINES[7], font=semibold20, fill="#fcfaf6")
     image.save(output, optimize=True)

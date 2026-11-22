@@ -195,7 +195,7 @@ def _wiley_papers(source: dict, start: date, today: date) -> list[dict]:
         if not isinstance(author_list, list) or not author_list:
             incomplete = True
             continue
-        authors = []
+        authors, ris_authors = [], []
         for author in author_list:
             if not isinstance(author, dict):
                 break
@@ -203,10 +203,11 @@ def _wiley_papers(source: dict, start: date, today: date) -> list[dict]:
             if not name:
                 break
             authors.append(name)
+            ris_authors.append(author.get("name") or ", ".join(filter(None, (author.get("family"), author.get("given")))))
         if not re.fullmatch(r"10\.1111/bjet\.\d+", doi) or len(authors) != len(author_list):
             incomplete = True
             continue
-        found[doi] = {"id": doi, "title": title, "authors": authors, "published": published.isoformat(),
+        found[doi] = {"id": doi, "title": title, "authors": authors, "risAuthors": ris_authors, "published": published.isoformat(),
                       "source": source["name"], "publicationType": "journal-article",
                       "url": "https://doi.org/" + doi}
     if not readable or (not found and incomplete):
@@ -237,7 +238,7 @@ def _article(source: dict, doi: str, start: date, today: date, timeout: float) -
     for author in author_fields:
         family, comma, given = author.partition(", ")
         authors.append(f"{given} {family}" if comma else author)
-    paper = {"id": doi, "title": title, "authors": authors, "published": published.isoformat(),
+    paper = {"id": doi, "title": title, "authors": authors, "risAuthors": author_fields, "published": published.isoformat(),
              "source": source["name"], "publicationType": "peer-reviewed", "url": "https://doi.org/" + doi}
     if paper["url"] in metadata.open_article_urls:
         paper["access"] = "open"

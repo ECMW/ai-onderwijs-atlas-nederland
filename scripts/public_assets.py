@@ -8,9 +8,9 @@ ASSET_REFERENCE = re.compile(
 )
 
 
-def versioned_html(root, html):
+def versioned_html(root, html, *, document_dir=None):
     def replace(match):
-        path = (root / match[2]).resolve()
+        path = ((document_dir or root) / match[2]).resolve()
         if not path.is_relative_to(root.resolve()):
             raise ValueError("Public asset must stay inside the site")
         # Git checks out CRLF on Windows and LF in CI; they are the same asset.

@@ -166,6 +166,22 @@
 
   let state = {};
   let resultRecords = [];
+  const RESULT_BATCH = 24;
+
+  function resultView() {
+    const view = window.history?.state?.atlasResults;
+    return view?.route === (location.hash || '#home') ? view : {};
+  }
+  function saveResultView(view) {
+    window.history?.replaceState?.({ ...window.history.state, atlasResults: { ...view, route: location.hash || '#home' } }, '');
+  }
+  function resultListMarkup() {
+    const shown = Math.min(resultRecords.length, Math.max(RESULT_BATCH, Number(resultView().shown) || 0));
+    const footer = resultRecords.length > RESULT_BATCH ? `<div class="result-batches">
+      <span data-result-progress role="status">${shown} van ${resultRecords.length} resultaten getoond</span>
+      <button type="button" class="btn secondary" data-more-results ${shown === resultRecords.length ? 'hidden' : ''}>Toon meer resultaten</button></div>` : '';
+    return `<div class="result-list" data-result-list>${resultRecords.slice(0, shown).map(record => simpleCard(record, true)).join('')}</div>${footer}`;
+  }
   let debounceTimer;
   let todayCache = { value: '', checkedAt: 0 };
 
@@ -503,13 +519,47 @@
   function paperDate(value) {
     return `<time datetime="${value}">${escapeHtml(dateLabel(value))}</time>`;
   }
-  function papersMarkup(data) {
+  function listedPapers(data) {
     if (!Array.isArray(data?.papers)) throw new Error('Paperlijst ontbreekt');
-    const types = {preprint:'Preprint', 'journal-article':'Gepubliceerd tijdschriftartikel', 'peer-reviewed':'Peer-reviewed artikel'};
-    const papers = data.papers.filter(paper => typeof paper?.title === 'string' && paper.title.trim() &&
-      validDate(paper.published) && paperUrl(paper.url));
-    papers.sort((a, b) => b.published.localeCompare(a.published) || a.title.localeCompare(b.title, 'nl') ||
+    return data.papers.filter(paper => typeof paper?.title === 'string' && paper.title.trim() &&
+      validDate(paper.published) && paperUrl(paper.url))
+      .sort((a, b) => b.published.localeCompare(a.published) || a.title.localeCompare(b.title, 'nl') ||
       String(a.id || a.url).localeCompare(String(b.id || b.url), 'en'));
+  }
+  function paperAuthors(paper) {
+    return Array.isArray(paper.authors) ? paper.authors.filter(name => typeof name === 'string' && name.trim()) : [];
+  }
+  function paperRis(papers) {
+    const types = {preprint:'UNPB', 'peer-reviewed':'JOUR', 'journal-article':'JOUR'};
+    return papers.map(paper => {
+      const url = new URL(paper.url);
+      const doiPath = /^(dx\.)?doi\.org$/.test(url.hostname) ? url.pathname.slice(1) : '';
+      const doi = [paper.id, doiPath].find(value => typeof value === 'string' && /^10\.\d{4,9}\/[^\s\x00-\x1f\x7f]+$/i.test(value));
+      const type = Object.hasOwn(types, paper.publicationType) ? types[paper.publicationType] : 'GEN';
+      const names = paperAuthors(paper);
+      const authors = Array.isArray(paper.risAuthors) && paper.risAuthors.length === paper.authors?.length &&
+        paper.risAuthors.every(name => typeof name === 'string' && name.trim()) ? paper.risAuthors : names;
+      const fields = [['TY', type], ...authors.map(name => ['AU', name]), ['TI', paper.title],
+        ['PY', paper.published.slice(0, 4)], ['DA', paper.published.replaceAll('-', '/')],
+        ['T2', paper.source], ['DO', doi], ['UR', url.href]];
+      return fields.filter(([,value]) => typeof value === 'string' && value.trim())
+        .map(([tag,value]) => `${tag}  - ${value.replace(/[\x00-\x1f\x7f-\x9f\u2028\u2029]+/g, ' ').trim()}`)
+        .concat('ER  -', '').join('\r\n');
+    }).join('\r\n');
+  }
+  function downloadPaperRis(papers) {
+    const file = new Blob([paperRis(papers)], {type:'application/x-research-info-systems;charset=utf-8'});
+    const url = URL.createObjectURL(file);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'ai-onderwijs-atlas-papers.ris';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+  function papersMarkup(data, papers = listedPapers(data)) {
+    const types = {preprint:'Preprint', 'journal-article':'Gepubliceerd tijdschriftartikel', 'peer-reviewed':'Peer-reviewed artikel'};
     const sources = Array.isArray(data.sources) ? data.sources.filter(item => typeof item?.name === 'string' && item.name.trim()) : [];
     const sourceList = sources.map(item => {
       const href = paperUrl(item.url);
@@ -517,12 +567,12 @@
       return `<li>${name} · ${validDate(item.checkedAt) ? `laatst gecontroleerd op ${paperDate(item.checkedAt)}` : 'controledatum onbekend'}</li>`;
     }).join('');
     const entries = papers.map(paper => {
-      const authors = Array.isArray(paper.authors) ? paper.authors.filter(name => typeof name === 'string' && name.trim()).join(', ') : '';
+      const authors = paperAuthors(paper).join(', ');
       const publicationType = Object.hasOwn(types, paper.publicationType) ? types[paper.publicationType] : 'Publicatietype niet vastgesteld';
       const url = paperUrl(paper.url);
       const citation = [`${authors || 'Auteurs niet vermeld'} (${paper.published.slice(0, 4)}).`, paper.title, paper.source, url].filter(Boolean).join('\n');
       return `<li><article><p class="paper-meta">${paperDate(paper.published)} <span>· ${publicationType}</span>${paper.access === 'open' ? ' <span>· Open access</span>' : ''}</p>
-        <h2><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(paper.title)} <span aria-hidden="true">↗</span></a></h2>
+        <h2><a href="${escapeHtml(url)}"${/^https?:\/\/(?:dx\.)?doi\.org\/10\.\d{4,9}\//i.test(url) ? ' data-atlas-usage="paper-doi-open"' : ''} target="_blank" rel="noopener noreferrer">${escapeHtml(paper.title)} <span aria-hidden="true">↗</span></a></h2>
         <p class="paper-byline">${escapeHtml(authors || 'Auteurs niet vermeld')}${paper.source ? ` · <cite>${escapeHtml(paper.source)}</cite>` : ''}</p>
         ${typeof paper.summary === 'string' && paper.summary.trim() ? `<p class="paper-summary">${escapeHtml(paper.summary)}</p>` : ''}
         <div class="paper-citation"><button class="btn secondary" type="button" data-copy-paper="${escapeHtml(citation)}" aria-label="Kopieer bronvermelding: ${escapeHtml(paper.title)}">Kopieer bronvermelding</button>
@@ -530,25 +580,55 @@
     }).join('');
     const checked = validDate(data.checkedAt) ? `Laatste geslaagde controle op ${paperDate(data.checkedAt)}.` : 'Datum van de laatste geslaagde controle onbekend.';
     const partial = sources.some(item => !validDate(item.checkedAt) || item.checkedAt < data.checkedAt);
-    return `<p class="papers-checked">${checked}${partial ? ' De laatste geslaagde controle verschilt per bron.' : ''} Publicaties na de laatste broncontrole kunnen ontbreken.</p>
+    const controls = papers.length ? `<div class="paper-actions"><label><input type="checkbox" data-open-papers> Alleen open access (${papers.filter(paper => paper.access === 'open').length})</label>
+        <button type="button" class="btn secondary" data-download-ris>Download voor Zotero / EndNote (.ris)</button></div>
+        <p class="paper-count" role="status" data-paper-count>${papers.length} ${papers.length === 1 ? 'paper' : 'papers'}</p>
+        <div data-no-open-papers hidden><p>Bij geen van deze papers is open access bevestigd.</p><button type="button" class="btn secondary" data-show-all-papers>Toon alle papers</button></div>` : '';
+    return `${controls}<p class="papers-checked">${checked}${partial ? ' De laatste geslaagde controle verschilt per bron.' : ''} Publicaties na de laatste broncontrole kunnen ontbreken.</p>
       ${sourceList ? `<details class="papers-sources"><summary>Gevolgde bronnen en controledatums</summary><ul>${sourceList}</ul></details>` : '<p>De gevolgde bronnen zijn voor deze lijst niet vermeld.</p>'}
       ${papers.length < data.papers.length ? '<p role="status">Enkele vermeldingen missen een bruikbare titel, publicatiedatum of bronlink.</p>' : ''}
       ${entries ? `<ol class="papers-list">${entries}</ol>` : `<p role="status">${data.papers.length ? 'Er zijn geen complete vermeldingen om te tonen.' : 'De laatste broncontrole bevatte geen papers voor deze selectie.'}</p>`}`;
   }
-  let lastPapersHtml = '';
+  function showPaperEdition(panel, data, notice = '') {
+    const papers = listedPapers(data);
+    panel.innerHTML = notice + papersMarkup(data, papers);
+    if (!papers.length) return;
+    const toggle = panel.querySelector('[data-open-papers]');
+    const download = panel.querySelector('[data-download-ris]');
+    const cards = panel.querySelectorAll('.papers-list li');
+    let shown = papers;
+    function update() {
+      shown = toggle.checked ? papers.filter(paper => paper.access === 'open') : papers;
+      cards.forEach((card, index) => { card.hidden = toggle.checked && papers[index].access !== 'open'; });
+      const total = `${papers.length} ${papers.length === 1 ? 'paper' : 'papers'}`;
+      panel.querySelector('[data-paper-count]').textContent = toggle.checked ? `${shown.length} van ${total}` : total;
+      panel.querySelector('[data-no-open-papers]').hidden = shown.length > 0;
+      download.disabled = !shown.length;
+    }
+    toggle.onchange = update;
+    panel.querySelector('[data-show-all-papers]').onclick = () => { toggle.checked = false; update(); toggle.focus(); };
+    download.onclick = event => {
+      if (!shown.length) return;
+      downloadPaperRis(shown);
+      if (event?.isTrusted) window.dispatchEvent(new Event('atlas-ris-downloaded'));
+    };
+  }
+  let lastPaperEdition;
   async function loadPapers(panel) {
     panel.innerHTML = '<p role="status">Papers worden geladen…</p>';
     try {
       const response = await fetch('data/papers.json', {cache:'no-cache'});
       if (!response.ok) throw new Error('Paperlijst niet beschikbaar');
-      const html = papersMarkup(await response.json());
+      const data = await response.json();
       if (main.querySelector('[data-papers]') === panel) {
-        lastPapersHtml = html;
-        panel.innerHTML = html;
+        showPaperEdition(panel, data);
+        lastPaperEdition = data;
       }
     } catch {
       if (main.querySelector('[data-papers]') !== panel) return;
-      panel.innerHTML = `<p role="status">${lastPapersHtml ? 'Verversen is niet gelukt. Hieronder staat de eerder geladen editie.' : 'De paperlijst kon niet worden geladen.'}</p><button class="btn secondary" type="button">Probeer opnieuw</button>${lastPapersHtml}`;
+      const notice = `<p role="status">${lastPaperEdition ? 'Verversen is niet gelukt. Hieronder staat de eerder geladen editie.' : 'De paperlijst kon niet worden geladen.'}</p><button class="btn secondary" type="button">Probeer opnieuw</button>`;
+      if (lastPaperEdition) showPaperEdition(panel, lastPaperEdition, notice);
+      else panel.innerHTML = notice;
       panel.querySelector('button').onclick = () => { document.querySelector('#papers-heading')?.focus(); loadPapers(panel); };
     }
   }
@@ -722,6 +802,10 @@
     return (record.sourceUrls || []).filter(item => item.sourceType === 'official' && /^https?:\/\//i.test(item.url || ''));
   }
   function primarySource(record) { return officialSources(record)[0] || null; }
+  function sourceUsage(record) {
+    if (isFunding(record)) return ' data-atlas-usage="funding-open"';
+    return record.offerCategory === 'materials' ? ` data-atlas-usage="lesson-open" data-atlas-item-id="${escapeHtml(record.id)}"` : '';
+  }
   function sourceActionLabel(record) {
     if (isFunding(record)) return record.recordType === 'funding_call' ? 'Officiële oproep en voorwaarden' : 'Officiële regeling en voorwaarden';
     if (record.offerCategory === 'materials') return 'Bekijk materiaal';
@@ -921,7 +1005,7 @@
           `<dl class="offer-terms"><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div><div><dt>Toegang</dt><dd>${escapeHtml(accessLabel(record))}</dd></div><div><dt>Taal</dt><dd>${escapeHtml(languageList(record))}</dd></div></dl>`}
       </div>
       <div class="card-actions offer-links">
-        ${sourceItem ? `<a class="card-cta primary" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record))}: ${escapeHtml(record.title)}">${escapeHtml(sourceActionLabel(record))} ↗</a>` : ''}
+        ${sourceItem ? `<a class="card-cta primary" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record))}: ${escapeHtml(record.title)}">${escapeHtml(sourceActionLabel(record))}&nbsp;↗</a>` : ''}
         <a class="card-cta" href="#item/${escapeHtml(record.id)}" aria-label="${escapeHtml(detailLabel)}: ${escapeHtml(record.title)}">${escapeHtml(detailLabel)}</a>
         <a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a>
         ${showPublicationDate ? `<label class="sheet-pick"><input type="checkbox" data-sheet-pick="${escapeHtml(record.id)}" aria-label="Kies voor vergelijking of overleg: ${escapeHtml(record.title)}" ${sheetPicks.has(record.id) ? 'checked' : ''}> Kies voor vergelijking of overleg</label>` : ''}
@@ -1032,7 +1116,7 @@
       <p class="provider">${escapeHtml(details.join(' · ') || factValue(record.providerName))}</p>
       <p class="description">${escapeHtml(factValue(record.description))}</p>
       <dl class="card-facts"><div><dt>Uitgever</dt><dd>${escapeHtml(factValue(record.providerName))}</dd></div><div><dt>Voor wie</dt><dd>${escapeHtml(factValue((record.audiences || []).join(', ')))}</dd></div><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div></dl>
-    </div><div class="card-actions"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">Uitgevers- of auteursbron ↗</a>` : ''}</div></article>`;
+    </div><div class="card-actions"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">Uitgevers- of auteursbron ↗</a>` : ''}</div></article>`;
   }
   function bookContextMarkup(record) {
     if (record.recordType !== 'book') return '';
@@ -1244,7 +1328,7 @@
     ].flatMap(([id, label]) => {
       const record = publicRecordsById.get(id);
       const official = record && effectiveStatus(record) === 'available' && primarySource(record);
-      return official ? [`<li><a href="${escapeHtml(official.url)}" target="_blank" rel="noopener noreferrer">${label} ↗</a></li>`] : [];
+      return official ? [`<li><a href="${escapeHtml(official.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${label} ↗</a></li>`] : [];
     });
     main.innerHTML = `<section class="assessment-page">
       <a href="${escapeHtml(criteriaHref(ASSESSMENT_CRITERIA))}">← Naar toetsmateriaal</a>
@@ -1405,7 +1489,7 @@
     ].flatMap(([recordId, label]) => {
       const record = publicRecordsById.get(recordId);
       const link = record && effectiveStatus(record) === 'available' && primarySource(record);
-      return link ? [`<li><a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${label} ↗</a></li>`] : [];
+      return link ? [`<li><a href="${escapeHtml(link.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${label} ↗</a></li>`] : [];
     });
     main.innerHTML = `<article class="trial-page">
       <div class="trial-screen"><a href="${escapeHtml(back)}">← Naar AI-afspraken</a>
@@ -1526,7 +1610,7 @@
       <div class="lesson-actions">
         <button type="button" class="btn" data-copy-lesson>Kopieer klasopdracht</button>
         <a class="btn secondary" href="${escapeHtml(learnerSheetHref(record))}">Open leerlingblad</a>
-        <a class="lesson-material" href="${escapeHtml(lesson.sourceUrl)}" target="_blank" rel="noopener noreferrer">Open lesmateriaal ↗</a>
+        <a class="lesson-material" href="${escapeHtml(lesson.sourceUrl)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">Open lesmateriaal ↗</a>
       </div>
       <p class="lesson-credit">Lesstart van de Atlas bij materiaal van ${escapeHtml(record.providerName)}.</p>
       <p class="lesson-feedback" role="status"></p>
@@ -1663,7 +1747,7 @@
       let work = '';
       if (task?.criteria.q === 'les' || ['lesstart', 'lesstarts'].includes(normalize(state.q))) {
         const materials = stateHref({ q: '', type: 'materials', language: 'nl', cost: 'Gratis' });
-        work = `<p class="lesson-shortcut"><a class="btn secondary" href="${escapeHtml(materials)}">Gratis Nederlandstalig lesmateriaal</a></p>` + lessonStartSection();
+        work = `<p class="lesson-shortcut"><a class="btn secondary" href="${escapeHtml(materials)}">Gratis Nederlandstalig lesmateriaal</a> <a href="lesmateriaal/">Alle lesstarts per onderwijssector</a></p>` + lessonStartSection();
       }
       else if (researchQuery(state.q)) {
         work = `<p><a class="btn secondary" href="${escapeHtml(stateHref().replace('#zoeken', '#onderzoek'))}">Onderzoek doen of promoveren</a></p>`;
@@ -1674,7 +1758,7 @@
       else if (values('theme').includes(ASSESSMENT_CRITERIA.theme) ||
         ['toets', 'toetsontwerp'].includes(normalize(state.q)) || assessmentToolQuery(state.q)) work = assessmentEntry();
       if (task) return `<nav class="practice-back" aria-label="Praktijkvragen"><a href="${escapeHtml(criteriaHref(context))}">← Andere taak</a><strong>${escapeHtml(task.label)}</strong></nav>${work}`;
-      return `<nav class="catalog-tabs" aria-label="Aanbodoverzicht"><a href="#zoeken">Al het aanbod</a><a href="#nieuw">Nieuw aanbod →</a></nav>${work}`;
+      return work;
     }
     const selected = values('sector');
     const links = PRACTICE_ROUTES.map(route => {
@@ -1712,17 +1796,24 @@
       ? `${state.sort === 'published' ? 'Nieuwste' : 'Oudste'} publicaties eerst. Publicatiedatum bekend bij ${knownDates} van ${resultRecords.length} resultaten; onbekende datums staan onderaan.`
       : state.sort === 'az' ? 'Gesorteerd op titel, van A tot Z.' : isFundingSelection()
       ? 'Open oproepen eerst, op volgorde van bekende deadline. Daarna volgen aangekondigde rondes, overige regelingen en gesloten oproepen.' : 'Gesorteerd op relevantie en directe bruikbaarheid.';
-    return `${practiceNavigation()}<header class="result-head"><div><h2 tabindex="-1">${escapeHtml(heading)}</h2><p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p></div><div class="result-tools"><label>Sorteren<select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select></label></div></header>
+    const selectedSearch = location.hash.split('?')[0] === '#zoeken' && (state.q?.trim() || FILTER_KEYS.some(key => values(key).length));
+    const outcome = selectedSearch ? (resultRecords.length ? ' data-atlas-search-hits' : ' data-atlas-empty-search') : '';
+    return `${practiceNavigation()}<header class="result-head"${outcome}><h2 tabindex="-1">${escapeHtml(heading)}</h2>
+      <details class="result-options"><summary>Sorteer, vergelijk of deel</summary>
+        <div class="result-options-body"><label for="sort">Sorteren</label><select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select>
+        <p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p>
+        <div class="selection-actions"><a href="#vergelijken" data-compare-guide>Aanbod vergelijken</a><button type="button" data-share-selection>Deel selectie</button>${resultRecords.length ? `<a data-meeting-sheet href="${escapeHtml(stateHref().replace(/^#zoeken/, '#overlegblad'))}">Overlegblad bekijken of afdrukken (${resultRecords.length})</a>` : ''}
+          <a href="#zoeken">Al het aanbod</a><a href="#nieuw">Nieuw aanbod</a><a href="#bijdragen">Aanbod toevoegen of feedback geven</a></div></div>
+      </details>
+      ${chips ? `<div class="chips">${chips}<button class="clear-link">Wis alles</button></div>` : ''}</header>
       ${values('type').length === 1 && values('type')[0] === 'Training' ? '<section class="training-intro"><h2>Workshops en trainers</h2><p>Vind een workshop, cursus of training en de aanbieder die deze verzorgt. Verfijn op onderwerp, doelgroep of aanbieder. Trainer, locatie, kosten en beschikbaarheid staan bij het aanbod voor zover bevestigd. Bespreek maatwerk via de officiële aanbodpagina.</p></section>' : ''}
       ${values('theme').includes('Veilige AI-omgeving') ? '<section class="selection-guidance"><h2>Beoordeel de toepassing in uw eigen situatie</h2><p>Gebruik de officiële bronnen om gegevensgebruik, beheer, menselijke controle, toegankelijkheid en overstapmogelijkheden te beoordelen. Wat passend is, hangt af van uw doel, gegevens, instellingen en afspraken. Deze selectie is geen keurmerk voor veilige of verantwoorde AI.</p></section>' : ''}
       <div class="picked-actions" ${sheetPicks.size ? '' : 'hidden'}>
         <a class="btn" data-picked-compare href="${escapeHtml(selectedHref('vergelijken'))}" ${sheetPicks.size >= 2 ? '' : 'hidden'}>Vergelijk mijn keuzes (${sheetPicks.size})</a>
         <a class="btn secondary" data-picked-sheet href="${escapeHtml(selectedHref('overlegblad'))}" ${sheetPicks.size ? '' : 'hidden'}>Open mijn overlegblad (${sheetPicks.size})</a>
         <span data-pick-hint ${sheetPicks.size === 1 ? '' : 'hidden'}>Kies nog een vermelding om te vergelijken.</span></div>
-      <details class="selection-bar"><summary>Vergelijken, delen of afdrukken</summary><div class="selection-actions"><a href="#vergelijken" data-compare-guide>Aanbod vergelijken</a><a href="#bijdragen">Aanbod toevoegen of feedback geven</a><button type="button" data-share-selection>Deel selectie</button>${resultRecords.length ? `<a data-meeting-sheet href="${escapeHtml(stateHref().replace(/^#zoeken/, '#overlegblad'))}">Overlegblad (${resultRecords.length})</a>` : ''}</div></details>
-      ${chips ? `<div class="chips">${chips}<button class="clear-link">Wis alles</button></div>` : ''}
       <div id="action-feedback" class="action-feedback" aria-live="polite"></div>
-      <div class="results-content">${resultRecords.length ? `<div class="result-list">${resultRecords.map(record => simpleCard(record, true)).join('')}</div>` : isFundingSelection() ? `<div class="empty"><h2>${state.status === STATUS_LABELS.open_call ? 'Geen open oproepen bij deze selectie' : 'Geen subsidies of calls bij deze selectie'}</h2><p>Kijk bij een andere aanvraagstatus of verruim uw filters.</p>${state.status ? `<a href="${escapeHtml(stateHref({ status: '' }))}">Bekijk alle aanvraagstatussen binnen deze selectie</a>` : `<a href="${escapeHtml(criteriaHref({ sector: state.sector }))}">Bekijk ander aanbod${state.sector ? ' in deze sectorselectie' : ''}</a>`}</div>` : `<div class="empty"><span class="eyebrow">Geen exacte match</span><h2>We helpen u verder</h2>${alternative ? `<a class="alternative" href="${stateHref({ q: alternative.candidate })}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` : '<p>Voor deze zoekterm is geen aantoonbaar werkend alternatief gevonden.</p>'}${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${stateHref({ [item.key]: '' })}">Zonder ${escapeHtml(item.values.join(' of '))} <strong>${item.count}</strong></a>`).join('')}</div>` : ''}<button class="clear btn">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`}</div>
+      <div class="results-content">${resultRecords.length ? resultListMarkup() : isFundingSelection() ? `<div class="empty"><h2>${state.status === STATUS_LABELS.open_call ? 'Geen open oproepen bij deze selectie' : 'Geen subsidies of calls bij deze selectie'}</h2><p>Kijk bij een andere aanvraagstatus of verruim uw filters.</p>${state.status ? `<a href="${escapeHtml(stateHref({ status: '' }))}">Bekijk alle aanvraagstatussen binnen deze selectie</a>` : `<a href="${escapeHtml(criteriaHref({ sector: state.sector }))}">Bekijk ander aanbod${state.sector ? ' in deze sectorselectie' : ''}</a>`}</div>` : `<div class="empty"><span class="eyebrow">Geen exacte match</span><h2>We helpen u verder</h2>${alternative ? `<a class="alternative" href="${stateHref({ q: alternative.candidate })}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` : '<p>Voor deze zoekterm is geen aantoonbaar werkend alternatief gevonden.</p>'}${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${stateHref({ [item.key]: '' })}">Zonder ${escapeHtml(item.values.join(' of '))} <strong>${item.count}</strong></a>`).join('')}</div>` : ''}<button class="clear btn">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`}</div>
       ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="${escapeHtml(stateHref({ theme }))}">${escapeHtml(theme)} <span>${count} ${count === 1 ? 'resultaat' : 'resultaten'}</span></a>`).join('')}</nav>` : ''}`;
   }
   function filterButtonText() {
@@ -1765,7 +1856,9 @@
   function updateSearchResults() {
     const panel = document.querySelector('#results-panel');
     if (!panel) return renderSearch();
+    const optionsOpen = panel.querySelector('.result-options')?.open;
     panel.innerHTML = resultsMarkup();
+    if (optionsOpen) panel.querySelector('.result-options').open = true;
     const input = document.querySelector('.atlas-search input');
     if (input && document.activeElement !== input) input.value = state.q || '';
     refreshFacetControls();
@@ -1785,6 +1878,15 @@
     </aside>`;
   }
   function renderSearch(isHome = false) {
+    const returnRoute = sessionGet('atlas.restoreResults');
+    const restoring = returnRoute && returnRoute === (location.hash || '#home');
+    if (restoring) {
+      try {
+        const view = JSON.parse(sessionGet('atlas.returnView'));
+        if (view?.route === returnRoute) saveResultView(view);
+      } catch { /* Earlier visits have only a scroll position. */ }
+      sessionSet('atlas.restoreResults', '');
+    }
     // Opening the catalogue is itself a request to browse all available offers.
     const typeOptions = [...new Set(records.map(offerType))].sort((a, b) => filterOptionLabel('type', a).localeCompare(filterOptionLabel('type', b), 'nl'));
     const organizationOptions = [...new Set(records.map(record => record.providerName).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'nl'));
@@ -1797,10 +1899,13 @@
     const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
     main.innerHTML = `<section class="catalog"><header class="catalog-intro"><h1>Zoek AI-aanbod voor uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, boeken, lesmaterialen en meer. Combineer uw zoekterm met de filters.</p>${isHome ? `${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}` : ''}</header><div class="catalog-grid"><div class="catalog-sidebar" aria-label="Zoeken en filteren"><h2 class="sidebar-title">Zoeken en filteren</h2>${searchForm(isHome ? 'home-search' : 'catalog-search')}<button class="mobile-filter btn secondary" type="button" aria-controls="filters" aria-expanded="false">${filterButtonText()}</button>${catalogFilterPanel(typeOptions, audienceOptions, organizationOptions)}</div><section class="results" id="results-panel">${results}</section></div></section>`;
     bindSearchPage(); bindRolePickers();
-    if (sessionGet('atlas.restoreResults') === location.hash) {
-      const targetY = Number(sessionGet('atlas.resultsScroll')) || 0;
-      sessionSet('atlas.restoreResults', '');
-      requestAnimationFrame(() => scrollTo(0, targetY));
+    const view = resultView();
+    if (restoring || view.focusId) {
+      const targetY = view.y ?? Number(sessionGet('atlas.resultsScroll'));
+      requestAnimationFrame(() => {
+        if (view.focusId) document.querySelector(`[data-record-id="${CSS.escape(view.focusId)}"] h2 a`)?.focus({preventScroll:true});
+        scrollTo(0, targetY || 0);
+      });
     }
   }
 
@@ -1843,7 +1948,7 @@
     const hasExample = example.every(id => publicRecordsById.has(id) && effectiveStatus(publicRecordsById.get(id)) === 'available');
     const sourceLink = record => {
       const link = primarySource(record);
-      return link ? `<a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record) + ': ' + record.title)}">${escapeHtml(sourceActionLabel(record))}</a>` : 'Geen officiële link beschikbaar';
+      return link ? `<a href="${escapeHtml(link.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record) + ': ' + record.title)}">${escapeHtml(sourceActionLabel(record))}</a>` : 'Geen officiële link beschikbaar';
     };
     main.innerHTML = `<section class="compare-page">
       <a class="back-results" href="${escapeHtml(backHref)}">Terug naar zoekresultaten</a>
@@ -1908,7 +2013,7 @@
         <p class="sheet-meta">Aanbieder: ${escapeHtml(factValue(record.providerName))} · ${escapeHtml(offerLabel(record))}</p>
         <p>${escapeHtml(factValue(record.description))}</p>
         <p class="sheet-meta">${[escapeHtml(statusLabel(record)), practicalDates(record)].filter(Boolean).join(' · ')} · ${escapeHtml(costLabel(record))} · ${escapeHtml(accessLabel(record))}${publicationDate(record) ? ` · Verschenen op ${escapeHtml(dateLabel(publicationDate(record)))}` : ''}</p>
-        <dl class="sheet-links">${officialSources(record).map(item => `<div><dt>${escapeHtml(item.label || 'Officiële bron')}</dt><dd><a href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.url)}</a></dd></div>`).join('')}<div><dt>In de Atlas</dt><dd><a href="${escapeHtml(publicItemUrl(record))}">${escapeHtml(publicItemUrl(record))}</a></dd></div></dl>
+        <dl class="sheet-links">${officialSources(record).map(item => `<div><dt>${escapeHtml(item.label || 'Officiële bron')}</dt><dd><a href="${escapeHtml(item.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${escapeHtml(item.url)}</a></dd></div>`).join('')}<div><dt>In de Atlas</dt><dd><a href="${escapeHtml(publicItemUrl(record))}">${escapeHtml(publicItemUrl(record))}</a></dd></div></dl>
         </article></li>`).join('')}</ol>` : '<p class="empty">Deze zoekselectie heeft geen resultaten. Pas uw zoekopdracht aan.</p>'}
       <p class="sheet-credit">AI & Onderwijs Atlas Nederland · Gemaakt door E.C.M. Willems</p></section>`;
   }
@@ -1942,7 +2047,7 @@
       <section><h2>Bespreek samen</h2><p>${escapeHtml(lesson.reflection)}</p></section>
       <div class="learner-answer">Ruimte voor je antwoord of tekening</div>
       <p class="learner-credit">Werkvorm van de AI &amp; Onderwijs Atlas Nederland. Lesmateriaal van
-        <a href="${escapeHtml(lesson.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(record.providerName)}</a>.</p>
+        <a href="${escapeHtml(lesson.sourceUrl)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${escapeHtml(record.providerName)}</a>.</p>
     </article>`;
     document.querySelector('[data-print-sheet]').onclick = () => window.print();
     document.querySelector('[data-share-sheet]').onclick = () => shareCurrentSelection(
@@ -1971,13 +2076,14 @@
       .slice(0, 4).map(candidate => candidate.item);
     const sources = officialSources(record);
     const funding = isFunding(record);
+    const materialDetail = record.offerCategory === 'materials' && effectiveStatus(record) === 'available' && sources.length;
     const factRows = offerFacts(record).filter(([label]) => !funding || label !== 'Beschikbaarheid');
     const applicants = funding && fundingApplicants(record);
     const amount = funding && typeof record.fundingAmount === 'string' && record.fundingAmount.trim();
-    const sourceLinks = `<h3>Officiële bronnen</h3>${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}`;
+    const sourceLinks = `<h3>Officiële bronnen</h3>${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}`;
     const lesson = hasAvailableLesson(record) && lessonStartBody(record);
     main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(offerLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
-      <section class="detail-shell"><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${backLabel}</a><span>Home / ${lastSearch.startsWith('#onderzoek') ? 'Onderzoek' : 'Resultaten'} / ${escapeHtml(record.title)}</span></nav>
+      <section class="detail-shell"${materialDetail ? ` data-atlas-material-detail="${escapeHtml(record.id)}"` : ''}><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${backLabel}</a><span>Home / ${lastSearch.startsWith('#onderzoek') ? 'Onderzoek' : 'Resultaten'} / ${escapeHtml(record.title)}</span></nav>
       <div class="detail-layout"><article>
         ${funding ? `<section class="funding-conditions"><h2>Aanvraag en voorwaarden</h2><dl>
           <div><dt>Aanvragers</dt><dd>${escapeHtml(applicants)}</dd></div>
@@ -2002,6 +2108,7 @@
         <aside class="item-contribution"><h3>Klopt deze informatie nog?</h3><p>Help mee met een correctie of aanvulling.</p><a class="btn secondary" href="#bijdragen?item=${encodeURIComponent(record.id)}">Fout of aanvulling doorgeven</a></aside>
       </aside></div></section>`;
     if (lesson) bindLessonCopy(main);
+    if (materialDetail) window.dispatchEvent?.(new Event('atlas-material-detail'));
     const back = document.querySelector('.back-results');
     back.onclick = () => sessionSet('atlas.restoreResults', lastSearch);
     document.querySelectorAll('.related-cards a[href^="#item/"]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', lastSearch));
@@ -2187,11 +2294,29 @@
   function bindResultsControls() {
     const panel = document.querySelector('#results-panel');
     if (!panel) return;
+    if (panel.querySelector('[data-atlas-empty-search]')) window.dispatchEvent?.(new Event('atlas-empty-search'));
+    else if (panel.querySelector('[data-atlas-search-hits]')) window.dispatchEvent?.(new Event('atlas-search-results'));
     bindLessonCopy(panel);
+    const list = panel.querySelector('[data-result-list]');
+    const more = panel.querySelector('[data-more-results]');
+    if (more) more.onclick = () => {
+      const first = list.children.length;
+      const batch = resultRecords.slice(first, first + RESULT_BATCH);
+      list.insertAdjacentHTML('beforeend', batch.map(record => simpleCard(record, true)).join(''));
+      const shown = list.children.length;
+      saveResultView({shown});
+      panel.querySelector('[data-result-progress]').textContent = `${shown} van ${resultRecords.length} resultaten getoond`;
+      more.hidden = shown === resultRecords.length;
+      bindResultsControls();
+      list.children[first]?.querySelector('h2 a')?.focus();
+    };
     const pickedLink = panel.querySelector('[data-picked-sheet]');
     const compareLink = panel.querySelector('[data-picked-compare]');
     const guide = panel.querySelector('[data-compare-guide]');
-    function rememberResults() {
+    function rememberResults(focusId) {
+      const view = {shown: list?.children.length || RESULT_BATCH, y: scrollY, focusId: typeof focusId === 'string' ? focusId : ''};
+      saveResultView(view);
+      sessionSet('atlas.returnView', JSON.stringify({...view, route: location.hash || '#home'}));
       sessionSet('atlas.lastSearch', stateHref());
       sessionSet('atlas.compareSearch', stateHref());
       sessionSet('atlas.resultsScroll', scrollY);
@@ -2251,7 +2376,8 @@
     const sheet = panel.querySelector('[data-meeting-sheet]');
     if (sheet) sheet.onclick = rememberResults;
     panel.querySelectorAll('.result-card a[href^="#item/"]').forEach(link => link.onclick = () => {
-      sessionSet('atlas.lastSearch', location.hash); sessionSet('atlas.resultsScroll', scrollY);
+      rememberResults(link.closest('[data-record-id]').dataset.recordId);
+      sessionSet('atlas.lastSearch', location.hash || '#home');
     });
   }
   function bindFacetLists() {
@@ -2372,6 +2498,18 @@
     }
   }
   let hiddenAt = 0;
+  window.addEventListener?.('beforeprint', () => {
+    const list = document.querySelector('[data-result-list]');
+    if (!list || list.children.length >= resultRecords.length) return;
+    list.dataset.beforePrint = list.children.length;
+    list.insertAdjacentHTML('beforeend', resultRecords.slice(list.children.length).map(record => simpleCard(record, true)).join(''));
+  });
+  window.addEventListener?.('afterprint', () => {
+    const list = document.querySelector('[data-result-list]');
+    if (!list?.dataset.beforePrint) return;
+    while (list.children.length > Number(list.dataset.beforePrint)) list.lastElementChild.remove();
+    delete list.dataset.beforePrint;
+  });
   document.addEventListener?.('visibilitychange', () => {
     const now = Date.now();
     if (document.hidden) { hiddenAt = now; return; }

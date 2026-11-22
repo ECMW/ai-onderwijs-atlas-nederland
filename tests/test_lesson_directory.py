@@ -1,0 +1,98 @@
+import json
+import shutil
+import sys
+import tempfile
+import unittest
+from html import escape
+from html.parser import HTMLParser
+from pathlib import Path
+from xml.etree import ElementTree
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts'))
+from generate_data import generate
+from lesson_directory import generate_lesson_directory, lesson_card
+
+
+class Links(HTMLParser):
+    def __init__(self, page):
+        super().__init__()
+        self.links = []
+        self.feed(page)
+
+    def handle_starttag(self, tag, attrs):
+        if tag == 'a':
+            self.links.append(dict(attrs))
+
+
+class LessonDirectoryTests(unittest.TestCase):
+    def test_generated_and_staged_directory_use_public_available_lessons_only(self):
+        original = next(row for row in json.loads((ROOT / 'data/records.json').read_text(encoding='utf-8'))
+                        if row.get('lessonStart') and row.get('subjects'))
+        public = {**original, 'id': 'les-een', 'title': 'Een les "<met>" & uitleg'}
+        local_url = 'https://localhost/verborgen'
+        records = [
+            public,
+            {**public, 'id': 'uitsluiting', 'title': 'Uitgesloten les', 'publicationExclusion': {'reason': 'test'}},
+            {**public, 'id': 'verouderd', 'title': 'Onbevestigde les', 'verificationStatus': 'stale'},
+            {**public, 'id': 'archief', 'title': 'Gearchiveerde les', 'status': 'archived'},
+            {**public, 'id': 'geenbron', 'title': 'Onbevestigde leslink',
+             'lessonStart': {**public['lessonStart'], 'sourceUrl': 'https://example.org/ander'}},
+            {**public, 'id': 'intern', 'title': 'Interne bron',
+             'sourceUrls': [{'sourceType': 'official', 'url': local_url}],
+             'lessonStart': {**public['lessonStart'], 'sourceUrl': local_url}},
+        ]
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'data').mkdir()
+            (root / 'scripts').mkdir()
+            shutil.copyfile(ROOT / 'scripts/lesson_directory.html', root / 'scripts/lesson_directory.html')
+            for asset in ('platform.css', 'brand.css', 'analytics.js'):
+                shutil.copyfile(ROOT / asset, root / asset)
+            (root / 'index.html').write_text('<title>Atlas</title>', encoding='utf-8')
+            (root / 'data/metadata.json').write_text('{}', encoding='utf-8')
+            (root / 'data/records.json').write_text(json.dumps(records), encoding='utf-8')
+            generate(root)
+            local = (root / 'lesmateriaal/index.html').read_text(encoding='utf-8')
+            staged = root / 'publicatie/lesmateriaal/index.html'
+            generate_lesson_directory(root, staged)
+            self.assertEqual(local, staged.read_text(encoding='utf-8'))
+            self.assertEqual(local.count('<article>'), 1)
+            self.assertIn(escape(public['title']), local)
+            self.assertIn(escape(public['lessonStart']['question']), local)
+            self.assertIn(escape(public['lessonStart']['task']), local)
+            self.assertIn(f'href="{escape(public["lessonStart"]["sourceUrl"])}" data-atlas-usage="lesson-open"', local)
+            self.assertEqual(local.count('data-atlas-usage='), 1)
+            marked = [link for link in Links(local).links if 'data-atlas-item-id' in link or 'data-atlas-item-title' in link]
+            self.assertEqual(marked, [{'href': public['lessonStart']['sourceUrl'], 'data-atlas-usage': 'lesson-open',
+                                       'data-atlas-item-id': public['id'], 'data-atlas-item-title': public['title']}])
+            self.assertIn('href="../#item/les-een"', local)
+            self.assertIn('href="../#zoeken?type=materials"', local)
+            self.assertIn('data-atlas-lesson-directory', local)
+            self.assertRegex(local, r'src="\.\./analytics\.js\?v=[a-f0-9]{16}"')
+            self.assertNotIn('window.ATLAS_RECORDS', local)
+            for record in records[1:]:
+                self.assertNotIn(record['title'], local)
+            self.assertNotIn(local_url, local)
+            sectors = ['VO', 'MBO', 'HBO', 'WO']
+            public.update(sectors=sectors, lessonStart={**public['lessonStart'], 'sectors': sectors})
+            (root / 'data/records.json').write_text(json.dumps([public]), encoding='utf-8')
+            generate(root)
+            across = (root / 'lesmateriaal/index.html').read_text(encoding='utf-8')
+            self.assertEqual(across.count('<article>'), 3)
+            for group in ('vo', 'mbo', 'ho'):
+                self.assertIn(f'<section aria-labelledby="{group}">', across)
+
+    def test_invalid_identifiers_or_titles_keep_the_source_link_without_an_item_marker(self):
+        record = next(row for row in json.loads((ROOT / 'data/records.json').read_text(encoding='utf-8')) if row.get('lessonStart'))
+        for fields in ({'id': 'x" data-fake="ja'}, {'title': ' '}, {'title': 'Twee\nregels'}):
+            with self.subTest(fields=fields):
+                primary = Links(lesson_card({**record, **fields})).links[0]
+                self.assertEqual(primary, {'href': record['lessonStart']['sourceUrl'], 'data-atlas-usage': 'lesson-open'})
+
+    def test_sitemap_and_page_use_the_same_canonical_address(self):
+        address = 'https://aionderwijsatlas.nl/lesmateriaal/'
+        urls = ElementTree.parse(ROOT / 'sitemap.xml').findall('.//{*}loc')
+        self.assertEqual([item.text for item in urls].count(address), 1)
+        template = (ROOT / 'scripts/lesson_directory.html').read_text(encoding='utf-8')
+        self.assertIn(f'rel="canonical" href="{address}"', template)
