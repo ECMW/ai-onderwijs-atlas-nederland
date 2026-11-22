@@ -811,9 +811,12 @@ test('subject search is present even without any choices, while provider search 
     const options = Array.from({length}, (_, index) => String(index + 1));
     return api.facet(key, key, options, new Map(options.map(value => [value, 1])));
   }
-  assert.match(list('vak', 0), /aria-label="Zoek binnen vakgebieden"/);
-  assert.match(list('vak', 1), /aria-label="Zoek binnen vakgebieden"/);
-  assert.match(list('vak', 9), /type="search"[^>]+aria-label="Zoek binnen vakgebieden"/);
+  for (const length of [0, 1, 9]) {
+    const markup = list('vak', length);
+    assert.match(markup, /<label[^>]+for="subject-search">Welk schoolvak of studievak zoekt u\?<\/label>/);
+    assert.match(markup, /<p id="subject-examples"[^>]*>Bijvoorbeeld biologie, burgerschap of econometrie\.<\/p>/);
+    assert.match(markup, /<input id="subject-search"[^>]+type="search"[^>]+aria-describedby="subject-examples subject-help"/);
+  }
   assert.match(list('vak', 9), /role="status">1–6 van 9/);
   assert.doesNotMatch(list('organization', 12), /class="facet-search"/);
   assert.match(list('organization', 13), /aria-label="Zoek binnen aanbieders"/);

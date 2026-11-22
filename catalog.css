@@ -64,6 +64,7 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 .facet-options.limited.searching:not(.expanded)>label:not([hidden]){display:flex}
 .facet-more[hidden]{display:none}
 .facet[data-facet-block="vak"]>div{max-height:none;overflow:visible}
+.facet .subject-question{display:block;min-height:0;margin:.15rem 0 .25rem;font-weight:700;cursor:text}
 .subject-pages{display:flex;align-items:center;justify-content:space-between;gap:.35rem;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
 .subject-pages button{min-height:44px;border:0;background:transparent;color:#075f77;text-decoration:underline;cursor:pointer;padding:.25rem}
 .subject-pages button:disabled{color:var(--muted);text-decoration:none;cursor:default}

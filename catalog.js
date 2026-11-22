@@ -969,8 +969,11 @@
   }
   function subjectPickerMarkup(counts, selected) {
     const view = subjectPage(counts);
-    return `<div data-subject-picker><input class="facet-search" type="search" placeholder="Typ een vak, bijv. biologie" aria-label="Zoek binnen vakgebieden" aria-describedby="subject-help">
-      <p id="subject-help" class="facet-note">Kies een vak of druk op Enter bij een exacte of enige treffer.</p>
+    return `<div data-subject-picker>
+      <label class="subject-question" for="subject-search">Welk schoolvak of studievak zoekt u?</label>
+      <p id="subject-examples" class="facet-note">Bijvoorbeeld biologie, burgerschap of econometrie.</p>
+      <input id="subject-search" class="facet-search" type="search" placeholder="Typ een vaknaam" aria-describedby="subject-examples subject-help">
+      <p id="subject-help" class="facet-note">Kies een vak hieronder of druk bij één treffer op Enter.</p>
       <div class="facet-options">${view.visible.map(name => facetOption('vak', name, counts.get(name), selected)).join('')}</div>
       <div class="subject-pages"><button type="button" data-page-step="-1" aria-label="Vorige vakgebieden" disabled ${view.pages < 2 ? 'hidden' : ''}>Vorige</button><span role="status">${view.range}</span><button type="button" data-page-step="1" aria-label="Volgende vakgebieden" ${view.pages < 2 ? 'disabled hidden' : ''}>Volgende</button></div>
       <a data-subject-fallback hidden></a></div>`;
