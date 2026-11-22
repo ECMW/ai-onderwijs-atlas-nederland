@@ -192,6 +192,13 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 .offer-terms > div { display: flex; flex-wrap: wrap; gap: 0 .35rem; }
 .offer-terms dt, .offer-audience dt { font-weight: 700; }
 .offer-terms dd, .offer-audience dd { margin: 0; overflow-wrap: anywhere; }
+.funding-nav { margin-bottom: 1rem; }
+.funding-nav h2 { margin: .5rem 0; }
+.funding-nav nav { display: flex; flex-wrap: wrap; gap: .25rem .85rem; align-items: center; }
+.funding-nav nav > * { display: inline-flex; align-items: center; min-height: 44px; }
+.funding-nav nav > span { color: var(--muted); }
+.funding-nav a[aria-current] { color: var(--ink); font-weight: 700; text-decoration-thickness: 2px; }
+.funding-conditions { border-left: 3px solid var(--green); padding-left: 1rem; margin-bottom: 1.5rem; }
 .offer-audience { gap: 0 .35rem; margin: .5rem 0; }
 @media (max-width: 899px) {
   .result-card[data-offer-card] {

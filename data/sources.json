@@ -2290,5 +2290,40 @@
     "themes": ["AI-geletterdheid", "Lesgeven en leren met AI", "Beleid en governance", "Professionalisering"],
     "sectors": ["PO", "VO", "MBO"],
     "sourceType": "official"
+  },
+  {
+    "id": "source-sia-open-rondes",
+    "name": "Open indieningsrondes",
+    "owner": "Regieorgaan SIA",
+    "baseUrl": "https://regieorgaan-sia.nl/open-rondes",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {"frequency": "daily"},
+    "extraction": {"type": "html", "scope": "listing", "deadlineAware": true},
+    "allowedRecordTypes": ["funding_call", "subsidy"],
+    "operational": {"lastSuccessfulCheck": null, "lastContentHash": null, "lastStatus": "never_checked", "consecutiveFailures": 0},
+    "notes": "Controleer veranderingen op de pagina van de specifieke ronde. Onderbouw de koppeling met AI en onderwijs, de formele aanvrager en het sluitingsmoment.",
+    "themes": ["Subsidies en financiering"],
+    "sectors": ["HBO"],
+    "sourceType": "official"
+  },
+  {
+    "id": "source-npuls-aido-oproep",
+    "name": "AI en Data Onderzoeksprogramma (AIDO)",
+    "owner": "Npuls",
+    "organizationId": "org-npuls",
+    "baseUrl": "https://www.npuls.nl/ai-en-data-onderzoeksprogramma-aido",
+    "sourceRole": "primary",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {"frequency": "daily"},
+    "extraction": {"type": "html", "scope": "page", "deadlineAware": true},
+    "allowedRecordTypes": ["funding_call"],
+    "operational": {"lastSuccessfulCheck": null, "lastContentHash": null, "lastStatus": "never_checked", "consecutiveFailures": 0},
+    "notes": "Volg de officiële oproeplink en indienvoorwaarden bij de bestaande AIDO-vermelding. Verifieer de openstelling bij Npuls.",
+    "themes": ["Subsidies en financiering"],
+    "sectors": ["MBO", "HBO", "WO"],
+    "sourceType": "official"
   }
 ]

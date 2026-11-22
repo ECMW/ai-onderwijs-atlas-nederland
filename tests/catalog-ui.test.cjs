@@ -105,7 +105,7 @@ test('practice links count matching offers and retain the chosen sectors and aud
   const html = api.resultsMarkup();
   assert.ok(html.includes('Meerdere sectoren'));
   const links = [...html.matchAll(/<a class="practice-link" href="([^"]+)"><strong>([^<]+)/g)];
-  assert.deepEqual(links.map(match => match[2]), ['Een les voorbereiden', 'AI-afspraken maken']);
+  assert.deepEqual(links.map(match => match[2]), ['Een les voorbereiden', 'AI-afspraken maken', 'Subsidies en calls']);
   assert.match(load(data, links[1][1].replaceAll('&amp;', '&')).resultsMarkup(), /href="#teamproef"/);
   const href = links[0][1].replaceAll('&amp;', '&');
   const params = new URLSearchParams(href.split('?')[1]);
@@ -643,6 +643,101 @@ test('results show the effective status and practical dates before source action
   assert.match(api.simpleCard({...course, endDate:null}), /Startdatum <time/);
   assert.match(api.simpleCard({...course, startDate:null}), /Einddatum <time/);
   assert.doesNotMatch(api.simpleCard({...course, startDate:null, endDate:'2027-02-30'}), /<time/);
+});
+
+test('a zoned call deadline closes exactly at the published instant and appears in Dutch local time', () => {
+  const api = load();
+  const call = {...record('timed-call'), recordType:'funding_call', legacyType:'Call', status:'open_call',
+    applicationDeadline:'2026-12-01', applicationDeadlineAt:'2026-12-01T14:00:00+01:00', applicantTypes:['Bekostigde hogescholen']};
+  const cutoff = Date.parse('2026-12-01T13:00:00Z');
+  assert.equal(api.effectiveStatus(call, '2026-12-01', cutoff - 1), 'open_call');
+  assert.equal(api.effectiveStatus(call, '2026-12-01', cutoff), 'closed_call');
+  assert.equal(api.effectiveStatus({...call, applicationDeadlineAt:'2026-12-01T14:00'}, '2026-12-01', cutoff), 'open_call');
+  assert.equal(api.effectiveStatus({...call, applicationDeadlineAt:null}, '2026-12-02', cutoff), 'closed_call');
+  assert.equal(api.effectiveStatus({...call, applicationOpenDate:'2026-12-01'}, '2026-11-30', cutoff - 86400000), 'planned');
+  const html = api.simpleCard(call);
+  assert.match(html, /<time datetime="2026-12-01T14:00:00\+01:00">[^<]+14:00<\/time> \(Nederlandse tijd\)/);
+  assert.match(html, /Aanvragers<\/dt><dd>Bekostigde hogescholen/);
+  assert.match(html, /Officiële oproep en voorwaarden/);
+  assert.doesNotMatch(html, /<dt>Kosten<\/dt>/);
+  const sameDay = [
+    {...call, id:'date-only', applicationDeadline:'2099-12-01', applicationDeadlineAt:null},
+    {...call, id:'later', applicationDeadline:'2099-12-01', applicationDeadlineAt:'2099-12-01T14:00:00+01:00'},
+    {...call, id:'earlier', applicationDeadline:'2099-12-01', applicationDeadlineAt:'2099-12-01T15:00:00+03:00'}
+  ];
+  const funding = load(sameDay, '#zoeken?type=Subsidie+of+call');
+  assert.deepEqual(Array.from(funding.sortRecords(sameDay), record => record.id), ['earlier', 'later', 'date-only']);
+});
+
+test('returning to an open detail after its published cutoff refreshes the status', () => {
+  const call = {...record('cutoff'), recordType:'funding_call', legacyType:'Call', status:'open_call',
+    applicationDeadline:'2026-12-01', applicationDeadlineAt:'2026-12-01T14:00:00+01:00'};
+  let now = Date.parse(call.applicationDeadlineAt) - 1;
+  let onVisibility;
+  const main = {};
+  const document = {hidden:false, addEventListener(name, handler) { if (name === 'visibilitychange') onVisibility = handler; },
+    querySelector: selector => selector === 'main' ? main : selector === '.catalog-grid' ? null : {},
+    querySelectorAll: () => []};
+  const api = load([call], '#item/cutoff', {document, Date:class extends Date { static now() { return now; } }});
+  api.renderDetail('cutoff');
+  assert.match(main.innerHTML, /Open voor aanvragen/);
+  document.hidden = true;
+  onVisibility();
+  now++;
+  document.hidden = false;
+  onVisibility();
+  assert.match(main.innerHTML, /Aanvraag gesloten/);
+  assert.doesNotMatch(main.innerHTML, /Open voor aanvragen/);
+});
+
+test('funding entry opens current calls; status navigation preserves the sector and separates portals and closed calls', () => {
+  const grant = {...record('open'), recordType:'funding_call', legacyType:'Call', status:'open_call',
+    availabilityText:'Doorlopend tot het subsidieplafond is bereikt', sectors:['HBO']};
+  const data = [grant, {...grant, id:'planned', status:'planned'}, {...grant, id:'closed', status:'closed_call'},
+    {...grant, id:'portal', recordType:'subsidy', legacyType:'Subsidie', status:'available', availabilityText:'Doorlopend / per call'},
+    {...grant, id:'other', sectors:['WO']}];
+  const home = load(data, '#zoeken?sector=HBO').resultsMarkup();
+  const entry = home.match(/<a class="practice-link" href="([^"]+)"><strong>Subsidies en calls<\/strong>[\s\S]*?<small>1 open/)[1].replaceAll('&amp;', '&');
+  const api = load(data, entry);
+  const html = api.resultsMarkup();
+  assert.equal(api.getState().status, 'Open voor aanvragen');
+  assert.match(html, /Doorlopend tot het subsidieplafond is bereikt/);
+  assert.match(html, /data-record-id="open"/);
+  assert.doesNotMatch(html, /data-record-id="(?:closed|planned|other|portal)"/);
+  const nav = html.match(/<nav aria-label="Aanvraagstatus">([\s\S]+?)<\/nav>/)[1];
+  for (const [href, label] of [...nav.matchAll(/<a href="([^"]+)"[^>]*>([^<]+)<\/a>/g)].map(match => match.slice(1))) {
+    const target = load(data, href.replaceAll('&amp;', '&'));
+    assert.equal(target.getState().sector, 'HBO');
+    assert.equal(target.recordsForCriteria(target.getState()).length, Number(label.match(/\((\d+)\)/)[1]));
+  }
+  assert.match(nav, /Regelingen en overige oproepen \(1\)/);
+  const all = load(data, entry.replace(/&status=[^&]+/, '')).resultsMarkup();
+  assert.deepEqual([...all.matchAll(/data-record-id="([^"]+)"/g)].map(match => match[1]), ['open', 'planned', 'portal', 'closed']);
+  assert.match(api.simpleCard(data[3]), /Regeling of informatiebron/);
+  const empty = load(data, entry.replace('sector=HBO', 'sector=PO')).resultsMarkup();
+  assert.match(empty, /Geen open oproepen bij deze selectie/);
+  assert.match(empty, /href="#zoeken\?[^"]*sector=PO[^"]*">Bekijk alle aanvraagstatussen/);
+  assert.match(api.simpleCard({...grant, availabilityText:''}), /Geen uiterste datum bevestigd/);
+});
+
+test('funding details show the documented scope of an amount, application conditions and official source before generic facts', () => {
+  const call = {...record('call'), recordType:'funding_call', legacyType:'Call', status:'open_call',
+    applicantTypes:['Consortia'], eligibility:'Minstens drie rechtspersonen uit drie landen.',
+    sourceUrls:[{url:'https://example.org/call', sourceType:'official'}, {url:'https://example.org/ronde.pdf', sourceType:'official', label:'Voorwaarden van deze ronde'}],
+    fundingAmount:'Per aanvraag maximaal € 50.000; rondebudget € 500.000, te verifiëren.'};
+  function detail(item) {
+    const main = {};
+    const document = {querySelector: selector => selector === 'main' ? main : {}, querySelectorAll: () => []};
+    load([item], '#item/call', {document}).renderDetail('call');
+    return main.innerHTML;
+  }
+  const html = detail(call);
+  assert.match(html, /Aanvraag en voorwaarden[\s\S]+Consortia[\s\S]+drie rechtspersonen uit drie landen/);
+  assert.equal(html.split(call.eligibility).length, 2);
+  assert.match(html, /<dt>Bedrag<\/dt><dd>Per aanvraag maximaal € 50.000; rondebudget € 500.000, te verifiëren\.<\/dd>/);
+  assert.match(html, /Officiële bronnen[\s\S]*https:\/\/example.org\/call[\s\S]*<dt>Kosten/);
+  assert.match(html, /href="https:\/\/example.org\/ronde\.pdf"[^>]+>Voorwaarden van deze ronde/);
+  assert.doesNotMatch(detail({...call, fundingAmount:null, totalBudget:500000}), /<dt>Bedrag|500000/);
 });
 
 test('expired availability is consistent across cards and availability filters', () => {

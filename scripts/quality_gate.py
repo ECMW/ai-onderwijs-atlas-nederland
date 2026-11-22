@@ -13,7 +13,7 @@ import re
 from datetime import date
 from pathlib import Path
 from public_assets import versioned_html
-from contribution_quality import commercial_field_errors, subject_field_errors
+from contribution_quality import application_deadline_errors, commercial_field_errors, subject_field_errors
 from offer_categories import offer_category_errors
 from publication_scope import publication_exclusion_errors, duplicate_redirects, duplicate_title_errors
 from source_library import source_library_issues
@@ -112,6 +112,7 @@ def main() -> int:
     errors.extend(encoding_errors(metadata, "metadata"))
     errors.extend(subject_field_errors(records))
     for record in records:
+        errors.extend(application_deadline_errors(record))
         errors.extend(commercial_field_errors(record))
         errors.extend(offer_category_errors(record))
         errors.extend(publication_exclusion_errors(record))
