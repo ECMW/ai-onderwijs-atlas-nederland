@@ -1,6 +1,26 @@
 """Decision-oriented daily report derived only from events and validated proposals."""
 import json
+import re
 from datetime import datetime, timezone
+
+
+def is_time_sensitive(item: dict) -> bool:
+    if item["materiality"] != "high":
+        return False
+    evidence = item.get("evidence", {})
+    if evidence.get("requiresRepeatedSuccessfulAbsence"):
+        return False
+    if "before" in evidence and "after" in evidence and not item.get("targetRecordId"):
+        facts = evidence["before"] + evidence["after"]
+        detection_year = item["detectedAt"][:4]
+        # Only downgrade when every observed date is explicitly historical and closed.
+        def historical_closed(fact):
+            year = re.search(r"\b(\d{4})\b", fact["dateText"])
+            return (year is not None and year.group(1) < detection_year
+                    and "status gesloten" in fact.get("context", "").casefold())
+        if facts and all(historical_closed(fact) for fact in facts):
+            return False
+    return True
 
 
 def build_daily_report(events: list[dict], proposals: list[dict]) -> dict:
@@ -9,7 +29,8 @@ def build_daily_report(events: list[dict], proposals: list[dict]) -> dict:
     failed = [event for event in events if event["type"] in {"UNREACHABLE", "REMOVED"}]
     verification = [item for item in proposals if item["action"] == "investigate" or item["uncertainties"]]
     insufficient = [item for item in proposals if not item["primarySources"]]
-    urgent = [item for item in proposals if item["materiality"] == "high"]
+    urgent = [item for item in proposals if is_time_sensitive(item)]
+    priority_checks = [item for item in verification if item["materiality"] == "high" and not is_time_sensitive(item)]
     links = [{"proposalId": item["proposalId"], "title": item["title"],
               "jsonPath": f"proposals/{item['proposalId']}.json",
               "markdownPath": f"proposals/{item['proposalId']}.md"} for item in proposals]
@@ -29,6 +50,7 @@ def build_daily_report(events: list[dict], proposals: list[dict]) -> dict:
             "actionRequired": bool(proposals),
         },
         "timeSensitive": urgent,
+        "priorityVerification": priority_checks,
         "failedSources": failed,
         "proposalLinks": links,
         "proposals": proposals,
@@ -53,6 +75,11 @@ def daily_report_markdown(report: dict) -> str:
         lines += ["", "## Eerst beoordelen: tijdgevoelig", ""]
         for item in report["timeSensitive"]:
             lines.append(f"- [{item['title']}](proposals/{item['proposalId']}.md)")
+    if report.get("priorityVerification"):
+        lines += ["", "## Broncontrole met hoge mogelijke impact", ""]
+        for item in report["priorityVerification"]:
+            target = item.get("targetRecordId") or item["source"]["sourceName"]
+            lines.append(f"- `{target}` · {item['uncertainties'][-1]} Voorstel `{item['proposalId']}`.")
     lines += ["", "## Voorstellen", ""]
     for item in report["proposals"]:
         uncertainties = "; ".join(item["uncertainties"]) or "geen vastgelegd"

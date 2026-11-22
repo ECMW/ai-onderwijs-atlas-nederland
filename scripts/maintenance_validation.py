@@ -27,6 +27,10 @@ def enrich(proposal: dict) -> dict:
         uncertainties.append("No primary source evidence")
     if proposal["action"] == "investigate":
         uncertainties.append("Signal requires human interpretation")
+    if evidence.get("requiresRepeatedSuccessfulAbsence"):
+        uncertainties.append("De link ontbreekt op de gecontroleerde pagina. Controleer de detailbron en de actuele Atlas-vermelding.")
+    if "before" in evidence and "after" in evidence and not target_record:
+        uncertainties.append("De gewijzigde datumtekst is nog niet gekoppeld aan een specifieke Atlas-vermelding.")
     if proposal["action"] == "add":
         uncertainties.append("Description, audiences, sectors and themes still require source verification")
     proposal.update({
