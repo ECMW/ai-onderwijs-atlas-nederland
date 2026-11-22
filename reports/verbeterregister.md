@@ -4,6 +4,8 @@
 
 De drie verbeteringen uit [PR #184](https://github.com/ECMW/ai-onderwijs-atlas-nederland/pull/184) zijn op het eigen domein opnieuw beproefd. Een verse browser op 320 en 1280 pixels opende dezelfde gedeelde lesselectie, kon voor één leerdoel twee toetsaanpakken vergelijken en een besluitblad kopiëren. De publieke editie was bij aanvang en afsluiting van deze controle [f55b846](https://github.com/ECMW/ai-onderwijs-atlas-nederland/commit/f55b8464f3a0400d87b4632606cbbd26bfa1cee8).
 
+De volgende drie verbeteringen zijn samen getest. De automatische screening van de eerste gecombineerde PR vroeg een aparte beoordeling van de bestaande bronrecords. De interface en de gegevenscorrectie volgen daarom elk hun bestaande beoordelingsroute. [Product-PR #185](https://github.com/ECMW/ai-onderwijs-atlas-nederland/pull/185) · [Gegevens-PR #186](https://github.com/ECMW/ai-onderwijs-atlas-nederland/pull/186)
+
 | Prioriteit en gebruikerstaak | Waargenomen in de beginsituatie | Wijziging en toets in de kandidaat |
 | --- | --- | --- |
 | 1. Met het toetsenbord doorwerken in dezelfde les of selectie | Enter op **Ga naar inhoud** verving het leerlingblad door de startpagina. In de gefilterde lesgids ging één resultaat terug naar elf. | De link verplaatst de focus naar de hoofdinhoud. Op 320 en 1280 pixels bleven de zoekresultaten, de lesgidsselectie en het geopende leerlingblad op hun eigen adres en ging de volgende Tab binnen de hoofdinhoud verder. |

@@ -38673,8 +38673,8 @@
       ],
       "level": "Voortgezet onderwijs · biologie",
       "question": "Merkt het gras op een eiland iets van de komst van een poolvos?",
-      "preparation": "Geef de klas het leerlingblad en toon figuur 2 uit het HHMI-werkblad, of deel een afdruk van de figuur uit.",
-      "task": "“De vos eet geen gras, dus zijn komst heeft geen invloed op de planten.” Toets dit verzonnen chatbotantwoord met figuur 2 in het HHMI-werkblad. Vergelijk in de grafieken A en B de eilanden met vos (fox-infested) en zonder vos (fox-free). Teken de route van zeevogels via hun uitwerpselen en de bodem naar planten. Geef aan waar een vos die route kan beïnvloeden. Onderstreep het deel van het antwoord dat je met de grafieken kunt controleren.",
+      "preparation": "Toon figuur 2 van het leerlingwerkblad. Zet dit verzonnen chatbotantwoord ernaast: “De vos eet geen gras, dus zijn komst heeft geen invloed op de planten.”",
+      "task": "Vergelijk de gemeten waarden voor de eilanden met en zonder vos. Teken de route van zeevogels via hun uitwerpselen en de bodem naar planten. Geef aan waar een vos deze route kan beïnvloeden. Onderstreep het deel van het voorbeeldantwoord dat je met de figuur kunt controleren.",
       "reflection": "Welke vergelijking laat de figuur werkelijk zien? Herschrijf het antwoord en geef aan welke stap in jullie verklaring op het model berust.",
       "sourceUrl": "https://docs.google.com/document/d/1dhy_ADiJ6wpG3MRSvv4qYatKZEe7MQGkTLNDcNtV9Gk/preview",
       "learningGoal": "Een indirect effect in een ecosysteem uitleggen en aanwijzen welke stap met metingen wordt onderbouwd.",
@@ -38690,11 +38690,6 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
-      },
-      {
-        "date": "2026-11-22",
-        "type": "updated",
-        "summary": "Het leerlingblad bevat het te toetsen voorbeeldantwoord en verwijst naar beide grafieken in figuur 2 van het HHMI-werkblad."
       }
     ],
     "subjects": [
@@ -38777,8 +38772,8 @@
       ],
       "level": "Universiteit · econometrie",
       "question": "Waarom bewijst een nauwkeurige voorspelling van spaarvermogen nog geen effect van een pensioenregeling?",
-      "preparation": "Deel de leesversie van het notebook of geef de studenten een afdruk van onderdeel 3.1 met de getoonde uitkomsten.",
-      "task": "Open onderdeel 3.1 ‘Any learner in DML’ in het notebook of gebruik de afdruk. Zoek in de uitvoer onder het codeblok de regels voor lasso en random forest. Vergelijk hun effectschattingen en standaardfouten. Noteer welke vraag beide schattingen beantwoorden, hoe cross-fitting de huishoudens over trainen en schatten verdeelt en welke aanname nodig is om van een causaal effect te spreken.",
+      "preparation": "Open het onderdeel “Any learner in DML” in de leesversie van het notebook. Laat studenten de tabel met drie effectschattingen en de bijbehorende standaardfouten gebruiken.",
+      "task": "Vergelijk de schattingen van lasso en random forest. Noteer welke vraag beide beantwoorden, hoe cross-fitting de huishoudens over trainen en schatten verdeelt en welke aanname nodig is om van een causaal effect te spreken.",
       "reflection": "Noem een denkbare ongemeten factor die zowel toegang tot de regeling als spaarvermogen beïnvloedt. Kan cross-fitting dat probleem oplossen?",
       "sourceUrl": "https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.html",
       "learningGoal": "Een effectschatting onderscheiden van een voorspelling en uitleggen welke aanname nodig is voor een causale interpretatie.",
@@ -38794,11 +38789,6 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
-      },
-      {
-        "date": "2026-11-22",
-        "type": "updated",
-        "summary": "Het leerlingblad wijst studenten de modeluitkomsten aan in de leesversie van het notebook."
       }
     ]
   },
