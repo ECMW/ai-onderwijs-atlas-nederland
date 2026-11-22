@@ -382,7 +382,7 @@ test('copying a classroom assignment includes the learner task, reflection and b
     await button.onclick();
     const text = allowed ? copied : field.value;
     for (const part of [lesson.question, lesson.task, lesson.reflection, lesson.sourceUrl,
-      `https://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${item.id}`]) assert.ok(text.includes(part));
+      `https://aionderwijsatlas.nl/#item/${item.id}`]) assert.ok(text.includes(part));
     assert.ok(!text.includes(lesson.preparation));
     assert.equal(field.hidden, allowed);
     assert.equal(/gekopieerd/i.test(feedback.textContent), allowed);
@@ -414,7 +414,7 @@ test('a shared learner sheet opens independently, prints one assignment and shar
     for (const other of classroomLessons.filter(row => row !== item)) assert.ok(!main.innerHTML.includes(other.lessonStart.question));
     print.onclick();
     await share.onclick();
-    assert.equal(copied, 'https://ecmw.github.io/ai-onderwijs-atlas-nederland/' + location.hash);
+    assert.equal(copied, 'https://aionderwijsatlas.nl/' + location.hash);
     assert.match(feedback.textContent, /leerlingblad gekopieerd/);
   }
   assert.equal(printCount, classroomLessons.length);
@@ -1391,7 +1391,7 @@ test('each flat and grouped result opens an email draft with its own public item
       const body = email.searchParams.get('body');
       assert.ok(body.includes(expected.title));
       assert.ok(body.includes(`Aanbieder: ${expected.providerName}`));
-      assert.ok(body.endsWith(`https://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${expected.id}`));
+      assert.ok(body.endsWith(`https://aionderwijsatlas.nl/#item/${expected.id}`));
       assert.ok(!/localhost|atlas-no-count|sector=|theme=/.test(body));
       assert.ok(card.includes('aria-label="Delen via e-mail:'));
     }
@@ -1418,7 +1418,7 @@ test('source citations preserve official references without inventing authors or
   assert.ok(text.includes('2001'));
   assert.ok(text.includes('https://official.example.org/report?chapter=1&lang=nl'));
   assert.ok(text.includes('https://official.example.org/appendix'));
-  assert.ok(text.includes(`https://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${encodeURIComponent(item.id)}`));
+  assert.ok(text.includes(`https://aionderwijsatlas.nl/#item/${encodeURIComponent(item.id)}`));
   assert.ok(!/secondary\.example|authoritative\.example|localhost|atlas-no-count|sector=|2099|Auteur:/i.test(text));
   for (const publicationDate of [null, '', '2001-02-30']) {
     const undated = api.sourceCitation({ ...item, publicationDate });
@@ -1426,7 +1426,7 @@ test('source citations preserve official references without inventing authors or
   }
   const sparse = api.sourceCitation({ ...item, providerName: '', publicationDate: null, sourceUrls: [] });
   assert.ok(!/undefined|null/.test(sparse));
-  assert.ok(sparse.includes(`https://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${encodeURIComponent(item.id)}`));
+  assert.ok(sparse.includes(`https://aionderwijsatlas.nl/#item/${encodeURIComponent(item.id)}`));
 });
 
 test('copying a source citation reports success only after the clipboard accepts it', async () => {
@@ -1567,7 +1567,7 @@ test('a personal comparison becomes shareable on fresh load and preserves the ch
   assert.equal(view.knownRows[0].hidden, true);
   await view.control('[data-share-comparison]').onclick();
   const url = new URL(view.clipboard.text);
-  assert.equal(url.origin + url.pathname, 'https://ecmw.github.io/ai-onderwijs-atlas-nederland/');
+  assert.equal(url.origin + url.pathname, 'https://aionderwijsatlas.nl/');
   assert.equal(url.hash, '#vergelijken?item=c&item=a&item=b&verschillen=1');
   assert.ok(compareAt(data, url.hash).main.innerHTML.includes('U vergelijkt 3 vermeldingen'));
   toggle.checked = false;
@@ -1600,7 +1600,7 @@ test('themed results and meeting sheets both include every matching record', () 
   for (const item of matching) {
     assert.ok(html.includes(item.title));
     assert.ok(html.includes(item.sourceUrls[0].url));
-    assert.ok(html.includes(`https://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/${item.id}`));
+    assert.ok(html.includes(`https://aionderwijsatlas.nl/#item/${item.id}`));
   }
   for (const item of [excluded, unverified, differentTheme]) assert.ok(!html.includes(item.id));
   assert.ok(!/2099|Broncontrole|Waarom zie ik dit/.test(html));
@@ -1649,7 +1649,7 @@ test('contributions use distinct templates and correction retains exact item con
     assert.equal(url.searchParams.get('template'), template);
     if (kind === 'correction') {
       assert.equal(url.searchParams.get('title'), '[Correctie] ' + item.title);
-      assert.equal(url.searchParams.get('record'), item.title + '\nhttps://ecmw.github.io/ai-onderwijs-atlas-nederland/#item/item-with-id');
+      assert.equal(url.searchParams.get('record'), item.title + '\nhttps://aionderwijsatlas.nl/#item/item-with-id');
     }
   }
 });
