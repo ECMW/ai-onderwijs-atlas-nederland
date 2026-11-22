@@ -1066,6 +1066,27 @@ test('funding cards preserve the documented amount and only show a valid checked
   assert.doesNotMatch(api.simpleCard({...call, verificationStatus:'needs_review'}), /<dt>(Bedrag|Aanvragen vanaf)<\/dt>/);
 });
 
+test('cards group details and email beside an optional primary source, before the comparison choice', () => {
+  const item = {...record('call'), recordType:'funding_call'};
+  const api = load([item]);
+  for (const sourceUrls of [item.sourceUrls, []]) {
+    const card = api.simpleCard({...item, sourceUrls}, true);
+    const mainActions = card.match(/<div class="offer-main-actions">([\s\S]*?)<\/div>\s*<\/div>\s*<label class="sheet-pick">/)[1];
+    const secondary = mainActions.split('<div class="offer-secondary-actions">');
+    assert.equal(secondary.length, 2);
+    if (sourceUrls.length) assert.match(secondary[0], /class="card-cta primary"[^>]*>Officiële oproep en voorwaarden/);
+    else assert.equal(secondary[0].trim(), '');
+    const labels = [...secondary[1].matchAll(/<a [^>]*>([^<]+)<\/a>/g)].map(match => match[1]);
+    assert.deepEqual(labels, ['Bekijk details','Delen via e-mail']);
+    assert.ok(card.indexOf('<p class="description">') < card.indexOf(mainActions));
+  }
+  const book = {...record('boek'),recordType:'book',bookCategory:'reading',language:['nl']};
+  const bookPage = load([book]).booksMarkup().match(/<article class="result-card book-card"[\s\S]*?<\/article>/)[0];
+  assert.match(bookPage, /class="card-cta primary"[^>]*>Bekijk details/);
+  assert.match(bookPage, /Uitgevers- of auteursbron/);
+  assert.doesNotMatch(bookPage, /offer-secondary-actions|share-email/);
+});
+
 test('a zoned call deadline closes exactly at the published instant and appears in Dutch local time', () => {
   const api = load();
   const call = {...record('timed-call'), recordType:'funding_call', legacyType:'Call', status:'open_call',

@@ -1136,9 +1136,13 @@
         <p class="description">${escapeHtml(factValue(record.description))}</p>
       </div>
       <div class="card-actions offer-links">
-        ${sourceItem ? `<a class="card-cta primary" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record))}: ${escapeHtml(record.title)}">${escapeHtml(sourceActionLabel(record))}&nbsp;↗</a>` : ''}
-        <a class="card-cta" href="#item/${escapeHtml(record.id)}" aria-label="${escapeHtml(detailLabel)}: ${escapeHtml(record.title)}">${escapeHtml(detailLabel)}</a>
-        <a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a>
+        <div class="offer-main-actions">
+          ${sourceItem ? `<a class="card-cta primary" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record))}: ${escapeHtml(record.title)}">${escapeHtml(sourceActionLabel(record))}&nbsp;↗</a>` : ''}
+          <div class="offer-secondary-actions">
+            <a class="card-cta" href="#item/${escapeHtml(record.id)}" aria-label="${escapeHtml(detailLabel)}: ${escapeHtml(record.title)}">${escapeHtml(detailLabel)}</a>
+            <a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a>
+          </div>
+        </div>
         ${showPublicationDate ? `<label class="sheet-pick"><input type="checkbox" data-sheet-pick="${escapeHtml(record.id)}" aria-label="Kies voor vergelijking of overleg: ${escapeHtml(record.title)}" ${sheetPicks.has(record.id) ? 'checked' : ''}> Kies voor vergelijking of overleg</label>` : ''}
       </div>
     </article>`;

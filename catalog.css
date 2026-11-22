@@ -259,6 +259,28 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
   border-left: 0;
   border-top: 1px solid var(--line);
 }
+.offer-main-actions {
+  flex-basis: 100%;
+  display: grid;
+  grid-template-columns: fit-content(53%) minmax(0, max-content);
+  align-items: center;
+  justify-content: start;
+  gap: .75rem;
+}
+.offer-main-actions > .primary { overflow-wrap: anywhere; }
+.offer-secondary-actions { display: grid; justify-items: start; }
+.offer-secondary-actions:only-child { grid-column: 1 / -1; }
+.offer-secondary-actions .card-cta {
+  justify-self: start;
+  justify-content: flex-start;
+  min-height: 32px;
+  padding: .15rem .25rem;
+  border: 0;
+  text-align: start;
+  text-decoration: underline;
+  text-underline-offset: .18em;
+  overflow-wrap: anywhere;
+}
 .funding-nav { margin-bottom: 1rem; }
 .funding-nav h2 { margin: .5rem 0; }
 .funding-nav nav { display: flex; flex-wrap: wrap; gap: .25rem .85rem; align-items: center; }
@@ -303,6 +325,9 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
     text-decoration: underline;
     text-underline-offset: .18em;
   }
+}
+@media (max-width: 899px), (pointer: coarse) {
+  .offer-secondary-actions .card-cta { min-height: 44px; }
 }
 
 .sheet-pick { display: flex; align-items: center; gap: .45rem; min-height: 44px; cursor: pointer; }
