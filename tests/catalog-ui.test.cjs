@@ -557,7 +557,7 @@ test('copying a classroom assignment includes the learner task, reflection and b
     load([item], lessonRoute, { navigator }).bindLessonCopy({ querySelectorAll: () => [button] });
     await button.onclick();
     const text = allowed ? copied : field.value;
-    for (const part of [lesson.question, lesson.task, lesson.reflection, lesson.sourceUrl,
+    for (const part of [lesson.question, 'Leerdoel: ' + lesson.learningGoal, lesson.task, lesson.reflection, lesson.sourceUrl,
       `https://aionderwijsatlas.nl/#item/${item.id}`]) assert.ok(text.includes(part));
     assert.ok(!text.includes(lesson.preparation));
     assert.equal(field.hidden, allowed);
@@ -569,7 +569,9 @@ test('copying a classroom assignment includes the learner task, reflection and b
 test('a shared learner sheet opens independently, prints one assignment and shares its public URL', async () => {
   const location = { hash:'', href:'http://localhost:8000/?atlas-no-count=1' };
   const archived = { ...classroomLessons[0], id:'vorige-editie', status:'archived' };
-  const data = { records:[...classroomLessons, archived], metadata:{} };
+  const older = { ...classroomLessons[0], id:'les-zonder-leerdoel', lessonStart:{...classroomLessons[0].lessonStart} };
+  delete older.lessonStart.learningGoal;
+  const data = { records:[...classroomLessons, archived, older], metadata:{} };
   const main = { focus() {} }, print = {}, share = {}, feedback = {};
   const document = { body:{classList:{remove() {}}}, querySelectorAll: () => [],
     querySelector: selector => ({ main, '[data-print-sheet]':print, '[data-share-sheet]':share, '#action-feedback':feedback })[selector] || null };
@@ -582,6 +584,7 @@ test('a shared learner sheet opens independently, prints one assignment and shar
     assert.ok(cards.includes(`href="${location.hash}">Open leerlingblad</a>`));
     api.route();
     assert.ok(main.innerHTML.includes(item.lessonStart.question));
+    if (item.lessonStart.learningGoal) assert.ok(main.innerHTML.includes(item.lessonStart.learningGoal));
     assert.ok(main.innerHTML.includes(item.lessonStart.task));
     assert.ok(main.innerHTML.includes(item.lessonStart.reflection));
     assert.ok(main.innerHTML.includes(`href="${item.lessonStart.sourceUrl}"`));
@@ -594,6 +597,10 @@ test('a shared learner sheet opens independently, prints one assignment and shar
     assert.match(feedback.textContent, /leerlingblad gekopieerd/);
   }
   assert.equal(printCount, classroomLessons.length);
+  location.hash = '#leerlingblad?item=' + older.id;
+  api.route();
+  assert.ok(main.innerHTML.includes(older.lessonStart.task));
+  assert.ok(!main.innerHTML.includes('learner-goal'));
   for (const hash of ['#leerlingblad', '#leerlingblad?item=onbekend', '#leerlingblad?item=vorige-editie']) {
     location.hash = hash;
     api.route();

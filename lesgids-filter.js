@@ -3,6 +3,12 @@
   const directory = document.querySelector('main[data-atlas-lesson-directory]');
   const form = directory?.querySelector('[data-directory-filter]');
   if (!form) return;
+  const skipLink = document.querySelector('a.skip');
+  if (skipLink) skipLink.onclick = event => {
+    event.preventDefault();
+    directory.focus({preventScroll:true});
+    window.scrollTo({top:0, behavior:'instant'});
+  };
   const normalize = text => text.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
     .replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
   const subjects = form.querySelector('[data-filter-subject]');

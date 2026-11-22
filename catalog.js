@@ -9,6 +9,14 @@
   }
   if (!source || !main) return;
 
+  // The fragment already identifies the visitor's current page and filters.
+  const skipLink = document.querySelector('a.skip');
+  if (skipLink) skipLink.onclick = event => {
+    event.preventDefault();
+    main.focus({preventScroll:true});
+    window.scrollTo({top:0, behavior:'instant'});
+  };
+
   const allRecords = source.records || [];
   const records = allRecords.filter(record =>
     !Object.hasOwn(record, 'publicationExclusion') &&
@@ -1937,9 +1945,9 @@
         const panel = button.closest('[data-lesson-id]');
         const record = publicRecordsById.get(panel.dataset.lessonId);
         const lesson = record.lessonStart;
-        const text = [lesson.question, lesson.task, lesson.reflection,
+        const text = [lesson.question, lesson.learningGoal && 'Leerdoel: ' + lesson.learningGoal, lesson.task, lesson.reflection,
           `Lesstart van de AI & Onderwijs Atlas Nederland: ${publicItemUrl(record)}`,
-          `Lesmateriaal van ${record.providerName}: ${lesson.sourceUrl}`].join('\n\n');
+          `Lesmateriaal van ${record.providerName}: ${lesson.sourceUrl}`].filter(Boolean).join('\n\n');
         await copyTextWithFallback(button, text, panel.querySelector('.lesson-feedback'), panel.querySelector('.lesson-copy'),
           'Klasopdracht en bronlinks gekopieerd.', 'De opdracht is geselecteerd. Kopieer de tekst om deze te delen.');
       };
@@ -2440,7 +2448,8 @@
         <div class="learner-actions"><button type="button" class="btn secondary" data-share-sheet>Deel leerlingblad</button>
           <button type="button" class="btn" data-print-sheet>Afdrukken of opslaan als pdf</button></div></div>
       <p id="action-feedback" role="status"></p>
-      <header><p class="lesson-level">Leerlingblad · ${escapeHtml(lesson.level)}</p><h1 id="learner-question">${escapeHtml(lesson.question)}</h1></header>
+      <header><p class="lesson-level">Leerlingblad · ${escapeHtml(lesson.level)}</p><h1 id="learner-question">${escapeHtml(lesson.question)}</h1>
+        ${lesson.learningGoal ? `<p class="learner-goal"><strong>Leerdoel</strong> · ${escapeHtml(lesson.learningGoal)}</p>` : ''}</header>
       <section><h2>Opdracht</h2><p>${escapeHtml(lesson.task)}</p></section>
       <section><h2>Bespreek samen</h2><p>${escapeHtml(lesson.reflection)}</p></section>
       <div class="learner-answer">Ruimte voor je antwoord of tekening</div>

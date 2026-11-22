@@ -317,6 +317,7 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
 .learner-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
 .learner-sheet header { padding: 1rem 0; border-top: .3rem solid var(--brand-olive); border-bottom: 1px solid var(--line); }
 .learner-sheet header p { margin: 0 0 .4rem; }
+.learner-sheet header .learner-goal { margin: .65rem 0 0; }
 .learner-sheet h1 { margin: 0; font-size: clamp(1.75rem, 4.2vw, 2.8rem); line-height: 1.14; }
 .learner-sheet section { margin: 1.4rem 0; }
 .learner-sheet h2 { margin: 0 0 .35rem; font-size: 1.25rem; }
