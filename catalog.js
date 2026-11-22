@@ -1233,6 +1233,7 @@
       ['lesmateriaal/', 'Een les voorbereiden', 'Vind een leerlingvraag, lesopdracht en werkblad bij uw vak.'],
       ['#toetsafspraak', 'Een toets aanpassen', 'Kies welke AI-hulp past en wat de leerling zelf moet laten zien.'],
       ['#toolkeuze', 'Een AI-toepassing kiezen', 'Vergelijk de functie, voorwaarden en open vragen voor uw klas.'],
+      ['#pilotbesluit', 'Besluiten over een AI-proef', 'Leg met schoolleiding en ICT vast wie beslist, wat u toetst en wanneer u stopt.'],
       ['#regels-in-de-praktijk', 'Leerlingwerk of lesmateriaal gebruiken', 'Controleer gegevens, licentie en afspraken op uw school.'],
       ['#wat-werkt', 'Beoordelen wat werkt', 'Bekijk wat leerlingen met hulp presteerden en wat ze daarna zelf konden.'],
       [criteriaHref(FUNDING_CRITERIA), 'Subsidies en calls vinden', 'Controleer wie kan aanvragen en wanneer de ronde sluit.']
@@ -2222,6 +2223,70 @@
     return rows;
   }
 
+  const PILOT_FIELDS = [
+    ['doel', 'Doel en afbakening', 'Wat probeert u, met wie en welk onderwijsprobleem wilt u oplossen?'],
+    ['rollen', 'Wie voert uit en wie mag besluiten?', 'Noem de rollen en wat zij mogen beslissen. Laat het mandaat bij twijfel bevestigen.'],
+    ['afweging', 'Risico en maatregel', 'Wiens belang kan onder druk komen? Welke maatregel en welk alternatief spreekt u af?'],
+    ['bewijs', 'Bewijs voor het besluit', 'Welke bron of observatie hebt u al? Wat moet nog blijken en waaraan ziet u dat?'],
+    ['herzien', 'Herbeoordeling en stopafspraak', 'Wanneer kijkt u terug? Wie kan ingrijpen als een leerling of medewerker een probleem meldt?']
+  ];
+  const PILOT_CHOICES = [
+    ['uitvoeren', 'Uitvoeren binnen de afgesproken grenzen', 'Leg vast wie akkoord gaf, wat de grenzen zijn en wie de inzet kan stoppen.'],
+    ['proef', 'Eerst een kleine proef', 'Baken de groep, duur en gegevens af. Start bijvoorbeeld met fictieve voorbeelden en beoordeel de uitkomst vóór breder gebruik.'],
+    ['uitstellen', 'Uitstellen of afzien', 'Noteer welke vraag openblijft, wie die uitzoekt en welke werkwijze intussen beschikbaar blijft.']
+  ];
+
+  function pilotSheetText(entries, choice) {
+    const decision = PILOT_CHOICES.find(([key]) => key === choice);
+    const fields = PILOT_FIELDS.map(([key, label]) => `${label}\n${entries[key]?.trim() || '[In te vullen]'}`);
+    return ['Besluitblad AI-proef · bespreekversie', ...fields,
+      `Voorgestelde keuze\n${decision ? decision[1] : '[Nog te kiezen]'}`,
+      `Vervolg\n${decision ? decision[2] : 'Bespreek de keuze met degene die volgens de instellingsafspraken mag besluiten.'}`,
+      'Werkblad van de AI & Onderwijs Atlas Nederland · https://aionderwijsatlas.nl/#pilotbesluit'].join('\n\n');
+  }
+
+  function renderPilotDecision() {
+    const fields = PILOT_FIELDS.map(([key, label, prompt]) => `<div class="pilot-field">
+      <label for="pilot-${key}">${escapeHtml(label)}</label><p id="pilot-help-${key}">${escapeHtml(prompt)}</p>
+      <textarea id="pilot-${key}" data-pilot-field="${key}" rows="2" aria-describedby="pilot-help-${key}" autocomplete="off"></textarea></div>`).join('');
+    main.innerHTML = `<article class="assessment-page pilot-page"><nav class="detail-back" aria-label="Terug naar de gids">
+      <a href="#praktijkgids">Naar de praktijkgids</a> · <a href="#toolkeuze">Naar de toepassing voor mijn les</a></nav>
+      <header><h1 tabindex="-1">Besluiten over een AI-proef</h1>
+        <p>Wil een team een AI-toepassing gaan gebruiken? Vul samen met schoolleiding, onderwijs en ICT of privacy één besluitblad in. Benoem wie volgens de afspraken van uw instelling mag besluiten en wie het besluit later kan herzien.</p></header>
+      <div class="assessment-layout"><section class="assessment-form" aria-labelledby="pilot-sheet"><h2 id="pilot-sheet">Uw besluitblad</h2>
+        <p>Gebruik functienamen en een algemene beschrijving. De Atlas verstuurt of bewaart uw invoer niet. Kopieer het blad als u het wilt meenemen.</p>
+        ${fields}<fieldset><legend>Welke keuze legt u voor?</legend>
+          ${PILOT_CHOICES.map(([key, label]) => `<label class="assessment-choice"><input type="radio" name="pilot-keuze" value="${key}">${escapeHtml(label)}</label>`).join('')}
+        </fieldset><p data-pilot-advice role="status"></p>
+        <div class="assessment-actions"><button type="button" class="btn" data-copy-pilot>Kopieer besluitblad</button>
+          <span data-pilot-feedback role="status"></span></div>
+        <textarea hidden readonly aria-label="Besluitblad om handmatig te kopiëren" data-pilot-copy></textarea>
+      </section><aside class="assessment-preview" aria-labelledby="pilot-example"><h2 id="pilot-example">Voorbeeld voor het overleg</h2>
+        <p>Een opleiding wil een chatbot feedback op conceptteksten laten geven. Twee docenten beginnen met verzonnen teksten. Ze vergelijken de feedback met het leerdoel en noteren onjuistheden. Een leerling kan dezelfde opdracht zonder chatbot maken.</p>
+        <p>De projectleider legt na twee weken de bevindingen voor aan de bevoegde rol. Als de feedback een fout aanleert, stopt de proef tot een docent de werkwijze heeft beoordeeld. Dit is een voorbeeld van de Atlas.</p>
+        <h3>Welke handreiking past bij uw instelling?</h3><ul>
+          <li><a href="#item/schoolafspraken-over-het-gebruik-van-generatieve-ai" target="_blank" rel="noopener noreferrer">PO en VO · Schoolafspraken van Kennisnet</a>. Bespreek het onderwijsdoel, de grenzen aan gebruik en de afspraken voor leraren en leerlingen.</li>
+          <li><a href="#item/npuls-raise-risicobeoordeling-ai" target="_blank" rel="noopener noreferrer">Mbo, hbo en wo · RAISE van Npuls</a>. Loop met de betrokken deskundigen de risico’s, maatregelen en opvolging langs. Npuls presenteert dit als een eerste versie.</li>
+          <li><a href="#item/surf-kennisnet-waardenwijzer-2025" target="_blank" rel="noopener noreferrer">Alle sectoren · WaardenWijzer van SURF en Kennisnet</a>. Kies een waarde die geraakt wordt, zoals autonomie of rechtvaardigheid. Betrek iemand die de gevolgen ondervindt.</li>
+        </ul><p class="assessment-note">De bronkaarten openen in een nieuw tabblad zodat uw besluitblad openblijft. Deze handreikingen ondersteunen het gesprek. Uw instelling bepaalt of de inzet kan doorgaan.</p>
+      </aside></div></article>`;
+    const form = main.querySelector('.assessment-form');
+    const advice = form.querySelector('[data-pilot-advice]');
+    const feedback = form.querySelector('[data-pilot-feedback]');
+    const fallback = form.querySelector('[data-pilot-copy]');
+    form.oninput = () => {
+      fallback.hidden = true;
+      feedback.textContent = '';
+      const choice = form.querySelector('input:checked')?.value;
+      advice.textContent = PILOT_CHOICES.find(([key]) => key === choice)?.[2] || '';
+    };
+    form.querySelector('[data-copy-pilot]').onclick = event => {
+      const entries = Object.fromEntries([...form.querySelectorAll('[data-pilot-field]')].map(field => [field.dataset.pilotField, field.value]));
+      return copyTextWithFallback(event.currentTarget, pilotSheetText(entries, form.querySelector('input:checked')?.value), feedback, fallback,
+        'Besluitblad gekopieerd.', 'De tekst is geselecteerd. Kopieer uw besluitblad handmatig.');
+    };
+  }
+
   function renderToolChoice() {
     const examples = [
       {id:'aigo-transcribe-tool', guide:'https://github.com/AIgovernanceofficer/Transcribe-tool#readme',
@@ -2245,7 +2310,8 @@
     const previous = sessionGet('atlas.lastSearch');
     const back = /^#zoeken(?:\?|$)/.test(previous) ? `<a href="${escapeHtml(previous)}">Terug naar uw zoekopdracht</a> · ` : '';
     main.innerHTML = `<section class="assessment-page tool-choice"><nav aria-label="Terug naar het aanbod">${back}<a href="#zoeken?type=software">Naar alle AI-software in de Atlas</a></nav>
-      <header><h1 tabindex="-1">Welke AI-toepassing past bij mijn les?</h1><p>Wilt u een bestaande opname laten uitschrijven of een tekst dicteren? Kies op basis van wat de leerling zelf moet oefenen.</p></header>
+        <header><h1 tabindex="-1">Welke AI-toepassing past bij mijn les?</h1><p>Wilt u een bestaande opname laten uitschrijven of een tekst dicteren? Kies op basis van wat de leerling zelf moet oefenen.</p>
+          <p>Een keuze maken voor meerdere klassen of een opleiding? <a href="#pilotbesluit">Vul samen het besluitblad voor een AI-proef in</a>.</p></header>
       ${examples.length ? `<div class="assessment-layout">${examples.map(({id, record, guide, goal, task, privacy, access}) => `<article class="assessment-preview">
         <h2>${goal}</h2><p><a href="#item/${escapeHtml(id)}">${escapeHtml(record.title)}</a></p><dl>
           <div><dt>Leshandeling</dt><dd>${task}</dd></div>
@@ -2828,11 +2894,13 @@
     clearTimeout(debounceTimer);
     if (window.ATLAS_STARTUP?.status === 'failed') { window.ATLAS_STARTUP.fail(); return; }
     const path = (location.hash.slice(1) || 'home').split('?')[0];
+    // A fragment link can fire both popstate and hashchange. Keep an open sheet and its keyboard focus.
+    if (path === 'pilotbesluit' && main.querySelector('.pilot-page')) return;
     document.querySelector('.site-header')?.classList.remove('open');
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
     const guides = {
       'praktijkgids': renderPracticeGuide, 'wat-werkt': renderLearningEvidence,
-      'toolkeuze': renderToolChoice, 'regels-in-de-praktijk': renderPracticeRules
+      'toolkeuze': renderToolChoice, 'pilotbesluit': renderPilotDecision, 'regels-in-de-praktijk': renderPracticeRules
     };
     if (path === 'home' || (!Object.hasOwn(guides, path) && !['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
     if (Object.hasOwn(guides, path)) guides[path]();

@@ -4,6 +4,58 @@
   "verification_window_days": 90,
   "sources": [
     {
+      "source_id": "npuls-raise-risicobeoordeling-2026",
+      "title": "RAISE – raamwerk voor risicobeoordeling van AI",
+      "author_or_organisation": "Npuls",
+      "publication_date": "2026-09-28",
+      "url_or_doi": "https://npuls.nl/kennisbank/raise-raamwerk-voor-risicobeoordeling-van-ai",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Implementatie en adoptie",
+        "Beleid en governance"
+      ],
+      "jurisdiction": "Nederland, mbo, hbo en wo",
+      "claims_supported": [
+        "RAISE ondersteunt instellingen bij het beoordelen van een AI-toepassing, het betrekken van deskundigen en het vastleggen van maatregelen en opvolging."
+      ],
+      "reliability_notes": "Npuls beschrijft vijf stappen en geeft een documentatiesjabloon. De uitgave is aangeduid als eerste versie. De instantie vermeldt de publicatiedatum op de detailpagina.",
+      "limitations": "Een instelling beoordeelt zelf de specifieke inzet en verantwoordelijkheden. Een ingevuld werkblad of het gebruik van het raamwerk levert geen formele toelating of volledige risicobeoordeling op.",
+      "legal_effect": "non_binding",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-22",
+      "status": "active",
+      "atlas_record_ids": [
+        "npuls-raise-risicobeoordeling-ai"
+      ]
+    },
+    {
+      "source_id": "surf-kennisnet-waardenwijzer-2025",
+      "title": "WaardenWijzer voor digitalisering in onderwijs en onderzoek",
+      "author_or_organisation": "SURF en Kennisnet met onderwijspartners",
+      "publication_date": "2025-12",
+      "url_or_doi": "https://www.surf.nl/themas/publieke-waarden/waardenwijzer",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Publieke waarden en ethiek",
+        "Beleid en governance"
+      ],
+      "jurisdiction": "Nederland, onderwijs en onderzoek",
+      "claims_supported": [
+        "De WaardenWijzer ondersteunt afwegingen bij ontwerp, inkoop, gebruik en bestuur. Autonomie, rechtvaardigheid en menselijkheid zijn de drie hoofdwaarden."
+      ],
+      "reliability_notes": "De uitgever beschrijft de geactualiseerde editie van december 2025 en de toepassing in onderwijsorganisaties. Het instrument bevat zowel een waardenoverzicht als voorbeelden.",
+      "limitations": "Een gespreksinstrument. De gekozen waarde, concrete maatregel en verantwoordelijke moeten bij de eigen onderwijssituatie passen.",
+      "legal_effect": "non_binding",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-22",
+      "status": "active",
+      "atlas_record_ids": [
+        "surf-kennisnet-waardenwijzer-2025"
+      ]
+    },
+    {
       "source_id": "kennisnet-generatieve-ai-en-privacy-leerlingwerk",
       "title": "Generatieve AI en privacy: hier moeten scholen op letten",
       "author_or_organisation": "Loes van Zuijdam, Kennisnet",

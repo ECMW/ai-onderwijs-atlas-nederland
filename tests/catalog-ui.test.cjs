@@ -8,6 +8,7 @@ const catalogue = fs.readFileSync(path.join(__dirname, '..', 'catalog.js'), 'utf
 const boot = "  addEventListener('hashchange', route); addEventListener('popstate', route); route();";
 assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly the route startup');
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
+    pilotSheetText, renderPilotDecision,
     renderLearningEvidence, renderPracticeGuide, practiceCasesMarkup,
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, papersMarkup, paperRis, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, bindFacetLists, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
@@ -97,6 +98,56 @@ test('paper list sorts by the published day, keeps equal dates stable and distin
   assert.match(sparse, /geen papers voor deze selectie/);
   assert.match(sparse, /controle onbekend/);
   assert.throws(() => api.papersMarkup({metadata:{}}));
+});
+
+test('a pilot sheet leaves missing evidence and the mandate visible in all three decisions', () => {
+  const api = load([]);
+  const entries = {doel:' Fictieve documenten ', rollen:'Opleidingsmanager beslist', bewijs:'', herzien:'De docent kan stoppen'};
+  const sheet = api.pilotSheetText(entries, 'proef');
+  assert.match(sheet, /Doel en afbakening\nFictieve documenten/);
+  assert.match(sheet, /Wie voert uit en wie mag besluiten\?\nOpleidingsmanager beslist/);
+  assert.match(sheet, /Bewijs voor het besluit\n\[In te vullen\]/);
+  assert.match(sheet, /Herbeoordeling en stopafspraak\nDe docent kan stoppen/);
+  assert.match(sheet, /Voorgestelde keuze\nEerst een kleine proef/);
+  assert.match(api.pilotSheetText({}, 'uitvoeren'), /wie akkoord gaf/);
+  assert.match(api.pilotSheetText({}, 'uitstellen'), /wie die uitzoekt/);
+  assert.match(api.pilotSheetText({}, ''), /\[Nog te kiezen\]/);
+});
+
+test('a second navigation event for the same pilot sheet preserves its current fields and focus', () => {
+  const panel = {};
+  const main = {innerHTML:'untouched', querySelector: selector => selector === '.pilot-page' ? panel : null};
+  const api = load([], '#pilotbesluit', {document:{querySelector: selector => selector === 'main' ? main : null}, clearTimeout() {}});
+  api.route();
+  assert.equal(main.innerHTML, 'untouched');
+});
+
+test('pilot sources resolve to public cards and the sheet copies its fields only on request', async () => {
+  let copied;
+  let current = 'proef';
+  const doCopy = {isConnected:true}, fallback = {}, feedback = {}, advice = {};
+  const form = {querySelector: selector => ({
+    '[data-copy-pilot]':doCopy, '[data-pilot-advice]':advice, '[data-pilot-feedback]':feedback,
+    '[data-pilot-copy]':fallback, 'input:checked':{value:current}
+  })[selector], querySelectorAll: () => [{dataset:{pilotField:'doel'},value:'Mijn werkblad'}]};
+  const main = {querySelector: () => form};
+  const api = load([], '#pilotbesluit', {document:{querySelector: selector => selector === 'main' ? main : null},
+    navigator:{clipboard:{writeText: async text => {copied = text;}}}});
+  api.renderPilotDecision();
+  const ids = ['schoolafspraken-over-het-gebruik-van-generatieve-ai','npuls-raise-risicobeoordeling-ai','surf-kennisnet-waardenwijzer-2025'];
+  const index = new Set(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'search-index.json'), 'utf8')).map(row => row.id));
+  for (const id of ids) {
+    assert.ok(index.has(id));
+    assert.ok(main.innerHTML.includes('href="#item/' + id + '" target="_blank" rel="noopener noreferrer"'));
+  }
+  form.oninput();
+  assert.match(advice.textContent, /fictieve voorbeelden/);
+  assert.equal(copied, undefined);
+  current = 'uitstellen';
+  await doCopy.onclick({currentTarget:doCopy});
+  assert.match(copied, /Mijn werkblad/);
+  assert.match(copied, /Voorgestelde keuze\nUitstellen of afzien/);
+  assert.equal(feedback.textContent, 'Besluitblad gekopieerd.');
 });
 
 test('three teacher questions keep their cited outcomes when the rolling paper edition is unavailable', () => {
