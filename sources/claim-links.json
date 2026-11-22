@@ -3,6 +3,24 @@
   "last_reviewed": "2026-11-22",
   "claims": [
     {
+      "claim_id": "pilotbesluit-schoolleiding-ict-bronnen",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "Het besluitblad vraagt schoolleiding, onderwijs en ICT of privacy om de toepassing, het mandaat, risico en maatregel, controleerbaar bewijs en menselijke herbeoordeling voor hun eigen instelling vast te leggen.",
+      "claim_kind": "atlas_synthesis",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "npuls-raise-risicobeoordeling-2026",
+        "surf-kennisnet-waardenwijzer-2025",
+        "kennisnet-schoolafspraken-generatieve-ai-2025"
+      ],
+      "assessment": "Kennisnet behandelt schoolafspraken, Npuls de beoordeling en opvolging in het vervolgonderwijs en de WaardenWijzer de betrokken belangen. Het besluitblad, de drie opties en de illustratieve stopafspraak zijn van de Atlas. De bevoegde rol hangt af van de instelling. Deze invuloefening vervangt geen formele goedkeuring.",
+      "last_reviewed": "2026-11-22",
+      "time_sensitive": true,
+      "review_by": "2027-02-20"
+    },
+    {
       "claim_id": "regels-herkenbaar-leerlingwerk",
       "location": {
         "path": "catalog.js"
@@ -208,7 +226,7 @@
       "claim_kind": "atlas_synthesis",
       "evidence_status": "SUPPORTED_WITH_LIMITS",
       "source_ids": ["npuls-assessment-ai-guidance-2025", "kennisnet-toetsing-generatieve-ai-vo-2026"],
-      "assessment": "Npuls en Kennisnet onderbouwen het verband tussen leerdoel, toetsvorm en zicht op eigen prestaties. De drie voorbeeldteksten en de beoordelingssuggesties zijn uitwerkingen van de Atlas. De docent bepaalt de geschiktheid voor de eigen opdracht en de plaatselijke afspraken.",
+      "assessment": "Npuls en Kennisnet verbinden het leerdoel aan de toetsvorm en het zicht op eigen prestaties. Npuls noemt in Handreiking 2 (p. 24–25) onder meer een mondelinge verdediging, feedbackrondes en de uitvoerbaarheid van de toets. De vergelijking, de leerlingteksten en de beoordelingssuggesties zijn uitwerkingen van de Atlas. De bronnen toetsen het effect van deze voorbeelden niet. De docent bepaalt wat past bij de opdracht en de plaatselijke afspraken.",
       "last_reviewed": "2026-11-22",
       "time_sensitive": false
     },

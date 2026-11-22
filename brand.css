@@ -155,6 +155,8 @@ footer{
   color:#f7f3e9;
   border-top:6px solid var(--brand-olive);
 }
+body > footer a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
+body > footer a:focus-visible { outline-color: #fff !important; }
 
 *:focus-visible{outline:3px solid var(--brand-focus)!important;outline-offset:3px}
 ::selection{background:var(--brand-sand);color:var(--brand-ink)}
@@ -354,6 +356,17 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
 .assessment-start > label, .assessment-start dt { display: block; font-weight: 700; }
 .assessment-start select { display: block; max-width: 100%; min-height: 44px; margin-top: .3rem; padding: .4rem; font: inherit; }
 .assessment-start dd { margin: .25rem 0 .75rem; }
+.assessment-form > #assessment-goal { max-width: 60ch; }
+.assessment-compare { margin: 1rem 0; }
+.assessment-compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; }
+.assessment-compare-grid section { display: flex; flex-direction: column; align-items: start; border-left: .2rem solid var(--brand-olive); padding-left: 1rem; }
+.assessment-compare-grid h2 { margin: 0; font-size: 1.2rem; }
+.assessment-compare-grid dl { flex: 1; }
+.assessment-compare-grid dt { font-weight: 700; }
+.assessment-compare-grid dd { margin: .15rem 0 .75rem; }
+.assessment-compare > p { overflow-wrap: anywhere; }
+.assessment-compare > .assessment-note { margin: .8rem 0; }
+.assessment-preview [data-assessment-apply-note]:empty { margin: 0; }
 .assessment-layout { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr); gap: clamp(1rem, 3vw, 2.5rem); align-items: start; }
 .assessment-form > label, .assessment-form legend, .assessment-custom label, .assessment-preview dt { display: block; font-weight: 700; color: var(--brand-bluegray-deep); }
 .assessment-custom { border-block: 1px solid var(--line); padding: .3rem 0; }
@@ -479,6 +492,7 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
 .lesson-directory h1 { font-size: clamp(2rem,5vw,3.25rem); line-height: 1.12; margin: 0 0 .65rem; }
 .lesson-directory h2 { scroll-margin-top: 6rem; margin: 1.8rem 0 .65rem; }
 .lesson-directory h3 { margin: 0; font-size: 1.2rem; line-height: 1.35; }
+.lesson-directory h3[tabindex="-1"] { scroll-margin-top: 6rem; }
 .lesson-directory p { max-width: 74ch; margin: .65rem 0; }
 .lesson-directory nav { display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
 .lesson-directory nav a, .directory-card-link { display: inline-flex; align-items: center; min-height: 44px; }
@@ -493,7 +507,7 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
 .lesson-directory [data-directory-filter] { margin: 1.2rem 0 .8rem; }
 .directory-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: .7rem 1rem; }
 .directory-fields label { display: flex; flex-direction: column; justify-content: end; gap: .35rem; font-weight: 650; }
-.directory-fields input { box-sizing: border-box; min-height: 44px; width: 100%; padding: .45rem .6rem; font: inherit; border: 1px solid var(--brand-bluegray-deep); border-radius: .25rem; }
+.directory-fields input, .directory-fields select, .lesson-directory [data-copy-fallback] input { box-sizing: border-box; min-height: 44px; width: 100%; padding: .45rem .6rem; font: inherit; border: 1px solid var(--brand-bluegray-deep); border-radius: .25rem; }
 .directory-filter-status { display: flex; align-items: center; flex-wrap: wrap; gap: .35rem 1rem; }
 .directory-filter-status button { min-height: 44px; padding: .35rem .7rem; color: var(--brand-bluegray-deep); }
 .lesson-directory .directory-filter-status p { font-weight: 650; }

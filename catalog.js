@@ -1233,6 +1233,7 @@
       ['lesmateriaal/', 'Een les voorbereiden', 'Vind een leerlingvraag, lesopdracht en werkblad bij uw vak.'],
       ['#toetsafspraak', 'Een toets aanpassen', 'Kies welke AI-hulp past en wat de leerling zelf moet laten zien.'],
       ['#toolkeuze', 'Een AI-toepassing kiezen', 'Vergelijk de functie, voorwaarden en open vragen voor uw klas.'],
+      ['#pilotbesluit', 'Besluiten over een AI-proef', 'Leg met schoolleiding en ICT vast wie beslist, wat u toetst en wanneer u stopt.'],
       ['#regels-in-de-praktijk', 'Leerlingwerk of lesmateriaal gebruiken', 'Controleer gegevens, licentie en afspraken op uw school.'],
       ['#wat-werkt', 'Beoordelen wat werkt', 'Bekijk wat leerlingen met hulp presteerden en wat ze daarna zelf konden.'],
       [criteriaHref(FUNDING_CRITERIA), 'Subsidies en calls vinden', 'Controleer wie kan aanvragen en wanneer de ronde sluit.']
@@ -1467,14 +1468,16 @@
       rule: 'Werk dit onderdeel zelf uit, zonder generatieve AI. Gebruik de overige hulpmiddelen die vooraf met je docent zijn afgesproken.',
       evidence: 'Lever je uitwerking in. Leg tijdens het toetsmoment één keuze uit en laat zien hoe je die keuze aanpast als een gegeven verandert.',
       criterion: 'Je kunt uitleggen welke informatie je keuze ondersteunt en wat er verandert bij de nieuwe situatie.',
-      teacher: 'Bereid een kleine variant op de opdracht voor. Leg vooraf vast waaraan u in de uitleg kunt zien of iemand het leerdoel beheerst.'
+      teacher: 'Bereid een kleine variant op de opdracht voor en reserveer tijd voor ieders toelichting. Leg vooraf vast waar u bij die uitleg op let.',
+      interpretation: 'De toelichting laat zien of de leerling de redenering zelf kan toepassen wanneer één gegeven verandert. Hoe de leerling feedback gebruikt, blijft buiten beeld.'
     },
     feedback: {
       label: 'AI mag feedback geven',
       rule: 'Maak eerst zelf een concept. Daarna mag je AI om feedback vragen. Schrijf de uiteindelijke uitwerking zelf.',
       evidence: 'Lever je concept en eindversie in. Licht één wijziging toe. Gebruikte je AI, leg dan uit wat je met één advies hebt gedaan. Werkte je zonder AI, leg dan uit waarom je zelf de wijziging aanbracht.',
       criterion: 'Je laat aan een concreet verschil tussen de versies zien hoe je wijziging bijdraagt aan het leerdoel.',
-      teacher: 'Leg beide versies naast elkaar. Gebruik voor iedereen hetzelfde criterium, ook wanneer iemand het werk zonder AI heeft herzien.'
+      teacher: 'Plan twee inlevermomenten. Leg concept en eindversie naast elkaar en gebruik voor iedereen hetzelfde criterium, ook bij herziening zonder AI.',
+      interpretation: 'De versies en de toelichting laten zien hoe de leerling een advies weegt. Uit een goed eindproduct alleen kunt u geen zelfstandige beheersing afleiden.'
     },
     controleren: {
       label: 'Een AI-antwoord onderzoeken',
@@ -1576,9 +1579,20 @@
           <dl><dt>Oorspronkelijke vraag</dt><dd>${escapeHtml(example.original)}</dd>
           <dt>Voorbeeldantwoord van een leerling</dt><dd>${escapeHtml(example.answer)}</dd>
           <dt>Feedback bij dit antwoord</dt><dd>${escapeHtml(example.feedback)}</dd></dl></details>` : ''}</div>
-      <div class="assessment-layout"><form class="assessment-form">
+      <form class="assessment-form">
         <label for="assessment-goal">Wat moet de leerling of student zelf kunnen?</label>
         <textarea id="assessment-goal" rows="2" maxlength="500" required placeholder="Bijv. twee bronnen vergelijken en een conclusie onderbouwen.">${escapeHtml(draft.goal)}</textarea>
+        <details class="assessment-custom assessment-compare"><summary>Vergelijk twee toetsaanpakken voor dit leerdoel</summary>
+          <p data-assessment-compare-goal></p><div class="assessment-compare-grid">
+          ${Object.entries(ASSESSMENT_MODES).filter(([, mode]) => mode.interpretation).map(([key, mode]) => `<section>
+            <h2>${mode.label}</h2><dl>
+              <dt>Wat levert de leerling in of laat die zien?</dt><dd>${mode.evidence}</dd>
+              <dt>Wat kunt u daaruit afleiden?</dt><dd>${mode.interpretation}</dd>
+              <dt>Wat organiseert u?</dt><dd>${mode.teacher}</dd></dl>
+            <button class="btn secondary" type="button" data-assessment-apply="${key}" aria-label="Gebruik deze aanpak: ${mode.label}">Gebruik deze aanpak</button></section>`).join('')}
+          </div><p class="assessment-note">De Atlas werkte de twee aanpakken uit. <a href="https://npuls.nl/_assets/9235efab-b04a-4c63-aeb9-ccd71518a0cf/Npuls-Handreiking-2-AI-B5.pdf" target="_blank" rel="noopener noreferrer">Npuls over leerdoelen, bewijs van beheersing en de uitvoerbaarheid van toetsing (pdf, p. 24–25) ↗</a></p>
+        </details>
+        <div class="assessment-layout"><div>
         <fieldset><legend>Welke rol krijgt AI bij deze opdracht?</legend>
           ${Object.entries(ASSESSMENT_MODES).map(([key, mode]) => `<label class="assessment-choice"><input required type="radio" name="mode" value="${key}" ${key === draft.mode ? 'checked' : ''}>${mode.label}</label>`).join('')}
         </fieldset>
@@ -1597,11 +1611,12 @@
         <div class="assessment-actions"><button class="btn" type="submit">Bekijk opdrachttekst</button>
           <button class="assessment-clear" type="button" data-assessment-clear>${example ? 'Herstel dit voorbeeld' : 'Wis concept'}</button></div>
         <p class="assessment-note">Uw concept blijft in dit tabblad. Kopieer de opdrachttekst om die te bewaren.</p>
-      </form>
+      </div>
       <section class="assessment-preview" aria-labelledby="assessment-preview-title">
         <h2 id="assessment-preview-title" tabindex="-1">Opdrachttekst voor uw klas</h2>
+        <p class="assessment-note" data-assessment-apply-note role="status"></p>
         <div data-assessment-result></div>
-      </section></div>
+      </section></div></form>
       <details class="assessment-sources"><summary>Over de voorbeelden en bronnen</summary>
         <p>De Atlas schreef de opdrachten, fictieve leerlingantwoorden, feedback en beoordelingscriteria. Stem ze af op uw leerdoel en de afspraken op uw school.</p>
         ${sources.length ? `<p>Achtergrond bij het toetsontwerp</p><ul>${sources.join('')}</ul>` : ''}</details>
@@ -1616,10 +1631,15 @@
     const result = main.querySelector('[data-assessment-result]');
     const start = main.querySelector('#assessment-start');
     const clear = form.querySelector('[data-assessment-clear]');
+    const comparison = form.querySelector('.assessment-compare');
+    const comparisonGoal = comparison.querySelector('[data-assessment-compare-goal]');
+    const applied = form.querySelector('[data-assessment-apply-note]');
     const current = () => ({goal:goal.value, mode:mode.value, task:task.value, alternative:alternative.value, evidence:evidence.value, criterion:criterion.value});
     function updatePreview() {
       const value = current();
       const parts = assessmentParts(value);
+      comparisonGoal.textContent = value.goal.trim() ? 'Uw leerdoel: ' + value.goal.trim() : 'Vul hierboven uw eigen leerdoel in om een aanpak te gebruiken.';
+      applied.textContent = '';
       clear.hidden = example ? Object.entries(value).every(([key, text]) => text === example[key]) : !Object.values(value).some(Boolean);
       goal.setCustomValidity(value.goal && !value.goal.trim() ? 'Vul een leerdoel in.' : '');
       if (!parts.length) {
@@ -1644,6 +1664,18 @@
       updatePreview();
     }
     form.oninput = saveAndPreview;
+    for (const button of comparison.querySelectorAll('[data-assessment-apply]')) {
+      button.onclick = () => {
+        if (!goal.value.trim()) { goal.focus(); goal.reportValidity(); return; }
+        mode.value = button.dataset.assessmentApply;
+        saveAndPreview();
+        comparison.open = false;
+        applied.textContent = 'Gekozen aanpak: ' + ASSESSMENT_MODES[mode.value].label + '.' +
+          ([task, alternative, evidence, criterion].some(field => field.value.trim())
+            ? ' Controleer of de ingevulde opdracht, inlevervorm en beoordeling aansluiten bij deze keuze.' : '');
+        main.querySelector('#assessment-preview-title').focus();
+      };
+    }
     form.onsubmit = event => { event.preventDefault(); main.querySelector('#assessment-preview-title').focus(); };
     start.onchange = () => {
       assessmentChoice = Object.hasOwn(ASSESSMENT_EXAMPLES, start.value) ? start.value : '';
@@ -2191,6 +2223,70 @@
     return rows;
   }
 
+  const PILOT_FIELDS = [
+    ['doel', 'Doel en afbakening', 'Wat probeert u, met wie en welk onderwijsprobleem wilt u oplossen?'],
+    ['rollen', 'Wie voert uit en wie mag besluiten?', 'Noem de rollen en wat zij mogen beslissen. Laat het mandaat bij twijfel bevestigen.'],
+    ['afweging', 'Risico en maatregel', 'Wiens belang kan onder druk komen? Welke maatregel en welk alternatief spreekt u af?'],
+    ['bewijs', 'Bewijs voor het besluit', 'Welke bron of observatie hebt u al? Wat moet nog blijken en waaraan ziet u dat?'],
+    ['herzien', 'Herbeoordeling en stopafspraak', 'Wanneer kijkt u terug? Wie kan ingrijpen als een leerling of medewerker een probleem meldt?']
+  ];
+  const PILOT_CHOICES = [
+    ['uitvoeren', 'Uitvoeren binnen de afgesproken grenzen', 'Leg vast wie akkoord gaf, wat de grenzen zijn en wie de inzet kan stoppen.'],
+    ['proef', 'Eerst een kleine proef', 'Baken de groep, duur en gegevens af. Start bijvoorbeeld met fictieve voorbeelden en beoordeel de uitkomst vóór breder gebruik.'],
+    ['uitstellen', 'Uitstellen of afzien', 'Noteer welke vraag openblijft, wie die uitzoekt en welke werkwijze intussen beschikbaar blijft.']
+  ];
+
+  function pilotSheetText(entries, choice) {
+    const decision = PILOT_CHOICES.find(([key]) => key === choice);
+    const fields = PILOT_FIELDS.map(([key, label]) => `${label}\n${entries[key]?.trim() || '[In te vullen]'}`);
+    return ['Besluitblad AI-proef · bespreekversie', ...fields,
+      `Voorgestelde keuze\n${decision ? decision[1] : '[Nog te kiezen]'}`,
+      `Vervolg\n${decision ? decision[2] : 'Bespreek de keuze met degene die volgens de instellingsafspraken mag besluiten.'}`,
+      'Werkblad van de AI & Onderwijs Atlas Nederland · https://aionderwijsatlas.nl/#pilotbesluit'].join('\n\n');
+  }
+
+  function renderPilotDecision() {
+    const fields = PILOT_FIELDS.map(([key, label, prompt]) => `<div class="pilot-field">
+      <label for="pilot-${key}">${escapeHtml(label)}</label><p id="pilot-help-${key}">${escapeHtml(prompt)}</p>
+      <textarea id="pilot-${key}" data-pilot-field="${key}" rows="2" aria-describedby="pilot-help-${key}" autocomplete="off"></textarea></div>`).join('');
+    main.innerHTML = `<article class="assessment-page pilot-page"><nav class="detail-back" aria-label="Terug naar de gids">
+      <a href="#praktijkgids">Naar de praktijkgids</a> · <a href="#toolkeuze">Naar de toepassing voor mijn les</a></nav>
+      <header><h1 tabindex="-1">Besluiten over een AI-proef</h1>
+        <p>Wil een team een AI-toepassing gaan gebruiken? Vul samen met schoolleiding, onderwijs en ICT of privacy één besluitblad in. Benoem wie volgens de afspraken van uw instelling mag besluiten en wie het besluit later kan herzien.</p></header>
+      <div class="assessment-layout"><section class="assessment-form" aria-labelledby="pilot-sheet"><h2 id="pilot-sheet">Uw besluitblad</h2>
+        <p>Gebruik functienamen en een algemene beschrijving. De Atlas verstuurt of bewaart uw invoer niet. Kopieer het blad als u het wilt meenemen.</p>
+        ${fields}<fieldset><legend>Welke keuze legt u voor?</legend>
+          ${PILOT_CHOICES.map(([key, label]) => `<label class="assessment-choice"><input type="radio" name="pilot-keuze" value="${key}">${escapeHtml(label)}</label>`).join('')}
+        </fieldset><p data-pilot-advice role="status"></p>
+        <div class="assessment-actions"><button type="button" class="btn" data-copy-pilot>Kopieer besluitblad</button>
+          <span data-pilot-feedback role="status"></span></div>
+        <textarea hidden readonly aria-label="Besluitblad om handmatig te kopiëren" data-pilot-copy></textarea>
+      </section><aside class="assessment-preview" aria-labelledby="pilot-example"><h2 id="pilot-example">Voorbeeld voor het overleg</h2>
+        <p>Een opleiding wil een chatbot feedback op conceptteksten laten geven. Twee docenten beginnen met verzonnen teksten. Ze vergelijken de feedback met het leerdoel en noteren onjuistheden. Een leerling kan dezelfde opdracht zonder chatbot maken.</p>
+        <p>De projectleider legt na twee weken de bevindingen voor aan de bevoegde rol. Als de feedback een fout aanleert, stopt de proef tot een docent de werkwijze heeft beoordeeld. Dit is een voorbeeld van de Atlas.</p>
+        <h3>Welke handreiking past bij uw instelling?</h3><ul>
+          <li><a href="#item/schoolafspraken-over-het-gebruik-van-generatieve-ai" target="_blank" rel="noopener noreferrer">PO en VO · Schoolafspraken van Kennisnet</a>. Bespreek het onderwijsdoel, de grenzen aan gebruik en de afspraken voor leraren en leerlingen.</li>
+          <li><a href="#item/npuls-raise-risicobeoordeling-ai" target="_blank" rel="noopener noreferrer">Mbo, hbo en wo · RAISE van Npuls</a>. Loop met de betrokken deskundigen de risico’s, maatregelen en opvolging langs. Npuls presenteert dit als een eerste versie.</li>
+          <li><a href="#item/surf-kennisnet-waardenwijzer-2025" target="_blank" rel="noopener noreferrer">Alle sectoren · WaardenWijzer van SURF en Kennisnet</a>. Kies een waarde die geraakt wordt, zoals autonomie of rechtvaardigheid. Betrek iemand die de gevolgen ondervindt.</li>
+        </ul><p class="assessment-note">De bronkaarten openen in een nieuw tabblad zodat uw besluitblad openblijft. Deze handreikingen ondersteunen het gesprek. Uw instelling bepaalt of de inzet kan doorgaan.</p>
+      </aside></div></article>`;
+    const form = main.querySelector('.assessment-form');
+    const advice = form.querySelector('[data-pilot-advice]');
+    const feedback = form.querySelector('[data-pilot-feedback]');
+    const fallback = form.querySelector('[data-pilot-copy]');
+    form.oninput = () => {
+      fallback.hidden = true;
+      feedback.textContent = '';
+      const choice = form.querySelector('input:checked')?.value;
+      advice.textContent = PILOT_CHOICES.find(([key]) => key === choice)?.[2] || '';
+    };
+    form.querySelector('[data-copy-pilot]').onclick = event => {
+      const entries = Object.fromEntries([...form.querySelectorAll('[data-pilot-field]')].map(field => [field.dataset.pilotField, field.value]));
+      return copyTextWithFallback(event.currentTarget, pilotSheetText(entries, form.querySelector('input:checked')?.value), feedback, fallback,
+        'Besluitblad gekopieerd.', 'De tekst is geselecteerd. Kopieer uw besluitblad handmatig.');
+    };
+  }
+
   function renderToolChoice() {
     const examples = [
       {id:'aigo-transcribe-tool', guide:'https://github.com/AIgovernanceofficer/Transcribe-tool#readme',
@@ -2214,7 +2310,8 @@
     const previous = sessionGet('atlas.lastSearch');
     const back = /^#zoeken(?:\?|$)/.test(previous) ? `<a href="${escapeHtml(previous)}">Terug naar uw zoekopdracht</a> · ` : '';
     main.innerHTML = `<section class="assessment-page tool-choice"><nav aria-label="Terug naar het aanbod">${back}<a href="#zoeken?type=software">Naar alle AI-software in de Atlas</a></nav>
-      <header><h1 tabindex="-1">Welke AI-toepassing past bij mijn les?</h1><p>Wilt u een bestaande opname laten uitschrijven of een tekst dicteren? Kies op basis van wat de leerling zelf moet oefenen.</p></header>
+        <header><h1 tabindex="-1">Welke AI-toepassing past bij mijn les?</h1><p>Wilt u een bestaande opname laten uitschrijven of een tekst dicteren? Kies op basis van wat de leerling zelf moet oefenen.</p>
+          <p>Een keuze maken voor meerdere klassen of een opleiding? <a href="#pilotbesluit">Vul samen het besluitblad voor een AI-proef in</a>.</p></header>
       ${examples.length ? `<div class="assessment-layout">${examples.map(({id, record, guide, goal, task, privacy, access}) => `<article class="assessment-preview">
         <h2>${goal}</h2><p><a href="#item/${escapeHtml(id)}">${escapeHtml(record.title)}</a></p><dl>
           <div><dt>Leshandeling</dt><dd>${task}</dd></div>
@@ -2356,6 +2453,18 @@
     );
   }
 
+  function lessonDirectoryReturn() {
+    const params = new URLSearchParams(location.hash.split('?')[1]);
+    if (params.get('van') !== 'lesgids' || params.getAll('van').length !== 1) return '';
+    params.delete('van');
+    for (const [key, value] of params) {
+      if (!['sector', 'vak', 'doel', 'activiteit', 'minuten'].includes(key) || params.getAll(key).length !== 1 ||
+          !value.trim() || value.length > 160 || /[\u0000-\u001f\u007f]/.test(value)) return '';
+      if (key === 'minuten' && (!/^[1-9]\d*$/.test(value) || !Number.isSafeInteger(Number(value)))) return '';
+      if (key === 'sector' && !SECTORS.includes(value) && !records.some(item => item.lessonStart?.sectors?.includes(value))) return '';
+    }
+    return 'lesmateriaal/' + (params.size ? '#selectie?' + params : '');
+  }
   function renderDetail(id) {
     const target = source.metadata?.recordRedirects?.[id];
     if (typeof target === 'string' && records.some(item => item.id === target)) {
@@ -2367,8 +2476,10 @@
       main.innerHTML = `<section class="detail-missing"><h1>Niet gevonden</h1><p>Dit item staat niet in de huidige dataset.</p><a class="btn" href="#zoeken">Terug naar zoeken</a></section>`;
       return;
     }
-    const lastSearch = sessionGet('atlas.lastSearch') || '#zoeken';
-    const backLabel = lastSearch.startsWith('#onderzoek') ? '← Terug naar Onderzoek doen of promoveren'
+    const directoryReturn = lessonDirectoryReturn();
+    const lastSearch = directoryReturn || sessionGet('atlas.lastSearch') || '#zoeken';
+    const fromDirectory = lastSearch.startsWith('lesmateriaal/');
+    const backLabel = fromDirectory ? '← Terug naar uw lesselectie' : lastSearch.startsWith('#onderzoek') ? '← Terug naar Onderzoek doen of promoveren'
       : lastSearch === '#praktijkgids' ? '← Terug naar de praktijkgids'
       : lastSearch.startsWith('#vergelijken?') ? 'Terug naar vergelijking' : '← Terug naar resultaten';
     const related = records.filter(item => item.id !== record.id)
@@ -2385,7 +2496,7 @@
     const sourceLinks = `<h3>Officiële bronnen</h3>${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}`;
     const lesson = hasAvailableLesson(record) && lessonStartBody(record);
     main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(offerLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
-      <section class="detail-shell"${materialDetail ? ` data-atlas-material-detail="${escapeHtml(record.id)}"` : ''}><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${backLabel}</a><span>Home / ${lastSearch.startsWith('#onderzoek') ? 'Onderzoek' : 'Resultaten'} / ${escapeHtml(record.title)}</span></nav>
+      <section class="detail-shell"${materialDetail ? ` data-atlas-material-detail="${escapeHtml(record.id)}"` : ''}><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${backLabel}</a><span>Home / ${fromDirectory ? 'Lesgids' : lastSearch.startsWith('#onderzoek') ? 'Onderzoek' : 'Resultaten'} / ${escapeHtml(record.title)}</span></nav>
       <div class="detail-layout"><article>
         ${funding ? `<section class="funding-conditions"><h2>Aanvraag en voorwaarden</h2><dl>
           <div><dt>Aanvragers</dt><dd>${escapeHtml(applicants)}</dd></div>
@@ -2412,7 +2523,8 @@
     if (lesson) bindLessonCopy(main);
     if (materialDetail) window.dispatchEvent?.(new Event('atlas-material-detail'));
     const back = document.querySelector('.back-results');
-    back.onclick = () => sessionSet('atlas.restoreResults', lastSearch);
+    back.onclick = () => { if (!fromDirectory) sessionSet('atlas.restoreResults', lastSearch); };
+    if (directoryReturn) document.querySelector('.lesson-detail a[href^="#leerlingblad?"]')?.addEventListener('click', () => sessionSet('atlas.lastSearch', directoryReturn));
     document.querySelectorAll('.related-cards a[href^="#item/"]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', lastSearch));
     const copy = document.querySelector('[data-copy-citation]');
     if (copy) copy.onclick = () => copySourceCitation(record);
@@ -2782,11 +2894,13 @@
     clearTimeout(debounceTimer);
     if (window.ATLAS_STARTUP?.status === 'failed') { window.ATLAS_STARTUP.fail(); return; }
     const path = (location.hash.slice(1) || 'home').split('?')[0];
+    // A fragment link can fire both popstate and hashchange. Keep an open sheet and its keyboard focus.
+    if (path === 'pilotbesluit' && main.querySelector('.pilot-page')) return;
     document.querySelector('.site-header')?.classList.remove('open');
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
     const guides = {
       'praktijkgids': renderPracticeGuide, 'wat-werkt': renderLearningEvidence,
-      'toolkeuze': renderToolChoice, 'regels-in-de-praktijk': renderPracticeRules
+      'toolkeuze': renderToolChoice, 'pilotbesluit': renderPilotDecision, 'regels-in-de-praktijk': renderPracticeRules
     };
     if (path === 'home' || (!Object.hasOwn(guides, path) && !['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
     if (Object.hasOwn(guides, path)) guides[path]();

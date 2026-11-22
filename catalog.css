@@ -290,6 +290,16 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 .guide-block { margin: .45rem 0; padding: .35rem .85rem; border: 1px solid var(--brand-border, #c6cfcb); border-radius: .5rem; }
 .guide-block summary { padding: .65rem 0; color: var(--brand-bluegray-deep, #344f5d); font-weight: 700; cursor: pointer; }
 .guide-block p { line-height: 1.5; }
+.pilot-page .assessment-layout { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+.pilot-page .assessment-form h2 { margin-top: 0; }
+.pilot-field { margin-top: 1.1rem; }
+.pilot-field label { display: block; font-weight: 700; }
+.pilot-field p { margin: .2rem 0; color: var(--muted); }
+.pilot-page .assessment-preview li + li { margin-top: .8rem; }
+.pilot-page .assessment-preview p, .pilot-page .assessment-preview li { overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+  .pilot-page .assessment-layout { grid-template-columns: minmax(0, 1fr); }
+}
 [data-picked-sheet][hidden] { display: none; }
 
 .teacher-routes ul { list-style: none; padding: 0; margin: .5rem 0 0; }

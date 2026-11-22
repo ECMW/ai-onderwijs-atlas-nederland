@@ -81,12 +81,60 @@ class Element {
   querySelector(selector) { return this.querySelectorAll(selector)[0] || null; }
   closest(selector) { return this.matches(selector) ? this : this.parent?.closest(selector) || null; }
   contains(other) { return Boolean(other && (other === this || this.contains(other.parent))); }
+  getAttribute(name) { return this.attributes[name] ?? null; }
   setAttribute(name, value) { this.attributes[name] = String(value); }
   removeAttribute(name) { delete this.attributes[name]; }
   addEventListener() {}
   focus() {}
   getBoundingClientRect() { return { top: 0, bottom: 0 }; }
 }
+
+test('a shared lesson directory selection reopens with the same sector, subject and goal, and reset restores all lessons', async () => {
+  const script = fs.readFileSync(path.join(root, 'lesgids-filter.js'), 'utf8');
+  const template = fs.readFileSync(path.join(__dirname, '../scripts/lesson_directory.html'), 'utf8');
+  const cases = [
+    ['doelles', 'VO', 'Biologie', 'Voedselweb tekenen'], ['ander-niveau', 'HBO', 'Biologie', 'Voedselweb tekenen'],
+    ['ander-vak', 'VO', 'Aardrijkskunde', 'Voedselweb tekenen'], ['ander-doel', 'VO', 'Biologie', 'Planten herkennen']
+  ];
+  function open(href) {
+    const location = new URL(href), document = new Element('document'), events = new EventTarget();
+    const cards = cases.map(([id, sector]) => '<article data-id="' + id + '"><span data-directory-sectors="' + sector +
+      '"></span><span data-directory-subject></span><span data-directory-goal></span><a class="directory-card-link" href="../#item/' + id + '"></a></article>');
+    document.innerHTML = template.replace('$sections', '<section aria-labelledby="groep">' + cards.join('') + '</section>');
+    const form = document.querySelector('[data-directory-filter]');
+    document.querySelectorAll('article').forEach((card, i) => {
+      card.querySelector('[data-directory-subject]').textContent = cases[i][2];
+      card.querySelector('[data-directory-goal]').textContent = cases[i][3];
+    });
+    const fields = form.querySelectorAll('input,select');
+    for (const field of fields) field.validity = {valid:true};
+    form.addEventListener = events.addEventListener.bind(events);
+    form.reportValidity = () => true;
+    let copied;
+    vm.runInNewContext(script, {document, location, URLSearchParams, window:new EventTarget(),
+      history:{replaceState:(_, __, url) => { location.href = new URL(url, location).href; }},
+      navigator:{clipboard:{writeText:async url => { copied = url; }}}, requestAnimationFrame:callback => callback()});
+    return {form, location, events, visible:() => document.querySelectorAll('article').filter(card => !card.hidden).map(card => card.dataset.id),
+      share:async () => { await form.querySelector('[data-share-lessons]').onclick(); return copied; },
+      reset:() => { fields.forEach(field => { field.value = ''; }); events.dispatchEvent(new Event('reset')); }};
+  }
+  const base = 'https://example.org/lesmateriaal/';
+  const original = open(base + '?atlas-no-count=1');
+  for (const [field, value] of [['sector','VO'], ['subject','Biologie'], ['goal','voedselweb']]) {
+    original.form.querySelector('[data-filter-' + field + ']').value = value;
+    original.events.dispatchEvent(new Event('input'));
+  }
+  assert.deepEqual(original.visible(), ['doelles']);
+  const hash = '#selectie?sector=VO&vak=Biologie&doel=voedselweb';
+  assert.equal(original.location.hash, hash);
+  const shared = await original.share();
+  assert.equal(shared, base + hash);
+  const reopened = open(shared);
+  assert.deepEqual(reopened.visible(), ['doelles']);
+  reopened.reset();
+  assert.deepEqual(reopened.visible(), cases.map(row => row[0]));
+  assert.equal(reopened.location.href, base);
+});
 
 function boot({ replacements = {}, omitted = [], omitGuard = false, fetch, href = 'https://example.org/atlas/?view=public#home' } = {}) {
   const document = new Element('document');

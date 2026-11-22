@@ -21,12 +21,13 @@ SECTOR_GROUPS = (
 LANGUAGES = {"nl": "Nederlands", "en": "Engels", "de": "Duits", "fr": "Frans", "es": "Spaans"}
 
 
-def lesson_card(record):
+def lesson_card(record, sector_group=None):
     lesson = record["lessonStart"]
     level = escape(lesson["level"])
     subjects = ", ".join(escape(name) for name in record.get("subjects", []))
     languages = ", ".join(LANGUAGES[code] for code in record.get("language", []) if code in LANGUAGES)
-    facts = [f'<div><dt>Niveau</dt><dd>{level}</dd></div>']
+    sectors = " ".join(value for value in lesson["sectors"] if not sector_group or value in sector_group)
+    facts = [f'<div><dt>Niveau</dt><dd data-directory-sectors="{escape(sectors)}">{level}</dd></div>']
     if subjects:
         facts.append(f'<div><dt>Vakgebied</dt><dd data-directory-subject>{subjects}</dd></div>')
     if languages:
@@ -76,14 +77,19 @@ def generate_lesson_directory(root: Path, destination: Path) -> None:
         for key in matches or ["overig"]:
             grouped[key].append(record)
     links, sections = [], []
-    for key, title, _ in SECTOR_GROUPS:
+    sectors_present = {sector for rows in grouped.values() for row in rows for sector in row["lessonStart"]["sectors"]}
+    sector_labels = {"PO": "Primair onderwijs", "VO": "Voortgezet onderwijs", "MBO": "Middelbaar beroepsonderwijs",
+                     "HBO": "Hoger beroepsonderwijs", "WO": "Wetenschappelijk onderwijs"}
+    sector_labels.update({value: value for value in sorted(sectors_present - sector_labels.keys())})
+    for key, title, group in SECTOR_GROUPS:
         if not grouped[key]:
             continue
         links.append(f'<a href="#{key}">{title}</a>')
-        cards = [lesson_card(row) for row in sorted(grouped[key], key=lambda row: row["title"].casefold())]
+        cards = [lesson_card(row, group) for row in sorted(grouped[key], key=lambda row: row["title"].casefold())]
         sections.append(f'<section aria-labelledby="{key}"><h2 id="{key}">{title}</h2>{"".join(cards)}</section>')
     template = Template((root / "scripts/lesson_directory.html").read_text(encoding="utf-8"))
     page = template.substitute(
+        sector_options="".join(f'<option value="{escape(key)}">{escape(title)}</option>' for key, title in sector_labels.items()),
         navigation=f'<nav aria-label="Onderwijssector">{"".join(links)}</nav>' if links else "",
         sections="\n".join(sections) or "<p>Er zijn momenteel geen beschikbare lesstarts.</p>",
     )
