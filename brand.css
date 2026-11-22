@@ -155,6 +155,8 @@ footer{
   color:#f7f3e9;
   border-top:6px solid var(--brand-olive);
 }
+body > footer a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
+body > footer a:focus-visible { outline-color: #fff !important; }
 
 *:focus-visible{outline:3px solid var(--brand-focus)!important;outline-offset:3px}
 ::selection{background:var(--brand-sand);color:var(--brand-ink)}
