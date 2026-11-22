@@ -42,6 +42,22 @@ Bij een vastgestelde aard is `commercialEvidence` verplicht:
 
 De automatische route voor nieuwe bijdragen stelt strengere eisen: de bron moet bij de bekende aanbieder horen, volledig uitgelezen worden en de letterlijke onderbouwende zin moet de commerciële of niet-commerciële aard van het aanbod expliciet benoemen. Een prijs, bedrijfsvorm, algemene licentievoorwaarde of aangevinkte keuze geldt niet als zelfstandig bewijs. Twijfelgevallen blijven ter beoordeling; er wordt geen persoonlijk akkoord van Eva toegekend.
 
+## Subsidies en calls
+
+Leg de organisaties vast die formeel mogen aanvragen in `applicantTypes` en beschrijf de
+voorwaarden in `eligibility`. De onderwijssector en de doelgroep van een project kunnen
+verschillen van de partij die de aanvraag indient. Maak bij bedragen onderscheid tussen het
+maximum per aanvraag en het totale budget van een ronde. Gebruik een officiële bron voor de
+specifieke ronde wanneer die beschikbaar is.
+
+`applicationDeadline` bevat de sluitingsdatum bij de verstrekker. Als de bron ook de
+sluitingstijd en tijdzone noemt, leg die dan vast in `applicationDeadlineAt`, bijvoorbeeld
+`2026-12-01T14:00:00+01:00`. Vanaf dat tijdstip toont de Atlas de ronde als gesloten.
+Als alleen de datum bekend is, blijft de bestaande daggrens gelden. Bij een doorlopende
+regeling horen tussenliggende ophaalmomenten en een eventueel subsidieplafond in
+`availabilityText`. Gebruik een ophaalmoment uitsluitend als einddeadline als de
+verstrekker die datum ook uitdrukkelijk als einde van de ronde noemt.
+
 ## Vakgebied
 
 `subjects` is een optionele lijst met Nederlandse vaknamen, bijvoorbeeld `["Biologie", "Wiskunde"]`.

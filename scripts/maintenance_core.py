@@ -8,7 +8,7 @@ from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
-from maintenance_normalize import FetchResult, canonical_url, normalize_html
+from maintenance_normalize import FetchResult, canonical_url, deadline_clock, normalize_html
 
 EVENTS = {"NEW", "CHANGED", "REMOVED", "UNREACHABLE", "SOURCE_CHANGED", "NO_CHANGE"}
 
@@ -75,6 +75,25 @@ class NetworkFetcher:
                 waits = net.get("backoffSeconds", [1])
                 self.sleep(waits[min(index, len(waits) - 1)])
         return FetchResult(False, 0, source["baseUrl"], error=error)
+
+
+def deadline_facts_changed(previous: list[dict], current: list[dict]) -> bool:
+    if [item["dateText"] for item in previous] != [item["dateText"] for item in current]:
+        return True
+    for before, after in zip(previous, current):
+        old_time = before.get("deadlineTime")
+        if old_time is None:
+            # Older snapshots kept up to 90 characters before the matched date.
+            date = before["dateText"]
+            context = before.get("context", "")
+            start = context.rfind(date, 0, 90 + len(date))
+            old_time = deadline_clock(context[start + len(date):]) if start >= 0 else ""
+            if not old_time or not after["deadlineTime"]:
+                # The old normalizer could discard a clock in its own HTML tag.
+                continue
+        if old_time != after["deadlineTime"]:
+            return True
+    return False
 
 
 def classify(source: dict, previous: dict, result: FetchResult, config: dict) -> tuple[dict, dict]:
@@ -151,9 +170,7 @@ def classify(source: dict, previous: dict, result: FetchResult, config: dict) ->
         pending.setdefault(item["url"], {"count": 1, "unit": item})
     state["pendingMissing"] = pending
     removed = confirmed_removed
-    old_deadlines = [item.get("dateText") for item in old.get("deadlineFacts", [])]
-    new_deadlines = [item.get("dateText") for item in snapshot.get("deadlineFacts", [])]
-    changed_deadlines = old_deadlines != new_deadlines
+    changed_deadlines = deadline_facts_changed(old.get("deadlineFacts", []), snapshot["deadlineFacts"])
     if not added and not removed and not changed_deadlines:
         reason = ("Source link absence awaits repeated successful confirmation" if newly_missing
                   else "Only non-structural body text changed")

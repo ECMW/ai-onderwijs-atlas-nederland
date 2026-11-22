@@ -7,7 +7,7 @@ import json
 import re
 from pathlib import Path
 
-from contribution_quality import commercial_field_errors, subject_field_errors
+from contribution_quality import application_deadline_errors, commercial_field_errors, subject_field_errors
 from offer_categories import offer_category_errors
 from publication_scope import publication_exclusion_errors
 from source_library import source_library_errors
@@ -62,6 +62,7 @@ def validation_errors(root: Path) -> tuple[list[str], int]:
     book_isbns: list[str] = []
 
     for record in records:
+        errors.extend(application_deadline_errors(record))
         errors.extend(commercial_field_errors(record))
         errors.extend(offer_category_errors(record))
         errors.extend(publication_exclusion_errors(record))

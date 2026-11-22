@@ -240,12 +240,20 @@
     }
     return todayCache.value;
   }
-  function effectiveStatus(record, today = todayInNetherlands()) {
+  const isFunding = record => ['funding_call', 'subsidy'].includes(record.recordType) || ['Call', 'Subsidie'].includes(record.legacyType);
+  function deadlineInstant(record) {
+    const value = record.applicationDeadlineAt;
+    return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|[+-]\d{2}:\d{2})$/i.test(value) &&
+      validDate(value.slice(0, 10)) && Number.isFinite(Date.parse(value)) ? value : '';
+  }
+  function effectiveStatus(record, today = todayInNetherlands(), now = Date.now()) {
     if (validDate(today)) {
-      const deadline = validDate(record.applicationDeadline) || validDate(record.fundingDeadline);
-      if (record.status === 'open_call' &&
-          (['funding_call', 'subsidy'].includes(record.recordType) || ['Call', 'Subsidie'].includes(record.legacyType)) &&
-          deadline && deadline < today) return 'closed_call';
+      if (record.status === 'open_call' && isFunding(record)) {
+        const instant = deadlineInstant(record);
+        const deadline = validDate(record.applicationDeadline) || validDate(record.fundingDeadline);
+        if (instant ? now >= Date.parse(instant) : deadline && deadline < today) return 'closed_call';
+        if (validDate(record.applicationOpenDate) > today) return 'planned';
+      }
       const end = validDate(record.endDate);
       if ((record.recordType === 'training' || record.legacyType === 'Training') &&
           ['available', 'planned'].includes(record.status) && end && end < today) return 'archived';
@@ -256,6 +264,7 @@
     if (['Behoefte', 'Witte vlek'].includes(record.legacyType)) return 'Geïdentificeerde behoefte';
     return STATUS_LABELS[effectiveStatus(record, today)] || 'Te verifiëren';
   };
+  const displayStatus = record => isFunding(record) && record.status === 'available' ? 'Regeling of informatiebron' : statusLabel(record);
   const subjectOptions = [...new Set(records.flatMap(record => record.subjects || []))]
     .sort((left, right) => left.localeCompare(right, 'nl'));
   const organizationNames = [...new Set(records.map(record => record.providerName).filter(Boolean))]
@@ -472,7 +481,20 @@
         return order || a.title.localeCompare(b.title, 'nl') || a.id.localeCompare(b.id);
       });
     }
-    return sortByRelevance(list, state);
+    const ranked = sortByRelevance(list, state);
+    if (!isFundingSelection()) return ranked;
+    const priority = {open_call:0, planned:1, in_development:1, closed_call:3, archived:3};
+    const ranks = new Map(ranked.map(record => [record, priority[effectiveStatus(record)] ?? 2]));
+    const deadlineDay = record => validDate(record.applicationDeadline) || validDate(record.fundingDeadline) || deadlineInstant(record).slice(0, 10) || '9999-12-31';
+    return ranked.sort((a, b) => {
+      const byStatus = ranks.get(a) - ranks.get(b);
+      if (byStatus || ranks.get(a) !== 0) return byStatus;
+      const byDay = deadlineDay(a).localeCompare(deadlineDay(b));
+      if (byDay) return byDay;
+      const first = deadlineInstant(a), second = deadlineInstant(b);
+      if (first && second) return Date.parse(first) - Date.parse(second);
+      return Number(Boolean(second)) - Number(Boolean(first));
+    });
   }
   function sortByRelevance(list, criteria) {
     const scores = new Map(list.map(record => [record, relevance(record, criteria)]));
@@ -598,6 +620,7 @@
   }
   function primarySource(record) { return officialSources(record)[0] || null; }
   function sourceActionLabel(record) {
+    if (isFunding(record)) return record.recordType === 'funding_call' ? 'Officiële oproep en voorwaarden' : 'Officiële regeling en voorwaarden';
     if (record.offerCategory === 'materials') return 'Bekijk materiaal';
     if (record.legacyType === 'Raamwerk') return 'Bekijk raamwerk';
     if (record.recordType === 'guidance' && record.subtype) {
@@ -681,6 +704,7 @@
     return `<h2>Commercieel aanbod</h2><p>${escapeHtml(evidence.note)} <a href="${escapeHtml(evidence.url)}" target="_blank" rel="noopener noreferrer">Bron voor deze vermelding ↗</a> · Broncontrole ${escapeHtml(dateLabel(evidence.checkedOn))}.</p>`;
   }
   function offerFacts(record) {
+    const funding = isFunding(record);
     const bookFacts = record.recordType === 'book' ? [
       ['Auteur(s)', factValue((record.authors || []).join(', '))],
       ['Boeksoort', bookCategoryLabel(record.bookCategory)],
@@ -695,7 +719,7 @@
       ['Voor wie', factValue((record.audiences || []).join(', '))],
       ['Sector', factValue((record.sectors || []).filter(sector => sector !== 'VSO').join(', '))],
       ...(record.subjects?.length ? [['Vakgebied', record.subjects.join(', ')]] : []),
-      ['Beschikbaarheid', statusLabel(record)],
+      ['Beschikbaarheid', displayStatus(record)],
       ['Kosten', costLabel(record)],
       ['Toegang', accessLabel(record)],
       ['Taal', languageList(record)],
@@ -703,7 +727,7 @@
       ['Verschenen op', publicationDate(record) ? dateLabel(publicationDate(record)) : 'Publicatiedatum onbekend'],
       ['Nieuw in de Atlas sinds', addedDate(record) ? dateLabel(addedDate(record)) : 'Datum niet vastgelegd'],
       ['Broncontrole', validDate(record.lastVerified) ? dateLabel(record.lastVerified) : 'Datum niet vastgelegd'],
-      ['Deadline', factValue(record.applicationDeadline || record.fundingDeadline)]
+      ...(!funding ? [['Deadline', factValue(record.applicationDeadline || record.fundingDeadline)]] : [])
     ];
   }
 
@@ -749,8 +773,23 @@
     ].join('\r\n');
     return `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
+  function fundingApplicants(record) {
+    return (record.applicantTypes || []).join(', ') || record.eligibility || 'Zie de officiële voorwaarden';
+  }
   function practicalDates(record, markup = true) {
     const deadline = validDate(record.applicationDeadline) || validDate(record.fundingDeadline);
+    if (isFunding(record)) {
+      const instant = deadlineInstant(record);
+      if (instant) {
+        const label = new Intl.DateTimeFormat('nl-NL', {dateStyle:'medium', timeStyle:'short', timeZone:'Europe/Amsterdam'}).format(new Date(instant));
+        return `Aanvraagdeadline ${markup ? `<time datetime="${escapeHtml(instant)}">${escapeHtml(label)}</time>` : label} (Nederlandse tijd)`;
+      }
+      if (!deadline) {
+        const period = record.availabilityText?.trim();
+        const text = period && /doorlopend|per call|subsidieplafond|ophaalmoment/i.test(period) ? period : 'Geen uiterste datum bevestigd';
+        return markup ? escapeHtml(text) : text;
+      }
+    }
     const parts = [];
     const time = date => markup ? `<time datetime="${date}">${escapeHtml(dateLabel(date))}</time>` : dateLabel(date);
     const training = record.recordType === 'training' || record.legacyType === 'Training';
@@ -774,8 +813,9 @@
       <div class="card-body offer-intro"><div class="card-top"><span class="type-label">${escapeHtml(offerLabel(record))}</span></div>
         <h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
         <p class="provider">Aanbieder: ${escapeHtml(factValue(record.providerName))}</p>${commercialBadge(record)}
-        <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(statusLabel(record))}</span>${dates ? `<span>${dates}</span>` : ''}</div>
-        <dl class="offer-terms"><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div><div><dt>Toegang</dt><dd>${escapeHtml(accessLabel(record))}</dd></div><div><dt>Taal</dt><dd>${escapeHtml(languageList(record))}</dd></div></dl>
+        <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(displayStatus(record))}</span>${dates ? `<span>${dates}</span>` : ''}</div>
+        ${isFunding(record) ? `<dl class="offer-terms funding-terms"><div><dt>Aanvragers</dt><dd>${escapeHtml(fundingApplicants(record))}</dd></div></dl>` :
+          `<dl class="offer-terms"><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div><div><dt>Toegang</dt><dd>${escapeHtml(accessLabel(record))}</dd></div><div><dt>Taal</dt><dd>${escapeHtml(languageList(record))}</dd></div></dl>`}
       </div>
       <div class="card-actions offer-links">
         ${sourceItem ? `<a class="card-cta primary" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record))}: ${escapeHtml(record.title)}">${escapeHtml(sourceActionLabel(record))} ↗</a>` : ''}
@@ -894,7 +934,8 @@
     return recordContextMarkup(record);
   }
   function recordContextMarkup(record) {
-    return `${record.availabilityText ? `<h2>Praktisch en beschikbaarheid</h2><p>${escapeHtml(record.availabilityText)}</p>` : ''}
+    const availability = record.availabilityText;
+    return `${availability && (!isFunding(record) || availability !== practicalDates(record, false)) ? `<h2>Praktisch en beschikbaarheid</h2><p>${escapeHtml(availability)}</p>` : ''}
       ${record.notes ? `<h2>Duiding en bewijsgrens</h2><p>${escapeHtml(record.notes)}</p>` : ''}
       ${record.verificationNote ? `<details class="source-review"><summary>Wat is bij de broncontrole vastgesteld?</summary><p>${escapeHtml(record.verificationNote)}</p></details>` : ''}`;
   }
@@ -1045,11 +1086,14 @@
   }
   const ASSESSMENT_CRITERIA = { q: 'toets', theme: 'Toetsing en examinering', type: 'materials,knowledge' };
   const AGREEMENT_CRITERIA = { q: 'afspraken', type: 'materials,knowledge' };
+  const FUNDING_TYPES = ['Subsidie of call', 'Subsidie'];
+  const FUNDING_CRITERIA = { type: FUNDING_TYPES.join(','), status: STATUS_LABELS.open_call };
   const PRACTICE_ROUTES = [
     { label: 'Een les voorbereiden', detail: 'Opdrachten voor de klas en lesmateriaal', criteria: { q: 'les', type: 'materials' } },
     { label: 'Een toets herontwerpen', detail: 'Een toetsafspraak maken en toetsmateriaal vinden', criteria: ASSESSMENT_CRITERIA },
     { label: 'AI-afspraken maken', detail: 'Een teamproef opzetten en afspraken vinden', criteria: AGREEMENT_CRITERIA },
-    { label: 'Scholing vinden', detail: 'Cursussen, workshops en trainerskits', criteria: { type: 'Training', status: 'Direct beschikbaar' } }
+    { label: 'Scholing vinden', detail: 'Cursussen, workshops en trainerskits', criteria: { type: 'Training', status: 'Direct beschikbaar' } },
+    { label: 'Subsidies en calls', detail: 'Open oproepen, aanvragers en deadlines', criteria: FUNDING_CRITERIA }
   ];
   const SECTOR_NAMES = {
     PO: 'Primair onderwijs', VO: 'Voortgezet onderwijs', MBO: 'Middelbaar beroepsonderwijs',
@@ -1451,9 +1495,40 @@
     });
   }
 
+  function isFundingSelection() {
+    const types = values('type');
+    return types.length > 0 && types.every(type => FUNDING_TYPES.includes(type));
+  }
+  function fundingNavigation(context) {
+    const pool = recordsForCriteria({ ...state, status: '' });
+    const counts = new Map();
+    for (const record of pool) {
+      const status = statusLabel(record);
+      counts.set(status, (counts.get(status) || 0) + 1);
+    }
+    const categories = [
+      ['Open', [STATUS_LABELS.open_call]], ['Aangekondigd', [STATUS_LABELS.planned, STATUS_LABELS.in_development]],
+      ['Gesloten', [STATUS_LABELS.closed_call, STATUS_LABELS.archived]]
+    ];
+    const namedStatuses = categories.flatMap(([, statuses]) => statuses);
+    categories.splice(2, 0, ['Regelingen en overige oproepen', [...counts.keys()].filter(status => !namedStatuses.includes(status))]);
+    const current = values('status');
+    const links = categories.map(([label, statuses]) => {
+      const count = statuses.reduce((sum, status) => sum + (counts.get(status) || 0), 0);
+      const selected = current.length && current.every(status => statuses.includes(status));
+      const content = `${label} (${count})`;
+      if (!count && !selected) return `<span>${content}</span>`;
+      return `<a href="${escapeHtml(stateHref({ status: statuses.filter(status => counts.has(status) || current.includes(status)).join(',') }))}"${selected ? ' aria-current="page"' : ''}>${content}</a>`;
+    });
+    links.push(`<a href="${escapeHtml(stateHref({ status: '' }))}"${!current.length ? ' aria-current="page"' : ''}>Alle (${pool.length})</a>`);
+    return `<nav class="practice-back" aria-label="Praktijkvragen"><a href="${escapeHtml(criteriaHref(context))}">← Andere taak</a></nav>
+      <section class="funding-nav"><h2 id="funding-heading" tabindex="-1">Subsidies en calls</h2>
+      <nav aria-label="Aanvraagstatus">${links.join('')}</nav></section>`;
+  }
   function practiceNavigation() {
     const context = { sector: state.sector, vak: state.vak, audience: state.audience, language: state.language };
     if (state.sort !== 'relevant' && new URLSearchParams(location.hash.split('?')[1]).has('sort')) context.sort = state.sort;
+    if (isFundingSelection()) return fundingNavigation(context);
     if (state.q || FILTER_KEYS.some(key => !['sector', 'vak', 'audience', 'language'].includes(key) && values(key).length)) {
       const task = PRACTICE_ROUTES.find(route => Object.entries(route.criteria).every(([key, value]) => state[key] === value));
       let work = '';
@@ -1470,6 +1545,7 @@
       const criteria = { ...context, ...route.criteria };
       const count = recordsForCriteria(criteria).length;
       const content = `<strong>${escapeHtml(route.label)}</strong><span>${escapeHtml(route.detail)}</span>`;
+      if (route.criteria === FUNDING_CRITERIA) return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${count} open <span aria-hidden="true">→</span></small></a>`;
       if (!count && route.criteria === AGREEMENT_CRITERIA) return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>Teamproef <span aria-hidden="true">→</span></small></a>`;
       if (!count) return `<span class="practice-link unavailable">${content}<small>Geen resultaten</small></span>`;
       return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${count} ${count === 1 ? 'resultaat' : 'resultaten'} <span aria-hidden="true">→</span></small></a>`;
@@ -1495,7 +1571,8 @@
       ? 'Nieuwste toevoegingen aan de Atlas eerst; onbekende toevoegdatums staan onderaan. Een broncontrole verandert de toevoegdatum niet.'
       : isPublicationSort()
       ? `${state.sort === 'published' ? 'Nieuwste' : 'Oudste'} publicaties eerst. Publicatiedatum bekend bij ${knownDates} van ${resultRecords.length} resultaten; onbekende datums staan onderaan.`
-      : state.sort === 'az' ? 'Gesorteerd op titel, van A tot Z.' : 'Gesorteerd op relevantie en directe bruikbaarheid.';
+      : state.sort === 'az' ? 'Gesorteerd op titel, van A tot Z.' : isFundingSelection()
+      ? 'Open oproepen eerst, op volgorde van bekende deadline. Daarna volgen aangekondigde rondes, overige regelingen en gesloten oproepen.' : 'Gesorteerd op relevantie en directe bruikbaarheid.';
     return `${practiceNavigation()}<header class="result-head"><div><h2 tabindex="-1">${escapeHtml(heading)}</h2><p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p></div><div class="result-tools"><label>Sorteren<select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select></label></div></header>
       ${values('type').length === 1 && values('type')[0] === 'Training' ? '<section class="training-intro"><h2>Workshops en trainers</h2><p>Vind een workshop, cursus of training en de aanbieder die deze verzorgt. Verfijn op onderwerp, doelgroep of aanbieder. Trainer, locatie, kosten en beschikbaarheid staan bij het aanbod voor zover bevestigd. Bespreek maatwerk via de officiële aanbodpagina.</p></section>' : ''}
       ${values('theme').includes('Veilige AI-omgeving') ? '<section class="selection-guidance"><h2>Beoordeel de toepassing in uw eigen situatie</h2><p>Gebruik de officiële bronnen om gegevensgebruik, beheer, menselijke controle, toegankelijkheid en overstapmogelijkheden te beoordelen. Wat passend is, hangt af van uw doel, gegevens, instellingen en afspraken. Deze selectie is geen keurmerk voor veilige of verantwoorde AI.</p></section>' : ''}
@@ -1506,7 +1583,7 @@
       <details class="selection-bar"><summary>Vergelijken, delen of afdrukken</summary><div class="selection-actions"><a href="#vergelijken" data-compare-guide>Aanbod vergelijken</a><a href="#bijdragen">Aanbod toevoegen of feedback geven</a><button type="button" data-share-selection>Deel selectie</button>${resultRecords.length ? `<a data-meeting-sheet href="${escapeHtml(stateHref().replace(/^#zoeken/, '#overlegblad'))}">Overlegblad (${resultRecords.length})</a>` : ''}</div></details>
       ${chips ? `<div class="chips">${chips}<button class="clear-link">Wis alles</button></div>` : ''}
       <div id="action-feedback" class="action-feedback" aria-live="polite"></div>
-      <div class="results-content">${resultRecords.length ? `<div class="result-list">${resultRecords.map(record => simpleCard(record, true)).join('')}</div>` : `<div class="empty"><span class="eyebrow">Geen exacte match</span><h2>We helpen u verder</h2>${alternative ? `<a class="alternative" href="${stateHref({ q: alternative.candidate })}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` : '<p>Voor deze zoekterm is geen aantoonbaar werkend alternatief gevonden.</p>'}${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${stateHref({ [item.key]: '' })}">Zonder ${escapeHtml(item.values.join(' of '))} <strong>${item.count}</strong></a>`).join('')}</div>` : ''}<button class="clear btn">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`}</div>
+      <div class="results-content">${resultRecords.length ? `<div class="result-list">${resultRecords.map(record => simpleCard(record, true)).join('')}</div>` : isFundingSelection() ? `<div class="empty"><h2>${state.status === STATUS_LABELS.open_call ? 'Geen open oproepen bij deze selectie' : 'Geen subsidies of calls bij deze selectie'}</h2><p>Kijk bij een andere aanvraagstatus of verruim uw filters.</p>${state.status ? `<a href="${escapeHtml(stateHref({ status: '' }))}">Bekijk alle aanvraagstatussen binnen deze selectie</a>` : `<a href="${escapeHtml(criteriaHref({ sector: state.sector }))}">Bekijk ander aanbod${state.sector ? ' in deze sectorselectie' : ''}</a>`}</div>` : `<div class="empty"><span class="eyebrow">Geen exacte match</span><h2>We helpen u verder</h2>${alternative ? `<a class="alternative" href="${stateHref({ q: alternative.candidate })}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` : '<p>Voor deze zoekterm is geen aantoonbaar werkend alternatief gevonden.</p>'}${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${stateHref({ [item.key]: '' })}">Zonder ${escapeHtml(item.values.join(' of '))} <strong>${item.count}</strong></a>`).join('')}</div>` : ''}<button class="clear btn">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`}</div>
       ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="${escapeHtml(stateHref({ theme }))}">${escapeHtml(theme)} <span>${count} ${count === 1 ? 'resultaat' : 'resultaten'}</span></a>`).join('')}</nav>` : ''}`;
   }
   function filterButtonText() {
@@ -1750,22 +1827,32 @@
       .sort((a, b) => b.score - a.score || relevance(b.item) - relevance(a.item))
       .slice(0, 4).map(candidate => candidate.item);
     const sources = officialSources(record);
-    const factRows = offerFacts(record);
+    const funding = isFunding(record);
+    const factRows = offerFacts(record).filter(([label]) => !funding || label !== 'Beschikbaarheid');
+    const applicants = funding && fundingApplicants(record);
+    const amount = funding && typeof record.fundingAmount === 'string' && record.fundingAmount.trim();
+    const sourceLinks = `<h3>Officiële bronnen</h3>${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}`;
     const lesson = hasAvailableLesson(record) && lessonStartBody(record);
     main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(offerLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
       <section class="detail-shell"><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${lastSearch.startsWith('#vergelijken?') ? 'Terug naar vergelijking' : '← Terug naar resultaten'}</a><span>Home / Resultaten / ${escapeHtml(record.title)}</span></nav>
       <div class="detail-layout"><article>
+        ${funding ? `<section class="funding-conditions"><h2>Aanvraag en voorwaarden</h2><dl>
+          <div><dt>Aanvragers</dt><dd>${escapeHtml(applicants)}</dd></div>
+          ${record.eligibility && record.eligibility !== applicants ? `<div><dt>Wie komt in aanmerking?</dt><dd>${escapeHtml(record.eligibility)}</dd></div>` : ''}
+          <div><dt>Indiening</dt><dd>${escapeHtml(displayStatus(record))} · ${practicalDates(record)}</dd></div>
+          ${amount && amount !== 'Nog niet ingevuld' ? `<div><dt>Bedrag</dt><dd>${escapeHtml(amount)}</dd></div>` : ''}
+          </dl>${sourceLinks}</section>` : ''}
         ${lesson ? `<section class="lesson-starts lesson-detail"><h2>Lesstart voor de klas</h2>
           <p class="lesson-level">${escapeHtml(record.lessonStart.level)}</p><h3>${escapeHtml(record.lessonStart.question)}</h3>${lesson}</section>` : ''}
         <h2>Feitelijke beschrijving</h2><p>${escapeHtml(factValue(record.description))}</p>
         <h2>Doel en gebruik</h2><p>${escapeHtml(factValue(record.purpose))}</p>
         ${recordContextMarkup(record)}
         <h2>Onderwerpen</h2>${recordThemes(record).length ? `<div class="detail-themes">${recordThemes(record).map(theme => `<a href="#zoeken?theme=${encodeURIComponent(theme)}">${escapeHtml(theme)}</a>`).join('')}</div>` : '<p>Niet vastgesteld</p>'}
-        <h2>Voorwaarden</h2><p>${escapeHtml(factValue(record.eligibility))}</p>
+        ${!funding ? `<h2>Voorwaarden</h2><p>${escapeHtml(factValue(record.eligibility))}</p>` : ''}
         ${commercialDetails(record)}
         ${related.length ? `<h2>Gerelateerd aanbod</h2><p class="section-intro">Inhoudelijk verbonden via onderwerp, sector, doelgroep, aanbieder of soort aanbod.</p><div class="related-cards">${related.map(item => simpleCard(item)).join('')}</div>` : ''}
       </article><aside class="detail-facts"><h2>In één oogopslag</h2><dl>${factRows.map(([label, value]) => `<div><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value)}</dd></div>`).join('')}</dl>
-        <h3>Officiële bronnen</h3>${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}
+        ${funding ? '' : sourceLinks}
         ${sources.length ? '<button class="btn secondary copy-citation" type="button" data-copy-citation>Kopieer bronvermelding</button><div id="citation-fallback" hidden><label for="source-citation">Bronvermelding om te kopiëren</label><textarea id="source-citation" rows="8" readonly></textarea></div>' : ''}
         <button class="btn secondary share-item" type="button" data-share-item>Deel dit item</button>
         <p id="detail-feedback" class="action-feedback" aria-live="polite"></p>
@@ -1994,7 +2081,7 @@
         if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
         const forward = link.classList.contains('practice-link');
         addEventListener('hashchange', () => {
-          const heading = forward ? document.querySelector('#lesson-heading, #trial-entry-heading, #assessment-entry-heading, .result-head h2') : document.querySelector('#practice-title');
+          const heading = forward ? document.querySelector('#lesson-heading, #trial-entry-heading, #assessment-entry-heading, #funding-heading, .result-head h2') : document.querySelector('#practice-title');
           heading?.focus();
         }, { once: true });
       };
@@ -2189,6 +2276,19 @@
       main.focus({ preventScroll: true });
     }
   }
+  let hiddenAt = 0;
+  document.addEventListener?.('visibilitychange', () => {
+    const now = Date.now();
+    if (document.hidden) { hiddenAt = now; return; }
+    const since = hiddenAt;
+    hiddenAt = 0;
+    if (!since || !records.some(record => {
+      const end = record.status === 'open_call' && Date.parse(deadlineInstant(record));
+      return end > since && end <= now;
+    })) return;
+    if (document.querySelector('.catalog-grid')) updateSearchResults();
+    else if (document.querySelector('.funding-conditions')) renderDetail(decodeURIComponent(location.hash.slice(6).split('?')[0]));
+  });
   addEventListener('hashchange', route); addEventListener('popstate', route); route();
   window.ATLAS_STARTUP?.ready();
 })();

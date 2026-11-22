@@ -139,6 +139,22 @@ class ReleaseQualityTests(unittest.TestCase):
             generate(self.root)
         self.assertEqual((self.root / "data/metadata.json").read_bytes(), metadata)
 
+    def test_application_cutoff_requires_a_real_local_time_and_matching_date(self):
+        base = {**self.records[0], "recordType": "funding_call", "status": "open_call",
+                "applicationDeadline": "2026-12-01"}
+        for instant in ("2026-12-01T14:00:00+01:00", "2026-12-01T13:00Z", None):
+            with self.subTest(valid=instant):
+                self.write_data([{**base, "applicationDeadlineAt": instant}])
+                self.assertEqual(validation_errors(self.root)[0], [])
+        for instant in ("2026-12-01T14:00", "2026-12-02T14:00+01:00",
+                        "2026-12-01T24:01+01:00", "2026-12-01T14:00+01:99", 1400):
+            with self.subTest(invalid=instant):
+                self.write_data([{**base, "applicationDeadlineAt": instant}])
+                self.assertTrue(any("applicationDeadlineAt" in e for e in validation_errors(self.root)[0]))
+                with self.assertRaisesRegex(ValueError, "applicationDeadlineAt"):
+                    generate(self.root)
+        self.assertTrue(any("applicationDeadlineAt" in e for e in self.gate()[1]["errors"]))
+
     def test_search_index_includes_explicit_subjects_only_on_their_public_records(self):
         base = self.records[0]
         tagged = {**base, "subjects": ["Biologie", "Geografie"]}

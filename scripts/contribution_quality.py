@@ -326,6 +326,25 @@ def subject_field_errors(records: list[dict]) -> list[str]:
     return errors
 
 
+def application_deadline_errors(record: dict) -> list[str]:
+    value = record.get("applicationDeadlineAt")
+    if value is None:
+        return []
+    prefix = f"{record.get('id') or '<zonder id>'}: applicationDeadlineAt "
+    if not isinstance(value, str) or not re.fullmatch(
+        r"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}(?::[0-9]{2})?(?:Z|[+-](?:[01][0-9]|2[0-3]):[0-5][0-9])", value
+    ):
+        return [prefix + "vereist een ISO-datum en tijd met tijdzone, bijvoorbeeld 2026-12-01T14:00:00+01:00."]
+    try:
+        instant = datetime.fromisoformat(value)
+    except ValueError:
+        return [prefix + "bevat een ongeldige datum of tijd."]
+    deadline = record.get("applicationDeadline") or record.get("fundingDeadline")
+    if instant.date().isoformat() != deadline:
+        return [prefix + "moet dezelfde lokale sluitingsdatum hebben als de aanvraagdeadline."]
+    return []
+
+
 def commercial_field_errors(record: dict) -> list[str]:
     """Additive schema: old records remain explicitly unclassified."""
     prefix = f"{record.get('id') or '<zonder id>'}: "
@@ -356,6 +375,7 @@ def commercial_field_errors(record: dict) -> list[str]:
 
 def _record_errors(record: dict, all_ids: set[str], trusted_automation: bool = False) -> list[str]:
     errors: list[str] = commercial_field_errors(record)
+    errors.extend(application_deadline_errors(record))
     record_id = record.get("id")
     prefix = f"{record_id or '<zonder id>'}: "
     if not record_id or not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,99}", str(record_id)):

@@ -1,7 +1,7 @@
 import json
 from datetime import date
 from pathlib import Path
-from contribution_quality import subject_field_errors
+from contribution_quality import application_deadline_errors, subject_field_errors
 from public_assets import versioned_html
 from promote_contribution import dutch_date
 from publication_scope import duplicate_redirects
@@ -34,6 +34,8 @@ def generate(root: Path = R, generated_on: date | None = None) -> None:
     public_meta = {**meta, 'updated': dutch_date(generated_on or date.today()), 'recordCount': len(published)}
     redirects, errors = duplicate_redirects(records, published)
     errors.extend(subject_field_errors(records))
+    for record in records:
+        errors.extend(application_deadline_errors(record))
     if errors:
         raise ValueError('; '.join(errors))
     public_meta.pop('recordRedirects', None)

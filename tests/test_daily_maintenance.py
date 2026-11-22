@@ -77,6 +77,51 @@ class DailyMaintenanceTests(unittest.TestCase):
         self.assertEqual([], report["timeSensitive"])
         self.assertEqual(original["id"], report["priorityVerification"][0]["proposalId"])
 
+    def test_deadline_clock_changes_from_both_old_and_current_snapshots(self):
+        def fetch(deadline):
+            result = self.result("base")
+            result.body = result.body.replace("12 juni 2026", deadline)
+            return result
+
+        for legacy in (True, False):
+            with self.subTest(legacy=legacy):
+                _, state = classify(self.source, {}, fetch("12 juni 2026 om 14.00 uur (CEST)"), self.config)
+                if legacy:
+                    state["snapshot"]["deadlineFacts"][0].pop("deadlineTime")
+                event, state = classify(self.source, state, fetch("12 juni 2026, 12:00 CEST"), self.config)
+                self.assertEqual("CHANGED", event["type"])
+                self.assertTrue(event["deadlineChanged"])
+                self.assertEqual("12:00 CEST", event["current"]["deadlineFacts"][0]["deadlineTime"])
+                event, _ = classify(self.source, state, fetch("12 juni 2026, 12:00 CET"), self.config)
+                self.assertTrue(event["deadlineChanged"])
+
+    def test_equivalent_clocks_markup_and_unrelated_times_are_not_deadline_changes(self):
+        for before, after in [
+            (" at 2:00 p.m. GMT", " om <strong>14.00</strong> uur UTC"),
+            (" om 14 uur CET", " at 2 PM (CET)"),
+            (" at 2 pm GMT+1", " 14:00 UTC+01:00"),
+            (". Webinar om 14:00", ". Webinar om 12:00"),
+            ("</p><p>14:00 webinar", "</p><p>12:00 webinar"),
+        ]:
+            with self.subTest(before=before, after=after):
+                old, new = self.result("base"), self.result("base")
+                old.body = old.body.replace("12 juni 2026", "24 November 2026" + before)
+                new.body = new.body.replace("12 juni 2026", "24 November 2026" + after)
+                _, state = classify(self.source, {}, old, self.config)
+                event, _ = classify(self.source, state, new, self.config)
+                self.assertEqual("NO_CHANGE", event["type"])
+
+    def test_legacy_date_without_clock_evidence_is_baselined_once(self):
+        state = self.baseline()
+        state["snapshot"]["deadlineFacts"][0].pop("deadlineTime")
+        with_time = self.result("base")
+        with_time.body = with_time.body.replace("12 juni 2026", "12 juni 2026 <b>14:00</b>")
+        event, state = classify(self.source, state, with_time, self.config)
+        self.assertEqual("NO_CHANGE", event["type"])
+        self.assertEqual("14:00", state["snapshot"]["deadlineFacts"][0]["deadlineTime"])
+        event, _ = classify(self.source, state, self.result("base"), self.config)
+        self.assertTrue(event["deadlineChanged"])
+
     def test_closed_prior_year_deadlines_only_leave_urgent_queue_if_all_are_historical(self):
         old = {"dateText": "13 mei 2025", "context": "sluitingsdatum 13 mei 2025 status gesloten"}
         for after, urgent in [([], False), ([dict(old, dateText="14 januari 2027")], True),

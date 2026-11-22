@@ -189,6 +189,20 @@ test('typing a subject and pressing Enter applies it once alongside sector and t
   assert.equal(history.length, 1);
 });
 
+test('the actual homepage links to open subsidies and calls, with all statuses reachable', () => {
+  const app = boot({href:'https://example.org/atlas/'});
+  const home = app.main.innerHTML.match(/<a class="practice-link" href="([^"]+)"><strong>Subsidies en calls<\/strong>/);
+  assert.ok(home);
+  app.navigate(home[1].replaceAll('&amp;', '&'));
+  assert.ok(app.document.querySelector('#funding-heading'));
+  assert.ok(app.document.querySelector('[aria-label="Aanvraagstatus"]'));
+  const all = app.main.innerHTML.match(/<a href="([^"]+)">Alle \(\d+\)<\/a>/);
+  assert.ok(all);
+  app.navigate(all[1].replaceAll('&amp;', '&'));
+  assert.ok(app.document.querySelector('[data-record-id="nwo-calls-rond-ai-en-onderwijs"]'));
+  assert.deepEqual(app.errors, []);
+});
+
 test('home and search expose one filter opener beside the search form, before the practice routes', () => {
   const app = boot({href: 'https://example.org/atlas/'});
   for (const route of ['', '#home', '#zoeken']) {
