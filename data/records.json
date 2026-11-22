@@ -34735,7 +34735,7 @@
     "subtype": "Lespakket met docentenhandleiding",
     "organizationIds": [],
     "providerName": "Dwengo vzw / Universiteit Gent",
-    "description": "Nederlandstalig lespakket over taalverwerking, chatbots en sentimentanalyse. Bevat een docentenhandleiding, programmeeractiviteiten en een losse oefening over woordembeddings. Ethische vragen over taaldata komen aan bod.",
+    "description": "Nederlandstalig lespakket over taalverwerking, chatbots en sentimentanalyse. Bevat een docentenhandleiding, programmeeractiviteiten en een losse oefening over woordembeddings. Ethische vragen over taaldata komen aan bod. Bij informatica werken leerlingen met Python en onderzoeken ze hoe algoritmen tekst verwerken. Voor wiskunde bevat het werkblad Woordembeddings een opdracht waarin ze woorden als punten in een assenstelsel tekenen en met de bijbehorende vectoren rekenen.",
     "purpose": "Leerlingen kennis laten maken met kennisgebaseerde en datagebaseerde taaltechnologie.",
     "audiences": [
       "Docenten",
@@ -34752,7 +34752,7 @@
     "status": "available",
     "availabilityText": "Handleiding en opdracht zijn openbaar en gratis te downloaden.",
     "publicationDate": null,
-    "lastVerified": "2026-10-23",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -34798,7 +34798,16 @@
         "date": "2026-10-23",
         "type": "added",
         "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Programmeermateriaal en het afzonderlijke rekenwerkblad over woordembeddings gekoppeld aan de bijbehorende vakken."
       }
+    ],
+    "subjects": [
+      "Informatica",
+      "Wiskunde"
     ]
   },
   {
@@ -35228,7 +35237,7 @@
     "subtype": "Les- en werkmateriaal",
     "organizationIds": [],
     "providerName": "Stanford CRAFT; verschillende lesmakers en partnerorganisaties",
-    "description": "Collectie lesplannen voor het voortgezet onderwijs over AI in onder meer taal, maatschappij en wetenschap. Lespagina’s verwijzen naar docentenmateriaal; onderwerpen omvatten verhalen maken en algoritmen onderzoeken.",
+    "description": "Collectie lesplannen voor het voortgezet onderwijs over AI in onder meer taal, maatschappij en wetenschap. Lespagina’s verwijzen naar docentenmateriaal; onderwerpen omvatten verhalen maken en algoritmen onderzoeken. Voor Engels vergelijken leerlingen de toon en opbouw van twee verhalen. In de wiskundeles over gezichtsherkenning vergelijken ze beeldmetingen en onderzoeken ze statistische fouten. Een biologieles laat hen toepassingen voor ecosysteembehoud afwegen. In de muziekles maken ze een lied en onderzoeken ze hoe hun aanwijzingen het resultaat beïnvloeden.",
     "purpose": "AI-geletterdheid verbinden aan vakinhoud en kritisch onderzoek naar AI-toepassingen.",
     "audiences": [
       "Docenten",
@@ -35244,7 +35253,7 @@
     "status": "available",
     "availabilityText": "De gecontroleerde lespagina’s en docentenhandleiding zijn openbaar. Externe tools en artikelen kunnen aanvullende toegang vereisen.",
     "publicationDate": null,
-    "lastVerified": "2026-11-06",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -35260,6 +35269,26 @@
       {
         "label": "Docentenhandleiding storytelling",
         "url": "https://docs.google.com/document/d/1YSm80gA3o2TLc9v5e4QgztLFlmSzek-vvOeuY3rUD7w/edit",
+        "sourceType": "official"
+      },
+      {
+        "label": "Engels: verhalend schrijven en vergelijken",
+        "url": "https://craft.stanford.edu/resource/how-can-generative-ai-support-narrative-writing-in-english-class/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Wiskunde en statistiek: meten en vergelijken met FaceID",
+        "url": "https://craft.stanford.edu/resource/how-does-faceid-recognize-images/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Biologie: simulatie over het behoud van ecosystemen",
+        "url": "https://craft.stanford.edu/resource/how-can-ai-be-used-to-help-conserve-natural-ecosystems/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Muziek: zelf muziek maken met generatieve AI",
+        "url": "https://craft.stanford.edu/resource/how-can-students-create-music-with-generative-ai/",
         "sourceType": "official"
       }
     ],
@@ -35289,7 +35318,19 @@
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Vier afzonderlijke vaklessen in de collectie gecontroleerd en rechtstreeks gekoppeld aan hun lespagina's."
       }
+    ],
+    "subjects": [
+      "Biologie",
+      "Engels",
+      "Muziek",
+      "Statistiek",
+      "Wiskunde"
     ]
   },
   {
@@ -35300,7 +35341,7 @@
     "subtype": "Les- en werkmateriaal",
     "organizationIds": [],
     "providerName": "AI Pedagogy Project",
-    "description": "Verzameling onderwijsopdrachten over kritisch en verantwoord AI-gebruik. Voorbeelden zijn het terugkijken op een AI-ervaring en het verbinden van persoonlijke waarden aan ethische vragen.",
+    "description": "Verzameling onderwijsopdrachten over kritisch en verantwoord AI-gebruik. Voorbeelden zijn het terugkijken op een AI-ervaring en het verbinden van persoonlijke waarden aan ethische vragen. De opdracht Values Bridge maakt ethische perspectieven concreet voor het vak filosofie. Studenten koppelen drie eigen waarden aan zeven vragen en vergelijken hoe zij redeneren over alledaagse keuzes en over AI-gebruik.",
     "purpose": "Docenten werkvormen bieden om menselijke afwegingen, eigen ervaringen en waarden rond AI bespreekbaar te maken.",
     "audiences": [
       "Docenten",
@@ -35317,7 +35358,7 @@
     "status": "available",
     "availabilityText": "Het beschreven werkmateriaal is gratis openbaar toegankelijk.",
     "publicationDate": null,
-    "lastVerified": "2026-11-06",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -35343,6 +35384,11 @@
       {
         "label": "Hergebruikvoorwaarden",
         "url": "https://aipedagogy.org/using-our-content/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Filosofie: Values Bridge met afdrukbaar werkblad",
+        "url": "https://digitalthriving.gse.harvard.edu/center-for-digital-thriving-values-bridge/",
         "sourceType": "official"
       }
     ],
@@ -35372,7 +35418,15 @@
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Het onderdeel Values Bridge en het bijbehorende werkblad van het Center for Digital Thriving gecontroleerd als onderbouwing voor filosofie."
       }
+    ],
+    "subjects": [
+      "Filosofie"
     ]
   },
   {
@@ -37166,7 +37220,7 @@
     "subtype": "Projectkit met lesactiviteiten",
     "organizationIds": [],
     "providerName": "European School Education Platform (Europese Commissie)",
-    "description": "Engelstalige projectkit voor 11- tot 16-jarigen met vijf samenwerkende activiteiten over AI in het dagelijks leven, promptverbetering, factchecking, menselijk corrigeren van AI-output en synthetische beelden. De kit sluit af met een door leerlingen gemaakte gids voor verantwoord AI-gebruik.",
+    "description": "Engelstalige projectkit voor 11- tot 16-jarigen met vijf samenwerkende activiteiten over AI in het dagelijks leven, promptverbetering, factchecking, menselijk corrigeren van AI-output en synthetische beelden. De kit sluit af met een door leerlingen gemaakte gids voor verantwoord AI-gebruik. In de opdracht Fact-check the machine toetsen leerlingen twee AI-uitspraken aan minstens twee bronnen en verantwoorden ze hun oordeel. In Spot the fake vergelijken ze echte en synthetische beelden.",
     "purpose": "Docenten een direct inzetbaar project bieden waarin leerlingen generatieve AI kritisch onderzoeken, bronnen controleren en afspraken maken over privacy, auteurschap en verantwoord gebruik.",
     "audiences": [
       "Docenten",
@@ -37186,7 +37240,7 @@
     "status": "available",
     "availabilityText": "De volledige projectkit is gratis en zonder account op de officiële Europese onderwijswebsite te lezen. Voor gekozen externe AI-tools of samenwerking in eTwinning kunnen accounts, leeftijdsvoorwaarden en schoolbeleid gelden; de activiteiten kunnen ook klassikaal via één door de docent bediend scherm worden uitgevoerd.",
     "publicationDate": "2026-10-13",
-    "lastVerified": "2026-11-17",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -37224,7 +37278,15 @@
         "date": "2026-11-17",
         "type": "added",
         "summary": "Toegevoegd na volledige controle van de officiële projectkit, gebruiksvoorwaarden en canonieke doublures."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Digitale geletterdheid gekoppeld aan twee uitgewerkte mediawijsheidsopdrachten op de officiële projectpagina."
       }
+    ],
+    "subjects": [
+      "Digitale geletterdheid"
     ]
   },
   {
@@ -37613,7 +37675,7 @@
     "subtype": "Programmeertaak met werkbladen en rubric",
     "organizationIds": [],
     "providerName": "Digital Technologies Hub (Education Services Australia)",
-    "description": "Engelstalige programmeeropdracht voor de onderbouw van het voortgezet onderwijs. Leerlingen trainen en testen een model voor handgebaren en verwerken dit in een steen-papier-schaarspel. De voorbeeldrubric beoordeelt onder meer ontwerp, algoritme en hoe goed het spel voor verschillende gebruikers werkt.",
+    "description": "Engelstalige programmeeropdracht voor de onderbouw van het voortgezet onderwijs. Leerlingen trainen en testen een model voor handgebaren en verwerken dit in een steen-papier-schaarspel. De voorbeeldrubric beoordeelt onder meer ontwerp, algoritme en hoe goed het spel voor verschillende gebruikers werkt. Bij informatica passen leerlingen een bestaand JavaScript-programma aan om hun getrainde model voor handgebaren in het spel te gebruiken.",
     "purpose": "Docenten een opdracht met werkbladen en rubric geven om modeltraining, bias en onderbouwd testen te bespreken en te beoordelen.",
     "audiences": [
       "Docenten",
@@ -37630,7 +37692,7 @@
     "status": "available",
     "availabilityText": "Het lesplan, de rubric en de werkbladen zijn gratis en zonder account toegankelijk. Voor de volledige bouwopdracht gebruikt de bron een webcam, Teachable Machine en de p5.js-webeditor. De les noemt gratis registratie bij de p5.js-stap.",
     "publicationDate": null,
-    "lastVerified": "2026-11-18",
+    "lastVerified": "2026-11-22",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -37678,7 +37740,15 @@
         "date": "2026-11-18",
         "type": "added",
         "summary": "Toegevoegd na controle van het officiële lesplan, de beoordelingsonderdelen en de publieke downloads."
+      },
+      {
+        "date": "2026-11-22",
+        "type": "updated",
+        "summary": "Vakgebied bevestigd met de programmeeropdracht, de curriculumdoelen en de rubric van de aanbieder."
       }
+    ],
+    "subjects": [
+      "Informatica"
     ]
   },
   {
