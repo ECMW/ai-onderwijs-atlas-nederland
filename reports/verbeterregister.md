@@ -1,5 +1,9 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Compacte voetregel
+
+De uitleg over brongebruik en bezoekersmeting nam op een telefoon bijna een heel scherm in. Op de Atlas en de lesgids staat deze informatie nu achter **Werkwijze en privacy**. Naam en correctieroute blijven zichtbaar. De toelichting is op alle schermbreedtes standaard ingeklapt en opent met een klik, tik of het toetsenbord. De bezoekersmeting volgt dezelfde instellingen en periodes als voorheen.
+
 ## 23 november 2026 · Financiering met een aanvraagroute vanuit Nederland
 
 Vijf rondes toegevoegd na controle bij de verstrekkers. Het open aanbod omvat de onderzoeksprijs van het Institut de France voor lopend onderzoek naar AI en leren, en de maart-ronde van RAAK-mkb voor bekostigde hogescholen met een mkb-consortium. Drie aangekondigde rondes bieden een andere ingang. Een school kan een Erasmus+ Cooperation Partnership voorbereiden, een mbo-instelling kan met werkgevers een Centre of Vocational Excellence vormen en een kennisinstelling kan personeelsuitwisseling voor onderzoek organiseren via MSCA Staff Exchanges. Elke kaart beschrijft wie kan meedoen en welke partners nodig zijn.

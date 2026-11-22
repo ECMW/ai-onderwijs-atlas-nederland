@@ -76,7 +76,8 @@
     link.textContent = ' Privacy bij GoatCounter';
     link.rel = 'noopener noreferrer';
     notice.append(link);
-    document.querySelector('body > footer')?.append(notice);
+    const notes = document.querySelector('[data-footer-notes]') || document.querySelector('body > footer');
+    notes?.append(notice);
     if (!allowed()) return;
     send({p:atlasPath, t:'AI & Onderwijs Atlas Nederland'});
     if (!withinPilot() && !updateLink) return;

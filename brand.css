@@ -180,7 +180,22 @@ footer{
   border-top:6px solid var(--brand-olive);
 }
 body > footer a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
-body > footer a:focus-visible { outline-color: #fff !important; }
+body > footer :is(a, summary):focus-visible { outline-color: #fff !important; }
+
+.site-footer {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  padding-block: .65rem;
+  font-size: .95rem;
+}
+.footer-meta { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 1.75rem; }
+.footer-edition { display: inline-block; }
+.footer-edition:has([data-updated]:empty) { display: none; }
+.footer-meta a, .footer-disclosure summary { padding-block: .65rem; }
+.footer-meta a { display: inline-block; }
+.footer-disclosure summary { width: fit-content; cursor: pointer; text-decoration: underline; text-underline-offset: .15em; }
+.footer-disclosure [data-footer-notes] { max-width: 72ch; padding-bottom: .5rem; }
+.footer-disclosure [data-footer-notes] p { margin: .35rem 0 .7rem; }
 
 *:focus-visible{outline:3px solid var(--brand-focus)!important;outline-offset:3px}
 ::selection{background:var(--brand-sand);color:var(--brand-ink)}
