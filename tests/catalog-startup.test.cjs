@@ -201,32 +201,25 @@ test('home uses the full catalogue and the same query, sector, cost and offer fi
   assert.ok(app.document.querySelector('[data-facet="cost"]'));
 });
 
-test('typing a subject and pressing Enter applies it once alongside sector and type; unknown names link to free search', () => {
-  const app = boot({href: 'https://example.org/atlas/#zoeken?sector=VO&type=materials'});
+test('the free subject form applies only the current input and preserves the other filters', () => {
+  const app = boot({href: 'https://example.org/atlas/#zoeken?q=les&sector=VO&type=materials'});
   const history = [];
   app.context.history = {pushState(_state, _title, href) { app.context.location.hash = href; history.push(href); }};
-  const picker = app.document.querySelector('[data-subject-picker]');
-  const search = picker.querySelector('input[type="search"]');
-  const list = picker.querySelector('.facet-options');
-  const enter = () => search.onkeydown({key: 'Enter', preventDefault() {}});
-  search.value = 'biologie';
-  search.oninput();
-  enter();
-  enter();
-  assert.equal(history.length, 1);
-  assert.deepEqual(Object.fromEntries(new URLSearchParams(history[0].split('?')[1])), {sector:'VO', vak:'Biologie', type:'materials'});
-  assert.equal(list.querySelector('input[value="Biologie"]').checked, true);
-  assert.match(app.document.querySelector('#results-panel').innerHTML, /data-record-id="/);
-  search.value = 'onbekend-keuzevak';
-  search.oninput();
-  const fallback = picker.querySelector('[data-subject-fallback]');
-  assert.equal(list.querySelectorAll('input').length, 0);
-  assert.equal(fallback.hidden, false);
-  assert.deepEqual(Object.fromEntries(new URLSearchParams(fallback.href.split('?')[1])), {q:'onbekend-keuzevak', sector:'VO', vak:'Biologie', type:'materials'});
-  search.onkeydown({key: 'Escape', preventDefault() {}, stopPropagation() {}});
-  assert.equal(search.value, '');
-  assert.equal(fallback.hidden, true);
-  assert.equal(history.length, 1);
+  const form = app.document.querySelector('.subject-filter');
+  const field = form.querySelector('input');
+  const submit = () => form.onsubmit({preventDefault() {}});
+  field.value = '  biologie ';
+  assert.equal(history.length,0);
+  submit(); submit();
+  assert.equal(history.length,1);
+  assert.equal(field.value,'Biologie');
+  assert.deepEqual(Object.fromEntries(new URLSearchParams(history[0].split('?')[1])), {q:'les', sector:'VO', vak:'Biologie', type:'materials'});
+  field.value='onbekend keuzevak';
+  submit();
+  assert.match(app.document.querySelector('#results-panel').innerHTML,/Geen exacte match/);
+  assert.equal(new URLSearchParams(history[1].split('?')[1]).get('vak'),'onbekend keuzevak');
+  field.value='  '; submit();
+  assert.deepEqual(Object.fromEntries(new URLSearchParams(history[2].split('?')[1])), {q:'les', sector:'VO', type:'materials'});
 });
 
 test('the actual homepage links to open subsidies and calls, with all statuses reachable', () => {
@@ -272,7 +265,7 @@ test('home and search expose one filter opener beside the search form, before th
     assert.equal(app.document.querySelectorAll('#filters').length, 1);
     assert.equal(opener.attributes['aria-controls'], panel.attributes.id);
     assert.ok(!('open' in panel.querySelector('[data-facet-block="sector"]').attributes));
-    assert.ok('open' in panel.querySelector('[data-facet-block="vak"]').attributes);
+    assert.ok(panel.querySelector('.subject-filter input'));
     assert.ok(app.main.innerHTML.indexOf('class="mobile-filter') < app.main.innerHTML.indexOf('class="practice-start'));
     opener.onclick();
     assert.equal(opener.attributes['aria-expanded'], 'true');
