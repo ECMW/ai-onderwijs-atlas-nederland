@@ -468,6 +468,33 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
 .compare-table tbody tr:last-child > * { border-block-end: 0; }
 .compare-table tr > :first-child { width: 10.5rem; }
 .compare-many { min-width: calc(10.5rem + var(--compare-count) * 14rem); }
+.directory-header { justify-content: space-between; }
+.directory-header > a:last-child { color: var(--brand-bluegray-deep); padding: .5rem 0; font-weight: 650; }
+.lesson-directory { max-width: 64rem; margin: auto; padding: clamp(1rem,4vw,3rem) 1.2rem 3rem; }
+.lesson-directory > header { border-bottom: 2px solid var(--brand-olive); padding-bottom: 1.25rem; }
+.lesson-directory h1 { font-size: clamp(2rem,5vw,3.25rem); line-height: 1.12; margin: 0 0 .65rem; }
+.lesson-directory h2 { scroll-margin-top: 6rem; margin: 1.8rem 0 .65rem; }
+.lesson-directory h3 { margin: 0; font-size: 1.2rem; line-height: 1.35; }
+.lesson-directory p { max-width: 74ch; margin: .65rem 0; }
+.lesson-directory nav { display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
+.lesson-directory nav a, .directory-card-link { display: inline-flex; align-items: center; min-height: 44px; }
+.lesson-directory a { color: var(--brand-bluegray-deep); text-underline-offset: .16em; }
+.lesson-directory article { margin: 0 0 .7rem; background: #fffefa; border: 1px solid var(--line); border-radius: .5rem; padding: 1rem 1.2rem .5rem; overflow-wrap: anywhere; }
+.lesson-directory dl, .lesson-directory dl div { display: flex; flex-wrap: wrap; gap: .25rem .4rem; }
+.lesson-directory dl { margin: .45rem 0; gap: .15rem 1rem; font-size: .86rem; }
+.lesson-directory dt { font-weight: 650; }
+.lesson-directory summary { width: fit-content; padding: .5rem 0; min-height: 44px; font-weight: 650; cursor: pointer; }
+.lesson-directory dd { margin: 0; }
+.directory-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.lesson-shortcut { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; }
+.lesson-shortcut > a { display: inline-flex; align-items: center; min-height: 44px; }
+@media(max-width: 560px) {
+  .directory-header { gap: .5rem 1rem; }
+  .directory-header > .brand { order: 0; }
+  .directory-header > a:last-child { order: 1; max-width: 9rem; font-size: .9rem; line-height: 1.25; }
+  .lesson-directory { padding-inline: .85rem; }
+  .lesson-directory article { padding-inline: .85rem; }
+}
 .compare-many tr > :first-child { position: sticky; inset-inline-start: 0; z-index: 1; }
 @media (max-width: 680px) {
   .compare-pair, .compare-pair thead, .compare-pair tbody { display: block; }

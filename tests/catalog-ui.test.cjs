@@ -8,7 +8,7 @@ const catalogue = fs.readFileSync(path.join(__dirname, '..', 'catalog.js'), 'utf
 const boot = "  addEventListener('hashchange', route); addEventListener('popstate', route); route();";
 assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly the route startup');
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
-    commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, papersMarkup, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
+    commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, papersMarkup, paperRis, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, bindFacetLists, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
     recordContextMarkup, queryMatchQuality, queryMatches, sortRecords,
     homeFilterPanel, catalogFilterPanel, recordsForCriteria, renderDetail, researchPage, renderAssessment, readAssessmentDraft, assessmentParts, renderTeamTrial,
@@ -91,6 +91,41 @@ test('a paper only shows open access for an explicit verified open value', () =>
   for (const access of [undefined, 'Open', 'unknown', false]) {
     assert.doesNotMatch(api.papersMarkup({papers:[{...paper, access}]}), /Open access/);
   }
+});
+
+test('RIS preserves source author names, Unicode and full dates without allowing extra fields or records', () => {
+  const api = load([], '#papers', {URL});
+  const study = {title:'Éducation\r\nER  -\u2028TY  - FAKE', published:'2026-03-09', source:'Tijdschrift Ō',
+    authors:['Elke van der Meer','Björk'], risAuthors:['van der Meer, Elke','Björk'], publicationType:'peer-reviewed',
+    url:'https://doi.org/10.1234/article'};
+  const other = {...study, id:'10.1000/new', title:'Second paper', published:'2025-05-31', authors:['Ana de la Cruz'],
+    risAuthors:['wrong','length'], publicationType:'preprint', url:'https://example.org/preprint', source:'arXiv'};
+  assert.deepEqual(api.paperRis([study,other]).split('\r\n'), [
+    'TY  - JOUR', 'AU  - van der Meer, Elke', 'AU  - Björk', 'TI  - Éducation ER  - TY  - FAKE', 'PY  - 2026',
+    'DA  - 2026/03/09', 'T2  - Tijdschrift Ō', 'DO  - 10.1234/article', 'UR  - https://doi.org/10.1234/article', 'ER  -', '',
+    'TY  - UNPB', 'AU  - Ana de la Cruz', 'TI  - Second paper', 'PY  - 2025', 'DA  - 2025/05/31',
+    'T2  - arXiv', 'DO  - 10.1000/new', 'UR  - https://example.org/preprint', 'ER  -', ''
+  ]);
+  const sparse = api.paperRis([{...other, id:'not-a-doi', risAuthors:[' '], publicationType:'unclassified'}]);
+  assert.match(sparse, /^TY  - GEN\r\nAU  - Ana de la Cruz/);
+  assert.doesNotMatch(sparse, /^DO  - /m);
+});
+
+test('usage markers distinguish real catalogue outcomes and official actions', () => {
+  const api = load([], '#zoeken', {URL});
+  const sample = record('item', '2026-11-22');
+  assert.match(api.simpleCard({...sample,offerCategory:'materials'}), /href="https:\/\/example.org\/item" data-atlas-usage="lesson-open"/);
+  assert.match(api.simpleCard({...sample,recordType:'funding_call'}), /href="https:\/\/example.org\/item" data-atlas-usage="funding-open"/);
+  assert.doesNotMatch(api.simpleCard(sample), /data-atlas-usage/);
+  assert.doesNotMatch(api.simpleCard({...sample,offerCategory:'materials',sourceUrls:[]}), /data-atlas-usage/);
+  assert.doesNotMatch(api.resultsMarkup(), /data-atlas-empty-search/);
+  api.setState({all:'1',q:'',sort:'az'});
+  assert.doesNotMatch(api.resultsMarkup(), /data-atlas-empty-search/);
+  api.setState({q:'missing',sort:'relevant'});
+  assert.match(api.resultsMarkup(), /data-atlas-empty-search/);
+  const paper = {title:'Article',published:'2026-11-22',url:'https://doi.org/10.1234/test'};
+  assert.match(api.papersMarkup({papers:[paper]}), /data-atlas-usage="paper-doi-open"/);
+  assert.doesNotMatch(api.papersMarkup({papers:[{...paper,url:'https://example.org/paper'}]}), /data-atlas-usage/);
 });
 
 test('specific paper searches offer the papers page and keep regular matching records', () => {
@@ -886,7 +921,7 @@ test('offer cards show all public sectors and give the official source after the
   };
   const html = load([item]).simpleCard(item);
   for (const sector of item.sectors) assert.ok(html.includes(`<span>${sector}</span>`), sector);
-  const officialAction = html.match(/<a [^>]*href="https:\/\/example\.org\/leskaart"[^>]*>Bekijk materiaal ↗<\/a>/);
+  const officialAction = html.match(/<a [^>]*href="https:\/\/example\.org\/leskaart"[^>]*>Bekijk materiaal&nbsp;↗<\/a>/);
   assert.ok(officialAction);
   assert.ok(html.indexOf('<dt>Toegang</dt>') < officialAction.index);
   assert.ok(officialAction.index < html.indexOf('>Bekijk details</a>'));
@@ -1120,8 +1155,21 @@ test('ordinary training searches preserve visible words and find named trainers'
   const training = load(data, '#zoeken?type=Training');
   const html = training.resultsMarkup();
   assert.ok(html.includes('<h2>Workshops en trainers</h2>'));
-  assert.ok(html.includes('In-school AI workshop op maat'));
-  assert.ok(html.includes('Copilot Chat: adoptietraining op locatie'));
+  const titles = training.recordsForCriteria({type:'Training'}).map(item => item.title);
+  assert.ok(titles.includes('In-school AI workshop op maat'));
+  assert.ok(titles.includes('Copilot Chat: adoptietraining op locatie'));
+});
+
+test('restoring more catalog cards keeps their sort order and the meeting sheet includes every record', () => {
+  const rows = Array.from({length:53}, (_, i) => record('test-' + String(i).padStart(2,'0')));
+  const route = '#zoeken?sort=az';
+  const history = {state:{atlasResults:{route, shown:48}}};
+  const api = load(rows, route, {window:{ATLAS_RECORDS:{records:rows, metadata:{}}, history}});
+  const visibleIds = html => [...html.matchAll(/data-record-id="([^"]+)"/g)].map(match => match[1]);
+  assert.deepEqual(visibleIds(api.resultsMarkup()), rows.slice(0,48).map(row => row.id));
+  history.state.atlasResults.route = '#home';
+  assert.deepEqual(visibleIds(api.resultsMarkup()), rows.slice(0,24).map(row => row.id));
+  assert.equal((api.meetingSheetMarkup().match(/class="sheet-entry"/g) || []).length,53);
 });
 
 test('excluded software stays out of results and filters while materials and legacy links remain usable', () => {

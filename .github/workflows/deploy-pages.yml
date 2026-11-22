@@ -114,6 +114,7 @@ jobs:
           import json
           import os
           import shutil
+          import sys
           from pathlib import Path
 
           root = Path('source').resolve()
@@ -131,6 +132,10 @@ jobs:
               target = site / source.relative_to(root)
               target.parent.mkdir(parents=True, exist_ok=True)
               shutil.copy2(source, target)
+          if (root / 'scripts/lesson_directory.html').is_file():
+              sys.path.insert(0, str(Path('toolkit/scripts').resolve()))
+              from lesson_directory import generate_lesson_directory
+              generate_lesson_directory(root, site / 'lesmateriaal/index.html')
           release = {
               'sourceSha': os.environ['SOURCE_SHA'],
               'workflowSha': os.environ['GITHUB_SHA'],

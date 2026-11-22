@@ -48,6 +48,11 @@ def paper_row(raw, source_name, today):
             result[key] = clean_text(raw[key], maximum)
     if raw.get("access") == "open":
         result["access"] = "open"
+    if "risAuthors" in raw:
+        names = raw["risAuthors"]
+        if not isinstance(names, list) or len(names) != len(authors):
+            raise ValueError("The reference author list must match the public byline")
+        result["risAuthors"] = [clean_text(name, 262) for name in names]
     return result
 
 

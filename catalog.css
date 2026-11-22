@@ -156,6 +156,39 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
   border-radius:7px 7px 0 0;font-size:1.1rem;line-height:1.4
 }.catalog-sidebar>.atlas-search{position:relative;padding:.75rem 1rem;border-bottom:0;z-index:2}.catalog-sidebar>.atlas-search>label{font-size:.82rem;font-weight:400;margin-bottom:.3rem}.catalog-sidebar>.atlas-search .search-row{grid-template-columns:minmax(0,1fr) auto;gap:.35rem}.catalog-sidebar>.atlas-search input{min-height:42px;padding:.5rem;font-size:.85rem}.catalog-sidebar>.atlas-search .btn{width:auto;min-width:56px;min-height:42px;padding:.5rem .6rem;background:#f4f5f1;color:var(--ink);border:1px solid #8c9ea7;font-size:.82rem;font-weight:600}.catalog-sidebar .filters>header h2{display:none}.catalog-sidebar .filter-help{margin-top:.2rem}
 .result-head h2 { scroll-margin-top: 6rem; }
+.results .result-head {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: .5rem; margin: 0 0 .85rem;
+}
+.result-head h2 { min-width: 0; }
+.result-batches { display: grid; justify-items: center; gap: .3rem; padding: 1.25rem 0; }
+.result-batches [role="status"] { color: var(--muted); font-size: .88rem; }
+.result-batches button { min-height: 44px; }
+.result-batches button[hidden] { display: none; }
+@media print { .result-batches { display: none; } }
+.result-head .chips { flex: 1 1 100%; margin: 0; }
+.result-options { max-width: 100%; }
+.result-options > summary {
+  display: flex; align-items: center; gap: .45rem; min-height: 44px; padding: .45rem .55rem;
+  border: 1px solid #8c9ea7; border-radius: 6px; background: #fffefa;
+  color: var(--ink); font: inherit; font-size: .85rem; font-weight: 650; cursor: pointer; list-style: none;
+}
+.result-options > summary::-webkit-details-marker { display: none; }
+.result-options > summary::after {
+  content: ''; width: .45rem; height: .45rem; margin: -.2rem .1rem 0 auto;
+  border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(45deg);
+}
+.result-options[open] { flex: 1 1 100%; border: 1px solid var(--line); border-radius: 6px; background: #fffefa; }
+.result-options[open] > summary { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
+.result-options[open] > summary::after { margin-top: .2rem; transform: rotate(225deg); }
+.result-options-body { padding: .75rem; }
+.result-options-body label { display: block; font-size: .85rem; font-weight: 650; }
+.result-options-body select { min-height: 44px; max-width: 100%; margin-top: .25rem; font: inherit; }
+.result-options-body .selection-actions { display: flex; flex-wrap: wrap; justify-content: start; gap: .25rem .9rem; margin: .5rem 0 0; }
+.result-options-body .selection-actions > * {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: 0;
+  background: transparent; color: var(--ink); font: inherit; font-size: .85rem; text-decoration: underline;
+}
 @media (768px <= width < 900px) {
   .catalog-grid { display: grid; grid-template-columns: 230px minmax(0,1fr); gap: 1rem; padding: 1rem; }
   .catalog-sidebar .filters { display: block; }
@@ -176,7 +209,7 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 .result-card[data-offer-card] {
   display: grid;
   grid-template-areas: "intro links" "context links";
-  grid-template-columns: minmax(0, 1fr) minmax(9rem, 12rem);
+  grid-template-columns: minmax(0, 1fr) minmax(9rem, 13rem);
   gap: 0;
 }
 .offer-intro { grid-area: intro; padding-bottom: .35rem; }
@@ -209,6 +242,11 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 .papers-sources { margin: .5rem 0 1.5rem; }
 .papers-sources summary { width: fit-content; padding: .55rem 0; cursor: pointer; font-weight: 650; }
 .papers-sources li + li { margin-top: .35rem; }
+.paper-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; padding: .6rem .85rem; border: 1px solid var(--line); border-radius: 7px; background: var(--surface, #fff); }
+.paper-actions label { display: inline-flex; align-items: center; gap: .45rem; min-height: 44px; font-weight: 650; cursor: pointer; }
+.paper-actions input { width: 1.15rem; height: 1.15rem; margin: 0; }
+.paper-actions button { max-width: 100%; white-space: normal; }
+.paper-count { margin: .65rem 0; color: var(--muted); }
 .papers-list { list-style: none; padding: 0; }
 .papers-list li { border-top: 1px solid var(--line); padding: 1.25rem 0; overflow-wrap: anywhere; }
 .papers-list p { margin: .4rem 0 0; }

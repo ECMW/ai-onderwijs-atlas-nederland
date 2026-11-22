@@ -186,6 +186,69 @@ test('papers open directly and from home or research; an optional feed failure c
   assert.deepEqual(direct.errors, []);
 });
 
+test('open access changes the visible papers and RIS together, including an older edition and an empty selection', async () => {
+  const base = {title:'One', published:'2026-05-22', url:'https://doi.org/10.1000/open', access:'open'};
+  const other = {...base, title:'Two', url:'https://doi.org/10.1000/other', access:'unknown'};
+  let data = {papers:[other, base, {...base, title:'Invalid', published:'unknown'}]};
+  const app = boot({href:'https://example.org/atlas/#papers', fetch:async () => ({ok:Boolean(data), json:async () => data})});
+  await new Promise(setImmediate);
+  const blobs = [], clicked = [], revoked = [], scheduled = [];
+  app.context.URL = class extends URL {
+    static createObjectURL(blob) { blobs.push(blob); return 'blob:test/' + blobs.length; }
+    static revokeObjectURL(url) { revoked.push(url); }
+  };
+  app.context.Blob = Blob;
+  app.context.setTimeout = fn => { scheduled.push(fn); };
+  app.document.body.appendChild = () => {};
+  app.document.createElement = () => ({click() { clicked.push([this.href,this.download]); }, remove() {}});
+  const panel = () => app.document.querySelector('[data-papers]');
+  const toggle = checked => {
+    const field = panel().querySelector('[data-open-papers]');
+    field.checked = checked;
+    field.onchange();
+  };
+  const download = () => panel().querySelector('[data-download-ris]');
+  const count = () => panel().querySelector('[data-paper-count]').textContent;
+  const visibleCards = () => panel().querySelectorAll('.papers-list li').filter(card => !card.hidden);
+  download().onclick();
+  assert.equal(visibleCards().length, 2);
+  toggle(true);
+  assert.equal(count(), '1 van 2 papers');
+  assert.equal(visibleCards().length, 1);
+  download().onclick();
+  assert.equal((await blobs[0].text()).split('TY  -').length - 1, 2);
+  assert.match(await blobs[1].text(), /10\.1000\/open/);
+  assert.doesNotMatch(await blobs[1].text(), /10\.1000\/other|Invalid/);
+  assert.deepEqual(clicked, [['blob:test/1','ai-onderwijs-atlas-papers.ris'],['blob:test/2','ai-onderwijs-atlas-papers.ris']]);
+  scheduled.splice(0).forEach(fn => fn());
+  assert.deepEqual(revoked, ['blob:test/1','blob:test/2']);
+  toggle(false);
+  assert.equal(visibleCards().length, 2);
+
+  const reload = async () => { app.navigate('#onderzoek'); app.navigate('#papers'); await new Promise(setImmediate); };
+  data = null;
+  await reload();
+  assert.match(panel().innerHTML, /eerder geladen editie/);
+  toggle(true);
+  assert.equal(visibleCards().length, 1);
+  download().onclick();
+  assert.equal(await blobs[2].text(), await blobs[1].text());
+
+  data = {papers:[other]};
+  await reload();
+  toggle(true);
+  assert.equal(visibleCards().length, 0);
+  assert.equal(panel().querySelector('[data-no-open-papers]').hidden, false);
+  assert.equal(download().disabled, true);
+  download().onclick();
+  assert.equal(blobs.length, 3);
+  panel().querySelector('[data-show-all-papers]').onclick();
+  assert.equal(count(), '1 paper');
+  assert.equal(visibleCards().length, 1);
+  assert.equal(download().disabled, false);
+  assert.equal(panel().querySelector('[data-open-papers]').checked, false);
+});
+
 test('each paper copies its own citation and selects only its own field when clipboard access is denied', async () => {
   const papers = [
     {authors:['Clara Smit','Jo Li'], title:'Learning with AI', source:'Journal A', url:'https://doi.org/10.1234/first', published:'2026-01-01'},
@@ -291,6 +354,29 @@ test('the sixth homepage task and direct research links open all three goals and
   assert.deepEqual(app.errors, []);
 });
 
+test('home and filtered results keep the count and selected filters together above the cards', () => {
+  const app = boot();
+  for (const route of ['#home', '#zoeken?sector=VO&vak=Biologie&type=materials']) {
+    app.navigate(route);
+    const head = app.document.querySelector('.result-head');
+    assert.ok(head.querySelector('h2'));
+    const options = head.querySelector('details.result-options');
+    assert.ok(options.querySelector('summary'));
+    assert.ok(!('open' in options.attributes));
+    assert.ok(options.querySelector('#sort'));
+    assert.ok(options.querySelector('[data-share-selection]'));
+    assert.ok(options.querySelector('[data-compare-guide]'));
+    assert.ok(options.querySelector('[data-meeting-sheet]'));
+    assert.ok(options.querySelectorAll('a').some(link => link.attributes.href === '#nieuw'));
+    if (route.includes('Biologie')) {
+      assert.equal(head.querySelectorAll('[data-remove]').length, 3);
+      assert.equal(options.querySelectorAll('[data-remove]').length, 0);
+    }
+    assert.ok(app.document.querySelector('.results-content .result-card'));
+  }
+  assert.deepEqual(app.errors, []);
+});
+
 test('home and search expose one filter opener beside the search form, before the practice routes', () => {
   const app = boot({href: 'https://example.org/atlas/'});
   for (const route of ['', '#home', '#zoeken']) {
@@ -317,7 +403,7 @@ test('home and search expose one filter opener beside the search form, before th
   assert.ok('open' in app.document.querySelector('[data-facet-block="sector"]').attributes);
 });
 
-test('root and every return home open the entire catalogue newest first', () => {
+test('root and every return home start with 24 cards from the complete catalogue, newest first', () => {
   const app = boot({href:'https://example.org/atlas/'});
   const expected = app.context.ATLAS_RECORDS.records.slice().sort((a,b) => {
     const first = r => (r.changeHistory || []).filter(c => c.type === 'added' && /^\d{4}-\d{2}-\d{2}$/.test(c.date)).map(c => c.date).sort()[0] || '';
@@ -327,7 +413,8 @@ test('root and every return home open the entire catalogue newest first', () => 
   const check = () => {
     assert.match(app.main.innerHTML, /value="added" selected/);
     const actual = [...app.main.innerHTML.matchAll(/data-record-id="([^"]+)"/g)].map(m => m[1]);
-    assert.deepEqual(actual, Array.from(expected));
+    assert.deepEqual(actual, Array.from(expected.slice(0, 24)));
+    assert.ok(app.main.innerHTML.includes(`24 van ${expected.length} resultaten getoond`));
   };
   check();
   app.navigate('#zoeken?sort=az');

@@ -70,6 +70,7 @@ class PaperSourcesTests(unittest.TestCase):
         self.assertEqual(result["id"], DOI)
         self.assertEqual(result["url"], "https://doi.org/" + DOI)
         self.assertEqual(result["authors"], ["Katharina Frosch", "Friederike Lindauer", "Carmen Winkel"])
+        self.assertEqual(result["risAuthors"], ["Frosch, Katharina", "Lindauer, Friederike", "Winkel, Carmen"])
         self.assertEqual(result["source"], SOURCE["name"])
         self.assertEqual(result["publicationType"], "peer-reviewed")
         self.assertEqual(result["language"], "en")
@@ -169,6 +170,7 @@ class WileyPaperTests(unittest.TestCase):
         self.assertEqual(paper["title"], "A study of AI in the classroom")
         self.assertEqual(paper["published"], "2026-11-13")
         self.assertEqual(paper["authors"], ["First Author", "Research Group"])
+        self.assertEqual(paper["risAuthors"], ["Author, First", "Research Group"])
         self.assertEqual(paper["publicationType"], "journal-article")
         self.assertNotIn("summary", paper)
 
