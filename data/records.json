@@ -23904,11 +23904,9 @@
       "MBO"
     ],
     "themes": [
-      "AI in het onderwijs",
-      "mediawijsheid",
-      "ethiek",
-      "digitale geletterdheid",
-      "generatieve AI"
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI",
+      "Publieke waarden en ethiek"
     ],
     "status": "available",
     "availabilityText": "Direct beschikbaar",
@@ -23963,7 +23961,12 @@
       "lesplan",
       "praatplaat",
       "verantwoord AI-gebruik",
-      "lesstart"
+      "lesstart",
+      "AI in het onderwijs",
+      "mediawijsheid",
+      "ethiek",
+      "digitale geletterdheid",
+      "generatieve AI"
     ],
     "notes": "Toegevoegd naar aanleiding van de op 8 september 2026 gedeelde collectiepagina.",
     "changeHistory": [
@@ -23990,7 +23993,7 @@
       {
         "date": "2026-11-22",
         "type": "updated",
-        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd. Vakgebied aan de hand van de gekoppelde lesbron vastgelegd. De aanbieder noemt 90 minuten voor de volledige bronles."
+        "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd. Vakgebied aan de hand van de gekoppelde lesbron vastgelegd. De aanbieder noemt 90 minuten voor de volledige bronles. De vrije themanamen zijn ondergebracht bij de bestaande Atlas-thema’s en blijven als trefwoord terug te vinden."
       }
     ],
     "offerCategory": "materials",
@@ -39146,7 +39149,7 @@
   },
   {
     "id": "stanford-craft-ai-ecosystemen",
-    "title": "Hoe kan AI helpen om ecosystemen te beschermen? (Stanford CRAFT)",
+    "title": "How can AI be used to help conserve natural ecosystems?",
     "recordType": "guidance",
     "legacyType": "Handreiking",
     "subtype": "Biologieles met docentengids en discussieblad",
@@ -39180,11 +39183,6 @@
         "sourceType": "official"
       },
       {
-        "label": "Lespagina van Stanford CRAFT",
-        "url": "https://craft.stanford.edu/resource/how-can-ai-be-used-to-help-conserve-natural-ecosystems/",
-        "sourceType": "official"
-      },
-      {
         "label": "Discussion Diamond: discussieblad voor leerlingen",
         "url": "https://docs.google.com/document/d/18UwwsbA0z4c6519rzLmUkZzDdL0FZuTS7JH-obuqqRo/preview",
         "sourceType": "official"
@@ -39207,7 +39205,10 @@
       "natuurbescherming",
       "AI",
       "ecologie",
-      "Stanford CRAFT"
+      "Stanford CRAFT",
+      "les",
+      "lesstart",
+      "lesstarts"
     ],
     "notes": "De docentengids vermeldt science, grades 6–8. VO-onderbouw is een Nederlandse niveau-inschatting. Wendi Cocita schreef de les, Chris Mah bewerkte haar. De budgetverdeling is een rollenspel. De volledige bronles gebruikt een extern artikel. Voor dat artikel en voor herpublicatie van de materialen zijn geen rechten vastgesteld.",
     "verificationMethod": "agent_primary_source_review",

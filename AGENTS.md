@@ -5,6 +5,10 @@ Lees voor inhoudelijke wijzigingen eerst `README.md`, `docs/source-policy.md`,
 de bestaande Atlas-taxonomie en scheid canonieke records, publieke projectie,
 operationele bronmonitoring en de kennisbibliotheek.
 
+Controleer bij de dagelijkse actualisering of een gewijzigde bron doorwerkt in
+een lesstart, toetsvoorbeeld, onderzoekssamenvatting of andere kaart in de
+praktijkgids. Gebruik de werkwijze in `docs/daily-maintenance.md`.
+
 ## Bronnenwerk
 
 1. Raadpleeg eerst `sources/sources.json` en `sources/claim-links.json`.
