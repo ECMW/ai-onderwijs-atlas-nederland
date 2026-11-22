@@ -358,6 +358,34 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
 .assessment-start select { display: block; max-width: 100%; min-height: 44px; margin-top: .3rem; padding: .4rem; font: inherit; }
 .assessment-start dd { margin: .25rem 0 .75rem; }
 .assessment-form > #assessment-goal { max-width: 60ch; }
+.assessment-form > #assessment-task { max-width: 60ch; margin-bottom: 1rem; }
+
+.home-spotlight {
+  --brand-focus: #f3dc96;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .85rem 1.5rem;
+  margin-bottom: 1rem;
+  padding: clamp(1rem, 2.5vw, 1.6rem);
+  border-radius: .65rem;
+  background: var(--brand-bluegray-deep);
+  color: #fff;
+}
+.home-spotlight > div { flex: 1 1 23rem; }
+.home-spotlight .spotlight-label {
+  display: inline-block; padding: .05rem .45rem; border-radius: .18rem;
+  background: #f3dc96; color: #253840; font-weight: 700; font-size: .85rem;
+}
+.home-spotlight h2 { margin: .45rem 0 .35rem; color: #fff; font-size: clamp(1.35rem, 2.2vw, 1.8rem); line-height: 1.15; }
+.home-spotlight p { margin: 0; max-width: 62ch; line-height: 1.45; }
+.home-spotlight .btn {
+  min-height: 44px; display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--brand-shell); color: var(--brand-bluegray-deep); border: 1px solid transparent;
+}
+.home-spotlight .btn:hover { background: #f3dc96; color: #253840; }
+.home-spotlight .btn:focus-visible { outline-offset: 4px; }
 .assessment-compare { margin: 1rem 0; }
 .assessment-compare-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; }
 .assessment-compare-grid section { display: flex; flex-direction: column; align-items: start; border-left: .2rem solid var(--brand-olive); padding-left: 1rem; }

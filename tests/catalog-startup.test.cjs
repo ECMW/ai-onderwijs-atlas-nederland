@@ -415,6 +415,22 @@ test('the actual homepage links to open subsidies and calls, with all statuses r
   assert.deepEqual(app.errors, []);
 });
 
+test('home features an actionable tool while the normal search results keep their space', () => {
+  const catalog = fs.readFileSync(path.join(root, 'catalog.js'), 'utf8');
+  const withSpotlight = value => boot({href:'https://example.org/atlas/', replacements:{
+    'catalog.js':catalog.replace(/const HOME_SPOTLIGHT = [\s\S]*?;\r?\n/, 'const HOME_SPOTLIGHT = ' + JSON.stringify(value) + ';\n')
+  }});
+  const app = withSpotlight({title:'Werkvorm', description:'Bekijk de opdracht.', action:'Open', href:'#praktijkgids'});
+  const spotlight = app.main.querySelector('.home-spotlight');
+  assert.ok(spotlight);
+  assert.equal(spotlight.querySelector('a').getAttribute('href'), '#praktijkgids');
+  app.navigate('#zoeken?q=les');
+  assert.equal(app.main.querySelector('.home-spotlight'), null);
+  app.navigate('#home');
+  assert.equal(app.main.querySelectorAll('.home-spotlight').length, 1);
+  assert.equal(withSpotlight(null).main.querySelector('.home-spotlight'), null);
+});
+
 test('the sixth homepage task and direct research links open all three goals and preserve the return context', () => {
   const app = boot({href:'https://example.org/atlas/'});
   assert.equal(app.document.querySelectorAll('.practice-links .practice-link').length, 6);

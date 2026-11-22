@@ -1495,7 +1495,17 @@
       teacher: 'Geef iedereen hetzelfde AI-antwoord en toegang tot de bron. Kijk of de aangehaalde passage het oordeel draagt, ook als iemand tot een andere conclusie komt.'
     }
   };
-  const assessmentToolQuery = query => ['toetsafspraak', 'toetsafspraken', 'toetsafspraak maken'].includes(normalize(query));
+  function assessmentToolLink(query) {
+    const term = normalize(query);
+    if (['toetsafspraak', 'toetsafspraken', 'toetsafspraak maken'].includes(term)) {
+      return {label:'Maak een toetsafspraak', meta:'Opdrachttekst voor uw klas', href:'#toetsafspraak'};
+    }
+    if (['ai bestendige toets', 'ai bestendige toetsvraag', 'toets ai bestendig maken',
+      'ai resilient toetsen', 'ai resilient toets', 'toets ai resilient', 'maak uw toetsvraag ai bestendiger'].includes(term)) {
+      return {label:'Maak uw toetsvraag AI-bestendiger', meta:'Werk met uw eigen toetsvraag', href:'#toetsafspraak?start=eigen'};
+    }
+    return null;
+  }
   const ASSESSMENT_EXAMPLES = {
     voedselweb: {
       title: 'VO-biologie · Een voedselweb verklaren',
@@ -1525,13 +1535,13 @@
   const assessmentDrafts = new Map();
   let assessmentChoice;
 
-  function assessmentEntry() {
+  function assessmentEntry(tool = null) {
     const sectors = values('sector');
     if (sectors.length && !sectors.some(sector => ['VO', 'MBO', 'HBO', 'WO'].includes(sector))) return '';
     return `<section class="assessment-entry" aria-labelledby="assessment-entry-heading"><div>
       <h2 id="assessment-entry-heading" tabindex="-1">Wat mag AI bij deze opdracht?</h2>
       <p>Maak een tekst voor uw klas over de toegestane hulp, het eigen werk en de beoordeling.</p></div>
-      <a class="btn" href="#toetsafspraak">Maak een toetsafspraak</a></section>`;
+      <a class="btn" href="${tool?.href || '#toetsafspraak'}">${tool?.label || 'Maak een toetsafspraak'}</a></section>`;
   }
 
   function assessmentStorageKey(choice) {
@@ -1545,7 +1555,7 @@
     return {
       goal: typeof saved?.goal === 'string' ? saved.goal.slice(0, 500) : '',
       mode: typeof saved?.mode === 'string' && Object.hasOwn(ASSESSMENT_MODES, saved.mode) ? saved.mode : '',
-      task: typeof saved?.task === 'string' ? saved.task.slice(0, 1000) : '',
+      task: typeof saved?.task === 'string' ? saved.task : '',
       alternative: typeof saved?.alternative === 'string' ? saved.alternative.slice(0, 500) : '',
       evidence: typeof saved?.evidence === 'string' ? saved.evidence.slice(0, 500) : '',
       criterion: typeof saved?.criterion === 'string' ? saved.criterion.slice(0, 500) : ''
@@ -1565,8 +1575,16 @@
       const saved = sessionGet('atlas.toetsafspraak.start');
       assessmentChoice = Object.hasOwn(ASSESSMENT_EXAMPLES, saved) ? saved : '';
     }
-    const example = ASSESSMENT_EXAMPLES[assessmentChoice];
-    const draft = readAssessmentDraft(assessmentChoice);
+    const startPoint = new URLSearchParams(location.hash.split('?')[1]).get('start');
+    const ownTest = startPoint === 'eigen';
+    const explicitExample = Object.hasOwn(ASSESSMENT_EXAMPLES, startPoint);
+    const choice = ownTest ? '' : (explicitExample ? startPoint : assessmentChoice);
+    const example = ASSESSMENT_EXAMPLES[choice];
+    const draft = readAssessmentDraft(choice);
+    const taskField = `<label for="assessment-task">${example ? 'Wat is de opdracht?' : 'Uw bestaande toetsvraag of opdracht'}</label>
+      <textarea id="assessment-task" rows="4" ${ownTest ? 'required' : ''}>${escapeHtml(draft.task)}</textarea>`;
+    const evidenceField = `<label for="assessment-evidence">${ownTest ? 'Wat moet de leerling bij deze vraag zelf laten zien?' : 'Wat wilt u terugzien?'}</label>
+      <textarea id="assessment-evidence" rows="2" maxlength="500" placeholder="${ownTest ? 'Bijv. licht je bronkeuze toe en leg uit welke nieuwe informatie je oordeel zou veranderen.' : 'Bijv. een schets met een korte mondelinge toelichting.'}">${escapeHtml(draft.evidence)}</textarea>`;
     const sources = [
       ['toetsing-en-generatieve-ai-in-het-voortgezet-onderwijs', 'Kennisnet over toetsing in het vo'],
       ['visie-op-toetsing-examinering-en-ai-en-handreikingen', 'Npuls over toetsing in het mbo, hbo en wo']
@@ -1577,10 +1595,11 @@
     });
     main.innerHTML = `<section class="assessment-page">
       <a href="${escapeHtml(criteriaHref(ASSESSMENT_CRITERIA))}">← Naar toetsmateriaal</a>
-      <header><h1>Maak een toetsafspraak</h1><p>Werk met uw eigen leerdoel of pas een uitgewerkt toetsvoorbeeld aan voor uw klas.</p></header>
+      <header><h1>${ownTest ? 'Maak eigen werk zichtbaar in uw toets' : 'Maak een toetsafspraak'}</h1>
+        <p>${ownTest ? 'Neem één bestaande toetsvraag. Kies wat de leerling zelf moet kunnen aantonen. U krijgt een opdrachttekst met een bewijsstap en een beoordelingscriterium.' : 'Werk met uw eigen leerdoel of pas een uitgewerkt toetsvoorbeeld aan voor uw klas.'}</p></header>
       <div class="assessment-start"><label for="assessment-start">Kies een startpunt</label>
         <select id="assessment-start"><option value="">Mijn eigen opdracht</option>
-          ${Object.entries(ASSESSMENT_EXAMPLES).map(([key, item]) => `<option value="${key}" ${key === assessmentChoice ? 'selected' : ''}>${escapeHtml(item.title)}</option>`).join('')}</select>
+          ${Object.entries(ASSESSMENT_EXAMPLES).map(([key, item]) => `<option value="${key}" ${key === choice ? 'selected' : ''}>${escapeHtml(item.title)}</option>`).join('')}</select>
         <p class="assessment-note">Uw eigen opdracht en aanpassingen aan elk voorbeeld blijven apart bewaard in dit tabblad.</p>
         ${example ? `<button class="assessment-example" type="button" data-assessment-jump>Ga naar de kopieerbare opdracht</button>
           <details class="assessment-custom"><summary>Oorspronkelijke vraag en voorbeeldfeedback</summary>
@@ -1588,6 +1607,7 @@
           <dt>Voorbeeldantwoord van een leerling</dt><dd>${escapeHtml(example.answer)}</dd>
           <dt>Feedback bij dit antwoord</dt><dd>${escapeHtml(example.feedback)}</dd></dl></details>` : ''}</div>
       <form class="assessment-form">
+        ${example ? '' : taskField}
         <label for="assessment-goal">Wat moet de leerling of student zelf kunnen?</label>
         <textarea id="assessment-goal" rows="2" maxlength="500" required placeholder="Bijv. twee bronnen vergelijken en een conclusie onderbouwen.">${escapeHtml(draft.goal)}</textarea>
         <details class="assessment-custom assessment-compare"><summary>Vergelijk twee toetsaanpakken voor dit leerdoel</summary>
@@ -1604,14 +1624,13 @@
         <fieldset><legend>Welke rol krijgt AI bij deze opdracht?</legend>
           ${Object.entries(ASSESSMENT_MODES).map(([key, mode]) => `<label class="assessment-choice"><input required type="radio" name="mode" value="${key}" ${key === draft.mode ? 'checked' : ''}>${mode.label}</label>`).join('')}
         </fieldset>
-        <details class="assessment-custom" ${!example && (draft.task || draft.evidence || draft.criterion || draft.alternative) ? 'open' : ''}>
-          <summary>Pas opdracht, inlevervorm en beoordeling aan</summary>
-          <label for="assessment-task">Wat is de opdracht?</label>
-          <textarea id="assessment-task" rows="4" maxlength="1000">${escapeHtml(draft.task)}</textarea>
+        ${ownTest ? `${evidenceField}<p class="assessment-note">Laat dit veld leeg om de bewijsstap van de gekozen aanpak te gebruiken.</p>` : ''}
+        <details class="assessment-custom" ${!example && (draft.evidence || draft.criterion || draft.alternative) ? 'open' : ''}>
+          <summary>${example ? 'Pas opdracht, inlevervorm en beoordeling aan' : 'Pas inlevervorm en beoordeling aan'}</summary>
+          ${example ? taskField : ''}
           <label for="assessment-alternative">Hoe kan de leerling zonder AI meedoen?</label>
           <textarea id="assessment-alternative" rows="2" maxlength="500">${escapeHtml(draft.alternative)}</textarea>
-          <label for="assessment-evidence">Wat wilt u terugzien?</label>
-          <textarea id="assessment-evidence" rows="2" maxlength="500" placeholder="Bijv. een schets met een korte mondelinge toelichting.">${escapeHtml(draft.evidence)}</textarea>
+          ${ownTest ? '' : evidenceField}
           <label for="assessment-criterion">Waar let u op bij de beoordeling?</label>
           <textarea id="assessment-criterion" rows="2" maxlength="500" placeholder="Bijv. elke ontwerpkeuze is onderbouwd met een gegeven uit de opdracht.">${escapeHtml(draft.criterion)}</textarea>
           <p class="assessment-note">Een lege inlevervorm of beoordeling gebruikt het voorstel bij de gekozen rol van AI.</p>
@@ -1645,13 +1664,15 @@
     const current = () => ({goal:goal.value, mode:mode.value, task:task.value, alternative:alternative.value, evidence:evidence.value, criterion:criterion.value});
     function updatePreview() {
       const value = current();
-      const parts = assessmentParts(value);
+      const missingTask = ownTest && !value.task.trim();
+      const parts = missingTask ? [] : assessmentParts(value);
       comparisonGoal.textContent = value.goal.trim() ? 'Uw leerdoel: ' + value.goal.trim() : 'Vul hierboven uw eigen leerdoel in om een aanpak te gebruiken.';
       applied.textContent = '';
       clear.hidden = example ? Object.entries(value).every(([key, text]) => text === example[key]) : !Object.values(value).some(Boolean);
       goal.setCustomValidity(value.goal && !value.goal.trim() ? 'Vul een leerdoel in.' : '');
+      if (ownTest) task.setCustomValidity(missingTask ? 'Vul uw bestaande toetsvraag of opdracht in.' : '');
       if (!parts.length) {
-        result.innerHTML = '<p class="assessment-prompt">Vul een leerdoel in en kies de rol van AI. Hier verschijnt de tekst voor uw klas.</p>';
+        result.innerHTML = `<p class="assessment-prompt">${ownTest ? 'Vul uw toetsvraag en leerdoel in en kies de rol van AI.' : 'Vul een leerdoel in en kies de rol van AI.'} Hier verschijnt de tekst voor uw klas.</p>`;
         return;
       }
       const selected = ASSESSMENT_MODES[value.mode];
@@ -1667,13 +1688,14 @@
     }
     function saveAndPreview() {
       const value = current();
-      assessmentDrafts.set(assessmentChoice, value);
-      sessionSet(assessmentStorageKey(assessmentChoice), JSON.stringify(value));
+      assessmentDrafts.set(choice, value);
+      sessionSet(assessmentStorageKey(choice), JSON.stringify(value));
       updatePreview();
     }
     form.oninput = saveAndPreview;
     for (const button of comparison.querySelectorAll('[data-assessment-apply]')) {
       button.onclick = () => {
+        if (ownTest && !task.value.trim()) { task.focus(); task.reportValidity(); return; }
         if (!goal.value.trim()) { goal.focus(); goal.reportValidity(); return; }
         mode.value = button.dataset.assessmentApply;
         saveAndPreview();
@@ -1688,6 +1710,9 @@
     start.onchange = () => {
       assessmentChoice = Object.hasOwn(ASSESSMENT_EXAMPLES, start.value) ? start.value : '';
       sessionSet('atlas.toetsafspraak.start', assessmentChoice);
+      if (ownTest || explicitExample) {
+        history.replaceState(history.state, '', '#toetsafspraak?start=' + (assessmentChoice || 'eigen'));
+      }
       renderAssessment();
       main.querySelector('#assessment-start').focus();
     };
@@ -1697,7 +1722,7 @@
       task.value = example?.task || ''; alternative.value = example?.alternative || '';
       for (const radio of form.querySelectorAll('[name="mode"]')) radio.checked = radio.value === example?.mode;
       saveAndPreview();
-      goal.focus();
+      (ownTest ? task : goal).focus();
     };
     updatePreview();
   }
@@ -2048,8 +2073,11 @@
       else if (papersQuery(state.q)) work = '<p><a class="btn secondary" href="#papers">Papers over AI en onderwijs</a></p>';
       else if (normalize(state.q) === 'afspraken') work = teamTrialEntry() + assessmentEntry();
       else if (teamTrialQuery(state.q)) work = teamTrialEntry();
-      else if (values('theme').includes(ASSESSMENT_CRITERIA.theme) ||
-        ['toets', 'toetsontwerp'].includes(normalize(state.q)) || assessmentToolQuery(state.q)) work = assessmentEntry();
+      else {
+        const tool = assessmentToolLink(state.q);
+        if (tool || values('theme').includes(ASSESSMENT_CRITERIA.theme) ||
+            ['toets', 'toetsontwerp'].includes(normalize(state.q))) work = assessmentEntry(tool);
+      }
       if (task) return `<nav class="practice-back" aria-label="Praktijkvragen"><a href="${escapeHtml(criteriaHref(context))}">← Andere taak</a><strong>${escapeHtml(task.label)}</strong></nav>${work}`;
       return work;
     }
@@ -2072,6 +2100,13 @@
       </select></label></div><div class="practice-links">${links.join('')}</div>
       <p class="home-papers"><a href="#wat-werkt">Wat werkt bij leren met AI?</a> · <a href="#papers">Recente papers over AI en onderwijs</a></p></section>`;
   }
+  // Set to null when there is no featured activity. Keep the destination on the Atlas.
+  const HOME_SPOTLIGHT = {
+    title: 'Maak uw toetsvraag AI-bestendiger',
+    description: 'Neem één vraag uit uw toets. Kies wat de leerling of student zelf moet laten zien en kopieer de aangepaste opdracht met beoordelingscriteria.',
+    action: 'Pas mijn toetsvraag aan',
+    href: '#toetsafspraak?start=eigen'
+  };
   function resultsMarkup() {
     resultRecords = sortRecords(recordsForCriteria(state));
     const chips = [
@@ -2094,7 +2129,12 @@
       ? 'Open oproepen eerst, op volgorde van bekende deadline. Daarna volgen aangekondigde rondes, overige regelingen en gesloten oproepen.' : 'Gesorteerd op relevantie en directe bruikbaarheid.';
     const selectedSearch = location.hash.split('?')[0] === '#zoeken' && (state.q?.trim() || FILTER_KEYS.some(key => values(key).length));
     const outcome = selectedSearch ? (resultRecords.length ? ' data-atlas-search-hits' : ' data-atlas-empty-search') : '';
-    return `${practiceNavigation()}<header class="result-head"${outcome}><h2 tabindex="-1">${escapeHtml(heading)}</h2>
+    const home = !location.hash || location.hash.split('?')[0] === '#home';
+    const spotlight = home && HOME_SPOTLIGHT ? `<section class="home-spotlight" aria-labelledby="spotlight-heading">
+      <div><span class="spotlight-label">Uitgelicht</span><h2 id="spotlight-heading">${escapeHtml(HOME_SPOTLIGHT.title)}</h2>
+      <p>${escapeHtml(HOME_SPOTLIGHT.description)}</p></div>
+      <a class="btn" href="${escapeHtml(HOME_SPOTLIGHT.href)}">${escapeHtml(HOME_SPOTLIGHT.action)} <span aria-hidden="true">→</span></a></section>` : '';
+    return `${spotlight}${practiceNavigation()}<header class="result-head"${outcome}><h2 tabindex="-1">${escapeHtml(heading)}</h2>
       <details class="result-options"><summary>Sorteer, vergelijk of deel</summary>
         <div class="result-options-body"><label for="sort">Sorteren</label><select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select>
         <p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p>
@@ -2588,9 +2628,8 @@
     if (teamTrialQuery(query)) sections.push({ label: 'Zelf aan de slag', items: [
       { label: 'Teamproef met AI', meta: 'Proefkaart voor het teamoverleg', href: '#teamproef' }
     ] });
-    if (assessmentToolQuery(query)) sections.push({ label: 'Zelf aan de slag', items: [
-      { label: 'Maak een toetsafspraak', meta: 'Opdrachttekst voor uw klas', href: '#toetsafspraak' }
-    ] });
+    const assessmentTool = assessmentToolLink(query);
+    if (assessmentTool) sections.push({ label: 'Zelf aan de slag', items: [assessmentTool] });
     if (themes.length) sections.push({ label: 'Onderwerpen', items: themes });
     if (organizations.length) sections.push({ label: 'Aanbieders', items: organizations });
     const definitions = [
@@ -2619,7 +2658,8 @@
       event.preventDefault();
       closeSuggestions();
       if (teamTrialQuery(input.value)) { location.hash = '#teamproef'; return; }
-      if (assessmentToolQuery(input.value)) { location.hash = '#toetsafspraak'; return; }
+      const assessmentTool = assessmentToolLink(input.value);
+      if (assessmentTool) { location.hash = assessmentTool.href; return; }
       if (input.value.trim() && ['#home', ''].includes(location.hash)) state.sort = 'relevant';
       applyNaturalQuery(input.value);
       setUrl();

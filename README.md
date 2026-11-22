@@ -33,6 +33,10 @@ presenteert vaste feitelijke velden. Kosten, toegang en commerciële aard zijn
 afzonderlijke gegevens; onbekende informatie wordt niet ingevuld op basis van de
 naam, rechtsvorm of prijs van een aanbieder.
 
+### Uitgelicht op de startpagina
+
+Met `HOME_SPOTLIGHT` in `catalog.js` kiest de redactie één activiteit op de Atlas. Vul de titel, het concrete resultaat voor de bezoeker, de knoptekst en de interne route in. Met `null` vervalt het hele blok. Open de startpagina na een wissel ook op mobiel en voer de beloofde taak uit. De zoekresultaten behouden hun eigen volgorde.
+
 ## Nieuwe bijdragen
 
 Via **Nieuwe bijdragen** ziet een bezoeker wat recent aan de Atlas is toegevoegd.
