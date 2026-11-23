@@ -1,5 +1,13 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Lesmateriaal vinden via het vak
+
+Van de 143 les- en werkmaterialen hadden er 24 een vaklabel in uitgave `604ccb8`. Na controle van de lesinhoud hebben 37 materialen een of meer vaklabels. Bij dertien bestaande vermeldingen beschrijft de wijzigingsgeschiedenis de concrete opdracht of curriculumkoppeling. Voor Nederlands lezen leerlingen twee romanfragmenten en schrijven ze een e-mail vanuit een personage. Bij Beeldende vorming gebruiken kinderen lijntekeningen om een voorwerp herkenbaar weer te geven. [Docentenhandleiding Nederlands](https://neerlandistiek.nl/wp-content/uploads/2026/01/Docentenhandleiding-bij-werkvorm-samen-leren-redeneren-over-generatieve-AI.pdf) · [Tekenles en beoordelingssuggesties](https://www.digitaltechnologieshub.edu.au/teach-and-assess/classroom-resources/lesson-ideas/can-an-ai-recognise-what-you-are-drawing/)
+
+De zoekfilters, de taakroute en Mijn profiel gebruiken dezelfde vaknamen. Het invoerveld legt uit hoe een vaklabel de selectie bepaalt en hoe iemand met andere woorden in de lesinhoud kan zoeken. Bij Day of AI staan de leeftijden en rechtstreekse leslinks voor meetkunde en statistiek afzonderlijk vermeld. De aanbieder vraagt registratie voor het volledige materiaal. [Meetkunde, 11–18 jaar](https://dayofai.org/units/transforming-faces-the-geometry-of-facial-recognition) · [Statistiek met weergegevens, 8–18 jaar](https://dayofai.org/units/making-sense-of-our-surroundings)
+
+In Edge op 390 en 1280 pixels leverden het vakfilter, een gedeelde link en een herladen profiel dezelfde expliciet gelabelde vermeldingen op. Dat is gecontroleerd voor Nederlands, Informatica en Beeldende vorming, naast vrije invoer en het wissen van voorkeuren. De native keuzelijst op een fysieke telefoon en de tijd die een docent in de praktijk nodig heeft, zijn nog niet gemeten. Voor een volgende ronde zijn mbo-beroepsvakken interessant: van de 37 materialen met sector MBO hebben er drie een vaklabel. Controleer eerst of de aanbieder een concrete beroepsopdracht beschrijft.
+
 ## 23 november 2026 · Een vindbaar adres per bron en een persoonlijk startpunt
 
 In de vorige uitgave (`cae969e`) noemde de sitemap twee adressen. De 470 openbare aanbodkaarten deelden het adres van de interactieve Atlas. Elke vermelding heeft nu een eigen leesbare HTML-pagina met titel, beschrijving, aanbieder en officiële bron. Een alfabetische index, een JSON-catalogus en de sitemap komen uit dezelfde publieke selectie. Een gekopieerde bronvermelding verwijst naar de vaste pagina. Een subsidiepagina verwijst voor de actuele openstelling naar de aanbieder.

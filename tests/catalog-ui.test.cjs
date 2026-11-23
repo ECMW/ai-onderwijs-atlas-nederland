@@ -1484,7 +1484,11 @@ test('subjects use explicit public metadata, allow multiple choices and combine 
   const panel = selected.catalogFilterPanel(['materials', 'knowledge'], ['Docenten'], ['Voorbeeld']);
   const block = panel.match(/<form class="subject-filter">[\s\S]+?<\/form>/)[0];
   assert.match(block, /value="Biologie, Econometrie"/);
-  assert.doesNotMatch(block, /checkbox|<small>|<datalist|suggestion|page-step/);
+  assert.doesNotMatch(block, /checkbox|<select|page-step/);
+  assert.match(block, /name="vak" type="text"[^>]+list="subject-search-options"/);
+  assert.match(block, /aria-describedby="subject-search-hint"/);
+  assert.match(block, /id="subject-search-hint">[^<]+vaklabel[^<]+tekst/);
+  assert.match(block, /<datalist id="subject-search-options"><option value="Biologie"><\/option><option value="Econometrie"><\/option><option value="Wiskunde"><\/option><\/datalist>/);
   const results = selected.resultsMarkup();
   assert.match(results, /data-remove="vak\|Econometrie"/);
   assert.match(results, /data-record-id="biology"[\s\S]*data-record-id="math"/);

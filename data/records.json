@@ -26052,10 +26052,18 @@
         "date": "2026-09-11",
         "type": "added",
         "summary": "Praktijkvoorbeeld toegevoegd na controle van de officiële WUR-publicatie."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. In de WUR-opdracht zoeken studenten bij een uitspraak de oorspronkelijke passage op en leggen zij de relatie tussen uitspraak en bron vast."
       }
     ],
     "offerCategory": "materials",
-    "commercialStatus": "unknown"
+    "commercialStatus": "unknown",
+    "subjects": [
+      "Informatievaardigheden"
+    ]
   },
   {
     "id": "eerlijk-over-ai-ai-coach-opleiding-open-source",
@@ -35089,9 +35097,18 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Tijd voor een verhaal met nagesprek en gebruik op digibord of telefoon toegevoegd op basis van de lesinstructie van Dé Codeerschool."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. De Codeerschool beschrijft bij beide vakgebieden hoe leerlingen met de verhalen het gebruik van hun gegevens en hun omgang met AI bespreken."
       }
     ],
-    "eligibility": "Voor leerlingen van 12 tot 18 jaar. Toon het verhaal op het digibord of laat leerlingen op hun telefoon meelezen."
+    "eligibility": "Voor leerlingen van 12 tot 18 jaar. Toon het verhaal op het digibord of laat leerlingen op hun telefoon meelezen.",
+    "subjects": [
+      "Burgerschap",
+      "Digitale geletterdheid"
+    ]
   },
   {
     "id": "vu-vijf-activerende-ai-werkvormen",
@@ -35571,7 +35588,15 @@
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Leerlingen trainen en testen met hun eigen bewegingsdata een model. Ze wijzigen de MakeCode-code en testen hun programma op de micro:bit."
       }
+    ],
+    "subjects": [
+      "Informatica"
     ]
   },
   {
@@ -35755,7 +35780,17 @@
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Level 1 verbindt het verzamelen en ordenen van gegevens met rekenen. Beide niveaus benoemen digitale geletterdheid. Level 2 behandelt ook algoritmen en programmeren."
       }
+    ],
+    "subjects": [
+      "Digitale geletterdheid",
+      "Informatica",
+      "Wiskunde"
     ]
   },
   {
@@ -35766,7 +35801,7 @@
     "subtype": "Les- en werkmateriaal",
     "organizationIds": [],
     "providerName": "Day of AI",
-    "description": "Engelstalige curriculumcollectie met leeftijdsgerichte lessen en docentenmateriaal. Voorbeelden zijn patroonherkenning voor 6–7 jaar en broncontrole van AI-inhoud voor leerlingen vanaf 11 jaar.",
+    "description": "Engelstalige curriculumcollectie met leeftijdsgerichte lessen en docentenmateriaal. Voorbeelden zijn patroonherkenning voor 6–7 jaar en broncontrole van AI-inhoud voor leerlingen vanaf 11 jaar. Leerlingen onderzoeken eigen weersgegevens met grafieken (8–18 jaar) of spiegelen en draaien gezichtsafbeeldingen in een assenstelsel (11–18 jaar).",
     "purpose": "Docenten lessen bieden over de werking van AI, menselijk oordeel en kritisch informatiegebruik.",
     "audiences": [
       "Docenten",
@@ -35805,6 +35840,16 @@
         "label": "MIT RAISE: herkomst",
         "url": "https://raise.mit.edu/resources/curricula/day-of-ai/",
         "sourceType": "official"
+      },
+      {
+        "label": "Statistiek met eigen weersgegevens (8–18 jaar)",
+        "url": "https://dayofai.org/units/making-sense-of-our-surroundings",
+        "sourceType": "official"
+      },
+      {
+        "label": "Meetkunde en gezichtsherkenning (11–18 jaar)",
+        "url": "https://dayofai.org/units/transforming-faces-the-geometry-of-facial-recognition",
+        "sourceType": "official"
       }
     ],
     "relatedIds": [],
@@ -35833,7 +35878,17 @@
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. De drie afzonderlijke lespagina’s beschrijven broncontrole, grafieken maken met eigen weersgegevens en meetkundige transformaties. De leeftijd staat per lessenreeks vermeld."
       }
+    ],
+    "subjects": [
+      "Informatievaardigheden",
+      "Statistiek",
+      "Wiskunde"
     ]
   },
   {
@@ -35895,7 +35950,15 @@
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. In de docentenhandleiding vergelijken leerlingen literaire fragmenten en een zakelijk artikel en schrijven ze vanuit een personage een beargumenteerde e-mail aan de schooldirecteur."
       }
+    ],
+    "subjects": [
+      "Nederlands"
     ]
   },
   {
@@ -36397,7 +36460,15 @@
         "date": "2026-11-08",
         "type": "added",
         "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Leerlingen onderzoeken in drie lessen hoe hun gedrag een tijdlijn verandert en hoe berichten aandacht en reacties uitlokken."
       }
+    ],
+    "subjects": [
+      "Mediawijsheid"
     ]
   },
   {
@@ -36771,7 +36842,15 @@
         "date": "2026-11-09",
         "type": "added",
         "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. In de les over computer vision ontwerpen en testen leerlingen een algoritme dat het cijfer op een display herkent."
       }
+    ],
+    "subjects": [
+      "Informatica"
     ]
   },
   {
@@ -36847,7 +36926,15 @@
         "date": "2026-11-09",
         "type": "added",
         "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Het curriculum bevat programmeereenheden waarin leerlingen eigen websites, apps en spellen bouwen."
       }
+    ],
+    "subjects": [
+      "Informatica"
     ]
   },
   {
@@ -36922,7 +37009,15 @@
         "date": "2026-11-09",
         "type": "added",
         "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. In het tweede semester leren leerlingen JavaScript en bouwen ze interactieve webapps."
       }
+    ],
+    "subjects": [
+      "Informatica"
     ]
   },
   {
@@ -36992,7 +37087,16 @@
         "date": "2026-11-12",
         "type": "added",
         "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. De UNESCO-module hoort bij het curriculum voor media- en informatiegeletterdheid. Leerlingen beoordelen door AI gemaakte informatie en onderzoeken vooringenomenheid."
       }
+    ],
+    "subjects": [
+      "Informatievaardigheden",
+      "Mediawijsheid"
     ]
   },
   {
@@ -37541,7 +37645,7 @@
     "subtype": "Werkvorm en docentenmateriaal",
     "organizationIds": [],
     "providerName": "University of Edinburgh Open.Ed",
-    "description": "Open werkvorm waarin studenten met vijf verschillende gesimuleerde personen in taalmodellen praten en daarna individueel en met medestudenten reflecteren op ervaring, bias, empathie, waarheid, ethiek en menselijke uniciteit. De set bevat uitleg, docentinstructies, een aanpasbaar personagesjabloon en voorbeeldprompts.",
+    "description": "Open werkvorm waarin studenten met vijf verschillende gesimuleerde personen in taalmodellen praten en daarna individueel en met medestudenten reflecteren op ervaring, bias, empathie, waarheid, ethiek en menselijke uniciteit. De set bevat uitleg, docentinstructies, een aanpasbaar personagesjabloon en voorbeeldprompts. Het uitgewerkte voorbeeld komt uit een zorgmaster en gaat over de inzet van AI in de zorg.",
     "purpose": "Docenten een korte, aanpasbare werkvorm bieden waarmee studenten de mogelijkheden en risico's van taalmodellen uit eigen ervaring leren onderzoeken en bespreken.",
     "audiences": [
       "Docenten",
@@ -37601,7 +37705,15 @@
         "date": "2026-11-17",
         "type": "added",
         "summary": "Toegevoegd na volledige controle van het Open.Ed-resourcepakket, de licentie en canonieke doublures."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Het instructieboekje bij de zorgmaster laat studenten met fictieve gesprekspartners reflecteren op het gebruik van AI in de zorg."
       }
+    ],
+    "subjects": [
+      "Zorg en gezondheid"
     ]
   },
   {
@@ -37744,7 +37856,15 @@
         "date": "2026-11-18",
         "type": "added",
         "summary": "Toegevoegd na controle van het officiële lesplan, de beoordelingsonderdelen en de publieke downloads."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Het Australische lesplan koppelt de tekenopdracht expliciet aan Visual Arts. Leerlingen verbeelden een voorwerp met herkenbare lijnen en vergelijken representaties."
       }
+    ],
+    "subjects": [
+      "Beeldende vorming"
     ]
   },
   {
