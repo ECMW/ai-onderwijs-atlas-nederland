@@ -8,7 +8,7 @@ const catalogue = fs.readFileSync(path.join(__dirname, '..', 'catalog.js'), 'utf
 const boot = "  addEventListener('hashchange', route); addEventListener('popstate', route); route();";
 assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly the route startup');
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
-    pilotSheetText, renderPilotDecision, renderWorksheet, renderMinutesCheck, renderStudentAssignment,
+    pilotSheetText, renderPilotDecision, renderWorksheet, renderMinutesCheck, renderStudentAssignment, renderExamCases,
     renderLearningEvidence, renderPracticeGuide, practiceCasesMarkup,
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, datedOffers, newOffersMarkup, papersMarkup, paperRis, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, bindFacetLists, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
@@ -1669,6 +1669,30 @@ test('the minutes exercise counts in search, filters, and recovery while catalog
     assert.match(blocked.resultsMarkup(), /Zonder [^<]+ <strong>1 oefening<\/strong>/);
     assert.ok(!blocked.suggestionData('notulen').flatMap(group => group.items).some(item => item.href === '#notulen-controleren'));
   }
+});
+
+test('exam boards find the two appeal decisions through their role and specific evidence questions', () => {
+  const route = '#vermoeden-ai-gebruik';
+  const main = {querySelector:() => null};
+  const query = 'Mag de examencommissie een AI-detector als bewijs gebruiken?';
+  const prior = '#zoeken?' + new URLSearchParams({q:query,audience:'Examencommissies',sector:'HBO'});
+  const api = load([], prior, {document:{querySelector:() => main},sessionStorage:{getItem:() => prior}});
+  api.renderExamCases();
+  assert.match(main.innerHTML, /uitspraak-cbe-25-223\.pdf#page=3/);
+  assert.match(main.innerHTML, /B2025060135-XXX\.pdf#page=6/);
+  assert.ok(main.innerHTML.includes('href="' + prior.replaceAll('&','&amp;') + '"'));
+  for (const text of [query, 'AI-detectie als bewijs', 'Wat doen we bij een vermoeden van AI-fraude?', 'Vermoeden van ongeoorloofd AI-gebruik']) {
+    api.setState(api.criteriaForQuery(text));
+    assert.match(api.resultsMarkup(), /1 leeswijzer voor/);
+    assert.ok(api.suggestionData(text).flatMap(group => group.items).some(item => item.href === route));
+  }
+  for (const sector of ['HBO','WO']) assert.ok(load([], '#zoeken?audience=Examencommissies&sector=' + sector).resultsMarkup().includes('href="' + route + '"'));
+  for (const filter of [{sector:'MBO'}, {audience:'Leerlingen'}, {type:'Subsidie'}, {language:'en'}]) {
+    const blocked = load([], '#zoeken?' + new URLSearchParams({q:query,...filter}));
+    assert.ok(!blocked.resultsMarkup().includes('href="' + route + '"'));
+    assert.ok(!blocked.suggestionData(query).flatMap(group => group.items).some(item => item.href === route));
+  }
+  assert.ok(!api.suggestionData('Mag ik AI gebruiken bij mijn opdracht?').flatMap(group => group.items).some(item => item.href === route));
 });
 
 test('a learner can find the assignment guide by asking about permission or disclosure', () => {

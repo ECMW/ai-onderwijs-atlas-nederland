@@ -1,5 +1,13 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Welke financierings- en deelnamekansen kan ik voorbereiden?
+
+Op uitgave `d02f32d` telde de financieringstegel acht open en zeven aangekondigde rondes. Voor leraren, schoolteams, onderzoekers en instellingsbesturen zijn zes verschillende kansen gecontroleerd. Drie zijn open: NWO-vervanging voor een promoverende leraar, Europese mediawijsheidsprojecten voor onder meer volwassenen en de sessieoproep van SURF en Npuls. De laatste is een kans om een praktijkvoorbeeld te presenteren. De drie aangekondigde subsidierondes betreffen leermobiliteit op scholen, samenwerking tussen beroepsonderwijs, hoger onderwijs en bedrijfsleven, en de vijfde ronde voor een Center for Teaching and Learning.
+
+De kaarten vermelden wie indient, met welke partners en tot welk tijdstip. Bij schoolmobiliteit is het voorbeeldformulier direct bereikbaar. Voor CTL blijft het formulier van de vorige ronde buiten de aanvraagroute. Een aangekondigde call met een verstreken deadline gaat ook zonder handmatige statuswijziging naar ‘Gesloten’. Bij gebrek aan een bevestigde openingsdatum blijft de aanvraagstatus herkenbaar.
+
+In Edge telde de vernieuwde tegel elf open en tien aangekondigde rondes. Alle zes waren op 320, 390 en 1280 pixels via zoeken en de statusfilters te vinden. Aanvragers en termijnen zijn op de detailkaart en de deelbare aanbodpagina nagegaan. Hoeveel bezoekers een partner vinden of daadwerkelijk aanvragen, is onbekend. Volg in de volgende dagronde de nieuwe indienroute van Npuls AIDO en de definitieve formulieren voor Erasmus+.
+
 ## 23 november 2026 · Een leerling of student met een vraag over de eigen opdracht
 
 Op uitgave `116946c` gaven ‘Mag ik AI gebruiken bij mijn opdracht?’ en ‘Moet ik ChatGPT vermelden?’ nul treffers. Dit was op mobiel en laptop reproduceerbaar, zonder profiel en met de profielen leerling (vo) en student (mbo, hbo, wo). Bij ‘regels AI voor studenten’ kwam in het wo zelfs een econometriepracticum naar boven door de term ‘regels’ in een rekeninstructie. Dit waren zoekproeven. Hoe vaak bezoekers deze vragen stellen is onbekend.
@@ -9,6 +17,12 @@ De zoekbalk, praktijkgids en leerling- en studentprofielen bieden nu een keuzehu
 De browserproef omvatte drie vragen in vijf profielsituaties. Op 320, 390 en 1280 pixels zijn de drie situaties met het toetsenbord geopend en bewerkte teksten gekopieerd. Bij geweigerde klembordtoegang bleef de tekst selecteerbaar. De invoer kwam bij de proef niet terecht in netwerkverzoeken, de URL of webopslag. Of studenten hierdoor de afspraken beter toepassen is nog onbekend.
 
 Een examencommissielid kon de eigen doelgroep wel filteren, maar niet bewaren als profiel. De nieuwe profielkeuze gebruikt de bestaande doelgroep ‘Examencommissies’. Bij de browserproef leverde deze zes kaarten voor mbo, twintig voor hbo en achttien voor wo. Na het heropenen bleef de selectie staan. Vanuit het hbo-profiel is het openbare vijfstappenplan voor geschreven eindproducten bereikt. Een specifiekere vraag over de bewijskracht van een AI-detector leverde bij de nulmeting geen antwoord op. Controleer in een volgende ronde of een actuele bron de rol en handelingsmogelijkheden van de examencommissie duidelijk maakt. [Vijfstappenplan van de Universiteit Utrecht](https://www.uu.nl/onderwijs/onderwijsadvies-training/kennisdossiers/themadossier-generatieve-ai-in-het-onderwijs/geschreven-eindproducten-toetsen-in-tijden-van-genai)
+
+## 23 november 2026 · Een examencommissie onderzoekt een melding
+
+Op uitgave `d02f32d` vond een examencommissielid in hbo en wo nul resultaten bij ‘Mag de examencommissie een AI-detector als bewijs gebruiken?’. Vanuit het profiel, de zoekbalk en de zoeksuggesties bereikt het lid nu een leeswijzer bij twee beslissingen op beroep. In het Leidse dossier staat de betekenis van detectorscores naast de uitleg van de student. In het Utrechtse dossier zijn de onderbouwing van bronnen en de authenticiteit van feedbackformulieren onderzocht. Elke verwijzing benoemt de relevante pagina’s. [Universiteit Leiden, p. 3–4](https://www.organisatiegids.universiteitleiden.nl/binaries/content/assets/ul2staff/organisatiegids/universitaire-commissies/cbe/uitspraken-cbe/fraude/uitspraak-cbe-25-223.pdf#page=3) · [Hogeschool Utrecht, p. 6–7](https://husite.nl/jurisprudentie/wp-content/uploads/sites/344/2025/11/B2025060135-XXX.pdf#page=6)
+
+In Edge op 320, 390 en 1280 pixels zijn beide zoekvragen en beide officiële documenten geopend. Na terugkeer bleven de zoekvraag, sector en rol geselecteerd. De leeswijzer verschijnt bij hbo en wo. Een instelling kan met deze voorbeelden de eigen werkwijze bespreken. Hoe vaak commissies deze vragen stellen en hoe ze de informatie toepassen is onbekend. Bij een volgende controle verdient de werkvraag in het mbo een eigen bron, met de examenpraktijk en regels van die sector.
 
 ## 23 november 2026 · Een AI-conceptverslag controleren
 

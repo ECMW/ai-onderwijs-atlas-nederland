@@ -1586,6 +1586,9 @@
     return row[b.length];
   }
   function teacherQuestion(normalized) {
+    const examSignal = /\b(?:ai|chatgpt|aidetector|aidetectie|detectorscore)\b/.test(normalized) &&
+      /\b(?:fraude|ongeoorloofd|ai ?detect(?:or(?:en|s)?|ie)|detectorscore|ai gebruik)\b/.test(normalized);
+    if (examSignal && /\b(?:bewijs|bewijskracht|vermoedens?|examencommissies?)\b/.test(normalized)) return 'examCases';
     if (/^(?:ai )?(?:notulen|conceptnotulen|vergaderverslag(?:en)?|vergadernotities|besluitenlijst)$/.test(normalized) ||
         (/\b(?:notulen|conceptnotulen|conceptverslag(?:en)?|vergaderverslag(?:en)?|vergadernotities|besluitenlijst|actielijst)\b/.test(normalized) &&
          /\b(?:controle\w*|nakijken|beoordelen)\b/.test(normalized))) return 'minutes';
@@ -1668,6 +1671,12 @@
     language:['nl'], cost:['Gratis'], status:[STATUS_LABELS.available], access:[ACCESS_LABELS.public]
   };
   const TASK_GUIDES = {
+    examCases: {
+      filters:{...TASK_FILTERS, audience:['Examencommissies'], sector:['HBO','WO'], theme:['Toetsing en examinering']},
+      href:'#vermoeden-ai-gebruik', label:'Een vermoeden van AI-gebruik onderzoeken', countLabel:'1 leeswijzer',
+      meta:'Lees hoe een detectorscore, een bronnenlijst en de uitleg van de student zijn gewogen in twee zaken.',
+      action:'Vergelijk de uitspraken'
+    },
     minutes: {
       filters:{...TASK_FILTERS, audience:['Ondersteunend personeel'], sector:['PO','VO','MBO','HBO','WO']},
       href:'#notulen-controleren', label:'Controleer een AI-conceptverslag', countLabel:'1 oefening',
@@ -2889,6 +2898,29 @@
     focusAfterNavigation(main.querySelector('a'), fromGuide ? '.guide-routes a[href^="#notulen-controleren"]' : '.result-head h2');
   }
 
+  function renderExamCases() {
+    const previous = sessionGet('atlas.lastSearch');
+    const back = /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
+    main.innerHTML = `<article class="assessment-page">
+      <a href="${escapeHtml(back)}">Terug naar zoeken</a>
+      <header><h1 tabindex="-1">Een vermoeden van AI-gebruik onderzoeken</h1>
+        <p>Wat woog mee bij een melding aan de examencommissie? Twee uitspraken laten zien hoe de onderbouwing en de reactie van de student uitpakten in een concreet dossier.</p></header>
+      <div class="assessment-layout">
+        <section class="assessment-preview"><h2>Wat zegt een detectorscore?</h2>
+          <p>Het College van beroep voor de examens van Universiteit Leiden bekeek meerdere detectorscores, de schrijfstijl en de uitleg van de student. Het vond de scores hooguit aanwijzingen en de alternatieve verklaring onvoldoende onderzocht. Het college vernietigde het besluit.</p>
+          <a href="https://www.organisatiegids.universiteitleiden.nl/binaries/content/assets/ul2staff/organisatiegids/universitaire-commissies/cbe/uitspraken-cbe/fraude/uitspraak-cbe-25-223.pdf#page=3" target="_blank" rel="noopener noreferrer">Lees de afweging in zaak 25-223, p. 3–4 (pdf) ↗</a>
+        </section>
+        <section class="assessment-preview"><h2>Wat kon de commissie controleren?</h2>
+          <p>Bij Hogeschool Utrecht onderzocht de examencommissie de opgegeven bronnen en feedbackformulieren. Het College van Beroep voor de Examens woog ook de uitleg van de student. Het achtte de onregelmatigheden in het ingeleverde werk voldoende onderbouwd en liet het oordeel ‘Niet Geldig’ in stand.</p>
+          <a href="https://husite.nl/jurisprudentie/wp-content/uploads/sites/344/2025/11/B2025060135-XXX.pdf#page=6" target="_blank" rel="noopener noreferrer">Lees de afweging in de Utrechtse zaak, p. 6–7 (pdf) ↗</a>
+        </section>
+      </div>
+      <h2>Bij een eigen melding</h2>
+      <p>Leg de opdrachtinstructie en de regels van uw opleiding ernaast. Welke waarneming kunt u controleren? Wat verklaart de student daarover? Welke vraag blijft open? De uitkomsten hierboven horen bij de twee afzonderlijke dossiers.</p>
+    </article>`;
+    focusAfterNavigation(main.querySelector('a'), '.result-head h2');
+  }
+
   function renderStudentAssignment() {
     const params = new URLSearchParams(location.hash.split('?')[1]);
     const fromGuide = params.get('van') === 'praktijkgids';
@@ -3760,7 +3792,8 @@
       'mijn-atlas': renderProfile,
       'praktijkgids': renderPracticeGuide, 'wat-werkt': renderLearningEvidence,
       'toolkeuze': renderToolChoice, 'pilotbesluit': renderPilotDecision, 'regels-in-de-praktijk': renderPracticeRules,
-      'notulen-controleren': renderMinutesCheck, 'ai-bij-mijn-opdracht': renderStudentAssignment
+      'notulen-controleren': renderMinutesCheck, 'ai-bij-mijn-opdracht': renderStudentAssignment,
+      'vermoeden-ai-gebruik': renderExamCases
     };
     if (Object.hasOwn(WORKSHEET_TEACHER_NOTES, path)) guides[path] = () => renderWorksheet(path);
     if (path === 'home' || (!Object.hasOwn(guides, path) && !['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();

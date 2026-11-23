@@ -17,6 +17,7 @@ from contribution_quality import _host_is_public
 
 
 SOURCE_TYPES = {
+    "appeal_decision",
     "regulation",
     "consolidated_legislation",
     "copyright_license",
