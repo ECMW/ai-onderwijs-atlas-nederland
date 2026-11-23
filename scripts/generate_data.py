@@ -3,6 +3,7 @@ from datetime import date
 from pathlib import Path
 from contribution_quality import application_deadline_errors, subject_field_errors
 from lesson_directory import generate_lesson_directory
+from offer_directory import generate_offer_directory
 from public_assets import versioned_html
 from promote_contribution import dutch_date
 from publication_scope import duplicate_redirects
@@ -69,6 +70,8 @@ def generate(root: Path = R, generated_on: date | None = None) -> None:
     index.write_text(versioned_html(root, index.read_text(encoding='utf-8')), encoding='utf-8')
     if (root / 'scripts/lesson_directory.html').is_file():
         generate_lesson_directory(root, root / 'lesmateriaal/index.html')
+    if (root / 'scripts/offer_page.html').is_file():
+        generate_offer_directory(root, root)
 
 
 if __name__ == '__main__':

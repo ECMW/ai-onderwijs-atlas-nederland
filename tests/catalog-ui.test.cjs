@@ -2040,7 +2040,7 @@ test('source citations preserve official references without inventing authors or
   assert.ok(text.includes('2001'));
   assert.ok(text.includes('https://official.example.org/report?chapter=1&lang=nl'));
   assert.ok(text.includes('https://official.example.org/appendix'));
-  assert.ok(text.includes(`https://aionderwijsatlas.nl/#item/${encodeURIComponent(item.id)}`));
+  assert.ok(text.includes(`https://aionderwijsatlas.nl/aanbod/${encodeURIComponent(item.id)}/`));
   assert.ok(!/secondary\.example|authoritative\.example|localhost|atlas-no-count|sector=|2099|Auteur:/i.test(text));
   for (const publicationDate of [null, '', '2001-02-30']) {
     const undated = api.sourceCitation({ ...item, publicationDate });
@@ -2048,7 +2048,7 @@ test('source citations preserve official references without inventing authors or
   }
   const sparse = api.sourceCitation({ ...item, providerName: '', publicationDate: null, sourceUrls: [] });
   assert.ok(!/undefined|null/.test(sparse));
-  assert.ok(sparse.includes(`https://aionderwijsatlas.nl/#item/${encodeURIComponent(item.id)}`));
+  assert.ok(sparse.includes(`https://aionderwijsatlas.nl/aanbod/${encodeURIComponent(item.id)}/`));
 });
 
 test('copying a source citation reports success only after the clipboard accepts it', async () => {

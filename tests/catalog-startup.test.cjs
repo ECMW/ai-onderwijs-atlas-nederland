@@ -761,6 +761,78 @@ test('root and every return home start with 24 cards from the complete catalogue
   app.navigate(''); check();
 });
 
+test('personal offers combine roles, sector and subject while shared selections bypass the local profile', () => {
+  const app = boot();
+  const saved = new Map();
+  app.context.localStorage = {getItem: key => saved.get(key), setItem: (key, value) => saved.set(key, value), removeItem: key => saved.delete(key)};
+  app.navigate('#mijn-atlas');
+  const form = app.main.querySelector('#profile-form');
+  form.querySelector('input[value="Docenten"]').checked = true;
+  form.querySelector('#profile-sector').value = 'VO';
+  form.querySelector('#profile-subject').value = 'biologie';
+  form.oninput();
+  const records = Array.from(app.context.ATLAS_RECORDS.records).filter(app.context.ATLAS_STARTUP.published);
+  const expected = records.filter(row => row.audiences.includes('Docenten') && row.sectors.includes('VO') && row.subjects?.includes('Biologie'));
+  assert.ok(expected.length > 0);
+  assert.equal(form.querySelector('.profile-count').textContent, expected.length + (expected.length === 1 ? ' resultaat' : ' resultaten') + ' bij uw keuzes.');
+  form.onsubmit(new Event('submit'));
+  assert.deepEqual(JSON.parse(saved.get('atlas.persona')), {audience: 'Docenten', sector: 'VO', vak: 'Biologie'});
+  app.dispatch('hashchange');
+  const actual = () => app.main.querySelectorAll('[data-record-id]').map(card => card.dataset.recordId).sort();
+  const homeResults = actual();
+  assert.equal(homeResults.length, Math.min(24, expected.length));
+  assert.ok(homeResults.every(id => expected.some(row => row.id === id)));
+  assert.equal(app.main.querySelector('.persona-indicator a').getAttribute('href'), '#zoeken');
+  app.navigate('#zoeken');
+  assert.ok(actual().some(id => !expected.some(row => row.id === id)));
+  app.navigate('#zoeken?sector=HBO');
+  assert.ok(actual().length > 0);
+  for (const id of actual()) assert.ok(records.find(row => row.id === id).sectors.includes('HBO'));
+  assert.equal(app.main.querySelector('[data-remove="audience|Docenten"]'), null);
+  app.navigate('#home');
+  assert.deepEqual(actual(), homeResults);
+});
+
+test('a profile survives blocked storage for this page and a zero-result profile keeps an all-catalogue link', () => {
+  const app = boot();
+  const blocked = () => { throw Error('Storage blocked'); };
+  app.context.localStorage = {getItem: blocked, setItem: blocked, removeItem: blocked};
+  app.navigate('#mijn-atlas');
+  const form = app.main.querySelector('#profile-form');
+  form.querySelector('#profile-subject').value = 'onbekendvoorbeeldvak';
+  form.oninput();
+  assert.match(form.querySelector('.profile-count').textContent, /Geen passend aanbod/);
+  form.onsubmit(new Event('submit'));
+  app.dispatch('hashchange');
+  assert.equal(app.main.querySelectorAll('[data-record-id]').length, 0);
+  assert.match(app.main.innerHTML, /De browser kon uw keuzes niet bewaren/);
+  assert.equal(app.main.querySelector('.persona-indicator a').getAttribute('href'), '#zoeken');
+  app.main.querySelector('.persona-clear').onclick();
+  assert.ok(app.main.querySelectorAll('[data-record-id]').length > 0);
+});
+
+test('editing a legacy role preserves it, adds a second role, and clears just the profile', () => {
+  const app = boot();
+  const saved = new Map([['atlas.persona', 'Bestuurders'], ['atlas.unrelated', 'blijft']]);
+  app.context.localStorage = {getItem: key => saved.get(key), setItem: (key, value) => saved.set(key, value), removeItem: key => saved.delete(key)};
+  app.navigate('#mijn-atlas');
+  const form = app.main.querySelector('#profile-form');
+  assert.equal(form.querySelector('input[value="Bestuurders"]').checked, true);
+  form.querySelector('input[value="Docenten"]').checked = true;
+  form.onsubmit(new Event('submit'));
+  app.dispatch('hashchange');
+  const records = Array.from(app.context.ATLAS_RECORDS.records).filter(app.context.ATLAS_STARTUP.published);
+  const expected = records.filter(row => row.audiences.some(role => role === 'Docenten' || role === 'Bestuurders'));
+  assert.ok(app.main.innerHTML.includes(expected.length + ' resultaten</h2>'));
+  app.navigate('#mijn-atlas');
+  app.main.querySelector('[data-profile-clear]').onclick();
+  app.dispatch('hashchange');
+  assert.equal(saved.has('atlas.persona'), false);
+  assert.equal(saved.get('atlas.unrelated'), 'blijft');
+  assert.equal(app.main.querySelector('.persona-indicator'), null);
+  assert.ok(app.main.innerHTML.includes(records.length + ' resultaten</h2>'));
+});
+
 test('home rerenders notify optional widgets when a saved role is cleared', () => {
   const app = boot();
   let stored = JSON.stringify(['Docenten']);

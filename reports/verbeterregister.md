@@ -1,5 +1,13 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Een vindbaar adres per bron en een persoonlijk startpunt
+
+In de vorige uitgave (`cae969e`) noemde de sitemap twee adressen. De 470 openbare aanbodkaarten deelden het adres van de interactieve Atlas. Elke vermelding heeft nu een eigen leesbare HTML-pagina met titel, beschrijving, aanbieder en officiële bron. Een alfabetische index, een JSON-catalogus en de sitemap komen uit dezelfde publieke selectie. Een gekopieerde bronvermelding verwijst naar de vaste pagina. Een subsidiepagina verwijst voor de actuele openstelling naar de aanbieder.
+
+De browserproef volgde zonder JavaScript de route van de startpagina naar een vermelding en de officiële bron. De sitemap bevat 476 pagina's inclusief de startpagina, beide gidsen en drie leerlingwerkbladen. Dat maakt de inhoud technisch bereikbaar voor zoekdiensten. Daadwerkelijke indexering, citaten in AI-antwoorden en bezoekersgroei zijn nog onbekend. [Google Search Central over AI-zoekfuncties](https://developers.google.com/search/docs/appearance/ai-features) · [OpenAI over zoekcrawlers](https://developers.openai.com/api/docs/bots) · [Anthropic over zoekcrawlers](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)
+
+Via **Mijn profiel** kan een bezoeker rol, sector en eventueel vak bewaren op het eigen apparaat. De browserproef op 320, 390 en 1280 pixels telde 113 passende vermeldingen voor een mbo-docent. Na herladen bleef de selectie actief. De volledige Atlas, gedeelde zoekselecties, nul treffers en wissen zijn afzonderlijk getest. Hoe vaak mensen het profiel gebruiken en of zij het op meerdere apparaten nodig hebben, is onbekend. Gebruik bij een volgende inhoudelijke ronde relevante vaklabels uit officiële bronnen om de vakselectie gerichter te maken.
+
 ## 23 november 2026 · Elke twee weken een andere taak uitgelicht
 
 Op de vorige uitgave `4259cb8` opende de startpagina op zowel 23 november als 7 december dezelfde toetstool. Het blok wisselt nu om de veertien dagen. Bezoekers zien de einddatum en kunnen vanaf de tweede editie met één klik de vorige activiteit terugvinden.

@@ -83,6 +83,8 @@
     unclassified: 'Aanbodvorm nog niet ingedeeld'
   };
   const PRIMARY_AUDIENCES = ['Docenten', 'Bestuurders', 'IT-professionals', 'Onderzoekers'];
+  const PROFILE_ROLES = ['Docenten', 'Onderwijsontwikkelaars', 'Toetsmakers', 'Schoolleiders', 'Bestuurders',
+    'Beleidsmakers', 'IT-professionals', 'Privacyprofessionals', 'Ondersteunend personeel', 'Onderzoekers', 'Studenten', 'Leerlingen'];
   const SECTORS = ['PO', 'VO', 'MBO', 'HBO', 'WO', 'Onderzoek', 'Overheid'];
   const ACCESS_LABELS = {
     public: 'Publiek toegankelijk', registration_required: 'Registratie nodig',
@@ -244,18 +246,28 @@
     timeZone: 'Europe/Amsterdam', year: 'numeric', month: '2-digit', day: '2-digit'
   });
 
-  function savedPersonas() {
-    try {
-      const value = localStorage.getItem(PERSONA_KEY);
-      if (!value) return [];
-      try {
-        const parsed = JSON.parse(value);
-        return Array.isArray(parsed) ? parsed.filter(item => PRIMARY_AUDIENCES.includes(item)) : [];
-      } catch { return PRIMARY_AUDIENCES.includes(value) ? [value] : []; }
-    } catch { return []; }
+  let temporaryProfile;
+  function profileCriteria(value) {
+    // Older browsers may hold a single role or a list of roles under the same key.
+    const roles = Array.isArray(value) ? value : typeof value === 'string' ? [value] : typeof value?.audience === 'string' ? value.audience.split(',') : [];
+    return {
+      audience: PROFILE_ROLES.filter(role => roles.includes(role)).join(','),
+      sector: SECTORS.includes(value?.sector) ? value.sector : '',
+      vak: typeof value?.vak === 'string' ? filterValues('vak', value.vak.slice(0, 160)).join(',') : ''
+    };
   }
-  function savePersonas(selected) {
-    try { selected.length ? localStorage.setItem(PERSONA_KEY, JSON.stringify(selected)) : localStorage.removeItem(PERSONA_KEY); } catch { /* lokale opslag kan geblokkeerd zijn */ }
+  function readProfile() {
+    if (temporaryProfile) return temporaryProfile;
+    let value;
+    try { value = localStorage.getItem(PERSONA_KEY); } catch { /* Browser storage is optional. */ }
+    try { return profileCriteria(JSON.parse(value)); } catch { return profileCriteria(value); }
+  }
+  function saveProfile(profile) {
+    try {
+      if (Object.values(profile).some(Boolean)) localStorage.setItem(PERSONA_KEY, JSON.stringify(profile));
+      else localStorage.removeItem(PERSONA_KEY);
+      temporaryProfile = undefined;
+    } catch { temporaryProfile = profile; }
   }
   function sessionGet(key) { try { return sessionStorage.getItem(key) || ''; } catch { return ''; } }
   function sessionSet(key, value) { try { sessionStorage.setItem(key, String(value)); } catch { /* sessieopslag kan geblokkeerd zijn */ } }
@@ -274,8 +286,9 @@
   function persistSheetPicks() {
     sessionSet('atlas.sheetPicks', selectedHref('overlegblad').split('?')[1] || '');
   }
-  const personaLabel = value => ({ Docenten: 'Docent', Bestuurders: 'Bestuurder', 'IT-professionals': 'IT-professional', Onderzoekers: 'Onderzoeker' }[value] || value);
-  const personaSummary = selected => selected.map(personaLabel).join(' + ');
+  const personaLabel = value => ({ Docenten: 'Docent', Onderwijsontwikkelaars: 'Onderwijsontwikkelaar', Toetsmakers: 'Toetsmaker',
+    Schoolleiders: 'Schoolleider', Bestuurders: 'Bestuurder', Beleidsmakers: 'Beleidsmaker', 'IT-professionals': 'IT-professional',
+    Privacyprofessionals: 'Privacyprofessional', Onderzoekers: 'Onderzoeker', Studenten: 'Student', Leerlingen: 'Leerling' }[value] || value);
 
   const recordText = record => normalize([
     record.title, record.description, record.purpose, record.providerName,
@@ -998,7 +1011,7 @@
       ...(record.providerName ? [`Aanbieder: ${record.providerName}`] : []),
       ...(publicationDate(record) ? [`Publicatiedatum: ${dateLabel(publicationDate(record))}`] : []),
       ...officialSources(record).map(item => `${item.label || 'Officiële bron'}: ${item.url}`),
-      `AI & Onderwijs Atlas Nederland: ${publicItemUrl(record)}`
+      `AI & Onderwijs Atlas Nederland: ${PUBLIC_ATLAS}aanbod/${encodeURIComponent(record.id)}/`
     ].join('\n');
   }
   async function copySourceCitation(record) {
@@ -1102,9 +1115,6 @@
     pool.forEach(record => { if (selected.length < 4 && !usedTypes.has(typeLabel(record))) { selected.push(record); usedTypes.add(typeLabel(record)); } });
     pool.forEach(record => { if (selected.length < 4 && !selected.includes(record)) selected.push(record); });
     return selected;
-  }
-  function rolePicker(roles, selected = []) {
-    return `<form class="role-picker"><p>Kies één of meer rollen. U kunt dit later altijd aanpassen.</p><div class="role-grid">${roles.map(role => `<label class="role-option"><input type="checkbox" value="${escapeHtml(role)}" ${selected.includes(role) ? 'checked' : ''}><span><strong>${escapeHtml(personaLabel(role))}</strong><small>${(records.filter(record => (record.audiences || []).includes(role))).length} passende records</small></span></label>`).join('')}</div><button class="btn role-submit" type="submit">Bekijk passend aanbod</button></form>`;
   }
   function teaserCard(record, label = '') {
     const sourceItem = primarySource(record);
@@ -1360,7 +1370,7 @@
     update();
   }
   function renderHome() {
-    state = { q: '', sort: 'added', audience: savedPersonas().join(',') };
+    state = { q: '', sort: 'added', ...readProfile() };
     renderSearch(true);
     refreshHomeSpotlight();
     window.dispatchEvent?.(new Event('atlas:home-rendered'));
@@ -1473,14 +1483,13 @@
     return true;
   }
   function renderStart() {
-    const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
     main.innerHTML = `<section class="catalog start">${searchForm('catalog-search')}<div class="start-content">
       <span class="eyebrow">Zoek in de volledige atlas</span><h1>Waarmee wilt u aan de slag?</h1><p>Typ uw vraag of kies een herkenbare ingang. Resultaten verschijnen pas nadat u een keuze maakt.</p>
       <div class="task-grid compact">${TASKS.map(task => taskTile(task)).join('')}</div>
       <h2>Veel gezocht</h2>${popularLinks()}
-      <details class="role-start"><summary>Afstemmen op uw rol</summary>${rolePicker(roles, savedPersonas())}</details>
+      <a href="#mijn-atlas">Afstemmen op mijn profiel</a>
     </div></section>`;
-    bindSearchForm(); bindRolePickers();
+    bindSearchForm();
   }
   function facetSelectionLabel(key) {
     const defaults = {
@@ -2520,7 +2529,7 @@
     const outcome = selectedSearch ? (resultRecords.length || worksheetCount ? ' data-atlas-search-hits' : ' data-atlas-empty-search') : '';
     const home = !location.hash || location.hash.split('?')[0] === '#home';
     const spotlight = home ? homeSpotlightMarkup() : '';
-    return `${spotlight}${practiceNavigation()}<header class="result-head"${outcome}><h2 tabindex="-1">${escapeHtml(heading)}</h2>
+    return `${spotlight}${practiceNavigation()}${profileNavigation(home)}<header class="result-head"${outcome}><h2 tabindex="-1">${escapeHtml(heading)}</h2>
       <details class="result-options"><summary>Sorteer, vergelijk of deel</summary>
         <div class="result-options-body"><label for="sort">Sorteren</label><select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select>
         <p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p>
@@ -2613,10 +2622,8 @@
       return primaryDifference || a.localeCompare(b, 'nl');
     });
     const results = resultsMarkup();
-    const personas = savedPersonas();
-    const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
-    main.innerHTML = `<section class="catalog"><header class="catalog-intro"><h1>Zoek AI-aanbod voor uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, boeken, lesmaterialen en meer. Combineer uw zoekterm met de filters.</p>${isHome ? `${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}` : ''}</header><div class="catalog-grid"><div class="catalog-sidebar" aria-label="Zoeken en filteren"><h2 class="sidebar-title">Zoeken en filteren</h2>${searchForm(isHome ? 'home-search' : 'catalog-search')}<button class="mobile-filter btn secondary" type="button" aria-controls="filters" aria-expanded="false">${filterButtonText()}</button>${catalogFilterPanel(typeOptions, audienceOptions, organizationOptions)}</div><section class="results" id="results-panel">${results}</section></div></section>`;
-    bindSearchPage(); bindRolePickers();
+    main.innerHTML = `<section class="catalog"><header class="catalog-intro"><h1>Zoek AI-aanbod voor uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, boeken, lesmaterialen en meer. Combineer uw zoekterm met de filters.</p></header><div class="catalog-grid"><div class="catalog-sidebar" aria-label="Zoeken en filteren"><h2 class="sidebar-title">Zoeken en filteren</h2>${searchForm(isHome ? 'home-search' : 'catalog-search')}<button class="mobile-filter btn secondary" type="button" aria-controls="filters" aria-expanded="false">${filterButtonText()}</button>${catalogFilterPanel(typeOptions, audienceOptions, organizationOptions)}</div><section class="results" id="results-panel">${results}</section></div></section>`;
+    bindSearchPage();
     const view = resultView();
     if (restoring || view.focusId) {
       const targetY = view.y ?? Number(sessionGet('atlas.resultsScroll'));
@@ -3180,28 +3187,66 @@
     };
     form.onfocusout = () => setTimeout(() => { if (!form.contains(document.activeElement)) closeSuggestions(); }, 0);
   }
-  function bindRolePickers() {
-    document.querySelectorAll('.role-picker').forEach(form => {
-      const submit = form.querySelector('.role-submit');
-      const update = () => {
-        const count = form.querySelectorAll('input:checked').length;
-        submit.disabled = count === 0;
-        submit.textContent = count > 1 ? `Bekijk aanbod voor ${count} rollen` : 'Bekijk passend aanbod';
-      };
-      form.querySelectorAll('input').forEach(input => input.onchange = update);
-      form.onsubmit = event => {
-        event.preventDefault();
-        const selected = [...form.querySelectorAll('input:checked')].map(input => input.value);
-        if (!selected.length) return;
-        savePersonas(selected);
-        location.hash = `zoeken?audience=${encodeURIComponent(selected.join(','))}`;
-      };
-      update();
+  function profileNavigation(home) {
+    const profile = readProfile();
+    const selected = Object.entries(profile).filter(([, value]) => value);
+    if (!selected.length) return temporaryProfile ? '<p role="status">Uw profiel is voor deze pagina gewist. De browser gaf geen toegang tot de opgeslagen voorkeuren.</p>' : '';
+    const active = selected.every(([key, value]) => state[key] === value);
+    const label = [...profile.audience.split(',').filter(Boolean).map(personaLabel), profile.sector, profile.vak].filter(Boolean).join(' · ');
+    return `<aside class="persona-indicator" aria-label="Mijn profiel">
+      ${active ? `<span>Uw profiel <strong>${escapeHtml(label)}</strong></span>` : '<a href="#home">Bekijk mijn aanbod</a>'}
+      ${activeFilters(state).length ? `<a href="${escapeHtml(criteriaHref({q: state.q}))}">Doorzoek de hele Atlas</a>` : ''}
+      <a href="#mijn-atlas">Profiel wijzigen</a>
+      ${home ? '<button class="persona-clear" type="button">Wis mijn profiel</button>' : ''}
+      ${temporaryProfile ? '<span role="status">Dit profiel geldt zolang deze pagina open is. De browser kon uw keuzes niet bewaren.</span>' : ''}</aside>`;
+  }
+  function clearProfile() {
+    saveProfile(profileCriteria(null));
+    if (location.hash === '#home' || !location.hash) {
+      renderHome();
+      main.querySelector('.result-head h2')?.focus({preventScroll:true});
+    } else location.hash = 'home';
+  }
+  function renderProfile() {
+    const profile = readProfile();
+    const roles = profile.audience.split(',');
+    main.innerHTML = `<article class="personal-page profile-page"><header class="page-intro"><h1 tabindex="-1">Mijn profiel</h1>
+      <p>Kies welk aanbod u op de startpagina wilt zien. U hebt geen account nodig. Deze browser bewaart uw keuzes op dit apparaat.</p></header>
+      <form id="profile-form"><fieldset><legend>Voor welke rol zoekt u aanbod?</legend>
+      <p>Kies eventueel meerdere rollen. Aanbod voor één van uw rollen telt mee.</p>
+      <div class="profile-roles">${PROFILE_ROLES.map(role => `<label><input type="checkbox" name="profile-role" value="${escapeHtml(role)}"${roles.includes(role) ? ' checked' : ''}> ${escapeHtml(personaLabel(role))}</label>`).join('')}</div></fieldset>
+      <div class="profile-fields"><div><label for="profile-sector">Onderwijssector</label>
+      <select id="profile-sector"><option value="">Alle sectoren</option>${SECTORS.map(sector => `<option value="${escapeHtml(sector)}"${profile.sector === sector ? ' selected' : ''}>${escapeHtml(SECTOR_NAMES[sector] ? sector + ' · ' + SECTOR_NAMES[sector] : sector)}</option>`).join('')}</select></div>
+      <div><label for="profile-subject">Vakgebied (optioneel)</label>
+      <input type="text" id="profile-subject" maxlength="160" list="profile-subjects" aria-describedby="profile-subject-hint" value="${escapeHtml(profile.vak)}" placeholder="Bijv. biologie">
+      <datalist id="profile-subjects">${[...subjectNames.values()].sort((a,b) => a.localeCompare(b, 'nl')).map(name => `<option value="${escapeHtml(name)}"></option>`).join('')}</datalist>
+      <small id="profile-subject-hint">Veel aanbod vermeldt geen vak. Laat dit veld leeg voor een ruimere selectie.</small></div></div>
+      <p class="profile-count" role="status"></p><div class="profile-actions"><button class="btn" type="submit">Bewaar mijn profiel</button>
+      <a href="#zoeken">Doorzoek de hele Atlas</a>${Object.values(profile).some(Boolean) ? '<button class="btn secondary" type="button" data-profile-clear>Wis mijn profiel</button>' : ''}</div>
+      </form></article>`;
+    const form = main.querySelector('#profile-form');
+    const choices = () => profileCriteria({
+      audience: [...form.querySelectorAll('input[name="profile-role"]')].filter(input => input.checked).map(input => input.value).join(','),
+      sector: form.querySelector('#profile-sector').value,
+      vak: form.querySelector('#profile-subject').value
     });
-    const change = document.querySelector('.persona-change');
-    if (change) change.onclick = () => { const choices = document.querySelector('.persona-choices'); choices.hidden = false; change.setAttribute('aria-expanded', 'true'); choices.querySelector('input').focus(); };
-    const clear = document.querySelector('.persona-clear');
-    if (clear) clear.onclick = () => { savePersonas([]); renderHome(); };
+    const preview = () => {
+      const selected = choices();
+      const count = recordsForCriteria(selected).length;
+      form.querySelector('.profile-count').textContent = count ? matchesLabel(count, 0) + ' bij uw keuzes.' : 'Geen passend aanbod. Probeer een andere rol, sector of vak.';
+      form.querySelector('button[type="submit"]').disabled = !Object.values(selected).some(Boolean);
+    };
+    form.oninput = preview;
+    form.onsubmit = event => {
+      event.preventDefault();
+      const selected = choices();
+      if (!Object.values(selected).some(Boolean)) return;
+      saveProfile(selected);
+      location.hash = 'home';
+    };
+    const clear = form.querySelector('[data-profile-clear]');
+    if (clear) clear.onclick = clearProfile;
+    preview();
   }
 
   function contributionPrompt() {
@@ -3244,6 +3289,8 @@
   function bindResultsControls(announceSearch = true) {
     const panel = document.querySelector('#results-panel');
     if (!panel) return;
+    const clearProfileButton = panel.querySelector('.persona-clear');
+    if (clearProfileButton) clearProfileButton.onclick = clearProfile;
     observeCardFacts();
     if (announceSearch && panel.querySelector('[data-atlas-empty-search]')) window.dispatchEvent?.(new Event('atlas-empty-search'));
     else if (announceSearch && panel.querySelector('[data-atlas-search-hits]')) window.dispatchEvent?.(new Event('atlas-search-results'));
@@ -3466,6 +3513,7 @@
     document.querySelector('.site-header')?.classList.remove('open');
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
     const guides = {
+      'mijn-atlas': renderProfile,
       'praktijkgids': renderPracticeGuide, 'wat-werkt': renderLearningEvidence,
       'werkblad-oefenvragen': () => renderWorksheet('werkblad-oefenvragen'),
       'werkblad-biologiepracticum': () => renderWorksheet('werkblad-biologiepracticum'),
@@ -3486,7 +3534,6 @@
     if (path === 'toetsafspraak') renderAssessment();
     if (path === 'teamproef') renderTeamTrial();
     if (path.startsWith('item/')) renderDetail(decodeURIComponent(path.slice(5)));
-    if (path === 'mijn-atlas') { location.replace('#home'); return; }
     if (path === 'bijdragen') renderContribute();
     if (!['home', 'zoeken', 'organisaties'].includes(path)) observeCardFacts();
     document.querySelectorAll('.site-header nav a').forEach(link => link.removeAttribute('aria-current'));
