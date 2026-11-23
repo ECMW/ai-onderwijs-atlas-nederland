@@ -755,8 +755,49 @@ test('item details show only available lessons backed by a known official materi
     const document = { querySelector: selector => selector === 'main' ? main : {}, querySelectorAll: () => [] };
     load([item], '#item/' + item.id, { document }).renderDetail(item.id);
     assert.equal(main.innerHTML.includes('Lesstart voor de klas'), available);
+    const header = main.innerHTML.split('</header>')[0];
+    assert.equal(header.includes('href="#leerlingblad?item=' + item.id + '"'), available);
     assert.ok(main.innerHTML.includes('Feitelijke beschrijving'));
     assert.equal(load([item], lessonRoute).resultsMarkup().includes('class="lesson-choice"'), available);
+  }
+});
+
+test('materials without a pupil sheet link to their first official source directly under the title', () => {
+  const material = {...record('materiaal'), offerCategory:'materials', sourceUrls:[
+    {sourceType:'secondary', url:'https://example.org/context'},
+    {sourceType:'official', url:'https://example.org/les'},
+    {sourceType:'official', url:'https://example.org/bronnen'}
+  ]};
+  for (const [item, available] of [
+    [material, true], [{...material, status:'archived'}, false],
+    [{...material, sourceUrls:[material.sourceUrls[0]]}, false], [{...material, offerCategory:'guidance'}, false]
+  ]) {
+    const main = {querySelectorAll:() => []};
+    const document = {querySelector:selector => selector === 'main' ? main : {}, querySelectorAll:() => []};
+    load([item], '#item/materiaal', {document}).renderDetail('materiaal');
+    const header = main.innerHTML.split('</header>')[0];
+    assert.equal(header.includes('Bekijk materiaal'), available);
+    if (available) {
+      assert.match(header, /<\/h1><a class="btn" href="https:\/\/example\.org\/les" data-atlas-usage="lesson-open" data-atlas-item-id="materiaal" target="_blank" rel="noopener noreferrer">/);
+      assert.match(header, /data-atlas-material-detail="materiaal">\s*<header/);
+    }
+  }
+});
+
+test('opening a pupil sheet from either detail action preserves the selected lesson directory entry', () => {
+  const lesson = classroomLessons.find(item => item.id === 'hhmi-introduction-to-systems');
+  const handlers = [], saved = new Map();
+  const main = {querySelectorAll:selector => selector === 'a[href^="#leerlingblad?"]'
+    ? [0, 1].map(() => ({addEventListener:(_event, listener) => handlers.push(listener)})) : []};
+  const document = {querySelector:selector => selector === 'main' ? main : {}, querySelectorAll:() => []};
+  const sessionStorage = {getItem:key => saved.get(key), setItem:(key, value) => saved.set(key, value)};
+  const route = '#item/' + lesson.id + '?van=lesgids&sector=VO&vak=Biologie&groep=vo';
+  load([lesson], route, {document, sessionStorage}).renderDetail(lesson.id);
+  assert.equal(handlers.length, 2);
+  for (const click of handlers) {
+    saved.clear();
+    click();
+    assert.equal(saved.get('atlas.lastSearch'), 'lesmateriaal/#selectie?sector=VO&vak=Biologie&groep=vo&kaart=' + lesson.id);
   }
 });
 

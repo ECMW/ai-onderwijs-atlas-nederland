@@ -3053,8 +3053,15 @@
     const amount = funding && fundingAmount(record);
     const sourceLinks = `<h3>Officiële bronnen</h3>${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}`;
     const lesson = hasAvailableLesson(record) && lessonStartBody(record);
-    main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(offerLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
-      <section class="detail-shell"${materialDetail ? ` data-atlas-material-detail="${escapeHtml(record.id)}"` : ''}><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${backLabel}</a><span>Home / ${fromDirectory ? 'Lesgids' : fromNewOffers ? 'Nieuw aanbod' : lastSearch.startsWith('#onderzoek') ? 'Onderzoek' : 'Resultaten'} / ${escapeHtml(record.title)}</span></nav>
+    let materialAction = '';
+    if (lesson) {
+      materialAction = `<a class="btn" href="${escapeHtml(learnerSheetHref(record))}" aria-label="Open leerlingblad: ${escapeHtml(record.lessonStart.question)}">Open leerlingblad</a>`;
+    } else if (materialDetail) {
+      materialAction = `<a class="btn" href="${escapeHtml(sources[0].url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${escapeHtml(sourceActionLabel(record))} ↗</a>`;
+    }
+    main.innerHTML = `<div${materialDetail ? ` data-atlas-material-detail="${escapeHtml(record.id)}"` : ''}>
+      <header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(offerLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1>${materialAction}<p class="listing-notice">${LISTING_NOTICE}</p></header>
+      <section class="detail-shell"><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${backLabel}</a><span>Home / ${fromDirectory ? 'Lesgids' : fromNewOffers ? 'Nieuw aanbod' : lastSearch.startsWith('#onderzoek') ? 'Onderzoek' : 'Resultaten'} / ${escapeHtml(record.title)}</span></nav>
       <div class="detail-layout"><article>
         ${funding ? `<section class="funding-conditions"><h2>Aanvraag en voorwaarden</h2><dl>
           <div><dt>Aanvragers</dt><dd>${escapeHtml(applicants)}</dd></div>
@@ -3077,12 +3084,13 @@
         <button class="btn secondary share-item" type="button" data-share-item>Deel dit item</button>
         <p id="detail-feedback" class="action-feedback" aria-live="polite"></p>
         <aside class="item-contribution"><h3>Klopt deze informatie nog?</h3><p>Help mee met een correctie of aanvulling.</p><a class="btn secondary" href="#bijdragen?item=${encodeURIComponent(record.id)}">Fout of aanvulling doorgeven</a></aside>
-      </aside></div></section>`;
+      </aside></div></section></div>`;
     if (lesson) bindLessonCopy(main);
     if (materialDetail) window.dispatchEvent?.(new Event('atlas-material-detail'));
     const back = document.querySelector('.back-results');
     back.onclick = () => { if (!fromDirectory) sessionSet('atlas.restoreResults', lastSearch); };
-    if (directoryReturn) document.querySelector('.lesson-detail a[href^="#leerlingblad?"]')?.addEventListener('click', () => sessionSet('atlas.lastSearch', directoryReturn));
+    if (directoryReturn) main.querySelectorAll('a[href^="#leerlingblad?"]').forEach(link =>
+      link.addEventListener('click', () => sessionSet('atlas.lastSearch', directoryReturn)));
     document.querySelectorAll('.related-cards a[href^="#item/"]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', lastSearch));
     const copy = document.querySelector('[data-copy-citation]');
     if (copy) copy.onclick = () => copySourceCitation(record);
