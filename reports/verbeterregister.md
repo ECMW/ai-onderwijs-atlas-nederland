@@ -1,5 +1,11 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Een werkblad aan de klas geven
+
+In editie `09bd76a` ontbraken de twee Atlas-werkbladen in de lesgids. Deelde een docent het adres van het werkblad, dan kon een leerling ook de docentnotities openklappen. De lesgids toont nu eigen werkbladen apart van externe lesstarts, met filters voor vak, leerdoel en activiteit. Bij een maximumduur verschijnen uitsluitend materialen met een bekende duur.
+
+De docent kan per werkblad een vaste klaslink kopiëren. Die opent een zelfstandig leesbare en afdrukbare leerlingpagina, ook zonder JavaScript. Beide weergaven gebruiken dezelfde leerlingtekst. Getest zijn onder meer de combinatie VO en biologie, terugkeren naar de lesselectie, openen in een nieuw browserprofiel en kopiëren wanneer het klembord is geblokkeerd.
+
 ## 23 november 2026 · Van zoekvraag naar een werkblad voor de klas
 
 Op de publieke versie `fa754316` gaven ‘tijd besparen’ en ‘biologie practicum’ nul catalogustreffers. ‘Lesvoorbereiding’ gaf er 18, met een onderzoeksdatabase als eerste. De twee nieuwe Atlas-werkbladen zijn te openen vanuit het zoekveld en vanuit **Een les voorbereiden**. Ze tellen afzonderlijk van vermeldingen van extern aanbod.

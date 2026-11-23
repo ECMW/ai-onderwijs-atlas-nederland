@@ -110,12 +110,18 @@ test('a shared lesson directory selection reopens with the same sector, subject 
   const template = fs.readFileSync(path.join(__dirname, '../scripts/lesson_directory.html'), 'utf8');
   const cases = [
     ['doelles', 'VO', 'Biologie', 'Voedselweb tekenen'], ['ander-niveau', 'HBO', 'Biologie', 'Voedselweb tekenen'],
-    ['ander-vak', 'VO', 'Aardrijkskunde', 'Voedselweb tekenen'], ['ander-doel', 'VO', 'Biologie', 'Planten herkennen']
+    ['ander-vak', 'VO', 'Aardrijkskunde', 'Voedselweb tekenen'], ['ander-doel', 'VO', 'Biologie', 'Planten herkennen'],
+    ['kiemproef', 'VO', 'Biologie', 'Een eerlijke vergelijking bij kieming'], ['oefenvragen', '', 'Wiskunde', 'Procenten berekenen']
   ];
   function open(href) {
     const location = new URL(href), document = new Element('document'), events = new EventTarget();
-    const cards = cases.map(([id, sector]) => '<article data-id="' + id + '"><span data-directory-sectors="' + sector +
-      '"></span><span data-directory-subject></span><span data-directory-goal></span><a class="directory-card-link" href="../#item/' + id + '"></a></article>');
+    const cards = cases.map(([id, sector]) => {
+      const worksheet = id === 'kiemproef' || id === 'oefenvragen';
+      const pupil = worksheet ? '<a class="pupil" href="./leerling/' + id + '/"></a>' : '';
+      return '<article data-id="' + id + '"' + (worksheet ? ' data-worksheet' : '') + '><span data-directory-sectors="' + sector +
+        '"></span><span data-directory-subject></span><span data-directory-goal></span>' + pupil +
+        '<a class="directory-card-link" href="../#' + (worksheet ? 'werkblad-' : 'item/') + id + '"></a></article>';
+    });
     document.innerHTML = template.replace('$sections', '<section aria-labelledby="groep">' + cards.join('') + '</section>');
     const form = document.querySelector('[data-directory-filter]');
     document.querySelectorAll('article').forEach((card, i) => {
@@ -131,7 +137,7 @@ test('a shared lesson directory selection reopens with the same sector, subject 
     vm.runInNewContext(script, {document, location, URLSearchParams, window,
       history:{replaceState:(_, __, url) => { location.href = new URL(url, location).href; }},
       navigator:{clipboard:{writeText:async url => { copied = url; }}}, requestAnimationFrame:callback => callback()});
-    return {form, location, events, skip:() => checkSkipLink(document, location, window),
+    return {form, location, events, document, skip:() => checkSkipLink(document, location, window),
       visible:() => document.querySelectorAll('article').filter(card => !card.hidden).map(card => card.dataset.id),
       share:async () => { await form.querySelector('[data-share-lessons]').onclick(); return copied; },
       reset:() => { fields.forEach(field => { field.value = ''; }); events.dispatchEvent(new Event('reset')); }};
@@ -153,6 +159,19 @@ test('a shared lesson directory selection reopens with the same sector, subject 
   reopened.reset();
   assert.deepEqual(reopened.visible(), cases.map(row => row[0]));
   assert.equal(reopened.location.href, base);
+  assert.equal(reopened.form.querySelector('[role="status"]').textContent, '2 werkbladen en 4 lesstarts');
+  const selected = open(base + '#selectie?sector=VO&vak=biologie');
+  assert.equal(selected.form.querySelector('[role="status"]').textContent, '1 werkblad en 2 lesstarts');
+  const sheet = selected.document.querySelector('[data-id="kiemproef"]');
+  assert.equal(sheet.querySelector('.pupil').getAttribute('href'), './leerling/kiemproef/');
+  assert.equal(sheet.querySelector('.directory-card-link').getAttribute('href'), '../#werkblad-kiemproef?van=lesgids&sector=VO&vak=biologie');
+  const duration = selected.form.querySelector('[data-filter-minutes]');
+  duration.value = '90';
+  duration.valueAsNumber = 90;
+  selected.events.dispatchEvent(new Event('input'));
+  assert.equal(selected.visible().length, 0);
+  const differentSector = open(base + '#selectie?sector=HBO&vak=wiskunde');
+  assert.equal(differentSector.visible().length, 0);
 });
 
 function boot({ replacements = {}, omitted = [], omitGuard = false, fetch, href = 'https://example.org/atlas/?view=public#home' } = {}) {

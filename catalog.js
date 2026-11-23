@@ -2734,16 +2734,8 @@
     );
   }
 
-  const WORKSHEETS = {
+  const WORKSHEET_TEACHER_NOTES = {
     'werkblad-oefenvragen': {
-      level: 'Rekenvoorbeeld · aanpasbaar voor uw eigen vak',
-      title: 'Wanneer is een verschil van 12 groter in procenten?',
-      goal: 'Je kunt een procentuele verandering berekenen en uitleggen waarom het begingetal telt.',
-      tasks: [
-        'Maandag staan er 48 fietsen bij school, dinsdag 60. Met hoeveel procent is het aantal gestegen? Schrijf op welk aantal 100% is en laat je berekening zien.',
-        'Vorige week leende de bibliotheek 60 boeken uit, deze week 48. Met hoeveel procent is het aantal gedaald? Noteer ook hier het begingetal en je berekening.',
-        'Het verschil is beide keren 12. Leg aan een klasgenoot uit waarom de percentages verschillen.'
-      ],
       teacherTitle: 'Antwoorden en controle voor de docent',
       notes: [
         'Fietsen: 12 ÷ 48 × 100 = 25% stijging. Reken terug: 48 × 1,25 = 60.',
@@ -2754,14 +2746,6 @@
       prompt: 'Maak voor [groep en vak] twee korte oefenvragen bij [leerdoel]. Gebruik verschillende situaties waarin leerlingen zelf [denkstap] moeten uitvoeren en uitleggen. Geef eerst alleen de leerlingvragen. Zet daarna per vraag het modelantwoord, een waarschijnlijke denkfout en een controle waarmee ik het antwoord kan toetsen.'
     },
     'werkblad-biologiepracticum': {
-      level: 'Biologie · vmbo vanaf leerjaar 2',
-      title: 'Heeft licht invloed op de kieming van tuinkers?',
-      goal: 'Je kunt een eerlijke vergelijking ontwerpen en je conclusie onderbouwen met eigen waarnemingen.',
-      tasks: [
-        'Bekijk dit voorstel: “Ik zet een schaaltje met natte watten in het licht en een schaaltje met droge watten in het donker.” Welke twee omstandigheden veranderen tegelijk? Wat kun je daardoor straks moeilijk verklaren?',
-        'Teken een betere opstelling om alleen de invloed van licht te onderzoeken. Noteer vooraf je verwachting, wanneer je een zaadje als gekiemd telt en wat je in beide opstellingen gelijk houdt. Bespreek het plan met je docent en voer het uit.',
-        'Maak een tabel met de datum, het aantal gekiemde zaadjes in het licht en het aantal in het donker. Tel telkens op dezelfde manier. Gebruik je eigen metingen om je verwachting te bespreken. Welke vraag blijft open?'
-      ],
       teacherTitle: 'Voorbereiding en bespreking voor de docent',
       notes: [
         'Leg tuinkerszaad, schaaltjes, watten, water en etiketten klaar. Kies twee plekken met vergelijkbare temperatuur en maak één opstelling donker. Volg de docentinstructie van NIBI voor het volledige practicum.',
@@ -2775,34 +2759,48 @@
   };
 
   function renderWorksheet(id) {
-    const sheet = WORKSHEETS[id];
+    const directoryReturn = lessonDirectoryReturn();
     const lastSearch = sessionGet('atlas.lastSearch') || '';
-    const back = /^#zoeken(?:\?|$)/.test(lastSearch) ? lastSearch : '#zoeken?q=les&type=materials';
-    const sourceLink = sheet.source ? ` Bij het practicum van <a href="${escapeHtml(sheet.source.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sheet.source.label)} ↗</a>.` : '';
+    const back = directoryReturn || (/^#zoeken(?:\?|$)/.test(lastSearch) ? lastSearch : '#zoeken?q=les&type=materials');
+    const backLabel = directoryReturn ? '← Terug naar uw lesselectie' : '← Naar het lesaanbod';
+    const classPath = 'lesmateriaal/leerling/' + encodeURIComponent(id.slice('werkblad-'.length)) + '/';
+    const sheet = source.worksheets?.[id];
+    if (!sheet || !Array.isArray(sheet.tasks) || !sheet.tasks.length) {
+      main.innerHTML = `<section class="detail-missing"><h1 tabindex="-1">Het werkblad kon niet worden geladen</h1><p><a class="btn" href="${escapeHtml(classPath)}">Open leerlingblad</a></p><a href="${escapeHtml(back)}">${backLabel}</a></section>`;
+      return;
+    }
+    const teacher = WORKSHEET_TEACHER_NOTES[id];
+    const sourceCredit = sheet.credit ? ' ' + sheet.credit : '';
+    const sourceLink = teacher.source ? ` <a class="work-screen" href="${escapeHtml(teacher.source.href)}" target="_blank" rel="noopener noreferrer">Open docentmateriaal ↗</a>` : '';
     main.innerHTML = `<article class="work-sheet" aria-labelledby="work-title">
-      <nav class="practice-back work-screen"><a href="${escapeHtml(back)}">← Naar het lesaanbod</a></nav>
+      <nav class="practice-back work-screen"><a href="${escapeHtml(back)}">${backLabel}</a></nav>
       <header><p class="lesson-level">${escapeHtml(sheet.level)}</p><h1 id="work-title" tabindex="-1">${escapeHtml(sheet.title)}</h1>
         <p><strong>Leerdoel</strong> · ${escapeHtml(sheet.goal)}</p></header>
       <section class="work-pupil"><h2>Opdracht voor de klas</h2><ol>${sheet.tasks.map(task => `<li>${escapeHtml(task)}</li>`).join('')}</ol>
-        <div class="lesson-actions work-screen"><button class="btn" data-work-copy type="button">Kopieer leerlingopdracht</button>
+        <div class="lesson-actions work-screen"><a class="btn" href="${escapeHtml(classPath)}">Open leerlingblad</a>
+          <button class="btn secondary" data-work-link type="button">Kopieer klaslink</button>
+          <button class="btn secondary" data-work-copy type="button">Kopieer leerlingopdracht</button>
           <button class="btn secondary" data-work-print type="button">Druk leerlingblad af</button></div></section>
-      <div class="work-screen"><details class="work-notes"><summary>${escapeHtml(sheet.teacherTitle)}</summary>
-        <ul>${sheet.notes.map(note => `<li>${escapeHtml(note)}</li>`).join('')}</ul></details>
-        <details class="work-notes"><summary>${sheet.source ? 'Een controlevraag voor mijn klas' : 'Oefenvragen voor mijn eigen vak maken'}</summary>
-          <p>${escapeHtml(sheet.adapt)}</p><label for="work-prompt">Bewerk de instructie voor uw les</label>
-          <textarea id="work-prompt" rows="5">${escapeHtml(sheet.prompt)}</textarea><button class="btn secondary" data-work-prompt type="button">Kopieer mijn instructie</button>
+      <div class="work-screen"><details class="work-notes"><summary>${escapeHtml(teacher.teacherTitle)}</summary>
+        <ul>${teacher.notes.map(note => `<li>${escapeHtml(note)}</li>`).join('')}</ul></details>
+        <details class="work-notes"><summary>${teacher.source ? 'Een controlevraag voor mijn klas' : 'Oefenvragen voor mijn eigen vak maken'}</summary>
+          <p>${escapeHtml(teacher.adapt)}</p><label for="work-prompt">Bewerk de instructie voor uw les</label>
+          <textarea id="work-prompt" rows="5">${escapeHtml(teacher.prompt)}</textarea><button class="btn secondary" data-work-prompt type="button">Kopieer mijn instructie</button>
         </details><p class="lesson-feedback" role="status"></p>
         <textarea class="lesson-copy" aria-label="Tekst om handmatig te kopiëren" readonly hidden></textarea></div>
-      <p class="learner-credit">Werkblad van de AI &amp; Onderwijs Atlas Nederland.${sourceLink}</p></article>`;
+      <p class="learner-credit">Werkblad van de AI &amp; Onderwijs Atlas Nederland.${escapeHtml(sourceCredit)}${sourceLink}</p></article>`;
     const feedback = main.querySelector('.lesson-feedback');
     const fallback = main.querySelector('.lesson-copy');
     const copy = (button, text) => copyTextWithFallback(button, text, feedback, fallback, 'Gekopieerd.', 'De tekst is geselecteerd. Kopieer deze met uw apparaat.');
     const pupil = main.querySelector('[data-work-copy]');
     pupil.onclick = () => copy(pupil, [sheet.title, sheet.goal, ...sheet.tasks.map((task, index) => `${index + 1}. ${task}`),
-      'Werkblad van de AI & Onderwijs Atlas Nederland.' + (sheet.source ? ` Bron: ${sheet.source.label} · ${sheet.source.href}` : '')].join('\n\n'));
+      'Werkblad van de AI & Onderwijs Atlas Nederland.' + sourceCredit].join('\n\n'));
+    const classLink = main.querySelector('[data-work-link]');
+    classLink.onclick = () => copyTextWithFallback(classLink, PUBLIC_ATLAS + classPath, feedback, fallback,
+      'Klaslink gekopieerd.', 'De klaslink is geselecteerd. Kopieer deze met uw apparaat.');
     main.querySelector('[data-work-print]').onclick = () => window.print();
-    const teacher = main.querySelector('[data-work-prompt]');
-    teacher.onclick = () => copy(teacher, main.querySelector('#work-prompt').value);
+    const promptButton = main.querySelector('[data-work-prompt]');
+    promptButton.onclick = () => copy(promptButton, main.querySelector('#work-prompt').value);
   }
 
   function lessonDirectoryReturn() {

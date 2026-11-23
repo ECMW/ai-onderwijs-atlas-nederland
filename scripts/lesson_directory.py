@@ -9,6 +9,7 @@ from urllib.parse import quote
 from public_assets import versioned_html
 from source_library import _canonical_locator
 from validate_data import valid_lesson_start
+from worksheet_pages import load_worksheets, render_pupil_pages
 
 
 SECTOR_GROUPS = (
@@ -61,6 +62,22 @@ def lesson_card(record, sector_group=None):
 </article>"""
 
 
+def worksheet_card(identifier, sheet):
+    slug = identifier.removeprefix("werkblad-")
+    title = escape(sheet["title"])
+    return f"""<article data-worksheet>
+  <h3>{title}</h3>
+  <dl>
+    <div><dt>Niveau</dt><dd data-directory-sectors="{escape(' '.join(sheet['sectors']))}">{escape(sheet['level'])}</dd></div>
+    <div><dt>Vakgebied</dt><dd data-directory-subject>{escape(', '.join(sheet['subjects']))}</dd></div>
+    <div><dt>Leerdoel</dt><dd data-directory-goal>{escape(sheet['goal'])}</dd></div>
+    <div><dt>Activiteit</dt><dd data-directory-activity>{escape(sheet['activity'])}</dd></div>
+  </dl>
+  <nav aria-label="Werkblad {title}"><a href="./leerling/{slug}/">Open leerlingblad<span class="directory-sr"> bij {title}</span></a>
+    <a class="directory-card-link" href="../#{identifier}" hidden>Open docentversie<span class="directory-sr"> bij {title}</span></a></nav>
+</article>"""
+
+
 def generate_lesson_directory(root: Path, destination: Path) -> None:
     raw = (root / "data/data-v2.js").read_text(encoding="utf-8").strip()
     published = json.loads(raw.removeprefix("window.ATLAS_RECORDS=").removesuffix(";"))["records"]
@@ -77,6 +94,11 @@ def generate_lesson_directory(root: Path, destination: Path) -> None:
         for key in matches or ["overig"]:
             grouped[key].append(record)
     links, sections = [], []
+    worksheets = load_worksheets(root)
+    if worksheets:
+        links.append('<a href="#werkbladen">Werkbladen</a>')
+        cards = ''.join(worksheet_card(key, sheet) for key, sheet in worksheets.items())
+        sections.append(f'<section aria-labelledby="werkbladen"><h2 id="werkbladen">Werkbladen van de Atlas</h2>{cards}</section>')
     sectors_present = {sector for rows in grouped.values() for row in rows for sector in row["lessonStart"]["sectors"]}
     sector_labels = {"PO": "Primair onderwijs", "VO": "Voortgezet onderwijs", "MBO": "Middelbaar beroepsonderwijs",
                      "HBO": "Hoger beroepsonderwijs", "WO": "Wetenschappelijk onderwijs"}
@@ -90,8 +112,10 @@ def generate_lesson_directory(root: Path, destination: Path) -> None:
     template = Template((root / "scripts/lesson_directory.html").read_text(encoding="utf-8"))
     page = template.substitute(
         sector_options="".join(f'<option value="{escape(key)}">{escape(title)}</option>' for key, title in sector_labels.items()),
-        navigation=f'<nav aria-label="Onderwijssector">{"".join(links)}</nav>' if links else "",
+        navigation=f'<nav aria-label="Onderdelen van de lesgids">{"".join(links)}</nav>' if links else "",
         sections="\n".join(sections) or "<p>Er zijn momenteel geen beschikbare lesstarts.</p>",
     )
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(versioned_html(root, page, document_dir=root / "lesmateriaal"), encoding="utf-8")
+    if worksheets:
+        render_pupil_pages(worksheets, destination.parent, root)

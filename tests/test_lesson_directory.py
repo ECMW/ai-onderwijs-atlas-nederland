@@ -11,7 +11,7 @@ from xml.etree import ElementTree
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from generate_data import generate
-from lesson_directory import generate_lesson_directory, lesson_card
+from lesson_directory import generate_lesson_directory, lesson_card, worksheet_card
 
 
 class Links(HTMLParser):
@@ -26,6 +26,41 @@ class Links(HTMLParser):
 
 
 class LessonDirectoryTests(unittest.TestCase):
+    def test_staged_directory_links_to_each_generated_classroom_copy(self):
+        sheets = json.loads((ROOT / 'data/worksheets.json').read_text(encoding='utf-8'))
+        with tempfile.TemporaryDirectory() as build:
+            site = Path(build) / 'lesmateriaal'
+            generate_lesson_directory(ROOT, site / 'index.html')
+            page = (site / 'index.html').read_text(encoding='utf-8')
+            self.assertEqual(page.count('<article data-worksheet>'), len(sheets))
+            for identifier, sheet in sheets.items():
+                pupil_path = f"leerling/{identifier.removeprefix('werkblad-')}/"
+                self.assertIn(f'href="./{pupil_path}"', page)
+                self.assertIn(f'href="../#{identifier}" hidden', page)
+                pupil = (site / pupil_path / 'index.html').read_text(encoding='utf-8')
+                for text in [sheet['title'], sheet['goal'], *sheet['tasks']]:
+                    self.assertIn(escape(text), pupil)
+                self.assertNotIn('catalog.js', pupil)
+                self.assertNotIn('analytics.js', pupil)
+                self.assertNotIn('<details', pupil)
+                self.assertNotIn('25% stijging', pupil)
+                self.assertNotIn('zichtbaar worteltje', pupil)
+
+    def test_own_worksheet_has_a_static_pupil_link_and_an_independent_teacher_link(self):
+        sheet = {'title': 'Tellen & vergelijken', 'level': 'Vmbo', 'sectors': ['VO'],
+                 'subjects': ['Biologie'], 'goal': 'Eigen metingen vergelijken', 'activity': 'Kiemproef'}
+        card = worksheet_card('werkblad-biologiepracticum', sheet)
+        self.assertIn('<article data-worksheet>', card)
+        self.assertIn('<dd data-directory-sectors="VO">', card)
+        self.assertIn('Tellen &amp; vergelijken', card)
+        self.assertNotIn('data-directory-minutes', card)
+        pupil, teacher = Links(card).links
+        self.assertEqual(pupil['href'], './leerling/biologiepracticum/')
+        self.assertNotIn('hidden', pupil)
+        self.assertEqual(teacher['href'], '../#werkblad-biologiepracticum')
+        self.assertEqual(teacher['class'], 'directory-card-link')
+        self.assertIn('hidden', teacher)
+
     def test_generated_and_staged_directory_use_public_available_lessons_only(self):
         original = next(row for row in json.loads((ROOT / 'data/records.json').read_text(encoding='utf-8'))
                         if row.get('lessonStart') and row.get('subjects'))

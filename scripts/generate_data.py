@@ -6,6 +6,7 @@ from lesson_directory import generate_lesson_directory
 from public_assets import versioned_html
 from promote_contribution import dutch_date
 from publication_scope import duplicate_redirects
+from worksheet_pages import load_worksheets
 
 R = Path(__file__).parents[1]
 
@@ -45,9 +46,13 @@ def generate(root: Path = R, generated_on: date | None = None) -> None:
     (root / 'data/metadata.json').write_text(
         json.dumps(public_meta, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
     )
+    projection = {'metadata': public_meta, 'records': published}
+    worksheets = load_worksheets(root)
+    if worksheets:
+        projection['worksheets'] = worksheets
     (root / 'data/data-v2.js').write_text(
         'window.ATLAS_RECORDS=' + json.dumps(
-            {'metadata': public_meta, 'records': published}, ensure_ascii=False, separators=(',', ':')
+            projection, ensure_ascii=False, separators=(',', ':')
         ) + ';\n', encoding='utf-8'
     )
     (root / 'data/search-index.json').write_text(json.dumps([
