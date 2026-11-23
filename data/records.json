@@ -38180,7 +38180,7 @@
     "subtype": "Modulaire personeels- en leiderschapstraining",
     "organizationIds": [],
     "providerName": "UK Department for Education",
-    "description": "Engelstalig trainingspakket voor scholen en colleges met vier personeelsmodules en een leiderschapsdeel over AI-basiskennis, interactie met generatieve AI, veilig gebruik, praktijktoepassingen, risicoanalyse en implementatieplanning.",
+    "description": "Engelstalig trainingspakket voor scholen en colleges met vier personeelsmodules en een leiderschapsdeel over AI-basiskennis, interactie met generatieve AI, veilig gebruik, praktijktoepassingen, risicoanalyse en implementatieplanning. Module 4 biedt een oefening voor schoolcommunicatie. Op dia 43–44 beoordeelt u aan de hand van vragen en twee Engelstalige voorbeeldbrieven of een AI-concept voor een oudermail klopt en past bij uw school. De schoolregels in het voorbeeld horen bij de Engelse context.",
     "purpose": "Onderwijspersoneel en schoolleiders ondersteunen om generatieve AI veilig, kritisch en doelgericht te gebruiken en de inzet ervan in de organisatie te plannen.",
     "audiences": [
       "Docenten",
@@ -38200,12 +38200,22 @@
     "status": "available",
     "availabilityText": "De collectie, presentaties, videoplaylists en transcripties zijn gratis en zonder account toegankelijk via GOV.UK en YouTube.",
     "publicationDate": "2025-06-10",
-    "lastVerified": "2026-11-21",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "GOV.UK: volledige collectie en moduleoverzicht",
         "url": "https://www.gov.uk/government/collections/using-ai-in-education-settings-support-materials",
+        "sourceType": "official"
+      },
+      {
+        "label": "Oudermail beoordelen – werkboek module 4, dia 43–44 (PowerPoint, 34,4 MB)",
+        "url": "https://assets.publishing.service.gov.uk/media/6a0ae777f7c2e79c33db909f/Module_4_workbook.pptx",
+        "sourceType": "official"
+      },
+      {
+        "label": "Module 4 – toelichting en alternatieve materialen (Engels)",
+        "url": "https://www.gov.uk/government/publications/use-cases-of-generative-ai-in-education-module-4",
         "sourceType": "official"
       },
       {
@@ -38243,17 +38253,26 @@
       "safeguarding",
       "prompten",
       "implementatieplanning",
-      "toegankelijkheid"
+      "toegankelijkheid",
+      "oudermail",
+      "ouderbrief",
+      "e-mail",
+      "schoolcommunicatie"
     ],
-    "notes": "Het pakket is ontwikkeld door Chiltern Learning Trust en Chartered College of Teaching voor de Engelse onderwijscontext en is op 19 mei 2026 bijgewerkt voor studiejaar 2026-2027. De vier personeelsmodules behandelen begrijpen, interactie, veiligheid en use cases; het leiderschapsdeel bevat onder meer een audit en koppeling aan de digitale strategie. De collectiepagina valt onder de Open Government Licence v3.0, behalve waar anders vermeld; controleer per download eventuele uitzonderingen. De volledige presentaties en video's zijn niet integraal doorlopen.",
+    "notes": "Het pakket is ontwikkeld door Chiltern Learning Trust en Chartered College of Teaching voor de Engelse onderwijscontext en is op 19 mei 2026 bijgewerkt voor studiejaar 2026-2027. De vier personeelsmodules behandelen begrijpen, interactie, veiligheid en use cases; het leiderschapsdeel bevat onder meer een audit en koppeling aan de digitale strategie. De collectiepagina valt onder de Open Government Licence v3.0, behalve waar anders vermeld; controleer per download eventuele uitzonderingen. De brieven en de vragen kunnen naast elkaar worden gelezen zonder AI-account. De oefening gebruikt een Engelse schoolsituatie. Toets de voorbeeldtekst aan de eigen schoolafspraken en behandel de Engelse richtlijnen niet als Nederlandse voorschriften.",
     "offerCategory": "materials",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "De officiële GOV.UK-collectie en de detailpagina's van alle vier personeelsmodules en het leiderschapsdeel zijn volledig gelezen op doelgroep, inhoud, beschikbaarheid, publicatie- en actualisatiedatum en documentvormen. De downloadlinks naar presentaties en transcripties zijn gecontroleerd op aanwezigheid; de grote presentaties en video's zijn niet volledig gelezen of bekeken. Controle op 21 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap.",
+    "verificationNote": "De officiële GOV.UK-collectie en de detailpagina's van alle vier personeelsmodules en het leiderschapsdeel zijn volledig gelezen op doelgroep, inhoud, beschikbaarheid, publicatie- en actualisatiedatum en documentvormen. De downloadlinks naar presentaties en transcripties zijn gecontroleerd op aanwezigheid; de grote presentaties en video's zijn niet volledig gelezen of bekeken. Controle op 21 november 2026; vergeleken met alle canonieke records op ID, genormaliseerde titel, aanbieder, URL en inhoudelijke overlap. Op 23 november 2026 zijn het werkboek van module 4, de oefenvragen op dia 43 en de instructie met de voorbeeldteksten op dia 44 inhoudelijk gecontroleerd.",
     "changeHistory": [
       {
         "date": "2026-11-21",
         "type": "added",
         "summary": "Toegevoegd na controle van de officiële collectie, alle modulepagina's, toegang en canonieke doublures."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "De administratieve oefening over een oudermail rechtstreeks gekoppeld, met Nederlandse zoektermen, de exacte dia’s en de Engelse gebruikscontext."
       }
     ]
   },
