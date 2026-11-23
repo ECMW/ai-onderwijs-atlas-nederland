@@ -270,6 +270,8 @@ beschikbaar is, maakt zij geen lege commit of PR.
 
 ### Praktijkgids bijhouden in dezelfde ronde
 
+Open bij een gewijzigde lesstart ook het leerlingblad vanuit de lesgids. Controleer of de leerling elke genoemde voorbeeldzin, figuur of tabel kan vinden met de informatie op dat blad. Verwijs bij een langere bron naar de pagina of het onderdeel. Controleer bij een afdruk welke gegevens de docent apart moet meegeven.
+
 Gebruik het [verbeterregister](../reports/verbeterregister.md) voor productverbeteringen. Begin bij de laatst gepubliceerde editie en de open PR's. Werk bij een afgeronde verbetering de oorspronkelijke taak, het aangetoonde resultaat, de resterende aanname en de volgende controle bij. Het register bevat publieke productbevindingen. Individuele meldingen en privéstatistieken blijven in hun bestaande omgeving.
 
 Controleer bij een gewijzigde bron ook de bijbehorende lesvraag, toetsopdracht of onderzoekssamenvatting in de praktijkgids. De bron- en claimkoppelingen in `sources/` leggen vast op welke uitkomst, doelgroep of gebruiksvoorwaarde de tekst berust. Geef bij lesduur aan welke concrete bronles de aanbieder heeft getimed. Houd een ervaring van één instelling herkenbaar als praktijkverslag.
