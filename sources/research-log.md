@@ -1,5 +1,9 @@
 # Onderzoekslog bronbasis
 
+## 23 november 2026 · Een AI-conceptverslag controleren
+
+Het Privacy Expertise Centrum van SURF beschrijft met ArtEZ het traject van opname naar transcript en van transcript naar notulen. De Taalwinkel beschrijft als taak van de notulist om afspraken en besluiten te controleren. De Atlas maakte zelf het fictieve fragment, de foutieve samenvatting en de correcties. Beide bronnen geven context voor de taak. Ze toetsen het oefenresultaat niet. [SURF PEC](https://pec.surf.nl/spraakherkenning-en-transcriptie-met-ai/) · [Taalwinkel](https://taalwinkel.uva.nl/studievaardigheden/vergaderen/vergaderen.html)
+
 ## 23 november 2026 · Lesvoorbereiding en toolkeuze uitlichten
 
 De enquête van het European School Education Platform bevat 1.130 antwoorden uit meer dan 50 landen. Deelnemers melden AI-gebruik bij de lesvoorbereiding (vraag 2) en vragen om toegang tot goedgekeurde, veilige hulpmiddelen (vraag 7). De redactie koos daarom de lesgids voor 7 december en de keuzehulp voor 21 december 2026. De keuzehulp biedt vragen om toepassingen te beoordelen. Hoeveel Atlas-bezoekers beide taken hebben, is onbekend. [Onderzoeksresultaten European School Education Platform](https://school-education.ec.europa.eu/en/discover/surveys/survey-artificial-intelligence-teaching-and-learning)

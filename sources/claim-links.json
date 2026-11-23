@@ -3,6 +3,17 @@
   "last_reviewed": "2026-11-23",
   "claims": [
     {
+      "claim_id": "ondersteuning-ai-conceptnotulen-controleren",
+      "location": {"path": "catalog.js"},
+      "claim": "Na omzetting van een gespreksfragment naar notulen controleert de ondersteuner het besluit, de actiehouder en het tijdstip tegen het gesprek.",
+      "claim_kind": "atlas_synthesis",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": ["surf-pec-spraakherkenning-transcriptie-2026"],
+      "assessment": "SURF onderscheidt opname, transcript en notulen. De Atlas maakte een fictieve oefening voor de controle van de laatste stap. Er is geen eigen gebruiks- of effectmeting.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": false
+    },
+    {
       "claim_id": "uitgelicht-lesvoorbereiding-en-toolkeuze-2026",
       "location": {
         "path": "catalog.js"

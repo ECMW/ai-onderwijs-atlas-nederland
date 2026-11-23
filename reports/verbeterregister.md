@@ -1,5 +1,11 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Een AI-conceptverslag controleren
+
+Op de publieke uitgave e127ff8 gaven ‘notulen’ en ‘vergaderverslag’ nul treffers. De eerdere zoekroute ‘oudermail’ bracht wel het bestaande DfE-oefenmateriaal naar voren. Voor notulen maakt de kandidaat via dezelfde zoekingang een korte Nederlandstalige oefening bereikbaar. De ondersteuner vergelijkt een fictief gespreksfragment met een AI-concept en controleert besluit, actiehouder en deadline. De oefening gebruikt geen account, gegevensinvoer of externe AI-dienst. [SURF Privacy Expertise Centrum](https://pec.surf.nl/spraakherkenning-en-transcriptie-met-ai/)
+
+Op 390 en 1280 pixels en bij 640 CSS-pixels voor de proef op 200% zijn het zoeken, openen, uitklappen van de correcties, kopiëren, de bron en terugkeer naar de zoekselectie in Edge gecontroleerd. De route is in de browser vastgesteld. Gebruik in een team is nog onbekend. Laat in een volgende proef een onderwijsondersteuner zelfstandig de drie fouten vinden en een gecorrigeerde afsprakenlijst maken. Gebruik de uitkomst om te bepalen of verder onderhoud zinvol is.
+
 ## 23 november 2026 · Van gedeelde vondst naar een bruikbare vervolgstap
 
 In uitgave `178dd36` ontbraken op de vaste aanbodpagina van de Professional Doctorate de aanvrager en de uiterste indiening. Een onderzoeker zag de doelgroep, maar moest elders achterhalen dat een bekostigde hogeschool indient. De vaste subsidiepagina’s tonen nu de vastgelegde aanvragers, voorwaarden en indieningsdatums. Een onbekende deadline blijft herkenbaar. Op de interactieve pagina verschoof de kop ‘Aanvraag en voorwaarden’ op 390 pixels breed van 1.814 naar 613 pixels vanaf de paginatop. [Regieorgaan SIA](https://regieorgaan-sia.nl/calls/financiering-professional-doctorate-kandidaten-2026-2027)

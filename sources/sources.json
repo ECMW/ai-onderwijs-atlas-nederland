@@ -4,6 +4,26 @@
   "verification_window_days": 90,
   "sources": [
     {
+      "source_id": "surf-pec-spraakherkenning-transcriptie-2026",
+      "title": "Spraakherkenning en transcriptie met AI",
+      "author_or_organisation": "SURF Privacy Expertise Centrum",
+      "publication_date": "2026-10-15",
+      "url_or_doi": "https://pec.surf.nl/spraakherkenning-en-transcriptie-met-ai/",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": ["Privacy en AVG", "Praktijkvoorbeelden"],
+      "jurisdiction": "Nederland, onderwijs en onderzoek",
+      "claims_supported": [
+        "Het praktijkvoorbeeld van ArtEZ onderscheidt opname, omzetting van spraak naar tekst en omzetting van tekst naar notulen. Het artikel noemt beperkingen bij de opname, taal en sprekerherkenning."
+      ],
+      "reliability_notes": "Publieke handreiking van het Privacy Expertise Centrum met een herkenbaar praktijkvoorbeeld van ArtEZ. Datum is de laatst vermelde wijzigingsdatum.",
+      "limitations": "De bron beoordeelt de fictieve Atlas-oefening niet en meet geen bereik of effect.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active"
+    },
+    {
       "source_id": "esep-survey-ai-teaching-learning-2026",
       "title": "Survey on artificial intelligence for teaching and learning – Results",
       "author_or_organisation": "European School Education Platform, Editorial team",

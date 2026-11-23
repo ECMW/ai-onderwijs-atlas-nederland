@@ -1567,6 +1567,8 @@
     return row[b.length];
   }
   function teacherQuestion(normalized) {
+    if (/^(?:notulen|vergaderverslag(?:en)?)$/.test(normalized) ||
+        (/\b(?:notulen|vergaderverslag(?:en)?)\b/.test(normalized) && /\b(?:controle\w*|nakijken|beoordelen)\b/.test(normalized))) return 'minutes';
     if (/\bai (?:tools?|toepassing(?:en)?|software|hulpmiddel(?:en)?)\b/.test(normalized) &&
         /\b(?:vergelijk\w*|kiezen|kies|past|passen|verantwoord)\b/.test(normalized)) return 'tools';
     if (/\b(?:ecosysteem|ecosystemen)\b/.test(normalized) &&
@@ -1640,6 +1642,8 @@
   }
   function teacherRoutes(query, criteria) {
     switch (teacherQuestion(normalize(query))) {
+      case 'minutes':
+        return [{label:'Controleer een AI-conceptverslag', meta:'Oefen met fictieve notulen: wat is besloten, wie doet wat en vóór wanneer?', href:'#notulen-controleren'}];
       case 'tools':
         return [{label:'Welke AI-toepassing past bij mijn les?', meta:'Vergelijk dicteren en transcriberen en controleer de voorwaarden voor uw klas.', href:'#toolkeuze'}];
       case 'privacy': {
@@ -2754,6 +2758,36 @@
     };
   }
 
+  function renderMinutesCheck() {
+    const previous = sessionGet('atlas.lastSearch');
+    const back = /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
+    main.innerHTML = `<article class="assessment-page">
+      <a href="${escapeHtml(back)}">Terug naar zoeken</a>
+      <header><h1 tabindex="-1">Controleer een AI-conceptverslag</h1>
+        <p>Oefen als ondersteuner met een fictief schooloverleg. Vergelijk het gespreksfragment met de conceptnotulen. Herschrijf wat onjuist of onbevestigd is.</p></header>
+      <div class="assessment-layout">
+        <section class="assessment-preview"><h2>Gespreksfragment</h2>
+          <p><strong>Voorzitter:</strong> ‘Vrijdag is een voorstel. De datum voor de studiedag kiezen we volgende week.’</p>
+          <p><strong>Teamleider:</strong> ‘Ik vraag uiterlijk woensdag welke lokalen beschikbaar zijn.’</p>
+          <p><strong>Ondersteuner:</strong> ‘Zodra de datum vaststaat, maak ik de uitnodiging.’</p>
+        </section>
+        <section class="assessment-preview"><h2>AI-conceptnotulen</h2>
+          <ol><li>Besluit: de studiedag is vrijdag.</li>
+            <li>De ondersteuner vraagt uiterlijk woensdag welke lokalen beschikbaar zijn.</li>
+            <li>De uitnodiging wordt uiterlijk woensdag verstuurd.</li></ol>
+        </section>
+      </div>
+      <details class="assessment-custom"><summary>Bekijk en vergelijk uw correcties</summary>
+        <ol><li>De datum is nog open. Vrijdag is voorgesteld. De keuze volgt volgende week.</li>
+          <li>De teamleider vraagt uiterlijk woensdag welke lokalen beschikbaar zijn.</li>
+          <li>De ondersteuner maakt de uitnodiging zodra de datum vaststaat. Er is geen verzenddatum afgesproken.</li></ol>
+      </details>
+      <p>Controleer bij uw eigen overleg eerst of opnemen en verwerken van de inhoud past binnen de afspraken van uw instelling. Leg onduidelijke afspraken aan de deelnemers voor voordat u het verslag deelt.</p>
+      <p><a href="https://pec.surf.nl/spraakherkenning-en-transcriptie-met-ai/">SURF Privacy Expertise Centrum over opnames, transcriptie en notulen</a></p>
+    </article>`;
+    focusAfterNavigation(main.querySelector('a'), '.result-head h2');
+  }
+
   function renderToolChoice() {
     const examples = [
       {id:'aigo-transcribe-tool', guide:'https://github.com/AIgovernanceofficer/Transcribe-tool#readme',
@@ -3569,7 +3603,8 @@
     const guides = {
       'mijn-atlas': renderProfile,
       'praktijkgids': renderPracticeGuide, 'wat-werkt': renderLearningEvidence,
-      'toolkeuze': renderToolChoice, 'pilotbesluit': renderPilotDecision, 'regels-in-de-praktijk': renderPracticeRules
+      'toolkeuze': renderToolChoice, 'pilotbesluit': renderPilotDecision, 'regels-in-de-praktijk': renderPracticeRules,
+      'notulen-controleren': renderMinutesCheck
     };
     if (Object.hasOwn(WORKSHEET_TEACHER_NOTES, path)) guides[path] = () => renderWorksheet(path);
     if (path === 'home' || (!Object.hasOwn(guides, path) && !['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
