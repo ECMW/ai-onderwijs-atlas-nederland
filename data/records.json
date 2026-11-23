@@ -40779,5 +40779,279 @@
         "summary": "De formele callfiche, de Europese oproep en de Nederlandse Creative Europe Desk zijn gecontroleerd op doelgroep, deelname, cofinanciering en deadline."
       }
     ]
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "status": "planned",
+    "startDate": null,
+    "endDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingMin": 125000,
+    "fundingMax": 500000,
+    "totalBudget": null,
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "id": "dus-i-npuls-center-teaching-learning-ronde-5-2027",
+    "title": "Npuls Center for Teaching and Learning — vijfde ronde, oktober 2027",
+    "subtype": "Instellingssubsidie voor docentondersteuning bij onderwijsinnovatie",
+    "providerName": "Dienst Uitvoering Subsidies aan Instellingen (DUS-I)",
+    "organizationIds": [],
+    "description": "Wilt u docenten binnen uw instelling helpen bij digitale onderwijsvernieuwing, bijvoorbeeld bij de didactische inzet van AI? Het college van bestuur kan subsidie aanvragen voor de opbouw of verdere ontwikkeling van een Center for Teaching and Learning (CTL). Werk daarvoor een instellingsbreed plan, een activiteitenplanning en een begroting uit.",
+    "purpose": "Docenten en onderwijspersoneel duurzaam ondersteunen bij het vernieuwen van onderwijs en het gebruik van digitale middelen.",
+    "audiences": [
+      "Bestuurders",
+      "Onderwijsontwikkelaars",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Professionalisering",
+      "Subsidies en financiering"
+    ],
+    "availabilityText": "De vijfde ronde opent op 4 oktober 2027 om 09.00 uur en sluit op 29 oktober 2027 om 16.00 uur Nederlandse tijd. De huidige DUS-I-pagina toont nog het formulier voor de ronde van 2026.",
+    "publicationDate": "2026-07-14",
+    "sourceUrls": [
+      {
+        "label": "Staatscourant — aanvraagtijdvak vijfde CTL-ronde, artikel I onder B",
+        "url": "https://zoek.officielebekendmakingen.nl/stcrt-2026-25326.html",
+        "sourceType": "official"
+      },
+      {
+        "label": "DUS-I — voorwaarden, aanvraagstukken en cofinanciering",
+        "url": "https://www.dus-i.nl/subsidies/middelbaar-beroepsonderwijs/npuls-center-for-teaching-and-learning-ctl",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "npuls"
+    ],
+    "fundingAmount": "€125.000 tot €500.000 per instelling. Tot en met €250.000 bedraagt de eigen bijdrage minimaal 35% van de aangevraagde subsidie, bij een hoger bedrag minimaal 70%. Voor ronde vier en vijf samen is €27 miljoen beschikbaar.",
+    "fundingDeadline": "2027-10-29",
+    "applicationOpenDate": "2027-10-04",
+    "applicationDeadline": "2027-10-29",
+    "applicationDeadlineAt": "2027-10-29T16:00:00+02:00",
+    "eligibility": "Het college van bestuur vraagt aan namens een publiek bekostigde mbo-instelling, hogeschool of universiteit die nog geen subsidie uit deze CTL-regeling heeft ontvangen. Het plan betreft het eigen CTL. De projectduur is maximaal 36 maanden.",
+    "applicantTypes": [
+      "Bekostigde mbo-instellingen",
+      "Bekostigde hogescholen",
+      "Bekostigde universiteiten"
+    ],
+    "keywords": [
+      "CTL",
+      "Center for Teaching and Learning",
+      "docentondersteuning",
+      "professionalisering",
+      "digitale onderwijsinnovatie",
+      "Npuls",
+      "DUS-I",
+      "ronde 5"
+    ],
+    "notes": "De subsidie betreft het CTL als geheel. AI-professionalisering is een mogelijke toepassing binnen het instellingsplan. Het gezamenlijke subsidieplafond van de vierde en vijfde ronde is niet als budget van alleen deze ronde ingevuld.",
+    "verificationNote": "De Staatscourant vermeldt de tijdstippen voor oktober 2027 en het gezamenlijke budget van ronde vier en vijf. DUS-I beschrijft de aanvrager, eenmalige deelname en bedragen. Het gelinkte formulier CTL26 hoort bij de eerdere ronde.",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Vijfde aanvraagperiode, eerder ontvangen subsidie, projectduur en cofinanciering gecontroleerd in de regeling en bij DUS-I."
+      }
+    ]
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europees Uitvoerend Agentschap onderwijs en cultuur (EACEA)",
+    "startDate": null,
+    "endDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "recurrence": null,
+    "verificationMethod": "agent_primary_source_review",
+    "id": "erasmus-allianties-onderwijs-bedrijven-2027",
+    "title": "Erasmus+ Alliances for Education and Enterprises 2027 — onderwijs en bedrijfsleven",
+    "description": "Ontwerp met opleiders en werkgevers een opleiding voor vaardigheden die in een beroep ontbreken. De beoordelingscriteria noemen digitale vaardigheden, waaronder AI. Een mbo-instelling, hogeschool of universiteit kan met het werkveld vaststellen welke taken veranderen en het curriculum daarop aanpassen.",
+    "purpose": "Onderwijs en werkveld ontwikkelen samen curricula die aansluiten op de vaardigheden die beroepen vragen.",
+    "audiences": [
+      "Onderwijsontwikkelaars",
+      "Onderwijsinstellingen",
+      "Bedrijven"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Curriculumontwikkeling",
+      "AI-geletterdheid"
+    ],
+    "status": "planned",
+    "callStatus": "forthcoming",
+    "availabilityText": "De ronde en voorwaarden zijn aangekondigd. Het specifieke aanvraagformulier was op 23 november 2026 nog niet vindbaar in het Europese loket. De deadline is 14 september 2027 om 17.00 uur Nederlandse tijd.",
+    "publicationDate": "2026-11-18",
+    "sourceUrls": [
+      {
+        "label": "Europese Commissie – Alliances for Innovation, Topic 1, voorwaarden en bedragen",
+        "url": "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/alliances-for-innovation",
+        "sourceType": "official"
+      },
+      {
+        "label": "Fins nationaal agentschap – onderwijs en bedrijfsleven, Europese aanvraagronde 2027",
+        "url": "https://www.oph.fi/en/funding/erasmus-higher-education-and-vocational-education-erasmus-alliances-innovation-0",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "erasmus"
+    ],
+    "fundingAmount": "Maximaal €1 miljoen voor 24 maanden of €1,5 miljoen voor 36 maanden. De EU-bijdrage wordt berekend met een financieringspercentage van 80%.",
+    "fundingDeadline": "2027-09-14",
+    "applicationOpenDate": null,
+    "applicationDeadline": "2027-09-14",
+    "applicationDeadlineAt": "2027-09-14T17:00:00+02:00",
+    "fundingMin": null,
+    "fundingMax": 1500000,
+    "totalBudget": null,
+    "eligibility": "Een Nederlandse onderwijsinstelling kan als rechtspersoon coördineren of deelnemen. Het consortium telt minstens acht begunstigden uit minstens vier EU-lidstaten of geassocieerde landen. Minstens vier arbeidsmarktpartijen en vier onderwijs- of opleidingsaanbieders doen mee, waaronder minstens één instelling voor hoger onderwijs en één voor beroepsonderwijs. Een Nederlandse hogeronderwijsinstelling heeft een geldig Erasmus Charter for Higher Education nodig.",
+    "applicantTypes": [
+      "Internationale consortia",
+      "Mbo-instellingen",
+      "Hogescholen",
+      "Universiteiten",
+      "Bedrijven"
+    ],
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "ERASMUS-EDU-2027-PI-ALL-INNO-EDU-ENTERP",
+      "Erasmus+",
+      "Alliances for Innovation",
+      "curriculumontwikkeling",
+      "beroepsvaardigheden",
+      "AI-vaardigheden",
+      "onderwijs en bedrijfsleven"
+    ],
+    "notes": "Deze vermelding beschrijft Topic 1, Alliances for Education and Enterprises. De afzonderlijke regeling voor sectorbrede skills-allianties (Topic 2) heeft andere voorwaarden. De aanvraag loopt via EACEA. De openingsdatum van het individuele loket blijft onbevestigd.",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "De Europese programmagids 2027 is gecontroleerd op deadline, consortium, financiering en de plaats van AI-vaardigheden in de beoordeling van Topic 1."
+      }
+    ]
+  },
+  {
+    "id": "erasmus-kortlopende-mobiliteit-schoolonderwijs-2027",
+    "title": "Erasmus+ 2027 – kortlopende mobiliteit voor scholen (KA122-SCH)",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": "Internationale leermobiliteit voor scholen",
+    "organizationIds": [],
+    "providerName": "Nationaal Agentschap Erasmus+ Onderwijs & Training",
+    "description": "Wilt u zien hoe een andere school AI inzet bij het lesgeven? Een Nederlandse school kan subsidie vragen om personeel bij een school in een ander programmaland te laten meelopen. Maak vooraf met de gastschool duidelijk wat uw team wil leren en hoe u die kennis op school gaat gebruiken.",
+    "purpose": "Scholen laten werken aan hun onderwijspraktijk door internationale uitwisseling van leerlingen of personeel.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Professionalisering"
+    ],
+    "status": "planned",
+    "availabilityText": "De ronde voor 2027 is aangekondigd. Het Europese voorbeeldformulier is beschikbaar om de aanvraag voor te bereiden. Het Nederlandse agentschap meldde op 19 november dat de aanvraagformulieren volgen. De eerste ronde sluit op 18 februari 2027 om 12.00 uur Nederlandse tijd.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-11-18",
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Europees voorbeeldformulier 2027 om de aanvraag voor te bereiden (Engels)",
+        "url": "https://erasmus-plus.ec.europa.eu/resources-and-tools/documents-and-guidelines/2027-template-application-form-short-term-projects-for-mobility-of-learners-and-staff-in-school-education-ka122-sch",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europese Commissie – kortlopende mobiliteit voor schoolonderwijs, voorwaarden en deadline",
+        "url": "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-1/mobility-school",
+        "sourceType": "official"
+      },
+      {
+        "label": "Nederlands Nationaal Agentschap – aanvraagvoorlichting voor po en vo, KA122 in januari 2027",
+        "url": "https://www.erasmusplus.nl/actueel/agenda/voorlichting-short-term-mobility-projects-ka122/6406",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "De bijdrage hangt af van de activiteiten, deelnemers, bestemming en duur.",
+    "fundingDeadline": "2027-02-18",
+    "applicationOpenDate": null,
+    "applicationDeadline": "2027-02-18",
+    "applicationDeadlineAt": "2027-02-18T12:00:00+01:00",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": "Een Nederlandse school zonder Erasmus-accreditatie voor schoolonderwijs kan bij het Nederlandse Nationaal Agentschap aanvragen. De aanvraag bevat ten minste één mobiliteitsactiviteit voor personeel of leerlingen. Een individuele docent bespreekt deelname met de school. De looptijd volgens de gids voor 2027 is 6 tot 24 maanden.",
+    "applicantTypes": [
+      "Scholen"
+    ],
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "Erasmus+",
+      "KA122-SCH",
+      "kortlopende mobiliteit",
+      "job shadowing",
+      "meelopen",
+      "internationalisering",
+      "professionalisering",
+      "AI in de les"
+    ],
+    "notes": "Meelopen voor professionalisering rond AI is een mogelijke invulling. Dit is een brede mobiliteitsregeling. Het voorbeeldformulier dient ter voorbereiding op de digitale indiening.",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Aanvrager, accreditatievoorwaarde, looptijd, eerste deadline en status van het formulier voor 2027 gecontroleerd."
+      }
+    ]
   }
 ]
