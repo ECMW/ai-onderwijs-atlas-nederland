@@ -28313,7 +28313,7 @@
     "legacyType": "Handreiking",
     "subtype": "Docentenhandleidingen en kaartenset",
     "providerName": "AI voor Docenten",
-    "description": "Docentenhandleidingen voor VO, MBO en HBO en gesprekskaarten over kiezen, instrueren, evalueren en spelregels bij AI-gebruik, met opdrachten, voorbeelden en vragen voor de klas.",
+    "description": "Mbo-studenten kunnen met KIES een stageverslag, sollicitatiebrief of werkinstructie voorbereiden. Ze delen de schrijfopdracht op in stappen en kiezen per stap wat ze zelf doen en waarbij ze AI inzetten. De collectie bevat ook docentenhandleidingen voor vo en hbo en gesprekskaarten voor teams.",
     "purpose": "Docenten ondersteunen bij het begeleiden van bewuste AI-keuzes en het bespreken van AI-gebruik met leerlingen en studenten.",
     "audiences": [
       "Docenten",
@@ -28331,9 +28331,9 @@
     ],
     "status": "available",
     "availabilityText": "Handleidingen gratis als PDF en aanpasbaar Word-bestand; de kaartenset is als PDF beschikbaar. Begeleiding op locatie is een afzonderlijke betaalde dienst.",
-    "eligibility": "De handleidingen begeleiden lessen met de KIES-leeromgeving; doorloop die vooraf als docent. De aanbieder staat aanpassen van de Word-handleiding en kaartenset toe. Begeleiding op locatie is afzonderlijk betaald. Een specifieke open licentie is niet vastgesteld.",
+    "eligibility": "Kies bij het eerste bezoek aan de KIES-leeromgeving MBO en daarna Start met leren. Open dan de oefenlink uit de Atlas opnieuw om direct een schrijfopdracht te kiezen. U vindt de opdrachten ook in de leeromgeving bij Kiezen, in K2 (Taak-Ontleder). Doorloop de leeromgeving vooraf als docent. De aanbieder staat aanpassen van de Word-handleiding en kaartenset toe. Begeleiding op locatie is afzonderlijk betaald. Een specifieke open licentie is niet vastgesteld.",
     "publicationDate": null,
-    "lastVerified": "2026-09-15",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -28342,8 +28342,13 @@
         "sourceType": "official"
       },
       {
-        "label": "Docentenhandleiding MBO (PDF)",
-        "url": "https://aivoordocenten.nl/downloads/kies/docentenhandleiding-kies-mbo.pdf",
+        "label": "Mbo-handleiding, pagina 9: een schrijfopdracht opdelen in stappen",
+        "url": "https://aivoordocenten.nl/downloads/kies/docentenhandleiding-kies-mbo.pdf#page=9",
+        "sourceType": "official"
+      },
+      {
+        "label": "KIES-oefening voor studenten: kies MBO en open Kiezen, K2",
+        "url": "https://ai-vaardigheid.vercel.app/leerpad/kiezen/k2",
         "sourceType": "official"
       },
       {
@@ -28375,10 +28380,20 @@
         "date": "2026-09-15",
         "type": "added",
         "summary": "Lesmateriaal toegevoegd na controle van de officiële downloadpagina, MBO-handleiding en gesprekskaartenset."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "De drie mbo-schrijfopdrachten vindbaar gemaakt onder Nederlands en de ingang naar de oefening en de betreffende pagina in de handleiding opgenomen."
       }
     ],
     "offerCategory": "materials",
-    "commercialStatus": "unknown"
+    "commercialStatus": "unknown",
+    "subjects": [
+      "Nederlands"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De downloadpagina, pagina 9 van de mbo-handleiding en de mbo-opdrachten in K2 van de gekoppelde leeromgeving zijn op 23 november 2026 gecontroleerd. De huidige leeromgeving heeft een eigen keuze MBO en toont daar drie schrijfopdrachten. Voor de werkinstructie zijn twee stappen ingevoerd en is de keuze voor een aanpak per stap geopend."
   },
   {
     "id": "techyourfuture-les-basiskennis-ai",
