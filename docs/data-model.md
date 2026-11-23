@@ -69,6 +69,7 @@ geen specifiek vak is onderbouwd, blijft het veld leeg of ontbreekt het.
 Bezoekers typen hun eigen vak in **Vakgebied** en passen het toe met Enter of de knop
 **Toepassen**. Zowel het filter als **Mijn profiel** biedt de browser dezelfde alfabetische
 suggesties uit de vaklabels van het openbare aanbod. Bij een bestaande vaknaam gebruikt de Atlas de vastgelegde vakindeling.
+Eigen Atlas-werkbladen uit `data/worksheets.json` leveren ook vaksuggesties en tellen afzonderlijk mee in zoeken en Mijn profiel. Een vak dat alleen op een werkblad staat, blijft voor de externe catalogus een vrije tekstselectie.
 Een andere invoer zoekt de getypte woorden in titel, beschrijving, doel, trefwoorden,
 thema's en lesactiviteiten. De zoekterm bovenaan en de andere filters blijven actief.
 Leegmaken en toepassen verwijdert het vakfilter.

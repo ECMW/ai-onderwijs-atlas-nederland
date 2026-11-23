@@ -16,6 +16,17 @@
       "time_sensitive": false
     },
     {
+      "claim_id": "mbo-picklijst-orders-controleren",
+      "location": {"path": "catalog.js"},
+      "claim": "Bij het verzamelen van orders controleert een logistiek medewerker de hoeveelheid en kwaliteit van de goederen en meldt afwijkingen aan de leidinggevende.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED",
+      "source_ids": ["sbb-logistiek-medewerker-orders-controleren-2022"],
+      "assessment": "B1-K2-W1 op pagina 10 beschrijft het controleren en melden. De Atlas gebruikt dit als beroepscontext voor het werkblad. Orderprioriteit, aantallen en het voorbeeld van een AI-voorstel zijn fictief.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": false
+    },
+    {
       "claim_id": "mbo-klantmail-intern-ordertraject",
       "location": {
         "path": "catalog.js"
