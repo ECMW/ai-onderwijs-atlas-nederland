@@ -8,7 +8,7 @@ const catalogue = fs.readFileSync(path.join(__dirname, '..', 'catalog.js'), 'utf
 const boot = "  addEventListener('hashchange', route); addEventListener('popstate', route); route();";
 assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly the route startup');
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
-    pilotSheetText, renderPilotDecision, renderWorksheet,
+    pilotSheetText, renderPilotDecision, renderWorksheet, renderMinutesCheck,
     renderLearningEvidence, renderPracticeGuide, practiceCasesMarkup,
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, datedOffers, newOffersMarkup, papersMarkup, paperRis, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, bindFacetLists, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
@@ -2518,6 +2518,37 @@ test('the practice guide connects each teaching stage to published material and 
   for (const href of ['lesmateriaal/', '#toetsafspraak', '#toolkeuze', '#regels-in-de-praktijk', '#wat-werkt']) {
     assert.ok(main.innerHTML.includes(`href="${href}"`), href);
   }
+});
+
+test('minute-taking practice copies the visitor’s own corrections and keeps an editable answer when the clipboard is blocked', async () => {
+  const controls = new Map();
+  const main = {querySelector(key) {
+    if (!controls.has(key)) controls.set(key, {isConnected:true, focus() {}, select() {}});
+    return controls.get(key);
+  }};
+  const copied = [];
+  const clipboard = {writeText: async value => { copied.push(value); }};
+  const api = load([], '#notulen-controleren?van=praktijkgids', {document:{querySelector:() => main}, navigator:{clipboard}});
+  api.renderMinutesCheck();
+  assert.match(main.innerHTML, /href="#praktijkgids">Terug naar de praktijkgids/);
+  assert.match(main.innerHTML, /data-minutes-copy disabled/);
+  const answer = controls.get('#minutes-answer'), copy = controls.get('[data-minutes-copy]');
+  const fallback = controls.get('.lesson-copy');
+  answer.value = '   ';
+  answer.oninput();
+  assert.ok(copy.disabled);
+  answer.value = 'Besloten: op school. De datum staat nog open.';
+  answer.oninput();
+  assert.equal(copy.disabled, false);
+  await copy.onclick();
+  assert.deepEqual(copied, [answer.value]);
+  clipboard.writeText = async () => {throw Error('blocked');};
+  await copy.onclick();
+  assert.equal(fallback.value, answer.value);
+  assert.equal(fallback.hidden, false);
+  answer.value = '';
+  answer.oninput();
+  assert.ok(copy.disabled && fallback.hidden);
 });
 
 test('comparing AI tools is reachable directly from the search box', () => {

@@ -1436,6 +1436,7 @@
       ['#toetsafspraak', 'Een toets aanpassen', 'Kies welke AI-hulp past en wat de leerling zelf moet laten zien.'],
       ['#toolkeuze', 'Een AI-toepassing kiezen', 'Vergelijk de functie, voorwaarden en open vragen voor uw klas.'],
       ['#pilotbesluit', 'Besluiten over een AI-proef', 'Leg met schoolleiding en ICT vast wie beslist, wat u toetst en wanneer u stopt.'],
+      ['#notulen-controleren?van=praktijkgids', 'Een conceptverslag controleren', 'Vergelijk de notulen met wat tijdens een schooloverleg is afgesproken.'],
       ['#regels-in-de-praktijk', 'Leerlingwerk of lesmateriaal gebruiken', 'Controleer gegevens, licentie en afspraken op uw school.'],
       ['#wat-werkt', 'Beoordelen wat werkt', 'Bekijk wat leerlingen met hulp presteerden en wat ze daarna zelf konden.'],
       [criteriaHref(FUNDING_CRITERIA), 'Subsidies en calls vinden', 'Controleer wie kan aanvragen en wanneer de ronde sluit.']
@@ -1567,8 +1568,9 @@
     return row[b.length];
   }
   function teacherQuestion(normalized) {
-    if (/^(?:notulen|vergaderverslag(?:en)?)$/.test(normalized) ||
-        (/\b(?:notulen|vergaderverslag(?:en)?)\b/.test(normalized) && /\b(?:controle\w*|nakijken|beoordelen)\b/.test(normalized))) return 'minutes';
+    if (/^(?:notulen|vergaderverslag(?:en)?|besluitenlijst)$/.test(normalized) ||
+        (/\b(?:notulen|vergaderverslag(?:en)?|besluitenlijst|actielijst)\b/.test(normalized) &&
+         /\b(?:controle\w*|nakijken|beoordelen)\b/.test(normalized))) return 'minutes';
     if (/\bai (?:tools?|toepassing(?:en)?|software|hulpmiddel(?:en)?)\b/.test(normalized) &&
         /\b(?:vergelijk\w*|kiezen|kies|past|passen|verantwoord)\b/.test(normalized)) return 'tools';
     if (/\b(?:ecosysteem|ecosystemen)\b/.test(normalized) &&
@@ -2760,32 +2762,55 @@
 
   function renderMinutesCheck() {
     const previous = sessionGet('atlas.lastSearch');
-    const back = /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
+    const fromGuide = new URLSearchParams(location.hash.split('?')[1]).get('van') === 'praktijkgids';
+    const back = fromGuide ? '#praktijkgids' : /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
     main.innerHTML = `<article class="assessment-page">
-      <a href="${escapeHtml(back)}">Terug naar zoeken</a>
+      <a href="${escapeHtml(back)}">${fromGuide ? 'Terug naar de praktijkgids' : 'Terug naar zoeken'}</a>
       <header><h1 tabindex="-1">Controleer een AI-conceptverslag</h1>
-        <p>Oefen als ondersteuner met een fictief schooloverleg. Vergelijk het gespreksfragment met de conceptnotulen. Herschrijf wat onjuist of onbevestigd is.</p></header>
+        <p>Vergelijk de vier regels uit de conceptnotulen met het fictieve schooloverleg. Welke afspraak klopt? Verbeter de andere regels met wat er werkelijk is gezegd.</p></header>
       <div class="assessment-layout">
         <section class="assessment-preview"><h2>Gespreksfragment</h2>
-          <p><strong>Voorzitter:</strong> ‘Vrijdag is een voorstel. De datum voor de studiedag kiezen we volgende week.’</p>
+          <p><strong>Voorzitter</strong> ‘We hebben afgesproken dat de studiedag op school plaatsvindt. Vrijdag is een voorstel. De datum kiezen we volgende week.’</p>
           <p><strong>Teamleider:</strong> ‘Ik vraag uiterlijk woensdag welke lokalen beschikbaar zijn.’</p>
           <p><strong>Ondersteuner:</strong> ‘Zodra de datum vaststaat, maak ik de uitnodiging.’</p>
         </section>
         <section class="assessment-preview"><h2>AI-conceptnotulen</h2>
           <ol><li>Besluit: de studiedag is vrijdag.</li>
             <li>De ondersteuner vraagt uiterlijk woensdag welke lokalen beschikbaar zijn.</li>
+            <li>De studiedag vindt op school plaats.</li>
             <li>De uitnodiging wordt uiterlijk woensdag verstuurd.</li></ol>
         </section>
       </div>
-      <details class="assessment-custom"><summary>Bekijk en vergelijk uw correcties</summary>
+      <div class="assessment-form assessment-start">
+        <label for="minutes-answer">Uw gecorrigeerde afsprakenlijst</label>
+        <p id="minutes-instruction">Noteer het besluit, de acties en wie ze uitvoert. Geef ook aan wat nog openstaat. Uw tekst blijft hier totdat u de pagina verlaat.</p>
+        <textarea id="minutes-answer" rows="4" aria-describedby="minutes-instruction" autocomplete="off"></textarea>
+        <div class="assessment-actions"><button type="button" class="btn secondary" data-minutes-copy disabled>Kopieer mijn afsprakenlijst</button></div>
+        <p class="action-feedback" role="status"></p>
+        <textarea class="lesson-copy" aria-label="Afsprakenlijst om handmatig te kopiëren" readonly hidden></textarea>
+      </div>
+      <details class="assessment-custom"><summary>Vergelijk met een uitgewerkte afsprakenlijst</summary>
         <ol><li>De datum is nog open. Vrijdag is voorgesteld. De keuze volgt volgende week.</li>
           <li>De teamleider vraagt uiterlijk woensdag welke lokalen beschikbaar zijn.</li>
+          <li>De locatie klopt. Er is besloten de studiedag op school te houden.</li>
           <li>De ondersteuner maakt de uitnodiging zodra de datum vaststaat. Er is geen verzenddatum afgesproken.</li></ol>
       </details>
       <p>Controleer bij uw eigen overleg eerst of opnemen en verwerken van de inhoud past binnen de afspraken van uw instelling. Leg onduidelijke afspraken aan de deelnemers voor voordat u het verslag deelt.</p>
-      <p><a href="https://pec.surf.nl/spraakherkenning-en-transcriptie-met-ai/">SURF Privacy Expertise Centrum over opnames, transcriptie en notulen</a></p>
+      <p><a href="https://taalwinkel.uva.nl/studievaardigheden/vergaderen#besluitenlijst" target="_blank" rel="noopener noreferrer">Een besluitenlijst maken · Taalwinkel ↗</a>
+        · <a href="https://pec.surf.nl/spraakherkenning-en-transcriptie-met-ai/" target="_blank" rel="noopener noreferrer">Opnames en transcriptie · SURF ↗</a></p>
     </article>`;
-    focusAfterNavigation(main.querySelector('a'), '.result-head h2');
+    const answer = main.querySelector('#minutes-answer');
+    const button = main.querySelector('[data-minutes-copy]');
+    const feedback = main.querySelector('.action-feedback');
+    const fallback = main.querySelector('.lesson-copy');
+    answer.oninput = () => {
+      button.disabled = !answer.value.trim();
+      feedback.textContent = '';
+      fallback.hidden = true;
+    };
+    button.onclick = () => copyTextWithFallback(button, answer.value, feedback, fallback,
+      'Uw afsprakenlijst is gekopieerd.', 'Uw tekst is geselecteerd. Kopieer de afsprakenlijst met uw apparaat.');
+    focusAfterNavigation(main.querySelector('a'), fromGuide ? '.guide-routes a[href^="#notulen-controleren"]' : '.result-head h2');
   }
 
   function renderToolChoice() {
