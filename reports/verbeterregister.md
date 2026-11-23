@@ -10,7 +10,13 @@ De zoekvraag ‘toetsvormen vergelijken’ gaf nul resultaten terwijl de toetson
 
 Ook de weg terug na nul treffers is beproefd. Bij ‘DPIA’ met mbo en lesmaterialen benoemt de Atlas het filter dat weg kan en het aantal resultaten dat dit oplevert. Na activering krijgt de nieuwe resultaatkop toetsenbordfocus en blijft de sector behouden. Dit werkt ook voor een spellingsuggestie en het verruimen van de subsidiestatus. Een student kon met het toetsenbord vanuit een gedeelde vergelijking op 200% zoom het EDUbox-materiaal van Mediawijs bereiken.
 
-De routes zijn technisch beproefd op 320, 390 en 1280 pixels, met toetsenbordbediening en een verse browser. Dit zegt iets over de bereikbaarheid en leesbaarheid van de actie. Tijdsbesparing in een team, succes van een aanvraag en effecten op leren zijn niet gemeten. Controleer in een volgende ronde vooral of iemand met een ondersteunende of bestuurlijke taak vanuit de eigen zoekwoorden bij een bruikbaar besluit- of communicatiedocument uitkomt.
+De routes zijn technisch beproefd op 320, 390 en 1280 pixels, met toetsenbordbediening en een verse browser. Dit zegt iets over de bereikbaarheid en leesbaarheid van de actie. Tijdsbesparing in een team, succes van een aanvraag en effecten op leren zijn niet gemeten.
+
+Bij de bronproef kwam een privacyadviseur via ‘risicobeoordeling’ bij RAISE, maar de knop voor de werkmap gaf HTTP 403. De bijgewerkte Excel van Npuls opent met instructies, een usecasekaart en een risicolijst. Het raamwerk is een eerste versie. Voor een schoolleider in po of vo opent ‘ouderbrief’ nu het bewerkbare voorbeeld van Kennisnet naast de gespreksbladen voor het team. Beide documenten zijn vanuit de publieke site geopend op 390 en 1280 pixels. [Broncorrecties en controle](https://github.com/ECMW/ai-onderwijs-atlas-nederland/pull/213)
+
+Binnen de doelgroep Ondersteunend personeel gaven ‘oudermail’, ‘ouderbrief’ en ‘e-mail’ bij de bronproef geen treffers. In het bestaande Engelstalige DfE-werkboek kan een medewerker op dia 43 en 44 twee conceptbrieven over hetzelfde onderwerp beoordelen en de toon vergelijken. Het schoolvoorbeeld komt uit Engeland. De geteste mbo-route voor Nederlands biedt daarnaast een stageverslag, sollicitatiebrief en werkinstructie. De browserproef bereikte de keuze van een aanpak per schrijfstap. [DfE-oefening en vindplaats](https://github.com/ECMW/ai-onderwijs-atlas-nederland/pull/214) · [Mbo-schrijfopdrachten](https://github.com/ECMW/ai-onderwijs-atlas-nederland/pull/211)
+
+Bij ‘notulen’ is nog geen zelfstandig bruikbaar resultaat vastgesteld voor de ondersteuner. Probeer in de volgende ronde een vergaderverslag met fictieve gegevens op juistheid en afspraken te controleren. Controleer eerst of bestaand Nederlandstalig materiaal de taak al ondersteunt. Zonder bruikbare bron of aantoonbaar knelpunt kan die ronde zonder toevoeging eindigen.
 
 ## 23 november 2026 · Twee leerlingbladen zelfstandig kunnen uitvoeren
 
