@@ -8,7 +8,7 @@ const catalogue = fs.readFileSync(path.join(__dirname, '..', 'catalog.js'), 'utf
 const boot = "  addEventListener('hashchange', route); addEventListener('popstate', route); route();";
 assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly the route startup');
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
-    pilotSheetText, renderPilotDecision, renderWorksheet, renderMinutesCheck,
+    pilotSheetText, renderPilotDecision, renderWorksheet, renderMinutesCheck, renderStudentAssignment,
     renderLearningEvidence, renderPracticeGuide, practiceCasesMarkup,
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, datedOffers, newOffersMarkup, papersMarkup, paperRis, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, bindFacetLists, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
@@ -2541,6 +2541,40 @@ test('the practice guide connects each teaching stage to published material and 
   for (const href of ['lesmateriaal/', '#toetsafspraak', '#toolkeuze', '#regels-in-de-praktijk', '#wat-werkt']) {
     assert.ok(main.innerHTML.includes(`href="${href}"`), href);
   }
+});
+
+test('students can copy each edited assignment template and recover when their clipboard is unavailable', async () => {
+  const panels = [new Map(), new Map()].map(controls => ({querySelector(selector) {
+    if (!controls.has(selector)) controls.set(selector, {isConnected:true, focus() {}, select() { this.selected = true; }});
+    return controls.get(selector);
+  }}));
+  const main = {querySelector:() => null, querySelectorAll:() => panels};
+  const copied = [];
+  const clipboard = {writeText: async value => copied.push(value)};
+  const api = load([], '#ai-bij-mijn-opdracht?stap=vermelden', {
+    document:{querySelector:() => main}, navigator:{clipboard},
+    sessionStorage:{getItem:() => '#zoeken?sector=MBO&q=ChatGPT'}
+  });
+  api.renderStudentAssignment();
+  assert.match(main.innerHTML, /href="#zoeken\?sector=MBO&amp;q=ChatGPT"/);
+  assert.match(main.innerHTML, /name="student-situatie" open><summary>Ik mag AI gebruiken/);
+  for (const [index, panel] of panels.entries()) {
+    const draft = panel.querySelector('textarea'), button = panel.querySelector('button');
+    draft.value = 'Eigen tekst ' + index;
+    draft.oninput();
+    assert.equal(button.disabled, false);
+    await button.onclick();
+  }
+  assert.deepEqual(copied, ['Eigen tekst 0', 'Eigen tekst 1']);
+  clipboard.writeText = async () => { throw Error('clipboard blocked'); };
+  const panel = panels[1], fallback = panel.querySelector('.lesson-copy');
+  await panel.querySelector('button').onclick();
+  assert.equal(fallback.value, 'Eigen tekst 1');
+  assert.ok(fallback.selected && !fallback.hidden);
+  panel.querySelector('textarea').value = ' ';
+  panel.querySelector('textarea').oninput();
+  assert.ok(panel.querySelector('button').disabled && fallback.hidden);
+  assert.equal(panels[0].querySelector('button').disabled, false);
 });
 
 test('minute-taking practice copies the visitor’s own corrections and keeps an editable answer when the clipboard is blocked', async () => {

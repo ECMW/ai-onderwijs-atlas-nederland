@@ -1434,6 +1434,7 @@
     const routes = [
       ['lesmateriaal/', 'Een les voorbereiden', 'Vind een leerlingvraag, lesopdracht en werkblad bij uw vak.'],
       ['#toetsafspraak', 'Een toets aanpassen', 'Kies welke AI-hulp past en wat de leerling zelf moet laten zien.'],
+      ['#ai-bij-mijn-opdracht?van=praktijkgids', 'Mag ik AI gebruiken bij mijn opdracht?', 'Vraag je docent wat mag of licht toe welke hulp je hebt gebruikt.'],
       ['#toolkeuze', 'Een AI-toepassing kiezen', 'Vergelijk de functie, voorwaarden en open vragen voor uw klas.'],
       ['#pilotbesluit', 'Besluiten over een AI-proef', 'Leg met schoolleiding en ICT vast wie beslist, wat u toetst en wanneer u stopt.'],
       ['#notulen-controleren?van=praktijkgids', 'Een conceptverslag controleren', 'Vergelijk de notulen met wat tijdens een schooloverleg is afgesproken.'],
@@ -2834,6 +2835,61 @@
     focusAfterNavigation(main.querySelector('a'), fromGuide ? '.guide-routes a[href^="#notulen-controleren"]' : '.result-head h2');
   }
 
+  function renderStudentAssignment() {
+    const params = new URLSearchParams(location.hash.split('?')[1]);
+    const fromGuide = params.get('van') === 'praktijkgids';
+    const previous = sessionGet('atlas.lastSearch');
+    const back = fromGuide ? '#praktijkgids' : /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
+    main.innerHTML = `<article class="assessment-page student-assignment">
+      <a href="${escapeHtml(back)}">${fromGuide ? 'Terug naar de praktijkgids' : 'Terug naar zoeken'}</a>
+      <header><h1 tabindex="-1">Mag ik AI gebruiken bij mijn opdracht?</h1>
+        <p>Pak de instructie van je opdracht of toets erbij. Zoek wat je zelf moet doen, waarbij je AI mag gebruiken en wat je daarover moet inleveren. Welke situatie past bij jou?</p></header>
+      <details class="assessment-custom" name="student-situatie"><summary>Ik twijfel of ik AI hiervoor mag gebruiken</summary>
+        <p>Kijk ook bij de afspraken van je vak of opleiding. Blijft jouw stap onduidelijk? Vraag het je docent voordat je AI voor die stap gebruikt. Pas de voorbeeldvraag aan jouw situatie aan.</p>
+        <div class="assessment-form" data-student-template>
+          <label for="student-question">Mijn vraag aan de docent</label>
+          <textarea id="student-question" rows="4" autocomplete="off">Mag ik bij [opdracht] AI gebruiken om feedback te krijgen op een alinea die ik zelf heb geschreven? Wat moet ik zelf doen en hoe vermeld ik die hulp?</textarea>
+          <button type="button" class="btn secondary">Kopieer mijn vraag</button>
+          <p class="action-feedback" role="status"></p>
+          <textarea class="lesson-copy" aria-label="Mijn vraag om handmatig te kopiëren" readonly hidden></textarea>
+        </div>
+      </details>
+      <details class="assessment-custom" name="student-situatie"${params.get('stap') === 'vermelden' ? ' open' : ''}><summary>Ik mag AI gebruiken. Hoe vermeld ik dat?</summary>
+        <p>Volg de vorm die je docent vraagt. Vul hieronder in welke hulp je echt hebt gebruikt. Vraagt de opdracht ook om je prompts of tussenversies? Voeg die bij het inleveren toe.</p>
+        <div class="assessment-form" data-student-template>
+          <label for="student-disclosure">Mijn toelichting bij het inleveren</label>
+          <textarea id="student-disclosure" rows="4" autocomplete="off">Bij [onderdeel] gebruikte ik [naam van de tool] voor [concrete handeling]. Ik heb zelf [wat je hebt uitgewerkt of gecontroleerd].</textarea>
+          <button type="button" class="btn secondary">Kopieer mijn toelichting</button>
+          <p class="action-feedback" role="status"></p>
+          <textarea class="lesson-copy" aria-label="Mijn toelichting om handmatig te kopiëren" readonly hidden></textarea>
+        </div>
+      </details>
+      <details class="assessment-custom" name="student-situatie"><summary>De opdracht sluit deze AI-hulp uit</summary>
+        <p>Werk dit onderdeel zelf uit met de afgesproken hulpmiddelen. Heb je AI voor deze stap al gebruikt? Vertel je docent vóór het inleveren wat je hebt gedaan. Vraag welk deel je opnieuw moet uitwerken of toelichten.</p>
+      </details>
+      <details class="assessment-custom student-sources"><summary>Hoe leggen scholen en opleidingen dit uit?</summary>
+        <ul><li><a href="https://lerenbij.curio.nl/generatieve-ai/generatieve-ai-tijdens-je-studie/">Curio (vmbo en mbo)</a> bespreekt de afspraken bij een opdracht, examen of stage.</li>
+          <li><a href="https://screensteps.saxion.nl/a/2123448-ai-gebruiken-in-brightspace#ai-bij-opdrachten-in-brightspace">Saxion (hbo)</a> laat zien waar je in Brightspace de instructies bij een opdracht vindt.</li>
+          <li>Bij de <a href="https://www.tilburguniversity.edu/nl/studenten/studie/regelingen/fraude/fraude-plagiaat-ai-gebruik-tshd">Tilburg School of Humanities and Digital Sciences (wo)</a> moet je docent AI-gebruik bij een toets of opdracht uitdrukkelijk toestaan.</li></ul>
+        <p>Dit zijn voorbeelden van plaatselijke afspraken. Volg de instructie voor jouw eigen opdracht.</p>
+      </details>
+    </article>`;
+    main.querySelectorAll('[data-student-template]').forEach(panel => {
+      const draft = panel.querySelector('textarea');
+      const button = panel.querySelector('button');
+      const feedback = panel.querySelector('.action-feedback');
+      const fallback = panel.querySelector('.lesson-copy');
+      draft.oninput = () => {
+        button.disabled = !draft.value.trim();
+        feedback.textContent = '';
+        fallback.hidden = true;
+      };
+      button.onclick = () => copyTextWithFallback(button, draft.value, feedback, fallback,
+        'Je tekst is gekopieerd.', 'Je tekst is geselecteerd. Kopieer hem met je apparaat.');
+    });
+    focusAfterNavigation(main.querySelector('a'), fromGuide ? '.guide-routes a[href^="#ai-bij-mijn-opdracht"]' : '.result-head h2');
+  }
+
   function renderToolChoice() {
     const examples = [
       {id:'aigo-transcribe-tool', guide:'https://github.com/AIgovernanceofficer/Transcribe-tool#readme',
@@ -3650,7 +3706,7 @@
       'mijn-atlas': renderProfile,
       'praktijkgids': renderPracticeGuide, 'wat-werkt': renderLearningEvidence,
       'toolkeuze': renderToolChoice, 'pilotbesluit': renderPilotDecision, 'regels-in-de-praktijk': renderPracticeRules,
-      'notulen-controleren': renderMinutesCheck
+      'notulen-controleren': renderMinutesCheck, 'ai-bij-mijn-opdracht': renderStudentAssignment
     };
     if (Object.hasOwn(WORKSHEET_TEACHER_NOTES, path)) guides[path] = () => renderWorksheet(path);
     if (path === 'home' || (!Object.hasOwn(guides, path) && !['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
