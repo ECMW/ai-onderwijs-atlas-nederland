@@ -152,6 +152,14 @@ test('a shared lesson directory selection reopens with the same sector, subject 
       reset:() => { fields.forEach(field => { field.value = ''; }); events.dispatchEvent(new Event('reset')); }};
   }
   const base = 'https://example.org/lesmateriaal/';
+  const empty = open(base + '#selectie?sector=MBO&vak=Kunst+%26+cultuur&doel=tekenen');
+  const catalog = empty.form.querySelector('[data-catalog-search]');
+  assert.equal(catalog.hidden, false);
+  assert.equal(catalog.getAttribute('href'), '../#zoeken?type=materials&sector=MBO&vak=Kunst+%26+cultuur');
+  assert.equal(catalog.textContent, 'Doorzoek alle lesmaterialen op sector en vak');
+  empty.reset();
+  assert.equal(catalog.hidden, true);
+  assert.equal(open(base + '#selectie?sector=onbekend&vak=Kunst').form.querySelector('[data-catalog-search]').hidden, true);
   const original = open(base + '?atlas-no-count=1');
   assert.ok(!original.form.querySelector('[data-more-filters]').open);
   assert.equal(original.form.querySelector('[data-selection-actions]').hidden, true);

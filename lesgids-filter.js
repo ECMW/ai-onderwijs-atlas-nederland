@@ -29,6 +29,7 @@
   const jumps = directory.querySelector('.directory-jumps');
   const status = form.querySelector('[role="status"]');
   const jump = form.querySelector('[data-go-lessons]');
+  const catalogSearch = form.querySelector('[data-catalog-search]');
   const feedback = form.querySelector('[data-copy-feedback]');
   const fallback = form.querySelector('[data-copy-fallback]');
   const cards = [...directory.querySelectorAll('section article')].map(card => {
@@ -131,7 +132,15 @@
     if (lessonCount) counts.push(lessonCount + (lessonCount === 1 ? ' lesstart' : ' lesstarts'));
     status.textContent = unknownSector ? 'Onbekende onderwijssector in deze link. Kies een sector of wis de filters.'
       : invalid ? 'Vul bij de duur een heel aantal minuten van minimaal 1 in.'
-      : counts.join(' en ') || 'Geen lesmateriaal bij deze keuzes. Pas uw zoekwoorden aan of wis de filters.';
+      : counts.join(' en ') || 'Geen lesmateriaal in de lesgids bij deze keuzes. Pas uw zoekwoorden aan of wis de filters.';
+    const catalogFilters = ['sector', 'vak'].filter(key => params.has(key));
+    catalogSearch.hidden = visible.size > 0 || unknownSector || invalid || !catalogFilters.length;
+    if (!catalogSearch.hidden) {
+      const catalog = new URLSearchParams({type:'materials'});
+      for (const key of catalogFilters) catalog.set(key, params.get(key));
+      catalogSearch.setAttribute('href', '../#zoeken?' + catalog);
+      catalogSearch.textContent = 'Doorzoek alle lesmaterialen op ' + catalogFilters.join(' en ');
+    }
     jump.disabled = !visible.size;
     if (jumps) jumps.hidden = !visible.size;
   }
