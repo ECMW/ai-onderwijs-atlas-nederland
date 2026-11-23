@@ -1640,6 +1640,26 @@ test('provider facets show matching choices and keep a zero-count selection remo
   assert.match(eightMatches, /class="facet-more"[^>]*hidden/);
 });
 
+test('the minutes exercise counts in search, filters, and recovery while catalogue totals stay separate', () => {
+  const base = '#zoeken?q=notulen&sector=MBO&audience=Ondersteunend+personeel';
+  const api = load([], base);
+  const results = api.resultsMarkup();
+  assert.match(results, />1 oefening voor ‘notulen’<\/h2>/);
+  assert.match(results, /data-atlas-search-hits/);
+  assert.doesNotMatch(results, /data-atlas-empty-search|class="empty"/);
+  assert.match(api.catalogFilterPanel([], [], []), /class="apply btn">Toon 1 oefening</);
+  assert.match(api.catalogFilterPanel([], [], []), /data-facet-option="nl"[^>]*><input[^>]+><span>Nederlands<\/span><small>1 oefening<\/small>/);
+  const mixed = load([{...record('notulen'), audiences:['Ondersteunend personeel'], sectors:['MBO']}], base);
+  assert.match(mixed.resultsMarkup(), /1 resultaat en 1 oefening voor/);
+  for (const excluded of ['language=en','type=Training','vak=Biologie','audience=Leerlingen']) {
+    const blocked = load([], '#zoeken?q=notulen&' + excluded);
+    assert.match(blocked.resultsMarkup(), /data-atlas-empty-search/);
+    assert.doesNotMatch(blocked.resultsMarkup(), /data-question-route href="#notulen-controleren"/);
+    assert.match(blocked.resultsMarkup(), /Zonder [^<]+ <strong>1 oefening<\/strong>/);
+    assert.ok(!blocked.suggestionData('notulen').flatMap(group => group.items).some(item => item.href === '#notulen-controleren'));
+  }
+});
+
 test('a worksheet-only customer mail search offers its MBO filter with a worksheet count', () => {
   const data = [{...record('onverwant'), sectors:['PO','MBO'], offerCategory:'materials'}];
   const api = load(data, '#zoeken?q=klantmail');

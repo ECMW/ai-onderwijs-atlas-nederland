@@ -1506,14 +1506,14 @@
     };
     return values(key).map(value => filterOptionLabel(key, value)).join(', ') || defaults[key] || 'Alle opties';
   }
-  function facetCountLabel(count, worksheets) {
-    if (!worksheets) return String(count);
-    return (count ? count + ' + ' : '') + worksheets + (worksheets === 1 ? ' werkblad' : ' werkbladen');
+  function facetCountLabel(count, atlasLabel) {
+    if (!atlasLabel) return String(count);
+    return (count ? count + ' + ' : '') + atlasLabel;
   }
-  function facetOption(key, option, count, worksheets, selected) {
+  function facetOption(key, option, count, atlasLabel, selected) {
     const checked = selected.includes(option);
-    const unavailable = !count && !worksheets && !checked;
-    return `<label data-facet-option="${escapeHtml(option)}" ${unavailable ? 'hidden' : ''}><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${unavailable ? 'disabled' : ''}><span>${escapeHtml(filterOptionLabel(key, option))}</span><small>${facetCountLabel(count, worksheets)}</small></label>`;
+    const unavailable = !count && !atlasLabel && !checked;
+    return `<label data-facet-option="${escapeHtml(option)}" ${unavailable ? 'hidden' : ''}><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${unavailable ? 'disabled' : ''}><span>${escapeHtml(filterOptionLabel(key, option))}</span><small>${facetCountLabel(count, atlasLabel)}</small></label>`;
   }
   function subjectInput(id, value = values('vak').join(', '), profile = false) {
     return `<label for="${id}">Vakgebied${profile ? ' (optioneel)' : ''}</label>
@@ -1531,17 +1531,17 @@
       setUrl();
     }
   }
-  function facet(key, title, options, counts = facetCounts()[key], worksheetCounts = new Map()) {
+  function facet(key, title, options, counts = facetCounts()[key], atlasLabels = new Map()) {
     const selected = values(key);
-    const present = [...new Set([...options.filter(option => counts.has(option)), ...worksheetCounts.keys(), ...selected])];
-    const available = present.filter(option => counts.get(option) || worksheetCounts.get(option) || selected.includes(option));
+    const present = [...new Set([...options.filter(option => counts.has(option)), ...atlasLabels.keys(), ...selected])];
+    const available = present.filter(option => counts.get(option) || atlasLabels.get(option) || selected.includes(option));
     const canExpand = available.slice(8).some(option => !selected.includes(option));
     const supportsMultiple = ['sector', 'audience'].includes(key);
     const startsOpen = supportsMultiple && (key !== 'sector' || selected.length > 0);
     return `<details class="facet${supportsMultiple ? ' facet-multi' : ''}" data-facet-block="${escapeHtml(key)}"${startsOpen ? ' open' : ''}><summary><span class="facet-heading">${escapeHtml(title)}<b aria-label="${values(key).length} geselecteerd" ${values(key).length ? '' : 'hidden'}>${values(key).length}</b></span><span class="facet-value">${escapeHtml(facetSelectionLabel(key))}</span></summary><div>
       ${supportsMultiple ? '<p class="facet-note">Kies één of meer opties tegelijk.</p>' : ''}
       ${key === 'organization' && present.length > 12 ? '<input class="facet-search" type="search" placeholder="Zoek aanbieder…" aria-label="Zoek binnen aanbieders">' : ''}
-      <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => facetOption(key, option, counts.get(option) || 0, worksheetCounts.get(option) || 0, selected)).join('')}</div>
+      <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => facetOption(key, option, counts.get(option) || 0, atlasLabels.get(option), selected)).join('')}</div>
       ${present.length > 8 ? `<button class="facet-more" type="button" aria-expanded="false" ${canExpand ? '' : 'hidden'}>Toon meer</button>` : ''}
       <p class="facet-empty" role="status"${available.length ? ' hidden' : ''}>Geen opties bij deze selectie.</p>
     </div></details>`;
@@ -1630,14 +1630,28 @@
   function matchingWorksheetRoutes(criteria) {
     return worksheetRoutes(criteria.q, criteria, isLessonSelection(criteria));
   }
-  function worksheetFacetCounts() {
-    if (!matchingWorksheetRoutes({q: state.q, vak: state.vak, type: 'materials'}).length) return {};
+  const MINUTES_FILTERS = {
+    type:['materials'], audience:['Ondersteunend personeel'], sector:['PO', 'VO', 'MBO', 'HBO', 'WO'],
+    language:['nl'], cost:['Gratis'], status:[STATUS_LABELS.available], access:[ACCESS_LABELS.public]
+  };
+  function matchesMinutesFilters(criteria) {
+    return activeFilters(criteria).every(([key, selected]) => selected.some(value => MINUTES_FILTERS[key]?.includes(value)));
+  }
+  function atlasFacetLabels() {
+    const minutes = teacherQuestion(normalize(state.q)) === 'minutes';
+    if (!minutes && !matchingWorksheetRoutes({q: state.q, vak: state.vak, type: 'materials'}).length) return {};
     const counts = {};
-    for (const [key, options] of Object.entries({...WORKSHEET_FILTERS, sector: SECTORS})) {
+    const facets = minutes ? MINUTES_FILTERS : {...WORKSHEET_FILTERS, sector: SECTORS};
+    for (const [key, options] of Object.entries(facets)) {
       counts[key] = new Map();
       for (const option of options) {
-        const matches = matchingWorksheetRoutes({...state, [key]: option}).length;
-        if (matches) counts[key].set(option, matches);
+        const criteria = {...state, [key]:option};
+        if (minutes) {
+          if (matchesMinutesFilters(criteria)) counts[key].set(option, '1 oefening');
+        } else {
+          const sheets = matchingWorksheetRoutes(criteria).length;
+          if (sheets) counts[key].set(option, matchesLabel(0, sheets));
+        }
       }
     }
     return counts;
@@ -1645,7 +1659,7 @@
   function teacherRoutes(query, criteria) {
     switch (teacherQuestion(normalize(query))) {
       case 'minutes':
-        return [{label:'Controleer een AI-conceptverslag', meta:'Oefen met fictieve notulen: wat is besloten, wie doet wat en vóór wanneer?', href:'#notulen-controleren'}];
+        return matchesMinutesFilters(criteria) ? [{kind:'exercise', label:'Controleer een AI-conceptverslag', meta:'Oefen met fictieve notulen: wat is besloten, wie doet wat en vóór wanneer?', href:'#notulen-controleren'}] : [];
       case 'tools':
         return [{label:'Welke AI-toepassing past bij mijn les?', meta:'Vergelijk dicteren en transcriberen en controleer de voorwaarden voor uw klas.', href:'#toolkeuze'}];
       case 'privacy': {
@@ -1695,12 +1709,14 @@
     return ranked[0] || null;
   }
   function relaxationSuggestions(currentSheets) {
+    const minutes = teacherQuestion(normalize(state.q)) === 'minutes';
     return FILTER_KEYS.filter(key => values(key).length).map(key => {
       const criteria = { ...state, [key]: '' };
       const offers = recordsForCriteria(criteria).length;
       const sheets = matchingWorksheetRoutes(criteria).length;
       const label = values(key).map(value => filterOptionLabel(key, value)).join(' of ');
-      return { key, label, offers, sheets, total: offers + sheets };
+      const exercises = minutes && matchesMinutesFilters(criteria) ? 1 : 0;
+      return { key, label, offers, sheets, exercises, total: offers + sheets + exercises };
     }).filter(item => item.total > currentSheets).sort((a, b) => b.total - a.total).slice(0, 3);
   }
   const ASSESSMENT_CRITERIA = { q: 'toets', theme: 'Toetsing en examinering', type: 'materials,knowledge' };
@@ -2530,7 +2546,7 @@
         `<p>${state.q ? 'Uw zoekopdracht levert binnen deze selectie geen resultaten op.' : 'Er is geen aanbod met deze combinatie van filters.'}</p>`}`;
     return `<div class="empty">${notice}
       ${actions}
-      ${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${escapeHtml(stateHref({ [item.key]: '' }))}">Zonder ${escapeHtml(item.label)} <strong>${matchesLabel(item.offers, item.sheets)}</strong></a>`).join('')}</div>` : ''}
+      ${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${escapeHtml(stateHref({ [item.key]: '' }))}">Zonder ${escapeHtml(item.label)} <strong>${matchesLabel(item.offers, item.sheets, item.exercises)}</strong></a>`).join('')}</div>` : ''}
       <button class="clear-link" type="button">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`;
   }
   function pickedActionLinks(scope) {
@@ -2538,10 +2554,11 @@
       <a class="btn secondary" data-${scope}-sheet href="${escapeHtml(selectedHref('overlegblad'))}" ${sheetPicks.size ? '' : 'hidden'}>Open mijn overlegblad (${sheetPicks.size})</a>
       <span ${sheetPicks.size === 1 ? '' : 'hidden'}>Kies nog een vermelding om te vergelijken.</span>`;
   }
-  function matchesLabel(offers, sheets) {
+  function matchesLabel(offers, sheets, exercises = 0) {
     const labels = [];
-    if (offers || !sheets) labels.push(offers + (offers === 1 ? ' resultaat' : ' resultaten'));
+    if (offers || (!sheets && !exercises)) labels.push(offers + (offers === 1 ? ' resultaat' : ' resultaten'));
     if (sheets) labels.push(sheets + (sheets === 1 ? ' werkblad' : ' werkbladen'));
+    if (exercises) labels.push(exercises + (exercises === 1 ? ' oefening' : ' oefeningen'));
     return labels.join(' en ');
   }
   function resultsMarkup() {
@@ -2553,10 +2570,11 @@
     const related = values('theme').length ? relatedThemes(values('theme')[0]) : [];
     const routes = teacherRoutes(state.q, state);
     const worksheetCount = routes.filter(route => route.href.startsWith('#werkblad-')).length;
-    const onlyWorksheets = !resultRecords.length && worksheetCount > 0;
-    const routeGuide = routes.length ? `<section class="selection-guidance teacher-routes" aria-label="Verder met uw vraag">${onlyWorksheets ? '' : '<h2>Verder met uw vraag</h2>'}
+    const exerciseCount = routes.filter(route => route.kind === 'exercise').length;
+    const onlyAtlas = !resultRecords.length && (worksheetCount > 0 || exerciseCount > 0);
+    const routeGuide = routes.length ? `<section class="selection-guidance teacher-routes" aria-label="Verder met uw vraag">${onlyAtlas ? '' : '<h2>Verder met uw vraag</h2>'}
       <ul>${routes.map(item => `<li><a data-question-route href="${escapeHtml(item.href)}">${escapeHtml(item.label)}</a><span>${escapeHtml(item.meta)}</span></li>`).join('')}</ul></section>` : '';
-    resultCountLabel = matchesLabel(resultRecords.length, worksheetCount);
+    resultCountLabel = matchesLabel(resultRecords.length, worksheetCount, exerciseCount);
     const heading = resultCountLabel + (state.q ? ` voor ‘${state.q}’` : '');
     const knownDates = isPublicationSort() && resultRecords.filter(record => publicationDate(record)).length;
     const sortSummary = state.sort === 'added'
@@ -2566,7 +2584,7 @@
       : state.sort === 'az' ? 'Gesorteerd op titel, van A tot Z.' : isFundingSelection()
       ? 'Open oproepen eerst, op volgorde van bekende deadline. Daarna volgen aangekondigde rondes, overige regelingen en gesloten oproepen.' : 'Gesorteerd op relevantie en directe bruikbaarheid.';
     const selectedSearch = location.hash.split('?')[0] === '#zoeken' && (state.q?.trim() || FILTER_KEYS.some(key => values(key).length));
-    const outcome = selectedSearch ? (resultRecords.length || worksheetCount ? ' data-atlas-search-hits' : ' data-atlas-empty-search') : '';
+    const outcome = selectedSearch ? (resultRecords.length || onlyAtlas ? ' data-atlas-search-hits' : ' data-atlas-empty-search') : '';
     const home = !location.hash || location.hash.split('?')[0] === '#home';
     const spotlight = home ? homeSpotlightMarkup() : '';
     return `${spotlight}${practiceNavigation()}${profileNavigation(home)}<header class="result-head"${outcome}><h2 tabindex="-1">${escapeHtml(heading)}</h2>
@@ -2582,7 +2600,7 @@
       ${values('theme').includes('Veilige AI-omgeving') ? '<section class="selection-guidance"><h2>Beoordeel de toepassing in uw eigen situatie</h2><p>Gebruik de officiële bronnen om gegevensgebruik, beheer, menselijke controle, toegankelijkheid en overstapmogelijkheden te beoordelen. Wat passend is, hangt af van uw doel, gegevens, instellingen en afspraken. Deze selectie is geen keurmerk voor veilige of verantwoorde AI.</p></section>' : ''}
       <div class="picked-actions" data-picked-actions ${sheetPicks.size ? '' : 'hidden'}>${pickedActionLinks('picked')}</div>
       <div id="action-feedback" class="action-feedback" aria-live="polite"></div>
-      <div class="results-content">${resultRecords.length ? resultListMarkup() : emptyResultsMarkup(routes, worksheetCount)}</div>
+      <div class="results-content">${resultRecords.length ? resultListMarkup() : exerciseCount ? '' : emptyResultsMarkup(routes, worksheetCount)}</div>
       ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="${escapeHtml(stateHref({ theme }))}">${escapeHtml(theme)} <span>${count} ${count === 1 ? 'resultaat' : 'resultaten'}</span></a>`).join('')}</nav>` : ''}`;
   }
   function filterButtonText() {
@@ -2591,7 +2609,7 @@
   }
   function refreshFacetControls() {
     const counts = facetCounts();
-    const worksheetCounts = worksheetFacetCounts();
+    const atlasLabels = atlasFacetLabels();
     const focusedFacet = document.activeElement?.closest?.('[data-facet]');
     const subject = document.querySelector('#subject-search');
     const applied = values('vak').join(', ');
@@ -2604,11 +2622,11 @@
       const key = input.dataset.facet;
       const checked = selections[key].includes(input.value);
       const count = counts[key].get(input.value) || 0;
-      const worksheets = worksheetCounts[key]?.get(input.value) || 0;
+      const atlasLabel = atlasLabels[key]?.get(input.value);
       input.checked = checked;
-      input.disabled = !count && !worksheets && !checked;
+      input.disabled = !count && !atlasLabel && !checked;
       const counter = input.closest('label')?.querySelector('small');
-      if (counter) counter.textContent = facetCountLabel(count, worksheets);
+      if (counter) counter.textContent = facetCountLabel(count, atlasLabel);
     });
     document.querySelectorAll('[data-facet-block]').forEach(block => {
       const count = values(block.dataset.facetBlock).length;
@@ -2640,8 +2658,8 @@
   }
   function catalogFilterPanel(typeOptions, audienceOptions, organizationOptions) {
     const counts = facetCounts();
-    const worksheetCounts = worksheetFacetCounts();
-    const filter = (key, title, options) => facet(key, title, options, counts[key], worksheetCounts[key]);
+    const atlasLabels = atlasFacetLabels();
+    const filter = (key, title, options) => facet(key, title, options, counts[key], atlasLabels[key]);
     const languages = [...new Set([...Object.keys(LANGUAGE_LABELS), ...counts.language.keys()])];
     const hiddenCount = ['access', 'source'].reduce((sum, key) => sum + values(key).length, 0);
     return `<aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Filters</h2><button class="close" aria-label="Sluit filters">×</button></header>
@@ -3278,7 +3296,7 @@
       }, 150);
     };
     suggestions.onclick = event => {
-      if (event.target.closest('a[href^="#item/"], a[href^="#werkblad-"], a[href="#regels-in-de-praktijk"], a[href="#wat-werkt"], a[href="#toolkeuze"]')) {
+      if (event.target.closest('a[href^="#"]:not([href^="#zoeken"])')) {
         sessionSet('atlas.lastSearch', criteriaHref(criteriaForQuery(input.value)));
       }
     };
