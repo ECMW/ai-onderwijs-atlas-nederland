@@ -92,6 +92,10 @@ relevante links en herkenbare datumwijzigingen komen in het bestaande onderhouds
 inhoudelijke dagronde ook op de officiële oproeppagina’s als het rapport geen nieuwe signalen geeft.
 Een leeg nationaal overzicht kan bijvoorbeeld voorafgaan aan de Nederlandse publicatie van een Europese ronde.
 
+De cyclus volgt ook de specifieke rondepagina Media Literacy 2027 bij Creative Europe Desk NL en de
+CTL-regelingpagina bij DUS-I. Leg een nieuwe datum of indienlink naast de officiële voorwaarden.
+Bij CTL kunnen het aangekondigde tijdvak en het zichtbare aanvraagformulier bij verschillende rondes horen.
+
 Controleer per kandidaat de relatie met AI en onderwijs, wie vanuit Nederland mag aanvragen, eventuele
 consortiumpartners en de eerste nog haalbare aanvraagstap. Onderscheid subsidie, aanbesteding en partneroproep.
 Controleer de uiterste datum en, waar vermeld, tijd en tijdzone voor zowel de intentieverklaring als het

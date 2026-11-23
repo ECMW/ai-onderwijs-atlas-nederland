@@ -131,6 +131,35 @@ class DailyMaintenanceTests(unittest.TestCase):
                 event, _ = classify(self.source, state, new, self.config)
                 self.assertEqual("NO_CHANGE", event["type"])
 
+    def test_media_literacy_deadline_keeps_inline_clock_and_stops_at_block_boundaries(self):
+        for suffix, expected in [
+            (" | 17:00 uur", "17:00"),
+            (" <span>|</span> <b>17:00</b> uur", "17:00"),
+            (", <span>17u00</span>", "17:00"),
+            ("</p><p>17:00 uur", ""),
+            (" |</p><p><b>17:00</b> uur", ""),
+        ]:
+            with self.subTest(suffix=suffix):
+                snapshot = normalize_html(f"<p>Deadline: 20 januari 2027{suffix}</p>",
+                                          self.source["baseUrl"], self.config)
+                self.assertEqual([("20 januari 2027", expected)],
+                                 [(d["dateText"], d["deadlineTime"]) for d in snapshot["deadlineFacts"]])
+
+    def test_ctl_application_window_drives_review_when_date_or_clock_changes(self):
+        for label in ("Aanvraagperiode", "U kunt subsidie aanvragen van"):
+            with self.subTest(label=label):
+                base = self.result("base")
+                base.body = base.body.replace("Deadline 12 juni 2026",
+                                              f"{label} 5 tot en met 30 oktober 2026 om 16.00 uur")
+                _, state = classify(self.source, {}, base, self.config)
+                for replacement in ("29 oktober 2027 om 16.00", "30 oktober 2026 om 15.30"):
+                    revised = self.result("base")
+                    revised.body = base.body.replace("30 oktober 2026 om 16.00", replacement)
+                    event, _ = classify(self.source, state, revised, self.config)
+                    self.assertTrue(event["deadlineChanged"])
+                    self.assertTrue(event["actionable"])
+                    self.assertEqual("update", proposals_for_event(self.source, event, [], self.config)[0]["action"])
+
     def test_french_application_portal_signals_a_midnight_deadline_change(self):
         old, new = self.result("base"), self.result("base")
         old.body = old.body.replace("<p>Deadline 12 juni 2026</p>",

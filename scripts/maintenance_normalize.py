@@ -111,11 +111,12 @@ DATE_PATTERN = re.compile(
     r"\b\d{1,2}\s+(?:januari|january|februari|february|maart|march|april|mei|may|"
     r"juni|june|juli|july|augustus|august|september|oktober|october|november|december)\s+\d{4}\b)", re.I
 )
-DATE_BEFORE_CLOCK = re.compile(DATE_PATTERN.pattern + r"\s*,?\s*(?:(?:om|at|a)\s*)?$", re.I)
+CLOCK_SEPARATOR = r"\s*[,|]?\s*"
+DATE_BEFORE_CLOCK = re.compile(DATE_PATTERN.pattern + CLOCK_SEPARATOR + r"(?:(?:om|at|a)\s*)?$", re.I)
 CLOCK_BLOCK_TAGS = {"p", "div", "li", "tr", "section", "article", "aside", "h1", "h2", "h3", "h4", "h5", "h6"}
 DEADLINE_CLOCK = re.compile(
-    r"\s*,?\s*(?:(?:om|at|a)\s+)?(?P<hour>[01]?\d|2[0-3])"
-    r"(?:[:.h](?P<minute>[0-5]\d)(?!\d|[:.]\d)|(?=\s*(?:uur\b|[ap]\.?m\b)))"
+    CLOCK_SEPARATOR + r"(?:(?:om|at|a)\s+)?(?P<hour>[01]?\d|2[0-3])"
+    r"(?:[:.hu](?P<minute>[0-5]\d)(?!\d|[:.]\d)|(?=\s*(?:uur\b|[ap]\.?m\b)))"
     r"\s*(?:uur\b|(?P<meridiem>[ap])\.?m\b\.?)?"
     r"(?:\s*\(?\s*(?P<zone>cest|cet|utc|gmt|brussels (?:local )?time)\b"
     r"(?:\s*(?P<sign>[+-])(?P<offset_hour>[01]?\d|2[0-3])(?::?(?P<offset_min>[0-5]\d))?(?!\d))?)?", re.I,
@@ -144,7 +145,8 @@ def normalize_html(html: str, base_url: str, config: dict) -> dict:
     text = fold(" ".join(parser.parts))
     # Preserve offsets in the original evidence text. A new paragraph, list
     # item or row interrupts the connection between a date and a nearby clock.
-    clock_text = "".join(("|" if i in parser.block_breaks else " ") + part
+    # A literal pipe, as in "20 januari 2027 | 17:00", belongs to the source.
+    clock_text = "".join(("\0" if i in parser.block_breaks else " ") + part
                          for i, part in enumerate(parser.parts))[1:]
     terms = [fold(x) for x in config["classification"]["deadlineTerms"]]
     prefix_terms = [fold(x) for x in config["classification"].get("deadlinePrefixTerms", [])]
