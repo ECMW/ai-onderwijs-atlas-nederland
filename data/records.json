@@ -36104,7 +36104,7 @@
     "subtype": "Les- en werkmateriaal",
     "organizationIds": [],
     "providerName": "ROC van Amsterdam – Flevoland, House of Digital en Team Content Creation",
-    "description": "Nederlandstalig pakket met negen lessen en een examenonderdeel. Het biedt e-learnings, presentaties, challenges, zelftesten, feedbackformulieren en een docentenhandleiding voor beroepsgericht werken met generatieve AI.",
+    "description": "Nederlandstalig mbo-lespakket met negen lessen, e-learnings, presentaties, challenges, zelftesten, feedbackformulieren, een docentenhandleiding en een examenonderdeel. In les 9 maakt de student als marketingmedewerker een campagne of socialmediapost voor influencers over het veilig gebruiken van generatieve AI. Twee medestudenten testen de boodschap vanuit de rollen van gebruiker en controleur.",
     "purpose": "Mbo-studenten laten oefenen met AI-toepassingen, bronbeoordeling en het onderbouwen van eigen keuzes.",
     "audiences": [
       "Docenten",
@@ -36118,14 +36118,19 @@
       "Lesgeven en leren met AI"
     ],
     "status": "available",
-    "availabilityText": "Lespakket en docentenhandleiding openbaar en gratis. Aanvullende assistent is instellingsgebonden; externe AI-tools hebben eigen voorwaarden.",
+    "availabilityText": "Lespakket en docentenhandleiding openbaar en gratis. Les 9 gebruikt voor het ontwerp Canva met Magic Write. Voor externe tools gelden de eigen toegangsvoorwaarden. De aanvullende GenAI-assistent is alleen beschikbaar voor ROC van Amsterdam – Flevoland.",
     "publicationDate": "2026-09-23",
-    "lastVerified": "2026-11-06",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "Oorspronkelijk lespakket",
         "url": "https://xerte.talnet.nl/play.php?template_id=8993",
+        "sourceType": "official"
+      },
+      {
+        "label": "Les 9 voor marketing: campagne of socialmediapost maken",
+        "url": "https://xerte.talnet.nl/play.php?template_id=8993#page4section16",
         "sourceType": "official"
       },
       {
@@ -36155,13 +36160,21 @@
     "notes": "Edusources vermeldt 23 september 2026 en keuzedeel 1499. De originele site vermeldt doorontwikkeling tot november 2026. Docentenhandleiding noemt mbo 2–4 en LLO. De aanvullende GenAI-assistent is alleen voor ROCvA–F. Oorspronkelijke bron: tekst en educatieve inhoud CC BY-NC-SA 4.0, video/animatie CC BY-NC-ND en afzonderlijke hergebruikbeperking voor afbeeldingen. Edusources toont algemeen BY-NC-ND; raadpleeg daarom de specifieke voorwaarden in het materiaal. Geen examenvaliditeit of juridische volledigheid vastgesteld.",
     "offerCategory": "materials",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "Edusources-detail, originele startpagina, lesoverzicht en docentenhandleiding in de browser gelezen. Niet alle downloads of examens zijn uitgevoerd. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "verificationNote": "Edusources-detail, originele startpagina, lesoverzicht en docentenhandleiding in de browser gelezen. Niet alle downloads of examens zijn uitgevoerd. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd. Op 23 november 2026 is de directe ingang naar les 9 in de openbare docentenhandleiding opnieuw geopend. De beschrijving van de marketingrol, de opdracht, Canva en de test met medestudenten komt uit die les.",
     "changeHistory": [
       {
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Les 9 rechtstreeks gekoppeld en ingedeeld bij Marketing en communicatie. In de docentenhandleiding staan de marketingrol, de campagne voor influencers en de test van het resultaat beschreven."
       }
+    ],
+    "subjects": [
+      "Marketing en communicatie"
     ]
   },
   {
