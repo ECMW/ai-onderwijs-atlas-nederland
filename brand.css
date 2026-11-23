@@ -201,7 +201,7 @@ body > footer :is(a, summary):focus-visible { outline-color: #fff !important; }
 ::selection{background:var(--brand-sand);color:var(--brand-ink)}
 
 @media(max-width:900px){
-  .site-header{backdrop-filter:none}
+  .site-header{background:var(--brand-shell);backdrop-filter:none}
   .menu{background:#fffdf9;border-color:#9ca9ad;color:var(--brand-bluegray-deep)}
 }
 @media(max-width:600px){
