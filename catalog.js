@@ -2907,7 +2907,7 @@
         <p>Volg de instructie voor jouw eigen opdracht. Deze voorbeelden openen in een nieuw tabblad, zodat je eigen tekst hier blijft staan.</p>
         <ul><li><a href="https://lerenbij.curio.nl/generatieve-ai/generatieve-ai-tijdens-je-studie/" target="_blank" rel="noopener noreferrer">Curio (vmbo en mbo)</a> bespreekt afspraken bij een opdracht, examen of stage.</li>
           <li><a href="https://screensteps.saxion.nl/a/2123448-ai-gebruiken-in-brightspace#ai-bij-opdrachten-in-brightspace" target="_blank" rel="noopener noreferrer">Saxion (hbo)</a> legt uit hoe je in Brightspace nagaat welke AI-hulp je bij een opdracht mag gebruiken.</li>
-          <li>De <a href="https://www.rug.nl/about-ug/organization/quality-assurance/education/artificial-intelligence-ai/" target="_blank" rel="noopener noreferrer">Rijksuniversiteit Groningen (wo)</a> legt in basisregels 2 en 3 uit waar je de afspraken vindt, aan wie je vragen kunt stellen en hoe je AI-gebruik meldt.</li></ul>
+          <li>De <a href="https://www.rug.nl/about-ug/organization/quality-assurance/education/artificial-intelligence-ai/?lang=nl" target="_blank" rel="noopener noreferrer">Rijksuniversiteit Groningen (wo)</a> legt in basisregels 2 en 3 uit waar je de afspraken vindt, aan wie je vragen kunt stellen en hoe je AI-gebruik meldt.</li></ul>
       </details>
     </article>`;
     main.querySelectorAll('[data-student-template]').forEach(panel => {

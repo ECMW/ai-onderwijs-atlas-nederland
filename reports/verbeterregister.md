@@ -1,5 +1,15 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Een leerling of student met een vraag over de eigen opdracht
+
+Op uitgave `116946c` gaven ‘Mag ik AI gebruiken bij mijn opdracht?’ en ‘Moet ik ChatGPT vermelden?’ nul treffers. Dit was op mobiel en laptop reproduceerbaar, zonder profiel en met de profielen leerling (vo) en student (mbo, hbo, wo). Bij ‘regels AI voor studenten’ kwam in het wo zelfs een econometriepracticum naar boven door de term ‘regels’ in een rekeninstructie. Dit waren zoekproeven. Hoe vaak bezoekers deze vragen stellen is onbekend.
+
+De zoekbalk, praktijkgids en leerling- en studentprofielen bieden nu een keuzehulp. Bij twijfel maakt de bezoeker een gerichte vraag voor de docent. Bij het inleveren kan diegene een eigen toelichting opstellen en kopiëren. Ook staat er wat je kunt doen als de opdracht de gekozen AI-hulp uitsluit. De instructie bij de eigen opdracht is leidend. Drie openbare schoolvoorbeelden openen naast de eigen tekst. [Curio](https://lerenbij.curio.nl/generatieve-ai/generatieve-ai-tijdens-je-studie/) · [Saxion](https://screensteps.saxion.nl/a/2123448-ai-gebruiken-in-brightspace#ai-bij-opdrachten-in-brightspace) · [Rijksuniversiteit Groningen](https://www.rug.nl/about-ug/organization/quality-assurance/education/artificial-intelligence-ai/?lang=nl)
+
+De browserproef omvatte drie vragen in vijf profielsituaties. Op 320, 390 en 1280 pixels zijn de drie situaties met het toetsenbord geopend en bewerkte teksten gekopieerd. Bij geweigerde klembordtoegang bleef de tekst selecteerbaar. De invoer kwam bij de proef niet terecht in netwerkverzoeken, de URL of webopslag. Of studenten hierdoor de afspraken beter toepassen is nog onbekend.
+
+De volgende controle betreft examencommissieleden. Bij de nulmeting leverde de combinatie ‘Examencommissies’ en ‘HBO’ twintig treffers op. De rol ontbrak in het profiel. Controleer of een commissielid vanuit het eigen profiel een openbaar bruikbare bron voor toetsbeleid kan bereiken.
+
 ## 23 november 2026 · Een AI-conceptverslag controleren
 
 Op de publieke uitgave `e127ff8` gaven ‘notulen’ en ‘vergaderverslag’ nul treffers. Een onderwijsondersteuner vindt nu via zoeken en de praktijkgids een fictief schooloverleg. Eén regel in de conceptnotulen is juist. Bij de drie overige regels moet de lezer onderscheid maken tussen voorstel en besluit, de actie aan de juiste persoon koppelen of een onbevestigde verzenddatum herkennen. De bezoeker kan een eigen afsprakenlijst uitschrijven, kopiëren en vergelijken met de uitwerking. De Atlas verwerkt de invoer in de browser. Taalwinkel onderbouwt de controle op besluiten en acties. SURF beschrijft de stap van transcript naar notulen. [Taalwinkel](https://taalwinkel.uva.nl/studievaardigheden/vergaderen#besluitenlijst) · [SURF Privacy Expertise Centrum](https://pec.surf.nl/spraakherkenning-en-transcriptie-met-ai/)
