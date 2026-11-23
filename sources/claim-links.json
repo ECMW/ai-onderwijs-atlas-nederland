@@ -3,6 +3,17 @@
   "last_reviewed": "2026-11-23",
   "claims": [
     {
+      "claim_id": "ondersteuning-ai-conceptnotulen-controleren",
+      "location": {"path": "catalog.js"},
+      "claim": "Na omzetting van een gespreksfragment naar notulen controleert de ondersteuner het besluit, de actiehouder en het tijdstip tegen het gesprek.",
+      "claim_kind": "atlas_synthesis",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": ["uva-taalwinkel-vergaderen-2025", "surf-pec-spraakherkenning-transcriptie-2026"],
+      "assessment": "Taalwinkel onderbouwt het controleren van afspraken en het koppelen van acties aan personen. SURF beschrijft de opeenvolgende stappen van opname tot notulen en de beperkingen van sprekerherkenning. De Atlas ontwierp het fictieve gesprek en de controle van de deadline. Het effect van de oefening is onbekend.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": false
+    },
+    {
       "claim_id": "uitgelicht-lesvoorbereiding-en-toolkeuze-2026",
       "location": {
         "path": "catalog.js"

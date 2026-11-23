@@ -1436,6 +1436,7 @@
       ['#toetsafspraak', 'Een toets aanpassen', 'Kies welke AI-hulp past en wat de leerling zelf moet laten zien.'],
       ['#toolkeuze', 'Een AI-toepassing kiezen', 'Vergelijk de functie, voorwaarden en open vragen voor uw klas.'],
       ['#pilotbesluit', 'Besluiten over een AI-proef', 'Leg met schoolleiding en ICT vast wie beslist, wat u toetst en wanneer u stopt.'],
+      ['#notulen-controleren?van=praktijkgids', 'Een conceptverslag controleren', 'Vergelijk de notulen met wat tijdens een schooloverleg is afgesproken.'],
       ['#regels-in-de-praktijk', 'Leerlingwerk of lesmateriaal gebruiken', 'Controleer gegevens, licentie en afspraken op uw school.'],
       ['#wat-werkt', 'Beoordelen wat werkt', 'Bekijk wat leerlingen met hulp presteerden en wat ze daarna zelf konden.'],
       [criteriaHref(FUNDING_CRITERIA), 'Subsidies en calls vinden', 'Controleer wie kan aanvragen en wanneer de ronde sluit.']
@@ -1505,14 +1506,14 @@
     };
     return values(key).map(value => filterOptionLabel(key, value)).join(', ') || defaults[key] || 'Alle opties';
   }
-  function facetCountLabel(count, worksheets) {
-    if (!worksheets) return String(count);
-    return (count ? count + ' + ' : '') + worksheets + (worksheets === 1 ? ' werkblad' : ' werkbladen');
+  function facetCountLabel(count, atlasLabel) {
+    if (!atlasLabel) return String(count);
+    return (count ? count + ' + ' : '') + atlasLabel;
   }
-  function facetOption(key, option, count, worksheets, selected) {
+  function facetOption(key, option, count, atlasLabel, selected) {
     const checked = selected.includes(option);
-    const unavailable = !count && !worksheets && !checked;
-    return `<label data-facet-option="${escapeHtml(option)}" ${unavailable ? 'hidden' : ''}><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${unavailable ? 'disabled' : ''}><span>${escapeHtml(filterOptionLabel(key, option))}</span><small>${facetCountLabel(count, worksheets)}</small></label>`;
+    const unavailable = !count && !atlasLabel && !checked;
+    return `<label data-facet-option="${escapeHtml(option)}" ${unavailable ? 'hidden' : ''}><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${unavailable ? 'disabled' : ''}><span>${escapeHtml(filterOptionLabel(key, option))}</span><small>${facetCountLabel(count, atlasLabel)}</small></label>`;
   }
   function subjectInput(id, value = values('vak').join(', '), profile = false) {
     return `<label for="${id}">Vakgebied${profile ? ' (optioneel)' : ''}</label>
@@ -1530,17 +1531,17 @@
       setUrl();
     }
   }
-  function facet(key, title, options, counts = facetCounts()[key], worksheetCounts = new Map()) {
+  function facet(key, title, options, counts = facetCounts()[key], atlasLabels = new Map()) {
     const selected = values(key);
-    const present = [...new Set([...options.filter(option => counts.has(option)), ...worksheetCounts.keys(), ...selected])];
-    const available = present.filter(option => counts.get(option) || worksheetCounts.get(option) || selected.includes(option));
+    const present = [...new Set([...options.filter(option => counts.has(option)), ...atlasLabels.keys(), ...selected])];
+    const available = present.filter(option => counts.get(option) || atlasLabels.get(option) || selected.includes(option));
     const canExpand = available.slice(8).some(option => !selected.includes(option));
     const supportsMultiple = ['sector', 'audience'].includes(key);
     const startsOpen = supportsMultiple && (key !== 'sector' || selected.length > 0);
     return `<details class="facet${supportsMultiple ? ' facet-multi' : ''}" data-facet-block="${escapeHtml(key)}"${startsOpen ? ' open' : ''}><summary><span class="facet-heading">${escapeHtml(title)}<b aria-label="${values(key).length} geselecteerd" ${values(key).length ? '' : 'hidden'}>${values(key).length}</b></span><span class="facet-value">${escapeHtml(facetSelectionLabel(key))}</span></summary><div>
       ${supportsMultiple ? '<p class="facet-note">Kies één of meer opties tegelijk.</p>' : ''}
       ${key === 'organization' && present.length > 12 ? '<input class="facet-search" type="search" placeholder="Zoek aanbieder…" aria-label="Zoek binnen aanbieders">' : ''}
-      <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => facetOption(key, option, counts.get(option) || 0, worksheetCounts.get(option) || 0, selected)).join('')}</div>
+      <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => facetOption(key, option, counts.get(option) || 0, atlasLabels.get(option), selected)).join('')}</div>
       ${present.length > 8 ? `<button class="facet-more" type="button" aria-expanded="false" ${canExpand ? '' : 'hidden'}>Toon meer</button>` : ''}
       <p class="facet-empty" role="status"${available.length ? ' hidden' : ''}>Geen opties bij deze selectie.</p>
     </div></details>`;
@@ -1567,6 +1568,9 @@
     return row[b.length];
   }
   function teacherQuestion(normalized) {
+    if (/^(?:ai )?(?:notulen|conceptnotulen|vergaderverslag(?:en)?|vergadernotities|besluitenlijst)$/.test(normalized) ||
+        (/\b(?:notulen|conceptnotulen|conceptverslag(?:en)?|vergaderverslag(?:en)?|vergadernotities|besluitenlijst|actielijst)\b/.test(normalized) &&
+         /\b(?:controle\w*|nakijken|beoordelen)\b/.test(normalized))) return 'minutes';
     if (/\bai (?:tools?|toepassing(?:en)?|software|hulpmiddel(?:en)?)\b/.test(normalized) &&
         /\b(?:vergelijk\w*|kiezen|kies|past|passen|verantwoord)\b/.test(normalized)) return 'tools';
     if (/\b(?:ecosysteem|ecosystemen)\b/.test(normalized) &&
@@ -1626,20 +1630,36 @@
   function matchingWorksheetRoutes(criteria) {
     return worksheetRoutes(criteria.q, criteria, isLessonSelection(criteria));
   }
-  function worksheetFacetCounts() {
-    if (!matchingWorksheetRoutes({q: state.q, vak: state.vak, type: 'materials'}).length) return {};
+  const MINUTES_FILTERS = {
+    type:['materials'], audience:['Ondersteunend personeel'], sector:['PO', 'VO', 'MBO', 'HBO', 'WO'],
+    language:['nl'], cost:['Gratis'], status:[STATUS_LABELS.available], access:[ACCESS_LABELS.public]
+  };
+  function matchesMinutesFilters(criteria) {
+    return activeFilters(criteria).every(([key, selected]) => selected.some(value => MINUTES_FILTERS[key]?.includes(value)));
+  }
+  function atlasFacetLabels() {
+    const minutes = teacherQuestion(normalize(state.q)) === 'minutes';
+    if (!minutes && !matchingWorksheetRoutes({q: state.q, vak: state.vak, type: 'materials'}).length) return {};
     const counts = {};
-    for (const [key, options] of Object.entries({...WORKSHEET_FILTERS, sector: SECTORS})) {
+    const facets = minutes ? MINUTES_FILTERS : {...WORKSHEET_FILTERS, sector: SECTORS};
+    for (const [key, options] of Object.entries(facets)) {
       counts[key] = new Map();
       for (const option of options) {
-        const matches = matchingWorksheetRoutes({...state, [key]: option}).length;
-        if (matches) counts[key].set(option, matches);
+        const criteria = {...state, [key]:option};
+        if (minutes) {
+          if (matchesMinutesFilters(criteria)) counts[key].set(option, '1 oefening');
+        } else {
+          const sheets = matchingWorksheetRoutes(criteria).length;
+          if (sheets) counts[key].set(option, matchesLabel(0, sheets));
+        }
       }
     }
     return counts;
   }
   function teacherRoutes(query, criteria) {
     switch (teacherQuestion(normalize(query))) {
+      case 'minutes':
+        return matchesMinutesFilters(criteria) ? [{kind:'exercise', label:'Controleer een AI-conceptverslag', meta:'Oefen met fictieve notulen: wat is besloten, wie doet wat en vóór wanneer?', href:'#notulen-controleren'}] : [];
       case 'tools':
         return [{label:'Welke AI-toepassing past bij mijn les?', meta:'Vergelijk dicteren en transcriberen en controleer de voorwaarden voor uw klas.', href:'#toolkeuze'}];
       case 'privacy': {
@@ -1689,12 +1709,14 @@
     return ranked[0] || null;
   }
   function relaxationSuggestions(currentSheets) {
+    const minutes = teacherQuestion(normalize(state.q)) === 'minutes';
     return FILTER_KEYS.filter(key => values(key).length).map(key => {
       const criteria = { ...state, [key]: '' };
       const offers = recordsForCriteria(criteria).length;
       const sheets = matchingWorksheetRoutes(criteria).length;
       const label = values(key).map(value => filterOptionLabel(key, value)).join(' of ');
-      return { key, label, offers, sheets, total: offers + sheets };
+      const exercises = minutes && matchesMinutesFilters(criteria) ? 1 : 0;
+      return { key, label, offers, sheets, exercises, total: offers + sheets + exercises };
     }).filter(item => item.total > currentSheets).sort((a, b) => b.total - a.total).slice(0, 3);
   }
   const ASSESSMENT_CRITERIA = { q: 'toets', theme: 'Toetsing en examinering', type: 'materials,knowledge' };
@@ -2413,6 +2435,9 @@
       if (!count && !worksheets) return `<span class="practice-link unavailable">${content}<small>Geen resultaten</small></span>`;
       return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${matchesLabel(count, worksheets)} <span aria-hidden="true">→</span></small></a>`;
     });
+    if (values('audience').includes('Ondersteunend personeel') && matchesMinutesFilters(state)) {
+      links.unshift('<a class="practice-link" data-question-route href="#notulen-controleren"><strong>Notulen controleren</strong><span>Verbeter de afsprakenlijst van een schooloverleg.</span><small>Open oefening <span aria-hidden="true">→</span></small></a>');
+    }
     const researchHref = criteriaHref(context).replace('#zoeken', '#onderzoek');
     links.push(`<a class="practice-link" href="${escapeHtml(researchHref)}"><strong>Onderzoek doen of promoveren</strong><span>Promotieplaatsen, onderzoeksdata en praktijkonderzoek</span><small>Bekijk routes <span aria-hidden="true">→</span></small></a>`);
     return `<section class="practice-start" aria-labelledby="practice-title"><div class="practice-heading"><h2 id="practice-title" tabindex="-1">Waar wilt u mee aan de slag?</h2>
@@ -2524,7 +2549,7 @@
         `<p>${state.q ? 'Uw zoekopdracht levert binnen deze selectie geen resultaten op.' : 'Er is geen aanbod met deze combinatie van filters.'}</p>`}`;
     return `<div class="empty">${notice}
       ${actions}
-      ${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${escapeHtml(stateHref({ [item.key]: '' }))}">Zonder ${escapeHtml(item.label)} <strong>${matchesLabel(item.offers, item.sheets)}</strong></a>`).join('')}</div>` : ''}
+      ${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${escapeHtml(stateHref({ [item.key]: '' }))}">Zonder ${escapeHtml(item.label)} <strong>${matchesLabel(item.offers, item.sheets, item.exercises)}</strong></a>`).join('')}</div>` : ''}
       <button class="clear-link" type="button">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`;
   }
   function pickedActionLinks(scope) {
@@ -2532,10 +2557,11 @@
       <a class="btn secondary" data-${scope}-sheet href="${escapeHtml(selectedHref('overlegblad'))}" ${sheetPicks.size ? '' : 'hidden'}>Open mijn overlegblad (${sheetPicks.size})</a>
       <span ${sheetPicks.size === 1 ? '' : 'hidden'}>Kies nog een vermelding om te vergelijken.</span>`;
   }
-  function matchesLabel(offers, sheets) {
+  function matchesLabel(offers, sheets, exercises = 0) {
     const labels = [];
-    if (offers || !sheets) labels.push(offers + (offers === 1 ? ' resultaat' : ' resultaten'));
+    if (offers || (!sheets && !exercises)) labels.push(offers + (offers === 1 ? ' resultaat' : ' resultaten'));
     if (sheets) labels.push(sheets + (sheets === 1 ? ' werkblad' : ' werkbladen'));
+    if (exercises) labels.push(exercises + (exercises === 1 ? ' oefening' : ' oefeningen'));
     return labels.join(' en ');
   }
   function resultsMarkup() {
@@ -2547,10 +2573,11 @@
     const related = values('theme').length ? relatedThemes(values('theme')[0]) : [];
     const routes = teacherRoutes(state.q, state);
     const worksheetCount = routes.filter(route => route.href.startsWith('#werkblad-')).length;
-    const onlyWorksheets = !resultRecords.length && worksheetCount > 0;
-    const routeGuide = routes.length ? `<section class="selection-guidance teacher-routes" aria-label="Verder met uw vraag">${onlyWorksheets ? '' : '<h2>Verder met uw vraag</h2>'}
+    const exerciseCount = routes.filter(route => route.kind === 'exercise').length;
+    const onlyAtlas = !resultRecords.length && (worksheetCount > 0 || exerciseCount > 0);
+    const routeGuide = routes.length ? `<section class="selection-guidance teacher-routes" aria-label="Verder met uw vraag">${onlyAtlas ? '' : '<h2>Verder met uw vraag</h2>'}
       <ul>${routes.map(item => `<li><a data-question-route href="${escapeHtml(item.href)}">${escapeHtml(item.label)}</a><span>${escapeHtml(item.meta)}</span></li>`).join('')}</ul></section>` : '';
-    resultCountLabel = matchesLabel(resultRecords.length, worksheetCount);
+    resultCountLabel = matchesLabel(resultRecords.length, worksheetCount, exerciseCount);
     const heading = resultCountLabel + (state.q ? ` voor ‘${state.q}’` : '');
     const knownDates = isPublicationSort() && resultRecords.filter(record => publicationDate(record)).length;
     const sortSummary = state.sort === 'added'
@@ -2560,7 +2587,7 @@
       : state.sort === 'az' ? 'Gesorteerd op titel, van A tot Z.' : isFundingSelection()
       ? 'Open oproepen eerst, op volgorde van bekende deadline. Daarna volgen aangekondigde rondes, overige regelingen en gesloten oproepen.' : 'Gesorteerd op relevantie en directe bruikbaarheid.';
     const selectedSearch = location.hash.split('?')[0] === '#zoeken' && (state.q?.trim() || FILTER_KEYS.some(key => values(key).length));
-    const outcome = selectedSearch ? (resultRecords.length || worksheetCount ? ' data-atlas-search-hits' : ' data-atlas-empty-search') : '';
+    const outcome = selectedSearch ? (resultRecords.length || onlyAtlas ? ' data-atlas-search-hits' : ' data-atlas-empty-search') : '';
     const home = !location.hash || location.hash.split('?')[0] === '#home';
     const spotlight = home ? homeSpotlightMarkup() : '';
     return `${spotlight}${practiceNavigation()}${profileNavigation(home)}<header class="result-head"${outcome}><h2 tabindex="-1">${escapeHtml(heading)}</h2>
@@ -2576,7 +2603,7 @@
       ${values('theme').includes('Veilige AI-omgeving') ? '<section class="selection-guidance"><h2>Beoordeel de toepassing in uw eigen situatie</h2><p>Gebruik de officiële bronnen om gegevensgebruik, beheer, menselijke controle, toegankelijkheid en overstapmogelijkheden te beoordelen. Wat passend is, hangt af van uw doel, gegevens, instellingen en afspraken. Deze selectie is geen keurmerk voor veilige of verantwoorde AI.</p></section>' : ''}
       <div class="picked-actions" data-picked-actions ${sheetPicks.size ? '' : 'hidden'}>${pickedActionLinks('picked')}</div>
       <div id="action-feedback" class="action-feedback" aria-live="polite"></div>
-      <div class="results-content">${resultRecords.length ? resultListMarkup() : emptyResultsMarkup(routes, worksheetCount)}</div>
+      <div class="results-content">${resultRecords.length ? resultListMarkup() : exerciseCount ? '' : emptyResultsMarkup(routes, worksheetCount)}</div>
       ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="${escapeHtml(stateHref({ theme }))}">${escapeHtml(theme)} <span>${count} ${count === 1 ? 'resultaat' : 'resultaten'}</span></a>`).join('')}</nav>` : ''}`;
   }
   function filterButtonText() {
@@ -2585,7 +2612,7 @@
   }
   function refreshFacetControls() {
     const counts = facetCounts();
-    const worksheetCounts = worksheetFacetCounts();
+    const atlasLabels = atlasFacetLabels();
     const focusedFacet = document.activeElement?.closest?.('[data-facet]');
     const subject = document.querySelector('#subject-search');
     const applied = values('vak').join(', ');
@@ -2598,11 +2625,11 @@
       const key = input.dataset.facet;
       const checked = selections[key].includes(input.value);
       const count = counts[key].get(input.value) || 0;
-      const worksheets = worksheetCounts[key]?.get(input.value) || 0;
+      const atlasLabel = atlasLabels[key]?.get(input.value);
       input.checked = checked;
-      input.disabled = !count && !worksheets && !checked;
+      input.disabled = !count && !atlasLabel && !checked;
       const counter = input.closest('label')?.querySelector('small');
-      if (counter) counter.textContent = facetCountLabel(count, worksheets);
+      if (counter) counter.textContent = facetCountLabel(count, atlasLabel);
     });
     document.querySelectorAll('[data-facet-block]').forEach(block => {
       const count = values(block.dataset.facetBlock).length;
@@ -2634,8 +2661,8 @@
   }
   function catalogFilterPanel(typeOptions, audienceOptions, organizationOptions) {
     const counts = facetCounts();
-    const worksheetCounts = worksheetFacetCounts();
-    const filter = (key, title, options) => facet(key, title, options, counts[key], worksheetCounts[key]);
+    const atlasLabels = atlasFacetLabels();
+    const filter = (key, title, options) => facet(key, title, options, counts[key], atlasLabels[key]);
     const languages = [...new Set([...Object.keys(LANGUAGE_LABELS), ...counts.language.keys()])];
     const hiddenCount = ['access', 'source'].reduce((sum, key) => sum + values(key).length, 0);
     return `<aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Filters</h2><button class="close" aria-label="Sluit filters">×</button></header>
@@ -2752,6 +2779,59 @@
       return copyTextWithFallback(event.currentTarget, pilotSheetText(entries, form.querySelector('input:checked')?.value), feedback, fallback,
         'Besluitblad gekopieerd.', 'De tekst is geselecteerd. Kopieer uw besluitblad handmatig.');
     };
+  }
+
+  function renderMinutesCheck() {
+    const previous = sessionGet('atlas.lastSearch');
+    const fromGuide = new URLSearchParams(location.hash.split('?')[1]).get('van') === 'praktijkgids';
+    const back = fromGuide ? '#praktijkgids' : /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
+    main.innerHTML = `<article class="assessment-page">
+      <a href="${escapeHtml(back)}">${fromGuide ? 'Terug naar de praktijkgids' : 'Terug naar zoeken'}</a>
+      <header><h1 tabindex="-1">Controleer een AI-conceptverslag</h1>
+        <p>Vergelijk de vier regels uit de conceptnotulen met het fictieve schooloverleg. Welke afspraak klopt? Verbeter de andere regels met wat er werkelijk is gezegd.</p></header>
+      <div class="assessment-layout">
+        <section class="assessment-preview"><h2>Gespreksfragment</h2>
+          <p><strong>Voorzitter:</strong> ‘We hebben afgesproken dat de studiedag op school plaatsvindt. Vrijdag is een voorstel. De datum kiezen we volgende week.’</p>
+          <p><strong>Teamleider:</strong> ‘Ik vraag uiterlijk woensdag welke lokalen beschikbaar zijn.’</p>
+          <p><strong>Ondersteuner:</strong> ‘Zodra de datum vaststaat, maak ik de uitnodiging.’</p>
+        </section>
+        <section class="assessment-preview"><h2>AI-conceptnotulen</h2>
+          <ol><li>Besluit: de studiedag is vrijdag.</li>
+            <li>De ondersteuner vraagt uiterlijk woensdag welke lokalen beschikbaar zijn.</li>
+            <li>De studiedag vindt op school plaats.</li>
+            <li>De uitnodiging wordt uiterlijk woensdag verstuurd.</li></ol>
+        </section>
+      </div>
+      <div class="assessment-form assessment-start">
+        <label for="minutes-answer">Uw gecorrigeerde afsprakenlijst</label>
+        <p id="minutes-instruction">Noteer het besluit, de acties en wie ze uitvoert. Geef ook aan wat nog openstaat. Kopieer uw lijst als u die wilt bewaren.</p>
+        <textarea id="minutes-answer" rows="4" aria-describedby="minutes-instruction" autocomplete="off"></textarea>
+        <div class="assessment-actions"><button type="button" class="btn secondary" data-minutes-copy disabled>Kopieer mijn afsprakenlijst</button></div>
+        <p class="action-feedback" role="status"></p>
+        <textarea class="lesson-copy" aria-label="Afsprakenlijst om handmatig te kopiëren" readonly hidden></textarea>
+      </div>
+      <details class="assessment-custom"><summary>Vergelijk met een uitgewerkte afsprakenlijst</summary>
+        <ol><li>De datum is nog open. Vrijdag is voorgesteld. De keuze volgt volgende week.</li>
+          <li>De teamleider vraagt uiterlijk woensdag welke lokalen beschikbaar zijn.</li>
+          <li>De locatie klopt. Er is besloten de studiedag op school te houden.</li>
+          <li>De ondersteuner maakt de uitnodiging zodra de datum vaststaat. Er is geen verzenddatum afgesproken.</li></ol>
+      </details>
+      <p>Controleer bij uw eigen overleg eerst of opnemen en verwerken van de inhoud past binnen de afspraken van uw instelling. Leg onduidelijke afspraken aan de deelnemers voor voordat u het verslag deelt.</p>
+      <p><a href="https://taalwinkel.uva.nl/studievaardigheden/vergaderen#besluitenlijst" target="_blank" rel="noopener noreferrer">Een besluitenlijst maken · Taalwinkel ↗</a>
+        · <a href="https://pec.surf.nl/spraakherkenning-en-transcriptie-met-ai/" target="_blank" rel="noopener noreferrer">Opnames en transcriptie · SURF ↗</a></p>
+    </article>`;
+    const answer = main.querySelector('#minutes-answer');
+    const button = main.querySelector('[data-minutes-copy]');
+    const feedback = main.querySelector('.action-feedback');
+    const fallback = main.querySelector('.lesson-copy');
+    answer.oninput = () => {
+      button.disabled = !answer.value.trim();
+      feedback.textContent = '';
+      fallback.hidden = true;
+    };
+    button.onclick = () => copyTextWithFallback(button, answer.value, feedback, fallback,
+      'Uw afsprakenlijst is gekopieerd.', 'Uw tekst is geselecteerd. Kopieer de afsprakenlijst met uw apparaat.');
+    focusAfterNavigation(main.querySelector('a'), fromGuide ? '.guide-routes a[href^="#notulen-controleren"]' : '.result-head h2');
   }
 
   function renderToolChoice() {
@@ -3219,7 +3299,7 @@
       }, 150);
     };
     suggestions.onclick = event => {
-      if (event.target.closest('a[href^="#item/"], a[href^="#werkblad-"], a[href="#regels-in-de-praktijk"], a[href="#wat-werkt"], a[href="#toolkeuze"]')) {
+      if (event.target.closest('a[href^="#"]:not([href^="#zoeken"])')) {
         sessionSet('atlas.lastSearch', criteriaHref(criteriaForQuery(input.value)));
       }
     };
@@ -3569,7 +3649,8 @@
     const guides = {
       'mijn-atlas': renderProfile,
       'praktijkgids': renderPracticeGuide, 'wat-werkt': renderLearningEvidence,
-      'toolkeuze': renderToolChoice, 'pilotbesluit': renderPilotDecision, 'regels-in-de-praktijk': renderPracticeRules
+      'toolkeuze': renderToolChoice, 'pilotbesluit': renderPilotDecision, 'regels-in-de-praktijk': renderPracticeRules,
+      'notulen-controleren': renderMinutesCheck
     };
     if (Object.hasOwn(WORKSHEET_TEACHER_NOTES, path)) guides[path] = () => renderWorksheet(path);
     if (path === 'home' || (!Object.hasOwn(guides, path) && !['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();

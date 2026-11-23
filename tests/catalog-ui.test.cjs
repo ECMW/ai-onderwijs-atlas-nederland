@@ -8,7 +8,7 @@ const catalogue = fs.readFileSync(path.join(__dirname, '..', 'catalog.js'), 'utf
 const boot = "  addEventListener('hashchange', route); addEventListener('popstate', route); route();";
 assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly the route startup');
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
-    pilotSheetText, renderPilotDecision, renderWorksheet,
+    pilotSheetText, renderPilotDecision, renderWorksheet, renderMinutesCheck,
     renderLearningEvidence, renderPracticeGuide, practiceCasesMarkup,
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, datedOffers, newOffersMarkup, papersMarkup, paperRis, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, bindFacetLists, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
@@ -1640,6 +1640,29 @@ test('provider facets show matching choices and keep a zero-count selection remo
   assert.match(eightMatches, /class="facet-more"[^>]*hidden/);
 });
 
+test('the minutes exercise counts in search, filters, and recovery while catalogue totals stay separate', () => {
+  const base = '#zoeken?q=notulen&sector=MBO&audience=Ondersteunend+personeel';
+  const api = load([], base);
+  const results = api.resultsMarkup();
+  assert.match(results, />1 oefening voor ‘notulen’<\/h2>/);
+  for (const phrase of ['Controleer een AI-conceptverslag', 'conceptnotulen', 'vergadernotities', 'AI-notulen', 'actielijst controleren']) {
+    assert.ok(api.suggestionData(phrase).flatMap(group => group.items).some(item => item.href === '#notulen-controleren'), phrase);
+  }
+  assert.match(results, /data-atlas-search-hits/);
+  assert.doesNotMatch(results, /data-atlas-empty-search|class="empty"/);
+  assert.match(api.catalogFilterPanel([], [], []), /class="apply btn">Toon 1 oefening</);
+  assert.match(api.catalogFilterPanel([], [], []), /data-facet-option="nl"[^>]*><input[^>]+><span>Nederlands<\/span><small>1 oefening<\/small>/);
+  const mixed = load([{...record('notulen'), audiences:['Ondersteunend personeel'], sectors:['MBO']}], base);
+  assert.match(mixed.resultsMarkup(), /1 resultaat en 1 oefening voor/);
+  for (const excluded of ['language=en','type=Training','vak=Biologie','audience=Leerlingen']) {
+    const blocked = load([], '#zoeken?q=notulen&' + excluded);
+    assert.match(blocked.resultsMarkup(), /data-atlas-empty-search/);
+    assert.doesNotMatch(blocked.resultsMarkup(), /data-question-route href="#notulen-controleren"/);
+    assert.match(blocked.resultsMarkup(), /Zonder [^<]+ <strong>1 oefening<\/strong>/);
+    assert.ok(!blocked.suggestionData('notulen').flatMap(group => group.items).some(item => item.href === '#notulen-controleren'));
+  }
+});
+
 test('a worksheet-only customer mail search offers its MBO filter with a worksheet count', () => {
   const data = [{...record('onverwant'), sectors:['PO','MBO'], offerCategory:'materials'}];
   const api = load(data, '#zoeken?q=klantmail');
@@ -2517,6 +2540,45 @@ test('the practice guide connects each teaching stage to published material and 
   }
   for (const href of ['lesmateriaal/', '#toetsafspraak', '#toolkeuze', '#regels-in-de-praktijk', '#wat-werkt']) {
     assert.ok(main.innerHTML.includes(`href="${href}"`), href);
+  }
+});
+
+test('minute-taking practice copies the visitor’s own corrections and keeps an editable answer when the clipboard is blocked', async () => {
+  const controls = new Map();
+  const main = {querySelector(key) {
+    if (!controls.has(key)) controls.set(key, {isConnected:true, focus() {}, select() {}});
+    return controls.get(key);
+  }};
+  const copied = [];
+  const clipboard = {writeText: async value => { copied.push(value); }};
+  const api = load([], '#notulen-controleren?van=praktijkgids', {document:{querySelector:() => main}, navigator:{clipboard}});
+  api.renderMinutesCheck();
+  assert.match(main.innerHTML, /href="#praktijkgids">Terug naar de praktijkgids/);
+  assert.match(main.innerHTML, /data-minutes-copy disabled/);
+  const answer = controls.get('#minutes-answer'), copy = controls.get('[data-minutes-copy]');
+  const fallback = controls.get('.lesson-copy');
+  answer.value = '   ';
+  answer.oninput();
+  assert.ok(copy.disabled);
+  answer.value = 'Besloten: op school. De datum staat nog open.';
+  answer.oninput();
+  assert.equal(copy.disabled, false);
+  await copy.onclick();
+  assert.deepEqual(copied, [answer.value]);
+  clipboard.writeText = async () => {throw Error('blocked');};
+  await copy.onclick();
+  assert.equal(fallback.value, answer.value);
+  assert.equal(fallback.hidden, false);
+  answer.value = '';
+  answer.oninput();
+  assert.ok(copy.disabled && fallback.hidden);
+});
+
+test('the selected support role can start minute-taking practice without guessing a search term', () => {
+  const support = '#zoeken?audience=Ondersteunend+personeel&sector=MBO';
+  assert.match(load([], support).resultsMarkup(), /class="practice-link" data-question-route href="#notulen-controleren"/);
+  for (const selection of [support + '&language=en', support + '&vak=Biologie', '#zoeken?audience=Leerlingen', '#zoeken']) {
+    assert.doesNotMatch(load([], selection).resultsMarkup(), /class="practice-link" data-question-route href="#notulen-controleren"/);
   }
 });
 

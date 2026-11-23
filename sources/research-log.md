@@ -1,5 +1,9 @@
 # Onderzoekslog bronbasis
 
+## 23 november 2026 · Een AI-conceptverslag controleren
+
+Bij ‘De rollen’ noemt Taalwinkel het controleren van afspraken en besluiten als taak van de notulist. Bij ‘Besluitenlijst’ legt de UvA uit dat een lezer ook moet kunnen zien wie een actie uitvoert. SURF beschrijft hoe ArtEZ van opname naar transcript en van transcript naar notulen gaat, inclusief beperkingen bij sprekerherkenning. Het fictieve fragment, de conceptnotulen en de controle van de deadline zijn van de Atlas. Een effect op het werk van ondersteuners is niet gemeten. [Taalwinkel, besluitenlijst](https://taalwinkel.uva.nl/studievaardigheden/vergaderen#besluitenlijst) · [SURF PEC](https://pec.surf.nl/spraakherkenning-en-transcriptie-met-ai/)
+
 ## 23 november 2026 · Lesvoorbereiding en toolkeuze uitlichten
 
 De enquête van het European School Education Platform bevat 1.130 antwoorden uit meer dan 50 landen. Deelnemers melden AI-gebruik bij de lesvoorbereiding (vraag 2) en vragen om toegang tot goedgekeurde, veilige hulpmiddelen (vraag 7). De redactie koos daarom de lesgids voor 7 december en de keuzehulp voor 21 december 2026. De keuzehulp biedt vragen om toepassingen te beoordelen. Hoeveel Atlas-bezoekers beide taken hebben, is onbekend. [Onderzoeksresultaten European School Education Platform](https://school-education.ec.europa.eu/en/discover/surveys/survey-artificial-intelligence-teaching-and-learning)

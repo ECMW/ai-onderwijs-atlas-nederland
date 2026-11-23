@@ -409,6 +409,7 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
 .assessment-page h1 { margin: 0 0 .5rem; font-size: clamp(1.9rem, 4vw, 3rem); }
 .assessment-page header p { max-width: 70ch; margin: 0; }
 .assessment-start { max-width: 50rem; margin: 0 0 1.25rem; }
+.assessment-layout + .assessment-start { margin-top: 1.25rem; }
 .assessment-start > label, .assessment-start dt { display: block; font-weight: 700; }
 .assessment-start select { display: block; max-width: 100%; min-height: 44px; margin-top: .3rem; padding: .4rem; font: inherit; }
 .assessment-start dd { margin: .25rem 0 .75rem; }
