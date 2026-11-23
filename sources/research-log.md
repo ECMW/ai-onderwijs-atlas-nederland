@@ -2,7 +2,7 @@
 
 ## 23 november 2026 · Een AI-conceptverslag controleren
 
-Het Privacy Expertise Centrum van SURF beschrijft met ArtEZ het traject van opname naar transcript en van transcript naar notulen. De Taalwinkel beschrijft als taak van de notulist om afspraken en besluiten te controleren. De Atlas maakte zelf het fictieve fragment, de foutieve samenvatting en de correcties. Beide bronnen geven context voor de taak. Ze toetsen het oefenresultaat niet. [SURF PEC](https://pec.surf.nl/spraakherkenning-en-transcriptie-met-ai/) · [Taalwinkel](https://taalwinkel.uva.nl/studievaardigheden/vergaderen/vergaderen.html)
+Bij ‘De rollen’ noemt Taalwinkel het controleren van afspraken en besluiten als taak van de notulist. Bij ‘Besluitenlijst’ legt de UvA uit dat een lezer ook moet kunnen zien wie een actie uitvoert. SURF beschrijft hoe ArtEZ van opname naar transcript en van transcript naar notulen gaat, inclusief beperkingen bij sprekerherkenning. Het fictieve fragment, de conceptnotulen en de controle van de deadline zijn van de Atlas. Een effect op het werk van ondersteuners is niet gemeten. [Taalwinkel, besluitenlijst](https://taalwinkel.uva.nl/studievaardigheden/vergaderen#besluitenlijst) · [SURF PEC](https://pec.surf.nl/spraakherkenning-en-transcriptie-met-ai/)
 
 ## 23 november 2026 · Lesvoorbereiding en toolkeuze uitlichten
 

@@ -4,6 +4,26 @@
   "verification_window_days": 90,
   "sources": [
     {
+      "source_id": "uva-taalwinkel-vergaderen-2025",
+      "title": "Vergaderen",
+      "author_or_organisation": "Taalwinkel, Universiteit van Amsterdam",
+      "publication_date": "2025-02-03",
+      "url_or_doi": "https://taalwinkel.uva.nl/studievaardigheden/vergaderen",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": ["Professionalisering"],
+      "jurisdiction": "Nederland, studie- en werkpraktijk",
+      "claims_supported": [
+        "De notulist controleert de afspraken en besluiten. Een besluitenlijst maakt duidelijk wat is besloten en wie een actie op zich neemt."
+      ],
+      "reliability_notes": "De uitleg staat bij ‘De rollen’ en ‘Besluitenlijst’. De paginametadata van de UvA vermeldt 3 februari 2025 als publicatiedatum en 28 februari 2025 als wijzigingsdatum.",
+      "limitations": "De handreiking gaat over vergaderen en notuleren. Zij onderzoekt geen AI-toepassingen of leerresultaten.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active"
+    },
+    {
       "source_id": "surf-pec-spraakherkenning-transcriptie-2026",
       "title": "Spraakherkenning en transcriptie met AI",
       "author_or_organisation": "SURF Privacy Expertise Centrum",
