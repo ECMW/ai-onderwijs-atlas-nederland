@@ -1568,8 +1568,8 @@
     return row[b.length];
   }
   function teacherQuestion(normalized) {
-    if (/^(?:notulen|vergaderverslag(?:en)?|besluitenlijst)$/.test(normalized) ||
-        (/\b(?:notulen|vergaderverslag(?:en)?|besluitenlijst|actielijst)\b/.test(normalized) &&
+    if (/^(?:ai )?(?:notulen|conceptnotulen|vergaderverslag(?:en)?|vergadernotities|besluitenlijst)$/.test(normalized) ||
+        (/\b(?:notulen|conceptnotulen|conceptverslag(?:en)?|vergaderverslag(?:en)?|vergadernotities|besluitenlijst|actielijst)\b/.test(normalized) &&
          /\b(?:controle\w*|nakijken|beoordelen)\b/.test(normalized))) return 'minutes';
     if (/\bai (?:tools?|toepassing(?:en)?|software|hulpmiddel(?:en)?)\b/.test(normalized) &&
         /\b(?:vergelijk\w*|kiezen|kies|past|passen|verantwoord)\b/.test(normalized)) return 'tools';

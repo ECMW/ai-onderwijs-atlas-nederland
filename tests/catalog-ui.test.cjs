@@ -1645,6 +1645,9 @@ test('the minutes exercise counts in search, filters, and recovery while catalog
   const api = load([], base);
   const results = api.resultsMarkup();
   assert.match(results, />1 oefening voor ‘notulen’<\/h2>/);
+  for (const phrase of ['Controleer een AI-conceptverslag', 'conceptnotulen', 'vergadernotities', 'AI-notulen', 'actielijst controleren']) {
+    assert.ok(api.suggestionData(phrase).flatMap(group => group.items).some(item => item.href === '#notulen-controleren'), phrase);
+  }
   assert.match(results, /data-atlas-search-hits/);
   assert.doesNotMatch(results, /data-atlas-empty-search|class="empty"/);
   assert.match(api.catalogFilterPanel([], [], []), /class="apply btn">Toon 1 oefening</);
