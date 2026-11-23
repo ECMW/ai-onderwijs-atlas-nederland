@@ -8,6 +8,8 @@ Op 390, 640 en 1280 CSS-pixels is de zoekvraag voor en na vergeleken. In de kand
 
 Bij een tweede browserproef ontbrak de leeswijzer bij ‘AI-fraude melden’ en ‘melding ongeoorloofd AI-gebruik’. Na aanpassing van de zoekherkenning openen beide termen vanuit het mbo-commissieprofiel dezelfde leeswijzer op 390 en 1280 pixels, ook met het toetsenbord. Zo vervalt de noodzaak om het woord ‘vermoeden’ of ‘examencommissie’ te kennen. De eerstvolgende gebruiksproef is een commissielid in eigen woorden laten zoeken en de passage over de melding laten aanwijzen.
 
+Een collega kan de leeswijzer ook via een gedeelde link openen voor een commissievergadering. In de mobiele A4-afdruk bedekte de navigatiebalk na het openen van de tweede bron een deel van de tekst over de melding. De afdrukstijl plaatst de Atlas-naam en het auteurschap boven de leeswijzer. In Edge is de afdruk op 390 en 1280 pixels vóór en na vergeleken en ook op 640 pixels gecontroleerd. De tekst past op één A4 en beide bronlinks in de PDF behouden hun paginaverwijzing.
+
 ## 23 november 2026 · Vanuit een lege lesgidsselectie verder zoeken
 
 Een leerkracht in het primair onderwijs koos in de browserproef ‘Beeldende vorming’. De lesgids van editie `892d804` toonde nul treffers. Via ‘Alle les- en werkmaterialen’ moest de leerkracht sector en vak opnieuw instellen om de tekenles van Digital Technologies Hub te vinden.

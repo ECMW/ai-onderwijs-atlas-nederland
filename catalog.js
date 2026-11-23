@@ -2917,7 +2917,7 @@
   function renderMboExamReport() {
     const previous = sessionGet('atlas.lastSearch');
     const back = /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
-    main.innerHTML = `<article class="assessment-page">
+    main.innerHTML = `<article class="assessment-page mbo-exam-report">
       <a href="${escapeHtml(back)}">Terug naar zoeken</a>
       <header><h1 tabindex="-1">Vermoeden van AI-gebruik bij een beroepsgericht mbo-examen</h1>
         <p>Een beoordelaar vermoedt dat een student AI heeft gebruikt. Pak de examenopdracht, de afnamecondities en het examenreglement van uw school erbij.</p></header>
