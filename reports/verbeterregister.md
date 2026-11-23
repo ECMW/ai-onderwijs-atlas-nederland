@@ -1,5 +1,13 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Vanuit een lege lesgidsselectie verder zoeken
+
+Een leerkracht in het primair onderwijs koos in de browserproef ‘Beeldende vorming’. De lesgids van editie `892d804` toonde nul treffers. Via ‘Alle les- en werkmaterialen’ moest de leerkracht sector en vak opnieuw instellen om de tekenles van Digital Technologies Hub te vinden.
+
+Bij een lege selectie biedt de lesgids nu een zoeklink die de gekozen sector, het vak of beide meeneemt naar de catalogus. Het linklabel benoemt welke filters meegaan. Leerdoel, activiteit en lesduur horen bij de lesgids. De link zoekt in het bestaande aanbod en vereist geen aparte lijst van aanbevelingen.
+
+Op 390 en 1280 pixels en bij 640 CSS-pixels is dezelfde taak vóór en na de wijziging doorlopen. In de kandidaat was de link vanuit het vakveld met twee keer Tab bereikbaar. De gefilterde catalogus gaf één resultaat. Via de aanbieder opende het Engelstalige werkblad waarin kinderen hun tekening vergelijken met de voorspelling van AI. Bij terugkeer in de lesgids stonden sector en vak nog ingevuld. Hoeveel leerkrachten de route gebruiken is onbekend. Controleer bij een volgende wijziging een ander vak en een catalogusselectie die zelf ook leeg is. [Tekenles en werkblad van Digital Technologies Hub](https://www.digitaltechnologieshub.edu.au/teach-and-assess/classroom-resources/lesson-ideas/can-an-ai-recognise-what-you-are-drawing/)
+
 ## 23 november 2026 · Welke financierings- en deelnamekansen kan ik voorbereiden?
 
 Op uitgave `d02f32d` telde de financieringstegel acht open en zeven aangekondigde rondes. Voor leraren, schoolteams, onderzoekers en instellingsbesturen zijn zes verschillende kansen gecontroleerd. Drie zijn open: NWO-vervanging voor een promoverende leraar, Europese mediawijsheidsprojecten voor onder meer volwassenen en de sessieoproep van SURF en Npuls. De laatste is een kans om een praktijkvoorbeeld te presenteren. De drie aangekondigde subsidierondes betreffen leermobiliteit op scholen, samenwerking tussen beroepsonderwijs, hoger onderwijs en bedrijfsleven, en de vijfde ronde voor een Center for Teaching and Learning.
