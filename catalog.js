@@ -354,6 +354,8 @@
   const displayStatus = record => isFunding(record) && record.status === 'available' ? 'Regeling of informatiebron' : statusLabel(record);
   const subjectNames = new Map(records.flatMap(record =>
     (record.subjects || []).map(name => [normalize(name), name])));
+  const subjectOptions = [...subjectNames.values()].sort((a, b) => a.localeCompare(b, 'nl'))
+    .map(name => `<option value="${escapeHtml(name)}"></option>`).join('');
   const subjectWords = new WeakMap();
   function subjectMatches(record, value) {
     const term = normalize(value);
@@ -1509,10 +1511,12 @@
     const unavailable = !count && !worksheets && !checked;
     return `<label data-facet-option="${escapeHtml(option)}" ${unavailable ? 'hidden' : ''}><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${unavailable ? 'disabled' : ''}><span>${escapeHtml(filterOptionLabel(key, option))}</span><small>${facetCountLabel(count, worksheets)}</small></label>`;
   }
-  function subjectInput(id) {
-    const value = values('vak').join(', ');
-    return `<label for="${id}">Vakgebied</label>
-      <input id="${id}" name="vak" type="text" autocomplete="off" placeholder="Typ zelf een vak" value="${escapeHtml(value)}" data-applied="${escapeHtml(value)}">`;
+  function subjectInput(id, value = values('vak').join(', '), profile = false) {
+    return `<label for="${id}">Vakgebied${profile ? ' (optioneel)' : ''}</label>
+      <input id="${id}" name="vak" type="text" autocomplete="off" list="${id}-options" aria-describedby="${id}-hint"
+        ${profile ? 'maxlength="160"' : ''} placeholder="Bijv. biologie" value="${escapeHtml(value)}" data-applied="${escapeHtml(value)}">
+      <datalist id="${id}-options">${subjectOptions}</datalist>
+      <small id="${id}-hint">Een vak uit de lijst toont aanbod met dat vaklabel. Andere woorden zoeken in de tekst.${profile ? ' Laat leeg voor alle vakken.' : ''}</small>`;
   }
   function applySubject(input) {
     const choices = filterValues('vak', input.value);
@@ -3217,10 +3221,7 @@
       <div class="profile-roles">${PROFILE_ROLES.map(role => `<label><input type="checkbox" name="profile-role" value="${escapeHtml(role)}"${roles.includes(role) ? ' checked' : ''}> ${escapeHtml(personaLabel(role))}</label>`).join('')}</div></fieldset>
       <div class="profile-fields"><div><label for="profile-sector">Onderwijssector</label>
       <select id="profile-sector"><option value="">Alle sectoren</option>${SECTORS.map(sector => `<option value="${escapeHtml(sector)}"${profile.sector === sector ? ' selected' : ''}>${escapeHtml(SECTOR_NAMES[sector] ? sector + ' · ' + SECTOR_NAMES[sector] : sector)}</option>`).join('')}</select></div>
-      <div><label for="profile-subject">Vakgebied (optioneel)</label>
-      <input type="text" id="profile-subject" maxlength="160" list="profile-subjects" aria-describedby="profile-subject-hint" value="${escapeHtml(profile.vak)}" placeholder="Bijv. biologie">
-      <datalist id="profile-subjects">${[...subjectNames.values()].sort((a,b) => a.localeCompare(b, 'nl')).map(name => `<option value="${escapeHtml(name)}"></option>`).join('')}</datalist>
-      <small id="profile-subject-hint">Veel aanbod vermeldt geen vak. Laat dit veld leeg voor een ruimere selectie.</small></div></div>
+      <div>${subjectInput('profile-subject', profile.vak, true)}</div></div>
       <p class="profile-count" role="status"></p><div class="profile-actions"><button class="btn" type="submit">Bewaar mijn profiel</button>
       <a href="#zoeken">Doorzoek de hele Atlas</a>${Object.values(profile).some(Boolean) ? '<button class="btn secondary" type="button" data-profile-clear>Wis mijn profiel</button>' : ''}</div>
       </form></article>`;
