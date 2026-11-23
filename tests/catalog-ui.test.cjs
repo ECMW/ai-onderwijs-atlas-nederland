@@ -1488,7 +1488,10 @@ test('subjects use explicit public metadata, allow multiple choices and combine 
   assert.match(block, /name="vak" type="text"[^>]+list="subject-search-options"/);
   assert.match(block, /aria-describedby="subject-search-hint"/);
   assert.match(block, /id="subject-search-hint">[^<]+vaklabel[^<]+tekst/);
-  assert.match(block, /<datalist id="subject-search-options"><option value="Biologie"><\/option><option value="Econometrie"><\/option><option value="Wiskunde"><\/option><\/datalist>/);
+  const list = block.match(/<datalist id="subject-search-options">(.+?)<\/datalist>/)[1];
+  const sheetSubjects = Object.values(require('../data/worksheets.json')).flatMap(sheet => sheet.subjects);
+  const expectedSubjects = [...new Set(['Biologie', 'Econometrie', 'Wiskunde', ...sheetSubjects])].sort((a, b) => a.localeCompare(b, 'nl'));
+  assert.deepEqual([...list.matchAll(/<option value="([^"]+)">/g)].map(match => match[1]), expectedSubjects);
   const results = selected.resultsMarkup();
   assert.match(results, /data-remove="vak\|Econometrie"/);
   assert.match(results, /data-record-id="biology"[\s\S]*data-record-id="math"/);
@@ -2511,6 +2514,29 @@ test('the customer email worksheet follows mbo lesson intent and keeps conflicti
   assert.ok(lesson('sector=MBO&vak=Handel').includes(href));
   assert.ok(!lesson('sector=MBO&vak=Geschiedenis').includes(href));
   assert.ok(!lesson('sector=VO&vak=Nederlands').includes(href));
+});
+
+test('subject filters find classroom worksheets before a query and retain free-text catalogue matches', () => {
+  const recordWithTopic = {...record('vakhandel', null, 'Voorbeeld voor Handel'), sectors:['MBO'], offerCategory:'materials'};
+  const customer = 'data-question-route href="#werkblad-klantmail"';
+  const logistic = 'data-question-route href="#werkblad-picklijst"';
+  const search = params => load([recordWithTopic], '#zoeken?' + params).resultsMarkup();
+  const handel = search('sector=MBO&vak=Handel&type=materials');
+  assert.ok(handel.includes(customer));
+  assert.ok(handel.includes('1 resultaat en 1 werkblad</h2>'));
+  assert.ok(!handel.includes(logistic));
+  for (const params of ['sector=MBO&vak=Logistiek', 'q=picklijst', 'q=mbo%20logistiek']) {
+    const html = search(params);
+    assert.ok(html.includes(logistic), params);
+    assert.ok(!html.includes(customer), params);
+    assert.match(html, /data-atlas-search-hits/);
+  }
+  for (const params of ['sector=VO&vak=Logistiek', 'sector=MBO&vak=Logistiek&type=Training',
+                        'vak=Logistiek&access=Registratie%20nodig', 'sector=MBO&vak=Logistiek&audience=Bestuurders']) {
+    assert.ok(!search(params).includes(logistic), params);
+  }
+  assert.match(search('sector=MBO&vak=Logistiek&q=onjuistezoekterm'), /Toon 1 werkblad zonder zoekterm/);
+  assert.ok(!search('').includes(logistic));
 });
 
 test('teacher questions offer real routes without silently changing the selected subject or sector', () => {

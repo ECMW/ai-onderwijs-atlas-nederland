@@ -530,12 +530,12 @@ test('empty search can edit the query or remove just the term, preserving filter
   assert.ok(selected);
   assert.equal(app.context.location.hash, initial);
   const panel = doc.querySelector('#results-panel');
-  const count = Number(app.main.innerHTML.match(/Toon (\d+) resultaten? zonder zoekterm/)[1]);
-  assert.ok(count > 0);
+  const count = app.main.innerHTML.match(/Toon (\d+ resultaten? en 1 werkblad) zonder zoekterm/)[1];
+  assert.ok(parseInt(count) > 0);
   doc.querySelector('.empty [data-clear-query]').onclick();
   assert.deepEqual(Object.fromEntries(new URLSearchParams(app.context.location.hash.split('?')[1])),
     {sort:'az',sector:'VO',type:'materials'});
-  assert.match(panel.innerHTML, new RegExp('>' + count + ' resultaten?</h2>'));
+  assert.ok(panel.innerHTML.includes('>' + count + '</h2>'));
   assert.equal(focused,doc.querySelector('.result-head h2'));
   doc.querySelector('[data-remove]').onclick();
   assert.equal(focused,doc.querySelector('.result-head h2'));
@@ -774,7 +774,7 @@ test('personal offers combine roles, sector and subject while shared selections 
   const records = Array.from(app.context.ATLAS_RECORDS.records).filter(app.context.ATLAS_STARTUP.published);
   const expected = records.filter(row => row.audiences.includes('Docenten') && row.sectors.includes('VO') && row.subjects?.includes('Biologie'));
   assert.ok(expected.length > 0);
-  assert.equal(form.querySelector('.profile-count').textContent, expected.length + (expected.length === 1 ? ' resultaat' : ' resultaten') + ' bij uw keuzes.');
+  assert.equal(form.querySelector('.profile-count').textContent, expected.length + (expected.length === 1 ? ' resultaat' : ' resultaten') + ' en 1 werkblad bij uw keuzes.');
   form.onsubmit(new Event('submit'));
   assert.deepEqual(JSON.parse(saved.get('atlas.persona')), {audience: 'Docenten', sector: 'VO', vak: 'Biologie'});
   app.dispatch('hashchange');
@@ -823,7 +823,8 @@ test('editing a legacy role preserves it, adds a second role, and clears just th
   app.dispatch('hashchange');
   const records = Array.from(app.context.ATLAS_RECORDS.records).filter(app.context.ATLAS_STARTUP.published);
   const expected = records.filter(row => row.audiences.some(role => role === 'Docenten' || role === 'Bestuurders'));
-  assert.ok(app.main.innerHTML.includes(expected.length + ' resultaten</h2>'));
+  const sheetCount = Object.keys(app.context.ATLAS_RECORDS.worksheets).length;
+  assert.ok(app.main.innerHTML.includes(expected.length + ' resultaten en ' + sheetCount + ' werkbladen</h2>'));
   app.navigate('#mijn-atlas');
   app.main.querySelector('[data-profile-clear]').onclick();
   app.dispatch('hashchange');

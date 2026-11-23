@@ -24,6 +24,26 @@
       "status": "active"
     },
     {
+      "source_id": "sbb-logistiek-medewerker-orders-controleren-2022",
+      "title": "Logistiek – profiel Logistiek medewerker (25774), gewijzigd 2022",
+      "author_or_organisation": "Samenwerkingsorganisatie Beroepsonderwijs Bedrijfsleven (SBB)",
+      "publication_date": "2022",
+      "url_or_doi": "https://kwalificatie-mijn.s-bb.nl/Details/DownloadDocument/1249133#page=10",
+      "source_type": "official_framework",
+      "primary_or_secondary": "primary",
+      "topics": ["Curriculumontwikkeling", "Praktijkvoorbeelden"],
+      "jurisdiction": "Nederland, mbo niveau 2, Logistiek medewerker",
+      "claims_supported": [
+        "Een logistiek medewerker verzamelt de goederen van een order, controleert de hoeveelheid en kwaliteit en rapporteert afwijkingen aan de leidinggevende."
+      ],
+      "reliability_notes": "Het profiel van het SBB-kwalificatiedossier Logistiek (23309) noemt kwalificatie 25774 en de versie Gewijzigd 2022. Werkproces B1-K2-W1 staat op pagina 10.",
+      "limitations": "SBB beschrijft de beroepshandeling. De twee productsoorten, orderregels en AI-conceptpicklijst zijn een didactische uitwerking van de Atlas. De bron beoordeelt deze oefening niet.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active"
+    },
+    {
       "source_id": "sbb-commercieel-medewerker-intern-ordertraject-2023",
       "title": "Commercie – profiel Commercieel medewerker (25874), gewijzigd 2023",
       "author_or_organisation": "Samenwerkingsorganisatie Beroepsonderwijs Bedrijfsleven (SBB)",

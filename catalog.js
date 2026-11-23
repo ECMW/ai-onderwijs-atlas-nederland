@@ -352,15 +352,18 @@
     return STATUS_LABELS[effectiveStatus(record, today)] || 'Te verifiëren';
   };
   const displayStatus = record => isFunding(record) && record.status === 'available' ? 'Regeling of informatiebron' : statusLabel(record);
-  const subjectNames = new Map(records.flatMap(record =>
+  const worksheets = Object.entries(source.worksheets || {});
+  const catalogueSubjectNames = new Map(records.flatMap(record =>
     (record.subjects || []).map(name => [normalize(name), name])));
+  const subjectNames = new Map([...catalogueSubjectNames, ...worksheets.flatMap(([, sheet]) =>
+    sheet.subjects.map(name => [normalize(name), name]))]);
   const subjectOptions = [...subjectNames.values()].sort((a, b) => a.localeCompare(b, 'nl'))
     .map(name => `<option value="${escapeHtml(name)}"></option>`).join('');
   const subjectWords = new WeakMap();
   function subjectMatches(record, value) {
     const term = normalize(value);
     if (!term) return false;
-    const name = subjectNames.get(term);
+    const name = catalogueSubjectNames.get(term);
     if (name) return (record.subjects || []).includes(name);
     if (!subjectWords.has(record)) {
       const content = [record.title, record.description, record.purpose, ...(record.subjects || []),
@@ -1516,7 +1519,7 @@
       <input id="${id}" name="vak" type="text" autocomplete="off" list="${id}-options" aria-describedby="${id}-hint"
         ${profile ? 'maxlength="160"' : ''} placeholder="Bijv. biologie" value="${escapeHtml(value)}" data-applied="${escapeHtml(value)}">
       <datalist id="${id}-options">${subjectOptions}</datalist>
-      <small id="${id}-hint">Een vak uit de lijst toont aanbod met dat vaklabel. Andere woorden zoeken in de tekst.${profile ? ' Laat leeg voor alle vakken.' : ''}</small>`;
+      <small id="${id}-hint">De Atlas zoekt op vaklabels. Voor vakken zonder label in de catalogus zoekt u ook in de tekst.${profile ? ' Laat leeg voor alle vakken.' : ''}</small>`;
   }
   function applySubject(input) {
     const choices = filterValues('vak', input.value);
@@ -1578,17 +1581,16 @@
     return '';
   }
   const SCHOOL_PRIVACY_ID = 'generatieve-ai-en-privacy-hier-moeten-scholen-op-letten';
-  const LESSON_WORKSHEETS = {
-    exercises: {label:'Maak oefenvragen bij uw les', meta:'Rekenvoorbeeld met antwoorden en een instructie voor uw eigen vak.', href:'#werkblad-oefenvragen'},
-    biology: {label:'Bereid een biologiepracticum voor', meta:'Kiemproef met tuinkers · vmbo vanaf leerjaar 2.', href:'#werkblad-biologiepracticum'},
-    customer: {label:'Controleer een klantmail over een bestelling', meta:'Mbo Nederlands en Handel · studenten toetsen een concept aan de bestelgegevens en schrijven zelf een antwoord.', href:'#werkblad-klantmail'}
-  };
   const WORKSHEET_FILTERS = {
     type:['materials'], audience:['Docenten', 'Onderwijsontwikkelaars'], language:['nl'], cost:['Gratis'],
     status:[STATUS_LABELS.available], access:[ACCESS_LABELS.public], theme:['Lesgeven en leren met AI']
   };
   function worksheetRoutes(query, criteria, lessonRoute = false) {
     const topic = normalize(query);
+    const filters = activeFilters(criteria);
+    if (!topic && !filters.length) return [];
+    if (filters.some(([key, selected]) => !['vak', 'sector'].includes(key) &&
+        !selected.some(value => WORKSHEET_FILTERS[key]?.includes(value)))) return [];
     const saveTime = /\btijd (?:besparen|winnen)\b/.test(topic) && (/\b(?:les|lessen|klas)\b/.test(topic) ||
       topic.split(' ').every(word => QUERY_STOPWORDS.has(word) || REQUEST_WORDS.has(word) ||
         ['tijd', 'besparen', 'winnen', 'ai', 'als', 'docent', 'je', 'kun'].includes(word)));
@@ -1596,26 +1598,27 @@
     const practicum = /\b(?:practicum|practica|biologiepracticum|kiemproe(?:f|ven))\b/.test(topic);
     const customerMail = /\b(?:klant(?:en)?mails?|zakelijke (?:e ?)?mail|(?:antwoord|(?:e ?)?mail) aan (?:een |de )?klant)\b/.test(topic) &&
       !/\b(?:mailbox|postvak|inbox|verzend\w*|verstuur\w*|versturen|automatiseer\w*|automatiseren|automatisch|software|apps?|tools?|programma)\b/.test(topic);
-    if (!lessonRoute && !exercises && !practicum && !customerMail) return [];
     if (Object.entries(TYPE_QUERY_RULES).some(([type, names]) => type !== 'materials' &&
         names.some(name => phrasePresent(topic, name)))) return [];
-    if (activeFilters(criteria).some(([key, selected]) => !['vak', 'sector'].includes(key) &&
-        !selected.some(value => WORKSHEET_FILTERS[key]?.includes(value)))) return [];
     const sectors = filterValues('sector', criteria.sector);
     const subjects = filterValues('vak', criteria.vak).map(normalize);
     const namedSectors = Object.entries(SECTOR_QUERY_NAMES).filter(([sector, names]) =>
       phrasePresent(topic, sector) || names.some(name => phrasePresent(topic, name))).flatMap(([key]) => key.split(','));
     if (/\b(?:vmbo|havo|vwo)\b/.test(topic)) namedSectors.push('VO');
-    const links = [];
-    if (lessonRoute || exercises && !practicum) links.push(LESSON_WORKSHEETS.exercises);
-    if (lessonRoute || practicum && (/\b(?:biologie|biologiepracticum|biologieles|kiemproe(?:f|ven))\b/.test(topic) || subjects.includes('biologie'))) links.push(LESSON_WORKSHEETS.biology);
-    if (lessonRoute || customerMail) links.push(LESSON_WORKSHEETS.customer);
-    return links.filter(route => {
-      const sheet = source.worksheets?.[route.href.slice(1)];
-      return sheet && (!subjects.length || sheet.subjects.some(name => subjects.includes(normalize(name)))) &&
-        (!sectors.length || sheet.sectors.some(sector => sectors.includes(sector))) &&
-        (!namedSectors.length || sheet.sectors.some(sector => namedSectors.includes(sector)));
-    });
+    const intents = {
+      'werkblad-oefenvragen': exercises && !practicum,
+      'werkblad-biologiepracticum': practicum && (/\b(?:biologie|biologiepracticum|biologieles|kiemproe(?:f|ven))\b/.test(topic) || subjects.includes('biologie')),
+      'werkblad-klantmail': customerMail
+    };
+    const terms = topic.split(' ').filter(word => word && !QUERY_STOPWORDS.has(word) && !REQUEST_WORDS.has(word));
+    return worksheets.filter(([id, sheet]) => {
+      if (subjects.length && !sheet.subjects.some(name => subjects.includes(normalize(name)))) return false;
+      if (sectors.length && !sheet.sectors.some(sector => sectors.includes(sector))) return false;
+      if (namedSectors.length && !sheet.sectors.some(sector => namedSectors.includes(sector))) return false;
+      if (!topic || lessonRoute || intents[id]) return true;
+      const words = new Set(normalize([id, sheet.title, sheet.activity, sheet.goal, ...sheet.subjects, ...sheet.sectors].join(' ')).split(' '));
+      return terms.length > 0 && terms.every(word => words.has(word));
+    }).map(([id, sheet]) => ({href:'#' + id, label:sheet.title, meta:sheet.level + ' · ' + sheet.activity}));
   }
   function isLessonSelection(criteria) {
     return (criteria.q === 'les' && criteria.type === 'materials') || ['lesstart', 'lesstarts'].includes(normalize(criteria.q));
@@ -1624,7 +1627,7 @@
     return worksheetRoutes(criteria.q, criteria, isLessonSelection(criteria));
   }
   function worksheetFacetCounts() {
-    if (!state.q || !matchingWorksheetRoutes({q: state.q, vak: state.vak, type: 'materials'}).length) return {};
+    if (!matchingWorksheetRoutes({q: state.q, vak: state.vak, type: 'materials'}).length) return {};
     const counts = {};
     for (const [key, options] of Object.entries({...WORKSHEET_FILTERS, sector: SECTORS})) {
       counts[key] = new Map();
@@ -2475,9 +2478,11 @@
   }
   function emptyQueryActions() {
     if (!state.q?.trim()) return '';
-    const count = activeFilters(state).length ? recordsForCriteria({...state, q: ''}).length : 0;
+    const withoutQuery = {...state, q: ''};
+    const count = activeFilters(state).length ? recordsForCriteria(withoutQuery).length : 0;
+    const sheets = matchingWorksheetRoutes(withoutQuery).length;
     return `<p><button class="btn secondary" type="button" data-edit-query>Zoekterm aanpassen</button>
-      ${count ? `<button class="btn secondary" type="button" data-clear-query>Toon ${count} ${count === 1 ? 'resultaat' : 'resultaten'} zonder zoekterm</button>` : ''}</p>`;
+      ${count || sheets ? `<button class="btn secondary" type="button" data-clear-query>Toon ${matchesLabel(count, sheets)} zonder zoekterm</button>` : ''}</p>`;
   }
   function emptyResultsMarkup(routes, worksheetCount) {
     const actions = emptyQueryActions();
@@ -2892,6 +2897,19 @@
   }
 
   const WORKSHEET_TEACHER_NOTES = {
+    'werkblad-picklijst': {
+      teacherTitle: 'Picklijst en nabespreking voor de docent',
+      notes: [
+        '09.00 uur. Start met 12 bruikbare flessen (15 min 3) en 9 broodtrommels. Na order 101 blijven 4 flessen en 6 broodtrommels over. Order 102 vraagt 5 flessen en moet wachten. De voorraad blijft 4 en 6. Order 103 kan volledig worden verzameld. Er blijven 0 flessen en 1 broodtrommel over.',
+        'Voorbeeldmelding: “Order 102 wacht. Na order 101 heb ik 4 bruikbare flessen en zijn er 5 nodig. Het tekort is 1 fles. Het AI-voorstel telt de 3 geblokkeerde flessen mee.” Vraag een student die ook order 103 laat wachten hoeveel artikelen er volgens de magazijnafspraak voor order 102 gereserveerd zijn.',
+        '09.05 uur. Start opnieuw met 13 bruikbare flessen en 9 broodtrommels. Na order 101 resteren 5 en 6. Na het verzamelen van order 102 resteren 0 flessen en 2 broodtrommels. Order 103 wacht nu en komt op dat moment 4 flessen en 3 broodtrommels tekort.',
+        'Let bij het nakijken op drie zichtbare stappen: de student bepaalt de bruikbare beginvoorraad, trekt een complete order één keer af en kan met de tussenstand een besluit verdedigen. In werkproces B1-K2-W1 controleert een logistiek medewerker de hoeveelheid en kwaliteit van verzamelde goederen en meldt afwijkingen aan de leidinggevende. De ordervolgorde en reserveringsafspraak zijn voor deze klasopdracht bedacht.'
+      ],
+      promptTitle: 'Pas de picklijst aan voor mijn klas',
+      adapt: 'Kies twee producten uit uw richting en verzin alle aantallen. Reken met de magazijnafspraak eerst zelf beide rondes door.',
+      prompt: 'Maak een fictieve picklijst met twee productsoorten en drie orders voor mijn mbo-klas [richting]. Laat een voorstel voor de picklijst beschadigde voorraad ten onrechte als beschikbaar tellen. Geef de volgorde van de orders en leg uit dat een onvolledige order moet wachten en niets reserveert. Voeg één latere vrijgave toe waardoor een ander besluit nodig is. Toon in een apart docentmodel per order de beginvoorraad, de beslissing en de eindvoorraad.',
+      source: {linkText: 'SBB · Logistiek medewerker, orders verzamelen en controleren (pdf, p. 10)', href: 'https://kwalificatie-mijn.s-bb.nl/Details/DownloadDocument/1249133#page=10'}
+    },
     'werkblad-klantmail': {
       teacherTitle: 'Antwoorden en feedback voor de docent',
       notes: [
@@ -2947,7 +2965,7 @@
     const sourceLink = teacher.source ? ` <a class="work-screen" href="${escapeHtml(teacher.source.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(teacher.source.linkText || 'Open docentmateriaal')} ↗</a>` : '';
     const caseFile = sheet.caseFile || [];
     const caseMarkup = caseFile.length ? `<section class="work-case"><h2>Fictief dossier</h2><dl>${caseFile.map(entry => `<dt>${escapeHtml(entry.label)}</dt><dd>${escapeHtml(entry.text)}</dd>`).join('')}</dl></section>` : '';
-    main.innerHTML = `<article class="work-sheet" aria-labelledby="work-title">
+    main.innerHTML = `<article class="work-sheet" data-worksheet-id="${escapeHtml(id)}" aria-labelledby="work-title">
       <nav class="practice-back work-screen"><a href="${escapeHtml(back)}">${backLabel}</a></nav>
       <header><p class="lesson-level">${escapeHtml(sheet.level)}</p><h1 id="work-title" tabindex="-1">${escapeHtml(sheet.title)}</h1>
         <p><strong>Leerdoel</strong> · ${escapeHtml(sheet.goal)}</p></header>
@@ -3234,7 +3252,8 @@
     const preview = () => {
       const selected = choices();
       const count = recordsForCriteria(selected).length;
-      form.querySelector('.profile-count').textContent = count ? matchesLabel(count, 0) + ' bij uw keuzes.' : 'Geen passend aanbod. Probeer een andere rol, sector of vak.';
+      const sheetCount = matchingWorksheetRoutes(selected).length;
+      form.querySelector('.profile-count').textContent = count || sheetCount ? matchesLabel(count, sheetCount) + ' bij uw keuzes.' : 'Geen passend aanbod. Probeer een andere rol, sector of vak.';
       form.querySelector('button[type="submit"]').disabled = !Object.values(selected).some(Boolean);
     };
     form.oninput = preview;
@@ -3516,11 +3535,9 @@
     const guides = {
       'mijn-atlas': renderProfile,
       'praktijkgids': renderPracticeGuide, 'wat-werkt': renderLearningEvidence,
-      'werkblad-oefenvragen': () => renderWorksheet('werkblad-oefenvragen'),
-      'werkblad-biologiepracticum': () => renderWorksheet('werkblad-biologiepracticum'),
-      'werkblad-klantmail': () => renderWorksheet('werkblad-klantmail'),
       'toolkeuze': renderToolChoice, 'pilotbesluit': renderPilotDecision, 'regels-in-de-praktijk': renderPracticeRules
     };
+    if (Object.hasOwn(WORKSHEET_TEACHER_NOTES, path)) guides[path] = () => renderWorksheet(path);
     if (path === 'home' || (!Object.hasOwn(guides, path) && !['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
     if (Object.hasOwn(guides, path)) guides[path]();
     if (path === 'wegwijzer') { location.replace('#zoeken'); return; }
