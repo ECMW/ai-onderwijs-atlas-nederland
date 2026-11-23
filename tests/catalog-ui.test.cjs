@@ -43,27 +43,61 @@ function load(records = [], hash = '#zoeken', overrides = {}) {
 }
 
 test('worksheets copy the pupil task separately from teacher answers and the edited instruction', async () => {
-  for (const id of ['werkblad-oefenvragen', 'werkblad-biologiepracticum']) {
+  const worksheets = require('../data/worksheets.json');
+  for (const [id, worksheet] of Object.entries(worksheets)) {
+    const classPath = 'lesmateriaal/leerling/' + id.slice('werkblad-'.length) + '/';
+    const location = { hash: '#' + id };
     const controls = new Map();
     const main = {querySelector(selector) {
       if (!controls.has(selector)) controls.set(selector, {isConnected: true});
       return controls.get(selector);
     }};
     const copied = [];
-    const api = load([], '#' + id, {
+    const clipboard = {writeText: async text => copied.push(text)};
+    const api = load([], location.hash, {
+      window: {ATLAS_RECORDS: {records: [], metadata: {}, worksheets}}, location,
       document: {querySelector: () => main},
       sessionStorage: {getItem: () => 'https://example.org/'},
-      navigator: {clipboard: {writeText: async text => copied.push(text)}}
+      navigator: {clipboard}
     });
     api.renderWorksheet(id);
     assert.match(main.innerHTML, /href="#zoeken\?q=les&amp;type=materials"/);
+    assert.ok(main.innerHTML.includes('href="' + classPath + '">Open leerlingblad'));
     await controls.get('[data-work-copy]').onclick();
     assert.match(copied[0], /1\. .+\n\n2\. .+\n\n3\. /);
-    assert.doesNotMatch(copied[0], /25% stijging|20% daling|zichtbaar worteltje|waarschijnlijke denkfout/);
+    for (const task of worksheet.tasks) assert.ok(copied[0].includes(task));
+    assert.doesNotMatch(copied[0], /25% stijging|20% daling|zichtbaar worteltje|waarschijnlijke denkfout|https?:/);
     main.querySelector('#work-prompt').value = 'Mijn aangepaste instructie';
     await controls.get('[data-work-prompt]').onclick();
     assert.equal(copied[1], 'Mijn aangepaste instructie');
+    await controls.get('[data-work-link]').onclick();
+    assert.equal(copied[2], 'https://aionderwijsatlas.nl/' + classPath);
+
+    clipboard.writeText = async () => { throw new Error('Clipboard unavailable'); };
+    const fallback = main.querySelector('.lesson-copy');
+    fallback.focus = () => {};
+    fallback.select = () => { fallback.selected = true; };
+    await controls.get('[data-work-link]').onclick();
+    assert.equal(fallback.value, copied[2]);
+    assert.equal(fallback.hidden, false);
+    assert.equal(fallback.selected, true);
+
+    location.hash += '?van=lesgids&sector=VO&vak=Biologie';
+    api.renderWorksheet(id);
+    assert.ok(main.innerHTML.includes('href="lesmateriaal/#selectie?sector=VO&amp;vak=Biologie"'));
+    location.hash += '&terug=https%3A%2F%2Fexample.org';
+    api.renderWorksheet(id);
+    assert.match(main.innerHTML, /href="#zoeken\?q=les&amp;type=materials"/);
   }
+});
+
+test('a previous data edition without worksheets still links to the independent pupil page', () => {
+  const main = {};
+  const api = load([], '#werkblad-oefenvragen', {document: {querySelector: () => main}});
+  api.renderWorksheet('werkblad-oefenvragen');
+  assert.match(main.innerHTML, /Het werkblad kon niet worden geladen/);
+  assert.match(main.innerHTML, /href="lesmateriaal\/leerling\/oefenvragen\/">Open leerlingblad/);
+  assert.doesNotMatch(main.innerHTML, /data-work-copy|Kopieer mijn instructie/);
 });
 
 test('merged detail links redirect only to a present public record', () => {

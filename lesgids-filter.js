@@ -24,8 +24,9 @@
   const cards = [...directory.querySelectorAll('section article')].map(card => {
     const content = selector => normalize([...card.querySelectorAll(selector)].map(el => el.textContent).join(' '));
     const link = card.querySelector('.directory-card-link');
+    link.hidden = false;
     return {
-      card, section:card.closest('section'), link, id:link.getAttribute('href'),
+      card, section:card.closest('section'), link, id:link.getAttribute('href'), worksheet:card.dataset.worksheet !== undefined,
       sectors:card.querySelector('[data-directory-sectors]').dataset.directorySectors.split(' '),
       subject:content('[data-directory-subject]'), goal:content('[data-directory-goal], h3'),
       activity:content('[data-directory-activity], [data-directory-task]'),
@@ -62,20 +63,28 @@
     feedback.textContent = '';
     fallback.hidden = true;
     const visible = new Set(), sections = new Set();
+    let worksheetCount = 0;
     for (const item of cards) {
       item.link.setAttribute('href', item.id + '?' + context);
       item.card.hidden = !((!sector.value || item.sectors.includes(sector.value)) &&
         matches(subject, item.subject) && matches(goal, item.goal) && matches(activity, item.activity) &&
         (max === null || (item.minutes !== null && item.minutes <= max)));
-      if (!item.card.hidden) { visible.add(item.id); sections.add(item.section); }
+      if (!item.card.hidden) {
+        if (item.worksheet && !visible.has(item.id)) worksheetCount++;
+        visible.add(item.id);
+        sections.add(item.section);
+      }
     }
     for (const {section, link} of groups) {
       section.hidden = !sections.has(section);
       if (link) link.hidden = section.hidden;
     }
+    const lessonCount = visible.size - worksheetCount;
+    const counts = [];
+    if (worksheetCount) counts.push(worksheetCount + (worksheetCount === 1 ? ' werkblad' : ' werkbladen'));
+    if (lessonCount) counts.push(lessonCount + (lessonCount === 1 ? ' lesstart' : ' lesstarts'));
     status.textContent = invalid ? 'Vul bij de duur een heel aantal minuten van minimaal 1 in.'
-      : visible.size ? visible.size + (visible.size === 1 ? ' lesstart' : ' lesstarts')
-      : 'Geen lesstarts bij deze keuzes. Pas uw zoekwoorden aan of wis de filters.';
+      : counts.join(' en ') || 'Geen lesmateriaal bij deze keuzes. Pas uw zoekwoorden aan of wis de filters.';
     jump.disabled = !visible.size;
   }
   function readLocation() {
