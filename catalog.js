@@ -2783,7 +2783,7 @@
       </div>
       <div class="assessment-form assessment-start">
         <label for="minutes-answer">Uw gecorrigeerde afsprakenlijst</label>
-        <p id="minutes-instruction">Noteer het besluit, de acties en wie ze uitvoert. Geef ook aan wat nog openstaat. Uw tekst blijft hier totdat u de pagina verlaat.</p>
+        <p id="minutes-instruction">Noteer het besluit, de acties en wie ze uitvoert. Geef ook aan wat nog openstaat. Kopieer uw lijst als u die wilt bewaren.</p>
         <textarea id="minutes-answer" rows="4" aria-describedby="minutes-instruction" autocomplete="off"></textarea>
         <div class="assessment-actions"><button type="button" class="btn secondary" data-minutes-copy disabled>Kopieer mijn afsprakenlijst</button></div>
         <p class="action-feedback" role="status"></p>
