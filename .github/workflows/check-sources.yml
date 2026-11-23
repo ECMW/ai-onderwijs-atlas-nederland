@@ -22,7 +22,7 @@ jobs:
     permissions: {actions: write}
     steps:
       - name: Refresh the papers through the protected Pages publication
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           script: |
             await github.rest.actions.createWorkflowDispatch({
