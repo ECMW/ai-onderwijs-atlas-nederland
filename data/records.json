@@ -35543,7 +35543,7 @@
     "status": "available",
     "availabilityText": "Het beschreven werkmateriaal is gratis openbaar toegankelijk.",
     "publicationDate": null,
-    "lastVerified": "2026-11-06",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -35588,7 +35588,15 @@
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Leerlingen trainen en testen met hun eigen bewegingsdata een model. Ze wijzigen de MakeCode-code en testen hun programma op de micro:bit."
       }
+    ],
+    "subjects": [
+      "Informatica"
     ]
   },
   {
@@ -35727,7 +35735,7 @@
     "status": "available",
     "availabilityText": "Gratis lesmateriaal; registratie nodig om de bestanden te downloaden. De downloads zijn niet inhoudelijk gecontroleerd.",
     "publicationDate": null,
-    "lastVerified": "2026-11-06",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -35772,7 +35780,17 @@
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Level 1 verbindt het verzamelen en ordenen van gegevens met rekenen. Beide niveaus benoemen digitale geletterdheid. Level 2 behandelt ook algoritmen en programmeren."
       }
+    ],
+    "subjects": [
+      "Digitale geletterdheid",
+      "Informatica",
+      "Wiskunde"
     ]
   },
   {
@@ -35783,7 +35801,7 @@
     "subtype": "Les- en werkmateriaal",
     "organizationIds": [],
     "providerName": "Day of AI",
-    "description": "Engelstalige curriculumcollectie met leeftijdsgerichte lessen en docentenmateriaal. Voorbeelden zijn patroonherkenning voor 6–7 jaar en broncontrole van AI-inhoud voor leerlingen vanaf 11 jaar.",
+    "description": "Engelstalige curriculumcollectie met leeftijdsgerichte lessen en docentenmateriaal. Voorbeelden zijn patroonherkenning voor 6–7 jaar en broncontrole van AI-inhoud voor leerlingen vanaf 11 jaar. Leerlingen onderzoeken eigen weersgegevens met grafieken (8–18 jaar) of spiegelen en draaien gezichtsafbeeldingen in een assenstelsel (11–18 jaar).",
     "purpose": "Docenten lessen bieden over de werking van AI, menselijk oordeel en kritisch informatiegebruik.",
     "audiences": [
       "Docenten",
@@ -35800,7 +35818,7 @@
     "status": "available",
     "availabilityText": "Gratis aanbod; aanmelden of registreren nodig voor alle lesbestanden. Overzichten en lesbeschrijvingen zijn openbaar.",
     "publicationDate": null,
-    "lastVerified": "2026-11-06",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -35821,6 +35839,16 @@
       {
         "label": "MIT RAISE: herkomst",
         "url": "https://raise.mit.edu/resources/curricula/day-of-ai/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Statistiek met eigen weersgegevens (8–18 jaar)",
+        "url": "https://dayofai.org/units/making-sense-of-our-surroundings",
+        "sourceType": "official"
+      },
+      {
+        "label": "Meetkunde en gezichtsherkenning (11–18 jaar)",
+        "url": "https://dayofai.org/units/transforming-faces-the-geometry-of-facial-recognition",
         "sourceType": "official"
       }
     ],
@@ -35850,7 +35878,17 @@
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. De drie afzonderlijke lespagina’s beschrijven broncontrole, grafieken maken met eigen weersgegevens en meetkundige transformaties. De leeftijd staat per lessenreeks vermeld."
       }
+    ],
+    "subjects": [
+      "Informatievaardigheden",
+      "Statistiek",
+      "Wiskunde"
     ]
   },
   {
@@ -36985,7 +37023,7 @@
     "status": "available",
     "availabilityText": "De officiële UNESCO-detailpagina en documentverwijzing zijn openbaar; de onderliggende volledige gids kon bij deze controle niet volledig worden uitgelezen.",
     "publicationDate": "2026-11-10",
-    "lastVerified": "2026-11-12",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -37025,7 +37063,16 @@
         "date": "2026-11-12",
         "type": "added",
         "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. De UNESCO-module hoort bij het curriculum voor media- en informatiegeletterdheid. Leerlingen beoordelen door AI gemaakte informatie en onderzoeken vooringenomenheid."
       }
+    ],
+    "subjects": [
+      "Informatievaardigheden",
+      "Mediawijsheid"
     ]
   },
   {
@@ -37574,7 +37621,7 @@
     "subtype": "Werkvorm en docentenmateriaal",
     "organizationIds": [],
     "providerName": "University of Edinburgh Open.Ed",
-    "description": "Open werkvorm waarin studenten met vijf verschillende gesimuleerde personen in taalmodellen praten en daarna individueel en met medestudenten reflecteren op ervaring, bias, empathie, waarheid, ethiek en menselijke uniciteit. De set bevat uitleg, docentinstructies, een aanpasbaar personagesjabloon en voorbeeldprompts.",
+    "description": "Open werkvorm waarin studenten met vijf verschillende gesimuleerde personen in taalmodellen praten en daarna individueel en met medestudenten reflecteren op ervaring, bias, empathie, waarheid, ethiek en menselijke uniciteit. De set bevat uitleg, docentinstructies, een aanpasbaar personagesjabloon en voorbeeldprompts. Het uitgewerkte voorbeeld komt uit een zorgmaster en gaat over de inzet van AI in de zorg.",
     "purpose": "Docenten een korte, aanpasbare werkvorm bieden waarmee studenten de mogelijkheden en risico's van taalmodellen uit eigen ervaring leren onderzoeken en bespreken.",
     "audiences": [
       "Docenten",
@@ -37593,7 +37640,7 @@
     "status": "available",
     "availabilityText": "Het volledige Engelstalige pakket is gratis, zonder account en in PDF- en bewerkbare Word-formaten te downloaden. Voor uitvoering is een gekozen taalmodel nodig; daarvoor kunnen eigen accounts, kosten en voorwaarden gelden.",
     "publicationDate": null,
-    "lastVerified": "2026-11-17",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -37634,7 +37681,15 @@
         "date": "2026-11-17",
         "type": "added",
         "summary": "Toegevoegd na volledige controle van het Open.Ed-resourcepakket, de licentie en canonieke doublures."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Het instructieboekje bij de zorgmaster laat studenten met fictieve gesprekspartners reflecteren op het gebruik van AI in de zorg."
       }
+    ],
+    "subjects": [
+      "Zorg en gezondheid"
     ]
   },
   {
