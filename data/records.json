@@ -4147,8 +4147,8 @@
       "org-kennisnet"
     ],
     "providerName": "Kennisnet",
-    "description": "Principes, voorbeeldafspraken en een toolkit waarmee schoolteams afspraken kunnen maken over generatieve AI.",
-    "purpose": "Scholen ondersteunen bij het maken van afspraken over veilig en verantwoord AI-gebruik",
+    "description": "Toolkit van Kennisnet voor schoolteams in po en vo. Bespreek de voorbeeldafspraken met de werkbladen en informeer ouders daarna met een aanpasbare ouderbrief.",
+    "purpose": "Schoolafspraken maken over generatieve AI en ouders informeren over de afspraken van de eigen school.",
     "audiences": [
       "Docenten",
       "Schoolleiders",
@@ -4156,21 +4156,33 @@
     ],
     "sectors": [
       "PO",
-      "VO",
-      "MBO"
+      "VO"
     ],
-    "themes": [],
+    "themes": [
+      "Beleid en governance",
+      "Privacy en AVG"
+    ],
     "status": "available",
-    "availabilityText": "2025",
+    "availabilityText": "De toolkit, werkbladen en voorbeeldbrief zijn openbaar te downloaden.",
     "startDate": null,
     "endDate": null,
-    "publicationDate": null,
-    "lastVerified": "2026-07-12",
+    "publicationDate": "2025-05-27",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "recently_checked",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
+        "label": "Kennisnet – toolkit met handleiding en presentatie",
         "url": "https://www.kennisnet.nl/artificial-intelligence/schoolafspraken-over-het-gebruik-van-generatieve-ai/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Ouderbrief over de schoolafspraken – bewerkbaar voorbeeld (Word)",
+        "url": "https://www.kennisnet.nl/app/uploads/Brief-informeren-ouders-ai-voorbeelddocument.docx",
+        "sourceType": "official"
+      },
+      {
+        "label": "Werkbladen voor het gesprek met het schoolteam (PDF)",
+        "url": "https://www.kennisnet.nl/app/uploads/Werkbladen-Schoolafspraken-generatieve-AI.pdf",
         "sourceType": "official"
       }
     ],
@@ -4198,7 +4210,12 @@
       "AI-geletterdheid",
       "beleid",
       "privacy",
-      "schoolafspraken"
+      "schoolafspraken",
+      "ouderbrief",
+      "voorbeeldbrief",
+      "oudercommunicatie",
+      "ouders informeren",
+      "teamgesprek"
     ],
     "notes": null,
     "changeHistory": [
@@ -4206,6 +4223,11 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "De ouderbrief en de werkbladen rechtstreeks gekoppeld. Sectoren afgestemd op de handleiding van Kennisnet, die po en vo noemt."
       }
     ]
   },
@@ -34322,10 +34344,10 @@
       "Beleid en governance",
       "Publieke waarden en ethiek"
     ],
-    "status": "pilot",
-    "availabilityText": "Eerste versie openbaar beschikbaar. Zes mbo-, hbo- en wo-instellingen toetsen het raamwerk in het najaar van 2026; werkwijze en uitkomsten kunnen nog veranderen.",
+    "status": "available",
+    "availabilityText": "De eerste versie van het raamwerk en het invulsjabloon zijn openbaar te downloaden. Zes mbo-, hbo- en wo-instellingen toetsen het raamwerk in het najaar van 2026; werkwijze en uitkomsten kunnen nog veranderen.",
     "publicationDate": "2026-09-28",
-    "lastVerified": "2026-10-23",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -34339,8 +34361,8 @@
         "sourceType": "official"
       },
       {
-        "label": "Template RAISE documentatie (Excel)",
-        "url": "https://npuls.nl/_assets/e0ad3d74-7995-4ece-bb89-fdc82f645e15/Template%20RAISE%20documentatie.xlsx",
+        "label": "Beoordeling vastleggen – invulsjabloon van Npuls (Excel)",
+        "url": "https://npuls.nl/_assets/9c683a99-5675-474d-8a52-1e37554e152b/Template%20RAISE%20documentatie%20rev.xlsx",
         "sourceType": "official"
       }
     ],
@@ -34366,12 +34388,17 @@
     "notes": "Onderzoek en shadow AI/IT vallen volgens de actuele Npuls-detailpagina buiten de huidige scope. De PDF is een conceptversie van 14 september 2026 onder CC BY-SA 4.0. Gebruik onder eigen verantwoordelijkheid; geen uitputtend juridisch oordeel of certificering. Niet hetzelfde als de bestaande Europese RAISE-oproep voor een Academic Advisory Board.",
     "offerCategory": "materials",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "Officiële detailpagina en beschikbaar materiaal gecontroleerd op 23 oktober 2026 op titel, herkomst, functie, doelgroep, toegang en beperkingen. Vergeleken met de actuele canonieke Atlasdata op titel, bron-URL en inhoud. Dit bevestigt de registratie, niet de effectiviteit of juridische geschiktheid.",
+    "verificationNote": "Op 23 november 2026 zijn de Npuls-pagina, het conceptraamwerk en het bijgewerkte Excel-sjabloon geopend. Het sjabloon bevat een instructie, een usecasekaart en een risicolijst.",
     "changeHistory": [
       {
         "date": "2026-10-23",
         "type": "added",
         "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bronnen en bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "De eerdere Excel-download gaf HTTP 403. Vervangen door de actuele Npuls-werkmap. De status beschrijft de toegang tot het raamwerk en de werkmap; de praktijktest van deze eerste versie staat bij de beschikbaarheid."
       }
     ]
   },
