@@ -32,7 +32,7 @@ function record(id, date, title = id) {
 function load(records = [], hash = '#zoeken', overrides = {}) {
   const media = () => ({ matches: false });
   const context = vm.createContext({
-    window: { ATLAS_RECORDS: { records, metadata: {} }, matchMedia: media },
+    window: { ATLAS_RECORDS: { records, metadata: {}, worksheets: require('../data/worksheets.json') }, matchMedia: media },
     document: { querySelector: selector => selector === 'main' ? {} : null },
     localStorage: { getItem: () => null }, location: { hash }, matchMedia: media,
     URLSearchParams, Intl, ...overrides
@@ -99,7 +99,7 @@ test('worksheets copy the pupil task separately from teacher answers and the edi
 
 test('a previous data edition without worksheets still links to the independent pupil page', () => {
   const main = {};
-  const api = load([], '#werkblad-oefenvragen', {document: {querySelector: () => main}});
+  const api = load([], '#werkblad-oefenvragen', {window:{ATLAS_RECORDS:{records:[], metadata:{}}}, document: {querySelector: () => main}});
   api.renderWorksheet('werkblad-oefenvragen');
   assert.match(main.innerHTML, /Het werkblad kon niet worden geladen/);
   assert.match(main.innerHTML, /href="lesmateriaal\/leerling\/oefenvragen\/">Open leerlingblad/);
@@ -126,6 +126,9 @@ test('merged detail links redirect only to a present public record', () => {
 test('lesson detail returns fresh tabs to the local directory selection and rejects foreign or unknown return targets', () => {
   for (const [context, expected] of [
     ['van=lesgids&sector=VO&vak=Biologie&doel=poolvos', 'lesmateriaal/#selectie?sector=VO&amp;vak=Biologie&amp;doel=poolvos'],
+    ['van=lesgids&sector=VO&groep=vo', 'lesmateriaal/#selectie?sector=VO&amp;groep=vo&amp;kaart=les-een'],
+    ['van=lesgids&sector=MBO%2CVO&groep=vo', 'lesmateriaal/#selectie?sector=MBO%2CVO&amp;groep=vo&amp;kaart=les-een'],
+    ['van=lesgids&groep=werkbladen', 'lesmateriaal/'], ['van=lesgids&groep=ander', '#zoeken'],
     ['van=lesgids', 'lesmateriaal/'], ['van=https%3A%2F%2Fexample.org', '#zoeken'],
     ['van=lesgids&terug=https%3A%2F%2Fexample.org', '#zoeken'], ['van=lesgids&minuten=-4', '#zoeken'],
     ['van=lesgids&sector=niet-bestaand', '#zoeken'], ['van=lesgids&vak=Nederlands&vak=Duits', '#zoeken']
@@ -1094,6 +1097,29 @@ test('results show the effective status and practical dates before source action
   assert.doesNotMatch(api.simpleCard({...course, startDate:null, endDate:'2027-02-30'}), /<time/);
 });
 
+test('the compact catalogue keeps order, detail links, funding deadlines and checked choices', () => {
+  const items = [
+    {...record('call', '', 'Ronde & voorwaarden'), recordType: 'funding_call', status: 'closed_call',
+      fundingDeadline: '2026-09-15', providerName: 'Onderzoek & Onderwijs', sectors: ['HBO', 'WO']},
+    record('guide', '', 'Een <voorbeeld>')
+  ];
+  const route = '#zoeken?sort=az';
+  const cards = load(items, route).resultsMarkup();
+  const sessionStorage = {getItem: key => ({'atlas.resultLayout': 'list', 'atlas.sheetPicks': 'item=call'})[key]};
+  const list = load(items, route, {sessionStorage}).resultsMarkup();
+  const ids = html => [...html.matchAll(/<article[^>]* data-record-id="([^"]+)"/g)].map(match => match[1]);
+  assert.deepEqual(ids(list), ids(cards));
+  assert.match(cards, /value="cards" checked/);
+  assert.match(list, /value="list" checked/);
+  assert.match(list, /<h2><a href="#item\/guide">Een &lt;voorbeeld&gt;<\/a>/);
+  assert.match(list, /Onderzoek &amp; Onderwijs · HBO, WO/);
+  const recent = load(items, '#zoeken?sort=added', {sessionStorage}).resultsMarkup();
+  assert.match(recent, /Toegevoegd 31 dec 2099/);
+  assert.match(list, /Aanvraag gesloten[\s\S]*?Aanvraagdeadline <time datetime="2026-09-15">/);
+  assert.match(list, /data-sheet-pick="call" aria-label="Vergelijken: Ronde &amp; voorwaarden" checked/);
+  assert.doesNotMatch(list, /class="offer-facts"|class="description"/);
+});
+
 test('every offer fact groups its own label and value before the description, actions and comparison control', () => {
   const item = {...record('workshop', '2026-10-05'), recordType:'training', legacyType:'Training',
     description:'Beschrijving met <persoonlijke> keuze.', language:['nl'], costType:'free', sectors:['HBO','WO'],
@@ -1497,6 +1523,29 @@ test('provider search retains its threshold and remains scoped to providers', ()
   assert.doesNotMatch(list('organization', 12), /class="facet-search"/);
   assert.match(list('organization', 13), /aria-label="Zoek binnen aanbieders"/);
   assert.doesNotMatch(list('sector', 13), /class="facet-search"/);
+});
+
+test('provider facets show matching choices and keep a zero-count selection removable', () => {
+  const options = Array.from({length: 17}, (_, index) => 'Aanbieder ' + index);
+  const counts = new Map(options.map((value, index) => [value, index < 9 ? 0 : 1]));
+  const api = load([], '#zoeken?organization=Aanbieder+1');
+  const markup = api.facet('organization', 'Aanbieder', options, counts);
+  assert.match(markup, /data-facet-option="Aanbieder 0" hidden><input[^>]* disabled>/);
+  assert.match(markup, /data-facet-option="Aanbieder 1" ><input[^>]*checked[^>]*>/);
+  assert.match(markup, /data-facet-option="Aanbieder 9" ><input[^>]+><span>Aanbieder 9<\/span><small>1<\/small>/);
+  assert.doesNotMatch(markup, /class="facet-more"[^>]*hidden/);
+  const eightMatches = load().facet('organization', 'Aanbieder', options, counts);
+  assert.match(eightMatches, /class="facet-more"[^>]*hidden/);
+});
+
+test('a worksheet-only customer mail search offers its MBO filter with a worksheet count', () => {
+  const data = [{...record('onverwant'), sectors:['PO','MBO'], offerCategory:'materials'}];
+  const api = load(data, '#zoeken?q=klantmail');
+  const markup = api.catalogFilterPanel(['materials'], ['Docenten'], []);
+  assert.match(markup, /data-facet-option="MBO" ><input[^>]+><span>MBO<\/span><small>1 werkblad<\/small>/);
+  assert.match(markup, /data-facet-option="PO" hidden><input[^>]+ disabled>/);
+  const incompatible = load(data, '#zoeken?q=klantmail&vak=Biologie').catalogFilterPanel(['materials'], [], []);
+  assert.doesNotMatch(incompatible, /<small>1 werkblad<\/small>/);
 });
 
 test('expanding a facet focuses its first newly visible enabled checkbox and collapsing keeps focus on the button', () => {
@@ -2394,6 +2443,9 @@ test('worksheet routes help with preparation queries without counting worksheets
     const html = api.resultsMarkup();
     assert.ok(html.includes(`data-question-route href="${href}"`), query);
     assert.match(html, /1 werkblad voor ‘/);
+    assert.match(html, /data-atlas-search-hits/);
+    assert.doesNotMatch(html, /data-atlas-empty-search/);
+    assert.match(api.catalogFilterPanel([], [], []), /class="apply btn">Toon 1 werkblad</);
     assert.match(html, /Geen andere treffers in de catalogus/);
     assert.doesNotMatch(html, /0 resultaten voor|Uw zoekopdracht levert/);
   }
@@ -2415,13 +2467,19 @@ test('worksheet links from search and lesson navigation follow the chosen subjec
   }
   const lesson = filters => load([], '#zoeken?q=les&type=materials&' + filters).resultsMarkup();
   const vo = lesson('sector=VO&vak=Biologie'), mbo = lesson('sector=MBO&vak=Nederlands');
-  assert.ok(vo.includes(`data-question-route href="${exercises}"`));
+  assert.ok(!vo.includes(`data-question-route href="${exercises}"`));
   assert.ok(vo.includes(`data-question-route href="${biology}"`));
-  assert.ok(mbo.includes(`data-question-route href="${exercises}"`));
+  assert.ok(!mbo.includes(`data-question-route href="${exercises}"`));
+  assert.ok(lesson('vak=Rekenen').includes(`data-question-route href="${exercises}"`));
+  assert.match(mbo, /href="lesmateriaal\/#selectie\?sector=MBO&amp;vak=Nederlands"/);
+  assert.match(lesson('sector=MBO,VO&vak=Nederlands'), /href="lesmateriaal\/#selectie\?sector=MBO%2CVO&amp;vak=Nederlands"/);
+  assert.match(lesson('sector=VO&vak=Biologie,Handel'), /href="lesmateriaal\/#selectie\?sector=VO&amp;vak=Biologie%2CHandel"/);
+  assert.match(mbo, /1 werkblad voor ‘les’/);
+  assert.equal((mbo.match(/data-question-route href="#werkblad-klantmail"/g) || []).length, 1);
   assert.ok(!mbo.includes(biology));
   const entry = {...record('biology',null,'Een biologie practicum'), subjects:['Biologie']};
   const mixed = load([entry], '#zoeken?q=biologie%20practicum').resultsMarkup();
-  assert.match(mixed, /1 resultaat voor ‘biologie practicum’/);
+  assert.match(mixed, /1 resultaat en 1 werkblad voor ‘biologie practicum’/);
   assert.ok(mixed.includes(`data-question-route href="${biology}"`));
   assert.doesNotMatch(mixed, /Geen andere treffers/);
 });

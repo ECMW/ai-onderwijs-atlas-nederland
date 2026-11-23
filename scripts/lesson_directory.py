@@ -112,7 +112,8 @@ def generate_lesson_directory(root: Path, destination: Path) -> None:
     template = Template((root / "scripts/lesson_directory.html").read_text(encoding="utf-8"))
     page = template.substitute(
         sector_options="".join(f'<option value="{escape(key)}">{escape(title)}</option>' for key, title in sector_labels.items()),
-        navigation=f'<nav aria-label="Onderdelen van de lesgids">{"".join(links)}</nav>' if links else "",
+        navigation=(f'<details class="directory-jumps"><summary>Spring naar een onderdeel</summary>'
+                    f'<nav aria-label="Onderdelen van de lesgids">{"".join(links)}</nav></details>') if links else "",
         sections="\n".join(sections) or "<p>Er zijn momenteel geen beschikbare lesstarts.</p>",
     )
     destination.parent.mkdir(parents=True, exist_ok=True)

@@ -175,6 +175,8 @@
 
   let state = {};
   let resultRecords = [];
+  let resultCountLabel = '0 resultaten';
+  let compactResults = sessionGet('atlas.resultLayout') === 'list';
   const RESULT_BATCH = 24;
 
   function resultView() {
@@ -231,7 +233,10 @@
     const footer = resultRecords.length > RESULT_BATCH ? `<div class="result-batches">
       <span data-result-progress role="status">${shown} van ${resultRecords.length} resultaten getoond</span>
       <button type="button" class="btn secondary" data-more-results ${shown === resultRecords.length ? 'hidden' : ''}>Toon meer resultaten</button></div>` : '';
-    return `<div class="result-list" data-result-list>${resultRecords.slice(0, shown).map(record => simpleCard(record, true)).join('')}</div>${footer}`;
+    return `<div class="result-layout" role="group" aria-label="Resultaatweergave"><span>Weergave</span>
+      <label><input type="radio" name="result-layout" value="cards"${compactResults ? '' : ' checked'}> Kaarten</label>
+      <label><input type="radio" name="result-layout" value="list"${compactResults ? ' checked' : ''}> Lijst</label></div>
+      <div class="result-list${compactResults ? ' compact-results' : ''}" data-result-list>${resultRecords.slice(0, shown).map(catalogueResult).join('')}</div>${footer}`;
   }
   let debounceTimer;
   let todayCache = { value: '', checkedAt: 0 };
@@ -1219,6 +1224,27 @@
     });
   }
   document.fonts?.addEventListener('loadingdone', observeCardFacts);
+  function sheetPickMarkup(record, label = 'Kies voor vergelijking of overleg') {
+    return `<label class="sheet-pick"><input type="checkbox" data-sheet-pick="${escapeHtml(record.id)}" aria-label="${label}: ${escapeHtml(record.title)}" ${sheetPicks.has(record.id) ? 'checked' : ''}> ${label}</label>`;
+  }
+  function catalogueResult(record) {
+    if (!compactResults) return simpleCard(record, true);
+    const sectors = (record.sectors || []).filter(sector => sector !== 'VSO').join(', ');
+    const context = [record.providerName, sectors];
+    if (state.sort === 'added' || isPublicationSort()) {
+      const added = state.sort === 'added';
+      const date = added ? addedDate(record) : publicationDate(record);
+      context.push(date ? (added ? 'Toegevoegd ' : 'Verschenen op ') + dateLabel(date)
+        : (added ? 'Toevoegdatum onbekend' : 'Publicatiedatum onbekend'));
+    }
+    const summary = context.filter(Boolean).map(escapeHtml).join(' · ');
+    const funding = isFunding(record) ? `<p class="listing-funding"><strong>${escapeHtml(displayStatus(record))}</strong>
+      · ${practicalDates(record)}</p>` : '';
+    return `<article class="listing-row" data-record-id="${escapeHtml(record.id)}" data-offer-card>
+      <div><h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
+        ${summary ? `<p class="listing-context">${summary}</p>` : ''}${funding}</div>
+      <div class="offer-links">${sheetPickMarkup(record, 'Vergelijken')}</div></article>`;
+  }
   function simpleCard(record, showPublicationDate = false, recency = null) {
     const sectors = (record.sectors || []).filter(sector => sector !== 'VSO');
     const sourceItem = primarySource(record);
@@ -1261,7 +1287,7 @@
             <a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a>
           </div>
         </div>
-        ${showPublicationDate ? `<label class="sheet-pick"><input type="checkbox" data-sheet-pick="${escapeHtml(record.id)}" aria-label="Kies voor vergelijking of overleg: ${escapeHtml(record.title)}" ${sheetPicks.has(record.id) ? 'checked' : ''}> Kies voor vergelijking of overleg</label>` : ''}
+        ${showPublicationDate ? sheetPickMarkup(record) : ''}
       </div>
     </article>`;
   }
@@ -1463,9 +1489,14 @@
     };
     return values(key).map(value => filterOptionLabel(key, value)).join(', ') || defaults[key] || 'Alle opties';
   }
-  function facetOption(key, option, count, selected) {
+  function facetCountLabel(count, worksheets) {
+    if (!worksheets) return String(count);
+    return (count ? count + ' + ' : '') + worksheets + (worksheets === 1 ? ' werkblad' : ' werkbladen');
+  }
+  function facetOption(key, option, count, worksheets, selected) {
     const checked = selected.includes(option);
-    return `<label data-facet-option="${escapeHtml(option)}"><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${!count && !checked ? 'disabled' : ''}><span>${escapeHtml(filterOptionLabel(key, option))}</span><small>${count}</small></label>`;
+    const unavailable = !count && !worksheets && !checked;
+    return `<label data-facet-option="${escapeHtml(option)}" ${unavailable ? 'hidden' : ''}><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${unavailable ? 'disabled' : ''}><span>${escapeHtml(filterOptionLabel(key, option))}</span><small>${facetCountLabel(count, worksheets)}</small></label>`;
   }
   function subjectInput(id) {
     const value = values('vak').join(', ');
@@ -1481,16 +1512,19 @@
       setUrl();
     }
   }
-  function facet(key, title, options, counts = facetCounts()[key]) {
-    const present = options.filter(option => counts.has(option));
+  function facet(key, title, options, counts = facetCounts()[key], worksheetCounts = new Map()) {
     const selected = values(key);
+    const present = [...new Set([...options.filter(option => counts.has(option)), ...worksheetCounts.keys(), ...selected])];
+    const available = present.filter(option => counts.get(option) || worksheetCounts.get(option) || selected.includes(option));
+    const canExpand = available.slice(8).some(option => !selected.includes(option));
     const supportsMultiple = ['sector', 'audience'].includes(key);
     const startsOpen = supportsMultiple && (key !== 'sector' || selected.length > 0);
     return `<details class="facet${supportsMultiple ? ' facet-multi' : ''}" data-facet-block="${escapeHtml(key)}"${startsOpen ? ' open' : ''}><summary><span class="facet-heading">${escapeHtml(title)}<b aria-label="${values(key).length} geselecteerd" ${values(key).length ? '' : 'hidden'}>${values(key).length}</b></span><span class="facet-value">${escapeHtml(facetSelectionLabel(key))}</span></summary><div>
       ${supportsMultiple ? '<p class="facet-note">Kies één of meer opties tegelijk.</p>' : ''}
       ${key === 'organization' && present.length > 12 ? '<input class="facet-search" type="search" placeholder="Zoek aanbieder…" aria-label="Zoek binnen aanbieders">' : ''}
-      <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => facetOption(key, option, counts.get(option), selected)).join('')}</div>
-      ${present.length > 8 ? '<button class="facet-more" type="button" aria-expanded="false">Toon meer</button>' : ''}
+      <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => facetOption(key, option, counts.get(option) || 0, worksheetCounts.get(option) || 0, selected)).join('')}</div>
+      ${present.length > 8 ? `<button class="facet-more" type="button" aria-expanded="false" ${canExpand ? '' : 'hidden'}>Toon meer</button>` : ''}
+      <p class="facet-empty" role="status"${available.length ? ' hidden' : ''}>Geen opties bij deze selectie.</p>
     </div></details>`;
   }
   function relatedThemes(activeTheme) {
@@ -1534,6 +1568,10 @@
     biology: {label:'Bereid een biologiepracticum voor', meta:'Kiemproef met tuinkers · vmbo vanaf leerjaar 2.', href:'#werkblad-biologiepracticum'},
     customer: {label:'Controleer een klantmail over een bestelling', meta:'Mbo Nederlands en Handel · studenten toetsen een concept aan de bestelgegevens en schrijven zelf een antwoord.', href:'#werkblad-klantmail'}
   };
+  const WORKSHEET_FILTERS = {
+    type:['materials'], audience:['Docenten', 'Onderwijsontwikkelaars'], language:['nl'], cost:['Gratis'],
+    status:[STATUS_LABELS.available], access:[ACCESS_LABELS.public], theme:['Lesgeven en leren met AI']
+  };
   function worksheetRoutes(query, criteria, lessonRoute = false) {
     const topic = normalize(query);
     const saveTime = /\btijd (?:besparen|winnen)\b/.test(topic) && (/\b(?:les|lessen|klas)\b/.test(topic) ||
@@ -1546,28 +1584,41 @@
     if (!lessonRoute && !exercises && !practicum && !customerMail) return [];
     if (Object.entries(TYPE_QUERY_RULES).some(([type, names]) => type !== 'materials' &&
         names.some(name => phrasePresent(topic, name)))) return [];
-    const allowed = {
-      type:['materials'], audience:['Docenten', 'Onderwijsontwikkelaars'], language:['nl'], cost:['Gratis'],
-      status:[STATUS_LABELS.available], access:[ACCESS_LABELS.public], theme:['Lesgeven en leren met AI']
-    };
     if (activeFilters(criteria).some(([key, selected]) => !['vak', 'sector'].includes(key) &&
-        !selected.some(value => allowed[key]?.includes(value)))) return [];
+        !selected.some(value => WORKSHEET_FILTERS[key]?.includes(value)))) return [];
     const sectors = filterValues('sector', criteria.sector);
     const subjects = filterValues('vak', criteria.vak).map(normalize);
-    const links = [];
-    if ((lessonRoute || exercises && !practicum) && (!sectors.length || sectors.some(sector => Object.hasOwn(SECTOR_NAMES, sector)))) {
-      links.push(LESSON_WORKSHEETS.exercises);
-    }
     const namedSectors = Object.entries(SECTOR_QUERY_NAMES).filter(([sector, names]) =>
       phrasePresent(topic, sector) || names.some(name => phrasePresent(topic, name))).flatMap(([key]) => key.split(','));
     if (/\b(?:vmbo|havo|vwo)\b/.test(topic)) namedSectors.push('VO');
-    const fitsSector = sector => (!sectors.length || sectors.includes(sector)) &&
-      (!namedSectors.length || namedSectors.includes(sector));
-    if ((lessonRoute || (practicum && (/\b(?:biologie|biologiepracticum|biologieles|kiemproe(?:f|ven))\b/.test(topic) || subjects.includes('biologie')))) &&
-        (!subjects.length || subjects.includes('biologie')) && fitsSector('VO')) links.push(LESSON_WORKSHEETS.biology);
-    if ((lessonRoute || customerMail) && fitsSector('MBO') &&
-        (!subjects.length || subjects.some(subject => ['nederlands', 'handel'].includes(subject)))) links.push(LESSON_WORKSHEETS.customer);
-    return links;
+    const links = [];
+    if (lessonRoute || exercises && !practicum) links.push(LESSON_WORKSHEETS.exercises);
+    if (lessonRoute || practicum && (/\b(?:biologie|biologiepracticum|biologieles|kiemproe(?:f|ven))\b/.test(topic) || subjects.includes('biologie'))) links.push(LESSON_WORKSHEETS.biology);
+    if (lessonRoute || customerMail) links.push(LESSON_WORKSHEETS.customer);
+    return links.filter(route => {
+      const sheet = source.worksheets?.[route.href.slice(1)];
+      return sheet && (!subjects.length || sheet.subjects.some(name => subjects.includes(normalize(name)))) &&
+        (!sectors.length || sheet.sectors.some(sector => sectors.includes(sector))) &&
+        (!namedSectors.length || sheet.sectors.some(sector => namedSectors.includes(sector)));
+    });
+  }
+  function isLessonSelection(criteria) {
+    return (criteria.q === 'les' && criteria.type === 'materials') || ['lesstart', 'lesstarts'].includes(normalize(criteria.q));
+  }
+  function matchingWorksheetRoutes(criteria) {
+    return worksheetRoutes(criteria.q, criteria, isLessonSelection(criteria));
+  }
+  function worksheetFacetCounts() {
+    if (!state.q || !matchingWorksheetRoutes({q: state.q, vak: state.vak, type: 'materials'}).length) return {};
+    const counts = {};
+    for (const [key, options] of Object.entries({...WORKSHEET_FILTERS, sector: SECTORS})) {
+      counts[key] = new Map();
+      for (const option of options) {
+        const matches = matchingWorksheetRoutes({...state, [key]: option}).length;
+        if (matches) counts[key].set(option, matches);
+      }
+    }
+    return counts;
   }
   function teacherRoutes(query, criteria) {
     switch (teacherQuestion(normalize(query))) {
@@ -1589,7 +1640,7 @@
         if (!count) return [];
         return [{label:'Bekijk lesmateriaal over ecosystemen', meta:'Controleer in de les of het niveau bij uw klas past.', href:criteriaHref(next), count}];
       }
-      default: return worksheetRoutes(query, criteria);
+      default: return matchingWorksheetRoutes({...criteria, q:query});
     }
   }
   function alternativeSuggestion() {
@@ -2271,6 +2322,14 @@
       <section class="funding-nav"><h2 id="funding-heading" tabindex="-1">Subsidies en calls</h2>
       <nav aria-label="Aanvraagstatus">${links.join('')}</nav><p><a href="${escapeHtml(stateHref().replace('#zoeken', '#onderzoek'))}">Ik zoek een promotieplaats</a></p></section>`;
   }
+  function lessonDirectoryLink() {
+    const sectors = values('sector'), subjects = values('vak');
+    const params = new URLSearchParams();
+    if (sectors.length) params.set('sector', sectors.join(','));
+    if (subjects.length) params.set('vak', subjects.join(','));
+    const label = params.size ? 'Open de lesgids voor ' + [sectors.join(' of '), subjects.join(' of ')].filter(Boolean).join(' · ') : 'Open de lesgids';
+    return `<a href="lesmateriaal/${params.size ? '#selectie?' + escapeHtml(params.toString()) : ''}">${escapeHtml(label)}</a>`;
+  }
   function practiceNavigation() {
     const context = { sector: state.sector, vak: state.vak, audience: state.audience, language: state.language };
     if (state.sort !== 'relevant' && new URLSearchParams(location.hash.split('?')[1]).has('sort')) context.sort = state.sort;
@@ -2278,12 +2337,9 @@
     if (state.q || FILTER_KEYS.some(key => !['sector', 'vak', 'audience', 'language'].includes(key) && values(key).length)) {
       const task = PRACTICE_ROUTES.find(route => Object.entries(route.criteria).every(([key, value]) => state[key] === value));
       let work = '';
-      if (task?.criteria.q === 'les' || ['lesstart', 'lesstarts'].includes(normalize(state.q))) {
+      if (isLessonSelection(state)) {
         const materials = stateHref({ q: '', type: 'materials', language: 'nl', cost: 'Gratis' });
-        const worksheets = worksheetRoutes(state.q, state, true);
-        work = (worksheets.length ? `<nav class="lesson-shortcut" aria-label="Werkbladen voor uw les">${worksheets.map(sheet =>
-          `<a data-question-route href="${sheet.href}">${sheet.label}</a>`).join(' · ')}</nav>` : '') +
-          `<p class="lesson-shortcut"><a class="btn secondary" href="${escapeHtml(materials)}">Gratis Nederlandstalig lesmateriaal</a> <a href="lesmateriaal/">Alle lesstarts per onderwijssector</a></p>` + lessonStartSection();
+        work = `<p class="lesson-shortcut"><a class="btn secondary" href="${escapeHtml(materials)}">Gratis Nederlandstalig lesmateriaal</a> ${lessonDirectoryLink()}</p>` + lessonStartSection();
       }
       else if (researchQuery(state.q)) {
         work = `<p><a class="btn secondary" href="${escapeHtml(stateHref().replace('#zoeken', '#onderzoek'))}">Onderzoek doen of promoveren</a></p>`;
@@ -2309,9 +2365,10 @@
         return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${open} open · ${matches.length - open} aangekondigd <span aria-hidden="true">→</span></small></a>`;
       }
       const count = matches.length;
+      const worksheets = isLessonSelection(criteria) ? matchingWorksheetRoutes(criteria).length : 0;
       if (!count && route.criteria === AGREEMENT_CRITERIA) return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>Teamproef <span aria-hidden="true">→</span></small></a>`;
-      if (!count) return `<span class="practice-link unavailable">${content}<small>Geen resultaten</small></span>`;
-      return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${count} ${count === 1 ? 'resultaat' : 'resultaten'} <span aria-hidden="true">→</span></small></a>`;
+      if (!count && !worksheets) return `<span class="practice-link unavailable">${content}<small>Geen resultaten</small></span>`;
+      return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${matchesLabel(count, worksheets)} <span aria-hidden="true">→</span></small></a>`;
     });
     const researchHref = criteriaHref(context).replace('#zoeken', '#onderzoek');
     links.push(`<a class="practice-link" href="${escapeHtml(researchHref)}"><strong>Onderzoek doen of promoveren</strong><span>Promotieplaatsen, onderzoeksdata en praktijkonderzoek</span><small>Bekijk routes <span aria-hidden="true">→</span></small></a>`);
@@ -2358,6 +2415,12 @@
       <a class="btn secondary" data-${scope}-sheet href="${escapeHtml(selectedHref('overlegblad'))}" ${sheetPicks.size ? '' : 'hidden'}>Open mijn overlegblad (${sheetPicks.size})</a>
       <span ${sheetPicks.size === 1 ? '' : 'hidden'}>Kies nog een vermelding om te vergelijken.</span>`;
   }
+  function matchesLabel(offers, sheets) {
+    const labels = [];
+    if (offers || !sheets) labels.push(offers + (offers === 1 ? ' resultaat' : ' resultaten'));
+    if (sheets) labels.push(sheets + (sheets === 1 ? ' werkblad' : ' werkbladen'));
+    return labels.join(' en ');
+  }
   function resultsMarkup() {
     resultRecords = sortRecords(recordsForCriteria(state));
     const chips = [
@@ -2370,9 +2433,8 @@
     const onlyWorksheets = !resultRecords.length && worksheetCount > 0;
     const routeGuide = routes.length ? `<section class="selection-guidance teacher-routes" aria-label="Verder met uw vraag">${onlyWorksheets ? '' : '<h2>Verder met uw vraag</h2>'}
       <ul>${routes.map(item => `<li><a data-question-route href="${escapeHtml(item.href)}">${escapeHtml(item.label)}</a><span>${escapeHtml(item.meta)}</span></li>`).join('')}</ul></section>` : '';
-    const countLabel = onlyWorksheets ? `${worksheetCount} ${worksheetCount === 1 ? 'werkblad' : 'werkbladen'}` :
-      `${resultRecords.length} ${resultRecords.length === 1 ? 'resultaat' : 'resultaten'}`;
-    const heading = countLabel + (state.q ? ` voor ‘${state.q}’` : '');
+    resultCountLabel = matchesLabel(resultRecords.length, worksheetCount);
+    const heading = resultCountLabel + (state.q ? ` voor ‘${state.q}’` : '');
     const knownDates = isPublicationSort() && resultRecords.filter(record => publicationDate(record)).length;
     const sortSummary = state.sort === 'added'
       ? 'Nieuwste toevoegingen aan de Atlas eerst; onbekende toevoegdatums staan onderaan. Een broncontrole verandert de toevoegdatum niet.'
@@ -2381,7 +2443,7 @@
       : state.sort === 'az' ? 'Gesorteerd op titel, van A tot Z.' : isFundingSelection()
       ? 'Open oproepen eerst, op volgorde van bekende deadline. Daarna volgen aangekondigde rondes, overige regelingen en gesloten oproepen.' : 'Gesorteerd op relevantie en directe bruikbaarheid.';
     const selectedSearch = location.hash.split('?')[0] === '#zoeken' && (state.q?.trim() || FILTER_KEYS.some(key => values(key).length));
-    const outcome = selectedSearch ? (resultRecords.length ? ' data-atlas-search-hits' : ' data-atlas-empty-search') : '';
+    const outcome = selectedSearch ? (resultRecords.length || worksheetCount ? ' data-atlas-search-hits' : ' data-atlas-empty-search') : '';
     const home = !location.hash || location.hash.split('?')[0] === '#home';
     const spotlight = home && HOME_SPOTLIGHT ? `<section class="home-spotlight" aria-labelledby="spotlight-heading">
       <div><span class="spotlight-label">Uitgelicht</span><h2 id="spotlight-heading">${escapeHtml(HOME_SPOTLIGHT.title)}</h2>
@@ -2409,6 +2471,8 @@
   }
   function refreshFacetControls() {
     const counts = facetCounts();
+    const worksheetCounts = worksheetFacetCounts();
+    const focusedFacet = document.activeElement?.closest?.('[data-facet]');
     const subject = document.querySelector('#subject-search');
     const applied = values('vak').join(', ');
     if (subject && subject.dataset.applied !== applied) {
@@ -2420,10 +2484,11 @@
       const key = input.dataset.facet;
       const checked = selections[key].includes(input.value);
       const count = counts[key].get(input.value) || 0;
+      const worksheets = worksheetCounts[key]?.get(input.value) || 0;
       input.checked = checked;
-      input.disabled = !count && !checked;
+      input.disabled = !count && !worksheets && !checked;
       const counter = input.closest('label')?.querySelector('small');
-      if (counter) counter.textContent = count;
+      if (counter) counter.textContent = facetCountLabel(count, worksheets);
     });
     document.querySelectorAll('[data-facet-block]').forEach(block => {
       const count = values(block.dataset.facetBlock).length;
@@ -2431,14 +2496,16 @@
       if (badge) { badge.textContent = count; badge.hidden = !count; badge.setAttribute('aria-label', `${count} geselecteerd`); }
       const selected = block.querySelector('.facet-value');
       if (selected) selected.textContent = facetSelectionLabel(block.dataset.facetBlock);
+      updateFacetOptions(block);
     });
+    if (focusedFacet?.closest('label').hidden) focusedFacet.closest('details').querySelector('summary').focus();
     const hiddenCount = ['access', 'source'].reduce((sum, key) => sum + values(key).length, 0);
     const moreCount = document.querySelector('[data-more-count]');
     if (moreCount) moreCount.textContent = hiddenCount ? ` (${hiddenCount})` : '';
     const opener = document.querySelector('.mobile-filter');
     if (opener) opener.textContent = filterButtonText();
     const apply = document.querySelector('.apply');
-    if (apply) apply.textContent = `Toon ${resultRecords.length} ${resultRecords.length === 1 ? 'resultaat' : 'resultaten'}`;
+    if (apply) apply.textContent = 'Toon ' + resultCountLabel;
   }
   function updateSearchResults() {
     const panel = document.querySelector('#results-panel');
@@ -2453,7 +2520,8 @@
   }
   function catalogFilterPanel(typeOptions, audienceOptions, organizationOptions) {
     const counts = facetCounts();
-    const filter = (key, title, options) => facet(key, title, options, counts[key]);
+    const worksheetCounts = worksheetFacetCounts();
+    const filter = (key, title, options) => facet(key, title, options, counts[key], worksheetCounts[key]);
     const languages = [...new Set([...Object.keys(LANGUAGE_LABELS), ...counts.language.keys()])];
     const hiddenCount = ['access', 'source'].reduce((sum, key) => sum + values(key).length, 0);
     return `<aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Filters</h2><button class="close" aria-label="Sluit filters">×</button></header>
@@ -2461,7 +2529,7 @@
       ${filter('sector', 'Voor welke sector?', SECTORS)}<form class="subject-filter">${subjectInput('subject-search')}<button class="btn secondary" type="submit">Toepassen</button></form>${filter('type', 'Wat zoekt u?', typeOptions)}${filter('language', 'Taal', languages)}${filter('cost', 'Kosten', ['Gratis', 'Betaald', 'Gratis en betaald', 'Kosten onbekend'])}${filter('theme', 'Onderwerp', themeOptions())}${filter('geography', 'Regio', ['Nederland', 'Europa', 'Internationaal'])}${filter('audience', 'Doelgroep', audienceOptions)}${filter('status', 'Beschikbaarheid', Object.values(STATUS_LABELS))}${filter('organization', 'Aanbieder', organizationOptions)}
       <details class="more-filters"><summary>Meer filters<span data-more-count>${hiddenCount ? ` (${hiddenCount})` : ''}</span> <span aria-hidden="true">▼</span></summary>
         ${filter('access', 'Toegang', Object.values(ACCESS_LABELS))}${filter('source', 'Bron', ['Met officiële bron', 'Bron nog niet vastgelegd'])}
-      </details><button class="clear btn secondary">Wis alle filters</button><footer><button class="apply btn">Toon ${resultRecords.length} resultaten</button></footer>
+      </details><button class="clear btn secondary">Wis alle filters</button><footer><button class="apply btn">Toon ${escapeHtml(resultCountLabel)}</button></footer>
     </aside>`;
   }
   function renderSearch(isHome = false) {
@@ -2833,11 +2901,23 @@
     const params = new URLSearchParams(location.hash.split('?')[1]);
     if (params.get('van') !== 'lesgids' || params.getAll('van').length !== 1) return '';
     params.delete('van');
+    const group = params.get('groep');
+    if (group !== null) {
+      if (params.getAll('groep').length !== 1 || !['po', 'vo', 'mbo', 'ho', 'overig', 'werkbladen'].includes(group)) return '';
+      params.delete('groep');
+    }
     for (const [key, value] of params) {
       if (!['sector', 'vak', 'doel', 'activiteit', 'minuten'].includes(key) || params.getAll(key).length !== 1 ||
-          !value.trim() || value.length > 160 || /[\u0000-\u001f\u007f]/.test(value)) return '';
+          !value.trim() || value.length > (key === 'vak' ? 512 : 160) || /[\u0000-\u001f\u007f]/.test(value)) return '';
       if (key === 'minuten' && (!/^[1-9]\d*$/.test(value) || !Number.isSafeInteger(Number(value)))) return '';
-      if (key === 'sector' && !SECTORS.includes(value) && !records.some(item => item.lessonStart?.sectors?.includes(value))) return '';
+      if (key === 'sector' && value.split(',').some(sector => !SECTORS.includes(sector) && !records.some(item => item.lessonStart?.sectors?.includes(sector)))) return '';
+    }
+    if (group) {
+      const slug = location.hash.split('?')[0].match(/^#(?:item\/([a-z0-9-]+)|(werkblad-[a-z0-9-]+))$/);
+      if (slug && (group === 'werkbladen') === Boolean(slug[2])) {
+        params.set('groep', group);
+        params.set('kaart', slug[1] || slug[2]);
+      }
     }
     return 'lesmateriaal/' + (params.size ? '#selectie?' + params : '');
   }
@@ -3090,24 +3170,31 @@
       if (error?.name !== 'AbortError') setActionFeedback('Delen lukte niet. Kopieer de URL uit de adresbalk.');
     }
   }
-  function bindResultsControls() {
+  function bindResultsControls(announceSearch = true) {
     const panel = document.querySelector('#results-panel');
     if (!panel) return;
     observeCardFacts();
-    if (panel.querySelector('[data-atlas-empty-search]')) window.dispatchEvent?.(new Event('atlas-empty-search'));
-    else if (panel.querySelector('[data-atlas-search-hits]')) window.dispatchEvent?.(new Event('atlas-search-results'));
+    if (announceSearch && panel.querySelector('[data-atlas-empty-search]')) window.dispatchEvent?.(new Event('atlas-empty-search'));
+    else if (announceSearch && panel.querySelector('[data-atlas-search-hits]')) window.dispatchEvent?.(new Event('atlas-search-results'));
     bindLessonCopy(panel);
     const list = panel.querySelector('[data-result-list]');
+    panel.querySelectorAll('input[name="result-layout"]').forEach(input => input.onchange = () => {
+      compactResults = input.value === 'list';
+      sessionSet('atlas.resultLayout', input.value);
+      list.classList.toggle('compact-results', compactResults);
+      list.innerHTML = resultRecords.slice(0, list.children.length).map(catalogueResult).join('');
+      bindResultsControls(false);
+    });
     const more = panel.querySelector('[data-more-results]');
     if (more) more.onclick = () => {
       const first = list.children.length;
       const batch = resultRecords.slice(first, first + RESULT_BATCH);
-      list.insertAdjacentHTML('beforeend', batch.map(record => simpleCard(record, true)).join(''));
+      list.insertAdjacentHTML('beforeend', batch.map(catalogueResult).join(''));
       const shown = list.children.length;
       saveResultView({shown});
       panel.querySelector('[data-result-progress]').textContent = `${shown} van ${resultRecords.length} resultaten getoond`;
       more.hidden = shown === resultRecords.length;
-      bindResultsControls();
+      bindResultsControls(false);
       list.children[first]?.querySelector('h2 a')?.focus();
     };
     const pickedActions = panel.querySelector('[data-picked-actions]');
@@ -3188,9 +3275,32 @@
     const sheet = panel.querySelector('[data-meeting-sheet]');
     if (sheet) sheet.onclick = () => rememberResults('', '', stateHref());
     panel.querySelectorAll('[data-question-route]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', stateHref()));
-    panel.querySelectorAll('.result-card a[href^="#item/"]').forEach(link => link.onclick = () => {
+    panel.querySelectorAll('[data-result-list] [data-record-id] a[href^="#item/"]').forEach(link => link.onclick = () => {
       rememberResults(link.closest('[data-record-id]').dataset.recordId, link.closest('h2') ? 'title' : 'details');
     });
+  }
+  function updateFacetOptions(block) {
+    const options = block.querySelector('.facet-options');
+    const query = normalize(block.querySelector('.facet-search')?.value || '');
+    options.classList.toggle('searching', Boolean(query));
+    let visible = 0;
+    let matches = 0;
+    let canExpand = false;
+    for (const label of options.children) {
+      const input = label.querySelector('input');
+      const matchesName = !query || normalize(label.dataset.facetOption).includes(query);
+      if (!input.disabled && matchesName) matches++;
+      label.hidden = input.disabled || (!matchesName && !input.checked);
+      if (!label.hidden) {
+        visible++;
+        if (visible > 8 && !input.checked) canExpand = true;
+      }
+    }
+    const more = block.querySelector('.facet-more');
+    if (more) more.hidden = Boolean(query) || !canExpand;
+    const empty = block.querySelector('.facet-empty');
+    empty.textContent = query ? 'Geen passende aanbieder gevonden.' : 'Geen opties bij deze selectie.';
+    empty.hidden = matches > 0;
   }
   function bindFacetLists() {
     document.querySelectorAll('.facet-more').forEach(button => button.onclick = () => {
@@ -3203,12 +3313,7 @@
       if (nextOption) nextOption.focus();
     });
     document.querySelectorAll('[data-facet-block="organization"] .facet-search').forEach(input => input.oninput = () => {
-      const options = input.nextElementSibling;
-      const query = normalize(input.value);
-      options.classList.toggle('searching', Boolean(query));
-      options.querySelectorAll('label').forEach(label => { label.hidden = !normalize(label.dataset.facetOption).includes(query); });
-      const more = options.nextElementSibling;
-      if (more) more.hidden = Boolean(query);
+      updateFacetOptions(input.closest('[data-facet-block]'));
     });
   }
   function bindSearchPage() {

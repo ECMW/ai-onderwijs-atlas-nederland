@@ -25,16 +25,20 @@
     <header><h1>Lesmateriaal over AI voor in de klas</h1>
       <p>Open een werkblad van de Atlas voor uw klas of kies een lesstart bij materiaal van een aanbieder.</p>
       <form data-directory-filter role="search" aria-label="Lesmateriaal filteren" autocomplete="off" hidden>
-        <div class="directory-filter-status"><button type="button" data-go-lessons>Naar de resultaten</button><p role="status" aria-atomic="true"></p></div>
         <div class="directory-fields">
           <label>Onderwijssector<select data-filter-sector><option value="">Alle sectoren</option>$sector_options</select></label>
-          <label>Vakgebied<input type="search" maxlength="160" data-filter-subject placeholder="Bijvoorbeeld biologie"></label>
-          <label>Leerdoel of leerlingvraag<input type="search" maxlength="160" data-filter-goal></label>
-          <label>Activiteit of opdracht<input type="search" maxlength="160" data-filter-activity></label>
-          <label data-duration-field hidden>Maximale duur bronles (minuten)<input type="number" min="1" step="1" inputmode="numeric" data-filter-minutes aria-describedby="source-duration-hint"></label>
+          <label>Vakgebied<input type="search" maxlength="512" data-filter-subject placeholder="Bijvoorbeeld biologie"></label>
         </div>
-        <p id="source-duration-hint" hidden>Met een maximumduur ziet u alleen lessen waarvoor de aanbieder een duur heeft opgegeven.</p>
-        <div class="directory-filter-status"><button type="button" data-share-lessons>Kopieer link naar deze lesselectie</button><button type="reset">Wis filters</button></div>
+        <details data-more-filters><summary>Meer filters<span data-more-count></span></summary>
+          <div class="directory-fields">
+            <label>Leerdoel of leerlingvraag<input type="search" maxlength="160" data-filter-goal></label>
+            <label>Activiteit of opdracht<input type="search" maxlength="160" data-filter-activity></label>
+            <label data-duration-field hidden>Maximale duur bronles (minuten)<input type="number" min="1" step="1" inputmode="numeric" data-filter-minutes aria-describedby="source-duration-hint"></label>
+          </div>
+          <p id="source-duration-hint" hidden>Met een maximumduur ziet u alleen lessen waarvoor de aanbieder een duur heeft opgegeven.</p>
+        </details>
+        <div class="directory-filter-status"><button type="button" data-go-lessons>Naar de resultaten</button><p role="status" aria-atomic="true"></p></div>
+        <div class="directory-filter-status" data-selection-actions hidden><button type="button" data-share-lessons>Kopieer selectielink</button><button type="reset">Wis filters</button></div>
         <p data-copy-feedback aria-live="polite"></p>
         <label data-copy-fallback hidden>Link om te kopiëren<input type="text" readonly></label>
       </form>

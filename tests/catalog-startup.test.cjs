@@ -119,14 +119,23 @@ test('a shared lesson directory selection reopens with the same sector, subject 
       const worksheet = id === 'kiemproef' || id === 'oefenvragen';
       const pupil = worksheet ? '<a class="pupil" href="./leerling/' + id + '/"></a>' : '';
       return '<article data-id="' + id + '"' + (worksheet ? ' data-worksheet' : '') + '><span data-directory-sectors="' + sector +
-        '"></span><span data-directory-subject></span><span data-directory-goal></span>' + pupil +
+        '"></span><h3></h3><span data-directory-subject></span><span data-directory-goal></span>' + pupil +
         '<a class="directory-card-link" href="../#' + (worksheet ? 'werkblad-' : 'item/') + id + '"></a></article>';
     });
-    document.innerHTML = template.replace('$sections', '<section aria-labelledby="groep">' + cards.join('') + '</section>');
+    document.innerHTML = template.replace('$sector_options', ['VO', 'MBO', 'HBO'].map(id => '<option value="' + id + '"></option>').join(''))
+      .replace('$sections', '<section aria-labelledby="vo">' + cards.slice(0, 4).join('') +
+      '</section><section aria-labelledby="werkbladen">' + cards.slice(4).join('') + '</section>');
     const form = document.querySelector('[data-directory-filter]');
+    document.createElement = name => new Element(name);
+    const select = form.querySelector('[data-filter-sector]');
+    select.append = option => {
+      select.children.push(option);
+      option.remove = () => { select.children = select.children.filter(other => other !== option); };
+    };
     document.querySelectorAll('article').forEach((card, i) => {
       card.querySelector('[data-directory-subject]').textContent = cases[i][2];
       card.querySelector('[data-directory-goal]').textContent = cases[i][3];
+      card.querySelector('h3').scrollIntoView = () => { document.scrolledCard = card.dataset.id; };
     });
     const fields = form.querySelectorAll('input,select');
     for (const field of fields) field.validity = {valid:true};
@@ -144,6 +153,8 @@ test('a shared lesson directory selection reopens with the same sector, subject 
   }
   const base = 'https://example.org/lesmateriaal/';
   const original = open(base + '?atlas-no-count=1');
+  assert.ok(!original.form.querySelector('[data-more-filters]').open);
+  assert.equal(original.form.querySelector('[data-selection-actions]').hidden, true);
   for (const [field, value] of [['sector','VO'], ['subject','Biologie'], ['goal','voedselweb']]) {
     original.form.querySelector('[data-filter-' + field + ']').value = value;
     original.events.dispatchEvent(new Event('input'));
@@ -154,6 +165,9 @@ test('a shared lesson directory selection reopens with the same sector, subject 
   const shared = await original.share();
   assert.equal(shared, base + hash);
   const reopened = open(shared);
+  assert.equal(reopened.form.querySelector('[data-more-filters]').open, true);
+  assert.equal(reopened.form.querySelector('[data-more-count]').textContent, ' (1 actief)');
+  assert.equal(reopened.form.querySelector('[data-selection-actions]').hidden, false);
   reopened.skip();
   assert.deepEqual(reopened.visible(), ['doelles']);
   reopened.reset();
@@ -164,7 +178,21 @@ test('a shared lesson directory selection reopens with the same sector, subject 
   assert.equal(selected.form.querySelector('[role="status"]').textContent, '1 werkblad en 2 lesstarts');
   const sheet = selected.document.querySelector('[data-id="kiemproef"]');
   assert.equal(sheet.querySelector('.pupil').getAttribute('href'), './leerling/kiemproef/');
-  assert.equal(sheet.querySelector('.directory-card-link').getAttribute('href'), '../#werkblad-kiemproef?van=lesgids&sector=VO&vak=biologie');
+  assert.equal(sheet.querySelector('.directory-card-link').getAttribute('href'), '../#werkblad-kiemproef?van=lesgids&sector=VO&vak=biologie&groep=werkbladen');
+  const filters = '#selectie?sector=VO&vak=biologie';
+  for (const [group, slug, target] of [['werkbladen','werkblad-kiemproef','kiemproef'], ['vo','ander-doel','ander-doel']]) {
+    const returned = open(base + filters + '&groep=' + group + '&kaart=' + slug);
+    assert.equal(returned.document.activeElement, returned.document.querySelector('[data-id="' + target + '"] h3'));
+    assert.equal(returned.document.scrolledCard, target);
+    assert.equal(await returned.share(), base + filters);
+  }
+  for (const extra of ['', '&groep=vo&kaart=onbekend', '&groep=vo&kaart=ander-vak',
+    '&groep=vo&kaart=werkblad-kiemproef', '&groep=vo&groep=werkbladen&kaart=doelles']) {
+    const direct = open(base + filters + extra);
+    assert.equal(direct.document.activeElement, undefined);
+    assert.equal(direct.document.scrolledCard, undefined);
+    assert.deepEqual(direct.visible(), selected.visible());
+  }
   const duration = selected.form.querySelector('[data-filter-minutes]');
   duration.value = '90';
   duration.valueAsNumber = 90;
@@ -172,6 +200,31 @@ test('a shared lesson directory selection reopens with the same sector, subject 
   assert.equal(selected.visible().length, 0);
   const differentSector = open(base + '#selectie?sector=HBO&vak=wiskunde');
   assert.equal(differentSector.visible().length, 0);
+  const combined = open(base + '#selectie?sector=HBO%2CVO&vak=Biologie%2CAardrijkskunde');
+  assert.deepEqual(combined.visible(), ['doelles','ander-niveau','ander-vak','ander-doel','kiemproef']);
+  assert.equal(combined.form.querySelector('[data-filter-sector]').value, 'HBO,VO');
+  assert.equal(combined.form.querySelector('[data-filter-sector]').children.at(-1).textContent, 'HBO of VO');
+  assert.equal(await combined.share(), combined.location.href);
+  const canonical = JSON.parse(fs.readFileSync(path.join(root, 'data/data-v2.js'), 'utf8').trim().replace(/^window\.ATLAS_RECORDS=/, '').replace(/;$/, ''));
+  const allSubjects = [...new Set(canonical.records.flatMap(record => record.subjects || []))].sort().join(',');
+  const everySubject = open(base + '#selectie?' + new URLSearchParams({vak:allSubjects}));
+  assert.equal(everySubject.form.querySelector('[data-filter-subject]').value, allSubjects);
+  assert.equal(await everySubject.share(), everySubject.location.href);
+  combined.reset();
+  assert.deepEqual(combined.visible(), cases.map(row => row[0]));
+  assert.ok(combined.form.querySelector('[data-filter-sector]').children.every(option => !option.value.includes(',')));
+  for (const query of ['Onderzoek', 'Overheid', 'Onderzoek%2COverheid']) {
+    const noLessons = open(base + '#selectie?sector=' + query);
+    assert.equal(noLessons.visible().length, 0);
+    assert.equal(noLessons.form.querySelector('[data-filter-sector]').value, decodeURIComponent(query));
+    assert.match(noLessons.form.querySelector('[role="status"]').textContent, /Geen lesmateriaal/);
+  }
+  const unknown = open(base + '#selectie?sector=VO%2COnbekend');
+  assert.deepEqual(unknown.visible(), []);
+  assert.match(unknown.form.querySelector('[role="status"]').textContent, /Onbekende onderwijssector/);
+  assert.ok(unknown.form.querySelector('[data-share-lessons]').disabled);
+  unknown.reset();
+  assert.deepEqual(unknown.visible(), cases.map(row => row[0]));
 });
 
 function boot({ replacements = {}, omitted = [], omitGuard = false, fetch, href = 'https://example.org/atlas/?view=public#home' } = {}) {
