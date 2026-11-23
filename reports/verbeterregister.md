@@ -1,5 +1,11 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Een klantmail controleren in het mbo
+
+De lesgids van editie `1d7c0a98` had één lesstart met een expliciet mbo-label, over mediavormgeving. Een docent Nederlands of Handel kan nu een fictieve bestelling, magazijnbericht en conceptmail als één werkblad uitdelen. Studenten controleren drie uitspraken, beantwoorden de klant en herzien hun mail wanneer een vervoerder de bestelling deels ophaalt. Het SBB-profiel Commercieel medewerker onderbouwt de beroepscontext. De casus en het antwoordmodel zijn van de Atlas.
+
+Het werkblad is vindbaar via de mbo-lesroute, de lesgids en de zoekterm ‘klantmail’. Op 320, 390 en 1280 pixels zijn de klaslink, het klembord, terugkeer naar de lesselectie en de afdruk gecontroleerd. De klaslink werkt zonder JavaScript. Of de opdracht voorbereidingstijd bespaart en of studenten hun antwoord zelfstandig kunnen onderbouwen, is nog onbekend. Controleer bij een volgende ronde welke andere beroepsvakken in de bestaande lesgids een direct uitdeelbare opdracht missen.
+
 ## 23 november 2026 · Een werkblad aan de klas geven
 
 In editie `09bd76a` ontbraken de twee Atlas-werkbladen in de lesgids. Deelde een docent het adres van het werkblad, dan kon een leerling ook de docentnotities openklappen. De lesgids toont nu eigen werkbladen apart van externe lesstarts, met filters voor vak, leerdoel en activiteit. Bij een maximumduur verschijnen uitsluitend materialen met een bekende duur.

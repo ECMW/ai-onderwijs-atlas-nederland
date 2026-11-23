@@ -1,5 +1,9 @@
 # Onderzoekslog bronbasis
 
+## 23 november 2026 · Een klantmail over een bestelling controleren
+
+Via het openbare kwalificatieregister van SBB is het profiel Commercieel medewerker (25874, niveau 3, versie gewijzigd 2023) geopend. Werkproces P1-K1-W6 op pagina 21 en 22 beschrijft hoe de medewerker orderafspraken controleert, betrokkenen informeert en bij afwijkingen overlegt. De Atlas gebruikt deze beroepshandeling als context voor een eigen oefening met een fictieve bestelling en een conceptmail. Het werkblad is nog niet in een klas beproefd. [SBB, profiel Commercieel medewerker, p. 21–22](https://kwalificatie-mijn.s-bb.nl/Details/DownloadDocument/1967278#page=21)
+
 ## 23 november 2026 · Een kiemproef voorbereiden
 
 De NIBI-vindplaats voor *Tuinkers ontkiemen* en de gekoppelde docentinstructie zijn gecontroleerd. De instructie onderscheidt lestijd en waarnemingen over twee weken. De Atlas schreef bij dit materiaal een leerlingopdracht om een proef met twee veranderende omstandigheden te verbeteren. De optionele vraag aan een AI-tool is een Atlas-bewerking. [PlantKracht vmbo, Tuinkers ontkiemen](https://www.nibi.nl/nl/plantkracht-vmbo#art_10431)

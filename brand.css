@@ -603,6 +603,9 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
 .work-sheet ol, .work-sheet ul { padding-inline-start: 1.6rem; }
 .work-sheet li { margin-bottom: .7rem; padding-inline-start: .2rem; line-height: 1.5; }
 .work-pupil { margin-block: 1.4rem; }
+.work-case { margin-block: 1.25rem; padding: .85rem 1rem; border-inline-start: 3px solid var(--line); background: var(--surface, #f5f4ee); }
+.work-case h2, .work-case dl, .work-case dd { margin: 0; }
+.work-case dt { margin-top: .7rem; font-weight: 650; }
 .work-notes { border-top: 1px solid var(--line); padding-block: .35rem; }
 .work-notes summary { min-height: 44px; padding-block: .65rem; cursor: pointer; font-weight: 650; }
 .work-notes label { display: block; font-weight: 650; }
@@ -615,6 +618,12 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
   .work-sheet h1 { font-size: 22pt; }
   .work-pupil li { margin-block: 5mm; break-inside: avoid; }
   .work-pupil li::after { content: ''; display: block; height: 25mm; border-bottom: 1px dotted #777; }
+  .work-case { margin-block: 2mm; padding: 2mm 3mm; background: #fff; font-size: 10pt; line-height: 1.25; }
+  .work-case dt { margin-top: 1mm; }
+  .work-case + .work-pupil { margin-block: 3mm; }
+  .work-case + .work-pupil li { margin-block: 2mm; line-height: 1.3; }
+  .work-case + .work-pupil li::after { height: 22mm; }
+  .work-case + .work-pupil li:nth-child(2)::after { height: 44mm; }
 }
 @media(max-width: 560px) {
   .directory-header { gap: .5rem 1rem; }

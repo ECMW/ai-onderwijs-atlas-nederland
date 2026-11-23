@@ -32,5 +32,32 @@
     ],
     "activity": "Practicum met tuinkers: een kiemproef ontwerpen en waarnemingen vergelijken",
     "credit": "Bij het practicum Tuinkers ontkiemen van het Nederlands Instituut voor Biologie (NIBI)."
+  },
+  "werkblad-klantmail": {
+    "title": "Wat kun je de klant vandaag beloven?",
+    "level": "Mbo · Handel en Nederlands",
+    "goal": "Je controleert een conceptantwoord aan de hand van ordergegevens en schrijft een klantmail met een haalbare vervolgstap.",
+    "caseFile": [
+      {
+        "label": "Bestelling en klantvraag",
+        "text": "12 blauwe ordners. De klant vraagt: ‘Heb ik ze donderdag alle twaalf in huis?’"
+      },
+      {
+        "label": "Magazijnbericht · woensdag 15.00 uur",
+        "text": "8 ordners zijn ingepakt en staan nog in het magazijn. De overige 4 zijn nabesteld. De leverancier heeft geen datum bevestigd."
+      },
+      {
+        "label": "Voorbeeld van een AI-conceptmail, geschreven door de Atlas",
+        "text": "‘U bestelde 12 blauwe ordners. Acht zijn al verzonden. De laatste vier ontvangt u donderdag.’"
+      }
+    ],
+    "tasks": [
+      "Beoordeel de drie zinnen van de conceptmail. Welke zin klopt, welke is in strijd met het magazijnbericht en voor welke ontbreekt bewijs? Schrijf bij elke keuze op welk gegeven je gebruikt.",
+      "Schrijf zelf de klantmail van woensdag, in maximaal vijf zinnen. Geef antwoord op de vraag van de klant, leg uit wat je al weet en geef aan wat je gaat navragen.",
+      "Donderdagochtend staat er een nieuwe scan: ‘8 ordners opgehaald door de vervoerder’. Herzie één zin uit je mail. Wat kun je nu bevestigen en wat weet je nog steeds niet?"
+    ],
+    "subjects": ["Nederlands", "Handel"],
+    "sectors": ["MBO"],
+    "activity": "Een AI-conceptmail controleren en een zakelijke klantmail schrijven over een bestelling"
   }
 }

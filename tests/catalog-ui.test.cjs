@@ -66,6 +66,12 @@ test('worksheets copy the pupil task separately from teacher answers and the edi
     await controls.get('[data-work-copy]').onclick();
     assert.match(copied[0], /1\. .+\n\n2\. .+\n\n3\. /);
     for (const task of worksheet.tasks) assert.ok(copied[0].includes(task));
+    for (const entry of worksheet.caseFile || []) {
+      assert.ok(main.innerHTML.includes(entry.label));
+      assert.ok(copied[0].includes(entry.label + '\n' + entry.text));
+      assert.ok(copied[0].includes('Fictief dossier'));
+    }
+    assert.ok(!copied[0].includes('Ik vraag de planning na en laat u weten wat ik hoor.'));
     assert.doesNotMatch(copied[0], /25% stijging|20% daling|zichtbaar worteltje|waarschijnlijke denkfout|https?:/);
     main.querySelector('#work-prompt').value = 'Mijn aangepaste instructie';
     await controls.get('[data-work-prompt]').onclick();
@@ -2418,6 +2424,31 @@ test('worksheet links from search and lesson navigation follow the chosen subjec
   assert.match(mixed, /1 resultaat voor ‘biologie practicum’/);
   assert.ok(mixed.includes(`data-question-route href="${biology}"`));
   assert.doesNotMatch(mixed, /Geen andere treffers/);
+});
+
+test('the customer email worksheet follows mbo lesson intent and keeps conflicting selections out', () => {
+  const href = '#werkblad-klantmail';
+  for (const [query, filters, expected] of [
+    ['klantmail', '', true], ['klantmail controleren', 'vak=Handel', true],
+    ['klantmail schrijven mbo', 'vak=Nederlands', true], ['zakelijke e-mail controleren', '', true],
+    ['AI-antwoord aan een klant controleren', 'sector=MBO', true],
+    ['klantmail middelbaar beroepsonderwijs', '', true],
+    ['klantmail voor het hoger onderwijs', '', false], ['klantmail controleren vmbo', '', false],
+    ['klantmail schrijven', 'sector=VO', false],
+    ['klantmail', 'vak=Biologie', false], ['klantmail', 'type=Training', false],
+    ['software voor klantmails', '', false], ['klantmail automatisch versturen', '', false],
+    ['hoe werkt mijn mailbox', '', false]
+  ]) {
+    const api = load([], '#zoeken?' + filters);
+    const options = api.suggestionData(query).flatMap(section => section.items);
+    assert.equal(options.some(option => option.href === href), expected, query + ' / ' + filters);
+    api.setState(api.criteriaForQuery(query));
+    assert.equal(api.resultsMarkup().includes(`data-question-route href="${href}"`), expected, query + ' / ' + filters);
+  }
+  const lesson = filters => load([], '#zoeken?q=les&type=materials&' + filters).resultsMarkup();
+  assert.ok(lesson('sector=MBO&vak=Handel').includes(href));
+  assert.ok(!lesson('sector=MBO&vak=Geschiedenis').includes(href));
+  assert.ok(!lesson('sector=VO&vak=Nederlands').includes(href));
 });
 
 test('teacher questions offer real routes without silently changing the selected subject or sector', () => {

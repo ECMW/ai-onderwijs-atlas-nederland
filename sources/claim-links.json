@@ -3,6 +3,19 @@
   "last_reviewed": "2026-11-23",
   "claims": [
     {
+      "claim_id": "mbo-klantmail-intern-ordertraject",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "Het SBB-profiel Commercieel medewerker beschrijft het controleren van commerciële afspraken, het voorbereiden van logistieke afspraken en planning en het informeren van betrokkenen. Bij afwijkingen overlegt de medewerker met een leidinggevende of ervaren collega.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED",
+      "source_ids": ["sbb-commercieel-medewerker-intern-ordertraject-2023"],
+      "assessment": "P1-K1-W6 op pagina 21 en 22 onderbouwt de beroepscontext voor de docentnotities. De Atlas werkte dit uit als oefening met een conceptmail en fictieve order. Het leereffect en de inzet als examenopdracht zijn niet onderzocht.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": false
+    },
+    {
       "claim_id": "biologie-practicum-tuinkers-bronopdracht",
       "location": {
         "path": "catalog.js"

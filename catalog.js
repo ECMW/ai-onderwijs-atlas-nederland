@@ -1531,7 +1531,8 @@
   const SCHOOL_PRIVACY_ID = 'generatieve-ai-en-privacy-hier-moeten-scholen-op-letten';
   const LESSON_WORKSHEETS = {
     exercises: {label:'Maak oefenvragen bij uw les', meta:'Rekenvoorbeeld met antwoorden en een instructie voor uw eigen vak.', href:'#werkblad-oefenvragen'},
-    biology: {label:'Bereid een biologiepracticum voor', meta:'Kiemproef met tuinkers · vmbo vanaf leerjaar 2.', href:'#werkblad-biologiepracticum'}
+    biology: {label:'Bereid een biologiepracticum voor', meta:'Kiemproef met tuinkers · vmbo vanaf leerjaar 2.', href:'#werkblad-biologiepracticum'},
+    customer: {label:'Controleer een klantmail over een bestelling', meta:'Mbo Nederlands en Handel · studenten toetsen een concept aan de bestelgegevens en schrijven zelf een antwoord.', href:'#werkblad-klantmail'}
   };
   function worksheetRoutes(query, criteria, lessonRoute = false) {
     const topic = normalize(query);
@@ -1540,7 +1541,9 @@
         ['tijd', 'besparen', 'winnen', 'ai', 'als', 'docent', 'je', 'kun'].includes(word)));
     const exercises = saveTime || /\b(?:oefenvra(?:ag|gen)|oefenopgaven?|quizvragen|lesvoorbereiding|lesontwerp|les(?:sen)? voorbereiden)\b/.test(topic);
     const practicum = /\b(?:practicum|practica|biologiepracticum|kiemproe(?:f|ven))\b/.test(topic);
-    if (!lessonRoute && !exercises && !practicum) return [];
+    const customerMail = /\b(?:klant(?:en)?mails?|zakelijke (?:e ?)?mail|(?:antwoord|(?:e ?)?mail) aan (?:een |de )?klant)\b/.test(topic) &&
+      !/\b(?:mailbox|postvak|inbox|verzend\w*|verstuur\w*|versturen|automatiseer\w*|automatiseren|automatisch|software|apps?|tools?|programma)\b/.test(topic);
+    if (!lessonRoute && !exercises && !practicum && !customerMail) return [];
     if (Object.entries(TYPE_QUERY_RULES).some(([type, names]) => type !== 'materials' &&
         names.some(name => phrasePresent(topic, name)))) return [];
     const allowed = {
@@ -1555,11 +1558,15 @@
     if ((lessonRoute || exercises && !practicum) && (!sectors.length || sectors.some(sector => Object.hasOwn(SECTOR_NAMES, sector)))) {
       links.push(LESSON_WORKSHEETS.exercises);
     }
-    if (!lessonRoute && !(practicum && (/\b(?:biologie|biologiepracticum|biologieles|kiemproe(?:f|ven))\b/.test(topic) || subjects.includes('biologie')))) return links;
     const namedSectors = Object.entries(SECTOR_QUERY_NAMES).filter(([sector, names]) =>
-      phrasePresent(topic, sector) || names.some(name => phrasePresent(topic, name)));
-    if ((!subjects.length || subjects.includes('biologie')) && (!sectors.length || sectors.includes('VO')) &&
-        (!namedSectors.length || namedSectors.some(([sector]) => sector === 'VO'))) links.push(LESSON_WORKSHEETS.biology);
+      phrasePresent(topic, sector) || names.some(name => phrasePresent(topic, name))).flatMap(([key]) => key.split(','));
+    if (/\b(?:vmbo|havo|vwo)\b/.test(topic)) namedSectors.push('VO');
+    const fitsSector = sector => (!sectors.length || sectors.includes(sector)) &&
+      (!namedSectors.length || namedSectors.includes(sector));
+    if ((lessonRoute || (practicum && (/\b(?:biologie|biologiepracticum|biologieles|kiemproe(?:f|ven))\b/.test(topic) || subjects.includes('biologie')))) &&
+        (!subjects.length || subjects.includes('biologie')) && fitsSector('VO')) links.push(LESSON_WORKSHEETS.biology);
+    if ((lessonRoute || customerMail) && fitsSector('MBO') &&
+        (!subjects.length || subjects.some(subject => ['nederlands', 'handel'].includes(subject)))) links.push(LESSON_WORKSHEETS.customer);
     return links;
   }
   function teacherRoutes(query, criteria) {
@@ -2735,7 +2742,22 @@
   }
 
   const WORKSHEET_TEACHER_NOTES = {
+    'werkblad-klantmail': {
+      teacherTitle: 'Antwoorden en feedback voor de docent',
+      notes: [
+        'De bestelling bevestigt de eerste zin. De tweede zin is onjuist: woensdag staan de acht nog in het magazijn. Voor de derde zin ontbreekt bewijs: de leverancier heeft voor de vier nabestelde ordners geen datum bevestigd.',
+        'Mogelijke klantmail: “Goedemiddag, dank voor uw bericht. Ik kan nog niet bevestigen dat u donderdag alle twaalf ordners in huis hebt. Acht staan ingepakt in ons magazijn. Voor de vier nabestelde ordners is de leverdatum nog onbekend. Ik vraag de planning na en laat u weten wat ik hoor.”',
+        'Lees de mail als klant. Krijgt u antwoord op uw donderdagvraag? Is duidelijk wat er met de acht en met de vier gebeurt? Kan de medewerker de beloofde vervolgstap zelf uitvoeren?',
+        'Na de scan kan de student melden dat de vervoerder acht ordners heeft opgehaald. Wanneer die bij de klant aankomen en wanneer de overige vier beschikbaar zijn, blijft onbekend.',
+        'Beroepscontext: bij het interne ordertraject controleert een commercieel medewerker afspraken en overlegt bij afwijkingen. Vraag met welke collega de student de planning zou afstemmen. Het SBB-profiel staat onderaan dit blad.'
+      ],
+      promptTitle: 'Maak een variant voor mijn klas',
+      adapt: 'Vervang het product en de ordergegevens door fictieve gegevens uit uw vak. Controleer zelf of elke uitspraak in de conceptmail met het dossier te beoordelen is.',
+      prompt: 'Maak voor mijn mbo-klas [richting] een oefening met een fictieve bestelling, een klantvraag en een kort magazijnbericht. Schrijf een conceptmail van drie zinnen met één juist feit, één fout en één onbevestigde toezegging. Geef een volgende orderstatus waarmee de student één zin kan herzien. Houd het antwoordmodel apart van de leerlingopdracht.',
+      source: {linkText: 'SBB · Werkproces intern ordertraject (pdf, p. 21–22)', href: 'https://kwalificatie-mijn.s-bb.nl/Details/DownloadDocument/1967278#page=21'}
+    },
     'werkblad-oefenvragen': {
+      promptTitle: 'Oefenvragen voor mijn eigen vak maken',
       teacherTitle: 'Antwoorden en controle voor de docent',
       notes: [
         'Fietsen: 12 ÷ 48 × 100 = 25% stijging. Reken terug: 48 × 1,25 = 60.',
@@ -2746,6 +2768,7 @@
       prompt: 'Maak voor [groep en vak] twee korte oefenvragen bij [leerdoel]. Gebruik verschillende situaties waarin leerlingen zelf [denkstap] moeten uitvoeren en uitleggen. Geef eerst alleen de leerlingvragen. Zet daarna per vraag het modelantwoord, een waarschijnlijke denkfout en een controle waarmee ik het antwoord kan toetsen.'
     },
     'werkblad-biologiepracticum': {
+      promptTitle: 'Een controlevraag voor mijn klas',
       teacherTitle: 'Voorbereiding en bespreking voor de docent',
       notes: [
         'Leg tuinkerszaad, schaaltjes, watten, water en etiketten klaar. Kies twee plekken met vergelijkbare temperatuur en maak één opstelling donker. Volg de docentinstructie van NIBI voor het volledige practicum.',
@@ -2771,19 +2794,21 @@
     }
     const teacher = WORKSHEET_TEACHER_NOTES[id];
     const sourceCredit = sheet.credit ? ' ' + sheet.credit : '';
-    const sourceLink = teacher.source ? ` <a class="work-screen" href="${escapeHtml(teacher.source.href)}" target="_blank" rel="noopener noreferrer">Open docentmateriaal ↗</a>` : '';
+    const sourceLink = teacher.source ? ` <a class="work-screen" href="${escapeHtml(teacher.source.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(teacher.source.linkText || 'Open docentmateriaal')} ↗</a>` : '';
+    const caseFile = sheet.caseFile || [];
+    const caseMarkup = caseFile.length ? `<section class="work-case"><h2>Fictief dossier</h2><dl>${caseFile.map(entry => `<dt>${escapeHtml(entry.label)}</dt><dd>${escapeHtml(entry.text)}</dd>`).join('')}</dl></section>` : '';
     main.innerHTML = `<article class="work-sheet" aria-labelledby="work-title">
       <nav class="practice-back work-screen"><a href="${escapeHtml(back)}">${backLabel}</a></nav>
       <header><p class="lesson-level">${escapeHtml(sheet.level)}</p><h1 id="work-title" tabindex="-1">${escapeHtml(sheet.title)}</h1>
         <p><strong>Leerdoel</strong> · ${escapeHtml(sheet.goal)}</p></header>
-      <section class="work-pupil"><h2>Opdracht voor de klas</h2><ol>${sheet.tasks.map(task => `<li>${escapeHtml(task)}</li>`).join('')}</ol>
+      ${caseMarkup}<section class="work-pupil"><h2>Opdracht voor de klas</h2><ol>${sheet.tasks.map(task => `<li>${escapeHtml(task)}</li>`).join('')}</ol>
         <div class="lesson-actions work-screen"><a class="btn" href="${escapeHtml(classPath)}">Open leerlingblad</a>
           <button class="btn secondary" data-work-link type="button">Kopieer klaslink</button>
           <button class="btn secondary" data-work-copy type="button">Kopieer leerlingopdracht</button>
           <button class="btn secondary" data-work-print type="button">Druk leerlingblad af</button></div></section>
       <div class="work-screen"><details class="work-notes"><summary>${escapeHtml(teacher.teacherTitle)}</summary>
         <ul>${teacher.notes.map(note => `<li>${escapeHtml(note)}</li>`).join('')}</ul></details>
-        <details class="work-notes"><summary>${teacher.source ? 'Een controlevraag voor mijn klas' : 'Oefenvragen voor mijn eigen vak maken'}</summary>
+        <details class="work-notes"><summary>${escapeHtml(teacher.promptTitle)}</summary>
           <p>${escapeHtml(teacher.adapt)}</p><label for="work-prompt">Bewerk de instructie voor uw les</label>
           <textarea id="work-prompt" rows="5">${escapeHtml(teacher.prompt)}</textarea><button class="btn secondary" data-work-prompt type="button">Kopieer mijn instructie</button>
         </details><p class="lesson-feedback" role="status"></p>
@@ -2793,7 +2818,8 @@
     const fallback = main.querySelector('.lesson-copy');
     const copy = (button, text) => copyTextWithFallback(button, text, feedback, fallback, 'Gekopieerd.', 'De tekst is geselecteerd. Kopieer deze met uw apparaat.');
     const pupil = main.querySelector('[data-work-copy]');
-    pupil.onclick = () => copy(pupil, [sheet.title, sheet.goal, ...sheet.tasks.map((task, index) => `${index + 1}. ${task}`),
+    const caseText = caseFile.length ? ['Fictief dossier', ...caseFile.map(entry => entry.label + '\n' + entry.text)] : [];
+    pupil.onclick = () => copy(pupil, [sheet.title, sheet.goal, ...caseText, ...sheet.tasks.map((task, index) => `${index + 1}. ${task}`),
       'Werkblad van de AI & Onderwijs Atlas Nederland.' + sourceCredit].join('\n\n'));
     const classLink = main.querySelector('[data-work-link]');
     classLink.onclick = () => copyTextWithFallback(classLink, PUBLIC_ATLAS + classPath, feedback, fallback,
@@ -3267,6 +3293,7 @@
       'praktijkgids': renderPracticeGuide, 'wat-werkt': renderLearningEvidence,
       'werkblad-oefenvragen': () => renderWorksheet('werkblad-oefenvragen'),
       'werkblad-biologiepracticum': () => renderWorksheet('werkblad-biologiepracticum'),
+      'werkblad-klantmail': () => renderWorksheet('werkblad-klantmail'),
       'toolkeuze': renderToolChoice, 'pilotbesluit': renderPilotDecision, 'regels-in-de-praktijk': renderPracticeRules
     };
     if (path === 'home' || (!Object.hasOwn(guides, path) && !['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
