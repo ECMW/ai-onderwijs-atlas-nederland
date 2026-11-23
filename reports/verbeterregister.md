@@ -1,5 +1,11 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Twee leerlingbladen zelfstandig kunnen uitvoeren
+
+Bij de biologieles van HHMI stond de te beoordelen chatbotzin alleen in de docentvoorbereiding. De zin staat nu bij de leerlingopdracht, met de pagina en de twee grafieken die leerlingen vergelijken. Bij het econometriepracticum van UBC opent de bronlink direct bij de lasso- en random-forest-uitkomsten waarover de opdracht gaat. Beide correcties staan in [PR #186](https://github.com/ECMW/ai-onderwijs-atlas-nederland/pull/186).
+
+De leerlingenroute is voor beide opdrachten in Edge op 390 en 1280 pixels doorlopen. Elk Atlas-leerlingblad past op één A4. Voor de grafieken of de modeluitvoer kan de klas de bronlink gebruiken of de docent kan het betreffende deel meedelen op papier. Of leerlingen de vergelijking in de klas zelfstandig afronden, is nog niet gemeten. Controleer bij de volgende wijziging van een lesstart de vindplaats vanuit het leerlingblad zelf, inclusief het paginanummer of onderdeel van een langere bron.
+
 ## 23 november 2026 · Van een mbo-profiel naar een uitdeelbare beroepsopdracht
 
 In uitgave `5c62b73` kregen een mbo-docent Nederlands en een mbo-docent Handel bij hun vakselectie nul resultaten. In de lesgids stond de klantmailopdracht wel. Het catalogusfilter vond die pas als de docent ook ‘klantmail’ of ‘les’ typte. De profielvoorvertoning telde uitsluitend externe vermeldingen. Nu tellen en tonen beide ingangen ook passende Atlas-werkbladen, herkenbaar apart van het externe aanbod. Gedeelde selecties en combinaties met andere filters volgen dezelfde regels.
