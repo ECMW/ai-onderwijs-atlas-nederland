@@ -240,6 +240,9 @@
   }
   let debounceTimer;
   let todayCache = { value: '', checkedAt: 0 };
+  const dutchCalendar = new Intl.DateTimeFormat('sv-SE', {
+    timeZone: 'Europe/Amsterdam', year: 'numeric', month: '2-digit', day: '2-digit'
+  });
 
   function savedPersonas() {
     try {
@@ -307,9 +310,7 @@
   function todayInNetherlands() {
     const now = Date.now();
     if (!todayCache.value || now - todayCache.checkedAt >= 60_000) {
-      todayCache = { checkedAt: now, value: new Intl.DateTimeFormat('sv-SE', {
-        timeZone: 'Europe/Amsterdam', year: 'numeric', month: '2-digit', day: '2-digit'
-      }).format(new Date(now)) };
+      todayCache = { checkedAt: now, value: dutchCalendar.format(now) };
     }
     return todayCache.value;
   }
@@ -1361,6 +1362,7 @@
   function renderHome() {
     state = { q: '', sort: 'added', audience: savedPersonas().join(',') };
     renderSearch(true);
+    refreshHomeSpotlight();
     window.dispatchEvent?.(new Event('atlas:home-rendered'));
   }
 
@@ -2379,13 +2381,85 @@
       </select></label></div><div class="practice-links">${links.join('')}</div>
       <p class="home-papers"><a href="#wat-werkt">Wat werkt bij leren met AI?</a> · <a href="#papers">Recente papers over AI en onderwijs</a></p></section>`;
   }
-  // Set to null when there is no featured activity. Keep the destination on the Atlas.
-  const HOME_SPOTLIGHT = {
-    title: 'Maak uw toetsvraag AI-bestendiger',
-    description: 'Neem één vraag uit uw toets. Kies wat de leerling of student zelf moet laten zien en kopieer de aangepaste opdracht met beoordelingscriteria.',
-    action: 'Pas mijn toetsvraag aan',
-    href: '#toetsafspraak?start=eigen'
-  };
+  const SPOTLIGHT_TOPICS = [
+    {
+      id: 'toets', title: 'Maak uw toetsvraag AI-bestendiger',
+      description: 'Neem één vraag uit uw toets. Kies wat de leerling of student zelf moet laten zien en kopieer de aangepaste opdracht met beoordelingscriteria.',
+      action: 'Pas mijn toetsvraag aan', href: '#toetsafspraak?start=eigen'
+    },
+    {
+      id: 'toolkeuze', title: 'Dicteren of een opname uitschrijven?',
+      description: 'Vergelijk twee toepassingen. Bekijk welke gegevens ze verwerken en welke afspraken u vooraf met uw school moet controleren.',
+      action: 'Vergelijk de toepassingen', href: '#toolkeuze'
+    },
+    {
+      id: 'lesgids', title: 'Vind een les voor uw vak',
+      description: 'Kies een vak en onderwijssector. Bekijk de opdracht en open het leerlingblad dat u met de klas kunt delen.',
+      action: 'Open de lesgids', href: 'lesmateriaal/'
+    },
+    {
+      id: 'leerlingwerk', title: 'Mag ik leerlingwerk delen met AI?',
+      description: 'Loop drie vragen langs voordat u werk van een leerling in een AI-tool invoert. Bekijk welke afspraak u op school moet nagaan.',
+      action: 'Bekijk de drie vragen', href: '#regels-in-de-praktijk'
+    },
+    {
+      id: 'subsidies', title: 'Welke subsidieronde kunt u voorbereiden?',
+      description: 'Bekijk de open en aangekondigde rondes. Controleer bij de verstrekker wie kan aanvragen en welke datum voor uw team telt.',
+      action: 'Bekijk subsidies en calls', href: criteriaHref(FUNDING_CRITERIA)
+    },
+    {
+      id: 'pilot', title: 'Maak afspraken over een AI-proef',
+      description: 'Leg met uw team vast wat u wilt uitproberen, wie mag besluiten en wanneer u stopt of bijstuurt. Kopieer het besluitblad voor uw overleg.',
+      action: 'Vul het besluitblad in', href: '#pilotbesluit'
+    }
+  ];
+  // The edition date is local to the Netherlands. Record the evidence for a dated choice in the maintenance log.
+  const SPOTLIGHT_SELECTIONS = {'2026-12-07': 'lesgids', '2026-12-21': 'toolkeuze'};
+  const SPOTLIGHT_START = Date.UTC(2026, 10, 23);
+  const DAY_MS = 86_400_000;
+  const FORTNIGHT_MS = 14 * DAY_MS;
+  let spotlightTimer;
+
+  function spotlightEdition(day, topics = SPOTLIGHT_TOPICS, selections = SPOTLIGHT_SELECTIONS) {
+    if (!topics.length) return null;
+    // Use UTC for arithmetic on calendar dates, so a clock change never shortens an edition.
+    const period = Math.max(0, Math.floor((Date.parse(day) - SPOTLIGHT_START) / FORTNIGHT_MS));
+    const dateAt = offset => new Date(SPOTLIGHT_START + offset).toISOString().slice(0, 10);
+    const topicAt = index => topics.find(topic => topic.id === selections[dateAt(index * FORTNIGHT_MS)]) || topics[index % topics.length];
+    return {current: topicAt(period), previous: period ? topicAt(period - 1) : null,
+      start: dateAt(period * FORTNIGHT_MS), end: dateAt((period + 1) * FORTNIGHT_MS - DAY_MS)};
+  }
+  function spotlightContent({current, previous, end}) {
+    const endLabel = new Intl.DateTimeFormat('nl-NL', {day:'numeric', month:'long', timeZone:'UTC'}).format(Date.parse(end));
+    return `<div class="spotlight-intro"><span class="spotlight-label">Uitgelicht</span>
+      <span class="spotlight-date">t/m <time datetime="${end}">${endLabel}</time></span>
+      <h2 id="spotlight-heading">${escapeHtml(current.title)}</h2><p>${escapeHtml(current.description)}</p></div>
+      <div class="spotlight-actions"><a class="btn" href="${escapeHtml(current.href)}">${escapeHtml(current.action)} <span aria-hidden="true">→</span></a>
+      ${previous ? `<a class="spotlight-previous" href="${escapeHtml(previous.href)}">Vorige keer: ${escapeHtml(previous.title)}</a>` : ''}</div>`;
+  }
+  function homeSpotlightMarkup() {
+    const edition = spotlightEdition(dutchCalendar.format(Date.now()));
+    return edition ? `<section class="home-spotlight" data-edition="${edition.start}" aria-labelledby="spotlight-heading">${spotlightContent(edition)}</section>` : '';
+  }
+  function refreshHomeSpotlight() {
+    window.clearTimeout?.(spotlightTimer);
+    if (location.hash && location.hash.split('?')[0] !== '#home') return;
+    const block = main.querySelector('.home-spotlight');
+    if (!block) return;
+    const now = Date.now();
+    const edition = spotlightEdition(dutchCalendar.format(now));
+    if (block.dataset.edition !== edition.start) {
+      const focused = block.contains(document.activeElement) && document.activeElement;
+      block.innerHTML = spotlightContent(edition);
+      block.dataset.edition = edition.start;
+      if (focused) block.querySelector(focused.classList.contains('spotlight-previous') ? '.spotlight-previous' : '.btn')?.focus({preventScroll:true});
+    }
+    // At 00:00 UTC Amsterdam is already one or two hours into the new day.
+    const nextDay = Date.parse(edition.end) + DAY_MS;
+    const localHour = new Intl.DateTimeFormat('nl-NL', {hour: '2-digit', hourCycle: 'h23', timeZone: 'Europe/Amsterdam'}).format(nextDay);
+    const wait = nextDay - Number(localHour) * 3_600_000 - now;
+    spotlightTimer = window.setTimeout?.(refreshHomeSpotlight, Math.max(1, Math.min(wait, FORTNIGHT_MS)));
+  }
   function emptyQueryActions() {
     if (!state.q?.trim()) return '';
     const count = activeFilters(state).length ? recordsForCriteria({...state, q: ''}).length : 0;
@@ -2445,10 +2519,7 @@
     const selectedSearch = location.hash.split('?')[0] === '#zoeken' && (state.q?.trim() || FILTER_KEYS.some(key => values(key).length));
     const outcome = selectedSearch ? (resultRecords.length || worksheetCount ? ' data-atlas-search-hits' : ' data-atlas-empty-search') : '';
     const home = !location.hash || location.hash.split('?')[0] === '#home';
-    const spotlight = home && HOME_SPOTLIGHT ? `<section class="home-spotlight" aria-labelledby="spotlight-heading">
-      <div><span class="spotlight-label">Uitgelicht</span><h2 id="spotlight-heading">${escapeHtml(HOME_SPOTLIGHT.title)}</h2>
-      <p>${escapeHtml(HOME_SPOTLIGHT.description)}</p></div>
-      <a class="btn" href="${escapeHtml(HOME_SPOTLIGHT.href)}">${escapeHtml(HOME_SPOTLIGHT.action)} <span aria-hidden="true">→</span></a></section>` : '';
+    const spotlight = home ? homeSpotlightMarkup() : '';
     return `${spotlight}${practiceNavigation()}<header class="result-head"${outcome}><h2 tabindex="-1">${escapeHtml(heading)}</h2>
       <details class="result-options"><summary>Sorteer, vergelijk of deel</summary>
         <div class="result-options-body"><label for="sort">Sorteren</label><select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select>
@@ -3428,6 +3499,7 @@
     }
   }
   let hiddenAt = 0;
+  window.addEventListener?.('pageshow', refreshHomeSpotlight);
   window.addEventListener?.('beforeprint', () => {
     const list = document.querySelector('[data-result-list]');
     if (!list || list.children.length >= resultRecords.length) return;
@@ -3443,6 +3515,7 @@
   document.addEventListener?.('visibilitychange', () => {
     const now = Date.now();
     if (document.hidden) { hiddenAt = now; return; }
+    refreshHomeSpotlight();
     const since = hiddenAt;
     hiddenAt = 0;
     if (!since || !records.some(record => {

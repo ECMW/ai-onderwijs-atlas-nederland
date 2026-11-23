@@ -227,7 +227,7 @@ test('a shared lesson directory selection reopens with the same sector, subject 
   assert.deepEqual(unknown.visible(), cases.map(row => row[0]));
 });
 
-function boot({ replacements = {}, omitted = [], omitGuard = false, fetch, href = 'https://example.org/atlas/?view=public#home' } = {}) {
+function boot({ replacements = {}, omitted = [], omitGuard = false, fetch, now, href = 'https://example.org/atlas/?view=public#home' } = {}) {
   const document = new Element('document');
   document.innerHTML = page.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '');
   document.body = document.querySelector('body');
@@ -239,11 +239,21 @@ function boot({ replacements = {}, omitted = [], omitGuard = false, fetch, href 
   };
   const location = new URL(href); location.replace = value => { location.href = new URL(value, location).href; };
   const storage = { getItem: () => null, setItem() {}, removeItem() {} };
-  const context = vm.createContext({ document, location, URL, URLSearchParams, Intl, Event, fetch,
+  const Clock = now ? class extends Date {
+    constructor(...args) { super(...(args.length ? args : [Date.parse(now)])); }
+    static now() { return Date.parse(now); }
+  } : Date;
+  const context = vm.createContext({ document, location, URL, URLSearchParams, Intl, Event, fetch, Date: Clock,
     dispatchEvent: event => dispatch(event.type, event),
     localStorage: storage, sessionStorage: storage, CSS: { escape: value => value },
     matchMedia: () => ({ matches: false }), scrollTo() {}, scrollBy() {}, scrollY: 0,
-    requestAnimationFrame: callback => callback(), setTimeout, clearTimeout,
+    requestAnimationFrame: callback => callback(),
+    setTimeout(callback, delay, ...args) {
+      const timer = setTimeout(callback, delay, ...args);
+      if (now || delay > 60000) timer.unref();
+      return timer;
+    },
+    clearTimeout,
     addEventListener: (kind, handler) => {
       if (!listeners.has(kind)) listeners.set(kind, []); listeners.get(kind).push(handler);
     }
@@ -561,20 +571,107 @@ test('the actual homepage opens both funding statuses and keeps the full funding
   assert.deepEqual(app.errors, []);
 });
 
-test('home features an actionable tool while the normal search results keep their space', () => {
+function bootSpotlight(now) {
   const catalog = fs.readFileSync(path.join(root, 'catalog.js'), 'utf8');
-  const withSpotlight = value => boot({href:'https://example.org/atlas/', replacements:{
-    'catalog.js':catalog.replace(/const HOME_SPOTLIGHT = [\s\S]*?;\r?\n/, 'const HOME_SPOTLIGHT = ' + JSON.stringify(value) + ';\n')
+  const start = "  addEventListener('hashchange', route); addEventListener('popstate', route); route();";
+  assert.equal(catalog.split(start).length, 2);
+  const app = boot({now, href:'https://example.org/atlas/', replacements:{
+    'catalog.js': catalog.replace(start, 'window.testSpotlight = {spotlightEdition, SPOTLIGHT_TOPICS, SPOTLIGHT_SELECTIONS};\n' + start)
   }});
-  const app = withSpotlight({title:'Werkvorm', description:'Bekijk de opdracht.', action:'Open', href:'#praktijkgids'});
-  const spotlight = app.main.querySelector('.home-spotlight');
-  assert.ok(spotlight);
-  assert.equal(spotlight.querySelector('a').getAttribute('href'), '#praktijkgids');
-  app.navigate('#zoeken?q=les');
-  assert.equal(app.main.querySelector('.home-spotlight'), null);
-  app.navigate('#home');
-  assert.equal(app.main.querySelectorAll('.home-spotlight').length, 1);
-  assert.equal(withSpotlight(null).main.querySelector('.home-spotlight'), null);
+  assert.deepEqual(app.errors, []);
+  return app;
+}
+
+test('spotlight editions keep the same topic for fourteen calendar days, including the turn of the year and daylight saving', () => {
+  const {spotlightEdition} = bootSpotlight('2026-11-23T10:00:00Z').context.testSpotlight;
+  const topics = ['toets', 'lesgids', 'toolkeuze'].map(id => ({id, href:'#' + id}));
+  assert.equal(spotlightEdition('2026-11-23', [], {}), null);
+  for (const [day, start, end, id, previous] of [
+    ['2026-11-23', '2026-11-23', '2026-12-06', 'toets', null],
+    ['2026-12-06', '2026-11-23', '2026-12-06', 'toets', null],
+    ['2026-12-07', '2026-12-07', '2026-12-20', 'lesgids', 'toets'],
+    ['2027-01-01', '2026-12-21', '2027-01-03', 'toolkeuze', 'lesgids'],
+    ['2027-01-04', '2027-01-04', '2027-01-17', 'toets', 'toolkeuze'],
+    ['2027-03-28', '2027-03-15', '2027-03-28', 'toolkeuze', 'lesgids'],
+    ['2027-03-29', '2027-03-29', '2027-04-11', 'toets', 'toolkeuze']
+  ]) {
+    const section = spotlightEdition(day, topics, {});
+    assert.deepEqual([section.start, section.end, section.current.id, section.previous?.id ?? null], [start, end, id, previous], day);
+  }
+  const selected = {'2026-12-07':'toolkeuze', '2026-12-21':'lesgids'};
+  assert.equal(spotlightEdition('2026-12-18', topics, selected).current.id, 'toolkeuze');
+  assert.equal(spotlightEdition('2026-12-21', topics, selected).previous.id, 'toolkeuze');
+  assert.equal(spotlightEdition('2026-12-21', topics, selected).current.id, 'lesgids');
+  assert.equal(spotlightEdition('2026-12-20', topics, {'2026-12-07':'unknown'}).current.id, 'lesgids');
+});
+
+test('the production spotlight defines internal actions and aligned, nonrepeating selections', () => {
+  const {spotlightEdition, SPOTLIGHT_TOPICS: topics, SPOTLIGHT_SELECTIONS: selections} = bootSpotlight('2026-11-23T10:00:00Z').context.testSpotlight;
+  const ids = new Set();
+  for (const {id, title, action, href} of topics) {
+    assert.ok(id && !ids.has(id), id);
+    assert.ok(title.trim() && action.trim(), id);
+    assert.match(href, /^(?:#[\w-]+(?:\?.*)?|[\w-]+\/(?:#[^\s]*)?)$/, id);
+    ids.add(id);
+  }
+  assert.ok(ids.size >= 2);
+  const anchor = Date.parse('2026-11-23'), fortnight = 14 * 86400000;
+  let lastSelected = anchor;
+  for (const [day, id] of Object.entries(selections)) {
+    assert.match(day, /^\d{4}-\d{2}-\d{2}$/);
+    const timestamp = Date.parse(day);
+    assert.ok(Number.isFinite(timestamp) && timestamp >= anchor, day);
+    assert.equal(new Date(timestamp).toISOString().slice(0,10), day);
+    assert.equal((timestamp - anchor) % fortnight, 0, day);
+    assert.ok(ids.has(id), id);
+    assert.equal(spotlightEdition(day).current.id, id, day);
+    lastSelected = Math.max(lastSelected, timestamp);
+  }
+  let previous = null;
+  for (let time = anchor; time <= lastSelected + fortnight * (topics.length + 1); time += fortnight) {
+    const day = new Date(time).toISOString().slice(0, 10);
+    const section = spotlightEdition(day);
+    assert.notEqual(section.current.id, previous, day);
+    assert.equal(section.previous?.id ?? null, previous, day);
+    previous = section.current.id;
+  }
+});
+
+test('the homepage switches at Amsterdam midnight, links to the previous edition and leaves searches unobstructed', () => {
+  for (const [now, day] of [
+    ['2026-12-06T22:59:59Z', '2026-12-06'], ['2026-12-06T23:00:00Z', '2026-12-07'],
+    ['2027-03-28T21:59:59Z', '2027-03-28'], ['2027-03-28T22:00:00Z', '2027-03-29']
+  ]) {
+    const app = bootSpotlight(now);
+    const {current, previous} = app.context.testSpotlight.spotlightEdition(day);
+    const spotlight = app.main.querySelector('.home-spotlight');
+    const href = link => link?.getAttribute('href')?.replaceAll('&amp;', '&') ?? null;
+    assert.equal(href(spotlight.querySelector('a.btn')), current.href, now);
+    assert.equal(href(spotlight.querySelector('a.spotlight-previous')), previous?.href ?? null, now);
+    app.navigate('#zoeken?q=les');
+    assert.equal(app.main.querySelector('.home-spotlight'), null);
+    app.navigate('#home');
+    assert.equal(app.main.querySelectorAll('.home-spotlight').length, 1);
+  }
+});
+
+test('an open homepage updates the spotlight in place at the edition boundary', () => {
+  const app = bootSpotlight('2026-12-06T22:59:59Z');
+  const {spotlightEdition} = app.context.testSpotlight;
+  let refresh, delay;
+  app.context.setTimeout = (callback, wait) => { refresh = callback; delay = wait; };
+  app.dispatch('pageshow');
+  assert.equal(delay, 1000);
+  const list = app.main.querySelector('[data-result-list]');
+  const block = app.main.querySelector('.home-spotlight');
+  block.querySelector('a.btn').focus();
+  app.context.Date.now = () => Date.parse('2026-12-06T23:00:00Z');
+  refresh();
+  const edition = spotlightEdition('2026-12-07');
+  assert.equal(block.querySelector('a.btn').getAttribute('href'), edition.current.href);
+  assert.equal(block.querySelector('a.spotlight-previous').getAttribute('href'), edition.previous.href);
+  assert.equal(app.document.activeElement, block.querySelector('a.btn'));
+  assert.equal(app.main.querySelector('[data-result-list]'), list);
 });
 
 test('the sixth homepage task and direct research links open all three goals and preserve the return context', () => {

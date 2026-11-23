@@ -4,6 +4,26 @@
   "verification_window_days": 90,
   "sources": [
     {
+      "source_id": "esep-survey-ai-teaching-learning-2026",
+      "title": "Survey on artificial intelligence for teaching and learning – Results",
+      "author_or_organisation": "European School Education Platform, Editorial team",
+      "publication_date": "2026-04-08",
+      "url_or_doi": "https://school-education.ec.europa.eu/en/discover/surveys/survey-artificial-intelligence-teaching-and-learning",
+      "source_type": "research_report",
+      "primary_or_secondary": "primary",
+      "topics": ["Professionalisering", "Implementatie en adoptie"],
+      "jurisdiction": "Internationale enquête onder deelnemers uit meer dan 50 landen",
+      "claims_supported": [
+        "Bij vraag 2 meldde 73% van de respondenten AI ten minste deels te gebruiken voor lesplanning en lesmateriaal. Bij vraag 7 noemde 62% toegang tot goedgekeurde, veilige AI-tools als gewenste ondersteuning."
+      ],
+      "reliability_notes": "Het platform publiceerde de vragen en uitkomsten van de eigen enquête. Van de 1.130 antwoorden kwam 54% van docenten in het voortgezet onderwijs.",
+      "limitations": "Het gaat om zelfrapportage. De publicatie geeft geen afzonderlijke resultaten voor Nederland of Atlas-bezoekers en beoordeelt de veiligheid van afzonderlijke toepassingen niet.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active"
+    },
+    {
       "source_id": "sbb-commercieel-medewerker-intern-ordertraject-2023",
       "title": "Commercie – profiel Commercieel medewerker (25874), gewijzigd 2023",
       "author_or_organisation": "Samenwerkingsorganisatie Beroepsonderwijs Bedrijfsleven (SBB)",

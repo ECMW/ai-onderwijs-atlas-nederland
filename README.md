@@ -35,7 +35,9 @@ naam, rechtsvorm of prijs van een aanbieder.
 
 ### Uitgelicht op de startpagina
 
-Met `HOME_SPOTLIGHT` in `catalog.js` kiest de redactie één activiteit op de Atlas. Vul de titel, het concrete resultaat voor de bezoeker, de knoptekst en de interne route in. Met `null` vervalt het hele blok. Open de startpagina na een wissel ook op mobiel en voer de beloofde taak uit. De zoekresultaten behouden hun eigen volgorde.
+Vanaf maandag 23 november 2026 toont de startpagina elke veertien dagen één activiteit. De wissel valt op maandag om 00.00 uur Nederlandse tijd en werkt ook zonder nieuwe publicatie. Vanaf de tweede editie brengt **Vorige keer** bezoekers rechtstreeks naar de vorige activiteit.
+
+De activiteiten staan in `SPOTLIGHT_TOPICS` in `catalog.js`. De volgorde herhaalt zich na de laatste activiteit. Leg voor een onderbouwde redactionele keuze de startdatum en onderwerpcode vast in `SPOTLIGHT_SELECTIONS`. De tests controleren dat twee opeenvolgende edities verschillende onderwerpen hebben. Met een lege onderwerpenlijst vervalt het blok. De [dagelijkse beheerinstructie](docs/daily-maintenance.md#uitgelicht-om-de-twee-weken) beschrijft de afweging.
 
 ## Nieuwe bijdragen
 
