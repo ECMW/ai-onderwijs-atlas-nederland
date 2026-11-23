@@ -54,6 +54,26 @@ class DailyMaintenanceTests(unittest.TestCase):
         event, _ = classify(self.source, state, self.result("same_cosmetic"), self.config)
         self.assertEqual("NO_CHANGE", event["type"])
 
+    def test_new_call_url_with_identical_listing_text_reaches_review(self):
+        source = dict(self.source, allowedRecordTypes=["subsidy", "funding_call"])
+
+        def listing(round_id):
+            page = self.result("base")
+            link = f'<a href="/calls/{round_id}">Subsidie voor onderwijsinnovatie</a>'
+            page.body = page.body.replace("</main>", link + "</main>")
+            return page
+
+        _, baseline = classify(source, {}, listing("eerste-ronde"), self.config)
+        event, state = classify(source, baseline, listing("tweede-ronde"), self.config)
+        self.assertEqual("CHANGED", event["type"])
+        self.assertEqual([], event["removedUnits"])
+        proposals = enrich_and_validate(proposals_for_event(source, event, [], self.config))
+        self.assertEqual(["https://example.test/calls/tweede-ronde"], [p["target"] for p in proposals])
+        self.assertFalse(proposals[0]["publicationAllowed"])
+        repeated, _ = classify(source, state, listing("tweede-ronde"), self.config)
+        self.assertEqual([], repeated["addedUnits"])
+        self.assertEqual(["https://example.test/calls/eerste-ronde"], [u["url"] for u in repeated["removedUnits"]])
+
     def test_04_deadline_change_has_high_priority_proposal(self):
         state = self.baseline()
         event, _ = classify(self.source, state, self.result("deadline_changed"), self.config)
@@ -110,6 +130,22 @@ class DailyMaintenanceTests(unittest.TestCase):
                 _, state = classify(self.source, {}, old, self.config)
                 event, _ = classify(self.source, state, new, self.config)
                 self.assertEqual("NO_CHANGE", event["type"])
+
+    def test_french_application_portal_signals_a_midnight_deadline_change(self):
+        old, new = self.result("base"), self.result("base")
+        old.body = old.body.replace("<p>Deadline 12 juni 2026</p>",
+                                    "<p>Lancement : 20/10/2026 à 11h53</p><h2>Clôture</h2><p>22/01/2027 à 00h00</p>")
+        new.body = old.body.replace("00h00", "12h00")
+        _, state = classify(self.source, {}, old, self.config)
+        self.assertEqual([("22/01/2027", "00:00")], [(d["dateText"], d["deadlineTime"]) for d in state["snapshot"]["deadlineFacts"]])
+        event, _ = classify(self.source, state, new, self.config)
+        self.assertTrue(event["deadlineChanged"])
+        self.assertEqual("12:00", event["current"]["deadlineFacts"][0]["deadlineTime"])
+
+    def test_european_call_timeline_with_english_month_and_trailing_label(self):
+        snapshot = normalize_html("<p>13 May 2027</p><p>Deadline for applicants</p>",
+                                  self.source["baseUrl"], self.config)
+        self.assertEqual(["13 may 2027"], [fact["dateText"] for fact in snapshot["deadlineFacts"]])
 
     def test_legacy_date_without_clock_evidence_is_baselined_once(self):
         state = self.baseline()

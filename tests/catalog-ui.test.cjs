@@ -8,15 +8,15 @@ const catalogue = fs.readFileSync(path.join(__dirname, '..', 'catalog.js'), 'utf
 const boot = "  addEventListener('hashchange', route); addEventListener('popstate', route); route();";
 assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly the route startup');
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
-    pilotSheetText, renderPilotDecision,
+    pilotSheetText, renderPilotDecision, renderWorksheet,
     renderLearningEvidence, renderPracticeGuide, practiceCasesMarkup,
-    commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, newestRecords, newOffersMarkup, papersMarkup, paperRis, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
+    commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, datedOffers, newOffersMarkup, papersMarkup, paperRis, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, bindFacetLists, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
     recordContextMarkup, queryMatchQuality, queryMatches, sortRecords,
     homeFilterPanel, catalogFilterPanel, recordsForCriteria, renderDetail, researchPage, renderAssessment, readAssessmentDraft, assessmentParts, renderTeamTrial,
     suggestionData, criteriaForQuery, relatedThemes, renderPracticeRules, filterKeys: FILTER_KEYS,
     effectiveStatus, statusLabel, trustTone, filterValues, serializeFilterValues,
-    accessLabel, accessOptions: Object.values(ACCESS_LABELS), recordThemes, themeOptions, route,
+    accessLabel, accessOptions: Object.values(ACCESS_LABELS), recordThemes, themeOptions, route, syncFactDisclosure,
     searchForm, bindResultsControls, bindFilterDrawer, bindLessonCopy, sourceActionLabel, sourceCitation, copySourceCitation, meetingSheetMarkup, renderComparison, renderToolChoice,
     options: SORT_OPTIONS, getState: () => state, setState: value => { state = value; }
   };`);
@@ -32,7 +32,7 @@ function record(id, date, title = id) {
 function load(records = [], hash = '#zoeken', overrides = {}) {
   const media = () => ({ matches: false });
   const context = vm.createContext({
-    window: { ATLAS_RECORDS: { records, metadata: {} }, matchMedia: media },
+    window: { ATLAS_RECORDS: { records, metadata: {}, worksheets: require('../data/worksheets.json') }, matchMedia: media },
     document: { querySelector: selector => selector === 'main' ? {} : null },
     localStorage: { getItem: () => null }, location: { hash }, matchMedia: media,
     URLSearchParams, Intl, ...overrides
@@ -41,6 +41,70 @@ function load(records = [], hash = '#zoeken', overrides = {}) {
   context.window.testCatalogue.parseState();
   return context.window.testCatalogue;
 }
+
+test('worksheets copy the pupil task separately from teacher answers and the edited instruction', async () => {
+  const worksheets = require('../data/worksheets.json');
+  for (const [id, worksheet] of Object.entries(worksheets)) {
+    const classPath = 'lesmateriaal/leerling/' + id.slice('werkblad-'.length) + '/';
+    const location = { hash: '#' + id };
+    const controls = new Map();
+    const main = {querySelector(selector) {
+      if (!controls.has(selector)) controls.set(selector, {isConnected: true});
+      return controls.get(selector);
+    }};
+    const copied = [];
+    const clipboard = {writeText: async text => copied.push(text)};
+    const api = load([], location.hash, {
+      window: {ATLAS_RECORDS: {records: [], metadata: {}, worksheets}}, location,
+      document: {querySelector: () => main},
+      sessionStorage: {getItem: () => 'https://example.org/'},
+      navigator: {clipboard}
+    });
+    api.renderWorksheet(id);
+    assert.match(main.innerHTML, /href="#zoeken\?q=les&amp;type=materials"/);
+    assert.ok(main.innerHTML.includes('href="' + classPath + '">Open leerlingblad'));
+    await controls.get('[data-work-copy]').onclick();
+    assert.match(copied[0], /1\. .+\n\n2\. .+\n\n3\. /);
+    for (const task of worksheet.tasks) assert.ok(copied[0].includes(task));
+    for (const entry of worksheet.caseFile || []) {
+      assert.ok(main.innerHTML.includes(entry.label));
+      assert.ok(copied[0].includes(entry.label + '\n' + entry.text));
+      assert.ok(copied[0].includes('Fictief dossier'));
+    }
+    assert.ok(!copied[0].includes('Ik vraag de planning na en laat u weten wat ik hoor.'));
+    assert.doesNotMatch(copied[0], /25% stijging|20% daling|zichtbaar worteltje|waarschijnlijke denkfout|https?:/);
+    main.querySelector('#work-prompt').value = 'Mijn aangepaste instructie';
+    await controls.get('[data-work-prompt]').onclick();
+    assert.equal(copied[1], 'Mijn aangepaste instructie');
+    await controls.get('[data-work-link]').onclick();
+    assert.equal(copied[2], 'https://aionderwijsatlas.nl/' + classPath);
+
+    clipboard.writeText = async () => { throw new Error('Clipboard unavailable'); };
+    const fallback = main.querySelector('.lesson-copy');
+    fallback.focus = () => {};
+    fallback.select = () => { fallback.selected = true; };
+    await controls.get('[data-work-link]').onclick();
+    assert.equal(fallback.value, copied[2]);
+    assert.equal(fallback.hidden, false);
+    assert.equal(fallback.selected, true);
+
+    location.hash += '?van=lesgids&sector=VO&vak=Biologie';
+    api.renderWorksheet(id);
+    assert.ok(main.innerHTML.includes('href="lesmateriaal/#selectie?sector=VO&amp;vak=Biologie"'));
+    location.hash += '&terug=https%3A%2F%2Fexample.org';
+    api.renderWorksheet(id);
+    assert.match(main.innerHTML, /href="#zoeken\?q=les&amp;type=materials"/);
+  }
+});
+
+test('a previous data edition without worksheets still links to the independent pupil page', () => {
+  const main = {};
+  const api = load([], '#werkblad-oefenvragen', {window:{ATLAS_RECORDS:{records:[], metadata:{}}}, document: {querySelector: () => main}});
+  api.renderWorksheet('werkblad-oefenvragen');
+  assert.match(main.innerHTML, /Het werkblad kon niet worden geladen/);
+  assert.match(main.innerHTML, /href="lesmateriaal\/leerling\/oefenvragen\/">Open leerlingblad/);
+  assert.doesNotMatch(main.innerHTML, /data-work-copy|Kopieer mijn instructie/);
+});
 
 test('merged detail links redirect only to a present public record', () => {
   let redirected;
@@ -62,6 +126,9 @@ test('merged detail links redirect only to a present public record', () => {
 test('lesson detail returns fresh tabs to the local directory selection and rejects foreign or unknown return targets', () => {
   for (const [context, expected] of [
     ['van=lesgids&sector=VO&vak=Biologie&doel=poolvos', 'lesmateriaal/#selectie?sector=VO&amp;vak=Biologie&amp;doel=poolvos'],
+    ['van=lesgids&sector=VO&groep=vo', 'lesmateriaal/#selectie?sector=VO&amp;groep=vo&amp;kaart=les-een'],
+    ['van=lesgids&sector=MBO%2CVO&groep=vo', 'lesmateriaal/#selectie?sector=MBO%2CVO&amp;groep=vo&amp;kaart=les-een'],
+    ['van=lesgids&groep=werkbladen', 'lesmateriaal/'], ['van=lesgids&groep=ander', '#zoeken'],
     ['van=lesgids', 'lesmateriaal/'], ['van=https%3A%2F%2Fexample.org', '#zoeken'],
     ['van=lesgids&terug=https%3A%2F%2Fexample.org', '#zoeken'], ['van=lesgids&minuten=-4', '#zoeken'],
     ['van=lesgids&sector=niet-bestaand', '#zoeken'], ['van=lesgids&vak=Nederlands&vak=Duits', '#zoeken']
@@ -313,6 +380,11 @@ test('teachers can reach an assessment agreement from the redesign route, agreem
   assert.ok(load(items, '#zoeken?q=afspraken&type=materials,knowledge').resultsMarkup().includes('href="#toetsafspraak"'));
   assert.ok(load(items, '#zoeken?q=toetsafspraak').suggestionData('Toetsafspraak maken')
     .some(section => section.items.some(item => item.href === '#toetsafspraak')));
+  for (const query of ['AI-bestendige toets', 'toets AI resilient']) {
+    const api = load(items, '#zoeken?q=' + encodeURIComponent(query));
+    assert.ok(api.suggestionData(query).some(section => section.items.some(item => item.href === '#toetsafspraak?start=eigen')));
+    assert.match(api.resultsMarkup(), /href="#toetsafspraak\?start=eigen"/);
+  }
   assert.ok(!load(items, '#zoeken?q=toets&sector=PO').resultsMarkup().includes('href="#toetsafspraak"'));
   assert.ok(!load(items, '#zoeken?q=privacy').resultsMarkup().includes('href="#toetsafspraak"'));
 });
@@ -401,21 +473,77 @@ test('assessment agreements distinguish independent work, optional AI feedback a
   assert.equal(api.assessmentParts({goal,mode:'__proto__',criterion:''}).length, 0);
 });
 
-test('the editable concept preserves choices in its tab and copies the exact classroom text or selects it for manual copying', async () => {
-  const stored = new Map(), storage = {getItem:k => stored.get(k), setItem:(k,v) => stored.set(k,v)};
+function assessmentFormFixture() {
   const goal = {value:'',setCustomValidity() {},focus() { this.focused = true; },reportValidity() { this.validated = true; }};
-  const mode = {value:''}, evidence = {value:''}, criterion = {value:''}, task = {value:''}, alternative = {value:''}, start = {value:''}, clear = {};
+  const mode = {value:''}, evidence = {value:''}, criterion = {value:''}, task = {...goal}, alternative = {value:''};
+  const start = {value:'',focus() {}}, clear = {}, jump = {};
   const compareGoal = {}, applied = {}, preview = {focus() { this.focused = true; }};
   const picks = ['zelfstandig','feedback'].map(key => ({dataset:{assessmentApply:key}}));
   const compare = {open:true,querySelector:() => compareGoal,querySelectorAll:() => picks};
+  const radios = ['zelfstandig','feedback','controleren'].map(key => ({value:key, set checked(value) {
+    if (value) mode.value = key;
+    else if (mode.value === key) mode.value = '';
+  }}));
   const form = {elements:{namedItem:() => mode}, querySelector:s => ({
     '#assessment-goal':goal,'#assessment-evidence':evidence,'#assessment-criterion':criterion,'#assessment-task':task,
     '#assessment-alternative':alternative,'[data-assessment-clear]':clear,'.assessment-compare':compare,'[data-assessment-apply-note]':applied
-  })[s], querySelectorAll:() => [{value:'feedback', set checked(value) { if (!value) mode.value = ''; }}]};
-  const copy = {isConnected:true}, feedback = {}, field = {hidden:true,focus() {},select() { this.selected = true; }};
-  const result = {querySelector:s => ({'[data-assessment-copy]':copy,'[role="status"]':feedback,textarea:field})[s]};
-  const main = {querySelector:s => ({'.assessment-form':form,'[data-assessment-result]':result,'#assessment-start':start,'#assessment-preview-title':preview})[s]};
+  })[s], querySelectorAll:() => radios};
+  const copy = {isConnected:true,focus() { this.focused = true; }}, review = {}, feedback = {}, field = {hidden:true,focus() {},select() { this.selected = true; }};
+  const result = {querySelector:s => ({'[data-assessment-copy]':copy,'[data-assessment-review]':review,'[role="status"]':feedback,textarea:field})[s]};
+  const main = {querySelector:s => ({'.assessment-form':form,'[data-assessment-result]':result,'#assessment-start':start,'#assessment-preview-title':preview,'[data-assessment-jump]':jump})[s]};
   const document = {querySelector:s => s === 'main' ? main : null};
+  return {document, main, form, goal, mode, task, evidence, criterion, alternative, start, clear, compare, compareGoal, picks, applied, preview, result, copy, review, feedback, field};
+}
+
+test('the spotlight opens the saved own question, requires its text and preserves the full question when switching examples', async () => {
+  const ui = assessmentFormFixture();
+  const longQuestion = 'Onderbouw met een gegeven uit de casus. '.repeat(35) + 'Einde van de vraag.';
+  const stored = new Map([
+    ['atlas.toetsafspraak.start','adviesmail'],
+    ['atlas.toetsafspraak', JSON.stringify({task:longQuestion,mode:'feedback',goal:'Een bron wegen.'})]
+  ]);
+  const location = {hash:'#toetsafspraak?start=eigen'};
+  const history = {replaceState:(_state, _title, hash) => { location.hash = hash; }};
+  const storage = {getItem:key => stored.get(key),setItem:(key,value) => stored.set(key,value)};
+  let copied;
+  const api = load([], location.hash, {document:ui.document, location, history, sessionStorage:storage,
+    navigator:{clipboard:{writeText:async text => { copied = text; }}}});
+  api.renderAssessment();
+  assert.ok(ui.main.innerHTML.includes(longQuestion));
+  assert.match(ui.main.innerHTML, /id="assessment-task" rows="4" required/);
+  assert.ok(ui.main.innerHTML.indexOf('id="assessment-task"') < ui.main.innerHTML.indexOf('id="assessment-goal"'));
+  assert.ok(!ui.main.innerHTML.includes('value="adviesmail" selected'));
+  ui.goal.value = 'Een bron wegen.';
+  ui.mode.value = 'feedback';
+  ui.task.value = '  ';
+  ui.form.oninput();
+  assert.ok(!ui.result.innerHTML.includes('data-assessment-copy'));
+  ui.picks[1].onclick();
+  assert.ok(ui.task.focused && ui.task.validated);
+  ui.task.value = longQuestion;
+  ui.form.oninput();
+  await ui.copy.onclick();
+  assert.ok(copied.includes(longQuestion) && copied.includes('Lever je concept en eindversie in.'));
+  ui.evidence.value = 'Verdedig één bronkeuze aan de hand van de casus.';
+  ui.form.oninput();
+  await ui.copy.onclick();
+  assert.ok(copied.includes(ui.evidence.value));
+  ui.start.value = 'voedselweb';
+  ui.start.onchange();
+  assert.equal(location.hash, '#toetsafspraak?start=voedselweb');
+  assert.ok(ui.main.innerHTML.includes('value="voedselweb" selected'));
+  ui.start.value = '';
+  ui.start.onchange();
+  assert.equal(location.hash, '#toetsafspraak?start=eigen');
+  assert.ok(ui.main.innerHTML.includes(longQuestion) && ui.main.innerHTML.includes(ui.evidence.value));
+  assert.match(ui.main.innerHTML, /id="assessment-task" rows="4" required/);
+  assert.equal(stored.get('atlas.toetsafspraak.start'), '');
+  assert.equal(load([], location.hash, {sessionStorage:storage}).readAssessmentDraft().task,longQuestion);
+});
+
+test('the editable concept preserves choices in its tab and copies the exact classroom text or selects it for manual copying', async () => {
+  const stored = new Map(), storage = {getItem:k => stored.get(k), setItem:(k,v) => stored.set(k,v)};
+  const {document, main, form, goal, mode, task, evidence, criterion, alternative, clear, compare, compareGoal, picks, applied, preview, result, copy, feedback, field} = assessmentFormFixture();
   let copied = '';
   const navigator = {clipboard:{writeText:async value => { copied = value; }}};
   const location = {hash:'#toetsafspraak'};
@@ -470,6 +598,96 @@ test('the editable concept preserves choices in its tab and copies the exact cla
   for (const damaged of ['{', 'null', '{"goal":false,"mode":"__proto__","criterion":[]}']) {
     stored.set('atlas.toetsafspraak', damaged);
     assert.ok(!fresh().goal && !fresh().mode);
+  }
+});
+
+test('switching AI roles preserves custom instructions and requires a review before copying, including after a reload', async () => {
+  const stored = new Map();
+  const storage = {getItem:key => stored.get(key),setItem:(key,value) => stored.set(key,value)};
+  let copied;
+  function open(choice = '') {
+    const ui = assessmentFormFixture();
+    const hash = '#toetsafspraak?start=' + (choice || 'eigen');
+    const api = load([], hash, {document:ui.document, sessionStorage:storage,
+      navigator:{clipboard:{writeText:async text => { copied = text; }}}});
+    const draft = api.readAssessmentDraft(choice);
+    for (const key of ['task','goal','mode','evidence','criterion','alternative']) ui[key].value = draft[key];
+    api.renderAssessment();
+    return ui;
+  }
+  const pending = ui => {
+    assert.match(ui.applied.textContent,/Controleer of de ingevulde opdracht/);
+    assert.match(ui.result.innerHTML,/data-assessment-review aria-describedby="assessment-apply-note"/);
+    assert.doesNotMatch(ui.result.innerHTML,/data-assessment-copy/);
+  };
+  let ui = open();
+  assert.match(ui.main.innerHTML,/id="assessment-apply-note" data-assessment-apply-note role="status"/);
+  ui.task.value = 'Schrijf een adviesbrief aan de beheerder.';
+  ui.goal.value = 'Een advies onderbouwen.';
+  ui.evidence.value = 'Vraag AI om twee suggesties.';
+  ui.mode.value = 'feedback';
+  ui.form.oninput();
+  assert.match(ui.result.innerHTML,/data-assessment-copy/);
+  ui.picks[1].onclick();
+  assert.match(ui.result.innerHTML,/data-assessment-copy/);
+  ui.mode.value = 'zelfstandig';
+  ui.form.oninput();
+  pending(ui);
+  assert.match(ui.result.innerHTML,/Vraag AI om twee suggesties/);
+  const adjusted = 'Verdedig mondeling één keuze uit je adviesbrief.';
+  ui.evidence.value = adjusted;
+  ui.form.oninput();
+  const notice = ui.applied.textContent;
+  pending(ui);
+  assert.equal(JSON.parse(stored.get('atlas.toetsafspraak')).reviewRequired,true);
+  const example = open('adviesmail');
+  assert.match(example.result.innerHTML,/data-assessment-copy/);
+  example.picks[0].onclick();
+  pending(example);
+  assert.equal(JSON.parse(stored.get('atlas.toetsafspraak.adviesmail')).reviewRequired,true);
+  ui = open();
+  pending(ui);
+  assert.equal(ui.applied.textContent, notice);
+  assert.equal(ui.evidence.value,adjusted);
+  ui.review.onclick();
+  assert.match(ui.result.innerHTML,/data-assessment-copy/);
+  assert.doesNotMatch(ui.result.innerHTML,/data-assessment-review/);
+  assert.equal(ui.applied.textContent,'');
+  assert.ok(ui.copy.focused);
+  await ui.copy.onclick();
+  assert.ok(copied.includes(adjusted) && copied.includes(ui.task.value));
+  assert.match(open().result.innerHTML,/data-assessment-copy/);
+  const restoredExample = open('adviesmail');
+  pending(restoredExample);
+  restoredExample.clear.onclick();
+  assert.equal(restoredExample.mode.value,'feedback');
+  assert.match(restoredExample.result.innerHTML,/data-assessment-copy/);
+  assert.equal(JSON.parse(stored.get('atlas.toetsafspraak.adviesmail')).reviewRequired,false);
+});
+
+test('each custom assessment field triggers review on changing roles and empty fields use the new defaults immediately', () => {
+  for (const key of ['evidence','criterion','alternative']) {
+    const ui = assessmentFormFixture();
+    const api = load([], '#toetsafspraak?start=eigen', {document:ui.document});
+    api.renderAssessment();
+    ui.task.value = 'Toets de conclusie aan de twee gegeven bronnen.';
+    ui.goal.value = 'Een conclusie verantwoorden.';
+    ui.mode.value = 'controleren';
+    ui.form.oninput();
+    ui.picks[1].onclick();
+    assert.match(ui.result.innerHTML,/data-assessment-copy/);
+    ui[key].value = 'Gebruik één tip om de conclusie te verbeteren.';
+    ui.form.oninput();
+    assert.match(ui.result.innerHTML,/data-assessment-copy/);
+    ui.picks[0].onclick();
+    assert.doesNotMatch(ui.result.innerHTML,/data-assessment-copy/);
+    assert.match(ui.result.innerHTML,/data-assessment-review/);
+    assert.ok(ui.result.innerHTML.includes(ui[key].value));
+    ui[key].value = '  ';
+    ui.form.oninput();
+    assert.match(ui.result.innerHTML,/data-assessment-copy/);
+    assert.doesNotMatch(ui.result.innerHTML,/data-assessment-review|Gebruik één tip/);
+    assert.equal(ui.applied.textContent,'');
   }
 });
 
@@ -557,7 +775,7 @@ test('copying a classroom assignment includes the learner task, reflection and b
     load([item], lessonRoute, { navigator }).bindLessonCopy({ querySelectorAll: () => [button] });
     await button.onclick();
     const text = allowed ? copied : field.value;
-    for (const part of [lesson.question, lesson.task, lesson.reflection, lesson.sourceUrl,
+    for (const part of [lesson.question, 'Leerdoel: ' + lesson.learningGoal, lesson.task, lesson.reflection, lesson.sourceUrl,
       `https://aionderwijsatlas.nl/#item/${item.id}`]) assert.ok(text.includes(part));
     assert.ok(!text.includes(lesson.preparation));
     assert.equal(field.hidden, allowed);
@@ -569,7 +787,9 @@ test('copying a classroom assignment includes the learner task, reflection and b
 test('a shared learner sheet opens independently, prints one assignment and shares its public URL', async () => {
   const location = { hash:'', href:'http://localhost:8000/?atlas-no-count=1' };
   const archived = { ...classroomLessons[0], id:'vorige-editie', status:'archived' };
-  const data = { records:[...classroomLessons, archived], metadata:{} };
+  const older = { ...classroomLessons[0], id:'les-zonder-leerdoel', lessonStart:{...classroomLessons[0].lessonStart} };
+  delete older.lessonStart.learningGoal;
+  const data = { records:[...classroomLessons, archived, older], metadata:{} };
   const main = { focus() {} }, print = {}, share = {}, feedback = {};
   const document = { body:{classList:{remove() {}}}, querySelectorAll: () => [],
     querySelector: selector => ({ main, '[data-print-sheet]':print, '[data-share-sheet]':share, '#action-feedback':feedback })[selector] || null };
@@ -582,6 +802,7 @@ test('a shared learner sheet opens independently, prints one assignment and shar
     assert.ok(cards.includes(`href="${location.hash}">Open leerlingblad</a>`));
     api.route();
     assert.ok(main.innerHTML.includes(item.lessonStart.question));
+    if (item.lessonStart.learningGoal) assert.ok(main.innerHTML.includes(item.lessonStart.learningGoal));
     assert.ok(main.innerHTML.includes(item.lessonStart.task));
     assert.ok(main.innerHTML.includes(item.lessonStart.reflection));
     assert.ok(main.innerHTML.includes(`href="${item.lessonStart.sourceUrl}"`));
@@ -594,6 +815,10 @@ test('a shared learner sheet opens independently, prints one assignment and shar
     assert.match(feedback.textContent, /leerlingblad gekopieerd/);
   }
   assert.equal(printCount, classroomLessons.length);
+  location.hash = '#leerlingblad?item=' + older.id;
+  api.route();
+  assert.ok(main.innerHTML.includes(older.lessonStart.task));
+  assert.ok(!main.innerHTML.includes('learner-goal'));
   for (const hash of ['#leerlingblad', '#leerlingblad?item=onbekend', '#leerlingblad?item=vorige-editie']) {
     location.hash = hash;
     api.route();
@@ -626,7 +851,10 @@ test('books page separates Dutch reading, study and practice books with metadata
   const html = load(books).booksMarkup();
   for (const heading of ['Leesboeken en essays', 'Studieboeken', 'Praktijk- en handboeken']) assert.ok(html.includes(heading));
   for (const title of ['Essayboek', 'Studieboek', 'Praktijkboek']) assert.ok(html.includes(title));
-  for (const detail of ['A. Auteur', '2025', 'ISBN 9780000000001', '80 pagina&#39;s', '<dt>Uitgever</dt>']) assert.ok(html.includes(detail), detail);
+  for (const [label, value] of [['Auteur(s)','A. Auteur'], ['Jaar','2025'], ['ISBN','9780000000001'], ['Omvang','80 pagina&#39;s'], ['Uitgever','Voorbeeld']]) {
+    assert.ok(html.includes(`<div><dt>${label}</dt><dd>${value}</dd></div>`), label);
+  }
+  assert.match(html, /<article class="result-card book-card"[^>]*>[\s\S]*?<h2>[\s\S]*?<dl class="offer-facts">[\s\S]*?<\/dl>\s*<p class="description">[^<]+<\/p>\s*<\/div><div class="card-actions/);
   assert.ok(!html.includes('English book'));
 });
 
@@ -860,13 +1088,127 @@ test('results show the effective status and practical dates before source action
   const call = {...record('call'), recordType:'funding_call', status:'closed_call',
     applicationDeadline:'invalid', fundingDeadline:'2026-09-15'};
   const card = api.simpleCard(call);
-  assert.match(card, /Aanvraag gesloten[\s\S]*Aanvraagdeadline <time datetime="2026-09-15">[^<]+<\/time>[\s\S]*class="card-actions/);
+  assert.match(card, /Aanvraag gesloten[\s\S]*<dt>Aanvraagdeadline<\/dt><dd><time datetime="2026-09-15">[^<]+<\/time>[\s\S]*class="card-actions/);
   const course = {...record('course'), recordType:'training', startDate:'2027-01-14', endDate:'2027-05-13'};
-  assert.match(api.simpleCard(course), /Periode <time datetime="2027-01-14">.*datetime="2027-05-13"/);
-  assert.match(api.simpleCard({...course, endDate:course.startDate}), /Datum <time/);
-  assert.match(api.simpleCard({...course, endDate:null}), /Startdatum <time/);
-  assert.match(api.simpleCard({...course, startDate:null}), /Einddatum <time/);
+  assert.match(api.simpleCard(course), /<dt>Periode<\/dt><dd><time datetime="2027-01-14">.*datetime="2027-05-13"/);
+  assert.match(api.simpleCard({...course, endDate:course.startDate}), /<dt>Datum<\/dt><dd><time/);
+  assert.match(api.simpleCard({...course, endDate:null}), /<dt>Startdatum<\/dt><dd><time/);
+  assert.match(api.simpleCard({...course, startDate:null}), /<dt>Einddatum<\/dt><dd><time/);
   assert.doesNotMatch(api.simpleCard({...course, startDate:null, endDate:'2027-02-30'}), /<time/);
+});
+
+test('the compact catalogue keeps order, detail links, funding deadlines and checked choices', () => {
+  const items = [
+    {...record('call', '', 'Ronde & voorwaarden'), recordType: 'funding_call', status: 'closed_call',
+      fundingDeadline: '2026-09-15', providerName: 'Onderzoek & Onderwijs', sectors: ['HBO', 'WO']},
+    record('guide', '', 'Een <voorbeeld>')
+  ];
+  const route = '#zoeken?sort=az';
+  const cards = load(items, route).resultsMarkup();
+  const sessionStorage = {getItem: key => ({'atlas.resultLayout': 'list', 'atlas.sheetPicks': 'item=call'})[key]};
+  const list = load(items, route, {sessionStorage}).resultsMarkup();
+  const ids = html => [...html.matchAll(/<article[^>]* data-record-id="([^"]+)"/g)].map(match => match[1]);
+  assert.deepEqual(ids(list), ids(cards));
+  assert.match(cards, /value="cards" checked/);
+  assert.match(list, /value="list" checked/);
+  assert.match(list, /<h2><a href="#item\/guide">Een &lt;voorbeeld&gt;<\/a>/);
+  assert.match(list, /Onderzoek &amp; Onderwijs · HBO, WO/);
+  const recent = load(items, '#zoeken?sort=added', {sessionStorage}).resultsMarkup();
+  assert.match(recent, /Toegevoegd 31 dec 2099/);
+  assert.match(list, /Aanvraag gesloten[\s\S]*?Aanvraagdeadline <time datetime="2026-09-15">/);
+  assert.match(list, /data-sheet-pick="call" aria-label="Vergelijken: Ronde &amp; voorwaarden" checked/);
+  assert.doesNotMatch(list, /class="offer-facts"|class="description"/);
+});
+
+test('every offer fact groups its own label and value before the description, actions and comparison control', () => {
+  const item = {...record('workshop', '2026-10-05'), recordType:'training', legacyType:'Training',
+    description:'Beschrijving met <persoonlijke> keuze.', language:['nl'], costType:'free', sectors:['HBO','WO'],
+    applicationDeadline:'2026-11-20', startDate:'2026-12-01', endDate:'2026-12-03', commercialStatus:'commercial',
+    commercialEvidence:{url:'https://example.org/workshop', note:'De aanbieder bevestigt de voorwaarden.', checkedOn:'2026-10-05'}};
+  const api = load([item], '#zoeken?sort=published');
+  const html = api.simpleCard(item, true);
+  const facts = html.match(/<dl class="offer-facts">([\s\S]*?)<\/dl>/)[1];
+  const factGroup = /<div><dt>([^<]+)<\/dt><dd>[\s\S]*?<\/dd><\/div>/g;
+  const labels = [...facts.matchAll(factGroup)].map(match => match[1]);
+  assert.equal(facts.replace(factGroup, '').trim(), '');
+  assert.deepEqual(labels, ['Verschenen op','Aanbieder','Status','Aanmelddeadline','Periode','Commercieel karakter','Kosten','Toegang','Taal','Voor wie','Sectoren']);
+  assert.match(facts, /commercial-label is-commercial/);
+  assert.match(facts, /<div class="sector-chips"><span>HBO<\/span><span>WO<\/span><\/div>/);
+  const sections = ['class="type-label"','<h2>','<dl','</dl>','<p class="description">Beschrijving met &lt;persoonlijke&gt; keuze.</p>',
+    'class="card-actions','>Bekijk details</a>','>Delen via e-mail</a>','data-sheet-pick='];
+  const order = sections.map(section => html.indexOf(section));
+  assert.ok(order.every((position,index) => position >= 0 && (!index || position > order[index-1])));
+  assert.doesNotMatch(api.simpleCard(item), /data-sheet-pick=|<dt>Verschenen op<\/dt>/);
+});
+
+test('a clipped label or value gains one keyboard control and releases it when both fit', () => {
+  let button, focusedTitle = false;
+  const document = {
+    querySelector: selector => selector === 'main' ? {} : null,
+    createElement: tag => {
+      assert.equal(tag, 'button');
+      return {setAttribute(name, value) { this[name] = value; }, remove() { button = null; }};
+    }
+  };
+  const {syncFactDisclosure} = load([], '#zoeken', {document});
+  const label = {textContent:'Commercieel karakter', clientWidth:120, scrollWidth:120};
+  const value = {clientWidth:120, scrollWidth:120, querySelector:() => button, append:control => { button = control; }};
+  const group = {children:[label, value], closest:() => ({querySelector:() => ({focus:() => { focusedTitle = true; }})})};
+  syncFactDisclosure(group);
+  assert.equal(button, undefined);
+  label.scrollWidth = 140;
+  syncFactDisclosure(group);
+  const first = button;
+  assert.equal(first.type, 'button');
+  assert.equal(first['aria-label'], 'Lees het volledige kenmerk: Commercieel karakter');
+  assert.equal(first['aria-haspopup'], 'dialog');
+  label.scrollWidth = 120;
+  value.scrollWidth = 240;
+  syncFactDisclosure(group);
+  assert.equal(button, first);
+  value.clientWidth = 240;
+  document.activeElement = button;
+  syncFactDisclosure(group);
+  assert.equal(button, null);
+  assert.equal(focusedTitle, true);
+});
+
+test('funding cards preserve the documented amount and only show a valid checked opening date', () => {
+  const api = load();
+  const amount = 'Maximaal € 30.000 per aanvraag; totaal voor de ronde € 500.000.';
+  const call = {...record('funding'), recordType:'funding_call', status:'planned', applicationOpenDate:'2027-01-05',
+    applicationDeadline:'2027-03-30', fundingAmount:amount, applicantTypes:['Hogescholen']};
+  const facts = api.simpleCard(call).match(/<dl class="offer-facts">([\s\S]*?)<\/dl>/)[1];
+  assert.ok(facts.includes('<dt>Bedrag</dt><dd>' + amount + '</dd>'));
+  assert.match(facts, /<dt>Aanvragen vanaf<\/dt><dd><time datetime="2027-01-05">/);
+  assert.match(facts, /<dt>Aanvraagdeadline<\/dt><dd><time datetime="2027-03-30">/);
+  assert.match(facts, /<dt>Aanvragers<\/dt><dd>Hogescholen<\/dd>/);
+  assert.doesNotMatch(facts, /<dt>Kosten<\/dt>/);
+  for (const fundingAmount of [null, '  Nog niet ingevuld ', 'Varieert']) {
+    assert.doesNotMatch(api.simpleCard({...call, fundingAmount, applicationOpenDate:'2027-02-30'}), /<dt>(Bedrag|Aanvragen vanaf)<\/dt>/);
+  }
+  assert.doesNotMatch(api.simpleCard({...call, verificationStatus:'needs_review'}), /<dt>(Bedrag|Aanvragen vanaf)<\/dt>/);
+});
+
+test('cards group details and email beside an optional primary source, before the comparison choice', () => {
+  const item = {...record('call'), recordType:'funding_call'};
+  const api = load([item]);
+  for (const sourceUrls of [item.sourceUrls, []]) {
+    const card = api.simpleCard({...item, sourceUrls}, true);
+    const mainActions = card.match(/<div class="offer-main-actions">([\s\S]*?)<\/div>\s*<\/div>\s*<label class="sheet-pick">/)[1];
+    const secondary = mainActions.split('<div class="offer-secondary-actions">');
+    assert.equal(secondary.length, 2);
+    if (sourceUrls.length) assert.match(secondary[0], /class="card-cta primary"[^>]*>Officiële oproep en voorwaarden/);
+    else assert.equal(secondary[0].trim(), '');
+    const labels = [...secondary[1].matchAll(/<a [^>]*>([^<]+)<\/a>/g)].map(match => match[1]);
+    assert.deepEqual(labels, ['Bekijk details','Delen via e-mail']);
+    assert.ok(card.indexOf('<p class="description">') < card.indexOf(mainActions));
+  }
+  const book = {...record('boek'),recordType:'book',bookCategory:'reading',language:['nl']};
+  const bookPage = load([book]).booksMarkup().match(/<article class="result-card book-card"[\s\S]*?<\/article>/)[0];
+  assert.match(bookPage, /class="card-cta primary"[^>]*>Bekijk details/);
+  assert.match(bookPage, /Uitgevers- of auteursbron/);
+  assert.doesNotMatch(bookPage, /offer-secondary-actions|share-email/);
 });
 
 test('a zoned call deadline closes exactly at the published instant and appears in Dutch local time', () => {
@@ -914,34 +1256,69 @@ test('returning to an open detail after its published cutoff refreshes the statu
   assert.doesNotMatch(main.innerHTML, /Open voor aanvragen/);
 });
 
-test('funding entry opens current calls; status navigation preserves the sector and separates portals and closed calls', () => {
+test('funding entry shows open and announced rounds, with matching status links and sector-preserving return', () => {
   const grant = {...record('open'), recordType:'funding_call', legacyType:'Call', status:'open_call',
     availabilityText:'Doorlopend tot het subsidieplafond is bereikt', sectors:['HBO']};
-  const data = [grant, {...grant, id:'planned', status:'planned'}, {...grant, id:'closed', status:'closed_call'},
+  const data = [grant, {...grant, id:'planned', status:'planned'}, {...grant, id:'developing', status:'in_development'}, {...grant, id:'closed', status:'closed_call'},
     {...grant, id:'portal', recordType:'subsidy', legacyType:'Subsidie', status:'available', availabilityText:'Doorlopend / per call'},
     {...grant, id:'other', sectors:['WO']}];
   const home = load(data, '#zoeken?sector=HBO').resultsMarkup();
-  const entry = home.match(/<a class="practice-link" href="([^"]+)"><strong>Subsidies en calls<\/strong>[\s\S]*?<small>1 open/)[1].replaceAll('&amp;', '&');
+  const entry = home.match(/<a class="practice-link" href="([^"]+)"><strong>Subsidies en calls<\/strong>[\s\S]*?<small>1 open · 2 aangekondigd/)[1].replaceAll('&amp;', '&');
   const api = load(data, entry);
   const html = api.resultsMarkup();
-  assert.equal(api.getState().status, 'Open voor aanvragen');
+  assert.equal(api.getState().status, 'Open voor aanvragen,Gepland,In ontwikkeling');
   assert.match(html, /Doorlopend tot het subsidieplafond is bereikt/);
   assert.match(html, /data-record-id="open"/);
-  assert.doesNotMatch(html, /data-record-id="(?:closed|planned|other|portal)"/);
+  assert.match(html, /data-record-id="planned"/);
+  assert.match(html, /data-record-id="developing"/);
+  assert.doesNotMatch(html, /data-record-id="(?:closed|other|portal)"/);
+  assert.match(html, /href="#zoeken\?sector=HBO">← Andere taak/);
   const nav = html.match(/<nav aria-label="Aanvraagstatus">([\s\S]+?)<\/nav>/)[1];
+  assert.match(nav, /aria-current="page">Open en aangekondigd \(3\)/);
+  assert.equal((nav.match(/aria-current="page"/g) || []).length, 1);
   for (const [href, label] of [...nav.matchAll(/<a href="([^"]+)"[^>]*>([^<]+)<\/a>/g)].map(match => match.slice(1))) {
     const target = load(data, href.replaceAll('&amp;', '&'));
     assert.equal(target.getState().sector, 'HBO');
     assert.equal(target.recordsForCriteria(target.getState()).length, Number(label.match(/\((\d+)\)/)[1]));
+    if (label === 'Open (1)') assert.equal(target.getState().status, 'Open voor aanvragen');
+    if (label === 'Aangekondigd (2)') assert.equal(target.getState().status, 'Gepland,In ontwikkeling');
+    assert.ok(target.resultsMarkup().includes('>Open en aangekondigd (3)</a>'));
   }
   assert.match(nav, /Regelingen en overige oproepen \(1\)/);
+  const legacy = load(data, '#zoeken?sector=HBO&type=Subsidie+of+call&status=Gepland').resultsMarkup()
+    .match(/<nav aria-label="Aanvraagstatus">([\s\S]+?)<\/nav>/)[1];
+  assert.match(legacy, /aria-current="page">Aangekondigd \(2\)/);
+  assert.equal((legacy.match(/aria-current="page"/g) || []).length, 1);
   const all = load(data, entry.replace(/&status=[^&]+/, '')).resultsMarkup();
-  assert.deepEqual([...all.matchAll(/data-record-id="([^"]+)"/g)].map(match => match[1]), ['open', 'planned', 'portal', 'closed']);
-  assert.match(api.simpleCard(data[3]), /Regeling of informatiebron/);
+  const sorted = [...all.matchAll(/data-record-id="([^"]+)"/g)].map(match => match[1]);
+  assert.equal(sorted[0], 'open');
+  assert.deepEqual(sorted.slice(1,3).sort(), ['developing', 'planned']);
+  assert.deepEqual(sorted.slice(3), ['portal', 'closed']);
+  assert.match(api.simpleCard(data.find(item => item.id === 'portal')), /Regeling of informatiebron/);
   const empty = load(data, entry.replace('sector=HBO', 'sector=PO')).resultsMarkup();
-  assert.match(empty, /Geen open oproepen bij deze selectie/);
+  assert.match(empty, /Geen subsidies of calls bij deze selectie/);
+  assert.match(load(data, '#zoeken?sector=PO').resultsMarkup(), /0 open · 0 aangekondigd/);
   assert.match(empty, /href="#zoeken\?[^"]*sector=PO[^"]*">Bekijk alle aanvraagstatussen/);
   assert.match(api.simpleCard({...grant, availabilityText:''}), /Geen uiterste datum bevestigd/);
+});
+
+test('funding tile and status links update when an open call closes while an announced round remains', () => {
+  let now = Date.parse('2026-11-23T12:59:59.999Z');
+  const clock = {Date:class extends Date { static now() { return now; } }};
+  const grant = {...record('cutoff'), recordType:'funding_call', legacyType:'Call', status:'open_call'};
+  const data = [{...grant, applicationDeadlineAt:'2026-11-23T14:00:00+01:00'}, {...grant, id:'future', applicationOpenDate:'2026-11-25'}];
+  const home = load(data, '#home', clock);
+  assert.match(home.resultsMarkup(), /1 open · 1 aangekondigd/);
+  now++;
+  const tile = home.resultsMarkup().match(/<a class="practice-link" href="([^"]+)"><strong>Subsidies en calls<\/strong>[\s\S]*?<small>0 open · 1 aangekondigd/);
+  const landing = load(data, tile[1].replaceAll('&amp;', '&'), clock).resultsMarkup();
+  assert.doesNotMatch(landing, /data-record-id="cutoff"/);
+  assert.match(landing, /data-record-id="future"/);
+  assert.match(landing, /aria-current="page">Open en aangekondigd \(1\)/);
+  assert.match(landing, /<span>Open \(0\)<\/span>/);
+  assert.match(load(data, '#zoeken?type=Subsidie+of+call&status=Open+voor+aanvragen', clock).resultsMarkup(), /Geen open oproepen bij deze selectie/);
+  const announced = landing.match(/<a href="([^"]+)">Aangekondigd \(1\)<\/a>/)[1];
+  assert.equal(load(data, announced.replaceAll('&amp;', '&'), clock).getState().status, 'Gepland,In ontwikkeling');
 });
 
 test('funding details show the documented scope of an amount, application conditions and official source before generic facts', () => {
@@ -1107,7 +1484,11 @@ test('subjects use explicit public metadata, allow multiple choices and combine 
   const panel = selected.catalogFilterPanel(['materials', 'knowledge'], ['Docenten'], ['Voorbeeld']);
   const block = panel.match(/<form class="subject-filter">[\s\S]+?<\/form>/)[0];
   assert.match(block, /value="Biologie, Econometrie"/);
-  assert.doesNotMatch(block, /checkbox|<small>|<datalist|suggestion|page-step/);
+  assert.doesNotMatch(block, /checkbox|<select|page-step/);
+  assert.match(block, /name="vak" type="text"[^>]+list="subject-search-options"/);
+  assert.match(block, /aria-describedby="subject-search-hint"/);
+  assert.match(block, /id="subject-search-hint">[^<]+vaklabel[^<]+tekst/);
+  assert.match(block, /<datalist id="subject-search-options"><option value="Biologie"><\/option><option value="Econometrie"><\/option><option value="Wiskunde"><\/option><\/datalist>/);
   const results = selected.resultsMarkup();
   assert.match(results, /data-remove="vak\|Econometrie"/);
   assert.match(results, /data-record-id="biology"[\s\S]*data-record-id="math"/);
@@ -1146,6 +1527,29 @@ test('provider search retains its threshold and remains scoped to providers', ()
   assert.doesNotMatch(list('organization', 12), /class="facet-search"/);
   assert.match(list('organization', 13), /aria-label="Zoek binnen aanbieders"/);
   assert.doesNotMatch(list('sector', 13), /class="facet-search"/);
+});
+
+test('provider facets show matching choices and keep a zero-count selection removable', () => {
+  const options = Array.from({length: 17}, (_, index) => 'Aanbieder ' + index);
+  const counts = new Map(options.map((value, index) => [value, index < 9 ? 0 : 1]));
+  const api = load([], '#zoeken?organization=Aanbieder+1');
+  const markup = api.facet('organization', 'Aanbieder', options, counts);
+  assert.match(markup, /data-facet-option="Aanbieder 0" hidden><input[^>]* disabled>/);
+  assert.match(markup, /data-facet-option="Aanbieder 1" ><input[^>]*checked[^>]*>/);
+  assert.match(markup, /data-facet-option="Aanbieder 9" ><input[^>]+><span>Aanbieder 9<\/span><small>1<\/small>/);
+  assert.doesNotMatch(markup, /class="facet-more"[^>]*hidden/);
+  const eightMatches = load().facet('organization', 'Aanbieder', options, counts);
+  assert.match(eightMatches, /class="facet-more"[^>]*hidden/);
+});
+
+test('a worksheet-only customer mail search offers its MBO filter with a worksheet count', () => {
+  const data = [{...record('onverwant'), sectors:['PO','MBO'], offerCategory:'materials'}];
+  const api = load(data, '#zoeken?q=klantmail');
+  const markup = api.catalogFilterPanel(['materials'], ['Docenten'], []);
+  assert.match(markup, /data-facet-option="MBO" ><input[^>]+><span>MBO<\/span><small>1 werkblad<\/small>/);
+  assert.match(markup, /data-facet-option="PO" hidden><input[^>]+ disabled>/);
+  const incompatible = load(data, '#zoeken?q=klantmail&vak=Biologie').catalogFilterPanel(['materials'], [], []);
+  assert.doesNotMatch(incompatible, /<small>1 werkblad<\/small>/);
 });
 
 test('expanding a facet focuses its first newly visible enabled checkbox and collapsing keeps focus on the button', () => {
@@ -1202,7 +1606,10 @@ test('research page exposes only public record links, current call statuses and 
   assert.match(main.innerHTML, /href="#item\/eur-generative-ai-in-research-emodule"/);
   assert.doesNotMatch(main.innerHTML, /href="#item\/oecd-talis|href="#item\/professional-doctorate/);
   assert.match(main.innerHTML, /Npuls AIDO voor mbo, hbo en wo<\/a> · Gepland/);
-  assert.match(main.innerHTML, /sector=MBO&amp;vak=Wiskunde[^"]*">Bekijk open subsidies en calls/);
+  const open = main.innerHTML.match(/data-open-funding href="([^"]+)">Bekijk open subsidies en calls/)[1];
+  assert.deepEqual(Object.fromEntries(new URLSearchParams(open.replaceAll('&amp;', '&').split('?')[1])), {
+    sector:'MBO', vak:'Wiskunde', type:'Subsidie of call,Subsidie', status:'Open voor aanvragen'
+  });
   setup([talis]).researchPage();
   assert.match(main.innerHTML, /href="#item\/oecd-talis-2024-database-ai-onderwijs"/);
   assert.match(main.innerHTML, /zelfrapportage[\s\S]+formulier/);
@@ -1404,10 +1811,40 @@ test('newest additions and newest publications are separate ordered views', () =
   const newOffer = record('just-published', '2026-09-08');
   newOffer.changeHistory = [{type: 'added', date: '2026-09-08'}];
   const api = load([oldOffer, newOffer]);
-  assert.deepEqual(Array.from(api.newestRecords('added'), r => r.id), ['just-added', 'just-published']);
-  assert.deepEqual(Array.from(api.newestRecords('published'), r => r.id), ['just-published', 'just-added']);
+  assert.deepEqual(Array.from(api.datedOffers('added'), entry => entry.record.id), ['just-added', 'just-published']);
+  assert.deepEqual(Array.from(api.datedOffers('published'), entry => entry.record.id), ['just-published', 'just-added']);
   assert.ok(api.newOffersMarkup('added').includes('Het aanbod zelf kan al langer bestaan'));
   assert.ok(api.newOffersMarkup('published').includes('Gepubliceerd op'));
+});
+
+test('sorting Nieuw aanbod reads each publication date once, including unknown dates', () => {
+  const items = [record('b', '2026-09-09'), record('unknown', ''), record('a', '2026-09-09')];
+  let reads = 0;
+  const api = load(items);
+  for (const item of items) {
+    const date = item.publicationDate;
+    Object.defineProperty(item, 'publicationDate', {get() { reads++; return date; }});
+  }
+  assert.deepEqual(Array.from(api.datedOffers('published'), entry => entry.record.id), ['a', 'b']);
+  assert.equal(reads, items.length);
+});
+
+test('new offers show the active date mode, full notice and date next to each title', () => {
+  const api = load([record('example', '2026-09-09')]);
+  for (const [current, other, activeLabel, dateLabel] of [
+    ['added', 'published', 'Nieuw in de Atlas', 'Toegevoegd'],
+    ['published', 'added', 'Recent gepubliceerd', 'Gepubliceerd op']
+  ]) {
+    const html = api.newOffersMarkup(current);
+    const nav = html.match(/<nav class="new-offers-modes"[^>]*>([\s\S]*?)<\/nav>/)[1];
+    assert.ok(nav.includes(`<span aria-current="page">${activeLabel}</span>`));
+    assert.deepEqual([...nav.matchAll(/href="([^"]+)"/g)].map(match => match[1]), [`#nieuw?volgorde=${other}`]);
+    assert.match(html, /<header[^>]*>\s*<h1>Nieuw aanbod<\/h1><p class="listing-notice">Opname in de Atlas betekent geen goedkeuring, kwaliteitsbeoordeling of aanbeveling van het aanbod of de aanbieder\.<\/p><\/header>/);
+    assert.match(html, /<details class="new-offers-explanation"><summary>[^<]+<\/summary>[\s\S]*?bekende (publicatie|toevoeg)datum\.<\/p>\s*<\/details>/);
+    const firstCard = html.match(/<article class="result-card"[\s\S]*?<\/article>/)[0];
+    assert.ok(firstCard.includes(`<dl class="offer-facts"><div><dt>${dateLabel}</dt><dd><time datetime="`));
+    assert.equal((firstCard.match(/<time /g) || []).length, 1);
+  }
 });
 
 test('unknown recency dates are disclosed rather than invented from verification', () => {
@@ -1415,7 +1852,7 @@ test('unknown recency dates are disclosed rather than invented from verification
   const api = load([unknown]);
   for (const mode of ['added', 'published']) {
     const html = api.newOffersMarkup(mode);
-    assert.ok(html.includes('Bij 1 vermeldingen is deze datum niet vastgelegd'));
+    assert.ok(html.includes('Bij één vermelding ontbreekt deze datum'));
     assert.ok(!html.includes('data-record-id="unknown-date"'));
     assert.ok(html.includes('#zoeken?all=1'));
   }
@@ -1500,7 +1937,7 @@ test('newest Atlas sorting uses the first valid addition and never a fresh verif
   assert.equal(params.get('sector'), 'HBO');
   const html = api.resultsMarkup();
   assert.ok(html.indexOf('data-record-id="a"') < html.indexOf('data-record-id="old"'));
-  assert.ok(html.includes('Toegevoegd aan de Atlas op'));
+  assert.ok(html.includes('<div><dt>Toegevoegd</dt><dd><time'));
   assert.ok(html.includes('Toevoegdatum onbekend'));
   assert.ok(html.includes('Een broncontrole verandert de toevoegdatum niet'));
 });
@@ -1607,7 +2044,7 @@ test('source citations preserve official references without inventing authors or
   assert.ok(text.includes('2001'));
   assert.ok(text.includes('https://official.example.org/report?chapter=1&lang=nl'));
   assert.ok(text.includes('https://official.example.org/appendix'));
-  assert.ok(text.includes(`https://aionderwijsatlas.nl/#item/${encodeURIComponent(item.id)}`));
+  assert.ok(text.includes(`https://aionderwijsatlas.nl/aanbod/${encodeURIComponent(item.id)}/`));
   assert.ok(!/secondary\.example|authoritative\.example|localhost|atlas-no-count|sector=|2099|Auteur:/i.test(text));
   for (const publicationDate of [null, '', '2001-02-30']) {
     const undated = api.sourceCitation({ ...item, publicationDate });
@@ -1615,7 +2052,7 @@ test('source citations preserve official references without inventing authors or
   }
   const sparse = api.sourceCitation({ ...item, providerName: '', publicationDate: null, sourceUrls: [] });
   assert.ok(!/undefined|null/.test(sparse));
-  assert.ok(sparse.includes(`https://aionderwijsatlas.nl/#item/${encodeURIComponent(item.id)}`));
+  assert.ok(sparse.includes(`https://aionderwijsatlas.nl/aanbod/${encodeURIComponent(item.id)}/`));
 });
 
 test('copying a source citation reports success only after the clipboard accepts it', async () => {
@@ -1701,6 +2138,59 @@ test('chosen meeting sheets travel by URL, retain order and only show public rec
   const search = load(items, '#zoeken', {sessionStorage:storage}).resultsMarkup();
   assert.match(search, /href="#overlegblad\?item=second"/);
   assert.match(search, /data-sheet-pick="second"[^>]* checked/);
+});
+
+test('the last operated card offers the next available actions and remembers its checkbox on return', () => {
+  const records = [record('a'), record('b')];
+  const route = '#zoeken?type=materials&sector=VO';
+  const history = {state: {}, replaceState(next) { this.state = next; }};
+  const summary = {};
+  let inline;
+  function checkbox(id) {
+    const links = {
+      insertAdjacentHTML(_position, html) {
+        inline = {id, html, remove() { inline = null; }};
+      },
+      querySelector: () => inline
+    };
+    return {dataset: {sheetPick: id}, closest: () => links};
+  }
+  const inputs = records.map(row => checkbox(row.id));
+  const panel = {
+    querySelector: selector => ({
+      '[data-picked-actions]': summary, '[data-inline-picks]': inline,
+      '[data-result-list]': {children: {length: 48}}
+    })[selector],
+    querySelectorAll: selector => selector === '[data-sheet-pick]' ? inputs : []
+  };
+  const api = load(records, route, {
+    document: {querySelector: selector => selector === 'main' || selector === '#results-panel' ? panel : null},
+    window: {ATLAS_RECORDS: {records, metadata: {}}, history},
+    scrollY: 800
+  });
+  api.bindResultsControls();
+  function choose(index, checked) {
+    inputs[index].checked = checked;
+    inputs[index].onchange();
+  }
+  choose(0, true);
+  assert.equal(inline.id, 'a');
+  assert.match(inline.html, /data-inline-compare[^>]*hidden/);
+  assert.match(inline.html, /data-inline-sheet href="#overlegblad\?item=a"\s*>Open mijn overlegblad \(1\)/);
+  assert.match(inline.html, /<span\s*>Kies nog een/);
+  choose(1, true);
+  assert.equal(inline.id, 'b');
+  assert.match(inline.html, /data-inline-compare href="#vergelijken\?item=a&amp;item=b"\s*>/);
+  assert.match(inline.html, /data-inline-sheet href="#overlegblad\?item=a&amp;item=b"\s*>/);
+  inline.onclick({target: {closest: () => true}});
+  assert.deepEqual({...history.state.atlasResults}, {route, shown: 48, y: 800, focusId: 'b', focusControl: 'pick'});
+  choose(1, false);
+  assert.equal(inline.id, 'b');
+  assert.match(inline.html, /data-inline-compare[^>]*hidden/);
+  assert.match(inline.html, /Open mijn overlegblad \(1\)/);
+  choose(0, false);
+  assert.equal(inline, null);
+  assert.equal(summary.hidden, true);
 });
 
 test('the tool guide contrasts two published teaching situations, preserves source limits and keeps decisions on the page', () => {
@@ -1940,6 +2430,87 @@ test('comparing AI tools is reachable directly from the search box', () => {
     assert.match(api.resultsMarkup(), /data-question-route href="#toolkeuze"/);
     assert.equal(api.getState().vak, 'Biologie');
   }
+});
+
+test('worksheet routes help with preparation queries without counting worksheets as catalogue records', () => {
+  const exercises = '#werkblad-oefenvragen', biology = '#werkblad-biologiepracticum';
+  for (const [query, href, filters] of [
+    ['tijd besparen', exercises], ['Hoe kan ik als docent tijd besparen bij mijn les?', exercises],
+    ['lesvoorbereiding', exercises], ['oefenvragen maken', exercises], ['Hoe maak ik quizvragen?', exercises],
+    ['biologie practicum', biology], ['Hoe bereid ik een practicum voor biologie voor?', biology],
+    ['practicum', biology, 'sector=VO&vak=Biologie&type=materials'], ['kiemproef', biology]
+  ]) {
+    const api = load([], '#zoeken?' + (filters || ''));
+    assert.equal(api.suggestionData(query)[0].items[0].href, href, query);
+    api.setState(api.criteriaForQuery(query));
+    assert.equal(api.recordsForCriteria(api.getState()).length, 0, query);
+    const html = api.resultsMarkup();
+    assert.ok(html.includes(`data-question-route href="${href}"`), query);
+    assert.match(html, /1 werkblad voor ‘/);
+    assert.match(html, /data-atlas-search-hits/);
+    assert.doesNotMatch(html, /data-atlas-empty-search/);
+    assert.match(api.catalogFilterPanel([], [], []), /class="apply btn">Toon 1 werkblad</);
+    assert.match(html, /Geen andere treffers in de catalogus/);
+    assert.doesNotMatch(html, /0 resultaten voor|Uw zoekopdracht levert/);
+  }
+});
+
+test('worksheet links from search and lesson navigation follow the chosen subject, sector and material filters', () => {
+  const exercises = '#werkblad-oefenvragen', biology = '#werkblad-biologiepracticum';
+  for (const [query, filters] of [
+    ['biologie practicum', 'sector=MBO'], ['biologie practicum', 'vak=Geschiedenis'],
+    ['practicum', 'vak=Scheikunde'], ['biologie practicum voor hoger onderwijs', ''],
+    ['tijd besparen bij de administratie', ''], ['training oefenvragen', ''], ['oefenvragen', 'type=Training'],
+    ['tijd besparen', 'language=en'], ['tijd besparen', 'organization=Voorbeeld']
+  ]) {
+    const api = load([], '#zoeken?' + filters);
+    const options = api.suggestionData(query).flatMap(section => section.items);
+    assert.ok(!options.some(option => option.href.startsWith('#werkblad-')), query + ' / ' + filters);
+    api.setState(api.criteriaForQuery(query));
+    assert.doesNotMatch(api.resultsMarkup(), /data-question-route href="#werkblad-/, query + ' / ' + filters);
+  }
+  const lesson = filters => load([], '#zoeken?q=les&type=materials&' + filters).resultsMarkup();
+  const vo = lesson('sector=VO&vak=Biologie'), mbo = lesson('sector=MBO&vak=Nederlands');
+  assert.ok(!vo.includes(`data-question-route href="${exercises}"`));
+  assert.ok(vo.includes(`data-question-route href="${biology}"`));
+  assert.ok(!mbo.includes(`data-question-route href="${exercises}"`));
+  assert.ok(lesson('vak=Rekenen').includes(`data-question-route href="${exercises}"`));
+  assert.match(mbo, /href="lesmateriaal\/#selectie\?sector=MBO&amp;vak=Nederlands"/);
+  assert.match(lesson('sector=MBO,VO&vak=Nederlands'), /href="lesmateriaal\/#selectie\?sector=MBO%2CVO&amp;vak=Nederlands"/);
+  assert.match(lesson('sector=VO&vak=Biologie,Handel'), /href="lesmateriaal\/#selectie\?sector=VO&amp;vak=Biologie%2CHandel"/);
+  assert.match(mbo, /1 werkblad voor ‘les’/);
+  assert.equal((mbo.match(/data-question-route href="#werkblad-klantmail"/g) || []).length, 1);
+  assert.ok(!mbo.includes(biology));
+  const entry = {...record('biology',null,'Een biologie practicum'), subjects:['Biologie']};
+  const mixed = load([entry], '#zoeken?q=biologie%20practicum').resultsMarkup();
+  assert.match(mixed, /1 resultaat en 1 werkblad voor ‘biologie practicum’/);
+  assert.ok(mixed.includes(`data-question-route href="${biology}"`));
+  assert.doesNotMatch(mixed, /Geen andere treffers/);
+});
+
+test('the customer email worksheet follows mbo lesson intent and keeps conflicting selections out', () => {
+  const href = '#werkblad-klantmail';
+  for (const [query, filters, expected] of [
+    ['klantmail', '', true], ['klantmail controleren', 'vak=Handel', true],
+    ['klantmail schrijven mbo', 'vak=Nederlands', true], ['zakelijke e-mail controleren', '', true],
+    ['AI-antwoord aan een klant controleren', 'sector=MBO', true],
+    ['klantmail middelbaar beroepsonderwijs', '', true],
+    ['klantmail voor het hoger onderwijs', '', false], ['klantmail controleren vmbo', '', false],
+    ['klantmail schrijven', 'sector=VO', false],
+    ['klantmail', 'vak=Biologie', false], ['klantmail', 'type=Training', false],
+    ['software voor klantmails', '', false], ['klantmail automatisch versturen', '', false],
+    ['hoe werkt mijn mailbox', '', false]
+  ]) {
+    const api = load([], '#zoeken?' + filters);
+    const options = api.suggestionData(query).flatMap(section => section.items);
+    assert.equal(options.some(option => option.href === href), expected, query + ' / ' + filters);
+    api.setState(api.criteriaForQuery(query));
+    assert.equal(api.resultsMarkup().includes(`data-question-route href="${href}"`), expected, query + ' / ' + filters);
+  }
+  const lesson = filters => load([], '#zoeken?q=les&type=materials&' + filters).resultsMarkup();
+  assert.ok(lesson('sector=MBO&vak=Handel').includes(href));
+  assert.ok(!lesson('sector=MBO&vak=Geschiedenis').includes(href));
+  assert.ok(!lesson('sector=VO&vak=Nederlands').includes(href));
 });
 
 test('teacher questions offer real routes without silently changing the selected subject or sector', () => {

@@ -108,14 +108,14 @@ class ContentExtractor(HTMLParser):
 
 DATE_PATTERN = re.compile(
     r"(?:\b\d{4}-\d{2}-\d{2}\b|\b\d{1,2}[-/.]\d{1,2}[-/.]\d{4}\b|"
-    r"\b\d{1,2}\s+(?:januari|februari|maart|april|mei|juni|juli|augustus|"
-    r"september|oktober|november|december)\s+\d{4}\b)", re.I
+    r"\b\d{1,2}\s+(?:januari|january|februari|february|maart|march|april|mei|may|"
+    r"juni|june|juli|july|augustus|august|september|oktober|october|november|december)\s+\d{4}\b)", re.I
 )
-DATE_BEFORE_CLOCK = re.compile(DATE_PATTERN.pattern + r"\s*,?\s*(?:(?:om|at)\s*)?$", re.I)
+DATE_BEFORE_CLOCK = re.compile(DATE_PATTERN.pattern + r"\s*,?\s*(?:(?:om|at|a)\s*)?$", re.I)
 CLOCK_BLOCK_TAGS = {"p", "div", "li", "tr", "section", "article", "aside", "h1", "h2", "h3", "h4", "h5", "h6"}
 DEADLINE_CLOCK = re.compile(
-    r"\s*,?\s*(?:(?:om|at)\s+)?(?P<hour>[01]?\d|2[0-3])"
-    r"(?:[:.](?P<minute>[0-5]\d)(?!\d|[:.]\d)|(?=\s*(?:uur\b|[ap]\.?m\b)))"
+    r"\s*,?\s*(?:(?:om|at|a)\s+)?(?P<hour>[01]?\d|2[0-3])"
+    r"(?:[:.h](?P<minute>[0-5]\d)(?!\d|[:.]\d)|(?=\s*(?:uur\b|[ap]\.?m\b)))"
     r"\s*(?:uur\b|(?P<meridiem>[ap])\.?m\b\.?)?"
     r"(?:\s*\(?\s*(?P<zone>cest|cet|utc|gmt|brussels (?:local )?time)\b"
     r"(?:\s*(?P<sign>[+-])(?P<offset_hour>[01]?\d|2[0-3])(?::?(?P<offset_min>[0-5]\d))?(?!\d))?)?", re.I,
@@ -147,10 +147,12 @@ def normalize_html(html: str, base_url: str, config: dict) -> dict:
     clock_text = "".join(("|" if i in parser.block_breaks else " ") + part
                          for i, part in enumerate(parser.parts))[1:]
     terms = [fold(x) for x in config["classification"]["deadlineTerms"]]
+    prefix_terms = [fold(x) for x in config["classification"].get("deadlinePrefixTerms", [])]
     deadlines = []
     for match in DATE_PATTERN.finditer(text):
-        context = text[max(0, match.start() - 90):match.end() + 30]
-        if any(term in context for term in terms):
+        before = text[max(0, match.start() - 90):match.start()]
+        context = before + text[match.start():match.end() + 30]
+        if any(term in context for term in terms) or any(term in before for term in prefix_terms):
             deadlines.append({"dateText": match.group(0), "context": context[:180],
                               "deadlineTime": deadline_clock(clock_text[match.end():match.end() + 30])})
     relevant_terms = [fold(term) for term in config["classification"].get("relevantTerms", [])]

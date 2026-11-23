@@ -48,7 +48,8 @@ class Element {
     selector = selector.replace(/:checked/g, '');
     const tag = /^[a-z][\w-]*/i.exec(selector)?.[0];
     if (tag && this.tagName !== tag.toUpperCase()) return false;
-    for (const [, kind, value] of selector.matchAll(/([.#])([\w-]+)/g)) {
+    const outsideAttributes = selector.replace(/\[[^\]]*\]/g, '');
+    for (const [, kind, value] of outsideAttributes.matchAll(/([.#])([\w-]+)/g)) {
       if (kind === '.' ? !this.classList.contains(value) : this.attributes.id !== value) return false;
     }
     for (const [, key, operation, value] of selector.matchAll(/\[([\w-]+)(?:(\^?=)"([^"]*)")?\]/g)) {
@@ -85,8 +86,23 @@ class Element {
   setAttribute(name, value) { this.attributes[name] = String(value); }
   removeAttribute(name) { delete this.attributes[name]; }
   addEventListener() {}
-  focus() {}
+  focus() { this.closest('document').activeElement = this; }
   getBoundingClientRect() { return { top: 0, bottom: 0 }; }
+}
+
+function checkSkipLink(document, location, window) {
+  const href = location.href;
+  const main = document.querySelector('main');
+  let focused, scrolledTo;
+  main.focus = () => { focused = main; };
+  window.scrollTo = options => { scrolledTo = options.top; };
+  const skip = document.querySelector('a.skip');
+  const activation = new Event('click', {cancelable:true});
+  skip.onclick?.(activation);
+  if (!activation.defaultPrevented) location.hash = skip.getAttribute('href');
+  assert.equal(location.href, href);
+  assert.equal(focused, main);
+  assert.equal(scrolledTo, 0);
 }
 
 test('a shared lesson directory selection reopens with the same sector, subject and goal, and reset restores all lessons', async () => {
@@ -94,32 +110,51 @@ test('a shared lesson directory selection reopens with the same sector, subject 
   const template = fs.readFileSync(path.join(__dirname, '../scripts/lesson_directory.html'), 'utf8');
   const cases = [
     ['doelles', 'VO', 'Biologie', 'Voedselweb tekenen'], ['ander-niveau', 'HBO', 'Biologie', 'Voedselweb tekenen'],
-    ['ander-vak', 'VO', 'Aardrijkskunde', 'Voedselweb tekenen'], ['ander-doel', 'VO', 'Biologie', 'Planten herkennen']
+    ['ander-vak', 'VO', 'Aardrijkskunde', 'Voedselweb tekenen'], ['ander-doel', 'VO', 'Biologie', 'Planten herkennen'],
+    ['kiemproef', 'VO', 'Biologie', 'Een eerlijke vergelijking bij kieming'], ['oefenvragen', '', 'Wiskunde', 'Procenten berekenen']
   ];
   function open(href) {
     const location = new URL(href), document = new Element('document'), events = new EventTarget();
-    const cards = cases.map(([id, sector]) => '<article data-id="' + id + '"><span data-directory-sectors="' + sector +
-      '"></span><span data-directory-subject></span><span data-directory-goal></span><a class="directory-card-link" href="../#item/' + id + '"></a></article>');
-    document.innerHTML = template.replace('$sections', '<section aria-labelledby="groep">' + cards.join('') + '</section>');
+    const cards = cases.map(([id, sector]) => {
+      const worksheet = id === 'kiemproef' || id === 'oefenvragen';
+      const pupil = worksheet ? '<a class="pupil" href="./leerling/' + id + '/"></a>' : '';
+      return '<article data-id="' + id + '"' + (worksheet ? ' data-worksheet' : '') + '><span data-directory-sectors="' + sector +
+        '"></span><h3></h3><span data-directory-subject></span><span data-directory-goal></span>' + pupil +
+        '<a class="directory-card-link" href="../#' + (worksheet ? 'werkblad-' : 'item/') + id + '"></a></article>';
+    });
+    document.innerHTML = template.replace('$sector_options', ['VO', 'MBO', 'HBO'].map(id => '<option value="' + id + '"></option>').join(''))
+      .replace('$sections', '<section aria-labelledby="vo">' + cards.slice(0, 4).join('') +
+      '</section><section aria-labelledby="werkbladen">' + cards.slice(4).join('') + '</section>');
     const form = document.querySelector('[data-directory-filter]');
+    document.createElement = name => new Element(name);
+    const select = form.querySelector('[data-filter-sector]');
+    select.append = option => {
+      select.children.push(option);
+      option.remove = () => { select.children = select.children.filter(other => other !== option); };
+    };
     document.querySelectorAll('article').forEach((card, i) => {
       card.querySelector('[data-directory-subject]').textContent = cases[i][2];
       card.querySelector('[data-directory-goal]').textContent = cases[i][3];
+      card.querySelector('h3').scrollIntoView = () => { document.scrolledCard = card.dataset.id; };
     });
     const fields = form.querySelectorAll('input,select');
     for (const field of fields) field.validity = {valid:true};
     form.addEventListener = events.addEventListener.bind(events);
     form.reportValidity = () => true;
     let copied;
-    vm.runInNewContext(script, {document, location, URLSearchParams, window:new EventTarget(),
+    const window = new EventTarget();
+    vm.runInNewContext(script, {document, location, URLSearchParams, window,
       history:{replaceState:(_, __, url) => { location.href = new URL(url, location).href; }},
       navigator:{clipboard:{writeText:async url => { copied = url; }}}, requestAnimationFrame:callback => callback()});
-    return {form, location, events, visible:() => document.querySelectorAll('article').filter(card => !card.hidden).map(card => card.dataset.id),
+    return {form, location, events, document, skip:() => checkSkipLink(document, location, window),
+      visible:() => document.querySelectorAll('article').filter(card => !card.hidden).map(card => card.dataset.id),
       share:async () => { await form.querySelector('[data-share-lessons]').onclick(); return copied; },
       reset:() => { fields.forEach(field => { field.value = ''; }); events.dispatchEvent(new Event('reset')); }};
   }
   const base = 'https://example.org/lesmateriaal/';
   const original = open(base + '?atlas-no-count=1');
+  assert.ok(!original.form.querySelector('[data-more-filters]').open);
+  assert.equal(original.form.querySelector('[data-selection-actions]').hidden, true);
   for (const [field, value] of [['sector','VO'], ['subject','Biologie'], ['goal','voedselweb']]) {
     original.form.querySelector('[data-filter-' + field + ']').value = value;
     original.events.dispatchEvent(new Event('input'));
@@ -130,13 +165,69 @@ test('a shared lesson directory selection reopens with the same sector, subject 
   const shared = await original.share();
   assert.equal(shared, base + hash);
   const reopened = open(shared);
+  assert.equal(reopened.form.querySelector('[data-more-filters]').open, true);
+  assert.equal(reopened.form.querySelector('[data-more-count]').textContent, ' (1 actief)');
+  assert.equal(reopened.form.querySelector('[data-selection-actions]').hidden, false);
+  reopened.skip();
   assert.deepEqual(reopened.visible(), ['doelles']);
   reopened.reset();
   assert.deepEqual(reopened.visible(), cases.map(row => row[0]));
   assert.equal(reopened.location.href, base);
+  assert.equal(reopened.form.querySelector('[role="status"]').textContent, '2 werkbladen en 4 lesstarts');
+  const selected = open(base + '#selectie?sector=VO&vak=biologie');
+  assert.equal(selected.form.querySelector('[role="status"]').textContent, '1 werkblad en 2 lesstarts');
+  const sheet = selected.document.querySelector('[data-id="kiemproef"]');
+  assert.equal(sheet.querySelector('.pupil').getAttribute('href'), './leerling/kiemproef/');
+  assert.equal(sheet.querySelector('.directory-card-link').getAttribute('href'), '../#werkblad-kiemproef?van=lesgids&sector=VO&vak=biologie&groep=werkbladen');
+  const filters = '#selectie?sector=VO&vak=biologie';
+  for (const [group, slug, target] of [['werkbladen','werkblad-kiemproef','kiemproef'], ['vo','ander-doel','ander-doel']]) {
+    const returned = open(base + filters + '&groep=' + group + '&kaart=' + slug);
+    assert.equal(returned.document.activeElement, returned.document.querySelector('[data-id="' + target + '"] h3'));
+    assert.equal(returned.document.scrolledCard, target);
+    assert.equal(await returned.share(), base + filters);
+  }
+  for (const extra of ['', '&groep=vo&kaart=onbekend', '&groep=vo&kaart=ander-vak',
+    '&groep=vo&kaart=werkblad-kiemproef', '&groep=vo&groep=werkbladen&kaart=doelles']) {
+    const direct = open(base + filters + extra);
+    assert.equal(direct.document.activeElement, undefined);
+    assert.equal(direct.document.scrolledCard, undefined);
+    assert.deepEqual(direct.visible(), selected.visible());
+  }
+  const duration = selected.form.querySelector('[data-filter-minutes]');
+  duration.value = '90';
+  duration.valueAsNumber = 90;
+  selected.events.dispatchEvent(new Event('input'));
+  assert.equal(selected.visible().length, 0);
+  const differentSector = open(base + '#selectie?sector=HBO&vak=wiskunde');
+  assert.equal(differentSector.visible().length, 0);
+  const combined = open(base + '#selectie?sector=HBO%2CVO&vak=Biologie%2CAardrijkskunde');
+  assert.deepEqual(combined.visible(), ['doelles','ander-niveau','ander-vak','ander-doel','kiemproef']);
+  assert.equal(combined.form.querySelector('[data-filter-sector]').value, 'HBO,VO');
+  assert.equal(combined.form.querySelector('[data-filter-sector]').children.at(-1).textContent, 'HBO of VO');
+  assert.equal(await combined.share(), combined.location.href);
+  const canonical = JSON.parse(fs.readFileSync(path.join(root, 'data/data-v2.js'), 'utf8').trim().replace(/^window\.ATLAS_RECORDS=/, '').replace(/;$/, ''));
+  const allSubjects = [...new Set(canonical.records.flatMap(record => record.subjects || []))].sort().join(',');
+  const everySubject = open(base + '#selectie?' + new URLSearchParams({vak:allSubjects}));
+  assert.equal(everySubject.form.querySelector('[data-filter-subject]').value, allSubjects);
+  assert.equal(await everySubject.share(), everySubject.location.href);
+  combined.reset();
+  assert.deepEqual(combined.visible(), cases.map(row => row[0]));
+  assert.ok(combined.form.querySelector('[data-filter-sector]').children.every(option => !option.value.includes(',')));
+  for (const query of ['Onderzoek', 'Overheid', 'Onderzoek%2COverheid']) {
+    const noLessons = open(base + '#selectie?sector=' + query);
+    assert.equal(noLessons.visible().length, 0);
+    assert.equal(noLessons.form.querySelector('[data-filter-sector]').value, decodeURIComponent(query));
+    assert.match(noLessons.form.querySelector('[role="status"]').textContent, /Geen lesmateriaal/);
+  }
+  const unknown = open(base + '#selectie?sector=VO%2COnbekend');
+  assert.deepEqual(unknown.visible(), []);
+  assert.match(unknown.form.querySelector('[role="status"]').textContent, /Onbekende onderwijssector/);
+  assert.ok(unknown.form.querySelector('[data-share-lessons]').disabled);
+  unknown.reset();
+  assert.deepEqual(unknown.visible(), cases.map(row => row[0]));
 });
 
-function boot({ replacements = {}, omitted = [], omitGuard = false, fetch, href = 'https://example.org/atlas/?view=public#home' } = {}) {
+function boot({ replacements = {}, omitted = [], omitGuard = false, fetch, now, href = 'https://example.org/atlas/?view=public#home' } = {}) {
   const document = new Element('document');
   document.innerHTML = page.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '');
   document.body = document.querySelector('body');
@@ -148,11 +239,21 @@ function boot({ replacements = {}, omitted = [], omitGuard = false, fetch, href 
   };
   const location = new URL(href); location.replace = value => { location.href = new URL(value, location).href; };
   const storage = { getItem: () => null, setItem() {}, removeItem() {} };
-  const context = vm.createContext({ document, location, URL, URLSearchParams, Intl, Event, fetch,
+  const Clock = now ? class extends Date {
+    constructor(...args) { super(...(args.length ? args : [Date.parse(now)])); }
+    static now() { return Date.parse(now); }
+  } : Date;
+  const context = vm.createContext({ document, location, URL, URLSearchParams, Intl, Event, fetch, Date: Clock,
     dispatchEvent: event => dispatch(event.type, event),
     localStorage: storage, sessionStorage: storage, CSS: { escape: value => value },
     matchMedia: () => ({ matches: false }), scrollTo() {}, scrollBy() {}, scrollY: 0,
-    requestAnimationFrame: callback => callback(), setTimeout, clearTimeout,
+    requestAnimationFrame: callback => callback(),
+    setTimeout(callback, delay, ...args) {
+      const timer = setTimeout(callback, delay, ...args);
+      if (now || delay > 60000) timer.unref();
+      return timer;
+    },
+    clearTimeout,
     addEventListener: (kind, handler) => {
       if (!listeners.has(kind)) listeners.set(kind, []); listeners.get(kind).push(handler);
     }
@@ -184,6 +285,49 @@ function assertFailure(app) {
     assert.match(app.main.innerHTML, /De atlas kon niet worden geladen/, 'Later routes must preserve the failure');
   }
 }
+
+test('Nieuw aanbod keeps the originating card control on the same page and sort', () => {
+  const app = boot();
+  const saved = new Map();
+  app.context.sessionStorage = {getItem: key => saved.get(key), setItem: (key, value) => saved.set(key, value)};
+  app.context.history = {state: null, replaceState(value) { this.state = value; }};
+  const route = '#nieuw?volgorde=published&pagina=2';
+  app.navigate(route);
+  const link = app.main.querySelectorAll('.offer-secondary-actions a[href^="#item/"]')[6];
+  app.context.scrollY = 2400;
+  link.onclick();
+  const cardId = link.closest('[data-record-id]').dataset.recordId;
+  const outgoing = app.context.history.state.atlasResults;
+  assert.equal(outgoing.focusId, cardId);
+  assert.equal(outgoing.focusControl, 'details');
+  assert.equal(outgoing.y, 2400);
+  app.context.history.state = null;
+  app.navigate(link.getAttribute('href'));
+  const back = app.main.querySelector('.back-results');
+  assert.match(app.main.innerHTML, /Terug naar Nieuw aanbod/);
+  assert.equal(back.getAttribute('href').replaceAll('&amp;', '&'), route);
+  back.onclick();
+  let scrollTop;
+  app.context.scrollTo = options => { scrollTop = options.top; };
+  app.navigate(route);
+  assert.equal(app.context.history.state.atlasResults.focusId, cardId);
+  assert.equal(app.document.activeElement, app.main.querySelector(`[data-record-id="${cardId}"] .offer-secondary-actions a`));
+  assert.equal(scrollTop, 2400);
+  app.navigate('#nieuw?volgorde=added');
+  assert.equal(scrollTop, 0, 'a new sort starts at the page heading');
+});
+
+test('skipping navigation keeps the filtered results and the current learner sheet', () => {
+  const app = boot({href:'https://example.org/atlas/#zoeken?vak=Biologie&sector=VO&type=materials'});
+  for (const content of ['#results-panel', '.learner-sheet']) {
+    if (content === '.learner-sheet') app.navigate('#leerlingblad?item=hhmi-introduction-to-systems');
+    const displayed = app.main.querySelector(content);
+    assert.ok(displayed);
+    checkSkipLink(app.document, app.context.location, app.context);
+    assert.equal(app.main.querySelector(content), displayed);
+  }
+  assert.deepEqual(app.errors, []);
+});
 
 test('a blocked or broken optional analytics script leaves the real Atlas usable', () => {
   const app = boot({ omitted: ['analytics.js'] });
@@ -371,10 +515,52 @@ test('the free subject form applies only the current input and preserves the oth
   assert.deepEqual(Object.fromEntries(new URLSearchParams(history[2].split('?')[1])), {q:'les', sector:'VO', type:'materials'});
 });
 
-test('the actual homepage links to open subsidies and calls, with all statuses reachable', () => {
+test('empty search can edit the query or remove just the term, preserving filters, sort and keyboard focus', t => {
+  const app = boot({href:'https://example.org/atlas/#zoeken?q=zonsverduistering&sector=VO&type=materials&sort=az'});
+  app.context.history = {pushState(_state, _title, href) { app.context.location.hash = href; }};
+  let focused;
+  t.mock.method(Element.prototype, 'focus', function () { focused = this; });
+  const doc = app.document;
+  const query = doc.querySelector('.atlas-search input');
+  let selected = false;
+  query.select = () => { selected = true; };
+  const initial = app.context.location.hash;
+  doc.querySelector('.empty [data-edit-query]').onclick();
+  assert.equal(focused,query);
+  assert.ok(selected);
+  assert.equal(app.context.location.hash, initial);
+  const panel = doc.querySelector('#results-panel');
+  const count = Number(app.main.innerHTML.match(/Toon (\d+) resultaten? zonder zoekterm/)[1]);
+  assert.ok(count > 0);
+  doc.querySelector('.empty [data-clear-query]').onclick();
+  assert.deepEqual(Object.fromEntries(new URLSearchParams(app.context.location.hash.split('?')[1])),
+    {sort:'az',sector:'VO',type:'materials'});
+  assert.match(panel.innerHTML, new RegExp('>' + count + ' resultaten?</h2>'));
+  assert.equal(focused,doc.querySelector('.result-head h2'));
+  doc.querySelector('[data-remove]').onclick();
+  assert.equal(focused,doc.querySelector('.result-head h2'));
+  doc.querySelector('.clear-link').onclick();
+  assert.equal(focused,query);
+  assert.equal(query.value,'');
+  assert.equal(app.context.location.hash,'#zoeken');
+});
+
+test('empty results offer a query edit without promising matches when filters alone also have none', () => {
+  for (const selection of ['vak=onbekend-keuzevak', 'type=Subsidie&vak=onbekend-keuzevak']) {
+    const app = boot({href:'https://example.org/atlas/#zoeken?q=zonsverduistering&' + selection});
+    assert.ok(app.document.querySelector('.empty [data-edit-query]'));
+    assert.equal(app.document.querySelector('.empty [data-clear-query]'), null);
+  }
+  const filtersOnly = boot({href:'https://example.org/atlas/#zoeken?vak=onbekend-keuzevak'});
+  assert.equal(filtersOnly.document.querySelector('.empty [data-edit-query]'), null);
+  assert.match(filtersOnly.main.innerHTML,/geen aanbod met deze combinatie van filters/);
+});
+
+test('the actual homepage opens both funding statuses and keeps the full funding catalogue reachable', () => {
   const app = boot({href:'https://example.org/atlas/'});
   const home = app.main.innerHTML.match(/<a class="practice-link" href="([^"]+)"><strong>Subsidies en calls<\/strong>/);
   assert.ok(home);
+  assert.equal(new URLSearchParams(home[1].replaceAll('&amp;', '&').split('?')[1]).get('status'), 'Open voor aanvragen,Gepland,In ontwikkeling');
   app.navigate(home[1].replaceAll('&amp;', '&'));
   assert.ok(app.document.querySelector('#funding-heading'));
   assert.ok(app.document.querySelector('[aria-label="Aanvraagstatus"]'));
@@ -383,6 +569,109 @@ test('the actual homepage links to open subsidies and calls, with all statuses r
   app.navigate(all[1].replaceAll('&amp;', '&'));
   assert.ok(app.document.querySelector('[data-record-id="nwo-calls-rond-ai-en-onderwijs"]'));
   assert.deepEqual(app.errors, []);
+});
+
+function bootSpotlight(now) {
+  const catalog = fs.readFileSync(path.join(root, 'catalog.js'), 'utf8');
+  const start = "  addEventListener('hashchange', route); addEventListener('popstate', route); route();";
+  assert.equal(catalog.split(start).length, 2);
+  const app = boot({now, href:'https://example.org/atlas/', replacements:{
+    'catalog.js': catalog.replace(start, 'window.testSpotlight = {spotlightEdition, SPOTLIGHT_TOPICS, SPOTLIGHT_SELECTIONS};\n' + start)
+  }});
+  assert.deepEqual(app.errors, []);
+  return app;
+}
+
+test('spotlight editions keep the same topic for fourteen calendar days, including the turn of the year and daylight saving', () => {
+  const {spotlightEdition} = bootSpotlight('2026-11-23T10:00:00Z').context.testSpotlight;
+  const topics = ['toets', 'lesgids', 'toolkeuze'].map(id => ({id, href:'#' + id}));
+  assert.equal(spotlightEdition('2026-11-23', [], {}), null);
+  for (const [day, start, end, id, previous] of [
+    ['2026-11-23', '2026-11-23', '2026-12-06', 'toets', null],
+    ['2026-12-06', '2026-11-23', '2026-12-06', 'toets', null],
+    ['2026-12-07', '2026-12-07', '2026-12-20', 'lesgids', 'toets'],
+    ['2027-01-01', '2026-12-21', '2027-01-03', 'toolkeuze', 'lesgids'],
+    ['2027-01-04', '2027-01-04', '2027-01-17', 'toets', 'toolkeuze'],
+    ['2027-03-28', '2027-03-15', '2027-03-28', 'toolkeuze', 'lesgids'],
+    ['2027-03-29', '2027-03-29', '2027-04-11', 'toets', 'toolkeuze']
+  ]) {
+    const section = spotlightEdition(day, topics, {});
+    assert.deepEqual([section.start, section.end, section.current.id, section.previous?.id ?? null], [start, end, id, previous], day);
+  }
+  const selected = {'2026-12-07':'toolkeuze', '2026-12-21':'lesgids'};
+  assert.equal(spotlightEdition('2026-12-18', topics, selected).current.id, 'toolkeuze');
+  assert.equal(spotlightEdition('2026-12-21', topics, selected).previous.id, 'toolkeuze');
+  assert.equal(spotlightEdition('2026-12-21', topics, selected).current.id, 'lesgids');
+  assert.equal(spotlightEdition('2026-12-20', topics, {'2026-12-07':'unknown'}).current.id, 'lesgids');
+});
+
+test('the production spotlight defines internal actions and aligned, nonrepeating selections', () => {
+  const {spotlightEdition, SPOTLIGHT_TOPICS: topics, SPOTLIGHT_SELECTIONS: selections} = bootSpotlight('2026-11-23T10:00:00Z').context.testSpotlight;
+  const ids = new Set();
+  for (const {id, title, action, href} of topics) {
+    assert.ok(id && !ids.has(id), id);
+    assert.ok(title.trim() && action.trim(), id);
+    assert.match(href, /^(?:#[\w-]+(?:\?.*)?|[\w-]+\/(?:#[^\s]*)?)$/, id);
+    ids.add(id);
+  }
+  assert.ok(ids.size >= 2);
+  const anchor = Date.parse('2026-11-23'), fortnight = 14 * 86400000;
+  let lastSelected = anchor;
+  for (const [day, id] of Object.entries(selections)) {
+    assert.match(day, /^\d{4}-\d{2}-\d{2}$/);
+    const timestamp = Date.parse(day);
+    assert.ok(Number.isFinite(timestamp) && timestamp >= anchor, day);
+    assert.equal(new Date(timestamp).toISOString().slice(0,10), day);
+    assert.equal((timestamp - anchor) % fortnight, 0, day);
+    assert.ok(ids.has(id), id);
+    assert.equal(spotlightEdition(day).current.id, id, day);
+    lastSelected = Math.max(lastSelected, timestamp);
+  }
+  let previous = null;
+  for (let time = anchor; time <= lastSelected + fortnight * (topics.length + 1); time += fortnight) {
+    const day = new Date(time).toISOString().slice(0, 10);
+    const section = spotlightEdition(day);
+    assert.notEqual(section.current.id, previous, day);
+    assert.equal(section.previous?.id ?? null, previous, day);
+    previous = section.current.id;
+  }
+});
+
+test('the homepage switches at Amsterdam midnight, links to the previous edition and leaves searches unobstructed', () => {
+  for (const [now, day] of [
+    ['2026-12-06T22:59:59Z', '2026-12-06'], ['2026-12-06T23:00:00Z', '2026-12-07'],
+    ['2027-03-28T21:59:59Z', '2027-03-28'], ['2027-03-28T22:00:00Z', '2027-03-29']
+  ]) {
+    const app = bootSpotlight(now);
+    const {current, previous} = app.context.testSpotlight.spotlightEdition(day);
+    const spotlight = app.main.querySelector('.home-spotlight');
+    const href = link => link?.getAttribute('href')?.replaceAll('&amp;', '&') ?? null;
+    assert.equal(href(spotlight.querySelector('a.btn')), current.href, now);
+    assert.equal(href(spotlight.querySelector('a.spotlight-previous')), previous?.href ?? null, now);
+    app.navigate('#zoeken?q=les');
+    assert.equal(app.main.querySelector('.home-spotlight'), null);
+    app.navigate('#home');
+    assert.equal(app.main.querySelectorAll('.home-spotlight').length, 1);
+  }
+});
+
+test('an open homepage updates the spotlight in place at the edition boundary', () => {
+  const app = bootSpotlight('2026-12-06T22:59:59Z');
+  const {spotlightEdition} = app.context.testSpotlight;
+  let refresh, delay;
+  app.context.setTimeout = (callback, wait) => { refresh = callback; delay = wait; };
+  app.dispatch('pageshow');
+  assert.equal(delay, 1000);
+  const list = app.main.querySelector('[data-result-list]');
+  const block = app.main.querySelector('.home-spotlight');
+  block.querySelector('a.btn').focus();
+  app.context.Date.now = () => Date.parse('2026-12-06T23:00:00Z');
+  refresh();
+  const edition = spotlightEdition('2026-12-07');
+  assert.equal(block.querySelector('a.btn').getAttribute('href'), edition.current.href);
+  assert.equal(block.querySelector('a.spotlight-previous').getAttribute('href'), edition.previous.href);
+  assert.equal(app.document.activeElement, block.querySelector('a.btn'));
+  assert.equal(app.main.querySelector('[data-result-list]'), list);
 });
 
 test('the sixth homepage task and direct research links open all three goals and preserve the return context', () => {
@@ -472,6 +761,78 @@ test('root and every return home start with 24 cards from the complete catalogue
   app.navigate(''); check();
 });
 
+test('personal offers combine roles, sector and subject while shared selections bypass the local profile', () => {
+  const app = boot();
+  const saved = new Map();
+  app.context.localStorage = {getItem: key => saved.get(key), setItem: (key, value) => saved.set(key, value), removeItem: key => saved.delete(key)};
+  app.navigate('#mijn-atlas');
+  const form = app.main.querySelector('#profile-form');
+  form.querySelector('input[value="Docenten"]').checked = true;
+  form.querySelector('#profile-sector').value = 'VO';
+  form.querySelector('#profile-subject').value = 'biologie';
+  form.oninput();
+  const records = Array.from(app.context.ATLAS_RECORDS.records).filter(app.context.ATLAS_STARTUP.published);
+  const expected = records.filter(row => row.audiences.includes('Docenten') && row.sectors.includes('VO') && row.subjects?.includes('Biologie'));
+  assert.ok(expected.length > 0);
+  assert.equal(form.querySelector('.profile-count').textContent, expected.length + (expected.length === 1 ? ' resultaat' : ' resultaten') + ' bij uw keuzes.');
+  form.onsubmit(new Event('submit'));
+  assert.deepEqual(JSON.parse(saved.get('atlas.persona')), {audience: 'Docenten', sector: 'VO', vak: 'Biologie'});
+  app.dispatch('hashchange');
+  const actual = () => app.main.querySelectorAll('[data-record-id]').map(card => card.dataset.recordId).sort();
+  const homeResults = actual();
+  assert.equal(homeResults.length, Math.min(24, expected.length));
+  assert.ok(homeResults.every(id => expected.some(row => row.id === id)));
+  assert.equal(app.main.querySelector('.persona-indicator a').getAttribute('href'), '#zoeken');
+  app.navigate('#zoeken');
+  assert.ok(actual().some(id => !expected.some(row => row.id === id)));
+  app.navigate('#zoeken?sector=HBO');
+  assert.ok(actual().length > 0);
+  for (const id of actual()) assert.ok(records.find(row => row.id === id).sectors.includes('HBO'));
+  assert.equal(app.main.querySelector('[data-remove="audience|Docenten"]'), null);
+  app.navigate('#home');
+  assert.deepEqual(actual(), homeResults);
+});
+
+test('a profile survives blocked storage for this page and a zero-result profile keeps an all-catalogue link', () => {
+  const app = boot();
+  const blocked = () => { throw Error('Storage blocked'); };
+  app.context.localStorage = {getItem: blocked, setItem: blocked, removeItem: blocked};
+  app.navigate('#mijn-atlas');
+  const form = app.main.querySelector('#profile-form');
+  form.querySelector('#profile-subject').value = 'onbekendvoorbeeldvak';
+  form.oninput();
+  assert.match(form.querySelector('.profile-count').textContent, /Geen passend aanbod/);
+  form.onsubmit(new Event('submit'));
+  app.dispatch('hashchange');
+  assert.equal(app.main.querySelectorAll('[data-record-id]').length, 0);
+  assert.match(app.main.innerHTML, /De browser kon uw keuzes niet bewaren/);
+  assert.equal(app.main.querySelector('.persona-indicator a').getAttribute('href'), '#zoeken');
+  app.main.querySelector('.persona-clear').onclick();
+  assert.ok(app.main.querySelectorAll('[data-record-id]').length > 0);
+});
+
+test('editing a legacy role preserves it, adds a second role, and clears just the profile', () => {
+  const app = boot();
+  const saved = new Map([['atlas.persona', 'Bestuurders'], ['atlas.unrelated', 'blijft']]);
+  app.context.localStorage = {getItem: key => saved.get(key), setItem: (key, value) => saved.set(key, value), removeItem: key => saved.delete(key)};
+  app.navigate('#mijn-atlas');
+  const form = app.main.querySelector('#profile-form');
+  assert.equal(form.querySelector('input[value="Bestuurders"]').checked, true);
+  form.querySelector('input[value="Docenten"]').checked = true;
+  form.onsubmit(new Event('submit'));
+  app.dispatch('hashchange');
+  const records = Array.from(app.context.ATLAS_RECORDS.records).filter(app.context.ATLAS_STARTUP.published);
+  const expected = records.filter(row => row.audiences.some(role => role === 'Docenten' || role === 'Bestuurders'));
+  assert.ok(app.main.innerHTML.includes(expected.length + ' resultaten</h2>'));
+  app.navigate('#mijn-atlas');
+  app.main.querySelector('[data-profile-clear]').onclick();
+  app.dispatch('hashchange');
+  assert.equal(saved.has('atlas.persona'), false);
+  assert.equal(saved.get('atlas.unrelated'), 'blijft');
+  assert.equal(app.main.querySelector('.persona-indicator'), null);
+  assert.ok(app.main.innerHTML.includes(records.length + ' resultaten</h2>'));
+});
+
 test('home rerenders notify optional widgets when a saved role is cleared', () => {
   const app = boot();
   let stored = JSON.stringify(['Docenten']);
@@ -488,6 +849,33 @@ test('home rerenders notify optional widgets when a saved role is cleared', () =
   assert.equal(rendered, 1);
   assert.equal(app.document.querySelector('[data-atlas-visit-count]'), null);
   assert.equal(app.context.ATLAS_STARTUP.status, 'ready');
+});
+
+test('every dashboard type opens exactly the records counted under its label', () => {
+  const app = boot({href: 'https://example.org/atlas/#dashboard'});
+  const records = Array.from(app.context.ATLAS_RECORDS.records).filter(app.context.ATLAS_STARTUP.published);
+  const entries = [...app.main.innerHTML.matchAll(/<a class="stat" href="([^"]+)"><strong>(\d+)<\/strong><span>([^<]+)<\/span>/g)];
+  assert.deepEqual(entries.map(entry => entry[3]).sort(), [...new Set(records.map(record => record.legacyType))].sort());
+
+  for (const [, href, count, label] of entries) {
+    const expected = records.filter(record => record.legacyType === label).map(record => record.id).sort();
+    assert.equal(Number(count), expected.length, label);
+    const oldHref = '#zoeken?type=' + encodeURIComponent(label);
+    for (const route of new Set([href, oldHref])) {
+      app.navigate(route);
+      const list = app.main.querySelector('[data-result-list]');
+      assert.ok(list, route);
+      list.insertAdjacentHTML = (position, html) => {
+        assert.equal(position, 'beforeend');
+        const fragment = new Element();
+        fragment.innerHTML = html;
+        for (const card of fragment.children) { card.parent = list; list.children.push(card); }
+      };
+      const more = app.main.querySelector('[data-more-results]');
+      while (more && !more.hidden) more.onclick();
+      assert.deepEqual(list.children.map(card => card.dataset.recordId).sort(), expected, route);
+    }
+  }
 });
 
 test('the real script order starts the catalogue and retains the mobile menu and informational routes', () => {
@@ -558,4 +946,35 @@ test('a resource load error after startup keeps the Dutch failure visible during
   const app = boot();
   app.dispatch('error', { target: { tagName: 'SCRIPT' } });
   assertFailure(app);
+});
+
+test('the mobile menu returns focus on Escape and closes when focus leaves the header', t => {
+  const handlers = {};
+  t.mock.method(Element.prototype, 'addEventListener', function (type, handler) {
+    if (this.classList.contains('site-header')) handlers[type] = handler;
+  });
+  const { document, main, errors } = boot();
+  assert.deepEqual(errors, []);
+  const header = document.querySelector('.site-header');
+  const menu = document.querySelector('.menu');
+  const firstLink = header.querySelector('nav a');
+  header.contains = target => target?.closest('.site-header') === header;
+  let focused = firstLink;
+  menu.focus = () => { focused = menu; };
+  menu.onclick();
+  handlers.focusout({ relatedTarget: firstLink });
+  assert.equal(menu.getAttribute('aria-expanded'), 'true');
+  let prevented = false;
+  handlers.keydown({ key: 'Escape', preventDefault() { prevented = true; } });
+  assert.ok(prevented);
+  assert.equal(focused, menu);
+  assert.equal(menu.getAttribute('aria-expanded'), 'false');
+  assert.equal(header.classList.contains('open'), false);
+
+  menu.onclick();
+  focused = main;
+  handlers.focusout({ relatedTarget: main });
+  assert.equal(focused, main);
+  assert.equal(menu.getAttribute('aria-expanded'), 'false');
+  assert.equal(header.classList.contains('open'), false);
 });

@@ -3,6 +3,7 @@
 De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijzer voor bestaand aanbod rond AI in het onderwijs. Bezoekers kunnen een zoekterm combineren met een vakgebied, onderwijssector, thema, soort aanbod of doelgroep. [Bekijk lesmaterialen voor biologie in het voortgezet onderwijs](https://aionderwijsatlas.nl/#zoeken?vak=Biologie&sector=VO&type=materials).
 
 - [Publieke Atlas](https://aionderwijsatlas.nl/)
+- [Aanbod van A tot Z](https://aionderwijsatlas.nl/aanbod/) geeft elke publieke vermelding een eigen webadres. De beschrijving, aanbieder en officiële bronnen zijn leesbaar zonder JavaScript. De [JSON-catalogus](https://aionderwijsatlas.nl/aanbod/index.json) bevat dezelfde vermeldingen voor geautomatiseerd gebruik.
 - [Praktijkgids](https://aionderwijsatlas.nl/#praktijkgids) met uitgewerkte toetsvoorbeelden, vragen over leerlingwerk en korte onderzoekssamenvattingen. De [lesgids](https://aionderwijsatlas.nl/lesmateriaal/) laat docenten zelf een vak, leerdoel of activiteit invullen.
 - [Bijdragen en broncode](https://github.com/ECMW/ai-onderwijs-atlas-nederland)
 
@@ -22,7 +23,7 @@ De AI & Onderwijs Atlas Nederland is een gratis, open en brongebaseerde wegwijze
 - op de detailpagina kopieert **Kopieer bronvermelding** de titel, aanbieder, eventuele publicatiedatum, officiële bronnen en Atlas-link; bij geblokkeerd klembord verschijnt selecteerbare tekst;
 - **Overlegblad** bij de zoekresultaten maakt een afdrukbaar overzicht van alle matches, inclusief volledige zoekcriteria, sortering en bronlinks; via de afdrukdialoog kan het ook als PDF worden opgeslagen;
 - met **Kies voor vergelijking of overleg** zet u twee of meer vermeldingen naast elkaar. De vergelijking kan gelijke kenmerken verbergen en is deelbaar met collega's. [Bekijk twee lessen voor het vo](https://ecmw.github.io/ai-onderwijs-atlas-nederland/#vergelijken?item=codeerschool-behind-the-chat-nl&item=mediawijs-edubox-artificiele-intelligentie).
-- persoonlijke rolvoorkeuren blijven lokaal in de browser;
+- in [Mijn profiel](https://aionderwijsatlas.nl/#mijn-atlas) kunt u uw rol, sector of vak bewaren voor uw volgende bezoek in dezelfde browser. **Doorzoek de hele Atlas** opent het volledige aanbod. U kunt uw voorkeuren zelf wijzigen of wissen;
 - er zijn geen cookies, externe autocomplete of eigen backend nodig;
 - GoatCounter telt bezoeken per dag zonder zoektermen of filters te ontvangen;
   de website toont geen openbaar bezoekentotaal.
@@ -32,6 +33,12 @@ Een vermelding is geen goedkeuring, kwaliteitsbeoordeling of aanbeveling. De Atl
 presenteert vaste feitelijke velden. Kosten, toegang en commerciële aard zijn
 afzonderlijke gegevens; onbekende informatie wordt niet ingevuld op basis van de
 naam, rechtsvorm of prijs van een aanbieder.
+
+### Uitgelicht op de startpagina
+
+Vanaf maandag 23 november 2026 toont de startpagina elke veertien dagen één activiteit. De wissel valt op maandag om 00.00 uur Nederlandse tijd en werkt ook zonder nieuwe publicatie. Vanaf de tweede editie brengt **Vorige keer** bezoekers rechtstreeks naar de vorige activiteit.
+
+De activiteiten staan in `SPOTLIGHT_TOPICS` in `catalog.js`. De volgorde herhaalt zich na de laatste activiteit. Leg voor een onderbouwde redactionele keuze de startdatum en onderwerpcode vast in `SPOTLIGHT_SELECTIONS`. De tests controleren dat twee opeenvolgende edities verschillende onderwerpen hebben. Met een lege onderwerpenlijst vervalt het blok. De [dagelijkse beheerinstructie](docs/daily-maintenance.md#uitgelicht-om-de-twee-weken) beschrijft de afweging.
 
 ## Nieuwe bijdragen
 

@@ -9,6 +9,10 @@ De door de eigenaar gemachtigde Atlas-actualisator mag alleen eigen wijzigingen 
 pull request met volledige validatie en verplichte groene checks. Zij mag geen branchbescherming verlagen,
 checks omzeilen of bij brononzekerheid mergen.
 
+## Mijn profiel
+
+De Atlas bewaart gekozen rollen, sector en vak in de browser op het apparaat van de bezoeker. Er is geen e-mailadres of wachtwoord nodig. Op een gedeeld apparaat kan de volgende gebruiker van hetzelfde browserprofiel deze voorkeuren zien. De bezoeker kan het profiel wissen via **Mijn profiel**. Zoekmachines en de openbare JSON-catalogus krijgen dezelfde openbare vermeldingen voor iedereen.
+
 ## Optionele bezoekersmeting
 
 Deze editie koppelt GoatCounter aan Eva's account `ecmw`. Eva heeft de publicatie
@@ -22,7 +26,7 @@ De koppeling kan uit door `atlas-goatcounter-site` in `index.html` leeg te maken
 Na publicatie vraagt de browser
 eenmaal per paginalading een telling aan voor het vaste Atlas-pad. Zoektermen,
 filters, URL-querystrings, fragmenten, verwijzende websites en opgeslagen
-rolvoorkeuren worden niet meegestuurd. De aanvraag sluit cookies en credentials
+profielvoorkeuren worden niet meegestuurd. De aanvraag sluit cookies en credentials
 uit en gebruikt geen browseropslag of extern JavaScript.
 
 De aanbieder ontvangt daarbij technisch wel het IP-adres en browserkenmerken.

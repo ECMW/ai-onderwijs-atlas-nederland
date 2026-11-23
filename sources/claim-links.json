@@ -1,7 +1,46 @@
 {
   "schema_version": "1.0",
-  "last_reviewed": "2026-11-22",
+  "last_reviewed": "2026-11-23",
   "claims": [
+    {
+      "claim_id": "uitgelicht-lesvoorbereiding-en-toolkeuze-2026",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "De Atlas licht in december de lesgids en de keuzehulp voor AI-toepassingen uit. Deze taken sluiten aan op gerapporteerd gebruik en een ondersteuningsvraag in de enquête van het European School Education Platform.",
+      "claim_kind": "atlas_synthesis",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": ["esep-survey-ai-teaching-learning-2026"],
+      "assessment": "Vraag 2 gaat over het gebruik van AI bij lesvoorbereiding. Vraag 7 gaat over gewenste toegang tot goedgekeurde hulpmiddelen. De redactie koppelt deze signalen aan een lesgids en een keuzehulp. Hun populariteit bij Nederlandse Atlas-bezoekers is onbekend.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": false
+    },
+    {
+      "claim_id": "mbo-klantmail-intern-ordertraject",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "Het SBB-profiel Commercieel medewerker beschrijft het controleren van commerciële afspraken, het voorbereiden van logistieke afspraken en planning en het informeren van betrokkenen. Bij afwijkingen overlegt de medewerker met een leidinggevende of ervaren collega.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED",
+      "source_ids": ["sbb-commercieel-medewerker-intern-ordertraject-2023"],
+      "assessment": "P1-K1-W6 op pagina 21 en 22 onderbouwt de beroepscontext voor de docentnotities. De Atlas werkte dit uit als oefening met een conceptmail en fictieve order. Het leereffect en de inzet als examenopdracht zijn niet onderzocht.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": false
+    },
+    {
+      "claim_id": "biologie-practicum-tuinkers-bronopdracht",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "In de NIBI-docentinstructie voor het vmbo ontwerpen leerlingen vanaf leerjaar 2 een kiemproef met een eigen onderzoeksvraag en een controlegroep. Na de opzet observeren ze de tuinkers gedurende twee weken en trekken ze hun eigen conclusie.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED",
+      "source_ids": ["nibi-plantkracht-vmbo-tuinkers"],
+      "assessment": "Dia 1 van de docentinstructie specificeert doelgroep, materialen en de les- en observatietijd. Dia 2 geeft de onderzoeksopzet. De docent spreekt de waarnemingsmomenten af. De bron doet geen uitspraak over het effect van AI-feedback op leren of voorbereidingstijd.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": false
+    },
     {
       "claim_id": "pilotbesluit-schoolleiding-ict-bronnen",
       "location": {

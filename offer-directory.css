@@ -1,0 +1,9 @@
+.offer-directory { overflow-wrap: anywhere; }
+.offer-directory h1 { max-width: 32ch; }
+.offer-directory .offer-letters a { min-width: 2.75rem; justify-content: center; border: 1px solid var(--line); border-radius: .3rem; }
+.offer-directory .offer-letters { gap: .25rem; }
+.offer-directory section > ul { padding-inline-start: 1.3rem; }
+.offer-directory section > ul li { padding-block: .28rem; }
+.offer-directory .offer-provider { color: var(--muted); }
+.offer-directory .offer-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); padding-block: .65rem; gap: .8rem; max-width: 48rem; }
+.offer-directory .offer-facts div { display: block; }

@@ -1,5 +1,17 @@
 # Onderzoekslog bronbasis
 
+## 23 november 2026 · Lesvoorbereiding en toolkeuze uitlichten
+
+De enquête van het European School Education Platform bevat 1.130 antwoorden uit meer dan 50 landen. Deelnemers melden AI-gebruik bij de lesvoorbereiding (vraag 2) en vragen om toegang tot goedgekeurde, veilige hulpmiddelen (vraag 7). De redactie koos daarom de lesgids voor 7 december en de keuzehulp voor 21 december 2026. De keuzehulp biedt vragen om toepassingen te beoordelen. Hoeveel Atlas-bezoekers beide taken hebben, is onbekend. [Onderzoeksresultaten European School Education Platform](https://school-education.ec.europa.eu/en/discover/surveys/survey-artificial-intelligence-teaching-and-learning)
+
+## 23 november 2026 · Een klantmail over een bestelling controleren
+
+Via het openbare kwalificatieregister van SBB is het profiel Commercieel medewerker (25874, niveau 3, versie gewijzigd 2023) geopend. Werkproces P1-K1-W6 op pagina 21 en 22 beschrijft hoe de medewerker orderafspraken controleert, betrokkenen informeert en bij afwijkingen overlegt. De Atlas gebruikt deze beroepshandeling als context voor een eigen oefening met een fictieve bestelling en een conceptmail. Het werkblad is nog niet in een klas beproefd. [SBB, profiel Commercieel medewerker, p. 21–22](https://kwalificatie-mijn.s-bb.nl/Details/DownloadDocument/1967278#page=21)
+
+## 23 november 2026 · Een kiemproef voorbereiden
+
+De NIBI-vindplaats voor *Tuinkers ontkiemen* en de gekoppelde docentinstructie zijn gecontroleerd. De instructie onderscheidt lestijd en waarnemingen over twee weken. De Atlas schreef bij dit materiaal een leerlingopdracht om een proef met twee veranderende omstandigheden te verbeteren. De optionele vraag aan een AI-tool is een Atlas-bewerking. [PlantKracht vmbo, Tuinkers ontkiemen](https://www.nibi.nl/nl/plantkracht-vmbo#art_10431)
+
 ## 2026-09-28 — structurele eerste tranche
 
 ### Doel en afbakening
@@ -178,3 +190,9 @@ De vergelijking van 36 lerarenkaders door [UNESCO IITE](https://iite.unesco.org/
 ## 2026-11-22 — Besluitblad voor schoolleiding, onderwijs en ICT
 
 De bestaande bronkaarten bieden drie verschillende ingangen voor een school- of opleidingsbesluit. Kennisnet behandelt afspraken over onderwijs en gebruik, Npuls de risicoafweging en opvolging voor het vervolgonderwijs en de WaardenWijzer het gesprek over de belangen van betrokkenen. De bespreekversie, de keuze tussen uitvoeren, een kleine proef en uitstellen, en het voorbeeld zijn redactionele uitwerkingen. Het plaatselijke mandaat en het bewijs bij de concrete toepassing blijven bepalend. [Kennisnet](https://www.kennisnet.nl/artificial-intelligence/schoolafspraken-over-het-gebruik-van-generatieve-ai/) · [Npuls](https://npuls.nl/kennisbank/raise-raamwerk-voor-risicobeoordeling-van-ai) · [SURF en Kennisnet](https://www.surf.nl/themas/publieke-waarden/waardenwijzer)
+
+## 2026-11-22 — Twee bronopdrachten op het leerlingblad
+
+Figuur 2 van het HHMI-werkblad vergelijkt eilanden met en zonder poolvossen. Grafiek A gaat over fosfor in de bodem, grafiek B over stikstof in het gras. De Nederlandse voorbeeldzin die de klas met de grafieken onderzoekt, komt uit de bestaande Atlas-lesstart. [HHMI, Introduction to Systems](https://docs.google.com/document/d/1dhy_ADiJ6wpG3MRSvv4qYatKZEe7MQGkTLNDcNtV9Gk/preview)
+
+In onderdeel 3.1 van het UBC-notebook staan de effectschattingen en standaardfouten voor lasso, random forest en boosting onder het codeblok. Studenten kunnen de getoonde uitkomsten voor de Atlas-opdracht in de leesversie raadplegen. [UBC, Double Machine Learning](https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.html#any-learner-in-dml)

@@ -9,6 +9,14 @@
   }
   if (!source || !main) return;
 
+  // The fragment already identifies the visitor's current page and filters.
+  const skipLink = document.querySelector('a.skip');
+  if (skipLink) skipLink.onclick = event => {
+    event.preventDefault();
+    main.focus({preventScroll:true});
+    window.scrollTo({top:0, behavior:'instant'});
+  };
+
   const allRecords = source.records || [];
   const records = allRecords.filter(record =>
     !Object.hasOwn(record, 'publicationExclusion') &&
@@ -75,6 +83,8 @@
     unclassified: 'Aanbodvorm nog niet ingedeeld'
   };
   const PRIMARY_AUDIENCES = ['Docenten', 'Bestuurders', 'IT-professionals', 'Onderzoekers'];
+  const PROFILE_ROLES = ['Docenten', 'Onderwijsontwikkelaars', 'Toetsmakers', 'Schoolleiders', 'Bestuurders',
+    'Beleidsmakers', 'IT-professionals', 'Privacyprofessionals', 'Ondersteunend personeel', 'Onderzoekers', 'Studenten', 'Leerlingen'];
   const SECTORS = ['PO', 'VO', 'MBO', 'HBO', 'WO', 'Onderzoek', 'Overheid'];
   const ACCESS_LABELS = {
     public: 'Publiek toegankelijk', registration_required: 'Registratie nodig',
@@ -167,37 +177,97 @@
 
   let state = {};
   let resultRecords = [];
+  let resultCountLabel = '0 resultaten';
+  let compactResults = sessionGet('atlas.resultLayout') === 'list';
   const RESULT_BATCH = 24;
 
   function resultView() {
     const view = window.history?.state?.atlasResults;
     return view?.route === (location.hash || '#home') ? view : {};
   }
+  function isResultRoute(route) {
+    return /^#(?:home|zoeken|organisaties)(?:\?|$)/.test(route);
+  }
+  function resultFocusTarget(container, focusId, focusControl) {
+    if (!focusId) return null;
+    const control = focusControl === 'pick' ? '[data-sheet-pick]'
+      : focusControl === 'details' ? '.offer-secondary-actions a[href^="#item/"]' : 'h2 a';
+    return container.querySelector(`[data-record-id="${CSS.escape(focusId)}"] ${control}`);
+  }
   function saveResultView(view) {
     window.history?.replaceState?.({ ...window.history.state, atlasResults: { ...view, route: location.hash || '#home' } }, '');
+  }
+  function restoreCardFocus(target, y) {
+    target?.focus({preventScroll: true});
+    requestAnimationFrame(() => {
+      if (target && !main.contains(target)) return;
+      if (target && document.activeElement !== target) {
+        if (document.activeElement !== main && document.activeElement !== document.body) return;
+        target.focus({preventScroll: true});
+      }
+      scrollTo({top: y || 0, behavior: 'instant'});
+      if (!target) return;
+      const rect = target.getBoundingClientRect();
+      const headerBottom = document.querySelector('.site-header')?.getBoundingClientRect().bottom || 0;
+      if (rect.top < headerBottom || rect.bottom > window.innerHeight) {
+        const freeSpace = Math.max(0, window.innerHeight - headerBottom - rect.height);
+        scrollBy({top: rect.top - headerBottom - freeSpace / 2, behavior: 'instant'});
+      }
+    });
+  }
+  function saveReturnView(view, route = location.hash || '#home') {
+    saveResultView(view);
+    sessionSet('atlas.returnView', JSON.stringify({...view, route}));
+    sessionSet('atlas.lastSearch', route);
+  }
+  function restoreReturnView() {
+    const route = sessionGet('atlas.restoreResults');
+    if (!route || route !== (location.hash || '#home')) return false;
+    sessionSet('atlas.restoreResults', '');
+    try {
+      const view = JSON.parse(sessionGet('atlas.returnView'));
+      if (view?.route === route) saveResultView(view);
+    } catch { /* Older visits can have a scroll position without a card. */ }
+    return true;
   }
   function resultListMarkup() {
     const shown = Math.min(resultRecords.length, Math.max(RESULT_BATCH, Number(resultView().shown) || 0));
     const footer = resultRecords.length > RESULT_BATCH ? `<div class="result-batches">
       <span data-result-progress role="status">${shown} van ${resultRecords.length} resultaten getoond</span>
       <button type="button" class="btn secondary" data-more-results ${shown === resultRecords.length ? 'hidden' : ''}>Toon meer resultaten</button></div>` : '';
-    return `<div class="result-list" data-result-list>${resultRecords.slice(0, shown).map(record => simpleCard(record, true)).join('')}</div>${footer}`;
+    return `<div class="result-layout" role="group" aria-label="Resultaatweergave"><span>Weergave</span>
+      <label><input type="radio" name="result-layout" value="cards"${compactResults ? '' : ' checked'}> Kaarten</label>
+      <label><input type="radio" name="result-layout" value="list"${compactResults ? ' checked' : ''}> Lijst</label></div>
+      <div class="result-list${compactResults ? ' compact-results' : ''}" data-result-list>${resultRecords.slice(0, shown).map(catalogueResult).join('')}</div>${footer}`;
   }
   let debounceTimer;
   let todayCache = { value: '', checkedAt: 0 };
+  const dutchCalendar = new Intl.DateTimeFormat('sv-SE', {
+    timeZone: 'Europe/Amsterdam', year: 'numeric', month: '2-digit', day: '2-digit'
+  });
 
-  function savedPersonas() {
-    try {
-      const value = localStorage.getItem(PERSONA_KEY);
-      if (!value) return [];
-      try {
-        const parsed = JSON.parse(value);
-        return Array.isArray(parsed) ? parsed.filter(item => PRIMARY_AUDIENCES.includes(item)) : [];
-      } catch { return PRIMARY_AUDIENCES.includes(value) ? [value] : []; }
-    } catch { return []; }
+  let temporaryProfile;
+  function profileCriteria(value) {
+    // Older browsers may hold a single role or a list of roles under the same key.
+    const roles = Array.isArray(value) ? value : typeof value === 'string' ? [value] : typeof value?.audience === 'string' ? value.audience.split(',') : [];
+    return {
+      audience: PROFILE_ROLES.filter(role => roles.includes(role)).join(','),
+      sector: SECTORS.includes(value?.sector) ? value.sector : '',
+      vak: typeof value?.vak === 'string' ? filterValues('vak', value.vak.slice(0, 160)).join(',') : ''
+    };
   }
-  function savePersonas(selected) {
-    try { selected.length ? localStorage.setItem(PERSONA_KEY, JSON.stringify(selected)) : localStorage.removeItem(PERSONA_KEY); } catch { /* lokale opslag kan geblokkeerd zijn */ }
+  function readProfile() {
+    if (temporaryProfile) return temporaryProfile;
+    let value;
+    try { value = localStorage.getItem(PERSONA_KEY); } catch { /* Browser storage is optional. */ }
+    try { return profileCriteria(JSON.parse(value)); } catch { return profileCriteria(value); }
+  }
+  function saveProfile(profile) {
+    try {
+      if (Object.values(profile).some(Boolean)) localStorage.setItem(PERSONA_KEY, JSON.stringify(profile));
+      else localStorage.removeItem(PERSONA_KEY);
+      temporaryProfile = undefined;
+    } catch { temporaryProfile = profile; }
   }
   function sessionGet(key) { try { return sessionStorage.getItem(key) || ''; } catch { return ''; } }
   function sessionSet(key, value) { try { sessionStorage.setItem(key, String(value)); } catch { /* sessieopslag kan geblokkeerd zijn */ } }
@@ -216,8 +286,9 @@
   function persistSheetPicks() {
     sessionSet('atlas.sheetPicks', selectedHref('overlegblad').split('?')[1] || '');
   }
-  const personaLabel = value => ({ Docenten: 'Docent', Bestuurders: 'Bestuurder', 'IT-professionals': 'IT-professional', Onderzoekers: 'Onderzoeker' }[value] || value);
-  const personaSummary = selected => selected.map(personaLabel).join(' + ');
+  const personaLabel = value => ({ Docenten: 'Docent', Onderwijsontwikkelaars: 'Onderwijsontwikkelaar', Toetsmakers: 'Toetsmaker',
+    Schoolleiders: 'Schoolleider', Bestuurders: 'Bestuurder', Beleidsmakers: 'Beleidsmaker', 'IT-professionals': 'IT-professional',
+    Privacyprofessionals: 'Privacyprofessional', Onderzoekers: 'Onderzoeker', Studenten: 'Student', Leerlingen: 'Leerling' }[value] || value);
 
   const recordText = record => normalize([
     record.title, record.description, record.purpose, record.providerName,
@@ -252,9 +323,7 @@
   function todayInNetherlands() {
     const now = Date.now();
     if (!todayCache.value || now - todayCache.checkedAt >= 60_000) {
-      todayCache = { checkedAt: now, value: new Intl.DateTimeFormat('sv-SE', {
-        timeZone: 'Europe/Amsterdam', year: 'numeric', month: '2-digit', day: '2-digit'
-      }).format(new Date(now)) };
+      todayCache = { checkedAt: now, value: dutchCalendar.format(now) };
     }
     return todayCache.value;
   }
@@ -285,6 +354,8 @@
   const displayStatus = record => isFunding(record) && record.status === 'available' ? 'Regeling of informatiebron' : statusLabel(record);
   const subjectNames = new Map(records.flatMap(record =>
     (record.subjects || []).map(name => [normalize(name), name])));
+  const subjectOptions = [...subjectNames.values()].sort((a, b) => a.localeCompare(b, 'nl'))
+    .map(name => `<option value="${escapeHtml(name)}"></option>`).join('');
   const subjectWords = new WeakMap();
   function subjectMatches(record, value) {
     const term = normalize(value);
@@ -375,7 +446,9 @@
       .forEach(key => state[key] = params.get(key) || '');
     state.vak = filterValues('vak', state.vak).join(',');
     if (!state.audience && params.get('aud')) state.audience = params.get('aud');
-    if (params.get('cat')) state.type = params.get('cat').split(',').map(value => TYPE_LABELS[value] || value).join(',');
+    // Earlier dashboard links used the record type under either parameter name.
+    const types = params.get('cat') || state.type;
+    state.type = types.split(',').map(value => Object.hasOwn(TYPE_LABELS, value) ? TYPE_LABELS[value] : value).join(',');
     // Retired freshness links still open the catalogue, without a misleading filter.
     if (params.get('all') === '1' || (params.has('freshness') && !hasIntent())) state.all = '1';
   }
@@ -472,22 +545,24 @@
   function addedDate(record) {
     // The first documented addition is distinct from later checks or edits.
     return (record.changeHistory || []).filter(change => change.type === 'added')
-      .map(change => publicationDate({ publicationDate: change.date })).filter(Boolean).sort()[0] || '';
+      .map(change => validDate(change.date)).filter(Boolean).sort()[0] || '';
   }
-  function newestRecords(mode = 'added') {
-    const date = mode === 'published' ? publicationDate : addedDate;
-    return records.filter(record => date(record)).sort((a, b) =>
-      date(b).localeCompare(date(a)) || a.title.localeCompare(b.title, 'nl') || a.id.localeCompare(b.id));
+  function datedOffers(mode) {
+    const dateOf = mode === 'published' ? publicationDate : addedDate;
+    return records.map(record => ({record, date: dateOf(record)}))
+      .filter(entry => entry.date)
+      .sort((a, b) => b.date.localeCompare(a.date) || a.record.title.localeCompare(b.record.title, 'nl') ||
+        a.record.id.localeCompare(b.record.id));
   }
   function newOffersMarkup(mode = 'added', requestedPage = 1) {
     mode = mode === 'published' ? 'published' : 'added';
-    const published = mode === 'published', date = published ? publicationDate : addedDate;
-    const sorted = newestRecords(mode), batches = [];
+    const published = mode === 'published';
+    const sorted = datedOffers(mode), batches = [];
     // Keep a day's additions together, including large imports. An arbitrary
     // card limit must not hide part of the latest batch behind the next page.
     for (let start = 0; start < sorted.length;) {
       let end = Math.min(start + 24, sorted.length);
-      while (end < sorted.length && date(sorted[end]) === date(sorted[end - 1])) end++;
+      while (end < sorted.length && sorted[end].date === sorted[end - 1].date) end++;
       batches.push(sorted.slice(start, end));
       start = end;
     }
@@ -495,20 +570,39 @@
     const page = Math.min(pages, Math.max(1, Number.isSafeInteger(requestedPage) ? requestedPage : 1));
     const shown = batches[page - 1] || [], unknown = records.length - sorted.length;
     const href = number => `#nieuw?volgorde=${mode}&pagina=${number}`;
-    const label = published ? 'Gepubliceerd op' : 'Toegevoegd aan de Atlas op';
-    return `<section class="new-offers"><header class="page-intro"><span class="eyebrow">Snel zien wat er is toegevoegd</span><h1>Nieuw aanbod</h1><p>Bekijk nieuwe vermeldingen in de Atlas of kies aanbod met een recente publicatiedatum.</p><p class="listing-notice">${LISTING_NOTICE}</p></header>
-      <nav class="new-offers-modes" aria-label="Welke datum wilt u bekijken?">
-        <a class="btn${published ? ' secondary' : ''}" href="#nieuw?volgorde=added"${!published ? ' aria-current="page"' : ''}>Nieuw in de Atlas</a>
-        <a class="btn${published ? '' : ' secondary'}" href="#nieuw?volgorde=published"${published ? ' aria-current="page"' : ''}>Recent gepubliceerd</a>
-      </nav><p class="new-offers-explanation">${published ? 'Gesorteerd op de vastgelegde publicatiedatum van het aanbod bij de aanbieder.' : 'Gesorteerd op de eerste vastgelegde toevoeging aan de Atlas. Het aanbod zelf kan al langer bestaan.'} Een latere broncontrole verandert deze volgorde niet. Vermeldingen met dezelfde datum blijven op één pagina.</p>
-      <p class="sort-summary">${sorted.length} vermeldingen met een bekende ${published ? 'publicatiedatum' : 'toevoegdatum'}.${unknown ? ` Bij ${unknown} vermeldingen is deze datum niet vastgelegd; die staan wel bij <a href="#zoeken?all=1">al het aanbod</a>.` : ''}</p>
-      <div class="result-list">${shown.length ? shown.map(record => simpleCard(record, false, { date: date(record), label })).join('') : '<div class="empty"><p>Er zijn nog geen vermeldingen met deze datum vastgelegd.</p><a href="#zoeken?all=1">Bekijk al het aanbod</a></div>'}</div>
+    const label = published ? 'Gepubliceerd op' : 'Toegevoegd';
+    const modeChoice = (value, title) => value === mode
+      ? `<span aria-current="page">${title}</span>`
+      : `<a href="#nieuw?volgorde=${value}">${title}</a>`;
+    return `<section class="new-offers new-offers-page"><header class="page-intro"><h1>Nieuw aanbod</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
+      <nav class="new-offers-modes" aria-label="Sorteer op datum">
+        ${modeChoice('added', 'Nieuw in de Atlas')}
+        ${modeChoice('published', 'Recent gepubliceerd')}
+      </nav>
+      <details class="new-offers-explanation"><summary>Hoe werkt deze sortering?</summary>
+        <p>${published ? 'De nieuwste publicatie bij de aanbieder staat bovenaan.' : 'De nieuwste toevoeging aan de Atlas staat bovenaan. Het aanbod zelf kan al langer bestaan.'} Een latere broncontrole verandert deze volgorde niet. Vermeldingen met dezelfde datum blijven op één pagina.</p>
+        <p>${sorted.length} ${sorted.length === 1 ? 'vermelding heeft' : 'vermeldingen hebben'} een bekende ${published ? 'publicatiedatum' : 'toevoegdatum'}.${unknown ? ` Bij ${unknown === 1 ? 'één vermelding' : `${unknown} vermeldingen`} ontbreekt deze datum. U vindt ${unknown === 1 ? 'die vermelding' : 'deze vermeldingen'} bij <a href="#zoeken?all=1">al het aanbod</a>.` : ''}</p>
+      </details>
+      <div class="result-list">${shown.length ? shown.map(({record, date}) => simpleCard(record, false, {date, label})).join('') : '<div class="empty"><p>Er zijn nog geen vermeldingen met deze datum vastgelegd.</p><a href="#zoeken?all=1">Bekijk al het aanbod</a></div>'}</div>
       ${pages > 1 ? `<nav class="new-offers-pagination" aria-label="Meer nieuwe bijdragen">${page > 1 ? `<a class="btn secondary" href="${href(page - 1)}">Vorige</a>` : ''}<span>Pagina ${page} van ${pages}</span>${page < pages ? `<a class="btn secondary" href="${href(page + 1)}">Volgende</a>` : ''}</nav>` : ''}</section>`;
   }
   function renderNewOffers() {
     const params = new URLSearchParams(location.hash.split('?')[1] || '');
     sessionSet('atlas.lastSearch', location.hash);
     main.innerHTML = newOffersMarkup(params.get('volgorde'), Number(params.get('pagina') || 1));
+    main.querySelectorAll('.result-card a[href^="#item/"]').forEach(link => {
+      link.onclick = () => saveReturnView({
+        focusId: link.closest('[data-record-id]').dataset.recordId,
+        focusControl: link.closest('h2') ? 'title' : 'details',
+        y: scrollY
+      });
+    });
+    restoreReturnView();
+    const view = resultView();
+    const target = resultFocusTarget(main, view.focusId, view.focusControl);
+    if (!target) return false;
+    restoreCardFocus(target, view.y);
+    return true;
   }
 
   function paperUrl(value) {
@@ -919,7 +1013,7 @@
       ...(record.providerName ? [`Aanbieder: ${record.providerName}`] : []),
       ...(publicationDate(record) ? [`Publicatiedatum: ${dateLabel(publicationDate(record))}`] : []),
       ...officialSources(record).map(item => `${item.label || 'Officiële bron'}: ${item.url}`),
-      `AI & Onderwijs Atlas Nederland: ${publicItemUrl(record)}`
+      `AI & Onderwijs Atlas Nederland: ${PUBLIC_ATLAS}aanbod/${encodeURIComponent(record.id)}/`
     ].join('\n');
   }
   async function copySourceCitation(record) {
@@ -1024,9 +1118,6 @@
     pool.forEach(record => { if (selected.length < 4 && !selected.includes(record)) selected.push(record); });
     return selected;
   }
-  function rolePicker(roles, selected = []) {
-    return `<form class="role-picker"><p>Kies één of meer rollen. U kunt dit later altijd aanpassen.</p><div class="role-grid">${roles.map(role => `<label class="role-option"><input type="checkbox" value="${escapeHtml(role)}" ${selected.includes(role) ? 'checked' : ''}><span><strong>${escapeHtml(personaLabel(role))}</strong><small>${(records.filter(record => (record.audiences || []).includes(role))).length} passende records</small></span></label>`).join('')}</div><button class="btn role-submit" type="submit">Bekijk passend aanbod</button></form>`;
-  }
   function teaserCard(record, label = '') {
     const sourceItem = primarySource(record);
     return `<article class="teaser-card"><div class="teaser-top"><span class="type-label">${escapeHtml(label || offerLabel(record))}</span></div>
@@ -1049,60 +1140,167 @@
   function fundingApplicants(record) {
     return (record.applicantTypes || []).join(', ') || record.eligibility || 'Zie de officiële voorwaarden';
   }
-  function practicalDates(record, markup = true) {
+  function fundingAmount(record) {
+    const amount = typeof record.fundingAmount === 'string' ? record.fundingAmount.trim() : '';
+    return amount === 'Nog niet ingevuld' ? '' : amount;
+  }
+  function practicalDateRows(record, markup = true) {
     const deadline = validDate(record.applicationDeadline) || validDate(record.fundingDeadline);
     if (isFunding(record)) {
       const instant = deadlineInstant(record);
       if (instant) {
         const label = new Intl.DateTimeFormat('nl-NL', {dateStyle:'medium', timeStyle:'short', timeZone:'Europe/Amsterdam'}).format(new Date(instant));
-        return `Aanvraagdeadline ${markup ? `<time datetime="${escapeHtml(instant)}">${escapeHtml(label)}</time>` : label} (Nederlandse tijd)`;
+        return [['Aanvraagdeadline', `${markup ? `<time datetime="${escapeHtml(instant)}">${escapeHtml(label)}</time>` : label} (Nederlandse tijd)`]];
       }
       if (!deadline) {
         const period = record.availabilityText?.trim();
         const text = period && /doorlopend|per call|subsidieplafond|ophaalmoment/i.test(period) ? period : 'Geen uiterste datum bevestigd';
-        return markup ? escapeHtml(text) : text;
+        return [['', markup ? escapeHtml(text) : text]];
       }
     }
     const parts = [];
     const time = date => markup ? `<time datetime="${date}">${escapeHtml(dateLabel(date))}</time>` : dateLabel(date);
     const training = record.recordType === 'training' || record.legacyType === 'Training';
-    if (deadline) parts.push(`${training ? 'Aanmelddeadline' : 'Aanvraagdeadline'} ${time(deadline)}`);
+    if (deadline) parts.push([training ? 'Aanmelddeadline' : 'Aanvraagdeadline', time(deadline)]);
     if (training) {
       const start = validDate(record.startDate);
       const end = validDate(record.endDate);
-      if (start && end && start < end) parts.push(`Periode ${time(start)} – ${time(end)}`);
-      else if (start && start === end) parts.push(`Datum ${time(start)}`);
-      else if (start && !end) parts.push(`Startdatum ${time(start)}`);
-      else if (end && !start) parts.push(`Einddatum ${time(end)}`);
+      if (start && end && start < end) parts.push(['Periode', `${time(start)} – ${time(end)}`]);
+      else if (start && start === end) parts.push(['Datum', time(start)]);
+      else if (start && !end) parts.push(['Startdatum', time(start)]);
+      else if (end && !start) parts.push(['Einddatum', time(end)]);
     }
-    return parts.join(' · ');
+    return parts;
+  }
+  function practicalDates(record, markup = true) {
+    return practicalDateRows(record, markup).map(parts => parts.filter(Boolean).join(' ')).join(' · ');
+  }
+  function cardFact(label, valueHtml) {
+    return `<div><dt>${escapeHtml(label)}</dt><dd>${valueHtml}</dd></div>`;
+  }
+  let factDialog;
+  let factOpener;
+  function readFact(button) {
+    const value = button.parentElement, label = value.previousElementSibling.textContent;
+    if (!factDialog) {
+      factDialog = document.createElement('dialog');
+      factDialog.className = 'fact-dialog';
+      factDialog.setAttribute('aria-labelledby', 'full-fact-label');
+      factDialog.setAttribute('aria-describedby', 'full-fact-value');
+      factDialog.innerHTML = '<h2 id="full-fact-label"></h2><p id="full-fact-value"></p><form method="dialog"><button class="btn secondary" autofocus>Sluiten</button></form>';
+      document.body.append(factDialog);
+      factDialog.onclick = event => {
+        if (event.target !== factDialog) return;
+        const {top, bottom, left, right} = factDialog.getBoundingClientRect();
+        if (event.clientY < top || event.clientY > bottom || event.clientX < left || event.clientX > right) factDialog.close();
+      };
+      factDialog.onclose = () => {
+        const opener = factOpener;
+        factOpener = null;
+        if (opener?.isConnected) {
+          opener.focus({preventScroll:true});
+          syncFactDisclosure(opener.parentElement.parentElement);
+        }
+      };
+    }
+    const sectors = [...value.querySelectorAll('.sector-chips span')];
+    factDialog.querySelector('h2').textContent = label;
+    factDialog.querySelector('p').textContent = sectors.length ? sectors.map(chip => chip.textContent).join(', ') : value.textContent;
+    factOpener = button;
+    factDialog.showModal();
+  }
+  function syncFactDisclosure(group) {
+    const [label, value] = group.children;
+    const button = value.querySelector('.fact-disclosure');
+    const clipped = label.scrollWidth > label.clientWidth || value.scrollWidth > value.clientWidth;
+    if (clipped && !button) {
+      const open = document.createElement('button');
+      open.type = 'button';
+      open.className = 'fact-disclosure';
+      open.setAttribute('aria-label', `Lees het volledige kenmerk: ${label.textContent}`);
+      open.setAttribute('aria-haspopup', 'dialog');
+      open.onclick = () => readFact(open);
+      value.append(open);
+    } else if (!clipped && button && button !== factOpener) {
+      if (button === document.activeElement) group.closest('.result-card')?.querySelector('h2 a')?.focus({preventScroll:true});
+      button.remove();
+    }
+  }
+  const factResize = window.ResizeObserver && window.HTMLDialogElement?.prototype.showModal
+    ? new window.ResizeObserver(entries => entries.forEach(({target}) => [...target.children].forEach(syncFactDisclosure))) : null;
+  function observeCardFacts() {
+    if (!factResize) return;
+    factResize.disconnect();
+    main.querySelectorAll('.offer-facts').forEach(list => {
+      list.classList.add('single-line-facts');
+      factResize.observe(list);
+    });
+  }
+  document.fonts?.addEventListener('loadingdone', observeCardFacts);
+  function sheetPickMarkup(record, label = 'Kies voor vergelijking of overleg') {
+    return `<label class="sheet-pick"><input type="checkbox" data-sheet-pick="${escapeHtml(record.id)}" aria-label="${label}: ${escapeHtml(record.title)}" ${sheetPicks.has(record.id) ? 'checked' : ''}> ${label}</label>`;
+  }
+  function catalogueResult(record) {
+    if (!compactResults) return simpleCard(record, true);
+    const sectors = (record.sectors || []).filter(sector => sector !== 'VSO').join(', ');
+    const context = [record.providerName, sectors];
+    if (state.sort === 'added' || isPublicationSort()) {
+      const added = state.sort === 'added';
+      const date = added ? addedDate(record) : publicationDate(record);
+      context.push(date ? (added ? 'Toegevoegd ' : 'Verschenen op ') + dateLabel(date)
+        : (added ? 'Toevoegdatum onbekend' : 'Publicatiedatum onbekend'));
+    }
+    const summary = context.filter(Boolean).map(escapeHtml).join(' · ');
+    const funding = isFunding(record) ? `<p class="listing-funding"><strong>${escapeHtml(displayStatus(record))}</strong>
+      · ${practicalDates(record)}</p>` : '';
+    return `<article class="listing-row" data-record-id="${escapeHtml(record.id)}" data-offer-card>
+      <div><h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
+        ${summary ? `<p class="listing-context">${summary}</p>` : ''}${funding}</div>
+      <div class="offer-links">${sheetPickMarkup(record, 'Vergelijken')}</div></article>`;
   }
   function simpleCard(record, showPublicationDate = false, recency = null) {
-    const dates = practicalDates(record);
     const sectors = (record.sectors || []).filter(sector => sector !== 'VSO');
     const sourceItem = primarySource(record);
     const detailLabel = lessonForSectors(record, values('sector')) ? `Lesstart · ${record.lessonStart.level}` : 'Bekijk details';
+    const commercial = commercialBadge(record);
+    const funding = isFunding(record);
+    const checkedFunding = funding && ['verified', 'recently_checked'].includes(record.verificationStatus);
+    const opening = checkedFunding && validDate(record.applicationOpenDate);
+    const amount = checkedFunding && fundingAmount(record);
+    let dateFact = '';
+    if (recency || (showPublicationDate && (state.sort === 'added' || isPublicationSort()))) {
+      const added = state.sort === 'added';
+      const label = recency?.label || (added ? 'Toegevoegd' : 'Verschenen op');
+      const date = recency?.date || (added ? addedDate(record) : publicationDate(record));
+      dateFact = cardFact(label, date ? `<time datetime="${escapeHtml(date)}">${escapeHtml(dateLabel(date))}</time>` :
+        (added ? 'Toevoegdatum onbekend' : 'Publicatiedatum onbekend'));
+    }
     return `<article class="result-card" data-record-id="${escapeHtml(record.id)}" data-offer-card>
-      <div class="card-body offer-intro"><div class="card-top"><span class="type-label">${escapeHtml(offerLabel(record))}</span></div>
+      <div class="card-body"><span class="type-label">${escapeHtml(offerLabel(record))}</span>
         <h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
-        <p class="provider">Aanbieder: ${escapeHtml(factValue(record.providerName))}</p>${commercialBadge(record)}
-        <div class="trust-row"><span class="status-text ${trustTone(record)}">${escapeHtml(displayStatus(record))}</span>${dates ? `<span>${dates}</span>` : ''}</div>
-        ${isFunding(record) ? `<dl class="offer-terms funding-terms"><div><dt>Aanvragers</dt><dd>${escapeHtml(fundingApplicants(record))}</dd></div></dl>` :
-          `<dl class="offer-terms"><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div><div><dt>Toegang</dt><dd>${escapeHtml(accessLabel(record))}</dd></div><div><dt>Taal</dt><dd>${escapeHtml(languageList(record))}</dd></div></dl>`}
+        <dl class="offer-facts">${dateFact}
+          ${cardFact('Aanbieder', escapeHtml(factValue(record.providerName)))}
+          ${cardFact('Status', `<span class="status-text ${trustTone(record)}">${escapeHtml(displayStatus(record))}</span>`)}
+          ${opening ? cardFact('Aanvragen vanaf', `<time datetime="${opening}">${escapeHtml(dateLabel(opening))}</time>`) : ''}
+          ${practicalDateRows(record).map(([label, value]) => cardFact(label || 'Aanvraagperiode', value)).join('')}
+          ${commercial ? cardFact('Commercieel karakter', commercial) : ''}
+          ${funding ? cardFact('Aanvragers', escapeHtml(fundingApplicants(record))) :
+            cardFact('Kosten', escapeHtml(costLabel(record))) + cardFact('Toegang', escapeHtml(accessLabel(record))) + cardFact('Taal', escapeHtml(languageList(record)))}
+          ${amount && amount !== 'Varieert' ? cardFact('Bedrag', escapeHtml(amount)) : ''}
+          ${cardFact('Voor wie', escapeHtml(factValue((record.audiences || []).join(', '))))}
+          ${sectors.length ? cardFact('Sectoren', `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>`) : ''}
+        </dl>
+        <p class="description">${escapeHtml(factValue(record.description))}</p>
       </div>
       <div class="card-actions offer-links">
-        ${sourceItem ? `<a class="card-cta primary" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record))}: ${escapeHtml(record.title)}">${escapeHtml(sourceActionLabel(record))}&nbsp;↗</a>` : ''}
-        <a class="card-cta" href="#item/${escapeHtml(record.id)}" aria-label="${escapeHtml(detailLabel)}: ${escapeHtml(record.title)}">${escapeHtml(detailLabel)}</a>
-        <a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a>
-        ${showPublicationDate ? `<label class="sheet-pick"><input type="checkbox" data-sheet-pick="${escapeHtml(record.id)}" aria-label="Kies voor vergelijking of overleg: ${escapeHtml(record.title)}" ${sheetPicks.has(record.id) ? 'checked' : ''}> Kies voor vergelijking of overleg</label>` : ''}
-      </div>
-      <div class="card-body offer-context">
-        <p class="description">${escapeHtml(factValue(record.description))}</p>
-        <dl class="offer-audience"><dt>Voor wie</dt><dd>${escapeHtml(factValue((record.audiences || []).join(', ')))}</dd></dl>
-        ${recency ? `<p class="publication-date">${escapeHtml(recency.label)} <time datetime="${escapeHtml(recency.date)}">${escapeHtml(dateLabel(recency.date))}</time></p>` : ''}
-        ${showPublicationDate && state.sort === 'added' ? `<p class="publication-date">${addedDate(record) ? `Toegevoegd aan de Atlas op <time datetime="${addedDate(record)}">${escapeHtml(dateLabel(addedDate(record)))}</time>` : 'Toevoegdatum onbekend'}</p>` : ''}
-        ${showPublicationDate && isPublicationSort() ? `<p class="publication-date">${publicationDate(record) ? `Verschenen op <time datetime="${publicationDate(record)}">${escapeHtml(dateLabel(publicationDate(record)))}</time>` : 'Publicatiedatum onbekend'}</p>` : ''}
-        ${sectors.length ? `<div class="sector-chips">${sectors.map(sector => `<span>${escapeHtml(sector)}</span>`).join('')}</div>` : ''}
+        <div class="offer-main-actions">
+          ${sourceItem ? `<a class="card-cta primary" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(sourceActionLabel(record))}: ${escapeHtml(record.title)}">${escapeHtml(sourceActionLabel(record))}&nbsp;↗</a>` : ''}
+          <div class="offer-secondary-actions">
+            <a class="card-cta" href="#item/${escapeHtml(record.id)}" aria-label="${escapeHtml(detailLabel)}: ${escapeHtml(record.title)}">${escapeHtml(detailLabel)}</a>
+            <a class="card-cta share-email" href="${escapeHtml(emailShareHref(record))}" aria-label="Delen via e-mail: ${escapeHtml(record.title)}">Delen via e-mail</a>
+          </div>
+        </div>
+        ${showPublicationDate ? sheetPickMarkup(record) : ''}
       </div>
     </article>`;
   }
@@ -1174,8 +1372,9 @@
     update();
   }
   function renderHome() {
-    state = { q: '', sort: 'added', audience: savedPersonas().join(',') };
+    state = { q: '', sort: 'added', ...readProfile() };
     renderSearch(true);
+    refreshHomeSpotlight();
     window.dispatchEvent?.(new Event('atlas:home-rendered'));
   }
 
@@ -1191,18 +1390,18 @@
   function bookCard(record) {
     const sourceItem = primarySource(record);
     const details = [
-      (record.authors || []).join(', '),
-      record.publicationYear || (publicationDate(record) || '').slice(0, 4),
-      record.isbn ? `ISBN ${record.isbn}` : '',
-      record.pageCount ? `${record.pageCount} pagina's` : ''
-    ].filter(Boolean);
+      ['Auteur(s)', (record.authors || []).join(', ')],
+      ['Jaar', record.publicationYear || (publicationDate(record) || '').slice(0, 4)],
+      ['ISBN', record.isbn], ['Omvang', record.pageCount ? `${record.pageCount} pagina's` : ''],
+      ['Uitgever', factValue(record.providerName)], ['Voor wie', factValue((record.audiences || []).join(', '))],
+      ['Kosten', costLabel(record)]
+    ];
     return `<article class="result-card book-card" data-record-id="${escapeHtml(record.id)}"><div class="card-body">
       <div class="card-top"><span class="type-label">${escapeHtml(bookCategoryLabel(record.bookCategory))}</span></div>
       <h2><a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a></h2>
-      <p class="provider">${escapeHtml(details.join(' · ') || factValue(record.providerName))}</p>
+      <dl class="offer-facts">${details.filter(([, value]) => value).map(([label, value]) => cardFact(label, escapeHtml(value))).join('')}</dl>
       <p class="description">${escapeHtml(factValue(record.description))}</p>
-      <dl class="card-facts"><div><dt>Uitgever</dt><dd>${escapeHtml(factValue(record.providerName))}</dd></div><div><dt>Voor wie</dt><dd>${escapeHtml(factValue((record.audiences || []).join(', ')))}</dd></div><div><dt>Kosten</dt><dd>${escapeHtml(costLabel(record))}</dd></div></dl>
-    </div><div class="card-actions"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">Uitgevers- of auteursbron ↗</a>` : ''}</div></article>`;
+    </div><div class="card-actions offer-links"><a class="card-cta primary" href="#item/${escapeHtml(record.id)}">Bekijk details</a>${sourceItem ? `<a class="card-cta" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">Uitgevers- of auteursbron ↗</a>` : ''}</div></article>`;
   }
   function bookContextMarkup(record) {
     if (record.recordType !== 'book') return '';
@@ -1286,14 +1485,13 @@
     return true;
   }
   function renderStart() {
-    const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
     main.innerHTML = `<section class="catalog start">${searchForm('catalog-search')}<div class="start-content">
       <span class="eyebrow">Zoek in de volledige atlas</span><h1>Waarmee wilt u aan de slag?</h1><p>Typ uw vraag of kies een herkenbare ingang. Resultaten verschijnen pas nadat u een keuze maakt.</p>
       <div class="task-grid compact">${TASKS.map(task => taskTile(task)).join('')}</div>
       <h2>Veel gezocht</h2>${popularLinks()}
-      <details class="role-start"><summary>Afstemmen op uw rol</summary>${rolePicker(roles, savedPersonas())}</details>
+      <a href="#mijn-atlas">Afstemmen op mijn profiel</a>
     </div></section>`;
-    bindSearchForm(); bindRolePickers();
+    bindSearchForm();
   }
   function facetSelectionLabel(key) {
     const defaults = {
@@ -1304,14 +1502,21 @@
     };
     return values(key).map(value => filterOptionLabel(key, value)).join(', ') || defaults[key] || 'Alle opties';
   }
-  function facetOption(key, option, count, selected) {
-    const checked = selected.includes(option);
-    return `<label data-facet-option="${escapeHtml(option)}"><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${!count && !checked ? 'disabled' : ''}><span>${escapeHtml(filterOptionLabel(key, option))}</span><small>${count}</small></label>`;
+  function facetCountLabel(count, worksheets) {
+    if (!worksheets) return String(count);
+    return (count ? count + ' + ' : '') + worksheets + (worksheets === 1 ? ' werkblad' : ' werkbladen');
   }
-  function subjectInput(id) {
-    const value = values('vak').join(', ');
-    return `<label for="${id}">Vakgebied</label>
-      <input id="${id}" name="vak" type="text" autocomplete="off" placeholder="Typ zelf een vak" value="${escapeHtml(value)}" data-applied="${escapeHtml(value)}">`;
+  function facetOption(key, option, count, worksheets, selected) {
+    const checked = selected.includes(option);
+    const unavailable = !count && !worksheets && !checked;
+    return `<label data-facet-option="${escapeHtml(option)}" ${unavailable ? 'hidden' : ''}><input type="checkbox" data-facet="${key}" value="${escapeHtml(option)}" ${checked ? 'checked' : ''} ${unavailable ? 'disabled' : ''}><span>${escapeHtml(filterOptionLabel(key, option))}</span><small>${facetCountLabel(count, worksheets)}</small></label>`;
+  }
+  function subjectInput(id, value = values('vak').join(', '), profile = false) {
+    return `<label for="${id}">Vakgebied${profile ? ' (optioneel)' : ''}</label>
+      <input id="${id}" name="vak" type="text" autocomplete="off" list="${id}-options" aria-describedby="${id}-hint"
+        ${profile ? 'maxlength="160"' : ''} placeholder="Bijv. biologie" value="${escapeHtml(value)}" data-applied="${escapeHtml(value)}">
+      <datalist id="${id}-options">${subjectOptions}</datalist>
+      <small id="${id}-hint">Een vak uit de lijst toont aanbod met dat vaklabel. Andere woorden zoeken in de tekst.${profile ? ' Laat leeg voor alle vakken.' : ''}</small>`;
   }
   function applySubject(input) {
     const choices = filterValues('vak', input.value);
@@ -1322,16 +1527,19 @@
       setUrl();
     }
   }
-  function facet(key, title, options, counts = facetCounts()[key]) {
-    const present = options.filter(option => counts.has(option));
+  function facet(key, title, options, counts = facetCounts()[key], worksheetCounts = new Map()) {
     const selected = values(key);
+    const present = [...new Set([...options.filter(option => counts.has(option)), ...worksheetCounts.keys(), ...selected])];
+    const available = present.filter(option => counts.get(option) || worksheetCounts.get(option) || selected.includes(option));
+    const canExpand = available.slice(8).some(option => !selected.includes(option));
     const supportsMultiple = ['sector', 'audience'].includes(key);
     const startsOpen = supportsMultiple && (key !== 'sector' || selected.length > 0);
     return `<details class="facet${supportsMultiple ? ' facet-multi' : ''}" data-facet-block="${escapeHtml(key)}"${startsOpen ? ' open' : ''}><summary><span class="facet-heading">${escapeHtml(title)}<b aria-label="${values(key).length} geselecteerd" ${values(key).length ? '' : 'hidden'}>${values(key).length}</b></span><span class="facet-value">${escapeHtml(facetSelectionLabel(key))}</span></summary><div>
       ${supportsMultiple ? '<p class="facet-note">Kies één of meer opties tegelijk.</p>' : ''}
       ${key === 'organization' && present.length > 12 ? '<input class="facet-search" type="search" placeholder="Zoek aanbieder…" aria-label="Zoek binnen aanbieders">' : ''}
-      <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => facetOption(key, option, counts.get(option), selected)).join('')}</div>
-      ${present.length > 8 ? '<button class="facet-more" type="button" aria-expanded="false">Toon meer</button>' : ''}
+      <div class="facet-options ${present.length > 8 ? 'limited' : ''}">${present.map(option => facetOption(key, option, counts.get(option) || 0, worksheetCounts.get(option) || 0, selected)).join('')}</div>
+      ${present.length > 8 ? `<button class="facet-more" type="button" aria-expanded="false" ${canExpand ? '' : 'hidden'}>Toon meer</button>` : ''}
+      <p class="facet-empty" role="status"${available.length ? ' hidden' : ''}>Geen opties bij deze selectie.</p>
     </div></details>`;
   }
   function relatedThemes(activeTheme) {
@@ -1370,6 +1578,63 @@
     return '';
   }
   const SCHOOL_PRIVACY_ID = 'generatieve-ai-en-privacy-hier-moeten-scholen-op-letten';
+  const LESSON_WORKSHEETS = {
+    exercises: {label:'Maak oefenvragen bij uw les', meta:'Rekenvoorbeeld met antwoorden en een instructie voor uw eigen vak.', href:'#werkblad-oefenvragen'},
+    biology: {label:'Bereid een biologiepracticum voor', meta:'Kiemproef met tuinkers · vmbo vanaf leerjaar 2.', href:'#werkblad-biologiepracticum'},
+    customer: {label:'Controleer een klantmail over een bestelling', meta:'Mbo Nederlands en Handel · studenten toetsen een concept aan de bestelgegevens en schrijven zelf een antwoord.', href:'#werkblad-klantmail'}
+  };
+  const WORKSHEET_FILTERS = {
+    type:['materials'], audience:['Docenten', 'Onderwijsontwikkelaars'], language:['nl'], cost:['Gratis'],
+    status:[STATUS_LABELS.available], access:[ACCESS_LABELS.public], theme:['Lesgeven en leren met AI']
+  };
+  function worksheetRoutes(query, criteria, lessonRoute = false) {
+    const topic = normalize(query);
+    const saveTime = /\btijd (?:besparen|winnen)\b/.test(topic) && (/\b(?:les|lessen|klas)\b/.test(topic) ||
+      topic.split(' ').every(word => QUERY_STOPWORDS.has(word) || REQUEST_WORDS.has(word) ||
+        ['tijd', 'besparen', 'winnen', 'ai', 'als', 'docent', 'je', 'kun'].includes(word)));
+    const exercises = saveTime || /\b(?:oefenvra(?:ag|gen)|oefenopgaven?|quizvragen|lesvoorbereiding|lesontwerp|les(?:sen)? voorbereiden)\b/.test(topic);
+    const practicum = /\b(?:practicum|practica|biologiepracticum|kiemproe(?:f|ven))\b/.test(topic);
+    const customerMail = /\b(?:klant(?:en)?mails?|zakelijke (?:e ?)?mail|(?:antwoord|(?:e ?)?mail) aan (?:een |de )?klant)\b/.test(topic) &&
+      !/\b(?:mailbox|postvak|inbox|verzend\w*|verstuur\w*|versturen|automatiseer\w*|automatiseren|automatisch|software|apps?|tools?|programma)\b/.test(topic);
+    if (!lessonRoute && !exercises && !practicum && !customerMail) return [];
+    if (Object.entries(TYPE_QUERY_RULES).some(([type, names]) => type !== 'materials' &&
+        names.some(name => phrasePresent(topic, name)))) return [];
+    if (activeFilters(criteria).some(([key, selected]) => !['vak', 'sector'].includes(key) &&
+        !selected.some(value => WORKSHEET_FILTERS[key]?.includes(value)))) return [];
+    const sectors = filterValues('sector', criteria.sector);
+    const subjects = filterValues('vak', criteria.vak).map(normalize);
+    const namedSectors = Object.entries(SECTOR_QUERY_NAMES).filter(([sector, names]) =>
+      phrasePresent(topic, sector) || names.some(name => phrasePresent(topic, name))).flatMap(([key]) => key.split(','));
+    if (/\b(?:vmbo|havo|vwo)\b/.test(topic)) namedSectors.push('VO');
+    const links = [];
+    if (lessonRoute || exercises && !practicum) links.push(LESSON_WORKSHEETS.exercises);
+    if (lessonRoute || practicum && (/\b(?:biologie|biologiepracticum|biologieles|kiemproe(?:f|ven))\b/.test(topic) || subjects.includes('biologie'))) links.push(LESSON_WORKSHEETS.biology);
+    if (lessonRoute || customerMail) links.push(LESSON_WORKSHEETS.customer);
+    return links.filter(route => {
+      const sheet = source.worksheets?.[route.href.slice(1)];
+      return sheet && (!subjects.length || sheet.subjects.some(name => subjects.includes(normalize(name)))) &&
+        (!sectors.length || sheet.sectors.some(sector => sectors.includes(sector))) &&
+        (!namedSectors.length || sheet.sectors.some(sector => namedSectors.includes(sector)));
+    });
+  }
+  function isLessonSelection(criteria) {
+    return (criteria.q === 'les' && criteria.type === 'materials') || ['lesstart', 'lesstarts'].includes(normalize(criteria.q));
+  }
+  function matchingWorksheetRoutes(criteria) {
+    return worksheetRoutes(criteria.q, criteria, isLessonSelection(criteria));
+  }
+  function worksheetFacetCounts() {
+    if (!state.q || !matchingWorksheetRoutes({q: state.q, vak: state.vak, type: 'materials'}).length) return {};
+    const counts = {};
+    for (const [key, options] of Object.entries({...WORKSHEET_FILTERS, sector: SECTORS})) {
+      counts[key] = new Map();
+      for (const option of options) {
+        const matches = matchingWorksheetRoutes({...state, [key]: option}).length;
+        if (matches) counts[key].set(option, matches);
+      }
+    }
+    return counts;
+  }
   function teacherRoutes(query, criteria) {
     switch (teacherQuestion(normalize(query))) {
       case 'tools':
@@ -1390,7 +1655,7 @@
         if (!count) return [];
         return [{label:'Bekijk lesmateriaal over ecosystemen', meta:'Controleer in de les of het niveau bij uw klas past.', href:criteriaHref(next), count}];
       }
-      default: return [];
+      default: return matchingWorksheetRoutes({...criteria, q:query});
     }
   }
   function alternativeSuggestion() {
@@ -1429,13 +1694,15 @@
   const ASSESSMENT_CRITERIA = { q: 'toets', theme: 'Toetsing en examinering', type: 'materials,knowledge' };
   const AGREEMENT_CRITERIA = { q: 'afspraken', type: 'materials,knowledge' };
   const FUNDING_TYPES = ['Subsidie of call', 'Subsidie'];
-  const FUNDING_CRITERIA = { type: FUNDING_TYPES.join(','), status: STATUS_LABELS.open_call };
+  const ANNOUNCED_FUNDING_STATUSES = [STATUS_LABELS.planned, STATUS_LABELS.in_development];
+  const CURRENT_FUNDING_STATUSES = [STATUS_LABELS.open_call, ...ANNOUNCED_FUNDING_STATUSES];
+  const FUNDING_CRITERIA = { type: FUNDING_TYPES.join(','), status: CURRENT_FUNDING_STATUSES.join(',') };
   const PRACTICE_ROUTES = [
     { label: 'Een les voorbereiden', detail: 'Opdrachten voor de klas en lesmateriaal', criteria: { q: 'les', type: 'materials' } },
     { label: 'Een toets herontwerpen', detail: 'Een toetsafspraak maken en toetsmateriaal vinden', criteria: ASSESSMENT_CRITERIA },
     { label: 'AI-afspraken maken', detail: 'Een teamproef opzetten en afspraken vinden', criteria: AGREEMENT_CRITERIA },
     { label: 'Scholing vinden', detail: 'Cursussen, workshops en trainerskits', criteria: { type: 'Training', status: 'Direct beschikbaar' } },
-    { label: 'Subsidies en calls', detail: 'Open oproepen, aanvragers en deadlines', criteria: FUNDING_CRITERIA }
+    { label: 'Subsidies en calls', detail: 'Open en aangekondigde rondes, voorwaarden en deadlines', criteria: FUNDING_CRITERIA }
   ];
   const SECTOR_NAMES = {
     PO: 'Primair onderwijs', VO: 'Voortgezet onderwijs', MBO: 'Middelbaar beroepsonderwijs',
@@ -1487,7 +1754,17 @@
       teacher: 'Geef iedereen hetzelfde AI-antwoord en toegang tot de bron. Kijk of de aangehaalde passage het oordeel draagt, ook als iemand tot een andere conclusie komt.'
     }
   };
-  const assessmentToolQuery = query => ['toetsafspraak', 'toetsafspraken', 'toetsafspraak maken'].includes(normalize(query));
+  function assessmentToolLink(query) {
+    const term = normalize(query);
+    if (['toetsafspraak', 'toetsafspraken', 'toetsafspraak maken'].includes(term)) {
+      return {label:'Maak een toetsafspraak', meta:'Opdrachttekst voor uw klas', href:'#toetsafspraak'};
+    }
+    if (['ai bestendige toets', 'ai bestendige toetsvraag', 'toets ai bestendig maken',
+      'ai resilient toetsen', 'ai resilient toets', 'toets ai resilient', 'maak uw toetsvraag ai bestendiger'].includes(term)) {
+      return {label:'Maak uw toetsvraag AI-bestendiger', meta:'Werk met uw eigen toetsvraag', href:'#toetsafspraak?start=eigen'};
+    }
+    return null;
+  }
   const ASSESSMENT_EXAMPLES = {
     voedselweb: {
       title: 'VO-biologie · Een voedselweb verklaren',
@@ -1517,13 +1794,13 @@
   const assessmentDrafts = new Map();
   let assessmentChoice;
 
-  function assessmentEntry() {
+  function assessmentEntry(tool = null) {
     const sectors = values('sector');
     if (sectors.length && !sectors.some(sector => ['VO', 'MBO', 'HBO', 'WO'].includes(sector))) return '';
     return `<section class="assessment-entry" aria-labelledby="assessment-entry-heading"><div>
       <h2 id="assessment-entry-heading" tabindex="-1">Wat mag AI bij deze opdracht?</h2>
       <p>Maak een tekst voor uw klas over de toegestane hulp, het eigen werk en de beoordeling.</p></div>
-      <a class="btn" href="#toetsafspraak">Maak een toetsafspraak</a></section>`;
+      <a class="btn" href="${tool?.href || '#toetsafspraak'}">${tool?.label || 'Maak een toetsafspraak'}</a></section>`;
   }
 
   function assessmentStorageKey(choice) {
@@ -1537,10 +1814,11 @@
     return {
       goal: typeof saved?.goal === 'string' ? saved.goal.slice(0, 500) : '',
       mode: typeof saved?.mode === 'string' && Object.hasOwn(ASSESSMENT_MODES, saved.mode) ? saved.mode : '',
-      task: typeof saved?.task === 'string' ? saved.task.slice(0, 1000) : '',
+      task: typeof saved?.task === 'string' ? saved.task : '',
       alternative: typeof saved?.alternative === 'string' ? saved.alternative.slice(0, 500) : '',
       evidence: typeof saved?.evidence === 'string' ? saved.evidence.slice(0, 500) : '',
-      criterion: typeof saved?.criterion === 'string' ? saved.criterion.slice(0, 500) : ''
+      criterion: typeof saved?.criterion === 'string' ? saved.criterion.slice(0, 500) : '',
+      reviewRequired: saved?.reviewRequired === true
     };
   }
 
@@ -1557,8 +1835,16 @@
       const saved = sessionGet('atlas.toetsafspraak.start');
       assessmentChoice = Object.hasOwn(ASSESSMENT_EXAMPLES, saved) ? saved : '';
     }
-    const example = ASSESSMENT_EXAMPLES[assessmentChoice];
-    const draft = readAssessmentDraft(assessmentChoice);
+    const startPoint = new URLSearchParams(location.hash.split('?')[1]).get('start');
+    const ownTest = startPoint === 'eigen';
+    const explicitExample = Object.hasOwn(ASSESSMENT_EXAMPLES, startPoint);
+    const choice = ownTest ? '' : (explicitExample ? startPoint : assessmentChoice);
+    const example = ASSESSMENT_EXAMPLES[choice];
+    const draft = readAssessmentDraft(choice);
+    const taskField = `<label for="assessment-task">${example ? 'Wat is de opdracht?' : 'Uw bestaande toetsvraag of opdracht'}</label>
+      <textarea id="assessment-task" rows="4" ${ownTest ? 'required' : ''}>${escapeHtml(draft.task)}</textarea>`;
+    const evidenceField = `<label for="assessment-evidence">${ownTest ? 'Wat moet de leerling bij deze vraag zelf laten zien?' : 'Wat wilt u terugzien?'}</label>
+      <textarea id="assessment-evidence" rows="2" maxlength="500" placeholder="${ownTest ? 'Bijv. licht je bronkeuze toe en leg uit welke nieuwe informatie je oordeel zou veranderen.' : 'Bijv. een schets met een korte mondelinge toelichting.'}">${escapeHtml(draft.evidence)}</textarea>`;
     const sources = [
       ['toetsing-en-generatieve-ai-in-het-voortgezet-onderwijs', 'Kennisnet over toetsing in het vo'],
       ['visie-op-toetsing-examinering-en-ai-en-handreikingen', 'Npuls over toetsing in het mbo, hbo en wo']
@@ -1569,10 +1855,11 @@
     });
     main.innerHTML = `<section class="assessment-page">
       <a href="${escapeHtml(criteriaHref(ASSESSMENT_CRITERIA))}">← Naar toetsmateriaal</a>
-      <header><h1>Maak een toetsafspraak</h1><p>Werk met uw eigen leerdoel of pas een uitgewerkt toetsvoorbeeld aan voor uw klas.</p></header>
+      <header><h1>${ownTest ? 'Maak eigen werk zichtbaar in uw toets' : 'Maak een toetsafspraak'}</h1>
+        <p>${ownTest ? 'Neem één bestaande toetsvraag. Kies wat de leerling zelf moet kunnen aantonen. U krijgt een opdrachttekst met een bewijsstap en een beoordelingscriterium.' : 'Werk met uw eigen leerdoel of pas een uitgewerkt toetsvoorbeeld aan voor uw klas.'}</p></header>
       <div class="assessment-start"><label for="assessment-start">Kies een startpunt</label>
         <select id="assessment-start"><option value="">Mijn eigen opdracht</option>
-          ${Object.entries(ASSESSMENT_EXAMPLES).map(([key, item]) => `<option value="${key}" ${key === assessmentChoice ? 'selected' : ''}>${escapeHtml(item.title)}</option>`).join('')}</select>
+          ${Object.entries(ASSESSMENT_EXAMPLES).map(([key, item]) => `<option value="${key}" ${key === choice ? 'selected' : ''}>${escapeHtml(item.title)}</option>`).join('')}</select>
         <p class="assessment-note">Uw eigen opdracht en aanpassingen aan elk voorbeeld blijven apart bewaard in dit tabblad.</p>
         ${example ? `<button class="assessment-example" type="button" data-assessment-jump>Ga naar de kopieerbare opdracht</button>
           <details class="assessment-custom"><summary>Oorspronkelijke vraag en voorbeeldfeedback</summary>
@@ -1580,6 +1867,7 @@
           <dt>Voorbeeldantwoord van een leerling</dt><dd>${escapeHtml(example.answer)}</dd>
           <dt>Feedback bij dit antwoord</dt><dd>${escapeHtml(example.feedback)}</dd></dl></details>` : ''}</div>
       <form class="assessment-form">
+        ${example ? '' : taskField}
         <label for="assessment-goal">Wat moet de leerling of student zelf kunnen?</label>
         <textarea id="assessment-goal" rows="2" maxlength="500" required placeholder="Bijv. twee bronnen vergelijken en een conclusie onderbouwen.">${escapeHtml(draft.goal)}</textarea>
         <details class="assessment-custom assessment-compare"><summary>Vergelijk twee toetsaanpakken voor dit leerdoel</summary>
@@ -1596,14 +1884,13 @@
         <fieldset><legend>Welke rol krijgt AI bij deze opdracht?</legend>
           ${Object.entries(ASSESSMENT_MODES).map(([key, mode]) => `<label class="assessment-choice"><input required type="radio" name="mode" value="${key}" ${key === draft.mode ? 'checked' : ''}>${mode.label}</label>`).join('')}
         </fieldset>
-        <details class="assessment-custom" ${!example && (draft.task || draft.evidence || draft.criterion || draft.alternative) ? 'open' : ''}>
-          <summary>Pas opdracht, inlevervorm en beoordeling aan</summary>
-          <label for="assessment-task">Wat is de opdracht?</label>
-          <textarea id="assessment-task" rows="4" maxlength="1000">${escapeHtml(draft.task)}</textarea>
+        ${ownTest ? `${evidenceField}<p class="assessment-note">Laat dit veld leeg om de bewijsstap van de gekozen aanpak te gebruiken.</p>` : ''}
+        <details class="assessment-custom" ${!example && (draft.evidence || draft.criterion || draft.alternative) ? 'open' : ''}>
+          <summary>${example ? 'Pas opdracht, inlevervorm en beoordeling aan' : 'Pas inlevervorm en beoordeling aan'}</summary>
+          ${example ? taskField : ''}
           <label for="assessment-alternative">Hoe kan de leerling zonder AI meedoen?</label>
           <textarea id="assessment-alternative" rows="2" maxlength="500">${escapeHtml(draft.alternative)}</textarea>
-          <label for="assessment-evidence">Wat wilt u terugzien?</label>
-          <textarea id="assessment-evidence" rows="2" maxlength="500" placeholder="Bijv. een schets met een korte mondelinge toelichting.">${escapeHtml(draft.evidence)}</textarea>
+          ${ownTest ? '' : evidenceField}
           <label for="assessment-criterion">Waar let u op bij de beoordeling?</label>
           <textarea id="assessment-criterion" rows="2" maxlength="500" placeholder="Bijv. elke ontwerpkeuze is onderbouwd met een gegeven uit de opdracht.">${escapeHtml(draft.criterion)}</textarea>
           <p class="assessment-note">Een lege inlevervorm of beoordeling gebruikt het voorstel bij de gekozen rol van AI.</p>
@@ -1614,7 +1901,7 @@
       </div>
       <section class="assessment-preview" aria-labelledby="assessment-preview-title">
         <h2 id="assessment-preview-title" tabindex="-1">Opdrachttekst voor uw klas</h2>
-        <p class="assessment-note" data-assessment-apply-note role="status"></p>
+        <p class="assessment-note" id="assessment-apply-note" data-assessment-apply-note role="status"></p>
         <div data-assessment-result></div>
       </section></div></form>
       <details class="assessment-sources"><summary>Over de voorbeelden en bronnen</summary>
@@ -1634,24 +1921,41 @@
     const comparison = form.querySelector('.assessment-compare');
     const comparisonGoal = comparison.querySelector('[data-assessment-compare-goal]');
     const applied = form.querySelector('[data-assessment-apply-note]');
+    let previousMode = draft.mode;
+    let reviewRequired = draft.reviewRequired;
     const current = () => ({goal:goal.value, mode:mode.value, task:task.value, alternative:alternative.value, evidence:evidence.value, criterion:criterion.value});
     function updatePreview() {
       const value = current();
-      const parts = assessmentParts(value);
+      const missingTask = ownTest && !value.task.trim();
+      const parts = missingTask ? [] : assessmentParts(value);
       comparisonGoal.textContent = value.goal.trim() ? 'Uw leerdoel: ' + value.goal.trim() : 'Vul hierboven uw eigen leerdoel in om een aanpak te gebruiken.';
-      applied.textContent = '';
-      clear.hidden = example ? Object.entries(value).every(([key, text]) => text === example[key]) : !Object.values(value).some(Boolean);
+      const reviewNote = reviewRequired && ASSESSMENT_MODES[value.mode]
+        ? `U koos ‘${ASSESSMENT_MODES[value.mode].label}’. Controleer of de ingevulde opdracht, het werk dat leerlingen laten zien, de beoordeling en de afspraken zonder AI bij deze aanpak passen. Pas de tekst waar nodig aan en bevestig uw controle onder de opdrachttekst.`
+        : '';
+      if (applied.textContent !== reviewNote) applied.textContent = reviewNote;
+      clear.hidden = !reviewRequired && (example ? Object.entries(value).every(([key, text]) => text === example[key]) : !Object.values(value).some(Boolean));
       goal.setCustomValidity(value.goal && !value.goal.trim() ? 'Vul een leerdoel in.' : '');
+      if (ownTest) task.setCustomValidity(missingTask ? 'Vul uw bestaande toetsvraag of opdracht in.' : '');
       if (!parts.length) {
-        result.innerHTML = '<p class="assessment-prompt">Vul een leerdoel in en kies de rol van AI. Hier verschijnt de tekst voor uw klas.</p>';
+        result.innerHTML = `<p class="assessment-prompt">${ownTest ? 'Vul uw toetsvraag en leerdoel in en kies de rol van AI.' : 'Vul een leerdoel in en kies de rol van AI.'} Hier verschijnt de tekst voor uw klas.</p>`;
         return;
       }
       const selected = ASSESSMENT_MODES[value.mode];
       result.innerHTML = `<dl>${parts.map(([label, text]) => `<div><dt>${label}</dt><dd>${escapeHtml(text)}</dd></div>`).join('')}</dl>
-        <button class="btn" type="button" data-assessment-copy>Kopieer opdrachttekst</button>
+        ${reviewRequired
+          ? '<button class="btn" type="button" data-assessment-review aria-describedby="assessment-apply-note">Ik heb de opdracht en beoordeling gecontroleerd</button>'
+          : '<button class="btn" type="button" data-assessment-copy>Kopieer opdrachttekst</button>'}
         <p class="assessment-feedback" role="status"></p>
         <textarea class="lesson-copy" aria-label="Opdrachttekst om te kopiëren" readonly hidden></textarea>
         <aside><h3>Suggestie voor de beoordeling</h3><p>${selected.teacher}</p></aside>`;
+      if (reviewRequired) {
+        result.querySelector('[data-assessment-review]').onclick = () => {
+          reviewRequired = false;
+          saveAndPreview();
+          result.querySelector('[data-assessment-copy]').focus();
+        };
+        return;
+      }
       const copy = result.querySelector('[data-assessment-copy]');
       copy.onclick = () => copyTextWithFallback(copy, parts.map(pair => pair.join('\n')).join('\n\n'),
         result.querySelector('[role="status"]'), result.querySelector('textarea'),
@@ -1659,20 +1963,24 @@
     }
     function saveAndPreview() {
       const value = current();
-      assessmentDrafts.set(assessmentChoice, value);
-      sessionSet(assessmentStorageKey(assessmentChoice), JSON.stringify(value));
+      const hasCustomTerms = [value.evidence, value.criterion, value.alternative].some(text => text.trim());
+      if (!hasCustomTerms || !value.mode) reviewRequired = false;
+      else if (previousMode && previousMode !== value.mode) reviewRequired = true;
+      previousMode = value.mode;
+      const saved = {...value, reviewRequired};
+      assessmentDrafts.set(choice, saved);
+      sessionSet(assessmentStorageKey(choice), JSON.stringify(saved));
       updatePreview();
     }
     form.oninput = saveAndPreview;
     for (const button of comparison.querySelectorAll('[data-assessment-apply]')) {
       button.onclick = () => {
+        if (ownTest && !task.value.trim()) { task.focus(); task.reportValidity(); return; }
         if (!goal.value.trim()) { goal.focus(); goal.reportValidity(); return; }
         mode.value = button.dataset.assessmentApply;
         saveAndPreview();
         comparison.open = false;
-        applied.textContent = 'Gekozen aanpak: ' + ASSESSMENT_MODES[mode.value].label + '.' +
-          ([task, alternative, evidence, criterion].some(field => field.value.trim())
-            ? ' Controleer of de ingevulde opdracht, inlevervorm en beoordeling aansluiten bij deze keuze.' : '');
+        if (!reviewRequired) applied.textContent = 'Gekozen aanpak: ' + ASSESSMENT_MODES[mode.value].label + '.';
         main.querySelector('#assessment-preview-title').focus();
       };
     }
@@ -1680,6 +1988,9 @@
     start.onchange = () => {
       assessmentChoice = Object.hasOwn(ASSESSMENT_EXAMPLES, start.value) ? start.value : '';
       sessionSet('atlas.toetsafspraak.start', assessmentChoice);
+      if (ownTest || explicitExample) {
+        history.replaceState(history.state, '', '#toetsafspraak?start=' + (assessmentChoice || 'eigen'));
+      }
       renderAssessment();
       main.querySelector('#assessment-start').focus();
     };
@@ -1688,8 +1999,10 @@
       goal.value = example?.goal || ''; evidence.value = example?.evidence || ''; criterion.value = example?.criterion || '';
       task.value = example?.task || ''; alternative.value = example?.alternative || '';
       for (const radio of form.querySelectorAll('[name="mode"]')) radio.checked = radio.value === example?.mode;
+      reviewRequired = false;
+      previousMode = mode.value;
       saveAndPreview();
-      goal.focus();
+      (ownTest ? task : goal).focus();
     };
     updatePreview();
   }
@@ -1937,9 +2250,9 @@
         const panel = button.closest('[data-lesson-id]');
         const record = publicRecordsById.get(panel.dataset.lessonId);
         const lesson = record.lessonStart;
-        const text = [lesson.question, lesson.task, lesson.reflection,
+        const text = [lesson.question, lesson.learningGoal && 'Leerdoel: ' + lesson.learningGoal, lesson.task, lesson.reflection,
           `Lesstart van de AI & Onderwijs Atlas Nederland: ${publicItemUrl(record)}`,
-          `Lesmateriaal van ${record.providerName}: ${lesson.sourceUrl}`].join('\n\n');
+          `Lesmateriaal van ${record.providerName}: ${lesson.sourceUrl}`].filter(Boolean).join('\n\n');
         await copyTextWithFallback(button, text, panel.querySelector('.lesson-feedback'), panel.querySelector('.lesson-copy'),
           'Klasopdracht en bronlinks gekopieerd.', 'De opdracht is geselecteerd. Kopieer de tekst om deze te delen.');
       };
@@ -1968,7 +2281,7 @@
     const backHref = location.hash.replace(/^#onderzoek/, '#zoeken');
     const params = new URLSearchParams(backHref.split('?')[1]);
     const fromFunding = filterValues('type', params.get('type')).some(type => FUNDING_TYPES.includes(type));
-    const fundingHref = criteriaHref({sector:params.get('sector'), vak:params.get('vak'), ...FUNDING_CRITERIA});
+    const fundingHref = criteriaHref({sector:params.get('sector'), vak:params.get('vak'), ...FUNDING_CRITERIA, status:STATUS_LABELS.open_call});
     function resource(id, label, description, showStatus = false) {
       const record = publicRecordsById.get(id);
       if (!record) return '';
@@ -2004,24 +2317,33 @@
       const status = statusLabel(record);
       counts.set(status, (counts.get(status) || 0) + 1);
     }
+    const closed = [STATUS_LABELS.closed_call, STATUS_LABELS.archived];
+    const other = [...counts.keys()].filter(status => !CURRENT_FUNDING_STATUSES.includes(status) && !closed.includes(status));
     const categories = [
-      ['Open', [STATUS_LABELS.open_call]], ['Aangekondigd', [STATUS_LABELS.planned, STATUS_LABELS.in_development]],
-      ['Gesloten', [STATUS_LABELS.closed_call, STATUS_LABELS.archived]]
+      ['Open en aangekondigd', CURRENT_FUNDING_STATUSES], ['Open', [STATUS_LABELS.open_call]],
+      ['Aangekondigd', ANNOUNCED_FUNDING_STATUSES], ['Regelingen en overige oproepen', other], ['Gesloten', closed]
     ];
-    const namedStatuses = categories.flatMap(([, statuses]) => statuses);
-    categories.splice(2, 0, ['Regelingen en overige oproepen', [...counts.keys()].filter(status => !namedStatuses.includes(status))]);
     const current = values('status');
     const links = categories.map(([label, statuses]) => {
       const count = statuses.reduce((sum, status) => sum + (counts.get(status) || 0), 0);
-      const selected = current.length && current.every(status => statuses.includes(status));
+      const selected = current.length > 0 && current.every(status => statuses.includes(status)) &&
+        (statuses !== CURRENT_FUNDING_STATUSES || current.length === statuses.length);
       const content = `${label} (${count})`;
       if (!count && !selected) return `<span>${content}</span>`;
-      return `<a href="${escapeHtml(stateHref({ status: statuses.filter(status => counts.has(status) || current.includes(status)).join(',') }))}"${selected ? ' aria-current="page"' : ''}>${content}</a>`;
+      return `<a href="${escapeHtml(stateHref({ status: statuses.join(',') }))}"${selected ? ' aria-current="page"' : ''}>${content}</a>`;
     });
     links.push(`<a href="${escapeHtml(stateHref({ status: '' }))}"${!current.length ? ' aria-current="page"' : ''}>Alle (${pool.length})</a>`);
     return `<nav class="practice-back" aria-label="Praktijkvragen"><a href="${escapeHtml(criteriaHref(context))}">← Andere taak</a></nav>
       <section class="funding-nav"><h2 id="funding-heading" tabindex="-1">Subsidies en calls</h2>
       <nav aria-label="Aanvraagstatus">${links.join('')}</nav><p><a href="${escapeHtml(stateHref().replace('#zoeken', '#onderzoek'))}">Ik zoek een promotieplaats</a></p></section>`;
+  }
+  function lessonDirectoryLink() {
+    const sectors = values('sector'), subjects = values('vak');
+    const params = new URLSearchParams();
+    if (sectors.length) params.set('sector', sectors.join(','));
+    if (subjects.length) params.set('vak', subjects.join(','));
+    const label = params.size ? 'Open de lesgids voor ' + [sectors.join(' of '), subjects.join(' of ')].filter(Boolean).join(' · ') : 'Open de lesgids';
+    return `<a href="lesmateriaal/${params.size ? '#selectie?' + escapeHtml(params.toString()) : ''}">${escapeHtml(label)}</a>`;
   }
   function practiceNavigation() {
     const context = { sector: state.sector, vak: state.vak, audience: state.audience, language: state.language };
@@ -2030,9 +2352,9 @@
     if (state.q || FILTER_KEYS.some(key => !['sector', 'vak', 'audience', 'language'].includes(key) && values(key).length)) {
       const task = PRACTICE_ROUTES.find(route => Object.entries(route.criteria).every(([key, value]) => state[key] === value));
       let work = '';
-      if (task?.criteria.q === 'les' || ['lesstart', 'lesstarts'].includes(normalize(state.q))) {
+      if (isLessonSelection(state)) {
         const materials = stateHref({ q: '', type: 'materials', language: 'nl', cost: 'Gratis' });
-        work = `<p class="lesson-shortcut"><a class="btn secondary" href="${escapeHtml(materials)}">Gratis Nederlandstalig lesmateriaal</a> <a href="lesmateriaal/">Alle lesstarts per onderwijssector</a></p>` + lessonStartSection();
+        work = `<p class="lesson-shortcut"><a class="btn secondary" href="${escapeHtml(materials)}">Gratis Nederlandstalig lesmateriaal</a> ${lessonDirectoryLink()}</p>` + lessonStartSection();
       }
       else if (researchQuery(state.q)) {
         work = `<p><a class="btn secondary" href="${escapeHtml(stateHref().replace('#zoeken', '#onderzoek'))}">Onderzoek doen of promoveren</a></p>`;
@@ -2040,20 +2362,28 @@
       else if (papersQuery(state.q)) work = '<p><a class="btn secondary" href="#papers">Papers over AI en onderwijs</a></p>';
       else if (normalize(state.q) === 'afspraken') work = teamTrialEntry() + assessmentEntry();
       else if (teamTrialQuery(state.q)) work = teamTrialEntry();
-      else if (values('theme').includes(ASSESSMENT_CRITERIA.theme) ||
-        ['toets', 'toetsontwerp'].includes(normalize(state.q)) || assessmentToolQuery(state.q)) work = assessmentEntry();
+      else {
+        const tool = assessmentToolLink(state.q);
+        if (tool || values('theme').includes(ASSESSMENT_CRITERIA.theme) ||
+            ['toets', 'toetsontwerp'].includes(normalize(state.q))) work = assessmentEntry(tool);
+      }
       if (task) return `<nav class="practice-back" aria-label="Praktijkvragen"><a href="${escapeHtml(criteriaHref(context))}">← Andere taak</a><strong>${escapeHtml(task.label)}</strong></nav>${work}`;
       return work;
     }
     const selected = values('sector');
     const links = PRACTICE_ROUTES.map(route => {
       const criteria = { ...context, ...route.criteria };
-      const count = recordsForCriteria(criteria).length;
+      const matches = recordsForCriteria(criteria);
       const content = `<strong>${escapeHtml(route.label)}</strong><span>${escapeHtml(route.detail)}</span>`;
-      if (route.criteria === FUNDING_CRITERIA) return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${count} open <span aria-hidden="true">→</span></small></a>`;
+      if (route.criteria === FUNDING_CRITERIA) {
+        const open = matches.filter(record => statusLabel(record) === STATUS_LABELS.open_call).length;
+        return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${open} open · ${matches.length - open} aangekondigd <span aria-hidden="true">→</span></small></a>`;
+      }
+      const count = matches.length;
+      const worksheets = isLessonSelection(criteria) ? matchingWorksheetRoutes(criteria).length : 0;
       if (!count && route.criteria === AGREEMENT_CRITERIA) return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>Teamproef <span aria-hidden="true">→</span></small></a>`;
-      if (!count) return `<span class="practice-link unavailable">${content}<small>Geen resultaten</small></span>`;
-      return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${count} ${count === 1 ? 'resultaat' : 'resultaten'} <span aria-hidden="true">→</span></small></a>`;
+      if (!count && !worksheets) return `<span class="practice-link unavailable">${content}<small>Geen resultaten</small></span>`;
+      return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${matchesLabel(count, worksheets)} <span aria-hidden="true">→</span></small></a>`;
     });
     const researchHref = criteriaHref(context).replace('#zoeken', '#onderzoek');
     links.push(`<a class="practice-link" href="${escapeHtml(researchHref)}"><strong>Onderzoek doen of promoveren</strong><span>Promotieplaatsen, onderzoeksdata en praktijkonderzoek</span><small>Bekijk routes <span aria-hidden="true">→</span></small></a>`);
@@ -2064,6 +2394,120 @@
       </select></label></div><div class="practice-links">${links.join('')}</div>
       <p class="home-papers"><a href="#wat-werkt">Wat werkt bij leren met AI?</a> · <a href="#papers">Recente papers over AI en onderwijs</a></p></section>`;
   }
+  const SPOTLIGHT_TOPICS = [
+    {
+      id: 'toets', title: 'Maak uw toetsvraag AI-bestendiger',
+      description: 'Neem één vraag uit uw toets. Kies wat de leerling of student zelf moet laten zien en kopieer de aangepaste opdracht met beoordelingscriteria.',
+      action: 'Pas mijn toetsvraag aan', href: '#toetsafspraak?start=eigen'
+    },
+    {
+      id: 'toolkeuze', title: 'Dicteren of een opname uitschrijven?',
+      description: 'Vergelijk twee toepassingen. Bekijk welke gegevens ze verwerken en welke afspraken u vooraf met uw school moet controleren.',
+      action: 'Vergelijk de toepassingen', href: '#toolkeuze'
+    },
+    {
+      id: 'lesgids', title: 'Vind een les voor uw vak',
+      description: 'Kies een vak en onderwijssector. Bekijk de opdracht en open het leerlingblad dat u met de klas kunt delen.',
+      action: 'Open de lesgids', href: 'lesmateriaal/'
+    },
+    {
+      id: 'leerlingwerk', title: 'Mag ik leerlingwerk delen met AI?',
+      description: 'Loop drie vragen langs voordat u werk van een leerling in een AI-tool invoert. Bekijk welke afspraak u op school moet nagaan.',
+      action: 'Bekijk de drie vragen', href: '#regels-in-de-praktijk'
+    },
+    {
+      id: 'subsidies', title: 'Welke subsidieronde kunt u voorbereiden?',
+      description: 'Bekijk de open en aangekondigde rondes. Controleer bij de verstrekker wie kan aanvragen en welke datum voor uw team telt.',
+      action: 'Bekijk subsidies en calls', href: criteriaHref(FUNDING_CRITERIA)
+    },
+    {
+      id: 'pilot', title: 'Maak afspraken over een AI-proef',
+      description: 'Leg met uw team vast wat u wilt uitproberen, wie mag besluiten en wanneer u stopt of bijstuurt. Kopieer het besluitblad voor uw overleg.',
+      action: 'Vul het besluitblad in', href: '#pilotbesluit'
+    }
+  ];
+  // The edition date is local to the Netherlands. Record the evidence for a dated choice in the maintenance log.
+  const SPOTLIGHT_SELECTIONS = {'2026-12-07': 'lesgids', '2026-12-21': 'toolkeuze'};
+  const SPOTLIGHT_START = Date.UTC(2026, 10, 23);
+  const DAY_MS = 86_400_000;
+  const FORTNIGHT_MS = 14 * DAY_MS;
+  let spotlightTimer;
+
+  function spotlightEdition(day, topics = SPOTLIGHT_TOPICS, selections = SPOTLIGHT_SELECTIONS) {
+    if (!topics.length) return null;
+    // Use UTC for arithmetic on calendar dates, so a clock change never shortens an edition.
+    const period = Math.max(0, Math.floor((Date.parse(day) - SPOTLIGHT_START) / FORTNIGHT_MS));
+    const dateAt = offset => new Date(SPOTLIGHT_START + offset).toISOString().slice(0, 10);
+    const topicAt = index => topics.find(topic => topic.id === selections[dateAt(index * FORTNIGHT_MS)]) || topics[index % topics.length];
+    return {current: topicAt(period), previous: period ? topicAt(period - 1) : null,
+      start: dateAt(period * FORTNIGHT_MS), end: dateAt((period + 1) * FORTNIGHT_MS - DAY_MS)};
+  }
+  function spotlightContent({current, previous, end}) {
+    const endLabel = new Intl.DateTimeFormat('nl-NL', {day:'numeric', month:'long', timeZone:'UTC'}).format(Date.parse(end));
+    return `<div class="spotlight-intro"><span class="spotlight-label">Uitgelicht</span>
+      <span class="spotlight-date">t/m <time datetime="${end}">${endLabel}</time></span>
+      <h2 id="spotlight-heading">${escapeHtml(current.title)}</h2><p>${escapeHtml(current.description)}</p></div>
+      <div class="spotlight-actions"><a class="btn" href="${escapeHtml(current.href)}">${escapeHtml(current.action)} <span aria-hidden="true">→</span></a>
+      ${previous ? `<a class="spotlight-previous" href="${escapeHtml(previous.href)}">Vorige keer: ${escapeHtml(previous.title)}</a>` : ''}</div>`;
+  }
+  function homeSpotlightMarkup() {
+    const edition = spotlightEdition(dutchCalendar.format(Date.now()));
+    return edition ? `<section class="home-spotlight" data-edition="${edition.start}" aria-labelledby="spotlight-heading">${spotlightContent(edition)}</section>` : '';
+  }
+  function refreshHomeSpotlight() {
+    window.clearTimeout?.(spotlightTimer);
+    if (location.hash && location.hash.split('?')[0] !== '#home') return;
+    const block = main.querySelector('.home-spotlight');
+    if (!block) return;
+    const now = Date.now();
+    const edition = spotlightEdition(dutchCalendar.format(now));
+    if (block.dataset.edition !== edition.start) {
+      const focused = block.contains(document.activeElement) && document.activeElement;
+      block.innerHTML = spotlightContent(edition);
+      block.dataset.edition = edition.start;
+      if (focused) block.querySelector(focused.classList.contains('spotlight-previous') ? '.spotlight-previous' : '.btn')?.focus({preventScroll:true});
+    }
+    // At 00:00 UTC Amsterdam is already one or two hours into the new day.
+    const nextDay = Date.parse(edition.end) + DAY_MS;
+    const localHour = new Intl.DateTimeFormat('nl-NL', {hour: '2-digit', hourCycle: 'h23', timeZone: 'Europe/Amsterdam'}).format(nextDay);
+    const wait = nextDay - Number(localHour) * 3_600_000 - now;
+    spotlightTimer = window.setTimeout?.(refreshHomeSpotlight, Math.max(1, Math.min(wait, FORTNIGHT_MS)));
+  }
+  function emptyQueryActions() {
+    if (!state.q?.trim()) return '';
+    const count = activeFilters(state).length ? recordsForCriteria({...state, q: ''}).length : 0;
+    return `<p><button class="btn secondary" type="button" data-edit-query>Zoekterm aanpassen</button>
+      ${count ? `<button class="btn secondary" type="button" data-clear-query>Toon ${count} ${count === 1 ? 'resultaat' : 'resultaten'} zonder zoekterm</button>` : ''}</p>`;
+  }
+  function emptyResultsMarkup(routes, worksheetCount) {
+    const actions = emptyQueryActions();
+    if (isFundingSelection()) {
+      return `<div class="empty"><h2>${state.status === STATUS_LABELS.open_call ? 'Geen open oproepen bij deze selectie' : 'Geen subsidies of calls bij deze selectie'}</h2>
+        <p>Kijk bij een andere aanvraagstatus of verruim uw filters.</p>${actions}
+        ${state.status ? `<a href="${escapeHtml(stateHref({ status: '' }))}">Bekijk alle aanvraagstatussen binnen deze selectie</a>` : `<a href="${escapeHtml(criteriaHref({ sector: state.sector }))}">Bekijk ander aanbod${state.sector ? ' in deze sectorselectie' : ''}</a>`}</div>`;
+    }
+    const alternative = routes.length ? null : alternativeSuggestion();
+    const relaxations = relaxationSuggestions();
+    const notice = worksheetCount ? '<p>Geen andere treffers in de catalogus.</p>' :
+      `<span class="eyebrow">Geen exacte match</span><h2>We helpen u verder</h2>${alternative ?
+        `<a class="alternative" href="${escapeHtml(stateHref({ q: alternative.candidate }))}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` :
+        `<p>${state.q ? 'Uw zoekopdracht levert binnen deze selectie geen resultaten op.' : 'Er is geen aanbod met deze combinatie van filters.'}</p>`}`;
+    return `<div class="empty">${notice}
+      ${actions}
+      ${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${escapeHtml(stateHref({ [item.key]: '' }))}">Zonder ${escapeHtml(item.values.join(' of '))} <strong>${item.count}</strong></a>`).join('')}</div>` : ''}
+      <button class="clear-link" type="button">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`;
+  }
+  function pickedActionLinks(scope) {
+    return `<a class="btn" data-${scope}-compare href="${escapeHtml(selectedHref('vergelijken'))}" ${sheetPicks.size >= 2 ? '' : 'hidden'}>Vergelijk mijn keuzes (${sheetPicks.size})</a>
+      <a class="btn secondary" data-${scope}-sheet href="${escapeHtml(selectedHref('overlegblad'))}" ${sheetPicks.size ? '' : 'hidden'}>Open mijn overlegblad (${sheetPicks.size})</a>
+      <span ${sheetPicks.size === 1 ? '' : 'hidden'}>Kies nog een vermelding om te vergelijken.</span>`;
+  }
+  function matchesLabel(offers, sheets) {
+    const labels = [];
+    if (offers || !sheets) labels.push(offers + (offers === 1 ? ' resultaat' : ' resultaten'));
+    if (sheets) labels.push(sheets + (sheets === 1 ? ' werkblad' : ' werkbladen'));
+    return labels.join(' en ');
+  }
   function resultsMarkup() {
     resultRecords = sortRecords(recordsForCriteria(state));
     const chips = [
@@ -2072,11 +2516,12 @@
     ].join('');
     const related = values('theme').length ? relatedThemes(values('theme')[0]) : [];
     const routes = teacherRoutes(state.q, state);
-    const routeGuide = routes.length ? `<section class="selection-guidance teacher-routes" aria-label="Verder met uw vraag"><h2>Verder met uw vraag</h2>
+    const worksheetCount = routes.filter(route => route.href.startsWith('#werkblad-')).length;
+    const onlyWorksheets = !resultRecords.length && worksheetCount > 0;
+    const routeGuide = routes.length ? `<section class="selection-guidance teacher-routes" aria-label="Verder met uw vraag">${onlyWorksheets ? '' : '<h2>Verder met uw vraag</h2>'}
       <ul>${routes.map(item => `<li><a data-question-route href="${escapeHtml(item.href)}">${escapeHtml(item.label)}</a><span>${escapeHtml(item.meta)}</span></li>`).join('')}</ul></section>` : '';
-    const alternative = routes.length ? null : alternativeSuggestion();
-    const relaxations = resultRecords.length ? [] : relaxationSuggestions();
-    const heading = `${resultRecords.length} ${resultRecords.length === 1 ? 'resultaat' : 'resultaten'}${state.q ? ` voor ‘${state.q}’` : ''}`;
+    resultCountLabel = matchesLabel(resultRecords.length, worksheetCount);
+    const heading = resultCountLabel + (state.q ? ` voor ‘${state.q}’` : '');
     const knownDates = isPublicationSort() && resultRecords.filter(record => publicationDate(record)).length;
     const sortSummary = state.sort === 'added'
       ? 'Nieuwste toevoegingen aan de Atlas eerst; onbekende toevoegdatums staan onderaan. Een broncontrole verandert de toevoegdatum niet.'
@@ -2085,8 +2530,10 @@
       : state.sort === 'az' ? 'Gesorteerd op titel, van A tot Z.' : isFundingSelection()
       ? 'Open oproepen eerst, op volgorde van bekende deadline. Daarna volgen aangekondigde rondes, overige regelingen en gesloten oproepen.' : 'Gesorteerd op relevantie en directe bruikbaarheid.';
     const selectedSearch = location.hash.split('?')[0] === '#zoeken' && (state.q?.trim() || FILTER_KEYS.some(key => values(key).length));
-    const outcome = selectedSearch ? (resultRecords.length ? ' data-atlas-search-hits' : ' data-atlas-empty-search') : '';
-    return `${practiceNavigation()}<header class="result-head"${outcome}><h2 tabindex="-1">${escapeHtml(heading)}</h2>
+    const outcome = selectedSearch ? (resultRecords.length || worksheetCount ? ' data-atlas-search-hits' : ' data-atlas-empty-search') : '';
+    const home = !location.hash || location.hash.split('?')[0] === '#home';
+    const spotlight = home ? homeSpotlightMarkup() : '';
+    return `${spotlight}${practiceNavigation()}${profileNavigation(home)}<header class="result-head"${outcome}><h2 tabindex="-1">${escapeHtml(heading)}</h2>
       <details class="result-options"><summary>Sorteer, vergelijk of deel</summary>
         <div class="result-options-body"><label for="sort">Sorteren</label><select id="sort" aria-describedby="sort-summary">${Object.entries(SORT_OPTIONS).map(([key, label]) => `<option value="${key}" ${state.sort === key ? 'selected' : ''}>${escapeHtml(label)}</option>`).join('')}</select>
         <p class="result-summary" id="sort-summary" aria-live="polite">${escapeHtml(sortSummary)}</p>
@@ -2097,12 +2544,9 @@
       ${routeGuide}
       ${values('type').length === 1 && values('type')[0] === 'Training' ? '<section class="training-intro"><h2>Workshops en trainers</h2><p>Vind een workshop, cursus of training en de aanbieder die deze verzorgt. Verfijn op onderwerp, doelgroep of aanbieder. Trainer, locatie, kosten en beschikbaarheid staan bij het aanbod voor zover bevestigd. Bespreek maatwerk via de officiële aanbodpagina.</p></section>' : ''}
       ${values('theme').includes('Veilige AI-omgeving') ? '<section class="selection-guidance"><h2>Beoordeel de toepassing in uw eigen situatie</h2><p>Gebruik de officiële bronnen om gegevensgebruik, beheer, menselijke controle, toegankelijkheid en overstapmogelijkheden te beoordelen. Wat passend is, hangt af van uw doel, gegevens, instellingen en afspraken. Deze selectie is geen keurmerk voor veilige of verantwoorde AI.</p></section>' : ''}
-      <div class="picked-actions" ${sheetPicks.size ? '' : 'hidden'}>
-        <a class="btn" data-picked-compare href="${escapeHtml(selectedHref('vergelijken'))}" ${sheetPicks.size >= 2 ? '' : 'hidden'}>Vergelijk mijn keuzes (${sheetPicks.size})</a>
-        <a class="btn secondary" data-picked-sheet href="${escapeHtml(selectedHref('overlegblad'))}" ${sheetPicks.size ? '' : 'hidden'}>Open mijn overlegblad (${sheetPicks.size})</a>
-        <span data-pick-hint ${sheetPicks.size === 1 ? '' : 'hidden'}>Kies nog een vermelding om te vergelijken.</span></div>
+      <div class="picked-actions" data-picked-actions ${sheetPicks.size ? '' : 'hidden'}>${pickedActionLinks('picked')}</div>
       <div id="action-feedback" class="action-feedback" aria-live="polite"></div>
-      <div class="results-content">${resultRecords.length ? resultListMarkup() : isFundingSelection() ? `<div class="empty"><h2>${state.status === STATUS_LABELS.open_call ? 'Geen open oproepen bij deze selectie' : 'Geen subsidies of calls bij deze selectie'}</h2><p>Kijk bij een andere aanvraagstatus of verruim uw filters.</p>${state.status ? `<a href="${escapeHtml(stateHref({ status: '' }))}">Bekijk alle aanvraagstatussen binnen deze selectie</a>` : `<a href="${escapeHtml(criteriaHref({ sector: state.sector }))}">Bekijk ander aanbod${state.sector ? ' in deze sectorselectie' : ''}</a>`}</div>` : `<div class="empty"><span class="eyebrow">Geen exacte match</span><h2>We helpen u verder</h2>${alternative ? `<a class="alternative" href="${escapeHtml(stateHref({ q: alternative.candidate }))}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` : routes.length ? '<p>De volledige zoekvraag levert binnen deze selectie geen catalogusvermeldingen op.</p>' : '<p>Voor deze zoekterm is geen aantoonbaar werkend alternatief gevonden.</p>'}${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${stateHref({ [item.key]: '' })}">Zonder ${escapeHtml(item.values.join(' of '))} <strong>${item.count}</strong></a>`).join('')}</div>` : ''}<button class="clear btn">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`}</div>
+      <div class="results-content">${resultRecords.length ? resultListMarkup() : emptyResultsMarkup(routes, worksheetCount)}</div>
       ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="${escapeHtml(stateHref({ theme }))}">${escapeHtml(theme)} <span>${count} ${count === 1 ? 'resultaat' : 'resultaten'}</span></a>`).join('')}</nav>` : ''}`;
   }
   function filterButtonText() {
@@ -2111,6 +2555,8 @@
   }
   function refreshFacetControls() {
     const counts = facetCounts();
+    const worksheetCounts = worksheetFacetCounts();
+    const focusedFacet = document.activeElement?.closest?.('[data-facet]');
     const subject = document.querySelector('#subject-search');
     const applied = values('vak').join(', ');
     if (subject && subject.dataset.applied !== applied) {
@@ -2122,10 +2568,11 @@
       const key = input.dataset.facet;
       const checked = selections[key].includes(input.value);
       const count = counts[key].get(input.value) || 0;
+      const worksheets = worksheetCounts[key]?.get(input.value) || 0;
       input.checked = checked;
-      input.disabled = !count && !checked;
+      input.disabled = !count && !worksheets && !checked;
       const counter = input.closest('label')?.querySelector('small');
-      if (counter) counter.textContent = count;
+      if (counter) counter.textContent = facetCountLabel(count, worksheets);
     });
     document.querySelectorAll('[data-facet-block]').forEach(block => {
       const count = values(block.dataset.facetBlock).length;
@@ -2133,14 +2580,16 @@
       if (badge) { badge.textContent = count; badge.hidden = !count; badge.setAttribute('aria-label', `${count} geselecteerd`); }
       const selected = block.querySelector('.facet-value');
       if (selected) selected.textContent = facetSelectionLabel(block.dataset.facetBlock);
+      updateFacetOptions(block);
     });
+    if (focusedFacet?.closest('label').hidden) focusedFacet.closest('details').querySelector('summary').focus();
     const hiddenCount = ['access', 'source'].reduce((sum, key) => sum + values(key).length, 0);
     const moreCount = document.querySelector('[data-more-count]');
     if (moreCount) moreCount.textContent = hiddenCount ? ` (${hiddenCount})` : '';
     const opener = document.querySelector('.mobile-filter');
     if (opener) opener.textContent = filterButtonText();
     const apply = document.querySelector('.apply');
-    if (apply) apply.textContent = `Toon ${resultRecords.length} ${resultRecords.length === 1 ? 'resultaat' : 'resultaten'}`;
+    if (apply) apply.textContent = 'Toon ' + resultCountLabel;
   }
   function updateSearchResults() {
     const panel = document.querySelector('#results-panel');
@@ -2155,7 +2604,8 @@
   }
   function catalogFilterPanel(typeOptions, audienceOptions, organizationOptions) {
     const counts = facetCounts();
-    const filter = (key, title, options) => facet(key, title, options, counts[key]);
+    const worksheetCounts = worksheetFacetCounts();
+    const filter = (key, title, options) => facet(key, title, options, counts[key], worksheetCounts[key]);
     const languages = [...new Set([...Object.keys(LANGUAGE_LABELS), ...counts.language.keys()])];
     const hiddenCount = ['access', 'source'].reduce((sum, key) => sum + values(key).length, 0);
     return `<aside class="filters" id="filters" aria-label="Zoekfilters"><header><h2>Filters</h2><button class="close" aria-label="Sluit filters">×</button></header>
@@ -2163,19 +2613,11 @@
       ${filter('sector', 'Voor welke sector?', SECTORS)}<form class="subject-filter">${subjectInput('subject-search')}<button class="btn secondary" type="submit">Toepassen</button></form>${filter('type', 'Wat zoekt u?', typeOptions)}${filter('language', 'Taal', languages)}${filter('cost', 'Kosten', ['Gratis', 'Betaald', 'Gratis en betaald', 'Kosten onbekend'])}${filter('theme', 'Onderwerp', themeOptions())}${filter('geography', 'Regio', ['Nederland', 'Europa', 'Internationaal'])}${filter('audience', 'Doelgroep', audienceOptions)}${filter('status', 'Beschikbaarheid', Object.values(STATUS_LABELS))}${filter('organization', 'Aanbieder', organizationOptions)}
       <details class="more-filters"><summary>Meer filters<span data-more-count>${hiddenCount ? ` (${hiddenCount})` : ''}</span> <span aria-hidden="true">▼</span></summary>
         ${filter('access', 'Toegang', Object.values(ACCESS_LABELS))}${filter('source', 'Bron', ['Met officiële bron', 'Bron nog niet vastgelegd'])}
-      </details><button class="clear btn secondary">Wis alle filters</button><footer><button class="apply btn">Toon ${resultRecords.length} resultaten</button></footer>
+      </details><button class="clear btn secondary">Wis alle filters</button><footer><button class="apply btn">Toon ${escapeHtml(resultCountLabel)}</button></footer>
     </aside>`;
   }
   function renderSearch(isHome = false) {
-    const returnRoute = sessionGet('atlas.restoreResults');
-    const restoring = returnRoute && returnRoute === (location.hash || '#home');
-    if (restoring) {
-      try {
-        const view = JSON.parse(sessionGet('atlas.returnView'));
-        if (view?.route === returnRoute) saveResultView(view);
-      } catch { /* Earlier visits have only a scroll position. */ }
-      sessionSet('atlas.restoreResults', '');
-    }
+    const restoring = restoreReturnView();
     // Opening the catalogue is itself a request to browse all available offers.
     const typeOptions = [...new Set(records.map(offerType))].sort((a, b) => filterOptionLabel('type', a).localeCompare(filterOptionLabel('type', b), 'nl'));
     const organizationOptions = [...new Set(records.map(record => record.providerName).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'nl'));
@@ -2184,17 +2626,12 @@
       return primaryDifference || a.localeCompare(b, 'nl');
     });
     const results = resultsMarkup();
-    const personas = savedPersonas();
-    const roles = PRIMARY_AUDIENCES.filter(role => records.some(record => (record.audiences || []).includes(role)));
-    main.innerHTML = `<section class="catalog"><header class="catalog-intro"><h1>Zoek AI-aanbod voor uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, boeken, lesmaterialen en meer. Combineer uw zoekterm met de filters.</p>${isHome ? `${personas.length ? `<div class="persona-indicator"><span>Afgestemd op: <strong>${escapeHtml(personaSummary(personas))}</strong></span><button class="persona-change" type="button" aria-expanded="false">Wijzigen</button><button class="persona-clear" type="button">Wissen</button></div><div class="persona-choices" hidden>${rolePicker(roles, personas)}</div>` : ''}` : ''}</header><div class="catalog-grid"><div class="catalog-sidebar" aria-label="Zoeken en filteren"><h2 class="sidebar-title">Zoeken en filteren</h2>${searchForm(isHome ? 'home-search' : 'catalog-search')}<button class="mobile-filter btn secondary" type="button" aria-controls="filters" aria-expanded="false">${filterButtonText()}</button>${catalogFilterPanel(typeOptions, audienceOptions, organizationOptions)}</div><section class="results" id="results-panel">${results}</section></div></section>`;
-    bindSearchPage(); bindRolePickers();
+    main.innerHTML = `<section class="catalog"><header class="catalog-intro"><h1>Zoek AI-aanbod voor uw onderwijs</h1><p>Doorzoek ${records.length} handreikingen, trainingen, boeken, lesmaterialen en meer. Combineer uw zoekterm met de filters.</p></header><div class="catalog-grid"><div class="catalog-sidebar" aria-label="Zoeken en filteren"><h2 class="sidebar-title">Zoeken en filteren</h2>${searchForm(isHome ? 'home-search' : 'catalog-search')}<button class="mobile-filter btn secondary" type="button" aria-controls="filters" aria-expanded="false">${filterButtonText()}</button>${catalogFilterPanel(typeOptions, audienceOptions, organizationOptions)}</div><section class="results" id="results-panel">${results}</section></div></section>`;
+    bindSearchPage();
     const view = resultView();
     if (restoring || view.focusId) {
       const targetY = view.y ?? Number(sessionGet('atlas.resultsScroll'));
-      requestAnimationFrame(() => {
-        if (view.focusId) document.querySelector(`[data-record-id="${CSS.escape(view.focusId)}"] h2 a`)?.focus({preventScroll:true});
-        scrollTo(0, targetY || 0);
-      });
+      restoreCardFocus(resultFocusTarget(main, view.focusId, view.focusControl), targetY);
     }
   }
 
@@ -2339,7 +2776,7 @@
     const items = ids.map(id => publicRecordsById.get(id));
     const missing = requested.some(id => !selectedPublicIds([id]).length);
     const previous = sessionGet('atlas.compareSearch');
-    const backHref = /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
+    const backHref = isResultRoute(previous) ? previous : '#zoeken';
     const incomplete = items.length < 2;
     const differences = params.get('verschillen') === '1';
     const example = ['codeerschool-behind-the-chat-nl', 'mediawijs-edubox-artificiele-intelligentie'];
@@ -2394,7 +2831,7 @@
     const ids = params.getAll('item');
     const items = picked ? selectedPublicIds(ids).map(id => publicRecordsById.get(id)) : sortRecords(recordsForCriteria(state));
     const previousSearch = sessionGet('atlas.lastSearch');
-    const backHref = picked && /^#zoeken(?:\?|$)/.test(previousSearch) ? previousSearch : stateHref();
+    const backHref = picked && isResultRoute(previousSearch) ? previousSearch : stateHref();
     const labels = { theme: 'Onderwerp', audience: 'Doelgroep', sector: 'Sector', vak: 'Vakgebied', status: 'Beschikbaarheid',
       type: 'Soort aanbod', geography: 'Regio', organization: 'Aanbieder', cost: 'Kosten', language: 'Taal', access: 'Toegang', source: 'Bron' };
     const criteria = [
@@ -2440,7 +2877,8 @@
         <div class="learner-actions"><button type="button" class="btn secondary" data-share-sheet>Deel leerlingblad</button>
           <button type="button" class="btn" data-print-sheet>Afdrukken of opslaan als pdf</button></div></div>
       <p id="action-feedback" role="status"></p>
-      <header><p class="lesson-level">Leerlingblad · ${escapeHtml(lesson.level)}</p><h1 id="learner-question">${escapeHtml(lesson.question)}</h1></header>
+      <header><p class="lesson-level">Leerlingblad · ${escapeHtml(lesson.level)}</p><h1 id="learner-question">${escapeHtml(lesson.question)}</h1>
+        ${lesson.learningGoal ? `<p class="learner-goal"><strong>Leerdoel</strong> · ${escapeHtml(lesson.learningGoal)}</p>` : ''}</header>
       <section><h2>Opdracht</h2><p>${escapeHtml(lesson.task)}</p></section>
       <section><h2>Bespreek samen</h2><p>${escapeHtml(lesson.reflection)}</p></section>
       <div class="learner-answer">Ruimte voor je antwoord of tekening</div>
@@ -2453,15 +2891,115 @@
     );
   }
 
+  const WORKSHEET_TEACHER_NOTES = {
+    'werkblad-klantmail': {
+      teacherTitle: 'Antwoorden en feedback voor de docent',
+      notes: [
+        'De bestelling bevestigt de eerste zin. De tweede zin is onjuist: woensdag staan de acht nog in het magazijn. Voor de derde zin ontbreekt bewijs: de leverancier heeft voor de vier nabestelde ordners geen datum bevestigd.',
+        'Mogelijke klantmail: “Goedemiddag, dank voor uw bericht. Ik kan nog niet bevestigen dat u donderdag alle twaalf ordners in huis hebt. Acht staan ingepakt in ons magazijn. Voor de vier nabestelde ordners is de leverdatum nog onbekend. Ik vraag de planning na en laat u weten wat ik hoor.”',
+        'Lees de mail als klant. Krijgt u antwoord op uw donderdagvraag? Is duidelijk wat er met de acht en met de vier gebeurt? Kan de medewerker de beloofde vervolgstap zelf uitvoeren?',
+        'Na de scan kan de student melden dat de vervoerder acht ordners heeft opgehaald. Wanneer die bij de klant aankomen en wanneer de overige vier beschikbaar zijn, blijft onbekend.',
+        'Beroepscontext: bij het interne ordertraject controleert een commercieel medewerker afspraken en overlegt bij afwijkingen. Vraag met welke collega de student de planning zou afstemmen. Het SBB-profiel staat onderaan dit blad.'
+      ],
+      promptTitle: 'Maak een variant voor mijn klas',
+      adapt: 'Vervang het product en de ordergegevens door fictieve gegevens uit uw vak. Controleer zelf of elke uitspraak in de conceptmail met het dossier te beoordelen is.',
+      prompt: 'Maak voor mijn mbo-klas [richting] een oefening met een fictieve bestelling, een klantvraag en een kort magazijnbericht. Schrijf een conceptmail van drie zinnen met één juist feit, één fout en één onbevestigde toezegging. Geef een volgende orderstatus waarmee de student één zin kan herzien. Houd het antwoordmodel apart van de leerlingopdracht.',
+      source: {linkText: 'SBB · Werkproces intern ordertraject (pdf, p. 21–22)', href: 'https://kwalificatie-mijn.s-bb.nl/Details/DownloadDocument/1967278#page=21'}
+    },
+    'werkblad-oefenvragen': {
+      promptTitle: 'Oefenvragen voor mijn eigen vak maken',
+      teacherTitle: 'Antwoorden en controle voor de docent',
+      notes: [
+        'Fietsen: 12 ÷ 48 × 100 = 25% stijging. Reken terug: 48 × 1,25 = 60.',
+        'Boeken: 12 ÷ 60 × 100 = 20% daling. Reken terug: 60 × 0,80 = 48.',
+        'Schrijft een leerling tweemaal 20%? Vraag welk aantal aan het begin van elk verhaal staat. Laat de leerling beide nieuwe aantallen narekenen.'
+      ],
+      adapt: 'Vervang de woorden tussen haken. Gebruik de tekst als schrijfhulp of in een AI-tool die uw school toestaat. Los beide opgaven zelf op voordat u ze uitdeelt.',
+      prompt: 'Maak voor [groep en vak] twee korte oefenvragen bij [leerdoel]. Gebruik verschillende situaties waarin leerlingen zelf [denkstap] moeten uitvoeren en uitleggen. Geef eerst alleen de leerlingvragen. Zet daarna per vraag het modelantwoord, een waarschijnlijke denkfout en een controle waarmee ik het antwoord kan toetsen.'
+    },
+    'werkblad-biologiepracticum': {
+      promptTitle: 'Een controlevraag voor mijn klas',
+      teacherTitle: 'Voorbereiding en bespreking voor de docent',
+      notes: [
+        'Leg tuinkerszaad, schaaltjes, watten, water en etiketten klaar. Kies twee plekken met vergelijkbare temperatuur en maak één opstelling donker. Volg de docentinstructie van NIBI voor het volledige practicum.',
+        'De NIBI-docentinstructie rekent één lesuur voor de opzet, twee weken voor waarnemingen en één lesuur voor de conclusie en de start van het verslag.',
+        'Controleer of leerlingen onder meer aantal en soort zaden, vocht, temperatuur en telmoment gelijk houden. Spreek bijvoorbeeld af dat een zichtbaar worteltje telt. Laat een leerling voor de conclusie eigen getallen aanwijzen, ook als die niet bij de verwachting passen.'
+      ],
+      adapt: 'Laat leerlingen eerst zelf hun proefopzet maken. U kunt onderstaande vraag aan een collega of een toegestane AI-tool stellen en één bruikbare controlevraag kiezen.',
+      prompt: 'Ik bereid een vmbo-practicum voor over de invloed van licht op de kieming van tuinkers. Geef twee korte vragen waarmee leerlingen hun eigen proefopzet kunnen controleren. Geef geen proefopzet, meetwaarden of conclusie. Ik kies welke vraag past bij mijn leerdoel.',
+      source: {label: 'NIBI · Tuinkers ontkiemen (PlantKracht vmbo)', href: 'https://www.nibi.nl/nl/plantkracht-vmbo#art_10431'}
+    }
+  };
+
+  function renderWorksheet(id) {
+    const directoryReturn = lessonDirectoryReturn();
+    const lastSearch = sessionGet('atlas.lastSearch') || '';
+    const back = directoryReturn || (/^#zoeken(?:\?|$)/.test(lastSearch) ? lastSearch : '#zoeken?q=les&type=materials');
+    const backLabel = directoryReturn ? '← Terug naar uw lesselectie' : '← Naar het lesaanbod';
+    const classPath = 'lesmateriaal/leerling/' + encodeURIComponent(id.slice('werkblad-'.length)) + '/';
+    const sheet = source.worksheets?.[id];
+    if (!sheet || !Array.isArray(sheet.tasks) || !sheet.tasks.length) {
+      main.innerHTML = `<section class="detail-missing"><h1 tabindex="-1">Het werkblad kon niet worden geladen</h1><p><a class="btn" href="${escapeHtml(classPath)}">Open leerlingblad</a></p><a href="${escapeHtml(back)}">${backLabel}</a></section>`;
+      return;
+    }
+    const teacher = WORKSHEET_TEACHER_NOTES[id];
+    const sourceCredit = sheet.credit ? ' ' + sheet.credit : '';
+    const sourceLink = teacher.source ? ` <a class="work-screen" href="${escapeHtml(teacher.source.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(teacher.source.linkText || 'Open docentmateriaal')} ↗</a>` : '';
+    const caseFile = sheet.caseFile || [];
+    const caseMarkup = caseFile.length ? `<section class="work-case"><h2>Fictief dossier</h2><dl>${caseFile.map(entry => `<dt>${escapeHtml(entry.label)}</dt><dd>${escapeHtml(entry.text)}</dd>`).join('')}</dl></section>` : '';
+    main.innerHTML = `<article class="work-sheet" aria-labelledby="work-title">
+      <nav class="practice-back work-screen"><a href="${escapeHtml(back)}">${backLabel}</a></nav>
+      <header><p class="lesson-level">${escapeHtml(sheet.level)}</p><h1 id="work-title" tabindex="-1">${escapeHtml(sheet.title)}</h1>
+        <p><strong>Leerdoel</strong> · ${escapeHtml(sheet.goal)}</p></header>
+      ${caseMarkup}<section class="work-pupil"><h2>Opdracht voor de klas</h2><ol>${sheet.tasks.map(task => `<li>${escapeHtml(task)}</li>`).join('')}</ol>
+        <div class="lesson-actions work-screen"><a class="btn" href="${escapeHtml(classPath)}">Open leerlingblad</a>
+          <button class="btn secondary" data-work-link type="button">Kopieer klaslink</button>
+          <button class="btn secondary" data-work-copy type="button">Kopieer leerlingopdracht</button>
+          <button class="btn secondary" data-work-print type="button">Druk leerlingblad af</button></div></section>
+      <div class="work-screen"><details class="work-notes"><summary>${escapeHtml(teacher.teacherTitle)}</summary>
+        <ul>${teacher.notes.map(note => `<li>${escapeHtml(note)}</li>`).join('')}</ul></details>
+        <details class="work-notes"><summary>${escapeHtml(teacher.promptTitle)}</summary>
+          <p>${escapeHtml(teacher.adapt)}</p><label for="work-prompt">Bewerk de instructie voor uw les</label>
+          <textarea id="work-prompt" rows="5">${escapeHtml(teacher.prompt)}</textarea><button class="btn secondary" data-work-prompt type="button">Kopieer mijn instructie</button>
+        </details><p class="lesson-feedback" role="status"></p>
+        <textarea class="lesson-copy" aria-label="Tekst om handmatig te kopiëren" readonly hidden></textarea></div>
+      <p class="learner-credit">Werkblad van de AI &amp; Onderwijs Atlas Nederland.${escapeHtml(sourceCredit)}${sourceLink}</p></article>`;
+    const feedback = main.querySelector('.lesson-feedback');
+    const fallback = main.querySelector('.lesson-copy');
+    const copy = (button, text) => copyTextWithFallback(button, text, feedback, fallback, 'Gekopieerd.', 'De tekst is geselecteerd. Kopieer deze met uw apparaat.');
+    const pupil = main.querySelector('[data-work-copy]');
+    const caseText = caseFile.length ? ['Fictief dossier', ...caseFile.map(entry => entry.label + '\n' + entry.text)] : [];
+    pupil.onclick = () => copy(pupil, [sheet.title, sheet.goal, ...caseText, ...sheet.tasks.map((task, index) => `${index + 1}. ${task}`),
+      'Werkblad van de AI & Onderwijs Atlas Nederland.' + sourceCredit].join('\n\n'));
+    const classLink = main.querySelector('[data-work-link]');
+    classLink.onclick = () => copyTextWithFallback(classLink, PUBLIC_ATLAS + classPath, feedback, fallback,
+      'Klaslink gekopieerd.', 'De klaslink is geselecteerd. Kopieer deze met uw apparaat.');
+    main.querySelector('[data-work-print]').onclick = () => window.print();
+    const promptButton = main.querySelector('[data-work-prompt]');
+    promptButton.onclick = () => copy(promptButton, main.querySelector('#work-prompt').value);
+  }
+
   function lessonDirectoryReturn() {
     const params = new URLSearchParams(location.hash.split('?')[1]);
     if (params.get('van') !== 'lesgids' || params.getAll('van').length !== 1) return '';
     params.delete('van');
+    const group = params.get('groep');
+    if (group !== null) {
+      if (params.getAll('groep').length !== 1 || !['po', 'vo', 'mbo', 'ho', 'overig', 'werkbladen'].includes(group)) return '';
+      params.delete('groep');
+    }
     for (const [key, value] of params) {
       if (!['sector', 'vak', 'doel', 'activiteit', 'minuten'].includes(key) || params.getAll(key).length !== 1 ||
-          !value.trim() || value.length > 160 || /[\u0000-\u001f\u007f]/.test(value)) return '';
+          !value.trim() || value.length > (key === 'vak' ? 512 : 160) || /[\u0000-\u001f\u007f]/.test(value)) return '';
       if (key === 'minuten' && (!/^[1-9]\d*$/.test(value) || !Number.isSafeInteger(Number(value)))) return '';
-      if (key === 'sector' && !SECTORS.includes(value) && !records.some(item => item.lessonStart?.sectors?.includes(value))) return '';
+      if (key === 'sector' && value.split(',').some(sector => !SECTORS.includes(sector) && !records.some(item => item.lessonStart?.sectors?.includes(sector)))) return '';
+    }
+    if (group) {
+      const slug = location.hash.split('?')[0].match(/^#(?:item\/([a-z0-9-]+)|(werkblad-[a-z0-9-]+))$/);
+      if (slug && (group === 'werkbladen') === Boolean(slug[2])) {
+        params.set('groep', group);
+        params.set('kaart', slug[1] || slug[2]);
+      }
     }
     return 'lesmateriaal/' + (params.size ? '#selectie?' + params : '');
   }
@@ -2479,7 +3017,9 @@
     const directoryReturn = lessonDirectoryReturn();
     const lastSearch = directoryReturn || sessionGet('atlas.lastSearch') || '#zoeken';
     const fromDirectory = lastSearch.startsWith('lesmateriaal/');
+    const fromNewOffers = lastSearch.split('?')[0] === '#nieuw';
     const backLabel = fromDirectory ? '← Terug naar uw lesselectie' : lastSearch.startsWith('#onderzoek') ? '← Terug naar Onderzoek doen of promoveren'
+      : fromNewOffers ? '← Terug naar Nieuw aanbod'
       : lastSearch === '#praktijkgids' ? '← Terug naar de praktijkgids'
       : lastSearch.startsWith('#vergelijken?') ? 'Terug naar vergelijking' : '← Terug naar resultaten';
     const related = records.filter(item => item.id !== record.id)
@@ -2492,17 +3032,17 @@
     const materialDetail = record.offerCategory === 'materials' && effectiveStatus(record) === 'available' && sources.length;
     const factRows = offerFacts(record).filter(([label]) => !funding || label !== 'Beschikbaarheid');
     const applicants = funding && fundingApplicants(record);
-    const amount = funding && typeof record.fundingAmount === 'string' && record.fundingAmount.trim();
+    const amount = funding && fundingAmount(record);
     const sourceLinks = `<h3>Officiële bronnen</h3>${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}`;
     const lesson = hasAvailableLesson(record) && lessonStartBody(record);
     main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(offerLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
-      <section class="detail-shell"${materialDetail ? ` data-atlas-material-detail="${escapeHtml(record.id)}"` : ''}><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${backLabel}</a><span>Home / ${fromDirectory ? 'Lesgids' : lastSearch.startsWith('#onderzoek') ? 'Onderzoek' : 'Resultaten'} / ${escapeHtml(record.title)}</span></nav>
+      <section class="detail-shell"${materialDetail ? ` data-atlas-material-detail="${escapeHtml(record.id)}"` : ''}><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${backLabel}</a><span>Home / ${fromDirectory ? 'Lesgids' : fromNewOffers ? 'Nieuw aanbod' : lastSearch.startsWith('#onderzoek') ? 'Onderzoek' : 'Resultaten'} / ${escapeHtml(record.title)}</span></nav>
       <div class="detail-layout"><article>
         ${funding ? `<section class="funding-conditions"><h2>Aanvraag en voorwaarden</h2><dl>
           <div><dt>Aanvragers</dt><dd>${escapeHtml(applicants)}</dd></div>
           ${record.eligibility && record.eligibility !== applicants ? `<div><dt>Wie komt in aanmerking?</dt><dd>${escapeHtml(record.eligibility)}</dd></div>` : ''}
           <div><dt>Indiening</dt><dd>${escapeHtml(displayStatus(record))} · ${practicalDates(record)}</dd></div>
-          ${amount && amount !== 'Nog niet ingevuld' ? `<div><dt>Bedrag</dt><dd>${escapeHtml(amount)}</dd></div>` : ''}
+          ${amount ? `<div><dt>Bedrag</dt><dd>${escapeHtml(amount)}</dd></div>` : ''}
           </dl>${sourceLinks}</section>` : ''}
         ${lesson ? `<section class="lesson-starts lesson-detail"><h2>Lesstart voor de klas</h2>
           <p class="lesson-level">${escapeHtml(record.lessonStart.level)}</p><h3>${escapeHtml(record.lessonStart.question)}</h3>${lesson}</section>` : ''}
@@ -2579,9 +3119,8 @@
     if (teamTrialQuery(query)) sections.push({ label: 'Zelf aan de slag', items: [
       { label: 'Teamproef met AI', meta: 'Proefkaart voor het teamoverleg', href: '#teamproef' }
     ] });
-    if (assessmentToolQuery(query)) sections.push({ label: 'Zelf aan de slag', items: [
-      { label: 'Maak een toetsafspraak', meta: 'Opdrachttekst voor uw klas', href: '#toetsafspraak' }
-    ] });
+    const assessmentTool = assessmentToolLink(query);
+    if (assessmentTool) sections.push({ label: 'Zelf aan de slag', items: [assessmentTool] });
     if (themes.length) sections.push({ label: 'Onderwerpen', items: themes });
     if (organizations.length) sections.push({ label: 'Aanbieders', items: organizations });
     const definitions = [
@@ -2610,7 +3149,8 @@
       event.preventDefault();
       closeSuggestions();
       if (teamTrialQuery(input.value)) { location.hash = '#teamproef'; return; }
-      if (assessmentToolQuery(input.value)) { location.hash = '#toetsafspraak'; return; }
+      const assessmentTool = assessmentToolLink(input.value);
+      if (assessmentTool) { location.hash = assessmentTool.href; return; }
       if (input.value.trim() && ['#home', ''].includes(location.hash)) state.sort = 'relevant';
       applyNaturalQuery(input.value);
       setUrl();
@@ -2628,7 +3168,7 @@
       }, 150);
     };
     suggestions.onclick = event => {
-      if (event.target.closest('a[href^="#item/"], a[href="#regels-in-de-praktijk"], a[href="#wat-werkt"], a[href="#toolkeuze"]')) {
+      if (event.target.closest('a[href^="#item/"], a[href^="#werkblad-"], a[href="#regels-in-de-praktijk"], a[href="#wat-werkt"], a[href="#toolkeuze"]')) {
         sessionSet('atlas.lastSearch', criteriaHref(criteriaForQuery(input.value)));
       }
     };
@@ -2651,28 +3191,63 @@
     };
     form.onfocusout = () => setTimeout(() => { if (!form.contains(document.activeElement)) closeSuggestions(); }, 0);
   }
-  function bindRolePickers() {
-    document.querySelectorAll('.role-picker').forEach(form => {
-      const submit = form.querySelector('.role-submit');
-      const update = () => {
-        const count = form.querySelectorAll('input:checked').length;
-        submit.disabled = count === 0;
-        submit.textContent = count > 1 ? `Bekijk aanbod voor ${count} rollen` : 'Bekijk passend aanbod';
-      };
-      form.querySelectorAll('input').forEach(input => input.onchange = update);
-      form.onsubmit = event => {
-        event.preventDefault();
-        const selected = [...form.querySelectorAll('input:checked')].map(input => input.value);
-        if (!selected.length) return;
-        savePersonas(selected);
-        location.hash = `zoeken?audience=${encodeURIComponent(selected.join(','))}`;
-      };
-      update();
+  function profileNavigation(home) {
+    const profile = readProfile();
+    const selected = Object.entries(profile).filter(([, value]) => value);
+    if (!selected.length) return temporaryProfile ? '<p role="status">Uw profiel is voor deze pagina gewist. De browser gaf geen toegang tot de opgeslagen voorkeuren.</p>' : '';
+    const active = selected.every(([key, value]) => state[key] === value);
+    const label = [...profile.audience.split(',').filter(Boolean).map(personaLabel), profile.sector, profile.vak].filter(Boolean).join(' · ');
+    return `<aside class="persona-indicator" aria-label="Mijn profiel">
+      ${active ? `<span>Uw profiel <strong>${escapeHtml(label)}</strong></span>` : '<a href="#home">Bekijk mijn aanbod</a>'}
+      ${activeFilters(state).length ? `<a href="${escapeHtml(criteriaHref({q: state.q}))}">Doorzoek de hele Atlas</a>` : ''}
+      <a href="#mijn-atlas">Profiel wijzigen</a>
+      ${home ? '<button class="persona-clear" type="button">Wis mijn profiel</button>' : ''}
+      ${temporaryProfile ? '<span role="status">Dit profiel geldt zolang deze pagina open is. De browser kon uw keuzes niet bewaren.</span>' : ''}</aside>`;
+  }
+  function clearProfile() {
+    saveProfile(profileCriteria(null));
+    if (location.hash === '#home' || !location.hash) {
+      renderHome();
+      main.querySelector('.result-head h2')?.focus({preventScroll:true});
+    } else location.hash = 'home';
+  }
+  function renderProfile() {
+    const profile = readProfile();
+    const roles = profile.audience.split(',');
+    main.innerHTML = `<article class="personal-page profile-page"><header class="page-intro"><h1 tabindex="-1">Mijn profiel</h1>
+      <p>Kies welk aanbod u op de startpagina wilt zien. U hebt geen account nodig. Deze browser bewaart uw keuzes op dit apparaat.</p></header>
+      <form id="profile-form"><fieldset><legend>Voor welke rol zoekt u aanbod?</legend>
+      <p>Kies eventueel meerdere rollen. Aanbod voor één van uw rollen telt mee.</p>
+      <div class="profile-roles">${PROFILE_ROLES.map(role => `<label><input type="checkbox" name="profile-role" value="${escapeHtml(role)}"${roles.includes(role) ? ' checked' : ''}> ${escapeHtml(personaLabel(role))}</label>`).join('')}</div></fieldset>
+      <div class="profile-fields"><div><label for="profile-sector">Onderwijssector</label>
+      <select id="profile-sector"><option value="">Alle sectoren</option>${SECTORS.map(sector => `<option value="${escapeHtml(sector)}"${profile.sector === sector ? ' selected' : ''}>${escapeHtml(SECTOR_NAMES[sector] ? sector + ' · ' + SECTOR_NAMES[sector] : sector)}</option>`).join('')}</select></div>
+      <div>${subjectInput('profile-subject', profile.vak, true)}</div></div>
+      <p class="profile-count" role="status"></p><div class="profile-actions"><button class="btn" type="submit">Bewaar mijn profiel</button>
+      <a href="#zoeken">Doorzoek de hele Atlas</a>${Object.values(profile).some(Boolean) ? '<button class="btn secondary" type="button" data-profile-clear>Wis mijn profiel</button>' : ''}</div>
+      </form></article>`;
+    const form = main.querySelector('#profile-form');
+    const choices = () => profileCriteria({
+      audience: [...form.querySelectorAll('input[name="profile-role"]')].filter(input => input.checked).map(input => input.value).join(','),
+      sector: form.querySelector('#profile-sector').value,
+      vak: form.querySelector('#profile-subject').value
     });
-    const change = document.querySelector('.persona-change');
-    if (change) change.onclick = () => { const choices = document.querySelector('.persona-choices'); choices.hidden = false; change.setAttribute('aria-expanded', 'true'); choices.querySelector('input').focus(); };
-    const clear = document.querySelector('.persona-clear');
-    if (clear) clear.onclick = () => { savePersonas([]); renderHome(); };
+    const preview = () => {
+      const selected = choices();
+      const count = recordsForCriteria(selected).length;
+      form.querySelector('.profile-count').textContent = count ? matchesLabel(count, 0) + ' bij uw keuzes.' : 'Geen passend aanbod. Probeer een andere rol, sector of vak.';
+      form.querySelector('button[type="submit"]').disabled = !Object.values(selected).some(Boolean);
+    };
+    form.oninput = preview;
+    form.onsubmit = event => {
+      event.preventDefault();
+      const selected = choices();
+      if (!Object.values(selected).some(Boolean)) return;
+      saveProfile(selected);
+      location.hash = 'home';
+    };
+    const clear = form.querySelector('[data-profile-clear]');
+    if (clear) clear.onclick = clearProfile;
+    preview();
   }
 
   function contributionPrompt() {
@@ -2712,60 +3287,68 @@
       if (error?.name !== 'AbortError') setActionFeedback('Delen lukte niet. Kopieer de URL uit de adresbalk.');
     }
   }
-  function bindResultsControls() {
+  function bindResultsControls(announceSearch = true) {
     const panel = document.querySelector('#results-panel');
     if (!panel) return;
-    if (panel.querySelector('[data-atlas-empty-search]')) window.dispatchEvent?.(new Event('atlas-empty-search'));
-    else if (panel.querySelector('[data-atlas-search-hits]')) window.dispatchEvent?.(new Event('atlas-search-results'));
+    const clearProfileButton = panel.querySelector('.persona-clear');
+    if (clearProfileButton) clearProfileButton.onclick = clearProfile;
+    observeCardFacts();
+    if (announceSearch && panel.querySelector('[data-atlas-empty-search]')) window.dispatchEvent?.(new Event('atlas-empty-search'));
+    else if (announceSearch && panel.querySelector('[data-atlas-search-hits]')) window.dispatchEvent?.(new Event('atlas-search-results'));
     bindLessonCopy(panel);
     const list = panel.querySelector('[data-result-list]');
+    panel.querySelectorAll('input[name="result-layout"]').forEach(input => input.onchange = () => {
+      compactResults = input.value === 'list';
+      sessionSet('atlas.resultLayout', input.value);
+      list.classList.toggle('compact-results', compactResults);
+      list.innerHTML = resultRecords.slice(0, list.children.length).map(catalogueResult).join('');
+      bindResultsControls(false);
+    });
     const more = panel.querySelector('[data-more-results]');
     if (more) more.onclick = () => {
       const first = list.children.length;
       const batch = resultRecords.slice(first, first + RESULT_BATCH);
-      list.insertAdjacentHTML('beforeend', batch.map(record => simpleCard(record, true)).join(''));
+      list.insertAdjacentHTML('beforeend', batch.map(catalogueResult).join(''));
       const shown = list.children.length;
       saveResultView({shown});
       panel.querySelector('[data-result-progress]').textContent = `${shown} van ${resultRecords.length} resultaten getoond`;
       more.hidden = shown === resultRecords.length;
-      bindResultsControls();
+      bindResultsControls(false);
       list.children[first]?.querySelector('h2 a')?.focus();
     };
-    const pickedLink = panel.querySelector('[data-picked-sheet]');
-    const compareLink = panel.querySelector('[data-picked-compare]');
+    const pickedActions = panel.querySelector('[data-picked-actions]');
     const guide = panel.querySelector('[data-compare-guide]');
-    function rememberResults(focusId) {
-      const view = {shown: list?.children.length || RESULT_BATCH, y: scrollY, focusId: typeof focusId === 'string' ? focusId : ''};
-      saveResultView(view);
-      sessionSet('atlas.returnView', JSON.stringify({...view, route: location.hash || '#home'}));
-      sessionSet('atlas.lastSearch', stateHref());
-      sessionSet('atlas.compareSearch', stateHref());
+    function rememberResults(focusId = '', focusControl = '', route = location.hash || '#home') {
+      const view = {shown: list?.children.length || RESULT_BATCH, y: scrollY, focusId, focusControl};
+      saveReturnView(view, route);
+      sessionSet('atlas.compareSearch', route);
       sessionSet('atlas.resultsScroll', scrollY);
     }
-    if (pickedLink) pickedLink.onclick = rememberResults;
-    if (compareLink) compareLink.onclick = rememberResults;
-    if (guide) guide.onclick = rememberResults;
+    if (pickedActions) pickedActions.onclick = event => {
+      if (event.target.closest('a')) rememberResults();
+    };
+    if (guide) guide.onclick = () => rememberResults();
+    function showPickedActions(input) {
+      panel.querySelector('[data-inline-picks]')?.remove();
+      if (!input || !sheetPicks.size) return;
+      const links = input.closest('.offer-links');
+      links.insertAdjacentHTML('beforeend', `<div class="picked-actions" data-inline-picks>${pickedActionLinks('inline')}</div>`);
+      links.querySelector('[data-inline-picks]').onclick = event => {
+        if (event.target.closest('a')) rememberResults(input.dataset.sheetPick, 'pick');
+      };
+    }
+    const view = resultView();
+    if (view.focusControl === 'pick' && !panel.querySelector('[data-inline-picks]')) {
+      showPickedActions(resultFocusTarget(panel, view.focusId, 'pick'));
+    }
     panel.querySelectorAll('[data-sheet-pick]').forEach(input => input.onchange = () => {
       const id = input.dataset.sheetPick;
       if (input.checked) sheetPicks.add(id);
       else sheetPicks.delete(id);
       persistSheetPicks();
-      pickedLink.href = selectedHref('overlegblad');
-      pickedLink.hidden = !sheetPicks.size;
-      pickedLink.textContent = `Open mijn overlegblad (${sheetPicks.size})`;
-      compareLink.href = selectedHref('vergelijken');
-      compareLink.hidden = sheetPicks.size < 2;
-      compareLink.textContent = `Vergelijk mijn keuzes (${sheetPicks.size})`;
-      panel.querySelector('.picked-actions').hidden = !sheetPicks.size;
-      panel.querySelector('[data-pick-hint]').hidden = sheetPicks.size !== 1;
-      panel.querySelector('[data-inline-compare]')?.remove();
-      if (input.checked && sheetPicks.size >= 2) {
-        const shortcut = compareLink.cloneNode(true);
-        shortcut.removeAttribute('data-picked-compare');
-        shortcut.setAttribute('data-inline-compare', '');
-        shortcut.onclick = rememberResults;
-        input.closest('.offer-links').append(shortcut);
-      }
+      pickedActions.hidden = !sheetPicks.size;
+      pickedActions.innerHTML = pickedActionLinks('picked');
+      showPickedActions(input);
       setActionFeedback(sheetPicks.size === 1 ? 'Eén vermelding gekozen. Kies nog een vermelding om te vergelijken.' : `${sheetPicks.size} vermeldingen gekozen.`);
     });
     const sector = panel.querySelector('#practice-sector');
@@ -2773,7 +3356,7 @@
       const target = link.classList.contains('practice-link') ? '#lesson-heading, #trial-entry-heading, #assessment-entry-heading, #funding-heading, #research-heading, .result-head h2' : '#practice-title';
       focusAfterNavigation(link, target);
     });
-    focusAfterNavigation(panel.querySelector('.lesson-shortcut a'), '.result-head h2');
+    focusAfterNavigation(panel.querySelector('.lesson-shortcut .btn'), '.result-head h2');
     if (sector) sector.onchange = () => {
       state.sector = sector.value;
       if (['#home', ''].includes(location.hash)) state.sort = 'relevant';
@@ -2786,21 +3369,57 @@
       const key = raw.slice(0, separator), value = raw.slice(separator + 1);
       state[key] = serializeFilterValues(key, values(key).filter(item => item !== value));
       setUrl();
+      panel.querySelector('.result-head h2')?.focus();
     });
-    const clearQuery = panel.querySelector('[data-clear-query]');
-    if (clearQuery) clearQuery.onclick = () => { state.q = ''; setUrl(); };
-    panel.querySelectorAll('.clear-link,.empty .clear').forEach(button => button.onclick = () => { state = { q: '', sort: 'relevant' }; setUrl(); });
+    panel.querySelectorAll('[data-clear-query]').forEach(button => button.onclick = () => {
+      state.q = '';
+      setUrl();
+      panel.querySelector('.result-head h2')?.focus();
+    });
+    const queryInput = document.querySelector('.atlas-search input');
+    const editQuery = panel.querySelector('[data-edit-query]');
+    if (editQuery) editQuery.onclick = () => {
+      queryInput.focus();
+      queryInput.select();
+    };
+    panel.querySelectorAll('.clear-link').forEach(button => button.onclick = () => {
+      state = { q: '', sort: 'relevant' };
+      setUrl();
+      queryInput.focus();
+    });
     const sort = panel.querySelector('#sort');
     if (sort) sort.onchange = event => { state.sort = event.target.value; setUrl(); document.querySelector('#sort')?.focus(); };
     const share = panel.querySelector('[data-share-selection]');
     if (share) share.onclick = () => shareCurrentSelection();
     const sheet = panel.querySelector('[data-meeting-sheet]');
-    if (sheet) sheet.onclick = rememberResults;
+    if (sheet) sheet.onclick = () => rememberResults('', '', stateHref());
     panel.querySelectorAll('[data-question-route]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', stateHref()));
-    panel.querySelectorAll('.result-card a[href^="#item/"]').forEach(link => link.onclick = () => {
-      rememberResults(link.closest('[data-record-id]').dataset.recordId);
-      sessionSet('atlas.lastSearch', location.hash || '#home');
+    panel.querySelectorAll('[data-result-list] [data-record-id] a[href^="#item/"]').forEach(link => link.onclick = () => {
+      rememberResults(link.closest('[data-record-id]').dataset.recordId, link.closest('h2') ? 'title' : 'details');
     });
+  }
+  function updateFacetOptions(block) {
+    const options = block.querySelector('.facet-options');
+    const query = normalize(block.querySelector('.facet-search')?.value || '');
+    options.classList.toggle('searching', Boolean(query));
+    let visible = 0;
+    let matches = 0;
+    let canExpand = false;
+    for (const label of options.children) {
+      const input = label.querySelector('input');
+      const matchesName = !query || normalize(label.dataset.facetOption).includes(query);
+      if (!input.disabled && matchesName) matches++;
+      label.hidden = input.disabled || (!matchesName && !input.checked);
+      if (!label.hidden) {
+        visible++;
+        if (visible > 8 && !input.checked) canExpand = true;
+      }
+    }
+    const more = block.querySelector('.facet-more');
+    if (more) more.hidden = Boolean(query) || !canExpand;
+    const empty = block.querySelector('.facet-empty');
+    empty.textContent = query ? 'Geen passende aanbieder gevonden.' : 'Geen opties bij deze selectie.';
+    empty.hidden = matches > 0;
   }
   function bindFacetLists() {
     document.querySelectorAll('.facet-more').forEach(button => button.onclick = () => {
@@ -2813,12 +3432,7 @@
       if (nextOption) nextOption.focus();
     });
     document.querySelectorAll('[data-facet-block="organization"] .facet-search').forEach(input => input.oninput = () => {
-      const options = input.nextElementSibling;
-      const query = normalize(input.value);
-      options.classList.toggle('searching', Boolean(query));
-      options.querySelectorAll('label').forEach(label => { label.hidden = !normalize(label.dataset.facetOption).includes(query); });
-      const more = options.nextElementSibling;
-      if (more) more.hidden = Boolean(query);
+      updateFacetOptions(input.closest('[data-facet-block]'));
     });
   }
   function bindSearchPage() {
@@ -2886,6 +3500,7 @@
   function route() {
     // Back/forward can replace an open mobile panel without invoking its close
     // button. Release scrolling and detached keyboard handlers before rendering.
+    if (factDialog?.open) factDialog.close();
     document.body?.classList.remove('locked');
     document.querySelector('#filters')?.classList.remove('open');
     document.querySelector('.mobile-filter')?.setAttribute('aria-expanded', 'false');
@@ -2899,13 +3514,17 @@
     document.querySelector('.site-header')?.classList.remove('open');
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
     const guides = {
+      'mijn-atlas': renderProfile,
       'praktijkgids': renderPracticeGuide, 'wat-werkt': renderLearningEvidence,
+      'werkblad-oefenvragen': () => renderWorksheet('werkblad-oefenvragen'),
+      'werkblad-biologiepracticum': () => renderWorksheet('werkblad-biologiepracticum'),
+      'werkblad-klantmail': () => renderWorksheet('werkblad-klantmail'),
       'toolkeuze': renderToolChoice, 'pilotbesluit': renderPilotDecision, 'regels-in-de-praktijk': renderPracticeRules
     };
     if (path === 'home' || (!Object.hasOwn(guides, path) && !['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();
     if (Object.hasOwn(guides, path)) guides[path]();
     if (path === 'wegwijzer') { location.replace('#zoeken'); return; }
-    if (path === 'nieuw') renderNewOffers();
+    const focusedNewOffer = path === 'nieuw' && renderNewOffers();
     if (path === 'papers') renderPapers();
     if (path === 'onderzoek') researchPage();
     const focusedBookGroup = path === 'boeken' && renderBooks();
@@ -2916,18 +3535,19 @@
     if (path === 'toetsafspraak') renderAssessment();
     if (path === 'teamproef') renderTeamTrial();
     if (path.startsWith('item/')) renderDetail(decodeURIComponent(path.slice(5)));
-    if (path === 'mijn-atlas') { location.replace('#home'); return; }
     if (path === 'bijdragen') renderContribute();
+    if (!['home', 'zoeken', 'organisaties'].includes(path)) observeCardFacts();
     document.querySelectorAll('.site-header nav a').forEach(link => link.removeAttribute('aria-current'));
     document.querySelector(`.site-header nav a[href="#${CSS.escape(path)}"]`)?.setAttribute('aria-current', 'page');
     const updated = document.querySelector('[data-updated]'); if (updated) updated.textContent = source.metadata.updated || '';
-    if (!['zoeken', 'organisaties'].includes(path) && !focusedBookGroup) {
+    if (!['zoeken', 'organisaties'].includes(path) && !focusedBookGroup && !focusedNewOffer) {
       scrollTo({ top: 0, behavior: 'instant' });
       const target = Object.hasOwn(guides, path) ? main.querySelector('h1') : path === 'onderzoek' ? document.querySelector('#research-heading') : path === 'papers' ? document.querySelector('#papers-heading') : main;
       (target || main).focus({ preventScroll: true });
     }
   }
   let hiddenAt = 0;
+  window.addEventListener?.('pageshow', refreshHomeSpotlight);
   window.addEventListener?.('beforeprint', () => {
     const list = document.querySelector('[data-result-list]');
     if (!list || list.children.length >= resultRecords.length) return;
@@ -2943,6 +3563,7 @@
   document.addEventListener?.('visibilitychange', () => {
     const now = Date.now();
     if (document.hidden) { hiddenAt = now; return; }
+    refreshHomeSpotlight();
     const since = hiddenAt;
     hiddenAt = 0;
     if (!since || !records.some(record => {

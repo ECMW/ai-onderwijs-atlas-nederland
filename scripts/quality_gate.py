@@ -17,6 +17,7 @@ from contribution_quality import application_deadline_errors, commercial_field_e
 from offer_categories import offer_category_errors
 from publication_scope import publication_exclusion_errors, duplicate_redirects, duplicate_title_errors
 from source_library import source_library_issues
+from worksheet_pages import load_worksheets
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_STATUSES = {"verified", "recently_checked"}
@@ -87,6 +88,8 @@ def main() -> int:
     public_records = public_data.get("records", [])
 
     errors, warnings = [], []
+    if public_data.get("worksheets", {}) != load_worksheets(root):
+        errors.append("Leerlingopdrachten in de browser wijken af van data/worksheets.json")
     if (root / "sources").is_dir():
         source_errors, source_warnings = source_library_issues(root)
         errors.extend(source_errors)

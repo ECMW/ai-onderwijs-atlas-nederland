@@ -1,0 +1,63 @@
+{
+  "werkblad-oefenvragen": {
+    "title": "Wanneer is een verschil van 12 groter in procenten?",
+    "level": "Rekenen met procenten",
+    "goal": "Je kunt een procentuele verandering berekenen en uitleggen waarom het begingetal telt.",
+    "tasks": [
+      "Maandag staan er 48 fietsen bij school, dinsdag 60. Met hoeveel procent is het aantal gestegen? Schrijf op welk aantal 100% is en laat je berekening zien.",
+      "Vorige week leende de bibliotheek 60 boeken uit, deze week 48. Met hoeveel procent is het aantal gedaald? Noteer ook hier het begingetal en je berekening.",
+      "Het verschil is beide keren 12. Leg aan een klasgenoot uit waarom de percentages verschillen."
+    ],
+    "subjects": [
+      "Rekenen",
+      "Wiskunde"
+    ],
+    "sectors": [],
+    "activity": "Oefenvragen maken en procentuele verandering uitleggen"
+  },
+  "werkblad-biologiepracticum": {
+    "title": "Heeft licht invloed op de kieming van tuinkers?",
+    "level": "Biologie · vmbo vanaf leerjaar 2",
+    "goal": "Je kunt een eerlijke vergelijking ontwerpen en je conclusie onderbouwen met eigen waarnemingen.",
+    "tasks": [
+      "Bekijk dit voorstel: “Ik zet een schaaltje met natte watten in het licht en een schaaltje met droge watten in het donker.” Welke twee omstandigheden veranderen tegelijk? Wat kun je daardoor straks moeilijk verklaren?",
+      "Teken een betere opstelling om alleen de invloed van licht te onderzoeken. Noteer vooraf je verwachting, wanneer je een zaadje als gekiemd telt en wat je in beide opstellingen gelijk houdt. Bespreek het plan met je docent en voer het uit.",
+      "Maak een tabel met de datum, het aantal gekiemde zaadjes in het licht en het aantal in het donker. Tel telkens op dezelfde manier. Gebruik je eigen metingen om je verwachting te bespreken. Welke vraag blijft open?"
+    ],
+    "subjects": [
+      "Biologie"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "activity": "Practicum met tuinkers: een kiemproef ontwerpen en waarnemingen vergelijken",
+    "credit": "Bij het practicum Tuinkers ontkiemen van het Nederlands Instituut voor Biologie (NIBI)."
+  },
+  "werkblad-klantmail": {
+    "title": "Wat kun je de klant vandaag beloven?",
+    "level": "Mbo · Handel en Nederlands",
+    "goal": "Je controleert een conceptantwoord aan de hand van ordergegevens en schrijft een klantmail met een haalbare vervolgstap.",
+    "caseFile": [
+      {
+        "label": "Bestelling en klantvraag",
+        "text": "12 blauwe ordners. De klant vraagt: ‘Heb ik ze donderdag alle twaalf in huis?’"
+      },
+      {
+        "label": "Magazijnbericht · woensdag 15.00 uur",
+        "text": "8 ordners zijn ingepakt en staan nog in het magazijn. De overige 4 zijn nabesteld. De leverancier heeft geen datum bevestigd."
+      },
+      {
+        "label": "Voorbeeld van een AI-conceptmail, geschreven door de Atlas",
+        "text": "‘U bestelde 12 blauwe ordners. Acht zijn al verzonden. De laatste vier ontvangt u donderdag.’"
+      }
+    ],
+    "tasks": [
+      "Beoordeel de drie zinnen van de conceptmail. Welke zin klopt, welke is in strijd met het magazijnbericht en voor welke ontbreekt bewijs? Schrijf bij elke keuze op welk gegeven je gebruikt.",
+      "Schrijf zelf de klantmail van woensdag, in maximaal vijf zinnen. Geef antwoord op de vraag van de klant, leg uit wat je al weet en geef aan wat je gaat navragen.",
+      "Donderdagochtend staat er een nieuwe scan: ‘8 ordners opgehaald door de vervoerder’. Herzie één zin uit je mail. Wat kun je nu bevestigen en wat weet je nog steeds niet?"
+    ],
+    "subjects": ["Nederlands", "Handel"],
+    "sectors": ["MBO"],
+    "activity": "Een AI-conceptmail controleren en een zakelijke klantmail schrijven over een bestelling"
+  }
+}

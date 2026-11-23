@@ -132,10 +132,13 @@ jobs:
               target = site / source.relative_to(root)
               target.parent.mkdir(parents=True, exist_ok=True)
               shutil.copy2(source, target)
+          sys.path.insert(0, str(Path('toolkit/scripts').resolve()))
           if (root / 'scripts/lesson_directory.html').is_file():
-              sys.path.insert(0, str(Path('toolkit/scripts').resolve()))
               from lesson_directory import generate_lesson_directory
               generate_lesson_directory(root, site / 'lesmateriaal/index.html')
+          if (root / 'scripts/offer_page.html').is_file():
+              from offer_directory import generate_offer_directory
+              generate_offer_directory(root, site)
           release = {
               'sourceSha': os.environ['SOURCE_SHA'],
               'workflowSha': os.environ['GITHUB_SHA'],

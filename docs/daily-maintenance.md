@@ -83,6 +83,22 @@ pas na respectievelijk zeven en 28 dagen opnieuw gecontroleerd. Kennisnet, SURF,
 SLO, UNESCO AI en onderwijs, edusources en de bestaande TNO-bronnen staan op `daily`. Hun bronrollen
 zijn ongewijzigd: een ontdekkingsbron geldt niet automatisch als bewijs voor andermans aanbod.
 
+### Subsidies en calls
+
+De dagelijkse signaalcyclus volgt de rondeoverzichten van NWO, NKO en Regieorgaan SIA, het AIDO-programma
+van Npuls, de Europese Digital Europe-oproepen bij RVO, de Nederlandse Erasmus+-deadlines,
+de MSCA Staff Exchanges-kalender en het aanvraagloket van de onderzoeksprijs Sopra Steria – Institut de France. Nieuwe
+relevante links en herkenbare datumwijzigingen komen in het bestaande onderhoudsrapport. Kijk bij de
+inhoudelijke dagronde ook op de officiële oproeppagina’s als het rapport geen nieuwe signalen geeft.
+Een leeg nationaal overzicht kan bijvoorbeeld voorafgaan aan de Nederlandse publicatie van een Europese ronde.
+
+Controleer per kandidaat de relatie met AI en onderwijs, wie vanuit Nederland mag aanvragen, eventuele
+consortiumpartners en de eerste nog haalbare aanvraagstap. Onderscheid subsidie, aanbesteding en partneroproep.
+Controleer de uiterste datum en, waar vermeld, tijd en tijdzone voor zowel de intentieverklaring als het
+volledige voorstel. Gebruik voor Europese calls de voorwaarden van de afzonderlijke actie en de officiële
+programmagids of oproep. Hercontroleer bestaande kaarten bij een verlenging, sluiting of nieuwe ronde.
+Een brede regeling kan een onderwijsproject passen; benoem die toepasselijkheid als redactionele duiding.
+
 ### Bron toevoegen of aanpassen
 
 1. Gebruik een stabiele ID met prefix `source-`.
@@ -259,6 +275,23 @@ Gebruik het [verbeterregister](../reports/verbeterregister.md) voor productverbe
 Controleer bij een gewijzigde bron ook de bijbehorende lesvraag, toetsopdracht of onderzoekssamenvatting in de praktijkgids. De bron- en claimkoppelingen in `sources/` leggen vast op welke uitkomst, doelgroep of gebruiksvoorwaarde de tekst berust. Geef bij lesduur aan welke concrete bronles de aanbieder heeft getimed. Houd een ervaring van één instelling herkenbaar als praktijkverslag.
 
 Gebruik bij herhaalde zoekacties zonder resultaat de bestaande geaggregeerde tellers en vrijwillig gemelde voorbeelden. De telling bevat geen zoekwoorden. Controleer een concrete verbetering met een zoekvraag, een passend lesmateriaal en de oorspronkelijke bron. De beslisregels hierboven blijven gelden voor wijzigingen in de reikwijdte en voor privacykeuzes.
+
+### Dagelijkse productverbetering
+
+Open elke dag de actuele uitgave op het publieke domein, het [verbeterregister](../reports/verbeterregister.md), de open PR's en issues en de vorige taakuitkomst. Gebruik de resultaten van de bestaande broncontroles. Ligt een wijziging nog ter beoordeling, controleer de kandidaat en de publieke versie apart.
+
+Bekijk bij elke uitvoering welke doelgroepen en taken in recente rondes weinig aandacht kregen. Voor wie ontbreekt een bruikbare route, en waar is dat aan te zien? Vergelijk waar relevant met oorspronkelijke onderwijsbronnen en kennisplatforms. Gebruik beschikbare, rechtmatig verzamelde signalen en houd privécijfers buiten de repository.
+
+1. Kies een concrete vraag van een onderwijsprofessional, leerling of student. Probeer de hele taak, bijvoorbeeld van vak en leerdoel naar een opdracht die een leerling daadwerkelijk kan uitvoeren. Onderzoek daarbij ook de vormgeving en gebruikservaring. Is de juiste informatie herkenbaar, blijft ze leesbaar bij inzoomen en is de volgende handeling bereikbaar? Leg de beginsituatie en de bron vast. Bij een visuele wijziging vergelijk je dezelfde taak vóór en na de ingreep op dezelfde schermbreedte. Geef aan of het knelpunt in de browser is gereproduceerd, door een bezoeker is gemeld of nog een vermoeden is.
+2. Maak een korte selectie uit de kansen in het register. Weeg elke dag gebruikerswaarde, bereik, wat de Atlas toevoegt aan bestaande platforms en de sterkte van het bewijs af tegen bouwkosten, terugkerend onderhoud en risico. Vergelijk toevoegen, vereenvoudigen en behouden. Kies de kleinste ingreep die de onderzochte taak aantoonbaar verder helpt. Als die taak al slaagt en verdere aanwijzingen ontbreken, volstaat behouden.
+3. Werk in een eigen schone werkboom. Hergebruik een passende PR en kies vooraf de beoordelingsroute. Een correctie van bestaande canonieke records doorloopt de afzonderlijke gegevenscontrole van de gemachtigde actualisator. Als zo'n correctie samenhangt met een interfaceverbetering, koppel de voorstellen en test ook de combinatie. Controleer bronnen, dataprojectie en de gebruikelijke tests. Herhaal de oorspronkelijke taak op telefoon en desktop, ook met het toetsenbord. Controleer de echte afdruk, bron of download als die bij de taak hoort.
+4. Noteer in de taakuitkomst welke doelgroep en taak aandacht verdienen en welke keuze de onderhoudslast waard is. Leg bij een materiële verbetering de bevinding, wijziging, controles, resterende aanname en eerstvolgende proef vast in het register. Een productronde levert hoogstens één afgebakende product-PR op. Een ronde zonder wijziging eindigt met de korte taakuitkomst. Publicatie volgt het bestaande releaseproces.
+
+### Uitgelicht om de twee weken
+
+Bekijk tijdens de dagelijkse taak welke editie hierna aan de beurt is. De startpagina wisselt elke veertien dagen automatisch. Is er voor de volgende periode een concreet signaal van belangstelling, vergelijk dan de redactionele keuze met dat signaal. Een recente behoeftepeiling kan iets zeggen over een doelgroep. Geaggregeerde bronkliks kunnen iets zeggen over het gebruik van een gemeten route. Houd rekening met de zichtbaarheid van het vorige uitgelichte onderwerp en de looptijd van de meting. Bewaar de dashboardcijfers privé. [Reikwijdte van de bezoekersmeting](visitor-statistics.md)
+
+Kies bij voldoende aanleiding een ander onderwerp dan in de voorafgaande editie. Open het materiaal en controleer of een bezoeker de beloofde taak vanaf de startpagina kan uitvoeren. Leg de periode, de bron of het soort signaal en de redactionele afweging vast in het verbeterregister. Koppel de startdatum van die editie in `SPOTLIGHT_SELECTIONS` in `catalog.js` aan de bestaande onderwerpcode. Ontbreekt een overtuigend nieuw signaal, dan volstaat de automatische afwisseling. Een wissel op zichzelf vraagt geen PR.
 
 ## Lokaal testen en handmatig starten
 

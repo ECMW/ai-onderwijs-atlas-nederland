@@ -7,3 +7,6 @@ discovery-state/
 discovery-output/
 .pytest_cache/
 /lesmateriaal/index.html
+/lesmateriaal/leerling/
+/aanbod/
+/atlas-sitemap.xml

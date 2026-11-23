@@ -26010,7 +26010,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": "2026-07-03",
-    "lastVerified": "2026-09-11",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -26052,10 +26052,18 @@
         "date": "2026-09-11",
         "type": "added",
         "summary": "Praktijkvoorbeeld toegevoegd na controle van de officiële WUR-publicatie."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. In de WUR-opdracht zoeken studenten bij een uitspraak de oorspronkelijke passage op en leggen zij de relatie tussen uitspraak en bron vast."
       }
     ],
     "offerCategory": "materials",
-    "commercialStatus": "unknown"
+    "commercialStatus": "unknown",
+    "subjects": [
+      "Informatievaardigheden"
+    ]
   },
   {
     "id": "eerlijk-over-ai-ai-coach-opleiding-open-source",
@@ -35044,7 +35052,7 @@
     "status": "available",
     "availabilityText": "Een verhaal duurt ongeveer 15 minuten. Reken voor één verhaal met klassikaal nagesprek op circa 20 minuten. De verhalen zijn gratis en zonder account te openen.",
     "publicationDate": null,
-    "lastVerified": "2026-11-22",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -35089,9 +35097,18 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Tijd voor een verhaal met nagesprek en gebruik op digibord of telefoon toegevoegd op basis van de lesinstructie van Dé Codeerschool."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. De Codeerschool beschrijft bij beide vakgebieden hoe leerlingen met de verhalen het gebruik van hun gegevens en hun omgang met AI bespreken."
       }
     ],
-    "eligibility": "Voor leerlingen van 12 tot 18 jaar. Toon het verhaal op het digibord of laat leerlingen op hun telefoon meelezen."
+    "eligibility": "Voor leerlingen van 12 tot 18 jaar. Toon het verhaal op het digibord of laat leerlingen op hun telefoon meelezen.",
+    "subjects": [
+      "Burgerschap",
+      "Digitale geletterdheid"
+    ]
   },
   {
     "id": "vu-vijf-activerende-ai-werkvormen",
@@ -35526,7 +35543,7 @@
     "status": "available",
     "availabilityText": "Het beschreven werkmateriaal is gratis openbaar toegankelijk.",
     "publicationDate": null,
-    "lastVerified": "2026-11-06",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -35571,7 +35588,15 @@
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Leerlingen trainen en testen met hun eigen bewegingsdata een model. Ze wijzigen de MakeCode-code en testen hun programma op de micro:bit."
       }
+    ],
+    "subjects": [
+      "Informatica"
     ]
   },
   {
@@ -35710,7 +35735,7 @@
     "status": "available",
     "availabilityText": "Gratis lesmateriaal; registratie nodig om de bestanden te downloaden. De downloads zijn niet inhoudelijk gecontroleerd.",
     "publicationDate": null,
-    "lastVerified": "2026-11-06",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -35755,7 +35780,17 @@
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Level 1 verbindt het verzamelen en ordenen van gegevens met rekenen. Beide niveaus benoemen digitale geletterdheid. Level 2 behandelt ook algoritmen en programmeren."
       }
+    ],
+    "subjects": [
+      "Digitale geletterdheid",
+      "Informatica",
+      "Wiskunde"
     ]
   },
   {
@@ -35766,7 +35801,7 @@
     "subtype": "Les- en werkmateriaal",
     "organizationIds": [],
     "providerName": "Day of AI",
-    "description": "Engelstalige curriculumcollectie met leeftijdsgerichte lessen en docentenmateriaal. Voorbeelden zijn patroonherkenning voor 6–7 jaar en broncontrole van AI-inhoud voor leerlingen vanaf 11 jaar.",
+    "description": "Engelstalige curriculumcollectie met leeftijdsgerichte lessen en docentenmateriaal. Voorbeelden zijn patroonherkenning voor 6–7 jaar en broncontrole van AI-inhoud voor leerlingen vanaf 11 jaar. Leerlingen onderzoeken eigen weersgegevens met grafieken (8–18 jaar) of spiegelen en draaien gezichtsafbeeldingen in een assenstelsel (11–18 jaar).",
     "purpose": "Docenten lessen bieden over de werking van AI, menselijk oordeel en kritisch informatiegebruik.",
     "audiences": [
       "Docenten",
@@ -35783,7 +35818,7 @@
     "status": "available",
     "availabilityText": "Gratis aanbod; aanmelden of registreren nodig voor alle lesbestanden. Overzichten en lesbeschrijvingen zijn openbaar.",
     "publicationDate": null,
-    "lastVerified": "2026-11-06",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -35804,6 +35839,16 @@
       {
         "label": "MIT RAISE: herkomst",
         "url": "https://raise.mit.edu/resources/curricula/day-of-ai/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Statistiek met eigen weersgegevens (8–18 jaar)",
+        "url": "https://dayofai.org/units/making-sense-of-our-surroundings",
+        "sourceType": "official"
+      },
+      {
+        "label": "Meetkunde en gezichtsherkenning (11–18 jaar)",
+        "url": "https://dayofai.org/units/transforming-faces-the-geometry-of-facial-recognition",
         "sourceType": "official"
       }
     ],
@@ -35833,7 +35878,17 @@
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. De drie afzonderlijke lespagina’s beschrijven broncontrole, grafieken maken met eigen weersgegevens en meetkundige transformaties. De leeftijd staat per lessenreeks vermeld."
       }
+    ],
+    "subjects": [
+      "Informatievaardigheden",
+      "Statistiek",
+      "Wiskunde"
     ]
   },
   {
@@ -35860,7 +35915,7 @@
     "status": "available",
     "availabilityText": "Het beschreven werkmateriaal is gratis openbaar toegankelijk.",
     "publicationDate": null,
-    "lastVerified": "2026-11-06",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -35895,7 +35950,15 @@
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. In de docentenhandleiding vergelijken leerlingen literaire fragmenten en een zakelijk artikel en schrijven ze vanuit een personage een beargumenteerde e-mail aan de schooldirecteur."
       }
+    ],
+    "subjects": [
+      "Nederlands"
     ]
   },
   {
@@ -36041,7 +36104,7 @@
     "subtype": "Les- en werkmateriaal",
     "organizationIds": [],
     "providerName": "ROC van Amsterdam – Flevoland, House of Digital en Team Content Creation",
-    "description": "Nederlandstalig pakket met negen lessen en een examenonderdeel. Het biedt e-learnings, presentaties, challenges, zelftesten, feedbackformulieren en een docentenhandleiding voor beroepsgericht werken met generatieve AI.",
+    "description": "Nederlandstalig mbo-lespakket met negen lessen, e-learnings, presentaties, challenges, zelftesten, feedbackformulieren, een docentenhandleiding en een examenonderdeel. In les 9 maakt de student als marketingmedewerker een campagne of socialmediapost voor influencers over het veilig gebruiken van generatieve AI. Twee medestudenten testen de boodschap vanuit de rollen van gebruiker en controleur.",
     "purpose": "Mbo-studenten laten oefenen met AI-toepassingen, bronbeoordeling en het onderbouwen van eigen keuzes.",
     "audiences": [
       "Docenten",
@@ -36055,14 +36118,19 @@
       "Lesgeven en leren met AI"
     ],
     "status": "available",
-    "availabilityText": "Lespakket en docentenhandleiding openbaar en gratis. Aanvullende assistent is instellingsgebonden; externe AI-tools hebben eigen voorwaarden.",
+    "availabilityText": "Lespakket en docentenhandleiding openbaar en gratis. Les 9 gebruikt voor het ontwerp Canva met Magic Write. Voor externe tools gelden de eigen toegangsvoorwaarden. De aanvullende GenAI-assistent is alleen beschikbaar voor ROC van Amsterdam – Flevoland.",
     "publicationDate": "2026-09-23",
-    "lastVerified": "2026-11-06",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "Oorspronkelijk lespakket",
         "url": "https://xerte.talnet.nl/play.php?template_id=8993",
+        "sourceType": "official"
+      },
+      {
+        "label": "Les 9 voor marketing: campagne of socialmediapost maken",
+        "url": "https://xerte.talnet.nl/play.php?template_id=8993#page4section16",
         "sourceType": "official"
       },
       {
@@ -36092,13 +36160,21 @@
     "notes": "Edusources vermeldt 23 september 2026 en keuzedeel 1499. De originele site vermeldt doorontwikkeling tot november 2026. Docentenhandleiding noemt mbo 2–4 en LLO. De aanvullende GenAI-assistent is alleen voor ROCvA–F. Oorspronkelijke bron: tekst en educatieve inhoud CC BY-NC-SA 4.0, video/animatie CC BY-NC-ND en afzonderlijke hergebruikbeperking voor afbeeldingen. Edusources toont algemeen BY-NC-ND; raadpleeg daarom de specifieke voorwaarden in het materiaal. Geen examenvaliditeit of juridische volledigheid vastgesteld.",
     "offerCategory": "materials",
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "Edusources-detail, originele startpagina, lesoverzicht en docentenhandleiding in de browser gelezen. Niet alle downloads of examens zijn uitgevoerd. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd.",
+    "verificationNote": "Edusources-detail, originele startpagina, lesoverzicht en docentenhandleiding in de browser gelezen. Niet alle downloads of examens zijn uitgevoerd. Controle op 6 november 2026; vergeleken met de canonieke Atlas op titel, bron-URL, maker en inhoud. Dit bevestigt het beschreven aanbod en de genoemde toegang, niet de effectiviteit. Niet genoemde onderdelen zijn niet afzonderlijk gecontroleerd. Op 23 november 2026 is de directe ingang naar les 9 in de openbare docentenhandleiding opnieuw geopend. De beschrijving van de marketingrol, de opdracht, Canva en de test met medestudenten komt uit die les.",
     "changeHistory": [
       {
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Les 9 rechtstreeks gekoppeld en ingedeeld bij Marketing en communicatie. In de docentenhandleiding staan de marketingrol, de campagne voor influencers en de test van het resultaat beschreven."
       }
+    ],
+    "subjects": [
+      "Marketing en communicatie"
     ]
   },
   {
@@ -36355,7 +36431,7 @@
     "status": "available",
     "availabilityText": "Het moduleoverzicht en de lesdoelen zijn openbaar; lesplannen, slides en activiteiten zijn gratis na aanmelding met een Raspberry Pi Foundation-account.",
     "publicationDate": null,
-    "lastVerified": "2026-11-08",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -36397,7 +36473,15 @@
         "date": "2026-11-08",
         "type": "added",
         "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Leerlingen onderzoeken in drie lessen hoe hun gedrag een tijdlijn verandert en hoe berichten aandacht en reacties uitlokken."
       }
+    ],
+    "subjects": [
+      "Mediawijsheid"
     ]
   },
   {
@@ -36952,7 +37036,7 @@
     "status": "available",
     "availabilityText": "De officiële UNESCO-detailpagina en documentverwijzing zijn openbaar; de onderliggende volledige gids kon bij deze controle niet volledig worden uitgelezen.",
     "publicationDate": "2026-11-10",
-    "lastVerified": "2026-11-12",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -36992,7 +37076,16 @@
         "date": "2026-11-12",
         "type": "added",
         "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. De UNESCO-module hoort bij het curriculum voor media- en informatiegeletterdheid. Leerlingen beoordelen door AI gemaakte informatie en onderzoeken vooringenomenheid."
       }
+    ],
+    "subjects": [
+      "Informatievaardigheden",
+      "Mediawijsheid"
     ]
   },
   {
@@ -37541,7 +37634,7 @@
     "subtype": "Werkvorm en docentenmateriaal",
     "organizationIds": [],
     "providerName": "University of Edinburgh Open.Ed",
-    "description": "Open werkvorm waarin studenten met vijf verschillende gesimuleerde personen in taalmodellen praten en daarna individueel en met medestudenten reflecteren op ervaring, bias, empathie, waarheid, ethiek en menselijke uniciteit. De set bevat uitleg, docentinstructies, een aanpasbaar personagesjabloon en voorbeeldprompts.",
+    "description": "Open werkvorm waarin studenten met vijf verschillende gesimuleerde personen in taalmodellen praten en daarna individueel en met medestudenten reflecteren op ervaring, bias, empathie, waarheid, ethiek en menselijke uniciteit. De set bevat uitleg, docentinstructies, een aanpasbaar personagesjabloon en voorbeeldprompts. Het uitgewerkte voorbeeld komt uit een zorgmaster en gaat over de inzet van AI in de zorg.",
     "purpose": "Docenten een korte, aanpasbare werkvorm bieden waarmee studenten de mogelijkheden en risico's van taalmodellen uit eigen ervaring leren onderzoeken en bespreken.",
     "audiences": [
       "Docenten",
@@ -37560,7 +37653,7 @@
     "status": "available",
     "availabilityText": "Het volledige Engelstalige pakket is gratis, zonder account en in PDF- en bewerkbare Word-formaten te downloaden. Voor uitvoering is een gekozen taalmodel nodig; daarvoor kunnen eigen accounts, kosten en voorwaarden gelden.",
     "publicationDate": null,
-    "lastVerified": "2026-11-17",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -37601,7 +37694,15 @@
         "date": "2026-11-17",
         "type": "added",
         "summary": "Toegevoegd na volledige controle van het Open.Ed-resourcepakket, de licentie en canonieke doublures."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Het instructieboekje bij de zorgmaster laat studenten met fictieve gesprekspartners reflecteren op het gebruik van AI in de zorg."
       }
+    ],
+    "subjects": [
+      "Zorg en gezondheid"
     ]
   },
   {
@@ -37702,7 +37803,7 @@
     "status": "available",
     "availabilityText": "Het lesplan en werkblad zijn gratis en zonder account toegankelijk. De digitale lesstap gebruikt AutoDraw op een internetapparaat of digibord.",
     "publicationDate": null,
-    "lastVerified": "2026-11-18",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -37744,7 +37845,15 @@
         "date": "2026-11-18",
         "type": "added",
         "summary": "Toegevoegd na controle van het officiële lesplan, de beoordelingsonderdelen en de publieke downloads."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Het Australische lesplan koppelt de tekenopdracht expliciet aan Visual Arts. Leerlingen verbeelden een voorwerp met herkenbare lijnen en vergelijken representaties."
       }
+    ],
+    "subjects": [
+      "Beeldende vorming"
     ]
   },
   {
@@ -38621,7 +38730,7 @@
     "status": "available",
     "availabilityText": "Het vier pagina’s tellende Engelse werkblad met figuren is zonder account te lezen en te printen. Leerlingen hebben papier en potlood of een eigen tekentoepassing nodig. HHMI rekent ongeveer 50 minuten voor de les.",
     "publicationDate": "2024-10-28",
-    "lastVerified": "2026-11-22",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -38674,7 +38783,7 @@
       "level": "Voortgezet onderwijs · biologie",
       "question": "Merkt het gras op een eiland iets van de komst van een poolvos?",
       "preparation": "Geef de klas het leerlingblad en toon figuur 2 uit het HHMI-werkblad, of deel een afdruk van de figuur uit.",
-      "task": "“De vos eet geen gras, dus zijn komst heeft geen invloed op de planten.” Toets dit verzonnen chatbotantwoord met figuur 2 in het HHMI-werkblad. Vergelijk in de grafieken A en B de eilanden met vos (fox-infested) en zonder vos (fox-free). Teken de route van zeevogels via hun uitwerpselen en de bodem naar planten. Geef aan waar een vos die route kan beïnvloeden. Onderstreep het deel van het antwoord dat je met de grafieken kunt controleren.",
+      "task": "“De vos eet geen gras, dus zijn komst heeft geen invloed op de planten.” Toets dit verzonnen chatbotantwoord met figuur 2 op pagina 3 van het HHMI-werkblad. Vergelijk bodemfosfor (grafiek A) en stikstof in gras (grafiek B) op eilanden met vos (fox-infested) en zonder vos (fox-free). Teken de route van zeevogels via hun uitwerpselen en de bodem naar planten. Geef aan waar een vos die route kan beïnvloeden. Onderstreep het deel van het antwoord dat je met de grafieken kunt controleren.",
       "reflection": "Welke vergelijking laat de figuur werkelijk zien? Herschrijf het antwoord en geef aan welke stap in jullie verklaring op het model berust.",
       "sourceUrl": "https://docs.google.com/document/d/1dhy_ADiJ6wpG3MRSvv4qYatKZEe7MQGkTLNDcNtV9Gk/preview",
       "learningGoal": "Een indirect effect in een ecosysteem uitleggen en aanwijzen welke stap met metingen wordt onderbouwd.",
@@ -38692,7 +38801,7 @@
         "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
       },
       {
-        "date": "2026-11-22",
+        "date": "2026-11-23",
         "type": "updated",
         "summary": "Het leerlingblad bevat het te toetsen voorbeeldantwoord en verwijst naar beide grafieken in figuur 2 van het HHMI-werkblad."
       }
@@ -38727,12 +38836,12 @@
     "status": "available",
     "availabilityText": "De Engelstalige les met code, figuren en uitkomsten is direct leesbaar. Voor zelf rekenen zijn het Jupyter-notebook, het meegeleverde gegevensbestand en een Python-omgeving met NumPy, pandas, Matplotlib en scikit-learn nodig. Plaats het CSV-bestand in de map datasets naast het notebook.",
     "publicationDate": "2026-06-21",
-    "lastVerified": "2026-11-22",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
         "label": "Lezen – practicum met voorbeelden en resultaten",
-        "url": "https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.html",
+        "url": "https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.html#any-learner-in-dml",
         "sourceType": "official"
       },
       {
@@ -38780,7 +38889,7 @@
       "preparation": "Deel de leesversie van het notebook of geef de studenten een afdruk van onderdeel 3.1 met de getoonde uitkomsten.",
       "task": "Open onderdeel 3.1 ‘Any learner in DML’ in het notebook of gebruik de afdruk. Zoek in de uitvoer onder het codeblok de regels voor lasso en random forest. Vergelijk hun effectschattingen en standaardfouten. Noteer welke vraag beide schattingen beantwoorden, hoe cross-fitting de huishoudens over trainen en schatten verdeelt en welke aanname nodig is om van een causaal effect te spreken.",
       "reflection": "Noem een denkbare ongemeten factor die zowel toegang tot de regeling als spaarvermogen beïnvloedt. Kan cross-fitting dat probleem oplossen?",
-      "sourceUrl": "https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.html",
+      "sourceUrl": "https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.html#any-learner-in-dml",
       "learningGoal": "Een effectschatting onderscheiden van een voorspelling en uitleggen welke aanname nodig is voor een causale interpretatie.",
       "activityType": "Schattingen vergelijken"
     },
@@ -38796,9 +38905,9 @@
         "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd."
       },
       {
-        "date": "2026-11-22",
+        "date": "2026-11-23",
         "type": "updated",
-        "summary": "Het leerlingblad wijst studenten de modeluitkomsten aan in de leesversie van het notebook."
+        "summary": "De bronlink opent onderdeel 3.1 van het UBC-notebook. De leerlingopdracht wijst de modeluitkomsten en standaardfouten aan in de uitvoer onder het codeblok."
       }
     ]
   },
@@ -39244,5 +39353,1017 @@
         "summary": "Afzonderlijke bronles uit de bestaande CRAFT-collectie toegevoegd met docentengids, discussieblad en Nederlandse lesstart."
       }
     ]
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "audiences": [
+      "Docenten",
+      "Onderwijsinstellingen",
+      "Professionals"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "open_call",
+    "callStatus": "open_call",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "applicationOpenDate": "2026-10-19",
+    "fundingMin": 10000,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "De doelgroep, aanvraagroute, bedragen en sluitingstijd zijn gecontroleerd bij de verstrekker."
+      }
+    ],
+    "id": "cultuureducatie-en-digitale-technologie-2026",
+    "title": "Cultuureducatie en digitale technologie — open oproep 2026",
+    "providerName": "Fonds voor Cultuurparticipatie",
+    "description": "Leerlingen kunnen met een cultureel professional en hun school bijvoorbeeld verhalen, muziek of beelden maken met AI en onderzoeken hoe de technologie hun keuzes beïnvloedt. De oproep ondersteunt cultuureducatie in Amsterdam, Friesland, Noord-Brabant en Caribisch Nederland.",
+    "purpose": "Leerlingen in het primair, voortgezet en gespecialiseerd onderwijs laten experimenteren met digitale technologie als onderdeel van een artistiek maakproces.",
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "availabilityText": "Indienen bij het Fonds van 19 oktober 2026 om 15.00 uur tot 16 december 2026 om 15.00 uur Nederlandse tijd. Op de sluitingsdag is dat 10.00 uur op Bonaire, Sint Eustatius en Saba. Het Fonds kan eerder sluiten bij grote overinschrijving.",
+    "applicationDeadlineAt": "2026-12-16T15:00:00+01:00",
+    "fundingDeadline": "2026-12-16",
+    "applicationDeadline": "2026-12-16",
+    "fundingAmount": "€ 10.000 tot € 25.000 per project, tot 100% van de projectkosten. Het subsidieplafond van de oproep is € 500.000.",
+    "fundingMax": 25000,
+    "totalBudget": 500000,
+    "eligibility": "Een culturele instelling of cultuurprofessional uit Amsterdam, Friesland, Noord-Brabant of Caribisch Nederland vraagt aan. Minstens één school en de regionale penvoerder van Cultuureducatie met Kwaliteit zijn samenwerkingspartners. Het project vindt plaats in een van deze regio’s. De regionale penvoerder kan zelf geen aanvraag doen. Bij grote overinschrijving kan het Fonds de oproep eerder sluiten.",
+    "applicantTypes": [
+      "Culturele instellingen",
+      "Cultuurprofessionals"
+    ],
+    "keywords": [
+      "cultuureducatie",
+      "creatief werken met AI",
+      "gespecialiseerd onderwijs",
+      "Caribisch Nederland",
+      "kunstonderwijs",
+      "VSO"
+    ],
+    "notes": "De ontwikkeling van een nieuwe app, tool of digitaal platform valt buiten de oproep.",
+    "verificationNote": "De oproeppagina noemt de open status, de regio’s, de culturele aanvragers en kunst maken met AI als voorbeeld. De Staatscourant bevestigt de indieningstermijn, het bedrag per project, het subsidieplafond en de mogelijkheid van eerdere sluiting.",
+    "sourceUrls": [
+      {
+        "label": "Fonds voor Cultuurparticipatie — oproep en aanvraagroute",
+        "url": "https://www.cultuurparticipatie.nl/subsidie/open-oproep-cultuureducatie-en-digitale-technologie/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Staatscourant — regeling en indieningstermijn",
+        "url": "https://zoek.officielebekendmakingen.nl/stcrt-2026-31942.html",
+        "sourceType": "official"
+      }
+    ]
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "audiences": [
+      "Docenten",
+      "Onderzoekers",
+      "Hogescholen"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Professionalisering"
+    ],
+    "status": "open_call",
+    "callStatus": "open_call",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "applicationOpenDate": null,
+    "fundingMin": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "De doelgroep, aanvraagroute, bedragen en sluitingstijd zijn gecontroleerd bij de verstrekker."
+      }
+    ],
+    "id": "sia-fellowships-docent-onderzoekers-januari-2027",
+    "title": "Fellowships voor docent-onderzoekers — januari 2027",
+    "providerName": "Regieorgaan SIA",
+    "description": "Een bekostigde hogeschool kan een docent of onderzoeker 12 tot 18 maanden vrijmaken voor verkennend praktijkgericht onderzoek. Een vraag over AI in de onderwijspraktijk kan passen als deze aansluit op de onderzoekseenheid en de opbrengst bruikbaar is voor onderwijs en beroepspraktijk.",
+    "purpose": "De onderzoeksvaardigheden van hbo-docenten en onderzoekers versterken en hun bevindingen laten doorwerken in onderwijs en beroepspraktijk.",
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "availabilityText": "De hogeschool kan vóór 12 januari 2027 om 14.00 uur Nederlandse tijd (CET) een aanvraag voor de beoogde fellow indienen.",
+    "fundingDeadline": "2027-01-12",
+    "applicationDeadline": "2027-01-12",
+    "applicationDeadlineAt": "2027-01-12T14:00:00+01:00",
+    "fundingAmount": "Maximaal € 50.000 per fellow. De hogeschool draagt minimaal 25% van de totale trajectkosten. Het rondebudget is € 2.000.000.",
+    "fundingMax": 50000,
+    "totalBudget": 2000000,
+    "eligibility": "De bekostigde hogeschool dient in onder verantwoordelijkheid van een lector en met een opleidingsmanager. De fellow werkt minstens twee jaar in het hbo en heeft voor het traject een aanstelling van minimaal 0,6 fte, waarvan minstens 0,4 fte als fellow. Promovendi en gepromoveerden vallen buiten de regeling. Bij de start resteert voor de fellow minstens vijf jaar tot de pensioengerechtigde leeftijd.",
+    "applicantTypes": [
+      "Bekostigde hogescholen"
+    ],
+    "keywords": [
+      "docent-onderzoeker",
+      "fellowship",
+      "hbo",
+      "praktijkgericht onderzoek"
+    ],
+    "notes": "De regeling is thematisch breed. De mogelijke toepassing op AI in het onderwijs is een duiding van de Atlas. SIA beoordeelt het onderzoeksvoorstel en de professionele ontwikkeling van de fellow.",
+    "verificationNote": "De SIA-rondepagina vermeldt dat aanvragen openstaat. De formele call bevestigt 12 januari 2027 vóór 14.00 uur CET, het rondebudget, het maximum per fellow en de eisen aan hogeschool en kandidaat.",
+    "sourceUrls": [
+      {
+        "label": "Regieorgaan SIA — aanvraagronde en voorwaarden",
+        "url": "https://regieorgaan-sia.nl/calls/fellowships-voor-docent-onderzoekers-januari-2027",
+        "sourceType": "official"
+      },
+      {
+        "label": "Regieorgaan SIA — formele oproep met deadline en budget (PDF)",
+        "url": "https://regieorgaan-sia.nl/sites/sia/files/media-files/call_for_proposals_fellowships_voor_docentonderzoekers_januari_2027.pdf",
+        "sourceType": "official"
+      }
+    ]
+  },
+  {
+    "id": "eit-stem-tech-talent-induction-2026",
+    "title": "EIT STEM Tech Talent 2026: introductietrajecten rond AI en techniek",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "EIT STEM Tech Talent Induction (28DIGITAL)",
+    "description": "Ontwikkel met een bedrijf een STEM-introductietraject dat leerlingen of studenten voorbereidt op verder leren en werken in techniek. AI kan het onderwerp van de lessen zijn of worden ingezet als hulpmiddel. De oproep legt de nadruk op beroepsonderwijs.",
+    "purpose": "Onderwijs en bedrijfsleven ontwikkelen trainingen rond een aantoonbare vaardigheidsvraag. EIT verwacht per project ten minste 1.200 deelnemers, met als doel 40% vrouwen en meisjes en 30% deelnemers uit EIT RIS-landen.",
+    "audiences": [
+      "Onderwijsinstellingen",
+      "MBO-docenten",
+      "Bedrijven",
+      "Onderwijsontwikkelaars"
+    ],
+    "sectors": [
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "AI-geletterdheid",
+      "Curriculumontwikkeling"
+    ],
+    "status": "open_call",
+    "availabilityText": "Indienen van 14 oktober tot 14 december 2026 om 17.00 uur Nederlandse tijd.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-10-14",
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Oproep, voorwaarden en aanvraagformulier",
+        "url": "https://eitstemtalent.eu/calls-and-opportunities/now-open-eit-stem-talent-call-for-proposals-2026/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Officiële oproeptekst (pdf)",
+        "url": "https://eitstemtalent.eu/wp-content/uploads/gb/2026/10/call_for_proposals_2026.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Maximaal €80.000 per project voor vergoeding van subsidiabele werkelijke kosten. Totaal voor de ronde is €2 miljoen.",
+    "fundingDeadline": "2026-12-14",
+    "applicationOpenDate": "2026-10-14",
+    "applicationDeadline": "2026-12-14",
+    "fundingMin": null,
+    "fundingMax": 80000,
+    "totalBudget": 2000000,
+    "eligibility": "Een Nederlandse onderwijsaanbieder kan meedoen in een consortium van rechtspersonen. Minimaal één onderwijsaanbieder en één bedrijfs- of industriepartner moeten als begunstigden deelnemen. De doelgroep is vooral ISCED 3–5, met nadruk op beroepsonderwijs. Ook hoger onderwijs en volwasseneneducatie zijn mogelijk.",
+    "applicantTypes": [
+      "Onderwijsinstellingen",
+      "Bedrijven",
+      "Consortia"
+    ],
+    "callStatus": "open",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "EIT STEM Tech Talent",
+      "AI",
+      "STEM",
+      "techniek",
+      "beroepsonderwijs",
+      "bedrijf"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Aanvraagperiode, doelgroep, consortiumvoorwaarden en vergoeding gecontroleerd in de open EIT-oproep."
+      }
+    ],
+    "applicationDeadlineAt": "2026-12-14T17:00:00+01:00",
+    "verificationMethod": "agent_primary_source_review"
+  },
+  {
+    "id": "erasmus-teacher-academies-2027",
+    "title": "Erasmus+ Teacher Academies 2027",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europees Uitvoerend Agentschap onderwijs en cultuur (EACEA)",
+    "description": "Werk met Europese lerarenopleidingen, scholen en onderwijsautoriteiten aan de opleiding van leraren en schoolleiders. Een van de aandachtsgebieden is het kindgericht gebruik van digitale technologie en AI bij lesgeven en leren. Het Europese loket opent op 9 december 2026.",
+    "purpose": "Ontwikkel en beproef samen een aanpak voor de initiële lerarenopleiding en begeleiding van beginnende leraren of schoolleiders.",
+    "audiences": [
+      "Lerarenopleiders",
+      "Schoolleiders",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Professionalisering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "planned",
+    "availabilityText": "Indienen via het Europese portaal van 9 december 2026 tot 23 februari 2027 om 17.00 uur Nederlandse tijd.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-11-20",
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële oproep en indiening",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/erasmus-edu-2027-pex-teach-aca",
+        "sourceType": "official"
+      },
+      {
+        "label": "Programmagids 2027, onderdeel Erasmus+ Teacher Academies (pdf)",
+        "url": "https://erasmus-plus.ec.europa.eu/sites/default/files/2026-11/programme-guide-erasmus-27_en.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Fins nationaal agentschap — Engelstalige uitleg van de aanvraagronde",
+        "url": "https://www.oph.fi/en/funding/erasmus-higher-education-vocational-education-and-training-and-school-education-teacher-0",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "erasmus"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Maximaal €1,5 miljoen per project. Het rondebudget bedraagt €37,5 miljoen.",
+    "fundingDeadline": "2027-02-23",
+    "applicationOpenDate": "2026-12-09",
+    "applicationDeadline": "2027-02-23",
+    "fundingMin": null,
+    "fundingMax": 1500000,
+    "totalBudget": 37500000,
+    "eligibility": "Een hogeronderwijsinstelling met een initiële lerarenopleiding en Erasmus Charter for Higher Education coördineert. Vereist zijn minstens negen organisaties uit drie of meer EU- of geassocieerde landen. Ieder vertegenwoordigd land levert een dergelijke lerarenopleiding, een onderwijsautoriteit of coördinatieorgaan en een school.",
+    "applicantTypes": [
+      "Internationale consortia",
+      "Hogescholen",
+      "Universiteiten"
+    ],
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "ERASMUS-EDU-2027-PEX-TEACH-ACA",
+      "Erasmus+ Teacher Academies",
+      "lerarenopleiding",
+      "AI in de klas",
+      "professionalisering"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Specifieke openstelling en deadlines bevestigd in het EACEA-portaal. Samenstelling en projectmaximum gecontroleerd in de programmagids 2027."
+      }
+    ],
+    "applicationDeadlineAt": "2027-02-23T17:00:00+01:00",
+    "verificationMethod": "agent_primary_source_review"
+  },
+  {
+    "id": "horizon-ai-leeromgeving-basisonderwijs-2027",
+    "title": "HORIZON-CL2-2027-01-TRANSFO-05 — AI in de voorschool en het basisonderwijs",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie",
+    "description": "Onderzoek wat het gebruik van AI in de voorschool en het basisonderwijs betekent voor leerprestaties, welzijn en kansengelijkheid. Projecten leveren ook praktisch advies op voor leraren over verantwoord gebruik en het beoordelen van leerresultaten. De geplande openingsdatum is 13 mei 2027.",
+    "purpose": "Europese onderzoekers en onderwijspraktijk kunnen gezamenlijk onderbouwen welke AI-toepassingen jonge kinderen en hun leraren helpen en onder welke omstandigheden.",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen",
+      "Leraren",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "planned",
+    "availabilityText": "Geplande indiening van 13 mei tot 23 september 2027 om 17.00 uur Nederlandse tijd.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2025-12-12",
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Officiële oproep en indiening",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/horizon-cl2-2027-01-transfo-05",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europese Commissie — officiële oproepgegevens, status en termijnen (JSON)",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/data/topicDetails/horizon-cl2-2027-01-transfo-05.json",
+        "sourceType": "official"
+      },
+      {
+        "label": "Werkprogramma, topic TRANSFO-05 (pdf)",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-5-culture-creativity-and-inclusive-society_horizon-2026-2027_en.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Algemene deelnamevoorwaarden, bijlage B (pdf)",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-15-general-annexes_horizon-2026-2027_en.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "horizon-europe"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Indicatieve EU-bijdrage van €3 tot €4 miljoen per project, bij een topicbudget van €12 miljoen. Het werkprogramma laat aanvragen voor een ander bedrag toe.",
+    "fundingDeadline": "2027-09-23",
+    "applicationOpenDate": "2027-05-13",
+    "applicationDeadline": "2027-09-23",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": 12000000,
+    "eligibility": "Nederlandse kennis- en onderwijsinstellingen kunnen deelnemen aan een internationaal onderzoeksconsortium. Voor deze Research and Innovation Action gelden de algemene voorwaarden voor Horizon Europe, waaronder ten minste drie onafhankelijke rechtspersonen in drie verschillende EU- of geassocieerde landen en minstens één deelnemer uit een EU-lidstaat.",
+    "applicantTypes": [
+      "Internationale consortia",
+      "Onderzoeksinstellingen",
+      "Onderwijsinstellingen"
+    ],
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "HORIZON-CL2-2027-01-TRANSFO-05",
+      "Horizon Europe",
+      "primair onderwijs",
+      "voorschool",
+      "AI",
+      "leerresultaten",
+      "welzijn"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Onderzoeksthema, indicatieve bijdrage en aanvraagdata gecontroleerd in het Europese portaal en bijbehorend werkprogramma."
+      }
+    ],
+    "applicationDeadlineAt": "2027-09-23T17:00:00+02:00",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Het werkprogramma en de officiële topicgegevens bevestigen de onderzoeksvraag, het rondebudget en de beoogde openstelling. De algemene bijlagen beschrijven de consortiumvoorwaarden."
+  },
+  {
+    "id": "erasmus-kleinschalige-samenwerkingsprojecten-onderwijs-2027",
+    "title": "Erasmus+ Small-scale partnerships 2027 — kleinschalige samenwerking (KA210)",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Nationaal Agentschap Erasmus+ Onderwijs & Training",
+    "description": "Een school of mbo-instelling kan met een onderwijsorganisatie in een ander programmaland een kleinschalig project opzetten. Een team kan bijvoorbeeld samen lesactiviteiten over AI-geletterdheid ontwikkelen. Het project moet aansluiten op een Erasmus+-prioriteit. De regeling staat ook open voor andere onderwijsthema’s. Het Nederlandse agentschap heeft de aanvraagformulieren aangekondigd.",
+    "purpose": "Kleinere organisaties laten samenwerken over de grens, ook als zij voor het eerst aan Erasmus+ meedoen.",
+    "audiences": [
+      "Docenten",
+      "Schoolleiders",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "AI-geletterdheid"
+    ],
+    "status": "planned",
+    "availabilityText": "De ronde is aangekondigd. Het Nederlandse agentschap meldde op 19 november dat de aanvraagformulieren nog volgen. De eerste deadline voor onderwijsprojecten is 9 maart 2027 om 12.00 uur Nederlandse tijd.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-11-18",
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Europese Commissie – voorwaarden en subsidiebedragen KA210",
+        "url": "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/small-scale-partnerships",
+        "sourceType": "official"
+      },
+      {
+        "label": "Nationaal Agentschap – stand van de Nederlandse aanvraagformulieren",
+        "url": "https://www.erasmusplus.nl/actueel/nieuws/erasmus-programmagids-2027-gepubliceerd",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europese Commissie — Nederlandstalige programmagids Erasmus+ 2027 (PDF)",
+        "url": "https://erasmus-plus.ec.europa.eu/sites/default/files/2026-11/programme-guide-erasmus-27_nl.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "fundingAmount": "Keuze uit twee vaste projectbedragen: € 30.000 of € 60.000.",
+    "fundingDeadline": "2027-03-09",
+    "applicationOpenDate": null,
+    "applicationDeadline": "2027-03-09",
+    "fundingMin": 30000,
+    "fundingMax": 60000,
+    "totalBudget": null,
+    "eligibility": "Minstens twee organisaties uit twee verschillende EU-lidstaten of met het programma geassocieerde landen. Een Nederlandse coördinator dient voor schoolonderwijs, beroepsonderwijs of volwasseneneducatie in bij het Nederlandse Nationaal Agentschap.",
+    "applicantTypes": [
+      "Scholen",
+      "Mbo-instellingen",
+      "Organisaties voor volwasseneneducatie"
+    ],
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "Erasmus+",
+      "KA210",
+      "kleinschalige partnerschappen",
+      "AI-geletterdheid",
+      "digitale transformatie",
+      "volwasseneneducatie"
+    ],
+    "notes": "Het genoemde AI-project is een mogelijke invulling door de Atlas. De programmagids 2027 noemt digitale technologie en AI bij de prioriteiten voor partnerschappen. Het agentschap bepaalt de ontvankelijkheid.",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Deadline, vaste bedragen, voorwaarden en stand van de Nederlandse aanvraagroute gecontroleerd bij het Nationaal Agentschap en de Europese Commissie."
+      }
+    ],
+    "applicationDeadlineAt": "2027-03-09T12:00:00+01:00",
+    "verificationNote": "De Europese actiepagina en programmagids 2027 bevestigen de thema-onafhankelijke voorwaarden, twee vaste subsidiebedragen en de sluiting op 9 maart om 12.00 uur (Brusselse tijd). Het Nederlandse agentschap publiceerde de oproep op 19 november 2026."
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "status": "open_call",
+    "callStatus": "open_call",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "verificationMethod": "agent_primary_source_review",
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingMin": null,
+    "totalBudget": null,
+    "recurrence": null,
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Aanvraagroute, deelnemers uit Nederland, bedrag en uiterste indieningstijd gecontroleerd bij de verstrekker."
+      }
+    ],
+    "id": "sopra-steria-institut-de-france-ai-leren-2027",
+    "title": "Grand Prix 2027 voor onderzoek naar AI en leren bij jongeren",
+    "providerName": "Fondation Sopra Steria – Institut de France",
+    "description": "Onderzoeksprijs voor lopend onderzoek dat al eerste betekenisvolle resultaten heeft over hoe AI het leren van kinderen, jongeren of jongvolwassenen beïnvloedt. Ook onderzoekers en promovendi aan een Nederlandse onderzoeksorganisatie zonder winstoogmerk kunnen meedingen.",
+    "purpose": "Onderzoek naar de effecten van AI op kennisverwerving, cognitieve en sociale vaardigheden of kritisch denken verder brengen.",
+    "audiences": [
+      "Onderzoekers",
+      "Promovendi"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Lesgeven en leren met AI"
+    ],
+    "geographicScope": "Europa",
+    "applicationOpenDate": "2026-10-20",
+    "applicationDeadline": "2027-01-22",
+    "fundingDeadline": "2027-01-22",
+    "applicationDeadlineAt": "2027-01-22T00:00:00+01:00",
+    "availabilityText": "Dien het dossier in het Frans of Engels in via het Institut de France. Het loket sluit in de nacht van 21 op 22 januari 2027 om 00.00 uur Nederlandse tijd.",
+    "eligibility": "Onderzoekers en promovendi bij een Europese onderzoeksorganisatie zonder winstoogmerk die het algemeen belang dient. De kandidaat toont eerste resultaten en licht het vervolgonderzoek toe. De stichting verlangt open verspreiding van de resultaten.",
+    "applicantTypes": [
+      "Onderzoekers bij Europese onderzoeksorganisaties zonder winstoogmerk",
+      "Promovendi bij die organisaties"
+    ],
+    "fundingAmount": "€ 100.000 voor de onderzoeksprijs, uitbetaald aan de instelling die het onderzoek huisvest.",
+    "fundingMax": 100000,
+    "language": [
+      "fr",
+      "en"
+    ],
+    "keywords": [
+      "onderzoeksprijs",
+      "AI en leren",
+      "kennisverwerving",
+      "promovendi",
+      "Grand Prix Sopra Steria"
+    ],
+    "notes": "Selecteer voor het dossier wetenschappelijke resultaten en regel een aanbevelingsbrief. Een nieuw onderzoeksvoorstel zonder eerste resultaten voldoet niet aan de oproep.",
+    "verificationNote": "Het indienportaal geeft de opening, sluiting en tijdzone Europe/Paris, het prijsbedrag en de voorwaarden voor Europese onderzoeksorganisaties. De Engelstalige oproep bevestigt de indieningstalen en vereiste bijlagen.",
+    "sourceUrls": [
+      {
+        "label": "Institut de France – oproep, voorwaarden en indiening",
+        "url": "https://fondations.institutdefrance.fr/fondation-sopra-steria-grand-prix?view=programme",
+        "sourceType": "official"
+      },
+      {
+        "label": "Sopra Steria – Engelstalige oproep en indieningsinstructies",
+        "url": "https://www.soprasteria.com/newsroom/press-releases/details/the-sopra-steria-institut-de-france-foundation-dedicates-its-2027-grand-prize-for-research-to-the-impact-of-ai-on-how-young-people-acquire-knowledge",
+        "sourceType": "official"
+      }
+    ]
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "status": "open_call",
+    "callStatus": "open_call",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "verificationMethod": "agent_primary_source_review",
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingMin": null,
+    "totalBudget": 6750000,
+    "recurrence": null,
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Aanvraagroute, deelnemers uit Nederland, bedrag en uiterste indieningstijd gecontroleerd bij de verstrekker."
+      }
+    ],
+    "id": "raak-mkb-maart-2027",
+    "title": "RAAK-mkb – indieningsronde maart 2027",
+    "providerName": "Regieorgaan SIA",
+    "description": "Een bekostigde Nederlandse hogeschool kan met mkb-partners twee jaar praktijkgericht onderzoek doen naar een vraag uit hun beroepspraktijk. Onderzoek naar AI in onderwijssoftware kan passen als mkb-bedrijven zelf het praktijkprobleem aandragen en actief deelnemen.",
+    "purpose": "Een onderbouwde praktijkvraag van mkb-professionals onderzoeken en de opbrengsten benutten in het hbo en de beroepspraktijk.",
+    "audiences": [
+      "Hogescholen",
+      "Onderzoekers",
+      "Bedrijven"
+    ],
+    "sectors": [
+      "HBO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Implementatie en adoptie"
+    ],
+    "geographicScope": "Nederland",
+    "applicationOpenDate": "2026-11-05",
+    "applicationDeadline": "2027-03-02",
+    "fundingDeadline": "2027-03-02",
+    "applicationDeadlineAt": "2027-03-02T14:00:00+01:00",
+    "availabilityText": "De aanvragende hogeschool dient in via ISAAC, vóór 2 maart 2027 om 14.00 uur Nederlandse tijd.",
+    "eligibility": "Een bekostigde hogeschool dient onder verantwoordelijkheid van een lector in en werkt met minimaal zes mkb-ondernemingen, waarvan minstens vijf in het Koninkrijk der Nederlanden gevestigd zijn, en een partij die de mkb-praktijk vertegenwoordigt. Leg samen de praktijkvraag en cofinanciering vast. Bij € 375.000 subsidie draagt het consortium € 325.000 bij, in geld of in natura. Bij een lagere aanvraag daalt de vereiste bijdrage naar rato.",
+    "applicantTypes": [
+      "Bekostigde hogescholen met een mkb-consortium"
+    ],
+    "fundingAmount": "Maximaal € 375.000 per project. Het rondebudget is € 6.750.000.",
+    "fundingMax": 375000,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "RAAK-mkb",
+      "praktijkgericht onderzoek",
+      "onderwijstechnologie",
+      "mkb",
+      "EdTech"
+    ],
+    "notes": "Dit is de afzonderlijke ronde van maart 2027. AI en onderwijssoftware zijn een mogelijke toepassing volgens de Atlas. De regeling staat open voor uiteenlopende onderzoeksthema’s. De regeling sluit reguliere onderwijsactiviteiten en het ontwikkelen van een eigen nieuw curriculum uit.",
+    "verificationNote": "De SIA-rondepagina bevestigt de actuele openstelling, sluitingsdatum en tijdzone, consortiumvoorwaarden, aanvraagbedrag, cofinanciering en rondebudget.",
+    "sourceUrls": [
+      {
+        "label": "Regieorgaan SIA – aanvraag, bedragen en consortiumvoorwaarden",
+        "url": "https://regieorgaan-sia.nl/calls/raak-mkb-maart-2027",
+        "sourceType": "official"
+      },
+      {
+        "label": "Formele call – aanvragers en uitsluitingen (pdf)",
+        "sourceType": "official",
+        "url": "https://regieorgaan-sia.nl/sites/sia/files/media-files/Call_for_proposals_RAAK-mkb_september_2026_en_maart_2027.pdf"
+      }
+    ]
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "status": "planned",
+    "startDate": null,
+    "endDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "verificationMethod": "agent_primary_source_review",
+    "id": "erasmus-centres-vocational-excellence-2027",
+    "title": "Erasmus+ Centres of Vocational Excellence 2027 — beroepsonderwijs en werkplekleren",
+    "providerName": "Europees Uitvoerend Agentschap onderwijs en cultuur (EACEA)",
+    "description": "Ontwikkel met beroepsopleiders en werkgevers in vier of meer landen onderwijs voor leren op school en op de werkplek. De programmagids noemt AI als mogelijke techniek om lesmateriaal en leermethoden te vernieuwen. Bespreek met een opleider en een werkgever in elk partnerland welke beroepsvaardigheden het project gaat versterken.",
+    "purpose": "Vernieuw het beroepsonderwijs met een internationaal partnerschap van opleiders en werkgevers. Het project omvat onderwijs, samenwerking en bestuur en financiering.",
+    "audiences": [
+      "Onderwijsontwikkelaars",
+      "MBO-docenten",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Lesgeven en leren met AI"
+    ],
+    "availabilityText": "Het Europese loket opent volgens de planning op 8 juni 2027. Indienen kan tot 16 september 2027 om 17.00 uur Nederlandse tijd.",
+    "publicationDate": "2026-11-20",
+    "sourceUrls": [
+      {
+        "label": "Europese oproep en aanvraagloket voor Topic 1",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/erasmus-edu-2027-pex-cove-top1",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europese Commissie – projectvoorwaarden en subsidiebedrag",
+        "url": "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/centres-of-vocational-excellence",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "erasmus"
+    ],
+    "fundingAmount": "Maximaal €4 miljoen per project. Voor Topic 1 is in totaal €73 miljoen begroot.",
+    "fundingDeadline": "2027-09-16",
+    "applicationOpenDate": "2027-06-08",
+    "applicationDeadline": "2027-09-16",
+    "applicationDeadlineAt": "2027-09-16T17:00:00+02:00",
+    "fundingMin": null,
+    "fundingMax": 4000000,
+    "totalBudget": 73000000,
+    "eligibility": "Een Nederlandse mbo-instelling, onderneming of andere rechtspersoon die actief is in het beroepsonderwijs of op de arbeidsmarkt kan coördineren. Nodig zijn minstens acht begunstigden uit minstens vier EU-lidstaten of geassocieerde landen. Elk van die landen levert minstens één beroepsopleider en één werkgever of sectorvertegenwoordiger. De focus ligt op EQF-niveau 3 tot en met 5. Een hogeschool kan meedoen met een project dat ook deze niveaus bedient.",
+    "applicantTypes": [
+      "Internationale consortia",
+      "Mbo-instellingen",
+      "Bedrijven"
+    ],
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "ERASMUS-EDU-2027-PEX-COVE-TOP1",
+      "Erasmus+",
+      "CoVE",
+      "werkplekleren",
+      "beroepsonderwijs",
+      "AI in het beroepsonderwijs"
+    ],
+    "notes": "Deze vermelding gaat over Topic 1 van de CoVE-oproep. Het aparte budget voor de Europese praktijkgemeenschap (Topic 2) valt buiten dit rondebudget.",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Openstelling, deadline en topicbudget gecontroleerd in het EU-portaal. Projectmaximum, voorwaarden en AI-toepassing gecontroleerd in de Europese programmagids."
+      }
+    ]
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "status": "planned",
+    "startDate": null,
+    "endDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "verificationMethod": "agent_primary_source_review",
+    "id": "erasmus-samenwerkingspartnerschappen-onderwijs-ka220-2027",
+    "title": "Erasmus+ Cooperation Partnerships 2027 — samenwerkingspartnerschappen in het onderwijs (KA220)",
+    "providerName": "Nationaal Agentschap Erasmus+ Onderwijs & Training",
+    "description": "Wilt u met onderwijsorganisaties in andere landen een gezamenlijke aanpak voor AI-geletterdheid ontwikkelen en beproeven? KA220 financiert samenwerking in schoolonderwijs, beroepsonderwijs, hoger onderwijs en volwasseneneducatie. Kies met partners in minstens twee andere programmalanden een gedeeld onderwijsprobleem en een Erasmus+-prioriteit en werk die uit in een projectopzet.",
+    "purpose": "Ontwikkel en beproef met buitenlandse partners een onderwijsaanpak die de betrokken organisaties na afloop in hun praktijk kunnen gebruiken.",
+    "audiences": [
+      "Onderwijsontwikkelaars",
+      "Docenten",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "AI-geletterdheid"
+    ],
+    "availabilityText": "De oproep is aangekondigd. Het Nederlandse agentschap biedt een projectopzetformulier aan. De openingsdatum van het indienloket is nog onbekend. De eerste onderwijsronde sluit op 9 maart 2027 om 12.00 uur Nederlandse tijd.",
+    "publicationDate": "2026-11-18",
+    "sourceUrls": [
+      {
+        "label": "Europese Commissie – voorwaarden, bedragen en deadline voor KA220",
+        "url": "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/cooperation-partnerships",
+        "sourceType": "official"
+      },
+      {
+        "label": "Nationaal Agentschap – projectopzet KA220 voor hoger onderwijs, ronde 2027",
+        "url": "https://www.erasmusplus.nl/subsidie/hoger-onderwijs/aanvragen/documenten/call-2027",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europese Commissie – prioriteiten voor samenwerking en AI in het onderwijs",
+        "url": "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/partnerships-for-cooperation",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "erasmus",
+      "erasmus-kleinschalige-samenwerkingsprojecten-onderwijs-2027"
+    ],
+    "fundingAmount": "U kiest een vast totaalbedrag voor het project van €120.000, €250.000 of €400.000. Erasmus+ verwacht medefinanciering.",
+    "fundingDeadline": "2027-03-09",
+    "applicationOpenDate": null,
+    "applicationDeadline": "2027-03-09",
+    "applicationDeadlineAt": "2027-03-09T12:00:00+01:00",
+    "fundingMin": 120000,
+    "fundingMax": 400000,
+    "totalBudget": null,
+    "eligibility": "Minstens drie organisaties uit drie verschillende EU-lidstaten of geassocieerde landen werken samen. Een Nederlandse onderwijsorganisatie kan bij het Nederlandse Nationaal Agentschap indienen als coördinator en moet dan op de deadline minstens twee jaar formeel bestaan. Een deelnemende Nederlandse hogeschool of universiteit heeft een geldig Erasmus Charter for Higher Education (ECHE) nodig. Europese ngo’s hebben een eigen centrale aanvraagroute.",
+    "applicantTypes": [
+      "Scholen",
+      "Mbo-instellingen",
+      "Hogescholen",
+      "Universiteiten",
+      "Organisaties voor volwasseneneducatie"
+    ],
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "Erasmus+",
+      "KA220",
+      "cooperation partnerships",
+      "samenwerkingspartnerschappen",
+      "AI-geletterdheid",
+      "volwasseneneducatie"
+    ],
+    "notes": "AI-geletterdheid is een mogelijke invulling binnen de oproep. De programmagids noemt het Europese AI-geletterdheidskader en ethische AI-richtlijnen voor onderwijs als aanknopingspunten voor dergelijke projecten.",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Voorwaarden, bedragen, AI-prioriteiten en sluitingstijd gecontroleerd bij de Europese Commissie. De Nederlandse aanvraagroute en projectopzet gecontroleerd bij het Nationaal Agentschap."
+      }
+    ],
+    "verificationNote": "De Commissie bevestigt de deadline, projectbedragen en consortiumvoorwaarden van KA220. Het Nederlandse agentschap publiceert een projectopzetformulier voor de ronde 2027. Dat voorbereidingsformulier bewijst niet dat het indienloket open is."
+  },
+  {
+    "id": "msca-staff-exchanges-2027",
+    "title": "MSCA Staff Exchanges 2027 – onderzoek via personeelsuitwisseling",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europese Commissie – Marie Skłodowska-Curie Actions",
+    "description": "Zet met buitenlandse partners een onderzoeksproject op waarin medewerkers tijdelijk bij elkaar werken. Ook onderzoek naar AI in het onderwijs kan passen. Via een eerdere ronde kreeg het project HUMAN-AI financiering voor onderzoek naar de menselijke kant van lesgeven en leren met AI in het hoger onderwijs.",
+    "purpose": "Financier internationale uitwisselingen van medewerkers die bijdragen aan een gezamenlijk onderzoeks- en innovatieproject.",
+    "audiences": [
+      "Onderzoekers",
+      "Onderwijsinstellingen"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek",
+      "Professionalisering"
+    ],
+    "status": "planned",
+    "availabilityText": "Het Europese indienloket opent op 15 december 2026. Dien in vóór de deadline van 13 april 2027 om 17.00 uur Nederlandse tijd.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Europees indienloket voor Staff Exchanges 2027",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/opportunities/topic-details/HORIZON-MSCA-2027-SE-01-01",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europees Uitvoerend Agentschap onderzoek – kalender voor 2027",
+        "url": "https://rea.ec.europa.eu/funding-and-grants/horizon-europe-marie-sklodowska-curie-actions/msca-staff-exchanges_en",
+        "sourceType": "official"
+      },
+      {
+        "label": "Marie Skłodowska-Curie Actions – deelnamevoorwaarden",
+        "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/staff-exchanges",
+        "sourceType": "official"
+      },
+      {
+        "label": "Herzien Europees werkprogramma MSCA 2026–2027, p. 38–40 (pdf)",
+        "url": "https://ec.europa.eu/transparency/documents-register/api/files/C%282026%296687_2/090166e534337d6f",
+        "sourceType": "official"
+      },
+      {
+        "label": "CORDIS – HUMAN-AI, een toegekend onderwijsproject uit de ronde van 2025",
+        "url": "https://cordis.europa.eu/project/id/101299940",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "horizon-europe"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Het indicatieve budget voor de hele ronde is €95,15 miljoen. De projectbijdrage hangt af van het aantal aangevraagde persoonsmaanden.",
+    "fundingDeadline": "2027-04-13",
+    "applicationOpenDate": "2026-12-15",
+    "applicationDeadline": "2027-04-13",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": 95150000,
+    "eligibility": "Minstens drie onafhankelijke organisaties uit drie verschillende landen, waarvan twee in verschillende EU-lidstaten of met Horizon Europe geassocieerde landen. Zowel de academische als de niet-academische sector doet mee. Een Nederlandse hogeschool of universiteit kan met passende partners deelnemen.",
+    "applicantTypes": [
+      "Internationale consortia",
+      "Hogescholen",
+      "Universiteiten",
+      "Onderzoeksinstellingen",
+      "Publieke en private organisaties"
+    ],
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "HORIZON-MSCA-2027-SE-01-01",
+      "MSCA Staff Exchanges",
+      "personeelsuitwisseling",
+      "onderzoek naar AI in het onderwijs"
+    ],
+    "notes": null,
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Openstelling en indieningstijd gecontroleerd in het herziene werkprogramma. De programmapagina en CORDIS onderbouwen de deelnamevoorwaarden en het eerdere onderwijsproject."
+      }
+    ],
+    "applicationDeadlineAt": "2027-04-13T17:00:00+02:00",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Het herziene werkprogramma en de kalender van de Europese uitvoerder noemen beide 13 april 2027. Het eerdere project HUMAN-AI illustreert de thematische ruimte; projectvoorstellen worden afzonderlijk beoordeeld."
   }
 ]
