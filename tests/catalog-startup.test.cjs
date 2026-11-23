@@ -793,6 +793,34 @@ test('personal offers combine roles, sector and subject while shared selections 
   assert.deepEqual(actual(), homeResults);
 });
 
+test('an examination board member can save a profile and return to the matching offers for their sector', () => {
+  const app = boot();
+  const saved = new Map();
+  app.context.localStorage = {getItem: key => saved.get(key), setItem: (key, value) => saved.set(key, value)};
+  app.navigate('#mijn-atlas');
+  const form = app.main.querySelector('#profile-form');
+  const role = form.querySelector('input[value="Examencommissies"]');
+  assert.match(app.main.innerHTML, /value="Examencommissies"> Examencommissielid<\/label>/);
+  role.checked = true;
+  form.querySelector('#profile-sector').value = 'HBO';
+  form.oninput();
+  const expected = Array.from(app.context.ATLAS_RECORDS.records)
+    .filter(app.context.ATLAS_STARTUP.published)
+    .filter(record => record.audiences.includes('Examencommissies') && record.sectors.includes('HBO'));
+  assert.ok(expected.length > 0);
+  form.onsubmit(new Event('submit'));
+  assert.deepEqual(JSON.parse(saved.get('atlas.persona')), {audience: 'Examencommissies', sector: 'HBO', vak: ''});
+  app.dispatch('hashchange');
+  const cards = () => app.main.querySelectorAll('[data-record-id]').map(card => card.dataset.recordId);
+  const personal = cards();
+  assert.equal(personal.length, Math.min(24, expected.length));
+  assert.ok(personal.every(id => expected.some(record => record.id === id)));
+  app.navigate('#zoeken?audience=Examencommissies&sector=HBO&sort=added');
+  assert.deepEqual(cards(), personal);
+  app.navigate('#mijn-atlas');
+  assert.equal(app.main.querySelector('input[value="Examencommissies"]').checked, true);
+});
+
 test('a profile survives blocked storage for this page and a zero-result profile keeps an all-catalogue link', () => {
   const app = boot();
   const blocked = () => { throw Error('Storage blocked'); };

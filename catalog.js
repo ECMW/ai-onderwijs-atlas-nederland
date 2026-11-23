@@ -83,7 +83,7 @@
     unclassified: 'Aanbodvorm nog niet ingedeeld'
   };
   const PRIMARY_AUDIENCES = ['Docenten', 'Bestuurders', 'IT-professionals', 'Onderzoekers'];
-  const PROFILE_ROLES = ['Docenten', 'Onderwijsontwikkelaars', 'Toetsmakers', 'Schoolleiders', 'Bestuurders',
+  const PROFILE_ROLES = ['Docenten', 'Onderwijsontwikkelaars', 'Toetsmakers', 'Examencommissies', 'Schoolleiders', 'Bestuurders',
     'Beleidsmakers', 'IT-professionals', 'Privacyprofessionals', 'Ondersteunend personeel', 'Onderzoekers', 'Studenten', 'Leerlingen'];
   const SECTORS = ['PO', 'VO', 'MBO', 'HBO', 'WO', 'Onderzoek', 'Overheid'];
   const ACCESS_LABELS = {
@@ -287,7 +287,7 @@
     sessionSet('atlas.sheetPicks', selectedHref('overlegblad').split('?')[1] || '');
   }
   const personaLabel = value => ({ Docenten: 'Docent', Onderwijsontwikkelaars: 'Onderwijsontwikkelaar', Toetsmakers: 'Toetsmaker',
-    Schoolleiders: 'Schoolleider', Bestuurders: 'Bestuurder', Beleidsmakers: 'Beleidsmaker', 'IT-professionals': 'IT-professional',
+    Examencommissies: 'Examencommissielid', Schoolleiders: 'Schoolleider', Bestuurders: 'Bestuurder', Beleidsmakers: 'Beleidsmaker', 'IT-professionals': 'IT-professional',
     Privacyprofessionals: 'Privacyprofessional', Onderzoekers: 'Onderzoeker', Studenten: 'Student', Leerlingen: 'Leerling' }[value] || value);
 
   const recordText = record => normalize([
