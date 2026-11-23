@@ -2791,7 +2791,7 @@
         <p>Vergelijk de vier regels uit de conceptnotulen met het fictieve schooloverleg. Welke afspraak klopt? Verbeter de andere regels met wat er werkelijk is gezegd.</p></header>
       <div class="assessment-layout">
         <section class="assessment-preview"><h2>Gespreksfragment</h2>
-          <p><strong>Voorzitter</strong> ‘We hebben afgesproken dat de studiedag op school plaatsvindt. Vrijdag is een voorstel. De datum kiezen we volgende week.’</p>
+          <p><strong>Voorzitter:</strong> ‘We hebben afgesproken dat de studiedag op school plaatsvindt. Vrijdag is een voorstel. De datum kiezen we volgende week.’</p>
           <p><strong>Teamleider:</strong> ‘Ik vraag uiterlijk woensdag welke lokalen beschikbaar zijn.’</p>
           <p><strong>Ondersteuner:</strong> ‘Zodra de datum vaststaat, maak ik de uitnodiging.’</p>
         </section>
