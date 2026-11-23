@@ -1,5 +1,13 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Welke financierings- en deelnamekansen kan ik voorbereiden?
+
+Op uitgave `d02f32d` telde de financieringstegel acht open en zeven aangekondigde rondes. Voor leraren, schoolteams, onderzoekers en instellingsbesturen zijn zes verschillende kansen gecontroleerd. Drie zijn open: NWO-vervanging voor een promoverende leraar, Europese mediawijsheidsprojecten voor onder meer volwassenen en de sessieoproep van SURF en Npuls. De laatste is een kans om een praktijkvoorbeeld te presenteren. De drie aangekondigde subsidierondes betreffen leermobiliteit op scholen, samenwerking tussen beroepsonderwijs, hoger onderwijs en bedrijfsleven, en de vijfde ronde voor een Center for Teaching and Learning.
+
+De kaarten vermelden wie indient, met welke partners en tot welk tijdstip. Bij schoolmobiliteit is het voorbeeldformulier direct bereikbaar. Voor CTL blijft het formulier van de vorige ronde buiten de aanvraagroute. Een aangekondigde call met een verstreken deadline gaat ook zonder handmatige statuswijziging naar ‘Gesloten’. Bij gebrek aan een bevestigde openingsdatum blijft de aanvraagstatus herkenbaar.
+
+In Edge telde de vernieuwde tegel elf open en tien aangekondigde rondes. Alle zes waren op 320, 390 en 1280 pixels via zoeken en de statusfilters te vinden. Aanvragers en termijnen zijn op de detailkaart en de deelbare aanbodpagina nagegaan. Hoeveel bezoekers een partner vinden of daadwerkelijk aanvragen, is onbekend. Volg in de volgende dagronde de nieuwe indienroute van Npuls AIDO en de definitieve formulieren voor Erasmus+.
+
 ## 23 november 2026 · Een leerling of student met een vraag over de eigen opdracht
 
 Op uitgave `116946c` gaven ‘Mag ik AI gebruiken bij mijn opdracht?’ en ‘Moet ik ChatGPT vermelden?’ nul treffers. Dit was op mobiel en laptop reproduceerbaar, zonder profiel en met de profielen leerling (vo) en student (mbo, hbo, wo). Bij ‘regels AI voor studenten’ kwam in het wo zelfs een econometriepracticum naar boven door de term ‘regels’ in een rekeninstructie. Dit waren zoekproeven. Hoe vaak bezoekers deze vragen stellen is onbekend.

@@ -3,6 +3,96 @@
   "last_reviewed": "2026-11-23",
   "claims": [
     {
+      "claim_id": "promotiebeurs-2027-i-aanvrager",
+      "location": {
+        "path": "data/records.json",
+        "record_id": "nwo-promotiebeurs-voor-leraren-2027-i",
+        "field": "eligibility"
+      },
+      "claim": "Een leraar kan onder voorwaarden vervanging voor promotieonderzoek aanvragen en heeft daarvoor verklaringen van de werkgever en de beoogde promotor nodig.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED",
+      "source_ids": [
+        "nwo-promotiebeurs-leraren-2027-i-oproep"
+      ],
+      "assessment": "De Staatscourant specificeert wie kan indienen. Een onderwerp over AI moet net als andere voorstellen het onderwijsbelang motiveren.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": true,
+      "review_by": "2027-01-12"
+    },
+    {
+      "claim_id": "npuls-ctl-vijfde-ronde",
+      "location": {
+        "path": "data/records.json",
+        "record_id": "dus-i-npuls-center-teaching-learning-ronde-5-2027",
+        "field": "applicationDeadline"
+      },
+      "claim": "Het vijfde aanvraagtijdvak is in oktober 2027. Ronde vier en vijf delen één subsidieplafond.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED",
+      "source_ids": [
+        "ocw-npuls-ctl-ronde-vier-vijf-2026"
+      ],
+      "assessment": "Het tijdvak van 4 tot 29 oktober volgt uit artikel I, onderdeel B. Bij een gewijzigd tijdvak of loket moet de vermelding opnieuw worden gecontroleerd.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": true,
+      "review_by": "2027-02-21"
+    },
+    {
+      "claim_id": "creative-europe-mediawijsheid-deelname-2027",
+      "location": {
+        "path": "data/records.json",
+        "record_id": "creative-europe-mediawijsheid-2027",
+        "field": "eligibility"
+      },
+      "claim": "Nederlandse onderwijs- en onderzoeksinstellingen kunnen deelnemen aan een internationaal consortium voor mediawijsheid.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED",
+      "source_ids": [
+        "eu-creative-europe-cross-medialiteracy-2027"
+      ],
+      "assessment": "De callfiche beschrijft de toegelaten organisaties en deelnemende landen. De oproep geeft bijzondere aandacht aan volwassenen buiten het formele onderwijs.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": true,
+      "review_by": "2027-01-20"
+    },
+    {
+      "claim_id": "erasmus-2027-ka122-school",
+      "location": {
+        "path": "data/records.json",
+        "record_id": "erasmus-kortlopende-mobiliteit-schoolonderwijs-2027",
+        "field": "eligibility"
+      },
+      "claim": "Een Nederlandse school zonder Erasmus-accreditatie voor schoolonderwijs kan in de eerste ronde van KA122-SCH een kortlopend mobiliteitsproject aanvragen.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED",
+      "source_ids": [
+        "eu-erasmus-programmagids-2027"
+      ],
+      "assessment": "De editie voor 2027 bevestigt de aanvragers en nieuwe looptijd. De Atlas geeft meelopen rond AI als mogelijke invulling van leermobiliteit.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": true,
+      "review_by": "2027-02-18"
+    },
+    {
+      "claim_id": "erasmus-2027-alliantie-onderwijs-bedrijven",
+      "location": {
+        "path": "data/records.json",
+        "record_id": "erasmus-allianties-onderwijs-bedrijven-2027",
+        "field": "eligibility"
+      },
+      "claim": "De alliantie voor onderwijs en bedrijfsleven vereist deelname van arbeidsmarkt- en onderwijsorganisaties uit meerdere programmalanden.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED",
+      "source_ids": [
+        "eu-erasmus-programmagids-2027"
+      ],
+      "assessment": "Deze voorwaarden horen bij Topic 1. Een specifieke openstellingsdatum is bij controle niet bevestigd.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": true,
+      "review_by": "2027-02-21"
+    },
+    {
       "claim_id": "student-ai-bij-eigen-opdracht",
       "location": {"path": "catalog.js"},
       "claim": "Een leerling of student kan vóór gebruik van AI de instructie bij de eigen opdracht raadplegen en bij twijfel aan de docent vragen welke hulp voor een specifieke stap is toegestaan en hoe die moet worden vermeld.",
