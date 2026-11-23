@@ -1529,6 +1529,39 @@
     return '';
   }
   const SCHOOL_PRIVACY_ID = 'generatieve-ai-en-privacy-hier-moeten-scholen-op-letten';
+  const LESSON_WORKSHEETS = {
+    exercises: {label:'Maak oefenvragen bij uw les', meta:'Rekenvoorbeeld met antwoorden en een instructie voor uw eigen vak.', href:'#werkblad-oefenvragen'},
+    biology: {label:'Bereid een biologiepracticum voor', meta:'Kiemproef met tuinkers · vmbo vanaf leerjaar 2.', href:'#werkblad-biologiepracticum'}
+  };
+  function worksheetRoutes(query, criteria, lessonRoute = false) {
+    const topic = normalize(query);
+    const saveTime = /\btijd (?:besparen|winnen)\b/.test(topic) && (/\b(?:les|lessen|klas)\b/.test(topic) ||
+      topic.split(' ').every(word => QUERY_STOPWORDS.has(word) || REQUEST_WORDS.has(word) ||
+        ['tijd', 'besparen', 'winnen', 'ai', 'als', 'docent', 'je', 'kun'].includes(word)));
+    const exercises = saveTime || /\b(?:oefenvra(?:ag|gen)|oefenopgaven?|quizvragen|lesvoorbereiding|lesontwerp|les(?:sen)? voorbereiden)\b/.test(topic);
+    const practicum = /\b(?:practicum|practica|biologiepracticum|kiemproe(?:f|ven))\b/.test(topic);
+    if (!lessonRoute && !exercises && !practicum) return [];
+    if (Object.entries(TYPE_QUERY_RULES).some(([type, names]) => type !== 'materials' &&
+        names.some(name => phrasePresent(topic, name)))) return [];
+    const allowed = {
+      type:['materials'], audience:['Docenten', 'Onderwijsontwikkelaars'], language:['nl'], cost:['Gratis'],
+      status:[STATUS_LABELS.available], access:[ACCESS_LABELS.public], theme:['Lesgeven en leren met AI']
+    };
+    if (activeFilters(criteria).some(([key, selected]) => !['vak', 'sector'].includes(key) &&
+        !selected.some(value => allowed[key]?.includes(value)))) return [];
+    const sectors = filterValues('sector', criteria.sector);
+    const subjects = filterValues('vak', criteria.vak).map(normalize);
+    const links = [];
+    if ((lessonRoute || exercises && !practicum) && (!sectors.length || sectors.some(sector => Object.hasOwn(SECTOR_NAMES, sector)))) {
+      links.push(LESSON_WORKSHEETS.exercises);
+    }
+    if (!lessonRoute && !(practicum && (/\b(?:biologie|biologiepracticum|biologieles|kiemproe(?:f|ven))\b/.test(topic) || subjects.includes('biologie')))) return links;
+    const namedSectors = Object.entries(SECTOR_QUERY_NAMES).filter(([sector, names]) =>
+      phrasePresent(topic, sector) || names.some(name => phrasePresent(topic, name)));
+    if ((!subjects.length || subjects.includes('biologie')) && (!sectors.length || sectors.includes('VO')) &&
+        (!namedSectors.length || namedSectors.some(([sector]) => sector === 'VO'))) links.push(LESSON_WORKSHEETS.biology);
+    return links;
+  }
   function teacherRoutes(query, criteria) {
     switch (teacherQuestion(normalize(query))) {
       case 'tools':
@@ -1549,7 +1582,7 @@
         if (!count) return [];
         return [{label:'Bekijk lesmateriaal over ecosystemen', meta:'Controleer in de les of het niveau bij uw klas past.', href:criteriaHref(next), count}];
       }
-      default: return [];
+      default: return worksheetRoutes(query, criteria);
     }
   }
   function alternativeSuggestion() {
@@ -2240,7 +2273,10 @@
       let work = '';
       if (task?.criteria.q === 'les' || ['lesstart', 'lesstarts'].includes(normalize(state.q))) {
         const materials = stateHref({ q: '', type: 'materials', language: 'nl', cost: 'Gratis' });
-        work = `<p class="lesson-shortcut"><a class="btn secondary" href="${escapeHtml(materials)}">Gratis Nederlandstalig lesmateriaal</a> <a href="lesmateriaal/">Alle lesstarts per onderwijssector</a></p>` + lessonStartSection();
+        const worksheets = worksheetRoutes(state.q, state, true);
+        work = (worksheets.length ? `<nav class="lesson-shortcut" aria-label="Werkbladen voor uw les">${worksheets.map(sheet =>
+          `<a data-question-route href="${sheet.href}">${sheet.label}</a>`).join(' · ')}</nav>` : '') +
+          `<p class="lesson-shortcut"><a class="btn secondary" href="${escapeHtml(materials)}">Gratis Nederlandstalig lesmateriaal</a> <a href="lesmateriaal/">Alle lesstarts per onderwijssector</a></p>` + lessonStartSection();
       }
       else if (researchQuery(state.q)) {
         work = `<p><a class="btn secondary" href="${escapeHtml(stateHref().replace('#zoeken', '#onderzoek'))}">Onderzoek doen of promoveren</a></p>`;
@@ -2292,7 +2328,7 @@
     return `<p><button class="btn secondary" type="button" data-edit-query>Zoekterm aanpassen</button>
       ${count ? `<button class="btn secondary" type="button" data-clear-query>Toon ${count} ${count === 1 ? 'resultaat' : 'resultaten'} zonder zoekterm</button>` : ''}</p>`;
   }
-  function emptyResultsMarkup(routes) {
+  function emptyResultsMarkup(routes, worksheetCount) {
     const actions = emptyQueryActions();
     if (isFundingSelection()) {
       return `<div class="empty"><h2>${state.status === STATUS_LABELS.open_call ? 'Geen open oproepen bij deze selectie' : 'Geen subsidies of calls bij deze selectie'}</h2>
@@ -2301,9 +2337,11 @@
     }
     const alternative = routes.length ? null : alternativeSuggestion();
     const relaxations = relaxationSuggestions();
-    return `<div class="empty"><span class="eyebrow">Geen exacte match</span><h2>We helpen u verder</h2>
-      ${alternative ? `<a class="alternative" href="${escapeHtml(stateHref({ q: alternative.candidate }))}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` :
-        `<p>${state.q ? 'Uw zoekopdracht levert binnen deze selectie geen resultaten op.' : 'Er is geen aanbod met deze combinatie van filters.'}</p>`}
+    const notice = worksheetCount ? '<p>Geen andere treffers in de catalogus.</p>' :
+      `<span class="eyebrow">Geen exacte match</span><h2>We helpen u verder</h2>${alternative ?
+        `<a class="alternative" href="${escapeHtml(stateHref({ q: alternative.candidate }))}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` :
+        `<p>${state.q ? 'Uw zoekopdracht levert binnen deze selectie geen resultaten op.' : 'Er is geen aanbod met deze combinatie van filters.'}</p>`}`;
+    return `<div class="empty">${notice}
       ${actions}
       ${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${escapeHtml(stateHref({ [item.key]: '' }))}">Zonder ${escapeHtml(item.values.join(' of '))} <strong>${item.count}</strong></a>`).join('')}</div>` : ''}
       <button class="clear-link" type="button">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`;
@@ -2321,9 +2359,13 @@
     ].join('');
     const related = values('theme').length ? relatedThemes(values('theme')[0]) : [];
     const routes = teacherRoutes(state.q, state);
-    const routeGuide = routes.length ? `<section class="selection-guidance teacher-routes" aria-label="Verder met uw vraag"><h2>Verder met uw vraag</h2>
+    const worksheetCount = routes.filter(route => route.href.startsWith('#werkblad-')).length;
+    const onlyWorksheets = !resultRecords.length && worksheetCount > 0;
+    const routeGuide = routes.length ? `<section class="selection-guidance teacher-routes" aria-label="Verder met uw vraag">${onlyWorksheets ? '' : '<h2>Verder met uw vraag</h2>'}
       <ul>${routes.map(item => `<li><a data-question-route href="${escapeHtml(item.href)}">${escapeHtml(item.label)}</a><span>${escapeHtml(item.meta)}</span></li>`).join('')}</ul></section>` : '';
-    const heading = `${resultRecords.length} ${resultRecords.length === 1 ? 'resultaat' : 'resultaten'}${state.q ? ` voor ‘${state.q}’` : ''}`;
+    const countLabel = onlyWorksheets ? `${worksheetCount} ${worksheetCount === 1 ? 'werkblad' : 'werkbladen'}` :
+      `${resultRecords.length} ${resultRecords.length === 1 ? 'resultaat' : 'resultaten'}`;
+    const heading = countLabel + (state.q ? ` voor ‘${state.q}’` : '');
     const knownDates = isPublicationSort() && resultRecords.filter(record => publicationDate(record)).length;
     const sortSummary = state.sort === 'added'
       ? 'Nieuwste toevoegingen aan de Atlas eerst; onbekende toevoegdatums staan onderaan. Een broncontrole verandert de toevoegdatum niet.'
@@ -2351,7 +2393,7 @@
       ${values('theme').includes('Veilige AI-omgeving') ? '<section class="selection-guidance"><h2>Beoordeel de toepassing in uw eigen situatie</h2><p>Gebruik de officiële bronnen om gegevensgebruik, beheer, menselijke controle, toegankelijkheid en overstapmogelijkheden te beoordelen. Wat passend is, hangt af van uw doel, gegevens, instellingen en afspraken. Deze selectie is geen keurmerk voor veilige of verantwoorde AI.</p></section>' : ''}
       <div class="picked-actions" data-picked-actions ${sheetPicks.size ? '' : 'hidden'}>${pickedActionLinks('picked')}</div>
       <div id="action-feedback" class="action-feedback" aria-live="polite"></div>
-      <div class="results-content">${resultRecords.length ? resultListMarkup() : emptyResultsMarkup(routes)}</div>
+      <div class="results-content">${resultRecords.length ? resultListMarkup() : emptyResultsMarkup(routes, worksheetCount)}</div>
       ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="${escapeHtml(stateHref({ theme }))}">${escapeHtml(theme)} <span>${count} ${count === 1 ? 'resultaat' : 'resultaten'}</span></a>`).join('')}</nav>` : ''}`;
   }
   function filterButtonText() {
@@ -2692,6 +2734,77 @@
     );
   }
 
+  const WORKSHEETS = {
+    'werkblad-oefenvragen': {
+      level: 'Rekenvoorbeeld · aanpasbaar voor uw eigen vak',
+      title: 'Wanneer is een verschil van 12 groter in procenten?',
+      goal: 'Je kunt een procentuele verandering berekenen en uitleggen waarom het begingetal telt.',
+      tasks: [
+        'Maandag staan er 48 fietsen bij school, dinsdag 60. Met hoeveel procent is het aantal gestegen? Schrijf op welk aantal 100% is en laat je berekening zien.',
+        'Vorige week leende de bibliotheek 60 boeken uit, deze week 48. Met hoeveel procent is het aantal gedaald? Noteer ook hier het begingetal en je berekening.',
+        'Het verschil is beide keren 12. Leg aan een klasgenoot uit waarom de percentages verschillen.'
+      ],
+      teacherTitle: 'Antwoorden en controle voor de docent',
+      notes: [
+        'Fietsen: 12 ÷ 48 × 100 = 25% stijging. Reken terug: 48 × 1,25 = 60.',
+        'Boeken: 12 ÷ 60 × 100 = 20% daling. Reken terug: 60 × 0,80 = 48.',
+        'Schrijft een leerling tweemaal 20%? Vraag welk aantal aan het begin van elk verhaal staat. Laat de leerling beide nieuwe aantallen narekenen.'
+      ],
+      adapt: 'Vervang de woorden tussen haken. Gebruik de tekst als schrijfhulp of in een AI-tool die uw school toestaat. Los beide opgaven zelf op voordat u ze uitdeelt.',
+      prompt: 'Maak voor [groep en vak] twee korte oefenvragen bij [leerdoel]. Gebruik verschillende situaties waarin leerlingen zelf [denkstap] moeten uitvoeren en uitleggen. Geef eerst alleen de leerlingvragen. Zet daarna per vraag het modelantwoord, een waarschijnlijke denkfout en een controle waarmee ik het antwoord kan toetsen.'
+    },
+    'werkblad-biologiepracticum': {
+      level: 'Biologie · vmbo vanaf leerjaar 2',
+      title: 'Heeft licht invloed op de kieming van tuinkers?',
+      goal: 'Je kunt een eerlijke vergelijking ontwerpen en je conclusie onderbouwen met eigen waarnemingen.',
+      tasks: [
+        'Bekijk dit voorstel: “Ik zet een schaaltje met natte watten in het licht en een schaaltje met droge watten in het donker.” Welke twee omstandigheden veranderen tegelijk? Wat kun je daardoor straks moeilijk verklaren?',
+        'Teken een betere opstelling om alleen de invloed van licht te onderzoeken. Noteer vooraf je verwachting, wanneer je een zaadje als gekiemd telt en wat je in beide opstellingen gelijk houdt. Bespreek het plan met je docent en voer het uit.',
+        'Maak een tabel met de datum, het aantal gekiemde zaadjes in het licht en het aantal in het donker. Tel telkens op dezelfde manier. Gebruik je eigen metingen om je verwachting te bespreken. Welke vraag blijft open?'
+      ],
+      teacherTitle: 'Voorbereiding en bespreking voor de docent',
+      notes: [
+        'Leg tuinkerszaad, schaaltjes, watten, water en etiketten klaar. Kies twee plekken met vergelijkbare temperatuur en maak één opstelling donker. Volg de docentinstructie van NIBI voor het volledige practicum.',
+        'De NIBI-docentinstructie rekent één lesuur voor de opzet, twee weken voor waarnemingen en één lesuur voor de conclusie en de start van het verslag.',
+        'Controleer of leerlingen onder meer aantal en soort zaden, vocht, temperatuur en telmoment gelijk houden. Spreek bijvoorbeeld af dat een zichtbaar worteltje telt. Laat een leerling voor de conclusie eigen getallen aanwijzen, ook als die niet bij de verwachting passen.'
+      ],
+      adapt: 'Laat leerlingen eerst zelf hun proefopzet maken. U kunt onderstaande vraag aan een collega of een toegestane AI-tool stellen en één bruikbare controlevraag kiezen.',
+      prompt: 'Ik bereid een vmbo-practicum voor over de invloed van licht op de kieming van tuinkers. Geef twee korte vragen waarmee leerlingen hun eigen proefopzet kunnen controleren. Geef geen proefopzet, meetwaarden of conclusie. Ik kies welke vraag past bij mijn leerdoel.',
+      source: {label: 'NIBI · Tuinkers ontkiemen (PlantKracht vmbo)', href: 'https://www.nibi.nl/nl/plantkracht-vmbo#art_10431'}
+    }
+  };
+
+  function renderWorksheet(id) {
+    const sheet = WORKSHEETS[id];
+    const lastSearch = sessionGet('atlas.lastSearch') || '';
+    const back = /^#zoeken(?:\?|$)/.test(lastSearch) ? lastSearch : '#zoeken?q=les&type=materials';
+    const sourceLink = sheet.source ? ` Bij het practicum van <a href="${escapeHtml(sheet.source.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(sheet.source.label)} ↗</a>.` : '';
+    main.innerHTML = `<article class="work-sheet" aria-labelledby="work-title">
+      <nav class="practice-back work-screen"><a href="${escapeHtml(back)}">← Naar het lesaanbod</a></nav>
+      <header><p class="lesson-level">${escapeHtml(sheet.level)}</p><h1 id="work-title" tabindex="-1">${escapeHtml(sheet.title)}</h1>
+        <p><strong>Leerdoel</strong> · ${escapeHtml(sheet.goal)}</p></header>
+      <section class="work-pupil"><h2>Opdracht voor de klas</h2><ol>${sheet.tasks.map(task => `<li>${escapeHtml(task)}</li>`).join('')}</ol>
+        <div class="lesson-actions work-screen"><button class="btn" data-work-copy type="button">Kopieer leerlingopdracht</button>
+          <button class="btn secondary" data-work-print type="button">Druk leerlingblad af</button></div></section>
+      <div class="work-screen"><details class="work-notes"><summary>${escapeHtml(sheet.teacherTitle)}</summary>
+        <ul>${sheet.notes.map(note => `<li>${escapeHtml(note)}</li>`).join('')}</ul></details>
+        <details class="work-notes"><summary>${sheet.source ? 'Een controlevraag voor mijn klas' : 'Oefenvragen voor mijn eigen vak maken'}</summary>
+          <p>${escapeHtml(sheet.adapt)}</p><label for="work-prompt">Bewerk de instructie voor uw les</label>
+          <textarea id="work-prompt" rows="5">${escapeHtml(sheet.prompt)}</textarea><button class="btn secondary" data-work-prompt type="button">Kopieer mijn instructie</button>
+        </details><p class="lesson-feedback" role="status"></p>
+        <textarea class="lesson-copy" aria-label="Tekst om handmatig te kopiëren" readonly hidden></textarea></div>
+      <p class="learner-credit">Werkblad van de AI &amp; Onderwijs Atlas Nederland.${sourceLink}</p></article>`;
+    const feedback = main.querySelector('.lesson-feedback');
+    const fallback = main.querySelector('.lesson-copy');
+    const copy = (button, text) => copyTextWithFallback(button, text, feedback, fallback, 'Gekopieerd.', 'De tekst is geselecteerd. Kopieer deze met uw apparaat.');
+    const pupil = main.querySelector('[data-work-copy]');
+    pupil.onclick = () => copy(pupil, [sheet.title, sheet.goal, ...sheet.tasks.map((task, index) => `${index + 1}. ${task}`),
+      'Werkblad van de AI & Onderwijs Atlas Nederland.' + (sheet.source ? ` Bron: ${sheet.source.label} · ${sheet.source.href}` : '')].join('\n\n'));
+    main.querySelector('[data-work-print]').onclick = () => window.print();
+    const teacher = main.querySelector('[data-work-prompt]');
+    teacher.onclick = () => copy(teacher, main.querySelector('#work-prompt').value);
+  }
+
   function lessonDirectoryReturn() {
     const params = new URLSearchParams(location.hash.split('?')[1]);
     if (params.get('van') !== 'lesgids' || params.getAll('van').length !== 1) return '';
@@ -2869,7 +2982,7 @@
       }, 150);
     };
     suggestions.onclick = event => {
-      if (event.target.closest('a[href^="#item/"], a[href="#regels-in-de-praktijk"], a[href="#wat-werkt"], a[href="#toolkeuze"]')) {
+      if (event.target.closest('a[href^="#item/"], a[href^="#werkblad-"], a[href="#regels-in-de-praktijk"], a[href="#wat-werkt"], a[href="#toolkeuze"]')) {
         sessionSet('atlas.lastSearch', criteriaHref(criteriaForQuery(input.value)));
       }
     };
@@ -3013,7 +3126,7 @@
       const target = link.classList.contains('practice-link') ? '#lesson-heading, #trial-entry-heading, #assessment-entry-heading, #funding-heading, #research-heading, .result-head h2' : '#practice-title';
       focusAfterNavigation(link, target);
     });
-    focusAfterNavigation(panel.querySelector('.lesson-shortcut a'), '.result-head h2');
+    focusAfterNavigation(panel.querySelector('.lesson-shortcut .btn'), '.result-head h2');
     if (sector) sector.onchange = () => {
       state.sector = sector.value;
       if (['#home', ''].includes(location.hash)) state.sort = 'relevant';
@@ -3154,6 +3267,8 @@
     document.querySelector('.menu')?.setAttribute('aria-expanded', 'false');
     const guides = {
       'praktijkgids': renderPracticeGuide, 'wat-werkt': renderLearningEvidence,
+      'werkblad-oefenvragen': () => renderWorksheet('werkblad-oefenvragen'),
+      'werkblad-biologiepracticum': () => renderWorksheet('werkblad-biologiepracticum'),
       'toolkeuze': renderToolChoice, 'pilotbesluit': renderPilotDecision, 'regels-in-de-praktijk': renderPracticeRules
     };
     if (path === 'home' || (!Object.hasOwn(guides, path) && !['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();

@@ -1,8 +1,28 @@
 {
   "schema_version": "1.0",
-  "last_reviewed": "2026-11-22",
+  "last_reviewed": "2026-11-23",
   "verification_window_days": 90,
   "sources": [
+    {
+      "source_id": "nibi-plantkracht-vmbo-tuinkers",
+      "title": "PlantKracht vmbo: Tuinkers ontkiemen, maar dan anders!",
+      "author_or_organisation": "Nederlands Instituut voor Biologie (NIBI)",
+      "publication_date": "2024",
+      "url_or_doi": "https://www.nibi.nl/nl/plantkracht-vmbo#art_10431",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": ["Praktijkvoorbeelden", "Onderzoek"],
+      "jurisdiction": "Nederland, vmbo",
+      "claims_supported": [
+        "Bij dit tuinkerspracticum formuleren leerlingen vanaf leerjaar 2 een eigen onderzoeksvraag en vergelijken ze een proefgroep met een controlegroep. De docentinstructie noemt één lesuur voor de opzet, twee weken voor waarnemingen en één lesuur voor conclusies en de start van het verslag."
+      ],
+      "reliability_notes": "NIBI presenteerde de lessenserie in 2024. De twee dia’s van de bijbehorende docentinstructie zijn rechtstreeks bij NIBI geopend en gelezen. De bestandsmetadata dateren deze versie eveneens in 2024. Een precieze publicatiedag ontbreekt.",
+      "limitations": "De overzichtspagina noemt vier lesuren voor leerjaar 2, 3 of 4 van het vmbo. De docentinstructie maakt afzonderlijk de periode voor waarnemingen zichtbaar. De bron geeft geen voorbereidingstijd voor de docent. De werkvorm met optionele AI-feedback is een uitwerking van de Atlas.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active"
+    },
     {
       "source_id": "npuls-raise-risicobeoordeling-2026",
       "title": "RAISE – raamwerk voor risicobeoordeling van AI",

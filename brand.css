@@ -596,6 +596,26 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
 .directory-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .lesson-shortcut { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; }
 .lesson-shortcut > a { display: inline-flex; align-items: center; min-height: 44px; }
+.work-sheet { max-width: 49rem; margin: 0 auto; padding: 1.3rem 1rem 3rem; }
+.work-sheet header { border-bottom: 1px solid var(--line); padding-block: .5rem; }
+.work-sheet h1 { margin: .35rem 0; font-size: clamp(1.75rem, 4vw, 2.65rem); line-height: 1.15; }
+.work-sheet h2 { font-size: 1.3rem; }
+.work-sheet ol, .work-sheet ul { padding-inline-start: 1.6rem; }
+.work-sheet li { margin-bottom: .7rem; padding-inline-start: .2rem; line-height: 1.5; }
+.work-pupil { margin-block: 1.4rem; }
+.work-notes { border-top: 1px solid var(--line); padding-block: .35rem; }
+.work-notes summary { min-height: 44px; padding-block: .65rem; cursor: pointer; font-weight: 650; }
+.work-notes label { display: block; font-weight: 650; }
+.work-notes textarea { width: 100%; font: inherit; padding: .6rem; margin: .4rem 0; resize: vertical; }
+@media print {
+  html:has(.work-sheet), body:has(.work-sheet), body:has(.work-sheet) main { background: #fff; }
+  body:has(.work-sheet) .site-header, body:has(.work-sheet) > footer,
+  body:has(.work-sheet) .skip, .work-screen { display: none !important; }
+  .work-sheet { max-width: none; padding: 0; color: #000; }
+  .work-sheet h1 { font-size: 22pt; }
+  .work-pupil li { margin-block: 5mm; break-inside: avoid; }
+  .work-pupil li::after { content: ''; display: block; height: 25mm; border-bottom: 1px dotted #777; }
+}
 @media(max-width: 560px) {
   .directory-header { gap: .5rem 1rem; }
   .directory-header > .brand { order: 0; }

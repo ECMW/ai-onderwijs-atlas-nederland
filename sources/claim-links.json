@@ -1,7 +1,20 @@
 {
   "schema_version": "1.0",
-  "last_reviewed": "2026-11-22",
+  "last_reviewed": "2026-11-23",
   "claims": [
+    {
+      "claim_id": "biologie-practicum-tuinkers-bronopdracht",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "In de NIBI-docentinstructie voor het vmbo ontwerpen leerlingen vanaf leerjaar 2 een kiemproef met een eigen onderzoeksvraag en een controlegroep. Na de opzet observeren ze de tuinkers gedurende twee weken en trekken ze hun eigen conclusie.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED",
+      "source_ids": ["nibi-plantkracht-vmbo-tuinkers"],
+      "assessment": "Dia 1 van de docentinstructie specificeert doelgroep, materialen en de les- en observatietijd. Dia 2 geeft de onderzoeksopzet. De docent spreekt de waarnemingsmomenten af. De bron doet geen uitspraak over het effect van AI-feedback op leren of voorbereidingstijd.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": false
+    },
     {
       "claim_id": "pilotbesluit-schoolleiding-ict-bronnen",
       "location": {
