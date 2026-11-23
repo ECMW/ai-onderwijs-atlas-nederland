@@ -1663,6 +1663,66 @@ test('the minutes exercise counts in search, filters, and recovery while catalog
   }
 });
 
+test('a learner can find the assignment guide by asking about permission or disclosure', () => {
+  const href = '#ai-bij-mijn-opdracht';
+  for (const [query, step] of [
+    ['Mag ik AI gebruiken bij mijn opdracht?', ''], ['AI bij mijn opdracht', ''],
+    ['Mag ik als leerling ChatGPT gebruiken?', ''], ['Mag ik AI gebruiken voor mijn huiswerk?', ''],
+    ['Regels AI voor studenten', ''], ['Welke regels gelden voor mij als student in het mbo bij AI?', ''],
+    ['Moet ik ChatGPT vermelden?', '?stap=vermelden'], ['AI-gebruik vermelden', '?stap=vermelden'],
+    ['Hoe vermeld ik mijn AI-gebruik?', '?stap=vermelden'], ['Hoe geef ik aan dat ik ChatGPT heb gebruikt?', '?stap=vermelden']
+  ]) {
+    const api = load([], '#zoeken?audience=Studenten%2CLeerlingen');
+    api.setState(api.criteriaForQuery(query));
+    const items = api.suggestionData(query).flatMap(group => group.items);
+    assert.equal(items[0]?.href, href + step, query);
+    const results = api.resultsMarkup();
+    assert.ok(results.includes(`data-question-route href="${href + step}">Mag ik AI gebruiken bij mijn opdracht?</a>`), query);
+    assert.ok(results.includes(`>1 keuzehulp voor ‘${query}’</h2>`), query);
+    assert.match(results, /data-atlas-search-hits/);
+    assert.doesNotMatch(results, /data-atlas-empty-search|class="empty"/);
+  }
+  const api = load([]);
+  for (const query of ['AI', 'ChatGPT', 'Bronvermelding', 'AI voor leerlingen', 'AI-tools vergelijken',
+    'Mag ik leerlingwerk uploaden naar ChatGPT?', 'AI-afspraken voor studenten opstellen',
+    'Mag ik AI gebruiken bij het nakijken van mijn studenten?', 'AI-subsidies voor studenten']) {
+    assert.ok(!api.suggestionData(query).flatMap(group => group.items).some(item => item.href.startsWith(href)), query);
+  }
+});
+
+test('the assignment guide respects filters and counts separately from catalogue records', () => {
+  const query = 'AI-gebruik vermelden';
+  const base = '#zoeken?' + new URLSearchParams({q:query});
+  const settings = {sector:'MBO', audience:'Studenten', language:'nl', cost:'Gratis', access:'Publiek toegankelijk', status:'Direct beschikbaar', type:'materials'};
+  const api = load([], base + '&' + new URLSearchParams(settings));
+  api.resultsMarkup();
+  const filters = api.catalogFilterPanel(['materials'], ['Studenten','Leerlingen'], []);
+  assert.match(filters, /class="apply btn">Toon 1 keuzehulp</);
+  assert.match(filters, /data-facet-option="Leerlingen"[^>]*><input[^>]+><span>Leerlingen<\/span><small>1 keuzehulp<\/small>/);
+  const mixed = load([record('uitleg', undefined, query)], base);
+  assert.match(mixed.resultsMarkup(), /1 resultaat en 1 keuzehulp voor/);
+  for (const selection of [{language:'en'}, {audience:'Docenten'}, {sector:'PO'}, {type:'Subsidie of call,Subsidie'},
+    {theme:'Subsidies en financiering'}, {cost:'Kosten onbekend'}, {access:'Registratie nodig'}, {status:'Gepland'}, {vak:'Biologie'}]) {
+    const blocked = load([], base + '&' + new URLSearchParams(selection));
+    const results = blocked.resultsMarkup();
+    assert.match(results, /data-atlas-empty-search/);
+    assert.doesNotMatch(results, /data-question-route href="#ai-bij-mijn-opdracht/);
+    if (selection.type) assert.match(results, /Geen subsidies of calls/);
+    else assert.match(results, /Zonder [^<]+ <strong>1 keuzehulp<\/strong>/);
+    assert.ok(!blocked.suggestionData(query).flatMap(group => group.items).some(item => item.href.startsWith('#ai-bij-mijn-opdracht')));
+  }
+});
+
+test('a selected learner profile opens the assignment guide directly', () => {
+  const route = /class="practice-link" data-question-route href="#ai-bij-mijn-opdracht"/;
+  for (const selection of ['audience=Studenten&sector=HBO', 'audience=Leerlingen&sector=VO', 'audience=Docenten,Studenten&sector=WO']) {
+    assert.match(load([], '#zoeken?' + selection).resultsMarkup(), route);
+  }
+  for (const selection of ['', 'audience=Docenten', 'audience=Studenten&language=en', 'audience=Studenten&vak=Biologie', 'audience=Leerlingen&sector=PO']) {
+    assert.doesNotMatch(load([], '#zoeken?' + selection).resultsMarkup(), route);
+  }
+});
+
 test('a worksheet-only customer mail search offers its MBO filter with a worksheet count', () => {
   const data = [{...record('onverwant'), sectors:['PO','MBO'], offerCategory:'materials'}];
   const api = load(data, '#zoeken?q=klantmail');

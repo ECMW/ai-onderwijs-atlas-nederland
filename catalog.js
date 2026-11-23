@@ -1580,10 +1580,24 @@
         (/\b(?:upload\w*|invoer\w*|delen|privacy|avg|schoolafspraken|persoonsgegevens|regels)\b/.test(normalized) ||
         (/\b(?:mag|mogen|toegestaan)\b/.test(normalized) && /\b(?:ai|chatgpt|chatbot)\b/.test(normalized)) ||
         /^(?:leerlingwerk|leerlingenwerk|leerlinggegevens|studentgegevens|studentenwerk)$/.test(normalized))) return 'privacy';
+    if (studentAssignmentQuestion(normalized)) return 'assignment';
     if (/\bfeedback\b/.test(normalized) && /\b(?:ai|chatgpt|chatbot|kunstmatige intelligentie)\b/.test(normalized) &&
         (/\b(?:leerwinst|leereffect\w*|leerresulta\w*|leereffectiviteit|leren|effect\w*|helpt|werkt|onderzoek)\b/.test(normalized) ||
         normalized === 'ai feedback')) return 'evidence';
     return '';
+  }
+  const AI_DISCLOSURE = /\b(?:vermeld(?:en|ing)?|verantwoord(?:en|ing)|aangeven|geef ik aan)\b/;
+  function studentAssignmentQuestion(query) {
+    if (!/\b(?:ai|chatgpt|kunstmatige intelligentie)\b/.test(query) ||
+        /\b(?:(?:als|voor) (?:docent(?:en)?|leraar|leerkracht)|nakijken|beoordelen|opstellen|mijn (?:studenten|leerlingen))\b/.test(query)) return false;
+    const assignment = /\b(?:opdracht|schoolopdracht|huiswerk|verslag|werkstuk|scriptie|toets|tentamen|examen)\b/.test(query);
+    const learner = /\b(?:student(?:en)?|leerling(?:en)?)\b/.test(query);
+    const permission = /\b(?:mag|mogen|toegestaan|toestemming|afspraken|regels)\b/.test(query);
+    const disclosure = AI_DISCLOSURE.test(query);
+    const ownWork = assignment && /\b(?:mijn|ons|onze|mag ik|mogen we)\b/.test(query);
+    return (ownWork && (permission || disclosure || /\b(?:bij|voor|in) (?:mijn|ons|onze)\b/.test(query))) ||
+      (learner && (permission || disclosure)) ||
+      (disclosure && (/\b(?:moet ik|hoe .*?ik|kan ik)\b/.test(query) || /^(?:ai gebruik|gebruik van (?:ai|chatgpt)|chatgpt) (?:vermelden|verantwoorden)$/.test(query)));
   }
   const SCHOOL_PRIVACY_ID = 'generatieve-ai-en-privacy-hier-moeten-scholen-op-letten';
   const WORKSHEET_FILTERS = {
@@ -1631,24 +1645,37 @@
   function matchingWorksheetRoutes(criteria) {
     return worksheetRoutes(criteria.q, criteria, isLessonSelection(criteria));
   }
-  const MINUTES_FILTERS = {
-    type:['materials'], audience:['Ondersteunend personeel'], sector:['PO', 'VO', 'MBO', 'HBO', 'WO'],
+  const TASK_FILTERS = {
+    type:['materials'],
     language:['nl'], cost:['Gratis'], status:[STATUS_LABELS.available], access:[ACCESS_LABELS.public]
   };
-  function matchesMinutesFilters(criteria) {
-    return activeFilters(criteria).every(([key, selected]) => selected.some(value => MINUTES_FILTERS[key]?.includes(value)));
+  const TASK_GUIDES = {
+    minutes: {
+      filters:{...TASK_FILTERS, audience:['Ondersteunend personeel'], sector:['PO','VO','MBO','HBO','WO']},
+      href:'#notulen-controleren', label:'Controleer een AI-conceptverslag', countLabel:'1 oefening',
+      meta:'Oefen met fictieve notulen: wat is besloten, wie doet wat en vóór wanneer?',
+      tileLabel:'Notulen controleren', tileDetail:'Verbeter de afsprakenlijst van een schooloverleg.', action:'Open oefening'
+    },
+    assignment: {
+      filters:{...TASK_FILTERS, audience:['Studenten','Leerlingen'], sector:['VO','MBO','HBO','WO']},
+      href:'#ai-bij-mijn-opdracht', label:'Mag ik AI gebruiken bij mijn opdracht?', countLabel:'1 keuzehulp',
+      meta:'Controleer de afspraken voor je opdracht en bepaal hoe je AI-gebruik vermeldt.', action:'Open keuzehulp'
+    }
+  };
+  function taskGuideMatches(guide, criteria) {
+    return activeFilters(criteria).every(([key, selected]) => selected.some(value => guide.filters[key]?.includes(value)));
   }
   function atlasFacetLabels() {
-    const minutes = teacherQuestion(normalize(state.q)) === 'minutes';
-    if (!minutes && !matchingWorksheetRoutes({q: state.q, vak: state.vak, type: 'materials'}).length) return {};
+    const guide = TASK_GUIDES[teacherQuestion(normalize(state.q))];
+    if (!guide && !matchingWorksheetRoutes({q: state.q, vak: state.vak, type: 'materials'}).length) return {};
     const counts = {};
-    const facets = minutes ? MINUTES_FILTERS : {...WORKSHEET_FILTERS, sector: SECTORS};
+    const facets = guide?.filters || {...WORKSHEET_FILTERS, sector: SECTORS};
     for (const [key, options] of Object.entries(facets)) {
       counts[key] = new Map();
       for (const option of options) {
         const criteria = {...state, [key]:option};
-        if (minutes) {
-          if (matchesMinutesFilters(criteria)) counts[key].set(option, '1 oefening');
+        if (guide) {
+          if (taskGuideMatches(guide, criteria)) counts[key].set(option, guide.countLabel);
         } else {
           const sheets = matchingWorksheetRoutes(criteria).length;
           if (sheets) counts[key].set(option, matchesLabel(0, sheets));
@@ -1658,9 +1685,15 @@
     return counts;
   }
   function teacherRoutes(query, criteria) {
-    switch (teacherQuestion(normalize(query))) {
-      case 'minutes':
-        return matchesMinutesFilters(criteria) ? [{kind:'exercise', label:'Controleer een AI-conceptverslag', meta:'Oefen met fictieve notulen: wat is besloten, wie doet wat en vóór wanneer?', href:'#notulen-controleren'}] : [];
+    const topic = normalize(query);
+    const question = teacherQuestion(topic);
+    const guide = TASK_GUIDES[question];
+    if (guide) {
+      if (!taskGuideMatches(guide, criteria)) return [];
+      if (question === 'assignment' && AI_DISCLOSURE.test(topic)) return [{...guide, href:guide.href + '?stap=vermelden'}];
+      return [guide];
+    }
+    switch (question) {
       case 'tools':
         return [{label:'Welke AI-toepassing past bij mijn les?', meta:'Vergelijk dicteren en transcriberen en controleer de voorwaarden voor uw klas.', href:'#toolkeuze'}];
       case 'privacy': {
@@ -1710,14 +1743,14 @@
     return ranked[0] || null;
   }
   function relaxationSuggestions(currentSheets) {
-    const minutes = teacherQuestion(normalize(state.q)) === 'minutes';
+    const guide = TASK_GUIDES[teacherQuestion(normalize(state.q))];
     return FILTER_KEYS.filter(key => values(key).length).map(key => {
       const criteria = { ...state, [key]: '' };
       const offers = recordsForCriteria(criteria).length;
       const sheets = matchingWorksheetRoutes(criteria).length;
       const label = values(key).map(value => filterOptionLabel(key, value)).join(' of ');
-      const exercises = minutes && matchesMinutesFilters(criteria) ? 1 : 0;
-      return { key, label, offers, sheets, exercises, total: offers + sheets + exercises };
+      const guideLabel = guide && taskGuideMatches(guide, criteria) ? guide.countLabel : '';
+      return { key, label, offers, sheets, guideLabel, total: offers + sheets + Number(Boolean(guideLabel)) };
     }).filter(item => item.total > currentSheets).sort((a, b) => b.total - a.total).slice(0, 3);
   }
   const ASSESSMENT_CRITERIA = { q: 'toets', theme: 'Toetsing en examinering', type: 'materials,knowledge' };
@@ -2436,8 +2469,11 @@
       if (!count && !worksheets) return `<span class="practice-link unavailable">${content}<small>Geen resultaten</small></span>`;
       return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${matchesLabel(count, worksheets)} <span aria-hidden="true">→</span></small></a>`;
     });
-    if (values('audience').includes('Ondersteunend personeel') && matchesMinutesFilters(state)) {
-      links.unshift('<a class="practice-link" data-question-route href="#notulen-controleren"><strong>Notulen controleren</strong><span>Verbeter de afsprakenlijst van een schooloverleg.</span><small>Open oefening <span aria-hidden="true">→</span></small></a>');
+    const audiences = values('audience');
+    for (const guide of Object.values(TASK_GUIDES)) {
+      if (audiences.some(role => guide.filters.audience.includes(role)) && taskGuideMatches(guide, state)) {
+        links.unshift(`<a class="practice-link" data-question-route href="${guide.href}"><strong>${guide.tileLabel || guide.label}</strong><span>${guide.tileDetail || guide.meta}</span><small>${guide.action} <span aria-hidden="true">→</span></small></a>`);
+      }
     }
     const researchHref = criteriaHref(context).replace('#zoeken', '#onderzoek');
     links.push(`<a class="practice-link" href="${escapeHtml(researchHref)}"><strong>Onderzoek doen of promoveren</strong><span>Promotieplaatsen, onderzoeksdata en praktijkonderzoek</span><small>Bekijk routes <span aria-hidden="true">→</span></small></a>`);
@@ -2550,7 +2586,7 @@
         `<p>${state.q ? 'Uw zoekopdracht levert binnen deze selectie geen resultaten op.' : 'Er is geen aanbod met deze combinatie van filters.'}</p>`}`;
     return `<div class="empty">${notice}
       ${actions}
-      ${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${escapeHtml(stateHref({ [item.key]: '' }))}">Zonder ${escapeHtml(item.label)} <strong>${matchesLabel(item.offers, item.sheets, item.exercises)}</strong></a>`).join('')}</div>` : ''}
+      ${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${escapeHtml(stateHref({ [item.key]: '' }))}">Zonder ${escapeHtml(item.label)} <strong>${matchesLabel(item.offers, item.sheets, item.guideLabel)}</strong></a>`).join('')}</div>` : ''}
       <button class="clear-link" type="button">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`;
   }
   function pickedActionLinks(scope) {
@@ -2558,11 +2594,11 @@
       <a class="btn secondary" data-${scope}-sheet href="${escapeHtml(selectedHref('overlegblad'))}" ${sheetPicks.size ? '' : 'hidden'}>Open mijn overlegblad (${sheetPicks.size})</a>
       <span ${sheetPicks.size === 1 ? '' : 'hidden'}>Kies nog een vermelding om te vergelijken.</span>`;
   }
-  function matchesLabel(offers, sheets, exercises = 0) {
+  function matchesLabel(offers, sheets, guideLabel = '') {
     const labels = [];
-    if (offers || (!sheets && !exercises)) labels.push(offers + (offers === 1 ? ' resultaat' : ' resultaten'));
+    if (offers || (!sheets && !guideLabel)) labels.push(offers + (offers === 1 ? ' resultaat' : ' resultaten'));
     if (sheets) labels.push(sheets + (sheets === 1 ? ' werkblad' : ' werkbladen'));
-    if (exercises) labels.push(exercises + (exercises === 1 ? ' oefening' : ' oefeningen'));
+    if (guideLabel) labels.push(guideLabel);
     return labels.join(' en ');
   }
   function resultsMarkup() {
@@ -2574,11 +2610,11 @@
     const related = values('theme').length ? relatedThemes(values('theme')[0]) : [];
     const routes = teacherRoutes(state.q, state);
     const worksheetCount = routes.filter(route => route.href.startsWith('#werkblad-')).length;
-    const exerciseCount = routes.filter(route => route.kind === 'exercise').length;
-    const onlyAtlas = !resultRecords.length && (worksheetCount > 0 || exerciseCount > 0);
+    const guideLabel = routes.find(route => route.countLabel)?.countLabel;
+    const onlyAtlas = !resultRecords.length && Boolean(worksheetCount || guideLabel);
     const routeGuide = routes.length ? `<section class="selection-guidance teacher-routes" aria-label="Verder met uw vraag">${onlyAtlas ? '' : '<h2>Verder met uw vraag</h2>'}
       <ul>${routes.map(item => `<li><a data-question-route href="${escapeHtml(item.href)}">${escapeHtml(item.label)}</a><span>${escapeHtml(item.meta)}</span></li>`).join('')}</ul></section>` : '';
-    resultCountLabel = matchesLabel(resultRecords.length, worksheetCount, exerciseCount);
+    resultCountLabel = matchesLabel(resultRecords.length, worksheetCount, guideLabel);
     const heading = resultCountLabel + (state.q ? ` voor ‘${state.q}’` : '');
     const knownDates = isPublicationSort() && resultRecords.filter(record => publicationDate(record)).length;
     const sortSummary = state.sort === 'added'
@@ -2604,7 +2640,7 @@
       ${values('theme').includes('Veilige AI-omgeving') ? '<section class="selection-guidance"><h2>Beoordeel de toepassing in uw eigen situatie</h2><p>Gebruik de officiële bronnen om gegevensgebruik, beheer, menselijke controle, toegankelijkheid en overstapmogelijkheden te beoordelen. Wat passend is, hangt af van uw doel, gegevens, instellingen en afspraken. Deze selectie is geen keurmerk voor veilige of verantwoorde AI.</p></section>' : ''}
       <div class="picked-actions" data-picked-actions ${sheetPicks.size ? '' : 'hidden'}>${pickedActionLinks('picked')}</div>
       <div id="action-feedback" class="action-feedback" aria-live="polite"></div>
-      <div class="results-content">${resultRecords.length ? resultListMarkup() : exerciseCount ? '' : emptyResultsMarkup(routes, worksheetCount)}</div>
+      <div class="results-content">${resultRecords.length ? resultListMarkup() : guideLabel ? '' : emptyResultsMarkup(routes, worksheetCount)}</div>
       ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="${escapeHtml(stateHref({ theme }))}">${escapeHtml(theme)} <span>${count} ${count === 1 ? 'resultaat' : 'resultaten'}</span></a>`).join('')}</nav>` : ''}`;
   }
   function filterButtonText() {
