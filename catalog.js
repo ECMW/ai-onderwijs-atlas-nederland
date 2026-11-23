@@ -1688,11 +1688,14 @@
       .sort((a, b) => a.quality - b.quality || b.count - a.count);
     return ranked[0] || null;
   }
-  function relaxationSuggestions() {
+  function relaxationSuggestions(currentSheets) {
     return FILTER_KEYS.filter(key => values(key).length).map(key => {
-      const count = recordsForCriteria({ ...state, [key]: '' }).length;
-      return { key, values: values(key), count };
-    }).filter(item => item.count > 0).sort((a, b) => b.count - a.count).slice(0, 3);
+      const criteria = { ...state, [key]: '' };
+      const offers = recordsForCriteria(criteria).length;
+      const sheets = matchingWorksheetRoutes(criteria).length;
+      const label = values(key).map(value => filterOptionLabel(key, value)).join(' of ');
+      return { key, label, offers, sheets, total: offers + sheets };
+    }).filter(item => item.total > currentSheets).sort((a, b) => b.total - a.total).slice(0, 3);
   }
   const ASSESSMENT_CRITERIA = { q: 'toets', theme: 'Toetsing en examinering', type: 'materials,knowledge' };
   const AGREEMENT_CRITERIA = { q: 'afspraken', type: 'materials,knowledge' };
@@ -2289,7 +2292,10 @@
     if (!link) return;
     link.onclick = event => {
       if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-      addEventListener('hashchange', () => document.querySelector(selector)?.focus(), {once: true});
+      addEventListener('hashchange', () => {
+        const target = document.querySelector(selector);
+        if (target) restoreCardFocus(target, scrollY);
+      }, {once: true});
     };
   }
   function researchQuery(query) {
@@ -2511,14 +2517,14 @@
         ${state.status ? `<a href="${escapeHtml(stateHref({ status: '' }))}">Bekijk alle aanvraagstatussen binnen deze selectie</a>` : `<a href="${escapeHtml(criteriaHref({ sector: state.sector }))}">Bekijk ander aanbod${state.sector ? ' in deze sectorselectie' : ''}</a>`}</div>`;
     }
     const alternative = routes.length ? null : alternativeSuggestion();
-    const relaxations = relaxationSuggestions();
+    const relaxations = relaxationSuggestions(worksheetCount);
     const notice = worksheetCount ? '<p>Geen andere treffers in de catalogus.</p>' :
       `<span class="eyebrow">Geen exacte match</span><h2>We helpen u verder</h2>${alternative ?
         `<a class="alternative" href="${escapeHtml(stateHref({ q: alternative.candidate }))}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` :
         `<p>${state.q ? 'Uw zoekopdracht levert binnen deze selectie geen resultaten op.' : 'Er is geen aanbod met deze combinatie van filters.'}</p>`}`;
     return `<div class="empty">${notice}
       ${actions}
-      ${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${escapeHtml(stateHref({ [item.key]: '' }))}">Zonder ${escapeHtml(item.values.join(' of '))} <strong>${item.count}</strong></a>`).join('')}</div>` : ''}
+      ${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${escapeHtml(stateHref({ [item.key]: '' }))}">Zonder ${escapeHtml(item.label)} <strong>${matchesLabel(item.offers, item.sheets)}</strong></a>`).join('')}</div>` : ''}
       <button class="clear-link" type="button">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`;
   }
   function pickedActionLinks(scope) {
@@ -3403,6 +3409,7 @@
       focusAfterNavigation(link, target);
     });
     focusAfterNavigation(panel.querySelector('.lesson-shortcut .btn'), '.result-head h2');
+    panel.querySelectorAll('.empty a[href^="#zoeken"]').forEach(link => focusAfterNavigation(link, '.result-head h2'));
     if (sector) sector.onchange = () => {
       state.sector = sector.value;
       if (['#home', ''].includes(location.hash)) state.sort = 'relevant';

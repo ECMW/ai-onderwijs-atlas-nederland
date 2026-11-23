@@ -389,6 +389,42 @@ test('teachers can reach an assessment agreement from the redesign route, agreem
   assert.ok(!load(items, '#zoeken?q=privacy').resultsMarkup().includes('href="#toetsafspraak"'));
 });
 
+test('empty searches name the removable filter and count records and worksheets at the destination', () => {
+  const guidance = {...record('dpia', '2026-01-02', 'DPIA voor scholen'), sectors:['MBO']};
+  const empty = load([guidance], '#zoeken?q=dpia&sector=MBO&type=materials').resultsMarkup();
+  assert.match(empty, /href="#zoeken\?[^"]*sector=MBO[^"]*">Zonder Les- en werkmaterialen <strong>1 resultaat<\/strong>/);
+  assert.doesNotMatch(empty, /Zonder materials/);
+  const worksheetOnly = load([], '#zoeken?sector=MBO&vak=Logistiek&cost=Betaald').resultsMarkup();
+  assert.match(worksheetOnly, /Zonder Betaald <strong>1 werkblad<\/strong>/);
+});
+
+test('links out of an empty search bring keyboard focus and the new result count into view', () => {
+  const link = {};
+  const panel = {
+    querySelector: () => null,
+    querySelectorAll: selector => selector === '.empty a[href^="#zoeken"]' ? [link] : [],
+    contains: element => element === heading
+  };
+  const heading = {focus() { document.activeElement = this; }, getBoundingClientRect: () => ({top:-100,bottom:-60,height:40})};
+  const document = {querySelector: selector => ({
+    main:panel, '#results-panel':panel, '.result-head h2':heading, '.site-header':{getBoundingClientRect: () => ({bottom:100})}
+  })[selector]};
+  let onNavigation, movement;
+  const api = load([], '#zoeken', {
+    window:{ATLAS_RECORDS:{records:[],metadata:{}},innerHeight:844},
+    document, scrollY:500, scrollTo() {}, scrollBy: change => { movement = change.top; },
+    requestAnimationFrame: callback => callback(),
+    addEventListener: (event, callback) => { assert.equal(event,'hashchange'); onNavigation = callback; }
+  });
+  api.bindResultsControls();
+  link.onclick({ctrlKey:true});
+  assert.equal(onNavigation, undefined);
+  link.onclick({});
+  onNavigation();
+  assert.equal(document.activeElement, heading);
+  assert.ok(movement < -100);
+});
+
 test('assessment specialists can find the two approaches by task and return to the same public filters', () => {
   const search = load([], '#zoeken?sector=MBO&vak=Logistiek');
   for (const query of ['toetsvormen vergelijken', 'Hoe vergelijk ik twee toetsvormen?', 'Hoe kan ik twee toetsaanpakken vergelijken voor mijn leerdoel?']) {
