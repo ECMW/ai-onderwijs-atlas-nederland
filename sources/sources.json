@@ -1551,6 +1551,107 @@
       "atlas_record_ids": [
         "stanford-craft-ai-lescollectie"
       ]
+    },
+    {
+      "source_id": "nwo-promotiebeurs-leraren-2027-i-oproep",
+      "title": "Call for proposals Promotiebeurs voor leraren 2027-I",
+      "author_or_organisation": "Nederlandse Organisatie voor Wetenschappelijk Onderzoek",
+      "publication_date": "2026-10-12",
+      "url_or_doi": "https://zoek.officielebekendmakingen.nl/stcrt-2026-35440.html",
+      "source_type": "regulation",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Subsidies en financiering"
+      ],
+      "jurisdiction": "Nederland",
+      "claims_supported": [
+        "Een bevoegde leraar kan onder de rondevoorwaarden vervanging voor promotieonderzoek aanvragen. Voor het hbo noemt de oproep een uitzondering op het vereiste van een onderwijsbevoegdheid."
+      ],
+      "reliability_notes": "De gepubliceerde oproep behandelt ontvankelijkheid, werkgeversverklaring, verklaring van de promotor en omvang van de vrijstelling. Het rondeloket koppelt naar ISAAC.",
+      "limitations": "De regeling staat open voor verschillende onderzoeksvragen. De beoordeling van een AI-onderwerp ligt bij NWO.",
+      "legal_effect": "binding",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active",
+      "atlas_record_ids": [
+        "nwo-promotiebeurs-voor-leraren-2027-i"
+      ]
+    },
+    {
+      "source_id": "ocw-npuls-ctl-ronde-vier-vijf-2026",
+      "title": "Wijziging Subsidieregeling Npuls CTL voor de vierde en vijfde aanvraagronde",
+      "author_or_organisation": "Ministerie van Onderwijs, Cultuur en Wetenschap",
+      "publication_date": "2026-07-14",
+      "url_or_doi": "https://zoek.officielebekendmakingen.nl/stcrt-2026-25326.html",
+      "source_type": "regulation",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Subsidies en financiering"
+      ],
+      "jurisdiction": "Nederland",
+      "claims_supported": [
+        "De vijfde CTL-ronde heeft een eigen aanvraagtijdvak in oktober 2027. Het subsidieplafond geldt voor de vierde en vijfde ronde samen."
+      ],
+      "reliability_notes": "Artikel I wijzigt onder meer het tijdvak, de financiering en de toepassing van de eigen bijdrage. DUS-I beschrijft de aanvragers en subsidieberekening op de regelingspagina.",
+      "limitations": "Een specifieke AI-activiteit kan deel uitmaken van een goedgekeurd CTL-plan. Een bedrag voor alleen de vijfde ronde is in deze bron niet vastgelegd.",
+      "legal_effect": "binding",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active",
+      "atlas_record_ids": [
+        "dus-i-npuls-center-teaching-learning-ronde-5-2027"
+      ]
+    },
+    {
+      "source_id": "eu-creative-europe-cross-medialiteracy-2027",
+      "title": "Creative Europe Programme – NEWS – Media Literacy (CREA-CROSS-2027-MEDIALITERACY)",
+      "author_or_organisation": "European Education and Culture Executive Agency",
+      "publication_date": "2026-10",
+      "url_or_doi": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/crea/wp-call/2027/call-fiche_crea-cross-2027-medialiteracy_en.pdf",
+      "source_type": "official_framework",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Subsidies en financiering"
+      ],
+      "jurisdiction": "Europese Unie en deelnemende programmalanden",
+      "claims_supported": [
+        "Deze oproep financiert grensoverschrijdende mediawijsheidsprojecten van consortia. Nederlandse onderwijs- en onderzoeksinstellingen kunnen deelnemen als zij aan de voorwaarden voldoen."
+      ],
+      "reliability_notes": "De callfiche beschrijft de doelgroep, samenstelling van het consortium, maximale bijdrage en het financieringspercentage. De Nederlandse Creative Europe Desk verwijst naar de Europese indienroute.",
+      "limitations": "De regeling richt zich nadrukkelijk ook op moeilijk bereikbare volwassenen buiten formele leeromgevingen. Deelname aan een consortium geeft geen aanspraak op subsidie.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active",
+      "atlas_record_ids": [
+        "creative-europe-mediawijsheid-2027"
+      ]
+    },
+    {
+      "source_id": "eu-erasmus-programmagids-2027",
+      "title": "Erasmus+ programmagids 2027",
+      "author_or_organisation": "Europese Commissie",
+      "publication_date": "2026-11-18",
+      "url_or_doi": "https://erasmus-plus.ec.europa.eu/sites/default/files/2026-11/programme-guide-erasmus-27_nl.pdf",
+      "source_type": "official_framework",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Subsidies en financiering"
+      ],
+      "jurisdiction": "Europese Unie en deelnemende programmalanden",
+      "claims_supported": [
+        "Voor een school zonder accreditatie biedt KA122-SCH kortlopende leermobiliteit. Voor gezamenlijke curriculumontwikkeling van onderwijs en bedrijfsleven gelden de afzonderlijke consortiumvoorwaarden van Alliances for Education and Enterprises."
+      ],
+      "reliability_notes": "Nederlandstalige editie voor 2027. Voor de mobiliteitsvoorwaarden staan de aanvragers op pagina 133 en de termijn en looptijd op pagina 134. De voorwaarden van de alliantie zijn per topic gespecificeerd.",
+      "limitations": "De gids beschrijft de ronde en de indieningstermijnen. Het moment waarop het loket een digitale aanvraag accepteert moet bij de uitvoerder worden nagegaan.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active",
+      "atlas_record_ids": [
+        "erasmus-kortlopende-mobiliteit-schoolonderwijs-2027",
+        "erasmus-allianties-onderwijs-bedrijven-2027"
+      ]
     }
   ]
 }

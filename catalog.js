@@ -335,11 +335,11 @@
   }
   function effectiveStatus(record, today = todayInNetherlands(), now = Date.now()) {
     if (validDate(today)) {
-      if (record.status === 'open_call' && isFunding(record)) {
+      if (isFunding(record) && ['open_call', 'planned', 'in_development'].includes(record.status)) {
         const instant = deadlineInstant(record);
         const deadline = validDate(record.applicationDeadline) || validDate(record.fundingDeadline);
         if (instant ? now >= Date.parse(instant) : deadline && deadline < today) return 'closed_call';
-        if (validDate(record.applicationOpenDate) > today) return 'planned';
+        if (record.status === 'open_call' && validDate(record.applicationOpenDate) > today) return 'planned';
       }
       const end = validDate(record.endDate);
       if ((record.recordType === 'training' || record.legacyType === 'Training') &&
@@ -3814,10 +3814,12 @@
     refreshHomeSpotlight();
     const since = hiddenAt;
     hiddenAt = 0;
-    if (!since || !records.some(record => {
-      const end = record.status === 'open_call' && Date.parse(deadlineInstant(record));
-      return end > since && end <= now;
-    })) return;
+    if (!since) return;
+    const previousDay = dutchCalendar.format(since);
+    const today = dutchCalendar.format(now);
+    todayCache = {checkedAt: now, value: today};
+    if (!records.some(record => isFunding(record) &&
+        effectiveStatus(record, previousDay, since) !== effectiveStatus(record, today, now))) return;
     if (document.querySelector('.catalog-grid')) updateSearchResults();
     else if (document.querySelector('.funding-conditions')) renderDetail(decodeURIComponent(location.hash.slice(6).split('?')[0]));
   });
