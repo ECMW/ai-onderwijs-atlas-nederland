@@ -26010,7 +26010,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": "2026-07-03",
-    "lastVerified": "2026-09-11",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -26052,10 +26052,18 @@
         "date": "2026-09-11",
         "type": "added",
         "summary": "Praktijkvoorbeeld toegevoegd na controle van de officiële WUR-publicatie."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. In de WUR-opdracht zoeken studenten bij een uitspraak de oorspronkelijke passage op en leggen zij de relatie tussen uitspraak en bron vast."
       }
     ],
     "offerCategory": "materials",
-    "commercialStatus": "unknown"
+    "commercialStatus": "unknown",
+    "subjects": [
+      "Informatievaardigheden"
+    ]
   },
   {
     "id": "eerlijk-over-ai-ai-coach-opleiding-open-source",
@@ -35044,7 +35052,7 @@
     "status": "available",
     "availabilityText": "Een verhaal duurt ongeveer 15 minuten. Reken voor één verhaal met klassikaal nagesprek op circa 20 minuten. De verhalen zijn gratis en zonder account te openen.",
     "publicationDate": null,
-    "lastVerified": "2026-11-22",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -35089,9 +35097,18 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Tijd voor een verhaal met nagesprek en gebruik op digibord of telefoon toegevoegd op basis van de lesinstructie van Dé Codeerschool."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. De Codeerschool beschrijft bij beide vakgebieden hoe leerlingen met de verhalen het gebruik van hun gegevens en hun omgang met AI bespreken."
       }
     ],
-    "eligibility": "Voor leerlingen van 12 tot 18 jaar. Toon het verhaal op het digibord of laat leerlingen op hun telefoon meelezen."
+    "eligibility": "Voor leerlingen van 12 tot 18 jaar. Toon het verhaal op het digibord of laat leerlingen op hun telefoon meelezen.",
+    "subjects": [
+      "Burgerschap",
+      "Digitale geletterdheid"
+    ]
   },
   {
     "id": "vu-vijf-activerende-ai-werkvormen",
@@ -35860,7 +35877,7 @@
     "status": "available",
     "availabilityText": "Het beschreven werkmateriaal is gratis openbaar toegankelijk.",
     "publicationDate": null,
-    "lastVerified": "2026-11-06",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -35895,7 +35912,15 @@
         "date": "2026-11-06",
         "type": "added",
         "summary": "Toegevoegd na controle van oorspronkelijke bronnen en vergelijking met bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. In de docentenhandleiding vergelijken leerlingen literaire fragmenten en een zakelijk artikel en schrijven ze vanuit een personage een beargumenteerde e-mail aan de schooldirecteur."
       }
+    ],
+    "subjects": [
+      "Nederlands"
     ]
   },
   {
@@ -36355,7 +36380,7 @@
     "status": "available",
     "availabilityText": "Het moduleoverzicht en de lesdoelen zijn openbaar; lesplannen, slides en activiteiten zijn gratis na aanmelding met een Raspberry Pi Foundation-account.",
     "publicationDate": null,
-    "lastVerified": "2026-11-08",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -36397,7 +36422,15 @@
         "date": "2026-11-08",
         "type": "added",
         "summary": "Toegevoegd na primaire broncontrole en vergelijking met de bestaande Atlas."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Leerlingen onderzoeken in drie lessen hoe hun gedrag een tijdlijn verandert en hoe berichten aandacht en reacties uitlokken."
       }
+    ],
+    "subjects": [
+      "Mediawijsheid"
     ]
   },
   {
@@ -37702,7 +37735,7 @@
     "status": "available",
     "availabilityText": "Het lesplan en werkblad zijn gratis en zonder account toegankelijk. De digitale lesstap gebruikt AutoDraw op een internetapparaat of digibord.",
     "publicationDate": null,
-    "lastVerified": "2026-11-18",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -37744,7 +37777,15 @@
         "date": "2026-11-18",
         "type": "added",
         "summary": "Toegevoegd na controle van het officiële lesplan, de beoordelingsonderdelen en de publieke downloads."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakindeling onderbouwd met de lesinhoud. Het Australische lesplan koppelt de tekenopdracht expliciet aan Visual Arts. Leerlingen verbeelden een voorwerp met herkenbare lijnen en vergelijken representaties."
       }
+    ],
+    "subjects": [
+      "Beeldende vorming"
     ]
   },
   {
