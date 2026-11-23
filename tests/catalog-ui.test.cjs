@@ -389,6 +389,24 @@ test('teachers can reach an assessment agreement from the redesign route, agreem
   assert.ok(!load(items, '#zoeken?q=privacy').resultsMarkup().includes('href="#toetsafspraak"'));
 });
 
+test('assessment specialists can find the two approaches by task and return to the same public filters', () => {
+  const search = load([], '#zoeken?sector=MBO&vak=Logistiek');
+  for (const query of ['toetsvormen vergelijken', 'Hoe vergelijk ik twee toetsvormen?', 'Hoe kan ik twee toetsaanpakken vergelijken voor mijn leerdoel?']) {
+    const expected = '#toetsafspraak?vergelijk=1&sector=MBO&vak=Logistiek';
+    assert.ok(search.suggestionData(query).some(section => section.items.some(item => item.href === expected)));
+    const sharedSearch = load([], '#zoeken?sector=MBO&vak=Logistiek&q=' + encodeURIComponent(query));
+    assert.ok(sharedSearch.resultsMarkup().includes('href="' + expected.replaceAll('&', '&amp;') + '"'));
+  }
+  for (const query of ['toetsing', 'onderzoek over toetsvormen vergelijken', 'vergelijk AI-tools']) {
+    assert.ok(!search.suggestionData(query).some(section => section.items.some(item => item.href.startsWith('#toetsafspraak?vergelijk=1'))));
+  }
+  const ui = assessmentFormFixture();
+  const api = load([], '#toetsafspraak?vergelijk=1&sector=MBO&vak=Logistiek', {document:ui.document});
+  api.renderAssessment();
+  assert.match(ui.main.innerHTML, /assessment-compare" open><summary>Vergelijk twee toetsaanpakken/);
+  assert.match(ui.main.innerHTML, /href="#zoeken\?sector=MBO&amp;vak=Logistiek">← Naar uw zoekselectie/);
+});
+
 test('the team card keeps private notes out of links, supports a later review and prints the actual decision', async () => {
   const memory = new Map();
   const tab = new Map();

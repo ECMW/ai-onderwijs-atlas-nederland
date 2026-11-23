@@ -1757,8 +1757,20 @@
       teacher: 'Geef iedereen hetzelfde AI-antwoord en toegang tot de bron. Kijk of de aangehaalde passage het oordeel draagt, ook als iemand tot een andere conclusie komt.'
     }
   };
+  function comparisonToolLink() {
+    const params = new URLSearchParams({vergelijk: '1'});
+    for (const key of FILTER_KEYS) {
+      if (state[key]) params.set(key, state[key]);
+    }
+    return {comparison: true, label: 'Vergelijk twee toetsaanpakken', meta: 'Zelfstandig uitwerken of AI-feedback gebruiken', href: '#toetsafspraak?' + params};
+  }
   function assessmentToolLink(query) {
     const term = normalize(query);
+    const task = term.replace(/^(?:hoe kan ik|hoe kunnen we|kan ik|ik wil|we willen) /, '')
+      .replace(/ voor (?:dit|een|mijn|ons) leerdoel$/, '');
+    if (/^(?:(?:hoe )?vergelijk(?: ik| je| u| we| wij)? (?:twee |verschillende )?toets(?:vormen|aanpakken)|(?:twee |verschillende )?toets(?:vormen|aanpakken) vergelijken)$/.test(task)) {
+      return comparisonToolLink();
+    }
     if (['toetsafspraak', 'toetsafspraken', 'toetsafspraak maken'].includes(term)) {
       return {label:'Maak een toetsafspraak', meta:'Opdrachttekst voor uw klas', href:'#toetsafspraak'};
     }
@@ -1799,11 +1811,13 @@
 
   function assessmentEntry(tool = null) {
     const sectors = values('sector');
-    if (sectors.length && !sectors.some(sector => ['VO', 'MBO', 'HBO', 'WO'].includes(sector))) return '';
+    const comparing = tool?.comparison;
+    if (!comparing && sectors.length && !sectors.some(sector => ['VO', 'MBO', 'HBO', 'WO'].includes(sector))) return '';
     return `<section class="assessment-entry" aria-labelledby="assessment-entry-heading"><div>
-      <h2 id="assessment-entry-heading" tabindex="-1">Wat mag AI bij deze opdracht?</h2>
-      <p>Maak een tekst voor uw klas over de toegestane hulp, het eigen werk en de beoordeling.</p></div>
-      <a class="btn" href="${tool?.href || '#toetsafspraak'}">${tool?.label || 'Maak een toetsafspraak'}</a></section>`;
+      <h2 id="assessment-entry-heading" tabindex="-1">${comparing ? 'Welke toetsaanpak past bij uw leerdoel?' : 'Wat mag AI bij deze opdracht?'}</h2>
+      <p>${comparing ? 'Bekijk per aanpak wat een student laat zien en wat u daarvoor organiseert.' : 'Maak een tekst voor uw klas over de toegestane hulp, het eigen werk en de beoordeling.'}</p>
+      ${comparing ? '' : `<p><a href="${escapeHtml(comparisonToolLink().href)}">Vergelijk twee toetsaanpakken</a></p>`}</div>
+      <a class="btn" href="${escapeHtml(tool?.href || '#toetsafspraak')}">${escapeHtml(tool?.label || 'Maak een toetsafspraak')}</a></section>`;
   }
 
   function assessmentStorageKey(choice) {
@@ -1838,10 +1852,14 @@
       const saved = sessionGet('atlas.toetsafspraak.start');
       assessmentChoice = Object.hasOwn(ASSESSMENT_EXAMPLES, saved) ? saved : '';
     }
-    const startPoint = new URLSearchParams(location.hash.split('?')[1]).get('start');
+    const params = new URLSearchParams(location.hash.split('?')[1]);
+    const startPoint = params.get('start');
+    const comparing = params.get('vergelijk') === '1';
+    const originFilters = Object.fromEntries(FILTER_KEYS.filter(key => params.get(key)).map(key => [key, params.get(key)]));
+    const filteredReturn = comparing && Object.keys(originFilters).length > 0;
     const ownTest = startPoint === 'eigen';
     const explicitExample = Object.hasOwn(ASSESSMENT_EXAMPLES, startPoint);
-    const choice = ownTest ? '' : (explicitExample ? startPoint : assessmentChoice);
+    const choice = explicitExample ? startPoint : (ownTest || comparing ? '' : assessmentChoice);
     const example = ASSESSMENT_EXAMPLES[choice];
     const draft = readAssessmentDraft(choice);
     const taskField = `<label for="assessment-task">${example ? 'Wat is de opdracht?' : 'Uw bestaande toetsvraag of opdracht'}</label>
@@ -1857,7 +1875,7 @@
       return official ? [`<li><a href="${escapeHtml(official.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${label} ↗</a></li>`] : [];
     });
     main.innerHTML = `<section class="assessment-page">
-      <a href="${escapeHtml(criteriaHref(ASSESSMENT_CRITERIA))}">← Naar toetsmateriaal</a>
+      <a href="${escapeHtml(criteriaHref(filteredReturn ? originFilters : ASSESSMENT_CRITERIA))}">← ${filteredReturn ? 'Naar uw zoekselectie' : 'Naar toetsmateriaal'}</a>
       <header><h1>${ownTest ? 'Maak eigen werk zichtbaar in uw toets' : 'Maak een toetsafspraak'}</h1>
         <p>${ownTest ? 'Neem één bestaande toetsvraag. Kies wat de leerling zelf moet kunnen aantonen. U krijgt een opdrachttekst met een bewijsstap en een beoordelingscriterium.' : 'Werk met uw eigen leerdoel of pas een uitgewerkt toetsvoorbeeld aan voor uw klas.'}</p></header>
       <div class="assessment-start"><label for="assessment-start">Kies een startpunt</label>
@@ -1873,7 +1891,7 @@
         ${example ? '' : taskField}
         <label for="assessment-goal">Wat moet de leerling of student zelf kunnen?</label>
         <textarea id="assessment-goal" rows="2" maxlength="500" required placeholder="Bijv. twee bronnen vergelijken en een conclusie onderbouwen.">${escapeHtml(draft.goal)}</textarea>
-        <details class="assessment-custom assessment-compare"><summary>Vergelijk twee toetsaanpakken voor dit leerdoel</summary>
+        <details class="assessment-custom assessment-compare"${comparing ? ' open' : ''}><summary>Vergelijk twee toetsaanpakken voor dit leerdoel</summary>
           <p data-assessment-compare-goal></p><div class="assessment-compare-grid">
           ${Object.entries(ASSESSMENT_MODES).filter(([, mode]) => mode.interpretation).map(([key, mode]) => `<section>
             <h2>${mode.label}</h2><dl>
@@ -1991,8 +2009,9 @@
     start.onchange = () => {
       assessmentChoice = Object.hasOwn(ASSESSMENT_EXAMPLES, start.value) ? start.value : '';
       sessionSet('atlas.toetsafspraak.start', assessmentChoice);
-      if (ownTest || explicitExample) {
-        history.replaceState(history.state, '', '#toetsafspraak?start=' + (assessmentChoice || 'eigen'));
+      if (ownTest || explicitExample || comparing) {
+        params.set('start', assessmentChoice || 'eigen');
+        history.replaceState(history.state, '', '#toetsafspraak?' + params);
       }
       renderAssessment();
       main.querySelector('#assessment-start').focus();
@@ -3566,6 +3585,12 @@
     document.querySelector(`.site-header nav a[href="#${CSS.escape(path)}"]`)?.setAttribute('aria-current', 'page');
     const updated = document.querySelector('[data-updated]'); if (updated) updated.textContent = source.metadata.updated || '';
     if (!['zoeken', 'organisaties'].includes(path) && !focusedBookGroup && !focusedNewOffer) {
+      if (path === 'toetsafspraak' && new URLSearchParams(location.hash.split('?')[1]).get('vergelijk') === '1') {
+        const summary = main.querySelector('.assessment-compare > summary');
+        summary.scrollIntoView({block: 'center', behavior: 'instant'});
+        restoreCardFocus(summary, scrollY);
+        return;
+      }
       scrollTo({ top: 0, behavior: 'instant' });
       const target = Object.hasOwn(guides, path) ? main.querySelector('h1') : path === 'onderzoek' ? document.querySelector('#research-heading') : path === 'papers' ? document.querySelector('#papers-heading') : main;
       (target || main).focus({ preventScroll: true });
