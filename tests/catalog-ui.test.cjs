@@ -2617,7 +2617,7 @@ test('students can copy each edited assignment template and recover when their c
   });
   api.renderStudentAssignment();
   assert.match(main.innerHTML, /href="#zoeken\?sector=MBO&amp;q=ChatGPT"/);
-  assert.match(main.innerHTML, /name="student-situatie" open><summary>Ik mag AI gebruiken/);
+  assert.match(main.innerHTML, /name="student-situatie" open><summary>Hoe vermeld ik dat ik AI heb gebruikt/);
   for (const [index, panel] of panels.entries()) {
     const draft = panel.querySelector('textarea'), button = panel.querySelector('button');
     draft.value = 'Eigen tekst ' + index;
