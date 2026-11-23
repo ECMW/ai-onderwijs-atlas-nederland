@@ -40502,5 +40502,282 @@
         "summary": "Handreiking met rechtstreekse verwijzing naar de vragen over persoonlijke begeleiding toegevoegd na controle van bron en zoekroute."
       }
     ]
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "status": "open_call",
+    "startDate": null,
+    "endDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": 5500000,
+    "callStatus": "open_call",
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "id": "nwo-promotiebeurs-voor-leraren-2027-i",
+    "title": "Promotiebeurs voor leraren — eerste ronde 2027",
+    "subtype": "Vervangingssubsidie voor promotieonderzoek",
+    "providerName": "Nederlandse Organisatie voor Wetenschappelijk Onderzoek (NWO)",
+    "organizationIds": [
+      "nwo"
+    ],
+    "description": "Wilt u als leraar onderzoeken wat AI doet met het leren van uw leerlingen of studenten? U kiest zelf het onderwerp van uw promotieonderzoek en onderbouwt het belang voor de onderwijspraktijk. Uw werkgever kan vervanging bekostigen, zodat u naast het lesgeven tijd krijgt voor onderzoek.",
+    "purpose": "Promotieonderzoek combineren met een aanstelling als leraar.",
+    "audiences": [
+      "Docenten",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Subsidies en financiering"
+    ],
+    "availabilityText": "Open voor aanvragen. De leraar dient via een eigen ISAAC-account in vóór 12 januari 2027 om 14.00 uur Nederlandse tijd.",
+    "publicationDate": "2026-10-12",
+    "sourceUrls": [
+      {
+        "label": "NWO — voorwaarden, aanvraagformulier en indienen in ISAAC",
+        "url": "https://www.nwo.nl/calls/promotiebeurs-voor-leraren-2027-i",
+        "sourceType": "official"
+      },
+      {
+        "label": "Staatscourant — volledige oproep Promotiebeurs voor leraren 2027-I",
+        "url": "https://zoek.officielebekendmakingen.nl/stcrt-2026-35440.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "fundingAmount": "Een vervangingssubsidie voor de helft van het dienstverband, tot 0,4 fte en maximaal vijf jaar. Het bedrag hangt af van onderwijssector en contractomvang. Het rondebudget bedraagt €5,5 miljoen.",
+    "fundingDeadline": "2027-01-12",
+    "applicationOpenDate": null,
+    "applicationDeadline": "2027-01-12",
+    "applicationDeadlineAt": "2027-01-12T14:00:00+01:00",
+    "eligibility": "De aanvrager geeft les in het primair, voortgezet, speciaal, middelbaar beroeps- of hoger beroepsonderwijs en is nog niet gepromoveerd. Vereist zijn onder meer een vast dienstverband van minstens 0,4 fte bij één door de Nederlandse overheid bekostigde instelling, minstens de helft van de aanstelling aan lesgebonden taken en een onderwijsbevoegdheid (behalve in het hbo). Een verklaring van de beoogde promotor en een ondertekende werkgeversverklaring horen bij de aanvraag. Controleer ook de voorwaarden voor eerdere aanvragen en promotiefinanciering.",
+    "applicantTypes": [
+      "Leraren en docenten"
+    ],
+    "keywords": [
+      "promotiebeurs",
+      "promoveren",
+      "promotieonderzoek",
+      "leraar-onderzoeker",
+      "studieverlof",
+      "speciaal onderwijs",
+      "vervangingssubsidie"
+    ],
+    "notes": "De keuze voor een AI-onderwijsvraag is een mogelijke eigen invulling van de themavrije beurs. Bij toekenning ontvangt de werkgever de vervangingssubsidie.",
+    "verificationNote": "NWO markeert deze ronde als open. De aanvraagknop op de rondepagina leidt naar de ISAAC-aanmelding voor PvL20271. Het rondebudget, de formele eisen en het uiterste indieningstijdstip zijn gecontroleerd in de Staatscourant.",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Open ronde, ontvankelijkheid, aanvraagroute en sluitingstijd gecontroleerd bij NWO en in de formele oproep."
+      }
+    ]
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "status": "open_call",
+    "startDate": null,
+    "endDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "callStatus": "open_call",
+    "recurrence": null,
+    "language": [
+      "nl",
+      "en"
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "id": "surf-npuls-call-praktijkvoorbeelden-verantwoorde-ai-2026",
+    "title": "Call voor sessievoorstellen — Richting verantwoorde inzet AI",
+    "subtype": "Oproep voor sessievoorstellen",
+    "providerName": "SURF en Npuls",
+    "organizationIds": [
+      "surf",
+      "npuls"
+    ],
+    "description": "Welke les uit uw AI-project is de moeite waard voor andere instellingen? SURF en Npuls zoeken praktijkvoorbeelden, initiatieven en lessen uit projecten rond verantwoorde AI in onderwijs, onderzoek en bedrijfsvoering. U kunt ook een aanpak delen die anders uitpakte dan verwacht. De oproep selecteert sessies voor het evenement.",
+    "purpose": "Een ervaring uit de eigen praktijk delen tijdens het landelijke AI-event op 4 februari 2027 in Hilversum.",
+    "audiences": [
+      "Docenten",
+      "Onderzoekers",
+      "Onderwijsontwikkelaars",
+      "Bestuurders"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Beleid en governance",
+      "Praktijkvoorbeelden"
+    ],
+    "availabilityText": "Open voor sessievoorstellen tot 6 december 2026 om 23.00 uur Nederlandse tijd. Start op het SURF-platform met ‘Stuur een voorstel in’.",
+    "publicationDate": null,
+    "sourceUrls": [
+      {
+        "label": "SURF en Npuls — sessievoorstel voorbereiden en insturen",
+        "url": "https://pretalx.surf.nl/richting-verantwoorde-inzet-ai-2026/cfp",
+        "sourceType": "official"
+      },
+      {
+        "label": "Npuls — programma, thema’s en uiterste inzenddatum",
+        "url": "https://npuls.nl/agenda/landelijk-ai-event-richting-verantwoorde-inzet-ai",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "fundingAmount": "Oproep voor een sessievoorstel. De organisatoren vermelden geen subsidiebedrag.",
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": "2026-12-06",
+    "applicationDeadlineAt": "2026-12-06T23:00:00+01:00",
+    "eligibility": "Wie vanuit het Nederlandse onderwijs, onderzoek of de bedrijfsvoering van een instelling een ervaring met verantwoorde AI wil delen, kan een sessie voorstellen. In het formulier kiest u een track en geeft u een titel (maximaal 14 woorden) en beschrijving (maximaal 400 woorden). De programmacommissie laat in december weten welke voorstellen zijn geselecteerd.",
+    "applicantTypes": [
+      "Onderwijsprofessionals",
+      "Onderzoekers",
+      "Medewerkers van onderwijs- en onderzoeksinstellingen"
+    ],
+    "keywords": [
+      "call for proposals",
+      "sessievoorstel",
+      "spreker",
+      "SURF",
+      "Npuls",
+      "verantwoorde AI",
+      "AI-event",
+      "praktijkvoorbeeld",
+      "governance"
+    ],
+    "notes": "De oproep selecteert inhoudelijke bijdragen voor het programma. Het gaat om een sessievoorstel; de organisatoren kondigen hierbij geen subsidie aan.",
+    "verificationNote": "De oproep in Pretalx noemt 6 december om 23.00 uur en leidt naar het actieve formulier met titel, beschrijving, track en een accountstap. Npuls bevestigt het jaar en de doelgroep. De openbare evenementgegevens van SURF vermelden Europe/Amsterdam als tijdzone.",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "De oproep, taalopties, sessievelden, datum, sluitingstijd en tijdzone gecontroleerd op de officiële Npuls- en SURF-pagina’s."
+      }
+    ]
+  },
+  {
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Europees Uitvoerend Agentschap onderwijs en cultuur (EACEA)",
+    "startDate": null,
+    "endDate": null,
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "recurrence": null,
+    "verificationMethod": "agent_primary_source_review",
+    "id": "creative-europe-mediawijsheid-2027",
+    "title": "Creative Europe Media Literacy 2027 — mediawijsheid voor volwassenen",
+    "description": "Ontwikkel met Europese partners een training of hulpmiddel waarmee volwassenen AI-gegenereerde media en desinformatie leren beoordelen. De oproep geeft prioriteit aan groepen die met bestaande mediawijsheidsprogramma’s moeilijk worden bereikt, met bijzondere aandacht voor volwassenen buiten het formele onderwijs.",
+    "purpose": "Versterk de weerbaarheid tegen informatiemanipulatie en ondersteun mediawijsheidsprofessionals bij nieuwe mediavormen, waaronder AI-gegenereerde inhoud.",
+    "audiences": [
+      "Onderwijsontwikkelaars",
+      "Onderzoekers",
+      "Maatschappelijke organisaties"
+    ],
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "AI-geletterdheid"
+    ],
+    "status": "open_call",
+    "callStatus": "open_call",
+    "availabilityText": "Het Europese aanvraagloket is geopend. Dien als internationaal consortium uiterlijk op 20 januari 2027 om 17.00 uur Nederlandse tijd in.",
+    "publicationDate": "2026-10-21",
+    "sourceUrls": [
+      {
+        "label": "Creative Europe Desk NL – Media Literacy 2027 en aanvraagloket",
+        "url": "https://www.creativeeuropedesk.nl/nl/node/1742669",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europese Commissie – doelgroep, subsidiabele activiteiten en partners",
+        "url": "https://digital-strategy.ec.europa.eu/en/funding/call-proposals-cross-border-media-literacy-2027",
+        "sourceType": "official"
+      },
+      {
+        "label": "EACEA – formele oproep en aanvraagvoorwaarden (pdf)",
+        "url": "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/crea/wp-call/2027/call-fiche_crea-cross-2027-medialiteracy_en.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "fundingAmount": "Maximaal €500.000 per project van maximaal 24 maanden. De EU draagt tot 70% van de subsidiabele kosten bij. Het totale rondebudget is €3,5 miljoen.",
+    "fundingDeadline": "2027-01-20",
+    "applicationOpenDate": "2026-10-22",
+    "applicationDeadline": "2027-01-20",
+    "applicationDeadlineAt": "2027-01-20T17:00:00+01:00",
+    "fundingMin": null,
+    "fundingMax": 500000,
+    "totalBudget": 3500000,
+    "eligibility": "Minstens drie onafhankelijke rechtspersonen uit drie verschillende deelnemende Creative Europe-landen dienen samen in. Nederlandse onderwijs- en onderzoeksinstellingen kunnen als coördinator of partner meedoen. Beschrijf hoe uw partners de doelgroep buiten school bereiken en het resterende deel van de kosten financieren.",
+    "applicantTypes": [
+      "Internationale consortia",
+      "Onderwijsinstellingen",
+      "Onderzoeksinstellingen",
+      "Maatschappelijke organisaties"
+    ],
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "CREA-CROSS-2027-MEDIALITERACY",
+      "Creative Europe",
+      "mediageletterdheid",
+      "volwasseneneducatie",
+      "AI-gegenereerde inhoud",
+      "desinformatie",
+      "mediawijsheid"
+    ],
+    "notes": "Deze oproep richt zich primair op mediawijsheid bij burgers. Een reguliere lessenreeks binnen één school sluit op zichzelf niet aan op de internationale samenwerking en de doelgroepprioriteit.",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "De formele callfiche, de Europese oproep en de Nederlandse Creative Europe Desk zijn gecontroleerd op doelgroep, deelname, cofinanciering en deadline."
+      }
+    ]
   }
 ]
