@@ -460,6 +460,11 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
 .assessment-custom { border-block: 1px solid var(--line); padding: .3rem 0; }
 .assessment-custom summary { min-height: 44px; padding: .55rem 0; cursor: pointer; font-weight: 650; }
 .assessment-custom label { margin-top: .6rem; }
+.student-assignment { max-width: 52rem; }
+.student-assignment .assessment-custom + .assessment-custom { border-top: 0; }
+.student-assignment .assessment-form button { margin-top: .7rem; }
+.student-assignment .student-sources { margin-top: 1.5rem; }
+.student-assignment .student-sources li + li { margin-top: .6rem; }
 .assessment-form textarea {
   display: block; width: 100%; padding: .7rem .85rem; margin: .35rem 0 0; resize: vertical;
   min-height: 4rem; border: 1px solid var(--brand-bluegray); border-radius: .4rem; background: #fff; color: var(--brand-ink); font: inherit;

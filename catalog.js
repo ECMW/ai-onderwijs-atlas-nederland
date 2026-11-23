@@ -83,7 +83,7 @@
     unclassified: 'Aanbodvorm nog niet ingedeeld'
   };
   const PRIMARY_AUDIENCES = ['Docenten', 'Bestuurders', 'IT-professionals', 'Onderzoekers'];
-  const PROFILE_ROLES = ['Docenten', 'Onderwijsontwikkelaars', 'Toetsmakers', 'Schoolleiders', 'Bestuurders',
+  const PROFILE_ROLES = ['Docenten', 'Onderwijsontwikkelaars', 'Toetsmakers', 'Examencommissies', 'Schoolleiders', 'Bestuurders',
     'Beleidsmakers', 'IT-professionals', 'Privacyprofessionals', 'Ondersteunend personeel', 'Onderzoekers', 'Studenten', 'Leerlingen'];
   const SECTORS = ['PO', 'VO', 'MBO', 'HBO', 'WO', 'Onderzoek', 'Overheid'];
   const ACCESS_LABELS = {
@@ -287,7 +287,7 @@
     sessionSet('atlas.sheetPicks', selectedHref('overlegblad').split('?')[1] || '');
   }
   const personaLabel = value => ({ Docenten: 'Docent', Onderwijsontwikkelaars: 'Onderwijsontwikkelaar', Toetsmakers: 'Toetsmaker',
-    Schoolleiders: 'Schoolleider', Bestuurders: 'Bestuurder', Beleidsmakers: 'Beleidsmaker', 'IT-professionals': 'IT-professional',
+    Examencommissies: 'Examencommissielid', Schoolleiders: 'Schoolleider', Bestuurders: 'Bestuurder', Beleidsmakers: 'Beleidsmaker', 'IT-professionals': 'IT-professional',
     Privacyprofessionals: 'Privacyprofessional', Onderzoekers: 'Onderzoeker', Studenten: 'Student', Leerlingen: 'Leerling' }[value] || value);
 
   const recordText = record => normalize([
@@ -474,6 +474,8 @@
   }
   const searchDocuments = new WeakMap();
   const searchPlans = new Map();
+  const ASSIGNMENT_RULE_TERMS = new Set(['regels', 'afspraken', 'richtlijnen']);
+  const RULE_TOPIC = /\b(?:(?:school|klas|gebruiks|toets|spel|gedrags)?regels|(?:school|klas|gebruiks|toets)?afspraken|richtlijnen)\b/;
   function searchPlan(query) {
     const normalized = normalize(query);
     if (searchPlans.has(normalized)) return searchPlans.get(normalized);
@@ -489,7 +491,10 @@
     // An unqualified sector name is also searchable through the sector metadata.
     // Keep an institution's complete name available for a literal provider search.
     const sector = Object.entries(SECTOR_QUERY_NAMES).find(([, names]) => names.includes(normalized));
-    const plan = {normalized, groups, sectors: sector ? sector[0].split(',') : [], scores: new WeakMap()};
+    const assignmentRules = tokens.some(token => ASSIGNMENT_RULE_TERMS.has(token)) && studentAssignmentQuestion(normalized);
+    const learnerAudiences = assignmentRules ? ['Studenten', 'Leerlingen'].filter(role =>
+      tokens.includes(normalize(role)) || tokens.includes(normalize(personaLabel(role)))) : [];
+    const plan = {normalized, groups, assignmentRules, learnerAudiences, sectors: sector ? sector[0].split(',') : [], scores: new WeakMap()};
     if (searchPlans.size >= 50) searchPlans.delete(searchPlans.keys().next().value);
     searchPlans.set(normalized, plan);
     return plan;
@@ -498,17 +503,29 @@
     const plan = searchPlan(query);
     if (!plan.normalized) return 3;
     if (plan.scores.has(record)) return plan.scores.get(record);
+    if (plan.learnerAudiences.length && !plan.learnerAudiences.some(role => record.audiences?.includes(role))) {
+      plan.scores.set(record, 0);
+      return 0;
+    }
     if (!searchDocuments.has(record)) {
       const text = recordText(record);
       searchDocuments.set(record, {text, words: [...new Set(text.split(' '))]});
     }
-    const {text, words} = searchDocuments.get(record);
-    const tokenMatches = (token, fuzzy) => words.some(word => {
+    const indexed = searchDocuments.get(record);
+    const {text, words} = indexed;
+    if (plan.assignmentRules && indexed.ruleTopic === undefined) {
+      // Search the subject of the material. Procedural instructions can refer to rows in a table as “regels”.
+      indexed.ruleTopic = RULE_TOPIC.test(normalize([record.title, record.description, record.purpose, record.subtype,
+        ...(record.keywords || []), record.lessonStart?.question, record.lessonStart?.learningGoal].join(' ')));
+    }
+    const wordMatches = (token, fuzzy) => words.some(word => {
       if (word === token || (token.length >= 3 && word.startsWith(token))) return true;
       if (!fuzzy || token.length < 4 || word.length < 4 || token[0] !== word[0] || /[0-9]/.test(token + word)) return false;
       const limit = Math.min(token.length, word.length) >= 10 ? 2 : 1;
       return Math.abs(token.length - word.length) <= limit && levenshtein(token, word) <= limit;
     });
+    const tokenMatches = (token, fuzzy) => plan.assignmentRules && ASSIGNMENT_RULE_TERMS.has(token)
+      ? indexed.ruleTopic : wordMatches(token, fuzzy);
     const allGroupsMatch = fuzzy => plan.groups.every(group =>
       group.some(alternative => alternative.every(token => tokenMatches(token, fuzzy))));
     const sectorMatch = plan.sectors.some(sector => (record.sectors || []).includes(sector));
@@ -1434,6 +1451,7 @@
     const routes = [
       ['lesmateriaal/', 'Een les voorbereiden', 'Vind een leerlingvraag, lesopdracht en werkblad bij uw vak.'],
       ['#toetsafspraak', 'Een toets aanpassen', 'Kies welke AI-hulp past en wat de leerling zelf moet laten zien.'],
+      ['#ai-bij-mijn-opdracht?van=praktijkgids', 'Mag ik AI gebruiken bij mijn opdracht?', 'Vraag je docent wat mag of licht toe welke hulp je hebt gebruikt.'],
       ['#toolkeuze', 'Een AI-toepassing kiezen', 'Vergelijk de functie, voorwaarden en open vragen voor uw klas.'],
       ['#pilotbesluit', 'Besluiten over een AI-proef', 'Leg met schoolleiding en ICT vast wie beslist, wat u toetst en wanneer u stopt.'],
       ['#notulen-controleren?van=praktijkgids', 'Een conceptverslag controleren', 'Vergelijk de notulen met wat tijdens een schooloverleg is afgesproken.'],
@@ -1579,10 +1597,25 @@
         (/\b(?:upload\w*|invoer\w*|delen|privacy|avg|schoolafspraken|persoonsgegevens|regels)\b/.test(normalized) ||
         (/\b(?:mag|mogen|toegestaan)\b/.test(normalized) && /\b(?:ai|chatgpt|chatbot)\b/.test(normalized)) ||
         /^(?:leerlingwerk|leerlingenwerk|leerlinggegevens|studentgegevens|studentenwerk)$/.test(normalized))) return 'privacy';
+    if (studentAssignmentQuestion(normalized)) return 'assignment';
     if (/\bfeedback\b/.test(normalized) && /\b(?:ai|chatgpt|chatbot|kunstmatige intelligentie)\b/.test(normalized) &&
         (/\b(?:leerwinst|leereffect\w*|leerresulta\w*|leereffectiviteit|leren|effect\w*|helpt|werkt|onderzoek)\b/.test(normalized) ||
         normalized === 'ai feedback')) return 'evidence';
     return '';
+  }
+  const AI_DISCLOSURE = /\b(?:vermeld(?:en|ing)?|verantwoord(?:en|ing)|aangeven|geef ik aan)\b/;
+  function studentAssignmentQuestion(query) {
+    if (!/\b(?:ai|chatgpt|kunstmatige intelligentie)\b/.test(query) ||
+        /\b(?:(?:als|voor) (?:docent(?:en)?|leraar|leerkracht)|(?:mijn|van(?: de| een)?) (?:student(?:en)?|leerling(?:en)?))\b/.test(query)) return false;
+    const assignment = /\b(?:opdracht|schoolopdracht|huiswerk|verslag|werkstuk|scriptie|toets|tentamen|examen)\b/.test(query);
+    const learner = /\b(?:student(?:en)?|leerling(?:en)?)\b/.test(query);
+    const permission = /\b(?:mag|mogen|toegestaan|toestemming|afspraken|regels|richtlijnen)\b/.test(query);
+    const disclosure = AI_DISCLOSURE.test(query);
+    const ownWork = assignment && /\b(?:mijn|ons|onze|mag ik|mogen we)\b/.test(query);
+    if (!ownWork && /\bopstellen\b/.test(query)) return false;
+    return (ownWork && (permission || disclosure || /\b(?:bij|voor|in) (?:mijn|ons|onze)\b/.test(query))) ||
+      (learner && (permission || disclosure)) ||
+      (disclosure && (/\b(?:moet ik|hoe .*?ik|kan ik)\b/.test(query) || /^(?:ai gebruik|gebruik van (?:ai|chatgpt)|chatgpt) (?:vermelden|verantwoorden)$/.test(query)));
   }
   const SCHOOL_PRIVACY_ID = 'generatieve-ai-en-privacy-hier-moeten-scholen-op-letten';
   const WORKSHEET_FILTERS = {
@@ -1630,24 +1663,37 @@
   function matchingWorksheetRoutes(criteria) {
     return worksheetRoutes(criteria.q, criteria, isLessonSelection(criteria));
   }
-  const MINUTES_FILTERS = {
-    type:['materials'], audience:['Ondersteunend personeel'], sector:['PO', 'VO', 'MBO', 'HBO', 'WO'],
+  const TASK_FILTERS = {
+    type:['materials'],
     language:['nl'], cost:['Gratis'], status:[STATUS_LABELS.available], access:[ACCESS_LABELS.public]
   };
-  function matchesMinutesFilters(criteria) {
-    return activeFilters(criteria).every(([key, selected]) => selected.some(value => MINUTES_FILTERS[key]?.includes(value)));
+  const TASK_GUIDES = {
+    minutes: {
+      filters:{...TASK_FILTERS, audience:['Ondersteunend personeel'], sector:['PO','VO','MBO','HBO','WO']},
+      href:'#notulen-controleren', label:'Controleer een AI-conceptverslag', countLabel:'1 oefening',
+      meta:'Oefen met fictieve notulen: wat is besloten, wie doet wat en vóór wanneer?',
+      tileLabel:'Notulen controleren', tileDetail:'Verbeter de afsprakenlijst van een schooloverleg.', action:'Open oefening'
+    },
+    assignment: {
+      filters:{...TASK_FILTERS, audience:['Studenten','Leerlingen'], sector:['VO','MBO','HBO','WO']},
+      href:'#ai-bij-mijn-opdracht', label:'Mag ik AI gebruiken bij mijn opdracht?', countLabel:'1 keuzehulp',
+      meta:'Controleer de afspraken voor je opdracht en bepaal hoe je AI-gebruik vermeldt.', action:'Open keuzehulp'
+    }
+  };
+  function taskGuideMatches(guide, criteria) {
+    return activeFilters(criteria).every(([key, selected]) => selected.some(value => guide.filters[key]?.includes(value)));
   }
   function atlasFacetLabels() {
-    const minutes = teacherQuestion(normalize(state.q)) === 'minutes';
-    if (!minutes && !matchingWorksheetRoutes({q: state.q, vak: state.vak, type: 'materials'}).length) return {};
+    const guide = TASK_GUIDES[teacherQuestion(normalize(state.q))];
+    if (!guide && !matchingWorksheetRoutes({q: state.q, vak: state.vak, type: 'materials'}).length) return {};
     const counts = {};
-    const facets = minutes ? MINUTES_FILTERS : {...WORKSHEET_FILTERS, sector: SECTORS};
+    const facets = guide?.filters || {...WORKSHEET_FILTERS, sector: SECTORS};
     for (const [key, options] of Object.entries(facets)) {
       counts[key] = new Map();
       for (const option of options) {
         const criteria = {...state, [key]:option};
-        if (minutes) {
-          if (matchesMinutesFilters(criteria)) counts[key].set(option, '1 oefening');
+        if (guide) {
+          if (taskGuideMatches(guide, criteria)) counts[key].set(option, guide.countLabel);
         } else {
           const sheets = matchingWorksheetRoutes(criteria).length;
           if (sheets) counts[key].set(option, matchesLabel(0, sheets));
@@ -1657,9 +1703,15 @@
     return counts;
   }
   function teacherRoutes(query, criteria) {
-    switch (teacherQuestion(normalize(query))) {
-      case 'minutes':
-        return matchesMinutesFilters(criteria) ? [{kind:'exercise', label:'Controleer een AI-conceptverslag', meta:'Oefen met fictieve notulen: wat is besloten, wie doet wat en vóór wanneer?', href:'#notulen-controleren'}] : [];
+    const topic = normalize(query);
+    const question = teacherQuestion(topic);
+    const guide = TASK_GUIDES[question];
+    if (guide) {
+      if (!taskGuideMatches(guide, criteria)) return [];
+      if (question === 'assignment' && AI_DISCLOSURE.test(topic)) return [{...guide, href:guide.href + '?stap=vermelden'}];
+      return [guide];
+    }
+    switch (question) {
       case 'tools':
         return [{label:'Welke AI-toepassing past bij mijn les?', meta:'Vergelijk dicteren en transcriberen en controleer de voorwaarden voor uw klas.', href:'#toolkeuze'}];
       case 'privacy': {
@@ -1709,14 +1761,14 @@
     return ranked[0] || null;
   }
   function relaxationSuggestions(currentSheets) {
-    const minutes = teacherQuestion(normalize(state.q)) === 'minutes';
+    const guide = TASK_GUIDES[teacherQuestion(normalize(state.q))];
     return FILTER_KEYS.filter(key => values(key).length).map(key => {
       const criteria = { ...state, [key]: '' };
       const offers = recordsForCriteria(criteria).length;
       const sheets = matchingWorksheetRoutes(criteria).length;
       const label = values(key).map(value => filterOptionLabel(key, value)).join(' of ');
-      const exercises = minutes && matchesMinutesFilters(criteria) ? 1 : 0;
-      return { key, label, offers, sheets, exercises, total: offers + sheets + exercises };
+      const guideLabel = guide && taskGuideMatches(guide, criteria) ? guide.countLabel : '';
+      return { key, label, offers, sheets, guideLabel, total: offers + sheets + Number(Boolean(guideLabel)) };
     }).filter(item => item.total > currentSheets).sort((a, b) => b.total - a.total).slice(0, 3);
   }
   const ASSESSMENT_CRITERIA = { q: 'toets', theme: 'Toetsing en examinering', type: 'materials,knowledge' };
@@ -2435,8 +2487,11 @@
       if (!count && !worksheets) return `<span class="practice-link unavailable">${content}<small>Geen resultaten</small></span>`;
       return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${matchesLabel(count, worksheets)} <span aria-hidden="true">→</span></small></a>`;
     });
-    if (values('audience').includes('Ondersteunend personeel') && matchesMinutesFilters(state)) {
-      links.unshift('<a class="practice-link" data-question-route href="#notulen-controleren"><strong>Notulen controleren</strong><span>Verbeter de afsprakenlijst van een schooloverleg.</span><small>Open oefening <span aria-hidden="true">→</span></small></a>');
+    const audiences = values('audience');
+    for (const guide of Object.values(TASK_GUIDES)) {
+      if (audiences.some(role => guide.filters.audience.includes(role)) && taskGuideMatches(guide, state)) {
+        links.unshift(`<a class="practice-link" data-question-route href="${guide.href}"><strong>${guide.tileLabel || guide.label}</strong><span>${guide.tileDetail || guide.meta}</span><small>${guide.action} <span aria-hidden="true">→</span></small></a>`);
+      }
     }
     const researchHref = criteriaHref(context).replace('#zoeken', '#onderzoek');
     links.push(`<a class="practice-link" href="${escapeHtml(researchHref)}"><strong>Onderzoek doen of promoveren</strong><span>Promotieplaatsen, onderzoeksdata en praktijkonderzoek</span><small>Bekijk routes <span aria-hidden="true">→</span></small></a>`);
@@ -2549,7 +2604,7 @@
         `<p>${state.q ? 'Uw zoekopdracht levert binnen deze selectie geen resultaten op.' : 'Er is geen aanbod met deze combinatie van filters.'}</p>`}`;
     return `<div class="empty">${notice}
       ${actions}
-      ${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${escapeHtml(stateHref({ [item.key]: '' }))}">Zonder ${escapeHtml(item.label)} <strong>${matchesLabel(item.offers, item.sheets, item.exercises)}</strong></a>`).join('')}</div>` : ''}
+      ${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${escapeHtml(stateHref({ [item.key]: '' }))}">Zonder ${escapeHtml(item.label)} <strong>${matchesLabel(item.offers, item.sheets, item.guideLabel)}</strong></a>`).join('')}</div>` : ''}
       <button class="clear-link" type="button">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`;
   }
   function pickedActionLinks(scope) {
@@ -2557,11 +2612,11 @@
       <a class="btn secondary" data-${scope}-sheet href="${escapeHtml(selectedHref('overlegblad'))}" ${sheetPicks.size ? '' : 'hidden'}>Open mijn overlegblad (${sheetPicks.size})</a>
       <span ${sheetPicks.size === 1 ? '' : 'hidden'}>Kies nog een vermelding om te vergelijken.</span>`;
   }
-  function matchesLabel(offers, sheets, exercises = 0) {
+  function matchesLabel(offers, sheets, guideLabel = '') {
     const labels = [];
-    if (offers || (!sheets && !exercises)) labels.push(offers + (offers === 1 ? ' resultaat' : ' resultaten'));
+    if (offers || (!sheets && !guideLabel)) labels.push(offers + (offers === 1 ? ' resultaat' : ' resultaten'));
     if (sheets) labels.push(sheets + (sheets === 1 ? ' werkblad' : ' werkbladen'));
-    if (exercises) labels.push(exercises + (exercises === 1 ? ' oefening' : ' oefeningen'));
+    if (guideLabel) labels.push(guideLabel);
     return labels.join(' en ');
   }
   function resultsMarkup() {
@@ -2573,11 +2628,11 @@
     const related = values('theme').length ? relatedThemes(values('theme')[0]) : [];
     const routes = teacherRoutes(state.q, state);
     const worksheetCount = routes.filter(route => route.href.startsWith('#werkblad-')).length;
-    const exerciseCount = routes.filter(route => route.kind === 'exercise').length;
-    const onlyAtlas = !resultRecords.length && (worksheetCount > 0 || exerciseCount > 0);
+    const guideLabel = routes.find(route => route.countLabel)?.countLabel;
+    const onlyAtlas = !resultRecords.length && Boolean(worksheetCount || guideLabel);
     const routeGuide = routes.length ? `<section class="selection-guidance teacher-routes" aria-label="Verder met uw vraag">${onlyAtlas ? '' : '<h2>Verder met uw vraag</h2>'}
       <ul>${routes.map(item => `<li><a data-question-route href="${escapeHtml(item.href)}">${escapeHtml(item.label)}</a><span>${escapeHtml(item.meta)}</span></li>`).join('')}</ul></section>` : '';
-    resultCountLabel = matchesLabel(resultRecords.length, worksheetCount, exerciseCount);
+    resultCountLabel = matchesLabel(resultRecords.length, worksheetCount, guideLabel);
     const heading = resultCountLabel + (state.q ? ` voor ‘${state.q}’` : '');
     const knownDates = isPublicationSort() && resultRecords.filter(record => publicationDate(record)).length;
     const sortSummary = state.sort === 'added'
@@ -2603,7 +2658,7 @@
       ${values('theme').includes('Veilige AI-omgeving') ? '<section class="selection-guidance"><h2>Beoordeel de toepassing in uw eigen situatie</h2><p>Gebruik de officiële bronnen om gegevensgebruik, beheer, menselijke controle, toegankelijkheid en overstapmogelijkheden te beoordelen. Wat passend is, hangt af van uw doel, gegevens, instellingen en afspraken. Deze selectie is geen keurmerk voor veilige of verantwoorde AI.</p></section>' : ''}
       <div class="picked-actions" data-picked-actions ${sheetPicks.size ? '' : 'hidden'}>${pickedActionLinks('picked')}</div>
       <div id="action-feedback" class="action-feedback" aria-live="polite"></div>
-      <div class="results-content">${resultRecords.length ? resultListMarkup() : exerciseCount ? '' : emptyResultsMarkup(routes, worksheetCount)}</div>
+      <div class="results-content">${resultRecords.length ? resultListMarkup() : guideLabel ? '' : emptyResultsMarkup(routes, worksheetCount)}</div>
       ${related.length ? `<nav class="related" aria-label="Verwante thema's"><strong>Verwante thema's</strong>${related.map(([theme, count]) => `<a href="${escapeHtml(stateHref({ theme }))}">${escapeHtml(theme)} <span>${count} ${count === 1 ? 'resultaat' : 'resultaten'}</span></a>`).join('')}</nav>` : ''}`;
   }
   function filterButtonText() {
@@ -2832,6 +2887,61 @@
     button.onclick = () => copyTextWithFallback(button, answer.value, feedback, fallback,
       'Uw afsprakenlijst is gekopieerd.', 'Uw tekst is geselecteerd. Kopieer de afsprakenlijst met uw apparaat.');
     focusAfterNavigation(main.querySelector('a'), fromGuide ? '.guide-routes a[href^="#notulen-controleren"]' : '.result-head h2');
+  }
+
+  function renderStudentAssignment() {
+    const params = new URLSearchParams(location.hash.split('?')[1]);
+    const fromGuide = params.get('van') === 'praktijkgids';
+    const previous = sessionGet('atlas.lastSearch');
+    const back = fromGuide ? '#praktijkgids' : /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
+    main.innerHTML = `<article class="assessment-page student-assignment">
+      <a href="${escapeHtml(back)}">${fromGuide ? 'Terug naar de praktijkgids' : 'Terug naar zoeken'}</a>
+      <header><h1 tabindex="-1">Mag ik AI gebruiken bij mijn opdracht?</h1>
+        <p>Pak de instructie van je opdracht of toets erbij. Wat moet je zelf doen? Welke hulp mag je gebruiken? Kies hieronder wat bij jou past.</p></header>
+      <details class="assessment-custom" name="student-situatie"><summary>Ik twijfel of ik AI hiervoor mag gebruiken</summary>
+        <p>Kijk ook bij de afspraken van je vak of opleiding. Blijft jouw stap onduidelijk? Vraag het je docent voordat je AI voor die stap gebruikt. Pas de voorbeeldvraag aan jouw situatie aan.</p>
+        <div class="assessment-form" data-student-template>
+          <label for="student-question">Mijn vraag aan de docent</label>
+          <textarea id="student-question" rows="4" autocomplete="off">Mag ik bij [opdracht] AI gebruiken om feedback te krijgen op een alinea die ik zelf heb geschreven? Wat moet ik zelf doen en hoe vermeld ik die hulp?</textarea>
+          <button type="button" class="btn secondary">Kopieer mijn vraag</button>
+          <p class="action-feedback" role="status"></p>
+          <textarea class="lesson-copy" aria-label="Mijn vraag om handmatig te kopiëren" readonly hidden></textarea>
+        </div>
+      </details>
+      <details class="assessment-custom" name="student-situatie"${params.get('stap') === 'vermelden' ? ' open' : ''}><summary>Hoe vermeld ik dat ik AI heb gebruikt?</summary>
+        <p>Controleer eerst of deze hulp bij jouw opdracht mag. Zo ja, volg de vorm die je docent vraagt. Vul in welke hulp je hebt gebruikt. Vraagt de opdracht ook om je prompts of tussenversies? Voeg die dan toe.</p>
+        <div class="assessment-form" data-student-template>
+          <label for="student-disclosure">Mijn toelichting bij het inleveren</label>
+          <textarea id="student-disclosure" rows="4" autocomplete="off">Bij [onderdeel] gebruikte ik [naam van de tool] voor [concrete handeling]. Ik heb zelf [wat je hebt uitgewerkt of gecontroleerd].</textarea>
+          <button type="button" class="btn secondary">Kopieer mijn toelichting</button>
+          <p class="action-feedback" role="status"></p>
+          <textarea class="lesson-copy" aria-label="Mijn toelichting om handmatig te kopiëren" readonly hidden></textarea>
+        </div>
+      </details>
+      <details class="assessment-custom" name="student-situatie"><summary>Ik mag AI hier niet voor gebruiken</summary>
+        <p>Werk dit onderdeel zelf uit met de afgesproken hulpmiddelen. Heb je AI voor deze stap al gebruikt? Vertel je docent vóór het inleveren wat je hebt gedaan. Vraag welk deel je opnieuw moet uitwerken of toelichten.</p>
+      </details>
+      <details class="assessment-custom student-sources"><summary>Hoe leggen scholen en opleidingen dit uit?</summary>
+        <p>Volg de instructie voor jouw eigen opdracht. Deze voorbeelden openen in een nieuw tabblad, zodat je eigen tekst hier blijft staan.</p>
+        <ul><li><a href="https://lerenbij.curio.nl/generatieve-ai/generatieve-ai-tijdens-je-studie/" target="_blank" rel="noopener noreferrer">Curio (vmbo en mbo)</a> bespreekt afspraken bij een opdracht, examen of stage.</li>
+          <li><a href="https://screensteps.saxion.nl/a/2123448-ai-gebruiken-in-brightspace#ai-bij-opdrachten-in-brightspace" target="_blank" rel="noopener noreferrer">Saxion (hbo)</a> legt uit hoe je in Brightspace nagaat welke AI-hulp je bij een opdracht mag gebruiken.</li>
+          <li>De <a href="https://www.rug.nl/about-ug/organization/quality-assurance/education/artificial-intelligence-ai/?lang=nl" target="_blank" rel="noopener noreferrer">Rijksuniversiteit Groningen (wo)</a> legt in basisregels 2 en 3 uit waar je de afspraken vindt, aan wie je vragen kunt stellen en hoe je AI-gebruik meldt.</li></ul>
+      </details>
+    </article>`;
+    main.querySelectorAll('[data-student-template]').forEach(panel => {
+      const draft = panel.querySelector('textarea');
+      const button = panel.querySelector('button');
+      const feedback = panel.querySelector('.action-feedback');
+      const fallback = panel.querySelector('.lesson-copy');
+      draft.oninput = () => {
+        button.disabled = !draft.value.trim();
+        feedback.textContent = '';
+        fallback.hidden = true;
+      };
+      button.onclick = () => copyTextWithFallback(button, draft.value, feedback, fallback,
+        'Je tekst is gekopieerd.', 'Je tekst is geselecteerd. Kopieer hem met je apparaat.');
+    });
+    focusAfterNavigation(main.querySelector('a'), fromGuide ? '.guide-routes a[href^="#ai-bij-mijn-opdracht"]' : '.result-head h2');
   }
 
   function renderToolChoice() {
@@ -3650,7 +3760,7 @@
       'mijn-atlas': renderProfile,
       'praktijkgids': renderPracticeGuide, 'wat-werkt': renderLearningEvidence,
       'toolkeuze': renderToolChoice, 'pilotbesluit': renderPilotDecision, 'regels-in-de-praktijk': renderPracticeRules,
-      'notulen-controleren': renderMinutesCheck
+      'notulen-controleren': renderMinutesCheck, 'ai-bij-mijn-opdracht': renderStudentAssignment
     };
     if (Object.hasOwn(WORKSHEET_TEACHER_NOTES, path)) guides[path] = () => renderWorksheet(path);
     if (path === 'home' || (!Object.hasOwn(guides, path) && !['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();

@@ -3,6 +3,18 @@
   "last_reviewed": "2026-11-23",
   "claims": [
     {
+      "claim_id": "student-ai-bij-eigen-opdracht",
+      "location": {"path": "catalog.js"},
+      "claim": "Een leerling of student kan vóór gebruik van AI de instructie bij de eigen opdracht raadplegen en bij twijfel aan de docent vragen welke hulp voor een specifieke stap is toegestaan en hoe die moet worden vermeld.",
+      "claim_kind": "atlas_synthesis",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": ["curio-generatieve-ai-tijdens-je-studie", "saxion-ai-bij-opdrachten-in-brightspace", "rug-basisregels-ai-onderwijs", "tilburg-tshd-ai-index-studenten-2026"],
+      "assessment": "Curio, Saxion en de RUG geven concrete aanwijzingen om toestemming en vermelding te bespreken. De RUG licht daarnaast toe hoe een opleiding of vak aanvullende afspraken bekendmaakt. De Tilburgse AI-index onderscheidt ter vergelijking redigeren en ideeën genereren. De Atlas vertaalde de instellingsvoorbeelden naar een vraag die een student bij de eigen opdracht kan stellen.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": true,
+      "review_by": "2027-02-21"
+    },
+    {
       "claim_id": "ondersteuning-ai-conceptnotulen-controleren",
       "location": {"path": "catalog.js"},
       "claim": "Na omzetting van een gespreksfragment naar notulen controleert de ondersteuner het besluit, de actiehouder en het tijdstip tegen het gesprek.",

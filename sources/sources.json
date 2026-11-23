@@ -4,6 +4,86 @@
   "verification_window_days": 90,
   "sources": [
     {
+      "source_id": "curio-generatieve-ai-tijdens-je-studie",
+      "title": "Generatieve AI tijdens je studie",
+      "author_or_organisation": "Curio",
+      "publication_date": "2024-11-11",
+      "url_or_doi": "https://lerenbij.curio.nl/generatieve-ai/generatieve-ai-tijdens-je-studie/",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": ["Lesgeven en leren met AI", "Toetsing en examinering"],
+      "jurisdiction": "Nederland, leerlingen en studenten van Curio (vmbo en mbo)",
+      "claims_supported": [
+        "Curio vraagt leerlingen en studenten het gebruik van AI met hun docent te bespreken als de opdracht daarover zwijgt. Voor gebruik op stage verwijst Curio naar de praktijkbegeleider."
+      ],
+      "reliability_notes": "De rubriek ‘Wanneer mag je genAI wel en niet gebruiken?’ op de openbare studentenpagina onderscheidt lesopdrachten, examens en stage. De paginametadata vermeldt 11 november 2024 als publicatiedatum en 19 november 2026 als laatste wijziging.",
+      "limitations": "De instructie geldt bij Curio. Welke hulp een individuele leerling bij een bepaalde opdracht mag gebruiken, blijkt uit de lokale afspraken.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active"
+    },
+    {
+      "source_id": "saxion-ai-bij-opdrachten-in-brightspace",
+      "title": "AI gebruiken in Brightspace",
+      "author_or_organisation": "Saxion, Onderwijslogistiek Support",
+      "publication_date": "2026-09-16",
+      "url_or_doi": "https://screensteps.saxion.nl/a/2123448-ai-gebruiken-in-brightspace#ai-bij-opdrachten-in-brightspace",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": ["Lesgeven en leren met AI", "Toetsing en examinering"],
+      "jurisdiction": "Nederland, studenten en docenten van hogeschool Saxion",
+      "claims_supported": [
+        "Bij Saxion bepalen de opdrachtinstructies in Brightspace waarvoor AI mag worden gebruikt. Studenten kunnen bij onduidelijkheid hun docent raadplegen. Zij vermelden gebruik volgens de afspraken bij de opdracht en de Saxion-richtlijnen."
+      ],
+      "reliability_notes": "De openbare studentenhandleiding beschrijft deze stappen onder ‘AI bij opdrachten in Brightspace’ en ‘Transparant gebruik van AI’. De datum is de door Saxion vermelde wijzigingsdatum.",
+      "limitations": "De handleiding gaat over opdrachten binnen Saxion en beschrijft geen algemeen geldende regel voor het hbo.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active"
+    },
+    {
+      "source_id": "rug-basisregels-ai-onderwijs",
+      "title": "Basisregels AI in het onderwijs",
+      "author_or_organisation": "Rijksuniversiteit Groningen",
+      "publication_date": "2024-01-11",
+      "url_or_doi": "https://www.rug.nl/about-ug/organization/quality-assurance/education/artificial-intelligence-ai/?lang=nl",
+      "source_type": "policy_document",
+      "primary_or_secondary": "primary",
+      "topics": ["Toetsing en examinering", "Beleid en governance"],
+      "jurisdiction": "Nederland, Rijksuniversiteit Groningen",
+      "claims_supported": [
+        "De RUG beschrijft in basisregels 2 en 3 wanneer en hoe studenten het gebruik van generatieve AI vermelden. Aanvullende afspraken kunnen per opleiding of vak verschillen. Studenten krijgen deze via de syllabus of Brightspace en kunnen hun docent om uitleg vragen."
+      ],
+      "reliability_notes": "De RUG publiceert de tien eigen basisregels en verwijst naar het onderliggende instellingsbeleid. De paginametadata vermeldt 11 januari 2024 als publicatiedatum en 28 oktober 2024 als laatste wijziging.",
+      "limitations": "De meldplicht in regel 2 gaat over gebruik dat verder gaat dan de algemene functies in regel 1. Plaatselijke aanvullingen zijn mogelijk. Deze regels zijn alleen voor het onderwijs van de RUG vastgesteld.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active"
+    },
+    {
+      "source_id": "tilburg-tshd-ai-index-studenten-2026",
+      "title": "AI Index Tilburg University",
+      "author_or_organisation": "Tilburg University, Tilburg School of Humanities and Digital Sciences (TSHD); bewerking door Hsiao, den Oudsten, Venhuizen en Engelen",
+      "publication_date": "2026",
+      "url_or_doi": "https://www.tilburguniversity.edu/sites/default/files/download/AI%20Index%20-%20TSHD%20-%202026.pdf",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": ["Toetsing en examinering"],
+      "jurisdiction": "Nederland, Tilburg School of Humanities and Digital Sciences",
+      "claims_supported": [
+        "De AI-index voor studenten geeft vijf voorbeelden van AI-instructies bij opdrachten. De voorbeelden onderscheiden onder meer het redigeren van een eigen tekst en het genereren van ideeën."
+      ],
+      "reliability_notes": "De Nederlandstalige TSHD-pagina over fraude, plagiaat en AI-gebruik verwijst naar deze Engelstalige tabel. De PDF-metadata en de versienaam duiden op de editie van 2026. Het document schrijft de bewerking toe aan Hsiao en coauteurs (2025), op basis van Perkins en coauteurs (2024).",
+      "limitations": "De voorbeelden zijn bedoeld voor instructies van een docent. Studenten kunnen uit de tabel alleen niet afleiden welk niveau voor hun eigen opdracht geldt.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active"
+    },
+    {
       "source_id": "uva-taalwinkel-vergaderen-2025",
       "title": "Vergaderen",
       "author_or_organisation": "Taalwinkel, Universiteit van Amsterdam",

@@ -1,5 +1,13 @@
 # Onderzoekslog bronbasis
 
+## 23 november 2026 · Mag ik AI gebruiken bij deze opdracht?
+
+Curio maakt op de studentenpagina onderscheid tussen les, examen en stage. Bij een onduidelijke opdracht kan de leerling de docent vragen om uitleg. Op stage bespreekt de student het gebruik vooraf met de praktijkbegeleider. De stappen zijn op de webpagina leesbaar. De daar gelinkte hulpkaart versie 1.5 gaf bij controle HTTP 404. [Curio, Generatieve AI tijdens je studie](https://lerenbij.curio.nl/generatieve-ai/generatieve-ai-tijdens-je-studie/)
+
+Saxion verwijst hbo-studenten naar hun opdracht in Brightspace en bij twijfel naar de docent. De RUG behandelt in basisregels 2 en 3 de vermelding van AI-gebruik en aanvullende afspraken per vak. De taalkeuze in de link opent de Nederlandse tekst ook bij een Engelstalige browserinstelling. Dit is in Edge op telefoon- en laptopbreedte gecontroleerd. De Atlas heeft de instellingsvoorbeelden gebruikt voor een vraag die een student bij de eigen opdracht kan stellen. Hoe vaak studenten hiermee vastlopen is onbekend. [Saxion, instructie bij opdrachten](https://screensteps.saxion.nl/a/2123448-ai-gebruiken-in-brightspace#ai-bij-opdrachten-in-brightspace) · [RUG, basisregels 2 en 3](https://www.rug.nl/about-ug/organization/quality-assurance/education/artificial-intelligence-ai/?lang=nl)
+
+De Tilburgse AI-index blijft als achtergrondbron in de bibliotheek. De Engelstalige pdf onderscheidt vijf niveaus van hulp bij een opdracht. De ingestelde documenttaal is Nederlands, wat de uitspraak met voorleessoftware kan beïnvloeden. Voor de directe route naar een wo-voorbeeld is de Nederlandstalige RUG-webpagina gekozen. [TSHD, AI-index voor studenten](https://www.tilburguniversity.edu/sites/default/files/download/AI%20Index%20-%20TSHD%20-%202026.pdf)
+
 ## 23 november 2026 · Een AI-conceptverslag controleren
 
 Bij ‘De rollen’ noemt Taalwinkel het controleren van afspraken en besluiten als taak van de notulist. Bij ‘Besluitenlijst’ legt de UvA uit dat een lezer ook moet kunnen zien wie een actie uitvoert. SURF beschrijft hoe ArtEZ van opname naar transcript en van transcript naar notulen gaat, inclusief beperkingen bij sprekerherkenning. Het fictieve fragment, de conceptnotulen en de controle van de deadline zijn van de Atlas. Een effect op het werk van ondersteuners is niet gemeten. [Taalwinkel, besluitenlijst](https://taalwinkel.uva.nl/studievaardigheden/vergaderen#besluitenlijst) · [SURF PEC](https://pec.surf.nl/spraakherkenning-en-transcriptie-met-ai/)

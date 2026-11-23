@@ -8,7 +8,7 @@ const catalogue = fs.readFileSync(path.join(__dirname, '..', 'catalog.js'), 'utf
 const boot = "  addEventListener('hashchange', route); addEventListener('popstate', route); route();";
 assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly the route startup');
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
-    pilotSheetText, renderPilotDecision, renderWorksheet, renderMinutesCheck,
+    pilotSheetText, renderPilotDecision, renderWorksheet, renderMinutesCheck, renderStudentAssignment,
     renderLearningEvidence, renderPracticeGuide, practiceCasesMarkup,
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, datedOffers, newOffersMarkup, papersMarkup, paperRis, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, bindFacetLists, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
@@ -1663,6 +1663,87 @@ test('the minutes exercise counts in search, filters, and recovery while catalog
   }
 });
 
+test('a learner can find the assignment guide by asking about permission or disclosure', () => {
+  const href = '#ai-bij-mijn-opdracht';
+  for (const [query, step] of [
+    ['Mag ik AI gebruiken bij mijn opdracht?', ''], ['AI bij mijn opdracht', ''],
+    ['Mag ik als leerling ChatGPT gebruiken?', ''], ['Mag ik AI gebruiken voor mijn huiswerk?', ''],
+    ['Mag ik mijn verslag door AI laten nakijken?', ''],
+    ['Regels AI voor studenten', ''], ['Welke regels gelden voor mij als student in het mbo bij AI?', ''],
+    ['Richtlijnen AI voor studenten', ''], ['Mag ik AI gebruiken voor het opstellen van mijn verslag?', ''],
+    ['Moet ik ChatGPT vermelden?', '?stap=vermelden'], ['AI-gebruik vermelden', '?stap=vermelden'],
+    ['Hoe vermeld ik mijn AI-gebruik?', '?stap=vermelden'], ['Hoe geef ik aan dat ik ChatGPT heb gebruikt?', '?stap=vermelden']
+  ]) {
+    const api = load([], '#zoeken?audience=Studenten%2CLeerlingen');
+    api.setState(api.criteriaForQuery(query));
+    const items = api.suggestionData(query).flatMap(group => group.items);
+    assert.equal(items[0]?.href, href + step, query);
+    const results = api.resultsMarkup();
+    assert.ok(results.includes(`data-question-route href="${href + step}">Mag ik AI gebruiken bij mijn opdracht?</a>`), query);
+    assert.ok(results.includes(`>1 keuzehulp voor ‘${query}’</h2>`), query);
+    assert.match(results, /data-atlas-search-hits/);
+    assert.doesNotMatch(results, /data-atlas-empty-search|class="empty"/);
+  }
+  const api = load([]);
+  for (const query of ['AI', 'ChatGPT', 'Bronvermelding', 'AI voor leerlingen', 'AI-tools vergelijken',
+    'Mag ik leerlingwerk uploaden naar ChatGPT?', 'AI-afspraken voor studenten opstellen',
+    'Mag ik AI gebruiken bij het nakijken van mijn studenten?', 'Mag ik opdrachten van studenten door AI laten nakijken?',
+    'AI-subsidies voor studenten']) {
+    assert.ok(!api.suggestionData(query).flatMap(group => group.items).some(item => item.href.startsWith(href)), query);
+  }
+});
+
+test('the assignment guide respects filters and counts separately from catalogue records', () => {
+  const query = 'AI-gebruik vermelden';
+  const base = '#zoeken?' + new URLSearchParams({q:query});
+  const settings = {sector:'MBO', audience:'Studenten', language:'nl', cost:'Gratis', access:'Publiek toegankelijk', status:'Direct beschikbaar', type:'materials'};
+  const api = load([], base + '&' + new URLSearchParams(settings));
+  api.resultsMarkup();
+  const filters = api.catalogFilterPanel(['materials'], ['Studenten','Leerlingen'], []);
+  assert.match(filters, /class="apply btn">Toon 1 keuzehulp</);
+  assert.match(filters, /data-facet-option="Leerlingen"[^>]*><input[^>]+><span>Leerlingen<\/span><small>1 keuzehulp<\/small>/);
+  const mixed = load([record('uitleg', undefined, query)], base);
+  assert.match(mixed.resultsMarkup(), /1 resultaat en 1 keuzehulp voor/);
+  for (const selection of [{language:'en'}, {audience:'Docenten'}, {sector:'PO'}, {type:'Subsidie of call,Subsidie'},
+    {theme:'Subsidies en financiering'}, {cost:'Kosten onbekend'}, {access:'Registratie nodig'}, {status:'Gepland'}, {vak:'Biologie'}]) {
+    const blocked = load([], base + '&' + new URLSearchParams(selection));
+    const results = blocked.resultsMarkup();
+    assert.match(results, /data-atlas-empty-search/);
+    assert.doesNotMatch(results, /data-question-route href="#ai-bij-mijn-opdracht/);
+    if (selection.type) assert.match(results, /Geen subsidies of calls/);
+    else assert.match(results, /Zonder [^<]+ <strong>1 keuzehulp<\/strong>/);
+    assert.ok(!blocked.suggestionData(query).flatMap(group => group.items).some(item => item.href.startsWith('#ai-bij-mijn-opdracht')));
+  }
+});
+
+test('learner rule searches distinguish AI agreements from notebook output rows and teacher assessment guidance', () => {
+  const catalogue = require('../data/records.json');
+  const notebook = catalogue.find(item => item.id === 'ubc-praxis-double-machine-learning');
+  const teacherGuide = catalogue.find(item => item.id === 'ecio-ai-toetsing-praktische-handvatten');
+  const classroom = catalogue.find(item => item.id === 'microsoft-generatieve-ai-veilig-verantwoord-klassentoolkit');
+  const agreement = {...record('afspraken', undefined, 'AI bij je opdracht'), sectors:['WO'],
+    audiences:['Studenten'], description:'Lees de afspraken voor AI-gebruik tijdens je opdracht.'};
+  const api = load([notebook, teacherGuide, classroom, agreement]);
+  const studentQuery = 'regels AI voor studenten';
+  for (const sector of ['', 'WO']) {
+    assert.deepEqual(Array.from(api.recordsForCriteria({q:studentQuery, sector}), item => item.id), ['afspraken']);
+  }
+  assert.deepEqual(Array.from(api.recordsForCriteria({q:'regels AI voor leerlingen'}), item => item.id), [classroom.id]);
+  for (const q of ['pensioenregeling', 'econometrie', 'regels voor lasso']) {
+    assert.ok(api.recordsForCriteria({q}).some(item => item.id === notebook.id), q);
+  }
+});
+
+test('a selected learner profile opens the assignment guide directly', () => {
+  const route = /class="practice-link" data-question-route href="#ai-bij-mijn-opdracht"/;
+  for (const selection of ['audience=Studenten&sector=HBO', 'audience=Leerlingen&sector=VO', 'audience=Docenten,Studenten&sector=WO']) {
+    assert.match(load([], '#zoeken?' + selection).resultsMarkup(), route);
+  }
+  for (const selection of ['', 'audience=Docenten', 'audience=Studenten&language=en', 'audience=Studenten&vak=Biologie', 'audience=Leerlingen&sector=PO']) {
+    assert.doesNotMatch(load([], '#zoeken?' + selection).resultsMarkup(), route);
+  }
+});
+
 test('a worksheet-only customer mail search offers its MBO filter with a worksheet count', () => {
   const data = [{...record('onverwant'), sectors:['PO','MBO'], offerCategory:'materials'}];
   const api = load(data, '#zoeken?q=klantmail');
@@ -2541,6 +2622,40 @@ test('the practice guide connects each teaching stage to published material and 
   for (const href of ['lesmateriaal/', '#toetsafspraak', '#toolkeuze', '#regels-in-de-praktijk', '#wat-werkt']) {
     assert.ok(main.innerHTML.includes(`href="${href}"`), href);
   }
+});
+
+test('students can copy each edited assignment template and recover when their clipboard is unavailable', async () => {
+  const panels = [new Map(), new Map()].map(controls => ({querySelector(selector) {
+    if (!controls.has(selector)) controls.set(selector, {isConnected:true, focus() {}, select() { this.selected = true; }});
+    return controls.get(selector);
+  }}));
+  const main = {querySelector:() => null, querySelectorAll:() => panels};
+  const copied = [];
+  const clipboard = {writeText: async value => copied.push(value)};
+  const api = load([], '#ai-bij-mijn-opdracht?stap=vermelden', {
+    document:{querySelector:() => main}, navigator:{clipboard},
+    sessionStorage:{getItem:() => '#zoeken?sector=MBO&q=ChatGPT'}
+  });
+  api.renderStudentAssignment();
+  assert.match(main.innerHTML, /href="#zoeken\?sector=MBO&amp;q=ChatGPT"/);
+  assert.match(main.innerHTML, /name="student-situatie" open><summary>Hoe vermeld ik dat ik AI heb gebruikt/);
+  for (const [index, panel] of panels.entries()) {
+    const draft = panel.querySelector('textarea'), button = panel.querySelector('button');
+    draft.value = 'Eigen tekst ' + index;
+    draft.oninput();
+    assert.equal(button.disabled, false);
+    await button.onclick();
+  }
+  assert.deepEqual(copied, ['Eigen tekst 0', 'Eigen tekst 1']);
+  clipboard.writeText = async () => { throw Error('clipboard blocked'); };
+  const panel = panels[1], fallback = panel.querySelector('.lesson-copy');
+  await panel.querySelector('button').onclick();
+  assert.equal(fallback.value, 'Eigen tekst 1');
+  assert.ok(fallback.selected && !fallback.hidden);
+  panel.querySelector('textarea').value = ' ';
+  panel.querySelector('textarea').oninput();
+  assert.ok(panel.querySelector('button').disabled && fallback.hidden);
+  assert.equal(panels[0].querySelector('button').disabled, false);
 });
 
 test('minute-taking practice copies the visitor’s own corrections and keeps an editable answer when the clipboard is blocked', async () => {
