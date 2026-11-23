@@ -1174,7 +1174,8 @@ test('expired dated training and application calls never retain an active status
     assert.equal(api.statusLabel({...call, applicationDeadline:endDate}, '2026-09-09'), 'Open voor aanvragen');
   }
   assert.equal(api.statusLabel({...record('guide'), endDate:'2026-01-01'}, '2026-09-09'), 'Direct beschikbaar');
-  assert.equal(api.statusLabel({...call, status:'planned'}, '2026-09-09'), 'Gepland');
+  assert.equal(api.statusLabel({...call, status:'planned'}, '2026-09-03'), 'Gepland');
+  assert.equal(api.statusLabel({...call, status:'planned'}, '2026-09-09'), 'Aanvraag gesloten');
   assert.equal(JSON.stringify([training, call]), original, 'Display status must not rewrite canonical data');
 });
 
@@ -1313,6 +1314,13 @@ test('a zoned call deadline closes exactly at the published instant and appears 
   const cutoff = Date.parse('2026-12-01T13:00:00Z');
   assert.equal(api.effectiveStatus(call, '2026-12-01', cutoff - 1), 'open_call');
   assert.equal(api.effectiveStatus(call, '2026-12-01', cutoff), 'closed_call');
+  for (const status of ['planned', 'in_development']) {
+    const announced = {...call, status};
+    assert.equal(api.effectiveStatus(announced, '2026-12-01', cutoff - 1), status);
+    assert.equal(api.effectiveStatus(announced, '2026-12-01', cutoff), 'closed_call');
+    assert.equal(api.effectiveStatus({...announced, applicationDeadlineAt:null}, '2026-12-02', cutoff), 'closed_call');
+    assert.equal(api.effectiveStatus({...announced, applicationDeadlineAt:null, applicationDeadline:null}, '2026-12-02', cutoff), status);
+  }
   assert.equal(api.effectiveStatus({...call, applicationDeadlineAt:'2026-12-01T14:00'}, '2026-12-01', cutoff), 'open_call');
   assert.equal(api.effectiveStatus({...call, applicationDeadlineAt:null}, '2026-12-02', cutoff), 'closed_call');
   assert.equal(api.effectiveStatus({...call, applicationOpenDate:'2026-12-01'}, '2026-11-30', cutoff - 86400000), 'planned');

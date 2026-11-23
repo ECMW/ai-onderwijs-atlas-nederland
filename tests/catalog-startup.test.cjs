@@ -556,6 +556,20 @@ test('empty results offer a query edit without promising matches when filters al
   assert.match(filtersOnly.main.innerHTML,/geen aanbod met deze combinatie van filters/);
 });
 
+function showAllResultBatches(app) {
+  const list = app.main.querySelector('[data-result-list]');
+  assert.ok(list);
+  list.insertAdjacentHTML = (position, html) => {
+    assert.equal(position, 'beforeend');
+    const fragment = new Element();
+    fragment.innerHTML = html;
+    for (const card of fragment.children) { card.parent = list; list.children.push(card); }
+  };
+  const more = app.main.querySelector('[data-more-results]');
+  while (more && !more.hidden) more.onclick();
+  return list;
+}
+
 test('the actual homepage opens both funding statuses and keeps the full funding catalogue reachable', () => {
   const app = boot({href:'https://example.org/atlas/'});
   const home = app.main.innerHTML.match(/<a class="practice-link" href="([^"]+)"><strong>Subsidies en calls<\/strong>/);
@@ -567,6 +581,7 @@ test('the actual homepage opens both funding statuses and keeps the full funding
   const all = app.main.innerHTML.match(/<a href="([^"]+)">Alle \(\d+\)<\/a>/);
   assert.ok(all);
   app.navigate(all[1].replaceAll('&amp;', '&'));
+  showAllResultBatches(app);
   assert.ok(app.document.querySelector('[data-record-id="nwo-calls-rond-ai-en-onderwijs"]'));
   assert.deepEqual(app.errors, []);
 });
@@ -892,16 +907,7 @@ test('every dashboard type opens exactly the records counted under its label', (
     const oldHref = '#zoeken?type=' + encodeURIComponent(label);
     for (const route of new Set([href, oldHref])) {
       app.navigate(route);
-      const list = app.main.querySelector('[data-result-list]');
-      assert.ok(list, route);
-      list.insertAdjacentHTML = (position, html) => {
-        assert.equal(position, 'beforeend');
-        const fragment = new Element();
-        fragment.innerHTML = html;
-        for (const card of fragment.children) { card.parent = list; list.children.push(card); }
-      };
-      const more = app.main.querySelector('[data-more-results]');
-      while (more && !more.hidden) more.onclick();
+      const list = showAllResultBatches(app);
       assert.deepEqual(list.children.map(card => card.dataset.recordId).sort(), expected, route);
     }
   }

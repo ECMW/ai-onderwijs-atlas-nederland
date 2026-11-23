@@ -2427,5 +2427,77 @@
     ],
     "sectors": [],
     "sourceType": "official"
+  },
+  {
+    "id": "source-creative-europe-desk-nl-media-literacy-2027",
+    "name": "Creative Europe Desk NL – Media Literacy 2027",
+    "owner": "Creative Europe Desk NL (DutchCulture)",
+    "baseUrl": "https://www.creativeeuropedesk.nl/nl/node/1742669",
+    "sourceRole": "verification",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "daily"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page",
+      "deadlineAware": true
+    },
+    "allowedRecordTypes": [
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "themes": [
+      "Subsidies en financiering"
+    ],
+    "sourceType": "official",
+    "sectors": [
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "notes": "Volg de Nederlandse rondepagina op wijzigingen in de sluitingsdatum en Europese callfiche. Controleer volwassenen buiten het formele onderwijs, Nederlandse deelname en cofinanciering in de formele Europese oproep. Beoordeel bij de volgende editie of er een nieuwe rondepagina is."
+  },
+  {
+    "id": "source-dus-i-npuls-ctl",
+    "name": "DUS-I – Npuls Center for Teaching and Learning",
+    "owner": "Dienst Uitvoering Subsidies aan Instellingen (DUS-I)",
+    "baseUrl": "https://www.dus-i.nl/subsidies/middelbaar-beroepsonderwijs/npuls-center-for-teaching-and-learning-ctl",
+    "sourceRole": "verification",
+    "trustLevel": "official",
+    "enabled": true,
+    "schedule": {
+      "frequency": "daily"
+    },
+    "extraction": {
+      "type": "html",
+      "scope": "page",
+      "deadlineAware": true
+    },
+    "allowedRecordTypes": [
+      "funding_call"
+    ],
+    "operational": {
+      "lastSuccessfulCheck": null,
+      "lastContentHash": null,
+      "lastStatus": "never_checked",
+      "consecutiveFailures": 0
+    },
+    "themes": [
+      "Subsidies en financiering"
+    ],
+    "sourceType": "official",
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "notes": "Volg de aanvraagperiode en het loket ‘Subsidie aanvragen’ voor Npuls CTL. Controleer bij een wijziging op welke ronde de tekst en het formulier betrekking hebben. Raadpleeg voor ronde vijf ook de gepubliceerde wijzigingsregeling."
   }
 ]
