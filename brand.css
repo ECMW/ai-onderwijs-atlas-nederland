@@ -425,7 +425,10 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
   background: var(--brand-bluegray-deep);
   color: #fff;
 }
-.home-spotlight > div { flex: 1 1 23rem; }
+.home-spotlight .spotlight-intro { flex: 1 1 23rem; }
+.spotlight-date { margin-inline-start: .4rem; font-size: .85rem; }
+.spotlight-actions { display: grid; justify-items: start; gap: .25rem; max-width: 24rem; }
+.home-spotlight .spotlight-previous { display: inline-flex; align-items: center; min-height: 44px; color: #fff; font-size: .9rem; text-decoration: underline; text-underline-offset: .15em; }
 .home-spotlight .spotlight-label {
   display: inline-block; padding: .05rem .45rem; border-radius: .18rem;
   background: #f3dc96; color: #253840; font-weight: 700; font-size: .85rem;

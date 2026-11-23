@@ -1,5 +1,13 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Elke twee weken een andere taak uitgelicht
+
+Op de vorige uitgave `4259cb8` opende de startpagina op zowel 23 november als 7 december dezelfde toetstool. Het blok wisselt nu om de veertien dagen. Bezoekers zien de einddatum en kunnen vanaf de tweede editie met één klik de vorige activiteit terugvinden.
+
+De eerste editie blijft de eigen toetsvraag. Op 7 december volgt de lesgids en op 21 december de vergelijking van dicteren en transcriberen. Lesvoorbereiding en toegang tot geschikte hulpmiddelen komen naar voren in een enquête onder onderwijsprofessionals. Dit is een redactionele keuze. De huidige meting ondersteunt geen populariteitsranglijst van alle Atlas-taken. [Europese enquête, april 2026](https://school-education.ec.europa.eu/en/discover/surveys/survey-artificial-intelligence-teaching-and-learning)
+
+De selectie gebruikt de Nederlandse kalenderdatum. Regressietests controleren de overgang bij middernacht, zomer- en wintertijd, de jaarwisseling, de vorige activiteit en de veilige interne bestemmingen. De dagelijkse producttaak weegt voor de volgende editie actuele belangstelling en beschikbare bronnen. Bij een ontbrekend signaal loopt de vaste afwisseling door.
+
 ## 23 november 2026 · Het aanbod doorzoeken en je plaats terugvinden
 
 Bij 470 publieke vermeldingen kostte het veel schermruimte om titels te vergelijken. In een browserproef bij 390 pixels waren de eerste vijf VO-kaarten gemiddeld 596 pixels hoog. In de nieuwe optionele lijst zijn dezelfde vermeldingen gemiddeld 131 pixels hoog. De titel opent de details en de bezoeker kan vanuit elke rij vergelijken. Weergave en aangevinkte keuzes blijven tijdens het bladeren behouden.

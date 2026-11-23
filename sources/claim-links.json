@@ -3,6 +3,19 @@
   "last_reviewed": "2026-11-23",
   "claims": [
     {
+      "claim_id": "uitgelicht-lesvoorbereiding-en-toolkeuze-2026",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "De Atlas licht in december de lesgids en de keuzehulp voor AI-toepassingen uit. Deze taken sluiten aan op gerapporteerd gebruik en een ondersteuningsvraag in de enquête van het European School Education Platform.",
+      "claim_kind": "atlas_synthesis",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": ["esep-survey-ai-teaching-learning-2026"],
+      "assessment": "Vraag 2 gaat over het gebruik van AI bij lesvoorbereiding. Vraag 7 gaat over gewenste toegang tot goedgekeurde hulpmiddelen. De redactie koppelt deze signalen aan een lesgids en een keuzehulp. Hun populariteit bij Nederlandse Atlas-bezoekers is onbekend.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": false
+    },
+    {
       "claim_id": "mbo-klantmail-intern-ordertraject",
       "location": {
         "path": "catalog.js"

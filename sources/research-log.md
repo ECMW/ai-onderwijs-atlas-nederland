@@ -1,5 +1,9 @@
 # Onderzoekslog bronbasis
 
+## 23 november 2026 · Lesvoorbereiding en toolkeuze uitlichten
+
+De enquête van het European School Education Platform bevat 1.130 antwoorden uit meer dan 50 landen. Deelnemers melden AI-gebruik bij de lesvoorbereiding (vraag 2) en vragen om toegang tot goedgekeurde, veilige hulpmiddelen (vraag 7). De redactie koos daarom de lesgids voor 7 december en de keuzehulp voor 21 december 2026. De keuzehulp biedt vragen om toepassingen te beoordelen. Hoeveel Atlas-bezoekers beide taken hebben, is onbekend. [Onderzoeksresultaten European School Education Platform](https://school-education.ec.europa.eu/en/discover/surveys/survey-artificial-intelligence-teaching-and-learning)
+
 ## 23 november 2026 · Een klantmail over een bestelling controleren
 
 Via het openbare kwalificatieregister van SBB is het profiel Commercieel medewerker (25874, niveau 3, versie gewijzigd 2023) geopend. Werkproces P1-K1-W6 op pagina 21 en 22 beschrijft hoe de medewerker orderafspraken controleert, betrokkenen informeert en bij afwijkingen overlegt. De Atlas gebruikt deze beroepshandeling als context voor een eigen oefening met een fictieve bestelling en een conceptmail. Het werkblad is nog niet in een klas beproefd. [SBB, profiel Commercieel medewerker, p. 21–22](https://kwalificatie-mijn.s-bb.nl/Details/DownloadDocument/1967278#page=21)
