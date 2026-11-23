@@ -3,18 +3,25 @@ import json
 import re
 import unicodedata
 from collections import defaultdict
+from datetime import date, datetime
 from html import escape
 from pathlib import Path
 from string import Template
 from xml.etree import ElementTree
 
 from catalogue_feed import CATALOGUE_URL, FUNDING_TYPES, official_sources, record_description, write_catalogue_feed
+from lesson_directory import LANGUAGES
 from public_assets import versioned_html
+from validate_data import valid_lesson_start
 
 
 BASE_URL = CATALOGUE_URL.removesuffix("aanbod/")
 GENERATED_MARKER = '<meta name="generator" content="Atlas aanbodcatalogus">'
 SLUG = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
+ACCESS_LABELS = {"public": "Publiek toegankelijk", "registration_required": "Registratie nodig",
+                 "paid": "Betaalde toegang", "restricted": "Beperkte toegang"}
+COST_LABELS = {"free": "Gratis", "paid": "Betaald", "freemium": "Gratis en betaald"}
+MONTHS = "januari februari maart april mei juni juli augustus september oktober november december".split()
 
 
 def read_public_projection(root):
@@ -59,28 +66,66 @@ def directory_content(records):
     {"".join(sections)}"""
 
 
+def date_markup(value):
+    if not value:
+        return ""
+    instant = datetime.fromisoformat(value) if "T" in value else None
+    day = instant.date() if instant else date.fromisoformat(value)
+    label = f"{day.day} {MONTHS[day.month - 1]} {day.year}"
+    if instant:
+        offset = instant.strftime("%z")
+        label += f" om {instant:%H:%M} uur (UTC{offset[:3]}:{offset[3:]})"
+    return f'<time datetime="{escape(value)}">{escape(label)}</time>'
+
+
+def funding_section(record):
+    applicants = ", ".join(record.get("applicantTypes") or [])
+    conditions = record.get("eligibility") or ""
+    opening = date_markup(record.get("applicationOpenDate"))
+    deadline = date_markup(record.get("applicationDeadlineAt") or record.get("applicationDeadline") or record.get("fundingDeadline"))
+    amount = record.get("fundingAmount")
+    rows = [("Wie kan aanvragen?", escape(applicants or conditions or "Zie de officiële voorwaarden")),
+            ("Deelnamevoorwaarden", escape(conditions) if applicants and conditions != applicants else ""),
+            ("Indienen vanaf", opening), ("Uiterste indiening", deadline or "Geen uiterste datum bevestigd"),
+            ("Bedrag", escape(amount) if amount and amount != "Nog niet ingevuld" else "")]
+    facts = "".join(f"<div><dt>{label}</dt><dd>{value}</dd></div>" for label, value in rows if value)
+    return f'<section><h2>Aanvraag en voorwaarden</h2><dl class="offer-application">{facts}</dl></section>'
+
+
 def offer_content(record, description):
     sources = official_sources(record)
     if not sources:
         raise ValueError(f'Geen openbare officiële bron voor {record["id"]}')
-    facts = []
-    for key, label in (("providerName", "Aanbieder"), ("legacyType", "Type aanbod"), ("sectors", "Onderwijssector"),
-                       ("audiences", "Voor wie"), ("subjects", "Vakgebied"), ("lastVerified", "Bron gecontroleerd op")):
-        value = record.get(key)
-        if value:
-            text = ", ".join(value) if isinstance(value, list) else value
-            if key == "lastVerified":
-                year, month, day = text.split("-")
-                display = f'<time datetime="{escape(text)}">{escape(f"{day}-{month}-{year}")}</time>'
-            else:
-                display = escape(text)
-            facts.append(f"<div><dt>{label}</dt><dd>{display}</dd></div>")
+    funding = record.get("legacyType") in FUNDING_TYPES
+    rows = [("Aanbieder", record.get("providerName")), ("Type aanbod", record.get("legacyType")),
+            ("Onderwijssector", ", ".join(record.get("sectors") or [])), ("Voor wie", ", ".join(record.get("audiences") or [])),
+            ("Vakgebied", ", ".join(record.get("subjects") or []))]
+    if not funding:
+        rows.extend([("Toegang", ACCESS_LABELS.get(record.get("accessType"), "Toegang niet vastgesteld")),
+                     ("Kosten", COST_LABELS.get(record.get("costType"), "Kosten onbekend"))])
+    languages = [LANGUAGES.get(code, "Meertalig (talen niet gespecificeerd)" if code == "Meertalig" else code)
+                 for code in record.get("language") or []]
+    rows.append(("Taal", ", ".join(languages)))
+    facts = [f"<div><dt>{label}</dt><dd>{escape(value)}</dd></div>" for label, value in rows if value]
+    if record.get("lastVerified"):
+        facts.append(f'<div><dt>Bron gecontroleerd op</dt><dd>{date_markup(record["lastVerified"])}</dd></div>')
     links = "".join(f'<li><a href="{escape(s["url"])}">{escape(s.get("label") or record["providerName"])}</a></li>' for s in sources)
-    funding_note = "<p>Bekijk bij de aanbieder of deze ronde open is en welke voorwaarden gelden.</p>" if record.get("legacyType") in FUNDING_TYPES else ""
+    funding_note = "<p>Controleer de openstelling en de voorwaarden bij de aanbieder.</p>" if funding else ""
+    practical = funding_section(record) if funding else ""
+    lesson = record.get("lessonStart")
+    if (lesson and record.get("status") == "available" and valid_lesson_start(record)
+            and any(source["url"] == lesson["sourceUrl"] for source in sources)):
+        practical = f"""<section><h2>Opdracht voor de klas</h2><p>{escape(lesson['question'])}</p>
+          <nav aria-label="Klasopdracht"><a href="../../#leerlingblad?item={record['id']}">Open leerlingblad</a></nav>
+          <details><summary>Lees de opdracht</summary><p>{escape(lesson['task'])}</p></details></section>"""
+    conditions = record.get("eligibility")
+    access_details = (f"<details><summary>Bekijk de deelnamevoorwaarden</summary><p>{escape(conditions)}</p></details>"
+                      if not funding and conditions and conditions != "Nog niet ingevuld" else "")
     content = f"""<nav aria-label="Broodkruimel"><a href="../">Aanbod van A tot Z</a></nav>
     <header><h1>{escape(record["title"])}</h1><p>{escape(description)}</p></header>
-    <dl class="offer-facts">{''.join(facts)}</dl>
+    {practical}
     <section><h2>Officiële bronnen</h2>{funding_note}<ul>{links}</ul></section>
+    <dl class="offer-facts">{''.join(facts)}</dl>{access_details}
     <nav aria-label="Naar de interactieve Atlas"><a href="../../#item/{record["id"]}">Open deze kaart in de interactieve Atlas</a></nav>"""
     return content, [source["url"] for source in sources]
 
