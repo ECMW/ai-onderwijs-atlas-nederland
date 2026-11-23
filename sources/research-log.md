@@ -1,5 +1,9 @@
 # Onderzoekslog bronbasis
 
+## 23 november 2026 · Hoe is een vermoeden van AI-gebruik onderzocht?
+
+De Leidse uitspraak bespreekt op p. 3–4 uiteenlopende detectorscores en een alternatieve uitleg die onvoldoende was onderzocht. In de Utrechtse uitspraak staan op p. 6–7 de verificatie van bronnen, de uitleg van de student en het onderzoek naar feedbackformulieren. Het oordeel in de Utrechtse zaak betreft een onregelmatigheid. Deze twee beslissingen van instellingscolleges zijn opgenomen om de afweging in elk afzonderlijk dossier te kunnen nalezen. [Universiteit Leiden, zaak 25-223](https://www.organisatiegids.universiteitleiden.nl/binaries/content/assets/ul2staff/organisatiegids/universitaire-commissies/cbe/uitspraken-cbe/fraude/uitspraak-cbe-25-223.pdf#page=3) · [Hogeschool Utrecht, zaak B2025060135](https://husite.nl/jurisprudentie/wp-content/uploads/sites/344/2025/11/B2025060135-XXX.pdf#page=6)
+
 ## 23 november 2026 · Nieuwe financieringsrondes en een oproep voor sessies
 
 De Nederlandse aanvraagroute is per regeling gecontroleerd. Bij de NWO-promotiebeurs vraagt de leraar aan en ondersteunt de werkgever de vervanging. Bij CTL vraagt het college van bestuur aan. De Staatscourant bepaalt voor de vijfde CTL-ronde een eigen tijdvak in oktober 2027. Het budget van €27 miljoen geldt voor de vierde en vijfde ronde samen. Voor een sessie bij het landelijke AI-evenement van SURF en Npuls is het openbare indienformulier gecontroleerd tot de invoerstap. [NWO](https://zoek.officielebekendmakingen.nl/stcrt-2026-35440.html) · [CTL](https://zoek.officielebekendmakingen.nl/stcrt-2026-25326.html) · [Sessievoorstel](https://pretalx.surf.nl/richting-verantwoorde-inzet-ai-2026/cfp)

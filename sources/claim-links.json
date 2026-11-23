@@ -3,6 +3,17 @@
   "last_reviewed": "2026-11-23",
   "claims": [
     {
+      "claim_id": "examencommissie-vermoeden-ai-twee-uitspraken",
+      "location": {"path": "catalog.js"},
+      "claim": "In de Leidse zaak boden onder meer detectorscores en tekstkenmerken onvoldoende grond voor het bestreden besluit. In de Utrechtse zaak vond het college de onderbouwing van de onregelmatigheden in de bronnen en feedbackformulieren overtuigend.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": ["leiden-cbe-uitspraak-25-223", "hu-cbe-b2025060135-bronnen-en-feedback"],
+      "assessment": "De vergelijking betreft twee concrete beslissingen van instellingscolleges op administratief beroep. De leesvragen voor een eigen bespreking zijn Atlas-redactie. De beslissingen geven geen algemene bewijsdrempel voor AI-gebruik.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": false
+    },
+    {
       "claim_id": "promotiebeurs-2027-i-aanvrager",
       "location": {
         "path": "data/records.json",

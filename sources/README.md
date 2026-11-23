@@ -41,6 +41,10 @@ waarde `legal_effect: binding` betekent hier dat de voorwaarden gelden voor
 degene die de verleende rechten uitoefent. De reikwijdte hoort bij de
 specifieke licentie en het materiaal waarop de rechthebbende haar toepast.
 
+Gebruik `source_type: appeal_decision` voor een beslissing op een beroep.
+Leg de instantie vast. Beschrijf bij `legal_effect: binding` op welk dossier
+de beslissing betrekking heeft en begrens de claim tot de gemaakte afweging.
+
 ## Claimkoppeling
 
 Een claimkoppeling verwijst naar een bestaand bestand en, bij records, naar een
