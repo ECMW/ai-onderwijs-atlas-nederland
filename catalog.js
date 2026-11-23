@@ -1672,7 +1672,7 @@
   };
   const TASK_GUIDES = {
     examCases: {
-      filters:{...TASK_FILTERS, audience:['Examencommissies'], sector:['HBO','WO'], theme:['Toetsing en examinering']},
+      filters:{...TASK_FILTERS, audience:['Examencommissies'], sector:['MBO','HBO','WO'], theme:['Toetsing en examinering']},
       href:'#vermoeden-ai-gebruik', label:'Een vermoeden van AI-gebruik onderzoeken', countLabel:'1 leeswijzer',
       meta:'Lees hoe een detectorscore, een bronnenlijst en de uitleg van de student zijn gewogen in twee zaken.',
       action:'Vergelijk de uitspraken'
@@ -1689,6 +1689,16 @@
       meta:'Controleer de afspraken voor je opdracht en bepaal hoe je AI-gebruik vermeldt.', action:'Open keuzehulp'
     }
   };
+  function sectorGuide(guide, criteria) {
+    if (guide !== TASK_GUIDES.examCases) return guide;
+    const sectors = filterValues('sector', criteria.sector);
+    if (sectors.includes('MBO') && !sectors.some(sector => sector === 'HBO' || sector === 'WO')) {
+      return {...guide, href:'#mbo-examenmelding', label:'Vermoeden van AI-gebruik bij een beroepsgericht mbo-examen',
+        meta:'Controleer de afspraken over AI en zoek de stappen voor de examencommissie op.',
+        action:'Open de mbo-handreikingen'};
+    }
+    return guide;
+  }
   function taskGuideMatches(guide, criteria) {
     return activeFilters(criteria).every(([key, selected]) => selected.some(value => guide.filters[key]?.includes(value)));
   }
@@ -1714,7 +1724,7 @@
   function teacherRoutes(query, criteria) {
     const topic = normalize(query);
     const question = teacherQuestion(topic);
-    const guide = TASK_GUIDES[question];
+    const guide = sectorGuide(TASK_GUIDES[question], criteria);
     if (guide) {
       if (!taskGuideMatches(guide, criteria)) return [];
       if (question === 'assignment' && AI_DISCLOSURE.test(topic)) return [{...guide, href:guide.href + '?stap=vermelden'}];
@@ -2497,7 +2507,8 @@
       return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${matchesLabel(count, worksheets)} <span aria-hidden="true">→</span></small></a>`;
     });
     const audiences = values('audience');
-    for (const guide of Object.values(TASK_GUIDES)) {
+    for (const entry of Object.values(TASK_GUIDES)) {
+      const guide = sectorGuide(entry, state);
       if (audiences.some(role => guide.filters.audience.includes(role)) && taskGuideMatches(guide, state)) {
         links.unshift(`<a class="practice-link" data-question-route href="${guide.href}"><strong>${guide.tileLabel || guide.label}</strong><span>${guide.tileDetail || guide.meta}</span><small>${guide.action} <span aria-hidden="true">→</span></small></a>`);
       }
@@ -2898,13 +2909,32 @@
     focusAfterNavigation(main.querySelector('a'), fromGuide ? '.guide-routes a[href^="#notulen-controleren"]' : '.result-head h2');
   }
 
+  function renderMboExamReport() {
+    const previous = sessionGet('atlas.lastSearch');
+    const back = /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
+    main.innerHTML = `<article class="assessment-page">
+      <a href="${escapeHtml(back)}">Terug naar zoeken</a>
+      <header><h1 tabindex="-1">Vermoeden van AI-gebruik bij een beroepsgericht mbo-examen</h1>
+        <p>Een beoordelaar vermoedt dat een student AI heeft gebruikt. Pak de examenopdracht, de afnamecondities en het examenreglement van uw school erbij.</p></header>
+      <section><h2>Welke afspraak gold bij dit examen?</h2>
+        <p>Zoek op welke AI-hulp de student mocht gebruiken en hoe die het gebruik moest vermelden. De landelijke AI-richtlijn helpt scholen hun eigen afspraken vast te leggen.</p>
+        <a href="https://ovis-kennisbank.nl/app/uploads/sites/2/2025/09/Landelijke-richtlijn-AI-en-examinering_2406.pdf#page=1" target="_blank" rel="noopener noreferrer">Lees de afnamecondities in punt 3 van de AI-richtlijn (pdf, p. 1) ↗</a></section>
+      <section><h2>Wat is er waargenomen en wat vraagt onderzoek?</h2>
+        <p>Noteer op welke passage of handeling de melding berust, welke afspraak daarbij hoort en welke verklaring de student geeft. Houd open wat nog uitgezocht moet worden. De bewijskracht van een detectorscore blijft in deze handreikingen onbesproken.</p>
+        <p>Deel A van de handreiking beschrijft hoe de commissie bij een beroepsgericht examen onder meer oorzaak, gevolgen en betrokkenen in kaart kan brengen. Raadpleeg het eigen reglement voor de vervolgstappen.</p>
+        <a href="https://ovis-kennisbank.nl/app/uploads/sites/2/2024/08/20201029_Handreiking-onregelmatigheden-en-fraude-bij-beroepsgerichte-examens-versie-2.0.pdf#page=3" target="_blank" rel="noopener noreferrer">Open de handelwijze en rol van de examencommissie (pdf, p. 3–4) ↗</a></section>
+    </article>`;
+    focusAfterNavigation(main.querySelector('a'), '.result-head h2');
+  }
+
   function renderExamCases() {
     const previous = sessionGet('atlas.lastSearch');
     const back = /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
     main.innerHTML = `<article class="assessment-page">
       <a href="${escapeHtml(back)}">Terug naar zoeken</a>
       <header><h1 tabindex="-1">Een vermoeden van AI-gebruik onderzoeken</h1>
-        <p>Wat woog mee bij een melding aan de examencommissie? Twee uitspraken laten zien hoe de onderbouwing en de reactie van de student uitpakten in een concreet dossier.</p></header>
+        <p>Wat woog mee bij een melding aan de examencommissie? Twee uitspraken laten zien hoe de onderbouwing en de reactie van de student uitpakten in een concreet dossier in het hoger onderwijs.</p>
+        <p><a href="#mbo-examenmelding">Bekijk de handelwijze bij een beroepsgericht mbo-examen</a></p></header>
       <div class="assessment-layout">
         <section class="assessment-preview"><h2>Wat zegt een detectorscore?</h2>
           <p>Het College van beroep voor de examens van Universiteit Leiden bekeek meerdere detectorscores, de schrijfstijl en de uitleg van de student. Het vond de scores hooguit aanwijzingen en de alternatieve verklaring onvoldoende onderzocht. Het college vernietigde het besluit.</p>
@@ -3793,7 +3823,7 @@
       'praktijkgids': renderPracticeGuide, 'wat-werkt': renderLearningEvidence,
       'toolkeuze': renderToolChoice, 'pilotbesluit': renderPilotDecision, 'regels-in-de-praktijk': renderPracticeRules,
       'notulen-controleren': renderMinutesCheck, 'ai-bij-mijn-opdracht': renderStudentAssignment,
-      'vermoeden-ai-gebruik': renderExamCases
+      'mbo-examenmelding': renderMboExamReport, 'vermoeden-ai-gebruik': renderExamCases
     };
     if (Object.hasOwn(WORKSHEET_TEACHER_NOTES, path)) guides[path] = () => renderWorksheet(path);
     if (path === 'home' || (!Object.hasOwn(guides, path) && !['wegwijzer', 'nieuw', 'boeken', 'papers', 'zoeken', 'onderzoek', 'vergelijken', 'overlegblad', 'leerlingblad', 'toetsafspraak', 'teamproef', 'organisaties', 'mijn-atlas', 'bijdragen', 'over', 'beheer', 'wijzigingen', 'ecosysteem', 'dashboard', 'ik-zoek'].includes(path) && !path.startsWith('item/'))) renderHome();

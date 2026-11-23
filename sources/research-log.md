@@ -1,5 +1,9 @@
 # Onderzoekslog bronbasis
 
+## 23 november 2026 · Een melding bij een beroepsgericht mbo-examen
+
+De bestaande landelijke AI-richtlijn (punt 3) en de officiële handreiking voor beroepsgerichte examens (deel A, p. 3–4) zijn naast elkaar gelezen. De eerste onderbouwt de vraag welke afspraken vooraf golden. De tweede geeft een handelwijze bij een incident. De Atlas koppelt beide aan een leesvraag voor de commissie. De bronnen geven geen bewijsregel voor detectorscores. De aanduiding oktober 2020 komt uit de PDF zelf. Op de publicatiepagina staat augustus 2022 als actualisering. [Kennispunt MBO](https://www.onderwijsenexaminering.nl/publicaties/handreiking-onregelmatigheden-en-fraude-bij-beroepsgerichte-examens/)
+
 ## 23 november 2026 · Hoe is een vermoeden van AI-gebruik onderzocht?
 
 De Leidse uitspraak bespreekt op p. 3–4 uiteenlopende detectorscores en een alternatieve uitleg die onvoldoende was onderzocht. In de Utrechtse uitspraak staan op p. 6–7 de verificatie van bronnen, de uitleg van de student en het onderzoek naar feedbackformulieren. Het oordeel in de Utrechtse zaak betreft een onregelmatigheid. Deze twee beslissingen van instellingscolleges zijn opgenomen om de afweging in elk afzonderlijk dossier te kunnen nalezen. [Universiteit Leiden, zaak 25-223](https://www.organisatiegids.universiteitleiden.nl/binaries/content/assets/ul2staff/organisatiegids/universitaire-commissies/cbe/uitspraken-cbe/fraude/uitspraak-cbe-25-223.pdf#page=3) · [Hogeschool Utrecht, zaak B2025060135](https://husite.nl/jurisprudentie/wp-content/uploads/sites/344/2025/11/B2025060135-XXX.pdf#page=6)

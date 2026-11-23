@@ -1687,7 +1687,12 @@ test('exam boards find the two appeal decisions through their role and specific 
     assert.ok(api.suggestionData(text).flatMap(group => group.items).some(item => item.href === route));
   }
   for (const sector of ['HBO','WO']) assert.ok(load([], '#zoeken?audience=Examencommissies&sector=' + sector).resultsMarkup().includes('href="' + route + '"'));
-  for (const filter of [{sector:'MBO'}, {audience:'Leerlingen'}, {type:'Subsidie'}, {language:'en'}]) {
+  const mbo = load([], '#zoeken?' + new URLSearchParams({q:query,audience:'Examencommissies',sector:'MBO'}));
+  assert.match(mbo.resultsMarkup(), /href="#mbo-examenmelding"/);
+  assert.ok(mbo.suggestionData(query).flatMap(group => group.items).some(item => item.href === '#mbo-examenmelding'));
+  assert.ok(!mbo.resultsMarkup().includes('href="' + route + '"'));
+  assert.match(load([], '#zoeken?audience=Examencommissies&sector=MBO%2CVO').resultsMarkup(), /href="#mbo-examenmelding"/);
+  for (const filter of [{sector:'PO'}, {audience:'Leerlingen'}, {type:'Subsidie'}, {language:'en'}]) {
     const blocked = load([], '#zoeken?' + new URLSearchParams({q:query,...filter}));
     assert.ok(!blocked.resultsMarkup().includes('href="' + route + '"'));
     assert.ok(!blocked.suggestionData(query).flatMap(group => group.items).some(item => item.href === route));

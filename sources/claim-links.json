@@ -3,6 +3,22 @@
   "last_reviewed": "2026-11-23",
   "claims": [
     {
+      "claim_id": "mbo-beroepsgericht-examen-ai-melding",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "De mbo-leeswijzer verbindt de afgesproken afnamecondities met de handelwijze van de examencommissie bij een melding over een beroepsgericht examen.",
+      "claim_kind": "atlas_synthesis",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "kennispunt-npuls-2025-mbo-richtlijn-ai-examinering",
+        "kennispunt-mbo-onregelmatigheden-beroepsgerichte-examens"
+      ],
+      "assessment": "Punt 3 van de AI-richtlijn gaat over toegestane hulp. Deel A van de afzonderlijke handreiking beschrijft procedurele vragen. De leesvragen, waaronder de vraag naar de uitleg van de student, zijn Atlas-redactie. Deze documenten geven geen AI-specifieke bewijsdrempel.",
+      "last_reviewed": "2026-11-23",
+      "time_sensitive": false
+    },
+    {
       "claim_id": "examencommissie-vermoeden-ai-twee-uitspraken",
       "location": {"path": "catalog.js"},
       "claim": "In de Leidse zaak boden onder meer detectorscores en tekstkenmerken onvoldoende grond voor het bestreden besluit. In de Utrechtse zaak vond het college de onderbouwing van de onregelmatigheden in de bronnen en feedbackformulieren overtuigend.",

@@ -1,5 +1,11 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Een melding bij een beroepsgericht mbo-examen
+
+De zoekvraag ‘Wat doen we bij een vermoeden van AI-fraude?’ gaf in uitgave `aebf758` met de selecties MBO en Examencommissies nul resultaten. De eerdere leeswijzer behandelde twee uitspraken in het hoger onderwijs. De kandidaat opent voor het mbo twee vindplaatsen. Bij punt 3 van de landelijke AI-richtlijn kan de lezer de eigen afnamecondities controleren. Deel A van de handreiking voor beroepsgerichte examens biedt op pagina 3–4 een werkwijze bij een melding. De leesvragen over de waarneming, de verklaring van de student en wat nog openstaat zijn van de Atlas. De bronnen geven geen bewijsregel voor detectorscores. [Landelijke AI-richtlijn](https://www.onderwijsenexaminering.nl/publicaties/gebruik-van-ai-bij-toetsing-en-examinering-in-het-mbo-landelijke-richtlijn-als-vertrekpunt/) · [Handreiking beroepsgerichte examens](https://www.onderwijsenexaminering.nl/publicaties/handreiking-onregelmatigheden-en-fraude-bij-beroepsgerichte-examens/)
+
+Op 390, 640 en 1280 CSS-pixels is de zoekvraag voor en na vergeleken. In de kandidaat geeft de zoekvraag één leeswijzer. Beide officiële documenten openden via het toetsenbord. De teruglink herstelde de zoekselectie en de focus op de resultaatkop. Of een commissielid de juiste stukken hier sneller mee vindt, is onbekend. Controleer bij herziening van de richtlijn of de paragraaf en paginaverwijzingen nog kloppen.
+
 ## 23 november 2026 · Vanuit een lege lesgidsselectie verder zoeken
 
 Een leerkracht in het primair onderwijs koos in de browserproef ‘Beeldende vorming’. De lesgids van editie `892d804` toonde nul treffers. Via ‘Alle les- en werkmaterialen’ moest de leerkracht sector en vak opnieuw instellen om de tekenles van Digital Technologies Hub te vinden.

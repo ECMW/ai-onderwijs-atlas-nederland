@@ -4,6 +4,28 @@
   "verification_window_days": 90,
   "sources": [
     {
+      "source_id": "kennispunt-mbo-onregelmatigheden-beroepsgerichte-examens",
+      "title": "Handreiking – Onregelmatigheden en fraude bij beroepsgerichte examens",
+      "author_or_organisation": "Kennispunt MBO Onderwijs & Examinering",
+      "publication_date": "2020-10",
+      "url_or_doi": "https://www.onderwijsenexaminering.nl/publicaties/handreiking-onregelmatigheden-en-fraude-bij-beroepsgerichte-examens/",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Toetsing en examinering"
+      ],
+      "jurisdiction": "Nederland, beroepsgerichte examens in het mbo",
+      "claims_supported": [
+        "Deel A beschrijft een werkwijze voor het onderzoeken van een incident, het betrekken van de relevante personen en het bepalen van vervolgstappen."
+      ],
+      "reliability_notes": "De gekoppelde PDF vermeldt oktober 2020, herziene versie 3.0. De publicatiepagina vermeldt een actualisering in augustus 2022. Zie deel A, p. 3–4.",
+      "limitations": "De handreiking betreft beroepsgerichte examens. Ze behandelt geen AI-detectie en doet geen uitspraak over een individuele melding.",
+      "legal_effect": "non_binding",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active"
+    },
+    {
       "source_id": "leiden-cbe-uitspraak-25-223",
       "title": "Uitspraak 25-223",
       "author_or_organisation": "College van beroep voor de examens van de Universiteit Leiden",
@@ -386,7 +408,7 @@
       "limitations": "Dit landelijke basisdocument laat ruimte voor schooleigen vertaling. Het beoordeelt geen individuele toets of student en verleent zelf geen toestemming bij een specifiek examen.",
       "legal_effect": "non_binding",
       "peer_review_status": "not_applicable",
-      "last_verified": "2026-11-22",
+      "last_verified": "2026-11-23",
       "status": "active",
       "atlas_record_ids": []
     },
