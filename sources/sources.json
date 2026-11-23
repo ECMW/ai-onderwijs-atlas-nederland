@@ -44,6 +44,26 @@
       "status": "active"
     },
     {
+      "source_id": "rug-basisregels-ai-onderwijs",
+      "title": "Basisregels AI in het onderwijs",
+      "author_or_organisation": "Rijksuniversiteit Groningen",
+      "publication_date": "2024-01-11",
+      "url_or_doi": "https://www.rug.nl/about-ug/organization/quality-assurance/education/artificial-intelligence-ai/?lang=nl",
+      "source_type": "policy_document",
+      "primary_or_secondary": "primary",
+      "topics": ["Toetsing en examinering", "Beleid en governance"],
+      "jurisdiction": "Nederland, Rijksuniversiteit Groningen",
+      "claims_supported": [
+        "De RUG beschrijft in basisregels 2 en 3 wanneer en hoe studenten het gebruik van generatieve AI vermelden. Aanvullende afspraken kunnen per opleiding of vak verschillen. Studenten krijgen deze via de syllabus of Brightspace en kunnen hun docent om uitleg vragen."
+      ],
+      "reliability_notes": "De RUG publiceert de tien eigen basisregels en verwijst naar het onderliggende instellingsbeleid. De paginametadata vermeldt 11 januari 2024 als publicatiedatum en 28 oktober 2024 als laatste wijziging.",
+      "limitations": "De meldplicht in regel 2 gaat over gebruik dat verder gaat dan de algemene functies in regel 1. Plaatselijke aanvullingen zijn mogelijk. Deze regels zijn alleen voor het onderwijs van de RUG vastgesteld.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active"
+    },
+    {
       "source_id": "tilburg-tshd-ai-index-studenten-2026",
       "title": "AI Index Tilburg University",
       "author_or_organisation": "Tilburg University, Tilburg School of Humanities and Digital Sciences (TSHD); bewerking door Hsiao, den Oudsten, Venhuizen en Engelen",
