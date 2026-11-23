@@ -1688,11 +1688,14 @@
       .sort((a, b) => a.quality - b.quality || b.count - a.count);
     return ranked[0] || null;
   }
-  function relaxationSuggestions() {
+  function relaxationSuggestions(currentSheets) {
     return FILTER_KEYS.filter(key => values(key).length).map(key => {
-      const count = recordsForCriteria({ ...state, [key]: '' }).length;
-      return { key, values: values(key), count };
-    }).filter(item => item.count > 0).sort((a, b) => b.count - a.count).slice(0, 3);
+      const criteria = { ...state, [key]: '' };
+      const offers = recordsForCriteria(criteria).length;
+      const sheets = matchingWorksheetRoutes(criteria).length;
+      const label = values(key).map(value => filterOptionLabel(key, value)).join(' of ');
+      return { key, label, offers, sheets, total: offers + sheets };
+    }).filter(item => item.total > currentSheets).sort((a, b) => b.total - a.total).slice(0, 3);
   }
   const ASSESSMENT_CRITERIA = { q: 'toets', theme: 'Toetsing en examinering', type: 'materials,knowledge' };
   const AGREEMENT_CRITERIA = { q: 'afspraken', type: 'materials,knowledge' };
@@ -1757,8 +1760,20 @@
       teacher: 'Geef iedereen hetzelfde AI-antwoord en toegang tot de bron. Kijk of de aangehaalde passage het oordeel draagt, ook als iemand tot een andere conclusie komt.'
     }
   };
+  function comparisonToolLink() {
+    const params = new URLSearchParams({vergelijk: '1'});
+    for (const key of FILTER_KEYS) {
+      if (state[key]) params.set(key, state[key]);
+    }
+    return {comparison: true, label: 'Vergelijk twee toetsaanpakken', meta: 'Zelfstandig uitwerken of AI-feedback gebruiken', href: '#toetsafspraak?' + params};
+  }
   function assessmentToolLink(query) {
     const term = normalize(query);
+    const task = term.replace(/^(?:hoe kan ik|hoe kunnen we|kan ik|ik wil|we willen) /, '')
+      .replace(/ voor (?:dit|een|mijn|ons) leerdoel$/, '');
+    if (/^(?:(?:hoe )?vergelijk(?: ik| je| u| we| wij)? (?:twee |verschillende )?toets(?:vormen|aanpakken)|(?:twee |verschillende )?toets(?:vormen|aanpakken) vergelijken)$/.test(task)) {
+      return comparisonToolLink();
+    }
     if (['toetsafspraak', 'toetsafspraken', 'toetsafspraak maken'].includes(term)) {
       return {label:'Maak een toetsafspraak', meta:'Opdrachttekst voor uw klas', href:'#toetsafspraak'};
     }
@@ -1799,11 +1814,13 @@
 
   function assessmentEntry(tool = null) {
     const sectors = values('sector');
-    if (sectors.length && !sectors.some(sector => ['VO', 'MBO', 'HBO', 'WO'].includes(sector))) return '';
+    const comparing = tool?.comparison;
+    if (!comparing && sectors.length && !sectors.some(sector => ['VO', 'MBO', 'HBO', 'WO'].includes(sector))) return '';
     return `<section class="assessment-entry" aria-labelledby="assessment-entry-heading"><div>
-      <h2 id="assessment-entry-heading" tabindex="-1">Wat mag AI bij deze opdracht?</h2>
-      <p>Maak een tekst voor uw klas over de toegestane hulp, het eigen werk en de beoordeling.</p></div>
-      <a class="btn" href="${tool?.href || '#toetsafspraak'}">${tool?.label || 'Maak een toetsafspraak'}</a></section>`;
+      <h2 id="assessment-entry-heading" tabindex="-1">${comparing ? 'Welke toetsaanpak past bij uw leerdoel?' : 'Wat mag AI bij deze opdracht?'}</h2>
+      <p>${comparing ? 'Bekijk per aanpak wat een student laat zien en wat u daarvoor organiseert.' : 'Maak een tekst voor uw klas over de toegestane hulp, het eigen werk en de beoordeling.'}</p>
+      ${comparing ? '' : `<p><a href="${escapeHtml(comparisonToolLink().href)}">Vergelijk twee toetsaanpakken</a></p>`}</div>
+      <a class="btn" href="${escapeHtml(tool?.href || '#toetsafspraak')}">${escapeHtml(tool?.label || 'Maak een toetsafspraak')}</a></section>`;
   }
 
   function assessmentStorageKey(choice) {
@@ -1838,10 +1855,14 @@
       const saved = sessionGet('atlas.toetsafspraak.start');
       assessmentChoice = Object.hasOwn(ASSESSMENT_EXAMPLES, saved) ? saved : '';
     }
-    const startPoint = new URLSearchParams(location.hash.split('?')[1]).get('start');
+    const params = new URLSearchParams(location.hash.split('?')[1]);
+    const startPoint = params.get('start');
+    const comparing = params.get('vergelijk') === '1';
+    const originFilters = Object.fromEntries(FILTER_KEYS.filter(key => params.get(key)).map(key => [key, params.get(key)]));
+    const filteredReturn = comparing && Object.keys(originFilters).length > 0;
     const ownTest = startPoint === 'eigen';
     const explicitExample = Object.hasOwn(ASSESSMENT_EXAMPLES, startPoint);
-    const choice = ownTest ? '' : (explicitExample ? startPoint : assessmentChoice);
+    const choice = explicitExample ? startPoint : (ownTest || comparing ? '' : assessmentChoice);
     const example = ASSESSMENT_EXAMPLES[choice];
     const draft = readAssessmentDraft(choice);
     const taskField = `<label for="assessment-task">${example ? 'Wat is de opdracht?' : 'Uw bestaande toetsvraag of opdracht'}</label>
@@ -1857,7 +1878,7 @@
       return official ? [`<li><a href="${escapeHtml(official.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${label} ↗</a></li>`] : [];
     });
     main.innerHTML = `<section class="assessment-page">
-      <a href="${escapeHtml(criteriaHref(ASSESSMENT_CRITERIA))}">← Naar toetsmateriaal</a>
+      <a href="${escapeHtml(criteriaHref(filteredReturn ? originFilters : ASSESSMENT_CRITERIA))}">← ${filteredReturn ? 'Naar uw zoekselectie' : 'Naar toetsmateriaal'}</a>
       <header><h1>${ownTest ? 'Maak eigen werk zichtbaar in uw toets' : 'Maak een toetsafspraak'}</h1>
         <p>${ownTest ? 'Neem één bestaande toetsvraag. Kies wat de leerling zelf moet kunnen aantonen. U krijgt een opdrachttekst met een bewijsstap en een beoordelingscriterium.' : 'Werk met uw eigen leerdoel of pas een uitgewerkt toetsvoorbeeld aan voor uw klas.'}</p></header>
       <div class="assessment-start"><label for="assessment-start">Kies een startpunt</label>
@@ -1873,7 +1894,7 @@
         ${example ? '' : taskField}
         <label for="assessment-goal">Wat moet de leerling of student zelf kunnen?</label>
         <textarea id="assessment-goal" rows="2" maxlength="500" required placeholder="Bijv. twee bronnen vergelijken en een conclusie onderbouwen.">${escapeHtml(draft.goal)}</textarea>
-        <details class="assessment-custom assessment-compare"><summary>Vergelijk twee toetsaanpakken voor dit leerdoel</summary>
+        <details class="assessment-custom assessment-compare"${comparing ? ' open' : ''}><summary>Vergelijk twee toetsaanpakken voor dit leerdoel</summary>
           <p data-assessment-compare-goal></p><div class="assessment-compare-grid">
           ${Object.entries(ASSESSMENT_MODES).filter(([, mode]) => mode.interpretation).map(([key, mode]) => `<section>
             <h2>${mode.label}</h2><dl>
@@ -1991,8 +2012,9 @@
     start.onchange = () => {
       assessmentChoice = Object.hasOwn(ASSESSMENT_EXAMPLES, start.value) ? start.value : '';
       sessionSet('atlas.toetsafspraak.start', assessmentChoice);
-      if (ownTest || explicitExample) {
-        history.replaceState(history.state, '', '#toetsafspraak?start=' + (assessmentChoice || 'eigen'));
+      if (ownTest || explicitExample || comparing) {
+        params.set('start', assessmentChoice || 'eigen');
+        history.replaceState(history.state, '', '#toetsafspraak?' + params);
       }
       renderAssessment();
       main.querySelector('#assessment-start').focus();
@@ -2270,7 +2292,10 @@
     if (!link) return;
     link.onclick = event => {
       if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-      addEventListener('hashchange', () => document.querySelector(selector)?.focus(), {once: true});
+      addEventListener('hashchange', () => {
+        const target = document.querySelector(selector);
+        if (target) restoreCardFocus(target, scrollY);
+      }, {once: true});
     };
   }
   function researchQuery(query) {
@@ -2492,14 +2517,14 @@
         ${state.status ? `<a href="${escapeHtml(stateHref({ status: '' }))}">Bekijk alle aanvraagstatussen binnen deze selectie</a>` : `<a href="${escapeHtml(criteriaHref({ sector: state.sector }))}">Bekijk ander aanbod${state.sector ? ' in deze sectorselectie' : ''}</a>`}</div>`;
     }
     const alternative = routes.length ? null : alternativeSuggestion();
-    const relaxations = relaxationSuggestions();
+    const relaxations = relaxationSuggestions(worksheetCount);
     const notice = worksheetCount ? '<p>Geen andere treffers in de catalogus.</p>' :
       `<span class="eyebrow">Geen exacte match</span><h2>We helpen u verder</h2>${alternative ?
         `<a class="alternative" href="${escapeHtml(stateHref({ q: alternative.candidate }))}">Bedoelde u <strong>${escapeHtml(alternative.candidate)}</strong>? <span>${alternative.count} ${alternative.count === 1 ? 'resultaat' : 'resultaten'}</span></a>` :
         `<p>${state.q ? 'Uw zoekopdracht levert binnen deze selectie geen resultaten op.' : 'Er is geen aanbod met deze combinatie van filters.'}</p>`}`;
     return `<div class="empty">${notice}
       ${actions}
-      ${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${escapeHtml(stateHref({ [item.key]: '' }))}">Zonder ${escapeHtml(item.values.join(' of '))} <strong>${item.count}</strong></a>`).join('')}</div>` : ''}
+      ${relaxations.length ? `<div class="relaxations"><h3>Meer resultaat door één keuze los te laten</h3>${relaxations.map(item => `<a href="${escapeHtml(stateHref({ [item.key]: '' }))}">Zonder ${escapeHtml(item.label)} <strong>${matchesLabel(item.offers, item.sheets)}</strong></a>`).join('')}</div>` : ''}
       <button class="clear-link" type="button">Begin opnieuw</button><p><a href="#bijdragen">Ontbreekt er aanbod? Laat het weten.</a></p></div>`;
   }
   function pickedActionLinks(scope) {
@@ -3053,8 +3078,15 @@
     const amount = funding && fundingAmount(record);
     const sourceLinks = `<h3>Officiële bronnen</h3>${sources.length ? `<div class="source-actions">${sources.map((sourceItem, index) => `<a class="btn ${index ? 'secondary' : ''}" href="${escapeHtml(sourceItem.url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${escapeHtml(sourceItem.label || 'Officiële bron')} ↗</a>`).join('')}</div>` : '<p class="source-warning">Voor dit record is nog geen officiële bron vastgelegd.</p>'}`;
     const lesson = hasAvailableLesson(record) && lessonStartBody(record);
-    main.innerHTML = `<header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(offerLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1><p class="listing-notice">${LISTING_NOTICE}</p></header>
-      <section class="detail-shell"${materialDetail ? ` data-atlas-material-detail="${escapeHtml(record.id)}"` : ''}><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${backLabel}</a><span>Home / ${fromDirectory ? 'Lesgids' : fromNewOffers ? 'Nieuw aanbod' : lastSearch.startsWith('#onderzoek') ? 'Onderzoek' : 'Resultaten'} / ${escapeHtml(record.title)}</span></nav>
+    let materialAction = '';
+    if (lesson) {
+      materialAction = `<a class="btn" href="${escapeHtml(learnerSheetHref(record))}" aria-label="Open leerlingblad: ${escapeHtml(record.lessonStart.question)}">Open leerlingblad</a>`;
+    } else if (materialDetail) {
+      materialAction = `<a class="btn" href="${escapeHtml(sources[0].url)}"${sourceUsage(record)} target="_blank" rel="noopener noreferrer">${escapeHtml(sourceActionLabel(record))} ↗</a>`;
+    }
+    main.innerHTML = `<div${materialDetail ? ` data-atlas-material-detail="${escapeHtml(record.id)}"` : ''}>
+      <header class="detail-hero"><div class="detail-hero-top"><span class="eyebrow">${escapeHtml(offerLabel(record))}</span>${commercialBadge(record)}</div><h1>${escapeHtml(record.title)}</h1>${materialAction}<p class="listing-notice">${LISTING_NOTICE}</p></header>
+      <section class="detail-shell"><nav class="detail-nav" aria-label="Terugnavigatie"><a class="back-results" href="${escapeHtml(lastSearch)}">${backLabel}</a><span>Home / ${fromDirectory ? 'Lesgids' : fromNewOffers ? 'Nieuw aanbod' : lastSearch.startsWith('#onderzoek') ? 'Onderzoek' : 'Resultaten'} / ${escapeHtml(record.title)}</span></nav>
       <div class="detail-layout"><article>
         ${funding ? `<section class="funding-conditions"><h2>Aanvraag en voorwaarden</h2><dl>
           <div><dt>Aanvragers</dt><dd>${escapeHtml(applicants)}</dd></div>
@@ -3077,12 +3109,13 @@
         <button class="btn secondary share-item" type="button" data-share-item>Deel dit item</button>
         <p id="detail-feedback" class="action-feedback" aria-live="polite"></p>
         <aside class="item-contribution"><h3>Klopt deze informatie nog?</h3><p>Help mee met een correctie of aanvulling.</p><a class="btn secondary" href="#bijdragen?item=${encodeURIComponent(record.id)}">Fout of aanvulling doorgeven</a></aside>
-      </aside></div></section>`;
+      </aside></div></section></div>`;
     if (lesson) bindLessonCopy(main);
     if (materialDetail) window.dispatchEvent?.(new Event('atlas-material-detail'));
     const back = document.querySelector('.back-results');
     back.onclick = () => { if (!fromDirectory) sessionSet('atlas.restoreResults', lastSearch); };
-    if (directoryReturn) document.querySelector('.lesson-detail a[href^="#leerlingblad?"]')?.addEventListener('click', () => sessionSet('atlas.lastSearch', directoryReturn));
+    if (directoryReturn) main.querySelectorAll('a[href^="#leerlingblad?"]').forEach(link =>
+      link.addEventListener('click', () => sessionSet('atlas.lastSearch', directoryReturn)));
     document.querySelectorAll('.related-cards a[href^="#item/"]').forEach(link => link.onclick = () => sessionSet('atlas.lastSearch', lastSearch));
     const copy = document.querySelector('[data-copy-citation]');
     if (copy) copy.onclick = () => copySourceCitation(record);
@@ -3376,6 +3409,7 @@
       focusAfterNavigation(link, target);
     });
     focusAfterNavigation(panel.querySelector('.lesson-shortcut .btn'), '.result-head h2');
+    panel.querySelectorAll('.empty a[href^="#zoeken"]').forEach(link => focusAfterNavigation(link, '.result-head h2'));
     if (sector) sector.onchange = () => {
       state.sector = sector.value;
       if (['#home', ''].includes(location.hash)) state.sort = 'relevant';
@@ -3558,6 +3592,12 @@
     document.querySelector(`.site-header nav a[href="#${CSS.escape(path)}"]`)?.setAttribute('aria-current', 'page');
     const updated = document.querySelector('[data-updated]'); if (updated) updated.textContent = source.metadata.updated || '';
     if (!['zoeken', 'organisaties'].includes(path) && !focusedBookGroup && !focusedNewOffer) {
+      if (path === 'toetsafspraak' && new URLSearchParams(location.hash.split('?')[1]).get('vergelijk') === '1') {
+        const summary = main.querySelector('.assessment-compare > summary');
+        summary.scrollIntoView({block: 'center', behavior: 'instant'});
+        restoreCardFocus(summary, scrollY);
+        return;
+      }
       scrollTo({ top: 0, behavior: 'instant' });
       const target = Object.hasOwn(guides, path) ? main.querySelector('h1') : path === 'onderzoek' ? document.querySelector('#research-heading') : path === 'papers' ? document.querySelector('#papers-heading') : main;
       (target || main).focus({ preventScroll: true });
