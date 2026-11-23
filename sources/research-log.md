@@ -1,11 +1,5 @@
 # Onderzoekslog bronbasis
 
-## 23 november 2026 · Nieuwe financieringsrondes en een oproep voor sessies
-
-De Nederlandse aanvraagroute is per regeling gecontroleerd. Bij de NWO-promotiebeurs vraagt de leraar aan en ondersteunt de werkgever de vervanging. Bij CTL vraagt het college van bestuur aan. De Staatscourant bepaalt voor de vijfde CTL-ronde een eigen tijdvak in oktober 2027. Het budget van €27 miljoen geldt voor de vierde en vijfde ronde samen. Voor een sessie bij het landelijke AI-evenement van SURF en Npuls is het openbare indienformulier gecontroleerd tot de invoerstap. [NWO](https://zoek.officielebekendmakingen.nl/stcrt-2026-35440.html) · [CTL](https://zoek.officielebekendmakingen.nl/stcrt-2026-25326.html) · [Sessievoorstel](https://pretalx.surf.nl/richting-verantwoorde-inzet-ai-2026/cfp)
-
-Voor Creative Europe zijn de consortiumplicht, Nederlandse deelname en prioriteit voor moeilijk bereikbare volwassenen gecontroleerd in de callfiche. De programmagids Erasmus+ voor 2027 maakt onderscheid tussen leermobiliteit en allianties met bedrijven. Voor KA122-SCH noemt deze editie 6 tot 24 maanden projectduur. Een oudere algemene toelichting noemt nog 6 tot 18 maanden. Het Europese voorbeeldformulier dient om voor te bereiden. Bij beide Erasmus+-rondes blijft de exacte opening van het specifieke indienloket onbevestigd. [Media Literacy](https://www.creativeeuropedesk.nl/nl/node/1742669) · [Programmagids 2027, p. 133–134](https://erasmus-plus.ec.europa.eu/sites/default/files/2026-11/programme-guide-erasmus-27_nl.pdf#page=133) · [Alliances for Innovation](https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/alliances-for-innovation)
-
 ## 23 november 2026 · Mag ik AI gebruiken bij deze opdracht?
 
 Curio maakt op de studentenpagina onderscheid tussen les, examen en stage. Bij een onduidelijke opdracht kan de leerling de docent vragen om uitleg. Op stage bespreekt de student het gebruik vooraf met de praktijkbegeleider. De stappen zijn op de webpagina leesbaar. De daar gelinkte hulpkaart versie 1.5 gaf bij controle HTTP 404. [Curio, Generatieve AI tijdens je studie](https://lerenbij.curio.nl/generatieve-ai/generatieve-ai-tijdens-je-studie/)
