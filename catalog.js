@@ -2481,7 +2481,13 @@
         work = `<p><a class="btn secondary" href="${escapeHtml(stateHref().replace('#zoeken', '#onderzoek'))}">Onderzoek doen of promoveren</a></p>`;
       }
       else if (papersQuery(state.q)) work = '<p><a class="btn secondary" href="#papers">Papers over AI en onderwijs</a></p>';
-      else if (normalize(state.q) === 'afspraken') work = teamTrialEntry() + assessmentEntry();
+      else if (normalize(state.q) === 'afspraken') {
+        if (task?.criteria === AGREEMENT_CRITERIA && taskGuideMatches(TASK_GUIDES.pilotDecision, state)) {
+          const sheet = stateHref({q:'', type:'', van:'afspraken'}).replace('#zoeken', '#pilotbesluit');
+          work = `<p><a data-agreement-decision href="${escapeHtml(sheet)}">Open het besluitblad voor een AI-proef</a></p>`;
+        }
+        work += teamTrialEntry() + assessmentEntry();
+      }
       else if (teamTrialQuery(state.q)) work = teamTrialEntry();
       else {
         const tool = assessmentToolLink(state.q);
@@ -2814,14 +2820,19 @@
   }
 
   function renderPilotDecision() {
-    const fromSearch = new URLSearchParams(location.hash.split('?')[1]).get('van') === 'zoeken';
+    const params = new URLSearchParams(location.hash.split('?')[1]);
+    const origin = params.get('van');
+    params.delete('van');
+    const fromAgreements = origin === 'afspraken';
+    const fromSearch = fromAgreements || origin === 'zoeken';
     const previous = sessionGet('atlas.lastSearch');
-    const back = /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
+    const back = fromAgreements ? criteriaHref({...Object.fromEntries(params), ...AGREEMENT_CRITERIA}) :
+      /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
     const fields = PILOT_FIELDS.map(([key, label, prompt]) => `<div class="pilot-field">
       <label for="pilot-${key}">${escapeHtml(label)}</label><p id="pilot-help-${key}">${escapeHtml(prompt)}</p>
       <textarea id="pilot-${key}" data-pilot-field="${key}" rows="2" aria-describedby="pilot-help-${key}" autocomplete="off"></textarea></div>`).join('');
     main.innerHTML = `<article class="assessment-page pilot-page"><nav class="detail-back" aria-label="Verder in de Atlas">
-      ${fromSearch ? `<a data-pilot-back href="${escapeHtml(back)}">Terug naar zoeken</a> · ` : ''}
+      ${fromSearch ? `<a data-pilot-back href="${escapeHtml(back)}">${fromAgreements ? 'Terug naar AI-afspraken' : 'Terug naar zoeken'}</a> · ` : ''}
       <a href="#praktijkgids">Naar de praktijkgids</a> · <a href="#toolkeuze">Naar de toepassing voor mijn les</a></nav>
       <header><h1 tabindex="-1">Besluiten over een AI-proef</h1>
         <p>Wil een team een AI-toepassing gaan gebruiken? Vul samen met schoolleiding, onderwijs en ICT of privacy één besluitblad in. Benoem wie volgens de afspraken van uw instelling mag besluiten en wie het besluit later kan herzien.</p></header>
@@ -2843,7 +2854,7 @@
         </ul><p class="assessment-note">De bronkaarten openen in een nieuw tabblad zodat uw besluitblad openblijft. Deze handreikingen ondersteunen het gesprek. Uw instelling bepaalt of de inzet kan doorgaan.</p>
       </aside></div></article>`;
     const form = main.querySelector('.assessment-form');
-    if (fromSearch) focusAfterNavigation(main.querySelector('[data-pilot-back]'), '.result-head h2');
+    if (fromSearch) focusAfterNavigation(main.querySelector('[data-pilot-back]'), fromAgreements ? '[data-agreement-decision]' : '.result-head h2');
     const advice = form.querySelector('[data-pilot-advice]');
     const feedback = form.querySelector('[data-pilot-feedback]');
     const fallback = form.querySelector('[data-pilot-copy]');
