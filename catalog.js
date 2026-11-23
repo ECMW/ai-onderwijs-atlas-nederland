@@ -2435,6 +2435,9 @@
       if (!count && !worksheets) return `<span class="practice-link unavailable">${content}<small>Geen resultaten</small></span>`;
       return `<a class="practice-link" href="${escapeHtml(criteriaHref(criteria))}">${content}<small>${matchesLabel(count, worksheets)} <span aria-hidden="true">→</span></small></a>`;
     });
+    if (values('audience').includes('Ondersteunend personeel') && matchesMinutesFilters(state)) {
+      links.unshift('<a class="practice-link" data-question-route href="#notulen-controleren"><strong>Notulen controleren</strong><span>Verbeter de afsprakenlijst van een schooloverleg.</span><small>Open oefening <span aria-hidden="true">→</span></small></a>');
+    }
     const researchHref = criteriaHref(context).replace('#zoeken', '#onderzoek');
     links.push(`<a class="practice-link" href="${escapeHtml(researchHref)}"><strong>Onderzoek doen of promoveren</strong><span>Promotieplaatsen, onderzoeksdata en praktijkonderzoek</span><small>Bekijk routes <span aria-hidden="true">→</span></small></a>`);
     return `<section class="practice-start" aria-labelledby="practice-title"><div class="practice-heading"><h2 id="practice-title" tabindex="-1">Waar wilt u mee aan de slag?</h2>

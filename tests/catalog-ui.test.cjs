@@ -2571,6 +2571,14 @@ test('minute-taking practice copies the visitor’s own corrections and keeps an
   assert.ok(copy.disabled && fallback.hidden);
 });
 
+test('the selected support role can start minute-taking practice without guessing a search term', () => {
+  const support = '#zoeken?audience=Ondersteunend+personeel&sector=MBO';
+  assert.match(load([], support).resultsMarkup(), /class="practice-link" data-question-route href="#notulen-controleren"/);
+  for (const selection of [support + '&language=en', support + '&vak=Biologie', '#zoeken?audience=Leerlingen', '#zoeken']) {
+    assert.doesNotMatch(load([], selection).resultsMarkup(), /class="practice-link" data-question-route href="#notulen-controleren"/);
+  }
+});
+
 test('comparing AI tools is reachable directly from the search box', () => {
   const api = load([], '#zoeken?sector=VO&vak=Biologie');
   for (const query of ['AI-tools vergelijken', 'Welke AI-toepassing past bij mijn les?']) {
