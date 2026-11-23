@@ -1606,12 +1606,13 @@
   const AI_DISCLOSURE = /\b(?:vermeld(?:en|ing)?|verantwoord(?:en|ing)|aangeven|geef ik aan)\b/;
   function studentAssignmentQuestion(query) {
     if (!/\b(?:ai|chatgpt|kunstmatige intelligentie)\b/.test(query) ||
-        /\b(?:(?:als|voor) (?:docent(?:en)?|leraar|leerkracht)|opstellen|(?:mijn|van(?: de| een)?) (?:student(?:en)?|leerling(?:en)?))\b/.test(query)) return false;
+        /\b(?:(?:als|voor) (?:docent(?:en)?|leraar|leerkracht)|(?:mijn|van(?: de| een)?) (?:student(?:en)?|leerling(?:en)?))\b/.test(query)) return false;
     const assignment = /\b(?:opdracht|schoolopdracht|huiswerk|verslag|werkstuk|scriptie|toets|tentamen|examen)\b/.test(query);
     const learner = /\b(?:student(?:en)?|leerling(?:en)?)\b/.test(query);
-    const permission = /\b(?:mag|mogen|toegestaan|toestemming|afspraken|regels)\b/.test(query);
+    const permission = /\b(?:mag|mogen|toegestaan|toestemming|afspraken|regels|richtlijnen)\b/.test(query);
     const disclosure = AI_DISCLOSURE.test(query);
     const ownWork = assignment && /\b(?:mijn|ons|onze|mag ik|mogen we)\b/.test(query);
+    if (!ownWork && /\bopstellen\b/.test(query)) return false;
     return (ownWork && (permission || disclosure || /\b(?:bij|voor|in) (?:mijn|ons|onze)\b/.test(query))) ||
       (learner && (permission || disclosure)) ||
       (disclosure && (/\b(?:moet ik|hoe .*?ik|kan ik)\b/.test(query) || /^(?:ai gebruik|gebruik van (?:ai|chatgpt)|chatgpt) (?:vermelden|verantwoorden)$/.test(query)));

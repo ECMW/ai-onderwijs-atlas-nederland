@@ -8,7 +8,7 @@ De zoekbalk, praktijkgids en leerling- en studentprofielen bieden nu een keuzehu
 
 De browserproef omvatte drie vragen in vijf profielsituaties. Op 320, 390 en 1280 pixels zijn de drie situaties met het toetsenbord geopend en bewerkte teksten gekopieerd. Bij geweigerde klembordtoegang bleef de tekst selecteerbaar. De invoer kwam bij de proef niet terecht in netwerkverzoeken, de URL of webopslag. Of studenten hierdoor de afspraken beter toepassen is nog onbekend.
 
-De volgende controle betreft examencommissieleden. Bij de nulmeting leverde de combinatie ‘Examencommissies’ en ‘HBO’ twintig treffers op. De rol ontbrak in het profiel. Controleer of een commissielid vanuit het eigen profiel een openbaar bruikbare bron voor toetsbeleid kan bereiken.
+Een examencommissielid kon de eigen doelgroep wel filteren, maar niet bewaren als profiel. De nieuwe profielkeuze gebruikt de bestaande doelgroep ‘Examencommissies’. Bij de browserproef leverde deze zes kaarten voor mbo, twintig voor hbo en achttien voor wo. Na het heropenen bleef de selectie staan. Vanuit het hbo-profiel is het openbare vijfstappenplan voor geschreven eindproducten bereikt. Een specifiekere vraag over de bewijskracht van een AI-detector leverde bij de nulmeting geen antwoord op. Controleer in een volgende ronde of een actuele bron de rol en handelingsmogelijkheden van de examencommissie duidelijk maakt. [Vijfstappenplan van de Universiteit Utrecht](https://www.uu.nl/onderwijs/onderwijsadvies-training/kennisdossiers/themadossier-generatieve-ai-in-het-onderwijs/geschreven-eindproducten-toetsen-in-tijden-van-genai)
 
 ## 23 november 2026 · Een AI-conceptverslag controleren
 

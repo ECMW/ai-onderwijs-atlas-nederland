@@ -1670,6 +1670,7 @@ test('a learner can find the assignment guide by asking about permission or disc
     ['Mag ik als leerling ChatGPT gebruiken?', ''], ['Mag ik AI gebruiken voor mijn huiswerk?', ''],
     ['Mag ik mijn verslag door AI laten nakijken?', ''],
     ['Regels AI voor studenten', ''], ['Welke regels gelden voor mij als student in het mbo bij AI?', ''],
+    ['Richtlijnen AI voor studenten', ''], ['Mag ik AI gebruiken voor het opstellen van mijn verslag?', ''],
     ['Moet ik ChatGPT vermelden?', '?stap=vermelden'], ['AI-gebruik vermelden', '?stap=vermelden'],
     ['Hoe vermeld ik mijn AI-gebruik?', '?stap=vermelden'], ['Hoe geef ik aan dat ik ChatGPT heb gebruikt?', '?stap=vermelden']
   ]) {
