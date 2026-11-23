@@ -33565,7 +33565,7 @@
     ],
     "status": "available",
     "publicationDate": null,
-    "lastVerified": "2026-10-09",
+    "lastVerified": "2026-11-23",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -33600,11 +33600,19 @@
         "date": "2026-10-09",
         "type": "added",
         "summary": "Toegevoegd op verzoek van Eva na controle van de officiële bron en bestaande Atlas-vermeldingen."
+      },
+      {
+        "date": "2026-11-23",
+        "type": "updated",
+        "summary": "Vakgebied zorg en gezondheid bevestigd met de zorgsettings en patiëntgesprekken in de onderwijsapp."
       }
     ],
     "offerCategory": "software",
     "notes": "Geselecteerd uit de categorie Onderwijs van https://aigovernanceofficer.github.io/AI-app-store/ op verzoek van Eva. De catalogus noemt de bereikbare apps gratis; eventuele externe API-kosten staan apart vermeld. Bereikbaarheid en zichtbare functies zijn gecontroleerd, niet de volledige werking, veiligheid of onderwijseffectiviteit. UU-vormgeving bewijst geen institutioneel eigenaarschap of goedkeuring. De interface kan de API-sleutel lokaal in de browser bewaren en verstuurt gesprekstekst naar de gekozen modelaanbieder. Geen echte patiëntgegevens gebruikt tijdens de broncontrole. Geen onafhankelijke toets van klinische of didactische juistheid.",
-    "availabilityText": "De browserapp is bereikbaar; een eigen Claude- of GPT-API-sleutel is nodig. De app is gratis volgens de maker; modelgebruik kan kosten meebrengen."
+    "availabilityText": "De browserapp is bereikbaar; een eigen Claude- of GPT-API-sleutel is nodig. De app is gratis volgens de maker; modelgebruik kan kosten meebrengen.",
+    "subjects": [
+      "Zorg en gezondheid"
+    ]
   },
   {
     "id": "aigo-transcribe-tool",
