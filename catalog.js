@@ -474,6 +474,8 @@
   }
   const searchDocuments = new WeakMap();
   const searchPlans = new Map();
+  const ASSIGNMENT_RULE_TERMS = new Set(['regels', 'afspraken', 'richtlijnen']);
+  const RULE_TOPIC = /\b(?:(?:school|klas|gebruiks|toets|spel|gedrags)?regels|(?:school|klas|gebruiks|toets)?afspraken|richtlijnen)\b/;
   function searchPlan(query) {
     const normalized = normalize(query);
     if (searchPlans.has(normalized)) return searchPlans.get(normalized);
@@ -489,7 +491,10 @@
     // An unqualified sector name is also searchable through the sector metadata.
     // Keep an institution's complete name available for a literal provider search.
     const sector = Object.entries(SECTOR_QUERY_NAMES).find(([, names]) => names.includes(normalized));
-    const plan = {normalized, groups, sectors: sector ? sector[0].split(',') : [], scores: new WeakMap()};
+    const assignmentRules = tokens.some(token => ASSIGNMENT_RULE_TERMS.has(token)) && studentAssignmentQuestion(normalized);
+    const learnerAudiences = assignmentRules ? ['Studenten', 'Leerlingen'].filter(role =>
+      tokens.includes(normalize(role)) || tokens.includes(normalize(personaLabel(role)))) : [];
+    const plan = {normalized, groups, assignmentRules, learnerAudiences, sectors: sector ? sector[0].split(',') : [], scores: new WeakMap()};
     if (searchPlans.size >= 50) searchPlans.delete(searchPlans.keys().next().value);
     searchPlans.set(normalized, plan);
     return plan;
@@ -498,17 +503,29 @@
     const plan = searchPlan(query);
     if (!plan.normalized) return 3;
     if (plan.scores.has(record)) return plan.scores.get(record);
+    if (plan.learnerAudiences.length && !plan.learnerAudiences.some(role => record.audiences?.includes(role))) {
+      plan.scores.set(record, 0);
+      return 0;
+    }
     if (!searchDocuments.has(record)) {
       const text = recordText(record);
       searchDocuments.set(record, {text, words: [...new Set(text.split(' '))]});
     }
-    const {text, words} = searchDocuments.get(record);
-    const tokenMatches = (token, fuzzy) => words.some(word => {
+    const indexed = searchDocuments.get(record);
+    const {text, words} = indexed;
+    if (plan.assignmentRules && indexed.ruleTopic === undefined) {
+      // Search the subject of the material. Procedural instructions can refer to rows in a table as “regels”.
+      indexed.ruleTopic = RULE_TOPIC.test(normalize([record.title, record.description, record.purpose, record.subtype,
+        ...(record.keywords || []), record.lessonStart?.question, record.lessonStart?.learningGoal].join(' ')));
+    }
+    const wordMatches = (token, fuzzy) => words.some(word => {
       if (word === token || (token.length >= 3 && word.startsWith(token))) return true;
       if (!fuzzy || token.length < 4 || word.length < 4 || token[0] !== word[0] || /[0-9]/.test(token + word)) return false;
       const limit = Math.min(token.length, word.length) >= 10 ? 2 : 1;
       return Math.abs(token.length - word.length) <= limit && levenshtein(token, word) <= limit;
     });
+    const tokenMatches = (token, fuzzy) => plan.assignmentRules && ASSIGNMENT_RULE_TERMS.has(token)
+      ? indexed.ruleTopic : wordMatches(token, fuzzy);
     const allGroupsMatch = fuzzy => plan.groups.every(group =>
       group.some(alternative => alternative.every(token => tokenMatches(token, fuzzy))));
     const sectorMatch = plan.sectors.some(sector => (record.sectors || []).includes(sector));
@@ -1589,7 +1606,7 @@
   const AI_DISCLOSURE = /\b(?:vermeld(?:en|ing)?|verantwoord(?:en|ing)|aangeven|geef ik aan)\b/;
   function studentAssignmentQuestion(query) {
     if (!/\b(?:ai|chatgpt|kunstmatige intelligentie)\b/.test(query) ||
-        /\b(?:(?:als|voor) (?:docent(?:en)?|leraar|leerkracht)|nakijken|beoordelen|opstellen|mijn (?:studenten|leerlingen))\b/.test(query)) return false;
+        /\b(?:(?:als|voor) (?:docent(?:en)?|leraar|leerkracht)|opstellen|(?:mijn|van(?: de| een)?) (?:student(?:en)?|leerling(?:en)?))\b/.test(query)) return false;
     const assignment = /\b(?:opdracht|schoolopdracht|huiswerk|verslag|werkstuk|scriptie|toets|tentamen|examen)\b/.test(query);
     const learner = /\b(?:student(?:en)?|leerling(?:en)?)\b/.test(query);
     const permission = /\b(?:mag|mogen|toegestaan|toestemming|afspraken|regels)\b/.test(query);

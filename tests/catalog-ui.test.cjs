@@ -1668,6 +1668,7 @@ test('a learner can find the assignment guide by asking about permission or disc
   for (const [query, step] of [
     ['Mag ik AI gebruiken bij mijn opdracht?', ''], ['AI bij mijn opdracht', ''],
     ['Mag ik als leerling ChatGPT gebruiken?', ''], ['Mag ik AI gebruiken voor mijn huiswerk?', ''],
+    ['Mag ik mijn verslag door AI laten nakijken?', ''],
     ['Regels AI voor studenten', ''], ['Welke regels gelden voor mij als student in het mbo bij AI?', ''],
     ['Moet ik ChatGPT vermelden?', '?stap=vermelden'], ['AI-gebruik vermelden', '?stap=vermelden'],
     ['Hoe vermeld ik mijn AI-gebruik?', '?stap=vermelden'], ['Hoe geef ik aan dat ik ChatGPT heb gebruikt?', '?stap=vermelden']
@@ -1685,7 +1686,8 @@ test('a learner can find the assignment guide by asking about permission or disc
   const api = load([]);
   for (const query of ['AI', 'ChatGPT', 'Bronvermelding', 'AI voor leerlingen', 'AI-tools vergelijken',
     'Mag ik leerlingwerk uploaden naar ChatGPT?', 'AI-afspraken voor studenten opstellen',
-    'Mag ik AI gebruiken bij het nakijken van mijn studenten?', 'AI-subsidies voor studenten']) {
+    'Mag ik AI gebruiken bij het nakijken van mijn studenten?', 'Mag ik opdrachten van studenten door AI laten nakijken?',
+    'AI-subsidies voor studenten']) {
     assert.ok(!api.suggestionData(query).flatMap(group => group.items).some(item => item.href.startsWith(href)), query);
   }
 });
@@ -1710,6 +1712,24 @@ test('the assignment guide respects filters and counts separately from catalogue
     if (selection.type) assert.match(results, /Geen subsidies of calls/);
     else assert.match(results, /Zonder [^<]+ <strong>1 keuzehulp<\/strong>/);
     assert.ok(!blocked.suggestionData(query).flatMap(group => group.items).some(item => item.href.startsWith('#ai-bij-mijn-opdracht')));
+  }
+});
+
+test('learner rule searches distinguish AI agreements from notebook output rows and teacher assessment guidance', () => {
+  const catalogue = require('../data/records.json');
+  const notebook = catalogue.find(item => item.id === 'ubc-praxis-double-machine-learning');
+  const teacherGuide = catalogue.find(item => item.id === 'ecio-ai-toetsing-praktische-handvatten');
+  const classroom = catalogue.find(item => item.id === 'microsoft-generatieve-ai-veilig-verantwoord-klassentoolkit');
+  const agreement = {...record('afspraken', undefined, 'AI bij je opdracht'), sectors:['WO'],
+    audiences:['Studenten'], description:'Lees de afspraken voor AI-gebruik tijdens je opdracht.'};
+  const api = load([notebook, teacherGuide, classroom, agreement]);
+  const studentQuery = 'regels AI voor studenten';
+  for (const sector of ['', 'WO']) {
+    assert.deepEqual(Array.from(api.recordsForCriteria({q:studentQuery, sector}), item => item.id), ['afspraken']);
+  }
+  assert.deepEqual(Array.from(api.recordsForCriteria({q:'regels AI voor leerlingen'}), item => item.id), [classroom.id]);
+  for (const q of ['pensioenregeling', 'econometrie', 'regels voor lasso']) {
+    assert.ok(api.recordsForCriteria({q}).some(item => item.id === notebook.id), q);
   }
 });
 
