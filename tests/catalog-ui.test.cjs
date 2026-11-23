@@ -389,6 +389,60 @@ test('teachers can reach an assessment agreement from the redesign route, agreem
   assert.ok(!load(items, '#zoeken?q=privacy').resultsMarkup().includes('href="#toetsafspraak"'));
 });
 
+test('empty searches name the removable filter and count records and worksheets at the destination', () => {
+  const guidance = {...record('dpia', '2026-01-02', 'DPIA voor scholen'), sectors:['MBO']};
+  const empty = load([guidance], '#zoeken?q=dpia&sector=MBO&type=materials').resultsMarkup();
+  assert.match(empty, /href="#zoeken\?[^"]*sector=MBO[^"]*">Zonder Les- en werkmaterialen <strong>1 resultaat<\/strong>/);
+  assert.doesNotMatch(empty, /Zonder materials/);
+  const worksheetOnly = load([], '#zoeken?sector=MBO&vak=Logistiek&cost=Betaald').resultsMarkup();
+  assert.match(worksheetOnly, /Zonder Betaald <strong>1 werkblad<\/strong>/);
+});
+
+test('links out of an empty search bring keyboard focus and the new result count into view', () => {
+  const link = {};
+  const panel = {
+    querySelector: () => null,
+    querySelectorAll: selector => selector === '.empty a[href^="#zoeken"]' ? [link] : [],
+    contains: element => element === heading
+  };
+  const heading = {focus() { document.activeElement = this; }, getBoundingClientRect: () => ({top:-100,bottom:-60,height:40})};
+  const document = {querySelector: selector => ({
+    main:panel, '#results-panel':panel, '.result-head h2':heading, '.site-header':{getBoundingClientRect: () => ({bottom:100})}
+  })[selector]};
+  let onNavigation, movement;
+  const api = load([], '#zoeken', {
+    window:{ATLAS_RECORDS:{records:[],metadata:{}},innerHeight:844},
+    document, scrollY:500, scrollTo() {}, scrollBy: change => { movement = change.top; },
+    requestAnimationFrame: callback => callback(),
+    addEventListener: (event, callback) => { assert.equal(event,'hashchange'); onNavigation = callback; }
+  });
+  api.bindResultsControls();
+  link.onclick({ctrlKey:true});
+  assert.equal(onNavigation, undefined);
+  link.onclick({});
+  onNavigation();
+  assert.equal(document.activeElement, heading);
+  assert.ok(movement < -100);
+});
+
+test('assessment specialists can find the two approaches by task and return to the same public filters', () => {
+  const search = load([], '#zoeken?sector=MBO&vak=Logistiek');
+  for (const query of ['toetsvormen vergelijken', 'Hoe vergelijk ik twee toetsvormen?', 'Hoe kan ik twee toetsaanpakken vergelijken voor mijn leerdoel?']) {
+    const expected = '#toetsafspraak?vergelijk=1&sector=MBO&vak=Logistiek';
+    assert.ok(search.suggestionData(query).some(section => section.items.some(item => item.href === expected)));
+    const sharedSearch = load([], '#zoeken?sector=MBO&vak=Logistiek&q=' + encodeURIComponent(query));
+    assert.ok(sharedSearch.resultsMarkup().includes('href="' + expected.replaceAll('&', '&amp;') + '"'));
+  }
+  for (const query of ['toetsing', 'onderzoek over toetsvormen vergelijken', 'vergelijk AI-tools']) {
+    assert.ok(!search.suggestionData(query).some(section => section.items.some(item => item.href.startsWith('#toetsafspraak?vergelijk=1'))));
+  }
+  const ui = assessmentFormFixture();
+  const api = load([], '#toetsafspraak?vergelijk=1&sector=MBO&vak=Logistiek', {document:ui.document});
+  api.renderAssessment();
+  assert.match(ui.main.innerHTML, /assessment-compare" open><summary>Vergelijk twee toetsaanpakken/);
+  assert.match(ui.main.innerHTML, /href="#zoeken\?sector=MBO&amp;vak=Logistiek">← Naar uw zoekselectie/);
+});
+
 test('the team card keeps private notes out of links, supports a later review and prints the actual decision', async () => {
   const memory = new Map();
   const tab = new Map();
@@ -755,8 +809,49 @@ test('item details show only available lessons backed by a known official materi
     const document = { querySelector: selector => selector === 'main' ? main : {}, querySelectorAll: () => [] };
     load([item], '#item/' + item.id, { document }).renderDetail(item.id);
     assert.equal(main.innerHTML.includes('Lesstart voor de klas'), available);
+    const header = main.innerHTML.split('</header>')[0];
+    assert.equal(header.includes('href="#leerlingblad?item=' + item.id + '"'), available);
     assert.ok(main.innerHTML.includes('Feitelijke beschrijving'));
     assert.equal(load([item], lessonRoute).resultsMarkup().includes('class="lesson-choice"'), available);
+  }
+});
+
+test('materials without a pupil sheet link to their first official source directly under the title', () => {
+  const material = {...record('materiaal'), offerCategory:'materials', sourceUrls:[
+    {sourceType:'secondary', url:'https://example.org/context'},
+    {sourceType:'official', url:'https://example.org/les'},
+    {sourceType:'official', url:'https://example.org/bronnen'}
+  ]};
+  for (const [item, available] of [
+    [material, true], [{...material, status:'archived'}, false],
+    [{...material, sourceUrls:[material.sourceUrls[0]]}, false], [{...material, offerCategory:'guidance'}, false]
+  ]) {
+    const main = {querySelectorAll:() => []};
+    const document = {querySelector:selector => selector === 'main' ? main : {}, querySelectorAll:() => []};
+    load([item], '#item/materiaal', {document}).renderDetail('materiaal');
+    const header = main.innerHTML.split('</header>')[0];
+    assert.equal(header.includes('Bekijk materiaal'), available);
+    if (available) {
+      assert.match(header, /<\/h1><a class="btn" href="https:\/\/example\.org\/les" data-atlas-usage="lesson-open" data-atlas-item-id="materiaal" target="_blank" rel="noopener noreferrer">/);
+      assert.match(header, /data-atlas-material-detail="materiaal">\s*<header/);
+    }
+  }
+});
+
+test('opening a pupil sheet from either detail action preserves the selected lesson directory entry', () => {
+  const lesson = classroomLessons.find(item => item.id === 'hhmi-introduction-to-systems');
+  const handlers = [], saved = new Map();
+  const main = {querySelectorAll:selector => selector === 'a[href^="#leerlingblad?"]'
+    ? [0, 1].map(() => ({addEventListener:(_event, listener) => handlers.push(listener)})) : []};
+  const document = {querySelector:selector => selector === 'main' ? main : {}, querySelectorAll:() => []};
+  const sessionStorage = {getItem:key => saved.get(key), setItem:(key, value) => saved.set(key, value)};
+  const route = '#item/' + lesson.id + '?van=lesgids&sector=VO&vak=Biologie&groep=vo';
+  load([lesson], route, {document, sessionStorage}).renderDetail(lesson.id);
+  assert.equal(handlers.length, 2);
+  for (const click of handlers) {
+    saved.clear();
+    click();
+    assert.equal(saved.get('atlas.lastSearch'), 'lesmateriaal/#selectie?sector=VO&vak=Biologie&groep=vo&kaart=' + lesson.id);
   }
 });
 

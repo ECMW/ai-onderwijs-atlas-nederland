@@ -7,3 +7,8 @@
 .offer-directory .offer-provider { color: var(--muted); }
 .offer-directory .offer-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); padding-block: .65rem; gap: .8rem; max-width: 48rem; }
 .offer-directory .offer-facts div { display: block; }
+.offer-directory .offer-application { display: grid; gap: .6rem; max-width: 70ch; font-size: 1rem; }
+.offer-directory .offer-application div { display: grid; grid-template-columns: minmax(9rem, 1fr) 3fr; align-items: baseline; gap: .2rem 1rem; }
+@media (max-width: 36rem) {
+  .offer-directory .offer-application div { grid-template-columns: 1fr; }
+}
