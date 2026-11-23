@@ -40434,5 +40434,73 @@
     "applicationDeadlineAt": "2027-04-13T17:00:00+02:00",
     "verificationMethod": "agent_primary_source_review",
     "verificationNote": "Het herziene werkprogramma en de kalender van de Europese uitvoerder noemen beide 13 april 2027. Het eerdere project HUMAN-AI illustreert de thematische ruimte; projectvoorstellen worden afzonderlijk beoordeeld."
+  },
+  {
+    "id": "ecio-ai-en-studentbegeleiding",
+    "title": "AI en studentbegeleiding",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Handreiking met gespreksvragen",
+    "organizationIds": [],
+    "providerName": "ECIO",
+    "description": "Wanneer neemt een begeleider het gesprek met een student zelf over? ECIO geeft drie vragen om dat af te wegen. De handreiking onderscheidt routinevragen zoals een herinnering aan een deadline van situaties die persoonlijke begeleiding vragen, zoals een bezwaar over studievoortgang.",
+    "purpose": "Studiebegeleiders, mentoren, studentendecanen en medewerkers van studentenvoorzieningen helpen kiezen tussen digitale ondersteuning en persoonlijk contact. Voor een gesprek biedt de handreiking ook intakevragen en een controlekaart voor de student.",
+    "audiences": [
+      "Ondersteunend personeel"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Publieke waarden en ethiek",
+      "AI-geletterdheid"
+    ],
+    "status": "available",
+    "availabilityText": "Open bij ECIO het onderdeel ‘Werk met een eenvoudig triageprincipe’ om de drie vragen te lezen. De Nederlandstalige handreiking is vrij toegankelijk zonder account.",
+    "publicationDate": "2026-08-05",
+    "lastVerified": "2026-11-23",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "ECIO – open ‘Werk met een eenvoudig triageprincipe’ voor de drie afweegvragen",
+        "url": "https://ecio.nl/handreiking/ai-en-studentbegeleiding/#houd-persoonlijke-begeleiding-centraal",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "studentbegeleiding",
+      "studiebegeleider",
+      "studieloopbaanbegeleider",
+      "studentendecaan",
+      "mentor",
+      "persoonlijke begeleiding",
+      "persoonlijk contact",
+      "menselijke opvolging",
+      "studievoortgang",
+      "toegankelijkheid"
+    ],
+    "notes": "De drie vragen zijn een handreiking van ECIO voor het gesprek met een student. De begeleider weegt zelf de gevolgen van een mogelijk fout antwoord en de rol van persoonlijke omstandigheden.",
+    "offerCategory": "knowledge",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De volledige ECIO-pagina is geopend zonder account. De kop over persoonlijke begeleiding bevat drie afweegvragen en voorbeelden. ECIO labelt de pagina als mbo, hbo en wo. De publicatiedatum staat in de paginametadata. Titel, bron en taak zijn vergeleken met de bestaande Atlas-vermeldingen.",
+    "changeHistory": [
+      {
+        "date": "2026-11-23",
+        "type": "added",
+        "summary": "Handreiking met rechtstreekse verwijzing naar de vragen over persoonlijke begeleiding toegevoegd na controle van bron en zoekroute."
+      }
+    ]
   }
 ]
