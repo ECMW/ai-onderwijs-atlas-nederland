@@ -33,6 +33,37 @@
     "activity": "Practicum met tuinkers: een kiemproef ontwerpen en waarnemingen vergelijken",
     "credit": "Bij het practicum Tuinkers ontkiemen van het Nederlands Instituut voor Biologie (NIBI)."
   },
+  "werkblad-picklijst": {
+    "title": "Welke orders kun je volledig verzamelen?",
+    "level": "Mbo niveau 2 · Logistiek medewerker",
+    "goal": "Je maakt een picklijst op basis van de bruikbare voorraad en meldt met cijfers waar een AI-voorstel misgaat.",
+    "caseFile": [
+      {
+        "label": "Voorraadtelling om 09.00 uur",
+        "text": "In het magazijn liggen 15 drinkflessen en 9 broodtrommels. Bij 3 van de 15 flessen is de dop beschadigd. Deze flessen zijn geblokkeerd. Alle broodtrommels zijn bruikbaar."
+      },
+      {
+        "label": "Drie bestellingen",
+        "text": "Order 101 vraagt 8 flessen en 3 broodtrommels. Order 102 vraagt 5 flessen en 4 broodtrommels. Order 103 vraagt 4 flessen en 5 broodtrommels."
+      },
+      {
+        "label": "Afspraak in dit magazijn",
+        "text": "Behandel de orders op volgorde van ordernummer. Verzamel alleen complete orders met bruikbare artikelen. Kom je bij een order iets tekort? Zet die order op wachten, reserveer er niets voor en ga door met de volgende."
+      },
+      {
+        "label": "AI-voorstel voor de picklijst, geschreven door de Atlas",
+        "text": "‘Verzamel order 101 en 102. Daarvoor zijn samen 13 flessen nodig en er zijn er 15 geteld. Laat order 103 wachten.’"
+      }
+    ],
+    "tasks": [
+      "Bereken hoeveel flessen en broodtrommels je om 09.00 uur kunt gebruiken. Maak je picklijst op papier. Zet bij elke order ‘verzamelen’ of ‘wachten’ en schrijf na elke order op hoeveel bruikbare artikelen van beide soorten overblijven.",
+      "Welk gegeven heeft de AI over het hoofd gezien? Schrijf een korte melding aan je teamleider met het ordernummer dat moet wachten, het artikel en het aantal dat op het beslismoment ontbreekt.",
+      "Je hebt nog niets gepakt. Om 09.05 uur geeft de controleur één van de drie geblokkeerde flessen vrij. Maak je picklijst opnieuw vanaf order 101. Welke orders veranderen van status? Toon met de resterende voorraad waarom."
+    ],
+    "subjects": ["Logistiek"],
+    "sectors": ["MBO"],
+    "activity": "Een AI-voorstel voor een picklijst controleren met voorraadgegevens en een tekort melden"
+  },
   "werkblad-klantmail": {
     "title": "Wat kun je de klant vandaag beloven?",
     "level": "Mbo · Handel en Nederlands",

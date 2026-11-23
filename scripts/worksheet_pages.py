@@ -45,7 +45,7 @@ def render_pupil_pages(worksheets: dict, directory: Path, root: Path) -> None:
   <style>@page {{ margin: 15mm }} .class-handout [hidden] {{ display: none }}</style>
 </head>
 <body>
-  <main class="work-sheet class-handout">
+  <main class="work-sheet class-handout" data-worksheet-id="{escape(key)}">
     <header><p class="lesson-level">Leerlingblad · {escape(sheet["level"])}</p>
       <h1>{title}</h1><p><strong>Leerdoel</strong> · {escape(sheet["goal"])}</p></header>
     {case_file}
