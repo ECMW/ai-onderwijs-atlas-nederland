@@ -8,7 +8,7 @@ const catalogue = fs.readFileSync(path.join(__dirname, '..', 'catalog.js'), 'utf
 const boot = "  addEventListener('hashchange', route); addEventListener('popstate', route); route();";
 assert.equal(catalogue.split(boot).length, 2, 'Test hook must replace exactly the route startup');
 const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
-    pilotSheetText, renderPilotDecision,
+    pilotSheetText, renderPilotDecision, renderWorksheet,
     renderLearningEvidence, renderPracticeGuide, practiceCasesMarkup,
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, datedOffers, newOffersMarkup, papersMarkup, paperRis, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
     facet, bindFacetLists, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
@@ -41,6 +41,30 @@ function load(records = [], hash = '#zoeken', overrides = {}) {
   context.window.testCatalogue.parseState();
   return context.window.testCatalogue;
 }
+
+test('worksheets copy the pupil task separately from teacher answers and the edited instruction', async () => {
+  for (const id of ['werkblad-oefenvragen', 'werkblad-biologiepracticum']) {
+    const controls = new Map();
+    const main = {querySelector(selector) {
+      if (!controls.has(selector)) controls.set(selector, {isConnected: true});
+      return controls.get(selector);
+    }};
+    const copied = [];
+    const api = load([], '#' + id, {
+      document: {querySelector: () => main},
+      sessionStorage: {getItem: () => 'https://example.org/'},
+      navigator: {clipboard: {writeText: async text => copied.push(text)}}
+    });
+    api.renderWorksheet(id);
+    assert.match(main.innerHTML, /href="#zoeken\?q=les&amp;type=materials"/);
+    await controls.get('[data-work-copy]').onclick();
+    assert.match(copied[0], /1\. .+\n\n2\. .+\n\n3\. /);
+    assert.doesNotMatch(copied[0], /25% stijging|20% daling|zichtbaar worteltje|waarschijnlijke denkfout/);
+    main.querySelector('#work-prompt').value = 'Mijn aangepaste instructie';
+    await controls.get('[data-work-prompt]').onclick();
+    assert.equal(copied[1], 'Mijn aangepaste instructie');
+  }
+});
 
 test('merged detail links redirect only to a present public record', () => {
   let redirected;
@@ -2313,6 +2337,53 @@ test('comparing AI tools is reachable directly from the search box', () => {
     assert.match(api.resultsMarkup(), /data-question-route href="#toolkeuze"/);
     assert.equal(api.getState().vak, 'Biologie');
   }
+});
+
+test('worksheet routes help with preparation queries without counting worksheets as catalogue records', () => {
+  const exercises = '#werkblad-oefenvragen', biology = '#werkblad-biologiepracticum';
+  for (const [query, href, filters] of [
+    ['tijd besparen', exercises], ['Hoe kan ik als docent tijd besparen bij mijn les?', exercises],
+    ['lesvoorbereiding', exercises], ['oefenvragen maken', exercises], ['Hoe maak ik quizvragen?', exercises],
+    ['biologie practicum', biology], ['Hoe bereid ik een practicum voor biologie voor?', biology],
+    ['practicum', biology, 'sector=VO&vak=Biologie&type=materials'], ['kiemproef', biology]
+  ]) {
+    const api = load([], '#zoeken?' + (filters || ''));
+    assert.equal(api.suggestionData(query)[0].items[0].href, href, query);
+    api.setState(api.criteriaForQuery(query));
+    assert.equal(api.recordsForCriteria(api.getState()).length, 0, query);
+    const html = api.resultsMarkup();
+    assert.ok(html.includes(`data-question-route href="${href}"`), query);
+    assert.match(html, /1 werkblad voor ‘/);
+    assert.match(html, /Geen andere treffers in de catalogus/);
+    assert.doesNotMatch(html, /0 resultaten voor|Uw zoekopdracht levert/);
+  }
+});
+
+test('worksheet links from search and lesson navigation follow the chosen subject, sector and material filters', () => {
+  const exercises = '#werkblad-oefenvragen', biology = '#werkblad-biologiepracticum';
+  for (const [query, filters] of [
+    ['biologie practicum', 'sector=MBO'], ['biologie practicum', 'vak=Geschiedenis'],
+    ['practicum', 'vak=Scheikunde'], ['biologie practicum voor hoger onderwijs', ''],
+    ['tijd besparen bij de administratie', ''], ['training oefenvragen', ''], ['oefenvragen', 'type=Training'],
+    ['tijd besparen', 'language=en'], ['tijd besparen', 'organization=Voorbeeld']
+  ]) {
+    const api = load([], '#zoeken?' + filters);
+    const options = api.suggestionData(query).flatMap(section => section.items);
+    assert.ok(!options.some(option => option.href.startsWith('#werkblad-')), query + ' / ' + filters);
+    api.setState(api.criteriaForQuery(query));
+    assert.doesNotMatch(api.resultsMarkup(), /data-question-route href="#werkblad-/, query + ' / ' + filters);
+  }
+  const lesson = filters => load([], '#zoeken?q=les&type=materials&' + filters).resultsMarkup();
+  const vo = lesson('sector=VO&vak=Biologie'), mbo = lesson('sector=MBO&vak=Nederlands');
+  assert.ok(vo.includes(`data-question-route href="${exercises}"`));
+  assert.ok(vo.includes(`data-question-route href="${biology}"`));
+  assert.ok(mbo.includes(`data-question-route href="${exercises}"`));
+  assert.ok(!mbo.includes(biology));
+  const entry = {...record('biology',null,'Een biologie practicum'), subjects:['Biologie']};
+  const mixed = load([entry], '#zoeken?q=biologie%20practicum').resultsMarkup();
+  assert.match(mixed, /1 resultaat voor ‘biologie practicum’/);
+  assert.ok(mixed.includes(`data-question-route href="${biology}"`));
+  assert.doesNotMatch(mixed, /Geen andere treffers/);
 });
 
 test('teacher questions offer real routes without silently changing the selected subject or sector', () => {

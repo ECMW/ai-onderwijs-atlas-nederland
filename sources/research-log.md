@@ -1,5 +1,9 @@
 # Onderzoekslog bronbasis
 
+## 23 november 2026 · Een kiemproef voorbereiden
+
+De NIBI-vindplaats voor *Tuinkers ontkiemen* en de gekoppelde docentinstructie zijn gecontroleerd. De instructie onderscheidt lestijd en waarnemingen over twee weken. De Atlas schreef bij dit materiaal een leerlingopdracht om een proef met twee veranderende omstandigheden te verbeteren. De optionele vraag aan een AI-tool is een Atlas-bewerking. [PlantKracht vmbo, Tuinkers ontkiemen](https://www.nibi.nl/nl/plantkracht-vmbo#art_10431)
+
 ## 2026-09-28 — structurele eerste tranche
 
 ### Doel en afbakening

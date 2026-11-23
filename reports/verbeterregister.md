@@ -1,5 +1,11 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Van zoekvraag naar een werkblad voor de klas
+
+Op de publieke versie `fa754316` gaven ‘tijd besparen’ en ‘biologie practicum’ nul catalogustreffers. ‘Lesvoorbereiding’ gaf er 18, met een onderzoeksdatabase als eerste. De twee nieuwe Atlas-werkbladen zijn te openen vanuit het zoekveld en vanuit **Een les voorbereiden**. Ze tellen afzonderlijk van vermeldingen van extern aanbod.
+
+Het rekenblad bevat twee opgaven over procentuele verandering, antwoorden, een controle en een bewerkbare instructie voor het eigen vak. Bij het vmbo-practicum van NIBI beoordelen leerlingen een proefopzet en vergelijken ze hun verwachting met eigen tellingen. De docent kan alleen de klasopdracht kopiëren of het leerlingblad afdrukken. Een bewerkte instructie blijft in het tabblad tot de docent deze zelf kopieert. Tijdwinst in de klas is onbekend. Controleer bij een wijziging aan de zoekfunctie ook de getypte vraag, gekozen filters, teruglink en afdruk van beide werkbladen.
+
 ## 23 november 2026 · Compacte voetregel
 
 De uitleg over brongebruik en bezoekersmeting nam op een telefoon bijna een heel scherm in. Op de Atlas en de lesgids staat deze informatie nu achter **Werkwijze en privacy**. Naam en correctieroute blijven zichtbaar. De toelichting is op alle schermbreedtes standaard ingeklapt en opent met een klik, tik of het toetsenbord. De bezoekersmeting volgt dezelfde instellingen en periodes als voorheen.
