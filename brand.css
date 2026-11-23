@@ -643,3 +643,8 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
   .compare-many tr > :first-child { width: 7rem; }
   .compare-many { min-width: calc(7rem + var(--compare-count) * 12rem); }
 }
+.lesson-directory [data-more-filters] { margin-block: .45rem; }
+.lesson-directory [data-more-filters] .directory-fields { padding-block-end: .5rem; }
+.lesson-directory [data-selection-actions] { margin-block-start: .35rem; }
+.lesson-directory .directory-jumps > summary { color: var(--brand-bluegray-deep); }
+.lesson-directory [data-copy-feedback]:empty { margin: 0; }

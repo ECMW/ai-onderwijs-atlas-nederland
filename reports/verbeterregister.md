@@ -1,5 +1,15 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Het aanbod doorzoeken en je plaats terugvinden
+
+Bij 470 publieke vermeldingen kostte het veel schermruimte om titels te vergelijken. In een browserproef bij 390 pixels waren de eerste vijf VO-kaarten gemiddeld 596 pixels hoog. In de nieuwe optionele lijst zijn dezelfde vermeldingen gemiddeld 131 pixels hoog. De titel opent de details en de bezoeker kan vanuit elke rij vergelijken. Weergave en aangevinkte keuzes blijven tijdens het bladeren behouden.
+
+Bij de filters voor trainingen en subsidies leverden de eerste acht aanbieders op de oude site geen treffers op. De filters beginnen nu met passende aanbieders en houden aangevinkte opties bereikbaar. Een zoekvraag die alleen een Atlas-werkblad oplevert, zoals ‘klantmail’, toont dat werkblad ook in de filterteller en op de knop om resultaten te openen.
+
+De lesgids neemt sector en vak over uit de catalogus. Op een scherm van 390 × 844 pixels begint de eerste kaart na 712 pixels, voorheen na 1.173. Wie vanuit de lesdetails terugkeert, landt bij de geopende kaart. De mobiele en desktopproeven omvatten meer resultaten laden, toetsenbordbediening, meerdere vakken en sectoren, selecties delen, vergelijken en terugnavigeren.
+
+Deze proeven meten schermruimte en technische werking. Hoeveel tijd een bezoeker in de praktijk bespaart, is onbekend. Controleer in de volgende cyclus of zoekers met weinig passende treffers ook een bruikbare vervolgstap vinden.
+
 ## 23 november 2026 · Een klantmail controleren in het mbo
 
 De lesgids van editie `1d7c0a98` had één lesstart met een expliciet mbo-label, over mediavormgeving. Een docent Nederlands of Handel kan nu een fictieve bestelling, magazijnbericht en conceptmail als één werkblad uitdelen. Studenten controleren drie uitspraken, beantwoorden de klant en herzien hun mail wanneer een vervoerder de bestelling deels ophaalt. Het SBB-profiel Commercieel medewerker onderbouwt de beroepscontext. De casus en het antwoordmodel zijn van de Atlas.
