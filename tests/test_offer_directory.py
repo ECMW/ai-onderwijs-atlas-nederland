@@ -66,6 +66,8 @@ class OfferDirectoryTests(unittest.TestCase):
         self.assertIn("Geen uiterste datum bevestigd", unknown)
         self.assertIn("Zie de officiële voorwaarden", unknown)
         self.assertNotIn("<dt>Wie kan aanvragen?</dt><dd>Studenten", unknown)
+        legacy, _ = offer_content(dict(record, fundingDeadline="doorlopend"), "")
+        self.assertIn("Geen uiterste datum bevestigd", legacy)
 
     def test_shared_pages_show_practical_access_and_only_available_official_lessons(self):
         workshop = {"id": "scholing", "title": "Workshop", "providerName": "Instelling", "accessType": "restricted",

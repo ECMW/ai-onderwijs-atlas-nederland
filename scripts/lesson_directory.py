@@ -19,7 +19,8 @@ SECTOR_GROUPS = (
     ("ho", "Hoger onderwijs", {"HBO", "WO"}),
     ("overig", "Overige onderwijssectoren", set()),
 )
-LANGUAGES = {"nl": "Nederlands", "en": "Engels", "de": "Duits", "fr": "Frans", "es": "Spaans"}
+LANGUAGES = {"nl": "Nederlands", "en": "Engels", "de": "Duits", "fr": "Frans", "es": "Spaans",
+             "Meertalig": "Meertalig (talen niet gespecificeerd)", "unknown": "Taal niet vastgesteld"}
 
 
 def lesson_card(record, sector_group=None):

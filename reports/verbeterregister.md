@@ -1,5 +1,15 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 23 november 2026 · Van gedeelde vondst naar een bruikbare vervolgstap
+
+In uitgave `178dd36` ontbraken op de vaste aanbodpagina van de Professional Doctorate de aanvrager en de uiterste indiening. Een onderzoeker zag de doelgroep, maar moest elders achterhalen dat een bekostigde hogeschool indient. De vaste subsidiepagina’s tonen nu de vastgelegde aanvragers, voorwaarden en indieningsdatums. Een onbekende deadline blijft herkenbaar. Op de interactieve pagina verschoof de kop ‘Aanvraag en voorwaarden’ op 390 pixels breed van 1.814 naar 613 pixels vanaf de paginatop. [Regieorgaan SIA](https://regieorgaan-sia.nl/calls/financiering-professional-doctorate-kandidaten-2026-2027)
+
+Op de gedeelde aanbodpagina van de UvA-workshop kan een ondersteuner nu de beperkte toegang zien en de aanmeldvoorwaarden uitklappen. Bij de SURF-praatplaat voor ICT en privacy en de Kennisnet-werkbladen voor schoolafspraken zijn de vastgelegde taal, kosten en toegang ook zonder JavaScript leesbaar. De officiële bron blijft rechtstreeks bereikbaar. [UvA-workshop](https://tlc.uva.nl/en/article/daily-office-tasks-with-uva-ai-chat/) · [SURF-praatplaat](https://pec.surf.nl/praatplaat-ai-en-privacy/)
+
+De zoekvraag ‘toetsvormen vergelijken’ gaf nul resultaten terwijl de toetsontwerper al twee aanpakken bevatte. De zoekingang opent nu die vergelijking; een toetsmaker kan een aanpak kiezen en de eigen vak- en sectorselectie weer oppakken. Op de interactieve biologieles van HHMI verschoof ‘Open leerlingblad’ op 390 pixels breed van 3.312 naar 273 pixels vanaf de paginatop. Via de vaste aanbodpagina kan ook een leerling de opdracht meteen lezen.
+
+De routes zijn technisch beproefd op 320, 390 en 1280 pixels, met toetsenbordbediening en een verse browser. Dit zegt iets over de bereikbaarheid en leesbaarheid van de actie. Tijdsbesparing in een team, succes van een aanvraag en effecten op leren zijn niet gemeten. Controleer in een volgende ronde vooral of iemand met een ondersteunende of bestuurlijke taak vanuit de eigen zoekwoorden bij een bruikbaar besluit- of communicatiedocument uitkomt.
+
 ## 23 november 2026 · Twee leerlingbladen zelfstandig kunnen uitvoeren
 
 Bij de biologieles van HHMI stond de te beoordelen chatbotzin alleen in de docentvoorbereiding. De zin staat nu bij de leerlingopdracht, met de pagina en de twee grafieken die leerlingen vergelijken. Bij het econometriepracticum van UBC opent de bronlink direct bij de lasso- en random-forest-uitkomsten waarover de opdracht gaat. Beide correcties staan in [PR #186](https://github.com/ECMW/ai-onderwijs-atlas-nederland/pull/186).

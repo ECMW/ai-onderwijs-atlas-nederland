@@ -67,12 +67,15 @@ def directory_content(records):
 
 
 def date_markup(value):
-    if not value:
+    if not isinstance(value, str) or not value:
         return ""
-    instant = datetime.fromisoformat(value) if "T" in value else None
-    day = instant.date() if instant else date.fromisoformat(value)
+    try:
+        instant = datetime.fromisoformat(value) if "T" in value else None
+        day = instant.date() if instant else date.fromisoformat(value)
+    except ValueError:
+        return ""
     label = f"{day.day} {MONTHS[day.month - 1]} {day.year}"
-    if instant:
+    if instant and instant.utcoffset() is not None:
         offset = instant.strftime("%z")
         label += f" om {instant:%H:%M} uur (UTC{offset[:3]}:{offset[3:]})"
     return f'<time datetime="{escape(value)}">{escape(label)}</time>'
@@ -103,12 +106,12 @@ def offer_content(record, description):
     if not funding:
         rows.extend([("Toegang", ACCESS_LABELS.get(record.get("accessType"), "Toegang niet vastgesteld")),
                      ("Kosten", COST_LABELS.get(record.get("costType"), "Kosten onbekend"))])
-    languages = [LANGUAGES.get(code, "Meertalig (talen niet gespecificeerd)" if code == "Meertalig" else code)
-                 for code in record.get("language") or []]
+    languages = [LANGUAGES.get(code, code) for code in record.get("language") or []]
     rows.append(("Taal", ", ".join(languages)))
     facts = [f"<div><dt>{label}</dt><dd>{escape(value)}</dd></div>" for label, value in rows if value]
-    if record.get("lastVerified"):
-        facts.append(f'<div><dt>Bron gecontroleerd op</dt><dd>{date_markup(record["lastVerified"])}</dd></div>')
+    verified = date_markup(record.get("lastVerified"))
+    if verified:
+        facts.append(f'<div><dt>Bron gecontroleerd op</dt><dd>{verified}</dd></div>')
     links = "".join(f'<li><a href="{escape(s["url"])}">{escape(s.get("label") or record["providerName"])}</a></li>' for s in sources)
     funding_note = "<p>Controleer de openstelling en de voorwaarden bij de aanbieder.</p>" if funding else ""
     practical = funding_section(record) if funding else ""
