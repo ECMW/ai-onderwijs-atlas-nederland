@@ -6,6 +6,8 @@ De zoekvraag ‘Wat doen we bij een vermoeden van AI-fraude?’ gaf in uitgave `
 
 Op 390, 640 en 1280 CSS-pixels is de zoekvraag voor en na vergeleken. In de kandidaat geeft de zoekvraag één leeswijzer. Beide officiële documenten openden via het toetsenbord. De teruglink herstelde de zoekselectie en de focus op de resultaatkop. Of een commissielid de juiste stukken hier sneller mee vindt, is onbekend. Controleer bij herziening van de richtlijn of de paragraaf en paginaverwijzingen nog kloppen.
 
+Bij een tweede browserproef ontbrak de leeswijzer bij ‘AI-fraude melden’ en ‘melding ongeoorloofd AI-gebruik’. Na aanpassing van de zoekherkenning openen beide termen vanuit het mbo-commissieprofiel dezelfde leeswijzer op 390 en 1280 pixels, ook met het toetsenbord. Zo vervalt de noodzaak om het woord ‘vermoeden’ of ‘examencommissie’ te kennen. De eerstvolgende gebruiksproef is een commissielid in eigen woorden laten zoeken en de passage over de melding laten aanwijzen.
+
 ## 23 november 2026 · Vanuit een lege lesgidsselectie verder zoeken
 
 Een leerkracht in het primair onderwijs koos in de browserproef ‘Beeldende vorming’. De lesgids van editie `892d804` toonde nul treffers. Via ‘Alle les- en werkmaterialen’ moest de leerkracht sector en vak opnieuw instellen om de tekenles van Digital Technologies Hub te vinden.

@@ -1588,7 +1588,12 @@
   function teacherQuestion(normalized) {
     const examSignal = /\b(?:ai|chatgpt|aidetector|aidetectie|detectorscore)\b/.test(normalized) &&
       /\b(?:fraude|ongeoorloofd|ai ?detect(?:or(?:en|s)?|ie)|detectorscore|ai gebruik)\b/.test(normalized);
-    if (examSignal && /\b(?:bewijs|bewijskracht|vermoedens?|examencommissies?)\b/.test(normalized)) return 'examCases';
+    if (examSignal) {
+      const shortReport = /^(?:(?:ai fraude|ongeoorloofd ai gebruik) melden|melding (?:van )?(?:ai fraude|ongeoorloofd ai gebruik))$/.test(normalized);
+      const examReport = /\b(?:examen|examens|toets|toetsen)\b/.test(normalized) &&
+        /\b(?:fraude|ongeoorloofd)\b/.test(normalized) && /\b(?:melden|melding(?:en)?)\b/.test(normalized);
+      if (shortReport || examReport || /\b(?:bewijs|bewijskracht|vermoedens?|examencommissies?)\b/.test(normalized)) return 'examCases';
+    }
     if (/^(?:ai )?(?:notulen|conceptnotulen|vergaderverslag(?:en)?|vergadernotities|besluitenlijst)$/.test(normalized) ||
         (/\b(?:notulen|conceptnotulen|conceptverslag(?:en)?|vergaderverslag(?:en)?|vergadernotities|besluitenlijst|actielijst)\b/.test(normalized) &&
          /\b(?:controle\w*|nakijken|beoordelen)\b/.test(normalized))) return 'minutes';
