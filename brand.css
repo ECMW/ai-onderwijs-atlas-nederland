@@ -61,6 +61,9 @@ h1,h2,h3{color:#263b45;text-wrap:balance}
 }
 .site-header nav a{border-bottom:2px solid transparent;padding:.45rem .1rem}
 .site-header nav a:hover,.site-header nav a[aria-current=page]{color:var(--brand-olive-deep);border-bottom-color:var(--brand-olive)}
+@media (min-width:901px) and (max-width:1100px){
+  .site-header nav{column-gap:.875rem}
+}
 .header-credit{
   margin-inline:.9rem auto;
   font-size:.875rem;

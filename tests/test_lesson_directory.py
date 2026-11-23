@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from generate_data import generate
 from lesson_directory import generate_lesson_directory, lesson_card, worksheet_card
+from offer_directory import write_sitemap
 
 
 class Links(HTMLParser):
@@ -38,6 +39,7 @@ class LessonDirectoryTests(unittest.TestCase):
                 self.assertIn(f'href="./{pupil_path}"', page)
                 self.assertIn(f'href="../#{identifier}" hidden', page)
                 pupil = (site / pupil_path / 'index.html').read_text(encoding='utf-8')
+                self.assertIn(f'rel="canonical" href="https://aionderwijsatlas.nl/lesmateriaal/{pupil_path}"', pupil)
                 for text in [sheet['title'], sheet['goal'], *sheet['tasks']]:
                     self.assertIn(escape(text), pupil)
                 for entry in sheet.get('caseFile', []):
@@ -159,7 +161,9 @@ class LessonDirectoryTests(unittest.TestCase):
 
     def test_sitemap_and_page_use_the_same_canonical_address(self):
         address = 'https://aionderwijsatlas.nl/lesmateriaal/'
-        urls = ElementTree.parse(ROOT / 'sitemap.xml').findall('.//{*}loc')
+        with tempfile.TemporaryDirectory() as tmp:
+            write_sitemap(Path(tmp), {"records": []})
+            urls = ElementTree.parse(Path(tmp) / 'atlas-sitemap.xml').findall('.//{*}loc')
         self.assertEqual([item.text for item in urls].count(address), 1)
         template = (ROOT / 'scripts/lesson_directory.html').read_text(encoding='utf-8')
         self.assertIn(f'rel="canonical" href="{address}"', template)

@@ -21,10 +21,11 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="platform.css?v=360959d21103b22c">
-  <link rel="stylesheet" href="catalog.css?v=c6f7f74ba8bdac7a">
-  <link rel="stylesheet" href="brand.css?v=36aa38e92b241ffe">
+  <link rel="stylesheet" href="catalog.css?v=23fc4545f048b194">
+  <link rel="stylesheet" href="brand.css?v=377c29b07d6c2648">
   <title>AI & Onderwijs Atlas Nederland</title>
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"AI & Onderwijs Atlas Nederland","url":"https://aionderwijsatlas.nl/","description":"Gratis, open en brongebaseerde wegwijzer voor AI in het onderwijs.","inLanguage":"nl","creator":{"@type":"Person","name":"E.C.M. Willems"}},{"@type":"Dataset","name":"AI & Onderwijs Atlas Nederland","url":"https://aionderwijsatlas.nl/","description":"Brongebaseerde catalogus van bestaand aanbod rond AI in het onderwijs.","inLanguage":"nl","creator":{"@type":"Person","name":"E.C.M. Willems"},"isAccessibleForFree":true}]}</script>
+  <noscript><style>.site-header .menu,.site-header #nav{display:none}</style></noscript>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"AI & Onderwijs Atlas Nederland","url":"https://aionderwijsatlas.nl/","description":"Gratis, open en brongebaseerde wegwijzer voor AI in het onderwijs.","inLanguage":"nl","creator":{"@type":"Person","name":"E.C.M. Willems"}},{"@type":"Dataset","name":"AI & Onderwijs Atlas Nederland","url":"https://aionderwijsatlas.nl/aanbod/","description":"Brongebaseerde catalogus van bestaand aanbod rond AI in het onderwijs.","inLanguage":"nl","creator":{"@type":"Person","name":"E.C.M. Willems"},"isAccessibleForFree":true,"distribution":{"@type":"DataDownload","contentUrl":"https://aionderwijsatlas.nl/aanbod/index.json","encodingFormat":"application/json"}}]}</script>
 </head>
 <body>
   <a class="skip" href="#inhoud">Ga naar inhoud</a>
@@ -38,14 +39,15 @@
       </a>
     </div>
     <nav id="nav" aria-label="Hoofdnavigatie">
-      <a href="#zoeken">Aanbod zoeken</a><a href="#praktijkgids">Praktijkgids</a><a href="#nieuw">Nieuw aanbod</a><a href="#papers">Papers</a><a href="#bijdragen" class="nav-contribute">Bijdragen &amp; feedback</a><a href="#over">Over de atlas</a>
+      <a href="#zoeken">Aanbod zoeken</a><a href="#praktijkgids">Praktijkgids</a><a href="#nieuw">Nieuw aanbod</a><a href="#papers">Papers</a><a href="#mijn-atlas">Mijn profiel</a><a href="#bijdragen" class="nav-contribute">Bijdragen &amp; feedback</a><a href="#over">Over de atlas</a>
     </nav>
   </header>
-  <main id="inhoud" tabindex="-1"><section class="section" role="status"><h1>De atlas wordt geladen</h1><p>Het brongecontroleerde aanbod wordt opgehaald.</p><noscript><p>Schakel JavaScript in om de atlas te bekijken.</p></noscript></section></main>
+  <main id="inhoud" tabindex="-1"><section class="section"><h1>AI &amp; Onderwijs Atlas Nederland</h1><p>Vind lesmateriaal, handreikingen, scholing en subsidies voor uw onderwijssector.</p><p><a href="aanbod/">Bekijk het aanbod van A tot Z</a> · <a href="lesmateriaal/">Open de lesgids</a></p></section></main>
   <footer class="site-footer">
     <div class="footer-meta">
       <p><a href="#over"><strong>E.C.M. Willems</strong></a> <span class="footer-edition">· Bijgewerkt <span data-updated></span></span></p>
       <a href="#bijdragen">Correctie of aanvulling doorgeven</a>
+      <a href="aanbod/">Aanbod van A tot Z</a>
     </div>
     <details class="footer-disclosure">
       <summary>Werkwijze en privacy</summary>
@@ -79,7 +81,7 @@
         },
         fail() {
           startup.status = 'failed';
-          main.innerHTML = '<section class="section" role="alert"><h1>De atlas kon niet worden geladen</h1><p>Het aanbod is nu niet beschikbaar door een laadfout. Dit betekent niet dat de atlas leeg is.</p><p><a class="btn" data-atlas-retry href="">Probeer opnieuw</a></p><p>Blijft dit gebeuren? Meld het via <a href="mailto:evac.m.willems@proton.me?subject=Atlas%20laadt%20niet">e-mail</a>.</p></section>';
+          main.innerHTML = '<section class="section" role="alert"><h1>De atlas kon niet worden geladen</h1><p>U kunt alle vermeldingen en hun bronnen openen via <a href="aanbod/">Aanbod van A tot Z</a>.</p><p><a class="btn" data-atlas-retry href="">Probeer opnieuw</a></p><p>Blijft dit gebeuren? Meld het via <a href="mailto:evac.m.willems@proton.me?subject=Atlas%20laadt%20niet">e-mail</a>.</p></section>';
           const retry = new URL(location.href);
           retry.searchParams.set('atlas-reload', String(Date.now()));
           document.querySelector('[data-atlas-retry]').href = retry.href;
@@ -99,7 +101,7 @@
   </script>
   <script src="data/data-v2.js?v=fd22934029fd6ea8"></script>
   <script src="platform.js?v=5467b3cd0f34a63a"></script>
-  <script src="catalog.js?v=75c7e8e176d0360f"></script>
+  <script src="catalog.js?v=6813fa515f47ed62"></script>
   <script src="governance.js?v=7bc7489ae54cf67d"></script>
   <script src="analytics.js?v=1efa3d9d4c6bd3fa"></script>
 </body>

@@ -37,6 +37,8 @@ def render_pupil_pages(worksheets: dict, directory: Path, root: Path) -> None:
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
+  <meta name="description" content="{escape(sheet["goal"])}">
+  <link rel="canonical" href="https://aionderwijsatlas.nl/lesmateriaal/leerling/{slug}/">
   <title>{title} | Leerlingblad</title>
   <link rel="stylesheet" href="../../../platform.css">
   <link rel="stylesheet" href="../../../brand.css">
