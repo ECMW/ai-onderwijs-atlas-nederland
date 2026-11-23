@@ -1174,7 +1174,8 @@ test('expired dated training and application calls never retain an active status
     assert.equal(api.statusLabel({...call, applicationDeadline:endDate}, '2026-09-09'), 'Open voor aanvragen');
   }
   assert.equal(api.statusLabel({...record('guide'), endDate:'2026-01-01'}, '2026-09-09'), 'Direct beschikbaar');
-  assert.equal(api.statusLabel({...call, status:'planned'}, '2026-09-09'), 'Gepland');
+  assert.equal(api.statusLabel({...call, status:'planned'}, '2026-09-03'), 'Gepland');
+  assert.equal(api.statusLabel({...call, status:'planned'}, '2026-09-09'), 'Aanvraag gesloten');
   assert.equal(JSON.stringify([training, call]), original, 'Display status must not rewrite canonical data');
 });
 
