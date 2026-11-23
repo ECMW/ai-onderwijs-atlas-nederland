@@ -181,6 +181,24 @@ test('a pilot sheet leaves missing evidence and the mandate visible in all three
   assert.match(api.pilotSheetText({}, ''), /\[Nog te kiezen\]/);
 });
 
+test('school teams can find the decision sheet by title or decision question within matching filters', () => {
+  const route = '#pilotbesluit?van=zoeken';
+  for (const audience of ['Schoolleiders', 'IT-professionals', 'Privacyprofessionals']) {
+    const api = load([], '#zoeken?' + new URLSearchParams({sector:'VO',audience}));
+    for (const query of ['Besluitblad AI-proef', 'Besluiten over een AI-proef', 'Wie beslist of onze AI-pilot doorgaat?']) {
+      api.setState(api.criteriaForQuery(query));
+      assert.match(api.resultsMarkup(), /1 besluitblad voor/, query);
+      assert.equal(api.suggestionData(query)[0].items[0].href, route, query);
+    }
+  }
+  for (const [query, filters] of [['Subsidie voor een AI-pilot', {}], ['Besluitenlijst', {}],
+    ['Besluitblad AI-proef', {type:'Subsidie'}], ['Besluitblad AI-proef', {audience:'Leerlingen'}]]) {
+    const api = load([], '#zoeken?' + new URLSearchParams({q:query,...filters}));
+    assert.ok(!api.resultsMarkup().includes(route), query);
+    assert.ok(!api.suggestionData(query).flatMap(group => group.items).some(item => item.href === route), query);
+  }
+});
+
 test('a second navigation event for the same pilot sheet preserves its current fields and focus', () => {
   const panel = {};
   const main = {innerHTML:'untouched', querySelector: selector => selector === '.pilot-page' ? panel : null};
