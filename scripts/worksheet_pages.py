@@ -20,6 +20,13 @@ def render_pupil_pages(worksheets: dict, directory: Path, root: Path) -> None:
     for key, sheet in worksheets.items():
         slug = key.removeprefix("werkblad-")
         tasks = "".join(f"<li>{escape(task)}</li>" for task in sheet["tasks"])
+        case_file = ""
+        if sheet.get("caseFile"):
+            documents = "".join(
+                f"<dt>{escape(item['label'])}</dt><dd>{escape(item['text'])}</dd>"
+                for item in sheet["caseFile"]
+            )
+            case_file = f'<section class="work-case"><h2>Fictief dossier</h2><dl>{documents}</dl></section>'
         title = escape(sheet["title"])
         credit = "Werkblad van de AI &amp; Onderwijs Atlas Nederland."
         if sheet.get("credit"):
@@ -39,6 +46,7 @@ def render_pupil_pages(worksheets: dict, directory: Path, root: Path) -> None:
   <main class="work-sheet class-handout">
     <header><p class="lesson-level">Leerlingblad · {escape(sheet["level"])}</p>
       <h1>{title}</h1><p><strong>Leerdoel</strong> · {escape(sheet["goal"])}</p></header>
+    {case_file}
     <section class="work-pupil"><h2>Opdracht voor de klas</h2><ol>{tasks}</ol></section>
     <p class="learner-credit">{credit}</p>
     <button type="button" class="btn secondary work-screen" hidden>Druk leerlingblad af</button>

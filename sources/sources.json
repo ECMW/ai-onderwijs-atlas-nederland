@@ -4,6 +4,26 @@
   "verification_window_days": 90,
   "sources": [
     {
+      "source_id": "sbb-commercieel-medewerker-intern-ordertraject-2023",
+      "title": "Commercie – profiel Commercieel medewerker (25874), gewijzigd 2023",
+      "author_or_organisation": "Samenwerkingsorganisatie Beroepsonderwijs Bedrijfsleven (SBB)",
+      "publication_date": "2023",
+      "url_or_doi": "https://kwalificatie-mijn.s-bb.nl/Details/DownloadDocument/1967278#page=21",
+      "source_type": "official_framework",
+      "primary_or_secondary": "primary",
+      "topics": ["Curriculumontwikkeling", "Praktijkvoorbeelden"],
+      "jurisdiction": "Nederland, mbo niveau 3, Commercieel medewerker",
+      "claims_supported": [
+        "Bij het interne ordertraject controleert de commercieel medewerker commerciële afspraken, bereidt logistieke afspraken en planning voor en informeert betrokkenen. Bij afwijkingen overlegt de medewerker met een leidinggevende of ervaren collega."
+      ],
+      "reliability_notes": "Het openbare SBB-register verwijst voor kwalificatie 25874 naar dit profiel in dossier Commercie (23354). Het voorblad dateert de versie op 2023 en vermeldt 1 augustus 2023 als ingangsdatum. Werkproces P1-K1-W6 staat op pagina 21 en 22.",
+      "limitations": "De bron is gebruikt om de beroepshandeling te beschrijven. De fictieve bestelgegevens, conceptmail en nakijkvragen zijn ontworpen door de Atlas. De bron beoordeelt de werkvorm en de inzet van AI daarbij niet.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-23",
+      "status": "active"
+    },
+    {
       "source_id": "nibi-plantkracht-vmbo-tuinkers",
       "title": "PlantKracht vmbo: Tuinkers ontkiemen, maar dan anders!",
       "author_or_organisation": "Nederlands Instituut voor Biologie (NIBI)",

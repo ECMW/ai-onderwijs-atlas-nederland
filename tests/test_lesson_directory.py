@@ -40,6 +40,11 @@ class LessonDirectoryTests(unittest.TestCase):
                 pupil = (site / pupil_path / 'index.html').read_text(encoding='utf-8')
                 for text in [sheet['title'], sheet['goal'], *sheet['tasks']]:
                     self.assertIn(escape(text), pupil)
+                for entry in sheet.get('caseFile', []):
+                    self.assertIn(escape(entry['label']), pupil)
+                    self.assertIn(escape(entry['text']), pupil)
+                    self.assertIn('Fictief dossier', pupil)
+                self.assertNotIn('Ik vraag de planning na en laat u weten wat ik hoor.', pupil)
                 self.assertNotIn('catalog.js', pupil)
                 self.assertNotIn('analytics.js', pupil)
                 self.assertNotIn('<details', pupil)
