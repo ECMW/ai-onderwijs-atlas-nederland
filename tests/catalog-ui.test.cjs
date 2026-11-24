@@ -181,6 +181,38 @@ test('a pilot sheet leaves missing evidence and the mandate visible in all three
   assert.match(api.pilotSheetText({}, ''), /\[Nog te kiezen\]/);
 });
 
+test('school teams can find the decision sheet by title or decision question within matching filters', () => {
+  const route = '#pilotbesluit?van=zoeken';
+  for (const audience of ['Schoolleiders', 'IT-professionals', 'Privacyprofessionals']) {
+    const api = load([], '#zoeken?' + new URLSearchParams({sector:'VO',audience}));
+    for (const query of ['Besluitblad AI-proef', 'Besluiten over een AI-proef', 'Wie beslist of onze AI-pilot doorgaat?']) {
+      api.setState(api.criteriaForQuery(query));
+      assert.match(api.resultsMarkup(), /1 besluitblad voor/, query);
+      assert.equal(api.suggestionData(query)[0].items[0].href, route, query);
+    }
+  }
+  for (const [query, filters] of [['Subsidie voor een AI-pilot', {}], ['Besluitenlijst', {}],
+    ['Besluitblad AI-proef', {type:'Subsidie'}], ['Besluitblad AI-proef', {audience:'Leerlingen'}]]) {
+    const api = load([], '#zoeken?' + new URLSearchParams({q:query,...filters}));
+    assert.ok(!api.resultsMarkup().includes(route), query);
+    assert.ok(!api.suggestionData(query).flatMap(group => group.items).some(item => item.href === route), query);
+  }
+});
+
+test('the agreements task links to a decision sheet that carries its return filters into another tab', () => {
+  const criteria = {q:'afspraken', type:'materials,knowledge', sector:'VO', audience:'Schoolleiders', language:'nl'};
+  const search = '#zoeken?' + new URLSearchParams(criteria);
+  const html = load([], search).resultsMarkup();
+  const href = html.match(/data-agreement-decision href="([^"]+)"/)[1].replaceAll('&amp;', '&');
+  const main = {querySelector:() => ({querySelector:() => ({})})};
+  const sheet = load([], href, {document:{querySelector:() => main}, sessionStorage:{getItem:() => '#zoeken?q=subsidie'}});
+  sheet.renderPilotDecision();
+  const back = main.innerHTML.match(/data-pilot-back href="([^"]+)">Terug naar AI-afspraken/)[1].replaceAll('&amp;', '&');
+  assert.ok(back.startsWith('#zoeken?'));
+  assert.deepEqual(Object.fromEntries(new URLSearchParams(back.split('?')[1])), criteria);
+  assert.doesNotMatch(load([], search.replace('Schoolleiders','Leerlingen')).resultsMarkup(), /data-agreement-decision/);
+});
+
 test('a second navigation event for the same pilot sheet preserves its current fields and focus', () => {
   const panel = {};
   const main = {innerHTML:'untouched', querySelector: selector => selector === '.pilot-page' ? panel : null};

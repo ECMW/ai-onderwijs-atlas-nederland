@@ -41053,5 +41053,88 @@
         "summary": "Aanvrager, accreditatievoorwaarde, looptijd, eerste deadline en status van het formulier voor 2027 gecontroleerd."
       }
     ]
+  },
+  {
+    "id": "cultuureducatie-vmbo-vso-pro-projecten-2026",
+    "title": "Cultuureducatie in vmbo, vso en pro – projecten 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": "Projectsubsidie cultuureducatie",
+    "organizationIds": [],
+    "providerName": "Fonds voor Cultuurparticipatie",
+    "description": "Een culturele instelling kan samen met een vmbo-, vso- of pro-school een cultuureducatief project ontwikkelen en uitvoeren. Ook projecten waarin digitale technologie, zoals AI, een instrument is in het creatieve proces passen binnen de regeling.",
+    "purpose": "Culturele instellingen en scholen laten samenwerken aan cultuureducatie die het creatief vermogen van leerlingen versterkt.",
+    "audiences": [
+      "Onderwijsinstellingen",
+      "Docenten",
+      "Culturele instellingen"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "open_call",
+    "callStatus": "open_call",
+    "availabilityText": "Het huidige digitale loket staat open tot en met 1 december 2026 om 08.00 uur; het loket vermeldt geen tijdzone. Een account voor Mijn Fonds kan tot vijf werkdagen kosten. De projectregeling wijzigt in 2027; voorwaarden en een eventuele volgende openstelling zijn nog niet bekendgemaakt.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-11-24",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Fonds voor Cultuurparticipatie – doelgroep, AI-relevantie, bedragen en voorwaarden",
+        "url": "https://www.cultuurparticipatie.nl/subsidie/cultuureducatie-in-het-vmbo-vso-en-pro-2025-2028/projecten/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Mijn Fonds – actueel aanvraagloket en sluitingsmoment",
+        "url": "https://aims.cultuurparticipatie.nl/AUUID/EC16DB98B",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Koninkrijk der Nederlanden",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "€ 25.000 tot € 65.000 per project. Voor aanvragers in Europees Nederland is de bijdrage maximaal 80% van de projectkosten; in Caribisch Nederland maximaal 100%. Het subsidieplafond bedraagt € 5.787.862.",
+    "fundingDeadline": "2026-12-01",
+    "applicationOpenDate": "2026-03-02",
+    "applicationDeadline": "2026-12-01",
+    "fundingMin": 25000,
+    "fundingMax": 65000,
+    "totalBudget": 5787862,
+    "eligibility": "Alleen een in het Koninkrijk der Nederlanden gevestigde culturele instelling kan aanvragen. De aanvraag moet worden uitgevoerd in samenwerking met een of meer scholen voor vmbo, inclusief internationale schakelklassen, vso en/of praktijkonderwijs. Een school kan dus uitsluitend als samenwerkingspartner meedoen. De vraag van de school en de onderwijsdoelen moeten in het projectplan zijn uitgewerkt.",
+    "applicantTypes": [
+      "Culturele instellingen"
+    ],
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "cultuureducatie",
+      "vmbo",
+      "vso",
+      "praktijkonderwijs",
+      "digitale contentcreatie",
+      "AI als creatief instrument",
+      "culturele instelling"
+    ],
+    "notes": "Dit is een brede cultuureducatieregeling en daarom alleen voorwaardelijk AI-relevant: AI of andere digitale technologie moet onderdeel zijn van het cultuureducatieve project. Aanvragen worden op volgorde van binnenkomst behandeld. Het sluitingsuur is door het aanvraagloket bevestigd, maar de tijdzone wordt daar niet genoemd.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De openbare regelingspagina is volledig gelezen voor doelgroep, AI-relevantie, bedragen en samenwerkingsvoorwaarden. Het actuele aanvraagloket is afzonderlijk geopend en bevestigt dat de regeling nu open is tot 1 december 2026 om 08.00 uur.",
+    "changeHistory": [
+      {
+        "date": "2026-11-24",
+        "type": "added",
+        "summary": "De voorwaardelijke AI-relevantie, bevoegde aanvrager, verplichte schoolpartner, bedragen, huidige openstelling en eerstvolgende sluiting zijn bij het Fonds gecontroleerd."
+      }
+    ]
   }
 ]

@@ -952,7 +952,9 @@
       /^(?:een )?(?:les(?:sen|geven)? (?:over|met) ai|teamafspraken|teamscholing|teamtraining)\b/.test(normalized));
     const task = teacherQuestion(normalized);
     if (!isQuestion && !taskFragment && !task) return {...base, q:query};
-    const interpreted = interpretNaturalQuery(query, normalized, practice);
+    // In a decision question the AI pilot is the subject, not a request for pilot case studies.
+    const filterText = task === 'pilotDecision' ? normalized.replace(/\bai pilot\b/g, ' ') : normalized;
+    const interpreted = interpretNaturalQuery(query, filterText, practice);
     const criteria = { ...base, q: task ? query : interpreted.q };
     if (task === 'ecology' && !base.vak && /\b(?:biologie|biologieles)\b/.test(normalized) && subjectNames.has('biologie')) {
       criteria.vak = subjectNames.get('biologie');
@@ -1606,6 +1608,8 @@
         (/\b(?:mag|mogen|toegestaan)\b/.test(normalized) && /\b(?:ai|chatgpt|chatbot)\b/.test(normalized)) ||
         /^(?:leerlingwerk|leerlingenwerk|leerlinggegevens|studentgegevens|studentenwerk)$/.test(normalized))) return 'privacy';
     if (studentAssignmentQuestion(normalized)) return 'assignment';
+    if (['besluitblad','pilotbesluit'].includes(normalized) || (/\bai ?(?:proef|pilot)\b/.test(normalized) &&
+        /\b(?:besluitblad|besluitvorming|besluiten|beslissen|beslist|uitstellen|stopafspraak)\b/.test(normalized))) return 'pilotDecision';
     if (/\bfeedback\b/.test(normalized) && /\b(?:ai|chatgpt|chatbot|kunstmatige intelligentie)\b/.test(normalized) &&
         (/\b(?:leerwinst|leereffect\w*|leerresulta\w*|leereffectiviteit|leren|effect\w*|helpt|werkt|onderzoek)\b/.test(normalized) ||
         normalized === 'ai feedback')) return 'evidence';
@@ -1687,6 +1691,12 @@
       href:'#notulen-controleren', label:'Controleer een AI-conceptverslag', countLabel:'1 oefening',
       meta:'Oefen met fictieve notulen: wat is besloten, wie doet wat en vóór wanneer?',
       tileLabel:'Notulen controleren', tileDetail:'Verbeter de afsprakenlijst van een schooloverleg.', action:'Open oefening'
+    },
+    pilotDecision: {
+      filters:{...TASK_FILTERS, audience:['Schoolleiders','Bestuurders','IT-professionals','Privacyprofessionals','Beleidsmakers'],
+        sector:['PO','VO','MBO','HBO','WO'], theme:['Beleid en governance','Publieke waarden en ethiek']},
+      href:'#pilotbesluit?van=zoeken', label:'Besluiten over een AI-proef', countLabel:'1 besluitblad',
+      meta:'Leg met uw team vast wie beslist, wat u wilt toetsen en wanneer u de proef heroverweegt.', action:'Open besluitblad'
     },
     assignment: {
       filters:{...TASK_FILTERS, audience:['Studenten','Leerlingen'], sector:['VO','MBO','HBO','WO']},
@@ -2486,7 +2496,13 @@
         work = `<p><a class="btn secondary" href="${escapeHtml(stateHref().replace('#zoeken', '#onderzoek'))}">Onderzoek doen of promoveren</a></p>`;
       }
       else if (papersQuery(state.q)) work = '<p><a class="btn secondary" href="#papers">Papers over AI en onderwijs</a></p>';
-      else if (normalize(state.q) === 'afspraken') work = teamTrialEntry() + assessmentEntry();
+      else if (normalize(state.q) === 'afspraken') {
+        if (task?.criteria === AGREEMENT_CRITERIA && taskGuideMatches(TASK_GUIDES.pilotDecision, state)) {
+          const sheet = stateHref({q:'', type:'', van:'afspraken'}).replace('#zoeken', '#pilotbesluit');
+          work = `<p><a data-agreement-decision href="${escapeHtml(sheet)}">Open het besluitblad voor een AI-proef</a></p>`;
+        }
+        work += teamTrialEntry() + assessmentEntry();
+      }
       else if (teamTrialQuery(state.q)) work = teamTrialEntry();
       else {
         const tool = assessmentToolLink(state.q);
@@ -2820,10 +2836,19 @@
   }
 
   function renderPilotDecision() {
+    const params = new URLSearchParams(location.hash.split('?')[1]);
+    const origin = params.get('van');
+    params.delete('van');
+    const fromAgreements = origin === 'afspraken';
+    const fromSearch = fromAgreements || origin === 'zoeken';
+    const previous = sessionGet('atlas.lastSearch');
+    const back = fromAgreements ? criteriaHref({...Object.fromEntries(params), ...AGREEMENT_CRITERIA}) :
+      /^#zoeken(?:\?|$)/.test(previous) ? previous : '#zoeken';
     const fields = PILOT_FIELDS.map(([key, label, prompt]) => `<div class="pilot-field">
       <label for="pilot-${key}">${escapeHtml(label)}</label><p id="pilot-help-${key}">${escapeHtml(prompt)}</p>
       <textarea id="pilot-${key}" data-pilot-field="${key}" rows="2" aria-describedby="pilot-help-${key}" autocomplete="off"></textarea></div>`).join('');
-    main.innerHTML = `<article class="assessment-page pilot-page"><nav class="detail-back" aria-label="Terug naar de gids">
+    main.innerHTML = `<article class="assessment-page pilot-page"><nav class="detail-back" aria-label="Verder in de Atlas">
+      ${fromSearch ? `<a data-pilot-back href="${escapeHtml(back)}">${fromAgreements ? 'Terug naar AI-afspraken' : 'Terug naar zoeken'}</a> · ` : ''}
       <a href="#praktijkgids">Naar de praktijkgids</a> · <a href="#toolkeuze">Naar de toepassing voor mijn les</a></nav>
       <header><h1 tabindex="-1">Besluiten over een AI-proef</h1>
         <p>Wil een team een AI-toepassing gaan gebruiken? Vul samen met schoolleiding, onderwijs en ICT of privacy één besluitblad in. Benoem wie volgens de afspraken van uw instelling mag besluiten en wie het besluit later kan herzien.</p></header>
@@ -2845,6 +2870,7 @@
         </ul><p class="assessment-note">De bronkaarten openen in een nieuw tabblad zodat uw besluitblad openblijft. Deze handreikingen ondersteunen het gesprek. Uw instelling bepaalt of de inzet kan doorgaan.</p>
       </aside></div></article>`;
     const form = main.querySelector('.assessment-form');
+    if (fromSearch) focusAfterNavigation(main.querySelector('[data-pilot-back]'), fromAgreements ? '[data-agreement-decision]' : '.result-head h2');
     const advice = form.querySelector('[data-pilot-advice]');
     const feedback = form.querySelector('[data-pilot-feedback]');
     const fallback = form.querySelector('[data-pilot-copy]');

@@ -10,6 +10,8 @@ Bij een tweede browserproef ontbrak de leeswijzer bij ‘AI-fraude melden’ en 
 
 Een collega kan de leeswijzer ook via een gedeelde link openen voor een commissievergadering. In de mobiele A4-afdruk bedekte de navigatiebalk na het openen van de tweede bron een deel van de tekst over de melding. De afdrukstijl plaatst de Atlas-naam en het auteurschap boven de leeswijzer. In Edge is de afdruk op 390 en 1280 pixels vóór en na vergeleken en ook op 640 pixels gecontroleerd. De tekst past op één A4 en beide bronlinks in de PDF behouden hun paginaverwijzing.
 
+Op 24 november gaf dezelfde vraag op de publieke editie `4da7a0f` opnieuw nul resultaten. De kandidaat is bijgewerkt naar die basis. Op 390, 640 en 1280 CSS-pixels openden de zoekvraag, de korte suggestie ‘AI-fraude melden’ en een vraag met ‘mbo’ zonder opgeslagen profiel de leeswijzer. De twee PDF’s, hun paginaverwijzingen en de terugkeer met zoekvraag, filters en toetsenbordfocus zijn opnieuw gecontroleerd. De afdruk past op alle drie de breedtes op één A4. De leeswijzer brengt twee bestaande documenten bijeen voor één handeling. Actualiseer de vindplaatsen bij een nieuwe bronversie. Laat bij de eerstvolgende praktijkproef een mbo-commissielid zelf de passage over een melding aanwijzen.
+
 ## 23 november 2026 · Vanuit een lege lesgidsselectie verder zoeken
 
 Een leerkracht in het primair onderwijs koos in de browserproef ‘Beeldende vorming’. De lesgids van editie `892d804` toonde nul treffers. Via ‘Alle les- en werkmaterialen’ moest de leerkracht sector en vak opnieuw instellen om de tekenles van Digital Technologies Hub te vinden.
@@ -17,6 +19,14 @@ Een leerkracht in het primair onderwijs koos in de browserproef ‘Beeldende vor
 Bij een lege selectie biedt de lesgids nu een zoeklink die de gekozen sector, het vak of beide meeneemt naar de catalogus. Het linklabel benoemt welke filters meegaan. Leerdoel, activiteit en lesduur horen bij de lesgids. De link zoekt in het bestaande aanbod en vereist geen aparte lijst van aanbevelingen.
 
 Op 390 en 1280 pixels en bij 640 CSS-pixels is dezelfde taak vóór en na de wijziging doorlopen. In de kandidaat was de link vanuit het vakveld met twee keer Tab bereikbaar. De gefilterde catalogus gaf één resultaat. Via de aanbieder opende het Engelstalige werkblad waarin kinderen hun tekening vergelijken met de voorspelling van AI. Bij terugkeer in de lesgids stonden sector en vak nog ingevuld. Hoeveel leerkrachten de route gebruiken is onbekend. Controleer bij een volgende wijziging een ander vak en een catalogusselectie die zelf ook leeg is. [Tekenles en werkblad van Digital Technologies Hub](https://www.digitaltechnologieshub.edu.au/teach-and-assess/classroom-resources/lesson-ideas/can-an-ai-recognise-what-you-are-drawing/)
+
+## 23 november 2026 · Een schoolteam zoekt het besluitblad voor een AI-proef
+
+Op de publieke editie `aebf758` gaven de titel ‘Besluiten over een AI-proef’, ‘Besluitblad AI-proef’ en ‘Wie beslist of onze AI-pilot doorgaat?’ nul resultaten. Het besluitblad was al beschikbaar via de praktijkgids. Een schoolleider die een proef met ICT of privacy wil bespreken kan in de kandidaat hetzelfde blad vanuit de zoekresultaten en zoeksuggesties openen. Dit vergt alleen onderhoud aan de vindbaarheid. De bestaande bronkaarten en het werkblad blijven op één plek.
+
+De beslisvraag is vóór en na met VO en Schoolleiders getest op 390, 640 en 1280 CSS-pixels. De kandidaat gaf één besluitblad. De proef doorliep het kiezen van ‘Uitstellen of afzien’ en het kopiëren van het ingevulde doel en de keuze. De bronkaart voor schoolafspraken opende apart. Bij terugkeer naar zoeken bleven vraag, sector en rol behouden en kreeg de resultaatkop toetsenbordfocus. Bereik en gebruik in een echt besluitvormend overleg zijn onbekend. Laat bij een volgende gebruiksproef een schoolleider en een ICT-collega hun eigen zoekvraag gebruiken en aanwijzen wie het besluit mag herzien. [Schoolafspraken van Kennisnet](https://www.kennisnet.nl/artificial-intelligence/schoolafspraken-over-het-gebruik-van-generatieve-ai/)
+
+Een schoolteam dat op de startpagina ‘AI-afspraken maken’ koos, kreeg op de publieke editie en in de eerste kandidaat wel de teamproef voor één les, maar geen verwijzing naar het besluitblad. Vanuit die taak opent nu ook het bestaande besluitblad. Op 390, 640 en 1280 pixels is dezelfde route met VO vóór en na doorlopen. De ingevulde bespreekversie bevatte het doel en de keuze ‘Eerst een kleine proef’. Na terugkeer stond VO nog ingesteld en kreeg de oorspronkelijke link weer toetsenbordfocus. Dezelfde terugweg is ook met hbo op 200% vergroting getest. De praktijkproef met een schoolteam blijft open.
 
 ## 23 november 2026 · Welke financierings- en deelnamekansen kan ik voorbereiden?
 
