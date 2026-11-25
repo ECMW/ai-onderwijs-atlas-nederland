@@ -503,6 +503,13 @@
       "decision": "rejected",
       "decidedAt": "2026-11-22T10:46:11Z",
       "reason": "Het overzicht wisselt tussen gesloten calls uit 2025. Er is geen gekoppeld Atlas-record of onderbouwde termijnwijziging."
+    },
+    {
+      "proposalId": "proposal-070d99815b673c64",
+      "evidenceHash": "0bfd5076158c424adbb2c1388aeb9de3e30e08afbecef1bca038d1dae911a20d",
+      "decision": "rejected",
+      "decidedAt": "2026-11-25T07:35:07Z",
+      "reason": "Het signaal betreft alleen een navigatielink naar een SURF-community met het label 'lid worden'; het bevat geen concreet nieuw AI-onderwijsaanbod of gewijzigde primaire aanbodpagina."
     }
   ]
 }
