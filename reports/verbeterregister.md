@@ -1,5 +1,13 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 25 november 2026 · Een aangekondigde subsidieronde voorbereiden
+
+Een schoolcoördinator in het po zoekt wie Erasmus+ KA240 kan aanvragen en welk formulier het team al kan gebruiken. In de browserproef op editie `1767450` stond bij ‘Aanvraag en voorwaarden’ wie mag coördineren en wie kan meedoen. De uitleg over het projectopzetformulier en het formele aanvraagformulier stond onder alle bronknoppen en twee algemene tekstblokken. Daardoor verscheen de uitleg over de huidige stap pas na de links naar de regeling.
+
+Op de detailpagina van een subsidie staat de bestaande praktische uitleg nu vóór de officiële bronnen, bij de aanvragers, status en deadline. Die uitleg verschijnt één keer en alleen als ze iets toevoegt aan de indieningsregel. Dit gebruikt dezelfde recordtekst en links. [Europese voorwaarden voor KA240](https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/partnerships-for-school-development) · [Projectopzetformulier bij het Nationaal Agentschap](https://www.erasmusplus.nl/subsidie/primair-en-voortgezet-onderwijs/aanvragen/documenten/call-2027)
+
+Vanaf de startpagina is dezelfde route met de sector PO en ‘Aangekondigd’ vóór en na doorlopen op 390, 640 en 1280 CSS-pixels. De officiële documentenpagina en het Word-bestand openden. Kopiëren van de bronvermelding en terugkeer met de selectie en focus op het resultaat zijn met het toetsenbord gecontroleerd. Zelfstandig taakgebruik en tijdwinst zijn onbekend. Controleer bij de volgende bronherziening of het formele aanvraagformulier zichtbaar is en laat bij een gebruiksproef een schoolcoördinator het juiste formulier voor de huidige fase aanwijzen.
+
 ## 23 november 2026 · Vanuit een lege lesgidsselectie verder zoeken
 
 Een leerkracht in het primair onderwijs koos in de browserproef ‘Beeldende vorming’. De lesgids van editie `892d804` toonde nul treffers. Via ‘Alle les- en werkmaterialen’ moest de leerkracht sector en vak opnieuw instellen om de tekenles van Digital Technologies Hub te vinden.
