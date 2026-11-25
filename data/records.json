@@ -8954,12 +8954,12 @@
       "Onderzoek",
       "Professionalisering"
     ],
-    "status": "open_call",
-    "availabilityText": "Indienen via het EU Funding & Tenders Portal tot 24 november 2026, 17.00 uur Brusselse en Nederlandse tijd.",
+    "status": "closed_call",
+    "availabilityText": "Gesloten: de uiterste indieningstermijn verstreek op 24 november 2026 om 17.00 uur Nederlandse tijd.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-11-22",
+    "lastVerified": "2026-11-25",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -9003,7 +9003,7 @@
       "Onderzoeksinstellingen",
       "Publieke en private organisaties"
     ],
-    "callStatus": "open_call",
+    "callStatus": "closed",
     "recurrence": null,
     "language": [
       "en"
@@ -9029,6 +9029,11 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Officiële PDF van het herziene werkprogramma toegevoegd. Pagina 13 bevestigt 24 november 2026 om 17.00 uur in Brussel."
+      },
+      {
+        "date": "2026-11-25",
+        "type": "updated",
+        "summary": "Ronde na het verstrijken van de officiële deadline als gesloten gemarkeerd."
       }
     ],
     "applicationDeadlineAt": "2026-11-24T17:00:00+01:00"
@@ -40330,6 +40335,100 @@
       }
     ],
     "verificationNote": "De Commissie bevestigt de deadline, projectbedragen en consortiumvoorwaarden van KA220. Het Nederlandse agentschap publiceert een projectopzetformulier voor de ronde 2027. Dat voorbereidingsformulier bewijst niet dat het indienloket open is."
+  },
+  {
+    "id": "erasmus-europese-partnerschappen-schoolontwikkeling-ka240-2027",
+    "title": "Erasmus+ 2027 — Europese partnerschappen voor schoolontwikkeling (KA240)",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": null,
+    "organizationIds": [],
+    "providerName": "Nationaal Agentschap Erasmus+ Onderwijs & Training",
+    "description": "Europese ronde voor schoolautoriteiten, schoolcoördinerende organisaties en scholen die in een 36-maandenpartnerschap basisvaardigheden en grensoverschrijdende samenwerking versterken. Een AI- of digitaliseringsproject past alleen als het aantoonbaar bijdraagt aan een basisvaardigheid en aan de doelen van deze actielijn.",
+    "purpose": "Schoolautoriteiten en scholen uit meerdere landen laten samenwerken aan aantoonbare verbetering van basisvaardigheden, onderwijspraktijken en organisatievermogen.",
+    "audiences": [
+      "Onderwijsinstellingen",
+      "Schoolleiders",
+      "Beleidsmakers"
+    ],
+    "sectors": [
+      "PO",
+      "VO"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "AI-geletterdheid",
+      "Curriculumontwikkeling"
+    ],
+    "status": "planned",
+    "availabilityText": "De call en voorwaarden zijn gepubliceerd. Het Nederlandse projectopzetformulier is beschikbaar; een adviesgesprek kan tot 14 december 2026 worden aangevraagd. Het formele Nederlandse aanvraagformulier was op 25 november nog niet zichtbaar. De aanvraagdeadline is 9 maart 2027 om 12.00 uur Nederlandse tijd.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": null,
+    "lastVerified": "2026-11-25",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Europese Commissie — voorwaarden voor European Partnerships for School Development",
+        "url": "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/partnerships-for-school-development",
+        "sourceType": "official"
+      },
+      {
+        "label": "Nationaal Agentschap — documenten voor schoolonderwijs, call 2027",
+        "url": "https://www.erasmusplus.nl/subsidie/primair-en-voortgezet-onderwijs/aanvragen/documenten/call-2027",
+        "sourceType": "official"
+      },
+      {
+        "label": "Nationaal Agentschap — adviesgesprekken voor KA240, call 2027",
+        "url": "https://www.erasmusplus.nl/actueel/agenda/adviesgesprekken-small-scale-partnerships-cooperation-partnerships-en-european-partnerships-school-development-call-2027/6400",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "erasmus"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Vaste lumpsum van €400.000 per geselecteerd project.",
+    "fundingDeadline": "2027-03-09",
+    "applicationOpenDate": null,
+    "applicationDeadline": "2027-03-09",
+    "applicationDeadlineAt": "2027-03-09T12:00:00+01:00",
+    "fundingMin": 400000,
+    "fundingMax": 400000,
+    "totalBudget": null,
+    "eligibility": "Alleen een lokale of regionale schoolautoriteit of schoolcoördinerende organisatie kan coördineren; de Nederlandse definitie wordt door de nationale autoriteit bepaald. Een school kan partner zijn. Het consortium telt minimaal zes organisaties. In het land van de aanvrager en in minstens één ander programmaland nemen telkens minimaal één schoolautoriteit of coördinerende organisatie en twee scholen deel.",
+    "applicantTypes": [
+      "Lokale en regionale schoolautoriteiten",
+      "Schoolcoördinerende organisaties"
+    ],
+    "callStatus": "forthcoming",
+    "recurrence": null,
+    "language": [
+      "nl",
+      "en"
+    ],
+    "keywords": [
+      "Erasmus+",
+      "KA240",
+      "schoolontwikkeling",
+      "basisvaardigheden",
+      "AI-geletterdheid",
+      "digitale vaardigheden"
+    ],
+    "notes": "De regeling is niet AI-exclusief. AI is alleen een passende invalshoek wanneer het voorstel de vereiste basisvaardigheid en structurele schoolontwikkeling aantoonbaar ondersteunt.",
+    "changeHistory": [
+      {
+        "date": "2026-11-25",
+        "type": "added",
+        "summary": "Officiële call, deelnamevoorwaarden, consortiumeisen, projectbudget en Nederlandse voorbereidingsroute gecontroleerd."
+      }
+    ],
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De Europese Commissie bevestigt coördinator, consortiumopbouw, looptijd, vast projectbedrag en deadline. Het Nederlandse agentschap publiceert het projectopzetformulier en adviesroute, maar op 25 november nog niet het formele aanvraagformulier."
   },
   {
     "id": "msca-staff-exchanges-2027",
