@@ -22517,7 +22517,9 @@
         "sourceType": "official"
       }
     ],
-    "relatedIds": [],
+    "relatedIds": [
+      "eu-fria-grondrechten-ai-onderwijs"
+    ],
     "parentIds": [],
     "childIds": [],
     "geographicScope": "Nederland",
@@ -22556,6 +22558,11 @@
         "date": "2026-09-09",
         "type": "updated",
         "summary": "Aanbodvorm ingedeeld voor de publieksfilters op basis van de bestaande beschrijving; geen nieuwe broncontrole of kwaliteitsbeoordeling."
+      },
+      {
+        "date": "2026-11-26",
+        "type": "updated",
+        "summary": "Verwijzing naar de Europese FRIA-conceptvragenlijst toegevoegd."
       }
     ],
     "offerCategory": "materials"
@@ -41243,6 +41250,114 @@
         "date": "2026-11-24",
         "type": "added",
         "summary": "De voorwaardelijke AI-relevantie, bevoegde aanvrager, verplichte schoolpartner, bedragen, huidige openstelling en eerstvolgende sluiting zijn bij het Fonds gecontroleerd."
+      }
+    ]
+  },
+  {
+    "id": "eu-fria-grondrechten-ai-onderwijs",
+    "title": "Grondrechten bij AI in het onderwijs – Europese FRIA-vragenlijst (concept)",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "offerCategory": "knowledge",
+    "subtype": "Grondrechteneffectbeoordeling",
+    "organizationIds": [
+      "org-europese-commissie"
+    ],
+    "providerName": "Europese Commissie – AI Office",
+    "description": "Wil een onderwijsinstelling AI inzetten voor toelating tot een opleiding of voor de beoordeling van leerresultaten? Met de Europese conceptvragenlijst brengt zij vooraf in kaart welke leerlingen of studenten nadeel kunnen ondervinden, wie kan ingrijpen en waar betrokkenen een klacht kunnen indienen. De grondrechtenbeoordeling is vanaf 2 december 2027 verplicht voor instellingen en hoogrisicosystemen die onder artikel 27 van de AI-verordening vallen.",
+    "purpose": "De gevolgen van het gebruik van een hoogrisico-AI-systeem voor grondrechten beoordelen en vastleggen vóór de eerste inzet.",
+    "audiences": [
+      "Bestuurders",
+      "Beleidsadviseurs",
+      "Juristen",
+      "Examencommissies"
+    ],
+    "sectors": [
+      "PO",
+      "VO",
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI Act en wetgeving",
+      "Publieke waarden en ethiek"
+    ],
+    "status": "available",
+    "availabilityText": "De Engelstalige conceptvragenlijst begint op pagina 6, na de toelichting. Voor instellingen die onder de verplichting zullen vallen loopt de aanmeldtermijn voor de praktijktest met een eigen systeem tot en met 4 december 2026. De openbare consultatie loopt tot en met 15 januari 2027.",
+    "startDate": null,
+    "endDate": null,
+    "publicationDate": "2026-11-16",
+    "lastVerified": "2026-11-26",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Open de conceptvragenlijst (pdf, Engels, vanaf pagina 6)",
+        "url": "https://ec.europa.eu/newsroom/dae/redirection/document/135051#page=6",
+        "sourceType": "official"
+      },
+      {
+        "label": "Europese Commissie – toelichting en termijnen (Nederlands)",
+        "url": "https://digital-strategy.ec.europa.eu/nl/news/commission-seeks-feedback-draft-template-fundamental-rights-impact-assessment-under-ai-act",
+        "sourceType": "official"
+      },
+      {
+        "label": "Praktijktest met een eigen systeem – aanmelden t/m 4 december 2026",
+        "url": "https://ec.europa.eu/eusurvey/runner/draftFRIAtesting",
+        "sourceType": "official"
+      },
+      {
+        "label": "Openbare consultatie – feedback t/m 15 januari 2027",
+        "url": "https://ec.europa.eu/eusurvey/runner/FRIAconsultation",
+        "sourceType": "official"
+      },
+      {
+        "label": "AI-verordening – artikel 27 en bijlage III, punt 3 (EUR-Lex)",
+        "url": "https://eur-lex.europa.eu/eli/reg/2024/1689/2026-07-27/nld/pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "algoritmekader-iama-2026",
+      "europese-ai-verordening-ai-act"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "FRIA",
+      "Fundamental Rights Impact Assessment",
+      "grondrechten",
+      "grondrechteneffectbeoordeling",
+      "toelating",
+      "leerresultaten",
+      "hoogrisico-AI",
+      "menselijk toezicht",
+      "artikel 27"
+    ],
+    "notes": "Het AI-bureau legt dit ontwerp voor aan het publiek. De wet bepaalt voor wie een beoordeling verplicht is. Voor het onderwijs gaat het om publiekrechtelijke instellingen en private organisaties die openbare diensten verlenen, voor zover zij een hoogrisicosysteem inzetten dat onder artikel 27 valt.",
+    "changeHistory": [
+      {
+        "date": "2026-11-26",
+        "type": "added",
+        "summary": "Conceptvragenlijst, toelichting en beide Europese reactietermijnen gecontroleerd."
       }
     ]
   }

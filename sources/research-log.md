@@ -1,5 +1,9 @@
 # Onderzoekslog bronbasis
 
+## 26 november 2026 · Europese FRIA-conceptvragenlijst
+
+Het ontwerp begint op pagina 6. Secties 5 en 6 vragen wie binnen de instelling kan ingrijpen en hoe de instelling klachten van betrokkenen behandelt. Bijlage III, punt 3, noemt onder meer toelating en beoordeling van leerresultaten. De instelling en de inzet moeten onder artikel 27 vallen. Het AI-bureau hanteert afzonderlijke termijnen voor de praktijktest met een eigen systeem (4 december 2026) en de publieke consultatie (15 januari 2027). [Conceptvragenlijst, p. 6](https://ec.europa.eu/newsroom/dae/redirection/document/135051#page=6) · [Europese oproep](https://digital-strategy.ec.europa.eu/nl/news/commission-seeks-feedback-draft-template-fundamental-rights-impact-assessment-under-ai-act) · [AI-verordening](https://eur-lex.europa.eu/eli/reg/2024/1689/2026-07-27/nld/pdf)
+
 ## 23 november 2026 · Hoe is een vermoeden van AI-gebruik onderzocht?
 
 De Leidse uitspraak bespreekt op p. 3–4 uiteenlopende detectorscores en een alternatieve uitleg die onvoldoende was onderzocht. In de Utrechtse uitspraak staan op p. 6–7 de verificatie van bronnen, de uitleg van de student en het onderzoek naar feedbackformulieren. Het oordeel in de Utrechtse zaak betreft een onregelmatigheid. Deze twee beslissingen van instellingscolleges zijn opgenomen om de afweging in elk afzonderlijk dossier te kunnen nalezen. [Universiteit Leiden, zaak 25-223](https://www.organisatiegids.universiteitleiden.nl/binaries/content/assets/ul2staff/organisatiegids/universitaire-commissies/cbe/uitspraken-cbe/fraude/uitspraak-cbe-25-223.pdf#page=3) · [Hogeschool Utrecht, zaak B2025060135](https://husite.nl/jurisprudentie/wp-content/uploads/sites/344/2025/11/B2025060135-XXX.pdf#page=6)
