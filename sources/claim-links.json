@@ -1,7 +1,45 @@
 {
   "schema_version": "1.0",
-  "last_reviewed": "2026-11-23",
+  "last_reviewed": "2026-11-26",
   "claims": [
+    {
+      "claim_id": "fria-concept-onderwijs-reikwijdte",
+      "location": {
+        "path": "data/records.json",
+        "record_id": "eu-fria-grondrechten-ai-onderwijs",
+        "field": "description"
+      },
+      "claim": "De vragenlijst brengt onder meer getroffen groepen, menselijk toezicht en klachten in kaart. Voor de in artikel 27 bedoelde gebruiksverantwoordelijken geldt de plicht bij hoogrisicosystemen uit bijlage III vanaf 2 december 2027. Punt 3 van die bijlage omvat onder meer AI voor toelating en evaluatie van leerresultaten.",
+      "source_ids": [
+        "ec-fria-ontwerpvragenlijst-2026",
+        "eu-ai-act-consolidated-2026-07-27",
+        "eu-ai-digital-omnibus-2026-1744"
+      ],
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "assessment": "Het beoogde gebruik, de kwalificatie als hoogrisicosysteem en de rol van de instelling bepalen de reikwijdte. Het ontwerp beschrijft hoe de beoordeling kan worden uitgevoerd.",
+      "review_by": "2027-01-16",
+      "claim_kind": "source_statement",
+      "last_reviewed": "2026-11-26",
+      "time_sensitive": true
+    },
+    {
+      "claim_id": "fria-concept-reactietermijnen",
+      "location": {
+        "path": "data/records.json",
+        "record_id": "eu-fria-grondrechten-ai-onderwijs",
+        "field": "availabilityText"
+      },
+      "claim": "De aanmeldtermijn voor de praktijktest met een eigen systeem loopt tot en met 4 december 2026, de publieke consultatie tot en met 15 januari 2027.",
+      "source_ids": [
+        "ec-fria-consultatie-2026"
+      ],
+      "evidence_status": "SUPPORTED",
+      "assessment": "De Commissie publiceert een afzonderlijke aanmeldroute voor gebruiksverantwoordelijken en een feedbackformulier voor het publiek.",
+      "review_by": "2026-12-05",
+      "claim_kind": "source_statement",
+      "last_reviewed": "2026-11-26",
+      "time_sensitive": true
+    },
     {
       "claim_id": "mbo-beroepsgericht-examen-ai-melding",
       "location": {

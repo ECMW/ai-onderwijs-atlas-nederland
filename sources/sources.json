@@ -1,8 +1,60 @@
 {
   "schema_version": "1.0",
-  "last_reviewed": "2026-11-23",
+  "last_reviewed": "2026-11-26",
   "verification_window_days": 90,
   "sources": [
+    {
+      "source_id": "ec-fria-ontwerpvragenlijst-2026",
+      "title": "Draft Explanatory Notice and template for the fundamental rights impact assessment under Article 27(5) of Regulation (EU) 2024/1689",
+      "url_or_doi": "https://ec.europa.eu/newsroom/dae/redirection/document/135051",
+      "claims_supported": [
+        "Het ontwerp vraagt naar geraakte groepen en grondrechten, menselijk toezicht en de afhandeling van klachten."
+      ],
+      "reliability_notes": "Oorspronkelijk Engelstalig ontwerp van het AI-bureau. De vragenlijst begint op pagina 6. Secties 5 en 6 op pagina 9 en 10 behandelen toezicht en klachten.",
+      "limitations": "De Commissie heeft het ontwerp ter consultatie voorgelegd. Het toepassingsgebied van de verplichting volgt uit de AI-verordening.",
+      "author_or_organisation": "Europese Commissie – AI Office",
+      "publication_date": "2026-11-16",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "AI Act en wetgeving",
+        "Publieke waarden en ethiek"
+      ],
+      "jurisdiction": "Europese Unie",
+      "legal_effect": "non_binding",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-26",
+      "status": "active",
+      "atlas_record_ids": [
+        "eu-fria-grondrechten-ai-onderwijs"
+      ]
+    },
+    {
+      "source_id": "ec-fria-consultatie-2026",
+      "title": "Commission seeks feedback on draft template for the fundamental rights impact assessment under the AI Act",
+      "url_or_doi": "https://digital-strategy.ec.europa.eu/en/news/commission-seeks-feedback-draft-template-fundamental-rights-impact-assessment-under-ai-act",
+      "claims_supported": [
+        "Gepubliceerd op 16 november 2026. Aanmelden voor de praktijktest kan tot en met 4 december 2026, publieke feedback geven tot en met 15 januari 2027."
+      ],
+      "reliability_notes": "Oproep van de Europese Commissie met twee afzonderlijke formulieren, de doelgroep van de praktijktest en de toelichting bij artikel 27.",
+      "limitations": "De termijnen hebben betrekking op de consultatieversie. Aanmelding voor een praktijktest geeft geen aanspraak op deelname.",
+      "author_or_organisation": "Europese Commissie – AI Office",
+      "publication_date": "2026-11-16",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "AI Act en wetgeving",
+        "Publieke waarden en ethiek"
+      ],
+      "jurisdiction": "Europese Unie",
+      "legal_effect": "non_binding",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-26",
+      "status": "active",
+      "atlas_record_ids": [
+        "eu-fria-grondrechten-ai-onderwijs"
+      ]
+    },
     {
       "source_id": "kennispunt-mbo-onregelmatigheden-beroepsgerichte-examens",
       "title": "Handreiking – Onregelmatigheden en fraude bij beroepsgerichte examens",
@@ -408,7 +460,7 @@
       "limitations": "Dit landelijke basisdocument laat ruimte voor schooleigen vertaling. Het beoordeelt geen individuele toets of student en verleent zelf geen toestemming bij een specifiek examen.",
       "legal_effect": "non_binding",
       "peer_review_status": "not_applicable",
-      "last_verified": "2026-11-23",
+      "last_verified": "2026-11-22",
       "status": "active",
       "atlas_record_ids": []
     },
