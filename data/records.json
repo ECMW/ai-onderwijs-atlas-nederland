@@ -40361,11 +40361,11 @@
       "Curriculumontwikkeling"
     ],
     "status": "planned",
-    "availabilityText": "De call en voorwaarden zijn gepubliceerd. Het Nederlandse projectopzetformulier is beschikbaar; een adviesgesprek kan tot 14 december 2026 worden aangevraagd. Het formele Nederlandse aanvraagformulier was op 25 november nog niet zichtbaar. De aanvraagdeadline is 9 maart 2027 om 12.00 uur Nederlandse tijd.",
+    "availabilityText": "De call en voorwaarden zijn gepubliceerd. Het Nederlandse projectopzetformulier is beschikbaar. Voor KA240 zijn geen adviesgesprekken; de eerstvolgende openbare voorbereiding is de online voorlichting voor po en vo op 2 december 2026 van 15.45 tot 16.15 uur CET. Het formele Nederlandse aanvraagformulier was op 26 november nog niet zichtbaar. De aanvraagdeadline is 9 maart 2027 om 12.00 uur Nederlandse tijd.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-11-25",
+    "lastVerified": "2026-11-26",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -40379,8 +40379,13 @@
         "sourceType": "official"
       },
       {
-        "label": "Nationaal Agentschap — adviesgesprekken voor KA240, call 2027",
+        "label": "Nationaal Agentschap — geen adviesgesprekken voor KA240, call 2027",
         "url": "https://www.erasmusplus.nl/actueel/agenda/adviesgesprekken-small-scale-partnerships-cooperation-partnerships-en-european-partnerships-school-development-call-2027/6400",
+        "sourceType": "official"
+      },
+      {
+        "label": "Nationaal Agentschap — online voorlichting KA210, KA220 en KA240 voor po en vo",
+        "url": "https://www.erasmusplus.nl/actueel/agenda/online-voorlichting-erasmus-voor-primairvoortgezet-onderwijs-ka210ka220ka240-call-2027/6356",
         "sourceType": "official"
       }
     ],
@@ -40425,10 +40430,15 @@
         "date": "2026-11-25",
         "type": "added",
         "summary": "Officiële call, deelnamevoorwaarden, consortiumeisen, projectbudget en Nederlandse voorbereidingsroute gecontroleerd."
+      },
+      {
+        "date": "2026-11-26",
+        "type": "corrected",
+        "summary": "Onjuiste adviesroute verwijderd: het Nationaal Agentschap biedt voor KA240 geen adviesgesprekken. Projectopzetformulier, online voorlichting en ontbrekend formeel aanvraagformulier opnieuw gecontroleerd."
       }
     ],
     "verificationMethod": "agent_primary_source_review",
-    "verificationNote": "De Europese Commissie bevestigt coördinator, consortiumopbouw, looptijd, vast projectbedrag en deadline. Het Nederlandse agentschap publiceert het projectopzetformulier en adviesroute, maar op 25 november nog niet het formele aanvraagformulier."
+    "verificationNote": "De Europese Commissie bevestigt coördinator, consortiumopbouw, looptijd, vast projectbedrag en deadline. Het Nederlandse agentschap publiceert het projectopzetformulier en een online voorlichting, sluit adviesgesprekken voor KA240 expliciet uit en toonde op 26 november nog geen formeel aanvraagformulier."
   },
   {
     "id": "msca-staff-exchanges-2027",
