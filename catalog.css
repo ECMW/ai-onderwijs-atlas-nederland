@@ -264,6 +264,10 @@ footer a{color:#fff}.site-header nav a[href="#mijn-atlas"]::before{content:'☆'
 .fact-dialog::backdrop { background: rgb(20 35 42 / 32%); }
 @media print {
   .fact-dialog, .fact-disclosure, .fact-dialog::backdrop { display: none; }
+  body:has(.mbo-exam-report) .site-header { position: static; }
+  body:has(.mbo-exam-report) .site-header :is(.menu, nav, .header-contact-label),
+  .mbo-exam-report > a:first-child { display: none; }
+  .mbo-exam-report a:focus-visible { outline: none !important; }
 }
 .result-card .offer-links {
   display: flex;

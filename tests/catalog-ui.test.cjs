@@ -1724,7 +1724,22 @@ test('exam boards find the two appeal decisions through their role and specific 
     assert.ok(api.suggestionData(text).flatMap(group => group.items).some(item => item.href === route));
   }
   for (const sector of ['HBO','WO']) assert.ok(load([], '#zoeken?audience=Examencommissies&sector=' + sector).resultsMarkup().includes('href="' + route + '"'));
-  for (const filter of [{sector:'MBO'}, {audience:'Leerlingen'}, {type:'Subsidie'}, {language:'en'}]) {
+  const mbo = load([], '#zoeken?' + new URLSearchParams({q:query,audience:'Examencommissies',sector:'MBO'}));
+  assert.match(mbo.resultsMarkup(), /href="#mbo-examenmelding"/);
+  assert.ok(mbo.suggestionData(query).flatMap(group => group.items).some(item => item.href === '#mbo-examenmelding'));
+  assert.ok(!mbo.resultsMarkup().includes('href="' + route + '"'));
+  for (const report of ['AI-fraude melden', 'Melding ongeoorloofd AI-gebruik', 'AI-fraude melden bij een beroepsgericht examen', 'Melding van AI-fraude bij een toets']) {
+    const search = load([], '#zoeken?' + new URLSearchParams({q:report, audience:'Examencommissies', sector:'MBO'}));
+    assert.match(search.resultsMarkup(), /href="#mbo-examenmelding"/, report);
+    assert.ok(search.suggestionData(report).flatMap(group => group.items).some(item => item.href === '#mbo-examenmelding'), report);
+  }
+  for (const other of ['AI-fraude melden bij mijn bank', 'AI-gebruik melden bij mijn examen', 'Hoe vermeld ik mijn AI-gebruik?']) {
+    const search = load([], '#zoeken?' + new URLSearchParams({q:other, sector:'MBO'}));
+    assert.doesNotMatch(search.resultsMarkup(), /href="#mbo-examenmelding"/, other);
+    assert.ok(!search.suggestionData(other).flatMap(group => group.items).some(item => item.href === '#mbo-examenmelding'), other);
+  }
+  assert.match(load([], '#zoeken?audience=Examencommissies&sector=MBO%2CVO').resultsMarkup(), /href="#mbo-examenmelding"/);
+  for (const filter of [{sector:'PO'}, {audience:'Leerlingen'}, {type:'Subsidie'}, {language:'en'}]) {
     const blocked = load([], '#zoeken?' + new URLSearchParams({q:query,...filter}));
     assert.ok(!blocked.resultsMarkup().includes('href="' + route + '"'));
     assert.ok(!blocked.suggestionData(query).flatMap(group => group.items).some(item => item.href === route));
