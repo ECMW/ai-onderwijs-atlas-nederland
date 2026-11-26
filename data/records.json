@@ -22497,10 +22497,9 @@
       "WO"
     ],
     "themes": [
-      "Governance",
-      "AI Act",
-      "Mensenrechten",
-      "Risicomanagement",
+      "Beleid en governance",
+      "AI Act en wetgeving",
+      "Publieke waarden en ethiek",
       "Privacy en AVG"
     ],
     "status": "available",
@@ -22508,7 +22507,7 @@
     "startDate": null,
     "endDate": null,
     "publicationDate": "2026-02-17",
-    "lastVerified": "2026-08-29",
+    "lastVerified": "2026-11-26",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -22545,7 +22544,8 @@
       "algoritmen",
       "AI-systemen",
       "Rijksmodel DPIA",
-      "hoog-risico AI"
+      "hoog-risico AI",
+      "risicomanagement"
     ],
     "notes": "Het instrument is vooral bedoeld voor overheidsorganen. De bron vermeldt dat het in het bijzonder wordt aanbevolen voor hoog-risico-AI-systemen en impactvolle algoritmen.",
     "changeHistory": [
@@ -22562,7 +22562,7 @@
       {
         "date": "2026-11-26",
         "type": "updated",
-        "summary": "Verwijzing naar de Europese FRIA-conceptvragenlijst toegevoegd."
+        "summary": "Het IAMA gecontroleerd bij het Algoritmekader, de thema’s gekoppeld aan de Atlas-filters en een verwijzing naar de Europese FRIA-conceptvragenlijst toegevoegd."
       }
     ],
     "offerCategory": "materials"
