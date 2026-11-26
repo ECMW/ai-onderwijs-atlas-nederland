@@ -1429,9 +1429,8 @@
     if (record.recordType !== 'book') return '';
     return recordContextMarkup(record);
   }
-  function recordContextMarkup(record) {
-    const availability = record.availabilityText;
-    return `${availability && (!isFunding(record) || availability !== practicalDates(record, false)) ? `<h2>Praktisch en beschikbaarheid</h2><p>${escapeHtml(availability)}</p>` : ''}
+  function recordContextMarkup(record, availability = record.availabilityText) {
+    return `${availability ? `<h2>Praktisch en beschikbaarheid</h2><p>${escapeHtml(availability)}</p>` : ''}
       ${record.notes ? `<h2>Duiding en bewijsgrens</h2><p>${escapeHtml(record.notes)}</p>` : ''}
       ${record.verificationNote ? `<details class="source-review"><summary>Wat is bij de broncontrole vastgesteld?</summary><p>${escapeHtml(record.verificationNote)}</p></details>` : ''}`;
   }
@@ -3355,6 +3354,8 @@
       .slice(0, 4).map(candidate => candidate.item);
     const sources = officialSources(record);
     const funding = isFunding(record);
+    const fundingAvailability = funding && record.availabilityText !== practicalDates(record, false)
+      ? record.availabilityText : '';
     const materialDetail = record.offerCategory === 'materials' && effectiveStatus(record) === 'available' && sources.length;
     const factRows = offerFacts(record).filter(([label]) => !funding || label !== 'Beschikbaarheid');
     const applicants = funding && fundingApplicants(record);
@@ -3376,12 +3377,13 @@
           ${record.eligibility && record.eligibility !== applicants ? `<div><dt>Wie komt in aanmerking?</dt><dd>${escapeHtml(record.eligibility)}</dd></div>` : ''}
           <div><dt>Indiening</dt><dd>${escapeHtml(displayStatus(record))} · ${practicalDates(record)}</dd></div>
           ${amount ? `<div><dt>Bedrag</dt><dd>${escapeHtml(amount)}</dd></div>` : ''}
-          </dl>${sourceLinks}</section>` : ''}
+          </dl>${fundingAvailability ? `<h3>Praktisch en beschikbaarheid</h3><p>${escapeHtml(fundingAvailability)}</p>` : ''}
+          ${sourceLinks}</section>` : ''}
         ${lesson ? `<section class="lesson-starts lesson-detail"><h2>Lesstart voor de klas</h2>
           <p class="lesson-level">${escapeHtml(record.lessonStart.level)}</p><h3>${escapeHtml(record.lessonStart.question)}</h3>${lesson}</section>` : ''}
         <h2>Feitelijke beschrijving</h2><p>${escapeHtml(factValue(record.description))}</p>
         <h2>Doel en gebruik</h2><p>${escapeHtml(factValue(record.purpose))}</p>
-        ${recordContextMarkup(record)}
+        ${recordContextMarkup(record, funding ? '' : record.availabilityText)}
         <h2>Onderwerpen</h2>${recordThemes(record).length ? `<div class="detail-themes">${recordThemes(record).map(theme => `<a href="#zoeken?theme=${encodeURIComponent(theme)}">${escapeHtml(theme)}</a>`).join('')}</div>` : '<p>Niet vastgesteld</p>'}
         ${!funding ? `<h2>Voorwaarden</h2><p>${escapeHtml(factValue(record.eligibility))}</p>` : ''}
         ${commercialDetails(record)}

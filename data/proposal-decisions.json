@@ -503,6 +503,41 @@
       "decision": "rejected",
       "decidedAt": "2026-11-22T10:46:11Z",
       "reason": "Het overzicht wisselt tussen gesloten calls uit 2025. Er is geen gekoppeld Atlas-record of onderbouwde termijnwijziging."
+    },
+    {
+      "proposalId": "proposal-070d99815b673c64",
+      "evidenceHash": "0bfd5076158c424adbb2c1388aeb9de3e30e08afbecef1bca038d1dae911a20d",
+      "decision": "rejected",
+      "decidedAt": "2026-11-25T07:35:07Z",
+      "reason": "Het signaal betreft alleen een navigatielink naar een SURF-community met het label 'lid worden'; het bevat geen concreet nieuw AI-onderwijsaanbod of gewijzigde primaire aanbodpagina."
+    },
+    {
+      "proposalId": "proposal-32b69b05a555ac74",
+      "evidenceHash": "c6358c670eaf6fe90c6ed37097c82606502b2d3919343bb3196ca808b4ce82f7",
+      "decision": "rejected",
+      "decidedAt": "2026-11-26T07:38:35Z",
+      "reason": "Het algemene Erasmus+-deadlineoverzicht bevestigt 9 maart 2027 maar koppelt de gedetecteerde datumreeks niet aan een specifiek Atlas-record. De bestaande KA210-, KA220- en KA240-records hebben deze deadline al op basis van hun primaire voorwaarden."
+    },
+    {
+      "proposalId": "proposal-eae94a784de55e42",
+      "evidenceHash": "a0e2af0a66c02554a377005570853d8bbd573ab5f2e6e2e662cd7b2c8dfd3a1f",
+      "decision": "rejected",
+      "decidedAt": "2026-11-26T07:38:35Z",
+      "reason": "Het NWO-overzicht wisselde alleen tussen gesloten rondes uit 2025. Het voorstel bevat geen gekoppeld Atlas-record of bewijs van een gewijzigde actuele aanvraagtermijn."
+    },
+    {
+      "proposalId": "proposal-bae22fea86a99c73",
+      "evidenceHash": "b08acbf37ae52757b0cb90956faf7cd5de9418281f322509050d822751ed39d6",
+      "decision": "rejected",
+      "decidedAt": "2026-11-26T07:38:35Z",
+      "reason": "De workshop is al gearchiveerd en het canonieke record gebruikt de officiële Npuls-agenda. Het verdwijnen van een gelijknamige link uit een SURF-overzicht bewijst geen bronverlies of aanbodwijziging."
+    },
+    {
+      "proposalId": "proposal-02b77ae5dc617e3c",
+      "evidenceHash": "bf8e3cae36840bbe3dbc29660fc326a167fd918aca72ece6b80548c0bdaa211f",
+      "decision": "rejected",
+      "decidedAt": "2026-11-26T07:38:35Z",
+      "reason": "De NOLAI-link ontbreekt alleen in het gecontroleerde overzicht; de officiële detailpagina is bereikbaar en bevestigt de gesloten call. De publieke gebundelde kaart is al correct gesloten; het uitgesloten bronrecord blijft wegens de bestaande duplicaatgrens buiten deze automatische wijzigingsroute."
     }
   ]
 }

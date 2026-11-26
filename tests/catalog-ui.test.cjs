@@ -1459,6 +1459,7 @@ test('funding tile and status links update when an open call closes while an ann
 test('funding details show the documented scope of an amount, application conditions and official source before generic facts', () => {
   const call = {...record('call'), recordType:'funding_call', legacyType:'Call', status:'open_call',
     applicantTypes:['Consortia'], eligibility:'Minstens drie rechtspersonen uit drie landen.',
+    availabilityText:'Het projectopzetformulier is beschikbaar.',
     sourceUrls:[{url:'https://example.org/call', sourceType:'official'}, {url:'https://example.org/ronde.pdf', sourceType:'official', label:'Voorwaarden van deze ronde'}],
     fundingAmount:'Per aanvraag maximaal € 50.000; rondebudget € 500.000, te verifiëren.'};
   function detail(item) {
@@ -1472,6 +1473,10 @@ test('funding details show the documented scope of an amount, application condit
   assert.equal(html.split(call.eligibility).length, 2);
   assert.match(html, /<dt>Bedrag<\/dt><dd>Per aanvraag maximaal € 50.000; rondebudget € 500.000, te verifiëren\.<\/dd>/);
   assert.match(html, /Officiële bronnen[\s\S]*https:\/\/example.org\/call[\s\S]*<dt>Kosten/);
+  assert.match(html, /Praktisch en beschikbaarheid<\/h3><p>Het projectopzetformulier is beschikbaar\.<\/p>\s+<h3>Officiële bronnen/);
+  assert.equal(html.split(call.availabilityText).length, 2);
+  assert.doesNotMatch(detail({...call, availabilityText:'Doorlopend aanvragen'}), /Praktisch en beschikbaarheid/);
+  assert.doesNotMatch(detail({...call, availabilityText:null}), /Praktisch en beschikbaarheid/);
   assert.match(html, /href="https:\/\/example.org\/ronde\.pdf"[^>]+>Voorwaarden van deze ronde/);
   assert.doesNotMatch(detail({...call, fundingAmount:null, totalBudget:500000}), /<dt>Bedrag|500000/);
 });
