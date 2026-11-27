@@ -1,5 +1,11 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 27 november 2026 · Een bijdrage zonder account versturen
+
+Een docent kan nu vanaf de startpagina of lesgids lesmateriaal voorstellen met een formulier. De eerdere e-mailknop vroeg om een eigen mailprogramma en leverde geen voorstel op in de wachtrij voor beheer. De nieuwe route zet de inzending in een besloten GitHub-issue. Het formulier bevestigt ontvangst nadat GitHub het issue heeft aangemaakt. Hetzelfde formulier verwerkt voorstellen voor aanbod, correcties en feedback. Bij een correctie vanuit een detailpagina staat de link naar de vermelding klaar. E-mail blijft beschikbaar als alternatief.
+
+De route is vóór en na getest op 390, 640 en 1280 CSS-pixels, met toetsenbord en zonder JavaScript. Een proef vanaf een verse browser zonder account leverde het juiste besloten issue op. De proef was fictief en is afgehandeld. De volgende proef is het eerste echte voorstel volgen van inzending tot inhoudelijke beoordeling en, bij voldoende onderbouwing, live publicatie. Werkelijk gebruik en tijdwinst zijn nog onbekend.
+
 ## 27 november 2026 · Bijdragen per e-mail
 
 Een bezoeker die lesmateriaal wilde voorstellen, kreeg het verzoek zich aan te melden bij GitHub. Het gemelde knelpunt is vanaf de startpagina en lesgids in de browser bevestigd. De vier bijdrageroutes openen nu een voorbereid bericht aan het bestaande contactadres. Het adres staat ook op de pagina voor wie zelf een bericht opstelt. Een correctie vanuit een vermelding neemt de titel en link mee. De e-mailroute gebruikt de bestaande redactionele beoordeling.

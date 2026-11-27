@@ -13,6 +13,14 @@ checks omzeilen of bij brononzekerheid mergen.
 
 De Atlas bewaart gekozen rollen, sector en vak in de browser op het apparaat van de bezoeker. Er is geen e-mailadres of wachtwoord nodig. Op een gedeeld apparaat kan de volgende gebruiker van hetzelfde browserprofiel deze voorkeuren zien. De bezoeker kan het profiel wissen via **Mijn profiel**. Zoekmachines en de openbare JSON-catalogus krijgen dezelfde openbare vermeldingen voor iedereen.
 
+## Bijdragen via het formulier
+
+Via **Bijdragen & feedback** kan een bezoeker zonder account een voorstel,
+correctie of reactie versturen. Het formulier draait op een apart ontvangstpunt.
+GitHub bewaart de inzending in een besloten wachtrij voor beoordeling. Het formulier
+vraagt naar een titel, een openbare link en een toelichting. Gebruik openbare
+informatie en laat persoonsgegevens en vertrouwelijke details weg.
+
 ## Optionele bezoekersmeting
 
 Deze editie koppelt GoatCounter aan Eva's account `ecmw`. Eva heeft de publicatie
