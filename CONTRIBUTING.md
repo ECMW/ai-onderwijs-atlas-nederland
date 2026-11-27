@@ -1,9 +1,10 @@
 # Bijdragen
 
 Gebruik **Bijdragen & feedback** op de website om lesmateriaal of ander aanbod voor
-te stellen, een feitelijke correctie door te geven of feedback te geven. De knoppen
-openen een voorbereid e-mailbericht. De redactie beoordeelt deze bijdragen en houdt
-de oorspronkelijke e-mail privé. Een vermelding in de Atlas is geen goedkeuring,
+te stellen, een feitelijke correctie door te geven of feedback te geven. Het
+formulier vraagt geen account en zet de inzending in een besloten GitHub-wachtrij.
+De redactie verifieert de bijdrage en verwerkt geschikte wijzigingsvoorstellen via
+een pull request. Mailen kan ook. Een vermelding in de Atlas is geen goedkeuring,
 kwaliteitsbeoordeling of aanbeveling.
 
 ## Een aanvulling rechtstreeks via GitHub indienen

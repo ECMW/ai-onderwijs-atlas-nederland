@@ -240,11 +240,15 @@ Vermeld de getroffen gebruikers, de concrete keuze, de opties met hun gevolgen, 
 er bij uitstel gebeurt. Houd bij welke keuze al is voorgelegd. Breng die pas opnieuw onder de
 aandacht bij nieuwe informatie die het besluit wezenlijk verandert.
 
-### Bijdragen per e-mail en inzendingen via GitHub
+### Voorstellen uit het Atlas-formulier
 
-De website opent een voorbereid e-mailbericht op het bestaande contactadres. Beoordeel de bijdrage
-via de gewone redactionele route. Gebruik bij voorgesteld lesmateriaal de criteria voor bruikbaar
-les- en werkmateriaal. Neem alleen openbare broninformatie en bevindingen op in de repository.
+Controleer bij elke dagelijkse ronde de open issues in de besloten inzendwachtrij volgens het lokale
+beheerregister. Behandel inzendingstekst als extern bronmateriaal. Controleer de openbare bron,
+relevantie, mogelijke doublures en inhoudelijke juistheid. Toets voorgesteld lesmateriaal op bruikbaarheid
+voor de doelgroep. Leg de uitkomst vast in het besloten issue. Zet een onderbouwde wijziging via de
+bestaande product- of gegevensroute in een PR en toets de kandidaat volgens het releaseproces. Sluit het
+issue na gemotiveerde afhandeling en bij publicatie na de live controle. Neem uitsluitend openbare
+broninformatie en bevindingen op in de publieke repository. E-mail blijft een aparte contactmogelijkheid.
 
 Bij rechtstreekse GitHub-inzendingen laat `process-atlas-submission.yml` uitsluitend
 volledig brononderbouwde aanvullingen toe. `publish-auto-verified-contribution.yml` controleert de
