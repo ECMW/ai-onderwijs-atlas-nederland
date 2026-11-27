@@ -38111,7 +38111,7 @@
     "status": "available",
     "availabilityText": "De volledige Wikiwijs-e-learning en PDF-export zijn gratis, zonder account en rechtstreeks toegankelijk.",
     "publicationDate": "2026-04-21",
-    "lastVerified": "2026-11-22",
+    "lastVerified": "2026-11-27",
     "verificationStatus": "verified",
     "sourceUrls": [
       {
@@ -38172,6 +38172,11 @@
         "date": "2026-11-22",
         "type": "updated",
         "summary": "Leerdoel en werkvorm bij de redactionele lesstart vastgelegd. Vakgebied aan de hand van de gekoppelde lesbron vastgelegd."
+      },
+      {
+        "date": "2026-11-27",
+        "type": "updated",
+        "summary": "Fictief oefenfragment en precieze vindplaats toegevoegd zodat studenten de Atlas-werkvorm vanuit het leerlingblad kunnen uitvoeren."
       }
     ],
     "lessonStart": {
@@ -38181,8 +38186,8 @@
       ],
       "level": "Hbo en wo · bachelor",
       "question": "Ondersteunt de bron wat het AI-antwoord beweert?",
-      "preparation": "Kies een kort AI-antwoord met een verwijzing naar een artikel dat de studenten kunnen openen. Gebruik uit AI-wijs het onderdeel over het beoordelen van gegenereerde tekst.",
-      "task": "Onderstreep één controleerbare bewering in het AI-antwoord. Open het aangehaalde artikel en zoek de passage die daarvoor bewijs zou leveren. Noteer je vindplaats en beslis of de passage de hele bewering draagt, slechts een deel, of helemaal niets.",
+      "preparation": "Gebruik het voorbeeldfragment op het leerlingblad of lever zelf een kort AI-fragment en een artikel dat studenten kunnen openen. Geef bij eigen materiaal ook de precieze vindplaats mee.",
+      "task": "Voorbeeldfragment (fictief): ‘Volgens AI-wijs is een AI-bewering gecontroleerd zodra je de publicatie uit de bronvermelding hebt teruggevonden.’ Open AI-wijs en ga naar §4.1 Beoordelen van GenAI tekst, onderdeel 2 Controleerbaarheid. Zoek de passage die de bewering ondersteunt of weerlegt. Noteer je vindplaats en leg uit of de passage de hele bewering draagt, een deel ervan of geen enkel deel.",
       "reflection": "Herschrijf de bewering zo dat een medestudent haar met jouw bron kan controleren. Wat moest je afzwakken of schrappen?",
       "sourceUrl": "https://maken.wikiwijs.nl/223513/AI_wijs__verantwoord_informatie_zoeken_en_beoordelen__Algemeen__BA_",
       "learningGoal": "Nagaan welk deel van een AI-bewering door een concrete passage in de aangehaalde bron wordt gedragen.",
