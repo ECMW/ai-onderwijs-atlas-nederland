@@ -90,33 +90,5 @@
     "subjects": ["Nederlands", "Handel"],
     "sectors": ["MBO"],
     "activity": "Een AI-conceptmail controleren en een zakelijke klantmail schrijven over een bestelling"
-  },
-  "werkblad-lichtbreking": {
-    "title": "Klopt de AI-uitleg over lichtbreking?",
-    "level": "VO · onderbouw havo/vwo · circa 10 minuten",
-    "goal": "Je onderzoekt hoe licht van richting verandert en verbetert een AI-bewering met een waarneming uit een model.",
-    "resource": {
-      "label": "Open PhET Lichtbreking · Inleiding",
-      "href": "https://phet.colorado.edu/sims/html/bending-light/latest/bending-light_nl.html?screens=1"
-    },
-    "caseFile": [
-      {
-        "label": "Fictieve AI-uitleg, geschreven door de Atlas",
-        "text": "‘Als de laser uit lucht in glas schijnt, ligt de gebroken straal verder van de normaal dan bij water.’"
-      }
-    ],
-    "tasks": [
-      "Voorspel of de AI gelijk heeft. Open PhET en zet de laser aan. Kies boven Lucht en onder Water. Kijk naar de hoek van de straal onder het grensvlak met de gestippelde lijn. Die lijn staat loodrecht op het grensvlak en heet de normaal.",
-      "Kies onder Glas in plaats van Water. Laat de laser op dezelfde plek en onder dezelfde hoek staan. Schets beide doorgelaten stralen vanaf hetzelfde punt. Schrijf een verbeterde zin en verwijs naar wat je in het model zag.",
-      "Sluit de simulatie. Licht gaat nu van water naar lucht onder een invalshoek van 30° ten opzichte van de normaal. Wordt de hoek met de normaal groter of kleiner? Leg uit waarom. Bespreek welke waarneming uit de simulatie je voor die voorspelling gebruikt."
-    ],
-    "subjects": [
-      "Natuurkunde"
-    ],
-    "sectors": [
-      "VO"
-    ],
-    "activity": "Lichtbreking onderzoeken en een AI-uitleg controleren",
-    "credit": "Simulatie van PhET Interactive Simulations, University of Colorado Boulder."
   }
 }

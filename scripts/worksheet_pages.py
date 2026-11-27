@@ -5,23 +5,14 @@ from html import escape
 from pathlib import Path
 
 from public_assets import versioned_html
-from source_library import _canonical_locator
 
 
 def load_worksheets(root: Path) -> dict:
     source = root / "data/worksheets.json"
     worksheets = json.loads(source.read_text(encoding="utf-8")) if source.is_file() else {}
-    for key, sheet in worksheets.items():
+    for key in worksheets:
         if not re.fullmatch(r"werkblad-[a-z0-9]+(?:-[a-z0-9]+)*", key):
             raise ValueError(f"Ongeldig werkbladadres: {key}")
-        resource = sheet.get("resource")
-        if resource is not None and (
-            not isinstance(resource, dict)
-            or not isinstance(resource.get("label"), str)
-            or not resource["label"].strip()
-            or not _canonical_locator(resource.get("href"))
-        ):
-            raise ValueError(f"Ongeldige materiaallink op werkblad: {key}")
     return worksheets
 
 
@@ -36,13 +27,6 @@ def render_pupil_pages(worksheets: dict, directory: Path, root: Path) -> None:
                 for item in sheet["caseFile"]
             )
             case_file = f'<section class="work-case"><h2>Fictief dossier</h2><dl>{documents}</dl></section>'
-        resource = sheet.get("resource")
-        resource_link = ""
-        if resource:
-            resource_link = (
-                f'<p class="work-resource"><a href="{escape(resource["href"])}" target="_blank" '
-                f'rel="noopener noreferrer">{escape(resource["label"])}</a></p>'
-            )
         title = escape(sheet["title"])
         credit = "Werkblad van de AI &amp; Onderwijs Atlas Nederland."
         if sheet.get("credit"):
@@ -65,7 +49,7 @@ def render_pupil_pages(worksheets: dict, directory: Path, root: Path) -> None:
     <header><p class="lesson-level">Leerlingblad · {escape(sheet["level"])}</p>
       <h1>{title}</h1><p><strong>Leerdoel</strong> · {escape(sheet["goal"])}</p></header>
     {case_file}
-    <section class="work-pupil"><h2>Opdracht voor de klas</h2>{resource_link}<ol>{tasks}</ol></section>
+    <section class="work-pupil"><h2>Opdracht voor de klas</h2><ol>{tasks}</ol></section>
     <p class="learner-credit">{credit}</p>
     <button type="button" class="btn secondary work-screen" hidden>Druk leerlingblad af</button>
   </main>

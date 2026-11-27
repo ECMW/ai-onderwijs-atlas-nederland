@@ -2,7 +2,7 @@
 
 ## 27 november 2026 · Een AI-uitleg over lichtbreking controleren
 
-De richtinggevende SLO-kennisbasis behandelt lichtbreking en de normaal voor de onderbouw havo/vwo. In §16.2 van OpenStax Physics staan de wet van Snell en de materiaaleigenschappen. PhET laat de twee stralen zien bij gelijkblijvende invalshoek. De Atlas ontwierp de fictieve uitspraak, de klasopdracht en de vervolgvraag. [SLO, §4.4](https://www.slo.nl/publish/pages/2766/kennisbasis-natuurwetenschappen-en-technologie-voor-de-onderbouw-vo.pdf#page=47) · [OpenStax, §16.2](https://openstax.org/books/physics/pages/16-2-refraction)
+De richtinggevende SLO-kennisbasis behandelt lichtbreking en de normaal voor de onderbouw havo/vwo. In §16.2 van OpenStax Physics staan de wet van Snell en de materiaaleigenschappen. In PhET bleek de doorgelaten straal bij gelijke invalshoek vanuit lucht dichter bij de normaal te liggen in glas dan in water. De wet van Snell geeft ook de omgekeerde richting bij 30° vanuit water naar lucht: dan buigt de doorgelaten straal van de normaal af. De Atlas trok de eigen werkvorm terug op 27 november 2026. Er was nog geen gebruik in de klas vastgelegd. [SLO, §4.4](https://www.slo.nl/publish/pages/2766/kennisbasis-natuurwetenschappen-en-technologie-voor-de-onderbouw-vo.pdf#page=47) · [OpenStax, §16.2](https://openstax.org/books/physics/pages/16-2-refraction)
 
 ## 26 november 2026 · Europese FRIA-conceptvragenlijst
 
