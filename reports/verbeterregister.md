@@ -1,5 +1,13 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 27 november 2026 · Zelfstandig een AI-bewering controleren
+
+Een bachelorstudent in het hbo of wo krijgt een link of afdruk van de AI-wijs-lesstart. In uitgave `7c6b7b0` verwees de opdracht naar een AI-antwoord en een artikel die alleen de docent kon meegeven. Het knelpunt is vastgesteld in een browserproef op telefoon- en desktopformaat.
+
+Het bestaande leerlingblad bevat nu één fictief fragment van de Atlas en noemt §4.1, onderdeel 2, van de open AI-wijs-module. De student zoekt zelf de passage en motiveert of die de bewering draagt. De docent kan eigen materiaal met een vindplaats blijven meegeven. Eén aanpassing aan de bestaande lesstart volstaat. Via de Atlas kan de docent de korte opdracht delen als werkblad en de student meteen beginnen in de bron. [Gegevens-PR #234](https://github.com/ECMW/ai-onderwijs-atlas-nederland/pull/234) · [Oorspronkelijke lesmodule](https://maken.wikiwijs.nl/223513/AI_wijs__verantwoord_informatie_zoeken_en_beoordelen__Algemeen__BA_) · [PDF, genummerde pagina’s 32–33](https://export.wikiwijs.nl/asset/arrangement/223513.pdf#page=33)
+
+De route via Praktijkgids, lesgids, WO en Informatievaardigheden is vóór en na getest op 390, 640 en 1280 CSS-pixels. Met het toetsenbord zijn het leerlingblad, de bron en de afdruk bereikt. De gedeelde link opent dezelfde opdracht en de afdruk blijft één A4. De praktijkproef is of een student die alleen dit blad krijgt de passage kan vinden en kan uitleggen wat de bron precies ondersteunt. Bereik, zelfstandig gebruik en leerwinst zijn nog onbekend.
+
 ## 25 november 2026 · Een aangekondigde subsidieronde voorbereiden
 
 Een schoolcoördinator in het po zoekt wie Erasmus+ KA240 kan aanvragen en welk formulier het team al kan gebruiken. In de browserproef op editie `1767450` stond bij ‘Aanvraag en voorwaarden’ wie mag coördineren en wie kan meedoen. De uitleg over het projectopzetformulier en het formele aanvraagformulier stond onder alle bronknoppen en twee algemene tekstblokken. Daardoor verscheen de uitleg over de huidige stap pas na de links naar de regeling.
