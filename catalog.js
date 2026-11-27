@@ -3204,6 +3204,19 @@
   }
 
   const WORKSHEET_TEACHER_NOTES = {
+    'werkblad-lichtbreking': {
+      teacherTitle: 'Voorbereiding en antwoorden voor de docent',
+      notes: [
+        'Zet PhET op Inleiding met Lucht boven en Water onder. Laat de normaal zichtbaar en gebruik de rode knop op de laser. Kies Glas in de onderste materiaallijst. Op een klein scherm kan projectie of een groter scherm helpen.',
+        'Bij dezelfde invalshoek ligt de doorgelaten straal in dit glas dichter bij de normaal dan in water. Glas heeft in het model een grotere brekingsindex dan water. Beide hoeken worden gemeten vanaf de normaal.',
+        'Bij 30° van water naar lucht wordt de hoek groter, omdat lucht een lagere brekingsindex heeft. De leerling kan het eerdere resultaat omkeren: bij overgang naar een hogere brekingsindex boog de straal naar de normaal. Laat de leerling de hoek en de richting aanwijzen.',
+        'Lesproef: geef één groep de korte opdracht “Vergelijk water en glas bij dezelfde invalshoek en corrigeer de AI-uitleg.” Geef de andere groep stappen 1 en 2. Sluit beide af met stap 3. Vergelijk de zelfstandige onderbouwing en noteer benodigde voorbereiding en correcties.'
+      ],
+      promptTitle: 'Maak een variant voor mijn klas',
+      adapt: 'Kies een andere toetsbare voorspelling. Controleer de richting van de stralen eerst zelf in PhET en houd de uitleg voor de docent apart.',
+      prompt: 'Maak voor [klas] een korte oefening met PhET Lichtbreking. Schrijf één fictieve AI-bewering die leerlingen kunnen controleren door bij gelijkblijvende invalshoek alleen het onderste materiaal te veranderen. Vraag om een voorspelling en een correctie met een waarneming. Zet het antwoordmodel apart en geef geen verzonnen metingen.',
+      source: {linkText: 'OpenStax Physics · lichtbreking, §16.2', href: 'https://openstax.org/books/physics/pages/16-2-refraction'}
+    },
     'werkblad-picklijst': {
       teacherTitle: 'Picklijst en nabespreking voor de docent',
       notes: [
@@ -3270,13 +3283,15 @@
     const teacher = WORKSHEET_TEACHER_NOTES[id];
     const sourceCredit = sheet.credit ? ' ' + sheet.credit : '';
     const sourceLink = teacher.source ? ` <a class="work-screen" href="${escapeHtml(teacher.source.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(teacher.source.linkText || 'Open docentmateriaal')} ↗</a>` : '';
+    const resource = sheet.resource;
+    const resourceMarkup = resource ? `<p class="work-resource"><a href="${escapeHtml(resource.href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(resource.label)}</a></p>` : '';
     const caseFile = sheet.caseFile || [];
     const caseMarkup = caseFile.length ? `<section class="work-case"><h2>Fictief dossier</h2><dl>${caseFile.map(entry => `<dt>${escapeHtml(entry.label)}</dt><dd>${escapeHtml(entry.text)}</dd>`).join('')}</dl></section>` : '';
     main.innerHTML = `<article class="work-sheet" data-worksheet-id="${escapeHtml(id)}" aria-labelledby="work-title">
       <nav class="practice-back work-screen"><a href="${escapeHtml(back)}">${backLabel}</a></nav>
       <header><p class="lesson-level">${escapeHtml(sheet.level)}</p><h1 id="work-title" tabindex="-1">${escapeHtml(sheet.title)}</h1>
         <p><strong>Leerdoel</strong> · ${escapeHtml(sheet.goal)}</p></header>
-      ${caseMarkup}<section class="work-pupil"><h2>Opdracht voor de klas</h2><ol>${sheet.tasks.map(task => `<li>${escapeHtml(task)}</li>`).join('')}</ol>
+      ${caseMarkup}<section class="work-pupil"><h2>Opdracht voor de klas</h2>${resourceMarkup}<ol>${sheet.tasks.map(task => `<li>${escapeHtml(task)}</li>`).join('')}</ol>
         <div class="lesson-actions work-screen"><a class="btn" href="${escapeHtml(classPath)}">Open leerlingblad</a>
           <button class="btn secondary" data-work-link type="button">Kopieer klaslink</button>
           <button class="btn secondary" data-work-copy type="button">Kopieer leerlingopdracht</button>
@@ -3294,7 +3309,8 @@
     const copy = (button, text) => copyTextWithFallback(button, text, feedback, fallback, 'Gekopieerd.', 'De tekst is geselecteerd. Kopieer deze met uw apparaat.');
     const pupil = main.querySelector('[data-work-copy]');
     const caseText = caseFile.length ? ['Fictief dossier', ...caseFile.map(entry => entry.label + '\n' + entry.text)] : [];
-    pupil.onclick = () => copy(pupil, [sheet.title, sheet.goal, ...caseText, ...sheet.tasks.map((task, index) => `${index + 1}. ${task}`),
+    const resourceText = resource ? [`${resource.label}: ${resource.href}`] : [];
+    pupil.onclick = () => copy(pupil, [sheet.title, sheet.goal, ...caseText, ...resourceText, ...sheet.tasks.map((task, index) => `${index + 1}. ${task}`),
       'Werkblad van de AI & Onderwijs Atlas Nederland.' + sourceCredit].join('\n\n'));
     const classLink = main.querySelector('[data-work-link]');
     classLink.onclick = () => copyTextWithFallback(classLink, PUBLIC_ATLAS + classPath, feedback, fallback,

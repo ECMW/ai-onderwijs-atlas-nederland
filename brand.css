@@ -633,6 +633,7 @@ body:has(.learner-sheet) > .site-header, body:has(.learner-sheet) > footer { dis
   .work-case { margin-block: 2mm; padding: 2mm 3mm; background: #fff; font-size: 10pt; line-height: 1.25; }
   .work-case dt { margin-top: 1mm; }
   .work-case + .work-pupil { margin-block: 3mm; }
+  .work-resource a::after { content: " (" attr(href) ")"; font-size: 9pt; overflow-wrap: anywhere; }
   .work-case + .work-pupil li { margin-block: 2mm; line-height: 1.3; }
   .work-case + .work-pupil li::after { height: 22mm; }
   [data-worksheet-id="werkblad-klantmail"] .work-pupil li:nth-child(2)::after { height: 44mm; }

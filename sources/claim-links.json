@@ -1,7 +1,23 @@
 {
   "schema_version": "1.0",
-  "last_reviewed": "2026-11-26",
+  "last_reviewed": "2026-11-27",
   "claims": [
+    {
+      "claim_id": "vo-lichtbreking-ai-uitleg-controleren",
+      "location": {
+        "path": "catalog.js"
+      },
+      "claim": "Bij gelijke invalshoek vanuit lucht ligt de doorgelaten straal in het glas van de simulatie dichter bij de normaal dan in water. Een straal met een invalshoek van 30° vanuit water buigt in lucht van de normaal af.",
+      "claim_kind": "reasonable_inference",
+      "evidence_status": "SUPPORTED",
+      "source_ids": [
+        "slo-kennisbasis-onderbouw-lichtbreking-2014",
+        "openstax-physics-refraction-2020"
+      ],
+      "assessment": "Het antwoordmodel volgt uit de wet van Snell en is voor lucht naar water en glas in PhET nagegaan. SLO begrenst de doelgroep. De foutieve AI-zin, klasvragen en docentvergelijking zijn redactioneel ontworpen. Een klasproef ontbreekt.",
+      "last_reviewed": "2026-11-27",
+      "time_sensitive": false
+    },
     {
       "claim_id": "fria-concept-onderwijs-reikwijdte",
       "location": {

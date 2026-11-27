@@ -1,5 +1,13 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 27 november 2026 · Een AI-uitleg over lichtbreking nakijken
+
+Een docent natuurkunde in de onderbouw havo/vwo zoekt een korte opdracht waarin leerlingen een AI-uitspraak aan een controleerbare waarneming toetsen. De zoekvraag ‘lichtbreking’ met VO en Natuurkunde gaf in uitgave `c09dcf1` nul resultaten. De Atlas-lesgids heeft nu één eigen werkblad. De klas vergelijkt water en glas bij dezelfde invalshoek in PhET en verbetert een fictieve AI-uitleg. De docentversie geeft een antwoordmodel en een korte vergelijking tussen een open vraag en een stapsgewijze instructie. [PhET Lichtbreking](https://phet.colorado.edu/sims/html/bending-light/latest/bending-light_nl.html?screens=1) · [OpenStax, §16.2](https://openstax.org/books/physics/pages/16-2-refraction) · [SLO Kennisbasis, p. 46](https://www.slo.nl/publish/pages/2766/kennisbasis-natuurwetenschappen-en-technologie-voor-de-onderbouw-vo.pdf#page=47)
+
+De lesgids, klaslinks, afdruk en kopie gebruiken de bestaande werkbladen. De nieuwe bronlink staat ook op het leerlingblad zonder JavaScript. De voor- en naproef vergeleek de zoekvraag op 390, 640 en 1280 CSS-pixels. De nieuwe route liep met toetsenbord en lesfilters door naar de gedeelde opdracht en de simulatie. Het blad past op één A4.
+
+De volgende proef is een vergelijking binnen één les. Vraag beide groepen zonder simulatie te voorspellen wat er gebeurt als licht onder 30° van water naar lucht gaat. De docent beoordeelt de uitleg en noteert voorbereidingstijd en correcties. Technische werking is vastgesteld. Werkelijk gebruik en leeropbrengst zijn onbekend. Breid verder uit als die proef een concrete extra behoefte laat zien.
+
 ## 27 november 2026 · Zelfstandig een AI-bewering controleren
 
 Een bachelorstudent in het hbo of wo krijgt een link of afdruk van de AI-wijs-lesstart. In uitgave `7c6b7b0` verwees de opdracht naar een AI-antwoord en een artikel die alleen de docent kon meegeven. Het knelpunt is vastgesteld in een browserproef op telefoon- en desktopformaat.
