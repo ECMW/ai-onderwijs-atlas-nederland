@@ -274,6 +274,8 @@ beschikbaar is, maakt zij geen lege commit of PR.
 
 ### Praktijkgids bijhouden in dezelfde ronde
 
+Pas vóór publicatie van een lesstart of werkblad de [toelatingsregel voor beproefd materiaal](editorial-policy.md#beproefd-les--en-werkmateriaal) toe. Leg de vindplaats van praktijkgebruik vast in de bronbeoordeling. Houd de opdracht in voorbereiding zolang het bewijs over het concrete materiaal ontbreekt.
+
 Open bij een gewijzigde lesstart ook het leerlingblad vanuit de lesgids. Controleer of de leerling elke genoemde voorbeeldzin, figuur of tabel kan vinden met de informatie op dat blad. Verwijs bij een langere bron naar de pagina of het onderdeel. Controleer bij een afdruk welke gegevens de docent apart moet meegeven.
 
 Gebruik het [verbeterregister](../reports/verbeterregister.md) voor productverbeteringen. Begin bij de laatst gepubliceerde editie en de open PR's. Werk bij een afgeronde verbetering de oorspronkelijke taak, het aangetoonde resultaat, de resterende aanname en de volgende controle bij. Het register bevat publieke productbevindingen. Individuele meldingen en privéstatistieken blijven in hun bestaande omgeving.

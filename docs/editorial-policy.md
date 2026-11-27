@@ -41,6 +41,14 @@ Boeken en materialen blijven onderdeel van de volledige zoekcatalogus en de
 filters. Zij hebben op verzoek van Eva geen afzonderlijke link in het hoofdmenu;
 bestaande links naar het boekenoverzicht blijven werken.
 
+## Beproefd les- en werkmateriaal
+
+De publieke Atlas biedt les- en werkmateriaal aan waarvan de inhoud en de aansluiting op doelgroep en leerdoel zijn beoordeeld en waarvan gebruik in een relevante onderwijspraktijk is vastgelegd. Leg voor publicatie per werkvorm de vindplaats, de betrokken doelgroep en de beproefde versie of onderdelen vast. Gebruik documentatie van een aanbieder, docent of instelling als die het concrete materiaal en het gebruik beschrijft. Benoem wat bekend is over de ervaring en houd conclusies over leeropbrengst binnen het beschikbare bewijs.
+
+Deze regel geldt ook voor eigen Atlas-opdrachten en voor ingrijpende bewerkingen van bronmateriaal. Ervaring met een bron of simulatie telt voor die bron of simulatie. Bij een nieuwe leeropdracht is praktijkbewijs over die opdracht nodig. Technische controles, zoals het openen, kopiëren, afdrukken en met het toetsenbord doorlopen, zijn onderdeel van de kwaliteitscontrole en geven bewijs over de werking.
+
+Houd voorstellen voor nog te beproeven lessen en werkbladen in de conceptfase, buiten publieke pagina’s, zoekresultaten en uitgelichte routes. Controleer bestaande materialen bij herbeoordeling aan dezelfde maatstaf. Leg vast welk bewijs is gevonden, waar een bewijsleemte zit en welke versie is teruggetrokken. Bewaar de wijzigingsgeschiedenis.
+
 ## Feitelijke en vergelijkbare vermeldingen
 
 Gebruik voor iedere vermelding dezelfde velden: titel, aanbieder, soort aanbod,

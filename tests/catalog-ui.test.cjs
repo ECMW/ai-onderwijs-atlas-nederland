@@ -72,11 +72,7 @@ test('worksheets copy the pupil task separately from teacher answers and the edi
       assert.ok(copied[0].includes('Fictief dossier'));
     }
     assert.ok(!copied[0].includes('Ik vraag de planning na en laat u weten wat ik hoor.'));
-    assert.doesNotMatch(copied[0], /25% stijging|20% daling|zichtbaar worteltje|waarschijnlijke denkfout|brekingsindex/);
-    if (worksheet.resource) {
-      assert.ok(main.innerHTML.includes(`href="${worksheet.resource.href}"`));
-      assert.ok(copied[0].includes(`${worksheet.resource.label}: ${worksheet.resource.href}`));
-    } else assert.doesNotMatch(copied[0], /https?:/);
+    assert.doesNotMatch(copied[0], /25% stijging|20% daling|zichtbaar worteltje|waarschijnlijke denkfout|https?:/);
     main.querySelector('#work-prompt').value = 'Mijn aangepaste instructie';
     await controls.get('[data-work-prompt]').onclick();
     assert.equal(copied[1], 'Mijn aangepaste instructie');

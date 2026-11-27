@@ -5,7 +5,7 @@
     {
       "claim_id": "vo-lichtbreking-ai-uitleg-controleren",
       "location": {
-        "path": "catalog.js"
+        "path": "sources/research-log.md"
       },
       "claim": "Bij gelijke invalshoek vanuit lucht ligt de doorgelaten straal in het glas van de simulatie dichter bij de normaal dan in water. Een straal met een invalshoek van 30° vanuit water buigt in lucht van de normaal af.",
       "claim_kind": "reasonable_inference",
