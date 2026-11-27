@@ -538,7 +538,7 @@ test('empty search can edit the query or remove just the term, preserving filter
   assert.ok(selected);
   assert.equal(app.context.location.hash, initial);
   const panel = doc.querySelector('#results-panel');
-  const count = app.main.innerHTML.match(/Toon (\d+ resultaten? en 1 werkblad) zonder zoekterm/)[1];
+  const count = app.main.innerHTML.match(/Toon (\d+ resultaten? en (?:1 werkblad|\d+ werkbladen)) zonder zoekterm/)[1];
   assert.ok(parseInt(count) > 0);
   doc.querySelector('.empty [data-clear-query]').onclick();
   assert.deepEqual(Object.fromEntries(new URLSearchParams(app.context.location.hash.split('?')[1])),

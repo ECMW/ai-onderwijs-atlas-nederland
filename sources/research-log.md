@@ -1,5 +1,9 @@
 # Onderzoekslog bronbasis
 
+## 27 november 2026 · Een AI-uitleg over lichtbreking controleren
+
+De richtinggevende SLO-kennisbasis behandelt lichtbreking en de normaal voor de onderbouw havo/vwo. In §16.2 van OpenStax Physics staan de wet van Snell en de materiaaleigenschappen. PhET laat de twee stralen zien bij gelijkblijvende invalshoek. De Atlas ontwierp de fictieve uitspraak, de klasopdracht en de vervolgvraag. [SLO, §4.4](https://www.slo.nl/publish/pages/2766/kennisbasis-natuurwetenschappen-en-technologie-voor-de-onderbouw-vo.pdf#page=47) · [OpenStax, §16.2](https://openstax.org/books/physics/pages/16-2-refraction)
+
 ## 26 november 2026 · Europese FRIA-conceptvragenlijst
 
 Het ontwerp begint op pagina 6. Secties 5 en 6 vragen wie binnen de instelling kan ingrijpen en hoe de instelling klachten van betrokkenen behandelt. Bijlage III, punt 3, noemt onder meer toelating en beoordeling van leerresultaten. De instelling en de inzet moeten onder artikel 27 vallen. Het AI-bureau hanteert afzonderlijke termijnen voor de praktijktest met een eigen systeem (4 december 2026) en de publieke consultatie (15 januari 2027). [Conceptvragenlijst, p. 6](https://ec.europa.eu/newsroom/dae/redirection/document/135051#page=6) · [Europese oproep](https://digital-strategy.ec.europa.eu/nl/news/commission-seeks-feedback-draft-template-fundamental-rights-impact-assessment-under-ai-act) · [AI-verordening](https://eur-lex.europa.eu/eli/reg/2024/1689/2026-07-27/nld/pdf)

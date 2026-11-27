@@ -1,8 +1,53 @@
 {
   "schema_version": "1.0",
-  "last_reviewed": "2026-11-26",
+  "last_reviewed": "2026-11-27",
   "verification_window_days": 90,
   "sources": [
+    {
+      "source_id": "slo-kennisbasis-onderbouw-lichtbreking-2014",
+      "title": "Kennisbasis natuurwetenschappen en technologie voor de onderbouw vo, §4.4",
+      "author_or_organisation": "SLO",
+      "publication_date": "2014-04",
+      "url_or_doi": "https://www.slo.nl/publish/pages/2766/kennisbasis-natuurwetenschappen-en-technologie-voor-de-onderbouw-vo.pdf#page=47",
+      "source_type": "official_framework",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Curriculumontwikkeling"
+      ],
+      "jurisdiction": "Nederland, onderbouw havo en vwo",
+      "claims_supported": [
+        "In §4.4 zijn het uitleggen van lichtbreking met een model en de richting ten opzichte van de normaal uitgewerkt."
+      ],
+      "reliability_notes": "De uitgever publiceert de richtinggevende kennisbasis in eigen beheer. Het onderdeel Licht, geluid en straling begint op genummerde pagina 45.",
+      "limitations": "Een richtinggevend leerplankader. Het zegt niets over de leeropbrengst van het Atlas-werkblad.",
+      "legal_effect": "non_binding",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-27",
+      "status": "active"
+    },
+    {
+      "source_id": "openstax-physics-refraction-2020",
+      "title": "Physics, §16.2 Refraction",
+      "author_or_organisation": "Paul Peter Urone en Roger Hinrichs, OpenStax",
+      "publication_date": "2020-03-26",
+      "url_or_doi": "https://openstax.org/books/physics/pages/16-2-refraction",
+      "source_type": "official_guidance",
+      "primary_or_secondary": "secondary",
+      "topics": [
+        "Lesgeven en leren met AI",
+        "Praktijkvoorbeelden"
+      ],
+      "jurisdiction": "Internationaal, natuurkunde",
+      "claims_supported": [
+        "De lichtbrekingshoek wordt gemeten vanaf de normaal. Bij gelijke invalshoek geeft een hogere brekingsindex in het tweede medium een kleinere brekingshoek."
+      ],
+      "reliability_notes": "Vakinhoudelijke uitleg van de wet van Snell met figuur 16.17, tabel 16.2 en een verwijzing naar dezelfde PhET-simulatie.",
+      "limitations": "Vakinhoudelijke bron voor het antwoordmodel. Deze publicatie onderzoekt het Atlas-werkblad of AI-gebruik niet.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-27",
+      "status": "active"
+    },
     {
       "source_id": "ec-fria-ontwerpvragenlijst-2026",
       "title": "Draft Explanatory Notice and template for the fundamental rights impact assessment under Article 27(5) of Regulation (EU) 2024/1689",

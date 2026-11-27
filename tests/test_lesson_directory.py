@@ -46,6 +46,9 @@ class LessonDirectoryTests(unittest.TestCase):
                     self.assertIn(escape(entry['label']), pupil)
                     self.assertIn(escape(entry['text']), pupil)
                     self.assertIn('Fictief dossier', pupil)
+                if resource := sheet.get('resource'):
+                    self.assertTrue(any(link['href'] == resource['href'] for link in Links(pupil).links))
+                    self.assertIn(escape(resource['label']), pupil)
                 self.assertNotIn('Ik vraag de planning na en laat u weten wat ik hoor.', pupil)
                 self.assertNotIn('catalog.js', pupil)
                 self.assertNotIn('analytics.js', pupil)
