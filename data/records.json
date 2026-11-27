@@ -41360,5 +41360,182 @@
         "summary": "Conceptvragenlijst, toelichting en beide Europese reactietermijnen gecontroleerd."
       }
     ]
+  },
+  {
+    "id": "eit-hei-call-2026-deep-tech-onderwijsinnovatie",
+    "title": "EIT Higher Education Initiative – Call 2026",
+    "recordType": "funding_call",
+    "legacyType": "Call",
+    "subtype": "Hogeronderwijsinnovatie en ondernemerschap",
+    "organizationIds": [],
+    "providerName": "EIT Higher Education Initiative",
+    "description": "Open Europese ronde voor hogeronderwijsconsortia die STEM-talent, kennisvalorisatie en institutionele innovatiecapaciteit voor deep-tech en maakindustrie versterken. Een AI-project past alleen wanneer AI aantoonbaar onderdeel is van die deep-tech- en innovatieopgave; dit is geen algemene subsidie voor AI-geletterdheid.",
+    "purpose": "Hogeronderwijsinstellingen duurzaam verbinden met onderzoek en bedrijfsleven om STEM-kennis om te zetten in innovatie, ondernemerschap en markttoepassingen.",
+    "audiences": [
+      "Onderwijsinstellingen",
+      "Bestuurders",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Subsidies en financiering",
+      "Curriculumontwikkeling",
+      "Implementatie en adoptie"
+    ],
+    "status": "open_call",
+    "callStatus": "open_call",
+    "availabilityText": "Het aanvraagportaal is open. De eerstvolgende openbare voorbereidingsstap is de online Q&A op 3 december 2026 van 15.00 tot 16.30 uur CET. Dien uiterlijk 13 januari 2027 om 17.00 uur CET in.",
+    "startDate": "2026-10-20",
+    "endDate": "2027-01-13",
+    "publicationDate": "2026-10-20",
+    "lastVerified": "2026-11-27",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "EIT – overzicht open Call 2026 en deadline",
+        "url": "https://www.eit.europa.eu/our-activities/opportunities",
+        "sourceType": "official"
+      },
+      {
+        "label": "EIT HEI – volledige Call for Proposals 2026",
+        "url": "https://eit-hei.eu/wp-content/uploads/2026/10/EIT_HEI_Call_6_FINAL_V2_19.11.2026.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "eit-higher-education-initiative"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Europa",
+    "accessType": "public",
+    "costType": "unknown",
+    "fundingAmount": "Maximaal €1.250.000 per project voor 18 maanden. De financiering kan tot 100% van de subsidiabele kosten dekken; cofinanciering wordt aangemoedigd maar niet meegewogen. Het geraamde totale rondebudget is €40 miljoen.",
+    "fundingDeadline": "2027-01-13",
+    "applicationOpenDate": "2026-10-20",
+    "applicationDeadline": "2027-01-13",
+    "applicationDeadlineAt": "2027-01-13T17:00:00+01:00",
+    "fundingMin": null,
+    "fundingMax": 1250000,
+    "totalBudget": 40000000,
+    "eligibility": "Een hogeronderwijsinstelling moet coördineren. Het consortium telt minimaal vijf begunstigden: ten minste drie hogeronderwijsinstellingen uit drie verschillende Horizon Europe-landen, waarvan minstens één in een EU-lidstaat, plus minimaal twee bedrijven of brancheorganisaties. Iedere deelnemende hogeronderwijsinstelling betrekt minimaal twee faculteiten, afdelingen of vergelijkbare eenheden en levert een bestuursverklaring. Een Nederlandse hogeschool of universiteit kan coördineren of als begunstigde deelnemen; mbo-instellingen, onderzoeksorganisaties en publieke of maatschappelijke organisaties kunnen partner zijn, maar vervangen de verplichte drie hogeronderwijsinstellingen en twee bedrijfspartners niet. Begunstigden uit de EIT HEI-call 2025 mogen in deze ronde alleen als niet-gefinancierde geassocieerde partner deelnemen.",
+    "applicantTypes": [
+      "Hogescholen",
+      "Universiteiten",
+      "Internationale consortia"
+    ],
+    "recurrence": null,
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "EIT HEI",
+      "deep tech",
+      "STEM",
+      "kennisvalorisatie",
+      "ondernemerschap",
+      "maakindustrie",
+      "AI-innovatie",
+      "HEInnovate"
+    ],
+    "notes": "De ronde is onderwijsgericht maar niet AI-specifiek. Een voorstel dat alleen AI-geletterdheid of algemeen AI-gebruik behandelt, sluit niet vanzelf aan; het moet bijdragen aan alle drie beleidsdoelen rond STEM-talent, institutionele innovatiecapaciteit en verbinding met deep-tech- en maakindustrie-ecosystemen. Het totale budget van €40 miljoen staat in de call als geraamd budget.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Het officiële EIT-overzicht, de EIT HEI-callpagina en de volledige calltekst zijn gecontroleerd op doelgroep, consortiumrollen, deelname van Nederlandse instellingen, openstelling, deadline met tijdzone, budget, financieringspercentage, projectduur, aanvraagroute en eerstvolgende Q&A. De publieke bronverwijzingen gebruiken het machineleesbare EIT-overzicht en de volledige calltekst, omdat de detailpagina de automatische Atlas-broncontrole met HTTP 403 blokkeert. De AI-relevantie is als voorwaardelijk vastgelegd omdat de ronde deep-tech en STEM financiert maar geen afzonderlijke AI-doelstelling heeft.",
+    "changeHistory": [
+      {
+        "date": "2026-11-27",
+        "type": "added",
+        "summary": "Open call, voorwaardelijke AI-relevantie, consortiumrollen, budget, deadline en eerstvolgende aanvraagstap gecontroleerd."
+      }
+    ]
+  },
+  {
+    "id": "surf-ai-edugenai-surfconext-qa-2026",
+    "title": "Q&A SURF AI: eduGenAI en SURFconext",
+    "recordType": "training",
+    "legacyType": "Training",
+    "subtype": "Online technisch vragenuur",
+    "organizationIds": [
+      "surf"
+    ],
+    "providerName": "SURF",
+    "description": "Online sessie waarin SURF de inlogstappen en autorisatiemogelijkheden voor eduGenAI via SURFconext doorloopt. Deelnemers kunnen technische onboardingvragen stellen aan de hand van de documentatie en de inrichting van hun instelling.",
+    "purpose": "Instellingen voorbereiden op beheerste toegang tot eduGenAI via de bestaande identiteits- en toegangsvoorziening SURFconext.",
+    "audiences": [
+      "IT-professionals",
+      "Informatiemanagers",
+      "Ondersteunend personeel"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Implementatie en adoptie",
+      "Veilige AI-omgeving",
+      "Data en infrastructuur"
+    ],
+    "status": "planned",
+    "availabilityText": "De online sessie is op 8 december 2026 van 13.00 tot 14.00 uur CET en vereist aanmelding. De voorbereidingsdocumentatie was op 27 november nog aangekondigd als binnenkort beschikbaar.",
+    "startDate": "2026-12-08",
+    "endDate": "2026-12-08",
+    "publicationDate": null,
+    "lastVerified": "2026-11-27",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "SURF – Q&A eduGenAI en SURFconext",
+        "url": "https://www.surf.nl/agenda/qa-surf-ai-met-name-edugenai-surfconext",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "edugenai-uitbreiding-pilot",
+      "npuls-ai-onderwijspraktijk-edugenai-training"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Nederland",
+    "accessType": "registration_required",
+    "costType": "unknown",
+    "fundingAmount": null,
+    "fundingDeadline": null,
+    "applicationOpenDate": null,
+    "applicationDeadline": null,
+    "fundingMin": null,
+    "fundingMax": null,
+    "totalBudget": null,
+    "eligibility": null,
+    "applicantTypes": [],
+    "callStatus": null,
+    "recurrence": null,
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "SURF AI",
+      "eduGenAI",
+      "SURFconext",
+      "onboarding",
+      "autorisatie",
+      "identiteitsbeheer",
+      "toegangsbeheer"
+    ],
+    "notes": "Dit is een technisch vragenuur over inloggen en autorisaties, niet een algemene training over didactisch gebruik van eduGenAI. Pilotdeelnemers blijven volgens SURF tot maart 2027 via SRAM inloggen. De aangekondigde documentatie is niet als gelezen of beschikbaar aangemerkt.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De officiële detailpagina is volledig gelezen op inhoud, doelgroepcontext, datum, tijd, locatie, aanmeldroute, voorbereiding en de afwijkende loginroute voor pilotdeelnemers. Kosten en hergebruiklicentie zijn niet vermeld en blijven onbekend.",
+    "changeHistory": [
+      {
+        "date": "2026-11-27",
+        "type": "added",
+        "summary": "Technische inhoud, datum, doelgroepcontext, aanmeldroute en beperkingen gecontroleerd."
+      }
+    ]
   }
 ]

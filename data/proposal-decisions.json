@@ -538,6 +538,55 @@
       "decision": "rejected",
       "decidedAt": "2026-11-26T07:38:35Z",
       "reason": "De NOLAI-link ontbreekt alleen in het gecontroleerde overzicht; de officiële detailpagina is bereikbaar en bevestigt de gesloten call. De publieke gebundelde kaart is al correct gesloten; het uitgesloten bronrecord blijft wegens de bestaande duplicaatgrens buiten deze automatische wijzigingsroute."
+    },
+    {
+      "proposalId": "proposal-44ec45ec9189b381",
+      "evidenceHash": "e8c1a79493685d75c76edd5aa225535b7dda8aa6b21d2ab885c29c18f0c98692",
+      "decision": "rejected",
+      "decidedAt": "2026-11-27T07:36:42Z",
+      "reason": "De officiële pagina is bereikbaar en beschrijft een jaarlijkse Npuls-temperatuurmeting voor medewerkers, geen les, training, subsidie of ander zelfstandig Atlas-aanbod. Het verdwijnen uit het SURF-overzicht bewijst geen inhoudelijke wijziging."
+    },
+    {
+      "proposalId": "proposal-7aa1494e44d19f59",
+      "evidenceHash": "96ea0d908e0325a2a092e4336513f6795c596e7e41624d9f5ed6345ae7bf56b6",
+      "decision": "rejected",
+      "decidedAt": "2026-11-27T07:36:42Z",
+      "reason": "De pagina is bereikbaar en vat onderzoek naar Teacher Design Teams en brede technologie-integratie samen. AI wordt slechts als een van meerdere verwachtingen genoemd; er is geen concrete AI-les of afzonderlijke AI-training."
+    },
+    {
+      "proposalId": "proposal-99e59c6da5c57bc3",
+      "evidenceHash": "981fca1116fbbf654da833a9ed8171fb85ec1230ccec8c23382530784cc453d3",
+      "decision": "rejected",
+      "decidedAt": "2026-11-27T07:36:42Z",
+      "reason": "De officiële SURF-communitypagina is een trend- en reflectieartikel over SXSW 2026. Zij bevat geen concrete les, handleiding, training, onderzoeksronde of ander direct bruikbaar aanbod voor opname."
+    },
+    {
+      "proposalId": "proposal-a45ade9b0277301f",
+      "evidenceHash": "1ef9e2d6bffd890f0eef1af27df0d59633a713a0dfcbdf23164e3f6f63dbf15f",
+      "decision": "rejected",
+      "decidedAt": "2026-11-27T07:36:42Z",
+      "reason": "De pagina beschrijft een afgerond SURF-seminar uit 2024 en koppelt presentaties over spraakherkenning. Er is geen actuele training of zelfstandige onderwijsopdracht; concrete spraaktools zijn al afzonderlijk in de Atlas opgenomen."
+    },
+    {
+      "proposalId": "proposal-ac4d90d3ade67669",
+      "evidenceHash": "478fe52eb2e3c0b5e023653becd8d8023ccf0de45b7facfb8703f75fd6eb7f78",
+      "decision": "rejected",
+      "decidedAt": "2026-11-27T07:36:42Z",
+      "reason": "De edusources-vermelding betreft een ontwerptool voor de organisatie van onderwijs in een arbeidsmarktregio. Het artifact en de titel tonen geen AI-inhoud of concrete AI-toepassing; er is daarom geen Atlasrelevantie vastgesteld."
+    },
+    {
+      "proposalId": "proposal-78cd6e7a82b24b9d",
+      "evidenceHash": "de879239ba0b30c188cb60b92a34d47c1d3ef09de035abbbb7e672522fd37e03",
+      "decision": "accepted",
+      "decidedAt": "2026-11-27T07:36:42Z",
+      "reason": "De officiële SURF-detailpagina bevestigt een concrete online sessie op 8 december 2026 over de inlogstappen en autorisatiemogelijkheden voor eduGenAI via SURFconext. Deze is als afzonderlijke technische training toegevoegd."
+    },
+    {
+      "proposalId": "proposal-386ad7e59f816cba",
+      "evidenceHash": "0b2bf7609783f3596f4353af10e103bec62edce8f04622cc20dc9ae19bb1a4ca",
+      "decision": "rejected",
+      "decidedAt": "2026-11-27T07:36:42Z",
+      "reason": "De officiële Kennisnet-detailpagina is bereikbaar. Zij behandelt gewijzigde privacyrechten van leerlingen maar niet specifiek AI; het verdwijnen van de homepagelink is geen bewijs van bronverlies of Atlasrelevante aanbodwijziging."
     }
   ]
 }
