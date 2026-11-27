@@ -1,5 +1,11 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 27 november 2026 · Lesmateriaal voorstellen vanuit de Atlas
+
+Bezoekers die lesmateriaal wilden voorstellen kwamen via Bijdragen & feedback bij een algemeen aanbodformulier. Dat formulier had geen keuze voor lesmateriaal. De startpagina en lesgids tonen nu **Lesmateriaal voorstellen**. Het aparte formulier vraagt naar de bron, doelgroep, het leerdoel en hoe een docent het materiaal kan gebruiken. Het voorstel wordt inhoudelijk beoordeeld.
+
+De toelatingsregel richt zich op inhoudelijke juistheid en op de bruikbaarheid van het afgewerkte materiaal voor de doelgroep. Leservaring kan extra informatie geven. De snelkoppeling en formulierbestemming zijn getest op mobiel en desktop, ook met toetsenbord en zonder JavaScript.
+
 ## 27 november 2026 · Een AI-uitleg over lichtbreking nakijken
 
 **Publicatiestatus: teruggetrokken op 27 november 2026.** De browser- en broncontrole bevestigden de werking en de vakinhoud. Voor de eigen Atlas-opdracht was nog geen onderwijsgebruik vastgelegd. De docentversie, het leerlingblad en de zoekingang zijn uit de publieke editie gehaald. De voorgaande versie is bewaard in de wijzigingsgeschiedenis. [Oorspronkelijke publicatie](https://github.com/ECMW/ai-onderwijs-atlas-nederland/pull/236) · [Toelatingsregel](../docs/editorial-policy.md#beproefd-les--en-werkmateriaal)

@@ -251,6 +251,8 @@ body > footer :is(a, summary):focus-visible { outline-color: #fff !important; }
 }
 
 /* Keep discovery ahead of secondary actions on every screen size. */
+.catalog-intro:has(.material-proposal-link){padding-inline:1.25rem}
+.material-proposal-link{display:inline-flex;align-items:center;min-height:44px;color:var(--brand-bluegray-deep);font-weight:650;text-decoration:underline;text-underline-offset:.15em}
 .home-browse-links{display:flex;flex-wrap:wrap;gap:.25rem 1.25rem;margin:.5rem 0}
 .home-browse-links a{display:inline-flex;align-items:center;min-height:44px;font-weight:700;color:var(--brand-bluegray-deep)}
 .home-market .home-search .trust-summary{margin:.65rem 0 0;font-size:.8rem}

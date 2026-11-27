@@ -41,13 +41,15 @@ Boeken en materialen blijven onderdeel van de volledige zoekcatalogus en de
 filters. Zij hebben op verzoek van Eva geen afzonderlijke link in het hoofdmenu;
 bestaande links naar het boekenoverzicht blijven werken.
 
-## Beproefd les- en werkmateriaal
+<a id="beproefd-les--en-werkmateriaal"></a>
 
-De publieke Atlas biedt les- en werkmateriaal aan waarvan de inhoud en de aansluiting op doelgroep en leerdoel zijn beoordeeld en waarvan gebruik in een relevante onderwijspraktijk is vastgelegd. Leg voor publicatie per werkvorm de vindplaats, de betrokken doelgroep en de beproefde versie of onderdelen vast. Gebruik documentatie van een aanbieder, docent of instelling als die het concrete materiaal en het gebruik beschrijft. Benoem wat bekend is over de ervaring en houd conclusies over leeropbrengst binnen het beschikbare bewijs.
+## Bruikbaar les- en werkmateriaal
 
-Deze regel geldt ook voor eigen Atlas-opdrachten en voor ingrijpende bewerkingen van bronmateriaal. Ervaring met een bron of simulatie telt voor die bron of simulatie. Bij een nieuwe leeropdracht is praktijkbewijs over die opdracht nodig. Technische controles, zoals het openen, kopiëren, afdrukken en met het toetsenbord doorlopen, zijn onderdeel van de kwaliteitscontrole en geven bewijs over de werking.
+De publieke Atlas biedt les- en werkmateriaal aan dat een docent voor een concreet leerdoel kan inzetten. Controleer de vakinhoud en bronverwijzingen, de aansluiting op de doelgroep en de uitvoerbaarheid van de opdracht. Leg de vindplaats vast en controleer of de benodigde instructie, materialen en eventuele docentversie bereikbaar zijn. Benoem relevante voorwaarden, zoals taal, account, tijdsindicatie of voorbereiding.
 
-Houd voorstellen voor nog te beproeven lessen en werkbladen in de conceptfase, buiten publieke pagina’s, zoekresultaten en uitgelichte routes. Controleer bestaande materialen bij herbeoordeling aan dezelfde maatstaf. Leg vast welk bewijs is gevonden, waar een bewijsleemte zit en welke versie is teruggetrokken. Bewaar de wijzigingsgeschiedenis.
+Voor publicatie volstaat aangetoonde bruikbaarheid van het afgewerkte materiaal. Een klasproef of eerder gebruik is optioneel. Als er ervaringen of leerresultaten zijn gedocumenteerd, vermeld dan bij welke doelgroep en versie die horen. Dezelfde beoordeling geldt voor eigen Atlas-opdrachten en ingrijpende bewerkingen van bronmateriaal.
+
+Houd onvolledige concepten en onbeoordeelde experimenten in voorbereiding. Leg bij herbeoordeling de onderbouwing en eventuele terugtrekking vast en bewaar de wijzigingsgeschiedenis.
 
 ## Feitelijke en vergelijkbare vermeldingen
 

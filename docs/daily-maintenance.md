@@ -251,6 +251,8 @@ Onzekere inzendingen, correcties,
 feedback en willekeurige externe PR's worden niet via deze toelating gepubliceerd.
 Zie `docs/release-process.md`.
 
+Het aparte formulier voor lesmateriaal levert een openbaar voorstel voor inhoudelijke beoordeling op. Gebruik daarvoor de criteria voor bruikbaar les- en werkmateriaal.
+
 ## Autonome Atlas-actualisator
 
 De cloudverkenning kan alleen gegevens toelaten die deterministisch uit bekende officiële bronnen
@@ -274,7 +276,7 @@ beschikbaar is, maakt zij geen lege commit of PR.
 
 ### Praktijkgids bijhouden in dezelfde ronde
 
-Pas vóór publicatie van een lesstart of werkblad de [toelatingsregel voor beproefd materiaal](editorial-policy.md#beproefd-les--en-werkmateriaal) toe. Leg de vindplaats van praktijkgebruik vast in de bronbeoordeling. Houd de opdracht in voorbereiding zolang het bewijs over het concrete materiaal ontbreekt.
+Pas vóór publicatie van een lesstart of werkblad de [toelatingsregel voor bruikbaar materiaal](editorial-policy.md#bruikbaar-les--en-werkmateriaal) toe. Leg vast hoe de vakinhoud, doelgroep en uitvoerbaarheid van het concrete materiaal zijn gecontroleerd. Beschrijf gedocumenteerde leservaring alleen als die beschikbaar is.
 
 Open bij een gewijzigde lesstart ook het leerlingblad vanuit de lesgids. Controleer of de leerling elke genoemde voorbeeldzin, figuur of tabel kan vinden met de informatie op dat blad. Verwijs bij een langere bron naar de pagina of het onderdeel. Controleer bij een afdruk welke gegevens de docent apart moet meegeven.
 

@@ -112,6 +112,7 @@ class LessonDirectoryTests(unittest.TestCase):
                                        'data-atlas-item-id': public['id'], 'data-atlas-item-title': public['title']}])
             self.assertIn('href="../#item/les-een"', local)
             self.assertIn('href="../#zoeken?type=materials"', local)
+            self.assertIn('href="../#bijdragen">Lesmateriaal voorstellen</a>', local)
             self.assertIn('data-atlas-lesson-directory', local)
             self.assertIn('name="referrer" content="no-referrer"', local)
             self.assertIn('data-filter-sector', local)

@@ -1,0 +1,34 @@
+name: Lesmateriaal voorstellen
+description: Stel een les, werkblad of oefening over AI in het onderwijs voor
+title: '[Lesmateriaal] '
+body:
+  - type: markdown
+    attributes:
+      value: |
+        De Atlas beoordeelt de inhoud, de aansluiting op het leerdoel en de bruikbaarheid in de onderwijspraktijk. Uw voorstel is openbaar. Deel alleen openbare links en informatie zonder persoonsgegevens.
+  - type: input
+    id: material_title
+    attributes:
+      label: Titel van het lesmateriaal
+    validations:
+      required: true
+  - type: input
+    id: material_source
+    attributes:
+      label: Link naar het lesmateriaal
+      description: Geef de rechtstreekse link naar de pagina van de maker of aanbieder.
+      placeholder: https://organisatie.nl/lesmateriaal
+    validations:
+      required: true
+  - type: textarea
+    id: material_audience
+    attributes:
+      label: Voor wie en met welk leerdoel?
+      description: Noem de onderwijssector en beschrijf kort wat leerlingen of studenten met het materiaal doen.
+    validations:
+      required: true
+  - type: textarea
+    id: material_use
+    attributes:
+      label: Hoe kan een docent het gebruiken?
+      description: Vermeld wat de docent moet voorbereiden en welk werkblad of nakijkmateriaal beschikbaar is. Ervaringen uit een les zijn welkom.
