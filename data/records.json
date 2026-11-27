@@ -4851,7 +4851,7 @@
       "org-regieorgaan-sia"
     ],
     "providerName": "Regieorgaan SIA",
-    "description": "Open financieringsronde voor duurzame praktijkgerichte onderzoeksgroepen rond AI-opschaling in het publieke domein.",
+    "description": "Financieringsronde voor praktijkgerichte onderzoeksgroepen rond de opschaling van AI in het publieke domein.",
     "purpose": "Duurzame onderzoeksgroepen versterken rond AI-opschaling in het publieke domein",
     "audiences": [
       "Hogescholen",
@@ -4863,18 +4863,21 @@
       "Onderzoek",
       "Overheid"
     ],
-    "themes": [],
-    "status": "open_call",
-    "availabilityText": "2026",
+    "themes": [
+      "Subsidies en financiering",
+      "Onderzoek"
+    ],
+    "status": "closed_call",
+    "availabilityText": "De aanvraagtermijn is op 15 september 2026 om 14.00 uur Nederlandse tijd verstreken. SIA verwacht het besluit in januari 2027.",
     "startDate": null,
     "endDate": null,
     "publicationDate": null,
-    "lastVerified": "2026-07-12",
-    "verificationStatus": "recently_checked",
+    "lastVerified": "2026-11-27",
+    "verificationStatus": "verified",
     "sourceUrls": [
       {
-        "label": "Officiële bron",
-        "url": "https://regieorgaan-sia.nl/financiering/sprong-thematisch/sprong-versnelling-ai-opschaling-in-het-publieke-domein/",
+        "label": "Regieorgaan SIA · voorwaarden en tijdpad",
+        "url": "https://regieorgaan-sia.nl/calls/sprong-versnelling-ai-opschaling-in-het-publieke-domein",
         "sourceType": "official"
       }
     ],
@@ -4893,7 +4896,7 @@
     "totalBudget": null,
     "eligibility": "Samenwerkingsverbanden rond praktijkgericht onderzoek; volledige voorwaarden staan in de call.",
     "applicantTypes": [],
-    "callStatus": "open_call",
+    "callStatus": "closed_call",
     "recurrence": null,
     "language": [
       "nl"
@@ -4911,8 +4914,16 @@
         "date": "2026-07-12",
         "type": "migrated",
         "summary": "Gemigreerd uit atlasdataset v1."
+      },
+      {
+        "date": "2026-11-27",
+        "type": "updated",
+        "summary": "Status op gesloten gezet en de sluitingstijd vastgelegd aan de hand van het officiële tijdpad."
       }
-    ]
+    ],
+    "applicationDeadlineAt": "2026-09-15T14:00:00+02:00",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "De sluitingsdatum, het tijdstip en de geplande besluitvorming gecontroleerd op de detailpagina van Regieorgaan SIA."
   },
   {
     "id": "kiem-arbeidsbesparende-ai-2026",
@@ -41896,6 +41907,271 @@
         "date": "2026-11-27",
         "type": "added",
         "summary": "Opgenomen na controle van de oorspronkelijke bron, doelgroep en praktische toepassing."
+      }
+    ],
+    "publicationDate": null
+  },
+  {
+    "id": "edinburgh-smart-speakers-and-ai",
+    "title": "Smart Speakers and AI – Teacher’s Guide",
+    "providerName": "University of Edinburgh – Data Education in Schools",
+    "subtype": "Docentenhandleiding over slimme luidsprekers",
+    "description": "Waarom begrijpt een slimme luidspreker de ene spreker beter dan de andere? In les 4 bespreken leerlingen een scène waarin de luidspreker opa verkeerd verstaat. Aan de hand van vragen en voorbeeldantwoorden onderzoeken ze wat uitspraak, zacht spreken en achtergrondgeluid uitmaken.",
+    "purpose": "Met leerlingen verklaringen bedenken voor fouten bij spraakherkenning.",
+    "audiences": [
+      "Leraren",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "PO"
+    ],
+    "themes": [
+      "AI-geletterdheid"
+    ],
+    "availabilityText": "De Engelstalige handleiding is vrij te downloaden. Les 4 vermeldt de scène in de bijbehorende film (9:09–11:22).",
+    "sourceUrls": [
+      {
+        "label": "Data Education in Schools · docentenhandleiding (pdf)",
+        "url": "https://dataschools.education/wp-content/uploads/2023/10/Smart-Speakers-and-AI-Teacher-guide_Final1.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "University of Edinburgh · lesfilm Smart Speakers and AI",
+        "url": "https://media.ed.ac.uk/media/t/1_1gn8s3x1",
+        "sourceType": "official"
+      }
+    ],
+    "geographicScope": "Europa",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "spraakherkenning",
+      "spraakassistent",
+      "slimme luidspreker",
+      "accent"
+    ],
+    "subjects": [
+      "Digitale geletterdheid"
+    ],
+    "notes": "De leerkracht kan de Engelstalige gespreksvragen voorbereiden en met de klas in het Nederlands bespreken.",
+    "verificationNote": "De oorspronkelijke handleiding, het lesdoel, de voorbeeldantwoorden bij les 4 en de bestemming van de lesfilm gecontroleerd. Het Edinburghse project beschrijft het werk met basisschoolleerlingen.",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-27",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "relatedIds": [],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-27",
+        "type": "added",
+        "summary": "Opgenomen na controle van de oorspronkelijke bron en de praktische toepassing."
+      }
+    ],
+    "publicationDate": null
+  },
+  {
+    "id": "mediawijs-lespakket-online-invloeden",
+    "title": "Lespakket online invloeden",
+    "providerName": "Mediawijs",
+    "subtype": "Lespakket over aanbevelingen op sociale media",
+    "description": "Bij de opdracht ‘Bubbels en konijnen’ vergelijken leerlingen in tweetallen wat dezelfde app hun laat zien. Ze noteren overeenkomsten en verschillen in berichten en advertenties, volgen een reeks videoaanbevelingen en bespreken hoe een filterbubbel kan ontstaan.",
+    "purpose": "Leerlingen laten onderzoeken hoe aanbevelingen op sociale media uiteenlopen.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid"
+    ],
+    "availabilityText": "De Nederlandstalige handleiding en opdrachten zijn vrij toegankelijk. Voor ‘Bubbels en konijnen’ rekent Mediawijs op 50 minuten en op toestellen met toegang tot sociale media.",
+    "sourceUrls": [
+      {
+        "label": "Mediawijs · lespakket en downloads",
+        "url": "https://www.mediawijs.be/nl/onlineinvloeden",
+        "sourceType": "official"
+      }
+    ],
+    "geographicScope": "Europa",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "filterbubbel",
+      "echokamer",
+      "aanbevelingsalgoritme",
+      "sociale media",
+      "Bubbels en konijnen"
+    ],
+    "subjects": [
+      "Mediawijsheid",
+      "Digitale geletterdheid"
+    ],
+    "notes": "Ontwikkeld voor de tweede en derde graad van het Vlaamse secundair onderwijs. Spreek vooraf af welke voorbeelden leerlingen willen laten zien. De aanvullende televisiefragmenten zijn optioneel.",
+    "verificationNote": "Op de pagina van de maker en in methodiek 7 zijn doelgroep, benodigdheden, lesduur en de concrete stappen voor de vergelijking gecontroleerd.",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-27",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "relatedIds": [],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-27",
+        "type": "added",
+        "summary": "Opgenomen na controle van de oorspronkelijke bron en de praktische toepassing."
+      }
+    ],
+    "publicationDate": null
+  },
+  {
+    "id": "hogeschool-rotterdam-beter-leren-schrijven-met-ai",
+    "title": "Beter leren schrijven met AI",
+    "providerName": "Hogeschool Rotterdam",
+    "subtype": "Schrijfwijzer met voorbeeldprompts voor studenten",
+    "description": "Studenten schrijven eerst zelf een tekst. Daarna kiezen ze een voorbeeldprompt om feedback te vragen op bijvoorbeeld de doelgroep, de opbouw of een alinea. Bij het herschrijven lichten ze toe welke suggesties ze overnemen en waarom.",
+    "purpose": "Gerichte feedback op een eigen tekst vragen en onderbouwen welke wijzigingen het schrijfdoel dienen.",
+    "audiences": [
+      "Studenten",
+      "Docenten"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI"
+    ],
+    "availabilityText": "De uitleg en de Nederlandstalige schrijfwijzer zijn vrij toegankelijk. Voor de oefeningen met AI is toegang nodig tot een taalmodel dat de opleiding toestaat.",
+    "sourceUrls": [
+      {
+        "label": "Hogeschool Rotterdam · uitleg en inzet in de les",
+        "url": "https://www.hogeschoolrotterdam.nl/onderzoek/lectoren/talentontwikkeling/lectoren/Jacqueline-van-Kruiningen/lectoraat-taalbewust-hoger-onderwijs/leidraad-taalbewust-hoger-onderwijs/tools/beter-leren-schrijven-met-ai/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Hogeschool Rotterdam · schrijfwijzer met voorbeeldprompts (pdf)",
+        "url": "https://www.hogeschoolrotterdam.nl/contentassets/426f6d11d1dc4501b1d9cfc1ba0fc1cb/beter-leren-schrijven-met-ai-een-taalmodel-als-schrijfcoach-hoe-zet-je-het-in.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "geographicScope": "Nederland",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "schrijfcoach",
+      "schrijfvaardigheid",
+      "Nederlandstalig schrijven",
+      "feedback",
+      "herschrijven"
+    ],
+    "subjects": [
+      "Nederlands"
+    ],
+    "notes": "Versie 1A van de schrijfwijzer is gedateerd op 25 februari 2026. De webpagina verwijst naar de actuele versie.",
+    "verificationNote": "De beschrijving van de didactiek en de schrijfwijzer gecontroleerd. In de pdf zijn de inhoudsopgave en voorbeelden over schrijfdoel, doelgroep en tekstopbouw bekeken.",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-27",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "relatedIds": [],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-27",
+        "type": "added",
+        "summary": "Opgenomen na controle van de oorspronkelijke bron en de praktische toepassing."
+      }
+    ],
+    "publicationDate": null
+  },
+  {
+    "id": "ugent-genai-peer-review-evaluatie",
+    "title": "Gebruik van (Gen)AI bij peer review en evaluatie",
+    "providerName": "Universiteit Gent",
+    "subtype": "Handreiking voor onderzoekers en beoordelaars",
+    "description": "Mag een reviewer een ongepubliceerd manuscript aan een taalmodel voorleggen? De Universiteit Gent laat zien welke regels van de uitgever of financier een beoordelaar vooraf moet raadplegen. Ook staat er bij wie een auteur terechtkan bij een vermoeden dat vertrouwelijk werk is gedeeld.",
+    "purpose": "Vooraf toetsen welke AI-hulp bij een peer review geoorloofd is en hoe vertrouwelijk werk beschermd blijft.",
+    "audiences": [
+      "Onderzoekers",
+      "Promovendi"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Onderzoek",
+      "Publieke waarden en ethiek"
+    ],
+    "availabilityText": "De Nederlandstalige onderzoekstip is vrij leesbaar. Het aanvullende interne onderzoekskader van de UGent staat op het intranet.",
+    "sourceUrls": [
+      {
+        "label": "Universiteit Gent · onderzoekstip over peer review",
+        "url": "https://www.onderzoektips.ugent.be/nl/tips/00002281/",
+        "sourceType": "official"
+      }
+    ],
+    "geographicScope": "Europa",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "peer review",
+      "manuscript",
+      "wetenschappelijke integriteit",
+      "vertrouwelijkheid",
+      "evaluatie"
+    ],
+    "subjects": [],
+    "notes": "De voorbeelden komen uit de universitaire onderzoekspraktijk. Raadpleeg voor een eigen review de voorwaarden van het betreffende tijdschrift of de financier.",
+    "verificationNote": "De passages voor beoordelaars en auteurs, voorbeelden van uitgeversbeleid en de grens tussen openbare tip en intern richtkader zijn gecontroleerd.",
+    "offerCategory": "knowledge",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-27",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "relatedIds": [],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-27",
+        "type": "added",
+        "summary": "Opgenomen na controle van de oorspronkelijke bron en de praktische toepassing."
       }
     ],
     "publicationDate": null
