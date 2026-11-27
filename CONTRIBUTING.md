@@ -1,12 +1,14 @@
 # Bijdragen
 
-Gebruik **Bijdragen & feedback** op de website om bestaand aanbod aan te vullen,
-een feitelijke correctie door te geven of feedback te geven. De formulieren openen
-op GitHub en vereisen een GitHub-account. Inzendingen zijn openbaar; deel geen
-persoonsgegevens of vertrouwelijke informatie. Een vermelding in de Atlas is geen
-goedkeuring, kwaliteitsbeoordeling of aanbeveling.
+Gebruik **Bijdragen & feedback** op de website om lesmateriaal of ander aanbod voor
+te stellen, een feitelijke correctie door te geven of feedback te geven. De knoppen
+openen een voorbereid e-mailbericht. De redactie beoordeelt deze bijdragen en houdt
+de oorspronkelijke e-mail privé. Een vermelding in de Atlas is geen goedkeuring,
+kwaliteitsbeoordeling of aanbeveling.
 
-## Een aanvulling indienen
+## Een aanvulling rechtstreeks via GitHub indienen
+
+GitHub-inzendingen zijn openbaar. Deel alleen informatie die openbaar mag zijn.
 
 Vul de vaste velden in: titel, aanbieder, soort aanbod, functie, sector, doelgroep,
 thema, beschikbaarheid, geografische reikwijdte, kosten en commerciële aard. Voeg

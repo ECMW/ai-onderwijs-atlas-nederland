@@ -1,5 +1,11 @@
 # Verbeterregister AI & Onderwijs Atlas Nederland
 
+## 27 november 2026 · Bijdragen per e-mail
+
+Een bezoeker die lesmateriaal wilde voorstellen, kreeg het verzoek zich aan te melden bij GitHub. Het gemelde knelpunt is vanaf de startpagina en lesgids in de browser bevestigd. De vier bijdrageroutes openen nu een voorbereid bericht aan het bestaande contactadres. Het adres staat ook op de pagina voor wie zelf een bericht opstelt. Een correctie vanuit een vermelding neemt de titel en link mee. De e-mailroute gebruikt de bestaande redactionele beoordeling.
+
+De voor- en naproef op 390, 640 en 1280 CSS-pixels controleerde beide ingangen, toetsenbordbediening, de vier bestemmingen, de context bij een correctie en de terugval zonder JavaScript. De browserproef controleert het e-mailconcept. Daadwerkelijke ontvangst en zelfstandig gebruik zijn nog onbekend. De volgende proef volgt het eerstvolgende echte voorstel van inzending tot beoordeling. Voor automatische beoordeling is een voor het beheer toegankelijke inzendroute nodig.
+
 ## 27 november 2026 · Lesmateriaal voorstellen vanuit de Atlas
 
 Bezoekers die lesmateriaal wilden voorstellen kwamen via Bijdragen & feedback bij een algemeen aanbodformulier. Dat formulier had geen keuze voor lesmateriaal. De startpagina en lesgids tonen nu **Lesmateriaal voorstellen**. Het aparte formulier vraagt naar de bron, doelgroep, het leerdoel en hoe een docent het materiaal kan gebruiken. Het voorstel wordt inhoudelijk beoordeeld.

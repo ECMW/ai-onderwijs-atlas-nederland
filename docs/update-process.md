@@ -23,6 +23,6 @@ alle verplichte GitHub-checks groen zijn en er geen conflict of andere onzekerhe
 controleert de actualisator de Pages-deployment en de live zoekbaarheid. Externe bijdragen worden niet
 door deze route gemerged.
 
-Website-inzendingen en volledig onderbouwde cloudvondsten volgen de afzonderlijke toelatings- en
+Inzendingen via het GitHub-formulier en volledig onderbouwde cloudvondsten volgen de afzonderlijke toelatings- en
 publicatieroute in [release-process.md](release-process.md). Ontdekte links worden daar niet
 ongecontroleerd in omgezet.

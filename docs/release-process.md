@@ -4,7 +4,7 @@
 
 De gemachtigde dagelijkse Atlas-actualisator mag uitsluitend eigen, volledig
 geverifieerde PR's samenvoegen na alle verplichte geslaagde controles. Volledig
-toegelaten aanvullingen via het websiteformulier hebben een afzonderlijke
+toegelaten aanvullingen via het GitHub-formulier hebben een afzonderlijke
 botroute. Die borgt de oorspronkelijke inzending, hoofdbranch en kandidaatcommit,
 vereist twee afzonderlijke geslaagde validaties van dezelfde commit en controleert
 het bronbewijs opnieuw vlak vóór samenvoegen. Een wijziging van de hoofdbranch
