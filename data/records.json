@@ -41542,5 +41542,89 @@
         "summary": "Technische inhoud, datum, doelgroepcontext, aanmeldroute en beperkingen gecontroleerd."
       }
     ]
+  },
+  {
+    "id": "european-ai-tools-ai-bronnen-controleren-oefening",
+    "title": "AI-bronnen controleren: oefening met vier voorbeeldzinnen",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "subtype": "Nederlandstalige broncontroleoefening met werkblad en nakijkmodel",
+    "organizationIds": [],
+    "providerName": "European AI Tools",
+    "description": "Een korte oefening voor hbo en wo. Studenten controleren vier voorbeeldzinnen bij hetzelfde Eurostat-bericht op doelgroep, meetjaar, maat en het soort AI. Ze onderbouwen per zin of die kan blijven, moet worden verbeterd of moet worden geschrapt.",
+    "purpose": "Een bronvermelding verifiëren door de precieze bewering met de oorspronkelijke cijfers en methodologische toelichting te vergelijken.",
+    "audiences": [
+      "Studenten",
+      "Docenten"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "status": "available",
+    "availabilityText": "De online oefening, het CSV-werkblad zonder antwoorden en het uitklapbare nakijkmodel zijn direct toegankelijk. Een AI-account is niet nodig. De lesopzet van de aanbieder rekent 15 minuten.",
+    "publicationDate": "2026-11-27",
+    "lastVerified": "2026-11-27",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "European AI Tools: open de oefening en het nakijkmodel",
+        "url": "https://europeanaitools.com/nl/gidsen/ai-bronnen-controleren-oefening/#broncheck-oefening",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "vu-ai-wijs-informatie-zoeken-beoordelen-2026"
+    ],
+    "parentIds": [],
+    "childIds": [],
+    "geographicScope": "Internationaal",
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "broncontrole",
+      "bronvermelding",
+      "informatievaardigheden",
+      "Eurostat",
+      "procentpunt",
+      "lesstart"
+    ],
+    "notes": "Het werkblad bevat vier door de aanbieder geschreven voorbeeldzinnen. De cijfers horen bij Eurostat-bericht ddn-20251211-2 van 11 december 2025. De 20,0% betreft gemeten AI-technologieën bij EU-ondernemingen met minimaal tien werkzame personen in de onderzochte sectoren. De werkvorm en bron zijn inhoudelijk gecontroleerd. De 15 minuten zijn de tijdsindeling van de aanbieder.",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Op 27 november 2026 de makerpagina, de vier CSV-rijen zonder ingevulde antwoorden, het uitklapbare nakijkmodel en de voorgestelde tijdsindeling gecontroleerd. Alle vier de beoordelingen komen overeen met het oorspronkelijke Eurostat-bericht en de methodologische toelichting. Pagina en download geopend zonder account. In de Atlas is op ID, titel, aanbieder, URL en onderwerp op doublures gecontroleerd. De bredere VU-les is inhoudelijk overlappend en blijft een aparte werkvorm.",
+    "changeHistory": [
+      {
+        "date": "2026-11-27",
+        "type": "added",
+        "summary": "Opgenomen na controle van de oefening, het losse werkblad, nakijkmodel en de onderliggende Eurostat-bron."
+      }
+    ],
+    "lessonStart": {
+      "sectors": [
+        "HBO",
+        "WO"
+      ],
+      "level": "Hbo en wo · informatievaardigheden",
+      "question": "Welke van de vier zinnen klopt volgens Eurostat?",
+      "preparation": "Deel het CSV-werkblad zonder antwoorden of open de oefening. Houd het uitklapbare nakijkmodel dicht tot de nabespreking. Het oorspronkelijke Eurostat-bericht staat bij de opdracht.",
+      "task": "Beoordeel de vier zinnen in het werkblad bij de oefening. Kies per zin behouden, verbeteren of schrappen en geef de vindplaats in het Eurostat-bericht. Vergelijk je keuzes in tweetallen.",
+      "reflection": "Licht één correctie toe. Welk detail in de bron gaf de doorslag? Gebruik het nakijkmodel om je onderbouwing te bespreken.",
+      "sourceUrl": "https://europeanaitools.com/nl/gidsen/ai-bronnen-controleren-oefening/#broncheck-oefening",
+      "learningGoal": "Een bewering vergelijken met een oorspronkelijke bron op doelgroep, meetjaar, maat en het soort AI, en een correctie onderbouwen.",
+      "activityType": "Bronnen controleren",
+      "sourceMinutes": 15
+    },
+    "subjects": [
+      "Informatievaardigheden"
+    ]
   }
 ]
