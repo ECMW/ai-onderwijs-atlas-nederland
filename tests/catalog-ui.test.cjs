@@ -2640,7 +2640,7 @@ test('no saving controls remain on cards or results; contributions are visible',
 test('contributions use distinct templates and correction retains exact item context', () => {
   const api = load();
   const item = record('item-with-id', null, 'Naam & uitleg? #test');
-  for (const [kind, template] of [['addition', 'atlas-aanvulling.yml'], ['correction', 'feitelijke-correctie.yml'], ['feedback', 'feedback.yml']]) {
+  for (const [kind, template] of [['material', 'lesmateriaal-voorstel.yml'], ['addition', 'atlas-aanvulling.yml'], ['correction', 'feitelijke-correctie.yml'], ['feedback', 'feedback.yml']]) {
     const url = new URL(api.contributionIssueUrl(kind, item));
     assert.equal(url.origin, 'https://github.com');
     assert.equal(url.searchParams.get('template'), template);
