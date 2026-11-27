@@ -41626,5 +41626,278 @@
     "subjects": [
       "Informatievaardigheden"
     ]
+  },
+  {
+    "id": "mediawijs-hoe-kan-je-beelden-controleren",
+    "title": "Hoe kan je beelden controleren?",
+    "providerName": "Mediawijs",
+    "subtype": "Printbare affiche voor beeldcontrole",
+    "description": "Met deze Nederlandstalige affiche onderzoeken jongeren vanaf 13 jaar waar een foto of video vandaan komt, of plaats en tijd kloppen en welke andere bronnen het beeld bevestigen. De stappen zijn ook toepasbaar op mogelijk door AI gemaakte beelden.",
+    "purpose": "Leerlingen laten onderbouwen of ze een online beeld met het bijschrift kunnen vertrouwen en delen.",
+    "audiences": [
+      "Leerlingen",
+      "Docenten"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid"
+    ],
+    "availabilityText": "De Nederlandstalige affiche is als één pagina te openen en af te drukken.",
+    "sourceUrls": [
+      {
+        "label": "Mediawijs – uitleg en taalversies",
+        "url": "https://www.mediawijs.be/nl/tools/hoe-kan-je-beelden-controleren",
+        "sourceType": "official"
+      },
+      {
+        "label": "Open de Nederlandstalige affiche (PDF)",
+        "url": "https://assets.mediawijs.be/2026-04/mediawijs_affiche_beeldencontroleren.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "mediawijs-edubox-artificiele-intelligentie"
+    ],
+    "geographicScope": "Europa",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "beeldcontrole",
+      "nepbeeld",
+      "beeldbron",
+      "deepfake",
+      "affiche"
+    ],
+    "subjects": [
+      "Digitale geletterdheid"
+    ],
+    "notes": "Het stappenplan ondersteunt brononderzoek. De uitkomst kan onzeker blijven.",
+    "verificationNote": "De makerpagina en de volledige Nederlandstalige affiche gecontroleerd. Mediawijs noemt jongeren van 13 tot 18 jaar. De affiche behandelt bron, context en een vervolgstap bij twijfel. De bestaande EDUbox is een afzonderlijk lespakket.",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-27",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-27",
+        "type": "added",
+        "summary": "Opgenomen na controle van de oorspronkelijke bron, doelgroep en praktische toepassing."
+      }
+    ],
+    "publicationDate": null
+  },
+  {
+    "id": "ecio-ai-en-privacy-stagegegevens",
+    "title": "AI en privacy",
+    "providerName": "ECIO",
+    "subtype": "Checklist en voorbeeldtekst voor opdrachten met stagegegevens",
+    "description": "Een stagebegeleider of docent kan met zeven vragen bepalen welke gegevens bij een opdracht nodig zijn. ECIO geeft een voorbeeldtekst voor studenten die met een fictieve beroepscasus werken. De handreiking bespreekt ook hoe een stageplek, datum of gebeurtenis iemand indirect herkenbaar kan maken.",
+    "purpose": "Vooraf bruikbare privacyafspraken maken bij een opdracht waarin studenten AI mogen gebruiken.",
+    "audiences": [
+      "Docenten",
+      "Onderwijsontwikkelaars",
+      "Privacyprofessionals"
+    ],
+    "sectors": [
+      "MBO",
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "Privacy en AVG",
+      "Lesgeven en leren met AI"
+    ],
+    "availabilityText": "De checklist, de voorbeeldtekst en de uitleg over indirecte herkenbaarheid staan op de openbare webpagina.",
+    "publicationDate": "2026-08-03",
+    "sourceUrls": [
+      {
+        "label": "ECIO – checklist en voorbeeldtekst bij een opdracht",
+        "url": "https://ecio.nl/handreiking/ai-en-privacy/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "ecio-ai-en-studentbegeleiding",
+      "ecio-ai-toetsing-praktische-handvatten"
+    ],
+    "geographicScope": "Nederland",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "stageverslag",
+      "beroepspraktijkvorming",
+      "fictieve casus",
+      "patiëntgegevens",
+      "stagebegeleiding",
+      "privacy"
+    ],
+    "notes": "Stem de opdracht af op de afspraken van de eigen opleiding en stageorganisatie.",
+    "verificationNote": "De doelgroepafbakening, zeven controlevragen en het onderdeel over privacy bij lessen en opdrachten op de ECIO-pagina gelezen. De maker noemt cliënt-, patiënt- en stagegegevens, indirecte herkenbaarheid en een uitgewerkt instructievoorbeeld. De publicatiedatum komt uit de paginametadata.",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-27",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-27",
+        "type": "added",
+        "summary": "Opgenomen na controle van de oorspronkelijke bron, doelgroep en praktische toepassing."
+      }
+    ]
+  },
+  {
+    "id": "hu-experimenteel-ontwerp-toetsing-genai",
+    "title": "Experimenteel Ontwerp – toetsing en verantwoording van GenAI",
+    "providerName": "Hogeschool Utrecht",
+    "subtype": "Voorbeeld van een mondeling assessment met GenAI-verantwoording",
+    "description": "Een openbare toetsbijlage laat zien hoe studenten hun experimenteel ontwerp mondeling onderbouwen. De examinator kan doorvragen naar bronkeuze, hypothese en controles. Studenten leggen per gebruikte AI-toepassing vast hoe zij die bij de voorbereiding hebben ingezet.",
+    "purpose": "Toetsdeskundigen en examinatoren een uitgewerkt voorbeeld geven van een individuele beoordeling na een gezamenlijke presentatie.",
+    "audiences": [
+      "Toetsdeskundigen",
+      "Examinatoren",
+      "Docenten",
+      "Studenten"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [
+      "Toetsing en examinering",
+      "Praktijkvoorbeelden"
+    ],
+    "availabilityText": "De toetsinstructie, beoordelingscriteria, voorbeeldvragen en verantwoordingstabel zijn openbaar te raadplegen in de cursusreader.",
+    "sourceUrls": [
+      {
+        "label": "Hogeschool Utrecht – bijlage 4 bij Experimenteel Ontwerp",
+        "url": "https://lesmaterialen.rstudio.hu.nl/dldas2-reader/bijlage4.html",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "hu-handreiking-generatieve-ai-toetsing"
+    ],
+    "geographicScope": "Nederland",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "mondeling assessment",
+      "verantwoording AI-gebruik",
+      "experimenteel ontwerp",
+      "toetsvragen",
+      "onderzoeksmethoden"
+    ],
+    "notes": "De afspraken gelden voor deze HU-opdracht. Tijdens het mondelinge assessment is AI-gebruik uitgesloten.",
+    "verificationNote": "De openbare toetsbijlage gecontroleerd op de rol van het verslag, de individuele beoordeling, de beoordelingscriteria, voorbeeldvragen en het onderdeel Gebruik GEN AI. Dit is een concrete toetsuitwerking naast de algemene HU-handreiking over toetsing.",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-27",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-27",
+        "type": "added",
+        "summary": "Opgenomen na controle van de oorspronkelijke bron, doelgroep en praktische toepassing."
+      }
+    ],
+    "publicationDate": null
+  },
+  {
+    "id": "goettingen-ai-disclosure-systematic-reviews",
+    "title": "AI Disclosure in Systematic Reviews and Meta-Analyses",
+    "providerName": "University of Göttingen",
+    "subtype": "Werkmateriaal voor methodesectie en gebruikslogboek",
+    "description": "Een Engelstalige gids voor onderzoekers die willen vastleggen waar AI is gebruikt bij een systematische review. Met een logboek en voorbeeldteksten kunnen zij de zoekstrategie, screening of gegevensextractie beschrijven en aangeven wie een uitkomst heeft gecontroleerd.",
+    "purpose": "AI-inzet en menselijke beslissingen per onderzoeksstap navolgbaar rapporteren.",
+    "audiences": [
+      "Onderzoekers",
+      "Promovendi",
+      "Bibliotheekprofessionals"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Onderzoek"
+    ],
+    "availabilityText": "De veldnamen voor het logboek en voorbeelden voor de methodesectie en bijlage staan op de openbare pagina.",
+    "sourceUrls": [
+      {
+        "label": "Universität Göttingen – werkwijze en rapportagevoorbeelden",
+        "url": "https://aicards.uni-goettingen.de/ai-disclosure-in-systematic-reviews-and-meta-analyses/",
+        "sourceType": "official"
+      }
+    ],
+    "relatedIds": [
+      "wur-citation-log-genai-literatuur"
+    ],
+    "geographicScope": "Europa",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "systematische review",
+      "literatuuronderzoek",
+      "screening",
+      "methodesectie",
+      "logboek"
+    ],
+    "subjects": [
+      "Informatievaardigheden"
+    ],
+    "notes": "Pas de voorbeelden aan het eigen reviewprotocol en de eisen van het tijdschrift aan. De pagina vermeldt 22 april 2026 als laatste wijziging.",
+    "verificationNote": "Het stappenplan, de logboekvelden en de voorbeelden voor methodesectie en bijlage gecontroleerd. De universiteit biedt deze vrij leesbare gids via AI Usage Cards aan. Het WUR-materiaal gaat over broncontrole door studenten en bedient een andere taak.",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-27",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "offerCategory": "materials",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-27",
+        "type": "added",
+        "summary": "Opgenomen na controle van de oorspronkelijke bron, doelgroep en praktische toepassing."
+      }
+    ],
+    "publicationDate": null
   }
 ]
