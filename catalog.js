@@ -3590,21 +3590,29 @@
   function contributionPrompt() {
     return `<aside class="contribution-prompt" aria-label="Help de atlas verbeteren"><div><h2>Help de Atlas verder</h2><p>Kent u relevant aanbod? Ziet u een fout of kan de website prettiger werken? Geef het door via de vaste bijdrageroute.</p></div><a class="btn" href="#bijdragen">Bijdragen &amp; feedback <span aria-hidden="true">→</span></a></aside>`;
   }
-  function contributionIssueUrl(kind, record = null) {
-    const templates = { material: 'lesmateriaal-voorstel.yml', addition: 'atlas-aanvulling.yml', correction: 'feitelijke-correctie.yml', feedback: 'feedback.yml' };
-    const params = new URLSearchParams({ template: templates[kind] || templates.feedback });
-    if (kind === 'correction' && record) {
-      params.set('title', `[Correctie] ${record.title}`);
-      params.set('record', `${record.title}\n${PUBLIC_ATLAS}#item/${encodeURIComponent(record.id)}`);
-    }
-    return `https://github.com/ECMW/ai-onderwijs-atlas-nederland/issues/new?${params}`;
+  const CONTRIBUTION_EMAIL = 'evac.m.willems@proton.me';
+  function contributionEmailHref(kind, record = null) {
+    const details = {
+      material: ['Voorstel voor lesmateriaal', ['Titel en link naar het materiaal:', 'Onderwijssector en doelgroep:', 'Leerdoel en gebruik in de les:']],
+      addition: ['Voorstel voor ander aanbod', ['Titel en aanbieder:', 'Link naar de officiële bron:', 'Korte beschrijving en doelgroep:']],
+      correction: ['Correctie of aanvulling', [record ? `Atlas-vermelding: ${record.title}\r\n${publicItemUrl(record)}` : 'Link naar de Atlas-vermelding:', 'Wat moet er worden aangepast?', 'Link naar de bron:']],
+      feedback: ['Feedback op de website', ['Pagina of link:', 'Wat probeerde u?', 'Wat gebeurde er en wat verwachtte u?']]
+    };
+    const [topic, prompts] = details[kind];
+    const subject = `Atlas: ${topic}`;
+    return `mailto:${CONTRIBUTION_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(prompts.join('\r\n\r\n'))}`;
   }
   function renderContribute() {
     const params = new URLSearchParams(location.hash.split('?')[1] || '');
     const record = records.find(item => item.id === params.get('item'));
-    main.innerHTML = `<section class="contribute-page"><header class="page-intro"><span class="eyebrow">Samen actueel en bruikbaar</span><h1>Help de Atlas verder</h1><p>Stel lesmateriaal of ander aanbod voor, geef een correctie door of deel feedback over de website.</p><p class="contribution-notice">De formulieren openen op GitHub. U heeft een gratis GitHub-account nodig. Uw inzending is openbaar: deel geen persoonsgegevens of vertrouwelijke informatie.</p>${record ? `<p class="contribution-context">Uw correctie gaat over <a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a>. Dit item staat alvast ingevuld in het correctieformulier.</p>` : ''}</header>
-      <div class="contribute-options"><article><span aria-hidden="true">＋</span><h2>Lesmateriaal voorstellen</h2><p>Deel de link naar een les, werkblad of oefening en vermeld voor wie het bedoeld is en hoe een docent het kan inzetten.</p><a class="btn" data-contribution="material" href="${escapeHtml(contributionIssueUrl('material'))}" target="_blank" rel="noopener noreferrer">Voorstel voor lesmateriaal indienen ↗</a></article><article><span aria-hidden="true">＋</span><h2>Ander aanbod voorstellen</h2><p>Kent u een handreiking, training, organisatie, voorziening, subsidie of praktijkvoorbeeld dat ontbreekt? Voeg de officiële bron en een korte feitelijke beschrijving toe.</p><a class="btn" data-contribution="addition" href="${escapeHtml(contributionIssueUrl('addition'))}" target="_blank" rel="noopener noreferrer">Ander aanbod voorstellen ↗</a></article><article><span aria-hidden="true">✓</span><h2>Fout of aanvulling doorgeven</h2><p>Klopt een titel, beschrijving, status, deadline of bron niet meer? Vermeld wat er moet veranderen, met een onderbouwende bron.</p><a class="btn secondary" data-contribution="correction" href="${escapeHtml(contributionIssueUrl('correction', record))}" target="_blank" rel="noopener noreferrer">Correctie doorgeven ↗</a></article><article><span aria-hidden="true">↔</span><h2>Feedback op de website</h2><p>Lukt zoeken niet goed, werkt een knop niet of kan iets duidelijker? Beschrijf wat u probeerde en wat u verwachtte. Hiervoor is geen bronlink nodig.</p><a class="btn secondary" data-contribution="feedback" href="${escapeHtml(contributionIssueUrl('feedback'))}" target="_blank" rel="noopener noreferrer">Feedback geven ↗</a></article></div>
-      <aside class="source-policy"><h2>Wat gebeurt er met uw bijdrage?</h2><p>Uw melding krijgt een eigen openbare plek op GitHub. Controleer eerst of er al een <a href="https://github.com/ECMW/ai-onderwijs-atlas-nederland/issues" target="_blank" rel="noopener noreferrer">vergelijkbare melding ↗</a> is; u kunt daar een aanvulling plaatsen.</p><p>Voorstellen voor lesmateriaal worden beoordeeld op inhoud en bruikbaarheid voor de doelgroep. Andere aanbodmeldingen worden direct gecontroleerd op een officiële bron, relevantie voor AI en onderwijs, onderbouwing en mogelijke duplicaten. Duidelijk onderbouwde aanvullingen worden na alle controles automatisch verwerkt. Bij twijfel of ontbrekende informatie blijft de bijdrage ter beoordeling staan. ${LISTING_NOTICE}</p><p>Correcties en websitefeedback blijven via dezelfde openbare route te volgen. U hoeft Eva niet apart te mailen.</p></aside></section>`;
+    main.innerHTML = `<section class="contribute-page"><header class="page-intro"><h1>Bijdragen &amp; feedback</h1><p>Stel lesmateriaal of ander aanbod voor, geef een correctie door of deel feedback over de website.</p><p class="contribution-notice">De knoppen openen een voorbereid bericht in uw e-mailprogramma. U kunt ook zelf mailen naar <a href="mailto:${CONTRIBUTION_EMAIL}">${CONTRIBUTION_EMAIL}</a>.</p>${record ? `<p class="contribution-context">De correctiemail bevat alvast de titel en link van <a href="#item/${escapeHtml(record.id)}">${escapeHtml(record.title)}</a>.</p>` : ''}</header>
+      <div class="contribute-options">
+        <article><h2>Lesmateriaal voorstellen</h2><p>Deel de link naar een les, werkblad of oefening en vermeld voor wie het bedoeld is en hoe een docent het kan inzetten.</p><a class="btn" data-contribution="material" href="${escapeHtml(contributionEmailHref('material'))}">Voorstel voor lesmateriaal mailen</a></article>
+        <article><h2>Ander aanbod voorstellen</h2><p>Kent u een handreiking, training, organisatie, voorziening, subsidie of praktijkvoorbeeld dat ontbreekt? Voeg de officiële bron en een korte feitelijke beschrijving toe.</p><a class="btn" data-contribution="addition" href="${escapeHtml(contributionEmailHref('addition'))}">Voorstel voor ander aanbod mailen</a></article>
+        <article><h2>Fout of aanvulling doorgeven</h2><p>Klopt een titel, beschrijving, status, deadline of bron niet meer? Vermeld wat er moet veranderen, met een onderbouwende bron.</p><a class="btn secondary" data-contribution="correction" href="${escapeHtml(contributionEmailHref('correction', record))}">Correctie mailen</a></article>
+        <article><h2>Feedback op de website</h2><p>Lukt zoeken niet goed, werkt een knop niet of kan iets duidelijker? Beschrijf wat u probeerde en wat u verwachtte.</p><a class="btn secondary" data-contribution="feedback" href="${escapeHtml(contributionEmailHref('feedback'))}">Feedback mailen</a></article>
+      </div>
+      <aside class="source-policy"><h2>Wat gebeurt er met uw bijdrage?</h2><p>De redactie controleert de bron en beoordeelt voorgesteld lesmateriaal op inhoud en bruikbaarheid voor de doelgroep. Deel alleen informatie die nodig is om uw bijdrage te beoordelen.</p></aside></section>`;
   }
   function currentSearchLabel() {
     const parts = [state.q && `‘${state.q}’`, ...FILTER_KEYS.flatMap(key => values(key).map(value => filterOptionLabel(key, value)))].filter(Boolean);

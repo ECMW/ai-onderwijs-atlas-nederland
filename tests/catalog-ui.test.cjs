@@ -11,7 +11,7 @@ const instrumented = catalogue.replace(boot, `  window.testCatalogue = {
     pilotSheetText, renderPilotDecision, renderWorksheet, renderMinutesCheck, renderStudentAssignment, renderExamCases,
     renderLearningEvidence, renderPracticeGuide, practiceCasesMarkup,
     commercialLabel, commercialBadge, commercialDetails, offerFacts, costLabel, publicationDate, addedDate, datedOffers, newOffersMarkup, papersMarkup, paperRis, sortRecords, stateHref, parseState, hasIntent, resultsMarkup, simpleCard,
-    facet, bindFacetLists, facetSelectionLabel, contributionIssueUrl, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
+    facet, bindFacetLists, facetSelectionLabel, contributionEmailHref, contributionPrompt, teaserCard, booksMarkup, bookContextMarkup,
     recordContextMarkup, queryMatchQuality, queryMatches, sortRecords,
     homeFilterPanel, catalogFilterPanel, recordsForCriteria, renderDetail, researchPage, renderAssessment, readAssessmentDraft, assessmentParts, renderTeamTrial,
     suggestionData, criteriaForQuery, relatedThemes, renderPracticeRules, filterKeys: FILTER_KEYS,
@@ -2637,18 +2637,23 @@ test('no saving controls remain on cards or results; contributions are visible',
   assert.ok(api.contributionPrompt().includes('href="#bijdragen"'));
 });
 
-test('contributions use distinct templates and correction retains exact item context', () => {
+test('contribution drafts use distinct subjects and correction retains exact item context', () => {
   const api = load();
   const item = record('item-with-id', null, 'Naam & uitleg? #test');
-  for (const [kind, template] of [['material', 'lesmateriaal-voorstel.yml'], ['addition', 'atlas-aanvulling.yml'], ['correction', 'feitelijke-correctie.yml'], ['feedback', 'feedback.yml']]) {
-    const url = new URL(api.contributionIssueUrl(kind, item));
-    assert.equal(url.origin, 'https://github.com');
-    assert.equal(url.searchParams.get('template'), template);
-    if (kind === 'correction') {
-      assert.equal(url.searchParams.get('title'), '[Correctie] ' + item.title);
-      assert.equal(url.searchParams.get('record'), item.title + '\nhttps://aionderwijsatlas.nl/#item/item-with-id');
-    }
+  const cases = [
+    ['material', 'Voorstel voor lesmateriaal', 'Leerdoel en gebruik in de les:'],
+    ['addition', 'Voorstel voor ander aanbod', 'Link naar de officiële bron:'],
+    ['correction', 'Correctie of aanvulling', `Atlas-vermelding: ${item.title}\r\nhttps://aionderwijsatlas.nl/#item/item-with-id`],
+    ['feedback', 'Feedback op de website', 'Wat probeerde u?']
+  ];
+  for (const [kind, subject, prompt] of cases) {
+    const url = new URL(api.contributionEmailHref(kind, item));
+    assert.equal(url.protocol, 'mailto:');
+    assert.equal(url.pathname, 'evac.m.willems@proton.me');
+    assert.equal(url.searchParams.get('subject'), 'Atlas: ' + subject);
+    assert.ok(url.searchParams.get('body').includes(prompt));
   }
+  assert.match(new URL(api.contributionEmailHref('correction')).searchParams.get('body'), /^Link naar de Atlas-vermelding:/);
 });
 
 test('funding task appears under help and reuses existing subsidy and call filters', () => {

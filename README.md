@@ -79,13 +79,13 @@ publieke Atlas onafhankelijk van de laptop.
 De Atlas heeft verschillende onderhoudsroutes:
 
 - de bestaande GitHub-workflow controleert geregistreerde bronnen driemaal per dag om 06:17, 11:17 en 16:17 UTC en bewaart signalen en bewijs in het rapport bij de run. Deze controle werkt ook met de laptop uit;
-- de aanvullende cloudverkenning controleert begrensd concrete officiële detailpagina's. Alleen complete, bronbewezen nieuwe aanvullingen gaan door dezelfde strikte toelating als website-inzendingen; overige vondsten blijven ter beoordeling;
+- de aanvullende cloudverkenning controleert begrensd concrete officiële detailpagina's. Alleen complete, bronbewezen nieuwe aanvullingen gaan door dezelfde strikte toelating als inzendingen via het GitHub-formulier; overige vondsten blijven ter beoordeling;
 - de gemachtigde Atlas-actualisator onderzoekt gemelde gebruiksproblemen, controleert wijzigingen in bestaand aanbod en vult concrete leemten aan. Alleen eigen, volledig geverifieerde pull requests kunnen na de verplichte controles worden samengevoegd. De eigenaar krijgt een gerichte vraag zodra voor de afhandeling een eigen besluit nodig is;
-- aanvullingen via het websiteformulier worden onmiddellijk getoetst aan de strikte bron- en publicatieregels. Alleen volledig toegelaten aanvullingen mogen via een eigen bot-PR automatisch worden verwerkt; twijfelgevallen blijven buiten de publieke Atlas.
+- aanvullingen via het GitHub-formulier worden onmiddellijk getoetst aan de strikte bron- en publicatieregels. Alleen volledig toegelaten aanvullingen mogen via een eigen bot-PR automatisch worden verwerkt; twijfelgevallen blijven buiten de publieke Atlas.
 
 De dagelijkse actualisator stopt zonder merge bij een dirty worktree, conflicten,
 mislukte checks, onduidelijke bronnen, mogelijke doublures of andere materiële
-onzekerheid. De website-inzendingen gebruiken een aparte route met onveranderlijke
+onzekerheid. De GitHub-inzendingen gebruiken een aparte route met onveranderlijke
 kandidaatcommits, twee geslaagde controles van dezelfde commit en een laatste
 bronhercontrole vóór samenvoegen. Gewijzigde inzendingen worden niet stilzwijgend
 doorgezet; een gewijzigde hoofdbranch vereist een nieuwe kandidaat en controles.

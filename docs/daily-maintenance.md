@@ -240,9 +240,13 @@ Vermeld de getroffen gebruikers, de concrete keuze, de opties met hun gevolgen, 
 er bij uitstel gebeurt. Houd bij welke keuze al is voorgelegd. Breng die pas opnieuw onder de
 aandacht bij nieuwe informatie die het besluit wezenlijk verandert.
 
-### Inzendingen via de website
+### Bijdragen per e-mail en inzendingen via GitHub
 
-Website-inzendingen hebben een aparte actieve route: `process-atlas-submission.yml` laat uitsluitend
+De website opent een voorbereid e-mailbericht op het bestaande contactadres. Beoordeel de bijdrage
+via de gewone redactionele route. Gebruik bij voorgesteld lesmateriaal de criteria voor bruikbaar
+les- en werkmateriaal. Neem alleen openbare broninformatie en bevindingen op in de repository.
+
+Bij rechtstreekse GitHub-inzendingen laat `process-atlas-submission.yml` uitsluitend
 volledig brononderbouwde aanvullingen toe. `publish-auto-verified-contribution.yml` controleert de
 onveranderlijke kandidaatcommit, beide geslaagde validaties, de actuele inzending en de bron opnieuw.
 Pas daarna kan de eigen bot-PR worden gemerged en de gecontroleerde Pages-publicatie worden gestart.
@@ -250,8 +254,6 @@ De cloudverkenning gebruikt dezezelfde toelating voor complete, bronbewezen nieu
 Onzekere inzendingen, correcties,
 feedback en willekeurige externe PR's worden niet via deze toelating gepubliceerd.
 Zie `docs/release-process.md`.
-
-Het aparte formulier voor lesmateriaal levert een openbaar voorstel voor inhoudelijke beoordeling op. Gebruik daarvoor de criteria voor bruikbaar les- en werkmateriaal.
 
 ## Autonome Atlas-actualisator
 
