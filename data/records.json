@@ -42572,5 +42572,337 @@
         "summary": "Promotiepilot toegevoegd na controle van de programmaopzet, deelnamevoorwaarden en het officiële aanmeldformulier."
       }
     ]
+  },
+  {
+    "id": "schooltv-nepvideos-en-deepfake",
+    "title": "Nepvideo’s en deepfake",
+    "providerName": "Schooltv – Tegenlicht in de klas",
+    "subtype": "Video met kijkvragen en docentenblad",
+    "description": "Leerlingen bekijken voorbeelden van synthetische beelden en stemmen. Ze bespreken wie baat heeft bij een nagemaakte stem en wie schade kan ondervinden als iemand zich online voordoet als een ander.",
+    "purpose": "De gevolgen van een toepassing van synthetische media afwegen voor de betrokkenen.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek"
+    ],
+    "subjects": [
+      "Digitale geletterdheid"
+    ],
+    "keywords": [
+      "deepfake",
+      "synthetische stem",
+      "mediawijsheid",
+      "maatschappijleer"
+    ],
+    "sourceUrls": [
+      {
+        "label": "Bekijk de aflevering en open de lesbrief bij Schooltv",
+        "url": "https://schooltv.nl/video-item/tegenlicht-in-de-klas-nepvideos-en-deepfake",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download de docenten- en leerlingversie (PDF)",
+        "url": "https://cdn3.schooltv.nl/fileadmin/PROGRAMMA/Indeklas/Tegenlicht/lesbrief_tl_nepvideos.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "availabilityText": "Nederlandstalige video van circa negen minuten. Het werkblad en de antwoorden zijn gratis te downloaden.",
+    "notes": "De lesbrief noemt 13–18 jaar. De aflevering uit 2021 bevat ook een voorbeeld van seksueel beeldmisbruik. Bekijk vooraf welke voorbeelden bij de klas passen.",
+    "verificationNote": "De video speelde in een verse browser. Pagina 1 van de lesbrief bevat het antwoordmodel. Pagina 2 bevat de kijkvragen en groepsvraag voor leerlingen.",
+    "geographicScope": "Nederland",
+    "language": [
+      "nl"
+    ],
+    "offerCategory": "materials",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-28",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "relatedIds": [],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-28",
+        "type": "added",
+        "summary": "Opgenomen na controle van het oorspronkelijke materiaal en de uitvoering van de opdracht."
+      }
+    ],
+    "publicationDate": null,
+    "lessonStart": {
+      "sectors": [
+        "VO"
+      ],
+      "level": "VO · 13–18 jaar volgens de lesbrief",
+      "question": "Wie help je met een nagemaakte stem en wie kan er schade van ondervinden?",
+      "learningGoal": "Aan de hand van twee voorbeelden uitleggen wat synthetische media betekenen voor de betrokkenen.",
+      "activityType": "Kijkopdracht en groepsgesprek",
+      "preparation": "Open de video. Deel alleen pagina 2 van de lesbrief uit en houd pagina 1 bij de hand voor de nabespreking.",
+      "task": "Bekijk de aflevering en maak kijkvragen 4 en 5. Kies in tweetallen een toepassing die iemand helpt en een toepassing die iemand kan schaden. Benoem per voorbeeld wie dat is en waarom.",
+      "reflection": "Welke rol spelen toestemming en de bedoeling van de maker in jullie oordeel?",
+      "sourceUrl": "https://schooltv.nl/video-item/tegenlicht-in-de-klas-nepvideos-en-deepfake"
+    }
+  },
+  {
+    "id": "ki-campus-bewerbungsfilter",
+    "title": "Automatisch ausgewählt – een sollicitatiefilter nabootsen",
+    "providerName": "KI-Campus – iRights.Lab",
+    "subtype": "Werkblad met fictieve sollicitaties en antwoordmodel",
+    "description": "Studenten leiden selectieregels af uit eerder beoordeelde sollicitaties voor een opleidingsplek. Ze testen hun regels op nieuwe profielen en onderzoeken waarom zelfs een lievelingskleur de uitkomst kan bepalen.",
+    "purpose": "Uitleggen hoe een patroon in eerdere sollicitaties kan leiden tot een onterechte selectie.",
+    "audiences": [
+      "Docenten",
+      "Studenten"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek"
+    ],
+    "subjects": [
+      "Burgerschap"
+    ],
+    "keywords": [
+      "sollicitatie",
+      "stage",
+      "selectiebias",
+      "beroepsopleiding",
+      "loopbaan"
+    ],
+    "sourceUrls": [
+      {
+        "label": "Open de oefening en de bijlagen bij KI-Campus",
+        "url": "https://ki-campus.org/exercises/bewerbungsfilter",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download het werkblad met de sollicitanten (PDF)",
+        "url": "https://ki-campus.org/sites/default/files/2022-12/Automatisch%20ausgew%C3%A4hlt%20-%20Trainiere%20deinen%20KI-basierten%20Bewerbungsfilter.pdf",
+        "sourceType": "official"
+      },
+      {
+        "label": "Download het afzonderlijke antwoordmodel (PDF)",
+        "url": "https://ki-campus.org/sites/default/files/2022-09/L%C3%B6sung%20Automatisch%20ausgew%C3%A4hlt%20-%20Trainiere%20deinen%20KI-basierten%20Bewerbungsfilter.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "availabilityText": "Duitstalig werkblad en antwoordmodel, bruikbaar op papier zonder AI-account.",
+    "notes": "De bron gebruikt een Duitse opleidingsplek als voorbeeld. Voor een Nederlandse mbo-les kan de docent de Duitse profielkenmerken vooraf toelichten. De casus is een simulatie.",
+    "verificationNote": "De fictieve profielen, vragen en het afzonderlijke antwoordmodel zijn gecontroleerd. Het antwoordmodel bespreekt onder meer lievelingskleur als selectiecriterium.",
+    "geographicScope": "Europa",
+    "language": [
+      "de"
+    ],
+    "offerCategory": "materials",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-28",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "relatedIds": [],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-28",
+        "type": "added",
+        "summary": "Opgenomen na controle van het oorspronkelijke materiaal en de uitvoering van de opdracht."
+      }
+    ],
+    "publicationDate": null,
+    "lessonStart": {
+      "sectors": [
+        "MBO"
+      ],
+      "level": "Mbo · loopbaan en burgerschap",
+      "question": "Waarom selecteert dit filter de ene sollicitant wel en de andere niet?",
+      "learningGoal": "Een selectieregel reconstrueren en uitleggen waarom een voorspeller ongeschikt kan zijn voor de selectie.",
+      "activityType": "Papieren simulatie met sollicitantenprofielen",
+      "preparation": "Download het werkblad en bewaar het antwoordmodel voor de bespreking. Licht de Duitse termen voor de profielkenmerken toe.",
+      "task": "Vergelijk de aangenomen en afgewezen kandidaten. Schrijf op welke regel de beslissingen kan verklaren en pas die toe op nieuwe kandidaten. Controleer je uitkomsten met het antwoordmodel.",
+      "reflection": "Welk kenmerk voorspelt in de oefening een uitkomst terwijl het weinig zegt over iemands geschiktheid voor de plek?",
+      "sourceUrl": "https://ki-campus.org/exercises/bewerbungsfilter"
+    }
+  },
+  {
+    "id": "st-ambrose-end-of-life-communication-lab",
+    "title": "End-of-Life Communication Lab – een gesprek oefenen in de verpleegkunde",
+    "providerName": "St. Ambrose University",
+    "subtype": "Zes fictieve gesprekscasussen met reflectievragen",
+    "description": "Verpleegkundestudenten oefenen gesprekken over het levenseinde met een AI die een fictieve patiënt of naaste speelt. Ze lezen hun eigen reacties terug en beschrijven wat ze in een volgend gesprek anders willen zeggen.",
+    "purpose": "Eigen vraagstelling, empathie en professioneel taalgebruik bij een gevoelig gesprek onderzoeken.",
+    "audiences": [
+      "Docenten",
+      "Studenten"
+    ],
+    "sectors": [
+      "HBO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI"
+    ],
+    "subjects": [],
+    "keywords": [
+      "verpleegkunde",
+      "palliatieve zorg",
+      "therapeutische communicatie",
+      "rollenspel",
+      "gespreksvaardigheden"
+    ],
+    "sourceUrls": [
+      {
+        "label": "Open de opdracht van Danielle Hoffman bij AACN (PDF)",
+        "url": "https://www.aacnnursing.org/Portals/0/PDFs/ELNEC/End-of-Life-Communication-Lab-Across-the-Lifespan.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "availabilityText": "Engelstalige opdracht van twee pagina’s. Voor het rollenspel is een door de opleiding toegestane AI-chat nodig.",
+    "notes": "Danielle Hoffman ontwikkelde de opdracht bij St. Ambrose University. In de volledige opdracht oefenen studenten zes casussen. De Atlas-lesstart gebruikt één ervan voor een begeleide nabespreking.",
+    "verificationNote": "Beide pagina’s zijn gecontroleerd op rolbeschrijvingen, gespreksopbouw en reflectievragen. De opdracht biedt fictieve reacties om te oefenen met communicatie.",
+    "geographicScope": "Internationaal",
+    "language": [
+      "en"
+    ],
+    "offerCategory": "materials",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-28",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "relatedIds": [],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-28",
+        "type": "added",
+        "summary": "Opgenomen na controle van het oorspronkelijke materiaal en de uitvoering van de opdracht."
+      }
+    ],
+    "publicationDate": null,
+    "lessonStart": {
+      "sectors": [
+        "HBO"
+      ],
+      "level": "Hbo · verpleegkunde",
+      "question": "Hoe reageer je op een patiënt die zich zorgen maakt over de familie die achterblijft?",
+      "learningGoal": "Een eigen gespreksreactie beoordelen op empathie en ruimte voor het perspectief van de patiënt.",
+      "activityType": "Rollenspel met nabespreking",
+      "preparation": "Kies casus 5 op pagina 2. Gebruik de fictieve gegevens uit de opdracht in een door de opleiding toegestane AI-chat. Spreek af hoe de groep het gesprek nabespreekt.",
+      "task": "Laat de AI de patiënt spelen. Voer het gesprek met de instructies van pagina 1. Kies daarna één eigen reactie waardoor de patiënt verder kon vertellen en één die je wilt herformuleren.",
+      "reflection": "Welke woorden zou je een volgende keer kiezen en welke aanname over de patiënt laat je daarbij los?",
+      "sourceUrl": "https://www.aacnnursing.org/Portals/0/PDFs/ELNEC/End-of-Life-Communication-Lab-Across-the-Lifespan.pdf"
+    }
+  },
+  {
+    "id": "uu-transcriptie-proefopname",
+    "title": "Transcribing audio data – een Nederlandse proefopname en haar transcripties",
+    "providerName": "Utrecht University RDM Support",
+    "subtype": "Oefenmateriaal voor kwalitatieve onderzoeksmethoden",
+    "description": "Onderzoekers kunnen een openbaar Nederlandstalig testinterview beluisteren en de ruwe automatische transcripties vergelijken met een opgeschoonde versie. Alle deelnemers aan de oefening kunnen dezelfde passage controleren.",
+    "purpose": "Leren vaststellen welke transcriptiefouten de interpretatie van een interview kunnen veranderen.",
+    "audiences": [
+      "Docenten",
+      "Studenten",
+      "Onderzoekers"
+    ],
+    "sectors": [
+      "WO"
+    ],
+    "themes": [
+      "Onderzoek",
+      "AI-geletterdheid"
+    ],
+    "subjects": [
+      "Informatievaardigheden"
+    ],
+    "keywords": [
+      "spraakherkenning",
+      "transcriptie",
+      "kwalitatief onderzoek",
+      "interview",
+      "onderzoeksmethoden"
+    ],
+    "sourceUrls": [
+      {
+        "label": "Open de proefopname en transcripties op Zenodo",
+        "url": "https://zenodo.org/records/6785845",
+        "sourceType": "official"
+      },
+      {
+        "label": "Lees de toelichting van Universiteit Utrecht",
+        "url": "https://www.uu.nl/en/research/research-data-management/tools-services/transcription-of-audio-data",
+        "sourceType": "official"
+      }
+    ],
+    "availabilityText": "Openbare dataset met een Nederlandstalige opname en Engelstalige toelichting. Download de oefenbestanden en vergelijk ze lokaal, zonder eigen interview te uploaden.",
+    "notes": "D.C. Huijser en F.M.T. de Liagre Böhl stelden de bestanden beschikbaar onder CC BY 4.0. De transcripties laten de resultaten van de toenmalige software zien.",
+    "verificationNote": "De Utrechtse toelichting verwijst naar de dataset. De MP3, de opgeschoonde transcriptie in ODT en de ruwe Kaldi-transcriptie zijn geopend. De woordkeuze in het begin van beide transcripties is vergeleken.",
+    "geographicScope": "Nederland",
+    "language": [
+      "nl",
+      "en"
+    ],
+    "offerCategory": "materials",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [
+      "universiteit-utrecht"
+    ],
+    "status": "available",
+    "lastVerified": "2026-11-28",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "relatedIds": [],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-28",
+        "type": "added",
+        "summary": "Opgenomen na controle van het oorspronkelijke materiaal en de uitvoering van de opdracht."
+      }
+    ],
+    "publicationDate": "2022-04-19",
+    "lessonStart": {
+      "sectors": [
+        "WO"
+      ],
+      "level": "Wo · kwalitatieve onderzoeksmethoden",
+      "question": "Welke transcriptiefout verandert de betekenis van een interviewfragment?",
+      "learningGoal": "Een verschil tussen transcripties controleren aan de hand van de opname en de mogelijke gevolgen voor de analyse benoemen.",
+      "activityType": "Luisterproef met twee transcripties",
+      "preparation": "Download Test_interview_20220203.mp3, Test_interview_cleaned_transcript.odt en Test_interview_Kaldi_raw_20220315.txt. Kies een korte passage.",
+      "task": "Leg de ruwe en opgeschoonde versie naast elkaar en markeer twee verschillen. Luister terug naar de bijbehorende passage en noteer per verschil welke lezing de opname ondersteunt.",
+      "reflection": "Welk verschil zou je interpretatie van het interview veranderen en welke onzekerheid blijft na terugluisteren over?",
+      "sourceUrl": "https://zenodo.org/records/6785845"
+    }
   }
 ]
