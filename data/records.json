@@ -42175,5 +42175,331 @@
       }
     ],
     "publicationDate": null
+  },
+  {
+    "id": "goethe-the-next-word-machine",
+    "title": "The Next-Word Machine – taalmodel spelen met woordkaarten",
+    "providerName": "Goethe-Institut – Science Film Festival",
+    "subtype": "Taalspel met docenteninstructie",
+    "description": "Kinderen bouwen samen zinnen door telkens een volgend woord te kiezen. Ze vergelijken logische, verrassende en feitelijk onjuiste zinnen en bespreken wanneer een antwoord controle nodig heeft.",
+    "purpose": "Met een taalspel laten zien hoe woordvoorspelling werkt en waarom een vlot klinkende zin onjuist kan zijn.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "PO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Lesgeven en leren met AI"
+    ],
+    "availabilityText": "Engelstalige instructie voor 7–11 jaar, 25–35 minuten. De docent maakt woord- en zinkaarten met voorbeelden uit het PDF. De les kan zonder apparaat of account.",
+    "sourceUrls": [
+      {
+        "label": "Open de lesinstructie van het Goethe-Institut (PDF)",
+        "url": "https://www.goethe.de/resources/files/pdf359/sff2026_the-next-word-machine-v6.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "geographicScope": "Internationaal",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "taalmodel",
+      "volgend woord",
+      "woordkaarten",
+      "rollenspel",
+      "zonder computer"
+    ],
+    "subjects": [
+      "Digitale geletterdheid"
+    ],
+    "notes": "De klas modelleert woordvoorspelling door te stemmen. De lesinstructie licht later ook toe dat een model met woorden en woorddelen kan werken. De voorbeelden kunnen mondeling in het Nederlands worden gegeven.",
+    "verificationNote": "De officiële Toolkit verwijst naar dit PDF. Leeftijd, benodigdheden, stemmen, feitelijk onjuiste voorbeeldzinnen en de meertalige toepassing zijn gecontroleerd op pagina 1, 3–5 en 7.",
+    "offerCategory": "materials",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-28",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "relatedIds": [],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-28",
+        "type": "added",
+        "summary": "Opgenomen na controle van de oorspronkelijke lesinstructie, doelgroep en uitvoering."
+      }
+    ],
+    "publicationDate": null,
+    "lessonStart": {
+      "sectors": [
+        "PO"
+      ],
+      "level": "7–11 jaar",
+      "question": "Is de meest logische zin ook waar?",
+      "learningGoal": "Een vlot klinkende zin onderscheiden van een zin die feitelijk klopt.",
+      "activityType": "Taalspel en klassengesprek",
+      "preparation": "Maak woordkaarten met de voorbeeldzinnen uit het PDF, pagina 1 en 3–4. Leg papier of een bord klaar.",
+      "task": "Bouw klassikaal één zin door na ieder woord op een vervolg te stemmen. Gebruik daarna het olifantenvoorbeeld op pagina 4. Bedenk één vervolg dat klopt en één vervolg dat wel goed klinkt maar niet klopt.",
+      "reflection": "Leg uit waarom stemmen laat zien welk woord jullie verwachten. Wat zou je daarnaast moeten weten om te bepalen of de zin klopt?",
+      "sourceUrl": "https://www.goethe.de/resources/files/pdf359/sff2026_the-next-word-machine-v6.pdf"
+    }
+  },
+  {
+    "id": "goethe-hidden-cost-ai-energie-grondstoffen",
+    "title": "The Hidden Cost of AI",
+    "providerName": "Goethe-Institut – Science Film Festival",
+    "subtype": "Klassikale werkvorm over de levenscyclus van AI",
+    "description": "Leerlingen leggen met kaarten de route van een AI-verzoek en voegen de productie, training, gebruiksfase en afdanking toe. Daarna vergelijken ze scenario’s op benodigde middelen, beoogd nut en ontbrekende informatie.",
+    "purpose": "In kaart brengen waar energie, water en materialen nodig kunnen zijn en welke informatie nodig is om twee toepassingen te vergelijken.",
+    "audiences": [
+      "Docenten",
+      "Leerlingen"
+    ],
+    "sectors": [
+      "VO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Publieke waarden en ethiek",
+      "Lesgeven en leren met AI"
+    ],
+    "availabilityText": "Engelstalige les voor 10–16 jaar, 40–55 minuten. De docent maakt proces- en scenariokaarten met de voorbeelden op pagina 2. Uitvoerbaar met papier en kaartjes.",
+    "sourceUrls": [
+      {
+        "label": "Open de lesinstructie van het Goethe-Institut (PDF)",
+        "url": "https://www.goethe.de/resources/files/pdf359/sff2026_the-hidden-cost-of-ai-v6.pdf",
+        "sourceType": "official"
+      }
+    ],
+    "geographicScope": "Internationaal",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "duurzaamheid",
+      "milieu-impact",
+      "datacentrum",
+      "energieverbruik",
+      "waterverbruik",
+      "inference",
+      "levenscyclus"
+    ],
+    "subjects": [
+      "Digitale geletterdheid"
+    ],
+    "notes": "De scenariovergelijking is kwalitatief. Verbruik hangt onder meer af van model, hardware, locatie en gebruik. De bron geeft geen universeel getal per prompt.",
+    "verificationNote": "Titels en leeftijden zijn gecontroleerd op de officiële Toolkit-pagina. Kaartteksten, route, levenscyclus, vergelijking en de begrenzing van milieucijfers staan op pagina 2–5 en 9 van het PDF.",
+    "offerCategory": "materials",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-28",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "relatedIds": [
+      "npuls-ai-duurzaamheid-verkenning-2026"
+    ],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-28",
+        "type": "added",
+        "summary": "Opgenomen na controle van de oorspronkelijke lesinstructie, doelgroep en uitvoering."
+      }
+    ],
+    "publicationDate": null,
+    "lessonStart": {
+      "sectors": [
+        "VO"
+      ],
+      "level": "10–16 jaar volgens de bron",
+      "question": "Wat gebeurt er achter het scherm bij een AI-vraag?",
+      "learningGoal": "Stappen in de levenscyclus van een AI-systeem verbinden met energie, materialen en water.",
+      "activityType": "Proceskaarten ordenen en vergelijken",
+      "preparation": "Maak proceskaarten en kaartjes voor energie, water en grondstoffen met de voorbeelden op pagina 2 van het PDF.",
+      "task": "Leg van links naar rechts de reis van een online AI-vraag. Voeg toe wat al vóór die vraag nodig was. Leg bij drie stappen welk middel nodig kan zijn en licht toe waarom.",
+      "reflection": "Kies uit pagina 2 twee manieren om AI te gebruiken. Welke informatie mis je om hun milieubelasting te vergelijken?",
+      "sourceUrl": "https://www.goethe.de/resources/files/pdf359/sff2026_the-hidden-cost-of-ai-v6.pdf"
+    }
+  },
+  {
+    "id": "mbomediawijs-chatgpt-als-mentor",
+    "title": "ChatGPT als mentor – onderbouw een ontwerpkeuze",
+    "providerName": "Practoraat Mediawijsheid & Burgerschap",
+    "subtype": "Mbo-les met denkvragen en herschrijven",
+    "description": "Studenten Mediavormgever schrijven eerst zelf waarom ze een keuze maakten. Ze bespreken drie door AI gegenereerde denkvragen met een klasgenoot, herschrijven hun onderbouwing en vergelijken de versies.",
+    "purpose": "Een eigen ontwerpkeuze duidelijk onderbouwen en uitleggen welke bewerking de student zelf heeft gekozen.",
+    "audiences": [
+      "Docenten",
+      "Studenten"
+    ],
+    "sectors": [
+      "MBO"
+    ],
+    "themes": [
+      "Lesgeven en leren met AI",
+      "AI-geletterdheid"
+    ],
+    "availabilityText": "Openbare Nederlandstalige les van 90 minuten voor mbo-niveau 3 en 4. De bronles gebruikt een apparaat en ChatGPT-account per student. De voorbeeldpresentatie op de site gaf bij controle een foutpagina.",
+    "sourceUrls": [
+      {
+        "label": "Open de les bij Mbomediawijs",
+        "url": "https://mbomediawijs.nl/openleermaterialen/chatgpt-als-mentor/",
+        "sourceType": "official"
+      }
+    ],
+    "geographicScope": "Nederland",
+    "language": [
+      "nl"
+    ],
+    "keywords": [
+      "mediavormgever",
+      "ontwerpkeuze",
+      "onderbouwing",
+      "denkvragen",
+      "herschrijven"
+    ],
+    "subjects": [
+      "Mediavormgeving"
+    ],
+    "notes": "De uitklapbare les bevat de benodigde stappen en voorbeeldprompts. Gebruik voor de lesstart een fictieve of openbare ontwerpopdracht en een door de school toegestane tool.",
+    "verificationNote": "Lesdoelen en beide opdrachten onder Uitvoering zijn in een verse browser geopend. De tekst bevat de prompt, de bespreking met een klasgenoot, de eigen herschrijving en de controle of die de oorspronkelijke bedoeling weergeeft.",
+    "offerCategory": "materials",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-28",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "relatedIds": [
+      "mbo-mediawijs-open-ai-leermaterialen"
+    ],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-28",
+        "type": "added",
+        "summary": "Opgenomen na controle van de oorspronkelijke lesinstructie, doelgroep en uitvoering."
+      }
+    ],
+    "publicationDate": "2024-06-13",
+    "lessonStart": {
+      "sectors": [
+        "MBO"
+      ],
+      "level": "Mbo 3–4 · Mediavormgever",
+      "question": "Waar heeft je ontwerpkeuze een sterkere onderbouwing nodig?",
+      "learningGoal": "Met een klasgenoot één ontwerpkeuze onderbouwen en uitleggen wat je in de tekst verandert.",
+      "activityType": "Denkvragen bespreken en herschrijven",
+      "preparation": "Open op de bronpagina Uitvoering. Gebruik een eigen, openbare of fictieve ontwerpkeuze zonder persoonsgegevens en volg de afspraken van de opleiding voor AI-gebruik.",
+      "task": "Schrijf zelf waarom je één ontwerpkeuze hebt gemaakt. Laat de toegestane AI-tool drie vragen stellen bij die tekst. Bespreek één vraag met een klasgenoot en scherp je onderbouwing zelf aan.",
+      "reflection": "Vergelijk beide versies. Welke wijziging verduidelijkt je reden en welke suggestie liet je liggen?",
+      "sourceUrl": "https://mbomediawijs.nl/openleermaterialen/chatgpt-als-mentor/",
+      "sourceMinutes": 90
+    }
+  },
+  {
+    "id": "flair-ai-source-checking-lab",
+    "title": "AI Source-Checking Lab – literatuurverwijzingen van AI natrekken",
+    "providerName": "FLAIR Collaboration",
+    "subtype": "Werkcollege met broncontrole en groepsbespreking",
+    "description": "Studenten zoeken drie tot vijf door AI voorgestelde literatuurverwijzingen op. Ze leggen per verwijzing vast of die bestaat, correct is en past bij de onderzoeksvraag. Daarna vergelijken ze hun zoekstappen en bevindingen.",
+    "purpose": "Een literatuurlijst van AI leren controleren op vindbaarheid, correctheid, relevantie en kwaliteit.",
+    "audiences": [
+      "Docenten",
+      "Studenten"
+    ],
+    "sectors": [
+      "HBO",
+      "WO"
+    ],
+    "themes": [
+      "AI-geletterdheid",
+      "Onderzoek",
+      "Lesgeven en leren met AI"
+    ],
+    "availabilityText": "Openbare Engelstalige instructie van 70 minuten. De docent stelt vooraf korte literatuurlijsten samen. De bron biedt een variant zonder AI-account voor studenten.",
+    "sourceUrls": [
+      {
+        "label": "Open het werkcollege en de docentstappen bij FLAIR",
+        "url": "https://learners-ai-readiness.org/learning-activities/ai-source-checking-lab/",
+        "sourceType": "official"
+      }
+    ],
+    "geographicScope": "Europa",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "literatuurverwijzingen",
+      "literatuurlijst",
+      "broncontrole",
+      "bibliotheek",
+      "verzonnen referentie"
+    ],
+    "subjects": [
+      "Informatievaardigheden"
+    ],
+    "notes": "De maker geeft een lesverloop en beoordelingsvormen. Voorbeeldlijsten worden door de docent voorbereid met bronnen die studenten kunnen bereiken. De bron vermeldt CC BY-SA 4.0.",
+    "verificationNote": "De onderdelen Preparation, Individual Verification, Group Discussion, Assessment en de variant zonder AI-gebruik zijn gecontroleerd. De activiteit richt zich op literatuurverwijzingen, naast de bestaande Atlas-oefening over controle van statistische beweringen.",
+    "offerCategory": "materials",
+    "recordType": "guidance",
+    "legacyType": "Handreiking",
+    "organizationIds": [],
+    "status": "available",
+    "lastVerified": "2026-11-28",
+    "verificationStatus": "verified",
+    "parentIds": [],
+    "childIds": [],
+    "relatedIds": [
+      "european-ai-tools-ai-bronnen-controleren-oefening"
+    ],
+    "accessType": "public",
+    "costType": "free",
+    "commercialStatus": "unknown",
+    "verificationMethod": "agent_primary_source_review",
+    "changeHistory": [
+      {
+        "date": "2026-11-28",
+        "type": "added",
+        "summary": "Opgenomen na controle van de oorspronkelijke lesinstructie, doelgroep en uitvoering."
+      }
+    ],
+    "publicationDate": null,
+    "lessonStart": {
+      "sectors": [
+        "HBO",
+        "WO"
+      ],
+      "level": "Hbo en wo · informatievaardigheden",
+      "question": "Welke literatuurverwijzingen kun je gebruiken voor je onderzoeksvraag?",
+      "learningGoal": "Per literatuurverwijzing vastleggen of deze te vinden is, klopt en relevant is voor de onderzoeksvraag.",
+      "activityType": "Literatuurverwijzingen opzoeken en vergelijken",
+      "preparation": "Maak een lijstje van drie tot vijf gemengde verwijzingen voor één herkenbare onderzoeksvraag. Controleer vooraf wat studenten via de bibliotheek kunnen bereiken.",
+      "task": "Zoek elke verwijzing op. Noteer de vindplaats, controleer auteur, titel en jaar en geef aan of de publicatie je vraag helpt beantwoorden. Vergelijk in een groep waar jullie controles verschilden.",
+      "reflection": "Welke zoekactie hielp het meest om een foutieve of ongeschikte verwijzing te herkennen?",
+      "sourceUrl": "https://learners-ai-readiness.org/learning-activities/ai-source-checking-lab/",
+      "sourceMinutes": 70
+    }
   }
 ]
