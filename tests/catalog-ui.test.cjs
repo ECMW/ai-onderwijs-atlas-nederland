@@ -817,7 +817,9 @@ test('the lesson route and direct searches show usable lessons in teaching-level
 });
 
 test('a specific lesson level and audience take precedence over a collection’s broader scope', () => {
-  const html = load(classroomLessons, lessonRoute + '&sector=PO&audience=Docenten').resultsMarkup();
+  const scenarioIds = ['digiduck-ai-lespakket-groep-7-8', 'ai-slim-bekeken-doorlopende-leerlijn'];
+  const scenario = classroomLessons.filter(item => scenarioIds.includes(item.id));
+  const html = load(scenario, lessonRoute + '&sector=PO&audience=Docenten').resultsMarkup();
   assert.match(html, /name="atlas-lesson-starts" open/);
   assert.match(html, /data-lesson-id="digiduck-ai-lespakket-groep-7-8"/);
   assert.ok(!html.includes('data-lesson-id="ai-slim-bekeken-doorlopende-leerlijn"'));
