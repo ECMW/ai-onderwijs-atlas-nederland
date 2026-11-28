@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_reviewed": "2026-11-27",
+  "last_reviewed": "2026-11-28",
   "verification_window_days": 90,
   "sources": [
     {
@@ -1806,6 +1806,31 @@
       "atlas_record_ids": [
         "erasmus-kortlopende-mobiliteit-schoolonderwijs-2027",
         "erasmus-allianties-onderwijs-bedrijven-2027"
+      ]
+    },
+    {
+      "source_id": "tuebingen-innovation-phd-programme-2026",
+      "title": "Innovation PhD | Research & Venture Creation",
+      "author_or_organisation": "Tübingen AI Center",
+      "publication_date": "2026",
+      "url_or_doi": "https://transfer.tuebingen.ai/innovationPhd/",
+      "source_type": "official_framework",
+      "primary_or_secondary": "primary",
+      "topics": [
+        "Onderzoek"
+      ],
+      "jurisdiction": "Duitsland",
+      "claims_supported": [
+        "Het ontwerp van deze lokale promotiepilot verbindt drie jaar AI-onderzoek met probleemverkenning, prototypetests en het ontwikkelen van een onderneming."
+      ],
+      "reliability_notes": "De aanbieder beschrijft de drie fasen, het profiel van kandidaten en de onderdelen van het beoogde eindwerk.",
+      "limitations": "Het programmaontwerp is in ontwikkeling. De promotieregels van de graadverlenende instelling zijn bepalend. Resultaten van deelnemers zijn op deze pagina niet gerapporteerd.",
+      "legal_effect": "not_applicable",
+      "peer_review_status": "not_applicable",
+      "last_verified": "2026-11-28",
+      "status": "active",
+      "atlas_record_ids": [
+        "tuebingen-ai-center-innovation-phd"
       ]
     }
   ]

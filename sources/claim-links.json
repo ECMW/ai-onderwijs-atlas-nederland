@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "last_reviewed": "2026-11-27",
+  "last_reviewed": "2026-11-28",
   "claims": [
     {
       "claim_id": "vo-lichtbreking-ai-uitleg-controleren",
@@ -833,6 +833,24 @@
       "last_reviewed": "2026-11-06",
       "time_sensitive": true,
       "review_by": "2027-02-04"
+    },
+    {
+      "claim_id": "tuebingen-innovation-phd-pilotopzet",
+      "location": {
+        "path": "data/records.json",
+        "record_id": "tuebingen-ai-center-innovation-phd",
+        "field": "description"
+      },
+      "claim": "In deze driejarige promotiepilot kiest de kandidaat een maatschappelijk of economisch vraagstuk. Met begeleiding van onderzoekers en ondernemers werkt de kandidaat aan een wetenschappelijke bijdrage over AI, test een prototype en onderzoekt of daaruit een start-up kan ontstaan.",
+      "claim_kind": "source_statement",
+      "evidence_status": "SUPPORTED_WITH_LIMITS",
+      "source_ids": [
+        "tuebingen-innovation-phd-programme-2026"
+      ],
+      "assessment": "De drie fasen en de dubbele begeleiding behoren tot de door het centrum beschreven pilotopzet. De uiteindelijke vorm van het promotietraject kan per instelling verschillen.",
+      "last_reviewed": "2026-11-28",
+      "time_sensitive": true,
+      "review_by": "2026-12-28"
     }
   ]
 }

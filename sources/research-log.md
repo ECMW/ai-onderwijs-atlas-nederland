@@ -230,3 +230,7 @@ De bestaande bronkaarten bieden drie verschillende ingangen voor een school- of 
 Figuur 2 van het HHMI-werkblad vergelijkt eilanden met en zonder poolvossen. Grafiek A gaat over fosfor in de bodem, grafiek B over stikstof in het gras. De Nederlandse voorbeeldzin die de klas met de grafieken onderzoekt, komt uit de bestaande Atlas-lesstart. [HHMI, Introduction to Systems](https://docs.google.com/document/d/1dhy_ADiJ6wpG3MRSvv4qYatKZEe7MQGkTLNDcNtV9Gk/preview)
 
 In onderdeel 3.1 van het UBC-notebook staan de effectschattingen en standaardfouten voor lasso, random forest en boosting onder het codeblok. Studenten kunnen de getoonde uitkomsten voor de Atlas-opdracht in de leesversie raadplegen. [UBC, Double Machine Learning](https://ubcecon.github.io/praxis-ubc/docs/Causal_ML/notebook_07_double_machine_learning.html#any-learner-in-dml)
+
+## 2026-11-28 — Innovation PhD in Tübingen
+
+Het Tübingen AI Center beschrijft een driejarige promotiepilot voor kandidaten met een STEM-kwalificatie op masterniveau. Het aanmeldformulier vraagt om een cv en antwoorden over onder meer probleemkeuze en maatschappelijke betekenis. De programmapagina en het formulier geven geen sluitingsdatum. [Programmaopzet](https://transfer.tuebingen.ai/innovationPhd/) · [Aanmeldformulier](https://transfer.tuebingen.ai/innovationPhd/applications/application.php)
