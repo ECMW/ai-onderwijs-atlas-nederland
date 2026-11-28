@@ -2435,7 +2435,8 @@
       <header class="page-intro"><h1 id="research-heading" tabindex="-1">Onderzoek doen of promoveren</h1></header>
       <section><h2>Ik zoek een promotieplaats</h2><p>U solliciteert bij het project of de werkgever die de PhD-vacature publiceert. Bij MSCA Doctoral Networks vraagt het consortium de financiering aan.</p>
         <ul><li><a href="https://www.academictransfer.com/nl/functietype/phd/" target="_blank" rel="noopener noreferrer">PhD-vacatures in Nederland op AcademicTransfer ↗</a></li>
-          <li><a href="https://euraxess.ec.europa.eu/jobs/search" target="_blank" rel="noopener noreferrer">Onderzoeksvacatures in Europa op EURAXESS ↗</a><p>Kies bij ‘Academic Level’ voor ‘PhD Positions’. Voor Nederland kiest u bij ‘Country’ voor ‘Netherlands’.</p></li></ul></section>
+          <li><a href="https://euraxess.ec.europa.eu/jobs/search" target="_blank" rel="noopener noreferrer">Onderzoeksvacatures in Europa op EURAXESS ↗</a><p>Kies bij ‘Academic Level’ voor ‘PhD Positions’. Voor Nederland kiest u bij ‘Country’ voor ‘Netherlands’.</p></li>
+          ${resource('tuebingen-ai-center-innovation-phd', 'Innovation PhD van het Tübingen AI Center', 'In deze Duitse promotiepilot combineren kandidaten met een STEM-kwalificatie op masterniveau AI-onderzoek met het ontwikkelen van een start-up.', true)}</ul></section>
       <section><h2>Ik doe al onderzoek</h2><p><a href="#papers">Recente papers over AI en onderwijs</a></p>${methods ? `<ul>${methods}</ul>` : '<p>Leg uw onderzoeksvraag, databron en keuzes rond AI-gebruik vast in uw onderzoeksplan.</p>'}</section>
       <section><h2>Met mijn onderwijsinstelling praktijkonderzoek doen</h2>
         <p>Bespreek een vraag uit uw onderwijspraktijk met de onderzoekscoördinator van uw instelling. Bekijk per regeling wie kan indienen.</p>
