@@ -42501,5 +42501,76 @@
       "sourceUrl": "https://learners-ai-readiness.org/learning-activities/ai-source-checking-lab/",
       "sourceMinutes": 70
     }
+  },
+  {
+    "id": "tuebingen-ai-center-innovation-phd",
+    "title": "Innovation PhD – AI-onderzoek en ondernemerschap in Tübingen",
+    "recordType": "programme",
+    "legacyType": "Programma",
+    "subtype": "Promotiepilot",
+    "organizationIds": [],
+    "providerName": "Tübingen AI Center",
+    "description": "In deze driejarige promotiepilot kiest de kandidaat een maatschappelijk of economisch vraagstuk. Met begeleiding van onderzoekers en ondernemers werkt de kandidaat aan een wetenschappelijke bijdrage over AI, test een prototype en onderzoekt of daaruit een start-up kan ontstaan.",
+    "purpose": "Promoveren op een AI-vraagstuk en tegelijk onderzoeken of de uitkomst de basis kan vormen voor een eigen bedrijf.",
+    "audiences": [
+      "Studenten",
+      "Onderzoekers",
+      "Promovendi"
+    ],
+    "sectors": [
+      "WO",
+      "Onderzoek"
+    ],
+    "themes": [
+      "Onderzoek"
+    ],
+    "status": "open_call",
+    "availabilityText": "Aanmelden kan via het Engelstalige formulier van het Tübingen AI Center. De aanbieder werkt de pilot verder uit. Een sluitingsdatum is nog onbekend.",
+    "publicationDate": null,
+    "lastVerified": "2026-11-28",
+    "verificationStatus": "verified",
+    "sourceUrls": [
+      {
+        "label": "Tübingen AI Center – opzet en voorwaarden van de Innovation PhD",
+        "url": "https://transfer.tuebingen.ai/innovationPhd/",
+        "sourceType": "official"
+      },
+      {
+        "label": "Tübingen AI Center – aanmeldformulier Innovation PhD",
+        "url": "https://transfer.tuebingen.ai/innovationPhd/applications/application.php",
+        "sourceType": "official"
+      }
+    ],
+    "geographicScope": "Europa",
+    "accessType": "restricted",
+    "costType": "unknown",
+    "commercialStatus": "unknown",
+    "applicationDeadline": null,
+    "eligibility": "Voor kandidaten met een kwalificatie op masterniveau in natuurwetenschappen, technologie, techniek of wiskunde (STEM). Bij de aanmelding horen een cv en schriftelijke antwoorden over onder meer het vraagstuk en de beoogde maatschappelijke bijdrage.",
+    "language": [
+      "en"
+    ],
+    "keywords": [
+      "promoveren",
+      "promotieplaats",
+      "promotieonderzoek",
+      "PhD",
+      "AI-onderzoek",
+      "ondernemerschap",
+      "startup",
+      "start-up",
+      "STEM",
+      "Duitsland"
+    ],
+    "notes": "De instelling waar de kandidaat promoveert verleent de graad volgens haar eigen promotiereglement. Het voorgestelde eindwerk omvat de wetenschappelijke bijdrage, de toetsing van een prototype en een plan voor toepassing.",
+    "verificationMethod": "agent_primary_source_review",
+    "verificationNote": "Programmaopzet en doelgroep gecontroleerd op de officiële programmapagina. De aanmeldlink opent het formulier voor kandidaten.",
+    "changeHistory": [
+      {
+        "date": "2026-11-28",
+        "type": "added",
+        "summary": "Promotiepilot toegevoegd na controle van de programmaopzet, deelnamevoorwaarden en het officiële aanmeldformulier."
+      }
+    ]
   }
 ]
